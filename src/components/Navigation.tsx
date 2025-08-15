@@ -1,10 +1,25 @@
-import { Calculator, Search, Menu, X } from "lucide-react";
+import { Calculator, Search, Menu, X, Moon, Sun, Palette } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { useTheme } from "next-themes";
 import { useState } from "react";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { theme, setTheme } = useTheme();
+
+  const colorPalettes = [
+    { name: "Green", primary: "142 76% 36%", class: "bg-green-500" },
+    { name: "Blue", primary: "221 83% 53%", class: "bg-blue-500" },
+    { name: "Purple", primary: "262 83% 58%", class: "bg-purple-500" },
+    { name: "Orange", primary: "25 95% 53%", class: "bg-orange-500" },
+    { name: "Pink", primary: "330 81% 60%", class: "bg-pink-500" },
+  ];
+
+  const setColorPalette = (primary: string) => {
+    document.documentElement.style.setProperty('--primary', primary);
+  };
 
   return (
     <nav className="fixed top-0 w-full z-50 bg-background/95 backdrop-blur-sm border-b shadow-sm">
@@ -55,6 +70,37 @@ const Navigation = () => {
                 {item}
               </Button>
             ))}
+            
+            <Popover>
+              <PopoverTrigger asChild>
+                <Button variant="ghost" size="sm">
+                  <Palette className="w-4 h-4" />
+                </Button>
+              </PopoverTrigger>
+              <PopoverContent className="w-48 p-3">
+                <div className="space-y-2">
+                  <p className="text-sm font-medium">Color Palette</p>
+                  <div className="grid grid-cols-5 gap-2">
+                    {colorPalettes.map((palette) => (
+                      <button
+                        key={palette.name}
+                        onClick={() => setColorPalette(palette.primary)}
+                        className={`w-8 h-8 rounded-md ${palette.class} hover:scale-110 transition-transform`}
+                        title={palette.name}
+                      />
+                    ))}
+                  </div>
+                </div>
+              </PopoverContent>
+            </Popover>
+
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            >
+              {theme === "dark" ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+            </Button>
           </div>
 
           {/* Mobile Menu Button */}
