@@ -7,6 +7,7 @@ import { useState } from "react";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [currentPrimary, setCurrentPrimary] = useState("142 76% 36%"); // Default green
   const { theme, setTheme } = useTheme();
 
   const colorPalettes = [
@@ -25,7 +26,10 @@ const Navigation = () => {
   ];
 
   const setColorPalette = (primary: string) => {
+    console.log('Setting color palette to:', primary);
     document.documentElement.style.setProperty('--primary', primary);
+    setCurrentPrimary(primary); // Force re-render
+    console.log('CSS variable set, current value:', getComputedStyle(document.documentElement).getPropertyValue('--primary'));
   };
 
   return (
