@@ -49,7 +49,7 @@ const Navigation = () => {
             </div>
             <div>
               <h1 className="text-xl font-bold text-primary">
-                Calculate<span className="text-primary">This</span>
+                Calculate<span className="text-primary">This</span><span className="text-xs text-muted-foreground">.ai</span>
               </h1>
             </div>
           </div>

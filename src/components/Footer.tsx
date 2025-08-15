@@ -66,7 +66,7 @@ const Footer = () => {
 
         <div className="border-t mt-8 pt-8 text-center">
           <p className="text-muted-foreground text-sm">
-            © 2024 CalculateThis. All rights reserved.
+            © 2024 CalculateThis.ai. All rights reserved.
           </p>
         </div>
       </div>

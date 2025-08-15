@@ -37,7 +37,7 @@ const SocialProof = () => {
             Trusted Worldwide
           </Badge>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Why Millions Choose CalculateThis
+            Why Millions Choose CalculateThis.ai
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Join millions of users who rely on our precision calculators for accurate, fast, and reliable calculations
