@@ -8,22 +8,22 @@ const HeroSection = () => {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-hero">
       {/* Floating Elements */}
       <div className="absolute top-24 left-16 opacity-60">
-        <div className="bg-card/80 backdrop-blur-sm p-4 rounded-lg shadow-lg border">
+        <div className="bg-card/80 backdrop-blur-sm p-4 rounded-lg shadow-lg border border-border/50">
           <Calculator className="w-6 h-6 text-primary" />
         </div>
       </div>
       <div className="absolute top-32 right-24 opacity-60">
-        <div className="bg-card/80 backdrop-blur-sm p-4 rounded-lg shadow-lg border">
+        <div className="bg-card/80 backdrop-blur-sm p-4 rounded-lg shadow-lg border border-border/50">
           <TrendingUp className="w-6 h-6 text-primary" />
         </div>
       </div>
       <div className="absolute bottom-40 left-24 opacity-60">
-        <div className="bg-card/80 backdrop-blur-sm p-4 rounded-lg shadow-lg border">
+        <div className="bg-card/80 backdrop-blur-sm p-4 rounded-lg shadow-lg border border-border/50">
           <Zap className="w-6 h-6 text-primary" />
         </div>
       </div>
       <div className="absolute bottom-32 right-32 opacity-60">
-        <div className="bg-card/80 backdrop-blur-sm p-4 rounded-lg shadow-lg border">
+        <div className="bg-card/80 backdrop-blur-sm p-4 rounded-lg shadow-lg border border-border/50">
           <Target className="w-6 h-6 text-primary" />
         </div>
       </div>
@@ -56,7 +56,7 @@ const HeroSection = () => {
         {/* Search Bar */}
         <div className="max-w-3xl mx-auto mb-12 animate-fade-up" style={{ animationDelay: '0.3s' }}>
           <div className="relative group">
-            <div className="relative bg-card/90 backdrop-blur-sm rounded-2xl shadow-lg border">
+            <div className="relative bg-card/90 backdrop-blur-sm rounded-2xl shadow-lg border border-border/50">
               <div className="flex items-center p-2">
                 <Search className="ml-4 text-muted-foreground w-5 h-5" />
                 <Input
@@ -87,7 +87,7 @@ const HeroSection = () => {
           <Button 
             variant="outline" 
             size="lg" 
-            className="border border-primary text-primary hover:bg-primary/5 px-8 py-4 text-lg"
+            className="border-2 border-primary text-primary hover:bg-primary/5 px-8 py-4 text-lg"
           >
             View Categories
           </Button>
