@@ -13,15 +13,15 @@ const Navigation = () => {
     { name: "Stripe Purple", primary: "263 90% 67%", class: "bg-[#8B5CF6]" },
     { name: "Airbnb Coral", primary: "354 84% 65%", class: "bg-[#FF5A5F]" },
     { name: "Cursor Blue", primary: "214 100% 59%", class: "bg-[#007AFF]" },
-    { name: "GitHub Dark", primary: "213 12% 14%", class: "bg-[#24292F]" },
-    { name: "Vercel Black", primary: "0 0% 0%", class: "bg-black" },
-    { name: "Linear Purple", primary: "265 89% 78%", class: "bg-[#B794F6]" },
-    { name: "Notion Gray", primary: "210 9% 31%", class: "bg-[#37352F]" },
-    { name: "Figma Purple", primary: "283 89% 68%", class: "bg-[#A259FF]" },
-    { name: "Discord Blurple", primary: "235 86% 65%", class: "bg-[#5865F2]" },
     { name: "Spotify Green", primary: "141 73% 42%", class: "bg-[#1DB954]" },
-    { name: "Twitter Blue", primary: "203 89% 53%", class: "bg-[#1DA1F2]" },
-    { name: "Slack Purple", primary: "291 64% 42%", class: "bg-[#4A154B]" },
+    { name: "Netflix Red", primary: "355 78% 56%", class: "bg-[#E50914]" },
+    { name: "Uber Black", primary: "0 0% 0%", class: "bg-black" },
+    { name: "Notion Gray", primary: "210 9% 31%", class: "bg-[#37352F]" },
+    { name: "Slack Aubergine", primary: "291 64% 42%", class: "bg-[#4A154B]" },
+    { name: "Shopify Mint", primary: "154 60% 51%", class: "bg-[#00A96E]" },
+    { name: "Twitch Purple", primary: "261 83% 58%", class: "bg-[#9146FF]" },
+    { name: "Discord Blurple", primary: "235 86% 65%", class: "bg-[#5865F2]" },
+    { name: "Orange Modern", primary: "25 95% 53%", class: "bg-[#FF6B35]" },
   ];
 
   const setColorPalette = (primary: string) => {
