@@ -14,117 +14,107 @@ import { Badge } from "@/components/ui/badge";
 
 const categories = [
   {
-    name: "FINANCIAL",
-    description: "MORTGAGES, LOANS, INVESTMENTS & FINANCIAL METRICS",
+    name: "Financial",
+    description: "Mortgages, loans, investments & financial metrics",
     icon: DollarSign,
     count: "120+",
-    color: "from-green-500 to-emerald-600"
+    color: "text-green-600"
   },
   {
-    name: "MATHEMATICS",
-    description: "BASIC & ADVANCED MATHEMATICAL CALCULATIONS",
+    name: "Mathematics",
+    description: "Basic & advanced mathematical calculations",
     icon: Calculator,
     count: "85+",
-    color: "from-blue-500 to-cyan-600"
+    color: "text-blue-600"
   },
   {
-    name: "HEALTH & FITNESS",
-    description: "BMI, CALORIE & HEALTH-RELATED CALCULATIONS",
+    name: "Health & Fitness",
+    description: "BMI, calorie & health-related calculations",
     icon: Heart,
     count: "95+",
-    color: "from-red-500 to-pink-600"
+    color: "text-red-600"
   },
   {
-    name: "DATE & TIME",
-    description: "AGE CALCULATOR, TIME ZONE CONVERTER & MORE",
+    name: "Date & Time",
+    description: "Age calculator, time zone converter & more",
     icon: Clock,
     count: "45+",
-    color: "from-purple-500 to-violet-600"
+    color: "text-purple-600"
   },
   {
-    name: "UNIT CONVERSION",
-    description: "CONVERT BETWEEN DIFFERENT UNITS OF MEASUREMENT",
+    name: "Unit Conversion",
+    description: "Convert between different units of measurement",
     icon: ArrowLeftRight,
     count: "75+",
-    color: "from-orange-500 to-amber-600"
+    color: "text-orange-600"
   },
   {
-    name: "EVERYDAY",
-    description: "PRACTICAL CALCULATORS FOR EVERYDAY SITUATIONS",
+    name: "Everyday",
+    description: "Practical calculators for everyday situations",
     icon: Coffee,
     count: "65+",
-    color: "from-brown-500 to-yellow-600"
+    color: "text-amber-600"
   },
   {
-    name: "BUSINESS",
-    description: "PROFIT MARGINS, DISCOUNTS & BUSINESS TOOLS",
+    name: "Business",
+    description: "Profit margins, discounts & business tools",
     icon: Briefcase,
     count: "55+",
-    color: "from-slate-500 to-gray-600"
+    color: "text-slate-600"
   },
   {
-    name: "EDUCATION",
-    description: "ACADEMIC CALCULATORS FOR STUDENTS & EDUCATORS",
+    name: "Education",
+    description: "Academic calculators for students & educators",
     icon: GraduationCap,
     count: "40+",
-    color: "from-indigo-500 to-blue-600"
+    color: "text-indigo-600"
   }
 ];
 
 const CalculatorCategories = () => {
   return (
-    <section className="py-32 relative overflow-hidden bg-gradient-section">
-      {/* Sharp Background Elements */}
-      <div className="absolute inset-0 bg-gradient-mesh opacity-30" />
-      <div className="absolute top-0 left-1/4 w-64 h-64 bg-primary/10 rounded-none rotate-45" />
-      <div className="absolute bottom-0 right-1/4 w-48 h-48 bg-accent/10 rounded-none -rotate-12" />
-      
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <div className="text-center mb-20 animate-brutal-slide">
-          <h2 className="text-6xl md:text-8xl font-black text-foreground mb-8 tracking-tighter leading-none">
-            PRECISION
-            <br />
-            <span className="text-primary">CATEGORIES</span>
+    <section className="py-24 bg-gradient-subtle">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16 animate-fade-up">
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+            Explore by Category
           </h2>
-          <p className="text-2xl text-muted-foreground max-w-4xl mx-auto font-mono tracking-wide uppercase">
-            BROWSE OUR COMPREHENSIVE COLLECTION ORGANIZED BY CATEGORY
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            Browse our comprehensive collection organized by category
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {categories.map((category, index) => {
             const Icon = category.icon;
             return (
               <div 
                 key={index}
-                className="animate-brutal-slide group"
+                className="animate-fade-up group"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <Card className="h-full group-hover:shadow-neon group-hover:-translate-y-2 transition-all duration-300 cursor-pointer bg-card/80 backdrop-blur-xl border-2 border-primary/30 hover:border-primary rounded-none shadow-brutal relative overflow-hidden">
-                  {/* Geometric Corner Element */}
-                  <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-primary opacity-20 group-hover:opacity-40 transition-opacity duration-300" />
-                  
-                  <CardContent className="p-8 relative z-10">
-                    <div className="flex items-start justify-between mb-8">
-                      <div className={`p-4 rounded-none bg-gradient-to-r ${category.color} shadow-brutal group-hover:scale-110 transition-transform duration-300`}>
-                        <Icon className="w-10 h-10 text-white" />
+                <Card className="h-full group-hover:shadow-lg group-hover:-translate-y-1 transition-all duration-300 cursor-pointer bg-card border hover:border-primary/30">
+                  <CardContent className="p-6">
+                    <div className="flex items-start justify-between mb-6">
+                      <div className={`p-3 rounded-lg ${category.color} bg-primary/10 group-hover:scale-110 transition-transform duration-300`}>
+                        <Icon className="w-7 h-7" />
                       </div>
-                      <Badge className="bg-primary/20 text-primary border-2 border-primary text-lg px-4 py-2 font-black tracking-wide rounded-none">
+                      <Badge variant="secondary" className="text-sm">
                         {category.count}
                       </Badge>
                     </div>
                     
-                    <h3 className="text-2xl font-black text-foreground mb-4 group-hover:text-primary transition-colors duration-300 tracking-wide">
+                    <h3 className="text-xl font-semibold text-foreground mb-3 group-hover:text-primary transition-colors duration-300">
                       {category.name}
                     </h3>
                     
-                    <p className="text-muted-foreground leading-relaxed mb-8 font-mono text-sm">
+                    <p className="text-muted-foreground text-sm leading-relaxed mb-4">
                       {category.description}
                     </p>
                     
-                    <div className="flex items-center text-primary font-black group-hover:translate-x-2 transition-transform duration-300 tracking-wide uppercase">
-                      BROWSE TOOLS
-                      <ArrowRight className="w-6 h-6 ml-3 group-hover:rotate-12 transition-transform duration-300" />
+                    <div className="flex items-center text-primary font-medium group-hover:translate-x-1 transition-transform duration-300">
+                      Browse Tools
+                      <ArrowRight className="w-4 h-4 ml-2" />
                     </div>
                   </CardContent>
                 </Card>
