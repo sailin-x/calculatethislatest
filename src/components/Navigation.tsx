@@ -10,18 +10,18 @@ const Navigation = () => {
   const { theme, setTheme } = useTheme();
 
   const colorPalettes = [
-    { name: "Green", primary: "142 76% 36%", class: "bg-green-500" },
-    { name: "Blue", primary: "221 83% 53%", class: "bg-blue-500" },
-    { name: "Purple", primary: "262 83% 58%", class: "bg-purple-500" },
-    { name: "Orange", primary: "25 95% 53%", class: "bg-orange-500" },
-    { name: "Pink", primary: "330 81% 60%", class: "bg-pink-500" },
-    { name: "Red", primary: "0 84% 60%", class: "bg-red-500" },
-    { name: "Teal", primary: "173 80% 40%", class: "bg-teal-500" },
-    { name: "Indigo", primary: "239 84% 67%", class: "bg-indigo-500" },
-    { name: "Cyan", primary: "188 94% 43%", class: "bg-cyan-500" },
-    { name: "Emerald", primary: "160 84% 39%", class: "bg-emerald-500" },
-    { name: "Lime", primary: "84 81% 44%", class: "bg-lime-500" },
-    { name: "Amber", primary: "45 93% 47%", class: "bg-amber-500" },
+    { name: "Stripe Purple", primary: "263 90% 67%", class: "bg-[#8B5CF6]" },
+    { name: "Airbnb Coral", primary: "354 84% 65%", class: "bg-[#FF5A5F]" },
+    { name: "Cursor Blue", primary: "214 100% 59%", class: "bg-[#007AFF]" },
+    { name: "GitHub Dark", primary: "213 12% 14%", class: "bg-[#24292F]" },
+    { name: "Vercel Black", primary: "0 0% 0%", class: "bg-black" },
+    { name: "Linear Purple", primary: "265 89% 78%", class: "bg-[#B794F6]" },
+    { name: "Notion Gray", primary: "210 9% 31%", class: "bg-[#37352F]" },
+    { name: "Figma Purple", primary: "283 89% 68%", class: "bg-[#A259FF]" },
+    { name: "Discord Blurple", primary: "235 86% 65%", class: "bg-[#5865F2]" },
+    { name: "Spotify Green", primary: "141 73% 42%", class: "bg-[#1DB954]" },
+    { name: "Twitter Blue", primary: "203 89% 53%", class: "bg-[#1DA1F2]" },
+    { name: "Slack Purple", primary: "291 64% 42%", class: "bg-[#4A154B]" },
   ];
 
   const setColorPalette = (primary: string) => {
