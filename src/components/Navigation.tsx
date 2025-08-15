@@ -38,7 +38,7 @@ const Navigation = () => {
               <Calculator className="w-6 h-6 text-primary-foreground" />
             </div>
             <div>
-              <h1 className="text-xl font-bold text-foreground">
+              <h1 className="text-xl font-bold text-primary">
                 Calculate<span className="text-primary">This</span>
               </h1>
             </div>
