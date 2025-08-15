@@ -28,6 +28,8 @@ const Navigation = () => {
   const setColorPalette = (primary: string) => {
     console.log('Setting color palette to:', primary);
     document.documentElement.style.setProperty('--primary', primary);
+    // Update the gradient to use the new primary color
+    document.documentElement.style.setProperty('--gradient-primary', `linear-gradient(135deg, hsl(${primary}), hsl(${primary}))`);
     setCurrentPrimary(primary); // Force re-render
     console.log('CSS variable set, current value:', getComputedStyle(document.documentElement).getPropertyValue('--primary'));
   };
