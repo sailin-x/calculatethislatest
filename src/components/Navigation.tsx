@@ -15,6 +15,13 @@ const Navigation = () => {
     { name: "Purple", primary: "262 83% 58%", class: "bg-purple-500" },
     { name: "Orange", primary: "25 95% 53%", class: "bg-orange-500" },
     { name: "Pink", primary: "330 81% 60%", class: "bg-pink-500" },
+    { name: "Red", primary: "0 84% 60%", class: "bg-red-500" },
+    { name: "Teal", primary: "173 80% 40%", class: "bg-teal-500" },
+    { name: "Indigo", primary: "239 84% 67%", class: "bg-indigo-500" },
+    { name: "Cyan", primary: "188 94% 43%", class: "bg-cyan-500" },
+    { name: "Emerald", primary: "160 84% 39%", class: "bg-emerald-500" },
+    { name: "Lime", primary: "84 81% 44%", class: "bg-lime-500" },
+    { name: "Amber", primary: "45 93% 47%", class: "bg-amber-500" },
   ];
 
   const setColorPalette = (primary: string) => {
@@ -77,30 +84,48 @@ const Navigation = () => {
                   <Palette className="w-4 h-4" />
                 </Button>
               </PopoverTrigger>
-              <PopoverContent className="w-48 p-3">
-                <div className="space-y-2">
-                  <p className="text-sm font-medium">Color Palette</p>
-                  <div className="grid grid-cols-5 gap-2">
-                    {colorPalettes.map((palette) => (
-                      <button
-                        key={palette.name}
-                        onClick={() => setColorPalette(palette.primary)}
-                        className={`w-8 h-8 rounded-md ${palette.class} hover:scale-110 transition-transform`}
-                        title={palette.name}
-                      />
-                    ))}
+              <PopoverContent className="w-56 p-4">
+                <div className="space-y-4">
+                  <div>
+                    <p className="text-sm font-medium mb-3">Theme</p>
+                    <div className="flex gap-2">
+                      <Button
+                        variant={theme === "light" ? "default" : "outline"}
+                        size="sm"
+                        onClick={() => setTheme("light")}
+                        className="flex-1"
+                      >
+                        <Sun className="w-4 h-4 mr-2" />
+                        Light
+                      </Button>
+                      <Button
+                        variant={theme === "dark" ? "default" : "outline"}
+                        size="sm"
+                        onClick={() => setTheme("dark")}
+                        className="flex-1"
+                      >
+                        <Moon className="w-4 h-4 mr-2" />
+                        Dark
+                      </Button>
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <p className="text-sm font-medium mb-3">Color Palette</p>
+                    <div className="grid grid-cols-6 gap-2">
+                      {colorPalettes.map((palette) => (
+                        <button
+                          key={palette.name}
+                          onClick={() => setColorPalette(palette.primary)}
+                          className={`w-8 h-8 rounded-md ${palette.class} hover:scale-110 transition-transform shadow-sm`}
+                          title={palette.name}
+                        />
+                      ))}
+                    </div>
                   </div>
                 </div>
               </PopoverContent>
             </Popover>
-
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            >
-              {theme === "dark" ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
-            </Button>
           </div>
 
           {/* Mobile Menu Button */}
