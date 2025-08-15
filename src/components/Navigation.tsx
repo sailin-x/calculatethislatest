@@ -35,7 +35,7 @@ const Navigation = () => {
   };
 
   return (
-    <nav className="fixed top-0 w-full z-50 bg-background/95 backdrop-blur-sm border-b shadow-sm">
+    <nav className="fixed top-0 w-full z-50 bg-background/95 backdrop-blur-sm border-b border-border/50 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
@@ -53,7 +53,7 @@ const Navigation = () => {
           {/* Desktop Search */}
           <div className="hidden md:flex flex-1 max-w-2xl mx-8">
             <div className="relative w-full">
-              <div className="relative bg-card border rounded-lg overflow-hidden">
+              <div className="relative bg-card border border-border/50 rounded-lg overflow-hidden">
                 <div className="flex items-center">
                   <Search className="ml-4 text-muted-foreground w-4 h-4" />
                   <Input
@@ -147,11 +147,11 @@ const Navigation = () => {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden border-t bg-card/95 backdrop-blur-sm animate-fade-in">
+          <div className="md:hidden border-t border-border/50 bg-card/95 backdrop-blur-sm animate-fade-in">
             <div className="px-4 py-4 space-y-3">
               {/* Mobile Search */}
               <div className="relative">
-                <div className="relative bg-background border rounded-lg overflow-hidden">
+                <div className="relative bg-background border border-border/50 rounded-lg overflow-hidden">
                   <div className="flex items-center">
                     <Search className="ml-3 text-muted-foreground w-4 h-4" />
                     <Input
