@@ -27,10 +27,14 @@ const Navigation = () => {
 
   const setColorPalette = (primary: string) => {
     console.log('Setting color palette to:', primary);
-    document.documentElement.style.setProperty('--primary', primary);
-    // Update the gradient to use the new primary color
-    document.documentElement.style.setProperty('--gradient-primary', `linear-gradient(135deg, hsl(${primary}), hsl(${primary}))`);
-    setCurrentPrimary(primary); // Force re-render
+    
+    // For black color in dark mode, use a lighter shade for better contrast
+    const isBlack = primary === "0 0% 0%";
+    const adjustedPrimary = isBlack ? "0 0% 90%" : primary;
+    
+    document.documentElement.style.setProperty('--primary', adjustedPrimary);
+    document.documentElement.style.setProperty('--gradient-primary', `linear-gradient(135deg, hsl(${adjustedPrimary}), hsl(${adjustedPrimary}))`);
+    setCurrentPrimary(primary); // Keep original for UI state
     console.log('CSS variable set, current value:', getComputedStyle(document.documentElement).getPropertyValue('--primary'));
   };
 
