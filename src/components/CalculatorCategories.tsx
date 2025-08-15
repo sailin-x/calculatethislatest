@@ -14,57 +14,57 @@ import { Badge } from "@/components/ui/badge";
 
 const categories = [
   {
-    name: "Financial",
-    description: "Calculate mortgages, loans, investments, and other financial metrics.",
+    name: "FINANCIAL",
+    description: "MORTGAGES, LOANS, INVESTMENTS & FINANCIAL METRICS",
     icon: DollarSign,
     count: "120+",
     color: "from-green-500 to-emerald-600"
   },
   {
-    name: "Math",
-    description: "Basic and advanced math calculators for all your needs.",
+    name: "MATHEMATICS",
+    description: "BASIC & ADVANCED MATHEMATICAL CALCULATIONS",
     icon: Calculator,
     count: "85+",
     color: "from-blue-500 to-cyan-600"
   },
   {
-    name: "Health & Fitness",
-    description: "BMI, calorie, and other health-related calculators.",
+    name: "HEALTH & FITNESS",
+    description: "BMI, CALORIE & HEALTH-RELATED CALCULATIONS",
     icon: Heart,
     count: "95+",
     color: "from-red-500 to-pink-600"
   },
   {
-    name: "Date & Time",
-    description: "Age calculator, time zone converter, and more.",
+    name: "DATE & TIME",
+    description: "AGE CALCULATOR, TIME ZONE CONVERTER & MORE",
     icon: Clock,
     count: "45+",
     color: "from-purple-500 to-violet-600"
   },
   {
-    name: "Unit Conversion",
-    description: "Convert between different units of measurement.",
+    name: "UNIT CONVERSION",
+    description: "CONVERT BETWEEN DIFFERENT UNITS OF MEASUREMENT",
     icon: ArrowLeftRight,
     count: "75+",
     color: "from-orange-500 to-amber-600"
   },
   {
-    name: "Everyday",
-    description: "Practical calculators for everyday situations.",
+    name: "EVERYDAY",
+    description: "PRACTICAL CALCULATORS FOR EVERYDAY SITUATIONS",
     icon: Coffee,
     count: "65+",
     color: "from-brown-500 to-yellow-600"
   },
   {
-    name: "Business",
-    description: "Profit margins, discounts, and other business tools.",
+    name: "BUSINESS",
+    description: "PROFIT MARGINS, DISCOUNTS & BUSINESS TOOLS",
     icon: Briefcase,
     count: "55+",
     color: "from-slate-500 to-gray-600"
   },
   {
-    name: "Education",
-    description: "Academic calculators for students and educators.",
+    name: "EDUCATION",
+    description: "ACADEMIC CALCULATORS FOR STUDENTS & EDUCATORS",
     icon: GraduationCap,
     count: "40+",
     color: "from-indigo-500 to-blue-600"
@@ -73,16 +73,21 @@ const categories = [
 
 const CalculatorCategories = () => {
   return (
-    <section className="py-32 relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0 bg-gradient-mesh opacity-20" />
+    <section className="py-32 relative overflow-hidden bg-gradient-section">
+      {/* Sharp Background Elements */}
+      <div className="absolute inset-0 bg-gradient-mesh opacity-30" />
+      <div className="absolute top-0 left-1/4 w-64 h-64 bg-primary/10 rounded-none rotate-45" />
+      <div className="absolute bottom-0 right-1/4 w-48 h-48 bg-accent/10 rounded-none -rotate-12" />
+      
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <div className="text-center mb-20 animate-fade-in">
-          <h2 className="text-5xl md:text-6xl font-black text-foreground mb-8 tracking-tight">
-            Calculator Categories
+        <div className="text-center mb-20 animate-brutal-slide">
+          <h2 className="text-6xl md:text-8xl font-black text-foreground mb-8 tracking-tighter leading-none">
+            PRECISION
+            <br />
+            <span className="text-primary">CATEGORIES</span>
           </h2>
-          <p className="text-2xl text-muted-foreground max-w-3xl mx-auto font-light leading-relaxed">
-            Browse our comprehensive collection organized by category to find exactly what you need
+          <p className="text-2xl text-muted-foreground max-w-4xl mx-auto font-mono tracking-wide uppercase">
+            BROWSE OUR COMPREHENSIVE COLLECTION ORGANIZED BY CATEGORY
           </p>
         </div>
 
@@ -92,37 +97,38 @@ const CalculatorCategories = () => {
             return (
               <div 
                 key={index}
-                className="animate-scale-in group"
+                className="animate-brutal-slide group"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <Card className="h-full group-hover:shadow-glow group-hover:-translate-y-2 transition-all duration-500 cursor-pointer bg-gradient-card backdrop-blur-2xl border-border/30 hover:border-primary/30 relative overflow-hidden">
-                  {/* Card Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <CardContent className="p-8 relative z-10">
-                  <div className="flex items-start justify-between mb-6">
-                    <div className={`p-4 rounded-2xl bg-gradient-to-r ${category.color} shadow-glow group-hover:scale-110 transition-transform duration-500`}>
-                      <Icon className="w-8 h-8 text-white" />
+                <Card className="h-full group-hover:shadow-neon group-hover:-translate-y-2 transition-all duration-300 cursor-pointer bg-card/80 backdrop-blur-xl border-2 border-primary/30 hover:border-primary rounded-none shadow-brutal relative overflow-hidden">
+                  {/* Geometric Corner Element */}
+                  <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-primary opacity-20 group-hover:opacity-40 transition-opacity duration-300" />
+                  
+                  <CardContent className="p-8 relative z-10">
+                    <div className="flex items-start justify-between mb-8">
+                      <div className={`p-4 rounded-none bg-gradient-to-r ${category.color} shadow-brutal group-hover:scale-110 transition-transform duration-300`}>
+                        <Icon className="w-10 h-10 text-white" />
+                      </div>
+                      <Badge className="bg-primary/20 text-primary border-2 border-primary text-lg px-4 py-2 font-black tracking-wide rounded-none">
+                        {category.count}
+                      </Badge>
                     </div>
-                    <Badge variant="secondary" className="bg-secondary/80 text-muted-foreground text-lg px-4 py-1 font-semibold">
-                      {category.count}
-                    </Badge>
-                  </div>
-                  
-                  <h3 className="text-2xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors duration-300">
-                    {category.name}
-                  </h3>
-                  
-                  <p className="text-muted-foreground leading-relaxed mb-6">
-                    {category.description}
-                  </p>
-                  
-                  <div className="flex items-center text-primary font-semibold group-hover:translate-x-2 transition-transform duration-300">
-                    Browse calculators
-                    <ArrowRight className="w-5 h-5 ml-2 group-hover:rotate-12 transition-transform duration-300" />
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
+                    
+                    <h3 className="text-2xl font-black text-foreground mb-4 group-hover:text-primary transition-colors duration-300 tracking-wide">
+                      {category.name}
+                    </h3>
+                    
+                    <p className="text-muted-foreground leading-relaxed mb-8 font-mono text-sm">
+                      {category.description}
+                    </p>
+                    
+                    <div className="flex items-center text-primary font-black group-hover:translate-x-2 transition-transform duration-300 tracking-wide uppercase">
+                      BROWSE TOOLS
+                      <ArrowRight className="w-6 h-6 ml-3 group-hover:rotate-12 transition-transform duration-300" />
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
             );
           })}
         </div>

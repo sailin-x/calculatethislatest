@@ -3,95 +3,93 @@ import { Button } from "@/components/ui/button";
 
 const Footer = () => {
   return (
-    <footer className="bg-secondary/50 border-t border-border/50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          {/* Logo and Description */}
-          <div className="col-span-1 md:col-span-2">
-            <div className="flex items-center space-x-3 mb-4">
-              <div className="bg-gradient-primary p-2 rounded-lg shadow-glass">
-                <Calculator className="w-6 h-6 text-white" />
+    <footer className="bg-card/80 backdrop-blur-xl border-t-2 border-primary/30 shadow-inset">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
+          {/* Logo & Description */}
+          <div className="md:col-span-1">
+            <div className="flex items-center space-x-4 mb-6">
+              <div className="bg-gradient-primary p-3 rounded-none shadow-brutal">
+                <Calculator className="w-8 h-8 text-primary-foreground" />
               </div>
-              <span className="text-xl font-bold bg-gradient-primary bg-clip-text text-transparent">
-                CalculateThis.ai
-              </span>
+              <div>
+                <h3 className="text-2xl font-black text-foreground tracking-tight">
+                  CALCULATE<span className="text-primary">THIS</span>
+                </h3>
+                <p className="text-xs text-muted-foreground font-mono uppercase tracking-widest">
+                  PRECISION TOOLS
+                </p>
+              </div>
             </div>
-            <p className="text-muted-foreground mb-6 max-w-md leading-relaxed">
-              The most comprehensive collection of online calculators for financial planning, 
-              math, health, conversions, and everyday calculations.
+            <p className="text-muted-foreground mb-8 font-mono leading-relaxed">
+              THE ULTIMATE COLLECTION OF FREE ONLINE CALCULATORS FOR PRECISION CALCULATIONS.
             </p>
-            <div className="flex space-x-3">
-              <Button variant="outline" size="sm" className="border-border/50 hover:bg-primary/10">
-                <Github className="w-4 h-4" />
+            <div className="flex space-x-4">
+              <Button size="sm" className="bg-card hover:bg-primary/10 border-2 border-primary/30 hover:border-primary text-primary rounded-none shadow-hard transition-snap">
+                <Github className="w-5 h-5" />
               </Button>
-              <Button variant="outline" size="sm" className="border-border/50 hover:bg-primary/10">
-                <Twitter className="w-4 h-4" />
+              <Button size="sm" className="bg-card hover:bg-primary/10 border-2 border-primary/30 hover:border-primary text-primary rounded-none shadow-hard transition-snap">
+                <Twitter className="w-5 h-5" />
               </Button>
-              <Button variant="outline" size="sm" className="border-border/50 hover:bg-primary/10">
-                <Mail className="w-4 h-4" />
+              <Button size="sm" className="bg-card hover:bg-primary/10 border-2 border-primary/30 hover:border-primary text-primary rounded-none shadow-hard transition-snap">
+                <Mail className="w-5 h-5" />
               </Button>
             </div>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-semibold text-foreground mb-4">Quick Links</h4>
+            <h4 className="text-lg font-black text-foreground mb-6 tracking-wide uppercase">QUICK LINKS</h4>
             <ul className="space-y-3">
-              <li>
-                <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                  All Calculators
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                  Categories
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                  Popular
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                  New Calculators
-                </a>
-              </li>
+              {['ALL CALCULATORS', 'CATEGORIES', 'POPULAR', 'NEW CALCULATORS'].map((link) => (
+                <li key={link}>
+                  <Button variant="ghost" className="p-0 h-auto text-muted-foreground hover:text-primary font-mono tracking-wide transition-snap">
+                    {link}
+                  </Button>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Categories */}
+          <div>
+            <h4 className="text-lg font-black text-foreground mb-6 tracking-wide uppercase">CATEGORIES</h4>
+            <ul className="space-y-3">
+              {['FINANCIAL', 'MATHEMATICS', 'HEALTH & FITNESS', 'UNIT CONVERSION'].map((category) => (
+                <li key={category}>
+                  <Button variant="ghost" className="p-0 h-auto text-muted-foreground hover:text-primary font-mono tracking-wide transition-snap">
+                    {category}
+                  </Button>
+                </li>
+              ))}
             </ul>
           </div>
 
           {/* Support */}
           <div>
-            <h4 className="font-semibold text-foreground mb-4">Support</h4>
+            <h4 className="text-lg font-black text-foreground mb-6 tracking-wide uppercase">SUPPORT</h4>
             <ul className="space-y-3">
-              <li>
-                <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                  Help Center
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                  Contact Us
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                  Privacy Policy
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                  Terms of Service
-                </a>
-              </li>
+              {['HELP CENTER', 'CONTACT US', 'PRIVACY POLICY', 'TERMS OF SERVICE'].map((support) => (
+                <li key={support}>
+                  <Button variant="ghost" className="p-0 h-auto text-muted-foreground hover:text-primary font-mono tracking-wide transition-snap">
+                    {support}
+                  </Button>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
 
-        <div className="border-t border-border/50 mt-12 pt-8 text-center">
-          <p className="text-muted-foreground">
-            © 2024 CalculateThis.ai. All rights reserved.
-          </p>
+        {/* Copyright */}
+        <div className="border-t-2 border-primary/20 mt-12 pt-8">
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <p className="text-muted-foreground font-mono tracking-wide">
+              © 2024 CALCULATETHIS. ALL RIGHTS RESERVED.
+            </p>
+            <p className="text-muted-foreground font-mono tracking-wide mt-4 md:mt-0">
+              PRECISION CALCULATIONS FOR EVERYONE
+            </p>
+          </div>
         </div>
       </div>
     </footer>

@@ -1,113 +1,108 @@
-import { Search, ArrowRight, Calculator, TrendingUp, Zap } from "lucide-react";
+import { Search, ArrowRight, Calculator, Zap, Target, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
-import heroImage from "@/assets/hero-bg.png";
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Animated Background Mesh */}
-      <div className="absolute inset-0 bg-gradient-hero" />
-      <div className="absolute inset-0 bg-gradient-mesh animate-pulse opacity-40" />
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-section">
+      {/* Geometric Background Pattern */}
+      <div className="absolute inset-0 bg-gradient-mesh opacity-60" />
       
-      {/* Dynamic Background Pattern */}
-      <div className="absolute inset-0 opacity-20">
-        {[...Array(20)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-2 h-2 bg-white rounded-full animate-float"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 6}s`,
-              animationDuration: `${4 + Math.random() * 4}s`
-            }}
-          />
-        ))}
+      {/* Sharp Geometric Elements */}
+      <div className="absolute inset-0">
+        <div className="absolute top-20 left-20 w-32 h-32 bg-gradient-primary rounded-none rotate-45 opacity-20 animate-geometric-spin" />
+        <div className="absolute top-40 right-32 w-24 h-24 bg-accent/30 rounded-none rotate-12" />
+        <div className="absolute bottom-32 left-40 w-20 h-20 bg-primary/40 rounded-none -rotate-12" />
+        <div className="absolute bottom-20 right-20 w-40 h-40 bg-gradient-primary rounded-none rotate-45 opacity-15 animate-geometric-spin" style={{ animationDuration: '12s' }} />
       </div>
-      
-      {/* Enhanced Floating Elements */}
-      <div className="absolute top-20 left-10 animate-float" style={{ animationDelay: '1s' }}>
-        <div className="bg-white/15 backdrop-blur-2xl p-4 rounded-2xl shadow-glow border border-white/20">
-          <Calculator className="w-8 h-8 text-white" />
+
+      {/* Floating Calculator Icons */}
+      <div className="absolute top-24 left-16 animate-sharp-bounce" style={{ animationDelay: '0s' }}>
+        <div className="bg-card/80 backdrop-blur-xl p-4 rounded-none shadow-brutal border border-primary/30">
+          <Calculator className="w-8 h-8 text-primary" />
         </div>
       </div>
-      <div className="absolute top-32 right-16 animate-float" style={{ animationDelay: '0.5s' }}>
-        <div className="bg-white/15 backdrop-blur-2xl p-4 rounded-2xl shadow-glow border border-white/20">
-          <TrendingUp className="w-8 h-8 text-white" />
+      <div className="absolute top-32 right-24 animate-sharp-bounce" style={{ animationDelay: '1s' }}>
+        <div className="bg-card/80 backdrop-blur-xl p-4 rounded-none shadow-brutal border border-accent/30">
+          <Zap className="w-8 h-8 text-accent" />
         </div>
       </div>
-      <div className="absolute bottom-32 left-20 animate-float" style={{ animationDelay: '2s' }}>
-        <div className="bg-white/15 backdrop-blur-2xl p-4 rounded-2xl shadow-glow border border-white/20">
-          <Zap className="w-8 h-8 text-white" />
+      <div className="absolute bottom-40 left-24 animate-sharp-bounce" style={{ animationDelay: '2s' }}>
+        <div className="bg-card/80 backdrop-blur-xl p-4 rounded-none shadow-brutal border border-primary/30">
+          <Target className="w-8 h-8 text-primary" />
+        </div>
+      </div>
+      <div className="absolute bottom-32 right-32 animate-sharp-bounce" style={{ animationDelay: '0.5s' }}>
+        <div className="bg-card/80 backdrop-blur-xl p-4 rounded-none shadow-brutal border border-accent/30">
+          <TrendingUp className="w-8 h-8 text-accent" />
         </div>
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div className="animate-slide-up" style={{ animationDelay: '0.2s' }}>
-          <Badge variant="secondary" className="mb-8 bg-white/20 backdrop-blur-2xl border-white/30 text-white text-lg px-6 py-2 shadow-glow">
-            <Calculator className="w-5 h-5 mr-3" />
-            560+ Premium Calculators
+      {/* Main Content */}
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="animate-brutal-slide" style={{ animationDelay: '0.2s' }}>
+          <Badge className="mb-8 bg-primary/20 backdrop-blur-xl border-2 border-primary text-primary text-lg px-8 py-3 shadow-hard font-black tracking-widest uppercase">
+            <Calculator className="w-6 h-6 mr-3" />
+            560+ PRECISION TOOLS
           </Badge>
         </div>
         
-        <div className="animate-scale-in" style={{ animationDelay: '0.4s' }}>
-          <h1 className="text-6xl md:text-8xl font-black text-white mb-8 leading-tight tracking-tight">
-            Simple, Powerful
+        <div className="animate-brutal-slide" style={{ animationDelay: '0.4s' }}>
+          <h1 className="text-7xl md:text-9xl font-black text-foreground mb-8 leading-none tracking-tighter">
+            CALCULATE
             <br />
-            <span className="bg-gradient-to-r from-blue-200 via-purple-200 to-pink-200 bg-clip-text text-transparent animate-glow-pulse">
-              Calculators
+            <span className="bg-gradient-primary bg-clip-text text-transparent animate-neon-pulse">
+              EVERYTHING
             </span>
-            <br />
-            for Every Need
           </h1>
         </div>
         
-        <div className="animate-fade-in" style={{ animationDelay: '0.6s' }}>
-          <p className="text-2xl md:text-3xl text-white/90 mb-12 max-w-3xl mx-auto leading-relaxed font-light">
-            The ultimate collection of free online calculators for financial planning, mathematics, health metrics, and everyday calculations.
+        <div className="animate-brutal-slide" style={{ animationDelay: '0.6s' }}>
+          <p className="text-2xl md:text-3xl text-muted-foreground mb-16 max-w-4xl mx-auto leading-relaxed font-mono">
+            PRECISION CALCULATORS FOR FINANCIAL PLANNING, MATHEMATICS, 
+            HEALTH METRICS & EVERYDAY CALCULATIONS
           </p>
         </div>
 
         {/* Enhanced Search Bar */}
-        <div className="max-w-3xl mx-auto mb-12 animate-slide-up" style={{ animationDelay: '0.8s' }}>
+        <div className="max-w-4xl mx-auto mb-16 animate-brutal-slide" style={{ animationDelay: '0.8s' }}>
           <div className="relative group">
-            <div className="absolute inset-0 bg-gradient-primary rounded-3xl blur-xl opacity-30 group-hover:opacity-50 transition-opacity duration-500" />
-            <div className="relative bg-white/95 backdrop-blur-2xl rounded-3xl p-2 shadow-glow border border-white/30">
-              <div className="flex items-center">
-                <Search className="ml-6 text-gray-500 w-6 h-6" />
+            <div className="absolute inset-0 bg-gradient-primary rounded-none blur-xl opacity-40 group-hover:opacity-60 transition-all duration-300" />
+            <div className="relative bg-card/90 backdrop-blur-2xl rounded-none shadow-brutal border-2 border-primary">
+              <div className="flex items-center p-2">
+                <Search className="ml-6 text-muted-foreground w-7 h-7" />
                 <Input
                   type="text"
-                  placeholder="Search our vast collection of calculators..."
-                  className="flex-1 border-0 bg-transparent px-6 py-4 text-lg placeholder:text-gray-500 focus:ring-0 focus:outline-none"
+                  placeholder="SEARCH OUR VAST COLLECTION OF PRECISION TOOLS..."
+                  className="flex-1 border-0 bg-transparent px-6 py-6 text-xl placeholder:text-muted-foreground focus:ring-0 focus:outline-none font-mono uppercase tracking-wide"
                 />
                 <Button 
                   size="lg" 
-                  className="bg-gradient-primary hover:shadow-glow hover:scale-105 transition-all duration-500 rounded-2xl px-8 py-3 font-semibold"
+                  className="bg-gradient-primary hover:shadow-neon hover:scale-105 transition-all duration-300 rounded-none shadow-brutal px-12 py-6 font-black text-xl tracking-widest uppercase"
                 >
-                  <ArrowRight className="w-5 h-5" />
+                  SEARCH
+                  <ArrowRight className="w-6 h-6 ml-3" />
                 </Button>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="flex flex-col sm:flex-row gap-6 justify-center items-center animate-fade-in" style={{ animationDelay: '1s' }}>
+        <div className="flex flex-col sm:flex-row gap-8 justify-center items-center animate-brutal-slide" style={{ animationDelay: '1s' }}>
           <Button 
             size="lg" 
-            className="group bg-white text-primary hover:bg-white/90 hover:scale-105 hover:shadow-glow transition-all duration-500 rounded-2xl shadow-glass px-10 py-4 text-xl font-bold"
+            className="group bg-gradient-primary hover:shadow-neon hover:scale-105 transition-all duration-300 rounded-none shadow-brutal px-16 py-6 text-2xl font-black tracking-widest uppercase"
           >
-            Explore All Calculators
-            <ArrowRight className="w-6 h-6 ml-3 group-hover:translate-x-1 transition-transform duration-300" />
+            EXPLORE TOOLS
+            <ArrowRight className="w-8 h-8 ml-4 group-hover:translate-x-2 transition-transform duration-300" />
           </Button>
           <Button 
             variant="outline" 
             size="lg" 
-            className="border-white/40 text-white hover:bg-white/20 hover:scale-105 backdrop-blur-2xl transition-all duration-500 rounded-2xl px-10 py-4 text-xl font-semibold shadow-glass"
+            className="border-2 border-primary text-primary hover:bg-primary/10 hover:scale-105 backdrop-blur-2xl transition-all duration-300 rounded-none px-16 py-6 text-2xl font-black tracking-widest uppercase shadow-hard"
           >
-            View Categories
+            VIEW CATEGORIES
           </Button>
         </div>
       </div>
