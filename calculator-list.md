@@ -52,7 +52,7 @@
 - [x] **Homeowners Insurance Calculator** ✅ **(COMPLETED)**
 - [x] **Hotel Feasibility & ADR Calculator** ✅ **(COMPLETED)**
 - [x] **HOA Fee Calculator** ✅ **(COMPLETED)**
-- [ ] Industrial Warehouse Profitability Calculator
+- [x] Industrial Warehouse Profitability Calculator
 - [ ] Interest-Only Mortgage Calculator
 - [ ] Jumbo Loan Calculator
 - [ ] Landlord Insurance Calculator
