@@ -53,8 +53,8 @@
 - [x] **Hotel Feasibility & ADR Calculator** ✅ **(COMPLETED)**
 - [x] **HOA Fee Calculator** ✅ **(COMPLETED)**
 - [x] Industrial Warehouse Profitability Calculator
-              - [x] **Interest-Only Mortgage Calculator** ✅ **(COMPLETED)**
-- [ ] Jumbo Loan Calculator
+                            - [x] **Interest-Only Mortgage Calculator** ✅ **(COMPLETED)**
+              - [x] **Jumbo Loan Calculator** ✅ **(COMPLETED)**
 - [ ] Landlord Insurance Calculator
 - [ ] Loan to Cost (LTC) Ratio Calculator
 - [ ] Loan-to-Value (LTV) Ratio Calculator
