@@ -67,23 +67,24 @@ This tracker enables continuous autonomous progress without conversation context
               46. **Interest-Only Mortgage Calculator** - Task 49 ✅ **COMPLETED**
                               47. **Jumbo Loan Calculator** - Task 50 ✅ **COMPLETED**
                 48. **Landlord Insurance Calculator** - Task 51 ✅ **COMPLETED**
+                49. **Loan to Cost (LTC) Ratio Calculator** - Task 52 ✅ **COMPLETED**
                 
                 ## Next Up (This Session)
-                49. **Loan to Cost (LTC) Ratio Calculator** - Task 52
+                50. **Loan-to-Value (LTV) Ratio Calculator** - Task 53
                 
                 ## Session Management
-                - **Current Focus:** Completing Loan to Cost (LTC) Ratio Calculator
+                - **Current Focus:** Completing Loan-to-Value (LTV) Ratio Calculator
 - **Batch Target:** 3-5 calculators before starting fresh session
 - **Resume Method:** Check this tracker, continue from current focus
 - **No Context Transfer:** This tracker contains all needed state
 
-                              ## Implementation Status - Loan to Cost (LTC) Ratio Calculator ⏳ IN PROGRESS
-                - ⏳ LoanToCostRatioCalculator.ts - **NEXT TO CREATE**
+                              ## Implementation Status - Loan-to-Value (LTV) Ratio Calculator ⏳ IN PROGRESS
+                - ⏳ LoanToValueRatioCalculator.ts - **NEXT TO CREATE**
                 - ⏳ formulas.ts - After main calculator
                 - ⏳ validation.ts - After formulas
                 - ⏳ quickValidation.ts - After validation
-                - ⏳ LoanToCostRatioCalculator.test.ts - After validation
+                - ⏳ LoanToValueRatioCalculator.test.ts - After validation
                 - ⏳ register.ts - After validation
                 - ⏳ calculator-list.md - After completion
                 
-                **CURRENT:** Starting Loan to Cost (LTC) Ratio Calculator implementation
+                **CURRENT:** Starting Loan-to-Value (LTV) Ratio Calculator implementation

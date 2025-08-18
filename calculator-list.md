@@ -55,9 +55,9 @@
 - [x] Industrial Warehouse Profitability Calculator
                             - [x] **Interest-Only Mortgage Calculator** ✅ **(COMPLETED)**
                             - [x] **Jumbo Loan Calculator** ✅ **(COMPLETED)**
-              - [x] **Landlord Insurance Calculator** ✅ **(COMPLETED)**
-              - [ ] Loan to Cost (LTC) Ratio Calculator
-- [ ] Loan-to-Value (LTV) Ratio Calculator
+                            - [x] **Landlord Insurance Calculator** ✅ **(COMPLETED)**
+              - [x] **Loan to Cost (LTC) Ratio Calculator** ✅ **(COMPLETED)**
+              - [ ] Loan-to-Value (LTV) Ratio Calculator
 - [ ] Mezzanine Financing for Real Estate Calculator
 - [ ] Mortgage APR Comparison Calculator
 - [ ] Mortgage Closing Cost Calculator
