@@ -65,24 +65,25 @@ This tracker enables continuous autonomous progress without conversation context
               44. **HOA Fee Calculator** - Task 47 ✅ **COMPLETED**
               45. **Industrial Warehouse Profitability Calculator** - Task 48 ✅ **COMPLETED**
               46. **Interest-Only Mortgage Calculator** - Task 49 ✅ **COMPLETED**
-              47. **Jumbo Loan Calculator** - Task 50 ✅ **COMPLETED**
-              
-              ## Next Up (This Session)
-              48. **Landlord Insurance Calculator** - Task 51
-              
-              ## Session Management
-              - **Current Focus:** Completing Landlord Insurance Calculator
+                              47. **Jumbo Loan Calculator** - Task 50 ✅ **COMPLETED**
+                48. **Landlord Insurance Calculator** - Task 51 ✅ **COMPLETED**
+                
+                ## Next Up (This Session)
+                49. **Loan to Cost (LTC) Ratio Calculator** - Task 52
+                
+                ## Session Management
+                - **Current Focus:** Completing Loan to Cost (LTC) Ratio Calculator
 - **Batch Target:** 3-5 calculators before starting fresh session
 - **Resume Method:** Check this tracker, continue from current focus
 - **No Context Transfer:** This tracker contains all needed state
 
-              ## Implementation Status - Landlord Insurance Calculator ⏳ IN PROGRESS
-              - ⏳ LandlordInsuranceCalculator.ts - **NEXT TO CREATE**
-              - ⏳ formulas.ts - After main calculator
-              - ⏳ validation.ts - After formulas
-              - ⏳ quickValidation.ts - After validation
-              - ⏳ LandlordInsuranceCalculator.test.ts - After validation
-              - ⏳ register.ts - After validation
-              - ⏳ calculator-list.md - After completion
-              
-              **CURRENT:** Starting Landlord Insurance Calculator implementation
+                              ## Implementation Status - Loan to Cost (LTC) Ratio Calculator ⏳ IN PROGRESS
+                - ⏳ LoanToCostRatioCalculator.ts - **NEXT TO CREATE**
+                - ⏳ formulas.ts - After main calculator
+                - ⏳ validation.ts - After formulas
+                - ⏳ quickValidation.ts - After validation
+                - ⏳ LoanToCostRatioCalculator.test.ts - After validation
+                - ⏳ register.ts - After validation
+                - ⏳ calculator-list.md - After completion
+                
+                **CURRENT:** Starting Loan to Cost (LTC) Ratio Calculator implementation
