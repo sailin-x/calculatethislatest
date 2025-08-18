@@ -454,7 +454,26 @@ describe('Mortgage APR Comparison Calculator', () => {
         }
       ];
 
-      const results = quickValidateAllInputs({ offers });
+      const results = quickValidateAllInputs({ 
+        offers: [
+          {
+            lender: 'Bank A',
+            interestRate: 6.5,
+            points: 0,
+            originationFee: 1000,
+            processingFee: 500,
+            underwritingFee: 800,
+            appraisalFee: 400,
+            titleInsurance: 1200,
+            recordingFee: 100,
+            creditReport: 50,
+            floodCert: 20,
+            taxService: 75,
+            wireFee: 25,
+            otherFees: 200
+          }
+        ]
+      });
 
       const highRateResult = results.find(r => r.message?.includes('High interest rate'));
       const pointsResult = results.find(r => r.message?.includes('High points cost'));

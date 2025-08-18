@@ -1,4 +1,4 @@
-import { CalculatorInputs, CalculatorOutputs } from '../../../types/calculator';
+import { Calculator } from '../../../types/calculator';
 
 export interface MortgageOffer {
   lender: string;
@@ -17,7 +17,7 @@ export interface MortgageOffer {
   otherFees: number;
 }
 
-export interface MortgageAPRComparisonInputs extends CalculatorInputs {
+export interface MortgageAPRComparisonInputs {
   loanAmount: number;
   loanTerm: number;
   offers: MortgageOffer[];
@@ -108,7 +108,7 @@ export interface KeyMetrics {
   aprRange: number;
 }
 
-export interface MortgageAPRComparisonOutputs extends CalculatorOutputs {
+export interface MortgageAPRComparisonOutputs {
   aprComparison: {
     offers: APRComparisonOffer[];
   };

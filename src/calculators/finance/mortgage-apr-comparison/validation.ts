@@ -3,24 +3,41 @@ import { MortgageAPRComparisonInputs, MortgageOffer } from './formulas';
 
 export function validateMortgageAPRComparisonInputs(inputs: MortgageAPRComparisonInputs): string[] {
   const errors: string[] = [];
-  const ruleFactory = new ValidationRuleFactory();
 
   // Required validations
-  ruleFactory
-    .required('loanAmount', inputs.loanAmount, 'Loan amount is required')
-    .positive('loanAmount', inputs.loanAmount, 'Loan amount must be positive')
-    .range('loanAmount', inputs.loanAmount, 10000, 10000000, 'Loan amount must be between $10,000 and $10,000,000')
-    .validate(errors);
+  const loanAmountRule = ValidationRuleFactory.required('loanAmount', 'Loan amount is required');
+  if (!loanAmountRule.validator(inputs.loanAmount)) {
+    errors.push(loanAmountRule.message);
+  }
 
-  ruleFactory
-    .required('loanTerm', inputs.loanTerm, 'Loan term is required')
-    .positive('loanTerm', inputs.loanTerm, 'Loan term must be positive')
-    .range('loanTerm', inputs.loanTerm, 1, 50, 'Loan term must be between 1 and 50 years')
-    .validate(errors);
+  const loanAmountPositiveRule = ValidationRuleFactory.positive('loanAmount', 'Loan amount must be positive');
+  if (!loanAmountPositiveRule.validator(inputs.loanAmount)) {
+    errors.push(loanAmountPositiveRule.message);
+  }
 
-  ruleFactory
-    .required('offers', inputs.offers, 'At least one mortgage offer is required')
-    .validate(errors);
+  const loanAmountRangeRule = ValidationRuleFactory.range('loanAmount', 10000, 10000000, 'Loan amount must be between $10,000 and $10,000,000');
+  if (!loanAmountRangeRule.validator(inputs.loanAmount)) {
+    errors.push(loanAmountRangeRule.message);
+  }
+
+  const loanTermRule = ValidationRuleFactory.required('loanTerm', 'Loan term is required');
+  if (!loanTermRule.validator(inputs.loanTerm)) {
+    errors.push(loanTermRule.message);
+  }
+
+  const loanTermPositiveRule = ValidationRuleFactory.positive('loanTerm', 'Loan term must be positive');
+  if (!loanTermPositiveRule.validator(inputs.loanTerm)) {
+    errors.push(loanTermPositiveRule.message);
+  }
+
+  const loanTermRangeRule = ValidationRuleFactory.range('loanTerm', 1, 50, 'Loan term must be between 1 and 50 years');
+  if (!loanTermRangeRule.validator(inputs.loanTerm)) {
+    errors.push(loanTermRangeRule.message);
+  }
+
+  if (!inputs.offers || inputs.offers.length === 0) {
+    errors.push('At least one mortgage offer is required');
+  }
 
   // Validate offers array
   if (inputs.offers && Array.isArray(inputs.offers)) {
@@ -38,87 +55,137 @@ export function validateMortgageAPRComparisonInputs(inputs: MortgageAPRCompariso
 
   // Optional field validations
   if (inputs.propertyValue !== undefined) {
-    ruleFactory
-      .positive('propertyValue', inputs.propertyValue, 'Property value must be positive')
-      .range('propertyValue', inputs.propertyValue, 10000, 10000000, 'Property value must be between $10,000 and $10,000,000')
-      .validate(errors);
+    const propertyValueRule = ValidationRuleFactory.positive('propertyValue', 'Property value must be positive');
+    if (!propertyValueRule.validator(inputs.propertyValue)) {
+      errors.push(propertyValueRule.message);
+    }
+    
+    const propertyValueRangeRule = ValidationRuleFactory.range('propertyValue', 10000, 10000000, 'Property value must be between $10,000 and $10,000,000');
+    if (!propertyValueRangeRule.validator(inputs.propertyValue)) {
+      errors.push(propertyValueRangeRule.message);
+    }
   }
 
   if (inputs.downPayment !== undefined) {
-    ruleFactory
-      .positive('downPayment', inputs.downPayment, 'Down payment must be positive')
-      .range('downPayment', inputs.downPayment, 0, 5000000, 'Down payment must be between $0 and $5,000,000')
-      .validate(errors);
+    const downPaymentRule = ValidationRuleFactory.nonNegative('downPayment', 'Down payment cannot be negative');
+    if (!downPaymentRule.validator(inputs.downPayment)) {
+      errors.push(downPaymentRule.message);
+    }
+    
+    const downPaymentRangeRule = ValidationRuleFactory.range('downPayment', 0, 5000000, 'Down payment must be between $0 and $5,000,000');
+    if (!downPaymentRangeRule.validator(inputs.downPayment)) {
+      errors.push(downPaymentRangeRule.message);
+    }
   }
 
   if (inputs.propertyTax !== undefined) {
-    ruleFactory
-      .positive('propertyTax', inputs.propertyTax, 'Property tax must be positive')
-      .range('propertyTax', inputs.propertyTax, 0, 100000, 'Property tax must be between $0 and $100,000')
-      .validate(errors);
+    const propertyTaxRule = ValidationRuleFactory.nonNegative('propertyTax', 'Property tax cannot be negative');
+    if (!propertyTaxRule.validator(inputs.propertyTax)) {
+      errors.push(propertyTaxRule.message);
+    }
+    
+    const propertyTaxRangeRule = ValidationRuleFactory.range('propertyTax', 0, 100000, 'Property tax must be between $0 and $100,000');
+    if (!propertyTaxRangeRule.validator(inputs.propertyTax)) {
+      errors.push(propertyTaxRangeRule.message);
+    }
   }
 
   if (inputs.homeInsurance !== undefined) {
-    ruleFactory
-      .positive('homeInsurance', inputs.homeInsurance, 'Home insurance must be positive')
-      .range('homeInsurance', inputs.homeInsurance, 0, 10000, 'Home insurance must be between $0 and $10,000')
-      .validate(errors);
+    const homeInsuranceRule = ValidationRuleFactory.nonNegative('homeInsurance', 'Home insurance cannot be negative');
+    if (!homeInsuranceRule.validator(inputs.homeInsurance)) {
+      errors.push(homeInsuranceRule.message);
+    }
+    
+    const homeInsuranceRangeRule = ValidationRuleFactory.range('homeInsurance', 0, 10000, 'Home insurance must be between $0 and $10,000');
+    if (!homeInsuranceRangeRule.validator(inputs.homeInsurance)) {
+      errors.push(homeInsuranceRangeRule.message);
+    }
   }
 
   if (inputs.pmiRate !== undefined) {
-    ruleFactory
-      .positive('pmiRate', inputs.pmiRate, 'PMI rate must be positive')
-      .range('pmiRate', inputs.pmiRate, 0, 5, 'PMI rate must be between 0% and 5%')
-      .validate(errors);
+    const pmiRateRule = ValidationRuleFactory.nonNegative('pmiRate', 'PMI rate cannot be negative');
+    if (!pmiRateRule.validator(inputs.pmiRate)) {
+      errors.push(pmiRateRule.message);
+    }
+    
+    const pmiRateRangeRule = ValidationRuleFactory.range('pmiRate', 0, 5, 'PMI rate must be between 0% and 5%');
+    if (!pmiRateRangeRule.validator(inputs.pmiRate)) {
+      errors.push(pmiRateRangeRule.message);
+    }
   }
 
   if (inputs.hoaFees !== undefined) {
-    ruleFactory
-      .positive('hoaFees', inputs.hoaFees, 'HOA fees must be positive')
-      .range('hoaFees', inputs.hoaFees, 0, 2000, 'HOA fees must be between $0 and $2,000')
-      .validate(errors);
+    const hoaFeesRule = ValidationRuleFactory.nonNegative('hoaFees', 'HOA fees cannot be negative');
+    if (!hoaFeesRule.validator(inputs.hoaFees)) {
+      errors.push(hoaFeesRule.message);
+    }
+    
+    const hoaFeesRangeRule = ValidationRuleFactory.range('hoaFees', 0, 2000, 'HOA fees must be between $0 and $2,000');
+    if (!hoaFeesRangeRule.validator(inputs.hoaFees)) {
+      errors.push(hoaFeesRangeRule.message);
+    }
   }
 
   if (inputs.creditScore !== undefined) {
-    ruleFactory
-      .positive('creditScore', inputs.creditScore, 'Credit score must be positive')
-      .range('creditScore', inputs.creditScore, 300, 850, 'Credit score must be between 300 and 850')
-      .validate(errors);
+    const creditScoreRule = ValidationRuleFactory.range('creditScore', 300, 850, 'Credit score must be between 300 and 850');
+    if (!creditScoreRule.validator(inputs.creditScore)) {
+      errors.push(creditScoreRule.message);
+    }
   }
 
   if (inputs.debtToIncomeRatio !== undefined) {
-    ruleFactory
-      .positive('debtToIncomeRatio', inputs.debtToIncomeRatio, 'Debt-to-income ratio must be positive')
-      .range('debtToIncomeRatio', inputs.debtToIncomeRatio, 0, 100, 'Debt-to-income ratio must be between 0% and 100%')
-      .validate(errors);
+    const dtiRule = ValidationRuleFactory.percentage('debtToIncomeRatio', 'Debt-to-income ratio must be between 0% and 100%');
+    if (!dtiRule.validator(inputs.debtToIncomeRatio)) {
+      errors.push(dtiRule.message);
+    }
   }
 
   if (inputs.lenderFees !== undefined) {
-    ruleFactory
-      .positive('lenderFees', inputs.lenderFees, 'Lender fees must be positive')
-      .range('lenderFees', inputs.lenderFees, 0, 10000, 'Lender fees must be between $0 and $10,000')
-      .validate(errors);
+    const lenderFeesRule = ValidationRuleFactory.nonNegative('lenderFees', 'Lender fees cannot be negative');
+    if (!lenderFeesRule.validator(inputs.lenderFees)) {
+      errors.push(lenderFeesRule.message);
+    }
+    
+    const lenderFeesRangeRule = ValidationRuleFactory.range('lenderFees', 0, 10000, 'Lender fees must be between $0 and $10,000');
+    if (!lenderFeesRangeRule.validator(inputs.lenderFees)) {
+      errors.push(lenderFeesRangeRule.message);
+    }
   }
 
   if (inputs.thirdPartyFees !== undefined) {
-    ruleFactory
-      .positive('thirdPartyFees', inputs.thirdPartyFees, 'Third-party fees must be positive')
-      .range('thirdPartyFees', inputs.thirdPartyFees, 0, 10000, 'Third-party fees must be between $0 and $10,000')
-      .validate(errors);
+    const thirdPartyFeesRule = ValidationRuleFactory.nonNegative('thirdPartyFees', 'Third-party fees cannot be negative');
+    if (!thirdPartyFeesRule.validator(inputs.thirdPartyFees)) {
+      errors.push(thirdPartyFeesRule.message);
+    }
+    
+    const thirdPartyFeesRangeRule = ValidationRuleFactory.range('thirdPartyFees', 0, 10000, 'Third-party fees must be between $0 and $10,000');
+    if (!thirdPartyFeesRangeRule.validator(inputs.thirdPartyFees)) {
+      errors.push(thirdPartyFeesRangeRule.message);
+    }
   }
 
   if (inputs.prepaidItems !== undefined) {
-    ruleFactory
-      .positive('prepaidItems', inputs.prepaidItems, 'Prepaid items must be positive')
-      .range('prepaidItems', inputs.prepaidItems, 0, 20000, 'Prepaid items must be between $0 and $20,000')
-      .validate(errors);
+    const prepaidItemsRule = ValidationRuleFactory.nonNegative('prepaidItems', 'Prepaid items cannot be negative');
+    if (!prepaidItemsRule.validator(inputs.prepaidItems)) {
+      errors.push(prepaidItemsRule.message);
+    }
+    
+    const prepaidItemsRangeRule = ValidationRuleFactory.range('prepaidItems', 0, 20000, 'Prepaid items must be between $0 and $20,000');
+    if (!prepaidItemsRangeRule.validator(inputs.prepaidItems)) {
+      errors.push(prepaidItemsRangeRule.message);
+    }
   }
 
   if (inputs.comparisonPeriod !== undefined) {
-    ruleFactory
-      .positive('comparisonPeriod', inputs.comparisonPeriod, 'Comparison period must be positive')
-      .range('comparisonPeriod', inputs.comparisonPeriod, 1, 50, 'Comparison period must be between 1 and 50 years')
-      .validate(errors);
+    const comparisonPeriodRule = ValidationRuleFactory.positive('comparisonPeriod', 'Comparison period must be positive');
+    if (!comparisonPeriodRule.validator(inputs.comparisonPeriod)) {
+      errors.push(comparisonPeriodRule.message);
+    }
+    
+    const comparisonPeriodRangeRule = ValidationRuleFactory.range('comparisonPeriod', 1, 50, 'Comparison period must be between 1 and 50 years');
+    if (!comparisonPeriodRangeRule.validator(inputs.comparisonPeriod)) {
+      errors.push(comparisonPeriodRangeRule.message);
+    }
   }
 
   // Business logic validations
@@ -174,102 +241,171 @@ export function validateMortgageAPRComparisonInputs(inputs: MortgageAPRCompariso
 
 function validateMortgageOffer(offer: MortgageOffer, index: number): string[] {
   const errors: string[] = [];
-  const ruleFactory = new ValidationRuleFactory();
 
   // Required offer fields
-  ruleFactory
-    .required('lender', offer.lender, `Lender name is required for offer ${index + 1}`)
-    .validate(errors);
+  const lenderRule = ValidationRuleFactory.required('lender', `Lender name is required for offer ${index + 1}`);
+  if (!lenderRule.validator(offer.lender)) {
+    errors.push(lenderRule.message);
+  }
 
-  ruleFactory
-    .required('interestRate', offer.interestRate, `Interest rate is required for offer ${index + 1}`)
-    .positive('interestRate', offer.interestRate, `Interest rate must be positive for offer ${index + 1}`)
-    .range('interestRate', offer.interestRate, 0.1, 25, `Interest rate must be between 0.1% and 25% for offer ${index + 1}`)
-    .validate(errors);
+  const interestRateRequiredRule = ValidationRuleFactory.required('interestRate', `Interest rate is required for offer ${index + 1}`);
+  if (!interestRateRequiredRule.validator(offer.interestRate)) {
+    errors.push(interestRateRequiredRule.message);
+  }
+
+  const interestRatePositiveRule = ValidationRuleFactory.positive('interestRate', `Interest rate must be positive for offer ${index + 1}`);
+  if (!interestRatePositiveRule.validator(offer.interestRate)) {
+    errors.push(interestRatePositiveRule.message);
+  }
+
+  const interestRateRangeRule = ValidationRuleFactory.range('interestRate', 0.1, 25, `Interest rate must be between 0.1% and 25% for offer ${index + 1}`);
+  if (!interestRateRangeRule.validator(offer.interestRate)) {
+    errors.push(interestRateRangeRule.message);
+  }
 
   // Optional offer fields with validation
   if (offer.points !== undefined) {
-    ruleFactory
-      .positive('points', offer.points, `Points must be positive for offer ${index + 1}`)
-      .range('points', offer.points, 0, 10, `Points must be between 0 and 10 for offer ${index + 1}`)
-      .validate(errors);
+    const pointsRule = ValidationRuleFactory.nonNegative('points', `Points cannot be negative for offer ${index + 1}`);
+    if (!pointsRule.validator(offer.points)) {
+      errors.push(pointsRule.message);
+    }
+    
+    const pointsRangeRule = ValidationRuleFactory.range('points', 0, 10, `Points must be between 0 and 10 for offer ${index + 1}`);
+    if (!pointsRangeRule.validator(offer.points)) {
+      errors.push(pointsRangeRule.message);
+    }
   }
 
   if (offer.originationFee !== undefined) {
-    ruleFactory
-      .positive('originationFee', offer.originationFee, `Origination fee must be positive for offer ${index + 1}`)
-      .range('originationFee', offer.originationFee, 0, 10000, `Origination fee must be between $0 and $10,000 for offer ${index + 1}`)
-      .validate(errors);
+    const originationFeeRule = ValidationRuleFactory.nonNegative('originationFee', `Origination fee cannot be negative for offer ${index + 1}`);
+    if (!originationFeeRule.validator(offer.originationFee)) {
+      errors.push(originationFeeRule.message);
+    }
+    
+    const originationFeeRangeRule = ValidationRuleFactory.range('originationFee', 0, 10000, `Origination fee must be between $0 and $10,000 for offer ${index + 1}`);
+    if (!originationFeeRangeRule.validator(offer.originationFee)) {
+      errors.push(originationFeeRangeRule.message);
+    }
   }
 
   if (offer.processingFee !== undefined) {
-    ruleFactory
-      .positive('processingFee', offer.processingFee, `Processing fee must be positive for offer ${index + 1}`)
-      .range('processingFee', offer.processingFee, 0, 2000, `Processing fee must be between $0 and $2,000 for offer ${index + 1}`)
-      .validate(errors);
+    const processingFeeRule = ValidationRuleFactory.nonNegative('processingFee', `Processing fee cannot be negative for offer ${index + 1}`);
+    if (!processingFeeRule.validator(offer.processingFee)) {
+      errors.push(processingFeeRule.message);
+    }
+    
+    const processingFeeRangeRule = ValidationRuleFactory.range('processingFee', 0, 2000, `Processing fee must be between $0 and $2,000 for offer ${index + 1}`);
+    if (!processingFeeRangeRule.validator(offer.processingFee)) {
+      errors.push(processingFeeRangeRule.message);
+    }
   }
 
   if (offer.underwritingFee !== undefined) {
-    ruleFactory
-      .positive('underwritingFee', offer.underwritingFee, `Underwriting fee must be positive for offer ${index + 1}`)
-      .range('underwritingFee', offer.underwritingFee, 0, 2000, `Underwriting fee must be between $0 and $2,000 for offer ${index + 1}`)
-      .validate(errors);
+    const underwritingFeeRule = ValidationRuleFactory.nonNegative('underwritingFee', `Underwriting fee cannot be negative for offer ${index + 1}`);
+    if (!underwritingFeeRule.validator(offer.underwritingFee)) {
+      errors.push(underwritingFeeRule.message);
+    }
+    
+    const underwritingFeeRangeRule = ValidationRuleFactory.range('underwritingFee', 0, 2000, `Underwriting fee must be between $0 and $2,000 for offer ${index + 1}`);
+    if (!underwritingFeeRangeRule.validator(offer.underwritingFee)) {
+      errors.push(underwritingFeeRangeRule.message);
+    }
   }
 
   if (offer.appraisalFee !== undefined) {
-    ruleFactory
-      .positive('appraisalFee', offer.appraisalFee, `Appraisal fee must be positive for offer ${index + 1}`)
-      .range('appraisalFee', offer.appraisalFee, 0, 1000, `Appraisal fee must be between $0 and $1,000 for offer ${index + 1}`)
-      .validate(errors);
+    const appraisalFeeRule = ValidationRuleFactory.nonNegative('appraisalFee', `Appraisal fee cannot be negative for offer ${index + 1}`);
+    if (!appraisalFeeRule.validator(offer.appraisalFee)) {
+      errors.push(appraisalFeeRule.message);
+    }
+    
+    const appraisalFeeRangeRule = ValidationRuleFactory.range('appraisalFee', 0, 1000, `Appraisal fee must be between $0 and $1,000 for offer ${index + 1}`);
+    if (!appraisalFeeRangeRule.validator(offer.appraisalFee)) {
+      errors.push(appraisalFeeRangeRule.message);
+    }
   }
 
   if (offer.titleInsurance !== undefined) {
-    ruleFactory
-      .positive('titleInsurance', offer.titleInsurance, `Title insurance must be positive for offer ${index + 1}`)
-      .range('titleInsurance', offer.titleInsurance, 0, 5000, `Title insurance must be between $0 and $5,000 for offer ${index + 1}`)
-      .validate(errors);
+    const titleInsuranceRule = ValidationRuleFactory.nonNegative('titleInsurance', `Title insurance cannot be negative for offer ${index + 1}`);
+    if (!titleInsuranceRule.validator(offer.titleInsurance)) {
+      errors.push(titleInsuranceRule.message);
+    }
+    
+    const titleInsuranceRangeRule = ValidationRuleFactory.range('titleInsurance', 0, 5000, `Title insurance must be between $0 and $5,000 for offer ${index + 1}`);
+    if (!titleInsuranceRangeRule.validator(offer.titleInsurance)) {
+      errors.push(titleInsuranceRangeRule.message);
+    }
   }
 
   if (offer.recordingFee !== undefined) {
-    ruleFactory
-      .positive('recordingFee', offer.recordingFee, `Recording fee must be positive for offer ${index + 1}`)
-      .range('recordingFee', offer.recordingFee, 0, 500, `Recording fee must be between $0 and $500 for offer ${index + 1}`)
-      .validate(errors);
+    const recordingFeeRule = ValidationRuleFactory.nonNegative('recordingFee', `Recording fee cannot be negative for offer ${index + 1}`);
+    if (!recordingFeeRule.validator(offer.recordingFee)) {
+      errors.push(recordingFeeRule.message);
+    }
+    
+    const recordingFeeRangeRule = ValidationRuleFactory.range('recordingFee', 0, 500, `Recording fee must be between $0 and $500 for offer ${index + 1}`);
+    if (!recordingFeeRangeRule.validator(offer.recordingFee)) {
+      errors.push(recordingFeeRangeRule.message);
+    }
   }
 
   if (offer.creditReport !== undefined) {
-    ruleFactory
-      .positive('creditReport', offer.creditReport, `Credit report fee must be positive for offer ${index + 1}`)
-      .range('creditReport', offer.creditReport, 0, 100, `Credit report fee must be between $0 and $100 for offer ${index + 1}`)
-      .validate(errors);
+    const creditReportRule = ValidationRuleFactory.nonNegative('creditReport', `Credit report fee cannot be negative for offer ${index + 1}`);
+    if (!creditReportRule.validator(offer.creditReport)) {
+      errors.push(creditReportRule.message);
+    }
+    
+    const creditReportRangeRule = ValidationRuleFactory.range('creditReport', 0, 100, `Credit report fee must be between $0 and $100 for offer ${index + 1}`);
+    if (!creditReportRangeRule.validator(offer.creditReport)) {
+      errors.push(creditReportRangeRule.message);
+    }
   }
 
   if (offer.floodCert !== undefined) {
-    ruleFactory
-      .positive('floodCert', offer.floodCert, `Flood certification fee must be positive for offer ${index + 1}`)
-      .range('floodCert', offer.floodCert, 0, 50, `Flood certification fee must be between $0 and $50 for offer ${index + 1}`)
-      .validate(errors);
+    const floodCertRule = ValidationRuleFactory.nonNegative('floodCert', `Flood certification fee cannot be negative for offer ${index + 1}`);
+    if (!floodCertRule.validator(offer.floodCert)) {
+      errors.push(floodCertRule.message);
+    }
+    
+    const floodCertRangeRule = ValidationRuleFactory.range('floodCert', 0, 50, `Flood certification fee must be between $0 and $50 for offer ${index + 1}`);
+    if (!floodCertRangeRule.validator(offer.floodCert)) {
+      errors.push(floodCertRangeRule.message);
+    }
   }
 
   if (offer.taxService !== undefined) {
-    ruleFactory
-      .positive('taxService', offer.taxService, `Tax service fee must be positive for offer ${index + 1}`)
-      .range('taxService', offer.taxService, 0, 150, `Tax service fee must be between $0 and $150 for offer ${index + 1}`)
-      .validate(errors);
+    const taxServiceRule = ValidationRuleFactory.nonNegative('taxService', `Tax service fee cannot be negative for offer ${index + 1}`);
+    if (!taxServiceRule.validator(offer.taxService)) {
+      errors.push(taxServiceRule.message);
+    }
+    
+    const taxServiceRangeRule = ValidationRuleFactory.range('taxService', 0, 150, `Tax service fee must be between $0 and $150 for offer ${index + 1}`);
+    if (!taxServiceRangeRule.validator(offer.taxService)) {
+      errors.push(taxServiceRangeRule.message);
+    }
   }
 
   if (offer.wireFee !== undefined) {
-    ruleFactory
-      .positive('wireFee', offer.wireFee, `Wire fee must be positive for offer ${index + 1}`)
-      .range('wireFee', offer.wireFee, 0, 50, `Wire fee must be between $0 and $50 for offer ${index + 1}`)
-      .validate(errors);
+    const wireFeeRule = ValidationRuleFactory.nonNegative('wireFee', `Wire fee cannot be negative for offer ${index + 1}`);
+    if (!wireFeeRule.validator(offer.wireFee)) {
+      errors.push(wireFeeRule.message);
+    }
+    
+    const wireFeeRangeRule = ValidationRuleFactory.range('wireFee', 0, 50, `Wire fee must be between $0 and $50 for offer ${index + 1}`);
+    if (!wireFeeRangeRule.validator(offer.wireFee)) {
+      errors.push(wireFeeRangeRule.message);
+    }
   }
 
   if (offer.otherFees !== undefined) {
-    ruleFactory
-      .positive('otherFees', offer.otherFees, `Other fees must be positive for offer ${index + 1}`)
-      .range('otherFees', offer.otherFees, 0, 2000, `Other fees must be between $0 and $2,000 for offer ${index + 1}`)
-      .validate(errors);
+    const otherFeesRule = ValidationRuleFactory.nonNegative('otherFees', `Other fees cannot be negative for offer ${index + 1}`);
+    if (!otherFeesRule.validator(offer.otherFees)) {
+      errors.push(otherFeesRule.message);
+    }
+    
+    const otherFeesRangeRule = ValidationRuleFactory.range('otherFees', 0, 2000, `Other fees must be between $0 and $2,000 for offer ${index + 1}`);
+    if (!otherFeesRangeRule.validator(offer.otherFees)) {
+      errors.push(otherFeesRangeRule.message);
+    }
   }
 
   return errors;
