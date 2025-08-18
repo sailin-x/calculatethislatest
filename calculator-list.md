@@ -50,7 +50,7 @@
 - [x] **Home Equity Loan Calculator** ✅ **(COMPLETED)**
 - [x] **Home Insurance Calculator** ✅ **(COMPLETED)**
 - [x] **Homeowners Insurance Calculator** ✅ **(COMPLETED)**
-- [ ] Hotel Feasibility & ADR Calculator
+- [x] **Hotel Feasibility & ADR Calculator** ✅ **(COMPLETED)**
 - [ ] HOA Fee Calculator
 - [ ] Industrial Warehouse Profitability Calculator
 - [ ] Interest-Only Mortgage Calculator
