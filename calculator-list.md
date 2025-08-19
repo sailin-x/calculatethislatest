@@ -78,7 +78,7 @@
 - [x] **Price Per Square Foot Calculator** ✅ **(COMPLETED - Task 71)**
 - [ ] Private Mortgage Insurance Calculator
 - [x] **Property Tax Calculator** ✅ **(COMPLETED - Task 70)**
-- [ ] Property Tax Proration Calculator
+- [x] **Property Tax Proration Calculator** ✅ **(COMPLETED - Task 72)**
 - [ ] Real Estate Crowdfunding Calculator
 - [ ] Real Estate Development Pro-Forma Calculator
 - [ ] Real Estate Depreciation Schedule Calculator
