@@ -60,8 +60,9 @@
               - [x] **Loan-to-Value (LTV) Ratio Calculator** ✅ **(COMPLETED - Task 53)**
 - [x] **Mezzanine Financing for Real Estate Calculator** ✅ **(COMPLETED - Task 54)**
 - [x] **Mortgage APR Comparison Calculator** ✅ **(COMPLETED - Task 55)**
-- [ ] Mortgage Closing Cost Calculator
-- [ ] Mortgage Equity Calculator
+- [x] **Mortgage Closing Cost Calculator** ✅ **(COMPLETED - Task 56)**
+- [x] **Mortgage Equity Calculator** ✅ **(COMPLETED - Task 57)**
+- [x] **Mortgage Equity Calculator** ✅ **(COMPLETED - Task 57)**
 - [ ] Mortgage Insurance Calculator
 - [ ] Mortgage Life Calculator
 - [ ] Mortgage Payoff Calculator

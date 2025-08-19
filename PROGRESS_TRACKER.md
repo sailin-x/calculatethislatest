@@ -73,20 +73,22 @@ This tracker enables continuous autonomous progress without conversation context
 50. **Loan-to-Value (LTV) Ratio Calculator** - Task 53 ✅ **COMPLETED**
 51. **Mezzanine Financing for Real Estate Calculator** - Task 54 ✅ **COMPLETED**
 52. **Mortgage APR Comparison Calculator** - Task 55 ✅ **COMPLETED**
+53. **Mortgage Closing Cost Calculator** - Task 56 ✅ **COMPLETED**
+54. **Mortgage Equity Calculator** - Task 57 ✅ **COMPLETED**
                 
                 ## Session Management
-                - **Current Focus:** Completing Loan-to-Value (LTV) Ratio Calculator
+                - **Current Focus:** Completing Mortgage Payment Calculator
 - **Batch Target:** 3-5 calculators before starting fresh session
 - **Resume Method:** Check this tracker, continue from current focus
 - **No Context Transfer:** This tracker contains all needed state
 
-                              ## Implementation Status - Mortgage Closing Cost Calculator ⏳ IN PROGRESS
-- ⏳ MortgageClosingCostCalculator.ts - **NEXT TO CREATE**
+                              ## Implementation Status - Mortgage Payment Calculator ⏳ IN PROGRESS
+- ⏳ MortgagePaymentCalculator.ts - **NEXT TO CREATE**
 - ⏳ formulas.ts - After main calculator
 - ⏳ validation.ts - After formulas
 - ⏳ quickValidation.ts - After validation
-- ⏳ MortgageClosingCostCalculator.test.ts - After validation
+- ⏳ MortgagePaymentCalculator.test.ts - After validation
 - ⏳ register.ts - After validation
 - ⏳ calculator-list.md - After completion
 
-**CURRENT:** Starting Mortgage Closing Cost Calculator implementation
+**CURRENT:** Starting Mortgage Payment Calculator implementation
