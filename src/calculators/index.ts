@@ -20,6 +20,7 @@ import { registerMezzanineFinancingCalculator } from './finance/mezzanine-financ
 import { registerMortgageAPRComparisonCalculator } from './finance/mortgage-apr-comparison/register';
 import { registerMortgageClosingCostCalculator } from './finance/mortgage-closing-cost/register';
 import { registerMortgageEquityCalculator } from './finance/mortgage-equity/register';
+import { registerMortgagePaymentCalculator } from './finance/mortgage-payment/register';
 
 // Legal calculators
 import { personalInjuryCalculator } from './legal/personal-injury';
@@ -72,6 +73,7 @@ export function registerAllCalculators(): void {
   registerMortgageAPRComparisonCalculator(calculatorRegistry);
   registerMortgageClosingCostCalculator(calculatorRegistry);
   registerMortgageEquityCalculator(calculatorRegistry);
+  registerMortgagePaymentCalculator(calculatorRegistry);
   
   // Legal & Settlement calculators
   calculatorRegistry.register(personalInjuryCalculator);
