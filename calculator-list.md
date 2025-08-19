@@ -81,7 +81,7 @@
 - [x] **Property Tax Proration Calculator** ✅ **(COMPLETED - Task 72)**
 - [x] **Real Estate Crowdfunding Calculator** ✅ **(COMPLETED - Task 73)**
 - [x] **Real Estate Development Pro-Forma Calculator** ✅ **(COMPLETED - Task 74)**
-- [ ] Real Estate Depreciation Schedule Calculator
+- [x] Real Estate Depreciation Schedule Calculator ✅ (COMPLETED)
 - [ ] Real Estate Syndication Calculator
 - [ ] Real Estate Tax Deductions Calculator
 - [ ] Real Estate Waterfall Model Calculator
