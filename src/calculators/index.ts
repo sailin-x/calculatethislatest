@@ -2,19 +2,29 @@
 import { calculatorRegistry } from '../data/calculatorRegistry';
 
 // Finance calculators
-import { mortgageCalculator } from './finance/mortgage';
-import { portfolioCalculator } from './finance/investment';
-import { balloonMortgageCalculator } from './finance/balloon-mortgage';
-import { bareboatCharterCalculator } from './finance/bareboat-charter';
-import { biweeklyMortgageCalculator } from './finance/biweekly-mortgage';
-import { bridgeLoanCalculator } from './finance/bridge-loan';
-import { brrrrStrategyCalculator } from './finance/brrrr-strategy';
-import { buildingReplacementCostCalculator } from './finance/building-replacement-cost';
-import { capRateCalculator } from './finance/cap-rate';
-import { cashFlowCalculator } from './finance/cash-flow';
-import { cashOnCashReturnCalculator } from './finance/cash-on-cash-return';
-import { commercialRealEstateCalculator } from './finance/commercial-real-estate';
-import { cashOutRefinanceCalculator } from './finance/cash-out-refinance';
+// import { mortgageCalculator } from './finance/mortgage';
+// import { portfolioCalculator } from './finance/investment';
+// import { balloonMortgageCalculator } from './finance/balloon-mortgage';
+// import { bareboatCharterCalculator } from './finance/bareboat-charter';
+// import { biweeklyMortgageCalculator } from './finance/biweekly-mortgage';
+// import { bridgeLoanCalculator } from './finance/bridge-loan';
+// import { brrrrStrategyCalculator } from './finance/brrrr-strategy';
+// import { buildingReplacementCostCalculator } from './finance/building-replacement-cost';
+// import { capRateCalculator } from './finance/cap-rate';
+// import { cashFlowCalculator } from './finance/cash-flow';
+// import { cashOnCashReturnCalculator } from './finance/cash-on-cash-return';
+// import { commercialRealEstateCalculator } from './finance/commercial-real-estate';
+// import { cashOutRefinanceCalculator } from './finance/cash-out-refinance';
+import { registerLoanToValueRatioCalculator } from './finance/loan-to-value-ratio/register';
+import { registerMezzanineFinancingCalculator } from './finance/mezzanine-financing/register';
+import { registerMortgageAPRComparisonCalculator } from './finance/mortgage-apr-comparison/register';
+import { registerMortgageClosingCostCalculator } from './finance/mortgage-closing-cost/register';
+import { registerMortgageEquityCalculator } from './finance/mortgage-equity/register';
+import { registerMortgagePaymentCalculator } from './finance/mortgage-payment/register';
+import { registerMortgageInsuranceCalculator } from './finance/mortgage-insurance/register';
+import { registerMortgageLifeCalculator } from './finance/mortgage-life/register';
+import { registerMortgagePayoffCalculator } from './finance/mortgage-payoff/register';
+import { registerMortgagePointsCalculator } from './finance/mortgage-points/register';
 
 // Legal calculators
 import { personalInjuryCalculator } from './legal/personal-injury';
@@ -49,19 +59,29 @@ import { hobbiesCalculator } from './lifestyle/hobbies';
  */
 export function registerAllCalculators(): void {
   // Finance & Investment calculators
-  calculatorRegistry.register(mortgageCalculator);
-  calculatorRegistry.register(portfolioCalculator);
-  calculatorRegistry.register(balloonMortgageCalculator);
-  calculatorRegistry.register(bareboatCharterCalculator);
-  calculatorRegistry.register(biweeklyMortgageCalculator);
-  calculatorRegistry.register(bridgeLoanCalculator);
-  calculatorRegistry.register(brrrrStrategyCalculator);
-  calculatorRegistry.register(buildingReplacementCostCalculator);
-  calculatorRegistry.register(capRateCalculator);
-  calculatorRegistry.register(cashFlowCalculator);
-  calculatorRegistry.register(cashOnCashReturnCalculator);
-  calculatorRegistry.register(commercialRealEstateCalculator);
-  calculatorRegistry.register(cashOutRefinanceCalculator);
+  // calculatorRegistry.register(mortgageCalculator);
+  // calculatorRegistry.register(portfolioCalculator);
+  // calculatorRegistry.register(balloonMortgageCalculator);
+  // calculatorRegistry.register(bareboatCharterCalculator);
+  // calculatorRegistry.register(biweeklyMortgageCalculator);
+  // calculatorRegistry.register(bridgeLoanCalculator);
+  // calculatorRegistry.register(brrrrStrategyCalculator);
+  // calculatorRegistry.register(buildingReplacementCostCalculator);
+  // calculatorRegistry.register(capRateCalculator);
+  // calculatorRegistry.register(cashFlowCalculator);
+  // calculatorRegistry.register(cashOnCashReturnCalculator);
+  // calculatorRegistry.register(commercialRealEstateCalculator);
+  // calculatorRegistry.register(cashOutRefinanceCalculator);
+  registerLoanToValueRatioCalculator(calculatorRegistry);
+  registerMezzanineFinancingCalculator(calculatorRegistry);
+  registerMortgageAPRComparisonCalculator(calculatorRegistry);
+  registerMortgageClosingCostCalculator(calculatorRegistry);
+  registerMortgageEquityCalculator(calculatorRegistry);
+  registerMortgagePaymentCalculator(calculatorRegistry);
+  registerMortgageInsuranceCalculator(calculatorRegistry);
+  registerMortgageLifeCalculator(calculatorRegistry);
+  registerMortgagePayoffCalculator(calculatorRegistry);
+  registerMortgagePointsCalculator(calculatorRegistry);
   
   // Legal & Settlement calculators
   calculatorRegistry.register(personalInjuryCalculator);
