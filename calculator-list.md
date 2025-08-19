@@ -79,7 +79,7 @@
 - [ ] Private Mortgage Insurance Calculator
 - [x] **Property Tax Calculator** ✅ **(COMPLETED - Task 70)**
 - [x] **Property Tax Proration Calculator** ✅ **(COMPLETED - Task 72)**
-- [ ] Real Estate Crowdfunding Calculator
+- [x] **Real Estate Crowdfunding Calculator** ✅ **(COMPLETED - Task 73)**
 - [ ] Real Estate Development Pro-Forma Calculator
 - [ ] Real Estate Depreciation Schedule Calculator
 - [ ] Real Estate Syndication Calculator
