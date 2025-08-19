@@ -71,10 +71,458 @@ export function calculateMortgagePayment(
     return principal / (termYears * 12);
   }
   
-  const monthlyRate = annualRate / 12;
+  const monthlyRate = annualRate / 100 / 12;
   const totalPayments = termYears * 12;
   
   return principal * 
     (monthlyRate * Math.pow(1 + monthlyRate, totalPayments)) /
     (Math.pow(1 + monthlyRate, totalPayments) - 1);
-}\n\n/**\n * Calculate interest-only payment\n */\nexport function calculateInterestOnlyPayment(\n  principal: number,\n  annualRate: number\n): number {\n  return (principal * annualRate) / 12;\n}\n\n/**\n * Calculate remaining balance after specified payments\n */\nexport function calculateRemainingBalance(\n  originalPrincipal: number,\n  monthlyPayment: number,\n  annualRate: number,\n  paymentsMade: number\n): number {\n  if (annualRate === 0) {\n    return Math.max(0, originalPrincipal - (monthlyPayment * paymentsMade));\n  }\n  \n  const monthlyRate = annualRate / 12;\n  const factor = Math.pow(1 + monthlyRate, paymentsMade);\n  \n  const remaining = originalPrincipal * factor - monthlyPayment * (factor - 1) / monthlyRate;\n  return Math.max(0, remaining);\n}\n\n/**\n * Calculate balloon mortgage payment structure\n */\nexport function calculateBalloonMortgage(inputs: BalloonMortgageInputs): BalloonMortgageResults {\n  const netLoanAmount = inputs.loanAmount - inputs.downPayment;\n  const monthlyRate = inputs.interestRate / 12;\n  const balloonMonths = inputs.balloonTerm * 12;\n  \n  let monthlyPayment: number;\n  let balloonPayment: number;\n  let principalPaid: number;\n  let totalInterestPaid: number;\n  \n  switch (inputs.balloonType) {\n    case 'interest-only':\n      monthlyPayment = calculateInterestOnlyPayment(netLoanAmount, inputs.interestRate);\n      balloonPayment = netLoanAmount;\n      principalPaid = 0;\n      totalInterestPaid = monthlyPayment * balloonMonths;\n      break;\n      \n    case 'partial-amortization':\n      monthlyPayment = calculateMortgagePayment(\n        netLoanAmount, \n        inputs.interestRate, \n        inputs.partialAmortizationYears\n      );\n      balloonPayment = calculateRemainingBalance(\n        netLoanAmount, \n        monthlyPayment, \n        inputs.interestRate, \n        balloonMonths\n      );\n      principalPaid = netLoanAmount - balloonPayment;\n      totalInterestPaid = (monthlyPayment * balloonMonths) - principalPaid;\n      break;\n      \n    default: // 'interest-principal'\n      monthlyPayment = calculateMortgagePayment(\n        netLoanAmount, \n        inputs.interestRate, \n        inputs.amortizationPeriod\n      );\n      balloonPayment = calculateRemainingBalance(\n        netLoanAmount, \n        monthlyPayment, \n        inputs.interestRate, \n        balloonMonths\n      );\n      principalPaid = netLoanAmount - balloonPayment;\n      totalInterestPaid = (monthlyPayment * balloonMonths) - principalPaid;\n      break;\n  }\n  \n  const totalCost = (monthlyPayment * balloonMonths) + balloonPayment;\n  \n  // Traditional mortgage comparison\n  const traditionalPayment = calculateMortgagePayment(netLoanAmount, inputs.interestRate, 30);\n  const traditionalCost = traditionalPayment * balloonMonths;\n  const monthlySavings = traditionalPayment - monthlyPayment;\n  const cashFlowSavings = monthlySavings * balloonMonths;\n  \n  // Risk assessment\n  const riskAssessment = assessBalloonRisks(inputs, balloonPayment, monthlyPayment);\n  \n  // Exit strategy analysis\n  const exitStrategyAnalysis = analyzeExitStrategy(inputs, balloonPayment);\n  \n  // Comparison analysis\n  const comparisonAnalysis: ComparisonAnalysis = {\n    traditionalMortgage: {\n      monthlyPayment: traditionalPayment,\n      totalCost: traditionalCost\n    },\n    balloonMortgage: {\n      monthlyPayment,\n      totalCost\n    },\n    monthlySavings,\n    totalSavings: cashFlowSavings,\n    breakEvenAppreciation: calculateBreakEvenAppreciation(\n      inputs.loanAmount + inputs.downPayment,\n      balloonPayment,\n      cashFlowSavings,\n      inputs.balloonTerm\n    )\n  };\n  \n  return {\n    monthlyPayment,\n    balloonPayment,\n    totalInterestPaid,\n    principalPaid,\n    totalCost,\n    cashFlowSavings,\n    riskAssessment,\n    exitStrategyAnalysis,\n    comparisonAnalysis\n  };\n}\n\n/**\n * Assess risks associated with balloon mortgage\n */\nexport function assessBalloonRisks(\n  inputs: BalloonMortgageInputs,\n  balloonPayment: number,\n  monthlyPayment: number\n): RiskAssessment {\n  let riskLevel: 'LOW' | 'MODERATE' | 'HIGH' | 'EXTREME' = 'MODERATE';\n  \n  // Interest rate risk\n  const rateIncrease = inputs.refinanceRate - inputs.interestRate;\n  let interestRateRisk: string;\n  if (rateIncrease > 0.02) {\n    interestRateRisk = 'HIGH - Rates expected to rise significantly';\n    riskLevel = 'HIGH';\n  } else if (rateIncrease > 0.005) {\n    interestRateRisk = 'MODERATE - Some rate increase expected';\n  } else {\n    interestRateRisk = 'LOW - Stable or declining rate environment';\n  }\n  \n  // Market risk based on balloon term\n  let marketRisk: string;\n  if (inputs.balloonTerm <= 3) {\n    marketRisk = 'LOW - Short term reduces market timing risk';\n  } else if (inputs.balloonTerm <= 5) {\n    marketRisk = 'MODERATE - Medium term market exposure';\n  } else {\n    marketRisk = 'HIGH - Long term increases market uncertainty';\n    riskLevel = riskLevel === 'LOW' ? 'MODERATE' : 'HIGH';\n  }\n  \n  // Refinancing risk based on expected LTV\n  const propertyValue = inputs.loanAmount + inputs.downPayment;\n  const futureValue = propertyValue * Math.pow(1 + inputs.expectedAppreciation, inputs.balloonTerm);\n  const ltvAtBalloon = (balloonPayment / futureValue) * 100;\n  \n  let refinancingRisk: string;\n  if (ltvAtBalloon > 90) {\n    refinancingRisk = 'EXTREME - Very high LTV may prevent refinancing';\n    riskLevel = 'EXTREME';\n  } else if (ltvAtBalloon > 80) {\n    refinancingRisk = 'HIGH - High LTV may limit refinancing options';\n    riskLevel = riskLevel === 'LOW' ? 'MODERATE' : 'HIGH';\n  } else if (ltvAtBalloon > 70) {\n    refinancingRisk = 'MODERATE - Reasonable LTV for refinancing';\n  } else {\n    refinancingRisk = 'LOW - Low LTV provides refinancing flexibility';\n  }\n  \n  // Liquidity risk based on balloon type and exit strategy\n  let liquidityRisk: string;\n  if (inputs.balloonType === 'interest-only') {\n    liquidityRisk = 'HIGH - No principal paydown increases cash needs';\n    riskLevel = riskLevel === 'LOW' ? 'MODERATE' : 'HIGH';\n  } else if (inputs.exitStrategy === 'cash') {\n    liquidityRisk = 'HIGH - Requires significant cash reserves';\n  } else if (inputs.exitStrategy === 'sell') {\n    liquidityRisk = 'MODERATE - Depends on market conditions';\n  } else {\n    liquidityRisk = 'MODERATE - Refinancing dependent';\n  }\n  \n  return {\n    riskLevel,\n    interestRateRisk,\n    marketRisk,\n    refinancingRisk,\n    liquidityRisk\n  };\n}\n\n/**\n * Analyze feasibility of chosen exit strategy\n */\nexport function analyzeExitStrategy(\n  inputs: BalloonMortgageInputs,\n  balloonPayment: number\n): ExitStrategyAnalysis {\n  const propertyValue = inputs.loanAmount + inputs.downPayment;\n  const futureValue = propertyValue * Math.pow(1 + inputs.expectedAppreciation, inputs.balloonTerm);\n  const equity = futureValue - balloonPayment;\n  \n  let feasibility: 'HIGH' | 'MODERATE' | 'LOW';\n  let requirements: string[];\n  let risks: string[];\n  let costs: number;\n  \n  switch (inputs.exitStrategy) {\n    case 'refinance':\n      const ltvForRefinance = ((balloonPayment + inputs.closingCosts) / futureValue) * 100;\n      feasibility = ltvForRefinance <= 80 ? 'HIGH' : ltvForRefinance <= 90 ? 'MODERATE' : 'LOW';\n      requirements = [\n        'Qualifying income and credit',\n        `Property appraisal at $${futureValue.toLocaleString()}`,\n        `LTV of ${ltvForRefinance.toFixed(1)}%`\n      ];\n      risks = [\n        'Interest rate increases',\n        'Tightened lending standards',\n        'Property value decline'\n      ];\n      costs = inputs.closingCosts;\n      break;\n      \n    case 'sell':\n      const sellingCosts = futureValue * 0.06; // 6% selling costs\n      const netProceeds = futureValue - balloonPayment - sellingCosts;\n      feasibility = netProceeds > 0 ? 'HIGH' : netProceeds > -20000 ? 'MODERATE' : 'LOW';\n      requirements = [\n        'Market conditions favorable for sale',\n        `Property value at least $${(balloonPayment + sellingCosts).toLocaleString()}`,\n        'Ability to relocate'\n      ];\n      risks = [\n        'Market downturn',\n        'Extended time to sell',\n        'Selling costs higher than expected'\n      ];\n      costs = sellingCosts;\n      break;\n      \n    case 'cash':\n      feasibility = 'HIGH'; // Assumes sufficient liquidity\n      requirements = [\n        `$${balloonPayment.toLocaleString()} in liquid assets`,\n        'No impact on other financial goals'\n      ];\n      risks = [\n        'Opportunity cost of cash',\n        'Reduced liquidity for emergencies'\n      ];\n      costs = 0; // No transaction costs\n      break;\n      \n    case 'extend':\n      feasibility = 'MODERATE'; // Depends on lender\n      requirements = [\n        'Lender willingness to extend',\n        'Good payment history',\n        'Reasonable property value'\n      ];\n      risks = [\n        'Lender may refuse extension',\n        'Higher interest rate',\n        'Extension fees'\n      ];\n      costs = 2500; // Estimated extension fees\n      break;\n      \n    default:\n      feasibility = 'LOW';\n      requirements = [];\n      risks = [];\n      costs = 0;\n  }\n  \n  return {\n    strategy: inputs.exitStrategy,\n    feasibility,\n    requirements,\n    risks,\n    costs\n  };\n}\n\n/**\n * Calculate required property appreciation to break even\n */\nexport function calculateBreakEvenAppreciation(\n  initialPropertyValue: number,\n  balloonPayment: number,\n  cashFlowSavings: number,\n  years: number\n): number {\n  // Property value needed to break even after accounting for cash flow savings\n  const neededValue = balloonPayment - cashFlowSavings;\n  \n  if (neededValue <= initialPropertyValue) {\n    return 0; // Already break even or better\n  }\n  \n  const requiredGrowthFactor = neededValue / initialPropertyValue;\n  return Math.pow(requiredGrowthFactor, 1 / years) - 1;\n}\n\n/**\n * Calculate total return on investment for balloon mortgage strategy\n */\nexport function calculateBalloonROI(\n  inputs: BalloonMortgageInputs,\n  results: BalloonMortgageResults\n): {\n  totalReturn: number;\n  annualizedReturn: number;\n  cashOnCashReturn: number;\n  leveragedReturn: number;\n} {\n  const propertyValue = inputs.loanAmount + inputs.downPayment;\n  const futureValue = propertyValue * Math.pow(1 + inputs.expectedAppreciation, inputs.balloonTerm);\n  const totalAppreciation = futureValue - propertyValue;\n  const netCashFlow = results.cashFlowSavings;\n  const totalReturn = totalAppreciation + netCashFlow;\n  \n  const annualizedReturn = Math.pow((futureValue + netCashFlow) / propertyValue, 1 / inputs.balloonTerm) - 1;\n  const cashOnCashReturn = (netCashFlow + totalAppreciation) / inputs.downPayment;\n  const leveragedReturn = totalReturn / inputs.downPayment;\n  \n  return {\n    totalReturn,\n    annualizedReturn,\n    cashOnCashReturn,\n    leveragedReturn\n  };\n}\n\n/**\n * Perform sensitivity analysis on key variables\n */\nexport function performSensitivityAnalysis(\n  baseInputs: BalloonMortgageInputs\n): {\n  interestRateSensitivity: Array<{ rate: number; payment: number; balloon: number }>;\n  appreciationSensitivity: Array<{ appreciation: number; equity: number; breakEven: boolean }>;\n  balloonTermSensitivity: Array<{ term: number; payment: number; balloon: number; risk: string }>;\n} {\n  const interestRates = [0.03, 0.04, 0.05, 0.06, 0.07, 0.08];\n  const appreciationRates = [-0.02, 0, 0.02, 0.03, 0.05, 0.07];\n  const balloonTerms = [3, 5, 7, 10];\n  \n  const interestRateSensitivity = interestRates.map(rate => {\n    const testInputs = { ...baseInputs, interestRate: rate };\n    const results = calculateBalloonMortgage(testInputs);\n    return {\n      rate,\n      payment: results.monthlyPayment,\n      balloon: results.balloonPayment\n    };\n  });\n  \n  const appreciationSensitivity = appreciationRates.map(appreciation => {\n    const testInputs = { ...baseInputs, expectedAppreciation: appreciation };\n    const results = calculateBalloonMortgage(testInputs);\n    const propertyValue = baseInputs.loanAmount + baseInputs.downPayment;\n    const futureValue = propertyValue * Math.pow(1 + appreciation, baseInputs.balloonTerm);\n    const equity = futureValue - results.balloonPayment;\n    \n    return {\n      appreciation,\n      equity,\n      breakEven: equity >= results.cashFlowSavings\n    };\n  });\n  \n  const balloonTermSensitivity = balloonTerms.map(term => {\n    const testInputs = { ...baseInputs, balloonTerm: term };\n    const results = calculateBalloonMortgage(testInputs);\n    \n    return {\n      term,\n      payment: results.monthlyPayment,\n      balloon: results.balloonPayment,\n      risk: results.riskAssessment.riskLevel\n    };\n  });\n  \n  return {\n    interestRateSensitivity,\n    appreciationSensitivity,\n    balloonTermSensitivity\n  };\n}\n\n/**\n * Calculate amortization schedule for balloon mortgage\n */\nexport function generateBalloonAmortizationSchedule(\n  inputs: BalloonMortgageInputs\n): Array<{\n  month: number;\n  payment: number;\n  principal: number;\n  interest: number;\n  balance: number;\n}> {\n  const results = calculateBalloonMortgage(inputs);\n  const schedule = [];\n  const netLoanAmount = inputs.loanAmount - inputs.downPayment;\n  const monthlyRate = inputs.interestRate / 12;\n  \n  let balance = netLoanAmount;\n  \n  for (let month = 1; month <= inputs.balloonTerm * 12; month++) {\n    const interestPayment = balance * monthlyRate;\n    let principalPayment: number;\n    \n    if (inputs.balloonType === 'interest-only') {\n      principalPayment = 0;\n    } else {\n      principalPayment = results.monthlyPayment - interestPayment;\n    }\n    \n    balance = Math.max(0, balance - principalPayment);\n    \n    schedule.push({\n      month,\n      payment: results.monthlyPayment,\n      principal: principalPayment,\n      interest: interestPayment,\n      balance\n    });\n  }\n  \n  return schedule;\n}"
+}
+
+/**
+ * Calculate interest-only payment
+ */
+export function calculateInterestOnlyPayment(
+  principal: number,
+  annualRate: number
+): number {
+  return (principal * annualRate / 100) / 12;
+}
+
+/**
+ * Calculate remaining balance after specified payments
+ */
+export function calculateRemainingBalance(
+  originalPrincipal: number,
+  monthlyPayment: number,
+  annualRate: number,
+  paymentsMade: number
+): number {
+  if (annualRate === 0) {
+    return Math.max(0, originalPrincipal - (monthlyPayment * paymentsMade));
+  }
+  
+  const monthlyRate = annualRate / 100 / 12;
+  const factor = Math.pow(1 + monthlyRate, paymentsMade);
+  
+  const remaining = originalPrincipal * factor - monthlyPayment * (factor - 1) / monthlyRate;
+  return Math.max(0, remaining);
+}
+
+/**
+ * Calculate balloon mortgage payment structure
+ */
+export function calculateBalloonMortgage(inputs: BalloonMortgageInputs): BalloonMortgageResults {
+  const netLoanAmount = inputs.loanAmount - inputs.downPayment;
+  const monthlyRate = inputs.interestRate / 100 / 12;
+  const balloonMonths = inputs.balloonTerm * 12;
+  
+  let monthlyPayment: number;
+  let balloonPayment: number;
+  let principalPaid: number;
+  let totalInterestPaid: number;
+  
+  switch (inputs.balloonType) {
+    case 'interest-only':
+      monthlyPayment = calculateInterestOnlyPayment(netLoanAmount, inputs.interestRate);
+      balloonPayment = netLoanAmount;
+      principalPaid = 0;
+      totalInterestPaid = monthlyPayment * balloonMonths;
+      break;
+      
+    case 'partial-amortization':
+      monthlyPayment = calculateMortgagePayment(
+        netLoanAmount, 
+        inputs.interestRate, 
+        inputs.partialAmortizationYears
+      );
+      balloonPayment = calculateRemainingBalance(
+        netLoanAmount, 
+        monthlyPayment, 
+        inputs.interestRate, 
+        balloonMonths
+      );
+      principalPaid = netLoanAmount - balloonPayment;
+      totalInterestPaid = (monthlyPayment * balloonMonths) - principalPaid;
+      break;
+      
+    default: // 'interest-principal'
+      monthlyPayment = calculateMortgagePayment(
+        netLoanAmount, 
+        inputs.interestRate, 
+        inputs.amortizationPeriod
+      );
+      balloonPayment = calculateRemainingBalance(
+        netLoanAmount, 
+        monthlyPayment, 
+        inputs.interestRate, 
+        balloonMonths
+      );
+      principalPaid = netLoanAmount - balloonPayment;
+      totalInterestPaid = (monthlyPayment * balloonMonths) - principalPaid;
+      break;
+  }
+  
+  const totalCost = (monthlyPayment * balloonMonths) + balloonPayment;
+  
+  // Traditional mortgage comparison
+  const traditionalPayment = calculateMortgagePayment(netLoanAmount, inputs.interestRate, 30);
+  const traditionalCost = traditionalPayment * balloonMonths;
+  const monthlySavings = traditionalPayment - monthlyPayment;
+  const cashFlowSavings = monthlySavings * balloonMonths;
+  
+  // Risk assessment
+  const riskAssessment = assessBalloonRisks(inputs, balloonPayment, monthlyPayment);
+  
+  // Exit strategy analysis
+  const exitStrategyAnalysis = analyzeExitStrategy(inputs, balloonPayment);
+  
+  // Comparison analysis
+  const comparisonAnalysis: ComparisonAnalysis = {
+    traditionalMortgage: {
+      monthlyPayment: traditionalPayment,
+      totalCost: traditionalCost
+    },
+    balloonMortgage: {
+      monthlyPayment,
+      totalCost
+    },
+    monthlySavings,
+    totalSavings: cashFlowSavings,
+    breakEvenAppreciation: calculateBreakEvenAppreciation(
+      inputs.loanAmount + inputs.downPayment,
+      balloonPayment,
+      cashFlowSavings,
+      inputs.balloonTerm
+    )
+  };
+  
+  return {
+    monthlyPayment,
+    balloonPayment,
+    totalInterestPaid,
+    principalPaid,
+    totalCost,
+    cashFlowSavings,
+    riskAssessment,
+    exitStrategyAnalysis,
+    comparisonAnalysis
+  };
+}
+
+/**
+ * Assess risks associated with balloon mortgage
+ */
+export function assessBalloonRisks(
+  inputs: BalloonMortgageInputs,
+  balloonPayment: number,
+  monthlyPayment: number
+): RiskAssessment {
+  let riskLevel: 'LOW' | 'MODERATE' | 'HIGH' | 'EXTREME' = 'MODERATE';
+  
+  // Interest rate risk
+  const rateIncrease = inputs.refinanceRate - inputs.interestRate;
+  let interestRateRisk: string;
+  if (rateIncrease > 2) {
+    interestRateRisk = 'HIGH - Rates expected to rise significantly';
+    riskLevel = 'HIGH';
+  } else if (rateIncrease > 0.5) {
+    interestRateRisk = 'MODERATE - Some rate increase expected';
+  } else {
+    interestRateRisk = 'LOW - Stable or declining rate environment';
+  }
+  
+  // Market risk based on balloon term
+  let marketRisk: string;
+  if (inputs.balloonTerm <= 3) {
+    marketRisk = 'LOW - Short term reduces market timing risk';
+  } else if (inputs.balloonTerm <= 5) {
+    marketRisk = 'MODERATE - Medium term market exposure';
+  } else {
+    marketRisk = 'HIGH - Long term increases market uncertainty';
+    riskLevel = riskLevel === 'LOW' ? 'MODERATE' : 'HIGH';
+  }
+  
+  // Refinancing risk based on expected LTV
+  const propertyValue = inputs.loanAmount + inputs.downPayment;
+  const futureValue = propertyValue * Math.pow(1 + inputs.expectedAppreciation / 100, inputs.balloonTerm);
+  const ltvAtBalloon = (balloonPayment / futureValue) * 100;
+  
+  let refinancingRisk: string;
+  if (ltvAtBalloon > 90) {
+    refinancingRisk = 'EXTREME - Very high LTV may prevent refinancing';
+    riskLevel = 'EXTREME';
+  } else if (ltvAtBalloon > 80) {
+    refinancingRisk = 'HIGH - High LTV may limit refinancing options';
+    riskLevel = riskLevel === 'LOW' ? 'MODERATE' : 'HIGH';
+  } else if (ltvAtBalloon > 70) {
+    refinancingRisk = 'MODERATE - Reasonable LTV for refinancing';
+  } else {
+    refinancingRisk = 'LOW - Low LTV provides refinancing flexibility';
+  }
+  
+  // Liquidity risk based on balloon type and exit strategy
+  let liquidityRisk: string;
+  if (inputs.balloonType === 'interest-only') {
+    liquidityRisk = 'HIGH - No principal paydown increases cash needs';
+    riskLevel = riskLevel === 'LOW' ? 'MODERATE' : 'HIGH';
+  } else if (inputs.exitStrategy === 'cash') {
+    liquidityRisk = 'HIGH - Requires significant cash reserves';
+  } else if (inputs.exitStrategy === 'sell') {
+    liquidityRisk = 'MODERATE - Depends on market conditions';
+  } else {
+    liquidityRisk = 'MODERATE - Refinancing dependent';
+  }
+  
+  return {
+    riskLevel,
+    interestRateRisk,
+    marketRisk,
+    refinancingRisk,
+    liquidityRisk
+  };
+}
+
+/**
+ * Analyze feasibility of chosen exit strategy
+ */
+export function analyzeExitStrategy(
+  inputs: BalloonMortgageInputs,
+  balloonPayment: number
+): ExitStrategyAnalysis {
+  const propertyValue = inputs.loanAmount + inputs.downPayment;
+  const futureValue = propertyValue * Math.pow(1 + inputs.expectedAppreciation / 100, inputs.balloonTerm);
+  const equity = futureValue - balloonPayment;
+  
+  let feasibility: 'HIGH' | 'MODERATE' | 'LOW';
+  let requirements: string[];
+  let risks: string[];
+  let costs: number;
+  
+  switch (inputs.exitStrategy) {
+    case 'refinance':
+      const ltvForRefinance = ((balloonPayment + inputs.closingCosts) / futureValue) * 100;
+      feasibility = ltvForRefinance <= 80 ? 'HIGH' : ltvForRefinance <= 90 ? 'MODERATE' : 'LOW';
+      requirements = [
+        'Qualifying income and credit',
+        `Property appraisal at $${futureValue.toLocaleString()}`,
+        `LTV of ${ltvForRefinance.toFixed(1)}%`
+      ];
+      risks = [
+        'Interest rate increases',
+        'Tightened lending standards',
+        'Property value decline'
+      ];
+      costs = inputs.closingCosts;
+      break;
+      
+    case 'sell':
+      const sellingCosts = futureValue * 0.06; // 6% selling costs
+      const netProceeds = futureValue - balloonPayment - sellingCosts;
+      feasibility = netProceeds > 0 ? 'HIGH' : netProceeds > -20000 ? 'MODERATE' : 'LOW';
+      requirements = [
+        'Market conditions favorable for sale',
+        `Property value at least $${(balloonPayment + sellingCosts).toLocaleString()}`,
+        'Ability to relocate'
+      ];
+      risks = [
+        'Market downturn',
+        'Extended time to sell',
+        'Selling costs higher than expected'
+      ];
+      costs = sellingCosts;
+      break;
+      
+    case 'cash':
+      feasibility = 'HIGH'; // Assumes sufficient liquidity
+      requirements = [
+        `$${balloonPayment.toLocaleString()} in liquid assets`,
+        'No impact on other financial goals'
+      ];
+      risks = [
+        'Opportunity cost of cash',
+        'Reduced liquidity for emergencies'
+      ];
+      costs = 0; // No transaction costs
+      break;
+      
+    case 'extend':
+      feasibility = 'MODERATE'; // Depends on lender
+      requirements = [
+        'Lender willingness to extend',
+        'Good payment history',
+        'Reasonable property value'
+      ];
+      risks = [
+        'Lender may refuse extension',
+        'Higher interest rate',
+        'Extension fees'
+      ];
+      costs = 2500; // Estimated extension fees
+      break;
+      
+    default:
+      feasibility = 'LOW';
+      requirements = [];
+      risks = [];
+      costs = 0;
+  }
+  
+  return {
+    strategy: inputs.exitStrategy,
+    feasibility,
+    requirements,
+    risks,
+    costs
+  };
+}
+
+/**
+ * Calculate required property appreciation to break even
+ */
+export function calculateBreakEvenAppreciation(
+  initialPropertyValue: number,
+  balloonPayment: number,
+  cashFlowSavings: number,
+  years: number
+): number {
+  // Property value needed to break even after accounting for cash flow savings
+  const neededValue = balloonPayment - cashFlowSavings;
+  
+  if (neededValue <= initialPropertyValue) {
+    return 0; // Already break even or better
+  }
+  
+  const requiredGrowthFactor = neededValue / initialPropertyValue;
+  return (Math.pow(requiredGrowthFactor, 1 / years) - 1) * 100;
+}
+
+/**
+ * Calculate total return on investment for balloon mortgage strategy
+ */
+export function calculateBalloonROI(
+  inputs: BalloonMortgageInputs,
+  results: BalloonMortgageResults
+): {
+  totalReturn: number;
+  annualizedReturn: number;
+  cashOnCashReturn: number;
+  leveragedReturn: number;
+} {
+  const propertyValue = inputs.loanAmount + inputs.downPayment;
+  const futureValue = propertyValue * Math.pow(1 + inputs.expectedAppreciation / 100, inputs.balloonTerm);
+  const totalAppreciation = futureValue - propertyValue;
+  const netCashFlow = results.cashFlowSavings;
+  const totalReturn = totalAppreciation + netCashFlow;
+  
+  const annualizedReturn = (Math.pow((futureValue + netCashFlow) / propertyValue, 1 / inputs.balloonTerm) - 1) * 100;
+  const cashOnCashReturn = ((netCashFlow + totalAppreciation) / inputs.downPayment) * 100;
+  const leveragedReturn = (totalReturn / inputs.downPayment) * 100;
+  
+  return {
+    totalReturn,
+    annualizedReturn,
+    cashOnCashReturn,
+    leveragedReturn
+  };
+}
+
+/**
+ * Perform sensitivity analysis on key variables
+ */
+export function performSensitivityAnalysis(
+  baseInputs: BalloonMortgageInputs
+): {
+  interestRateSensitivity: Array<{ rate: number; payment: number; balloon: number }>;
+  appreciationSensitivity: Array<{ appreciation: number; equity: number; breakEven: boolean }>;
+  balloonTermSensitivity: Array<{ term: number; payment: number; balloon: number; risk: string }>;
+} {
+  const interestRates = [3, 4, 5, 6, 7, 8];
+  const appreciationRates = [-2, 0, 2, 3, 5, 7];
+  const balloonTerms = [3, 5, 7, 10];
+  
+  const interestRateSensitivity = interestRates.map(rate => {
+    const testInputs = { ...baseInputs, interestRate: rate };
+    const results = calculateBalloonMortgage(testInputs);
+    return {
+      rate,
+      payment: results.monthlyPayment,
+      balloon: results.balloonPayment
+    };
+  });
+  
+  const appreciationSensitivity = appreciationRates.map(appreciation => {
+    const testInputs = { ...baseInputs, expectedAppreciation: appreciation };
+    const results = calculateBalloonMortgage(testInputs);
+    const propertyValue = baseInputs.loanAmount + baseInputs.downPayment;
+    const futureValue = propertyValue * Math.pow(1 + appreciation / 100, baseInputs.balloonTerm);
+    const equity = futureValue - results.balloonPayment;
+    
+    return {
+      appreciation,
+      equity,
+      breakEven: equity >= results.cashFlowSavings
+    };
+  });
+  
+  const balloonTermSensitivity = balloonTerms.map(term => {
+    const testInputs = { ...baseInputs, balloonTerm: term };
+    const results = calculateBalloonMortgage(testInputs);
+    
+    return {
+      term,
+      payment: results.monthlyPayment,
+      balloon: results.balloonPayment,
+      risk: results.riskAssessment.riskLevel
+    };
+  });
+  
+  return {
+    interestRateSensitivity,
+    appreciationSensitivity,
+    balloonTermSensitivity
+  };
+}
+
+/**
+ * Calculate amortization schedule for balloon mortgage
+ */
+export function generateBalloonAmortizationSchedule(
+  inputs: BalloonMortgageInputs
+): Array<{
+  month: number;
+  payment: number;
+  principal: number;
+  interest: number;
+  balance: number;
+}> {
+  const results = calculateBalloonMortgage(inputs);
+  const schedule = [];
+  const netLoanAmount = inputs.loanAmount - inputs.downPayment;
+  const monthlyRate = inputs.interestRate / 100 / 12;
+  
+  let balance = netLoanAmount;
+  
+  for (let month = 1; month <= inputs.balloonTerm * 12; month++) {
+    const interestPayment = balance * monthlyRate;
+    let principalPayment: number;
+    
+    if (inputs.balloonType === 'interest-only') {
+      principalPayment = 0;
+    } else {
+      principalPayment = results.monthlyPayment - interestPayment;
+    }
+    
+    balance = Math.max(0, balance - principalPayment);
+    
+    schedule.push({
+      month,
+      payment: results.monthlyPayment,
+      principal: principalPayment,
+      interest: interestPayment,
+      balance
+    });
+  }
+  
+  return schedule;
+}
