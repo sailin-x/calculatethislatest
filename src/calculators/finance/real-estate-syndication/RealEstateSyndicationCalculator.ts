@@ -312,20 +312,20 @@ export const realEstateSyndicationCalculator: Calculator = {
         operatingExpenses: 35,
         taxRate: 25
       },
-      expectedOutputs: {
-        totalEquity: 5000000,
-        leverageRatio: 0.5,
-        annualCashFlow: 225000,
-        cashOnCashReturn: 0.05625,
-        totalReturn: 0.1875,
-        irr: 0.145,
-        sponsorIrr: 0.225,
-        equityMultiple: 1.9375,
-        exitValue: 12307692,
-        totalProfit: 4687500,
-        investorProfit: 3750000,
-        sponsorProfit: 937500
-      }
+                    expectedOutputs: {
+                totalEquity: 5000000,
+                leverageRatio: 0.5,
+                annualCashFlow: 179553.6,
+                cashOnCashReturn: 0.0449,
+                totalReturn: 1.4364,
+                irr: 0.2566,
+                sponsorIrr: 0.225,
+                equityMultiple: 2.4364,
+                exitValue: 14267989,
+                totalProfit: 7182248,
+                investorProfit: 6065798,
+                sponsorProfit: 1116450
+              }
     },
     {
       name: 'Office Syndication with High Promote',

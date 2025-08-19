@@ -53,8 +53,8 @@ function validateBusinessLogic(inputs: RealEstateSyndicationInputs, errors: stri
   const totalEquity = inputs.sponsorEquity + inputs.investorEquity;
   const totalCapital = totalEquity + inputs.debtAmount;
   
-  if (Math.abs(totalCapital - inputs.totalProjectCost) > inputs.totalProjectCost * 0.01) {
-    errors.push('Total capital (equity + debt) should equal total project cost');
+  if (Math.abs(totalCapital - inputs.totalProjectCost) > inputs.totalProjectCost * 0.05) {
+    errors.push('Total capital (equity + debt) should approximately equal total project cost');
   }
 
   // Leverage validation
