@@ -77,7 +77,7 @@
 - [x] **PMI Cancellation Calculator** ✅ **(COMPLETED - Task 69)**
 - [ ] Price Per Square Foot Calculator
 - [ ] Private Mortgage Insurance Calculator
-- [ ] Property Tax Calculator
+- [x] **Property Tax Calculator** ✅ **(COMPLETED - Task 70)**
 - [ ] Property Tax Proration Calculator
 - [ ] Real Estate Crowdfunding Calculator
 - [ ] Real Estate Development Pro-Forma Calculator
