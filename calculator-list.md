@@ -72,7 +72,7 @@
 - [x] **Mortgage Rate Lock Calculator** ✅ **(COMPLETED - Task 64)**
 - [x] **Mortgage Refinance Calculator** ✅ **(COMPLETED - Task 65)**
 - [x] **Mortgage vs. Rent Calculator** ✅ **(COMPLETED - Task 66)**
-- [ ] Net Operating Income (NOI) Calculator
+- [x] **Net Operating Income (NOI) Calculator** ✅ **(COMPLETED - Task 67)**
 - [ ] Opportunity Zone Investment ROI Calculator
 - [ ] PMI Cancellation Calculator
 - [ ] Price Per Square Foot Calculator

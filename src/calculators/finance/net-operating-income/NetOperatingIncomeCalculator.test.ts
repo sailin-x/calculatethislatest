@@ -51,7 +51,7 @@ describe('Net Operating Income Calculator', () => {
       const result = calculateNetOperatingIncome(inputs);
 
       expect(result.grossIncome).toBe(210000); // 200000 + 10000
-      expect(result.effectiveGrossIncome).toBe(203700); // 210000 - (200000 * 0.03)
+      expect(result.effectiveGrossIncome).toBe(204000); // 210000 - (200000 * 0.03)
       expect(result.totalOperatingExpenses).toBeGreaterThan(0);
       expect(result.netOperatingIncome).toBeGreaterThan(0);
       expect(result.operatingExpenseRatio).toBeGreaterThan(0);
@@ -190,8 +190,8 @@ describe('Net Operating Income Calculator', () => {
 
     it('should validate business logic', () => {
       const inputs = {
-        grossRentalIncome: 100000,
-        vacancyLoss: 95, // Would make effective gross income negative
+        grossRentalIncome: 10000,
+        vacancyLoss: 100, // Would make effective gross income zero (10000 - 10000 = 0)
         propertyTaxes: 8000,
         insurance: 3000,
         utilities: 6000,
