@@ -84,7 +84,7 @@
 - [x] Real Estate Depreciation Schedule Calculator ✅ (COMPLETED)
 - [x] Real Estate Syndication Calculator ✅ (COMPLETED)
 - [x] Real Estate Tax Deductions Calculator ✅ (COMPLETED)
-- [ ] Real Estate Waterfall Model Calculator
+- [x] Real Estate Waterfall Model Calculator ✅ (COMPLETED)
 - [ ] Refinance Calculator
 - [ ] Rental Property ROI Calculator
 - [ ] Rental Yield Calculator
