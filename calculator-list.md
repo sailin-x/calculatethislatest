@@ -84,8 +84,8 @@
 - [ ] Real Estate Syndication Calculator
 - [ ] Real Estate Tax Deductions Calculator
 - [ ] Real Estate Waterfall Model Calculator
-- [ ] Refinance Calculator
-- [ ] Rental Property ROI Calculator
+- [x] **Refinance Calculator** ✅ **(COMPLETED - Task 79)**
+- [x] **Rental Property ROI Calculator** ✅ **(COMPLETED - Task 80)**
 - [ ] Rental Yield Calculator
 - [ ] Renters Insurance Calculator
 - [ ] Rent vs. Buy Calculator
