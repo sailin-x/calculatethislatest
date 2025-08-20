@@ -86,7 +86,7 @@
 - [ ] Real Estate Waterfall Model Calculator
 - [x] **Refinance Calculator** ✅ **(COMPLETED - Task 79)**
 - [x] **Rental Property ROI Calculator** ✅ **(COMPLETED - Task 80)**
-- [ ] Rental Yield Calculator
+- [x] **Rental Yield Calculator** ✅ **(COMPLETED - Task 81)**
 - [ ] Renters Insurance Calculator
 - [ ] Rent vs. Buy Calculator
 - [ ] Reverse Mortgage Calculator

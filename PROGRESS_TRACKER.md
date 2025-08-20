@@ -73,21 +73,22 @@ This tracker enables continuous autonomous progress without conversation context
                   ## Next Up (This Session)
 79. **Refinance Calculator** - Task 79 ✅ **COMPLETED**
 80. **Rental Property ROI Calculator** - Task 80 ✅ **COMPLETED**
-81. **Rental Yield Calculator** - Task 81
+81. **Rental Yield Calculator** - Task 81 ✅ **COMPLETED**
+82. **Renters Insurance Calculator** - Task 82
 
 ## Session Management
-- **Current Focus:** Completing Rental Yield Calculator
+- **Current Focus:** Completing Renters Insurance Calculator
 - **Batch Target:** 3-5 calculators before starting fresh session
 - **Resume Method:** Check this tracker, continue from current focus
 - **No Context Transfer:** This tracker contains all needed state
 
-## Implementation Status - Rental Yield Calculator ⏳ IN PROGRESS
-- ⏳ RentalYieldCalculator.ts - **NEXT TO CREATE**
+## Implementation Status - Renters Insurance Calculator ⏳ IN PROGRESS
+- ⏳ RentersInsuranceCalculator.ts - **NEXT TO CREATE**
 - ⏳ formulas.ts - After main calculator
 - ⏳ validation.ts - After formulas
 - ⏳ quickValidation.ts - After validation
-- ⏳ RentalYieldCalculator.test.ts - After validation
+- ⏳ RentersInsuranceCalculator.test.ts - After validation
 - ⏳ register.ts - After validation
 - ⏳ calculator-list.md - After completion
 
-**CURRENT:** Rental Property ROI Calculator completed successfully
+**CURRENT:** Rental Yield Calculator completed successfully
