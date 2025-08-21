@@ -5,16 +5,16 @@ import { calculatorRegistry } from '../data/calculatorRegistry';
 import { mortgageCalculator } from './finance/mortgage';
 import { portfolioCalculator } from './finance/investment';
 import { BalloonMortgageCalculator as balloonMortgageCalculator } from './finance/balloon-mortgage';
-import { bareboatCharterCalculator } from './finance/bareboat-charter';
-import { biweeklyMortgageCalculator } from './finance/biweekly-mortgage';
-import { bridgeLoanCalculator } from './finance/bridge-loan';
-import { brrrrStrategyCalculator } from './finance/brrrr-strategy';
-import { buildingReplacementCostCalculator } from './finance/building-replacement-cost';
-import { capRateCalculator } from './finance/cap-rate';
-import { cashFlowCalculator } from './finance/cash-flow';
-import { cashOnCashReturnCalculator } from './finance/cash-on-cash-return';
-import { commercialRealEstateCalculator } from './finance/commercial-real-estate';
-import { cashOutRefinanceCalculator } from './finance/cash-out-refinance';
+import { BareboatCharterCalculator as bareboatCharterCalculator } from './finance/bareboat-charter';
+import { BiweeklyMortgageCalculator as biweeklyMortgageCalculator } from './finance/biweekly-mortgage';
+import { BridgeLoanCalculator as bridgeLoanCalculator } from './finance/bridge-loan';
+import { BRRRRStrategyCalculator as brrrrStrategyCalculator } from './finance/brrrr-strategy';
+import { BuildingReplacementCostCalculator as buildingReplacementCostCalculator } from './finance/building-replacement-cost';
+import { CapRateCalculator as capRateCalculator } from './finance/cap-rate';
+import { CashFlowCalculator as cashFlowCalculator } from './finance/cash-flow';
+import { CashOnCashReturnCalculator as cashOnCashReturnCalculator } from './finance/cash-on-cash-return';
+import { CommercialRealEstateCalculator as commercialRealEstateCalculator } from './finance/commercial-real-estate';
+import { CashOutRefinanceCalculator as cashOutRefinanceCalculator } from './finance/cash-out-refinance';
 
 // Legal calculators
 import { personalInjuryCalculator } from './legal/personal-injury';
