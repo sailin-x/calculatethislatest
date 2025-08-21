@@ -67,8 +67,8 @@
 - [x] **Mortgage Payoff Calculator** ✅ **(COMPLETED - Task 103)**
 - [x] **Mortgage Payment Calculator** ✅ **(COMPLETED - Task 104)**
 - [x] **Mortgage Points Calculator** ✅ **(COMPLETED - Task 105)**
-- [ ] Mortgage Qualification Calculator
-- [ ] Mortgage Rate Lock Calculator
+- [x] **Mortgage Qualification Calculator** ✅ **(COMPLETED - Task 106)**
+- [x] **Mortgage Rate Lock Calculator** ✅ **(COMPLETED - Task 107)**
 - [ ] Mortgage Refinance Calculator
 - [ ] Mortgage vs. Rent Calculator
 - [ ] Net Operating Income (NOI) Calculator

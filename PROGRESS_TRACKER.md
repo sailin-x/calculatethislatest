@@ -98,9 +98,11 @@ This tracker enables continuous autonomous progress without conversation context
 103. **Mortgage Payoff Calculator** - Task 103 ✅ **COMPLETED**
 104. **Mortgage Payment Calculator** - Task 104 ✅ **COMPLETED**
 105. **Mortgage Points Calculator** - Task 105 ✅ **COMPLETED**
+106. **Mortgage Qualification Calculator** - Task 106 ✅ **COMPLETED**
+107. **Mortgage Rate Lock Calculator** - Task 107 ✅ **COMPLETED**
 
 ## Session Management
-- **Current Focus:** Completing Vineyard Profitability Calculator
+- **Current Focus:** Completing Mortgage Rate Lock Calculator
 - **Batch Target:** 3-5 calculators before starting fresh session
 - **Resume Method:** Check this tracker, continue from current focus
 - **No Context Transfer:** This tracker contains all needed state

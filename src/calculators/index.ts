@@ -27,6 +27,8 @@ import { MortgageLifeCalculator as mortgageLifeCalculator } from './finance/mort
 import { MortgagePayoffCalculator as mortgagePayoffCalculator } from './finance/mortgage-payoff';
 import { MortgagePaymentCalculator as mortgagePaymentCalculator } from './finance/mortgage-payment';
 import { MortgagePointsCalculator as mortgagePointsCalculator } from './finance/mortgage-points';
+import { MortgageQualificationCalculator as mortgageQualificationCalculator } from './finance/mortgage-qualification';
+import { MortgageRateLockCalculator as mortgageRateLockCalculator } from './finance/mortgage-rate-lock';
 
 // Legal calculators
 import { personalInjuryCalculator } from './legal/personal-injury';
@@ -86,6 +88,8 @@ export function registerAllCalculators(): void {
   calculatorRegistry.register(mortgagePayoffCalculator);
   calculatorRegistry.register(mortgagePaymentCalculator);
   calculatorRegistry.register(mortgagePointsCalculator);
+  calculatorRegistry.register(mortgageQualificationCalculator);
+  calculatorRegistry.register(mortgageRateLockCalculator);
   
   // Legal & Settlement calculators
   calculatorRegistry.register(personalInjuryCalculator);
