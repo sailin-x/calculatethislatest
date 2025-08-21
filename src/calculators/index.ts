@@ -21,6 +21,12 @@ import { WindstormInsuranceCalculator as windstormInsuranceCalculator } from './
 import { MezzanineFinancingCalculator as mezzanineFinancingCalculator } from './finance/mezzanine-financing';
 import { MortgageAPRComparisonCalculator as mortgageAPRComparisonCalculator } from './finance/mortgage-apr-comparison';
 import { MortgageClosingCostCalculator as mortgageClosingCostCalculator } from './finance/mortgage-closing-cost';
+import { MortgageEquityCalculator as mortgageEquityCalculator } from './finance/mortgage-equity';
+import { MortgageInsuranceCalculator as mortgageInsuranceCalculator } from './finance/mortgage-insurance';
+import { MortgageLifeCalculator as mortgageLifeCalculator } from './finance/mortgage-life';
+import { MortgagePayoffCalculator as mortgagePayoffCalculator } from './finance/mortgage-payoff';
+import { MortgagePaymentCalculator as mortgagePaymentCalculator } from './finance/mortgage-payment';
+import { MortgagePointsCalculator as mortgagePointsCalculator } from './finance/mortgage-points';
 
 // Legal calculators
 import { personalInjuryCalculator } from './legal/personal-injury';
@@ -74,6 +80,12 @@ export function registerAllCalculators(): void {
   calculatorRegistry.register(mezzanineFinancingCalculator);
   calculatorRegistry.register(mortgageAPRComparisonCalculator);
   calculatorRegistry.register(mortgageClosingCostCalculator);
+  calculatorRegistry.register(mortgageEquityCalculator);
+  calculatorRegistry.register(mortgageInsuranceCalculator);
+  calculatorRegistry.register(mortgageLifeCalculator);
+  calculatorRegistry.register(mortgagePayoffCalculator);
+  calculatorRegistry.register(mortgagePaymentCalculator);
+  calculatorRegistry.register(mortgagePointsCalculator);
   
   // Legal & Settlement calculators
   calculatorRegistry.register(personalInjuryCalculator);
