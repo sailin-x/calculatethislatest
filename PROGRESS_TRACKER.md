@@ -83,19 +83,27 @@ This tracker enables continuous autonomous progress without conversation context
 88. **Reverse Mortgage Calculator** - Task 88 ✅ **COMPLETED**
 89. **Self-Storage Facility ROI Calculator** - Task 89 ✅ **COMPLETED**
 90. **Tenant Improvement (TI) Allowance Calculator** - Task 90 ✅ **COMPLETED**
+91. **Timberland Investment Calculator** - Task 91 ✅ **COMPLETED**
+92. **Triple Net (NNN) Lease ROI Calculator** - Task 92 ✅ **COMPLETED**
+93. **USDA Loan Calculator** - Task 93 ✅ **COMPLETED**
+94. **VA Loan Calculator** - Task 94 ✅ **COMPLETED**
 
 ## Session Management
-- **Current Focus:** Completing Tenant Improvement (TI) Allowance Calculator
+- **Current Focus:** Completing VA Loan Calculator
 - **Batch Target:** 3-5 calculators before starting fresh session
 - **Resume Method:** Check this tracker, continue from current focus
 - **No Context Transfer:** This tracker contains all needed state
 
-## Implementation Status - Tenant Improvement (TI) Allowance Calculator ✅ COMPLETED
-- ✅ TenantImprovementCalculator.ts - **COMPLETED**
+## Implementation Status - VA Loan Calculator ✅ COMPLETED
+- ✅ VALoanCalculator.ts - **COMPLETED**
 - ✅ formulas.ts - **COMPLETED**
 - ✅ validation.ts - **COMPLETED**
 - ✅ quickValidation.ts - **COMPLETED**
-- ✅ TenantImprovementCalculator.test.ts - **COMPLETED**
+- ✅ VALoanCalculator.test.ts - **COMPLETED**
+- ✅ register.ts - **COMPLETED**
+- ✅ index.ts - **COMPLETED**
+- ✅ Updated main index.ts - **COMPLETED**
+- ✅ USDALoanCalculator.test.ts - **COMPLETED**
 - ✅ register.ts - **COMPLETED**
 - ✅ calculator-list.md - **COMPLETED**
 

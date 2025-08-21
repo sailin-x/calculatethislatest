@@ -15,6 +15,7 @@ import { CashFlowCalculator as cashFlowCalculator } from './finance/cash-flow';
 import { CashOnCashReturnCalculator as cashOnCashReturnCalculator } from './finance/cash-on-cash-return';
 import { CommercialRealEstateCalculator as commercialRealEstateCalculator } from './finance/commercial-real-estate';
 import { CashOutRefinanceCalculator as cashOutRefinanceCalculator } from './finance/cash-out-refinance';
+import { VALoanCalculator as vaLoanCalculator } from './finance/va-loan';
 
 // Legal calculators
 import { personalInjuryCalculator } from './legal/personal-injury';
@@ -62,6 +63,7 @@ export function registerAllCalculators(): void {
   calculatorRegistry.register(cashOnCashReturnCalculator);
   calculatorRegistry.register(commercialRealEstateCalculator);
   calculatorRegistry.register(cashOutRefinanceCalculator);
+  calculatorRegistry.register(vaLoanCalculator);
   
   // Legal & Settlement calculators
   calculatorRegistry.register(personalInjuryCalculator);

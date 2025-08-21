@@ -96,10 +96,10 @@
 - [x] **Reverse Mortgage Calculator** ✅ **(COMPLETED - Task 88)**
 - [x] **Self-Storage Facility ROI Calculator** ✅ **(COMPLETED - Task 89)**
 - [x] **Tenant Improvement (TI) Allowance Calculator** ✅ **(COMPLETED - Task 90)**
-- [ ] Timberland Investment Calculator
-- [ ] Triple Net (NNN) Lease ROI Calculator
-- [ ] USDA Loan Calculator
-- [ ] VA Loan Calculator
+- [x] **Timberland Investment Calculator** ✅ **(COMPLETED - Task 91)**
+- [x] **Triple Net (NNN) Lease ROI Calculator** ✅ **(COMPLETED - Task 92)**
+- [x] **USDA Loan Calculator** ✅ **(COMPLETED - Task 93)**
+- [x] **VA Loan Calculator** ✅ **(COMPLETED - Task 94)**
 - [ ] Vineyard Profitability Calculator
 - [ ] Windstorm Insurance Calculator
 

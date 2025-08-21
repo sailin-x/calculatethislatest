@@ -51,8 +51,8 @@ function calculatorReducer(state: CalculatorState, action: CalculatorAction): Ca
       return {
         ...initialState,
         currentCalculator: action.payload,
-        inputs: action.payload.inputs.reduce((acc, input) => {
-          acc[input.id] = input.defaultValue || '';
+        inputs: Object.keys(action.payload.inputs).reduce((acc, key) => {
+          acc[key] = action.payload.inputs[key].defaultValue || '';
           return acc;
         }, {} as Record<string, any>)
       };
@@ -113,10 +113,10 @@ function calculatorReducer(state: CalculatorState, action: CalculatorAction): Ca
     case 'RESET_INPUTS':
       return {
         ...state,
-        inputs: state.currentCalculator?.inputs.reduce((acc, input) => {
-          acc[input.id] = input.defaultValue || '';
+        inputs: state.currentCalculator ? Object.keys(state.currentCalculator.inputs).reduce((acc, key) => {
+          acc[key] = state.currentCalculator!.inputs[key].defaultValue || '';
           return acc;
-        }, {} as Record<string, any>) || {},
+        }, {} as Record<string, any>) : {},
         outputs: {},
         validation: { isValid: true, errors: {}, warnings: {}, suggestions: {} },
         lastCalculation: null
