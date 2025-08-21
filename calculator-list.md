@@ -87,8 +87,8 @@
 - [x] **Refinance Calculator** ✅ **(COMPLETED - Task 79)**
 - [x] **Rental Property ROI Calculator** ✅ **(COMPLETED - Task 80)**
 - [x] **Rental Yield Calculator** ✅ **(COMPLETED - Task 81)**
-- [ ] Renters Insurance Calculator
-- [ ] Rent vs. Buy Calculator
+- [x] **Renters Insurance Calculator** ✅ **(COMPLETED - Task 82)**
+- [x] **Rent vs. Buy Calculator** ✅ **(COMPLETED - Task 83)**
 - [ ] Reverse Mortgage Calculator
 - [ ] Self-Storage Facility ROI Calculator
 - [ ] Tenant Improvement (TI) Allowance Calculator
