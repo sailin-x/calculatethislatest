@@ -163,7 +163,7 @@ export const amortizationValidationRules: ValidationRule[] = [
   {
     field: 'startDate',
     type: 'custom',
-    validator: (value) => {
+    validator: (value, allInputs) => {
       if (!value) return true; // Optional field
       const date = new Date(value);
       const now = new Date();

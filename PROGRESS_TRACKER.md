@@ -88,6 +88,7 @@ This tracker enables continuous autonomous progress without conversation context
 93. **USDA Loan Calculator** - Task 93 ✅ **COMPLETED**
 94. **VA Loan Calculator** - Task 94 ✅ **COMPLETED**
 95. **Vineyard Profitability Calculator** - Task 95 ✅ **COMPLETED**
+96. **Windstorm Insurance Calculator** - Task 96 ✅ **COMPLETED**
 
 ## Session Management
 - **Current Focus:** Completing Vineyard Profitability Calculator

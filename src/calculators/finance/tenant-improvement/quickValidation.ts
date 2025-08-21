@@ -332,7 +332,7 @@ export function validateAllTenantImprovementInputs(inputs: CalculatorInputs): { 
   ];
 
   for (const validation of validations) {
-    const error = validation.validator(inputs[validation.field] as number);
+    const error = validation.validator(inputs[validation.field] as number, inputs);
     if (error) {
       errors.push(error);
     }
