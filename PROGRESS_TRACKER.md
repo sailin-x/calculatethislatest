@@ -76,20 +76,21 @@ This tracker enables continuous autonomous progress without conversation context
 81. **Rental Yield Calculator** - Task 81 ✅ **COMPLETED**
 82. **Renters Insurance Calculator** - Task 82 ✅ **COMPLETED**
 83. **Rent vs. Buy Calculator** - Task 83 ✅ **COMPLETED**
-84. **Reverse Mortgage Calculator** - Task 84
+84. **Reverse Mortgage Calculator** - Task 84 ✅ **COMPLETED**
+85. **Self-Storage Facility ROI Calculator** - Task 85 ✅ **COMPLETED**
 
 ## Session Management
-- **Current Focus:** Completing Reverse Mortgage Calculator
+- **Current Focus:** Completing Tenant Improvement (TI) Allowance Calculator
 - **Batch Target:** 3-5 calculators before starting fresh session
 - **Resume Method:** Check this tracker, continue from current focus
 - **No Context Transfer:** This tracker contains all needed state
 
-## Implementation Status - Reverse Mortgage Calculator ⏳ IN PROGRESS
-- ⏳ ReverseMortgageCalculator.ts - **NEXT TO CREATE**
+## Implementation Status - Tenant Improvement (TI) Allowance Calculator ⏳ IN PROGRESS
+- ⏳ TenantImprovementAllowanceCalculator.ts - **NEXT TO CREATE**
 - ⏳ formulas.ts - After main calculator
 - ⏳ validation.ts - After formulas
-- ⏳ ReverseMortgageCalculator.test.ts - After validation
+- ⏳ TenantImprovementAllowanceCalculator.test.ts - After validation
 - ⏳ register.ts - After validation
 - ⏳ calculator-list.md - After completion
 
-**CURRENT:** Rent vs. Buy Calculator completed successfully
+**CURRENT:** Self-Storage Facility ROI Calculator completed successfully

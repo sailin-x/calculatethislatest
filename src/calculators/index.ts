@@ -17,6 +17,8 @@ import { commercialRealEstateCalculator } from './finance/commercial-real-estate
 import { cashOutRefinanceCalculator } from './finance/cash-out-refinance';
 import { RentersInsuranceCalculator } from './finance/renters-insurance';
 import { RentVsBuyCalculator } from './finance/rent-vs-buy';
+import { ReverseMortgageCalculator } from './finance/reverse-mortgage';
+import { SelfStorageFacilityROICalculator } from './finance/self-storage-facility-roi';
 
 // Legal calculators
 import { personalInjuryCalculator } from './legal/personal-injury';
@@ -66,6 +68,8 @@ export function registerAllCalculators(): void {
   calculatorRegistry.register(cashOutRefinanceCalculator);
   calculatorRegistry.register(RentersInsuranceCalculator);
   calculatorRegistry.register(RentVsBuyCalculator);
+  calculatorRegistry.register(ReverseMortgageCalculator);
+  calculatorRegistry.register(SelfStorageFacilityROICalculator);
   
   // Legal & Settlement calculators
   calculatorRegistry.register(personalInjuryCalculator);
