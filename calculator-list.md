@@ -91,7 +91,7 @@
 - [x] **Rent vs. Buy Calculator** ✅ **(COMPLETED - Task 83)**
 - [x] **Reverse Mortgage Calculator** ✅ **(COMPLETED - Task 84)**
 - [x] **Self-Storage Facility ROI Calculator** ✅ **(COMPLETED - Task 85)**
-- [ ] Tenant Improvement (TI) Allowance Calculator
+- [x] **Tenant Improvement (TI) Allowance Calculator** ✅ **(COMPLETED - Task 86)**
 - [ ] Timberland Investment Calculator
 - [ ] Triple Net (NNN) Lease ROI Calculator
 - [ ] USDA Loan Calculator
