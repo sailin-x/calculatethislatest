@@ -100,7 +100,7 @@
 - [x] **Triple Net (NNN) Lease ROI Calculator** ✅ **(COMPLETED - Task 92)**
 - [x] **USDA Loan Calculator** ✅ **(COMPLETED - Task 93)**
 - [x] **VA Loan Calculator** ✅ **(COMPLETED - Task 94)**
-- [ ] Vineyard Profitability Calculator
+- [x] **Vineyard Profitability Calculator** ✅ **(COMPLETED - Task 95)**
 - [ ] Windstorm Insurance Calculator
 
 ### Retirement & Savings Hub (65 calculators)
