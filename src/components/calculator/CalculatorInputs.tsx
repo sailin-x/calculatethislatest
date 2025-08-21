@@ -161,7 +161,7 @@ export function CalculatorInputs() {
 
   return (
     <div className="space-y-4">
-      {currentCalculator.inputs.map(renderInput)}
+      {Object.entries(currentCalculator.inputs).map(([inputId, input]) => renderInput({ id: inputId, ...input }))}
     </div>
   );
 }
