@@ -74,21 +74,24 @@ This tracker enables continuous autonomous progress without conversation context
 79. **Refinance Calculator** - Task 79 ✅ **COMPLETED**
 80. **Rental Property ROI Calculator** - Task 80 ✅ **COMPLETED**
 81. **Rental Yield Calculator** - Task 81 ✅ **COMPLETED**
-82. **Renters Insurance Calculator** - Task 82
+82. **Renters Insurance Calculator** - Task 82 ✅ **COMPLETED**
+83. **Rent vs. Buy Calculator** - Task 83 ✅ **COMPLETED**
+84. **Reverse Mortgage Calculator** - Task 84 ✅ **COMPLETED**
+85. **Self-Storage Facility ROI Calculator** - Task 85 ✅ **COMPLETED**
+86. **Tenant Improvement (TI) Allowance Calculator** - Task 86 ✅ **COMPLETED**
 
 ## Session Management
-- **Current Focus:** Completing Renters Insurance Calculator
+- **Current Focus:** Completing Timberland Investment Calculator
 - **Batch Target:** 3-5 calculators before starting fresh session
 - **Resume Method:** Check this tracker, continue from current focus
 - **No Context Transfer:** This tracker contains all needed state
 
-## Implementation Status - Renters Insurance Calculator ⏳ IN PROGRESS
-- ⏳ RentersInsuranceCalculator.ts - **NEXT TO CREATE**
+## Implementation Status - Timberland Investment Calculator ⏳ IN PROGRESS
+- ⏳ TimberlandInvestmentCalculator.ts - **NEXT TO CREATE**
 - ⏳ formulas.ts - After main calculator
 - ⏳ validation.ts - After formulas
-- ⏳ quickValidation.ts - After validation
-- ⏳ RentersInsuranceCalculator.test.ts - After validation
+- ⏳ TimberlandInvestmentCalculator.test.ts - After validation
 - ⏳ register.ts - After validation
 - ⏳ calculator-list.md - After completion
 
-**CURRENT:** Rental Yield Calculator completed successfully
+**CURRENT:** Tenant Improvement (TI) Allowance Calculator completed successfully
