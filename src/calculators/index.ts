@@ -18,6 +18,9 @@ import { CashOutRefinanceCalculator as cashOutRefinanceCalculator } from './fina
 import { VALoanCalculator as vaLoanCalculator } from './finance/va-loan';
 import { VineyardProfitabilityCalculator as vineyardProfitabilityCalculator } from './finance/vineyard-profitability';
 import { WindstormInsuranceCalculator as windstormInsuranceCalculator } from './finance/windstorm-insurance';
+import { MezzanineFinancingCalculator as mezzanineFinancingCalculator } from './finance/mezzanine-financing';
+import { MortgageAPRComparisonCalculator as mortgageAPRComparisonCalculator } from './finance/mortgage-apr-comparison';
+import { MortgageClosingCostCalculator as mortgageClosingCostCalculator } from './finance/mortgage-closing-cost';
 
 // Legal calculators
 import { personalInjuryCalculator } from './legal/personal-injury';
@@ -68,6 +71,9 @@ export function registerAllCalculators(): void {
   calculatorRegistry.register(vaLoanCalculator);
   calculatorRegistry.register(vineyardProfitabilityCalculator);
   calculatorRegistry.register(windstormInsuranceCalculator);
+  calculatorRegistry.register(mezzanineFinancingCalculator);
+  calculatorRegistry.register(mortgageAPRComparisonCalculator);
+  calculatorRegistry.register(mortgageClosingCostCalculator);
   
   // Legal & Settlement calculators
   calculatorRegistry.register(personalInjuryCalculator);

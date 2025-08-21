@@ -58,9 +58,9 @@
                                                           - [x] **Landlord Insurance Calculator** ✅ **(COMPLETED)**
                               - [x] **Loan to Cost (LTC) Ratio Calculator** ✅ **(COMPLETED)**
                               - [x] **Loan-to-Value (LTV) Ratio Calculator** ✅ **(COMPLETED)**
-                              - [ ] Mezzanine Financing for Real Estate Calculator
-- [ ] Mortgage APR Comparison Calculator
-- [ ] Mortgage Closing Cost Calculator
+                              - [x] **Mezzanine Financing for Real Estate Calculator** ✅ **(COMPLETED - Task 97)**
+- [x] **Mortgage APR Comparison Calculator** ✅ **(COMPLETED - Task 98)**
+- [x] **Mortgage Closing Cost Calculator** ✅ **(COMPLETED - Task 99)**
 - [ ] Mortgage Equity Calculator
 - [ ] Mortgage Insurance Calculator
 - [ ] Mortgage Life Calculator

@@ -89,6 +89,9 @@ This tracker enables continuous autonomous progress without conversation context
 94. **VA Loan Calculator** - Task 94 ✅ **COMPLETED**
 95. **Vineyard Profitability Calculator** - Task 95 ✅ **COMPLETED**
 96. **Windstorm Insurance Calculator** - Task 96 ✅ **COMPLETED**
+97. **Mezzanine Financing for Real Estate Calculator** - Task 97 ✅ **COMPLETED**
+98. **Mortgage APR Comparison Calculator** - Task 98 ✅ **COMPLETED**
+99. **Mortgage Closing Cost Calculator** - Task 99 ✅ **COMPLETED**
 
 ## Session Management
 - **Current Focus:** Completing Vineyard Profitability Calculator
@@ -107,4 +110,4 @@ This tracker enables continuous autonomous progress without conversation context
 - ✅ Updated main index.ts - **COMPLETED**
 - ✅ calculator-list.md - **COMPLETED**
 
-**CURRENT:** Vineyard Profitability Calculator completed successfully - Moving to next calculator
+**CURRENT:** Mortgage Closing Cost Calculator completed successfully - Moving to next calculator
