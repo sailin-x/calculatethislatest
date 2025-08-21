@@ -4,7 +4,7 @@ import { calculatorRegistry } from '../data/calculatorRegistry';
 // Finance calculators
 import { mortgageCalculator } from './finance/mortgage';
 import { portfolioCalculator } from './finance/investment';
-import { balloonMortgageCalculator } from './finance/balloon-mortgage';
+import { BalloonMortgageCalculator as balloonMortgageCalculator } from './finance/balloon-mortgage';
 import { bareboatCharterCalculator } from './finance/bareboat-charter';
 import { biweeklyMortgageCalculator } from './finance/biweekly-mortgage';
 import { bridgeLoanCalculator } from './finance/bridge-loan';
