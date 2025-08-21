@@ -98,7 +98,7 @@ export const InteractiveTutorial: React.FC<InteractiveTutorialProps> = ({
       case 'custom':
         if (step.validation.validator) {
           const elementValue = (targetElement as HTMLInputElement).value;
-          return step.validation.validator(elementValue);
+          return step.validation.validator(elementValue, {});
         }
         return false;
       
