@@ -87,24 +87,23 @@ This tracker enables continuous autonomous progress without conversation context
 92. **Triple Net (NNN) Lease ROI Calculator** - Task 92 ✅ **COMPLETED**
 93. **USDA Loan Calculator** - Task 93 ✅ **COMPLETED**
 94. **VA Loan Calculator** - Task 94 ✅ **COMPLETED**
+95. **Vineyard Profitability Calculator** - Task 95 ✅ **COMPLETED**
 
 ## Session Management
-- **Current Focus:** Completing VA Loan Calculator
+- **Current Focus:** Completing Vineyard Profitability Calculator
 - **Batch Target:** 3-5 calculators before starting fresh session
 - **Resume Method:** Check this tracker, continue from current focus
 - **No Context Transfer:** This tracker contains all needed state
 
-## Implementation Status - VA Loan Calculator ✅ COMPLETED
-- ✅ VALoanCalculator.ts - **COMPLETED**
+## Implementation Status - Vineyard Profitability Calculator ✅ COMPLETED
+- ✅ VineyardProfitabilityCalculator.ts - **COMPLETED**
 - ✅ formulas.ts - **COMPLETED**
 - ✅ validation.ts - **COMPLETED**
 - ✅ quickValidation.ts - **COMPLETED**
-- ✅ VALoanCalculator.test.ts - **COMPLETED**
+- ✅ VineyardProfitabilityCalculator.test.ts - **COMPLETED**
 - ✅ register.ts - **COMPLETED**
 - ✅ index.ts - **COMPLETED**
 - ✅ Updated main index.ts - **COMPLETED**
-- ✅ USDALoanCalculator.test.ts - **COMPLETED**
-- ✅ register.ts - **COMPLETED**
 - ✅ calculator-list.md - **COMPLETED**
 
-**CURRENT:** Tenant Improvement (TI) Allowance Calculator completed successfully - Moving to next calculator
+**CURRENT:** Vineyard Profitability Calculator completed successfully - Moving to next calculator

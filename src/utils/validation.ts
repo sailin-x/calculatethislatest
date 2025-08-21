@@ -12,7 +12,7 @@ export class ValidationRuleFactory {
       field,
       type: 'required',
       message: customMessage || `${field} is required`,
-      validator: (value) => {
+      validator: (value, allInputs) => {
         if (value === null || value === undefined) return false;
         if (typeof value === 'string') return value.trim().length > 0;
         if (typeof value === 'number') return !isNaN(value);
@@ -29,7 +29,7 @@ export class ValidationRuleFactory {
       field,
       type: 'range',
       message: customMessage || `${field} must be between ${min || 'any'} and ${max || 'any'}`,
-      validator: (value) => {
+      validator: (value, allInputs) => {
         const num = typeof value === 'string' ? parseFloat(value) : value;
         if (isNaN(num)) return false;
         if (min !== undefined && num < min) return false;
@@ -47,7 +47,7 @@ export class ValidationRuleFactory {
       field,
       type: 'range',
       message: customMessage || `${field} must be positive`,
-      validator: (value) => {
+      validator: (value, allInputs) => {
         const num = typeof value === 'string' ? parseFloat(value) : value;
         return !isNaN(num) && num > 0;
       }
@@ -62,7 +62,7 @@ export class ValidationRuleFactory {
       field,
       type: 'range',
       message: customMessage || `${field} cannot be negative`,
-      validator: (value) => {
+      validator: (value, allInputs) => {
         const num = typeof value === 'string' ? parseFloat(value) : value;
         return !isNaN(num) && num >= 0;
       }
@@ -77,7 +77,7 @@ export class ValidationRuleFactory {
       field,
       type: 'range',
       message: customMessage || `${field} must be between 0 and 100`,
-      validator: (value) => {
+      validator: (value, allInputs) => {
         const num = typeof value === 'string' ? parseFloat(value) : value;
         return !isNaN(num) && num >= 0 && num <= 100;
       }
@@ -93,7 +93,7 @@ export class ValidationRuleFactory {
       field,
       type: 'format',
       message: customMessage || `${field} must be a valid email address`,
-      validator: (value) => {
+      validator: (value, allInputs) => {
         if (typeof value !== 'string') return false;
         return emailRegex.test(value);
       }
@@ -108,7 +108,7 @@ export class ValidationRuleFactory {
       field,
       type: 'format',
       message: customMessage || `${field} must be a valid date`,
-      validator: (value) => {
+      validator: (value, allInputs) => {
         if (!value) return false;
         const date = new Date(value);
         return !isNaN(date.getTime());
@@ -124,7 +124,7 @@ export class ValidationRuleFactory {
       field,
       type: 'business',
       message: customMessage || `${field} must be in the future`,
-      validator: (value) => {
+      validator: (value, allInputs) => {
         if (!value) return false;
         const date = new Date(value);
         const now = new Date();
@@ -141,7 +141,7 @@ export class ValidationRuleFactory {
       field,
       type: 'business',
       message: customMessage || `${field} must be in the past`,
-      validator: (value) => {
+      validator: (value, allInputs) => {
         if (!value) return false;
         const date = new Date(value);
         const now = new Date();
