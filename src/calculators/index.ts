@@ -27,6 +27,7 @@ import { MortgageAPRComparisonCalculator as mortgageAPRComparisonCalculator } fr
 import { MortgageEquityCalculator as mortgageEquityCalculator } from './finance/mortgage-equity';
 import { MortgageInsuranceCalculator as mortgageInsuranceCalculator } from './finance/mortgage-insurance';
 import { MortgageLifeCalculator as mortgageLifeCalculator } from './finance/mortgage-life';
+import { MortgagePayoffCalculator as mortgagePayoffCalculator } from './finance/mortgage-payoff';
 
 // Legal calculators
 import { personalInjuryCalculator } from './legal/personal-injury';
@@ -86,6 +87,7 @@ calculatorRegistry.register(mortgageAPRComparisonCalculator);
 calculatorRegistry.register(mortgageEquityCalculator);
 calculatorRegistry.register(mortgageInsuranceCalculator);
 calculatorRegistry.register(mortgageLifeCalculator);
+calculatorRegistry.register(mortgagePayoffCalculator);
   
   // Legal & Settlement calculators
   calculatorRegistry.register(personalInjuryCalculator);
