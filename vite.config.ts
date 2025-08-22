@@ -4,6 +4,10 @@ import path from "path";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
+  define: {
+    // Prevent global variable issues
+    'process.env': 'import.meta.env'
+  },
   server: {
     host: "::",
     port: 8080,
@@ -42,14 +46,23 @@ export default defineConfig(({ mode }) => ({
   build: {
     // Temporarily disable minification to isolate the issue
     minify: false,
+    sourcemap: 'inline', // Detailed source maps
     rollupOptions: {
       output: {
-        // Preserve function names for debugging
+        // Preserve function names and variables
+        mangleProps: false,
+        compact: false,
         generatedCode: {
           preset: 'es2015',
           constBindings: false
         }
       }
     }
+  },
+  esbuild: {
+    // Preserve names during build
+    keepNames: true,
+    minifyIdentifiers: false,
+    minifySyntax: false
   }
 }));

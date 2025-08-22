@@ -1,4 +1,5 @@
 import { ValidationRule } from '../types/calculator';
+import { createSafeValidator } from './validation-wrapper';
 
 /**
  * Common validation rule factories for calculator inputs
@@ -16,16 +17,7 @@ export class ValidationRuleFactory {
       field,
       type: 'custom',
       message,
-      validator: (value: any, inputs?: Record<string, any>) => {
-        try {
-          // Ensure allInputs is always available
-          const inputsToUse = inputs || {};
-          return validator(value, inputsToUse);
-        } catch (error) {
-          console.error(`Validation error for field ${field}:`, error);
-          return false;
-        }
-      }
+      validator: createSafeValidator(validator) // Use bulletproof wrapper
     };
   }
 
