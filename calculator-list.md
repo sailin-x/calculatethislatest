@@ -101,7 +101,9 @@
 - [x] **USDA Loan Calculator** ✅ **(COMPLETED - Task 93)**
 - [x] **VA Loan Calculator** ✅ **(COMPLETED - Task 94)**
 - [x] **Vineyard Profitability Calculator** ✅ **(COMPLETED - Task 95)**
-- [ ] Windstorm Insurance Calculator
+- [x] **Windstorm Insurance Calculator** ✅ **(COMPLETED - Task 96)**
+- [x] **401(k) Calculator** ✅ **(COMPLETED - Task 97)**
+- [x] **401(k) Company Match ROI Calculator** ✅ **(COMPLETED - Task 98)**
 
 ### Retirement & Savings Hub (65 calculators)
 - [ ] 401(k) Calculator

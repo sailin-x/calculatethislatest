@@ -89,22 +89,24 @@ This tracker enables continuous autonomous progress without conversation context
 94. **VA Loan Calculator** - Task 94 ✅ **COMPLETED**
 95. **Vineyard Profitability Calculator** - Task 95 ✅ **COMPLETED**
 96. **Windstorm Insurance Calculator** - Task 96 ✅ **COMPLETED**
+97. **401(k) Calculator** - Task 97 ✅ **COMPLETED**
+98. **401(k) Company Match ROI Calculator** - Task 98 ✅ **COMPLETED**
 
 ## Session Management
-- **Current Focus:** Completing Vineyard Profitability Calculator
+- **Current Focus:** Completing 401(k) Company Match ROI Calculator
 - **Batch Target:** 3-5 calculators before starting fresh session
 - **Resume Method:** Check this tracker, continue from current focus
 - **No Context Transfer:** This tracker contains all needed state
 
-## Implementation Status - Vineyard Profitability Calculator ✅ COMPLETED
-- ✅ VineyardProfitabilityCalculator.ts - **COMPLETED**
+## Implementation Status - 401(k) Company Match ROI Calculator ✅ COMPLETED
+- ✅ FourZeroOneKCompanyMatchROICalculator.ts - **COMPLETED**
 - ✅ formulas.ts - **COMPLETED**
 - ✅ validation.ts - **COMPLETED**
 - ✅ quickValidation.ts - **COMPLETED**
-- ✅ VineyardProfitabilityCalculator.test.ts - **COMPLETED**
+- ✅ FourZeroOneKCompanyMatchROICalculator.test.ts - **COMPLETED**
 - ✅ register.ts - **COMPLETED**
 - ✅ index.ts - **COMPLETED**
 - ✅ Updated main index.ts - **COMPLETED**
 - ✅ calculator-list.md - **COMPLETED**
 
-**CURRENT:** Vineyard Profitability Calculator completed successfully - Moving to next calculator
+**CURRENT:** 401(k) Company Match ROI Calculator completed successfully - Moving to next calculator
