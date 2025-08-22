@@ -21,6 +21,7 @@ import { WindstormInsuranceCalculator as windstormInsuranceCalculator } from './
 import { FourZeroOneKCalculator as fourZeroOneKCalculator } from './finance/401k';
 import { FourZeroOneKCompanyMatchROICalculator as fourZeroOneKCompanyMatchROICalculator } from './finance/401k-company-match-roi';
 import { FourZeroOneKPlanCalculator as fourZeroOneKPlanCalculator } from './finance/401k-plan';
+import { FourZeroOneKRolloverCalculator as fourZeroOneKRolloverCalculator } from './finance/401k-rollover';
 
 // Legal calculators
 import { personalInjuryCalculator } from './legal/personal-injury';
@@ -74,6 +75,7 @@ export function registerAllCalculators(): void {
   calculatorRegistry.register(fourZeroOneKCalculator);
   calculatorRegistry.register(fourZeroOneKCompanyMatchROICalculator);
   calculatorRegistry.register(fourZeroOneKPlanCalculator);
+calculatorRegistry.register(fourZeroOneKRolloverCalculator);
   
   // Legal & Settlement calculators
   calculatorRegistry.register(personalInjuryCalculator);
