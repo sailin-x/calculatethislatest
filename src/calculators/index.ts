@@ -33,6 +33,7 @@ import { MortgageRefinanceCalculator as mortgageRefinanceCalculator } from './fi
 import { MortgageVsRentCalculator as mortgageVsRentCalculator } from './finance/mortgage-vs-rent';
 import { NetOperatingIncomeCalculator as netOperatingIncomeCalculator } from './finance/net-operating-income';
 import { OpportunityZoneInvestmentROICalculator as opportunityZoneInvestmentROICalculator } from './finance/opportunity-zone-investment-roi';
+import { PMICancellationCalculator as pmiCancellationCalculator } from './finance/pmi-cancellation';
 
 // Legal calculators
 import { personalInjuryCalculator } from './legal/personal-injury';
@@ -98,6 +99,7 @@ export function registerAllCalculators(): void {
   calculatorRegistry.register(mortgageVsRentCalculator);
   calculatorRegistry.register(netOperatingIncomeCalculator);
   calculatorRegistry.register(opportunityZoneInvestmentROICalculator);
+  calculatorRegistry.register(pmiCancellationCalculator);
   
   // Legal & Settlement calculators
   calculatorRegistry.register(personalInjuryCalculator);
