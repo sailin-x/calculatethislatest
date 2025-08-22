@@ -6,7 +6,9 @@ import path from "path";
 export default defineConfig(({ mode }) => ({
   define: {
     // Prevent global variable issues
-    'process.env': 'import.meta.env'
+    'process.env': 'import.meta.env',
+    // Force cache bust
+    '__BUILD_TIME__': JSON.stringify(Date.now())
   },
   server: {
     host: "::",
@@ -27,7 +29,11 @@ export default defineConfig(({ mode }) => ({
         generatedCode: {
           preset: 'es2015',
           constBindings: false
-        }
+        },
+        // Force cache bust
+        entryFileNames: `[name]-[hash].js`,
+        chunkFileNames: `[name]-[hash].js`,
+        assetFileNames: `[name]-[hash].[ext]`
       }
     }
   }
