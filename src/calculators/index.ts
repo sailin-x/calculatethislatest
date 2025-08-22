@@ -18,6 +18,23 @@ import { CashOutRefinanceCalculator as cashOutRefinanceCalculator } from './fina
 import { VALoanCalculator as vaLoanCalculator } from './finance/va-loan';
 import { VineyardProfitabilityCalculator as vineyardProfitabilityCalculator } from './finance/vineyard-profitability';
 import { WindstormInsuranceCalculator as windstormInsuranceCalculator } from './finance/windstorm-insurance';
+import { MezzanineFinancingCalculator as mezzanineFinancingCalculator } from './finance/mezzanine-financing';
+import { MortgageAPRComparisonCalculator as mortgageAPRComparisonCalculator } from './finance/mortgage-apr-comparison';
+import { MortgageClosingCostCalculator as mortgageClosingCostCalculator } from './finance/mortgage-closing-cost';
+import { MortgageEquityCalculator as mortgageEquityCalculator } from './finance/mortgage-equity';
+import { MortgageInsuranceCalculator as mortgageInsuranceCalculator } from './finance/mortgage-insurance';
+import { MortgageLifeCalculator as mortgageLifeCalculator } from './finance/mortgage-life';
+import { MortgagePayoffCalculator as mortgagePayoffCalculator } from './finance/mortgage-payoff';
+import { MortgagePaymentCalculator as mortgagePaymentCalculator } from './finance/mortgage-payment';
+import { MortgagePointsCalculator as mortgagePointsCalculator } from './finance/mortgage-points';
+import { MortgageQualificationCalculator as mortgageQualificationCalculator } from './finance/mortgage-qualification';
+import { MortgageRateLockCalculator as mortgageRateLockCalculator } from './finance/mortgage-rate-lock';
+import { MortgageRefinanceCalculator as mortgageRefinanceCalculator } from './finance/mortgage-refinance';
+import { MortgageVsRentCalculator as mortgageVsRentCalculator } from './finance/mortgage-vs-rent';
+import { NetOperatingIncomeCalculator as netOperatingIncomeCalculator } from './finance/net-operating-income';
+import { OpportunityZoneInvestmentROICalculator as opportunityZoneInvestmentROICalculator } from './finance/opportunity-zone-investment-roi';
+import { PMICancellationCalculator as pmiCancellationCalculator } from './finance/pmi-cancellation';
+import { PricePerSquareFootCalculator as pricePerSquareFootCalculator } from './finance/price-per-square-foot';
 
 // Legal calculators
 import { personalInjuryCalculator } from './legal/personal-injury';
@@ -68,6 +85,23 @@ export function registerAllCalculators(): void {
   calculatorRegistry.register(vaLoanCalculator);
   calculatorRegistry.register(vineyardProfitabilityCalculator);
   calculatorRegistry.register(windstormInsuranceCalculator);
+  calculatorRegistry.register(mezzanineFinancingCalculator);
+  calculatorRegistry.register(mortgageAPRComparisonCalculator);
+  calculatorRegistry.register(mortgageClosingCostCalculator);
+  calculatorRegistry.register(mortgageEquityCalculator);
+  calculatorRegistry.register(mortgageInsuranceCalculator);
+  calculatorRegistry.register(mortgageLifeCalculator);
+  calculatorRegistry.register(mortgagePayoffCalculator);
+  calculatorRegistry.register(mortgagePaymentCalculator);
+  calculatorRegistry.register(mortgagePointsCalculator);
+  calculatorRegistry.register(mortgageQualificationCalculator);
+  calculatorRegistry.register(mortgageRateLockCalculator);
+  calculatorRegistry.register(mortgageRefinanceCalculator);
+  calculatorRegistry.register(mortgageVsRentCalculator);
+  calculatorRegistry.register(netOperatingIncomeCalculator);
+  calculatorRegistry.register(opportunityZoneInvestmentROICalculator);
+  calculatorRegistry.register(pmiCancellationCalculator);
+  calculatorRegistry.register(pricePerSquareFootCalculator);
   
   // Legal & Settlement calculators
   calculatorRegistry.register(personalInjuryCalculator);
