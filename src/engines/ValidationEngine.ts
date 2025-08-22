@@ -41,7 +41,8 @@ export class ValidationEngine {
     for (const rule of rules) {
       try {
         const fieldValue = inputs[rule.field];
-        const isValid = rule.validator(fieldValue, inputs);
+        // Ensure allInputs is always available to prevent undefined errors
+        const isValid = rule.validator(fieldValue, inputs || {});
         
         if (!isValid) {
           if (rule.type === 'business' && this.isWarningRule(rule)) {
@@ -93,9 +94,12 @@ export class ValidationEngine {
     const rules = this.rules.get(calculatorId) || [];
     const fieldRules = rules.filter(rule => rule.field === fieldName);
 
+    // Ensure allInputs is always available
+    const inputsToUse = allInputs || {};
+
     for (const rule of fieldRules) {
       try {
-        const isValid = rule.validator(value, allInputs);
+        const isValid = rule.validator(value, inputsToUse);
         if (!isValid) {
           if (rule.type === 'business' && this.isWarningRule(rule)) {
             return { warning: rule.message };
@@ -110,7 +114,7 @@ export class ValidationEngine {
     }
 
     // Generate field-specific suggestion
-    const suggestion = this.generateFieldSuggestion(calculatorId, fieldName, value, allInputs);
+    const suggestion = this.generateFieldSuggestion(calculatorId, fieldName, value, inputsToUse);
     return suggestion ? { suggestion } : {};
   }
 

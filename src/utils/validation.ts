@@ -5,6 +5,32 @@ import { ValidationRule } from '../types/calculator';
  */
 export class ValidationRuleFactory {
   /**
+   * Create a validation rule with custom validator function
+   */
+  static createRule(
+    field: string,
+    validator: (value: any, allInputs?: Record<string, any>) => boolean,
+    message: string,
+    allInputs?: Record<string, any>
+  ): ValidationRule {
+    return {
+      field,
+      type: 'custom',
+      message,
+      validator: (value: any, inputs?: Record<string, any>) => {
+        try {
+          // Ensure allInputs is always available
+          const inputsToUse = inputs || allInputs || {};
+          return validator(value, inputsToUse);
+        } catch (error) {
+          console.error(`Validation error for field ${field}:`, error);
+          return false;
+        }
+      }
+    };
+  }
+
+  /**
    * Create a required field validation rule
    */
   static required(field: string, customMessage?: string): ValidationRule {
