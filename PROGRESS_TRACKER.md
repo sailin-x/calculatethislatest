@@ -105,22 +105,23 @@ This tracker enables continuous autonomous progress without conversation context
 110. **Net Operating Income (NOI) Calculator** - Task 110 ✅ **COMPLETED**
 111. **Opportunity Zone Investment ROI Calculator** - Task 111 ✅ **COMPLETED**
 112. **PMI Cancellation Calculator** - Task 112 ✅ **COMPLETED**
+113. **Price Per Square Foot Calculator** - Task 113 ✅ **COMPLETED**
 
 ## Session Management
-- **Current Focus:** Completing PMI Cancellation Calculator
+- **Current Focus:** Completing Price Per Square Foot Calculator
 - **Batch Target:** 3-5 calculators before starting fresh session
 - **Resume Method:** Check this tracker, continue from current focus
 - **No Context Transfer:** This tracker contains all needed state
 
-## Implementation Status - PMI Cancellation Calculator ✅ COMPLETED
-- ✅ PMICancellationCalculator.ts - **COMPLETED**
+## Implementation Status - Price Per Square Foot Calculator ✅ COMPLETED
+- ✅ PricePerSquareFootCalculator.ts - **COMPLETED**
 - ✅ formulas.ts - **COMPLETED**
 - ✅ validation.ts - **COMPLETED**
 - ✅ quickValidation.ts - **COMPLETED**
-- ✅ PMICancellationCalculator.test.ts - **COMPLETED**
+- ✅ PricePerSquareFootCalculator.test.ts - **COMPLETED**
 - ✅ register.ts - **COMPLETED**
 - ✅ index.ts - **COMPLETED**
 - ✅ Updated main index.ts - **COMPLETED**
 - ✅ calculator-list.md - **COMPLETED**
 
-**CURRENT:** PMI Cancellation Calculator completed successfully - Moving to next calculator
+**CURRENT:** Price Per Square Foot Calculator completed successfully - Moving to next calculator

@@ -74,7 +74,7 @@
 - [x] ✅ (COMPLETED) Net Operating Income (NOI) Calculator
 - [x] ✅ (COMPLETED) Opportunity Zone Investment ROI Calculator
 - [x] ✅ (COMPLETED) PMI Cancellation Calculator
-- [ ] Price Per Square Foot Calculator
+- [x] ✅ (COMPLETED) Price Per Square Foot Calculator
 - [ ] Private Mortgage Insurance Calculator
 - [ ] Property Tax Calculator
 - [ ] Property Tax Proration Calculator
