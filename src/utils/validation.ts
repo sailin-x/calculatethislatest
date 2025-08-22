@@ -182,7 +182,7 @@ export class ValidationRuleFactory {
       message: customMessage || `${field} validation failed`,
       validator: createSafeValidator((value, allInputs) => {
         if (!allInputs) return true;
-        const dependentValue = allInputs[dependentField];
+        const dependentValue = allInputs?.[dependentField];
         return validator(value, dependentValue);
       })
     };
@@ -215,13 +215,13 @@ export class FinancialValidation {
   static loanToValue(loanAmountField: string, homeValueField: string, maxLTV: number = 0.95): ValidationRule {
     return ValidationRuleFactory.businessRule(
       loanAmountField,
-      (loanAmount, allInputs) => {
+      createSafeValidator((loanAmount, allInputs) => {
         if (!allInputs) return true;
-        const homeValue = allInputs[homeValueField];
+        const homeValue = allInputs?.[homeValueField];
         if (!homeValue || homeValue <= 0) return true;
         const ltv = loanAmount / homeValue;
         return ltv <= maxLTV;
-      },
+      }),
       `Loan amount cannot exceed ${maxLTV * 100}% of home value`
     );
   }
@@ -232,13 +232,13 @@ export class FinancialValidation {
   static debtToIncome(debtField: string, incomeField: string, maxDTI: number = 0.43): ValidationRule {
     return ValidationRuleFactory.businessRule(
       debtField,
-      (debt, allInputs) => {
+      createSafeValidator((debt, allInputs) => {
         if (!allInputs) return true;
-        const income = allInputs[incomeField];
+        const income = allInputs?.[incomeField];
         if (!income || income <= 0) return true;
         const dti = debt / income;
         return dti <= maxDTI;
-      },
+      }),
       `Debt-to-income ratio cannot exceed ${maxDTI * 100}%`
     );
   }

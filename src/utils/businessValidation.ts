@@ -20,8 +20,8 @@ export class BusinessValidation {
       loanAmountField,
       (loanAmount, allInputs) => {
         if (!allInputs) return true;
-        const homeValue = allInputs[homeValueField];
-        const type = loanType || allInputs.loanType;
+        const homeValue = allInputs?.[homeValueField];
+        const type = loanType || allInputs?.loanType;
         
         if (!homeValue || homeValue <= 0) return true;
         
@@ -52,7 +52,7 @@ export class BusinessValidation {
       monthlyDebtField,
       (monthlyDebt, allInputs) => {
         if (!allInputs) return true;
-        const monthlyIncome = allInputs[monthlyIncomeField];
+        const monthlyIncome = allInputs?.[monthlyIncomeField];
         
         if (!monthlyIncome || monthlyIncome <= 0) return true;
         
@@ -111,8 +111,8 @@ export class BusinessValidation {
       downPaymentField,
       (downPayment, allInputs) => {
         if (!allInputs) return true;
-        const homePrice = allInputs[homePriceField];
-        const loanType = loanTypeField ? allInputs[loanTypeField] : 'conventional';
+        const homePrice = allInputs?.[homePriceField];
+        const loanType = loanTypeField ? allInputs?.[loanTypeField] : 'conventional';
         
         if (!homePrice || homePrice <= 0) return true;
         
@@ -240,7 +240,7 @@ export class BusinessValidation {
       cacField,
       (cac, allInputs) => {
         if (!allInputs) return true;
-        const ltv = allInputs[ltvField];
+        const ltv = allInputs?.[ltvField];
         
         if (!ltv || ltv <= 0) return true;
         
