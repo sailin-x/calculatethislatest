@@ -9,16 +9,9 @@ export const createSafeValidator = <T = any>(
     try {
       // Always provide allInputs, even if it's empty
       const safeInputs = allInputs || {};
-      
-      // Log for debugging
-      if (process.env.NODE_ENV === 'development') {
-        console.log('SafeValidator called with:', { value, allInputs: safeInputs });
-      }
-      
       return validator(value, safeInputs);
     } catch (error) {
       console.error('Validation error in SafeValidator:', error);
-      console.error('Error details:', { value, allInputs, validator: validator.toString() });
       return false;
     }
   };

@@ -162,7 +162,7 @@ export const portfolioValidationRules: ValidationRule[] = [
   // Asset class diversification
   ValidationRuleFactory.businessRule(
     'assets',
-    (assets) => {
+    (assets, allInputs) => {
       if (!Array.isArray(assets)) return true;
       
       const assetClasses = new Set(assets.map((asset: any) => asset.assetClass));
@@ -174,7 +174,7 @@ export const portfolioValidationRules: ValidationRule[] = [
   // Reasonable expected returns check
   ValidationRuleFactory.businessRule(
     'assets',
-    (assets) => {
+    (assets, allInputs) => {
       if (!Array.isArray(assets)) return true;
       
       return assets.every((asset: any) => {

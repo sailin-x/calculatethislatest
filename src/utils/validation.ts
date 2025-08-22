@@ -29,12 +29,12 @@ export class ValidationRuleFactory {
       field,
       type: 'required',
       message: customMessage || `${field} is required`,
-      validator: (value, allInputs) => {
+      validator: createSafeValidator((value, allInputs) => {
         if (value === null || value === undefined) return false;
         if (typeof value === 'string') return value.trim().length > 0;
         if (typeof value === 'number') return !isNaN(value);
         return Boolean(value);
-      }
+      })
     };
   }
 
@@ -46,13 +46,13 @@ export class ValidationRuleFactory {
       field,
       type: 'range',
       message: customMessage || `${field} must be between ${min || 'any'} and ${max || 'any'}`,
-      validator: (value, allInputs) => {
+      validator: createSafeValidator((value, allInputs) => {
         const num = typeof value === 'string' ? parseFloat(value) : value;
         if (isNaN(num)) return false;
         if (min !== undefined && num < min) return false;
         if (max !== undefined && num > max) return false;
         return true;
-      }
+      })
     };
   }
 
@@ -64,10 +64,10 @@ export class ValidationRuleFactory {
       field,
       type: 'range',
       message: customMessage || `${field} must be positive`,
-      validator: (value, allInputs) => {
+      validator: createSafeValidator((value, allInputs) => {
         const num = typeof value === 'string' ? parseFloat(value) : value;
         return !isNaN(num) && num > 0;
-      }
+      })
     };
   }
 
@@ -79,10 +79,10 @@ export class ValidationRuleFactory {
       field,
       type: 'range',
       message: customMessage || `${field} cannot be negative`,
-      validator: (value, allInputs) => {
+      validator: createSafeValidator((value, allInputs) => {
         const num = typeof value === 'string' ? parseFloat(value) : value;
         return !isNaN(num) && num >= 0;
-      }
+      })
     };
   }
 
@@ -94,10 +94,10 @@ export class ValidationRuleFactory {
       field,
       type: 'range',
       message: customMessage || `${field} must be between 0 and 100`,
-      validator: (value, allInputs) => {
+      validator: createSafeValidator((value, allInputs) => {
         const num = typeof value === 'string' ? parseFloat(value) : value;
         return !isNaN(num) && num >= 0 && num <= 100;
-      }
+      })
     };
   }
 
@@ -110,10 +110,10 @@ export class ValidationRuleFactory {
       field,
       type: 'format',
       message: customMessage || `${field} must be a valid email address`,
-      validator: (value, allInputs) => {
+      validator: createSafeValidator((value, allInputs) => {
         if (typeof value !== 'string') return false;
         return emailRegex.test(value);
-      }
+      })
     };
   }
 
@@ -125,11 +125,11 @@ export class ValidationRuleFactory {
       field,
       type: 'format',
       message: customMessage || `${field} must be a valid date`,
-      validator: (value, allInputs) => {
+      validator: createSafeValidator((value, allInputs) => {
         if (!value) return false;
         const date = new Date(value);
         return !isNaN(date.getTime());
-      }
+      })
     };
   }
 
@@ -141,12 +141,12 @@ export class ValidationRuleFactory {
       field,
       type: 'business',
       message: customMessage || `${field} must be in the future`,
-      validator: (value, allInputs) => {
+      validator: createSafeValidator((value, allInputs) => {
         if (!value) return false;
         const date = new Date(value);
         const now = new Date();
         return !isNaN(date.getTime()) && date > now;
-      }
+      })
     };
   }
 
@@ -158,12 +158,12 @@ export class ValidationRuleFactory {
       field,
       type: 'business',
       message: customMessage || `${field} must be in the past`,
-      validator: (value, allInputs) => {
+      validator: createSafeValidator((value, allInputs) => {
         if (!value) return false;
         const date = new Date(value);
         const now = new Date();
         return !isNaN(date.getTime()) && date < now;
-      }
+      })
     };
   }
 
@@ -180,11 +180,11 @@ export class ValidationRuleFactory {
       field,
       type: 'cross-field',
       message: customMessage || `${field} validation failed`,
-      validator: (value, allInputs) => {
+      validator: createSafeValidator((value, allInputs) => {
         if (!allInputs) return true;
         const dependentValue = allInputs[dependentField];
         return validator(value, dependentValue);
-      }
+      })
     };
   }
 
@@ -200,7 +200,7 @@ export class ValidationRuleFactory {
       field,
       type: 'business',
       message: customMessage || `${field} violates business rules`,
-      validator
+      validator: createSafeValidator(validator) // Use bulletproof wrapper
     };
   }
 }
