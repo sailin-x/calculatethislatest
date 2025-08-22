@@ -1,138 +1,138 @@
 import { CalculatorInputs } from '../../../types/calculator';
 
 // Individual field validation functions
-export function validateLoanAmount(value: number): string | null {
+export function validateLoanAmount(value: number, allInputs?: Record<string, any>): string | null {
   if (!value || value <= 0) return 'Loan amount must be greater than 0';
   if (value > 1000000) return 'Loan amount cannot exceed $1,000,000';
   return null;
 }
 
-export function validateInterestRate(value: number): string | null {
+export function validateInterestRate(value: number, allInputs?: Record<string, any>): string | null {
   if (!value || value < 0) return 'Interest rate must be greater than or equal to 0';
   if (value > 20) return 'Interest rate cannot exceed 20%';
   return null;
 }
 
-export function validateLoanTerm(value: number): string | null {
+export function validateLoanTerm(value: number, allInputs?: Record<string, any>): string | null {
   if (!value || value < 1) return 'Loan term must be at least 1 year';
   if (value > 30) return 'Loan term cannot exceed 30 years';
   return null;
 }
 
-export function validateLoanType(value: string): string | null {
+export function validateLoanType(value: string, allInputs?: Record<string, any>): string | null {
   const validTypes = ['federal-subsidized', 'federal-unsubsidized', 'federal-plus', 'private', 'consolidated'];
   if (!value) return 'Loan type is required';
   if (!validTypes.includes(value)) return 'Invalid loan type';
   return null;
 }
 
-export function validateGracePeriod(value: number): string | null {
+export function validateGracePeriod(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Grace period cannot be negative';
   if (value > 60) return 'Grace period cannot exceed 60 months';
   return null;
 }
 
-export function validateRepaymentPlan(value: string): string | null {
+export function validateRepaymentPlan(value: string, allInputs?: Record<string, any>): string | null {
   const validPlans = ['standard', 'extended', 'graduated', 'income-based', 'pay-as-you-earn', 'revised-pay-as-you-earn', 'income-contingent', 'income-sensitive'];
   if (!value) return 'Repayment plan is required';
   if (!validPlans.includes(value)) return 'Invalid repayment plan';
   return null;
 }
 
-export function validateMonthlyPayment(value: number): string | null {
+export function validateMonthlyPayment(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Monthly payment cannot be negative';
   if (value > 10000) return 'Monthly payment cannot exceed $10,000';
   return null;
 }
 
-export function validateAnnualIncome(value: number): string | null {
+export function validateAnnualIncome(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Annual income cannot be negative';
   if (value > 1000000) return 'Annual income cannot exceed $1,000,000';
   return null;
 }
 
-export function validateFamilySize(value: number): string | null {
+export function validateFamilySize(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 1) return 'Family size must be at least 1';
   if (value > 10) return 'Family size cannot exceed 10';
   return null;
 }
 
-export function validateFilingStatus(value: string): string | null {
+export function validateFilingStatus(value: string, allInputs?: Record<string, any>): string | null {
   const validStatuses = ['single', 'married-filing-jointly', 'married-filing-separately', 'head-of-household'];
   if (!value) return 'Filing status is required';
   if (!validStatuses.includes(value)) return 'Invalid filing status';
   return null;
 }
 
-export function validateStateOfResidence(value: string): string | null {
+export function validateStateOfResidence(value: string, allInputs?: Record<string, any>): string | null {
   const validStates = ['al', 'ak', 'az', 'ar', 'ca', 'co', 'ct', 'de', 'fl', 'ga', 'hi', 'id', 'il', 'in', 'ia', 'ks', 'ky', 'la', 'me', 'md', 'ma', 'mi', 'mn', 'ms', 'mo', 'mt', 'ne', 'nv', 'nh', 'nj', 'nm', 'ny', 'nc', 'nd', 'oh', 'ok', 'or', 'pa', 'ri', 'sc', 'sd', 'tn', 'tx', 'ut', 'vt', 'va', 'wa', 'wv', 'wi', 'wy'];
   if (!value) return 'State of residence is required';
   if (!validStates.includes(value)) return 'Invalid state';
   return null;
 }
 
-export function validateOtherDebts(value: number): string | null {
+export function validateOtherDebts(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Other debts cannot be negative';
   if (value > 10000) return 'Other debts cannot exceed $10,000';
   return null;
 }
 
-export function validateMonthlyExpenses(value: number): string | null {
+export function validateMonthlyExpenses(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Monthly expenses cannot be negative';
   if (value > 50000) return 'Monthly expenses cannot exceed $50,000';
   return null;
 }
 
-export function validateEmergencyFund(value: number): string | null {
+export function validateEmergencyFund(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Emergency fund cannot be negative';
   if (value > 100000) return 'Emergency fund cannot exceed $100,000';
   return null;
 }
 
-export function validateMonthlySavings(value: number): string | null {
+export function validateMonthlySavings(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Monthly savings cannot be negative';
   if (value > 10000) return 'Monthly savings cannot exceed $10,000';
   return null;
 }
 
-export function validateRepaymentStrategy(value: string): string | null {
+export function validateRepaymentStrategy(value: string, allInputs?: Record<string, any>): string | null {
   const validStrategies = ['minimum-payments', 'debt-snowball', 'debt-avalanche', 'aggressive-payoff', 'income-based'];
   if (!value) return 'Repayment strategy is required';
   if (!validStrategies.includes(value)) return 'Invalid repayment strategy';
   return null;
 }
 
-export function validateExtraPayment(value: number): string | null {
+export function validateExtraPayment(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Extra payment cannot be negative';
   if (value > 10000) return 'Extra payment cannot exceed $10,000';
   return null;
 }
 
-export function validateLumpSumPayment(value: number): string | null {
+export function validateLumpSumPayment(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Lump sum payment cannot be negative';
   if (value > 100000) return 'Lump sum payment cannot exceed $100,000';
   return null;
 }
 
-export function validateRefinanceRate(value: number): string | null {
+export function validateRefinanceRate(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Refinance rate cannot be negative';
   if (value > 20) return 'Refinance rate cannot exceed 20%';
   return null;
 }
 
-export function validateRefinanceTerm(value: number): string | null {
+export function validateRefinanceTerm(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 1) return 'Refinance term must be at least 1 year';
   if (value > 30) return 'Refinance term cannot exceed 30 years';
   return null;
 }
 
-export function validateRefinanceFees(value: number): string | null {
+export function validateRefinanceFees(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Refinance fees cannot be negative';
   if (value > 10000) return 'Refinance fees cannot exceed $10,000';
   return null;
 }
 
-export function validateAnalysisPeriod(value: string): string | null {
+export function validateAnalysisPeriod(value: string, allInputs?: Record<string, any>): string | null {
   const validPeriods = ['1-year', '5-year', '10-year', 'full-term'];
   if (!value) return 'Analysis period is required';
   if (!validPeriods.includes(value)) return 'Invalid analysis period';

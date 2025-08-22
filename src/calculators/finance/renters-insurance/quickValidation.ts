@@ -1,220 +1,220 @@
 import { CalculatorInputs } from '../../../types/calculator';
 
 // Individual field validation functions
-export function validatePersonalPropertyValue(value: number): string | null {
+export function validatePersonalPropertyValue(value: number, allInputs?: Record<string, any>): string | null {
   if (!value || value <= 0) return 'Personal property value must be greater than 0';
   if (value > 1000000) return 'Personal property value cannot exceed $1,000,000';
   return null;
 }
 
-export function validateElectronicsValue(value: number): string | null {
+export function validateElectronicsValue(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Electronics value cannot be negative';
   if (value > 100000) return 'Electronics value cannot exceed $100,000';
   return null;
 }
 
-export function validateJewelryValue(value: number): string | null {
+export function validateJewelryValue(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Jewelry value cannot be negative';
   if (value > 50000) return 'Jewelry value cannot exceed $50,000';
   return null;
 }
 
-export function validateFurnitureValue(value: number): string | null {
+export function validateFurnitureValue(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Furniture value cannot be negative';
   if (value > 100000) return 'Furniture value cannot exceed $100,000';
   return null;
 }
 
-export function validateClothingValue(value: number): string | null {
+export function validateClothingValue(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Clothing value cannot be negative';
   if (value > 50000) return 'Clothing value cannot exceed $50,000';
   return null;
 }
 
-export function validateArtValue(value: number): string | null {
+export function validateArtValue(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Art value cannot be negative';
   if (value > 50000) return 'Art value cannot exceed $50,000';
   return null;
 }
 
-export function validateSportsEquipmentValue(value: number): string | null {
+export function validateSportsEquipmentValue(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Sports equipment value cannot be negative';
   if (value > 20000) return 'Sports equipment value cannot exceed $20,000';
   return null;
 }
 
-export function validateMusicalInstrumentsValue(value: number): string | null {
+export function validateMusicalInstrumentsValue(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Musical instruments value cannot be negative';
   if (value > 20000) return 'Musical instruments value cannot exceed $20,000';
   return null;
 }
 
-export function validateLiabilityCoverage(value: number): string | null {
+export function validateLiabilityCoverage(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Liability coverage cannot be negative';
   if (value > 1000000) return 'Liability coverage cannot exceed $1,000,000';
   return null;
 }
 
-export function validateMedicalPayments(value: number): string | null {
+export function validateMedicalPayments(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Medical payments cannot be negative';
   if (value > 10000) return 'Medical payments cannot exceed $10,000';
   return null;
 }
 
-export function validateLossOfUse(value: number): string | null {
+export function validateLossOfUse(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Loss of use coverage cannot be negative';
   if (value > 50000) return 'Loss of use coverage cannot exceed $50,000';
   return null;
 }
 
-export function validateDeductible(value: number): string | null {
+export function validateDeductible(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Deductible cannot be negative';
   if (value > 5000) return 'Deductible cannot exceed $5,000';
   return null;
 }
 
-export function validatePropertyType(value: string): string | null {
+export function validatePropertyType(value: string, allInputs?: Record<string, any>): string | null {
   const validTypes = ['apartment', 'condo', 'house', 'townhouse', 'duplex', 'studio', 'loft', 'mobile-home'];
   if (!value) return 'Property type is required';
   if (!validTypes.includes(value)) return 'Invalid property type';
   return null;
 }
 
-export function validateSquareFootage(value: number): string | null {
+export function validateSquareFootage(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Square footage cannot be negative';
   if (value > 10000) return 'Square footage cannot exceed 10,000';
   return null;
 }
 
-export function validateBedrooms(value: number): string | null {
+export function validateBedrooms(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Bedrooms cannot be negative';
   if (value > 10) return 'Bedrooms cannot exceed 10';
   return null;
 }
 
-export function validateBathrooms(value: number): string | null {
+export function validateBathrooms(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Bathrooms cannot be negative';
   if (value > 10) return 'Bathrooms cannot exceed 10';
   return null;
 }
 
-export function validateYearBuilt(value: number): string | null {
+export function validateYearBuilt(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 1800) return 'Year built must be at least 1800';
   if (value > 2030) return 'Year built cannot exceed 2030';
   return null;
 }
 
-export function validateState(value: string): string | null {
+export function validateState(value: string, allInputs?: Record<string, any>): string | null {
   const validStates = ['al', 'ak', 'az', 'ar', 'ca', 'co', 'ct', 'de', 'fl', 'ga', 'hi', 'id', 'il', 'in', 'ia', 'ks', 'ky', 'la', 'me', 'md', 'ma', 'mi', 'mn', 'ms', 'mo', 'mt', 'ne', 'nv', 'nh', 'nj', 'nm', 'ny', 'nc', 'nd', 'oh', 'ok', 'or', 'pa', 'ri', 'sc', 'sd', 'tn', 'tx', 'ut', 'vt', 'va', 'wa', 'wv', 'wi', 'wy'];
   if (!value) return 'State is required';
   if (!validStates.includes(value)) return 'Invalid state';
   return null;
 }
 
-export function validateCity(value: string): string | null {
+export function validateCity(value: string, allInputs?: Record<string, any>): string | null {
   const validCities = ['major-metro', 'suburban', 'small-city', 'rural'];
   if (!value) return 'City type is required';
   if (!validCities.includes(value)) return 'Invalid city type';
   return null;
 }
 
-export function validateCrimeRate(value: string): string | null {
+export function validateCrimeRate(value: string, allInputs?: Record<string, any>): string | null {
   const validRates = ['low', 'medium', 'high'];
   if (!value) return 'Crime rate is required';
   if (!validRates.includes(value)) return 'Invalid crime rate';
   return null;
 }
 
-export function validateSmoking(value: string): string | null {
+export function validateSmoking(value: string, allInputs?: Record<string, any>): string | null {
   const validStatuses = ['non-smoker', 'smoker', 'former-smoker'];
   if (!value) return 'Smoking status is required';
   if (!validStatuses.includes(value)) return 'Invalid smoking status';
   return null;
 }
 
-export function validatePets(value: string): string | null {
+export function validatePets(value: string, allInputs?: Record<string, any>): string | null {
   const validTypes = ['none', 'dog', 'cat', 'other'];
   if (!value) return 'Pet type is required';
   if (!validTypes.includes(value)) return 'Invalid pet type';
   return null;
 }
 
-export function validateSecurityFeatures(value: string): string | null {
+export function validateSecurityFeatures(value: string, allInputs?: Record<string, any>): string | null {
   const validFeatures = ['none', 'basic', 'advanced', 'gated'];
   if (!value) return 'Security features is required';
   if (!validFeatures.includes(value)) return 'Invalid security features';
   return null;
 }
 
-export function validateFireProtection(value: string): string | null {
+export function validateFireProtection(value: string, allInputs?: Record<string, any>): string | null {
   const validProtection = ['none', 'smoke-detectors', 'sprinklers', 'fire-station-nearby'];
   if (!value) return 'Fire protection is required';
   if (!validProtection.includes(value)) return 'Invalid fire protection';
   return null;
 }
 
-export function validateFloodZone(value: string): string | null {
+export function validateFloodZone(value: string, allInputs?: Record<string, any>): string | null {
   const validZones = ['none', 'low-risk', 'moderate-risk', 'high-risk'];
   if (!value) return 'Flood zone is required';
   if (!validZones.includes(value)) return 'Invalid flood zone';
   return null;
 }
 
-export function validateEarthquakeZone(value: string): string | null {
+export function validateEarthquakeZone(value: string, allInputs?: Record<string, any>): string | null {
   const validZones = ['none', 'low', 'moderate', 'high'];
   if (!value) return 'Earthquake zone is required';
   if (!validZones.includes(value)) return 'Invalid earthquake zone';
   return null;
 }
 
-export function validateAge(value: number): string | null {
+export function validateAge(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 18) return 'Age must be at least 18';
   if (value > 100) return 'Age cannot exceed 100';
   return null;
 }
 
-export function validateCreditScore(value: number): string | null {
+export function validateCreditScore(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 300) return 'Credit score must be at least 300';
   if (value > 850) return 'Credit score cannot exceed 850';
   return null;
 }
 
-export function validateClaimsHistory(value: string): string | null {
+export function validateClaimsHistory(value: string, allInputs?: Record<string, any>): string | null {
   const validHistory = ['none', '1-2', '3-5', '5-plus'];
   if (!value) return 'Claims history is required';
   if (!validHistory.includes(value)) return 'Invalid claims history';
   return null;
 }
 
-export function validateOccupation(value: string): string | null {
+export function validateOccupation(value: string, allInputs?: Record<string, any>): string | null {
   const validOccupations = ['student', 'professional', 'service', 'retail', 'unemployed', 'retired', 'other'];
   if (!value) return 'Occupation is required';
   if (!validOccupations.includes(value)) return 'Invalid occupation';
   return null;
 }
 
-export function validatePolicyType(value: string): string | null {
+export function validatePolicyType(value: string, allInputs?: Record<string, any>): string | null {
   const validTypes = ['basic', 'standard', 'premium', 'comprehensive'];
   if (!value) return 'Policy type is required';
   if (!validTypes.includes(value)) return 'Invalid policy type';
   return null;
 }
 
-export function validateReplacementCost(value: string): string | null {
+export function validateReplacementCost(value: string, allInputs?: Record<string, any>): string | null {
   const validCosts = ['actual-cash-value', 'replacement-cost'];
   if (!value) return 'Replacement cost is required';
   if (!validCosts.includes(value)) return 'Invalid replacement cost';
   return null;
 }
 
-export function validateIdentityTheft(value: string): string | null {
+export function validateIdentityTheft(value: string, allInputs?: Record<string, any>): string | null {
   const validCoverage = ['none', 'basic', 'comprehensive'];
   if (!value) return 'Identity theft coverage is required';
   if (!validCoverage.includes(value)) return 'Invalid identity theft coverage';
   return null;
 }
 
-export function validateWaterBackup(value: string): string | null {
+export function validateWaterBackup(value: string, allInputs?: Record<string, any>): string | null {
   const validCoverage = ['none', 'basic', 'enhanced'];
   if (!value) return 'Water backup coverage is required';
   if (!validCoverage.includes(value)) return 'Invalid water backup coverage';

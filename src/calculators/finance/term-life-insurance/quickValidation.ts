@@ -1,14 +1,14 @@
 import { CalculatorInputs } from '../../../types/calculator';
 
 // Individual field validation functions
-export function validateAge(value: number): string | null {
+export function validateAge(value: number, allInputs?: Record<string, any>): string | null {
   if (!value) return 'Age is required';
   if (value < 18) return 'Age must be at least 18';
   if (value > 85) return 'Age cannot exceed 85';
   return null;
 }
 
-export function validateGender(value: string): string | null {
+export function validateGender(value: string, allInputs?: Record<string, any>): string | null {
   if (!value) return 'Gender is required';
   if (!['male', 'female'].includes(value)) {
     return 'Gender must be one of: male, female';
@@ -16,168 +16,168 @@ export function validateGender(value: string): string | null {
   return null;
 }
 
-export function validateCoverageAmount(value: number): string | null {
+export function validateCoverageAmount(value: number, allInputs?: Record<string, any>): string | null {
   if (!value) return 'Coverage amount is required';
   if (value < 10000) return 'Coverage amount must be at least $10,000';
   if (value > 10000000) return 'Coverage amount cannot exceed $10,000,000';
   return null;
 }
 
-export function validateTermLength(value: number): string | null {
+export function validateTermLength(value: number, allInputs?: Record<string, any>): string | null {
   if (!value) return 'Term length is required';
   if (value < 1) return 'Term length must be at least 1 year';
   if (value > 40) return 'Term length cannot exceed 40 years';
   return null;
 }
 
-export function validateFilingStatus(value: string): string | null {
+export function validateFilingStatus(value: string, allInputs?: Record<string, any>): string | null {
   if (value && !['non-smoker', 'smoker', 'former-smoker'].includes(value)) {
     return 'Filing status must be one of: non-smoker, smoker, former-smoker';
   }
   return null;
 }
 
-export function validateHeight(value: number): string | null {
+export function validateHeight(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 48) return 'Height must be at least 48 inches';
   if (value > 84) return 'Height cannot exceed 84 inches';
   return null;
 }
 
-export function validateWeight(value: number): string | null {
+export function validateWeight(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 80) return 'Weight must be at least 80 pounds';
   if (value > 400) return 'Weight cannot exceed 400 pounds';
   return null;
 }
 
-export function validatePolicyType(value: string): string | null {
+export function validatePolicyType(value: string, allInputs?: Record<string, any>): string | null {
   if (value && !['level-term', 'decreasing-term', 'increasing-term', 'return-of-premium'].includes(value)) {
     return 'Policy type must be one of: level-term, decreasing-term, increasing-term, return-of-premium';
   }
   return null;
 }
 
-export function validateRiders(value: string): string | null {
+export function validateRiders(value: string, allInputs?: Record<string, any>): string | null {
   if (value && !['none', 'waiver-of-premium', 'accelerated-death-benefit', 'child-rider', 'spouse-rider', 'multiple'].includes(value)) {
     return 'Riders must be one of: none, waiver-of-premium, accelerated-death-benefit, child-rider, spouse-rider, multiple';
   }
   return null;
 }
 
-export function validateAnnualIncome(value: number): string | null {
+export function validateAnnualIncome(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Annual income cannot be negative';
   if (value > 10000000) return 'Annual income cannot exceed $10,000,000';
   return null;
 }
 
-export function validateDebts(value: number): string | null {
+export function validateDebts(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Debts cannot be negative';
   if (value > 10000000) return 'Debts cannot exceed $10,000,000';
   return null;
 }
 
-export function validateSavings(value: number): string | null {
+export function validateSavings(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Savings cannot be negative';
   if (value > 10000000) return 'Savings cannot exceed $10,000,000';
   return null;
 }
 
-export function validateExistingLifeInsurance(value: number): string | null {
+export function validateExistingLifeInsurance(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Existing life insurance cannot be negative';
   if (value > 10000000) return 'Existing life insurance cannot exceed $10,000,000';
   return null;
 }
 
-export function validateFuneralExpenses(value: number): string | null {
+export function validateFuneralExpenses(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Funeral expenses cannot be negative';
   if (value > 100000) return 'Funeral expenses cannot exceed $100,000';
   return null;
 }
 
-export function validateDependents(value: number): string | null {
+export function validateDependents(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Number of dependents cannot be negative';
   if (value > 10) return 'Number of dependents cannot exceed 10';
   return null;
 }
 
-export function validateChildrenAge(value: number): string | null {
+export function validateChildrenAge(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Children age cannot be negative';
   if (value > 25) return 'Children age cannot exceed 25';
   return null;
 }
 
-export function validateSpouseIncome(value: number): string | null {
+export function validateSpouseIncome(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Spouse income cannot be negative';
   if (value > 10000000) return 'Spouse income cannot exceed $10,000,000';
   return null;
 }
 
-export function validateCollegeCosts(value: number): string | null {
+export function validateCollegeCosts(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'College costs cannot be negative';
   if (value > 1000000) return 'College costs cannot exceed $1,000,000';
   return null;
 }
 
-export function validateHealthRating(value: string): string | null {
+export function validateHealthRating(value: string, allInputs?: Record<string, any>): string | null {
   if (value && !['preferred-plus', 'preferred', 'standard-plus', 'standard', 'substandard'].includes(value)) {
     return 'Health rating must be one of: preferred-plus, preferred, standard-plus, standard, substandard';
   }
   return null;
 }
 
-export function validateMedicalConditions(value: string): string | null {
+export function validateMedicalConditions(value: string, allInputs?: Record<string, any>): string | null {
   if (value && !['none', 'diabetes', 'heart-disease', 'cancer', 'high-blood-pressure', 'multiple'].includes(value)) {
     return 'Medical conditions must be one of: none, diabetes, heart-disease, cancer, high-blood-pressure, multiple';
   }
   return null;
 }
 
-export function validateFamilyHistory(value: string): string | null {
+export function validateFamilyHistory(value: string, allInputs?: Record<string, any>): string | null {
   if (value && !['none', 'heart-disease', 'cancer', 'diabetes', 'multiple'].includes(value)) {
     return 'Family history must be one of: none, heart-disease, cancer, diabetes, multiple';
   }
   return null;
 }
 
-export function validateOccupation(value: string): string | null {
+export function validateOccupation(value: string, allInputs?: Record<string, any>): string | null {
   if (value && !['office', 'manual-labor', 'hazardous', 'military', 'aviation'].includes(value)) {
     return 'Occupation must be one of: office, manual-labor, hazardous, military, aviation';
   }
   return null;
 }
 
-export function validateHobbies(value: string): string | null {
+export function validateHobbies(value: string, allInputs?: Record<string, any>): string | null {
   if (value && !['none', 'scuba-diving', 'skydiving', 'rock-climbing', 'racing', 'multiple'].includes(value)) {
     return 'Hobbies must be one of: none, scuba-diving, skydiving, rock-climbing, racing, multiple';
   }
   return null;
 }
 
-export function validateInflationRate(value: number): string | null {
+export function validateInflationRate(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Inflation rate cannot be negative';
   if (value > 10) return 'Inflation rate cannot exceed 10%';
   return null;
 }
 
-export function validateInvestmentReturn(value: number): string | null {
+export function validateInvestmentReturn(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Investment return cannot be negative';
   if (value > 20) return 'Investment return cannot exceed 20%';
   return null;
 }
 
-export function validateDiscountRate(value: number): string | null {
+export function validateDiscountRate(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Discount rate cannot be negative';
   if (value > 15) return 'Discount rate cannot exceed 15%';
   return null;
 }
 
-export function validateAnalysisType(value: string): string | null {
+export function validateAnalysisType(value: string, allInputs?: Record<string, any>): string | null {
   if (value && !['basic', 'detailed', 'comparison', 'needs-analysis'].includes(value)) {
     return 'Analysis type must be one of: basic, detailed, comparison, needs-analysis';
   }
   return null;
 }
 
-export function validateComparisonTerms(value: string): string | null {
+export function validateComparisonTerms(value: string, allInputs?: Record<string, any>): string | null {
   if (value && !['10-20-30', '15-25', '20-30', 'custom'].includes(value)) {
     return 'Comparison terms must be one of: 10-20-30, 15-25, 20-30, custom';
   }

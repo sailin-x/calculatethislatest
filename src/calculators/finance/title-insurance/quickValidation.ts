@@ -1,14 +1,14 @@
 import { CalculatorInputs } from '../../../types/calculator';
 
 // Individual field validation functions
-export function validatePropertyValue(value: number): string | null {
+export function validatePropertyValue(value: number, allInputs?: Record<string, any>): string | null {
   if (!value) return 'Property value is required';
   if (value < 0) return 'Property value cannot be negative';
   if (value > 10000000) return 'Property value cannot exceed $10,000,000';
   return null;
 }
 
-export function validateTransactionType(value: string): string | null {
+export function validateTransactionType(value: string, allInputs?: Record<string, any>): string | null {
   if (!value) return 'Transaction type is required';
   if (!['purchase', 'refinance', 'construction', 'equity-line'].includes(value)) {
     return 'Transaction type must be one of: purchase, refinance, construction, equity-line';
@@ -16,7 +16,7 @@ export function validateTransactionType(value: string): string | null {
   return null;
 }
 
-export function validateCoverageType(value: string): string | null {
+export function validateCoverageType(value: string, allInputs?: Record<string, any>): string | null {
   if (!value) return 'Coverage type is required';
   if (!['owners-policy', 'lenders-policy', 'both'].includes(value)) {
     return 'Coverage type must be one of: owners-policy, lenders-policy, both';
@@ -24,66 +24,66 @@ export function validateCoverageType(value: string): string | null {
   return null;
 }
 
-export function validatePurchasePrice(value: number): string | null {
+export function validatePurchasePrice(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Purchase price cannot be negative';
   if (value > 10000000) return 'Purchase price cannot exceed $10,000,000';
   return null;
 }
 
-export function validateLoanAmount(value: number): string | null {
+export function validateLoanAmount(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Loan amount cannot be negative';
   if (value > 10000000) return 'Loan amount cannot exceed $10,000,000';
   return null;
 }
 
-export function validatePropertyType(value: string): string | null {
+export function validatePropertyType(value: string, allInputs?: Record<string, any>): string | null {
   if (value && !['single-family', 'condo', 'townhouse', 'multi-family', 'commercial', 'land'].includes(value)) {
     return 'Property type must be one of: single-family, condo, townhouse, multi-family, commercial, land';
   }
   return null;
 }
 
-export function validatePropertyAge(value: number): string | null {
+export function validatePropertyAge(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Property age cannot be negative';
   if (value > 200) return 'Property age cannot exceed 200 years';
   return null;
 }
 
-export function validateBuyerType(value: string): string | null {
+export function validateBuyerType(value: string, allInputs?: Record<string, any>): string | null {
   if (value && !['individual', 'married-couple', 'trust', 'llc', 'corporation', 'partnership'].includes(value)) {
     return 'Buyer type must be one of: individual, married-couple, trust, llc, corporation, partnership';
   }
   return null;
 }
 
-export function validateOccupancyType(value: string): string | null {
+export function validateOccupancyType(value: string, allInputs?: Record<string, any>): string | null {
   if (value && !['primary-residence', 'secondary-residence', 'investment', 'commercial'].includes(value)) {
     return 'Occupancy type must be one of: primary-residence, secondary-residence, investment, commercial';
   }
   return null;
 }
 
-export function validateCoverageAmount(value: number): string | null {
+export function validateCoverageAmount(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Coverage amount cannot be negative';
   if (value > 10000000) return 'Coverage amount cannot exceed $10,000,000';
   return null;
 }
 
-export function validateEndorsements(value: string): string | null {
+export function validateEndorsements(value: string, allInputs?: Record<string, any>): string | null {
   if (value && !['none', 'survey', 'access', 'zoning', 'condo', 'multiple'].includes(value)) {
     return 'Endorsements must be one of: none, survey, access, zoning, condo, multiple';
   }
   return null;
 }
 
-export function validateExtendedCoverage(value: string): string | null {
+export function validateExtendedCoverage(value: string, allInputs?: Record<string, any>): string | null {
   if (value && !['none', 'basic', 'enhanced', 'premium'].includes(value)) {
     return 'Extended coverage must be one of: none, basic, enhanced, premium';
   }
   return null;
 }
 
-export function validateState(value: string): string | null {
+export function validateState(value: string, allInputs?: Record<string, any>): string | null {
   if (value) {
     const validStates = ['al', 'ak', 'az', 'ar', 'ca', 'co', 'ct', 'de', 'fl', 'ga', 'hi', 'id', 'il', 'in', 'ia', 'ks', 'ky', 'la', 'me', 'md', 'ma', 'mi', 'mn', 'ms', 'mo', 'mt', 'ne', 'nv', 'nh', 'nj', 'nm', 'ny', 'nc', 'nd', 'oh', 'ok', 'or', 'pa', 'ri', 'sc', 'sd', 'tn', 'tx', 'ut', 'vt', 'va', 'wa', 'wv', 'wi', 'wy'];
     if (!validStates.includes(value)) {
@@ -93,81 +93,81 @@ export function validateState(value: string): string | null {
   return null;
 }
 
-export function validateMarketType(value: string): string | null {
+export function validateMarketType(value: string, allInputs?: Record<string, any>): string | null {
   if (value && !['urban', 'suburban', 'rural', 'resort'].includes(value)) {
     return 'Market type must be one of: urban, suburban, rural, resort';
   }
   return null;
 }
 
-export function validateTitleSearchDepth(value: string): string | null {
+export function validateTitleSearchDepth(value: string, allInputs?: Record<string, any>): string | null {
   if (value && !['standard', 'extended', 'comprehensive'].includes(value)) {
     return 'Title search depth must be one of: standard, extended, comprehensive';
   }
   return null;
 }
 
-export function validateKnownIssues(value: string): string | null {
+export function validateKnownIssues(value: string, allInputs?: Record<string, any>): string | null {
   if (value && !['none', 'easements', 'liens', 'encroachments', 'boundary-disputes', 'multiple'].includes(value)) {
     return 'Known issues must be one of: none, easements, liens, encroachments, boundary-disputes, multiple';
   }
   return null;
 }
 
-export function validatePreviousClaims(value: string): string | null {
+export function validatePreviousClaims(value: string, allInputs?: Record<string, any>): string | null {
   if (value && !['none', 'one', 'multiple'].includes(value)) {
     return 'Previous claims must be one of: none, one, multiple';
   }
   return null;
 }
 
-export function validateChainOfTitle(value: string): string | null {
+export function validateChainOfTitle(value: string, allInputs?: Record<string, any>): string | null {
   if (value && !['simple', 'moderate', 'complex', 'very-complex'].includes(value)) {
     return 'Chain of title must be one of: simple, moderate, complex, very-complex';
   }
   return null;
 }
 
-export function validateSurveyRequired(value: string): string | null {
+export function validateSurveyRequired(value: string, allInputs?: Record<string, any>): string | null {
   if (value && !['no', 'yes', 'maybe'].includes(value)) {
     return 'Survey required must be one of: no, yes, maybe';
   }
   return null;
 }
 
-export function validateAbstractRequired(value: string): string | null {
+export function validateAbstractRequired(value: string, allInputs?: Record<string, any>): string | null {
   if (value && !['no', 'yes', 'maybe'].includes(value)) {
     return 'Abstract required must be one of: no, yes, maybe';
   }
   return null;
 }
 
-export function validateEscrowServices(value: string): string | null {
+export function validateEscrowServices(value: string, allInputs?: Record<string, any>): string | null {
   if (value && !['none', 'basic', 'full', 'custom'].includes(value)) {
     return 'Escrow services must be one of: none, basic, full, custom';
   }
   return null;
 }
 
-export function validateClosingCosts(value: number): string | null {
+export function validateClosingCosts(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Closing costs cannot be negative';
   if (value > 100000) return 'Closing costs cannot exceed $100,000';
   return null;
 }
 
-export function validateDiscountRate(value: number): string | null {
+export function validateDiscountRate(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Discount rate cannot be negative';
   if (value > 15) return 'Discount rate cannot exceed 15%';
   return null;
 }
 
-export function validateInflationRate(value: number): string | null {
+export function validateInflationRate(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Inflation rate cannot be negative';
   if (value > 10) return 'Inflation rate cannot exceed 10%';
   return null;
 }
 
-export function validateAnalysisType(value: string): string | null {
+export function validateAnalysisType(value: string, allInputs?: Record<string, any>): string | null {
   if (value && !['basic', 'detailed', 'comparison', 'risk-assessment'].includes(value)) {
     return 'Analysis type must be one of: basic, detailed, comparison, risk-assessment';
   }

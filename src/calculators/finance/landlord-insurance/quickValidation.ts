@@ -1,193 +1,193 @@
 import { CalculatorInputs } from '../../../types/calculator';
 
-export function validatePropertyValue(value: any): { isValid: boolean; message?: string } {
+export function validatePropertyValue(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   if (!value) return { isValid: false, message: 'Property value is required' };
   if (typeof value !== 'number' || value <= 0) return { isValid: false, message: 'Must be a positive number' };
   if (value < 50000 || value > 10000000) return { isValid: false, message: 'Must be between $50,000 and $10,000,000' };
   return { isValid: true };
 }
 
-export function validateReplacementCost(value: any): { isValid: boolean; message?: string } {
+export function validateReplacementCost(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   if (value && (typeof value !== 'number' || value <= 0)) return { isValid: false, message: 'Must be a positive number' };
   if (value && (value < 50000 || value > 15000000)) return { isValid: false, message: 'Must be between $50,000 and $15,000,000' };
   return { isValid: true };
 }
 
-export function validateAnnualRent(value: any): { isValid: boolean; message?: string } {
+export function validateAnnualRent(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   if (value && (typeof value !== 'number' || value < 0)) return { isValid: false, message: 'Must be a non-negative number' };
   if (value && value > 500000) return { isValid: false, message: 'Must be $500,000 or less' };
   return { isValid: true };
 }
 
-export function validateYearBuilt(value: any): { isValid: boolean; message?: string } {
+export function validateYearBuilt(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   if (value && (typeof value !== 'number' || value <= 0)) return { isValid: false, message: 'Must be a positive number' };
   if (value && (value < 1800 || value > 2024)) return { isValid: false, message: 'Must be between 1800 and 2024' };
   return { isValid: true };
 }
 
-export function validateSquareFootage(value: any): { isValid: boolean; message?: string } {
+export function validateSquareFootage(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   if (value && (typeof value !== 'number' || value <= 0)) return { isValid: false, message: 'Must be a positive number' };
   if (value && (value < 500 || value > 50000)) return { isValid: false, message: 'Must be between 500 and 50,000 sqft' };
   return { isValid: true };
 }
 
-export function validateNumberOfUnits(value: any): { isValid: boolean; message?: string } {
+export function validateNumberOfUnits(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   if (value && (typeof value !== 'number' || value <= 0)) return { isValid: false, message: 'Must be a positive number' };
   if (value && (value < 1 || value > 100)) return { isValid: false, message: 'Must be between 1 and 100' };
   return { isValid: true };
 }
 
-export function validateLiabilityLimit(value: any): { isValid: boolean; message?: string } {
+export function validateLiabilityLimit(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   if (value && (typeof value !== 'number' || value <= 0)) return { isValid: false, message: 'Must be a positive number' };
   if (value && (value < 100000 || value > 5000000)) return { isValid: false, message: 'Must be between $100,000 and $5,000,000' };
   return { isValid: true };
 }
 
-export function validateMedicalPayments(value: any): { isValid: boolean; message?: string } {
+export function validateMedicalPayments(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   if (value && (typeof value !== 'number' || value <= 0)) return { isValid: false, message: 'Must be a positive number' };
   if (value && (value < 1000 || value > 100000)) return { isValid: false, message: 'Must be between $1,000 and $100,000' };
   return { isValid: true };
 }
 
-export function validateLossOfRent(value: any): { isValid: boolean; message?: string } {
+export function validateLossOfRent(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   if (value && (typeof value !== 'number' || value < 0)) return { isValid: false, message: 'Must be a non-negative number' };
   if (value && value > 100000) return { isValid: false, message: 'Must be $100,000 or less' };
   return { isValid: true };
 }
 
-export function validatePersonalProperty(value: any): { isValid: boolean; message?: string } {
+export function validatePersonalProperty(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   if (value && (typeof value !== 'number' || value < 0)) return { isValid: false, message: 'Must be a non-negative number' };
   if (value && value > 100000) return { isValid: false, message: 'Must be $100,000 or less' };
   return { isValid: true };
 }
 
-export function validateDeductible(value: any): { isValid: boolean; message?: string } {
+export function validateDeductible(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   if (value && (typeof value !== 'number' || value <= 0)) return { isValid: false, message: 'Must be a positive number' };
   if (value && (value < 250 || value > 10000)) return { isValid: false, message: 'Must be between $250 and $10,000' };
   return { isValid: true };
 }
 
-export function validateOccupancyRate(value: any): { isValid: boolean; message?: string } {
+export function validateOccupancyRate(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   if (value && (typeof value !== 'number' || value < 0)) return { isValid: false, message: 'Must be a non-negative number' };
   if (value && value > 100) return { isValid: false, message: 'Must be 100% or less' };
   return { isValid: true };
 }
 
-export function validateCreditScore(value: any): { isValid: boolean; message?: string } {
+export function validateCreditScore(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   if (value && (typeof value !== 'number' || value <= 0)) return { isValid: false, message: 'Must be a positive number' };
   if (value && (value < 300 || value > 850)) return { isValid: false, message: 'Must be between 300 and 850' };
   return { isValid: true };
 }
 
-export function validateLoyaltyDiscount(value: any): { isValid: boolean; message?: string } {
+export function validateLoyaltyDiscount(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   if (value && (typeof value !== 'number' || value < 0)) return { isValid: false, message: 'Must be a non-negative number' };
   if (value && value > 50) return { isValid: false, message: 'Must be 50 or less' };
   return { isValid: true };
 }
 
-export function validatePropertyType(value: any): { isValid: boolean; message?: string } {
+export function validatePropertyType(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   const validTypes = ['Single Family', 'Multi-Family', 'Condo', 'Townhouse', 'Apartment Building', 'Commercial'];
   if (value && !validTypes.includes(value)) return { isValid: false, message: `Must be one of: ${validTypes.join(', ')}` };
   return { isValid: true };
 }
 
-export function validateConstructionType(value: any): { isValid: boolean; message?: string } {
+export function validateConstructionType(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   const validTypes = ['Frame', 'Brick', 'Masonry', 'Steel', 'Concrete', 'Mixed'];
   if (value && !validTypes.includes(value)) return { isValid: false, message: `Must be one of: ${validTypes.join(', ')}` };
   return { isValid: true };
 }
 
-export function validateLocation(value: any): { isValid: boolean; message?: string } {
+export function validateLocation(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   const validTypes = ['Urban', 'Suburban', 'Rural', 'Coastal', 'Mountain', 'Desert'];
   if (value && !validTypes.includes(value)) return { isValid: false, message: `Must be one of: ${validTypes.join(', ')}` };
   return { isValid: true };
 }
 
-export function validateState(value: any): { isValid: boolean; message?: string } {
+export function validateState(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   const validStates = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'];
   if (value && !validStates.includes(value)) return { isValid: false, message: `Must be one of: ${validStates.join(', ')}` };
   return { isValid: true };
 }
 
-export function validateRiskZone(value: any): { isValid: boolean; message?: string } {
+export function validateRiskZone(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   const validTypes = ['Low', 'Medium', 'High', 'Very High'];
   if (value && !validTypes.includes(value)) return { isValid: false, message: `Must be one of: ${validTypes.join(', ')}` };
   return { isValid: true };
 }
 
-export function validateCoverageLevel(value: any): { isValid: boolean; message?: string } {
+export function validateCoverageLevel(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   const validTypes = ['Basic', 'Standard', 'Comprehensive', 'Premium'];
   if (value && !validTypes.includes(value)) return { isValid: false, message: `Must be one of: ${validTypes.join(', ')}` };
   return { isValid: true };
 }
 
-export function validateTenantType(value: any): { isValid: boolean; message?: string } {
+export function validateTenantType(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   const validTypes = ['Residential', 'Student', 'Section 8', 'Corporate', 'Short-term', 'Vacant'];
   if (value && !validTypes.includes(value)) return { isValid: false, message: `Must be one of: ${validTypes.join(', ')}` };
   return { isValid: true };
 }
 
-export function validateClaimsHistory(value: any): { isValid: boolean; message?: string } {
+export function validateClaimsHistory(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   const validTypes = ['None', '1-2 Claims', '3-5 Claims', '5+ Claims'];
   if (value && !validTypes.includes(value)) return { isValid: false, message: `Must be one of: ${validTypes.join(', ')}` };
   return { isValid: true };
 }
 
-export function validateInsuranceScore(value: any): { isValid: boolean; message?: string } {
+export function validateInsuranceScore(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   const validTypes = ['Excellent', 'Good', 'Fair', 'Poor'];
   if (value && !validTypes.includes(value)) return { isValid: false, message: `Must be one of: ${validTypes.join(', ')}` };
   return { isValid: true };
 }
 
-export function validateMultiPolicyDiscount(value: any): { isValid: boolean; message?: string } {
+export function validateMultiPolicyDiscount(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   const validTypes = ['None', 'Auto', 'Umbrella', 'Life', 'Multiple'];
   if (value && !validTypes.includes(value)) return { isValid: false, message: `Must be one of: ${validTypes.join(', ')}` };
   return { isValid: true };
 }
 
-export function validatePaymentMethod(value: any): { isValid: boolean; message?: string } {
+export function validatePaymentMethod(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   const validTypes = ['Monthly', 'Quarterly', 'Semi-Annual', 'Annual'];
   if (value && !validTypes.includes(value)) return { isValid: false, message: `Must be one of: ${validTypes.join(', ')}` };
   return { isValid: true };
 }
 
-export function validatePaperlessDiscount(value: any): { isValid: boolean; message?: string } {
+export function validatePaperlessDiscount(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   const validTypes = ['Yes', 'No'];
   if (value && !validTypes.includes(value)) return { isValid: false, message: `Must be one of: ${validTypes.join(', ')}` };
   return { isValid: true };
 }
 
-export function validateAutoPayDiscount(value: any): { isValid: boolean; message?: string } {
+export function validateAutoPayDiscount(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   const validTypes = ['Yes', 'No'];
   if (value && !validTypes.includes(value)) return { isValid: false, message: `Must be one of: ${validTypes.join(', ')}` };
   return { isValid: true };
 }
 
-export function validateNewCustomerDiscount(value: any): { isValid: boolean; message?: string } {
+export function validateNewCustomerDiscount(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   const validTypes = ['Yes', 'No'];
   if (value && !validTypes.includes(value)) return { isValid: false, message: `Must be one of: ${validTypes.join(', ')}` };
   return { isValid: true };
 }
 
-export function validateBundlingDiscount(value: any): { isValid: boolean; message?: string } {
+export function validateBundlingDiscount(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   const validTypes = ['None', 'Auto', 'Umbrella', 'Life', 'Multiple'];
   if (value && !validTypes.includes(value)) return { isValid: false, message: `Must be one of: ${validTypes.join(', ')}` };
   return { isValid: true };
 }
 
-export function validateSafetyDiscount(value: any): { isValid: boolean; message?: string } {
+export function validateSafetyDiscount(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   const validTypes = ['None', 'Basic', 'Advanced', 'Premium'];
   if (value && !validTypes.includes(value)) return { isValid: false, message: `Must be one of: ${validTypes.join(', ')}` };
   return { isValid: true };
 }
 
-export function validateClaimsFreeDiscount(value: any): { isValid: boolean; message?: string } {
+export function validateClaimsFreeDiscount(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   const validTypes = ['None', '1-3 Years', '3-5 Years', '5+ Years'];
   if (value && !validTypes.includes(value)) return { isValid: false, message: `Must be one of: ${validTypes.join(', ')}` };
   return { isValid: true };
 }
 
-export function validateSecurityFeatures(value: any): { isValid: boolean; message?: string } {
+export function validateSecurityFeatures(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   const validFeatures = ['Alarm System', 'Security Cameras', 'Deadbolts', 'Fire Sprinklers', 'Smoke Detectors', 'Carbon Monoxide Detectors', 'Gated Community', 'Doorman', 'None'];
   if (Array.isArray(value)) {
     for (const feature of value) {

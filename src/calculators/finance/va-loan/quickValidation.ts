@@ -5,7 +5,7 @@ export interface ValidationResult {
   message: string;
 }
 
-export function validatePurchasePrice(value: any): ValidationResult {
+export function validatePurchasePrice(value: any, allInputs?: Record<string, any>): ValidationResult {
   if (typeof value !== 'number' || isNaN(value)) {
     return { isValid: false, message: 'Purchase price must be a valid number' };
   }
@@ -18,7 +18,7 @@ export function validatePurchasePrice(value: any): ValidationResult {
   return { isValid: true, message: '' };
 }
 
-export function validateDownPayment(value: any, purchasePrice?: number): ValidationResult {
+export function validateDownPayment(value: any, allInputs?: Record<string, any>): ValidationResult {
   if (typeof value !== 'number' || isNaN(value)) {
     return { isValid: false, message: 'Down payment must be a valid number' };
   }
@@ -34,7 +34,7 @@ export function validateDownPayment(value: any, purchasePrice?: number): Validat
   return { isValid: true, message: '' };
 }
 
-export function validateInterestRate(value: any): ValidationResult {
+export function validateInterestRate(value: any, allInputs?: Record<string, any>): ValidationResult {
   if (typeof value !== 'number' || isNaN(value)) {
     return { isValid: false, message: 'Interest rate must be a valid number' };
   }
@@ -47,7 +47,7 @@ export function validateInterestRate(value: any): ValidationResult {
   return { isValid: true, message: '' };
 }
 
-export function validateLoanTerm(value: any): ValidationResult {
+export function validateLoanTerm(value: any, allInputs?: Record<string, any>): ValidationResult {
   if (typeof value !== 'number' || isNaN(value)) {
     return { isValid: false, message: 'Loan term must be a valid number' };
   }
@@ -60,14 +60,14 @@ export function validateLoanTerm(value: any): ValidationResult {
   return { isValid: true, message: '' };
 }
 
-export function validateVeteranStatus(value: any): ValidationResult {
+export function validateVeteranStatus(value: any, allInputs?: Record<string, any>): ValidationResult {
   if (typeof value !== 'string' || !value) {
     return { isValid: false, message: 'Veteran status must be selected' };
   }
   return { isValid: true, message: '' };
 }
 
-export function validateServiceYears(value: any): ValidationResult {
+export function validateServiceYears(value: any, allInputs?: Record<string, any>): ValidationResult {
   if (typeof value !== 'number' || isNaN(value)) {
     return { isValid: false, message: 'Years of service must be a valid number' };
   }
@@ -80,7 +80,7 @@ export function validateServiceYears(value: any): ValidationResult {
   return { isValid: true, message: '' };
 }
 
-export function validateDisabilityRating(value: any): ValidationResult {
+export function validateDisabilityRating(value: any, allInputs?: Record<string, any>): ValidationResult {
   if (typeof value !== 'number' || isNaN(value)) {
     return { isValid: false, message: 'Disability rating must be a valid number' };
   }
@@ -93,14 +93,14 @@ export function validateDisabilityRating(value: any): ValidationResult {
   return { isValid: true, message: '' };
 }
 
-export function validateFirstTimeUse(value: any): ValidationResult {
+export function validateFirstTimeUse(value: any, allInputs?: Record<string, any>): ValidationResult {
   if (typeof value !== 'string' || !value) {
     return { isValid: false, message: 'First time use must be selected' };
   }
   return { isValid: true, message: '' };
 }
 
-export function validatePropertyType(value: any): ValidationResult {
+export function validatePropertyType(value: any, allInputs?: Record<string, any>): ValidationResult {
   if (typeof value !== 'string' || !value) {
     return { isValid: false, message: 'Property type must be selected' };
   }
@@ -113,14 +113,14 @@ export function validatePropertyType(value: any): ValidationResult {
   return { isValid: true, message: '' };
 }
 
-export function validatePropertyLocation(value: any): ValidationResult {
+export function validatePropertyLocation(value: any, allInputs?: Record<string, any>): ValidationResult {
   if (typeof value !== 'string' || !value) {
     return { isValid: false, message: 'Property location must be selected' };
   }
   return { isValid: true, message: '' };
 }
 
-export function validatePropertyAge(value: any): ValidationResult {
+export function validatePropertyAge(value: any, allInputs?: Record<string, any>): ValidationResult {
   if (typeof value !== 'number' || isNaN(value)) {
     return { isValid: false, message: 'Property age must be a valid number' };
   }
@@ -133,7 +133,7 @@ export function validatePropertyAge(value: any): ValidationResult {
   return { isValid: true, message: '' };
 }
 
-export function validatePropertySize(value: any): ValidationResult {
+export function validatePropertySize(value: any, allInputs?: Record<string, any>): ValidationResult {
   if (typeof value !== 'number' || isNaN(value)) {
     return { isValid: false, message: 'Property size must be a valid number' };
   }
@@ -146,7 +146,7 @@ export function validatePropertySize(value: any): ValidationResult {
   return { isValid: true, message: '' };
 }
 
-export function validatePropertyTaxes(value: any): ValidationResult {
+export function validatePropertyTaxes(value: any, allInputs?: Record<string, any>): ValidationResult {
   if (typeof value !== 'number' || isNaN(value)) {
     return { isValid: false, message: 'Property taxes must be a valid number' };
   }
@@ -159,7 +159,7 @@ export function validatePropertyTaxes(value: any): ValidationResult {
   return { isValid: true, message: '' };
 }
 
-export function validateHomeownersInsurance(value: any): ValidationResult {
+export function validateHomeownersInsurance(value: any, allInputs?: Record<string, any>): ValidationResult {
   if (typeof value !== 'number' || isNaN(value)) {
     return { isValid: false, message: 'Homeowners insurance must be a valid number' };
   }
@@ -172,7 +172,7 @@ export function validateHomeownersInsurance(value: any): ValidationResult {
   return { isValid: true, message: '' };
 }
 
-export function validateMonthlyDebts(value: any): ValidationResult {
+export function validateMonthlyDebts(value: any, allInputs?: Record<string, any>): ValidationResult {
   if (typeof value !== 'number' || isNaN(value)) {
     return { isValid: false, message: 'Monthly debts must be a valid number' };
   }
@@ -185,7 +185,7 @@ export function validateMonthlyDebts(value: any): ValidationResult {
   return { isValid: true, message: '' };
 }
 
-export function validateCreditScore(value: any): ValidationResult {
+export function validateCreditScore(value: any, allInputs?: Record<string, any>): ValidationResult {
   if (typeof value !== 'number' || isNaN(value)) {
     return { isValid: false, message: 'Credit score must be a valid number' };
   }
@@ -201,7 +201,7 @@ export function validateCreditScore(value: any): ValidationResult {
   return { isValid: true, message: '' };
 }
 
-export function validateAnnualIncome(value: any): ValidationResult {
+export function validateAnnualIncome(value: any, allInputs?: Record<string, any>): ValidationResult {
   if (typeof value !== 'number' || isNaN(value)) {
     return { isValid: false, message: 'Annual income must be a valid number' };
   }
@@ -214,7 +214,7 @@ export function validateAnnualIncome(value: any): ValidationResult {
   return { isValid: true, message: '' };
 }
 
-export function validateClosingCosts(value: any): ValidationResult {
+export function validateClosingCosts(value: any, allInputs?: Record<string, any>): ValidationResult {
   if (typeof value !== 'number' || isNaN(value)) {
     return { isValid: false, message: 'Closing costs must be a valid number' };
   }
@@ -227,7 +227,7 @@ export function validateClosingCosts(value: any): ValidationResult {
   return { isValid: true, message: '' };
 }
 
-export function validatePrepaidItems(value: any): ValidationResult {
+export function validatePrepaidItems(value: any, allInputs?: Record<string, any>): ValidationResult {
   if (typeof value !== 'number' || isNaN(value)) {
     return { isValid: false, message: 'Prepaid items must be a valid number' };
   }
@@ -240,7 +240,7 @@ export function validatePrepaidItems(value: any): ValidationResult {
   return { isValid: true, message: '' };
 }
 
-export function validateSellerCredits(value: any): ValidationResult {
+export function validateSellerCredits(value: any, allInputs?: Record<string, any>): ValidationResult {
   if (typeof value !== 'number' || isNaN(value)) {
     return { isValid: false, message: 'Seller credits must be a valid number' };
   }
@@ -253,7 +253,7 @@ export function validateSellerCredits(value: any): ValidationResult {
   return { isValid: true, message: '' };
 }
 
-export function validateAnalysisPeriod(value: any): ValidationResult {
+export function validateAnalysisPeriod(value: any, allInputs?: Record<string, any>): ValidationResult {
   if (typeof value !== 'number' || isNaN(value)) {
     return { isValid: false, message: 'Analysis period must be a valid number' };
   }

@@ -1,7 +1,7 @@
 import { CalculatorInputs } from '../../../types/calculator';
 
 // Real-time validation functions for immediate feedback
-export function validateTotalPropertyCost(value: any): { isValid: boolean; message?: string } {
+export function validateTotalPropertyCost(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   if (value === undefined || value === null || value === '') {
     return { isValid: false, message: 'Total property cost is required' };
   }
@@ -22,7 +22,7 @@ export function validateTotalPropertyCost(value: any): { isValid: boolean; messa
   return { isValid: true };
 }
 
-export function validateLandCost(value: any): { isValid: boolean; message?: string } {
+export function validateLandCost(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   if (value === undefined || value === null || value === '') {
     return { isValid: false, message: 'Land cost is required' };
   }
@@ -43,7 +43,7 @@ export function validateLandCost(value: any): { isValid: boolean; message?: stri
   return { isValid: true };
 }
 
-export function validateBuildingCost(value: any): { isValid: boolean; message?: string } {
+export function validateBuildingCost(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   if (value === undefined || value === null || value === '') {
     return { isValid: false, message: 'Building cost is required' };
   }
@@ -64,7 +64,7 @@ export function validateBuildingCost(value: any): { isValid: boolean; message?: 
   return { isValid: true };
 }
 
-export function validateSiteImprovements(value: any): { isValid: boolean; message?: string } {
+export function validateSiteImprovements(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   if (value === undefined || value === null || value === '') {
     return { isValid: false, message: 'Site improvements is required' };
   }
@@ -85,7 +85,7 @@ export function validateSiteImprovements(value: any): { isValid: boolean; messag
   return { isValid: true };
 }
 
-export function validatePersonalProperty(value: any): { isValid: boolean; message?: string } {
+export function validatePersonalProperty(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   if (value === undefined || value === null || value === '') {
     return { isValid: false, message: 'Personal property is required' };
   }
@@ -106,7 +106,7 @@ export function validatePersonalProperty(value: any): { isValid: boolean; messag
   return { isValid: true };
 }
 
-export function validateLandImprovements(value: any): { isValid: boolean; message?: string } {
+export function validateLandImprovements(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   if (value === undefined || value === null || value === '') {
     return { isValid: false, message: 'Land improvements is required' };
   }
@@ -127,7 +127,7 @@ export function validateLandImprovements(value: any): { isValid: boolean; messag
   return { isValid: true };
 }
 
-export function validateStudyCost(value: any): { isValid: boolean; message?: string } {
+export function validateStudyCost(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   if (value === undefined || value === null || value === '') {
     return { isValid: false, message: 'Study cost is required' };
   }
@@ -148,7 +148,7 @@ export function validateStudyCost(value: any): { isValid: boolean; message?: str
   return { isValid: true };
 }
 
-export function validateTaxYear(value: any): { isValid: boolean; message?: string } {
+export function validateTaxYear(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   if (value === undefined || value === null || value === '') {
     return { isValid: false, message: 'Tax year is required' };
   }
@@ -169,7 +169,7 @@ export function validateTaxYear(value: any): { isValid: boolean; message?: strin
   return { isValid: true };
 }
 
-export function validateMarginalTaxRate(value: any): { isValid: boolean; message?: string } {
+export function validateMarginalTaxRate(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   if (value === undefined || value === null || value === '') {
     return { isValid: false, message: 'Marginal tax rate is required' };
   }
@@ -190,7 +190,7 @@ export function validateMarginalTaxRate(value: any): { isValid: boolean; message
   return { isValid: true };
 }
 
-export function validateStateTaxRate(value: any): { isValid: boolean; message?: string } {
+export function validateStateTaxRate(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   if (value === undefined || value === null || value === '') {
     return { isValid: false, message: 'State tax rate is required' };
   }
@@ -211,7 +211,7 @@ export function validateStateTaxRate(value: any): { isValid: boolean; message?: 
   return { isValid: true };
 }
 
-export function validatePropertyAge(value: any): { isValid: boolean; message?: string } {
+export function validatePropertyAge(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   if (value === undefined || value === null || value === '') {
     return { isValid: false, message: 'Property age is required' };
   }
@@ -232,7 +232,7 @@ export function validatePropertyAge(value: any): { isValid: boolean; message?: s
   return { isValid: true };
 }
 
-export function validateRenovationCost(value: any): { isValid: boolean; message?: string } {
+export function validateRenovationCost(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   if (value === undefined || value === null || value === '') {
     return { isValid: false, message: 'Renovation cost is required' };
   }
@@ -253,7 +253,7 @@ export function validateRenovationCost(value: any): { isValid: boolean; message?
   return { isValid: true };
 }
 
-export function validateSection179(value: any): { isValid: boolean; message?: string } {
+export function validateSection179(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   if (value === undefined || value === null || value === '') {
     return { isValid: false, message: 'Section 179 deduction is required' };
   }
@@ -274,7 +274,7 @@ export function validateSection179(value: any): { isValid: boolean; message?: st
   return { isValid: true };
 }
 
-export function validatePriorDepreciation(value: any): { isValid: boolean; message?: string } {
+export function validatePriorDepreciation(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   if (value === undefined || value === null || value === '') {
     return { isValid: false, message: 'Prior depreciation is required' };
   }
@@ -295,7 +295,7 @@ export function validatePriorDepreciation(value: any): { isValid: boolean; messa
   return { isValid: true };
 }
 
-export function validatePropertyType(value: any): { isValid: boolean; message?: string } {
+export function validatePropertyType(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   const validTypes = ['office', 'retail', 'warehouse', 'hotel', 'apartment', 'restaurant', 'medical', 'mixed-use'];
   
   if (!value) {
@@ -309,7 +309,7 @@ export function validatePropertyType(value: any): { isValid: boolean; message?: 
   return { isValid: true };
 }
 
-export function validatePropertyUse(value: any): { isValid: boolean; message?: string } {
+export function validatePropertyUse(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   const validUses = ['business', 'rental', 'investment', 'mixed'];
   
   if (!value) {
@@ -323,7 +323,7 @@ export function validatePropertyUse(value: any): { isValid: boolean; message?: s
   return { isValid: true };
 }
 
-export function validateOwnershipType(value: any): { isValid: boolean; message?: string } {
+export function validateOwnershipType(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   const validTypes = ['individual', 'partnership', 'corporation', 'llc', 'trust'];
   
   if (!value) {
@@ -337,7 +337,7 @@ export function validateOwnershipType(value: any): { isValid: boolean; message?:
   return { isValid: true };
 }
 
-export function validateBonusDepreciation(value: any): { isValid: boolean; message?: string } {
+export function validateBonusDepreciation(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   const validPercentages = ['100', '80', '60', '40', '20', '0'];
   
   if (!value) {
@@ -351,7 +351,7 @@ export function validateBonusDepreciation(value: any): { isValid: boolean; messa
   return { isValid: true };
 }
 
-export function validateRecoveryPeriod(value: any): { isValid: boolean; message?: string } {
+export function validateRecoveryPeriod(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   const validPeriods = ['27.5', '39', '31.5'];
   
   if (!value) {
@@ -365,7 +365,7 @@ export function validateRecoveryPeriod(value: any): { isValid: boolean; message?
   return { isValid: true };
 }
 
-export function validateDepreciationMethod(value: any): { isValid: boolean; message?: string } {
+export function validateDepreciationMethod(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   const validMethods = ['straight-line', 'declining-balance', 'sum-of-years'];
   
   if (!value) {
@@ -379,7 +379,7 @@ export function validateDepreciationMethod(value: any): { isValid: boolean; mess
   return { isValid: true };
 }
 
-export function validateConvention(value: any): { isValid: boolean; message?: string } {
+export function validateConvention(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   const validConventions = ['mid-month', 'mid-quarter', 'half-year'];
   
   if (!value) {
@@ -393,7 +393,7 @@ export function validateConvention(value: any): { isValid: boolean; message?: st
   return { isValid: true };
 }
 
-export function validateAcquisitionDate(value: any): { isValid: boolean; message?: string } {
+export function validateAcquisitionDate(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   if (!value) {
     return { isValid: false, message: 'Acquisition date is required' };
   }
@@ -406,7 +406,7 @@ export function validateAcquisitionDate(value: any): { isValid: boolean; message
   return { isValid: true };
 }
 
-export function validateRenovationDate(value: any): { isValid: boolean; message?: string } {
+export function validateRenovationDate(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   if (!value) {
     return { isValid: false, message: 'Renovation date is required' };
   }

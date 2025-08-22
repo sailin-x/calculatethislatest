@@ -1,7 +1,7 @@
 import { CalculatorInputs } from '../../../types/calculator';
 
 // Individual field validation functions
-export function validateFilingStatus(value: string): string | null {
+export function validateFilingStatus(value: string, allInputs?: Record<string, any>): string | null {
   if (!value) return 'Filing status is required';
   const validStatuses = ['single', 'married-filing-jointly', 'married-filing-separately', 'head-of-household', 'qualifying-widow'];
   if (!validStatuses.includes(value)) {
@@ -10,7 +10,7 @@ export function validateFilingStatus(value: string): string | null {
   return null;
 }
 
-export function validateTaxYear(value: string): string | null {
+export function validateTaxYear(value: string, allInputs?: Record<string, any>): string | null {
   if (!value) return 'Tax year is required';
   const validYears = ['2024', '2023', '2022'];
   if (!validYears.includes(value)) {
@@ -19,184 +19,184 @@ export function validateTaxYear(value: string): string | null {
   return null;
 }
 
-export function validateAge(value: number): string | null {
+export function validateAge(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Age cannot be negative';
   if (value > 120) return 'Age cannot exceed 120';
   return null;
 }
 
-export function validateWages(value: number): string | null {
+export function validateWages(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Wages cannot be negative';
   if (value > 10000000) return 'Wages cannot exceed $10,000,000';
   return null;
 }
 
-export function validateSelfEmployment(value: number): string | null {
+export function validateSelfEmployment(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Self-employment income cannot be negative';
   if (value > 10000000) return 'Self-employment income cannot exceed $10,000,000';
   return null;
 }
 
-export function validateInterest(value: number): string | null {
+export function validateInterest(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Interest income cannot be negative';
   if (value > 1000000) return 'Interest income cannot exceed $1,000,000';
   return null;
 }
 
-export function validateDividends(value: number): string | null {
+export function validateDividends(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Dividend income cannot be negative';
   if (value > 1000000) return 'Dividend income cannot exceed $1,000,000';
   return null;
 }
 
-export function validateCapitalGains(value: number): string | null {
+export function validateCapitalGains(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Capital gains cannot be negative';
   if (value > 1000000) return 'Capital gains cannot exceed $1,000,000';
   return null;
 }
 
-export function validateRentalIncome(value: number): string | null {
+export function validateRentalIncome(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Rental income cannot be negative';
   if (value > 1000000) return 'Rental income cannot exceed $1,000,000';
   return null;
 }
 
-export function validateBusinessIncome(value: number): string | null {
+export function validateBusinessIncome(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Business income cannot be negative';
   if (value > 1000000) return 'Business income cannot exceed $1,000,000';
   return null;
 }
 
-export function validateOtherIncome(value: number): string | null {
+export function validateOtherIncome(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Other income cannot be negative';
   if (value > 1000000) return 'Other income cannot exceed $1,000,000';
   return null;
 }
 
-export function validateStandardDeduction(value: string): string | null {
+export function validateStandardDeduction(value: string, allInputs?: Record<string, any>): string | null {
   if (value && !['standard', 'itemized'].includes(value)) {
     return 'Standard deduction must be one of: standard, itemized';
   }
   return null;
 }
 
-export function validateStateLocalTaxes(value: number): string | null {
+export function validateStateLocalTaxes(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'State and local taxes cannot be negative';
   if (value > 10000) return 'State and local taxes cannot exceed $10,000 (SALT cap)';
   return null;
 }
 
-export function validateMortgageInterest(value: number): string | null {
+export function validateMortgageInterest(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Mortgage interest cannot be negative';
   if (value > 100000) return 'Mortgage interest cannot exceed $100,000';
   return null;
 }
 
-export function validateCharitableContributions(value: number): string | null {
+export function validateCharitableContributions(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Charitable contributions cannot be negative';
   if (value > 100000) return 'Charitable contributions cannot exceed $100,000';
   return null;
 }
 
-export function validateMedicalExpenses(value: number): string | null {
+export function validateMedicalExpenses(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Medical expenses cannot be negative';
   if (value > 100000) return 'Medical expenses cannot exceed $100,000';
   return null;
 }
 
-export function validateCasualtyLosses(value: number): string | null {
+export function validateCasualtyLosses(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Casualty losses cannot be negative';
   if (value > 100000) return 'Casualty losses cannot exceed $100,000';
   return null;
 }
 
-export function validateMiscDeductions(value: number): string | null {
+export function validateMiscDeductions(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Miscellaneous deductions cannot be negative';
   if (value > 100000) return 'Miscellaneous deductions cannot exceed $100,000';
   return null;
 }
 
-export function validateStudentLoanInterest(value: number): string | null {
+export function validateStudentLoanInterest(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Student loan interest cannot be negative';
   if (value > 2500) return 'Student loan interest cannot exceed $2,500';
   return null;
 }
 
-export function validateIraContribution(value: number): string | null {
+export function validateIraContribution(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'IRA contribution cannot be negative';
   if (value > 7000) return 'IRA contribution cannot exceed $7,000';
   return null;
 }
 
-export function validateHsaContribution(value: number): string | null {
+export function validateHsaContribution(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'HSA contribution cannot be negative';
   if (value > 4150) return 'HSA contribution cannot exceed $4,150';
   return null;
 }
 
-export function validateSelfEmploymentTax(value: number): string | null {
+export function validateSelfEmploymentTax(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Self-employment tax cannot be negative';
   if (value > 100000) return 'Self-employment tax cannot exceed $100,000';
   return null;
 }
 
-export function validateSelfEmploymentHealth(value: number): string | null {
+export function validateSelfEmploymentHealth(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Self-employment health insurance cannot be negative';
   if (value > 100000) return 'Self-employment health insurance cannot exceed $100,000';
   return null;
 }
 
-export function validateAlimonyPaid(value: number): string | null {
+export function validateAlimonyPaid(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Alimony paid cannot be negative';
   if (value > 100000) return 'Alimony paid cannot exceed $100,000';
   return null;
 }
 
-export function validateChildTaxCredit(value: number): string | null {
+export function validateChildTaxCredit(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Child tax credit cannot be negative';
   if (value > 10) return 'Child tax credit cannot exceed 10 children';
   return null;
 }
 
-export function validateChildCareCredit(value: number): string | null {
+export function validateChildCareCredit(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Child care credit cannot be negative';
   if (value > 10000) return 'Child care credit cannot exceed $10,000';
   return null;
 }
 
-export function validateEarnedIncomeCredit(value: string): string | null {
+export function validateEarnedIncomeCredit(value: string, allInputs?: Record<string, any>): string | null {
   if (value && !['yes', 'no'].includes(value)) {
     return 'Earned income credit must be one of: yes, no';
   }
   return null;
 }
 
-export function validateEducationCredits(value: number): string | null {
+export function validateEducationCredits(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Education credits cannot be negative';
   if (value > 10000) return 'Education credits cannot exceed $10,000';
   return null;
 }
 
-export function validateSaversCredit(value: string): string | null {
+export function validateSaversCredit(value: string, allInputs?: Record<string, any>): string | null {
   if (value && !['yes', 'no'].includes(value)) {
     return 'Saver\'s credit must be one of: yes, no';
   }
   return null;
 }
 
-export function validateAdoptionCredit(value: number): string | null {
+export function validateAdoptionCredit(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Adoption credit cannot be negative';
   if (value > 100000) return 'Adoption credit cannot exceed $100,000';
   return null;
 }
 
-export function validateForeignTaxCredit(value: number): string | null {
+export function validateForeignTaxCredit(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Foreign tax credit cannot be negative';
   if (value > 100000) return 'Foreign tax credit cannot exceed $100,000';
   return null;
 }
 
-export function validateStateOfResidence(value: string): string | null {
+export function validateStateOfResidence(value: string, allInputs?: Record<string, any>): string | null {
   if (value) {
     const validStates = ['al', 'ak', 'az', 'ar', 'ca', 'co', 'ct', 'de', 'fl', 'ga', 'hi', 'id', 'il', 'in', 'ia', 'ks', 'ky', 'la', 'me', 'md', 'ma', 'mi', 'mn', 'ms', 'mo', 'mt', 'ne', 'nv', 'nh', 'nj', 'nm', 'ny', 'nc', 'nd', 'oh', 'ok', 'or', 'pa', 'ri', 'sc', 'sd', 'tn', 'tx', 'ut', 'vt', 'va', 'wa', 'wv', 'wi', 'wy'];
     if (!validStates.includes(value)) {
@@ -206,61 +206,61 @@ export function validateStateOfResidence(value: string): string | null {
   return null;
 }
 
-export function validateStateIncome(value: number): string | null {
+export function validateStateIncome(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'State income cannot be negative';
   if (value > 10000000) return 'State income cannot exceed $10,000,000';
   return null;
 }
 
-export function validateStateDeductions(value: number): string | null {
+export function validateStateDeductions(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'State deductions cannot be negative';
   if (value > 100000) return 'State deductions cannot exceed $100,000';
   return null;
 }
 
-export function validateStateCredits(value: number): string | null {
+export function validateStateCredits(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'State credits cannot be negative';
   if (value > 10000) return 'State credits cannot exceed $10,000';
   return null;
 }
 
-export function validateFederalWithholding(value: number): string | null {
+export function validateFederalWithholding(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Federal withholding cannot be negative';
   if (value > 1000000) return 'Federal withholding cannot exceed $1,000,000';
   return null;
 }
 
-export function validateStateWithholding(value: number): string | null {
+export function validateStateWithholding(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'State withholding cannot be negative';
   if (value > 1000000) return 'State withholding cannot exceed $1,000,000';
   return null;
 }
 
-export function validateEstimatedPayments(value: number): string | null {
+export function validateEstimatedPayments(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Estimated payments cannot be negative';
   if (value > 1000000) return 'Estimated payments cannot exceed $1,000,000';
   return null;
 }
 
-export function validateOtherPayments(value: number): string | null {
+export function validateOtherPayments(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Other payments cannot be negative';
   if (value > 1000000) return 'Other payments cannot exceed $1,000,000';
   return null;
 }
 
-export function validateAmtIncome(value: number): string | null {
+export function validateAmtIncome(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'AMT income cannot be negative';
   if (value > 10000000) return 'AMT income cannot exceed $10,000,000';
   return null;
 }
 
-export function validateAmtPreferences(value: number): string | null {
+export function validateAmtPreferences(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'AMT preferences cannot be negative';
   if (value > 1000000) return 'AMT preferences cannot exceed $1,000,000';
   return null;
 }
 
-export function validateAnalysisType(value: string): string | null {
+export function validateAnalysisType(value: string, allInputs?: Record<string, any>): string | null {
   if (value && !['basic', 'detailed', 'optimization', 'comparison'].includes(value)) {
     return 'Analysis type must be one of: basic, detailed, optimization, comparison';
   }

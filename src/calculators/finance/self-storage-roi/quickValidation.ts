@@ -1,6 +1,6 @@
 import { CalculatorInputs } from '../../../types/calculator';
 
-export function validateFacilitySize(value: number): string | null {
+export function validateFacilitySize(value: number, allInputs?: Record<string, any>): string | null {
   if (value === undefined || value === null || value === '') {
     return 'Facility size is required';
   }
@@ -16,7 +16,7 @@ export function validateFacilitySize(value: number): string | null {
   return null;
 }
 
-export function validateUnitCount(value: number): string | null {
+export function validateUnitCount(value: number, allInputs?: Record<string, any>): string | null {
   if (value === undefined || value === null || value === '') {
     return 'Number of units is required';
   }
@@ -32,7 +32,7 @@ export function validateUnitCount(value: number): string | null {
   return null;
 }
 
-export function validateAverageUnitSize(value: number): string | null {
+export function validateAverageUnitSize(value: number, allInputs?: Record<string, any>): string | null {
   if (value === undefined || value === null || value === '') {
     return 'Average unit size is required';
   }
@@ -48,7 +48,7 @@ export function validateAverageUnitSize(value: number): string | null {
   return null;
 }
 
-export function validatePurchasePrice(value: number): string | null {
+export function validatePurchasePrice(value: number, allInputs?: Record<string, any>): string | null {
   if (value === undefined || value === null || value === '') {
     return 'Purchase price is required';
   }
@@ -64,7 +64,7 @@ export function validatePurchasePrice(value: number): string | null {
   return null;
 }
 
-export function validateDownPayment(value: number): string | null {
+export function validateDownPayment(value: number, allInputs?: Record<string, any>): string | null {
   if (value === undefined || value === null || value === '') {
     return 'Down payment is required';
   }
@@ -80,7 +80,7 @@ export function validateDownPayment(value: number): string | null {
   return null;
 }
 
-export function validateInterestRate(value: number): string | null {
+export function validateInterestRate(value: number, allInputs?: Record<string, any>): string | null {
   if (value === undefined || value === null || value === '') {
     return 'Interest rate is required';
   }
@@ -96,7 +96,7 @@ export function validateInterestRate(value: number): string | null {
   return null;
 }
 
-export function validateLoanTerm(value: number): string | null {
+export function validateLoanTerm(value: number, allInputs?: Record<string, any>): string | null {
   if (value === undefined || value === null || value === '') {
     return 'Loan term is required';
   }
@@ -112,7 +112,7 @@ export function validateLoanTerm(value: number): string | null {
   return null;
 }
 
-export function validateAverageRentPerSqFt(value: number): string | null {
+export function validateAverageRentPerSqFt(value: number, allInputs?: Record<string, any>): string | null {
   if (value === undefined || value === null || value === '') {
     return 'Average rent per sq ft is required';
   }
@@ -128,7 +128,7 @@ export function validateAverageRentPerSqFt(value: number): string | null {
   return null;
 }
 
-export function validateOccupancyRate(value: number): string | null {
+export function validateOccupancyRate(value: number, allInputs?: Record<string, any>): string | null {
   if (value === undefined || value === null || value === '') {
     return 'Occupancy rate is required';
   }
@@ -144,7 +144,7 @@ export function validateOccupancyRate(value: number): string | null {
   return null;
 }
 
-export function validateAnnualExpenses(value: number): string | null {
+export function validateAnnualExpenses(value: number, allInputs?: Record<string, any>): string | null {
   if (value === undefined || value === null || value === '') {
     return 'Annual operating expenses is required';
   }
@@ -160,7 +160,7 @@ export function validateAnnualExpenses(value: number): string | null {
   return null;
 }
 
-export function validatePropertyTaxes(value: number): string | null {
+export function validatePropertyTaxes(value: number, allInputs?: Record<string, any>): string | null {
   if (value === undefined || value === null || value === '') {
     return 'Annual property taxes is required';
   }
@@ -176,7 +176,7 @@ export function validatePropertyTaxes(value: number): string | null {
   return null;
 }
 
-export function validateInsurance(value: number): string | null {
+export function validateInsurance(value: number, allInputs?: Record<string, any>): string | null {
   if (value === undefined || value === null || value === '') {
     return 'Annual insurance is required';
   }
@@ -192,7 +192,7 @@ export function validateInsurance(value: number): string | null {
   return null;
 }
 
-export function validateUtilities(value: number): string | null {
+export function validateUtilities(value: number, allInputs?: Record<string, any>): string | null {
   if (value === undefined || value === null || value === '') {
     return 'Annual utilities is required';
   }
@@ -208,7 +208,7 @@ export function validateUtilities(value: number): string | null {
   return null;
 }
 
-export function validateMaintenance(value: number): string | null {
+export function validateMaintenance(value: number, allInputs?: Record<string, any>): string | null {
   if (value === undefined || value === null || value === '') {
     return 'Annual maintenance is required';
   }
@@ -224,7 +224,7 @@ export function validateMaintenance(value: number): string | null {
   return null;
 }
 
-export function validateManagementFee(value: number): string | null {
+export function validateManagementFee(value: number, allInputs?: Record<string, any>): string | null {
   if (value === undefined || value === null || value === '') {
     return 'Management fee is required';
   }
@@ -240,7 +240,7 @@ export function validateManagementFee(value: number): string | null {
   return null;
 }
 
-export function validateAppreciationRate(value: number): string | null {
+export function validateAppreciationRate(value: number, allInputs?: Record<string, any>): string | null {
   if (value === undefined || value === null || value === '') {
     return 'Annual appreciation rate is required';
   }
@@ -256,7 +256,7 @@ export function validateAppreciationRate(value: number): string | null {
   return null;
 }
 
-export function validateAnalysisPeriod(value: number): string | null {
+export function validateAnalysisPeriod(value: number, allInputs?: Record<string, any>): string | null {
   if (value === undefined || value === null || value === '') {
     return 'Analysis period is required';
   }
@@ -272,7 +272,7 @@ export function validateAnalysisPeriod(value: number): string | null {
   return null;
 }
 
-export function validateRentIncreaseRate(value: number): string | null {
+export function validateRentIncreaseRate(value: number, allInputs?: Record<string, any>): string | null {
   if (value === undefined || value === null || value === '') {
     return 'Annual rent increase rate is required';
   }
@@ -288,7 +288,7 @@ export function validateRentIncreaseRate(value: number): string | null {
   return null;
 }
 
-export function validateExpenseIncreaseRate(value: number): string | null {
+export function validateExpenseIncreaseRate(value: number, allInputs?: Record<string, any>): string | null {
   if (value === undefined || value === null || value === '') {
     return 'Annual expense increase rate is required';
   }
@@ -304,7 +304,7 @@ export function validateExpenseIncreaseRate(value: number): string | null {
   return null;
 }
 
-export function validateVacancyLoss(value: number): string | null {
+export function validateVacancyLoss(value: number, allInputs?: Record<string, any>): string | null {
   if (value === undefined || value === null || value === '') {
     return 'Vacancy loss rate is required';
   }

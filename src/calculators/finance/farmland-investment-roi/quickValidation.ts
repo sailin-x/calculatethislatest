@@ -1,6 +1,6 @@
 import { CalculatorInputs } from '../../../types/calculator';
 
-export function validateLandAcres(value: any): { isValid: boolean; message?: string } {
+export function validateLandAcres(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   const numValue = Number(value);
   if (isNaN(numValue)) {
     return { isValid: false, message: 'Land size must be a number' };
@@ -14,7 +14,7 @@ export function validateLandAcres(value: any): { isValid: boolean; message?: str
   return { isValid: true };
 }
 
-export function validatePurchasePrice(value: any): { isValid: boolean; message?: string } {
+export function validatePurchasePrice(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   const numValue = Number(value);
   if (isNaN(numValue)) {
     return { isValid: false, message: 'Purchase price must be a number' };
@@ -28,7 +28,7 @@ export function validatePurchasePrice(value: any): { isValid: boolean; message?:
   return { isValid: true };
 }
 
-export function validateDownPayment(value: any): { isValid: boolean; message?: string } {
+export function validateDownPayment(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   const numValue = Number(value);
   if (isNaN(numValue)) {
     return { isValid: false, message: 'Down payment must be a number' };
@@ -42,7 +42,7 @@ export function validateDownPayment(value: any): { isValid: boolean; message?: s
   return { isValid: true };
 }
 
-export function validateInterestRate(value: any): { isValid: boolean; message?: string } {
+export function validateInterestRate(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   const numValue = Number(value);
   if (isNaN(numValue)) {
     return { isValid: false, message: 'Interest rate must be a number' };
@@ -56,7 +56,7 @@ export function validateInterestRate(value: any): { isValid: boolean; message?: 
   return { isValid: true };
 }
 
-export function validateLoanTerm(value: any): { isValid: boolean; message?: string } {
+export function validateLoanTerm(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   const numValue = Number(value);
   if (isNaN(numValue)) {
     return { isValid: false, message: 'Loan term must be a number' };
@@ -70,7 +70,7 @@ export function validateLoanTerm(value: any): { isValid: boolean; message?: stri
   return { isValid: true };
 }
 
-export function validateAnnualCropRevenue(value: any): { isValid: boolean; message?: string } {
+export function validateAnnualCropRevenue(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   const numValue = Number(value);
   if (isNaN(numValue)) {
     return { isValid: false, message: 'Annual crop revenue must be a number' };
@@ -84,7 +84,7 @@ export function validateAnnualCropRevenue(value: any): { isValid: boolean; messa
   return { isValid: true };
 }
 
-export function validateCropType(value: any): { isValid: boolean; message?: string } {
+export function validateCropType(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   const validCropTypes = ['corn', 'soybeans', 'wheat', 'cotton', 'rice', 'sorghum', 'barley', 'oats', 'sunflowers', 'canola', 'mixed', 'other'];
   if (!validCropTypes.includes(value)) {
     return { isValid: false, message: 'Invalid crop type' };
@@ -92,7 +92,7 @@ export function validateCropType(value: any): { isValid: boolean; message?: stri
   return { isValid: true };
 }
 
-export function validateYieldPerAcre(value: any): { isValid: boolean; message?: string } {
+export function validateYieldPerAcre(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   const numValue = Number(value);
   if (isNaN(numValue)) {
     return { isValid: false, message: 'Yield per acre must be a number' };
@@ -106,7 +106,7 @@ export function validateYieldPerAcre(value: any): { isValid: boolean; message?: 
   return { isValid: true };
 }
 
-export function validateCropPrice(value: any): { isValid: boolean; message?: string } {
+export function validateCropPrice(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   const numValue = Number(value);
   if (isNaN(numValue)) {
     return { isValid: false, message: 'Crop price must be a number' };
@@ -120,7 +120,7 @@ export function validateCropPrice(value: any): { isValid: boolean; message?: str
   return { isValid: true };
 }
 
-export function validateOperatingCosts(value: any): { isValid: boolean; message?: string } {
+export function validateOperatingCosts(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   const numValue = Number(value);
   if (isNaN(numValue)) {
     return { isValid: false, message: 'Operating costs must be a number' };
@@ -134,7 +134,7 @@ export function validateOperatingCosts(value: any): { isValid: boolean; message?
   return { isValid: true };
 }
 
-export function validateLandTaxes(value: any): { isValid: boolean; message?: string } {
+export function validateLandTaxes(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   const numValue = Number(value);
   if (isNaN(numValue)) {
     return { isValid: false, message: 'Land taxes must be a number' };
@@ -148,7 +148,7 @@ export function validateLandTaxes(value: any): { isValid: boolean; message?: str
   return { isValid: true };
 }
 
-export function validateInsuranceCosts(value: any): { isValid: boolean; message?: string } {
+export function validateInsuranceCosts(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   const numValue = Number(value);
   if (isNaN(numValue)) {
     return { isValid: false, message: 'Insurance costs must be a number' };
@@ -162,7 +162,7 @@ export function validateInsuranceCosts(value: any): { isValid: boolean; message?
   return { isValid: true };
 }
 
-export function validateMaintenanceCosts(value: any): { isValid: boolean; message?: string } {
+export function validateMaintenanceCosts(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   const numValue = Number(value);
   if (isNaN(numValue)) {
     return { isValid: false, message: 'Maintenance costs must be a number' };
@@ -176,7 +176,7 @@ export function validateMaintenanceCosts(value: any): { isValid: boolean; messag
   return { isValid: true };
 }
 
-export function validateLandAppreciation(value: any): { isValid: boolean; message?: string } {
+export function validateLandAppreciation(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   const numValue = Number(value);
   if (isNaN(numValue)) {
     return { isValid: false, message: 'Land appreciation must be a number' };
@@ -190,7 +190,7 @@ export function validateLandAppreciation(value: any): { isValid: boolean; messag
   return { isValid: true };
 }
 
-export function validateInflationRate(value: any): { isValid: boolean; message?: string } {
+export function validateInflationRate(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   const numValue = Number(value);
   if (isNaN(numValue)) {
     return { isValid: false, message: 'Inflation rate must be a number' };
@@ -204,7 +204,7 @@ export function validateInflationRate(value: any): { isValid: boolean; message?:
   return { isValid: true };
 }
 
-export function validateHoldingPeriod(value: any): { isValid: boolean; message?: string } {
+export function validateHoldingPeriod(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   const numValue = Number(value);
   if (isNaN(numValue)) {
     return { isValid: false, message: 'Holding period must be a number' };
@@ -218,7 +218,7 @@ export function validateHoldingPeriod(value: any): { isValid: boolean; message?:
   return { isValid: true };
 }
 
-export function validateSoilQuality(value: any): { isValid: boolean; message?: string } {
+export function validateSoilQuality(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   const validSoilQualities = ['excellent', 'good', 'average', 'poor', 'marginal'];
   if (!validSoilQualities.includes(value)) {
     return { isValid: false, message: 'Invalid soil quality rating' };
@@ -226,7 +226,7 @@ export function validateSoilQuality(value: any): { isValid: boolean; message?: s
   return { isValid: true };
 }
 
-export function validateIrrigationType(value: any): { isValid: boolean; message?: string } {
+export function validateIrrigationType(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   const validIrrigationTypes = ['none', 'drip', 'sprinkler', 'flood', 'center-pivot', 'subsurface'];
   if (!validIrrigationTypes.includes(value)) {
     return { isValid: false, message: 'Invalid irrigation type' };
@@ -234,7 +234,7 @@ export function validateIrrigationType(value: any): { isValid: boolean; message?
   return { isValid: true };
 }
 
-export function validateClimateZone(value: any): { isValid: boolean; message?: string } {
+export function validateClimateZone(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   const validClimateZones = ['arid', 'semi-arid', 'temperate', 'humid', 'tropical', 'mediterranean'];
   if (!validClimateZones.includes(value)) {
     return { isValid: false, message: 'Invalid climate zone' };
@@ -242,7 +242,7 @@ export function validateClimateZone(value: any): { isValid: boolean; message?: s
   return { isValid: true };
 }
 
-export function validateMarketAccess(value: any): { isValid: boolean; message?: string } {
+export function validateMarketAccess(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   const validMarketAccess = ['excellent', 'good', 'average', 'poor', 'remote'];
   if (!validMarketAccess.includes(value)) {
     return { isValid: false, message: 'Invalid market access rating' };
@@ -250,7 +250,7 @@ export function validateMarketAccess(value: any): { isValid: boolean; message?: 
   return { isValid: true };
 }
 
-export function validateGovernmentSubsidies(value: any): { isValid: boolean; message?: string } {
+export function validateGovernmentSubsidies(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   if (value === '' || value === null || value === undefined) {
     return { isValid: true }; // Optional field
   }
@@ -267,7 +267,7 @@ export function validateGovernmentSubsidies(value: any): { isValid: boolean; mes
   return { isValid: true };
 }
 
-export function validateConservationPrograms(value: any): { isValid: boolean; message?: string } {
+export function validateConservationPrograms(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   if (value === '' || value === null || value === undefined) {
     return { isValid: true }; // Optional field
   }
@@ -278,7 +278,7 @@ export function validateConservationPrograms(value: any): { isValid: boolean; me
   return { isValid: true };
 }
 
-export function validateOrganicCertification(value: any): { isValid: boolean; message?: string } {
+export function validateOrganicCertification(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   if (value === '' || value === null || value === undefined) {
     return { isValid: true }; // Optional field
   }
@@ -289,7 +289,7 @@ export function validateOrganicCertification(value: any): { isValid: boolean; me
   return { isValid: true };
 }
 
-export function validateEnergyCosts(value: any): { isValid: boolean; message?: string } {
+export function validateEnergyCosts(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   if (value === '' || value === null || value === undefined) {
     return { isValid: true }; // Optional field
   }
@@ -306,7 +306,7 @@ export function validateEnergyCosts(value: any): { isValid: boolean; message?: s
   return { isValid: true };
 }
 
-export function validateLaborCosts(value: any): { isValid: boolean; message?: string } {
+export function validateLaborCosts(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   if (value === '' || value === null || value === undefined) {
     return { isValid: true }; // Optional field
   }
@@ -323,7 +323,7 @@ export function validateLaborCosts(value: any): { isValid: boolean; message?: st
   return { isValid: true };
 }
 
-export function validateEquipmentCosts(value: any): { isValid: boolean; message?: string } {
+export function validateEquipmentCosts(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   if (value === '' || value === null || value === undefined) {
     return { isValid: true }; // Optional field
   }
@@ -340,7 +340,7 @@ export function validateEquipmentCosts(value: any): { isValid: boolean; message?
   return { isValid: true };
 }
 
-export function validateWaterRights(value: any): { isValid: boolean; message?: string } {
+export function validateWaterRights(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   if (value === '' || value === null || value === undefined) {
     return { isValid: true }; // Optional field
   }
@@ -351,7 +351,7 @@ export function validateWaterRights(value: any): { isValid: boolean; message?: s
   return { isValid: true };
 }
 
-export function validateMineralRights(value: any): { isValid: boolean; message?: string } {
+export function validateMineralRights(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   if (value === '' || value === null || value === undefined) {
     return { isValid: true }; // Optional field
   }
@@ -362,7 +362,7 @@ export function validateMineralRights(value: any): { isValid: boolean; message?:
   return { isValid: true };
 }
 
-export function validateZoningRestrictions(value: any): { isValid: boolean; message?: string } {
+export function validateZoningRestrictions(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   if (value === '' || value === null || value === undefined) {
     return { isValid: true }; // Optional field
   }

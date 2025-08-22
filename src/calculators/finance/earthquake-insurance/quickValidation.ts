@@ -1,7 +1,7 @@
 import { CalculatorInputs } from '../../../types/calculator';
 
 // Real-time validation functions for immediate feedback
-export function validatePropertyValue(value: any): { isValid: boolean; message?: string } {
+export function validatePropertyValue(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   const num = Number(value);
   if (isNaN(num)) return { isValid: false, message: 'Property value must be a number' };
   if (num < 50000) return { isValid: false, message: 'Property value must be at least $50,000' };
@@ -9,7 +9,7 @@ export function validatePropertyValue(value: any): { isValid: boolean; message?:
   return { isValid: true };
 }
 
-export function validateBuildingAge(value: any): { isValid: boolean; message?: string } {
+export function validateBuildingAge(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   const num = Number(value);
   if (isNaN(num)) return { isValid: false, message: 'Building age must be a number' };
   if (num < 0) return { isValid: false, message: 'Building age cannot be negative' };
@@ -17,7 +17,7 @@ export function validateBuildingAge(value: any): { isValid: boolean; message?: s
   return { isValid: true };
 }
 
-export function validateStories(value: any): { isValid: boolean; message?: string } {
+export function validateStories(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   const num = Number(value);
   if (isNaN(num)) return { isValid: false, message: 'Number of stories must be a number' };
   if (num < 1) return { isValid: false, message: 'Number of stories must be at least 1' };
@@ -25,7 +25,7 @@ export function validateStories(value: any): { isValid: boolean; message?: strin
   return { isValid: true };
 }
 
-export function validateSquareFootage(value: any): { isValid: boolean; message?: string } {
+export function validateSquareFootage(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   const num = Number(value);
   if (isNaN(num)) return { isValid: false, message: 'Square footage must be a number' };
   if (num < 100) return { isValid: false, message: 'Square footage must be at least 100 sq ft' };
@@ -33,7 +33,7 @@ export function validateSquareFootage(value: any): { isValid: boolean; message?:
   return { isValid: true };
 }
 
-export function validateDeductiblePercentage(value: any): { isValid: boolean; message?: string } {
+export function validateDeductiblePercentage(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   const num = Number(value);
   if (isNaN(num)) return { isValid: false, message: 'Deductible percentage must be a number' };
   if (num < 1) return { isValid: false, message: 'Deductible percentage must be at least 1%' };
@@ -41,7 +41,7 @@ export function validateDeductiblePercentage(value: any): { isValid: boolean; me
   return { isValid: true };
 }
 
-export function validateCoverageLimit(value: any): { isValid: boolean; message?: string } {
+export function validateCoverageLimit(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   const num = Number(value);
   if (isNaN(num)) return { isValid: false, message: 'Coverage limit must be a number' };
   if (num < 10000) return { isValid: false, message: 'Coverage limit must be at least $10,000' };
@@ -49,7 +49,7 @@ export function validateCoverageLimit(value: any): { isValid: boolean; message?:
   return { isValid: true };
 }
 
-export function validateContentsValue(value: any): { isValid: boolean; message?: string } {
+export function validateContentsValue(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   const num = Number(value);
   if (isNaN(num)) return { isValid: false, message: 'Contents value must be a number' };
   if (num < 0) return { isValid: false, message: 'Contents value cannot be negative' };
@@ -57,7 +57,7 @@ export function validateContentsValue(value: any): { isValid: boolean; message?:
   return { isValid: true };
 }
 
-export function validateAnnualIncome(value: any): { isValid: boolean; message?: string } {
+export function validateAnnualIncome(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   const num = Number(value);
   if (isNaN(num)) return { isValid: false, message: 'Annual income must be a number' };
   if (num < 0) return { isValid: false, message: 'Annual income cannot be negative' };
@@ -65,7 +65,7 @@ export function validateAnnualIncome(value: any): { isValid: boolean; message?: 
   return { isValid: true };
 }
 
-export function validateLocation(value: any): { isValid: boolean; message?: string } {
+export function validateLocation(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   const validStates = [
     'CA', 'AK', 'WA', 'OR', 'NV', 'UT', 'ID', 'MT', 'WY', 'CO', 'AZ', 'NM', 'TX', 'OK', 'AR', 'MO', 'TN', 'KY', 'IL', 'IN', 'OH', 'SC', 'NC', 'VA', 'WV', 'PA', 'NY', 'VT', 'NH', 'ME', 'MA', 'RI', 'CT', 'NJ', 'DE', 'MD', 'GA', 'FL', 'AL', 'MS', 'LA', 'HI', 'other'
   ];
@@ -73,54 +73,54 @@ export function validateLocation(value: any): { isValid: boolean; message?: stri
   return { isValid: true };
 }
 
-export function validateSeismicZone(value: any): { isValid: boolean; message?: string } {
+export function validateSeismicZone(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   const validZones = ['zone-1', 'zone-2', 'zone-3', 'zone-4'];
   if (!validZones.includes(value)) return { isValid: false, message: 'Please select a valid seismic zone' };
   return { isValid: true };
 }
 
-export function validateBuildingType(value: any): { isValid: boolean; message?: string } {
+export function validateBuildingType(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   const validTypes = ['wood-frame', 'steel-frame', 'concrete', 'masonry', 'mixed', 'manufactured'];
   if (!validTypes.includes(value)) return { isValid: false, message: 'Please select a valid building type' };
   return { isValid: true };
 }
 
-export function validateFoundationType(value: any): { isValid: boolean; message?: string } {
+export function validateFoundationType(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   const validTypes = ['slab', 'crawlspace', 'basement', 'pier-beam', 'post-tension'];
   if (!validTypes.includes(value)) return { isValid: false, message: 'Please select a valid foundation type' };
   return { isValid: true };
 }
 
-export function validateSoilType(value: any): { isValid: boolean; message?: string } {
+export function validateSoilType(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   const validTypes = ['rock', 'hard-soil', 'soft-soil', 'fill'];
   if (!validTypes.includes(value)) return { isValid: false, message: 'Please select a valid soil type' };
   return { isValid: true };
 }
 
-export function validateRetrofitStatus(value: any): { isValid: boolean; message?: string } {
+export function validateRetrofitStatus(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   const validStatuses = ['none', 'partial', 'complete', 'unknown'];
   if (!validStatuses.includes(value)) return { isValid: false, message: 'Please select a valid retrofit status' };
   return { isValid: true };
 }
 
-export function validateCoverageType(value: any): { isValid: boolean; message?: string } {
+export function validateCoverageType(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   const validTypes = ['building-only', 'contents-only', 'building-contents', 'loss-of-use', 'comprehensive'];
   if (!validTypes.includes(value)) return { isValid: false, message: 'Please select a valid coverage type' };
   return { isValid: true };
 }
 
-export function validateBusinessInterruption(value: any): { isValid: boolean; message?: string } {
+export function validateBusinessInterruption(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   if (!['yes', 'no'].includes(value)) return { isValid: false, message: 'Please select yes or no' };
   return { isValid: true };
 }
 
-export function validatePolicyType(value: any): { isValid: boolean; message?: string } {
+export function validatePolicyType(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   const validTypes = ['standalone', 'endorsement', 'commercial'];
   if (!validTypes.includes(value)) return { isValid: false, message: 'Please select a valid policy type' };
   return { isValid: true };
 }
 
-export function validateClaimsHistory(value: any): { isValid: boolean; message?: string } {
+export function validateClaimsHistory(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   const validHistory = ['none', 'one', 'multiple'];
   if (!validHistory.includes(value)) return { isValid: false, message: 'Please select a valid claims history' };
   return { isValid: true };

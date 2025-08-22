@@ -1,6 +1,6 @@
 import { CalculatorInputs } from '../../../types/calculator';
 
-export function validatePurchasePrice(value: any): { isValid: boolean; message?: string } {
+export function validatePurchasePrice(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   const numValue = Number(value);
   if (isNaN(numValue)) {
     return { isValid: false, message: 'Purchase price must be a number' };
@@ -14,7 +14,7 @@ export function validatePurchasePrice(value: any): { isValid: boolean; message?:
   return { isValid: true };
 }
 
-export function validateDownPayment(value: any): { isValid: boolean; message?: string } {
+export function validateDownPayment(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   const numValue = Number(value);
   if (isNaN(numValue)) {
     return { isValid: false, message: 'Down payment must be a number' };
@@ -28,7 +28,7 @@ export function validateDownPayment(value: any): { isValid: boolean; message?: s
   return { isValid: true };
 }
 
-export function validateInterestRate(value: any): { isValid: boolean; message?: string } {
+export function validateInterestRate(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   const numValue = Number(value);
   if (isNaN(numValue)) {
     return { isValid: false, message: 'Interest rate must be a number' };
@@ -42,7 +42,7 @@ export function validateInterestRate(value: any): { isValid: boolean; message?: 
   return { isValid: true };
 }
 
-export function validateLoanTerm(value: any): { isValid: boolean; message?: string } {
+export function validateLoanTerm(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   const numValue = Number(value);
   if (isNaN(numValue)) {
     return { isValid: false, message: 'Loan term must be a number' };
@@ -56,7 +56,7 @@ export function validateLoanTerm(value: any): { isValid: boolean; message?: stri
   return { isValid: true };
 }
 
-export function validateRenovationBudget(value: any): { isValid: boolean; message?: string } {
+export function validateRenovationBudget(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   const numValue = Number(value);
   if (isNaN(numValue)) {
     return { isValid: false, message: 'Renovation budget must be a number' };
@@ -70,7 +70,7 @@ export function validateRenovationBudget(value: any): { isValid: boolean; messag
   return { isValid: true };
 }
 
-export function validateRenovationTime(value: any): { isValid: boolean; message?: string } {
+export function validateRenovationTime(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   const numValue = Number(value);
   if (isNaN(numValue)) {
     return { isValid: false, message: 'Renovation time must be a number' };
@@ -84,7 +84,7 @@ export function validateRenovationTime(value: any): { isValid: boolean; message?
   return { isValid: true };
 }
 
-export function validateAfterRepairValue(value: any): { isValid: boolean; message?: string } {
+export function validateAfterRepairValue(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   const numValue = Number(value);
   if (isNaN(numValue)) {
     return { isValid: false, message: 'After repair value must be a number' };
@@ -98,7 +98,7 @@ export function validateAfterRepairValue(value: any): { isValid: boolean; messag
   return { isValid: true };
 }
 
-export function validateSellingCosts(value: any): { isValid: boolean; message?: string } {
+export function validateSellingCosts(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   const numValue = Number(value);
   if (isNaN(numValue)) {
     return { isValid: false, message: 'Selling costs must be a number' };
@@ -112,7 +112,7 @@ export function validateSellingCosts(value: any): { isValid: boolean; message?: 
   return { isValid: true };
 }
 
-export function validateHoldingCosts(value: any): { isValid: boolean; message?: string } {
+export function validateHoldingCosts(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   const numValue = Number(value);
   if (isNaN(numValue)) {
     return { isValid: false, message: 'Monthly holding costs must be a number' };
@@ -126,7 +126,7 @@ export function validateHoldingCosts(value: any): { isValid: boolean; message?: 
   return { isValid: true };
 }
 
-export function validatePropertyType(value: any): { isValid: boolean; message?: string } {
+export function validatePropertyType(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   const validTypes = ['single-family', 'duplex', 'townhouse', 'condo', 'multi-family', 'commercial'];
   if (!validTypes.includes(value)) {
     return { isValid: false, message: 'Please select a valid property type' };
@@ -134,7 +134,7 @@ export function validatePropertyType(value: any): { isValid: boolean; message?: 
   return { isValid: true };
 }
 
-export function validatePropertyCondition(value: any): { isValid: boolean; message?: string } {
+export function validatePropertyCondition(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   const validConditions = ['excellent', 'good', 'fair', 'poor', 'needs-major-repairs'];
   if (!validConditions.includes(value)) {
     return { isValid: false, message: 'Please select a valid property condition' };
@@ -142,7 +142,7 @@ export function validatePropertyCondition(value: any): { isValid: boolean; messa
   return { isValid: true };
 }
 
-export function validateMarketType(value: any): { isValid: boolean; message?: string } {
+export function validateMarketType(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   const validTypes = ['hot', 'stable', 'slow', 'declining'];
   if (!validTypes.includes(value)) {
     return { isValid: false, message: 'Please select a valid market type' };
@@ -150,7 +150,7 @@ export function validateMarketType(value: any): { isValid: boolean; message?: st
   return { isValid: true };
 }
 
-export function validateLocation(value: any): { isValid: boolean; message?: string } {
+export function validateLocation(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   if (!value || value.trim().length === 0) {
     return { isValid: false, message: 'Location is required' };
   }

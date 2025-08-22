@@ -5,7 +5,7 @@ export interface ValidationResult {
   message: string;
 }
 
-export function validatePropertySize(value: any): ValidationResult {
+export function validatePropertySize(value: any, allInputs?: Record<string, any>): ValidationResult {
   if (typeof value !== 'number' || isNaN(value)) {
     return { isValid: false, message: 'Property size must be a valid number' };
   }
@@ -18,7 +18,7 @@ export function validatePropertySize(value: any): ValidationResult {
   return { isValid: true, message: '' };
 }
 
-export function validatePurchasePrice(value: any): ValidationResult {
+export function validatePurchasePrice(value: any, allInputs?: Record<string, any>): ValidationResult {
   if (typeof value !== 'number' || isNaN(value)) {
     return { isValid: false, message: 'Purchase price must be a valid number' };
   }
@@ -47,7 +47,7 @@ export function validateDownPayment(value: any, purchasePrice?: number): Validat
   return { isValid: true, message: '' };
 }
 
-export function validateInterestRate(value: any): ValidationResult {
+export function validateInterestRate(value: any, allInputs?: Record<string, any>): ValidationResult {
   if (typeof value !== 'number' || isNaN(value)) {
     return { isValid: false, message: 'Interest rate must be a valid number' };
   }
@@ -60,7 +60,7 @@ export function validateInterestRate(value: any): ValidationResult {
   return { isValid: true, message: '' };
 }
 
-export function validateLoanTerm(value: any): ValidationResult {
+export function validateLoanTerm(value: any, allInputs?: Record<string, any>): ValidationResult {
   if (typeof value !== 'number' || isNaN(value)) {
     return { isValid: false, message: 'Loan term must be a valid number' };
   }
@@ -73,14 +73,14 @@ export function validateLoanTerm(value: any): ValidationResult {
   return { isValid: true, message: '' };
 }
 
-export function validateTimberType(value: any): ValidationResult {
+export function validateTimberType(value: any, allInputs?: Record<string, any>): ValidationResult {
   if (typeof value !== 'string' || !value) {
     return { isValid: false, message: 'Timber type must be selected' };
   }
   return { isValid: true, message: '' };
 }
 
-export function validateCurrentStandAge(value: any): ValidationResult {
+export function validateCurrentStandAge(value: any, allInputs?: Record<string, any>): ValidationResult {
   if (typeof value !== 'number' || isNaN(value)) {
     return { isValid: false, message: 'Current stand age must be a valid number' };
   }
@@ -109,7 +109,7 @@ export function validateRotationAge(value: any, currentStandAge?: number): Valid
   return { isValid: true, message: '' };
 }
 
-export function validateCurrentVolume(value: any): ValidationResult {
+export function validateCurrentVolume(value: any, allInputs?: Record<string, any>): ValidationResult {
   if (typeof value !== 'number' || isNaN(value)) {
     return { isValid: false, message: 'Current volume must be a valid number' };
   }
@@ -138,7 +138,7 @@ export function validateMatureVolume(value: any, currentVolume?: number): Valida
   return { isValid: true, message: '' };
 }
 
-export function validateTimberPrice(value: any): ValidationResult {
+export function validateTimberPrice(value: any, allInputs?: Record<string, any>): ValidationResult {
   if (typeof value !== 'number' || isNaN(value)) {
     return { isValid: false, message: 'Timber price must be a valid number' };
   }
@@ -151,7 +151,7 @@ export function validateTimberPrice(value: any): ValidationResult {
   return { isValid: true, message: '' };
 }
 
-export function validatePriceGrowthRate(value: any): ValidationResult {
+export function validatePriceGrowthRate(value: any, allInputs?: Record<string, any>): ValidationResult {
   if (typeof value !== 'number' || isNaN(value)) {
     return { isValid: false, message: 'Price growth rate must be a valid number' };
   }
@@ -164,7 +164,7 @@ export function validatePriceGrowthRate(value: any): ValidationResult {
   return { isValid: true, message: '' };
 }
 
-export function validateVolumeGrowthRate(value: any): ValidationResult {
+export function validateVolumeGrowthRate(value: any, allInputs?: Record<string, any>): ValidationResult {
   if (typeof value !== 'number' || isNaN(value)) {
     return { isValid: false, message: 'Volume growth rate must be a valid number' };
   }
@@ -177,7 +177,7 @@ export function validateVolumeGrowthRate(value: any): ValidationResult {
   return { isValid: true, message: '' };
 }
 
-export function validateHarvestCosts(value: any): ValidationResult {
+export function validateHarvestCosts(value: any, allInputs?: Record<string, any>): ValidationResult {
   if (typeof value !== 'number' || isNaN(value)) {
     return { isValid: false, message: 'Harvest costs must be a valid number' };
   }
@@ -190,7 +190,7 @@ export function validateHarvestCosts(value: any): ValidationResult {
   return { isValid: true, message: '' };
 }
 
-export function validateReplantingCosts(value: any): ValidationResult {
+export function validateReplantingCosts(value: any, allInputs?: Record<string, any>): ValidationResult {
   if (typeof value !== 'number' || isNaN(value)) {
     return { isValid: false, message: 'Replanting costs must be a valid number' };
   }
@@ -203,7 +203,7 @@ export function validateReplantingCosts(value: any): ValidationResult {
   return { isValid: true, message: '' };
 }
 
-export function validateAnnualExpenses(value: any): ValidationResult {
+export function validateAnnualExpenses(value: any, allInputs?: Record<string, any>): ValidationResult {
   if (typeof value !== 'number' || isNaN(value)) {
     return { isValid: false, message: 'Annual expenses must be a valid number' };
   }
@@ -216,7 +216,7 @@ export function validateAnnualExpenses(value: any): ValidationResult {
   return { isValid: true, message: '' };
 }
 
-export function validatePropertyTaxes(value: any): ValidationResult {
+export function validatePropertyTaxes(value: any, allInputs?: Record<string, any>): ValidationResult {
   if (typeof value !== 'number' || isNaN(value)) {
     return { isValid: false, message: 'Property taxes must be a valid number' };
   }
@@ -229,7 +229,7 @@ export function validatePropertyTaxes(value: any): ValidationResult {
   return { isValid: true, message: '' };
 }
 
-export function validateInsurance(value: any): ValidationResult {
+export function validateInsurance(value: any, allInputs?: Record<string, any>): ValidationResult {
   if (typeof value !== 'number' || isNaN(value)) {
     return { isValid: false, message: 'Insurance must be a valid number' };
   }
@@ -242,7 +242,7 @@ export function validateInsurance(value: any): ValidationResult {
   return { isValid: true, message: '' };
 }
 
-export function validateManagementFee(value: any): ValidationResult {
+export function validateManagementFee(value: any, allInputs?: Record<string, any>): ValidationResult {
   if (typeof value !== 'number' || isNaN(value)) {
     return { isValid: false, message: 'Management fee must be a valid number' };
   }
@@ -255,7 +255,7 @@ export function validateManagementFee(value: any): ValidationResult {
   return { isValid: true, message: '' };
 }
 
-export function validateAppreciationRate(value: any): ValidationResult {
+export function validateAppreciationRate(value: any, allInputs?: Record<string, any>): ValidationResult {
   if (typeof value !== 'number' || isNaN(value)) {
     return { isValid: false, message: 'Appreciation rate must be a valid number' };
   }
@@ -268,7 +268,7 @@ export function validateAppreciationRate(value: any): ValidationResult {
   return { isValid: true, message: '' };
 }
 
-export function validateAnalysisPeriod(value: any): ValidationResult {
+export function validateAnalysisPeriod(value: any, allInputs?: Record<string, any>): ValidationResult {
   if (typeof value !== 'number' || isNaN(value)) {
     return { isValid: false, message: 'Analysis period must be a valid number' };
   }
@@ -281,7 +281,7 @@ export function validateAnalysisPeriod(value: any): ValidationResult {
   return { isValid: true, message: '' };
 }
 
-export function validateHarvestSchedule(value: any): ValidationResult {
+export function validateHarvestSchedule(value: any, allInputs?: Record<string, any>): ValidationResult {
   if (typeof value !== 'string' || !value) {
     return { isValid: false, message: 'Harvest schedule must be selected' };
   }

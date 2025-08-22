@@ -1,214 +1,214 @@
 import { CalculatorInputs } from '../../../types/calculator';
 
 // Individual field validation functions
-export function validateHomePrice(value: number): string | null {
+export function validateHomePrice(value: number, allInputs?: Record<string, any>): string | null {
   if (!value || value <= 0) return 'Home price must be greater than 0';
   if (value > 10000000) return 'Home price cannot exceed $10,000,000';
   return null;
 }
 
-export function validateDownPayment(value: number): string | null {
+export function validateDownPayment(value: number, allInputs?: Record<string, any>): string | null {
   if (!value || value < 0) return 'Down payment must be greater than or equal to 0';
   if (value > 10000000) return 'Down payment cannot exceed $10,000,000';
   return null;
 }
 
-export function validateDownPaymentPercent(value: number): string | null {
+export function validateDownPaymentPercent(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Down payment percentage cannot be negative';
   if (value > 100) return 'Down payment percentage cannot exceed 100%';
   return null;
 }
 
-export function validateClosingCosts(value: number): string | null {
+export function validateClosingCosts(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Closing costs cannot be negative';
   if (value > 100000) return 'Closing costs cannot exceed $100,000';
   return null;
 }
 
-export function validateClosingCostsPercent(value: number): string | null {
+export function validateClosingCostsPercent(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Closing costs percentage cannot be negative';
   if (value > 10) return 'Closing costs percentage cannot exceed 10%';
   return null;
 }
 
-export function validateLoanAmount(value: number): string | null {
+export function validateLoanAmount(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Loan amount cannot be negative';
   if (value > 10000000) return 'Loan amount cannot exceed $10,000,000';
   return null;
 }
 
-export function validateInterestRate(value: number): string | null {
+export function validateInterestRate(value: number, allInputs?: Record<string, any>): string | null {
   if (!value || value < 0) return 'Interest rate must be greater than or equal to 0';
   if (value > 20) return 'Interest rate cannot exceed 20%';
   return null;
 }
 
-export function validateLoanTerm(value: number): string | null {
+export function validateLoanTerm(value: number, allInputs?: Record<string, any>): string | null {
   if (!value || value < 1) return 'Loan term must be at least 1 year';
   if (value > 50) return 'Loan term cannot exceed 50 years';
   return null;
 }
 
-export function validatePMI(value: number): string | null {
+export function validatePMI(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'PMI cannot be negative';
   if (value > 1000) return 'PMI cannot exceed $1,000';
   return null;
 }
 
-export function validatePMIRate(value: number): string | null {
+export function validatePMIRate(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'PMI rate cannot be negative';
   if (value > 2) return 'PMI rate cannot exceed 2%';
   return null;
 }
 
-export function validateMonthlyRent(value: number): string | null {
+export function validateMonthlyRent(value: number, allInputs?: Record<string, any>): string | null {
   if (!value || value <= 0) return 'Monthly rent must be greater than 0';
   if (value > 50000) return 'Monthly rent cannot exceed $50,000';
   return null;
 }
 
-export function validateRentIncreaseRate(value: number): string | null {
+export function validateRentIncreaseRate(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Rent increase rate cannot be negative';
   if (value > 20) return 'Rent increase rate cannot exceed 20%';
   return null;
 }
 
-export function validateRentersInsurance(value: number): string | null {
+export function validateRentersInsurance(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Renters insurance cannot be negative';
   if (value > 500) return 'Renters insurance cannot exceed $500';
   return null;
 }
 
-export function validateSecurityDeposit(value: number): string | null {
+export function validateSecurityDeposit(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Security deposit cannot be negative';
   if (value > 10000) return 'Security deposit cannot exceed $10,000';
   return null;
 }
 
-export function validatePropertyTaxes(value: number): string | null {
+export function validatePropertyTaxes(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Property taxes cannot be negative';
   if (value > 50000) return 'Property taxes cannot exceed $50,000';
   return null;
 }
 
-export function validatePropertyTaxRate(value: number): string | null {
+export function validatePropertyTaxRate(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Property tax rate cannot be negative';
   if (value > 5) return 'Property tax rate cannot exceed 5%';
   return null;
 }
 
-export function validateHomeownersInsurance(value: number): string | null {
+export function validateHomeownersInsurance(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Homeowners insurance cannot be negative';
   if (value > 10000) return 'Homeowners insurance cannot exceed $10,000';
   return null;
 }
 
-export function validateHOAFees(value: number): string | null {
+export function validateHOAFees(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'HOA fees cannot be negative';
   if (value > 2000) return 'HOA fees cannot exceed $2,000';
   return null;
 }
 
-export function validateMaintenance(value: number): string | null {
+export function validateMaintenance(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Maintenance cannot be negative';
   if (value > 5000) return 'Maintenance cannot exceed $5,000';
   return null;
 }
 
-export function validateMaintenancePercent(value: number): string | null {
+export function validateMaintenancePercent(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Maintenance percentage cannot be negative';
   if (value > 5) return 'Maintenance percentage cannot exceed 5%';
   return null;
 }
 
-export function validateUtilities(value: number): string | null {
+export function validateUtilities(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Utilities cannot be negative';
   if (value > 2000) return 'Utilities cannot exceed $2,000';
   return null;
 }
 
-export function validateHomeAppreciationRate(value: number): string | null {
+export function validateHomeAppreciationRate(value: number, allInputs?: Record<string, any>): string | null {
   if (value < -20) return 'Home appreciation rate cannot be less than -20%';
   if (value > 20) return 'Home appreciation rate cannot exceed 20%';
   return null;
 }
 
-export function validateInflationRate(value: number): string | null {
+export function validateInflationRate(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Inflation rate cannot be negative';
   if (value > 10) return 'Inflation rate cannot exceed 10%';
   return null;
 }
 
-export function validateInvestmentReturn(value: number): string | null {
+export function validateInvestmentReturn(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Investment return cannot be negative';
   if (value > 20) return 'Investment return cannot exceed 20%';
   return null;
 }
 
-export function validateSellingCosts(value: number): string | null {
+export function validateSellingCosts(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Selling costs cannot be negative';
   if (value > 15) return 'Selling costs cannot exceed 15%';
   return null;
 }
 
-export function validateTimeHorizon(value: number): string | null {
+export function validateTimeHorizon(value: number, allInputs?: Record<string, any>): string | null {
   if (!value || value < 1) return 'Time horizon must be at least 1 year';
   if (value > 50) return 'Time horizon cannot exceed 50 years';
   return null;
 }
 
-export function validateAnalysisPeriod(value: string): string | null {
+export function validateAnalysisPeriod(value: string, allInputs?: Record<string, any>): string | null {
   const validPeriods = ['1-year', '3-year', '5-year', '7-year', '10-year', '15-year', '30-year'];
   if (!value) return 'Analysis period is required';
   if (!validPeriods.includes(value)) return 'Invalid analysis period';
   return null;
 }
 
-export function validateMarginalTaxRate(value: number): string | null {
+export function validateMarginalTaxRate(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Marginal tax rate cannot be negative';
   if (value > 50) return 'Marginal tax rate cannot exceed 50%';
   return null;
 }
 
-export function validateStateTaxRate(value: number): string | null {
+export function validateStateTaxRate(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'State tax rate cannot be negative';
   if (value > 15) return 'State tax rate cannot exceed 15%';
   return null;
 }
 
-export function validatePropertyTaxDeductible(value: string): string | null {
+export function validatePropertyTaxDeductible(value: string, allInputs?: Record<string, any>): string | null {
   const validDeductions = ['yes', 'no', 'partial'];
   if (!value) return 'Property tax deductible is required';
   if (!validDeductions.includes(value)) return 'Invalid property tax deductible';
   return null;
 }
 
-export function validateCurrentSavings(value: number): string | null {
+export function validateCurrentSavings(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Current savings cannot be negative';
   if (value > 10000000) return 'Current savings cannot exceed $10,000,000';
   return null;
 }
 
-export function validateMonthlySavings(value: number): string | null {
+export function validateMonthlySavings(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Monthly savings cannot be negative';
   if (value > 50000) return 'Monthly savings cannot exceed $50,000';
   return null;
 }
 
-export function validateEmergencyFund(value: number): string | null {
+export function validateEmergencyFund(value: number, allInputs?: Record<string, any>): string | null {
   if (value < 0) return 'Emergency fund cannot be negative';
   if (value > 100000) return 'Emergency fund cannot exceed $100,000';
   return null;
 }
 
-export function validateLifestylePreference(value: string): string | null {
+export function validateLifestylePreference(value: string, allInputs?: Record<string, any>): string | null {
   const validPreferences = ['flexibility', 'stability', 'neutral'];
   if (!value) return 'Lifestyle preference is required';
   if (!validPreferences.includes(value)) return 'Invalid lifestyle preference';
   return null;
 }
 
-export function validateMaintenancePreference(value: string): string | null {
+export function validateMaintenancePreference(value: string, allInputs?: Record<string, any>): string | null {
   const validPreferences = ['avoid', 'handle', 'neutral'];
   if (!value) return 'Maintenance preference is required';
   if (!validPreferences.includes(value)) return 'Invalid maintenance preference';

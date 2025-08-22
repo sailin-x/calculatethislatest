@@ -1,21 +1,21 @@
 import { CalculatorInputs } from '../../../types/calculator';
 
 // Individual field validation functions
-export function validateBorrowerAge(value: number): string | null {
+export function validateBorrowerAge(value: number, allInputs?: Record<string, any>): string | null {
   if (!value) return 'Borrower age is required';
   if (value < 62) return 'Borrower must be at least 62 years old for a reverse mortgage';
   if (value > 100) return 'Borrower age cannot exceed 100 years';
   return null;
 }
 
-export function validateSpouseAge(value: number): string | null {
+export function validateSpouseAge(value: number, allInputs?: Record<string, any>): string | null {
   if (value === undefined || value === null) return null;
   if (value < 62) return 'Spouse must be at least 62 years old to be a co-borrower';
   if (value > 100) return 'Spouse age cannot exceed 100 years';
   return null;
 }
 
-export function validateMaritalStatus(value: string): string | null {
+export function validateMaritalStatus(value: string, allInputs?: Record<string, any>): string | null {
   if (!value) return 'Marital status is required';
   const validStatuses = ['single', 'married', 'divorced', 'widowed'];
   if (!validStatuses.includes(value)) {
@@ -24,7 +24,7 @@ export function validateMaritalStatus(value: string): string | null {
   return null;
 }
 
-export function validateOccupancyType(value: string): string | null {
+export function validateOccupancyType(value: string, allInputs?: Record<string, any>): string | null {
   if (!value) return 'Occupancy type is required';
   const validOccupancy = ['primary', 'secondary', 'investment'];
   if (!validOccupancy.includes(value)) {
@@ -33,14 +33,14 @@ export function validateOccupancyType(value: string): string | null {
   return null;
 }
 
-export function validatePropertyValue(value: number): string | null {
+export function validatePropertyValue(value: number, allInputs?: Record<string, any>): string | null {
   if (!value) return 'Property value is required';
   if (value < 100000) return 'Property value must be at least $100,000';
   if (value > 10000000) return 'Property value cannot exceed $10,000,000';
   return null;
 }
 
-export function validatePropertyType(value: string): string | null {
+export function validatePropertyType(value: string, allInputs?: Record<string, any>): string | null {
   if (!value) return 'Property type is required';
   const validTypes = ['single-family', 'condo', 'townhouse', 'manufactured', 'multi-unit'];
   if (!validTypes.includes(value)) {
@@ -49,14 +49,14 @@ export function validatePropertyType(value: string): string | null {
   return null;
 }
 
-export function validatePropertyAge(value: number): string | null {
+export function validatePropertyAge(value: number, allInputs?: Record<string, any>): string | null {
   if (value === undefined || value === null) return null;
   if (value < 0) return 'Property age cannot be negative';
   if (value > 200) return 'Property age cannot exceed 200 years';
   return null;
 }
 
-export function validateLocation(value: string): string | null {
+export function validateLocation(value: string, allInputs?: Record<string, any>): string | null {
   if (!value) return 'Property location is required';
   const validLocations = ['urban', 'suburban', 'rural'];
   if (!validLocations.includes(value)) {
@@ -65,28 +65,28 @@ export function validateLocation(value: string): string | null {
   return null;
 }
 
-export function validateExistingMortgage(value: number): string | null {
+export function validateExistingMortgage(value: number, allInputs?: Record<string, any>): string | null {
   if (value === undefined || value === null) return null;
   if (value < 0) return 'Existing mortgage balance cannot be negative';
   if (value > 5000000) return 'Existing mortgage balance cannot exceed $5,000,000';
   return null;
 }
 
-export function validateExistingPayment(value: number): string | null {
+export function validateExistingPayment(value: number, allInputs?: Record<string, any>): string | null {
   if (value === undefined || value === null) return null;
   if (value < 0) return 'Existing monthly payment cannot be negative';
   if (value > 10000) return 'Existing monthly payment cannot exceed $10,000';
   return null;
 }
 
-export function validateOtherLiens(value: number): string | null {
+export function validateOtherLiens(value: number, allInputs?: Record<string, any>): string | null {
   if (value === undefined || value === null) return null;
   if (value < 0) return 'Other liens cannot be negative';
   if (value > 1000000) return 'Other liens cannot exceed $1,000,000';
   return null;
 }
 
-export function validateLoanType(value: string): string | null {
+export function validateLoanType(value: string, allInputs?: Record<string, any>): string | null {
   if (!value) return 'Loan type is required';
   const validLoanTypes = ['hecm', 'proprietary', 'single-purpose'];
   if (!validLoanTypes.includes(value)) {
@@ -95,7 +95,7 @@ export function validateLoanType(value: string): string | null {
   return null;
 }
 
-export function validatePaymentOption(value: string): string | null {
+export function validatePaymentOption(value: string, allInputs?: Record<string, any>): string | null {
   if (!value) return 'Payment option is required';
   const validOptions = ['tenure', 'term', 'line-of-credit', 'modified-tenure', 'modified-term'];
   if (!validOptions.includes(value)) {
@@ -104,21 +104,21 @@ export function validatePaymentOption(value: string): string | null {
   return null;
 }
 
-export function validateTermYears(value: number): string | null {
+export function validateTermYears(value: number, allInputs?: Record<string, any>): string | null {
   if (value === undefined || value === null) return null;
   if (value < 1) return 'Term length must be at least 1 year';
   if (value > 30) return 'Term length cannot exceed 30 years';
   return null;
 }
 
-export function validateInterestRate(value: number): string | null {
+export function validateInterestRate(value: number, allInputs?: Record<string, any>): string | null {
   if (!value) return 'Interest rate is required';
   if (value < 1) return 'Interest rate must be at least 1%';
   if (value > 15) return 'Interest rate cannot exceed 15%';
   return null;
 }
 
-export function validateRateType(value: string): string | null {
+export function validateRateType(value: string, allInputs?: Record<string, any>): string | null {
   if (!value) return 'Rate type is required';
   const validRateTypes = ['fixed', 'adjustable'];
   if (!validRateTypes.includes(value)) {
@@ -127,70 +127,70 @@ export function validateRateType(value: string): string | null {
   return null;
 }
 
-export function validateMonthlyIncome(value: number): string | null {
+export function validateMonthlyIncome(value: number, allInputs?: Record<string, any>): string | null {
   if (value === undefined || value === null) return null;
   if (value < 0) return 'Monthly income cannot be negative';
   if (value > 100000) return 'Monthly income cannot exceed $100,000';
   return null;
 }
 
-export function validateMonthlyExpenses(value: number): string | null {
+export function validateMonthlyExpenses(value: number, allInputs?: Record<string, any>): string | null {
   if (value === undefined || value === null) return null;
   if (value < 0) return 'Monthly expenses cannot be negative';
   if (value > 50000) return 'Monthly expenses cannot exceed $50,000';
   return null;
 }
 
-export function validateSavings(value: number): string | null {
+export function validateSavings(value: number, allInputs?: Record<string, any>): string | null {
   if (value === undefined || value === null) return null;
   if (value < 0) return 'Savings cannot be negative';
   if (value > 10000000) return 'Savings cannot exceed $10,000,000';
   return null;
 }
 
-export function validateOtherAssets(value: number): string | null {
+export function validateOtherAssets(value: number, allInputs?: Record<string, any>): string | null {
   if (value === undefined || value === null) return null;
   if (value < 0) return 'Other assets cannot be negative';
   if (value > 10000000) return 'Other assets cannot exceed $10,000,000';
   return null;
 }
 
-export function validateOriginationFee(value: number): string | null {
+export function validateOriginationFee(value: number, allInputs?: Record<string, any>): string | null {
   if (value === undefined || value === null) return null;
   if (value < 0) return 'Origination fee cannot be negative';
   if (value > 100000) return 'Origination fee cannot exceed $100,000';
   return null;
 }
 
-export function validateMortgageInsurance(value: number): string | null {
+export function validateMortgageInsurance(value: number, allInputs?: Record<string, any>): string | null {
   if (value === undefined || value === null) return null;
   if (value < 0) return 'Mortgage insurance premium cannot be negative';
   if (value > 100000) return 'Mortgage insurance premium cannot exceed $100,000';
   return null;
 }
 
-export function validateClosingCosts(value: number): string | null {
+export function validateClosingCosts(value: number, allInputs?: Record<string, any>): string | null {
   if (value === undefined || value === null) return null;
   if (value < 0) return 'Closing costs cannot be negative';
   if (value > 50000) return 'Closing costs cannot exceed $50,000';
   return null;
 }
 
-export function validateAnalysisPeriod(value: number): string | null {
+export function validateAnalysisPeriod(value: number, allInputs?: Record<string, any>): string | null {
   if (value === undefined || value === null) return null;
   if (value < 1) return 'Analysis period must be at least 1 year';
   if (value > 30) return 'Analysis period cannot exceed 30 years';
   return null;
 }
 
-export function validatePropertyAppreciation(value: number): string | null {
+export function validatePropertyAppreciation(value: number, allInputs?: Record<string, any>): string | null {
   if (value === undefined || value === null) return null;
   if (value < -10) return 'Property appreciation rate cannot be less than -10%';
   if (value > 15) return 'Property appreciation rate cannot exceed 15%';
   return null;
 }
 
-export function validateInflationRate(value: number): string | null {
+export function validateInflationRate(value: number, allInputs?: Record<string, any>): string | null {
   if (value === undefined || value === null) return null;
   if (value < 0) return 'Inflation rate cannot be negative';
   if (value > 10) return 'Inflation rate cannot exceed 10%';
