@@ -22,6 +22,7 @@ import { FourZeroOneKCalculator as fourZeroOneKCalculator } from './finance/401k
 import { FourZeroOneKCompanyMatchROICalculator as fourZeroOneKCompanyMatchROICalculator } from './finance/401k-company-match-roi';
 import { FourZeroOneKPlanCalculator as fourZeroOneKPlanCalculator } from './finance/401k-plan';
 import { FourZeroOneKRolloverCalculator as fourZeroOneKRolloverCalculator } from './finance/401k-rollover';
+import { MezzanineFinancingCalculator as mezzanineFinancingCalculator } from './finance/mezzanine-financing';
 
 // Legal calculators
 import { personalInjuryCalculator } from './legal/personal-injury';
@@ -76,6 +77,7 @@ export function registerAllCalculators(): void {
   calculatorRegistry.register(fourZeroOneKCompanyMatchROICalculator);
   calculatorRegistry.register(fourZeroOneKPlanCalculator);
 calculatorRegistry.register(fourZeroOneKRolloverCalculator);
+calculatorRegistry.register(mezzanineFinancingCalculator);
   
   // Legal & Settlement calculators
   calculatorRegistry.register(personalInjuryCalculator);
