@@ -8,7 +8,7 @@ export const validateMezzanineFinancingInputs = (inputs: Record<string, any>): V
   rules.push(
     ValidationRuleFactory.createRule(
       'projectValue',
-      (value: any) => typeof value === 'number' && !isNaN(value) && value >= 100000 && value <= 1000000000,
+      (value: any, allInputs?: Record<string, any>) => typeof value === 'number' && !isNaN(value) && value >= 100000 && value <= 1000000000,
       'Project value must be between $100,000 and $1,000,000,000',
       inputs
     )
@@ -18,11 +18,11 @@ export const validateMezzanineFinancingInputs = (inputs: Record<string, any>): V
   rules.push(
     ValidationRuleFactory.createRule(
       'seniorLoanAmount',
-      (value: any) => {
+      (value: any, allInputs?: Record<string, any>) => {
         if (typeof value !== 'number' || isNaN(value) || value < 0) {
           return false;
         }
-        return inputs.projectValue ? value <= inputs.projectValue : true;
+        return allInputs?.projectValue ? value <= allInputs.projectValue : true;
       },
       'Senior loan amount must be a valid number and cannot exceed project value',
       inputs
@@ -33,11 +33,11 @@ export const validateMezzanineFinancingInputs = (inputs: Record<string, any>): V
   rules.push(
     ValidationRuleFactory.createRule(
       'mezzanineLoanAmount',
-      (value: any) => {
+      (value: any, allInputs?: Record<string, any>) => {
         if (typeof value !== 'number' || isNaN(value) || value < 0) {
           return false;
         }
-        return inputs.projectValue ? value <= inputs.projectValue : true;
+        return allInputs?.projectValue ? value <= allInputs.projectValue : true;
       },
       'Mezzanine loan amount must be a valid number and cannot exceed project value',
       inputs
@@ -48,7 +48,7 @@ export const validateMezzanineFinancingInputs = (inputs: Record<string, any>): V
   rules.push(
     ValidationRuleFactory.createRule(
       'equityContribution',
-      (value: any) => typeof value === 'number' && !isNaN(value) && value >= 0,
+      (value: any, allInputs?: Record<string, any>) => typeof value === 'number' && !isNaN(value) && value >= 0,
       'Equity contribution must be a valid non-negative number',
       inputs
     )
@@ -58,7 +58,7 @@ export const validateMezzanineFinancingInputs = (inputs: Record<string, any>): V
   rules.push(
     ValidationRuleFactory.createRule(
       'seniorLoanRate',
-      (value: any) => typeof value === 'number' && !isNaN(value) && value >= 0 && value <= 20,
+      (value: any, allInputs?: Record<string, any>) => typeof value === 'number' && !isNaN(value) && value >= 0 && value <= 20,
       'Senior loan rate must be between 0% and 20%',
       inputs
     )
@@ -68,7 +68,7 @@ export const validateMezzanineFinancingInputs = (inputs: Record<string, any>): V
   rules.push(
     ValidationRuleFactory.createRule(
       'mezzanineLoanRate',
-      (value: any) => typeof value === 'number' && !isNaN(value) && value >= 0 && value <= 30,
+      (value: any, allInputs?: Record<string, any>) => typeof value === 'number' && !isNaN(value) && value >= 0 && value <= 30,
       'Mezzanine loan rate must be between 0% and 30%',
       inputs
     )
@@ -78,7 +78,7 @@ export const validateMezzanineFinancingInputs = (inputs: Record<string, any>): V
   rules.push(
     ValidationRuleFactory.createRule(
       'seniorLoanTerm',
-      (value: any) => typeof value === 'number' && !isNaN(value) && value >= 1 && value <= 50,
+      (value: any, allInputs?: Record<string, any>) => typeof value === 'number' && !isNaN(value) && value >= 1 && value <= 50,
       'Senior loan term must be between 1 and 50 years',
       inputs
     )
@@ -88,7 +88,7 @@ export const validateMezzanineFinancingInputs = (inputs: Record<string, any>): V
   rules.push(
     ValidationRuleFactory.createRule(
       'mezzanineLoanTerm',
-      (value: any) => typeof value === 'number' && !isNaN(value) && value >= 1 && value <= 20,
+      (value: any, allInputs?: Record<string, any>) => typeof value === 'number' && !isNaN(value) && value >= 1 && value <= 20,
       'Mezzanine loan term must be between 1 and 20 years',
       inputs
     )
@@ -98,7 +98,7 @@ export const validateMezzanineFinancingInputs = (inputs: Record<string, any>): V
   rules.push(
     ValidationRuleFactory.createRule(
       'projectTimeline',
-      (value: any) => typeof value === 'number' && !isNaN(value) && value >= 6 && value <= 60,
+      (value: any, allInputs?: Record<string, any>) => typeof value === 'number' && !isNaN(value) && value >= 6 && value <= 60,
       'Project timeline must be between 6 and 60 months',
       inputs
     )
@@ -108,7 +108,7 @@ export const validateMezzanineFinancingInputs = (inputs: Record<string, any>): V
   rules.push(
     ValidationRuleFactory.createRule(
       'expectedExitValue',
-      (value: any) => typeof value === 'number' && !isNaN(value) && value >= 0,
+      (value: any, allInputs?: Record<string, any>) => typeof value === 'number' && !isNaN(value) && value >= 0,
       'Expected exit value must be a valid non-negative number',
       inputs
     )
@@ -118,7 +118,7 @@ export const validateMezzanineFinancingInputs = (inputs: Record<string, any>): V
   rules.push(
     ValidationRuleFactory.createRule(
       'exitTimeline',
-      (value: any) => typeof value === 'number' && !isNaN(value) && value >= 12 && value <= 120,
+      (value: any, allInputs?: Record<string, any>) => typeof value === 'number' && !isNaN(value) && value >= 12 && value <= 120,
       'Exit timeline must be between 12 and 120 months',
       inputs
     )
@@ -128,7 +128,7 @@ export const validateMezzanineFinancingInputs = (inputs: Record<string, any>): V
   rules.push(
     ValidationRuleFactory.createRule(
       'mezzanineFees',
-      (value: any) => typeof value === 'number' && !isNaN(value) && value >= 0 && value <= 1000000,
+      (value: any, allInputs?: Record<string, any>) => typeof value === 'number' && !isNaN(value) && value >= 0 && value <= 1000000,
       'Mezzanine fees must be between $0 and $1,000,000',
       inputs
     )
@@ -138,7 +138,7 @@ export const validateMezzanineFinancingInputs = (inputs: Record<string, any>): V
   rules.push(
     ValidationRuleFactory.createRule(
       'mezzanineEquityKicker',
-      (value: any) => typeof value === 'number' && !isNaN(value) && value >= 0 && value <= 50,
+      (value: any, allInputs?: Record<string, any>) => typeof value === 'number' && !isNaN(value) && value >= 0 && value <= 50,
       'Mezzanine equity kicker must be between 0% and 50%',
       inputs
     )
@@ -148,7 +148,7 @@ export const validateMezzanineFinancingInputs = (inputs: Record<string, any>): V
   rules.push(
     ValidationRuleFactory.createRule(
       'operatingExpenses',
-      (value: any) => typeof value === 'number' && !isNaN(value) && value >= 0 && value <= 10000000,
+      (value: any, allInputs?: Record<string, any>) => typeof value === 'number' && !isNaN(value) && value >= 0 && value <= 10000000,
       'Operating expenses must be between $0 and $10,000,000',
       inputs
     )
@@ -158,7 +158,7 @@ export const validateMezzanineFinancingInputs = (inputs: Record<string, any>): V
   rules.push(
     ValidationRuleFactory.createRule(
       'vacancyRate',
-      (value: any) => typeof value === 'number' && !isNaN(value) && value >= 0 && value <= 50,
+      (value: any, allInputs?: Record<string, any>) => typeof value === 'number' && !isNaN(value) && value >= 0 && value <= 50,
       'Vacancy rate must be between 0% and 50%',
       inputs
     )
@@ -168,7 +168,7 @@ export const validateMezzanineFinancingInputs = (inputs: Record<string, any>): V
   rules.push(
     ValidationRuleFactory.createRule(
       'propertyTaxRate',
-      (value: any) => typeof value === 'number' && !isNaN(value) && value >= 0 && value <= 10,
+      (value: any, allInputs?: Record<string, any>) => typeof value === 'number' && !isNaN(value) && value >= 0 && value <= 10,
       'Property tax rate must be between 0% and 10%',
       inputs
     )
@@ -178,7 +178,7 @@ export const validateMezzanineFinancingInputs = (inputs: Record<string, any>): V
   rules.push(
     ValidationRuleFactory.createRule(
       'insuranceRate',
-      (value: any) => typeof value === 'number' && !isNaN(value) && value >= 0 && value <= 5,
+      (value: any, allInputs?: Record<string, any>) => typeof value === 'number' && !isNaN(value) && value >= 0 && value <= 5,
       'Insurance rate must be between 0% and 5%',
       inputs
     )
@@ -188,7 +188,7 @@ export const validateMezzanineFinancingInputs = (inputs: Record<string, any>): V
   rules.push(
     ValidationRuleFactory.createRule(
       'managementFee',
-      (value: any) => typeof value === 'number' && !isNaN(value) && value >= 0 && value <= 15,
+      (value: any, allInputs?: Record<string, any>) => typeof value === 'number' && !isNaN(value) && value >= 0 && value <= 15,
       'Management fee must be between 0% and 15%',
       inputs
     )
@@ -198,7 +198,7 @@ export const validateMezzanineFinancingInputs = (inputs: Record<string, any>): V
   rules.push(
     ValidationRuleFactory.createRule(
       'mezzanineLTV',
-      (value: any) => typeof value === 'number' && !isNaN(value) && value >= 0 && value <= 100,
+      (value: any, allInputs?: Record<string, any>) => typeof value === 'number' && !isNaN(value) && value >= 0 && value <= 100,
       'Mezzanine LTV must be between 0% and 100%',
       inputs
     )
@@ -208,7 +208,7 @@ export const validateMezzanineFinancingInputs = (inputs: Record<string, any>): V
   rules.push(
     ValidationRuleFactory.createRule(
       'seniorLTV',
-      (value: any) => typeof value === 'number' && !isNaN(value) && value >= 0 && value <= 100,
+      (value: any, allInputs?: Record<string, any>) => typeof value === 'number' && !isNaN(value) && value >= 0 && value <= 100,
       'Senior LTV must be between 0% and 100%',
       inputs
     )
@@ -218,7 +218,7 @@ export const validateMezzanineFinancingInputs = (inputs: Record<string, any>): V
   rules.push(
     ValidationRuleFactory.createRule(
       'mezzanineDSCR',
-      (value: any) => typeof value === 'number' && !isNaN(value) && value >= 1 && value <= 3,
+      (value: any, allInputs?: Record<string, any>) => typeof value === 'number' && !isNaN(value) && value >= 1 && value <= 3,
       'Mezzanine DSCR must be between 1.0 and 3.0',
       inputs
     )
@@ -228,7 +228,7 @@ export const validateMezzanineFinancingInputs = (inputs: Record<string, any>): V
   rules.push(
     ValidationRuleFactory.createRule(
       'seniorDSCR',
-      (value: any) => typeof value === 'number' && !isNaN(value) && value >= 1 && value <= 3,
+      (value: any, allInputs?: Record<string, any>) => typeof value === 'number' && !isNaN(value) && value >= 1 && value <= 3,
       'Senior DSCR must be between 1.0 and 3.0',
       inputs
     )
@@ -238,7 +238,7 @@ export const validateMezzanineFinancingInputs = (inputs: Record<string, any>): V
   rules.push(
     ValidationRuleFactory.createRule(
       'mezzaninePrepaymentPenalty',
-      (value: any) => typeof value === 'number' && !isNaN(value) && value >= 0 && value <= 10,
+      (value: any, allInputs?: Record<string, any>) => typeof value === 'number' && !isNaN(value) && value >= 0 && value <= 10,
       'Mezzanine prepayment penalty must be between 0% and 10%',
       inputs
     )
@@ -248,7 +248,7 @@ export const validateMezzanineFinancingInputs = (inputs: Record<string, any>): V
   rules.push(
     ValidationRuleFactory.createRule(
       'mezzanineOriginationFee',
-      (value: any) => typeof value === 'number' && !isNaN(value) && value >= 0 && value <= 10,
+      (value: any, allInputs?: Record<string, any>) => typeof value === 'number' && !isNaN(value) && value >= 0 && value <= 10,
       'Mezzanine origination fee must be between 0% and 10%',
       inputs
     )
@@ -258,7 +258,7 @@ export const validateMezzanineFinancingInputs = (inputs: Record<string, any>): V
   rules.push(
     ValidationRuleFactory.createRule(
       'mezzanineExitFee',
-      (value: any) => typeof value === 'number' && !isNaN(value) && value >= 0 && value <= 5,
+      (value: any, allInputs?: Record<string, any>) => typeof value === 'number' && !isNaN(value) && value >= 0 && value <= 5,
       'Mezzanine exit fee must be between 0% and 5%',
       inputs
     )
@@ -268,33 +268,33 @@ export const validateMezzanineFinancingInputs = (inputs: Record<string, any>): V
   rules.push(
     ValidationRuleFactory.createRule(
       'crossFieldValidation',
-      () => {
+      (value: any, allInputs?: Record<string, any>) => {
         // Validate total debt doesn't exceed project value
-        if (inputs.seniorLoanAmount && inputs.mezzanineLoanAmount && inputs.projectValue) {
-          const totalDebt = inputs.seniorLoanAmount + inputs.mezzanineLoanAmount;
-          if (totalDebt > inputs.projectValue) {
+        if (allInputs?.seniorLoanAmount && allInputs?.mezzanineLoanAmount && allInputs?.projectValue) {
+          const totalDebt = allInputs.seniorLoanAmount + allInputs.mezzanineLoanAmount;
+          if (totalDebt > allInputs.projectValue) {
             return false;
           }
         }
 
         // Validate total capitalization
-        if (inputs.seniorLoanAmount && inputs.mezzanineLoanAmount && inputs.equityContribution) {
-          const totalCap = inputs.seniorLoanAmount + inputs.mezzanineLoanAmount + inputs.equityContribution;
+        if (allInputs?.seniorLoanAmount && allInputs?.mezzanineLoanAmount && allInputs?.equityContribution) {
+          const totalCap = allInputs.seniorLoanAmount + allInputs.mezzanineLoanAmount + allInputs.equityContribution;
           if (totalCap <= 0) {
             return false;
           }
         }
 
         // Validate mezzanine rate is higher than senior rate
-        if (inputs.mezzanineLoanRate && inputs.seniorLoanRate) {
-          if (inputs.mezzanineLoanRate <= inputs.seniorLoanRate) {
+        if (allInputs?.mezzanineLoanRate && allInputs?.seniorLoanRate) {
+          if (allInputs.mezzanineLoanRate <= allInputs.seniorLoanRate) {
             return false;
           }
         }
 
         // Validate mezzanine term is shorter than senior term
-        if (inputs.mezzanineLoanTerm && inputs.seniorLoanTerm) {
-          if (inputs.mezzanineLoanTerm >= inputs.seniorLoanTerm) {
+        if (allInputs?.mezzanineLoanTerm && allInputs?.seniorLoanTerm) {
+          if (allInputs.mezzanineLoanTerm >= allInputs.seniorLoanTerm) {
             return false;
           }
         }
