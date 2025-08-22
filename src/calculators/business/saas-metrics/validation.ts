@@ -34,7 +34,7 @@ export const saasMetricsValidationRules: ValidationRule[] = [
     'churnedCustomersThisMonth',
     (churned, allInputs) => {
       if (!allInputs?.totalCustomers) return true;
-      return churned <= allInputs.totalCustomers;
+      return churned <= allInputs?.totalCustomers;
     },
     'Churned customers cannot exceed total customers'
   ),
@@ -43,7 +43,7 @@ export const saasMetricsValidationRules: ValidationRule[] = [
     'monthlyRecurringRevenue',
     (mrr, allInputs) => {
       if (!allInputs?.totalRevenue) return true;
-      return mrr <= allInputs.totalRevenue;
+      return mrr <= allInputs?.totalRevenue;
     },
     'MRR cannot exceed total revenue'
   ),
@@ -52,7 +52,7 @@ export const saasMetricsValidationRules: ValidationRule[] = [
     'averageRevenuePerUser',
     (arpu, allInputs) => {
       if (!allInputs?.monthlyRecurringRevenue || !allInputs?.totalCustomers) return true;
-      const calculatedARPU = allInputs.monthlyRecurringRevenue / allInputs.totalCustomers;
+      const calculatedARPU = allInputs?.monthlyRecurringRevenue / allInputs?.totalCustomers;
       return Math.abs(arpu - calculatedARPU) / calculatedARPU < 0.5; // Allow 50% variance
     },
     'ARPU should be consistent with MRR and customer count'
@@ -72,7 +72,7 @@ export const saasMetricsValidationRules: ValidationRule[] = [
     'customerAcquisitionCost',
     (cac, allInputs) => {
       if (!allInputs?.averageRevenuePerUser) return true;
-      const ratio = cac / allInputs.averageRevenuePerUser;
+      const ratio = cac / allInputs?.averageRevenuePerUser;
       return ratio <= 12; // CAC shouldn't exceed 12 months of ARPU
     },
     'CAC seems high relative to ARPU - consider optimizing acquisition efficiency'

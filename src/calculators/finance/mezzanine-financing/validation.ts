@@ -271,15 +271,15 @@ export const validateMezzanineFinancingInputs = (inputs: Record<string, any>): V
       (value: any, allInputs?: Record<string, any>) => {
         // Validate total debt doesn't exceed project value
         if (allInputs?.seniorLoanAmount && allInputs?.mezzanineLoanAmount && allInputs?.projectValue) {
-          const totalDebt = allInputs.seniorLoanAmount + allInputs.mezzanineLoanAmount;
-          if (totalDebt > allInputs.projectValue) {
+          const totalDebt = allInputs?.seniorLoanAmount + allInputs?.mezzanineLoanAmount;
+          if (totalDebt > allInputs?.projectValue) {
             return false;
           }
         }
 
         // Validate total capitalization
         if (allInputs?.seniorLoanAmount && allInputs?.mezzanineLoanAmount && allInputs?.equityContribution) {
-          const totalCap = allInputs.seniorLoanAmount + allInputs.mezzanineLoanAmount + allInputs.equityContribution;
+          const totalCap = allInputs?.seniorLoanAmount + allInputs?.mezzanineLoanAmount + allInputs?.equityContribution;
           if (totalCap <= 0) {
             return false;
           }
@@ -287,14 +287,14 @@ export const validateMezzanineFinancingInputs = (inputs: Record<string, any>): V
 
         // Validate mezzanine rate is higher than senior rate
         if (allInputs?.mezzanineLoanRate && allInputs?.seniorLoanRate) {
-          if (allInputs.mezzanineLoanRate <= allInputs.seniorLoanRate) {
+          if (allInputs?.mezzanineLoanRate <= allInputs?.seniorLoanRate) {
             return false;
           }
         }
 
         // Validate mezzanine term is shorter than senior term
         if (allInputs?.mezzanineLoanTerm && allInputs?.seniorLoanTerm) {
-          if (allInputs.mezzanineLoanTerm >= allInputs.seniorLoanTerm) {
+          if (allInputs?.mezzanineLoanTerm >= allInputs?.seniorLoanTerm) {
             return false;
           }
         }

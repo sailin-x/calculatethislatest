@@ -107,7 +107,7 @@ export const portfolioValidationRules: ValidationRule[] = [
         .filter((asset: any) => asset.assetClass === 'stocks')
         .reduce((sum: number, asset: any) => sum + asset.allocation, 0);
       
-      const riskTolerance = allInputs.riskTolerance;
+      const riskTolerance = allInputs?.riskTolerance;
       
       // Conservative: 10-50% stocks, Moderate: 40-80% stocks, Aggressive: 60-100% stocks
       if (riskTolerance === 'conservative' && stockAllocation > 50) {
@@ -132,7 +132,7 @@ export const portfolioValidationRules: ValidationRule[] = [
       if (!allInputs?.riskTolerance) return true;
       
       // Short time horizons should be more conservative
-      if (timeHorizon < 5 && allInputs.riskTolerance === 'aggressive') {
+      if (timeHorizon < 5 && allInputs?.riskTolerance === 'aggressive') {
         // This is a warning, not an error
         return true;
       }
@@ -204,7 +204,7 @@ export const portfolioValidationRules: ValidationRule[] = [
         .reduce((sum: number, asset: any) => sum + asset.allocation, 0);
       
       // Warning for high cash allocation in long-term portfolios
-      if (allInputs.timeHorizon > 10 && cashAllocation > 20) {
+      if (allInputs?.timeHorizon > 10 && cashAllocation > 20) {
         // This is a warning, not an error
         return true;
       }

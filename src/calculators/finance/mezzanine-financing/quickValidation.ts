@@ -20,7 +20,7 @@ export function validateSeniorLoanAmount(value: any, allInputs?: Record<string, 
   if (value < 0) {
     return { isValid: false, message: 'Senior loan amount cannot be negative' };
   }
-  if (allInputs && allInputs.projectValue && value > allInputs.projectValue) {
+  if (allInputs && allInputs?.projectValue && value > allInputs?.projectValue) {
     return { isValid: false, message: 'Senior loan amount cannot exceed project value' };
   }
   return { isValid: true };
@@ -33,7 +33,7 @@ export function validateMezzanineLoanAmount(value: any, allInputs?: Record<strin
   if (value < 0) {
     return { isValid: false, message: 'Mezzanine loan amount cannot be negative' };
   }
-  if (allInputs && allInputs.projectValue && value > allInputs.projectValue) {
+  if (allInputs && allInputs?.projectValue && value > allInputs?.projectValue) {
     return { isValid: false, message: 'Mezzanine loan amount cannot exceed project value' };
   }
   return { isValid: true };

@@ -153,7 +153,7 @@ export function validateMortgageEquityInputs(): ValidationRule[] {
       'Down payment cannot exceed original purchase price',
       (value: any, allInputs?: Record<string, any>) => {
         if (!allInputs?.originalPurchasePrice) return true;
-        return value <= allInputs.originalPurchasePrice;
+        return value <= allInputs?.originalPurchasePrice;
       }
     ),
     ValidationRuleFactory.createRule(
@@ -161,7 +161,7 @@ export function validateMortgageEquityInputs(): ValidationRule[] {
       'Original loan amount cannot exceed original purchase price',
       (value: any, allInputs?: Record<string, any>) => {
         if (!allInputs?.originalPurchasePrice) return true;
-        return value <= allInputs.originalPurchasePrice;
+        return value <= allInputs?.originalPurchasePrice;
       }
     ),
     ValidationRuleFactory.createRule(
@@ -169,7 +169,7 @@ export function validateMortgageEquityInputs(): ValidationRule[] {
       'Current loan balance cannot exceed original loan amount',
       (value: any, allInputs?: Record<string, any>) => {
         if (!allInputs?.originalLoanAmount) return true;
-        return value <= allInputs.originalLoanAmount;
+        return value <= allInputs?.originalLoanAmount;
       }
     ),
     ValidationRuleFactory.createRule(
@@ -177,7 +177,7 @@ export function validateMortgageEquityInputs(): ValidationRule[] {
       'Home value should be reasonable compared to original purchase price',
       (value: any, allInputs?: Record<string, any>) => {
         if (!allInputs?.originalPurchasePrice) return true;
-        const purchasePrice = allInputs.originalPurchasePrice;
+        const purchasePrice = allInputs?.originalPurchasePrice;
         const minReasonable = purchasePrice * 0.5; // Allow for 50% depreciation
         const maxReasonable = purchasePrice * 5; // Allow for 400% appreciation
         return value >= minReasonable && value <= maxReasonable;
