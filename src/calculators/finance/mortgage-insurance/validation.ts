@@ -151,7 +151,7 @@ export function validateMortgageInsuranceInputs(): ValidationRule[] {
       'Down payment cannot exceed home value',
       (value: any, allInputs?: Record<string, any>) => {
         if (!allInputs?.homeValue) return true;
-        return value <= allInputs.homeValue;
+        return value <= allInputs?.homeValue;
       }
     ),
     ValidationRuleFactory.createRule(
@@ -159,7 +159,7 @@ export function validateMortgageInsuranceInputs(): ValidationRule[] {
       'Loan amount cannot exceed home value',
       (value: any, allInputs?: Record<string, any>) => {
         if (!allInputs?.homeValue) return true;
-        return value <= allInputs.homeValue;
+        return value <= allInputs?.homeValue;
       }
     ),
     ValidationRuleFactory.createRule(
@@ -167,7 +167,7 @@ export function validateMortgageInsuranceInputs(): ValidationRule[] {
       'Current loan balance cannot exceed original loan amount',
       (value: any, allInputs?: Record<string, any>) => {
         if (!allInputs?.loanAmount) return true;
-        return value <= allInputs.loanAmount;
+        return value <= allInputs?.loanAmount;
       }
     ),
     ValidationRuleFactory.createRule(
@@ -175,7 +175,7 @@ export function validateMortgageInsuranceInputs(): ValidationRule[] {
       'Home value should be reasonable compared to loan amount',
       (value: any, allInputs?: Record<string, any>) => {
         if (!allInputs?.loanAmount) return true;
-        const loanAmount = allInputs.loanAmount;
+        const loanAmount = allInputs?.loanAmount;
         const minReasonable = loanAmount * 0.8; // Allow for 20% down payment
         const maxReasonable = loanAmount * 2; // Allow for 50% down payment
         return value >= minReasonable && value <= maxReasonable;
@@ -186,8 +186,8 @@ export function validateMortgageInsuranceInputs(): ValidationRule[] {
       'Debt-to-income ratio should be reasonable',
       (value: any, allInputs?: Record<string, any>) => {
         if (!allInputs?.annualIncome || !allInputs?.monthlyPayment || !allInputs?.otherMonthlyDebts) return true;
-        const monthlyIncome = allInputs.annualIncome / 12;
-        const totalMonthlyDebt = allInputs.monthlyPayment + allInputs.otherMonthlyDebts;
+        const monthlyIncome = allInputs?.annualIncome / 12;
+        const totalMonthlyDebt = allInputs?.monthlyPayment + allInputs?.otherMonthlyDebts;
         const calculatedDTI = (totalMonthlyDebt / monthlyIncome) * 100;
         return Math.abs(value - calculatedDTI) <= 10; // Allow 10% variance
       }
