@@ -1,4 +1,4 @@
-// NUCLEAR OPTION - Global allInputs polyfill to catch ANY reference
+// MEGA NUCLEAR OPTION - Global allInputs polyfill to catch ANY reference
 if (typeof window !== 'undefined') {
   // Create a global allInputs object
   (window as any).allInputs = {};
@@ -31,8 +31,11 @@ if (typeof window !== 'undefined') {
     }
   });
   
+  // MEGA NUCLEAR OPTION: Global variable declaration
+  (window as any).allInputs = {};
+  
   // Force cache bust
-  console.log('Nuclear allInputs polyfill loaded - cache bust:', Date.now());
+  console.log('MEGA NUCLEAR allInputs polyfill loaded - cache bust:', Date.now());
 }
 
 import React from 'react'
