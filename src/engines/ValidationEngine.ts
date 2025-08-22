@@ -42,7 +42,7 @@ export class ValidationEngine {
       try {
         const fieldValue = inputs[rule.field];
         // Ensure allInputs is always available to prevent undefined errors
-        const isValid = rule.validator(fieldValue, inputs || {});
+        const isValid = rule.validator(fieldValue, inputs);
         
         if (!isValid) {
           if (rule.type === 'business' && this.isWarningRule(rule)) {

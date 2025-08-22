@@ -23,7 +23,7 @@ export const portfolioValidationRules: ValidationRule[] = [
   // Tax rate validation
   ValidationRuleFactory.businessRule(
     'taxRate',
-    (taxRate) => {
+    (taxRate, allInputs) => {
       if (taxRate === undefined || taxRate === null || taxRate === '') return true;
       return taxRate >= 0 && taxRate <= 50;
     },
@@ -33,7 +33,7 @@ export const portfolioValidationRules: ValidationRule[] = [
   // Asset allocation validation - must sum to 100%
   ValidationRuleFactory.businessRule(
     'assets',
-    (assets) => {
+    (assets, allInputs) => {
       if (!Array.isArray(assets) || assets.length === 0) return false;
       const totalAllocation = assets.reduce((sum: number, asset: any) => sum + (asset.allocation || 0), 0);
       return Math.abs(totalAllocation - 100) < 0.01; // Allow for small rounding errors
@@ -44,7 +44,7 @@ export const portfolioValidationRules: ValidationRule[] = [
   // Minimum number of assets
   ValidationRuleFactory.businessRule(
     'assets',
-    (assets) => {
+    (assets, allInputs) => {
       if (!Array.isArray(assets)) return false;
       return assets.length >= 2;
     },
@@ -54,7 +54,7 @@ export const portfolioValidationRules: ValidationRule[] = [
   // Maximum number of assets
   ValidationRuleFactory.businessRule(
     'assets',
-    (assets) => {
+    (assets, allInputs) => {
       if (!Array.isArray(assets)) return true;
       return assets.length <= 20;
     },
@@ -64,7 +64,7 @@ export const portfolioValidationRules: ValidationRule[] = [
   // Individual asset allocation validation
   ValidationRuleFactory.businessRule(
     'assets',
-    (assets) => {
+    (assets, allInputs) => {
       if (!Array.isArray(assets)) return true;
       return assets.every((asset: any) => {
         return asset.allocation >= 0 && asset.allocation <= 100;
@@ -76,7 +76,7 @@ export const portfolioValidationRules: ValidationRule[] = [
   // Expected return validation for individual assets
   ValidationRuleFactory.businessRule(
     'assets',
-    (assets) => {
+    (assets, allInputs) => {
       if (!Array.isArray(assets)) return true;
       return assets.every((asset: any) => {
         return asset.expectedReturn >= -50 && asset.expectedReturn <= 100;
@@ -88,7 +88,7 @@ export const portfolioValidationRules: ValidationRule[] = [
   // Standard deviation validation for individual assets
   ValidationRuleFactory.businessRule(
     'assets',
-    (assets) => {
+    (assets, allInputs) => {
       if (!Array.isArray(assets)) return true;
       return assets.every((asset: any) => {
         return asset.standardDeviation >= 0 && asset.standardDeviation <= 200;

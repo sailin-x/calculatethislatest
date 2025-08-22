@@ -26,7 +26,7 @@ export const personalInjuryValidationRules: ValidationRule[] = [
   // Life care costs validation
   ValidationRuleFactory.businessRule(
     'lifeCareCost',
-    (lifeCareCost) => {
+    (lifeCareCost, allInputs) => {
       if (lifeCareCost === undefined || lifeCareCost === null || lifeCareCost === '') return true;
       return lifeCareCost >= 0 && lifeCareCost <= 20000000;
     },
