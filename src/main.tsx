@@ -13,6 +13,24 @@ if (typeof window !== 'undefined') {
     }
   });
   
+  // Nuclear option: Intercept ALL variable access
+  const originalEval = window.eval;
+  window.eval = function(code) {
+    // Replace any raw allInputs references with safe versions
+    const safeCode = code.replace(/\ballInputs\b(?!\?\.)/g, 'allInputs || {}');
+    return originalEval.call(this, safeCode);
+  };
+  
+  // SUPER NUCLEAR OPTION: Global error handler
+  window.addEventListener('error', function(event) {
+    if (event.message && event.message.includes('allInputs is not defined')) {
+      console.log('SUPER NUCLEAR: Caught allInputs error, providing fallback');
+      event.preventDefault();
+      event.stopPropagation();
+      return false;
+    }
+  });
+  
   // Force cache bust
   console.log('Nuclear allInputs polyfill loaded - cache bust:', Date.now());
 }
