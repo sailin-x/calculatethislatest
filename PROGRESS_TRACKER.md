@@ -100,22 +100,25 @@ This tracker enables continuous autonomous progress without conversation context
 105. **Mortgage Points Calculator** - Task 105 ✅ **COMPLETED**
 106. **Mortgage Qualification Calculator** - Task 106 ✅ **COMPLETED**
 107. **Mortgage Rate Lock Calculator** - Task 107 ✅ **COMPLETED**
+108. **Mortgage Refinance Calculator** - Task 108 ✅ **COMPLETED**
+109. **Mortgage vs. Rent Calculator** - Task 109 ✅ **COMPLETED**
+110. **Net Operating Income (NOI) Calculator** - Task 110 ✅ **COMPLETED**
 
 ## Session Management
-- **Current Focus:** Completing Mortgage Rate Lock Calculator
+- **Current Focus:** Completing Net Operating Income Calculator
 - **Batch Target:** 3-5 calculators before starting fresh session
 - **Resume Method:** Check this tracker, continue from current focus
 - **No Context Transfer:** This tracker contains all needed state
 
-## Implementation Status - Vineyard Profitability Calculator ✅ COMPLETED
-- ✅ VineyardProfitabilityCalculator.ts - **COMPLETED**
+## Implementation Status - Net Operating Income Calculator ✅ COMPLETED
+- ✅ NetOperatingIncomeCalculator.ts - **COMPLETED**
 - ✅ formulas.ts - **COMPLETED**
 - ✅ validation.ts - **COMPLETED**
 - ✅ quickValidation.ts - **COMPLETED**
-- ✅ VineyardProfitabilityCalculator.test.ts - **COMPLETED**
+- ✅ NetOperatingIncomeCalculator.test.ts - **COMPLETED**
 - ✅ register.ts - **COMPLETED**
 - ✅ index.ts - **COMPLETED**
 - ✅ Updated main index.ts - **COMPLETED**
 - ✅ calculator-list.md - **COMPLETED**
 
-**CURRENT:** Mortgage Points Calculator completed successfully - Moving to next calculator
+**CURRENT:** Net Operating Income Calculator completed successfully - Moving to next calculator
