@@ -352,7 +352,9 @@ Each calculator must include:
 - [ ] Dogecoin Mining Calculator
 - [ ] Ethereum 2.0 Staking Calculator
 - [ ] Gas Fee Optimizer Calculator
-- [ ] GPU Mining Profitability Calculator
+- [x] **GPU Mining Profitability Calculator** ✅ **(COMPLETED - Imported from simple-math-world)**
+- [x] **AI Prompt Cost & Token Estimator** ✅ **(COMPLETED - Imported from simple-math-world)**
+- [x] **Crypto Staking Profitability Calculator** ✅ **(COMPLETED - Imported from simple-math-world)**
 - [ ] Impermanent Loss Calculator
 - [ ] Initial Coin Offering Calculator
 - [ ] Initial DEX Offering Calculator
