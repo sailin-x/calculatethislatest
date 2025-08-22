@@ -1,3 +1,16 @@
+// SUPER SIMPLE NUCLEAR OPTION - Global allInputs declaration
+declare global {
+  var allInputs: any;
+}
+
+// Set global allInputs
+if (typeof globalThis !== 'undefined') {
+  (globalThis as any).allInputs = {};
+}
+if (typeof window !== 'undefined') {
+  (window as any).allInputs = {};
+}
+
 // MEGA NUCLEAR OPTION - Global allInputs polyfill to catch ANY reference
 if (typeof window !== 'undefined') {
   // Create a global allInputs object
