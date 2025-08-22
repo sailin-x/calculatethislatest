@@ -72,7 +72,7 @@
 - [x] **Mortgage Refinance Calculator** ✅ **(COMPLETED - Task 108)**
 - [x] ✅ (COMPLETED) Mortgage vs. Rent Calculator
 - [x] ✅ (COMPLETED) Net Operating Income (NOI) Calculator
-- [ ] Opportunity Zone Investment ROI Calculator
+- [x] ✅ (COMPLETED) Opportunity Zone Investment ROI Calculator
 - [ ] PMI Cancellation Calculator
 - [ ] Price Per Square Foot Calculator
 - [ ] Private Mortgage Insurance Calculator
