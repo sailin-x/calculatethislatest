@@ -26,6 +26,7 @@ import { MezzanineFinancingCalculator as mezzanineFinancingCalculator } from './
 import { MortgageAPRComparisonCalculator as mortgageAPRComparisonCalculator } from './finance/mortgage-apr-comparison';
 import { MortgageEquityCalculator as mortgageEquityCalculator } from './finance/mortgage-equity';
 import { MortgageInsuranceCalculator as mortgageInsuranceCalculator } from './finance/mortgage-insurance';
+import { MortgageLifeCalculator as mortgageLifeCalculator } from './finance/mortgage-life';
 
 // Legal calculators
 import { personalInjuryCalculator } from './legal/personal-injury';
@@ -84,6 +85,7 @@ calculatorRegistry.register(mezzanineFinancingCalculator);
 calculatorRegistry.register(mortgageAPRComparisonCalculator);
 calculatorRegistry.register(mortgageEquityCalculator);
 calculatorRegistry.register(mortgageInsuranceCalculator);
+calculatorRegistry.register(mortgageLifeCalculator);
   
   // Legal & Settlement calculators
   calculatorRegistry.register(personalInjuryCalculator);
