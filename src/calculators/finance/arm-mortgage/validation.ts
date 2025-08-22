@@ -167,7 +167,7 @@ export const armMortgageValidationRules: ValidationRule[] = [
     type: 'custom',
     validator: (value, allInputs) => {
       const periodicCap = Number(value) || 0;
-      const lifetimeCap = Number(allInputs.lifetimeCap) || 0;
+      const lifetimeCap = Number(allInputs?.lifetimeCap) || 0;
       return periodicCap <= lifetimeCap;
     },
     message: 'Periodic cap cannot exceed lifetime cap'
@@ -177,7 +177,7 @@ export const armMortgageValidationRules: ValidationRule[] = [
     type: 'custom',
     validator: (value, allInputs) => {
       const margin = Number(value) || 0;
-      const indexRate = Number(allInputs.indexRate) || 0;
+      const indexRate = Number(allInputs?.indexRate) || 0;
       const fullyIndexed = indexRate + margin;
       return fullyIndexed <= 0.25; // 25% max fully indexed rate
     },
@@ -188,8 +188,8 @@ export const armMortgageValidationRules: ValidationRule[] = [
     type: 'custom',
     validator: (value, allInputs) => {
       const initialRate = Number(value) || 0;
-      const indexRate = Number(allInputs.indexRate) || 0;
-      const margin = Number(allInputs.margin) || 0;
+      const indexRate = Number(allInputs?.indexRate) || 0;
+      const margin = Number(allInputs?.margin) || 0;
       const fullyIndexed = indexRate + margin;
       
       // Warn if initial rate is significantly below fully indexed (teaser rate)
