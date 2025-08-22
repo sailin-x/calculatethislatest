@@ -20,6 +20,7 @@ import { VineyardProfitabilityCalculator as vineyardProfitabilityCalculator } fr
 import { WindstormInsuranceCalculator as windstormInsuranceCalculator } from './finance/windstorm-insurance';
 import { FourZeroOneKCalculator as fourZeroOneKCalculator } from './finance/401k';
 import { FourZeroOneKCompanyMatchROICalculator as fourZeroOneKCompanyMatchROICalculator } from './finance/401k-company-match-roi';
+import { FourZeroOneKPlanCalculator as fourZeroOneKPlanCalculator } from './finance/401k-plan';
 
 // Legal calculators
 import { personalInjuryCalculator } from './legal/personal-injury';
@@ -72,6 +73,7 @@ export function registerAllCalculators(): void {
   calculatorRegistry.register(windstormInsuranceCalculator);
   calculatorRegistry.register(fourZeroOneKCalculator);
   calculatorRegistry.register(fourZeroOneKCompanyMatchROICalculator);
+  calculatorRegistry.register(fourZeroOneKPlanCalculator);
   
   // Legal & Settlement calculators
   calculatorRegistry.register(personalInjuryCalculator);

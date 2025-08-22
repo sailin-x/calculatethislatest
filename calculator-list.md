@@ -3,6 +3,39 @@
 
 *Each calculator must deliver professional-grade accuracy and comprehensive features that match or exceed industry standards before being marked complete.*
 
+## 🚨 CRITICAL DEVELOPMENT NOTES 🚨
+
+### **VALIDATION FUNCTION SIGNATURE REQUIREMENT**
+**ALL validation functions in quickValidation.ts files MUST include the `allInputs` parameter:**
+
+```typescript
+// ✅ CORRECT - Include allInputs parameter
+export function validateFieldName(value: any, allInputs?: Record<string, any>): ValidationResult {
+  // validation logic
+}
+
+// ❌ WRONG - Missing allInputs parameter (causes runtime error)
+export function validateFieldName(value: any): ValidationResult {
+  // validation logic
+}
+```
+
+**This is CRITICAL because:**
+- The `ValidationEngine` expects all validator functions to accept `allInputs`
+- Missing this parameter causes `Uncaught ReferenceError: allInputs is not defined`
+- This error breaks the entire application and shows blank screen
+- **ALWAYS include `allInputs?: Record<string, any>` in validation function signatures**
+
+### **CALCULATOR ARCHITECTURE REQUIREMENTS**
+Each calculator must include:
+- `[CalculatorName]Calculator.ts` - Main calculator definition
+- `formulas.ts` - Core calculation logic
+- `validation.ts` - Comprehensive validation rules
+- `quickValidation.ts` - Individual field validation (with allInputs parameter!)
+- `[CalculatorName]Calculator.test.ts` - Unit tests
+- `register.ts` - Calculator registration
+- `index.ts` - Module exports
+
 ---
 
 ## 🏛️ Finance & Investment (235+ calculators)
@@ -104,6 +137,7 @@
 - [x] **Windstorm Insurance Calculator** ✅ **(COMPLETED - Task 96)**
 - [x] **401(k) Calculator** ✅ **(COMPLETED - Task 97)**
 - [x] **401(k) Company Match ROI Calculator** ✅ **(COMPLETED - Task 98)**
+- [x] **401(k) Plan Calculator** ✅ **(COMPLETED - Task 99)**
 
 ### Retirement & Savings Hub (65 calculators)
 - [ ] 401(k) Calculator
