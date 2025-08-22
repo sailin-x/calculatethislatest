@@ -7,7 +7,7 @@ export function validateFourZeroOneKPlanInputs(inputs: CalculatorInputs): Valida
       field: 'currentAge',
       type: 'required',
       message: 'Current age is required',
-      validator: (value) => {
+      validator: (value, allInputs) => {
         if (value === null || value === undefined) return false;
         const numValue = Number(value);
         return !isNaN(numValue) && numValue >= 18 && numValue <= 100;
@@ -17,7 +17,7 @@ export function validateFourZeroOneKPlanInputs(inputs: CalculatorInputs): Valida
       field: 'retirementAge',
       type: 'required',
       message: 'Retirement age is required',
-      validator: (value) => {
+      validator: (value, allInputs) => {
         if (value === null || value === undefined) return false;
         const numValue = Number(value);
         return !isNaN(numValue) && numValue >= 50 && numValue <= 85;
@@ -27,7 +27,7 @@ export function validateFourZeroOneKPlanInputs(inputs: CalculatorInputs): Valida
       field: 'currentSalary',
       type: 'required',
       message: 'Current salary is required',
-      validator: (value) => {
+      validator: (value, allInputs) => {
         if (value === null || value === undefined) return false;
         const numValue = Number(value);
         return !isNaN(numValue) && numValue >= 10000 && numValue <= 10000000;
@@ -37,7 +37,7 @@ export function validateFourZeroOneKPlanInputs(inputs: CalculatorInputs): Valida
       field: 'current401kBalance',
       type: 'required',
       message: 'Current 401(k) balance is required',
-      validator: (value) => {
+      validator: (value, allInputs) => {
         if (value === null || value === undefined) return false;
         const numValue = Number(value);
         return !isNaN(numValue) && numValue >= 0 && numValue <= 10000000;
@@ -47,7 +47,7 @@ export function validateFourZeroOneKPlanInputs(inputs: CalculatorInputs): Valida
       field: 'employeeContribution',
       type: 'required',
       message: 'Employee contribution percentage is required',
-      validator: (value) => {
+      validator: (value, allInputs) => {
         if (value === null || value === undefined) return false;
         const numValue = Number(value);
         return !isNaN(numValue) && numValue >= 0 && numValue <= 100;
@@ -57,7 +57,7 @@ export function validateFourZeroOneKPlanInputs(inputs: CalculatorInputs): Valida
       field: 'employerMatch',
       type: 'required',
       message: 'Employer match percentage is required',
-      validator: (value) => {
+      validator: (value, allInputs) => {
         if (value === null || value === undefined) return false;
         const numValue = Number(value);
         return !isNaN(numValue) && numValue >= 0 && numValue <= 100;
@@ -67,7 +67,7 @@ export function validateFourZeroOneKPlanInputs(inputs: CalculatorInputs): Valida
       field: 'employerMatchLimit',
       type: 'required',
       message: 'Employer match limit is required',
-      validator: (value) => {
+      validator: (value, allInputs) => {
         if (value === null || value === undefined) return false;
         const numValue = Number(value);
         return !isNaN(numValue) && numValue >= 0 && numValue <= 100;
@@ -77,7 +77,7 @@ export function validateFourZeroOneKPlanInputs(inputs: CalculatorInputs): Valida
       field: 'planFees',
       type: 'required',
       message: 'Plan fees are required',
-      validator: (value) => {
+      validator: (value, allInputs) => {
         if (value === null || value === undefined) return false;
         const numValue = Number(value);
         return !isNaN(numValue) && numValue >= 0 && numValue <= 5;
@@ -87,7 +87,7 @@ export function validateFourZeroOneKPlanInputs(inputs: CalculatorInputs): Valida
       field: 'investmentFees',
       type: 'required',
       message: 'Investment fees are required',
-      validator: (value) => {
+      validator: (value, allInputs) => {
         if (value === null || value === undefined) return false;
         const numValue = Number(value);
         return !isNaN(numValue) && numValue >= 0 && numValue <= 5;
@@ -97,7 +97,7 @@ export function validateFourZeroOneKPlanInputs(inputs: CalculatorInputs): Valida
       field: 'salaryGrowthRate',
       type: 'required',
       message: 'Salary growth rate is required',
-      validator: (value) => {
+      validator: (value, allInputs) => {
         if (value === null || value === undefined) return false;
         const numValue = Number(value);
         return !isNaN(numValue) && numValue >= 0 && numValue <= 20;
@@ -107,7 +107,7 @@ export function validateFourZeroOneKPlanInputs(inputs: CalculatorInputs): Valida
       field: 'investmentReturn',
       type: 'required',
       message: 'Investment return rate is required',
-      validator: (value) => {
+      validator: (value, allInputs) => {
         if (value === null || value === undefined) return false;
         const numValue = Number(value);
         return !isNaN(numValue) && numValue >= 0 && numValue <= 20;
@@ -117,7 +117,7 @@ export function validateFourZeroOneKPlanInputs(inputs: CalculatorInputs): Valida
       field: 'inflationRate',
       type: 'required',
       message: 'Inflation rate is required',
-      validator: (value) => {
+      validator: (value, allInputs) => {
         if (value === null || value === undefined) return false;
         const numValue = Number(value);
         return !isNaN(numValue) && numValue >= 0 && numValue <= 15;
@@ -127,7 +127,7 @@ export function validateFourZeroOneKPlanInputs(inputs: CalculatorInputs): Valida
       field: 'contributionIncrease',
       type: 'required',
       message: 'Contribution increase rate is required',
-      validator: (value) => {
+      validator: (value, allInputs) => {
         if (value === null || value === undefined) return false;
         const numValue = Number(value);
         return !isNaN(numValue) && numValue >= 0 && numValue <= 10;
@@ -137,7 +137,7 @@ export function validateFourZeroOneKPlanInputs(inputs: CalculatorInputs): Valida
       field: 'taxRate',
       type: 'required',
       message: 'Tax rate is required',
-      validator: (value) => {
+      validator: (value, allInputs) => {
         if (value === null || value === undefined) return false;
         const numValue = Number(value);
         return !isNaN(numValue) && numValue >= 0 && numValue <= 50;
@@ -147,7 +147,7 @@ export function validateFourZeroOneKPlanInputs(inputs: CalculatorInputs): Valida
       field: 'retirementTaxRate',
       type: 'required',
       message: 'Retirement tax rate is required',
-      validator: (value) => {
+      validator: (value, allInputs) => {
         if (value === null || value === undefined) return false;
         const numValue = Number(value);
         return !isNaN(numValue) && numValue >= 0 && numValue <= 50;
@@ -157,7 +157,7 @@ export function validateFourZeroOneKPlanInputs(inputs: CalculatorInputs): Valida
       field: 'lifeExpectancy',
       type: 'required',
       message: 'Life expectancy is required',
-      validator: (value) => {
+      validator: (value, allInputs) => {
         if (value === null || value === undefined) return false;
         const numValue = Number(value);
         return !isNaN(numValue) && numValue >= 65 && numValue <= 120;
@@ -167,7 +167,7 @@ export function validateFourZeroOneKPlanInputs(inputs: CalculatorInputs): Valida
       field: 'socialSecurityIncome',
       type: 'required',
       message: 'Social Security income is required',
-      validator: (value) => {
+      validator: (value, allInputs) => {
         if (value === null || value === undefined) return false;
         const numValue = Number(value);
         return !isNaN(numValue) && numValue >= 0 && numValue <= 1000000;
@@ -177,7 +177,7 @@ export function validateFourZeroOneKPlanInputs(inputs: CalculatorInputs): Valida
       field: 'otherRetirementIncome',
       type: 'required',
       message: 'Other retirement income is required',
-      validator: (value) => {
+      validator: (value, allInputs) => {
         if (value === null || value === undefined) return false;
         const numValue = Number(value);
         return !isNaN(numValue) && numValue >= 0 && numValue <= 1000000;
@@ -187,7 +187,7 @@ export function validateFourZeroOneKPlanInputs(inputs: CalculatorInputs): Valida
       field: 'planType',
       type: 'required',
       message: 'Plan type is required',
-      validator: (value) => {
+      validator: (value, allInputs) => {
         return value && ['traditional', 'roth', 'both'].includes(value);
       }
     },
@@ -195,7 +195,7 @@ export function validateFourZeroOneKPlanInputs(inputs: CalculatorInputs): Valida
       field: 'rothPercentage',
       type: 'required',
       message: 'Roth percentage is required',
-      validator: (value) => {
+      validator: (value, allInputs) => {
         if (value === null || value === undefined) return false;
         const numValue = Number(value);
         return !isNaN(numValue) && numValue >= 0 && numValue <= 100;
@@ -205,7 +205,7 @@ export function validateFourZeroOneKPlanInputs(inputs: CalculatorInputs): Valida
       field: 'loanBalance',
       type: 'required',
       message: 'Loan balance is required',
-      validator: (value) => {
+      validator: (value, allInputs) => {
         if (value === null || value === undefined) return false;
         const numValue = Number(value);
         return !isNaN(numValue) && numValue >= 0 && numValue <= 1000000;
@@ -215,7 +215,7 @@ export function validateFourZeroOneKPlanInputs(inputs: CalculatorInputs): Valida
       field: 'hardshipWithdrawals',
       type: 'required',
       message: 'Hardship withdrawals amount is required',
-      validator: (value) => {
+      validator: (value, allInputs) => {
         if (value === null || value === undefined) return false;
         const numValue = Number(value);
         return !isNaN(numValue) && numValue >= 0 && numValue <= 1000000;
@@ -225,7 +225,7 @@ export function validateFourZeroOneKPlanInputs(inputs: CalculatorInputs): Valida
       field: 'investmentAllocation',
       type: 'required',
       message: 'Investment allocation is required',
-      validator: (value) => {
+      validator: (value, allInputs) => {
         return value && ['conservative', 'moderate', 'aggressive', 'custom'].includes(value);
       }
     },
@@ -233,7 +233,7 @@ export function validateFourZeroOneKPlanInputs(inputs: CalculatorInputs): Valida
       field: 'rebalanceFrequency',
       type: 'required',
       message: 'Rebalance frequency is required',
-      validator: (value) => {
+      validator: (value, allInputs) => {
         return value && ['never', 'annually', 'quarterly', 'monthly'].includes(value);
       }
     },
