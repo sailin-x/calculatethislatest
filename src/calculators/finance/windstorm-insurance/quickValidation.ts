@@ -6,7 +6,7 @@ export interface ValidationResult {
   warning?: string;
 }
 
-export function validatePropertyValue(value: any): ValidationResult {
+export function validatePropertyValue(value: any, allInputs?: Record<string, any>): ValidationResult {
   if (value === undefined || value === null || value === '') {
     return { isValid: false, error: 'Property value is required' };
   }
@@ -22,7 +22,7 @@ export function validatePropertyValue(value: any): ValidationResult {
   return { isValid: true };
 }
 
-export function validatePropertyType(value: any): ValidationResult {
+export function validatePropertyType(value: any, allInputs?: Record<string, any>): ValidationResult {
   if (value === undefined || value === null || value === '') {
     return { isValid: false, error: 'Property type is required' };
   }
@@ -35,7 +35,7 @@ export function validatePropertyType(value: any): ValidationResult {
   return { isValid: true };
 }
 
-export function validateConstructionType(value: any): ValidationResult {
+export function validateConstructionType(value: any, allInputs?: Record<string, any>): ValidationResult {
   if (value === undefined || value === null || value === '') {
     return { isValid: false, error: 'Construction type is required' };
   }
@@ -48,7 +48,7 @@ export function validateConstructionType(value: any): ValidationResult {
   return { isValid: true };
 }
 
-export function validateRoofType(value: any): ValidationResult {
+export function validateRoofType(value: any, allInputs?: Record<string, any>): ValidationResult {
   if (value === undefined || value === null || value === '') {
     return { isValid: false, error: 'Roof type is required' };
   }
@@ -61,7 +61,7 @@ export function validateRoofType(value: any): ValidationResult {
   return { isValid: true };
 }
 
-export function validateWindZone(value: any): ValidationResult {
+export function validateWindZone(value: any, allInputs?: Record<string, any>): ValidationResult {
   if (value === undefined || value === null || value === '') {
     return { isValid: false, error: 'Wind zone is required' };
   }
@@ -74,7 +74,7 @@ export function validateWindZone(value: any): ValidationResult {
   return { isValid: true };
 }
 
-export function validateDistanceFromCoast(value: any): ValidationResult {
+export function validateDistanceFromCoast(value: any, allInputs?: Record<string, any>): ValidationResult {
   if (value === undefined || value === null || value === '') {
     return { isValid: false, error: 'Distance from coast is required' };
   }
@@ -90,7 +90,7 @@ export function validateDistanceFromCoast(value: any): ValidationResult {
   return { isValid: true };
 }
 
-export function validateBuildingAge(value: any): ValidationResult {
+export function validateBuildingAge(value: any, allInputs?: Record<string, any>): ValidationResult {
   if (value === undefined || value === null || value === '') {
     return { isValid: false, error: 'Building age is required' };
   }

@@ -6,7 +6,7 @@ export interface ValidationResult {
   warning?: string;
 }
 
-export function validateCurrentAge(value: any): ValidationResult {
+export function validateCurrentAge(value: any, allInputs?: Record<string, any>): ValidationResult {
   if (value === undefined || value === null || value === '') {
     return { isValid: false, error: 'Current age is required' };
   }
@@ -47,7 +47,7 @@ export function validateRetirementAge(value: any, allInputs?: Record<string, any
   return { isValid: true };
 }
 
-export function validateCurrentSalary(value: any): ValidationResult {
+export function validateCurrentSalary(value: any, allInputs?: Record<string, any>): ValidationResult {
   if (value === undefined || value === null || value === '') {
     return { isValid: false, error: 'Current salary is required' };
   }
@@ -63,7 +63,7 @@ export function validateCurrentSalary(value: any): ValidationResult {
   return { isValid: true };
 }
 
-export function validateCurrent401kBalance(value: any): ValidationResult {
+export function validateCurrent401kBalance(value: any, allInputs?: Record<string, any>): ValidationResult {
   if (value === undefined || value === null || value === '') {
     return { isValid: false, error: 'Current 401(k) balance is required' };
   }
@@ -110,7 +110,7 @@ export function validateEmployeeContribution(value: any, allInputs?: Record<stri
   return { isValid: true };
 }
 
-export function validateEmployerMatch(value: any): ValidationResult {
+export function validateEmployerMatch(value: any, allInputs?: Record<string, any>): ValidationResult {
   if (value === undefined || value === null || value === '') {
     return { isValid: false, error: 'Employer match percentage is required' };
   }
@@ -131,7 +131,7 @@ export function validateEmployerMatch(value: any): ValidationResult {
   return { isValid: true };
 }
 
-export function validateEmployerMatchLimit(value: any): ValidationResult {
+export function validateEmployerMatchLimit(value: any, allInputs?: Record<string, any>): ValidationResult {
   if (value === undefined || value === null || value === '') {
     return { isValid: false, error: 'Employer match limit percentage is required' };
   }
@@ -147,7 +147,7 @@ export function validateEmployerMatchLimit(value: any): ValidationResult {
   return { isValid: true };
 }
 
-export function validateSalaryGrowthRate(value: any): ValidationResult {
+export function validateSalaryGrowthRate(value: any, allInputs?: Record<string, any>): ValidationResult {
   if (value === undefined || value === null || value === '') {
     return { isValid: false, error: 'Salary growth rate is required' };
   }
@@ -163,7 +163,7 @@ export function validateSalaryGrowthRate(value: any): ValidationResult {
   return { isValid: true };
 }
 
-export function validateInvestmentReturn(value: any): ValidationResult {
+export function validateInvestmentReturn(value: any, allInputs?: Record<string, any>): ValidationResult {
   if (value === undefined || value === null || value === '') {
     return { isValid: false, error: 'Expected investment return is required' };
   }
@@ -188,7 +188,7 @@ export function validateInvestmentReturn(value: any): ValidationResult {
   return { isValid: true };
 }
 
-export function validateInflationRate(value: any): ValidationResult {
+export function validateInflationRate(value: any, allInputs?: Record<string, any>): ValidationResult {
   if (value === undefined || value === null || value === '') {
     return { isValid: false, error: 'Expected inflation rate is required' };
   }
@@ -204,7 +204,7 @@ export function validateInflationRate(value: any): ValidationResult {
   return { isValid: true };
 }
 
-export function validateContributionIncrease(value: any): ValidationResult {
+export function validateContributionIncrease(value: any, allInputs?: Record<string, any>): ValidationResult {
   if (value === undefined || value === null || value === '') {
     return { isValid: false, error: 'Annual contribution increase is required' };
   }
@@ -235,7 +235,7 @@ export function validateCatchUpContribution(value: any, allInputs?: Record<strin
   return { isValid: true };
 }
 
-export function validateTaxRate(value: any): ValidationResult {
+export function validateTaxRate(value: any, allInputs?: Record<string, any>): ValidationResult {
   if (value === undefined || value === null || value === '') {
     return { isValid: false, error: 'Current tax rate is required' };
   }
@@ -251,7 +251,7 @@ export function validateTaxRate(value: any): ValidationResult {
   return { isValid: true };
 }
 
-export function validateRetirementTaxRate(value: any): ValidationResult {
+export function validateRetirementTaxRate(value: any, allInputs?: Record<string, any>): ValidationResult {
   if (value === undefined || value === null || value === '') {
     return { isValid: false, error: 'Expected retirement tax rate is required' };
   }
@@ -288,7 +288,7 @@ export function validateLifeExpectancy(value: any, allInputs?: Record<string, an
   return { isValid: true };
 }
 
-export function validateSocialSecurityIncome(value: any): ValidationResult {
+export function validateSocialSecurityIncome(value: any, allInputs?: Record<string, any>): ValidationResult {
   if (value === undefined || value === null || value === '') {
     return { isValid: false, error: 'Expected Social Security income is required' };
   }
@@ -304,7 +304,7 @@ export function validateSocialSecurityIncome(value: any): ValidationResult {
   return { isValid: true };
 }
 
-export function validateOtherRetirementIncome(value: any): ValidationResult {
+export function validateOtherRetirementIncome(value: any, allInputs?: Record<string, any>): ValidationResult {
   if (value === undefined || value === null || value === '') {
     return { isValid: false, error: 'Other retirement income is required' };
   }

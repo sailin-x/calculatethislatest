@@ -206,7 +206,7 @@ export function validateInvestmentReturn(value: any): ValidationResult {
   return { isValid: true };
 }
 
-export function validateInflationRate(value: any): ValidationResult {
+export function validateInflationRate(value: any, allInputs?: Record<string, any>): ValidationResult {
   if (value === undefined || value === null || value === '') {
     return { isValid: false, error: 'Expected inflation rate is required' };
   }
@@ -222,7 +222,7 @@ export function validateInflationRate(value: any): ValidationResult {
   return { isValid: true };
 }
 
-export function validateTaxRate(value: any): ValidationResult {
+export function validateTaxRate(value: any, allInputs?: Record<string, any>): ValidationResult {
   if (value === undefined || value === null || value === '') {
     return { isValid: false, error: 'Current tax rate is required' };
   }
@@ -238,7 +238,7 @@ export function validateTaxRate(value: any): ValidationResult {
   return { isValid: true };
 }
 
-export function validateRetirementTaxRate(value: any): ValidationResult {
+export function validateRetirementTaxRate(value: any, allInputs?: Record<string, any>): ValidationResult {
   if (value === undefined || value === null || value === '') {
     return { isValid: false, error: 'Expected retirement tax rate is required' };
   }
@@ -254,7 +254,7 @@ export function validateRetirementTaxRate(value: any): ValidationResult {
   return { isValid: true };
 }
 
-export function validateAlternativeInvestmentReturn(value: any): ValidationResult {
+export function validateAlternativeInvestmentReturn(value: any, allInputs?: Record<string, any>): ValidationResult {
   if (value === undefined || value === null || value === '') {
     return { isValid: false, error: 'Alternative investment return is required' };
   }
@@ -270,7 +270,7 @@ export function validateAlternativeInvestmentReturn(value: any): ValidationResul
   return { isValid: true };
 }
 
-export function validatePlanToStay(value: any): ValidationResult {
+export function validatePlanToStay(value: any, allInputs?: Record<string, any>): ValidationResult {
   if (value === undefined || value === null) {
     return { isValid: false, error: 'Plan to stay preference is required' };
   }
@@ -280,7 +280,7 @@ export function validatePlanToStay(value: any): ValidationResult {
   return { isValid: true };
 }
 
-export function validateCompanyStability(value: any): ValidationResult {
+export function validateCompanyStability(value: any, allInputs?: Record<string, any>): ValidationResult {
   if (value === undefined || value === null || value === '') {
     return { isValid: false, error: 'Company stability rating is required' };
   }
@@ -300,7 +300,7 @@ export function validateCompanyStability(value: any): ValidationResult {
   return { isValid: true };
 }
 
-export function validateJobSatisfaction(value: any): ValidationResult {
+export function validateJobSatisfaction(value: any, allInputs?: Record<string, any>): ValidationResult {
   if (value === undefined || value === null || value === '') {
     return { isValid: false, error: 'Job satisfaction level is required' };
   }
@@ -320,7 +320,7 @@ export function validateJobSatisfaction(value: any): ValidationResult {
   return { isValid: true };
 }
 
-export function validateMarketConditions(value: any): ValidationResult {
+export function validateMarketConditions(value: any, allInputs?: Record<string, any>): ValidationResult {
   if (value === undefined || value === null || value === '') {
     return { isValid: false, error: 'Market conditions is required' };
   }
