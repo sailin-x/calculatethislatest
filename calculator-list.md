@@ -355,6 +355,7 @@ Each calculator must include:
 - [x] **GPU Mining Profitability Calculator** ✅ **(COMPLETED - Imported from simple-math-world)**
 - [x] **AI Prompt Cost & Token Estimator** ✅ **(COMPLETED - Imported from simple-math-world)**
 - [x] **Crypto Staking Profitability Calculator** ✅ **(COMPLETED - Imported from simple-math-world)**
+- [x] **NFT Royalty & Revenue Calculator** ✅ **(COMPLETED - Imported from simple-math-world)**
 - [ ] Impermanent Loss Calculator
 - [ ] Initial Coin Offering Calculator
 - [ ] Initial DEX Offering Calculator
