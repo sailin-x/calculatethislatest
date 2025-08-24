@@ -1,286 +1,520 @@
-export interface PrivateEquityInputs {
-  // Fund Information
-  fundName: string;
-  fundSize: number;
-  fundVintage: number;
-  fundLife: number; // in years
-  fundType: 'buyout' | 'growth' | 'venture' | 'mezzanine' | 'distressed' | 'special_situations' | 'infrastructure' | 'real_estate' | 'secondaries' | 'fund_of_funds';
+export interface PrivateEquityCalculatorInputs {
+  // Private Equity Information
+  peInfo: {
+    peName: string;
+    peType: 'buyout' | 'growth' | 'venture' | 'mezzanine' | 'distressed' | 'real_estate' | 'infrastructure' | 'fund_of_funds' | 'secondary' | 'other';
+    fundSize: number;
+    fundNumber: number;
+    vintageYear: number;
+    investmentPeriod: number; // in years
+    fundLife: number; // in years
+    managementFee: number;
+    carriedInterest: number;
+    hurdleRate: number;
+    peDescription: string;
+  };
   
-  // Investment Information
-  investmentAmount: number;
-  investmentDate: string;
-  investmentType: 'control' | 'minority' | 'growth' | 'distressed' | 'special_situations';
-  ownershipPercentage: number;
-  enterpriseValue: number;
-  equityValue: number;
-  debtValue: number;
+  // Portfolio Company Information
+  portfolioCompanyInfo: {
+    // Company Details
+    companyDetails: {
+      companyName: string;
+      industry: string;
+      sector: string;
+      stage: 'startup' | 'growth' | 'mature' | 'turnaround' | 'distressed' | 'exit_ready';
+      foundingYear: number;
+      employeeCount: number;
+      revenue: number;
+      ebitda: number;
+      netIncome: number;
+      companyDescription: string;
+    };
+    
+    // Investment Details
+    investmentDetails: {
+      investmentAmount: number;
+      ownershipPercentage: number;
+      valuation: number;
+      investmentDate: string;
+      investmentType: 'majority' | 'minority' | 'control' | 'influence' | 'passive';
+      boardSeats: number;
+      managementParticipation: boolean;
+      coInvestment: boolean;
+      syndicateSize: number;
+    };
+    
+    // Financial Projections
+    financialProjections: {
+      year: number;
+      revenue: number;
+      ebitda: number;
+      netIncome: number;
+      freeCashFlow: number;
+      debt: number;
+      equity: number;
+      growthRate: number;
+    }[];
+    
+    // Exit Scenarios
+    exitScenarios: {
+      scenario: string;
+      probability: number;
+      exitValue: number;
+      exitMultiple: number;
+      exitYear: number;
+      exitType: 'ipo' | 'strategic_sale' | 'financial_sale' | 'recapitalization' | 'liquidation';
+    }[];
+  };
   
-  // Company Information
-  companyName: string;
-  companyStage: 'startup' | 'growth' | 'mature' | 'turnaround' | 'distressed' | 'stable';
-  industry: string;
-  sector: string;
-  businessModel: string;
-  revenueModel: string;
-  
-  // Financial Metrics
-  currentRevenue: number;
-  projectedRevenue: number;
-  revenueGrowth: number;
-  ebitda: number;
-  ebitdaMargin: number;
-  netIncome: number;
-  netMargin: number;
-  freeCashFlow: number;
-  fcfMargin: number;
-  
-  // Balance Sheet
-  totalAssets: number;
-  totalLiabilities: number;
-  shareholdersEquity: number;
-  workingCapital: number;
-  currentRatio: number;
-  quickRatio: number;
-  debtToEquity: number;
-  debtToEbitda: number;
+  // Financial Information
+  financialInfo: {
+    // Income Statement
+    incomeStatement: {
+      revenue: number;
+      costOfGoodsSold: number;
+      grossProfit: number;
+      operatingExpenses: number;
+      ebitda: number;
+      depreciation: number;
+      amortization: number;
+      ebit: number;
+      interestExpense: number;
+      ebt: number;
+      taxes: number;
+      netIncome: number;
+    };
+    
+    // Balance Sheet
+    balanceSheet: {
+      totalAssets: number;
+      currentAssets: number;
+      fixedAssets: number;
+      intangibleAssets: number;
+      totalLiabilities: number;
+      currentLiabilities: number;
+      longTermDebt: number;
+      shareholdersEquity: number;
+      workingCapital: number;
+      netDebt: number;
+    };
+    
+    // Cash Flow Statement
+    cashFlowStatement: {
+      operatingCashFlow: number;
+      investingCashFlow: number;
+      financingCashFlow: number;
+      netCashFlow: number;
+      capitalExpenditures: number;
+      acquisitions: number;
+      dispositions: number;
+      debtIssuance: number;
+      debtRepayment: number;
+      dividendPayments: number;
+    };
+    
+    // Financial Ratios
+    financialRatios: {
+      debtToEquity: number;
+      debtToEbitda: number;
+      interestCoverage: number;
+      currentRatio: number;
+      quickRatio: number;
+      returnOnEquity: number;
+      returnOnAssets: number;
+      returnOnInvestment: number;
+      grossMargin: number;
+      operatingMargin: number;
+      netMargin: number;
+    };
+  };
   
   // Capital Structure
-  seniorDebt: number;
-  mezzanineDebt: number;
-  preferredEquity: number;
-  commonEquity: number;
-  totalDebt: number;
-  netDebt: number;
-  leverageRatio: number;
-  interestCoverage: number;
-  
-  // Debt Terms
-  debtTerms: {
-    type: string;
-    amount: number;
-    interestRate: number;
-    maturity: string;
-    amortization: string;
-    covenants: string[];
-  }[];
+  capitalStructure: {
+    // Equity Structure
+    equityStructure: {
+      commonEquity: number;
+      preferredEquity: number;
+      managementEquity: number;
+      totalEquity: number;
+      equityPercentage: number;
+    };
+    
+    // Debt Structure
+    debtStructure: {
+      seniorDebt: number;
+      mezzanineDebt: number;
+      subordinatedDebt: number;
+      totalDebt: number;
+      debtPercentage: number;
+      averageInterestRate: number;
+      averageMaturity: number;
+    };
+    
+    // Capital Structure Summary
+    capitalStructureSummary: {
+      totalCapital: number;
+      equityWeight: number;
+      debtWeight: number;
+      targetCapitalStructure: {
+        equity: number;
+        debt: number;
+      };
+    };
+  };
   
   // Operational Metrics
   operationalMetrics: {
-    revenuePerEmployee: number;
-    ebitdaPerEmployee: number;
-    assetTurnover: number;
-    inventoryTurnover: number;
-    receivablesDays: number;
-    payablesDays: number;
-    cashConversionCycle: number;
-  };
-  
-  // Market Analysis
-  marketSize: number;
-  marketGrowth: number;
-  marketShare: number;
-  competitiveLandscape: string[];
-  competitiveAdvantage: string[];
-  barriersToEntry: string[];
-  regulatoryEnvironment: string[];
-  
-  // Industry Analysis
-  industryMetrics: {
-    averageEbitdaMargin: number;
-    averageRevenueGrowth: number;
-    averageLeverage: number;
-    averageValuationMultiple: number;
-    industryTrends: string[];
-  };
-  
-  // Management Team
-  managementTeam: {
-    ceo: {
-      name: string;
-      experience: number;
-      trackRecord: string;
-      compensation: number;
+    // Operational Performance
+    operationalPerformance: {
+      revenueGrowth: number;
+      ebitdaGrowth: number;
+      marginExpansion: number;
+      costReduction: number;
+      efficiencyImprovement: number;
+      marketShare: number;
+      customerRetention: number;
+      employeeProductivity: number;
     };
-    cfo: {
-      name: string;
-      experience: number;
-      trackRecord: string;
-      compensation: number;
-    };
-    keyExecutives: {
-      name: string;
-      title: string;
-      experience: number;
-      compensation: number;
+    
+    // Key Performance Indicators
+    keyPerformanceIndicators: {
+      kpi: string;
+      currentValue: number;
+      targetValue: number;
+      performance: number;
+      trend: 'improving' | 'stable' | 'declining';
     }[];
-  };
-  
-  // Value Creation Plan
-  valueCreationPlan: {
+    
+    // Operational Improvements
     operationalImprovements: {
-      initiative: string;
+      improvement: string;
       impact: number;
-      timeline: string;
-      cost: number;
+      implementationCost: number;
+      timeline: number;
+      probability: number;
     }[];
-    growthInitiatives: {
-      initiative: string;
-      impact: number;
-      timeline: string;
-      investment: number;
+  };
+  
+  // Market Information
+  marketInfo: {
+    // Market Size
+    marketSize: {
+      totalAddressableMarket: number;
+      serviceableAddressableMarket: number;
+      serviceableObtainableMarket: number;
+      marketGrowthRate: number;
+      marketMaturity: 'nascent' | 'growing' | 'mature' | 'declining';
+    };
+    
+    // Competitive Landscape
+    competitiveLandscape: {
+      competitors: {
+        competitor: string;
+        marketShare: number;
+        revenue: number;
+        strengths: string[];
+        weaknesses: string[];
+      }[];
+      competitiveAdvantage: string[];
+      barriersToEntry: string[];
+      competitiveIntensity: 'low' | 'medium' | 'high';
+    };
+    
+    // Industry Trends
+    industryTrends: {
+      trend: string;
+      impact: 'positive' | 'negative' | 'neutral';
+      probability: number;
+      timeframe: string;
+      description: string;
     }[];
-    costReductions: {
-      initiative: string;
-      savings: number;
-      timeline: string;
-      cost: number;
+    
+    // Regulatory Environment
+    regulatoryEnvironment: {
+      regulatoryRisk: number;
+      complianceCosts: number;
+      regulatoryChanges: string[];
+      regulatoryTrend: 'favorable' | 'neutral' | 'unfavorable';
+    };
+  };
+  
+  // Valuation Parameters
+  valuationParameters: {
+    // DCF Analysis
+    dcfAnalysis: {
+      freeCashFlow: number;
+      growthRate: number;
+      terminalGrowthRate: number;
+      discountRate: number;
+      terminalValue: number;
+      presentValue: number;
+    };
+    
+    // Comparable Analysis
+    comparableAnalysis: {
+      comparableCompanies: {
+        company: string;
+        evToEbitda: number;
+        priceToEarnings: number;
+        priceToBook: number;
+        revenueMultiple: number;
+      }[];
+      averageMultiples: {
+        evToEbitda: number;
+        priceToEarnings: number;
+        priceToBook: number;
+        revenueMultiple: number;
+      };
+    };
+    
+    // Precedent Transactions
+    precedentTransactions: {
+      transaction: string;
+      date: string;
+      evToEbitda: number;
+      priceToEarnings: number;
+      priceToBook: number;
+      revenueMultiple: number;
     }[];
-    strategicInitiatives: {
-      initiative: string;
-      impact: number;
-      timeline: string;
-      investment: number;
-    }[];
+    
+    // Asset-Based Valuation
+    assetBasedValuation: {
+      bookValue: number;
+      tangibleBookValue: number;
+      replacementValue: number;
+      liquidationValue: number;
+      adjustedBookValue: number;
+    };
+  };
+  
+  // Risk Assessment
+  riskAssessment: {
+    // Business Risk
+    businessRisk: {
+      executionRisk: number;
+      marketRisk: number;
+      competitiveRisk: number;
+      operationalRisk: number;
+      technologyRisk: number;
+    };
+    
+    // Financial Risk
+    financialRisk: {
+      leverageRisk: number;
+      liquidityRisk: number;
+      refinancingRisk: number;
+      interestRateRisk: number;
+      currencyRisk: number;
+    };
+    
+    // Management Risk
+    managementRisk: {
+      managementQuality: number;
+      keyPersonRisk: number;
+      successionRisk: number;
+      alignmentRisk: number;
+      executionRisk: number;
+    };
+    
+    // Market Risk
+    marketRisk: {
+      demandRisk: number;
+      supplyRisk: number;
+      pricingRisk: number;
+      regulatoryRisk: number;
+      economicRisk: number;
+    };
   };
   
   // Exit Strategy
-  exitStrategy: 'ipo' | 'strategic_sale' | 'financial_sale' | 'recapitalization' | 'dividend_recap' | 'secondary_sale' | 'liquidation';
-  expectedExitValue: number;
-  expectedExitDate: string;
-  exitMultiple: number;
-  exitProbability: number;
-  
-  // Comparable Companies
-  comparableCompanies: {
-    company: string;
-    valuation: number;
-    revenue: number;
-    ebitda: number;
-    multiple: number;
-    leverage: number;
-  }[];
-  
-  // Comparable Transactions
-  comparableTransactions: {
-    target: string;
-    acquirer: string;
-    dealValue: number;
-    multiple: number;
-    date: string;
-    type: string;
-  }[];
-  
-  // Risk Assessment
-  riskFactors: {
-    category: string;
-    factor: string;
-    impact: 'low' | 'medium' | 'high';
-    probability: number;
-    mitigation: string;
-  }[];
-  
-  // Due Diligence
-  dueDiligence: {
-    financial: boolean;
-    legal: boolean;
-    operational: boolean;
-    market: boolean;
-    environmental: boolean;
-    tax: boolean;
-    regulatory: boolean;
-    technology: boolean;
-  };
-  
-  // Investment Terms
-  investmentTerms: {
-    purchasePrice: number;
-    earnout: number;
-    escrow: number;
-    workingCapitalAdjustment: boolean;
-    indemnification: boolean;
-    representations: string[];
-    warranties: string[];
+  exitStrategy: {
+    // Exit Options
+    exitOptions: {
+      option: string;
+      probability: number;
+      timeline: number; // in years
+      valuation: number;
+      multiple: number;
+      description: string;
+    }[];
+    
+    // IPO Analysis
+    ipoAnalysis: {
+      ipoReadiness: number;
+      ipoTimeline: number;
+      ipoValuation: number;
+      ipoCosts: number;
+      ipoProbability: number;
+      ipoRequirements: string[];
+    };
+    
+    // Strategic Sale Analysis
+    strategicSaleAnalysis: {
+      potentialBuyers: {
+        buyer: string;
+        probability: number;
+        valuation: number;
+        strategicFit: number;
+        synergies: string[];
+      }[];
+      saleProbability: number;
+      saleTimeline: number;
+      saleValuation: number;
+    };
+    
+    // Secondary Sale Analysis
+    secondarySaleAnalysis: {
+      secondaryMarket: 'active' | 'limited' | 'none';
+      secondaryValuation: number;
+      secondaryDiscount: number;
+      secondaryProbability: number;
+      secondaryTimeline: number;
+    };
   };
   
   // Fund Performance
   fundPerformance: {
-    irr: number;
-    tvpi: number;
-    dpi: number;
-    rvpi: number;
-    jCurve: boolean;
-    timeToFirstExit: number;
-    timeToLiquidity: number;
+    // Fund Metrics
+    fundMetrics: {
+      totalInvested: number;
+      totalValue: number;
+      unrealizedValue: number;
+      realizedValue: number;
+      irr: number;
+      tvpi: number;
+      dpi: number;
+      rvpi: number;
+    };
+    
+    // Portfolio Metrics
+    portfolioMetrics: {
+      portfolioCompanies: number;
+      activeInvestments: number;
+      exitedInvestments: number;
+      writeOffs: number;
+      averageHoldingPeriod: number;
+      portfolioDiversification: number;
+    };
+    
+    // Performance Benchmarks
+    performanceBenchmarks: {
+      benchmark: string;
+      fundPerformance: number;
+      benchmarkPerformance: number;
+      outperformance: number;
+      percentile: number;
+    }[];
   };
   
-  // Portfolio Company Performance
-  portfolioPerformance: {
-    revenueGrowth: number;
-    ebitdaGrowth: number;
-    marginExpansion: number;
-    cashFlowGeneration: number;
-    debtPaydown: number;
-    valueCreation: number;
-  };
-  
-  // Market Conditions
-  marketConditions: {
-    peFundraising: number;
-    exitActivity: number;
-    ipoMarket: string;
-    mandaMarket: string;
-    debtMarkets: string;
-    interestRates: number;
-    inflation: number;
-    economicOutlook: string;
+  // Economic Environment
+  economicEnvironment: {
+    // Economic Indicators
+    economicIndicators: {
+      gdpGrowth: number;
+      inflationRate: number;
+      interestRate: number;
+      unemploymentRate: number;
+      consumerConfidence: number;
+    };
+    
+    // Private Equity Market
+    peMarket: {
+      totalPeFunding: number;
+      dealCount: number;
+      averageDealSize: number;
+      exitActivity: number;
+      marketSentiment: 'bullish' | 'neutral' | 'bearish';
+    };
+    
+    // Exit Market
+    exitMarket: {
+      ipoActivity: number;
+      acquisitionActivity: number;
+      exitValuations: number;
+      exitMultiples: number;
+      marketLiquidity: 'high' | 'medium' | 'low';
+    };
   };
   
   // Scenario Analysis
-  scenarios: {
-    name: string;
-    probability: number;
-    revenueGrowth: number;
-    marginExpansion: number;
-    exitMultiple: number;
-    exitValue: number;
-    exitDate: string;
-    irr: number;
-  }[];
+  scenarioAnalysis: {
+    // Business Scenarios
+    businessScenarios: {
+      scenarioName: string;
+      probability: number;
+      revenueGrowth: number;
+      ebitdaGrowth: number;
+      marginExpansion: number;
+      marketShare: number;
+      description: string;
+    }[];
+    
+    // Exit Scenarios
+    exitScenarios: {
+      scenarioName: string;
+      probability: number;
+      exitValue: number;
+      exitMultiple: number;
+      exitYear: number;
+      exitType: string;
+      description: string;
+    }[];
+    
+    // Market Scenarios
+    marketScenarios: {
+      scenarioName: string;
+      probability: number;
+      marketGrowth: number;
+      competitiveIntensity: number;
+      regulatoryEnvironment: string;
+      economicConditions: string;
+      description: string;
+    }[];
+  };
   
   // Monte Carlo Simulation
   monteCarloSimulations: number;
   monteCarloTimeSteps: number;
-  includeMarketShocks: boolean;
-  marketShockProbability: number;
-  marketShockSize: number;
-  
-  // Historical Analysis
-  historicalData: {
-    date: string;
-    valuation: number;
-    revenue: number;
-    ebitda: number;
-    debt: number;
-    cashFlow: number;
-  }[];
+  includeRevenueVolatility: boolean;
+  includeEbitdaVolatility: boolean;
+  includeExitVolatility: boolean;
   
   // Analysis Parameters
   analysisPeriod: number; // in years
   discountRate: number;
-  terminalGrowthRate: number;
-  exitMultiple: number;
+  terminalValue: number;
   includeTransactionCosts: boolean;
   includeTaxes: boolean;
-  includeSynergies: boolean;
+  
+  // Calculation Options
+  calculationOptions: {
+    includeValuationAnalysis: boolean;
+    includeRiskAnalysis: boolean;
+    includeExitAnalysis: boolean;
+    includeScenarioAnalysis: boolean;
+    includeMonteCarlo: boolean;
+  };
+  
+  // Historical Analysis
+  historicalData: {
+    year: number;
+    investment: number;
+    valuation: number;
+    revenue: number;
+    ebitda: number;
+    exitValue: number;
+    return: number;
+  }[];
   
   // Reporting Preferences
   includeValuationAnalysis: boolean;
-  includeRiskMetrics: boolean;
+  includeRiskAnalysis: boolean;
+  includeExitAnalysis: boolean;
+  includeFundAnalysis: boolean;
+  includeMarketAnalysis: boolean;
   includeScenarioAnalysis: boolean;
   includeMonteCarlo: boolean;
   includeHistoricalAnalysis: boolean;
-  includeComparableAnalysis: boolean;
-  includeDueDiligence: boolean;
   includeRecommendations: boolean;
   includeActionItems: boolean;
   
@@ -291,153 +525,130 @@ export interface PrivateEquityInputs {
   includeRecommendations: boolean;
 }
 
-export interface PrivateEquityResults {
-  // Core Investment Metrics
-  investmentValue: number;
-  currentValue: number;
-  unrealizedGain: number;
-  realizedGain: number;
-  totalReturn: number;
+export interface PrivateEquityCalculatorResults {
+  // Core PE Metrics
+  investmentAmount: number;
+  currentValuation: number;
+  ownershipPercentage: number;
   irr: number;
   tvpi: number;
-  dpi: number;
-  rvpi: number;
+  exitValue: number;
+  
+  // PE Analysis
+  peAnalysis: {
+    investmentAmount: number;
+    currentValuation: number;
+    ownershipPercentage: number;
+    irr: number;
+    tvpi: number;
+    exitValue: number;
+    peBreakdown: {
+      component: string;
+      value: number;
+      contribution: number;
+    }[];
+    peEfficiency: number;
+  };
   
   // Valuation Analysis
   valuationAnalysis: {
-    method: string;
-    value: number;
-    weight: number;
-    assumptions: string[];
-  }[];
-  
-  // DCF Analysis
-  dcfAnalysis: {
-    presentValue: number;
-    terminalValue: number;
-    enterpriseValue: number;
-    equityValue: number;
-    valuePerShare: number;
-    cashFlows: {
-      year: number;
-      revenue: number;
-      ebitda: number;
-      freeCashFlow: number;
-      presentValue: number;
-    }[];
-  };
-  
-  // Comparable Analysis
-  comparableAnalysis: {
-    comparableCompanies: {
-      company: string;
-      valuation: number;
-      revenue: number;
-      ebitda: number;
-      multiple: number;
-      leverage: number;
-    }[];
-    comparableTransactions: {
-      target: string;
-      dealValue: number;
-      multiple: number;
-      date: string;
-    }[];
-    averageMultiple: number;
-    medianMultiple: number;
-    impliedValuation: number;
-  };
-  
-  // Exit Analysis
-  exitAnalysis: {
-    exitStrategy: string;
-    expectedExitValue: number;
-    expectedExitDate: string;
-    exitMultiple: number;
-    probabilityOfExit: number;
-    timeToExit: number;
-    exitScenarios: {
-      scenario: string;
+    dcfValue: number;
+    comparableValue: number;
+    precedentValue: number;
+    assetValue: number;
+    weightedValue: number;
+    valuationMethod: string;
+    valuationComponents: {
+      component: string;
       value: number;
-      probability: number;
-      irr: number;
+      percentage: number;
     }[];
+    valuationEfficiency: number;
+  };
+  
+  // Return Analysis
+  returnAnalysis: {
+    internalRateOfReturn: number;
+    totalValueToPaidIn: number;
+    distributedToPaidIn: number;
+    residualValueToPaidIn: number;
+    netPresentValue: number;
+    paybackPeriod: number;
+    returnBreakdown: {
+      component: string;
+      value: number;
+      contribution: number;
+    }[];
+    returnEfficiency: number;
   };
   
   // Risk Analysis
   riskAnalysis: {
-    marketRisk: number;
-    operationalRisk: number;
-    financialRisk: number;
-    regulatoryRisk: number;
-    managementRisk: number;
-    competitiveRisk: number;
-    executionRisk: number;
+    businessRisk: {
+      executionRisk: number;
+      marketRisk: number;
+      competitiveRisk: number;
+      operationalRisk: number;
+      technologyRisk: number;
+      riskContribution: number;
+    };
+    financialRisk: {
+      leverageRisk: number;
+      liquidityRisk: number;
+      refinancingRisk: number;
+      interestRateRisk: number;
+      currencyRisk: number;
+      riskContribution: number;
+    };
+    managementRisk: {
+      managementQuality: number;
+      keyPersonRisk: number;
+      successionRisk: number;
+      alignmentRisk: number;
+      executionRisk: number;
+      riskContribution: number;
+    };
     totalRisk: number;
+    riskEfficiency: number;
   };
   
-  // Performance Metrics
-  performanceMetrics: {
-    totalReturn: number;
-    annualizedReturn: number;
-    sharpeRatio: number;
-    sortinoRatio: number;
-    calmarRatio: number;
-    treynorRatio: number;
-    informationRatio: number;
+  // Exit Analysis
+  exitAnalysis: {
+    exitProbability: number;
+    expectedExitValue: number;
+    expectedExitMultiple: number;
+    expectedExitYear: number;
+    exitOptions: {
+      option: string;
+      probability: number;
+      value: number;
+      timeline: number;
+    }[];
+    exitBreakdown: {
+      component: string;
+      value: number;
+      contribution: number;
+    }[];
+    exitEfficiency: number;
   };
   
-  // Financial Health
-  financialHealth: {
-    revenueGrowth: number;
-    ebitdaGrowth: number;
-    marginExpansion: number;
-    cashFlowGeneration: number;
-    debtPaydown: number;
-    leverageRatio: number;
-    interestCoverage: number;
-    liquidityRatio: number;
-  };
-  
-  // Operational Performance
-  operationalPerformance: {
-    revenuePerEmployee: number;
-    ebitdaPerEmployee: number;
-    assetTurnover: number;
-    inventoryTurnover: number;
-    receivablesDays: number;
-    payablesDays: number;
-    cashConversionCycle: number;
-    operationalEfficiency: number;
-  };
-  
-  // Value Creation Analysis
-  valueCreationAnalysis: {
-    operationalImprovements: {
-      initiative: string;
-      impact: number;
-      status: string;
-      valueCreated: number;
+  // Fund Analysis
+  fundAnalysis: {
+    fundSize: number;
+    totalInvested: number;
+    totalValue: number;
+    unrealizedValue: number;
+    realizedValue: number;
+    fundIrr: number;
+    fundTvpi: number;
+    fundDpi: number;
+    fundRvpi: number;
+    fundBreakdown: {
+      component: string;
+      value: number;
+      contribution: number;
     }[];
-    growthInitiatives: {
-      initiative: string;
-      impact: number;
-      status: string;
-      valueCreated: number;
-    }[];
-    costReductions: {
-      initiative: string;
-      savings: number;
-      status: string;
-      valueCreated: number;
-    }[];
-    strategicInitiatives: {
-      initiative: string;
-      impact: number;
-      status: string;
-      valueCreated: number;
-    }[];
-    totalValueCreated: number;
+    fundEfficiency: number;
   };
   
   // Market Analysis
@@ -446,82 +657,114 @@ export interface PrivateEquityResults {
     marketGrowth: number;
     marketShare: number;
     competitivePosition: number;
-    competitiveAdvantage: string[];
-    marketOpportunities: string[];
-    marketThreats: string[];
+    marketBreakdown: {
+      factor: string;
+      impact: number;
+      opportunity: number;
+    }[];
+    marketScore: number;
   };
   
-  // Industry Analysis
-  industryAnalysis: {
-    averageEbitdaMargin: number;
-    averageRevenueGrowth: number;
-    averageLeverage: number;
-    averageValuationMultiple: number;
-    industryTrends: string[];
-    relativePerformance: number;
-    industryRanking: number;
-  };
-  
-  // Management Analysis
-  managementAnalysis: {
-    managementQuality: number;
-    executionCapability: number;
-    alignment: number;
-    trackRecord: number;
-    compensation: number;
-    retentionRisk: number;
-  };
-  
-  // Due Diligence Results
-  dueDiligenceResults: {
-    financial: {
-      completed: boolean;
-      findings: string[];
-      risks: string[];
-      recommendations: string[];
+  // Financial Analysis
+  financialAnalysis: {
+    // Revenue Analysis
+    revenueAnalysis: {
+      currentRevenue: number;
+      projectedRevenue: number;
+      revenueGrowth: number;
+      revenueBreakdown: {
+        component: string;
+        value: number;
+        contribution: number;
+      }[];
+      revenueEfficiency: number;
     };
-    legal: {
-      completed: boolean;
-      findings: string[];
-      risks: string[];
-      recommendations: string[];
+    
+    // EBITDA Analysis
+    ebitdaAnalysis: {
+      currentEbitda: number;
+      projectedEbitda: number;
+      ebitdaGrowth: number;
+      ebitdaMargin: number;
+      ebitdaBreakdown: {
+        component: string;
+        value: number;
+        contribution: number;
+      }[];
+      ebitdaEfficiency: number;
     };
-    operational: {
-      completed: boolean;
-      findings: string[];
-      risks: string[];
-      recommendations: string[];
-    };
-    market: {
-      completed: boolean;
-      findings: string[];
-      risks: string[];
-      recommendations: string[];
-    };
-    environmental: {
-      completed: boolean;
-      findings: string[];
-      risks: string[];
-      recommendations: string[];
+    
+    // Cash Flow Analysis
+    cashFlowAnalysis: {
+      operatingCashFlow: number;
+      freeCashFlow: number;
+      cashFlowGrowth: number;
+      cashFlowBreakdown: {
+        component: string;
+        value: number;
+        contribution: number;
+      }[];
+      cashFlowEfficiency: number;
     };
   };
   
-  // Scenario Analysis Results
-  scenarioResults: {
+  // Sensitivity Analysis
+  sensitivityAnalysis: {
+    variable: string;
+    baseValue: number;
+    lowValue: number;
+    highValue: number;
+    lowValuation: number;
+    highValuation: number;
+    sensitivity: number;
+  }[];
+  
+  // Scenario Analysis
+  scenarioAnalysis: {
     scenarioName: string;
     probability: number;
-    investmentValue: number;
+    valuation: number;
+    exitValue: number;
     irr: number;
     tvpi: number;
-    exitValue: number;
-    exitDate: string;
-    keyAssumptions: string[];
+    riskLevel: string;
   }[];
+  
+  // Peer Comparison
+  peerComparison: {
+    peerComparison: {
+      peer: string;
+      valuation: number;
+      irr: number;
+      tvpi: number;
+      exitValue: number;
+      outperformance: number;
+    }[];
+    industryComparison: {
+      metric: string;
+      company: number;
+      industry: number;
+      difference: number;
+    }[];
+  };
+  
+  // PE Score
+  peScore: {
+    overallScore: number;
+    componentScores: {
+      valuation: number;
+      returns: number;
+      risk: number;
+      exit: number;
+      market: number;
+    };
+    recommendation: 'invest' | 'hold' | 'exit' | 'review';
+  };
   
   // Monte Carlo Results
   monteCarloResults: {
-    meanValue: number;
-    medianValue: number;
+    meanValuation: number;
+    medianValuation: number;
     standardDeviation: number;
     percentiles: {
       p5: number;
@@ -533,51 +776,19 @@ export interface PrivateEquityResults {
       p95: number;
     };
     probabilityDistribution: {
-      value: number;
+      valuation: number;
       probability: number;
     }[];
+    successProbability: number;
   };
   
   // Historical Analysis
   historicalAnalysis: {
-    historicalReturn: number;
-    historicalVolatility: number;
-    historicalSharpeRatio: number;
-    historicalMaxDrawdown: number;
-    valuationTrend: number;
-    revenueTrend: number;
-    ebitdaTrend: number;
-  };
-  
-  // Portfolio Impact
-  portfolioImpact: {
-    portfolioValue: number;
-    positionWeight: number;
-    portfolioReturn: number;
-    portfolioRisk: number;
-    diversificationImpact: number;
-    correlationWithPortfolio: number;
-  };
-  
-  // Sensitivity Analysis
-  sensitivityAnalysis: {
-    parameter: string;
-    baseValue: number;
-    lowValue: number;
-    highValue: number;
-    lowValuation: number;
-    highValuation: number;
-    sensitivity: number;
-  }[];
-  
-  // Comparative Analysis
-  comparativeAnalysis: {
-    benchmark: string;
-    benchmarkReturn: number;
-    excessReturn: number;
-    trackingError: number;
-    informationRatio: number;
-    relativePerformance: number;
+    historicalValuation: number;
+    historicalReturns: number;
+    historicalExits: number;
+    historicalTrends: string[];
+    yearOverYearChange: number;
   };
   
   // Optimization Opportunities
@@ -591,18 +802,18 @@ export interface PrivateEquityResults {
   
   // Business Impact
   businessImpact: {
-    roi: number;
-    paybackPeriod: number;
-    netPresentValue: number;
-    internalRateOfReturn: number;
-    riskAdjustedReturn: number;
+    valueCreation: number;
+    returnImprovement: number;
+    riskReduction: number;
+    competitiveAdvantage: number;
+    overallBenefit: number;
   };
   
   // Comprehensive Report
   comprehensiveReport: {
     executiveSummary: string;
     keyFindings: string[];
-    riskAssessment: string;
+    peAssessment: string;
     recommendations: string[];
     actionItems: {
       action: string;
@@ -614,12 +825,12 @@ export interface PrivateEquityResults {
   
   // Executive Summary
   executiveSummary: {
-    investmentValue: number;
-    totalReturn: number;
-    riskLevel: 'low' | 'medium' | 'high';
-    recommendation: 'invest' | 'pass' | 'hold';
-    keyRisks: string[];
-    keyOpportunities: string[];
+    investmentAmount: number;
+    currentValuation: number;
+    irr: number;
+    recommendation: 'invest' | 'hold' | 'exit' | 'review';
+    keyStrengths: string[];
+    keyWeaknesses: string[];
   };
   
   // Recommendations

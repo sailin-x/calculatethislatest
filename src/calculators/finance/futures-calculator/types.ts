@@ -1,166 +1,419 @@
-export interface FuturesInputs {
-  // Futures Contract Information
-  contractType: 'commodity' | 'financial' | 'currency' | 'index' | 'interest_rate' | 'energy' | 'metals' | 'agriculture' | 'livestock' | 'softs';
-  underlyingAsset: string;
-  contractSymbol: string;
-  exchange: string;
+export interface FuturesCalculatorInputs {
+  // Futures Information
+  futuresInfo: {
+    futuresName: string;
+    futuresSymbol: string;
+    underlyingAsset: string;
+    assetType: 'commodity' | 'currency' | 'index' | 'bond' | 'stock' | 'interest_rate' | 'energy' | 'metals' | 'agriculture' | 'other';
+    exchange: string;
+    contractSize: number;
+    tickSize: number;
+    tickValue: number;
+    futuresDescription: string;
+  };
   
   // Contract Specifications
-  contractSize: number;
-  tickSize: number;
-  tickValue: number;
-  priceQuotation: string; // e.g., "dollars per barrel", "points"
-  deliveryMonth: string;
-  lastTradingDay: string;
-  deliveryLocation: string;
+  contractSpecifications: {
+    // Basic Contract Details
+    basicDetails: {
+      contractSize: number;
+      tickSize: number;
+      tickValue: number;
+      minimumPriceMovement: number;
+      priceQuotation: string;
+      tradingHours: string;
+      lastTradingDay: string;
+      deliveryDate: string;
+      deliveryLocation: string;
+    };
+    
+    // Contract Months
+    contractMonths: {
+      month: string;
+      symbol: string;
+      lastTradingDay: string;
+      deliveryDate: string;
+      openInterest: number;
+      volume: number;
+    }[];
+    
+    // Margin Requirements
+    marginRequirements: {
+      initialMargin: number;
+      maintenanceMargin: number;
+      variationMargin: number;
+      marginCallLevel: number;
+      leverage: number;
+    };
+    
+    // Delivery Specifications
+    deliverySpecifications: {
+      deliveryType: 'physical' | 'cash' | 'both';
+      deliveryLocation: string;
+      deliveryGrade: string;
+      deliveryPeriod: string;
+      deliveryNotice: number; // days
+    };
+  };
   
-  // Pricing Information
-  currentPrice: number;
-  bidPrice: number;
-  askPrice: number;
-  lastPrice: number;
-  settlementPrice: number;
-  openInterest: number;
-  volume: number;
+  // Market Data
+  marketData: {
+    // Current Market Information
+    currentMarketInfo: {
+      currentPrice: number;
+      bidPrice: number;
+      askPrice: number;
+      lastPrice: number;
+      openPrice: number;
+      highPrice: number;
+      lowPrice: number;
+      volume: number;
+      openInterest: number;
+      change: number;
+      changePercent: number;
+    };
+    
+    // Price Data
+    priceData: {
+      date: string;
+      open: number;
+      high: number;
+      low: number;
+      close: number;
+      volume: number;
+      openInterest: number;
+    }[];
+    
+    // Term Structure
+    termStructure: {
+      month: string;
+      price: number;
+      basis: number;
+      contango: number;
+      backwardation: number;
+      openInterest: number;
+      volume: number;
+    }[];
+    
+    // Market Conditions
+    marketConditions: {
+      marketType: 'contango' | 'backwardation' | 'normal';
+      volatilityRegime: 'low' | 'medium' | 'high';
+      liquidityCondition: 'high' | 'medium' | 'low';
+      marketStress: 'low' | 'medium' | 'high';
+    };
+  };
   
   // Position Information
-  positionType: 'long' | 'short';
-  positionSize: number;
-  entryPrice: number;
-  currentPrice: number;
-  markToMarket: number;
+  positionInformation: {
+    // Position Details
+    positionDetails: {
+      positionType: 'long' | 'short' | 'spread' | 'calendar' | 'butterfly' | 'straddle' | 'strangle' | 'other';
+      quantity: number;
+      entryPrice: number;
+      currentPrice: number;
+      unrealizedPnL: number;
+      realizedPnL: number;
+      totalPnL: number;
+    };
+    
+    // Position Legs
+    positionLegs: {
+      leg: string;
+      contract: string;
+      quantity: number;
+      price: number;
+      type: 'long' | 'short';
+      month: string;
+    }[];
+    
+    // Position Risk
+    positionRisk: {
+      delta: number;
+      gamma: number;
+      theta: number;
+      vega: number;
+      rho: number;
+      var: number;
+      maxLoss: number;
+      maxProfit: number;
+    };
+  };
   
-  // Market Conditions
-  spotPrice: number;
-  riskFreeRate: number;
-  timeToExpiration: number; // in years
-  volatility: number;
-  convenienceYield: number;
-  storageCost: number;
-  insuranceCost: number;
+  // Pricing Parameters
+  pricingParameters: {
+    // Cost of Carry Model
+    costOfCarryModel: {
+      spotPrice: number;
+      riskFreeRate: number;
+      storageCost: number;
+      convenienceYield: number;
+      dividendYield: number;
+      timeToDelivery: number;
+      theoreticalPrice: number;
+    };
+    
+    // Basis Analysis
+    basisAnalysis: {
+      cashPrice: number;
+      futuresPrice: number;
+      basis: number;
+      basisRisk: number;
+      convergence: number;
+      basisComponents: {
+        component: string;
+        value: number;
+        contribution: number;
+      }[];
+    };
+    
+    // Arbitrage Analysis
+    arbitrageAnalysis: {
+      arbitrageOpportunity: boolean;
+      arbitrageProfit: number;
+      transactionCosts: number;
+      netProfit: number;
+      arbitrageType: 'cash_and_carry' | 'reverse_cash_and_carry' | 'calendar' | 'inter_commodity' | 'none';
+    };
+  };
   
-  // Cost of Carry
-  costOfCarry: number;
-  basis: number;
-  basisRisk: number;
-  convergence: number;
-  
-  // Margin Requirements
-  initialMargin: number;
-  maintenanceMargin: number;
-  variationMargin: number;
-  marginCall: boolean;
-  marginLevel: number;
-  
-  // Risk Management
-  stopLoss: number;
-  takeProfit: number;
-  maxLoss: number;
-  riskRewardRatio: number;
-  positionSizing: number;
+  // Risk Parameters
+  riskParameters: {
+    // Market Risk
+    marketRisk: {
+      priceRisk: number;
+      basisRisk: number;
+      volatilityRisk: number;
+      correlationRisk: number;
+      liquidityRisk: number;
+    };
+    
+    // Position Risk
+    positionRisk: {
+      deltaRisk: number;
+      gammaRisk: number;
+      thetaRisk: number;
+      vegaRisk: number;
+      concentrationRisk: number;
+    };
+    
+    // Credit Risk
+    creditRisk: {
+      counterpartyRisk: number;
+      defaultProbability: number;
+      recoveryRate: number;
+      creditSpread: number;
+    };
+    
+    // Operational Risk
+    operationalRisk: {
+      settlementRisk: number;
+      deliveryRisk: number;
+      regulatoryRisk: number;
+      technologyRisk: number;
+    };
+  };
   
   // Hedging Parameters
-  hedgeRatio: number;
-  hedgeEffectiveness: number;
-  basisRisk: number;
-  crossHedge: boolean;
-  hedgeInstrument: string;
+  hedgingParameters: {
+    // Hedging Strategy
+    hedgingStrategy: {
+      hedgeType: 'long' | 'short' | 'cross' | 'calendar' | 'ratio' | 'none';
+      hedgeRatio: number;
+      hedgeEffectiveness: number;
+      hedgeInstruments: string[];
+      rebalancingFrequency: 'daily' | 'weekly' | 'monthly' | 'event_driven';
+    };
+    
+    // Hedge Costs
+    hedgeCosts: {
+      transactionCosts: number;
+      marginCosts: number;
+      opportunityCosts: number;
+      totalHedgeCost: number;
+    };
+    
+    // Hedge Performance
+    hedgePerformance: {
+      hedgeRatio: number;
+      hedgeEfficiency: number;
+      basisRisk: number;
+      trackingError: number;
+    };
+  };
   
-  // Transaction Costs
-  commission: number;
-  fees: number;
-  slippage: number;
-  bidAskSpread: number;
-  clearingFees: number;
-  exchangeFees: number;
+  // Trading Parameters
+  tradingParameters: {
+    // Transaction Costs
+    transactionCosts: {
+      commission: number;
+      exchangeFees: number;
+      clearingFees: number;
+      bidAskSpread: number;
+      slippage: number;
+      totalCost: number;
+    };
+    
+    // Execution Parameters
+    executionParameters: {
+      orderType: 'market' | 'limit' | 'stop' | 'stop_limit' | 'iceberg' | 'twap' | 'vwap';
+      orderSize: number;
+      executionTime: number;
+      fillProbability: number;
+      marketImpact: number;
+    };
+    
+    // Liquidity Constraints
+    liquidityConstraints: {
+      maxTradeSize: number;
+      minTradeSize: number;
+      averageDailyVolume: number;
+      openInterest: number;
+      liquidityScore: number;
+    };
+  };
   
-  // Tax Considerations
-  taxRate: number;
-  taxTreatment: 'section_1256' | 'ordinary_income' | 'capital_gains';
-  markToMarketTax: boolean;
-  washSaleRule: boolean;
+  // Fundamental Analysis
+  fundamentalAnalysis: {
+    // Supply and Demand
+    supplyDemand: {
+      supply: number;
+      demand: number;
+      surplus: number;
+      deficit: number;
+      inventory: number;
+      production: number;
+      consumption: number;
+    };
+    
+    // Seasonal Factors
+    seasonalFactors: {
+      season: string;
+      impact: number;
+      historicalPattern: string;
+      currentPhase: string;
+    }[];
+    
+    // Weather Impact
+    weatherImpact: {
+      weatherCondition: string;
+      impact: number;
+      probability: number;
+      duration: number;
+    }[];
+    
+    // Economic Factors
+    economicFactors: {
+      factor: string;
+      impact: number;
+      direction: 'positive' | 'negative' | 'neutral';
+      probability: number;
+    }[];
+  };
   
-  // Portfolio Context
-  portfolioValue: number;
-  portfolioBeta: number;
-  portfolioVolatility: number;
-  correlationWithPortfolio: number;
-  diversificationImpact: number;
-  
-  // Analysis Parameters
-  analysisPeriod: number; // in days
-  rebalancingFrequency: 'daily' | 'weekly' | 'monthly' | 'quarterly' | 'annually' | 'never';
-  includeTransactionCosts: boolean;
-  includeTaxes: boolean;
-  includeStorageCosts: boolean;
-  includeFinancingCosts: boolean;
+  // Technical Analysis
+  technicalAnalysis: {
+    // Price Patterns
+    pricePatterns: {
+      pattern: string;
+      signal: 'buy' | 'sell' | 'hold';
+      strength: number;
+      target: number;
+      stopLoss: number;
+    }[];
+    
+    // Technical Indicators
+    technicalIndicators: {
+      indicator: string;
+      value: number;
+      signal: 'buy' | 'sell' | 'hold';
+      strength: number;
+    }[];
+    
+    // Support and Resistance
+    supportResistance: {
+      level: number;
+      type: 'support' | 'resistance';
+      strength: number;
+      touches: number;
+    }[];
+  };
   
   // Scenario Analysis
-  scenarios: {
-    name: string;
-    priceChange: number; // percentage
-    volatilityChange: number; // percentage
-    timeDecay: number; // days
-    interestRateChange: number; // percentage
-    basisChange: number; // percentage
-  }[];
+  scenarioAnalysis: {
+    // Market Scenarios
+    marketScenarios: {
+      scenarioName: string;
+      probability: number;
+      priceChange: number;
+      volumeChange: number;
+      volatilityChange: number;
+      description: string;
+    }[];
+    
+    // Stress Testing
+    stressTesting: {
+      stressTest: string;
+      priceShock: number;
+      volumeShock: number;
+      volatilityShock: number;
+      correlationShock: number;
+      description: string;
+    }[];
+    
+    // Sensitivity Analysis
+    sensitivityAnalysis: {
+      variable: string;
+      baseValue: number;
+      lowValue: number;
+      highValue: number;
+      stepSize: number;
+    }[];
+  };
   
   // Monte Carlo Simulation
   monteCarloSimulations: number;
   monteCarloTimeSteps: number;
-  includeJumpDiffusion: boolean;
-  jumpIntensity: number;
-  jumpSize: number;
+  includePriceVolatility: boolean;
+  includeVolumeVolatility: boolean;
+  includeCorrelationChanges: boolean;
+  
+  // Analysis Parameters
+  analysisPeriod: number; // in years
+  includeTransactionCosts: boolean;
+  includeTaxes: boolean;
+  includeStorageCosts: boolean;
+  includeDeliveryCosts: boolean;
+  
+  // Calculation Options
+  calculationOptions: {
+    includePricingAnalysis: boolean;
+    includeRiskAnalysis: boolean;
+    includeHedgingAnalysis: boolean;
+    includeScenarioAnalysis: boolean;
+    includeMonteCarlo: boolean;
+  };
   
   // Historical Analysis
   historicalData: {
     date: string;
-    futuresPrice: number;
-    spotPrice: number;
-    basis: number;
+    price: number;
     volume: number;
     openInterest: number;
+    basis: number;
     volatility: number;
+    return: number;
   }[];
-  
-  // Seasonality Analysis
-  seasonalityAnalysis: boolean;
-  seasonalFactors: {
-    month: number;
-    factor: number;
-  }[];
-  
-  // Supply and Demand Analysis
-  supplyDemandAnalysis: {
-    supplyFactors: string[];
-    demandFactors: string[];
-    inventoryLevels: number;
-    productionCapacity: number;
-    consumptionRate: number;
-  };
-  
-  // Weather Analysis (for agricultural/energy futures)
-  weatherAnalysis: {
-    weatherImpact: number;
-    weatherForecast: string;
-    weatherRisk: number;
-  };
-  
-  // Regulatory Considerations
-  positionLimits: number;
-  reportingRequirements: boolean;
-  regulatoryConstraints: string[];
   
   // Reporting Preferences
   includePricingAnalysis: boolean;
-  includeRiskMetrics: boolean;
+  includeRiskAnalysis: boolean;
+  includeHedgingAnalysis: boolean;
+  includeFundamentalAnalysis: boolean;
+  includeTechnicalAnalysis: boolean;
   includeScenarioAnalysis: boolean;
   includeMonteCarlo: boolean;
   includeHistoricalAnalysis: boolean;
-  includeSeasonalityAnalysis: boolean;
-  includeSupplyDemandAnalysis: boolean;
-  includeWeatherAnalysis: boolean;
-  includeRegulatoryAnalysis: boolean;
   includeRecommendations: boolean;
   includeActionItems: boolean;
   
@@ -171,76 +424,224 @@ export interface FuturesInputs {
   includeRecommendations: boolean;
 }
 
-export interface FuturesResults {
+export interface FuturesCalculatorResults {
   // Core Futures Metrics
-  futuresValue: number;
-  fairValue: number;
+  currentPrice: number;
   theoreticalPrice: number;
   basis: number;
-  costOfCarry: number;
-  convenienceYield: number;
-  
-  // Profit/Loss Analysis
-  profitLoss: number;
-  profitLossPercentage: number;
+  contango: number;
+  backwardation: number;
   unrealizedPnL: number;
-  realizedPnL: number;
-  totalReturn: number;
-  annualizedReturn: number;
   
-  // Risk Metrics
-  valueAtRisk: number;
-  conditionalVaR: number;
-  expectedShortfall: number;
-  maxDrawdown: number;
-  downsideDeviation: number;
-  riskOfLoss: number;
-  
-  // Performance Metrics
-  sharpeRatio: number;
-  sortinoRatio: number;
-  calmarRatio: number;
-  treynorRatio: number;
-  informationRatio: number;
+  // Futures Analysis
+  futuresAnalysis: {
+    currentPrice: number;
+    theoreticalPrice: number;
+    basis: number;
+    contango: number;
+    backwardation: number;
+    pricingEfficiency: number;
+    futuresBreakdown: {
+      component: string;
+      value: number;
+      contribution: number;
+    }[];
+  };
   
   // Pricing Analysis
   pricingAnalysis: {
     spotPrice: number;
     futuresPrice: number;
     theoreticalPrice: number;
-    fairValue: number;
-    basis: number;
     costOfCarry: number;
     convenienceYield: number;
-    arbitrageOpportunity: number;
+    storageCost: number;
+    pricingComponents: {
+      component: string;
+      value: number;
+      contribution: number;
+    }[];
+    pricingEfficiency: number;
   };
   
-  // Profit/Loss Analysis Over Time
-  profitLossAnalysis: {
-    price: number;
-    futuresValue: number;
-    profitLoss: number;
-    return: number;
+  // Basis Analysis
+  basisAnalysis: {
+    cashPrice: number;
+    futuresPrice: number;
+    basis: number;
+    basisRisk: number;
+    convergence: number;
+    basisComponents: {
+      component: string;
+      value: number;
+      contribution: number;
+    }[];
+    basisEfficiency: number;
+  };
+  
+  // Position Analysis
+  positionAnalysis: {
+    positionType: string;
+    quantity: number;
+    entryPrice: number;
+    currentPrice: number;
+    unrealizedPnL: number;
+    realizedPnL: number;
+    totalPnL: number;
+    positionBreakdown: {
+      component: string;
+      value: number;
+      contribution: number;
+    }[];
+    positionEfficiency: number;
+  };
+  
+  // Risk Analysis
+  riskAnalysis: {
+    marketRisk: {
+      priceRisk: number;
+      basisRisk: number;
+      volatilityRisk: number;
+      correlationRisk: number;
+      liquidityRisk: number;
+      riskContribution: number;
+    };
+    positionRisk: {
+      deltaRisk: number;
+      gammaRisk: number;
+      thetaRisk: number;
+      vegaRisk: number;
+      concentrationRisk: number;
+      riskContribution: number;
+    };
+    creditRisk: {
+      counterpartyRisk: number;
+      defaultProbability: number;
+      recoveryRate: number;
+      creditSpread: number;
+      riskContribution: number;
+    };
+    totalRisk: number;
+    riskEfficiency: number;
+  };
+  
+  // Hedging Analysis
+  hedgingAnalysis: {
+    hedgeType: string;
+    hedgeRatio: number;
+    hedgeEffectiveness: number;
+    hedgeInstruments: {
+      instrument: string;
+      quantity: number;
+      cost: number;
+      effectiveness: number;
+    }[];
+    hedgeCosts: {
+      transactionCosts: number;
+      marginCosts: number;
+      opportunityCosts: number;
+      totalCost: number;
+    };
+    hedgePerformance: {
+      hedgeRatio: number;
+      hedgeEfficiency: number;
+      basisRisk: number;
+      trackingError: number;
+    };
+    hedgeEfficiency: number;
+  };
+  
+  // Arbitrage Analysis
+  arbitrageAnalysis: {
+    arbitrageOpportunity: boolean;
+    arbitrageType: string;
+    arbitrageProfit: number;
+    transactionCosts: number;
+    netProfit: number;
+    arbitrageComponents: {
+      component: string;
+      value: number;
+      contribution: number;
+    }[];
+    arbitrageEfficiency: number;
+  };
+  
+  // Sensitivity Analysis
+  sensitivityAnalysis: {
+    variable: string;
+    baseValue: number;
+    lowValue: number;
+    highValue: number;
+    lowPrice: number;
+    highPrice: number;
+    sensitivity: number;
   }[];
   
-  // Scenario Analysis Results
-  scenarioResults: {
+  // Scenario Analysis
+  scenarioAnalysis: {
     scenarioName: string;
+    probability: number;
     price: number;
-    futuresValue: number;
+    volume: number;
+    volatility: number;
     profitLoss: number;
-    return: number;
-    riskMetrics: {
-      var: number;
-      cvar: number;
-      maxDrawdown: number;
-    };
+    riskLevel: string;
   }[];
+  
+  // Fundamental Analysis
+  fundamentalAnalysis: {
+    supplyDemand: {
+      supply: number;
+      demand: number;
+      surplus: number;
+      deficit: number;
+      inventory: number;
+      production: number;
+      consumption: number;
+    };
+    seasonalFactors: {
+      season: string;
+      impact: number;
+      historicalPattern: string;
+      currentPhase: string;
+    }[];
+    weatherImpact: {
+      weatherCondition: string;
+      impact: number;
+      probability: number;
+      duration: number;
+    }[];
+    fundamentalScore: number;
+  };
+  
+  // Technical Analysis
+  technicalAnalysis: {
+    pricePatterns: {
+      pattern: string;
+      signal: string;
+      strength: number;
+      target: number;
+      stopLoss: number;
+    }[];
+    technicalIndicators: {
+      indicator: string;
+      value: number;
+      signal: string;
+      strength: number;
+    }[];
+    supportResistance: {
+      level: number;
+      type: string;
+      strength: number;
+      touches: number;
+    }[];
+    technicalScore: number;
+  };
   
   // Monte Carlo Results
   monteCarloResults: {
-    meanValue: number;
-    medianValue: number;
+    meanPrice: number;
+    medianPrice: number;
     standardDeviation: number;
     percentiles: {
       p5: number;
@@ -252,135 +653,32 @@ export interface FuturesResults {
       p95: number;
     };
     probabilityDistribution: {
-      value: number;
+      price: number;
       probability: number;
     }[];
+    successProbability: number;
   };
   
   // Historical Analysis
   historicalAnalysis: {
+    historicalPrice: number;
+    historicalBasis: number;
     historicalVolatility: number;
-    historicalReturn: number;
-    historicalSharpeRatio: number;
-    historicalMaxDrawdown: number;
-    priceCorrelation: number;
-    basisCorrelation: number;
+    historicalTrends: string[];
+    yearOverYearChange: number;
   };
   
-  // Seasonality Analysis
-  seasonalityAnalysis: {
-    seasonalFactors: {
-      month: number;
-      factor: number;
-      significance: number;
-    }[];
-    seasonalPattern: string;
-    seasonalStrength: number;
-  };
-  
-  // Supply and Demand Analysis
-  supplyDemandAnalysis: {
-    supplyFactors: string[];
-    demandFactors: string[];
-    inventoryLevels: number;
-    productionCapacity: number;
-    consumptionRate: number;
-    supplyDemandBalance: number;
-    priceImpact: number;
-  };
-  
-  // Weather Analysis
-  weatherAnalysis: {
-    weatherImpact: number;
-    weatherForecast: string;
-    weatherRisk: number;
-    priceSensitivity: number;
-  };
-  
-  // Risk Analysis
-  riskAnalysis: {
-    priceRisk: number;
-    basisRisk: number;
-    liquidityRisk: number;
-    counterpartyRisk: number;
-    deliveryRisk: number;
-    regulatoryRisk: number;
-    weatherRisk: number;
-    totalRisk: number;
-  };
-  
-  // Margin Analysis
-  marginAnalysis: {
-    initialMargin: number;
-    maintenanceMargin: number;
-    variationMargin: number;
-    marginLevel: number;
-    marginCall: boolean;
-    marginUtilization: number;
-    marginEfficiency: number;
-  };
-  
-  // Hedging Analysis
-  hedgingAnalysis: {
-    hedgeRatio: number;
-    hedgeEffectiveness: number;
-    basisRisk: number;
-    crossHedge: boolean;
-    hedgeInstrument: string;
-    hedgeCost: number;
-    hedgeBenefit: number;
-  };
-  
-  // Transaction Analysis
-  transactionAnalysis: {
-    totalCost: number;
-    commission: number;
-    fees: number;
-    slippage: number;
-    bidAskSpread: number;
-    clearingFees: number;
-    exchangeFees: number;
-    netCost: number;
-    costAsPercentage: number;
-  };
-  
-  // Tax Analysis
-  taxAnalysis: {
-    taxRate: number;
-    taxTreatment: string;
-    taxableGain: number;
-    taxLiability: number;
-    afterTaxReturn: number;
-    taxEfficiency: number;
-  };
-  
-  // Portfolio Impact
-  portfolioImpact: {
-    portfolioValue: number;
-    positionWeight: number;
-    portfolioBeta: number;
-    portfolioVolatility: number;
-    correlationWithPortfolio: number;
-    diversificationImpact: number;
-    riskContribution: number;
-  };
-  
-  // Regulatory Analysis
-  regulatoryAnalysis: {
-    positionLimits: number;
-    reportingRequirements: boolean;
-    regulatoryConstraints: string[];
-    complianceScore: number;
-  };
-  
-  // Comparative Analysis
-  comparativeAnalysis: {
-    benchmark: string;
-    benchmarkReturn: number;
-    excessReturn: number;
-    trackingError: number;
-    informationRatio: number;
-    relativePerformance: number;
+  // Futures Score
+  futuresScore: {
+    overallScore: number;
+    componentScores: {
+      pricing: number;
+      risk: number;
+      liquidity: number;
+      fundamentals: number;
+      technical: number;
+    };
+    recommendation: 'buy' | 'sell' | 'hold' | 'close' | 'review';
   };
   
   // Optimization Opportunities
@@ -394,18 +692,18 @@ export interface FuturesResults {
   
   // Business Impact
   businessImpact: {
-    roi: number;
-    paybackPeriod: number;
-    netPresentValue: number;
-    internalRateOfReturn: number;
-    riskAdjustedReturn: number;
+    profitPotential: number;
+    riskReduction: number;
+    costSavings: number;
+    valueCreation: number;
+    overallBenefit: number;
   };
   
   // Comprehensive Report
   comprehensiveReport: {
     executiveSummary: string;
     keyFindings: string[];
-    riskAssessment: string;
+    futuresAssessment: string;
     recommendations: string[];
     actionItems: {
       action: string;
@@ -417,12 +715,12 @@ export interface FuturesResults {
   
   // Executive Summary
   executiveSummary: {
-    futuresValue: number;
-    totalReturn: number;
-    riskLevel: 'low' | 'medium' | 'high';
-    recommendation: 'buy' | 'sell' | 'hold';
-    keyRisks: string[];
-    keyOpportunities: string[];
+    currentPrice: number;
+    theoreticalPrice: number;
+    basis: number;
+    recommendation: 'buy' | 'sell' | 'hold' | 'close' | 'review';
+    keyStrengths: string[];
+    keyWeaknesses: string[];
   };
   
   // Recommendations

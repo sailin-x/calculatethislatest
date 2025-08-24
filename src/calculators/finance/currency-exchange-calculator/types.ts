@@ -1,215 +1,370 @@
-export interface CurrencyExchangeInputs {
-  // Currency Information
-  baseCurrency: string;
-  quoteCurrency: string;
-  currencyPair: string;
-  exchangeRate: number;
-  bidRate: number;
-  askRate: number;
-  spread: number;
-  
-  // Transaction Information
-  transactionAmount: number;
-  transactionType: 'spot' | 'forward' | 'swap' | 'option' | 'futures' | 'cross_currency';
-  transactionDate: string;
-  settlementDate: string;
-  valueDate: string;
-  
-  // Forward Contract Information
-  forwardContract: {
-    forwardRate: number;
-    forwardPoints: number;
-    maturity: number; // in days
-    interestRateBase: number;
-    interestRateQuote: number;
-    forwardPremium: number;
-  };
-  
-  // Option Information
-  optionContract: {
-    optionType: 'call' | 'put';
-    strikeRate: number;
-    premium: number;
-    expirationDate: string;
-    volatility: number;
-    delta: number;
-    gamma: number;
-    theta: number;
-    vega: number;
+export interface CurrencyExchangeCalculatorInputs {
+  // Exchange Information
+  exchangeInfo: {
+    // Transaction Details
+    transactionDetails: {
+      transactionType: 'spot' | 'forward' | 'swap' | 'option' | 'futures' | 'cross_currency' | 'other';
+      baseCurrency: string;
+      quoteCurrency: string;
+      exchangeRate: number;
+      transactionAmount: number;
+      transactionDate: string;
+      valueDate: string;
+      settlementDate: string;
+      transactionDescription: string;
+    };
+    
+    // Currency Pair Information
+    currencyPairInfo: {
+      baseCurrency: string;
+      quoteCurrency: string;
+      pairName: string;
+      pipValue: number;
+      lotSize: number;
+      minimumTradeSize: number;
+      maximumTradeSize: number;
+      tradingHours: string;
+      marketStatus: 'open' | 'closed' | 'holiday';
+    };
   };
   
   // Market Data
   marketData: {
-    spotRate: number;
-    forwardRates: {
-      period: string;
-      rate: number;
-      points: number;
-    }[];
-    impliedVolatility: number;
-    volatilitySurface: {
-      maturity: number;
-      strike: number;
-      volatility: number;
-    }[];
-    interestRates: {
-      currency: string;
-      rate: number;
-      term: number;
-    }[];
+    // Current Market Information
+    currentMarketInfo: {
+      spotRate: number;
+      bidRate: number;
+      askRate: number;
+      spread: number;
+      spreadPercentage: number;
+      lastUpdated: string;
+      marketSource: string;
+    };
+    
+    // Forward Market Information
+    forwardMarketInfo: {
+      forwardRate: number;
+      forwardPoints: number;
+      forwardPremium: number;
+      forwardDiscount: number;
+      forwardSpread: number;
+      maturityDate: string;
+    };
+    
+    // Interest Rate Information
+    interestRateInfo: {
+      baseCurrencyRate: number;
+      quoteCurrencyRate: number;
+      rateDifferential: number;
+      rateSource: string;
+      rateDate: string;
+    };
+    
+    // Volatility Information
+    volatilityInfo: {
+      impliedVolatility: number;
+      historicalVolatility: number;
+      volatilitySurface: {
+        maturity: number;
+        strike: number;
+        volatility: number;
+      }[];
+      volatilityRegime: 'low' | 'normal' | 'high' | 'extreme';
+    };
   };
   
-  // Economic Indicators
-  economicIndicators: {
-    gdpGrowth: number;
-    inflationRate: number;
-    interestRate: number;
-    unemploymentRate: number;
-    tradeBalance: number;
-    currentAccount: number;
-    foreignReserves: number;
+  // Transaction Details
+  transactionDetails: {
+    // Amount Information
+    amountInfo: {
+      baseAmount: number;
+      quoteAmount: number;
+      exchangeRate: number;
+      commission: number;
+      fees: number;
+      totalCost: number;
+      netAmount: number;
+    };
+    
+    // Timing Information
+    timingInfo: {
+      transactionDate: string;
+      valueDate: string;
+      settlementDate: string;
+      deliveryDate: string;
+      timeToSettlement: number;
+      businessDays: number;
+    };
+    
+    // Counterparty Information
+    counterpartyInfo: {
+      counterpartyName: string;
+      counterpartyType: 'bank' | 'broker' | 'exchange' | 'other';
+      creditRating: string;
+      country: string;
+      regulatoryStatus: string;
+    };
   };
   
-  // Central Bank Information
-  centralBankInfo: {
-    baseCurrencyBank: string;
-    quoteCurrencyBank: string;
-    baseCurrencyRate: number;
-    quoteCurrencyRate: number;
-    policyOutlook: string;
-    interventionHistory: string[];
+  // Risk Analysis
+  riskAnalysis: {
+    // Exchange Rate Risk
+    exchangeRateRisk: {
+      spotRisk: number;
+      forwardRisk: number;
+      volatilityRisk: number;
+      correlationRisk: number;
+      totalExchangeRateRisk: number;
+    };
+    
+    // Credit Risk
+    creditRisk: {
+      counterpartyRisk: number;
+      settlementRisk: number;
+      countryRisk: number;
+      sovereignRisk: number;
+      totalCreditRisk: number;
+    };
+    
+    // Liquidity Risk
+    liquidityRisk: {
+      marketLiquidity: number;
+      bidAskSpread: number;
+      marketDepth: number;
+      executionRisk: number;
+      totalLiquidityRisk: number;
+    };
+    
+    // Operational Risk
+    operationalRisk: {
+      settlementRisk: number;
+      technologyRisk: number;
+      complianceRisk: number;
+      legalRisk: number;
+      totalOperationalRisk: number;
+    };
   };
   
-  // Political and Economic Risk
-  politicalEconomicRisk: {
-    politicalStability: number;
-    economicStability: number;
-    sovereignRisk: number;
-    countryRating: string;
-    riskFactors: string[];
+  // Hedging Analysis
+  hedgingAnalysis: {
+    // Hedging Strategy
+    hedgingStrategy: {
+      strategy: 'forward' | 'option' | 'swap' | 'natural' | 'none';
+      hedgeRatio: number;
+      hedgeAmount: number;
+      hedgeCost: number;
+      hedgeEffectiveness: number;
+    };
+    
+    // Forward Contract
+    forwardContract: {
+      forwardRate: number;
+      forwardAmount: number;
+      forwardValue: number;
+      forwardPremium: number;
+      forwardDiscount: number;
+    };
+    
+    // Option Contract
+    optionContract: {
+      optionType: 'call' | 'put';
+      strikeRate: number;
+      optionPremium: number;
+      optionAmount: number;
+      optionValue: number;
+      delta: number;
+      gamma: number;
+      theta: number;
+      vega: number;
+    };
+    
+    // Currency Swap
+    currencySwap: {
+      swapRate: number;
+      swapAmount: number;
+      swapValue: number;
+      swapPayments: {
+        date: string;
+        payment: number;
+        currency: string;
+      }[];
+    };
+  };
+  
+  // Economic Analysis
+  economicAnalysis: {
+    // Economic Indicators
+    economicIndicators: {
+      baseCountryGdp: number;
+      quoteCountryGdp: number;
+      baseCountryInflation: number;
+      quoteCountryInflation: number;
+      baseCountryInterestRate: number;
+      quoteCountryInterestRate: number;
+      baseCountryUnemployment: number;
+      quoteCountryUnemployment: number;
+    };
+    
+    // Purchasing Power Parity
+    purchasingPowerParity: {
+      pppRate: number;
+      pppDeviation: number;
+      pppOvervaluation: number;
+      pppUndervaluation: number;
+      pppEquilibrium: number;
+    };
+    
+    // Interest Rate Parity
+    interestRateParity: {
+      coveredInterestRate: number;
+      uncoveredInterestRate: number;
+      interestRateDifferential: number;
+      forwardRateBias: number;
+      carryTradeOpportunity: number;
+    };
+    
+    // Balance of Payments
+    balanceOfPayments: {
+      currentAccount: number;
+      capitalAccount: number;
+      financialAccount: number;
+      reserves: number;
+      balanceOfPayments: number;
+    };
   };
   
   // Technical Analysis
   technicalAnalysis: {
-    movingAverages: {
-      period: number;
-      value: number;
-      signal: 'buy' | 'sell' | 'hold';
-    }[];
-    supportLevels: number[];
-    resistanceLevels: number[];
-    trendDirection: 'bullish' | 'bearish' | 'sideways';
-    momentumIndicators: {
-      indicator: string;
-      value: number;
-      signal: string;
+    // Price Action
+    priceAction: {
+      supportLevel: number;
+      resistanceLevel: number;
+      trendDirection: 'bullish' | 'bearish' | 'sideways';
+      trendStrength: number;
+      momentum: number;
+    };
+    
+    // Technical Indicators
+    technicalIndicators: {
+      movingAverage: {
+        period: number;
+        value: number;
+        signal: 'buy' | 'sell' | 'hold';
+      }[];
+      rsi: number;
+      macd: {
+        macdLine: number;
+        signalLine: number;
+        histogram: number;
+        signal: 'buy' | 'sell' | 'hold';
+      };
+      bollingerBands: {
+        upper: number;
+        middle: number;
+        lower: number;
+        position: 'above' | 'between' | 'below';
+      };
+    };
+    
+    // Chart Patterns
+    chartPatterns: {
+      pattern: string;
+      probability: number;
+      target: number;
+      stopLoss: number;
+      timeframe: string;
     }[];
   };
   
   // Fundamental Analysis
   fundamentalAnalysis: {
-    purchasingPowerParity: number;
-    interestRateParity: number;
-    fisherEffect: number;
-    uncoveredInterestParity: number;
-    coveredInterestParity: number;
-    fundamentalValue: number;
-  };
-  
-  // Correlation Analysis
-  correlationAnalysis: {
-    correlationWithUSD: number;
-    correlationWithEUR: number;
-    correlationWithGBP: number;
-    correlationWithJPY: number;
-    correlationWithCommodities: number;
-    correlationWithEquities: number;
-    correlationWithBonds: number;
-  };
-  
-  // Volatility Analysis
-  volatilityAnalysis: {
-    historicalVolatility: number;
-    impliedVolatility: number;
-    volatilityRegime: 'low' | 'normal' | 'high' | 'extreme';
-    volatilityForecast: number;
-    volatilitySkew: number;
-    volatilityTerm: number;
-  };
-  
-  // Liquidity Analysis
-  liquidityAnalysis: {
-    averageDailyVolume: number;
-    bidAskSpread: number;
-    marketDepth: number;
-    liquidityScore: number;
-    tradingHours: string;
-    marketParticipants: string[];
-  };
-  
-  // Hedging Information
-  hedgingInfo: {
-    hedgeType: 'natural' | 'financial' | 'operational' | 'none';
-    hedgeRatio: number;
-    hedgeEffectiveness: number;
-    hedgeCost: number;
-    hedgeInstruments: string[];
-  };
-  
-  // Transaction Costs
-  transactionCosts: {
-    commission: number;
-    fees: number;
-    slippage: number;
-    bidAskSpread: number;
-    totalCost: number;
-    costAsPercentage: number;
-  };
-  
-  // Tax Considerations
-  taxConsiderations: {
-    taxRate: number;
-    taxTreatment: string;
-    withholdingTax: number;
-    taxReporting: boolean;
-    taxOptimization: string[];
-  };
-  
-  // Regulatory Considerations
-  regulatoryConsiderations: {
-    reportingRequirements: boolean;
-    capitalControls: boolean;
-    exchangeControls: boolean;
-    regulatoryConstraints: string[];
-    complianceCost: number;
-  };
-  
-  // Risk Management
-  riskManagement: {
-    positionSize: number;
-    stopLoss: number;
-    takeProfit: number;
-    maxLoss: number;
-    riskRewardRatio: number;
-    varLimit: number;
+    // Economic Fundamentals
+    economicFundamentals: {
+      gdpGrowth: number;
+      inflationRate: number;
+      interestRate: number;
+      unemploymentRate: number;
+      tradeBalance: number;
+      fiscalBalance: number;
+      debtToGdp: number;
+    };
+    
+    // Political Factors
+    politicalFactors: {
+      politicalStability: number;
+      governmentEffectiveness: number;
+      regulatoryEnvironment: number;
+      policyUncertainty: number;
+      electionRisk: number;
+    };
+    
+    // Central Bank Policy
+    centralBankPolicy: {
+      monetaryPolicy: 'expansionary' | 'neutral' | 'contractionary';
+      policyRate: number;
+      quantitativeEasing: boolean;
+      forwardGuidance: string;
+      policyCredibility: number;
+    };
   };
   
   // Scenario Analysis
-  scenarios: {
-    name: string;
-    probability: number;
-    exchangeRateChange: number;
-    volatilityChange: number;
-    interestRateChange: number;
-    economicShock: number;
-  }[];
+  scenarioAnalysis: {
+    // Economic Scenarios
+    economicScenarios: {
+      scenario: string;
+      probability: number;
+      baseCurrencyGrowth: number;
+      quoteCurrencyGrowth: number;
+      interestRateDifferential: number;
+      inflationDifferential: number;
+      exchangeRate: number;
+    }[];
+    
+    // Political Scenarios
+    politicalScenarios: {
+      scenario: string;
+      probability: number;
+      politicalStability: number;
+      policyChanges: string[];
+      regulatoryImpact: number;
+      exchangeRate: number;
+    }[];
+    
+    // Market Scenarios
+    marketScenarios: {
+      scenario: string;
+      probability: number;
+      volatility: number;
+      liquidity: number;
+      correlation: number;
+      exchangeRate: number;
+    }[];
+  };
   
   // Monte Carlo Simulation
   monteCarloSimulations: number;
   monteCarloTimeSteps: number;
-  includeJumpDiffusion: boolean;
-  jumpIntensity: number;
-  jumpSize: number;
+  includeVolatilityChanges: boolean;
+  includeCorrelationChanges: boolean;
+  includeJumpRisk: boolean;
+  
+  // Analysis Parameters
+  analysisPeriod: number; // in days
+  confidenceLevel: number;
+  riskHorizon: number;
+  includeTransactionCosts: boolean;
+  includeTaxes: boolean;
+  
+  // Calculation Options
+  calculationOptions: {
+    includeRiskAnalysis: boolean;
+    includeHedgingAnalysis: boolean;
+    includeEconomicAnalysis: boolean;
+    includeTechnicalAnalysis: boolean;
+    includeScenarioAnalysis: boolean;
+    includeMonteCarlo: boolean;
+  };
   
   // Historical Analysis
   historicalData: {
@@ -217,54 +372,19 @@ export interface CurrencyExchangeInputs {
     exchangeRate: number;
     volume: number;
     volatility: number;
-    interestRateBase: number;
-    interestRateQuote: number;
+    interestRateDifferential: number;
+    economicConditions: string;
   }[];
   
-  // Cross Currency Analysis
-  crossCurrencyAnalysis: {
-    crossRates: {
-      pair: string;
-      rate: number;
-      bid: number;
-      ask: number;
-    }[];
-    triangularArbitrage: {
-      opportunity: boolean;
-      profit: number;
-      path: string[];
-    };
-  };
-  
-  // Carry Trade Analysis
-  carryTradeAnalysis: {
-    interestRateDifferential: number;
-    expectedReturn: number;
-    carryTradeRisk: number;
-    unwindProbability: number;
-    carryTradeProfitability: number;
-  };
-  
-  // Analysis Parameters
-  analysisPeriod: number; // in days
-  confidenceLevel: number;
-  timeHorizon: number;
-  includeTransactionCosts: boolean;
-  includeTaxes: boolean;
-  includeInflation: boolean;
-  
   // Reporting Preferences
-  includeRateAnalysis: boolean;
-  includeRiskMetrics: boolean;
+  includeRiskAnalysis: boolean;
+  includeHedgingAnalysis: boolean;
+  includeEconomicAnalysis: boolean;
   includeTechnicalAnalysis: boolean;
   includeFundamentalAnalysis: boolean;
-  includeVolatilityAnalysis: boolean;
-  includeCorrelationAnalysis: boolean;
   includeScenarioAnalysis: boolean;
   includeMonteCarlo: boolean;
   includeHistoricalAnalysis: boolean;
-  includeCrossCurrencyAnalysis: boolean;
-  includeCarryTradeAnalysis: boolean;
   includeRecommendations: boolean;
   includeActionItems: boolean;
   
@@ -275,244 +395,282 @@ export interface CurrencyExchangeInputs {
   includeRecommendations: boolean;
 }
 
-export interface CurrencyExchangeResults {
+export interface CurrencyExchangeCalculatorResults {
   // Core Exchange Metrics
   exchangeRate: number;
-  convertedAmount: number;
-  transactionCost: number;
+  transactionAmount: number;
+  totalCost: number;
   netAmount: number;
-  effectiveRate: number;
+  exchangeRisk: number;
   
-  // Rate Analysis
-  rateAnalysis: {
-    spotRate: number;
-    forwardRate: number;
-    forwardPoints: number;
-    forwardPremium: number;
-    interestRateDifferential: number;
-    rateForecast: number;
-    rateVolatility: number;
-  };
-  
-  // Forward Analysis
-  forwardAnalysis: {
-    forwardRate: number;
-    forwardPoints: number;
-    interestRateParity: number;
-    coveredInterestParity: number;
-    forwardBias: number;
-    forwardEfficiency: number;
-  };
-  
-  // Option Analysis
-  optionAnalysis: {
-    optionValue: number;
-    intrinsicValue: number;
-    timeValue: number;
-    delta: number;
-    gamma: number;
-    theta: number;
-    vega: number;
-    impliedVolatility: number;
-  };
-  
-  // Risk Metrics
-  riskMetrics: {
-    valueAtRisk: number;
-    conditionalVaR: number;
-    expectedShortfall: number;
-    maxDrawdown: number;
-    downsideDeviation: number;
-    riskOfLoss: number;
-  };
-  
-  // Performance Metrics
-  performanceMetrics: {
-    totalReturn: number;
-    annualizedReturn: number;
-    sharpeRatio: number;
-    sortinoRatio: number;
-    calmarRatio: number;
-    treynorRatio: number;
-    informationRatio: number;
-  };
-  
-  // Technical Analysis Results
-  technicalAnalysis: {
-    movingAverages: {
-      period: number;
-      value: number;
-      signal: 'buy' | 'sell' | 'hold';
-    }[];
-    supportLevels: number[];
-    resistanceLevels: number[];
-    trendDirection: 'bullish' | 'bearish' | 'sideways';
-    momentumIndicators: {
-      indicator: string;
-      value: number;
-      signal: string;
-    }[];
-    technicalScore: number;
-  };
-  
-  // Fundamental Analysis Results
-  fundamentalAnalysis: {
-    purchasingPowerParity: number;
-    interestRateParity: number;
-    fisherEffect: number;
-    uncoveredInterestParity: number;
-    coveredInterestParity: number;
-    fundamentalValue: number;
-    misalignment: number;
-    fundamentalScore: number;
-  };
-  
-  // Volatility Analysis Results
-  volatilityAnalysis: {
-    historicalVolatility: number;
-    impliedVolatility: number;
-    volatilityRegime: string;
-    volatilityForecast: number;
-    volatilitySkew: number;
-    volatilityTerm: number;
-    volatilitySurface: {
-      maturity: number;
-      strike: number;
-      volatility: number;
-    }[];
-  };
-  
-  // Correlation Analysis Results
-  correlationAnalysis: {
-    correlationWithUSD: number;
-    correlationWithEUR: number;
-    correlationWithGBP: number;
-    correlationWithJPY: number;
-    correlationWithCommodities: number;
-    correlationWithEquities: number;
-    correlationWithBonds: number;
-    averageCorrelation: number;
-  };
-  
-  // Liquidity Analysis Results
-  liquidityAnalysis: {
-    averageDailyVolume: number;
-    bidAskSpread: number;
-    marketDepth: number;
-    liquidityScore: number;
-    liquidityRisk: number;
-    marketImpact: number;
-  };
-  
-  // Hedging Analysis Results
-  hedgingAnalysis: {
-    hedgeType: string;
-    hedgeRatio: number;
-    hedgeEffectiveness: number;
-    hedgeCost: number;
-    hedgeInstruments: string[];
-    hedgeValue: number;
-    hedgeEfficiency: number;
-  };
-  
-  // Transaction Cost Analysis
-  transactionCostAnalysis: {
-    commission: number;
-    fees: number;
-    slippage: number;
-    bidAskSpread: number;
+  // Exchange Analysis
+  exchangeAnalysis: {
+    exchangeRate: number;
+    transactionAmount: number;
     totalCost: number;
-    costAsPercentage: number;
-    costEfficiency: number;
-  };
-  
-  // Tax Analysis
-  taxAnalysis: {
-    taxRate: number;
-    taxTreatment: string;
-    withholdingTax: number;
-    taxLiability: number;
-    afterTaxReturn: number;
-    taxEfficiency: number;
-  };
-  
-  // Regulatory Analysis
-  regulatoryAnalysis: {
-    reportingRequirements: boolean;
-    capitalControls: boolean;
-    exchangeControls: boolean;
-    regulatoryConstraints: string[];
-    complianceCost: number;
-    regulatoryRisk: number;
-  };
-  
-  // Cross Currency Analysis Results
-  crossCurrencyAnalysis: {
-    crossRates: {
-      pair: string;
-      rate: number;
-      bid: number;
-      ask: number;
+    netAmount: number;
+    exchangeRisk: number;
+    exchangeBreakdown: {
+      component: string;
+      value: number;
+      contribution: number;
     }[];
-    triangularArbitrage: {
-      opportunity: boolean;
-      profit: number;
-      path: string[];
-    };
-    arbitrageEfficiency: number;
+    exchangeEfficiency: number;
   };
   
-  // Carry Trade Analysis Results
-  carryTradeAnalysis: {
-    interestRateDifferential: number;
-    expectedReturn: number;
-    carryTradeRisk: number;
-    unwindProbability: number;
-    carryTradeProfitability: number;
-    carryTradeEfficiency: number;
+  // Market Analysis
+  marketAnalysis: {
+    spotRate: number;
+    bidRate: number;
+    askRate: number;
+    spread: number;
+    spreadPercentage: number;
+    forwardRate: number;
+    forwardPoints: number;
+    marketComponents: {
+      component: string;
+      value: number;
+      impact: number;
+    }[];
+    marketEfficiency: number;
+  };
+  
+  // Risk Analysis
+  riskAnalysis: {
+    exchangeRateRisk: {
+      spotRisk: number;
+      forwardRisk: number;
+      volatilityRisk: number;
+      correlationRisk: number;
+      totalExchangeRateRisk: number;
+      riskContribution: number;
+    };
+    creditRisk: {
+      counterpartyRisk: number;
+      settlementRisk: number;
+      countryRisk: number;
+      sovereignRisk: number;
+      totalCreditRisk: number;
+      riskContribution: number;
+    };
+    liquidityRisk: {
+      marketLiquidity: number;
+      bidAskSpread: number;
+      marketDepth: number;
+      executionRisk: number;
+      totalLiquidityRisk: number;
+      riskContribution: number;
+    };
+    operationalRisk: {
+      settlementRisk: number;
+      technologyRisk: number;
+      complianceRisk: number;
+      legalRisk: number;
+      totalOperationalRisk: number;
+      riskContribution: number;
+    };
+    totalRisk: number;
+    riskEfficiency: number;
+  };
+  
+  // Hedging Analysis
+  hedgingAnalysis: {
+    hedgingStrategy: {
+      strategy: string;
+      hedgeRatio: number;
+      hedgeAmount: number;
+      hedgeCost: number;
+      hedgeEffectiveness: number;
+    };
+    forwardContract: {
+      forwardRate: number;
+      forwardAmount: number;
+      forwardValue: number;
+      forwardPremium: number;
+      forwardDiscount: number;
+    };
+    optionContract: {
+      optionType: string;
+      strikeRate: number;
+      optionPremium: number;
+      optionAmount: number;
+      optionValue: number;
+      delta: number;
+      gamma: number;
+      theta: number;
+      vega: number;
+    };
+    currencySwap: {
+      swapRate: number;
+      swapAmount: number;
+      swapValue: number;
+      swapPayments: {
+        date: string;
+        payment: number;
+        currency: string;
+      }[];
+    };
+    hedgingEfficiency: number;
   };
   
   // Economic Analysis
   economicAnalysis: {
-    gdpGrowth: number;
-    inflationRate: number;
-    interestRate: number;
-    unemploymentRate: number;
-    tradeBalance: number;
-    currentAccount: number;
-    foreignReserves: number;
-    economicScore: number;
+    economicIndicators: {
+      baseCountryGdp: number;
+      quoteCountryGdp: number;
+      baseCountryInflation: number;
+      quoteCountryInflation: number;
+      baseCountryInterestRate: number;
+      quoteCountryInterestRate: number;
+      baseCountryUnemployment: number;
+      quoteCountryUnemployment: number;
+    };
+    purchasingPowerParity: {
+      pppRate: number;
+      pppDeviation: number;
+      pppOvervaluation: number;
+      pppUndervaluation: number;
+      pppEquilibrium: number;
+    };
+    interestRateParity: {
+      coveredInterestRate: number;
+      uncoveredInterestRate: number;
+      interestRateDifferential: number;
+      forwardRateBias: number;
+      carryTradeOpportunity: number;
+    };
+    balanceOfPayments: {
+      currentAccount: number;
+      capitalAccount: number;
+      financialAccount: number;
+      reserves: number;
+      balanceOfPayments: number;
+    };
+    economicEfficiency: number;
   };
   
-  // Political Risk Analysis
-  politicalRiskAnalysis: {
-    politicalStability: number;
-    economicStability: number;
-    sovereignRisk: number;
-    countryRating: string;
-    riskFactors: string[];
-    politicalRiskScore: number;
+  // Technical Analysis
+  technicalAnalysis: {
+    priceAction: {
+      supportLevel: number;
+      resistanceLevel: number;
+      trendDirection: string;
+      trendStrength: number;
+      momentum: number;
+    };
+    technicalIndicators: {
+      movingAverage: {
+        period: number;
+        value: number;
+        signal: string;
+      }[];
+      rsi: number;
+      macd: {
+        macdLine: number;
+        signalLine: number;
+        histogram: number;
+        signal: string;
+      };
+      bollingerBands: {
+        upper: number;
+        middle: number;
+        lower: number;
+        position: string;
+      };
+    };
+    chartPatterns: {
+      pattern: string;
+      probability: number;
+      target: number;
+      stopLoss: number;
+      timeframe: string;
+    }[];
+    technicalEfficiency: number;
   };
   
-  // Scenario Analysis Results
-  scenarioResults: {
+  // Fundamental Analysis
+  fundamentalAnalysis: {
+    economicFundamentals: {
+      gdpGrowth: number;
+      inflationRate: number;
+      interestRate: number;
+      unemploymentRate: number;
+      tradeBalance: number;
+      fiscalBalance: number;
+      debtToGdp: number;
+    };
+    politicalFactors: {
+      politicalStability: number;
+      governmentEffectiveness: number;
+      regulatoryEnvironment: number;
+      policyUncertainty: number;
+      electionRisk: number;
+    };
+    centralBankPolicy: {
+      monetaryPolicy: string;
+      policyRate: number;
+      quantitativeEasing: boolean;
+      forwardGuidance: string;
+      policyCredibility: number;
+    };
+    fundamentalEfficiency: number;
+  };
+  
+  // Sensitivity Analysis
+  sensitivityAnalysis: {
+    variable: string;
+    baseValue: number;
+    lowValue: number;
+    highValue: number;
+    lowRate: number;
+    highRate: number;
+    sensitivity: number;
+  }[];
+  
+  // Scenario Analysis
+  scenarioAnalysis: {
     scenarioName: string;
     probability: number;
     exchangeRate: number;
-    convertedAmount: number;
-    profitLoss: number;
-    return: number;
-    riskMetrics: {
-      var: number;
-      cvar: number;
-      maxDrawdown: number;
-    };
+    riskLevel: string;
+    impact: number;
   }[];
+  
+  // Peer Comparison
+  peerComparison: {
+    peerComparison: {
+      peer: string;
+      exchangeRate: number;
+      spread: number;
+      volatility: number;
+      risk: number;
+      outperformance: number;
+    }[];
+    marketComparison: {
+      metric: string;
+      transaction: number;
+      market: number;
+      difference: number;
+    }[];
+  };
+  
+  // Currency Exchange Score
+  currencyExchangeScore: {
+    overallScore: number;
+    componentScores: {
+      market: number;
+      risk: number;
+      hedging: number;
+      economic: number;
+      technical: number;
+    };
+    recommendation: 'execute' | 'hedge' | 'delay' | 'review';
+  };
   
   // Monte Carlo Results
   monteCarloResults: {
-    meanRate: number;
-    medianRate: number;
+    meanExchangeRate: number;
+    medianExchangeRate: number;
     standardDeviation: number;
     percentiles: {
       p5: number;
@@ -524,40 +682,19 @@ export interface CurrencyExchangeResults {
       p95: number;
     };
     probabilityDistribution: {
-      rate: number;
+      value: number;
       probability: number;
     }[];
+    successProbability: number;
   };
   
   // Historical Analysis
   historicalAnalysis: {
-    historicalReturn: number;
+    historicalRate: number;
     historicalVolatility: number;
-    historicalSharpeRatio: number;
-    historicalMaxDrawdown: number;
-    rateTrend: number;
-    rateCycles: string[];
-  };
-  
-  // Sensitivity Analysis
-  sensitivityAnalysis: {
-    parameter: string;
-    baseValue: number;
-    lowValue: number;
-    highValue: number;
-    lowRate: number;
-    highRate: number;
-    sensitivity: number;
-  }[];
-  
-  // Comparative Analysis
-  comparativeAnalysis: {
-    benchmark: string;
-    benchmarkReturn: number;
-    excessReturn: number;
-    trackingError: number;
-    informationRatio: number;
-    relativePerformance: number;
+    historicalTrend: number;
+    historicalTrends: string[];
+    yearOverYearChange: number;
   };
   
   // Optimization Opportunities
@@ -571,18 +708,18 @@ export interface CurrencyExchangeResults {
   
   // Business Impact
   businessImpact: {
-    roi: number;
-    paybackPeriod: number;
-    netPresentValue: number;
-    internalRateOfReturn: number;
-    riskAdjustedReturn: number;
+    costSavings: number;
+    riskReduction: number;
+    efficiencyImprovement: number;
+    competitiveAdvantage: number;
+    overallBenefit: number;
   };
   
   // Comprehensive Report
   comprehensiveReport: {
     executiveSummary: string;
     keyFindings: string[];
-    riskAssessment: string;
+    exchangeAssessment: string;
     recommendations: string[];
     actionItems: {
       action: string;
@@ -595,11 +732,11 @@ export interface CurrencyExchangeResults {
   // Executive Summary
   executiveSummary: {
     exchangeRate: number;
-    convertedAmount: number;
-    riskLevel: 'low' | 'medium' | 'high';
-    recommendation: 'execute' | 'wait' | 'hedge';
-    keyRisks: string[];
-    keyOpportunities: string[];
+    transactionAmount: number;
+    totalCost: number;
+    recommendation: 'execute' | 'hedge' | 'delay' | 'review';
+    keyStrengths: string[];
+    keyWeaknesses: string[];
   };
   
   // Recommendations

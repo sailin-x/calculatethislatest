@@ -1,285 +1,518 @@
-export interface MergerAcquisitionInputs {
+export interface MergerAcquisitionCalculatorInputs {
   // Transaction Information
-  transactionName: string;
-  transactionType: 'merger' | 'acquisition' | 'asset_purchase' | 'stock_purchase' | 'reverse_merger' | 'leveraged_buyout' | 'management_buyout' | 'hostile_takeover' | 'friendly_takeover' | 'joint_venture' | 'strategic_alliance';
-  dealStructure: 'cash' | 'stock' | 'mixed' | 'earnout' | 'contingent_value_rights';
-  announcementDate: string;
-  expectedClosingDate: string;
-  dealStatus: 'announced' | 'pending' | 'completed' | 'terminated' | 'withdrawn';
+  transactionInfo: {
+    transactionName: string;
+    transactionType: 'merger' | 'acquisition' | 'takeover' | 'joint_venture' | 'strategic_alliance' | 'asset_purchase' | 'stock_purchase' | 'leveraged_buyout' | 'management_buyout' | 'other';
+    dealStructure: 'cash' | 'stock' | 'mixed' | 'earnout' | 'contingent_value_rights' | 'other';
+    transactionValue: number;
+    announcementDate: string;
+    expectedClosingDate: string;
+    status: 'announced' | 'pending' | 'completed' | 'terminated' | 'withdrawn';
+    transactionDescription: string;
+  };
   
   // Target Company Information
-  targetCompany: {
-    name: string;
-    ticker: string;
-    industry: string;
-    sector: string;
-    marketCap: number;
-    enterpriseValue: number;
-    sharesOutstanding: number;
-    currentPrice: number;
-    bookValue: number;
-    tangibleBookValue: number;
+  targetCompanyInfo: {
+    // Company Details
+    companyDetails: {
+      companyName: string;
+      tickerSymbol: string;
+      industry: string;
+      sector: string;
+      marketCap: number;
+      enterpriseValue: number;
+      employeeCount: number;
+      revenue: number;
+      ebitda: number;
+      netIncome: number;
+      companyDescription: string;
+    };
+    
+    // Financial Information
+    financialInfo: {
+      // Income Statement
+      incomeStatement: {
+        revenue: number;
+        costOfGoodsSold: number;
+        grossProfit: number;
+        operatingExpenses: number;
+        ebitda: number;
+        depreciation: number;
+        amortization: number;
+        ebit: number;
+        interestExpense: number;
+        ebt: number;
+        taxes: number;
+        netIncome: number;
+      };
+      
+      // Balance Sheet
+      balanceSheet: {
+        totalAssets: number;
+        currentAssets: number;
+        fixedAssets: number;
+        intangibleAssets: number;
+        totalLiabilities: number;
+        currentLiabilities: number;
+        longTermDebt: number;
+        shareholdersEquity: number;
+        workingCapital: number;
+        netDebt: number;
+      };
+      
+      // Cash Flow Statement
+      cashFlowStatement: {
+        operatingCashFlow: number;
+        investingCashFlow: number;
+        financingCashFlow: number;
+        netCashFlow: number;
+        capitalExpenditures: number;
+        freeCashFlow: number;
+      };
+      
+      // Financial Ratios
+      financialRatios: {
+        debtToEquity: number;
+        debtToEbitda: number;
+        interestCoverage: number;
+        currentRatio: number;
+        quickRatio: number;
+        returnOnEquity: number;
+        returnOnAssets: number;
+        grossMargin: number;
+        operatingMargin: number;
+        netMargin: number;
+      };
+    };
+    
+    // Market Information
+    marketInfo: {
+      currentPrice: number;
+      sharesOutstanding: number;
+      marketCap: number;
+      enterpriseValue: number;
+      priceToEarnings: number;
+      priceToBook: number;
+      evToEbitda: number;
+      dividendYield: number;
+      beta: number;
+    };
   };
   
   // Acquirer Company Information
-  acquirerCompany: {
-    name: string;
-    ticker: string;
-    industry: string;
-    sector: string;
-    marketCap: number;
-    enterpriseValue: number;
-    sharesOutstanding: number;
-    currentPrice: number;
-    bookValue: number;
-    tangibleBookValue: number;
-  };
-  
-  // Financial Metrics - Target
-  targetFinancials: {
-    revenue: number;
-    ebitda: number;
-    ebitdaMargin: number;
-    netIncome: number;
-    netMargin: number;
-    freeCashFlow: number;
-    fcfMargin: number;
-    totalAssets: number;
-    totalLiabilities: number;
-    shareholdersEquity: number;
-    netDebt: number;
-    workingCapital: number;
-  };
-  
-  // Financial Metrics - Acquirer
-  acquirerFinancials: {
-    revenue: number;
-    ebitda: number;
-    ebitdaMargin: number;
-    netIncome: number;
-    netMargin: number;
-    freeCashFlow: number;
-    fcfMargin: number;
-    totalAssets: number;
-    totalLiabilities: number;
-    shareholdersEquity: number;
-    netDebt: number;
-    workingCapital: number;
+  acquirerCompanyInfo: {
+    // Company Details
+    companyDetails: {
+      companyName: string;
+      tickerSymbol: string;
+      industry: string;
+      sector: string;
+      marketCap: number;
+      enterpriseValue: number;
+      employeeCount: number;
+      revenue: number;
+      ebitda: number;
+      netIncome: number;
+      companyDescription: string;
+    };
+    
+    // Financial Information
+    financialInfo: {
+      // Income Statement
+      incomeStatement: {
+        revenue: number;
+        costOfGoodsSold: number;
+        grossProfit: number;
+        operatingExpenses: number;
+        ebitda: number;
+        depreciation: number;
+        amortization: number;
+        ebit: number;
+        interestExpense: number;
+        ebt: number;
+        taxes: number;
+        netIncome: number;
+      };
+      
+      // Balance Sheet
+      balanceSheet: {
+        totalAssets: number;
+        currentAssets: number;
+        fixedAssets: number;
+        intangibleAssets: number;
+        totalLiabilities: number;
+        currentLiabilities: number;
+        longTermDebt: number;
+        shareholdersEquity: number;
+        workingCapital: number;
+        netDebt: number;
+      };
+      
+      // Cash Flow Statement
+      cashFlowStatement: {
+        operatingCashFlow: number;
+        investingCashFlow: number;
+        financingCashFlow: number;
+        netCashFlow: number;
+        capitalExpenditures: number;
+        freeCashFlow: number;
+      };
+    };
+    
+    // Market Information
+    marketInfo: {
+      currentPrice: number;
+      sharesOutstanding: number;
+      marketCap: number;
+      enterpriseValue: number;
+      priceToEarnings: number;
+      priceToBook: number;
+      evToEbitda: number;
+      dividendYield: number;
+      beta: number;
+    };
   };
   
   // Deal Terms
   dealTerms: {
-    purchasePrice: number;
-    equityValue: number;
-    enterpriseValue: number;
-    premium: number; // percentage
-    exchangeRatio: number;
-    cashConsideration: number;
-    stockConsideration: number;
-    earnout: number;
-    escrow: number;
-    workingCapitalAdjustment: boolean;
-    netDebtAdjustment: boolean;
+    // Purchase Price
+    purchasePrice: {
+      totalValue: number;
+      perShareValue: number;
+      premium: number;
+      premiumPercentage: number;
+      exchangeRatio: number;
+      cashComponent: number;
+      stockComponent: number;
+      earnoutComponent: number;
+    };
+    
+    // Financing Structure
+    financingStructure: {
+      cashFinancing: number;
+      stockFinancing: number;
+      debtFinancing: number;
+      equityFinancing: number;
+      bridgeFinancing: number;
+      totalFinancing: number;
+    };
+    
+    // Deal Protection
+    dealProtection: {
+      breakUpFee: number;
+      reverseBreakUpFee: number;
+      goShopPeriod: number;
+      noShopClause: boolean;
+      matchingRights: boolean;
+      specificPerformance: boolean;
+    };
+    
+    // Regulatory Approvals
+    regulatoryApprovals: {
+      antitrust: boolean;
+      foreignInvestment: boolean;
+      industrySpecific: boolean;
+      expectedTimeline: number;
+      approvalProbability: number;
+    };
   };
   
-  // Valuation Metrics
-  valuationMetrics: {
-    priceToEarnings: number;
-    priceToBook: number;
-    priceToSales: number;
-    evToEbitda: number;
-    evToRevenue: number;
-    evToFcf: number;
-    priceToEarningsTarget: number;
-    priceToBookTarget: number;
-    priceToSalesTarget: number;
-    evToEbitdaTarget: number;
-    evToRevenueTarget: number;
-    evToFcfTarget: number;
-  };
-  
-  // Synergies
-  synergies: {
-    revenueSynergies: number;
-    costSynergies: number;
-    totalSynergies: number;
-    synergyTimeline: number; // years
-    synergyCapture: number; // percentage
-    revenueSynergyDetails: {
-      category: string;
-      amount: number;
+  // Synergy Analysis
+  synergyAnalysis: {
+    // Revenue Synergies
+    revenueSynergies: {
+      crossSelling: number;
+      marketExpansion: number;
+      pricingPower: number;
+      distributionChannels: number;
+      totalRevenueSynergies: number;
+      timeline: number;
       probability: number;
+    };
+    
+    // Cost Synergies
+    costSynergies: {
+      overheadReduction: number;
+      operationalEfficiencies: number;
+      procurementSavings: number;
+      facilityConsolidation: number;
+      workforceReduction: number;
+      totalCostSynergies: number;
       timeline: number;
-    }[];
-    costSynergyDetails: {
-      category: string;
-      amount: number;
       probability: number;
+    };
+    
+    // Financial Synergies
+    financialSynergies: {
+      taxBenefits: number;
+      financingEfficiencies: number;
+      workingCapitalOptimization: number;
+      capitalStructureOptimization: number;
+      totalFinancialSynergies: number;
       timeline: number;
-    }[];
-  };
-  
-  // Financing
-  financing: {
-    cashOnHand: number;
-    debtFinancing: number;
-    equityFinancing: number;
-    bridgeLoan: number;
-    totalFinancing: number;
-    interestRate: number;
-    debtMaturity: number;
-    debtTerms: {
-      type: string;
-      amount: number;
-      interestRate: number;
-      maturity: number;
-      covenants: string[];
-    }[];
-  };
-  
-  // Integration Plan
-  integrationPlan: {
-    integrationCosts: number;
-    integrationTimeline: number; // months
-    integrationRisks: string[];
-    integrationBenefits: string[];
-    keyMilestones: {
-      milestone: string;
+      probability: number;
+    };
+    
+    // Total Synergies
+    totalSynergies: {
+      totalSynergies: number;
+      presentValue: number;
+      discountRate: number;
       timeline: number;
-      status: 'planned' | 'in_progress' | 'completed' | 'delayed';
+      probability: number;
+    };
+  };
+  
+  // Valuation Analysis
+  valuationAnalysis: {
+    // DCF Analysis
+    dcfAnalysis: {
+      freeCashFlow: number;
+      growthRate: number;
+      terminalGrowthRate: number;
+      discountRate: number;
+      terminalValue: number;
+      presentValue: number;
+    };
+    
+    // Comparable Analysis
+    comparableAnalysis: {
+      comparableCompanies: {
+        company: string;
+        evToEbitda: number;
+        priceToEarnings: number;
+        priceToBook: number;
+        revenueMultiple: number;
+      }[];
+      averageMultiples: {
+        evToEbitda: number;
+        priceToEarnings: number;
+        priceToBook: number;
+        revenueMultiple: number;
+      };
+    };
+    
+    // Precedent Transactions
+    precedentTransactions: {
+      transaction: string;
+      date: string;
+      evToEbitda: number;
+      priceToEarnings: number;
+      priceToBook: number;
+      revenueMultiple: number;
+    }[];
+    
+    // Asset-Based Valuation
+    assetBasedValuation: {
+      bookValue: number;
+      tangibleBookValue: number;
+      replacementValue: number;
+      liquidationValue: number;
+      adjustedBookValue: number;
+    };
+  };
+  
+  // Integration Planning
+  integrationPlanning: {
+    // Integration Strategy
+    integrationStrategy: {
+      approach: 'full_integration' | 'partial_integration' | 'standalone' | 'hybrid';
+      timeline: number;
+      complexity: 'low' | 'medium' | 'high';
+      riskLevel: 'low' | 'medium' | 'high';
+    };
+    
+    // Integration Costs
+    integrationCosts: {
+      oneTimeCosts: number;
+      ongoingCosts: number;
+      restructuringCosts: number;
+      technologyCosts: number;
+      totalIntegrationCosts: number;
+      timeline: number;
+    };
+    
+    // Integration Risks
+    integrationRisks: {
+      culturalRisk: number;
+      operationalRisk: number;
+      technologyRisk: number;
+      regulatoryRisk: number;
+      executionRisk: number;
+      totalIntegrationRisk: number;
+    };
+    
+    // Integration Timeline
+    integrationTimeline: {
+      phase: string;
+      duration: number;
+      activities: string[];
+      milestones: string[];
+      dependencies: string[];
     }[];
   };
   
-  // Regulatory Considerations
-  regulatoryConsiderations: {
-    antitrustReview: boolean;
-    regulatoryApprovals: string[];
-    regulatoryRisks: string[];
-    approvalTimeline: number; // months
-    probabilityOfApproval: number;
-    regulatoryConditions: string[];
+  // Risk Assessment
+  riskAssessment: {
+    // Deal Risk
+    dealRisk: {
+      regulatoryRisk: number;
+      financingRisk: number;
+      integrationRisk: number;
+      marketRisk: number;
+      executionRisk: number;
+    };
+    
+    // Business Risk
+    businessRisk: {
+      operationalRisk: number;
+      competitiveRisk: number;
+      technologyRisk: number;
+      marketRisk: number;
+      financialRisk: number;
+    };
+    
+    // Financial Risk
+    financialRisk: {
+      leverageRisk: number;
+      liquidityRisk: number;
+      refinancingRisk: number;
+      interestRateRisk: number;
+      currencyRisk: number;
+    };
+    
+    // Strategic Risk
+    strategicRisk: {
+      strategicFit: number;
+      culturalFit: number;
+      managementRisk: number;
+      keyPersonRisk: number;
+      executionRisk: number;
+    };
   };
   
-  // Due Diligence
-  dueDiligence: {
-    financial: boolean;
-    legal: boolean;
-    operational: boolean;
-    tax: boolean;
-    environmental: boolean;
-    technology: boolean;
-    humanResources: boolean;
-    intellectualProperty: boolean;
-    findings: {
-      category: string;
-      finding: string;
-      impact: 'low' | 'medium' | 'high';
-      mitigation: string;
+  // Market Analysis
+  marketAnalysis: {
+    // Market Size
+    marketSize: {
+      totalAddressableMarket: number;
+      serviceableAddressableMarket: number;
+      serviceableObtainableMarket: number;
+      marketGrowthRate: number;
+      marketMaturity: 'nascent' | 'growing' | 'mature' | 'declining';
+    };
+    
+    // Competitive Landscape
+    competitiveLandscape: {
+      competitors: {
+        competitor: string;
+        marketShare: number;
+        revenue: number;
+        strengths: string[];
+        weaknesses: string[];
+      }[];
+      competitiveAdvantage: string[];
+      barriersToEntry: string[];
+      competitiveIntensity: 'low' | 'medium' | 'high';
+    };
+    
+    // Industry Trends
+    industryTrends: {
+      trend: string;
+      impact: 'positive' | 'negative' | 'neutral';
+      probability: number;
+      timeframe: string;
+      description: string;
     }[];
-  };
-  
-  // Risk Factors
-  riskFactors: {
-    category: string;
-    factor: string;
-    impact: 'low' | 'medium' | 'high';
-    probability: number;
-    mitigation: string;
-  }[];
-  
-  // Comparable Transactions
-  comparableTransactions: {
-    target: string;
-    acquirer: string;
-    dealValue: number;
-    multiple: number;
-    premium: number;
-    date: string;
-    industry: string;
-  }[];
-  
-  // Comparable Companies
-  comparableCompanies: {
-    company: string;
-    ticker: string;
-    industry: string;
-    marketCap: number;
-    enterpriseValue: number;
-    revenue: number;
-    ebitda: number;
-    multiple: number;
-  }[];
-  
-  // Market Conditions
-  marketConditions: {
-    mandaActivity: number;
-    marketValuations: number;
-    financingAvailability: string;
-    interestRates: number;
-    economicOutlook: string;
-    industryTrends: string[];
-  };
-  
-  // Strategic Rationale
-  strategicRationale: {
-    horizontalIntegration: boolean;
-    verticalIntegration: boolean;
-    marketExpansion: boolean;
-    technologyAcquisition: boolean;
-    talentAcquisition: boolean;
-    costReduction: boolean;
-    revenueGrowth: boolean;
-    diversification: boolean;
-    rationale: string[];
+    
+    // Regulatory Environment
+    regulatoryEnvironment: {
+      regulatoryRisk: number;
+      complianceCosts: number;
+      regulatoryChanges: string[];
+      regulatoryTrend: 'favorable' | 'neutral' | 'unfavorable';
+    };
   };
   
   // Scenario Analysis
-  scenarios: {
-    name: string;
-    probability: number;
-    purchasePrice: number;
-    synergies: number;
-    integrationCosts: number;
-    closingDate: string;
-    regulatoryApproval: boolean;
-  }[];
+  scenarioAnalysis: {
+    // Deal Scenarios
+    dealScenarios: {
+      scenarioName: string;
+      probability: number;
+      purchasePrice: number;
+      synergies: number;
+      integrationCosts: number;
+      netValue: number;
+      description: string;
+    }[];
+    
+    // Market Scenarios
+    marketScenarios: {
+      scenarioName: string;
+      probability: number;
+      marketGrowth: number;
+      competitiveIntensity: number;
+      regulatoryEnvironment: string;
+      economicConditions: string;
+      description: string;
+    }[];
+    
+    // Integration Scenarios
+    integrationScenarios: {
+      scenarioName: string;
+      probability: number;
+      integrationSuccess: number;
+      synergyRealization: number;
+      integrationCosts: number;
+      timeline: number;
+      description: string;
+    }[];
+  };
   
   // Monte Carlo Simulation
   monteCarloSimulations: number;
   monteCarloTimeSteps: number;
-  includeRegulatoryRisk: boolean;
-  includeSynergyRisk: boolean;
-  includeIntegrationRisk: boolean;
-  
-  // Historical Analysis
-  historicalData: {
-    date: string;
-    targetPrice: number;
-    acquirerPrice: number;
-    dealValue: number;
-    premium: number;
-    marketReaction: number;
-  }[];
+  includeSynergyVolatility: boolean;
+  includeIntegrationVolatility: boolean;
+  includeMarketVolatility: boolean;
   
   // Analysis Parameters
   analysisPeriod: number; // in years
   discountRate: number;
-  terminalGrowthRate: number;
+  terminalValue: number;
   includeTransactionCosts: boolean;
   includeTaxes: boolean;
-  includeSynergies: boolean;
+  
+  // Calculation Options
+  calculationOptions: {
+    includeValuationAnalysis: boolean;
+    includeSynergyAnalysis: boolean;
+    includeRiskAnalysis: boolean;
+    includeScenarioAnalysis: boolean;
+    includeMonteCarlo: boolean;
+  };
+  
+  // Historical Analysis
+  historicalData: {
+    year: number;
+    targetRevenue: number;
+    targetEbitda: number;
+    acquirerRevenue: number;
+    acquirerEbitda: number;
+    combinedValue: number;
+    return: number;
+  }[];
   
   // Reporting Preferences
   includeValuationAnalysis: boolean;
   includeSynergyAnalysis: boolean;
-  includeFinancingAnalysis: boolean;
-  includeIntegrationAnalysis: boolean;
-  includeRegulatoryAnalysis: boolean;
   includeRiskAnalysis: boolean;
+  includeIntegrationAnalysis: boolean;
+  includeMarketAnalysis: boolean;
   includeScenarioAnalysis: boolean;
   includeMonteCarlo: boolean;
   includeHistoricalAnalysis: boolean;
-  includeComparableAnalysis: boolean;
   includeRecommendations: boolean;
   includeActionItems: boolean;
   
@@ -290,206 +523,250 @@ export interface MergerAcquisitionInputs {
   includeRecommendations: boolean;
 }
 
-export interface MergerAcquisitionResults {
-  // Core Transaction Metrics
+export interface MergerAcquisitionCalculatorResults {
+  // Core M&A Metrics
   transactionValue: number;
-  equityValue: number;
-  enterpriseValue: number;
+  purchasePrice: number;
   premium: number;
-  exchangeRatio: number;
-  dealMultiple: number;
+  synergies: number;
+  netValue: number;
+  irr: number;
+  
+  // M&A Analysis
+  maAnalysis: {
+    transactionValue: number;
+    purchasePrice: number;
+    premium: number;
+    synergies: number;
+    netValue: number;
+    irr: number;
+    maBreakdown: {
+      component: string;
+      value: number;
+      contribution: number;
+    }[];
+    maEfficiency: number;
+  };
   
   // Valuation Analysis
   valuationAnalysis: {
-    method: string;
-    value: number;
-    weight: number;
-    assumptions: string[];
-  }[];
-  
-  // DCF Analysis
-  dcfAnalysis: {
-    presentValue: number;
-    terminalValue: number;
-    enterpriseValue: number;
-    equityValue: number;
-    valuePerShare: number;
-    cashFlows: {
-      year: number;
-      revenue: number;
-      ebitda: number;
-      synergies: number;
-      freeCashFlow: number;
-      presentValue: number;
+    dcfValue: number;
+    comparableValue: number;
+    precedentValue: number;
+    assetValue: number;
+    weightedValue: number;
+    valuationMethod: string;
+    valuationComponents: {
+      component: string;
+      value: number;
+      percentage: number;
     }[];
-  };
-  
-  // Comparable Analysis
-  comparableAnalysis: {
-    comparableCompanies: {
-      company: string;
-      ticker: string;
-      multiple: number;
-      impliedValue: number;
-    }[];
-    comparableTransactions: {
-      target: string;
-      multiple: number;
-      premium: number;
-      impliedValue: number;
-    }[];
-    averageMultiple: number;
-    medianMultiple: number;
-    impliedValuation: number;
+    valuationEfficiency: number;
   };
   
   // Synergy Analysis
   synergyAnalysis: {
-    revenueSynergies: number;
-    costSynergies: number;
-    totalSynergies: number;
-    synergyTimeline: number;
-    synergyCapture: number;
-    synergyValue: number;
-    synergyBreakdown: {
-      category: string;
-      amount: number;
+    revenueSynergies: {
+      crossSelling: number;
+      marketExpansion: number;
+      pricingPower: number;
+      distributionChannels: number;
+      totalRevenueSynergies: number;
+    };
+    costSynergies: {
+      overheadReduction: number;
+      operationalEfficiencies: number;
+      procurementSavings: number;
+      facilityConsolidation: number;
+      workforceReduction: number;
+      totalCostSynergies: number;
+    };
+    financialSynergies: {
+      taxBenefits: number;
+      financingEfficiencies: number;
+      workingCapitalOptimization: number;
+      capitalStructureOptimization: number;
+      totalFinancialSynergies: number;
+    };
+    totalSynergies: {
+      totalSynergies: number;
+      presentValue: number;
+      discountRate: number;
+      timeline: number;
       probability: number;
-      value: number;
-    }[];
+    };
+    synergyEfficiency: number;
   };
   
-  // Financing Analysis
-  financingAnalysis: {
-    cashOnHand: number;
-    debtFinancing: number;
-    equityFinancing: number;
-    totalFinancing: number;
-    financingCost: number;
-    debtCapacity: number;
-    leverageRatio: number;
-    interestCoverage: number;
-    financingRisk: number;
-  };
-  
-  // Integration Analysis
-  integrationAnalysis: {
-    integrationCosts: number;
-    integrationTimeline: number;
-    integrationRisks: string[];
-    integrationBenefits: string[];
-    integrationValue: number;
-    integrationEfficiency: number;
-  };
-  
-  // Accretion/Dilution Analysis
-  accretionDilutionAnalysis: {
-    epsAccretion: number;
-    bookValueAccretion: number;
-    roeImpact: number;
-    roaImpact: number;
-    leverageImpact: number;
-    accretionBreakdown: {
-      metric: string;
-      standalone: number;
-      combined: number;
-      change: number;
-      percentage: number;
-    }[];
+  // Deal Analysis
+  dealAnalysis: {
+    purchasePrice: {
+      totalValue: number;
+      perShareValue: number;
+      premium: number;
+      premiumPercentage: number;
+      exchangeRatio: number;
+      cashComponent: number;
+      stockComponent: number;
+      earnoutComponent: number;
+    };
+    financingStructure: {
+      cashFinancing: number;
+      stockFinancing: number;
+      debtFinancing: number;
+      equityFinancing: number;
+      bridgeFinancing: number;
+      totalFinancing: number;
+    };
+    dealEfficiency: number;
   };
   
   // Risk Analysis
   riskAnalysis: {
-    regulatoryRisk: number;
-    integrationRisk: number;
-    financingRisk: number;
-    synergyRisk: number;
-    marketRisk: number;
-    operationalRisk: number;
+    dealRisk: {
+      regulatoryRisk: number;
+      financingRisk: number;
+      integrationRisk: number;
+      marketRisk: number;
+      executionRisk: number;
+      riskContribution: number;
+    };
+    businessRisk: {
+      operationalRisk: number;
+      competitiveRisk: number;
+      technologyRisk: number;
+      marketRisk: number;
+      financialRisk: number;
+      riskContribution: number;
+    };
+    integrationRisk: {
+      culturalRisk: number;
+      operationalRisk: number;
+      technologyRisk: number;
+      regulatoryRisk: number;
+      executionRisk: number;
+      riskContribution: number;
+    };
     totalRisk: number;
+    riskEfficiency: number;
   };
   
-  // Performance Metrics
-  performanceMetrics: {
-    totalReturn: number;
-    annualizedReturn: number;
-    sharpeRatio: number;
-    sortinoRatio: number;
-    calmarRatio: number;
-    treynorRatio: number;
-    informationRatio: number;
+  // Integration Analysis
+  integrationAnalysis: {
+    integrationStrategy: {
+      approach: string;
+      timeline: number;
+      complexity: string;
+      riskLevel: string;
+    };
+    integrationCosts: {
+      oneTimeCosts: number;
+      ongoingCosts: number;
+      restructuringCosts: number;
+      technologyCosts: number;
+      totalIntegrationCosts: number;
+    };
+    integrationTimeline: {
+      phase: string;
+      duration: number;
+      activities: string[];
+      milestones: string[];
+      dependencies: string[];
+    }[];
+    integrationEfficiency: number;
   };
   
-  // Financial Impact
-  financialImpact: {
-    revenueGrowth: number;
-    ebitdaGrowth: number;
-    marginExpansion: number;
-    cashFlowGeneration: number;
-    debtPaydown: number;
-    valueCreation: number;
-  };
-  
-  // Strategic Analysis
-  strategicAnalysis: {
-    marketPosition: number;
-    competitiveAdvantage: number;
-    marketShare: number;
+  // Market Analysis
+  marketAnalysis: {
+    marketSize: number;
     marketGrowth: number;
-    strategicValue: number;
-    strategicRisks: string[];
-    strategicOpportunities: string[];
+    marketShare: number;
+    competitivePosition: number;
+    marketBreakdown: {
+      factor: string;
+      impact: number;
+      opportunity: number;
+    }[];
+    marketScore: number;
   };
   
-  // Regulatory Analysis
-  regulatoryAnalysis: {
-    antitrustRisk: number;
-    approvalProbability: number;
-    approvalTimeline: number;
-    regulatoryConditions: string[];
-    complianceCost: number;
-    regulatoryValue: number;
+  // Financial Analysis
+  financialAnalysis: {
+    // Combined Financials
+    combinedFinancials: {
+      combinedRevenue: number;
+      combinedEbitda: number;
+      combinedNetIncome: number;
+      combinedAssets: number;
+      combinedLiabilities: number;
+      combinedEquity: number;
+    };
+    
+    // Pro Forma Analysis
+    proFormaAnalysis: {
+      proFormaRevenue: number;
+      proFormaEbitda: number;
+      proFormaNetIncome: number;
+      proFormaEarningsPerShare: number;
+      accretion: number;
+      dilution: number;
+    };
+    
+    // FinancialEfficiency: number;
   };
   
-  // Due Diligence Results
-  dueDiligenceResults: {
-    financial: {
-      completed: boolean;
-      findings: string[];
-      risks: string[];
-      recommendations: string[];
-    };
-    legal: {
-      completed: boolean;
-      findings: string[];
-      risks: string[];
-      recommendations: string[];
-    };
-    operational: {
-      completed: boolean;
-      findings: string[];
-      risks: string[];
-      recommendations: string[];
-    };
-    tax: {
-      completed: boolean;
-      findings: string[];
-      risks: string[];
-      recommendations: string[];
-    };
-  };
+  // Sensitivity Analysis
+  sensitivityAnalysis: {
+    variable: string;
+    baseValue: number;
+    lowValue: number;
+    highValue: number;
+    lowValue: number;
+    highValue: number;
+    sensitivity: number;
+  }[];
   
-  // Scenario Analysis Results
-  scenarioResults: {
+  // Scenario Analysis
+  scenarioAnalysis: {
     scenarioName: string;
     probability: number;
-    transactionValue: number;
+    purchasePrice: number;
     synergies: number;
     integrationCosts: number;
     netValue: number;
-    irr: number;
-    keyAssumptions: string[];
+    riskLevel: string;
   }[];
+  
+  // Peer Comparison
+  peerComparison: {
+    peerComparison: {
+      peer: string;
+      transactionValue: number;
+      premium: number;
+      synergies: number;
+      irr: number;
+      outperformance: number;
+    }[];
+    industryComparison: {
+      metric: string;
+      transaction: number;
+      industry: number;
+      difference: number;
+    }[];
+  };
+  
+  // M&A Score
+  maScore: {
+    overallScore: number;
+    componentScores: {
+      valuation: number;
+      synergies: number;
+      risk: number;
+      integration: number;
+      market: number;
+    };
+    recommendation: 'proceed' | 'modify' | 'abandon' | 'review';
+  };
   
   // Monte Carlo Results
   monteCarloResults: {
@@ -509,37 +786,16 @@ export interface MergerAcquisitionResults {
       value: number;
       probability: number;
     }[];
+    successProbability: number;
   };
   
   // Historical Analysis
   historicalAnalysis: {
-    historicalReturn: number;
-    historicalVolatility: number;
-    historicalSharpeRatio: number;
-    historicalMaxDrawdown: number;
-    dealTrends: string[];
-    marketReaction: number;
-  };
-  
-  // Sensitivity Analysis
-  sensitivityAnalysis: {
-    parameter: string;
-    baseValue: number;
-    lowValue: number;
-    highValue: number;
-    lowValuation: number;
-    highValuation: number;
-    sensitivity: number;
-  }[];
-  
-  // Comparative Analysis
-  comparativeAnalysis: {
-    benchmark: string;
-    benchmarkReturn: number;
-    excessReturn: number;
-    trackingError: number;
-    informationRatio: number;
-    relativePerformance: number;
+    historicalValue: number;
+    historicalSynergies: number;
+    historicalReturns: number;
+    historicalTrends: string[];
+    yearOverYearChange: number;
   };
   
   // Optimization Opportunities
@@ -553,18 +809,18 @@ export interface MergerAcquisitionResults {
   
   // Business Impact
   businessImpact: {
-    roi: number;
-    paybackPeriod: number;
-    netPresentValue: number;
-    internalRateOfReturn: number;
-    riskAdjustedReturn: number;
+    valueCreation: number;
+    returnImprovement: number;
+    riskReduction: number;
+    competitiveAdvantage: number;
+    overallBenefit: number;
   };
   
   // Comprehensive Report
   comprehensiveReport: {
     executiveSummary: string;
     keyFindings: string[];
-    riskAssessment: string;
+    transactionAssessment: string;
     recommendations: string[];
     actionItems: {
       action: string;
@@ -578,10 +834,10 @@ export interface MergerAcquisitionResults {
   executiveSummary: {
     transactionValue: number;
     premium: number;
-    riskLevel: 'low' | 'medium' | 'high';
-    recommendation: 'proceed' | 'reconsider' | 'terminate';
-    keyRisks: string[];
-    keyOpportunities: string[];
+    synergies: number;
+    recommendation: 'proceed' | 'modify' | 'abandon' | 'review';
+    keyStrengths: string[];
+    keyWeaknesses: string[];
   };
   
   // Recommendations

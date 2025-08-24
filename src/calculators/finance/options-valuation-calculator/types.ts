@@ -1,173 +1,366 @@
 export interface OptionsValuationInputs {
-  // Option basic information
-  optionType: 'call' | 'put' | 'american-call' | 'american-put' | 'european-call' | 'european-put';
-  underlyingPrice: number; // Current price of underlying asset
-  strikePrice: number; // Strike price
-  timeToExpiration: number; // Time to expiration in years
-  riskFreeRate: number; // Risk-free interest rate
-  
-  // Volatility
-  volatility: number; // Implied volatility
-  volatilityModel: 'constant' | 'time-varying' | 'stochastic' | 'local' | 'implied';
-  volatilitySurface: {
-    strike: number;
-    maturity: number;
-    volatility: number;
-  }[];
-  
-  // Dividend information
-  dividendYield: number; // Continuous dividend yield
-  dividendPayments: {
-    amount: number;
-    exDate: string;
-  }[];
-  
-  // Option features
-  barrierOptions: {
-    isBarrier: boolean;
-    barrierType: 'up-and-out' | 'down-and-out' | 'up-and-in' | 'down-and-in';
-    barrierLevel: number;
+  // Option Information
+  optionInfo: {
+    optionName: string;
+    optionType: 'call' | 'put' | 'binary_call' | 'binary_put' | 'barrier_up_in' | 'barrier_up_out' | 'barrier_down_in' | 'barrier_down_out' | 'asian' | 'lookback' | 'spread' | 'straddle' | 'strangle' | 'butterfly' | 'iron_condor' | 'other';
+    underlyingAsset: string;
+    underlyingType: 'stock' | 'index' | 'etf' | 'currency' | 'commodity' | 'bond' | 'futures' | 'other';
+    optionStyle: 'american' | 'european' | 'bermudan' | 'asian' | 'lookback' | 'barrier';
+    optionDescription: string;
   };
   
-  binaryOptions: {
-    isBinary: boolean;
-    payout: number;
-  };
-  
-  // Greeks calculation
-  calculateGreeks: boolean;
-  greekPrecision: number; // Precision for numerical calculations
-  
-  // Pricing model
-  pricingModel: 'black-scholes' | 'binomial' | 'trinomial' | 'monte-carlo' | 'finite-difference' | 'analytical';
-  
-  // Binomial/Trinomial parameters
-  latticeParameters: {
-    steps: number; // Number of time steps
-    method: 'cox-ross-rubinstein' | 'jarrow-rudd' | 'leisen-reimer' | 'tian';
-  };
-  
-  // Monte Carlo parameters
-  monteCarloParameters: {
-    simulations: number;
-    seed: number;
-    antithetic: boolean;
-    controlVariate: boolean;
-  };
-  
-  // Market data
-  marketData: {
-    bidPrice: number;
-    askPrice: number;
-    lastPrice: number;
-    volume: number;
-    openInterest: number;
-  };
-  
-  // Risk metrics
-  riskMetrics: {
-    calculateVaR: boolean;
-    confidenceLevel: number;
-    timeHorizon: number;
-  };
-  
-  // Hedging parameters
-  hedgingParameters: {
-    deltaHedging: boolean;
-    gammaHedging: boolean;
-    vegaHedging: boolean;
-    rebalancingFrequency: 'daily' | 'weekly' | 'monthly';
-  };
-  
-  // Volatility analysis
-  volatilityAnalysis: {
-    historicalVolatility: number;
-    impliedVolatility: number;
-    volatilitySkew: number;
-    volatilityTermStructure: number[];
-  };
-  
-  // Option strategies
-  optionStrategies: {
-    strategy: 'long-call' | 'long-put' | 'covered-call' | 'protective-put' | 'bull-spread' | 'bear-spread' | 'butterfly' | 'straddle' | 'strangle' | 'iron-condor';
-    legs: {
-      type: 'call' | 'put';
+  // Option Characteristics
+  optionCharacteristics: {
+    // Basic Characteristics
+    basicCharacteristics: {
+      strikePrice: number;
+      currentPrice: number;
+      expirationDate: string;
+      timeToExpiration: number; // in years
+      optionPrice: number;
+      intrinsicValue: number;
+      timeValue: number;
+      moneyness: 'in_the_money' | 'at_the_money' | 'out_of_the_money' | 'deep_in_the_money' | 'deep_out_of_the_money';
+    };
+    
+    // Option Chain
+    optionChain: {
       strike: number;
-      quantity: number;
-      premium: number;
+      callPrice: number;
+      putPrice: number;
+      callVolume: number;
+      putVolume: number;
+      callOpenInterest: number;
+      putOpenInterest: number;
+      callImpliedVolatility: number;
+      putImpliedVolatility: number;
+    }[];
+    
+    // Option Greeks
+    optionGreeks: {
+      delta: number;
+      gamma: number;
+      theta: number;
+      vega: number;
+      rho: number;
+      lambda: number;
+      epsilon: number;
+      vanna: number;
+      volga: number;
+    };
+    
+    // Option Strategy
+    optionStrategy: {
+      strategy: 'long_call' | 'long_put' | 'short_call' | 'short_put' | 'covered_call' | 'protective_put' | 'bull_spread' | 'bear_spread' | 'iron_condor' | 'butterfly' | 'straddle' | 'strangle' | 'collar' | 'diagonal' | 'calendar' | 'custom';
+      legs: {
+        type: 'call' | 'put';
+        strike: number;
+        expiration: string;
+        quantity: number;
+        action: 'buy' | 'sell';
+      }[];
+    };
+  };
+  
+  // Market Data
+  marketData: {
+    // Underlying Asset Data
+    underlyingData: {
+      currentPrice: number;
+      historicalPrices: {
+        date: string;
+        price: number;
+        volume: number;
+      }[];
+      volatility: number;
+      dividendYield: number;
+      beta: number;
+      marketCap: number;
+    };
+    
+    // Market Information
+    marketInfo: {
+      riskFreeRate: number;
+      marketReturn: number;
+      marketVolatility: number;
+      correlation: number;
+      liquidity: 'high' | 'medium' | 'low';
+    };
+    
+    // Volatility Surface
+    volatilitySurface: {
+      strike: number;
+      expiration: string;
+      impliedVolatility: number;
+      historicalVolatility: number;
+      realizedVolatility: number;
+    }[];
+    
+    // Market Conditions
+    marketConditions: {
+      volatilityRegime: 'low' | 'medium' | 'high';
+      trendDirection: 'bullish' | 'bearish' | 'sideways';
+      liquidityCondition: 'high' | 'medium' | 'low';
+      marketStress: 'low' | 'medium' | 'high';
+    };
+  };
+  
+  // Pricing Model Parameters
+  pricingModelParameters: {
+    // Model Selection
+    modelType: 'black_scholes' | 'binomial' | 'trinomial' | 'monte_carlo' | 'finite_difference' | 'barone_adesi_whaley' | 'bjerksund_stensland' | 'heston' | 'sabr' | 'custom';
+    
+    // Black-Scholes Parameters
+    blackScholesParams: {
+      underlyingPrice: number;
+      strikePrice: number;
+      timeToExpiration: number;
+      riskFreeRate: number;
+      volatility: number;
+      dividendYield: number;
+    };
+    
+    // Binomial Parameters
+    binomialParams: {
+      timeSteps: number;
+      upFactor: number;
+      downFactor: number;
+      riskNeutralProbability: number;
+      convergenceCriteria: number;
+    };
+    
+    // Monte Carlo Parameters
+    monteCarloParams: {
+      simulations: number;
+      timeSteps: number;
+      randomSeed: number;
+      varianceReduction: boolean;
+      antitheticVariates: boolean;
+      controlVariates: boolean;
+    };
+    
+    // Volatility Models
+    volatilityModels: {
+      constantVolatility: number;
+      localVolatility: {
+        strike: number;
+        time: number;
+        volatility: number;
+      }[];
+      stochasticVolatility: {
+        meanReversion: number;
+        volatilityOfVolatility: number;
+        correlation: number;
+        longTermVolatility: number;
+      };
+    };
+  };
+  
+  // Risk Parameters
+  riskParameters: {
+    // Greeks Risk Limits
+    greeksRiskLimits: {
+      maxDelta: number;
+      maxGamma: number;
+      maxTheta: number;
+      maxVega: number;
+      maxRho: number;
+    };
+    
+    // Position Risk
+    positionRisk: {
+      maxPositionSize: number;
+      maxLoss: number;
+      maxDrawdown: number;
+      var: number;
+      cvar: number;
+    };
+    
+    // Market Risk
+    marketRisk: {
+      priceRisk: number;
+      volatilityRisk: number;
+      interestRateRisk: number;
+      correlationRisk: number;
+      liquidityRisk: number;
+    };
+    
+    // Counterparty Risk
+    counterpartyRisk: {
+      defaultProbability: number;
+      recoveryRate: number;
+      creditSpread: number;
+      collateralValue: number;
+    };
+  };
+  
+  // Trading Parameters
+  tradingParameters: {
+    // Transaction Costs
+    transactionCosts: {
+      commission: number;
+      bidAskSpread: number;
+      slippage: number;
+      marketImpact: number;
+      totalCost: number;
+    };
+    
+    // Margin Requirements
+    marginRequirements: {
+      initialMargin: number;
+      maintenanceMargin: number;
+      marginCallLevel: number;
+      leverage: number;
+    };
+    
+    // Liquidity Constraints
+    liquidityConstraints: {
+      maxTradeSize: number;
+      minTradeSize: number;
+      executionTime: number;
+      fillProbability: number;
+    };
+  };
+  
+  // Hedging Parameters
+  hedgingParameters: {
+    // Hedging Strategy
+    hedgingStrategy: {
+      hedgeType: 'delta' | 'gamma' | 'vega' | 'delta_gamma' | 'delta_gamma_vega' | 'dynamic' | 'static' | 'none';
+      rebalancingFrequency: 'continuous' | 'daily' | 'weekly' | 'monthly' | 'event_driven';
+      hedgeRatio: number;
+      hedgeInstruments: string[];
+    };
+    
+    // Hedge Costs
+    hedgeCosts: {
+      transactionCosts: number;
+      financingCosts: number;
+      opportunityCosts: number;
+      totalHedgeCost: number;
+    };
+    
+    // Hedge Effectiveness
+    hedgeEffectiveness: {
+      hedgeRatio: number;
+      hedgeEfficiency: number;
+      basisRisk: number;
+      trackingError: number;
+    };
+  };
+  
+  // Scenario Analysis
+  scenarioAnalysis: {
+    // Market Scenarios
+    marketScenarios: {
+      scenarioName: string;
+      probability: number;
+      underlyingPrice: number;
+      volatility: number;
+      interestRate: number;
+      timeToExpiration: number;
+      description: string;
+    }[];
+    
+    // Stress Testing
+    stressTesting: {
+      stressTest: string;
+      priceShock: number;
+      volatilityShock: number;
+      interestRateShock: number;
+      correlationShock: number;
+      description: string;
+    }[];
+    
+    // Sensitivity Analysis
+    sensitivityAnalysis: {
+      variable: string;
+      baseValue: number;
+      lowValue: number;
+      highValue: number;
+      stepSize: number;
     }[];
   };
   
-  // Sensitivity analysis
-  sensitivityParameters: {
-    parameter: string;
-    baseValue: number;
-    lowValue: number;
-    highValue: number;
-    steps: number;
-  }[];
+  // Monte Carlo Simulation
+  monteCarloSimulations: number;
+  monteCarloTimeSteps: number;
+  includeVolatilitySmile: boolean;
+  includeJumpDiffusion: boolean;
+  includeStochasticVolatility: boolean;
   
-  // Scenario analysis
-  scenarios: {
-    scenario: string;
-    probability: number;
+  // Analysis Parameters
+  analysisPeriod: number; // in years
+  includeTransactionCosts: boolean;
+  includeTaxes: boolean;
+  includeDividends: boolean;
+  includeEarlyExercise: boolean;
+  
+  // Calculation Options
+  calculationOptions: {
+    includeGreeks: boolean;
+    includeSensitivityAnalysis: boolean;
+    includeScenarioAnalysis: boolean;
+    includeMonteCarlo: boolean;
+    includeHedgingAnalysis: boolean;
+  };
+  
+  // Historical Analysis
+  historicalData: {
+    date: string;
     underlyingPrice: number;
-    volatility: number;
-    timeToExpiration: number;
+    optionPrice: number;
+    impliedVolatility: number;
+    delta: number;
+    gamma: number;
+    theta: number;
+    vega: number;
+    rho: number;
   }[];
   
-  // Market conditions
-  marketConditions: {
-    marketRegime: 'bull' | 'bear' | 'sideways' | 'volatile';
-    volatilityRegime: 'low' | 'normal' | 'high' | 'extreme';
-    interestRateEnvironment: 'low' | 'normal' | 'high' | 'rising' | 'falling';
-  };
-  
-  // Transaction costs
-  transactionCosts: {
-    commission: number;
-    bidAskSpread: number;
-    slippage: number;
-    financingCost: number;
-  };
-  
-  // Early exercise
-  earlyExercise: {
-    americanOptions: boolean;
-    optimalExercise: boolean;
-    exerciseBoundary: number[];
-  };
-  
-  // Exotic options
-  exoticFeatures: {
-    isExotic: boolean;
-    exoticType: 'asian' | 'barrier' | 'binary' | 'lookback' | 'chooser' | 'compound' | 'spread' | 'basket';
-    parameters: Record<string, number>;
-  };
-  
-  // Analysis parameters
-  includeGreeks: boolean;
-  includeSensitivityAnalysis: boolean;
-  includeScenarioAnalysis: boolean;
-  includeRiskMetrics: boolean;
+  // Reporting Preferences
+  includeOptionAnalysis: boolean;
+  includeGreeksAnalysis: boolean;
+  includeRiskAnalysis: boolean;
   includeHedgingAnalysis: boolean;
+  includeScenarioAnalysis: boolean;
+  includeMonteCarlo: boolean;
+  includeHistoricalAnalysis: boolean;
+  includeRecommendations: boolean;
+  includeActionItems: boolean;
   
-  // Output preferences
-  includeDetailedBreakdown: boolean;
-  includeMultipleModels: boolean;
-  includeComparisons: boolean;
+  // Output Format
+  outputFormat: 'detailed' | 'summary' | 'executive';
+  includeCharts: boolean;
+  includeTables: boolean;
   includeRecommendations: boolean;
 }
 
 export interface OptionsValuationResults {
-  // Core option valuation
+  // Core Option Metrics
   optionPrice: number;
   intrinsicValue: number;
   timeValue: number;
   impliedVolatility: number;
+  moneyness: string;
   
-  // Greeks
-  greeks: {
+  // Option Analysis
+  optionAnalysis: {
+    optionPrice: number;
+    intrinsicValue: number;
+    timeValue: number;
+    impliedVolatility: number;
+    moneyness: string;
+    optionBreakdown: {
+      component: string;
+      value: number;
+      percentage: number;
+    }[];
+    optionEfficiency: number;
+  };
+  
+  // Greeks Analysis
+  greeksAnalysis: {
     delta: number;
     gamma: number;
     theta: number;
@@ -177,203 +370,247 @@ export interface OptionsValuationResults {
     epsilon: number;
     vanna: number;
     volga: number;
+    greeksBreakdown: {
+      greek: string;
+      value: number;
+      risk: number;
+      contribution: number;
+    }[];
+    greeksEfficiency: number;
   };
   
-  // Model-specific results
-  blackScholesResults: {
-    price: number;
-    delta: number;
-    gamma: number;
-    theta: number;
-    vega: number;
-    rho: number;
-  };
-  
-  binomialResults: {
-    price: number;
-    delta: number;
-    gamma: number;
-    theta: number;
-    vega: number;
-    rho: number;
-    convergence: boolean;
-  };
-  
-  monteCarloResults: {
-    price: number;
-    standardError: number;
-    confidenceInterval: {
-      lower: number;
-      upper: number;
+  // Risk Analysis
+  riskAnalysis: {
+    priceRisk: {
+      delta: number;
+      gamma: number;
+      priceSensitivity: number;
+      riskContribution: number;
     };
-    convergence: boolean;
+    volatilityRisk: {
+      vega: number;
+      volga: number;
+      volatilitySensitivity: number;
+      riskContribution: number;
+    };
+    timeRisk: {
+      theta: number;
+      timeDecay: number;
+      timeSensitivity: number;
+      riskContribution: number;
+    };
+    interestRateRisk: {
+      rho: number;
+      rateSensitivity: number;
+      riskContribution: number;
+    };
+    totalRisk: number;
+    riskEfficiency: number;
   };
   
-  // Risk metrics
-  riskMetrics: {
-    valueAtRisk: number;
-    expectedShortfall: number;
-    maximumLoss: number;
-    probabilityOfProfit: number;
-    expectedValue: number;
+  // Pricing Analysis
+  pricingAnalysis: {
+    theoreticalPrice: number;
+    marketPrice: number;
+    priceDifference: number;
+    pricingModel: string;
+    modelAccuracy: number;
+    pricingComponents: {
+      component: string;
+      value: number;
+      contribution: number;
+    }[];
+    pricingEfficiency: number;
   };
   
-  // Sensitivity analysis
-  sensitivityResults: {
-    parameter: string;
-    basePrice: number;
+  // Volatility Analysis
+  volatilityAnalysis: {
+    impliedVolatility: number;
+    historicalVolatility: number;
+    realizedVolatility: number;
+    volatilitySkew: number;
+    volatilityTermStructure: {
+      expiration: string;
+      volatility: number;
+    }[];
+    volatilityBreakdown: {
+      component: string;
+      volatility: number;
+      contribution: number;
+    }[];
+    volatilityEfficiency: number;
+  };
+  
+  // Sensitivity Analysis
+  sensitivityAnalysis: {
+    variable: string;
+    baseValue: number;
+    lowValue: number;
+    highValue: number;
     lowPrice: number;
     highPrice: number;
     sensitivity: number;
   }[];
   
-  // Scenario analysis
-  scenarioResults: {
-    scenario: string;
+  // Scenario Analysis
+  scenarioAnalysis: {
+    scenarioName: string;
     probability: number;
     optionPrice: number;
-    profit: number;
-    return: number;
+    underlyingPrice: number;
+    impliedVolatility: number;
+    profitLoss: number;
+    riskLevel: string;
   }[];
   
-  // Volatility analysis
-  volatilityAnalysis: {
-    historicalVolatility: number;
-    impliedVolatility: number;
-    volatilitySkew: number;
-    volatilitySmile: number[];
-    volatilityTermStructure: number[];
-  };
-  
-  // Hedging analysis
+  // Hedging Analysis
   hedgingAnalysis: {
-    deltaHedge: {
-      shares: number;
+    hedgeRatio: number;
+    hedgeInstruments: {
+      instrument: string;
+      quantity: number;
       cost: number;
       effectiveness: number;
+    }[];
+    hedgeCosts: {
+      transactionCosts: number;
+      financingCosts: number;
+      opportunityCosts: number;
+      totalCost: number;
     };
-    gammaHedge: {
-      additionalShares: number;
-      cost: number;
-      effectiveness: number;
+    hedgeEffectiveness: {
+      hedgeRatio: number;
+      hedgeEfficiency: number;
+      basisRisk: number;
+      trackingError: number;
     };
-    vegaHedge: {
-      vegaExposure: number;
-      hedgeCost: number;
-    };
+    hedgeEfficiency: number;
   };
   
-  // Break-even analysis
-  breakEvenAnalysis: {
-    breakEvenPrice: number;
-    breakEvenTime: number;
-    probabilityOfBreakEven: number;
-    marginOfSafety: number;
-  };
-  
-  // Profit/Loss analysis
-  profitLossAnalysis: {
-    maxProfit: number;
-    maxLoss: number;
-    breakEvenPoints: number[];
-    profitProbability: number;
-    expectedProfit: number;
-  };
-  
-  // Option strategies
-  strategyResults: {
+  // Strategy Analysis
+  strategyAnalysis: {
     strategy: string;
-    totalCost: number;
+    profitLoss: number;
     maxProfit: number;
     maxLoss: number;
-    breakEvenPoints: number[];
-    profitProbability: number;
+    breakevenPoints: number[];
+    probabilityOfProfit: number;
+    strategyBreakdown: {
+      leg: string;
+      profitLoss: number;
+      contribution: number;
+    }[];
+    strategyEfficiency: number;
   };
   
-  // Market comparison
-  marketComparison: {
-    theoreticalPrice: number;
-    marketPrice: number;
-    difference: number;
-    mispricing: number;
-    arbitrageOpportunity: boolean;
+  // Monte Carlo Results
+  monteCarloResults: {
+    meanPrice: number;
+    medianPrice: number;
+    standardDeviation: number;
+    percentiles: {
+      p5: number;
+      p10: number;
+      p25: number;
+      p50: number;
+      p75: number;
+      p90: number;
+      p95: number;
+    };
+    probabilityDistribution: {
+      price: number;
+      probability: number;
+    }[];
+    successProbability: number;
   };
   
-  // Performance metrics
-  performanceMetrics: {
-    returnOnInvestment: number;
-    riskAdjustedReturn: number;
-    sharpeRatio: number;
-    sortinoRatio: number;
+  // Historical Analysis
+  historicalAnalysis: {
+    historicalPrice: number;
+    historicalVolatility: number;
+    historicalGreeks: {
+      delta: number;
+      gamma: number;
+      theta: number;
+      vega: number;
+      rho: number;
+    };
+    historicalTrends: string[];
+    yearOverYearChange: number;
   };
   
-  // Early exercise analysis
-  earlyExerciseAnalysis: {
-    optimalExercise: boolean;
-    exerciseValue: number;
-    holdingValue: number;
-    exerciseBoundary: number[];
+  // Option Score
+  optionScore: {
+    overallScore: number;
+    componentScores: {
+      pricing: number;
+      risk: number;
+      liquidity: number;
+      volatility: number;
+      strategy: number;
+    };
+    recommendation: 'buy' | 'sell' | 'hold' | 'close' | 'review';
   };
   
-  // Volatility trading
-  volatilityTrading: {
-    volatilityPosition: number;
-    vegaExposure: number;
-    gammaExposure: number;
-    volatilityPnl: number;
+  // Optimization Opportunities
+  optimizationOpportunities: {
+    category: string;
+    description: string;
+    potentialImprovement: number;
+    implementationDifficulty: 'low' | 'medium' | 'high';
+    priority: 'low' | 'medium' | 'high';
+  }[];
+  
+  // Business Impact
+  businessImpact: {
+    profitPotential: number;
+    riskReduction: number;
+    costSavings: number;
+    valueCreation: number;
+    overallBenefit: number;
   };
   
-  // Time decay analysis
-  timeDecayAnalysis: {
-    theta: number;
-    timeDecay: number;
-    daysToExpiration: number;
-    timeValueDecay: number[];
+  // Comprehensive Report
+  comprehensiveReport: {
+    executiveSummary: string;
+    keyFindings: string[];
+    optionAssessment: string;
+    recommendations: string[];
+    actionItems: {
+      action: string;
+      priority: 'low' | 'medium' | 'high';
+      timeline: string;
+      responsibleParty: string;
+    }[];
   };
   
-  // Strike analysis
-  strikeAnalysis: {
-    inTheMoney: boolean;
-    outOfTheMoney: boolean;
-    atTheMoney: boolean;
-    moneyness: number;
-    leverage: number;
+  // Executive Summary
+  executiveSummary: {
+    optionPrice: number;
+    impliedVolatility: number;
+    delta: number;
+    recommendation: 'buy' | 'sell' | 'hold' | 'close' | 'review';
+    keyStrengths: string[];
+    keyWeaknesses: string[];
   };
-  
-  // Liquidity analysis
-  liquidityAnalysis: {
-    bidAskSpread: number;
-    volume: number;
-    openInterest: number;
-    liquidityScore: number;
-  };
-  
-  // Transaction cost analysis
-  transactionCostAnalysis: {
-    totalCost: number;
-    commission: number;
-    bidAskSpread: number;
-    slippage: number;
-    netProfit: number;
-  };
-  
-  // Comprehensive report
-  report: string;
   
   // Recommendations
   recommendations: {
     category: string;
-    recommendations: string[];
-    priority: 'high' | 'medium' | 'low';
+    recommendation: string;
+    rationale: string;
     expectedImpact: number;
+    implementationSteps: string[];
   }[];
   
-  // Action items
+  // Action Items
   actionItems: {
-    priority: 'immediate' | 'short-term' | 'long-term';
     action: string;
-    owner: string;
+    description: string;
+    priority: 'low' | 'medium' | 'high';
     timeline: string;
-    expectedOutcome: string;
+    responsibleParty: string;
+    dependencies: string[];
+    successMetrics: string[];
   }[];
 }

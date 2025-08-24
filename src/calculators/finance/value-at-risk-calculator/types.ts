@@ -1,210 +1,462 @@
-export interface VaRInputs {
-  // Portfolio data
-  portfolioReturns: number[]; // Historical returns array
-  portfolioValue: number; // Current portfolio value
-  assetWeights: number[]; // Asset allocation weights
+export interface ValueAtRiskInputs {
+  // Portfolio Information
+  portfolioInfo: {
+    portfolioName: string;
+    portfolioType: 'equity' | 'fixed_income' | 'multi_asset' | 'hedge_fund' | 'private_equity' | 'real_estate' | 'commodity' | 'cryptocurrency' | 'other';
+    portfolioCategory: 'retail' | 'institutional' | 'pension' | 'endowment' | 'sovereign_wealth' | 'hedge_fund' | 'private_equity' | 'other';
+    portfolioStrategy: 'passive' | 'active' | 'factor_based' | 'smart_beta' | 'quantitative' | 'fundamental' | 'tactical' | 'strategic';
+    portfolioCurrency: string;
+    portfolioValue: number;
+    portfolioDescription: string;
+  };
   
-  // VaR parameters
-  confidenceLevel: number; // Confidence level (e.g., 95%, 99%)
-  timeHorizon: number; // Time horizon in days
-  varMethod: 'historical' | 'parametric' | 'monte-carlo' | 'conditional';
+  // Asset Allocation
+  assetAllocation: {
+    // Asset Classes
+    assetClasses: {
+      assetClass: string;
+      weight: number;
+      value: number;
+      currency: string;
+    }[];
+    
+    // Individual Assets
+    individualAssets: {
+      asset: string;
+      assetClass: string;
+      weight: number;
+      value: number;
+      currency: string;
+      ticker: string;
+    }[];
+    
+    // Geographic Allocation
+    geographicAllocation: {
+      region: string;
+      weight: number;
+      value: number;
+    }[];
+    
+    // Sector Allocation
+    sectorAllocation: {
+      sector: string;
+      weight: number;
+      value: number;
+    }[];
+  };
   
-  // Asset data
-  assetReturns: number[][]; // Returns for each asset
-  assetNames: string[]; // Names of assets
-  assetValues: number[]; // Current values of each asset
+  // Historical Data
+  historicalData: {
+    // Price Data
+    priceData: {
+      date: string;
+      asset: string;
+      price: number;
+      volume: number;
+    }[];
+    
+    // Return Data
+    returnData: {
+      date: string;
+      asset: string;
+      return: number;
+      logReturn: number;
+    }[];
+    
+    // Portfolio Data
+    portfolioData: {
+      date: string;
+      value: number;
+      return: number;
+      weight: number;
+    }[];
+    
+    // Market Data
+    marketData: {
+      date: string;
+      marketIndex: string;
+      value: number;
+      return: number;
+    }[];
+  };
   
-  // Market data
-  marketReturns: number[]; // Market returns for beta calculation
-  riskFreeRate: number; // Risk-free rate
+  // VaR Parameters
+  varParameters: {
+    // Confidence Level
+    confidenceLevel: number; // e.g., 95%, 99%
+    confidenceLevels: number[]; // multiple confidence levels
+    
+    // Time Horizon
+    timeHorizon: number; // in days
+    timeHorizons: number[]; // multiple time horizons
+    
+    // Calculation Method
+    calculationMethod: 'historical' | 'parametric' | 'monte_carlo' | 'hybrid';
+    distributionType: 'normal' | 'student_t' | 'skewed_t' | 'empirical' | 'custom';
+    
+    // Lookback Period
+    lookbackPeriod: number; // in days
+    dataFrequency: 'daily' | 'weekly' | 'monthly';
+    
+    // Risk Metrics
+    riskMetrics: {
+      standardDeviation: number;
+      variance: number;
+      skewness: number;
+      kurtosis: number;
+      correlation: number;
+    };
+  };
   
-  // Volatility parameters
-  volatilityMethod: 'historical' | 'exponential' | 'garch' | 'ewma';
-  volatilityWindow: number; // Window for volatility calculation
-  decayFactor: number; // Decay factor for EWMA
-  
-  // Distribution assumptions
-  distributionType: 'normal' | 'student-t' | 'skewed-t' | 'empirical';
-  degreesOfFreedom: number; // For Student's t-distribution
-  
-  // Correlation and covariance
-  correlationMethod: 'historical' | 'exponential' | 'constant';
-  useDynamicCorrelations: boolean;
-  
-  // Monte Carlo parameters
-  monteCarloSimulations: number; // Number of simulations
-  monteCarloSeed: number; // Random seed for reproducibility
-  
-  // Stress testing
-  stressScenarios: {
-    scenario: string;
-    probability: number;
-    marketShock: number;
-    correlationChange: number;
-    volatilityChange: number;
-  }[];
-  
-  // Risk factors
+  // Risk Factors
   riskFactors: {
-    factor: string;
-    exposure: number;
-    volatility: number;
-    correlation: number;
-  }[];
-  
-  // Liquidity considerations
-  liquidityAdjustments: {
-    bidAskSpread: number;
-    marketImpact: number;
-    holdingPeriod: number;
-    liquidationTime: number;
+    // Market Risk
+    marketRisk: {
+      equityRisk: number;
+      interestRateRisk: number;
+      currencyRisk: number;
+      commodityRisk: number;
+      volatilityRisk: number;
+    };
+    
+    // Credit Risk
+    creditRisk: {
+      defaultRisk: number;
+      downgradeRisk: number;
+      spreadRisk: number;
+      counterpartyRisk: number;
+    };
+    
+    // Liquidity Risk
+    liquidityRisk: {
+      bidAskSpread: number;
+      tradingVolume: number;
+      marketDepth: number;
+      timeToLiquidate: number;
+    };
+    
+    // Operational Risk
+    operationalRisk: {
+      systemRisk: number;
+      processRisk: number;
+      peopleRisk: number;
+      externalRisk: number;
+    };
+    
+    // Specific Risks
+    specificRisks: {
+      risk: string;
+      probability: number;
+      impact: number;
+      mitigation: string;
+    }[];
   };
   
-  // Regulatory requirements
-  regulatoryVaR: {
-    baselII: boolean;
-    baselIII: boolean;
-    solvencyII: boolean;
-    regulatoryMultiplier: number;
+  // Correlation Matrix
+  correlationMatrix: {
+    // Asset Correlations
+    assetCorrelations: {
+      asset1: string;
+      asset2: string;
+      correlation: number;
+    }[];
+    
+    // Factor Correlations
+    factorCorrelations: {
+      factor1: string;
+      factor2: string;
+      correlation: number;
+    }[];
+    
+    // Correlation Estimation
+    correlationEstimation: {
+      method: 'historical' | 'exponential' | 'garch' | 'custom';
+      decayFactor: number;
+      minimumObservations: number;
+    };
   };
   
-  // Backtesting parameters
-  backtestingWindow: number; // Days for backtesting
-  backtestingFrequency: 'daily' | 'weekly' | 'monthly';
-  
-  // Extreme value theory
-  extremeValueTheory: {
-    useEVT: boolean;
-    threshold: number;
-    tailIndex: number;
+  // Volatility Models
+  volatilityModels: {
+    // Historical Volatility
+    historicalVolatility: {
+      method: 'simple' | 'exponential' | 'garch' | 'ewma';
+      window: number;
+      decayFactor: number;
+    };
+    
+    // Implied Volatility
+    impliedVolatility: {
+      source: 'options' | 'swaps' | 'futures' | 'other';
+      surface: {
+        strike: number;
+        maturity: number;
+        volatility: number;
+      }[];
+    };
+    
+    // Volatility Forecasting
+    volatilityForecasting: {
+      method: 'garch' | 'ewma' | 'regime_switching' | 'custom';
+      forecastHorizon: number;
+      confidenceInterval: number;
+    };
   };
   
-  // Copula modeling
-  copulaModel: {
-    useCopula: boolean;
-    copulaType: 'gaussian' | 'student-t' | 'clayton' | 'gumbel';
-    copulaParameters: number[];
+  // Stress Testing
+  stressTesting: {
+    // Historical Scenarios
+    historicalScenarios: {
+      scenario: string;
+      date: string;
+      description: string;
+      impact: number;
+    }[];
+    
+    // Hypothetical Scenarios
+    hypotheticalScenarios: {
+      scenario: string;
+      probability: number;
+      marketShock: number;
+      interestRateShock: number;
+      currencyShock: number;
+      commodityShock: number;
+      impact: number;
+    }[];
+    
+    // Factor Shocks
+    factorShocks: {
+      factor: string;
+      shock: number;
+      impact: number;
+    }[];
   };
   
-  // Time-varying parameters
-  timeVaryingParameters: {
-    useTimeVarying: boolean;
-    updateFrequency: 'daily' | 'weekly' | 'monthly';
-    estimationWindow: number;
+  // Monte Carlo Simulation
+  monteCarloSimulation: {
+    // Simulation Parameters
+    simulations: number;
+    timeSteps: number;
+    seed: number;
+    
+    // Distribution Parameters
+    distributionParameters: {
+      mean: number;
+      standardDeviation: number;
+      skewness: number;
+      kurtosis: number;
+    };
+    
+    // Correlation Structure
+    correlationStructure: {
+      method: 'cholesky' | 'copula' | 'custom';
+      copulaType: 'gaussian' | 'student_t' | 'clayton' | 'gumbel';
+    };
   };
   
-  // Risk decomposition
-  riskDecomposition: {
-    includeDecomposition: boolean;
-    decompositionMethod: 'marginal' | 'component' | 'incremental';
+  // Risk Limits
+  riskLimits: {
+    // VaR Limits
+    varLimits: {
+      daily: number;
+      weekly: number;
+      monthly: number;
+      annual: number;
+    };
+    
+    // Position Limits
+    positionLimits: {
+      asset: string;
+      limit: number;
+      current: number;
+      utilization: number;
+    }[];
+    
+    // Concentration Limits
+    concentrationLimits: {
+      assetClass: string;
+      limit: number;
+      current: number;
+      utilization: number;
+    }[];
   };
   
-  // Custom parameters
-  customVolatility?: number;
-  customCorrelation?: number[][];
-  customDistribution?: number[];
+  // Market Conditions
+  marketConditions: {
+    // Economic Environment
+    economicEnvironment: {
+      gdpGrowth: number;
+      inflationRate: number;
+      interestRate: number;
+      unemploymentRate: number;
+      consumerConfidence: number;
+    };
+    
+    // Market Regime
+    marketRegime: {
+      regime: 'bull' | 'bear' | 'sideways' | 'volatile';
+      volatilityRegime: 'low' | 'medium' | 'high';
+      correlationRegime: 'low' | 'medium' | 'high';
+    };
+    
+    // Market Stress
+    marketStress: {
+      stressLevel: 'low' | 'medium' | 'high' | 'extreme';
+      stressFactors: string[];
+      stressDuration: number;
+    };
+  };
   
-  // Analysis parameters
-  includeExpectedShortfall: boolean;
+  // Analysis Parameters
+  analysisPeriod: number; // in days
+  includeTransactionCosts: boolean;
+  includeFees: boolean;
+  includeTaxes: boolean;
+  includeCurrency: boolean;
+  
+  // Calculation Options
+  calculationOptions: {
+    includePartialPeriods: boolean;
+    interpolationMethod: 'linear' | 'cubic' | 'spline';
+    roundingMethod: 'nearest' | 'up' | 'down';
+    precision: number;
+  };
+  
+  // Reporting Preferences
+  includeVaRAnalysis: boolean;
   includeStressTesting: boolean;
-  includeBacktesting: boolean;
+  includeMonteCarlo: boolean;
   includeRiskDecomposition: boolean;
-  includeConfidenceIntervals: boolean;
+  includeScenarioAnalysis: boolean;
+  includeBacktesting: boolean;
+  includeRiskLimits: boolean;
+  includeMarketAnalysis: boolean;
+  includeRecommendations: boolean;
+  includeActionItems: boolean;
+  
+  // Output Format
+  outputFormat: 'detailed' | 'summary' | 'executive';
+  includeCharts: boolean;
+  includeTables: boolean;
+  includeRecommendations: boolean;
 }
 
-export interface VaRResults {
-  // Core VaR metrics
-  var: number;
+export interface ValueAtRiskResults {
+  // Core VaR Metrics
+  valueAtRisk: number;
+  conditionalValueAtRisk: number;
   expectedShortfall: number;
-  conditionalVaR: number;
+  tailRisk: number;
   
-  // Time-based VaR
-  dailyVaR: number;
-  weeklyVaR: number;
-  monthlyVaR: number;
-  annualVaR: number;
-  
-  // Method-specific results
-  historicalVaR: number;
-  parametricVaR: number;
-  monteCarloVaR: number;
-  conditionalVaR: number;
-  
-  // Confidence intervals
-  varConfidenceInterval: {
-    lower: number;
-    upper: number;
-    confidence: number;
-  };
-  
-  // Risk decomposition
-  riskDecomposition: {
-    asset: string;
-    marginalVaR: number;
-    componentVaR: number;
-    percentageContribution: number;
-  }[];
-  
-  // Factor analysis
-  factorVaR: {
-    factor: string;
-    var: number;
-    contribution: number;
-    exposure: number;
-  }[];
-  
-  // Stress testing results
-  stressTestResults: {
-    scenario: string;
-    probability: number;
-    var: number;
+  // VaR Analysis
+  varAnalysis: {
+    valueAtRisk: number;
+    conditionalValueAtRisk: number;
     expectedShortfall: number;
-    impact: number;
-  }[];
-  
-  // Backtesting results
-  backtestingResults: {
-    date: string;
-    actualReturn: number;
-    predictedVaR: number;
-    violation: boolean;
-    cumulativeViolations: number;
-    violationRate: number;
-  }[];
-  
-  // Statistical measures
-  statisticalMeasures: {
-    mean: number;
-    standardDeviation: number;
-    skewness: number;
-    kurtosis: number;
-    varOfReturns: number;
+    varBreakdown: {
+      component: string;
+      value: number;
+      percentage: number;
+    }[];
+    varEfficiency: number;
   };
   
-  // Distribution analysis
-  distributionAnalysis: {
-    distributionType: string;
-    goodnessOfFit: number;
-    tailIndex: number;
-    extremeValueVaR: number;
+  // Risk Decomposition
+  riskDecomposition: {
+    // Asset Decomposition
+    assetDecomposition: {
+      asset: string;
+      contribution: number;
+      percentage: number;
+      marginalVaR: number;
+    }[];
+    
+    // Factor Decomposition
+    factorDecomposition: {
+      factor: string;
+      contribution: number;
+      percentage: number;
+      exposure: number;
+    }[];
+    
+    // Risk Type Decomposition
+    riskTypeDecomposition: {
+      riskType: string;
+      contribution: number;
+      percentage: number;
+    }[];
   };
   
-  // Volatility analysis
+  // Portfolio Analysis
+  portfolioAnalysis: {
+    totalValue: number;
+    totalRisk: number;
+    riskPerUnit: number;
+    portfolioBreakdown: {
+      asset: string;
+      value: number;
+      weight: number;
+      risk: number;
+      contribution: number;
+    }[];
+    portfolioEfficiency: number;
+  };
+  
+  // Volatility Analysis
   volatilityAnalysis: {
-    historical: number;
-    implied: number;
-    forecast: number;
-    rolling: number[];
+    historicalVolatility: number;
+    impliedVolatility: number;
+    forecastVolatility: number;
+    volatilityBreakdown: {
+      component: string;
+      volatility: number;
+      contribution: number;
+    }[];
+    volatilityEfficiency: number;
   };
   
-  // Correlation analysis
+  // Correlation Analysis
   correlationAnalysis: {
     averageCorrelation: number;
-    correlationMatrix: number[][];
-    correlationStability: number;
+    correlationMatrix: {
+      asset1: string;
+      asset2: string;
+      correlation: number;
+    }[];
+    correlationImpact: number;
+    diversificationBenefit: number;
   };
   
-  // Monte Carlo results
+  // Stress Testing Results
+  stressTestingResults: {
+    // Historical Scenarios
+    historicalScenarios: {
+      scenario: string;
+      date: string;
+      var: number;
+      impact: number;
+      probability: number;
+    }[];
+    
+    // Hypothetical Scenarios
+    hypotheticalScenarios: {
+      scenario: string;
+      var: number;
+      impact: number;
+      probability: number;
+      severity: string;
+    }[];
+    
+    // Worst Case Scenarios
+    worstCaseScenarios: {
+      scenario: string;
+      var: number;
+      probability: number;
+      impact: number;
+    }[];
+  };
+  
+  // Monte Carlo Results
   monteCarloResults: {
     meanVaR: number;
     medianVaR: number;
@@ -220,84 +472,193 @@ export interface VaRResults {
       p95: number;
       p99: number;
     };
-    convergence: boolean;
+    probabilityDistribution: {
+      var: number;
+      probability: number;
+    }[];
+    confidenceIntervals: {
+      level: number;
+      lower: number;
+      upper: number;
+    }[];
   };
   
-  // Liquidity-adjusted VaR
-  liquidityAdjustedVaR: {
-    basicVaR: number;
-    liquidityAdjustment: number;
-    adjustedVaR: number;
-    liquidityCost: number;
+  // Backtesting Results
+  backtestingResults: {
+    // VaR Violations
+    varViolations: {
+      date: string;
+      actualLoss: number;
+      predictedVaR: number;
+      violation: boolean;
+      severity: number;
+    }[];
+    
+    // Backtesting Statistics
+    backtestingStatistics: {
+      totalObservations: number;
+      violations: number;
+      violationRate: number;
+      expectedViolations: number;
+      kupiecTest: number;
+      christoffersenTest: number;
+    };
+    
+    // Performance Metrics
+    performanceMetrics: {
+      hitRate: number;
+      meanViolation: number;
+      maxViolation: number;
+      violationSeverity: number;
+    };
   };
   
-  // Regulatory VaR
-  regulatoryVaR: {
-    basicVaR: number;
-    regulatoryMultiplier: number;
-    regulatoryVaR: number;
-    capitalRequirement: number;
+  // Risk Limits Analysis
+  riskLimitsAnalysis: {
+    // VaR Limits
+    varLimits: {
+      limit: number;
+      current: number;
+      utilization: number;
+      status: 'within' | 'approaching' | 'exceeded';
+    };
+    
+    // Position Limits
+    positionLimits: {
+      asset: string;
+      limit: number;
+      current: number;
+      utilization: number;
+      status: string;
+    }[];
+    
+    // Concentration Limits
+    concentrationLimits: {
+      assetClass: string;
+      limit: number;
+      current: number;
+      utilization: number;
+      status: string;
+    }[];
   };
   
-  // Risk metrics
-  riskMetrics: {
-    maximumDrawdown: number;
-    downsideDeviation: number;
-    semiDeviation: number;
-    valueAtRisk: number;
-    expectedShortfall: number;
+  // Market Analysis
+  marketAnalysis: {
+    marketSensitivity: number;
+    beta: number;
+    marketImpact: number;
+    marketBreakdown: {
+      factor: string;
+      sensitivity: number;
+      impact: number;
+    }[];
+    marketScore: number;
   };
   
-  // Performance metrics
-  performanceMetrics: {
-    varEfficiency: number;
-    riskAdjustedReturn: number;
-    informationRatio: number;
-    sharpeRatio: number;
+  // Risk Score
+  riskScore: {
+    overallScore: number;
+    componentScores: {
+      var: number;
+      volatility: number;
+      correlation: number;
+      concentration: number;
+      liquidity: number;
+      stress: number;
+    };
+    riskLevel: 'low' | 'medium' | 'high' | 'very_high';
   };
   
-  // Time series analysis
-  timeSeriesAnalysis: {
-    varTrend: number[];
-    volatilityTrend: number[];
-    correlationTrend: number[];
-    regimeChanges: string[];
+  // Comparative Analysis
+  comparativeAnalysis: {
+    peerComparison: {
+      peer: string;
+      var: number;
+      volatility: number;
+      riskLevel: string;
+    }[];
+    benchmarkComparison: {
+      benchmark: string;
+      var: number;
+      difference: number;
+      relativeRisk: number;
+    };
+    historicalComparison: {
+      period: string;
+      var: number;
+      change: number;
+      trend: string;
+    }[];
   };
   
-  // Extreme events
-  extremeEvents: {
-    worstDay: string;
-    worstReturn: number;
-    varViolation: number;
-    frequency: number;
-  };
-  
-  // Risk budgeting
-  riskBudgeting: {
-    asset: string;
-    allocation: number;
-    riskContribution: number;
-    riskBudget: number;
-    excessRisk: number;
+  // Scenario Analysis
+  scenarioAnalysis: {
+    scenarioName: string;
+    probability: number;
+    var: number;
+    impact: number;
+    severity: string;
   }[];
   
-  // Comprehensive report
-  report: string;
+  // Optimization Opportunities
+  optimizationOpportunities: {
+    category: string;
+    description: string;
+    potentialImprovement: number;
+    implementationDifficulty: 'low' | 'medium' | 'high';
+    priority: 'low' | 'medium' | 'high';
+  }[];
+  
+  // Business Impact
+  businessImpact: {
+    riskReduction: number;
+    capitalEfficiency: number;
+    regulatoryCompliance: number;
+    strategicAlignment: number;
+    overallBenefit: number;
+  };
+  
+  // Comprehensive Report
+  comprehensiveReport: {
+    executiveSummary: string;
+    keyFindings: string[];
+    riskAssessment: string;
+    recommendations: string[];
+    actionItems: {
+      action: string;
+      priority: 'low' | 'medium' | 'high';
+      timeline: string;
+      responsibleParty: string;
+    }[];
+  };
+  
+  // Executive Summary
+  executiveSummary: {
+    valueAtRisk: number;
+    conditionalValueAtRisk: number;
+    riskLevel: string;
+    recommendation: 'maintain' | 'reduce' | 'increase' | 'hedge';
+    keyRisks: string[];
+    keyMitigations: string[];
+  };
   
   // Recommendations
   recommendations: {
     category: string;
-    recommendations: string[];
-    priority: 'high' | 'medium' | 'low';
+    recommendation: string;
+    rationale: string;
     expectedImpact: number;
+    implementationSteps: string[];
   }[];
   
-  // Action items
+  // Action Items
   actionItems: {
-    priority: 'immediate' | 'short-term' | 'long-term';
     action: string;
-    owner: string;
+    description: string;
+    priority: 'low' | 'medium' | 'high';
     timeline: string;
-    expectedOutcome: string;
+    responsibleParty: string;
+    dependencies: string[];
+    successMetrics: string[];
   }[];
 }

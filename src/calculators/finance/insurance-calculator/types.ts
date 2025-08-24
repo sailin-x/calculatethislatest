@@ -1,282 +1,522 @@
-export interface InsuranceInputs {
-  // Policy Information
-  policyType: 'life' | 'health' | 'auto' | 'home' | 'business' | 'liability' | 'disability' | 'long_term_care' | 'travel' | 'pet' | 'umbrella' | 'professional' | 'cyber' | 'directors_officers' | 'errors_omissions';
-  policyName: string;
-  policyNumber: string;
-  insuranceCompany: string;
-  policyStartDate: string;
-  policyEndDate: string;
-  policyTerm: number; // in years
-  
-  // Insured Information
-  insuredName: string;
-  insuredAge: number;
-  insuredGender: 'male' | 'female' | 'other';
-  insuredOccupation: string;
-  insuredHealthStatus: 'excellent' | 'good' | 'fair' | 'poor';
-  insuredLifestyle: {
-    smoker: boolean;
-    alcoholUse: string;
-    exerciseFrequency: string;
-    medicalConditions: string[];
-    familyHistory: string[];
+export interface InsuranceCalculatorInputs {
+  // Personal Information
+  personalInfo: {
+    basicInfo: {
+      firstName: string;
+      lastName: string;
+      dateOfBirth: string;
+      gender: 'male' | 'female' | 'other';
+      maritalStatus: 'single' | 'married' | 'divorced' | 'widowed' | 'separated';
+      occupation: string;
+      annualIncome: number;
+      smokingStatus: 'non_smoker' | 'smoker' | 'former_smoker';
+      height: number;
+      weight: number;
+      bmi: number;
+    };
+    healthInfo: {
+      healthStatus: 'excellent' | 'very_good' | 'good' | 'fair' | 'poor';
+      medicalConditions: {
+        condition: string;
+        diagnosisDate: string;
+        severity: 'mild' | 'moderate' | 'severe';
+        treatment: string;
+        controlled: boolean;
+      }[];
+      medications: {
+        medication: string;
+        dosage: string;
+        frequency: string;
+        startDate: string;
+      }[];
+      familyHistory: {
+        condition: string;
+        relationship: string;
+        ageAtDiagnosis: number;
+      }[];
+    };
+    contactInfo: {
+      address: string;
+      city: string;
+      state: string;
+      zipCode: string;
+      phoneNumber: string;
+      emailAddress: string;
+      emergencyContact: {
+        name: string;
+        relationship: string;
+        phoneNumber: string;
+      };
+    };
   };
   
-  // Coverage Information
-  coverageAmount: number;
-  coverageType: string;
-  coverageLimits: {
-    perOccurrence: number;
-    aggregate: number;
-    deductible: number;
-    coinsurance: number;
+  // Insurance Information
+  insuranceInfo: {
+    lifeInsurance: {
+      policyType: 'term' | 'whole' | 'universal' | 'variable' | 'final_expense' | 'other';
+      coverageAmount: number;
+      policyTerm: number;
+      premiumAmount: number;
+      premiumFrequency: 'monthly' | 'quarterly' | 'semi_annual' | 'annual';
+      riders: {
+        rider: string;
+        coverage: number;
+        cost: number;
+        description: string;
+      }[];
+      beneficiary: {
+        name: string;
+        relationship: string;
+        percentage: number;
+      }[];
+      policyStartDate: string;
+      policyEndDate: string;
+      cashValue: number;
+      surrenderValue: number;
+      loanBalance: number;
+    };
+    healthInsurance: {
+      policyType: 'individual' | 'family' | 'group' | 'medicare' | 'medicaid' | 'other';
+      coverageType: 'hmo' | 'ppo' | 'epo' | 'pos' | 'hdhp' | 'other';
+      deductible: number;
+      outOfPocketMaximum: number;
+      copay: {
+        service: string;
+        amount: number;
+      }[];
+      coinsurance: number;
+      premiumAmount: number;
+      premiumFrequency: 'monthly' | 'quarterly' | 'semi_annual' | 'annual';
+      network: string;
+      prescriptionCoverage: boolean;
+      dentalCoverage: boolean;
+      visionCoverage: boolean;
+      mentalHealthCoverage: boolean;
+      policyStartDate: string;
+      policyEndDate: string;
+    };
+    autoInsurance: {
+      policyType: 'liability' | 'collision' | 'comprehensive' | 'full_coverage' | 'other';
+      coverageLimits: {
+        bodilyInjury: number;
+        propertyDamage: number;
+        uninsuredMotorist: number;
+        underinsuredMotorist: number;
+        personalInjuryProtection: number;
+        medicalPayments: number;
+      };
+      deductible: number;
+      premiumAmount: number;
+      premiumFrequency: 'monthly' | 'quarterly' | 'semi_annual' | 'annual';
+      vehicleInfo: {
+        make: string;
+        model: string;
+        year: number;
+        vin: string;
+        value: number;
+        safetyFeatures: string[];
+      }[];
+      drivers: {
+        name: string;
+        age: number;
+        licenseNumber: string;
+        drivingRecord: {
+          violation: string;
+          date: string;
+          points: number;
+        }[];
+      }[];
+      policyStartDate: string;
+      policyEndDate: string;
+    };
+    homeInsurance: {
+      policyType: 'ho1' | 'ho2' | 'ho3' | 'ho4' | 'ho5' | 'ho6' | 'ho8' | 'other';
+      coverageLimits: {
+        dwelling: number;
+        personalProperty: number;
+        liability: number;
+        medicalPayments: number;
+        additionalLivingExpenses: number;
+        otherStructures: number;
+      };
+      deductible: number;
+      premiumAmount: number;
+      premiumFrequency: 'monthly' | 'quarterly' | 'semi_annual' | 'annual';
+      propertyInfo: {
+        address: string;
+        constructionType: string;
+        yearBuilt: number;
+        squareFootage: number;
+        replacementCost: number;
+        securityFeatures: string[];
+      };
+      policyStartDate: string;
+      policyEndDate: string;
+    };
+    disabilityInsurance: {
+      policyType: 'short_term' | 'long_term' | 'own_occupation' | 'any_occupation' | 'other';
+      coverageAmount: number;
+      benefitPeriod: number;
+      eliminationPeriod: number;
+      premiumAmount: number;
+      premiumFrequency: 'monthly' | 'quarterly' | 'semi_annual' | 'annual';
+      riders: {
+        rider: string;
+        coverage: number;
+        cost: number;
+        description: string;
+      }[];
+      policyStartDate: string;
+      policyEndDate: string;
+    };
+    otherInsurance: {
+      umbrellaInsurance: {
+        coverageAmount: number;
+        premiumAmount: number;
+        underlyingPolicies: string[];
+      };
+      petInsurance: {
+        petType: string;
+        petAge: number;
+        coverageAmount: number;
+        premiumAmount: number;
+        deductible: number;
+      };
+      travelInsurance: {
+        tripCost: number;
+        coverageAmount: number;
+        premiumAmount: number;
+        tripDuration: number;
+        destinations: string[];
+      };
+    };
   };
-  
-  // Premium Information
-  annualPremium: number;
-  monthlyPremium: number;
-  premiumPaymentFrequency: 'monthly' | 'quarterly' | 'semi_annually' | 'annually';
-  premiumPaymentMethod: 'automatic' | 'manual' | 'payroll_deduction';
   
   // Risk Assessment
   riskAssessment: {
-    riskScore: number;
-    riskCategory: 'low' | 'medium' | 'high' | 'very_high';
-    riskFactors: {
-      factor: string;
-      impact: 'low' | 'medium' | 'high';
-      weight: number;
-    }[];
-  };
-  
-  // Claims History
-  claimsHistory: {
-    totalClaims: number;
-    claimsAmount: number;
-    claimsFrequency: number;
-    lastClaimDate: string;
-    claims: {
-      date: string;
-      type: string;
-      amount: number;
-      status: 'pending' | 'approved' | 'denied' | 'settled';
-      description: string;
-    }[];
-  };
-  
-  // Underwriting Information
-  underwritingInfo: {
-    underwritingClass: string;
-    ratingFactors: {
-      factor: string;
-      value: string;
-      impact: number;
-    }[];
-    exclusions: string[];
-    riders: string[];
-    endorsements: string[];
-  };
-  
-  // Life Insurance Specific
-  lifeInsurance: {
-    deathBenefit: number;
-    cashValue: number;
-    surrenderValue: number;
-    policyLoan: number;
-    dividend: number;
-    riders: {
-      waiverOfPremium: boolean;
-      accidentalDeath: boolean;
-      criticalIllness: boolean;
-      longTermCare: boolean;
-    };
-  };
-  
-  // Health Insurance Specific
-  healthInsurance: {
-    networkType: 'ppo' | 'hmo' | 'epo' | 'pos' | 'hdhp';
-    inNetworkDeductible: number;
-    outNetworkDeductible: number;
-    inNetworkCoinsurance: number;
-    outNetworkCoinsurance: number;
-    copays: {
-      primaryCare: number;
-      specialist: number;
-      urgentCare: number;
-      emergencyRoom: number;
-      prescription: number;
-    };
-    coveredServices: string[];
-    excludedServices: string[];
-  };
-  
-  // Auto Insurance Specific
-  autoInsurance: {
-    vehicleInfo: {
-      make: string;
-      model: string;
-      year: number;
-      vin: string;
-      value: number;
-    };
-    drivers: {
-      name: string;
+    lifeRiskFactors: {
       age: number;
-      licenseYears: number;
+      gender: string;
+      healthStatus: string;
+      smokingStatus: string;
+      bmi: number;
+      familyHistory: string[];
+      occupation: string;
+      hobbies: string[];
+      travelFrequency: number;
+      riskScore: number;
+    };
+    healthRiskFactors: {
+      age: number;
+      gender: string;
+      bmi: number;
+      medicalConditions: string[];
+      familyHistory: string[];
+      lifestyleFactors: string[];
+      occupation: string;
+      geographicLocation: string;
+      riskScore: number;
+    };
+    autoRiskFactors: {
+      age: number;
+      gender: string;
+      drivingExperience: number;
       drivingRecord: string[];
-    }[];
-    coverageTypes: {
-      liability: boolean;
-      collision: boolean;
-      comprehensive: boolean;
-      uninsuredMotorist: boolean;
-      underinsuredMotorist: boolean;
-      medicalPayments: boolean;
-      personalInjuryProtection: boolean;
+      vehicleType: string;
+      annualMileage: number;
+      location: string;
+      usage: string;
+      riskScore: number;
     };
-  };
-  
-  // Home Insurance Specific
-  homeInsurance: {
-    propertyInfo: {
-      address: string;
-      propertyType: string;
+    homeRiskFactors: {
+      location: string;
       constructionType: string;
-      yearBuilt: number;
-      squareFootage: number;
-      replacementCost: number;
+      age: number;
+      securityFeatures: string[];
+      proximityToFireStation: number;
+      crimeRate: number;
+      naturalDisasterRisk: string[];
+      maintenanceHistory: string[];
+      riskScore: number;
     };
-    coverageTypes: {
-      dwelling: boolean;
-      personalProperty: boolean;
-      liability: boolean;
-      medicalPayments: boolean;
-      additionalLivingExpenses: boolean;
-    };
-    perils: string[];
-    exclusions: string[];
-  };
-  
-  // Business Insurance Specific
-  businessInsurance: {
-    businessInfo: {
-      businessType: string;
-      industry: string;
-      annualRevenue: number;
-      employeeCount: number;
-      businessLocation: string;
-    };
-    coverageTypes: {
-      generalLiability: boolean;
-      professionalLiability: boolean;
-      property: boolean;
-      workersCompensation: boolean;
-      businessInterruption: boolean;
-      cyberLiability: boolean;
+    disabilityRiskFactors: {
+      age: number;
+      gender: string;
+      occupation: string;
+      healthStatus: string;
+      medicalConditions: string[];
+      lifestyleFactors: string[];
+      workEnvironment: string;
+      riskScore: number;
     };
   };
   
-  // Financial Information
-  financialInfo: {
-    annualIncome: number;
-    netWorth: number;
-    debtToIncomeRatio: number;
-    creditScore: number;
-    financialObligations: number;
-  };
-  
-  // Market Conditions
-  marketConditions: {
-    interestRate: number;
-    inflationRate: number;
-    marketCompetition: number;
-    regulatoryEnvironment: string;
-    industryTrends: string[];
-  };
-  
-  // Actuarial Data
-  actuarialData: {
-    mortalityTable: string;
-    morbidityTable: string;
-    lapseRate: number;
-    expenseRatio: number;
-    lossRatio: number;
-    combinedRatio: number;
-  };
-  
-  // Investment Information
-  investmentInfo: {
-    investmentStrategy: string;
-    assetAllocation: {
-      assetClass: string;
-      percentage: number;
+  // Coverage Analysis
+  coverageAnalysis: {
+    coverageGaps: {
+      gap: string;
+      description: string;
+      riskLevel: 'low' | 'medium' | 'high' | 'critical';
+      recommendedCoverage: number;
+      estimatedCost: number;
+      priority: 'low' | 'medium' | 'high';
     }[];
-    expectedReturn: number;
-    riskTolerance: 'low' | 'medium' | 'high';
+    overlappingCoverage: {
+      coverage: string;
+      policies: string[];
+      overlapAmount: number;
+      efficiency: number;
+      recommendation: string;
+    }[];
+    coverageAdequacy: {
+      category: string;
+      currentCoverage: number;
+      recommendedCoverage: number;
+      adequacy: number;
+      gap: number;
+      recommendation: string;
+    }[];
   };
   
-  // Tax Considerations
-  taxConsiderations: {
-    taxDeductible: boolean;
-    taxRate: number;
-    taxTreatment: string;
-    taxBenefits: string[];
+  // Cost Analysis
+  costAnalysis: {
+    premiumAnalysis: {
+      policy: string;
+      premiumAmount: number;
+      premiumFrequency: string;
+      annualPremium: number;
+      premiumBreakdown: {
+        component: string;
+        amount: number;
+        percentage: number;
+      }[];
+      premiumTrend: number;
+      premiumEfficiency: number;
+    }[];
+    costComparison: {
+      policy: string;
+      provider: string;
+      premium: number;
+      coverage: number;
+      costPerThousand: number;
+      valueScore: number;
+      recommendation: string;
+    }[];
+    deductibleAnalysis: {
+      policy: string;
+      currentDeductible: number;
+      alternativeDeductibles: {
+        deductible: number;
+        premiumSavings: number;
+        breakevenPoint: number;
+        recommendation: string;
+      }[];
+    }[];
+    totalCostOfOwnership: {
+      policy: string;
+      annualPremium: number;
+      expectedClaims: number;
+      outOfPocketCosts: number;
+      totalCost: number;
+      costEfficiency: number;
+    }[];
   };
   
-  // Regulatory Environment
-  regulatoryEnvironment: {
-    regulatoryStatus: string;
-    complianceRequirements: string[];
-    regulatoryRisks: string[];
-    solvencyRequirements: number;
+  // Claims Analysis
+  claimsAnalysis: {
+    claimsHistory: {
+      policy: string;
+      claims: {
+        date: string;
+        type: string;
+        amount: number;
+        status: string;
+        description: string;
+      }[];
+      totalClaims: number;
+      averageClaim: number;
+      claimsFrequency: number;
+    }[];
+    claimsProjections: {
+      policy: string;
+      projectedClaims: number;
+      confidenceInterval: {
+        low: number;
+        high: number;
+      };
+      riskFactors: string[];
+      mitigationStrategies: string[];
+    }[];
+    claimsEfficiency: {
+      policy: string;
+      claimsRatio: number;
+      lossRatio: number;
+      expenseRatio: number;
+      combinedRatio: number;
+      efficiency: number;
+    }[];
+  };
+  
+  // Provider Analysis
+  providerAnalysis: {
+    providerInfo: {
+      provider: string;
+      rating: number;
+      financialStrength: string;
+      customerSatisfaction: number;
+      claimsSettlement: number;
+      networkSize: number;
+      serviceQuality: number;
+    }[];
+    providerComparison: {
+      provider: string;
+      premium: number;
+      coverage: number;
+      rating: number;
+      customerSatisfaction: number;
+      claimsSettlement: number;
+      overallScore: number;
+      recommendation: string;
+    }[];
+    marketAnalysis: {
+      marketShare: {
+        provider: string;
+        share: number;
+        growth: number;
+      }[];
+      marketTrends: {
+        trend: string;
+        impact: 'positive' | 'negative' | 'neutral';
+        probability: number;
+      }[];
+      competitivePosition: {
+        provider: string;
+        position: string;
+        strengths: string[];
+        weaknesses: string[];
+      }[];
+    };
+  };
+  
+  // Policy Optimization
+  policyOptimization: {
+    coverageOptimization: {
+      category: string;
+      currentCoverage: number;
+      optimalCoverage: number;
+      costBenefit: number;
+      recommendation: string;
+      implementation: string[];
+    }[];
+    premiumOptimization: {
+      policy: string;
+      currentPremium: number;
+      optimizedPremium: number;
+      savings: number;
+      changes: string[];
+      implementation: string[];
+    }[];
+    deductibleOptimization: {
+      policy: string;
+      currentDeductible: number;
+      optimalDeductible: number;
+      premiumSavings: number;
+      riskIncrease: number;
+      recommendation: string;
+    }[];
+    bundleOptimization: {
+      currentPolicies: string[];
+      recommendedBundle: string[];
+      savings: number;
+      additionalCoverage: string[];
+      recommendation: string;
+    }[];
   };
   
   // Scenario Analysis
-  scenarios: {
-    name: string;
-    probability: number;
-    claimAmount: number;
-    premiumChange: number;
-    coverageChange: number;
-    regulatoryChange: number;
-  }[];
+  scenarioAnalysis: {
+    lifeScenarios: {
+      scenario: string;
+      probability: number;
+      impact: number;
+      coverageNeeded: number;
+      currentCoverage: number;
+      gap: number;
+      recommendation: string;
+    }[];
+    healthScenarios: {
+      scenario: string;
+      probability: number;
+      medicalCosts: number;
+      currentCoverage: number;
+      outOfPocket: number;
+      recommendation: string;
+    }[];
+    autoScenarios: {
+      scenario: string;
+      probability: number;
+      damageCosts: number;
+      liabilityCosts: number;
+      currentCoverage: number;
+      gap: number;
+      recommendation: string;
+    }[];
+    homeScenarios: {
+      scenario: string;
+      probability: number;
+      damageCosts: number;
+      currentCoverage: number;
+      gap: number;
+      recommendation: string;
+    }[];
+  };
   
   // Monte Carlo Simulation
   monteCarloSimulations: number;
   monteCarloTimeSteps: number;
-  includeCatastrophicEvents: boolean;
-  catastrophicEventProbability: number;
-  catastrophicEventImpact: number;
+  includePremiumVolatility: boolean;
+  includeClaimsVolatility: boolean;
+  includeMarketVolatility: boolean;
   
-  // Historical Analysis
+  // Analysis Parameters
+  analysisPeriod: number;
+  confidenceLevel: number;
+  riskHorizon: number;
+  includeInflation: boolean;
+  includeTaxBenefits: boolean;
+  
+  // Calculation Options
+  calculationOptions: {
+    includeRiskAssessment: boolean;
+    includeCoverageAnalysis: boolean;
+    includeCostAnalysis: boolean;
+    includeClaimsAnalysis: boolean;
+    includeProviderAnalysis: boolean;
+    includePolicyOptimization: boolean;
+    includeScenarioAnalysis: boolean;
+    includeMonteCarlo: boolean;
+  };
+  
+  // Historical Data
   historicalData: {
     date: string;
     premium: number;
     claims: number;
-    lossRatio: number;
-    investmentReturn: number;
+    coverage: number;
+    cost: number;
+    efficiency: number;
   }[];
   
-  // Analysis Parameters
-  analysisPeriod: number; // in years
-  discountRate: number;
-  inflationRate: number;
-  includeTaxes: boolean;
-  includeInvestmentReturns: boolean;
-  includeRegulatoryChanges: boolean;
-  
   // Reporting Preferences
-  includePremiumAnalysis: boolean;
-  includeRiskMetrics: boolean;
+  includeRiskAssessment: boolean;
+  includeCoverageAnalysis: boolean;
+  includeCostAnalysis: boolean;
   includeClaimsAnalysis: boolean;
-  includeUnderwritingAnalysis: boolean;
-  includeInvestmentAnalysis: boolean;
-  includeRegulatoryAnalysis: boolean;
-  includeTaxAnalysis: boolean;
+  includeProviderAnalysis: boolean;
+  includePolicyOptimization: boolean;
   includeScenarioAnalysis: boolean;
   includeMonteCarlo: boolean;
   includeHistoricalAnalysis: boolean;
-  includeComparativeAnalysis: boolean;
   includeRecommendations: boolean;
   includeActionItems: boolean;
   
@@ -287,245 +527,352 @@ export interface InsuranceInputs {
   includeRecommendations: boolean;
 }
 
-export interface InsuranceResults {
+export interface InsuranceCalculatorResults {
   // Core Insurance Metrics
-  policyValue: number;
-  premiumCost: number;
-  coverageValue: number;
-  netPresentValue: number;
-  internalRateOfReturn: number;
+  totalPremium: number;
+  totalCoverage: number;
+  coverageGap: number;
+  costEfficiency: number;
+  riskScore: number;
   
-  // Premium Analysis
-  premiumAnalysis: {
-    annualPremium: number;
-    monthlyPremium: number;
-    premiumBreakdown: {
-      component: string;
-      amount: number;
-      percentage: number;
-    }[];
-    premiumTrend: number;
-    premiumEfficiency: number;
-  };
-  
-  // Risk Metrics
-  riskMetrics: {
+  // Insurance Analysis
+  insuranceAnalysis: {
+    totalPremium: number;
+    totalCoverage: number;
+    coverageGap: number;
+    costEfficiency: number;
     riskScore: number;
-    riskCategory: string;
-    expectedLoss: number;
-    valueAtRisk: number;
-    conditionalVaR: number;
-    riskOfLoss: number;
+    insuranceBreakdown: {
+      component: string;
+      value: number;
+      contribution: number;
+    }[];
+    insuranceEfficiency: number;
   };
   
-  // Performance Metrics
-  performanceMetrics: {
-    totalReturn: number;
-    annualizedReturn: number;
-    sharpeRatio: number;
-    sortinoRatio: number;
-    calmarRatio: number;
-    treynorRatio: number;
-    informationRatio: number;
+  // Risk Assessment
+  riskAssessment: {
+    lifeRiskFactors: {
+      age: number;
+      gender: string;
+      healthStatus: string;
+      smokingStatus: string;
+      bmi: number;
+      familyHistory: string[];
+      occupation: string;
+      hobbies: string[];
+      travelFrequency: number;
+      riskScore: number;
+    };
+    healthRiskFactors: {
+      age: number;
+      gender: string;
+      bmi: number;
+      medicalConditions: string[];
+      familyHistory: string[];
+      lifestyleFactors: string[];
+      occupation: string;
+      geographicLocation: string;
+      riskScore: number;
+    };
+    autoRiskFactors: {
+      age: number;
+      gender: string;
+      drivingExperience: number;
+      drivingRecord: string[];
+      vehicleType: string;
+      annualMileage: number;
+      location: string;
+      usage: string;
+      riskScore: number;
+    };
+    homeRiskFactors: {
+      location: string;
+      constructionType: string;
+      age: number;
+      securityFeatures: string[];
+      proximityToFireStation: number;
+      crimeRate: number;
+      naturalDisasterRisk: string[];
+      maintenanceHistory: string[];
+      riskScore: number;
+    };
+    disabilityRiskFactors: {
+      age: number;
+      gender: string;
+      occupation: string;
+      healthStatus: string;
+      medicalConditions: string[];
+      lifestyleFactors: string[];
+      workEnvironment: string;
+      riskScore: number;
+    };
+    riskEfficiency: number;
+  };
+  
+  // Coverage Analysis
+  coverageAnalysis: {
+    coverageGaps: {
+      gap: string;
+      description: string;
+      riskLevel: string;
+      recommendedCoverage: number;
+      estimatedCost: number;
+      priority: string;
+    }[];
+    overlappingCoverage: {
+      coverage: string;
+      policies: string[];
+      overlapAmount: number;
+      efficiency: number;
+      recommendation: string;
+    }[];
+    coverageAdequacy: {
+      category: string;
+      currentCoverage: number;
+      recommendedCoverage: number;
+      adequacy: number;
+      gap: number;
+      recommendation: string;
+    }[];
+    coverageEfficiency: number;
+  };
+  
+  // Cost Analysis
+  costAnalysis: {
+    premiumAnalysis: {
+      policy: string;
+      premiumAmount: number;
+      premiumFrequency: string;
+      annualPremium: number;
+      premiumBreakdown: {
+        component: string;
+        amount: number;
+        percentage: number;
+      }[];
+      premiumTrend: number;
+      premiumEfficiency: number;
+    }[];
+    costComparison: {
+      policy: string;
+      provider: string;
+      premium: number;
+      coverage: number;
+      costPerThousand: number;
+      valueScore: number;
+      recommendation: string;
+    }[];
+    deductibleAnalysis: {
+      policy: string;
+      currentDeductible: number;
+      alternativeDeductibles: {
+        deductible: number;
+        premiumSavings: number;
+        breakevenPoint: number;
+        recommendation: string;
+      }[];
+    }[];
+    totalCostOfOwnership: {
+      policy: string;
+      annualPremium: number;
+      expectedClaims: number;
+      outOfPocketCosts: number;
+      totalCost: number;
+      costEfficiency: number;
+    }[];
+    costEfficiency: number;
   };
   
   // Claims Analysis
   claimsAnalysis: {
-    expectedClaims: number;
-    claimsFrequency: number;
-    claimsSeverity: number;
-    lossRatio: number;
-    claimsTrend: number;
-    claimsProjection: {
-      year: number;
-      expectedClaims: number;
-      probability: number;
+    claimsHistory: {
+      policy: string;
+      claims: {
+        date: string;
+        type: string;
+        amount: number;
+        status: string;
+        description: string;
+      }[];
+      totalClaims: number;
+      averageClaim: number;
+      claimsFrequency: number;
     }[];
-  };
-  
-  // Underwriting Analysis
-  underwritingAnalysis: {
-    underwritingClass: string;
-    ratingFactors: {
-      factor: string;
-      value: string;
-      impact: number;
+    claimsProjections: {
+      policy: string;
+      projectedClaims: number;
+      confidenceInterval: {
+        low: number;
+        high: number;
+      };
+      riskFactors: string[];
+      mitigationStrategies: string[];
     }[];
-    underwritingScore: number;
-    pricingEfficiency: number;
-    riskSelection: number;
-  };
-  
-  // Life Insurance Analysis
-  lifeInsuranceAnalysis: {
-    deathBenefit: number;
-    cashValue: number;
-    surrenderValue: number;
-    policyLoan: number;
-    dividend: number;
-    policyEfficiency: number;
-    riders: {
-      waiverOfPremium: boolean;
-      accidentalDeath: boolean;
-      criticalIllness: boolean;
-      longTermCare: boolean;
-    };
-  };
-  
-  // Health Insurance Analysis
-  healthInsuranceAnalysis: {
-    networkType: string;
-    inNetworkDeductible: number;
-    outNetworkDeductible: number;
-    inNetworkCoinsurance: number;
-    outNetworkCoinsurance: number;
-    copays: {
-      primaryCare: number;
-      specialist: number;
-      urgentCare: number;
-      emergencyRoom: number;
-      prescription: number;
-    };
-    coverageEfficiency: number;
-    costEffectiveness: number;
-  };
-  
-  // Auto Insurance Analysis
-  autoInsuranceAnalysis: {
-    vehicleInfo: {
-      make: string;
-      model: string;
-      year: number;
-      value: number;
-    };
-    drivers: {
-      name: string;
-      age: number;
-      riskScore: number;
+    claimsEfficiency: {
+      policy: string;
+      claimsRatio: number;
+      lossRatio: number;
+      expenseRatio: number;
+      combinedRatio: number;
+      efficiency: number;
     }[];
-    coverageEfficiency: number;
-    riskAssessment: number;
+    claimsEfficiency: number;
   };
   
-  // Home Insurance Analysis
-  homeInsuranceAnalysis: {
-    propertyInfo: {
-      address: string;
-      propertyType: string;
-      replacementCost: number;
-    };
-    coverageEfficiency: number;
-    riskAssessment: number;
-    propertyProtection: number;
-  };
-  
-  // Business Insurance Analysis
-  businessInsuranceAnalysis: {
-    businessInfo: {
-      businessType: string;
-      industry: string;
-      annualRevenue: number;
-    };
-    coverageEfficiency: number;
-    riskAssessment: number;
-    businessProtection: number;
-  };
-  
-  // Investment Analysis
-  investmentAnalysis: {
-    investmentStrategy: string;
-    assetAllocation: {
-      assetClass: string;
-      percentage: number;
-      return: number;
+  // Provider Analysis
+  providerAnalysis: {
+    providerInfo: {
+      provider: string;
+      rating: number;
+      financialStrength: string;
+      customerSatisfaction: number;
+      claimsSettlement: number;
+      networkSize: number;
+      serviceQuality: number;
     }[];
-    expectedReturn: number;
-    investmentRisk: number;
-    investmentEfficiency: number;
-  };
-  
-  // Financial Analysis
-  financialAnalysis: {
-    annualIncome: number;
-    netWorth: number;
-    debtToIncomeRatio: number;
-    creditScore: number;
-    financialObligations: number;
-    financialHealth: number;
-    affordability: number;
-  };
-  
-  // Market Analysis
-  marketAnalysis: {
-    interestRate: number;
-    inflationRate: number;
-    marketCompetition: number;
-    regulatoryEnvironment: string;
-    marketEfficiency: number;
-    competitivePosition: number;
-  };
-  
-  // Actuarial Analysis
-  actuarialAnalysis: {
-    mortalityTable: string;
-    morbidityTable: string;
-    lapseRate: number;
-    expenseRatio: number;
-    lossRatio: number;
-    combinedRatio: number;
-    actuarialSoundness: number;
-  };
-  
-  // Tax Analysis
-  taxAnalysis: {
-    taxDeductible: boolean;
-    taxRate: number;
-    taxTreatment: string;
-    taxBenefits: string[];
-    afterTaxCost: number;
-    taxEfficiency: number;
-  };
-  
-  // Regulatory Analysis
-  regulatoryAnalysis: {
-    regulatoryStatus: string;
-    complianceRequirements: string[];
-    regulatoryRisks: string[];
-    solvencyRequirements: number;
-    regulatoryCompliance: number;
-  };
-  
-  // Comparative Analysis
-  comparativeAnalysis: {
-    marketAverage: number;
-    competitorComparison: {
-      competitor: string;
+    providerComparison: {
+      provider: string;
       premium: number;
       coverage: number;
       rating: number;
+      customerSatisfaction: number;
+      claimsSettlement: number;
+      overallScore: number;
+      recommendation: string;
     }[];
-    marketPosition: number;
-    competitiveAdvantage: string[];
+    marketAnalysis: {
+      marketShare: {
+        provider: string;
+        share: number;
+        growth: number;
+      }[];
+      marketTrends: {
+        trend: string;
+        impact: string;
+        probability: number;
+      }[];
+      competitivePosition: {
+        provider: string;
+        position: string;
+        strengths: string[];
+        weaknesses: string[];
+      }[];
+    };
+    providerEfficiency: number;
   };
   
-  // Scenario Analysis Results
-  scenarioResults: {
-    scenarioName: string;
-    probability: number;
-    premiumCost: number;
-    coverageValue: number;
-    netValue: number;
-    riskMetrics: {
-      expectedLoss: number;
-      var: number;
-      cvar: number;
-    };
+  // Policy Optimization
+  policyOptimization: {
+    coverageOptimization: {
+      category: string;
+      currentCoverage: number;
+      optimalCoverage: number;
+      costBenefit: number;
+      recommendation: string;
+      implementation: string[];
+    }[];
+    premiumOptimization: {
+      policy: string;
+      currentPremium: number;
+      optimizedPremium: number;
+      savings: number;
+      changes: string[];
+      implementation: string[];
+    }[];
+    deductibleOptimization: {
+      policy: string;
+      currentDeductible: number;
+      optimalDeductible: number;
+      premiumSavings: number;
+      riskIncrease: number;
+      recommendation: string;
+    }[];
+    bundleOptimization: {
+      currentPolicies: string[];
+      recommendedBundle: string[];
+      savings: number;
+      additionalCoverage: string[];
+      recommendation: string;
+    }[];
+    optimizationEfficiency: number;
+  };
+  
+  // Sensitivity Analysis
+  sensitivityAnalysis: {
+    variable: string;
+    baseValue: number;
+    lowValue: number;
+    highValue: number;
+    lowCost: number;
+    highCost: number;
+    sensitivity: number;
   }[];
+  
+  // Scenario Analysis
+  scenarioAnalysis: {
+    scenarioName: string;
+    description: string;
+    probability: number;
+    impact: number;
+    coverageNeeded: number;
+    currentCoverage: number;
+    gap: number;
+    recommendation: string;
+  }[];
+  
+  // Comparison Analysis
+  comparisonAnalysis: {
+    alternativePolicies: {
+      policy: string;
+      expectedCost: number;
+      coverage: number;
+      efficiency: number;
+      comparison: number;
+    }[];
+    marketComparison: {
+      benchmark: string;
+      benchmarkCost: number;
+      policyCost: number;
+      difference: number;
+      efficiency: number;
+    };
+    comparisonEfficiency: number;
+  };
+  
+  // Peer Comparison
+  peerComparison: {
+    peerComparison: {
+      peer: string;
+      cost: number;
+      coverage: number;
+      efficiency: number;
+    }[];
+    marketComparison: {
+      metric: string;
+      policy: number;
+      market: number;
+      difference: number;
+    }[];
+  };
+  
+  // Insurance Score
+  insuranceScore: {
+    overallScore: number;
+    componentScores: {
+      coverage: number;
+      cost: number;
+      risk: number;
+      provider: number;
+      claims: number;
+      optimization: number;
+    };
+    recommendation: 'adequate' | 'inadequate' | 'excessive' | 'optimize';
+  };
   
   // Monte Carlo Results
   monteCarloResults: {
-    meanValue: number;
-    medianValue: number;
+    meanCost: number;
+    medianCost: number;
     standardDeviation: number;
     percentiles: {
       p5: number;
@@ -540,27 +887,17 @@ export interface InsuranceResults {
       value: number;
       probability: number;
     }[];
+    successProbability: number;
   };
   
   // Historical Analysis
   historicalAnalysis: {
-    historicalPremium: number;
-    historicalClaims: number;
-    historicalLossRatio: number;
+    historicalCost: number;
+    historicalCoverage: number;
+    historicalEfficiency: number;
     historicalTrends: string[];
-    historicalVolatility: number;
+    yearOverYearChange: number;
   };
-  
-  // Sensitivity Analysis
-  sensitivityAnalysis: {
-    parameter: string;
-    baseValue: number;
-    lowValue: number;
-    highValue: number;
-    lowPremium: number;
-    highPremium: number;
-    sensitivity: number;
-  }[];
   
   // Optimization Opportunities
   optimizationOpportunities: {
@@ -574,17 +911,17 @@ export interface InsuranceResults {
   // Business Impact
   businessImpact: {
     costSavings: number;
-    riskReduction: number;
     coverageImprovement: number;
-    financialProtection: number;
-    peaceOfMind: number;
+    riskReduction: number;
+    efficiencyGain: number;
+    overallBenefit: number;
   };
   
   // Comprehensive Report
   comprehensiveReport: {
     executiveSummary: string;
     keyFindings: string[];
-    riskAssessment: string;
+    insuranceAssessment: string;
     recommendations: string[];
     actionItems: {
       action: string;
@@ -596,12 +933,13 @@ export interface InsuranceResults {
   
   // Executive Summary
   executiveSummary: {
-    policyValue: number;
-    premiumCost: number;
-    riskLevel: 'low' | 'medium' | 'high';
-    recommendation: 'purchase' | 'modify' | 'decline';
-    keyRisks: string[];
-    keyBenefits: string[];
+    totalPremium: number;
+    totalCoverage: number;
+    coverageGap: number;
+    costEfficiency: number;
+    recommendation: 'adequate' | 'inadequate' | 'excessive' | 'optimize';
+    keyStrengths: string[];
+    keyWeaknesses: string[];
   };
   
   // Recommendations

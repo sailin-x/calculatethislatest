@@ -1,263 +1,457 @@
-export interface REITInputs {
+export interface REITCalculatorInputs {
   // REIT Information
-  reitName: string;
-  reitSymbol: string;
-  reitType: 'equity' | 'mortgage' | 'hybrid' | 'healthcare' | 'office' | 'retail' | 'industrial' | 'residential' | 'hotel' | 'data_center' | 'self_storage' | 'timber' | 'infrastructure' | 'specialty';
-  exchange: string;
-  marketCap: number;
-  
-  // Share Information
-  sharesOutstanding: number;
-  currentPrice: number;
-  bookValue: number;
-  tangibleBookValue: number;
-  priceToBook: number;
-  priceToEarnings: number;
-  priceToFFO: number;
-  priceToAFFO: number;
-  
-  // Financial Performance
-  totalRevenue: number;
-  netIncome: number;
-  fundsFromOperations: number;
-  adjustedFundsFromOperations: number;
-  cashAvailableForDistribution: number;
-  normalizedFFO: number;
-  normalizedAFFO: number;
+  reitInfo: {
+    reitName: string;
+    tickerSymbol: string;
+    reitType: 'equity' | 'mortgage' | 'hybrid' | 'public' | 'private' | 'exchange_traded' | 'non_traded';
+    propertyType: 'office' | 'retail' | 'industrial' | 'residential' | 'healthcare' | 'hotel' | 'data_center' | 'self_storage' | 'timber' | 'infrastructure' | 'diversified' | 'other';
+    marketCap: number;
+    totalAssets: number;
+    totalLiabilities: number;
+    shareholdersEquity: number;
+    reitDescription: string;
+  };
   
   // Property Portfolio
-  totalProperties: number;
-  totalSquareFootage: number;
-  occupancyRate: number;
-  weightedAverageLeaseTerm: number;
-  averageRentPerSqFt: number;
-  sameStoreNOI: number;
-  sameStoreNOIGrowth: number;
+  propertyPortfolio: {
+    // Portfolio Overview
+    portfolioOverview: {
+      totalProperties: number;
+      totalSquareFootage: number;
+      totalUnits: number;
+      occupancyRate: number;
+      averageLeaseTerm: number;
+      geographicDiversification: number;
+      propertyTypeDiversification: number;
+    };
+    
+    // Property Details
+    propertyDetails: {
+      propertyName: string;
+      propertyType: string;
+      location: string;
+      squareFootage: number;
+      units: number;
+      occupancyRate: number;
+      annualRent: number;
+      operatingExpenses: number;
+      netOperatingIncome: number;
+      propertyValue: number;
+      acquisitionDate: string;
+    }[];
+    
+    // Geographic Distribution
+    geographicDistribution: {
+      region: string;
+      properties: number;
+      squareFootage: number;
+      annualRent: number;
+      percentage: number;
+    }[];
+    
+    // Property Type Distribution
+    propertyTypeDistribution: {
+      propertyType: string;
+      properties: number;
+      squareFootage: number;
+      annualRent: number;
+      percentage: number;
+    }[];
+  };
   
-  // Property Types
-  propertyTypes: {
-    type: string;
-    count: number;
-    squareFootage: number;
-    value: number;
-    percentage: number;
-  }[];
-  
-  // Geographic Distribution
-  geographicDistribution: {
-    region: string;
-    properties: number;
-    squareFootage: number;
-    value: number;
-    percentage: number;
-  }[];
-  
-  // Tenant Information
-  tenantConcentration: {
-    tenant: string;
-    squareFootage: number;
-    rent: number;
-    percentage: number;
-    creditRating: string;
-  }[];
-  
-  // Debt and Leverage
-  totalDebt: number;
-  netDebt: number;
-  debtToEquity: number;
-  debtToEBITDA: number;
-  interestCoverage: number;
-  fixedChargeCoverage: number;
-  weightedAverageInterestRate: number;
-  weightedAverageMaturity: number;
-  
-  // Debt Maturity Schedule
-  debtMaturitySchedule: {
-    year: number;
-    amount: number;
-    percentage: number;
-  }[];
+  // Financial Information
+  financialInfo: {
+    // Income Statement
+    incomeStatement: {
+      totalRevenue: number;
+      rentalRevenue: number;
+      otherRevenue: number;
+      operatingExpenses: number;
+      propertyManagementFees: number;
+      generalAndAdministrative: number;
+      depreciationAndAmortization: number;
+      interestExpense: number;
+      netIncome: number;
+      fundsFromOperations: number;
+      adjustedFundsFromOperations: number;
+    };
+    
+    // Balance Sheet
+    balanceSheet: {
+      totalAssets: number;
+      realEstateAssets: number;
+      cashAndEquivalents: number;
+      accountsReceivable: number;
+      otherAssets: number;
+      totalLiabilities: number;
+      totalDebt: number;
+      accountsPayable: number;
+      otherLiabilities: number;
+      shareholdersEquity: number;
+      commonStock: number;
+      retainedEarnings: number;
+    };
+    
+    // Cash Flow Statement
+    cashFlowStatement: {
+      operatingCashFlow: number;
+      investingCashFlow: number;
+      financingCashFlow: number;
+      netCashFlow: number;
+      capitalExpenditures: number;
+      acquisitions: number;
+      dispositions: number;
+      debtIssuance: number;
+      debtRepayment: number;
+      dividendPayments: number;
+    };
+    
+    // Financial Ratios
+    financialRatios: {
+      debtToEquity: number;
+      debtToAssets: number;
+      interestCoverage: number;
+      debtServiceCoverage: number;
+      fixedChargeCoverage: number;
+      currentRatio: number;
+      quickRatio: number;
+      returnOnEquity: number;
+      returnOnAssets: number;
+      returnOnInvestment: number;
+    };
+  };
   
   // Dividend Information
-  annualDividend: number;
-  dividendYield: number;
-  dividendPayoutRatio: number;
-  dividendGrowthRate: number;
-  dividendCoverage: number;
-  dividendHistory: {
-    year: number;
-    dividend: number;
-    growth: number;
-  }[];
+  dividendInfo: {
+    // Current Dividend
+    currentDividend: {
+      annualDividend: number;
+      quarterlyDividend: number;
+      monthlyDividend: number;
+      dividendPerShare: number;
+      dividendYield: number;
+      payoutRatio: number;
+      exDividendDate: string;
+      paymentDate: string;
+      declarationDate: string;
+    };
+    
+    // Historical Dividends
+    historicalDividends: {
+      year: number;
+      dividend: number;
+      growthRate: number;
+      payoutRatio: number;
+      fundsFromOperations: number;
+      adjustedFundsFromOperations: number;
+    }[];
+    
+    // Dividend Growth
+    dividendGrowth: {
+      historicalGrowthRate: number;
+      expectedGrowthRate: number;
+      sustainableGrowthRate: number;
+      growthPhase: 'high_growth' | 'stable_growth' | 'mature_growth' | 'declining_growth';
+      growthPeriod: number; // in years
+    };
+    
+    // Dividend Coverage
+    dividendCoverage: {
+      ffoCoverage: number;
+      affoCoverage: number;
+      cashFlowCoverage: number;
+      earningsCoverage: number;
+      coverageTrend: 'improving' | 'stable' | 'declining';
+    };
+  };
   
-  // Growth Metrics
-  revenueGrowth: number;
-  NOIGrowth: number;
-  FFOGrowth: number;
-  AFFOGrowth: number;
-  dividendGrowth: number;
-  sameStoreGrowth: number;
-  
-  // Valuation Metrics
-  capRate: number;
-  impliedCapRate: number;
-  netAssetValue: number;
-  priceToNAV: number;
-  enterpriseValue: number;
-  EVToEBITDA: number;
-  EVToFFO: number;
-  EVToAFFO: number;
-  
-  // Operating Metrics
-  grossMargin: number;
-  operatingMargin: number;
-  netMargin: number;
-  FFOmargin: number;
-  AFFOmargin: number;
-  expenseRatio: number;
-  managementFee: number;
+  // Valuation Parameters
+  valuationParameters: {
+    // FFO/AFFO Analysis
+    ffoAffoAnalysis: {
+      fundsFromOperations: number;
+      adjustedFundsFromOperations: number;
+      ffoPerShare: number;
+      affoPerShare: number;
+      ffoGrowth: number;
+      affoGrowth: number;
+      ffoQuality: 'high' | 'medium' | 'low';
+    };
+    
+    // NAV Analysis
+    navAnalysis: {
+      netAssetValue: number;
+      navPerShare: number;
+      priceToNav: number;
+      navGrowth: number;
+      assetAppreciation: number;
+      navComponents: {
+        component: string;
+        value: number;
+        percentage: number;
+      }[];
+    };
+    
+    // Cap Rate Analysis
+    capRateAnalysis: {
+      marketCapRate: number;
+      impliedCapRate: number;
+      capRateSpread: number;
+      capRateTrend: 'increasing' | 'stable' | 'decreasing';
+      capRateComparison: {
+        peer: string;
+        capRate: number;
+        difference: number;
+      }[];
+    };
+    
+    // Multiple Analysis
+    multipleAnalysis: {
+      priceToFFO: number;
+      priceToAFFO: number;
+      priceToBook: number;
+      priceToSales: number;
+      evToEbitda: number;
+      multipleComparison: {
+        peer: string;
+        multiple: number;
+        difference: number;
+      }[];
+    };
+  };
   
   // Market Data
-  beta: number;
-  volatility: number;
-  correlationWithMarket: number;
-  correlationWithBonds: number;
-  correlationWithRealEstate: number;
-  
-  // Interest Rate Sensitivity
-  interestRateSensitivity: number;
-  duration: number;
-  convexity: number;
-  
-  // Inflation Sensitivity
-  inflationSensitivity: number;
-  rentEscalation: number;
-  expenseEscalation: number;
-  
-  // Economic Indicators
-  gdpGrowth: number;
-  unemploymentRate: number;
-  inflationRate: number;
-  interestRate: number;
-  realEstateMarketGrowth: number;
-  
-  // Sector Analysis
-  sectorPerformance: number;
-  sectorValuation: number;
-  sectorGrowth: number;
-  sectorRisk: number;
-  
-  // Peer Comparison
-  peerGroup: string[];
-  peerMetrics: {
-    metric: string;
-    reitValue: number;
-    peerAverage: number;
-    peerMedian: number;
-    percentile: number;
-  }[];
-  
-  // Development Pipeline
-  developmentPipeline: {
-    project: string;
-    type: string;
-    squareFootage: number;
-    cost: number;
-    completionDate: string;
-    expectedNOI: number;
-    expectedYield: number;
-  }[];
-  
-  // Acquisition Pipeline
-  acquisitionPipeline: {
-    property: string;
-    type: string;
-    squareFootage: number;
-    purchasePrice: number;
-    expectedNOI: number;
-    expectedYield: number;
-    closingDate: string;
-  }[];
-  
-  // Disposition Pipeline
-  dispositionPipeline: {
-    property: string;
-    type: string;
-    squareFootage: number;
-    salePrice: number;
-    gain: number;
-    closingDate: string;
-  }[];
+  marketData: {
+    // Current Market Information
+    currentMarketInfo: {
+      currentPrice: number;
+      marketCap: number;
+      enterpriseValue: number;
+      sharesOutstanding: number;
+      volume: number;
+      beta: number;
+      dividendYield: number;
+    };
+    
+    // Industry Data
+    industryData: {
+      industry: string;
+      averageDividendYield: number;
+      averageFFO: number;
+      averageCapRate: number;
+      averageMultiple: number;
+    };
+    
+    // Peer Comparison
+    peerComparison: {
+      peer: string;
+      dividendYield: number;
+      ffoGrowth: number;
+      capRate: number;
+      multiple: number;
+      marketCap: number;
+    }[];
+    
+    // Market Conditions
+    marketConditions: {
+      realEstateMarket: 'bull' | 'bear' | 'sideways';
+      interestRateEnvironment: 'low' | 'normal' | 'high' | 'rising' | 'falling';
+      economicCycle: 'expansion' | 'peak' | 'contraction' | 'trough';
+      marketVolatility: 'low' | 'medium' | 'high';
+    };
+  };
   
   // Risk Factors
   riskFactors: {
-    category: string;
-    factor: string;
-    impact: 'low' | 'medium' | 'high';
-    probability: number;
-  }[];
-  
-  // ESG Metrics
-  esgMetrics: {
-    environmentalScore: number;
-    socialScore: number;
-    governanceScore: number;
-    overallScore: number;
-    carbonFootprint: number;
-    energyEfficiency: number;
-    waterEfficiency: number;
-    wasteReduction: number;
-    communityImpact: number;
-    employeeSatisfaction: number;
-    boardIndependence: number;
-    executiveCompensation: number;
+    // Property Risk
+    propertyRisk: {
+      occupancyRisk: number;
+      leaseRolloverRisk: number;
+      tenantConcentrationRisk: number;
+      propertyConcentrationRisk: number;
+      geographicConcentrationRisk: number;
+    };
+    
+    // Financial Risk
+    financialRisk: {
+      leverageRisk: number;
+      interestRateRisk: number;
+      refinancingRisk: number;
+      liquidityRisk: number;
+      cashFlowRisk: number;
+    };
+    
+    // Market Risk
+    marketRisk: {
+      realEstateMarketRisk: number;
+      economicRisk: number;
+      regulatoryRisk: number;
+      taxRisk: number;
+      currencyRisk: number;
+    };
+    
+    // Operational Risk
+    operationalRisk: {
+      managementRisk: number;
+      executionRisk: number;
+      technologyRisk: number;
+      environmentalRisk: number;
+      legalRisk: number;
+    };
   };
   
-  // Analysis Parameters
-  analysisPeriod: number; // in years
-  discountRate: number;
-  terminalGrowthRate: number;
-  exitCapRate: number;
-  includeTransactionCosts: boolean;
-  includeTaxes: boolean;
-  includeInflation: boolean;
+  // Growth Projections
+  growthProjections: {
+    // Revenue Growth
+    revenueGrowth: {
+      shortTermGrowth: number; // 1-3 years
+      mediumTermGrowth: number; // 4-7 years
+      longTermGrowth: number; // 8+ years
+      growthDrivers: string[];
+      growthSustainability: 'high' | 'medium' | 'low';
+    };
+    
+    // FFO Growth
+    ffoGrowth: {
+      shortTermGrowth: number;
+      mediumTermGrowth: number;
+      longTermGrowth: number;
+      ffoQuality: 'high' | 'medium' | 'low';
+      ffoStability: 'high' | 'medium' | 'low';
+    };
+    
+    // Dividend Growth
+    dividendGrowth: {
+      shortTermGrowth: number;
+      mediumTermGrowth: number;
+      longTermGrowth: number;
+      dividendSustainability: 'high' | 'medium' | 'low';
+      payoutRatioTarget: number;
+    };
+    
+    // NAV Growth
+    navGrowth: {
+      shortTermGrowth: number;
+      mediumTermGrowth: number;
+      longTermGrowth: number;
+      assetAppreciation: number;
+      developmentPipeline: number;
+    };
+  };
+  
+  // Economic Environment
+  economicEnvironment: {
+    // Economic Indicators
+    economicIndicators: {
+      gdpGrowth: number;
+      inflationRate: number;
+      interestRate: number;
+      unemploymentRate: number;
+      consumerConfidence: number;
+    };
+    
+    // Real Estate Market
+    realEstateMarket: {
+      marketCycle: 'expansion' | 'peak' | 'contraction' | 'trough';
+      vacancyRates: number;
+      rentalGrowth: number;
+      propertyValues: number;
+      transactionVolume: number;
+    };
+    
+    // Interest Rate Environment
+    interestRateEnvironment: {
+      federalFundsRate: number;
+      treasuryYields: {
+        maturity: number;
+        yield: number;
+      }[];
+      mortgageRates: number;
+      capRateTrend: 'increasing' | 'stable' | 'decreasing';
+    };
+  };
   
   // Scenario Analysis
-  scenarios: {
-    name: string;
-    revenueGrowth: number;
-    NOIGrowth: number;
-    capRateChange: number;
-    interestRateChange: number;
-    occupancyChange: number;
-  }[];
+  scenarioAnalysis: {
+    // Market Scenarios
+    marketScenarios: {
+      scenarioName: string;
+      probability: number;
+      priceChange: number;
+      dividendChange: number;
+      ffoChange: number;
+      capRateChange: number;
+      description: string;
+    }[];
+    
+    // Economic Scenarios
+    economicScenarios: {
+      scenarioName: string;
+      probability: number;
+      gdpGrowth: number;
+      interestRate: number;
+      inflationRate: number;
+      unemploymentRate: number;
+      description: string;
+    }[];
+    
+    // Property Scenarios
+    propertyScenarios: {
+      scenarioName: string;
+      probability: number;
+      occupancyRate: number;
+      rentalGrowth: number;
+      propertyValues: number;
+      capRates: number;
+      description: string;
+    }[];
+  };
   
   // Monte Carlo Simulation
   monteCarloSimulations: number;
   monteCarloTimeSteps: number;
-  includeMarketShocks: boolean;
-  marketShockProbability: number;
-  marketShockSize: number;
+  includeRevenueVolatility: boolean;
+  includeExpenseVolatility: boolean;
+  includePropertyValueVolatility: boolean;
+  
+  // Analysis Parameters
+  analysisPeriod: number; // in years
+  includeTaxes: boolean;
+  includeInflation: boolean;
+  includeTransactionCosts: boolean;
+  includeLiquidityDiscount: boolean;
+  
+  // Calculation Options
+  calculationOptions: {
+    includeValuationAnalysis: boolean;
+    includeRiskAnalysis: boolean;
+    includeGrowthAnalysis: boolean;
+    includeScenarioAnalysis: boolean;
+    includeMonteCarlo: boolean;
+  };
   
   // Historical Analysis
   historicalData: {
-    date: string;
+    year: number;
     price: number;
     dividend: number;
-    FFO: number;
-    AFFO: number;
-    NAV: number;
-    occupancy: number;
+    ffo: number;
+    affo: number;
+    nav: number;
+    occupancyRate: number;
+    return: number;
   }[];
   
   // Reporting Preferences
   includeValuationAnalysis: boolean;
-  includeRiskMetrics: boolean;
+  includeDividendAnalysis: boolean;
+  includeRiskAnalysis: boolean;
+  includeGrowthAnalysis: boolean;
+  includeMarketAnalysis: boolean;
+  includePeerComparison: boolean;
   includeScenarioAnalysis: boolean;
   includeMonteCarlo: boolean;
   includeHistoricalAnalysis: boolean;
-  includePeerComparison: boolean;
-  includeESGAnalysis: boolean;
   includeRecommendations: boolean;
   includeActionItems: boolean;
   
@@ -268,172 +462,253 @@ export interface REITInputs {
   includeRecommendations: boolean;
 }
 
-export interface REITResults {
+export interface REITCalculatorResults {
   // Core REIT Metrics
-  reitValue: number;
-  intrinsicValue: number;
-  fairValue: number;
-  targetPrice: number;
-  upsidePotential: number;
+  currentPrice: number;
+  dividendYield: number;
+  ffoPerShare: number;
+  affoPerShare: number;
+  navPerShare: number;
+  totalReturn: number;
+  
+  // REIT Analysis
+  reitAnalysis: {
+    currentPrice: number;
+    dividendYield: number;
+    ffoPerShare: number;
+    affoPerShare: number;
+    navPerShare: number;
+    totalReturn: number;
+    reitBreakdown: {
+      component: string;
+      value: number;
+      contribution: number;
+    }[];
+    reitEfficiency: number;
+  };
   
   // Valuation Analysis
   valuationAnalysis: {
-    method: string;
-    value: number;
-    weight: number;
-    assumptions: string[];
-  }[];
-  
-  // DCF Analysis
-  dcfAnalysis: {
-    presentValue: number;
-    terminalValue: number;
-    enterpriseValue: number;
-    equityValue: number;
-    valuePerShare: number;
-    cashFlows: {
-      year: number;
-      revenue: number;
-      NOI: number;
-      FFO: number;
-      AFFO: number;
-      freeCashFlow: number;
-      presentValue: number;
+    netAssetValue: number;
+    navPerShare: number;
+    priceToNav: number;
+    impliedCapRate: number;
+    marketCapRate: number;
+    capRateSpread: number;
+    valuationComponents: {
+      component: string;
+      value: number;
+      percentage: number;
     }[];
+    valuationEfficiency: number;
   };
   
-  // NAV Analysis
-  navAnalysis: {
-    netAssetValue: number;
-    priceToNAV: number;
-    impliedCapRate: number;
-    propertyValues: {
-      property: string;
+  // FFO/AFFO Analysis
+  ffoAffoAnalysis: {
+    fundsFromOperations: number;
+    adjustedFundsFromOperations: number;
+    ffoPerShare: number;
+    affoPerShare: number;
+    ffoGrowth: number;
+    affoGrowth: number;
+    ffoQuality: 'high' | 'medium' | 'low';
+    ffoBreakdown: {
+      component: string;
       value: number;
-      capRate: number;
+      contribution: number;
     }[];
+    ffoEfficiency: number;
   };
   
   // Dividend Analysis
   dividendAnalysis: {
-    currentYield: number;
-    sustainableYield: number;
-    dividendCoverage: number;
+    currentDividend: number;
+    expectedDividend: number;
     dividendGrowth: number;
-    dividendSafety: number;
-    dividendProjection: {
-      year: number;
-      dividend: number;
-      growth: number;
-      coverage: number;
+    dividendYield: number;
+    payoutRatio: number;
+    dividendCoverage: number;
+    dividendBreakdown: {
+      component: string;
+      value: number;
+      contribution: number;
     }[];
+    dividendEfficiency: number;
+  };
+  
+  // Risk Analysis
+  riskAnalysis: {
+    propertyRisk: {
+      occupancyRisk: number;
+      leaseRolloverRisk: number;
+      tenantConcentrationRisk: number;
+      propertyConcentrationRisk: number;
+      geographicConcentrationRisk: number;
+      riskContribution: number;
+    };
+    financialRisk: {
+      leverageRisk: number;
+      interestRateRisk: number;
+      refinancingRisk: number;
+      liquidityRisk: number;
+      cashFlowRisk: number;
+      riskContribution: number;
+    };
+    marketRisk: {
+      realEstateMarketRisk: number;
+      economicRisk: number;
+      regulatoryRisk: number;
+      taxRisk: number;
+      currencyRisk: number;
+      riskContribution: number;
+    };
+    totalRisk: number;
+    riskEfficiency: number;
   };
   
   // Growth Analysis
   growthAnalysis: {
-    revenueGrowth: number;
-    NOIGrowth: number;
-    FFOGrowth: number;
-    AFFOGrowth: number;
-    dividendGrowth: number;
-    sameStoreGrowth: number;
-    growthDrivers: string[];
-    growthRisks: string[];
+    revenueGrowth: {
+      shortTermGrowth: number;
+      mediumTermGrowth: number;
+      longTermGrowth: number;
+      growthDrivers: string[];
+      growthSustainability: 'high' | 'medium' | 'low';
+    };
+    ffoGrowth: {
+      shortTermGrowth: number;
+      mediumTermGrowth: number;
+      longTermGrowth: number;
+      ffoQuality: 'high' | 'medium' | 'low';
+      ffoStability: 'high' | 'medium' | 'low';
+    };
+    dividendGrowth: {
+      shortTermGrowth: number;
+      mediumTermGrowth: number;
+      longTermGrowth: number;
+      dividendSustainability: 'high' | 'medium' | 'low';
+      payoutRatioTarget: number;
+    };
+    growthEfficiency: number;
   };
   
-  // Risk Metrics
-  riskMetrics: {
-    beta: number;
-    volatility: number;
-    valueAtRisk: number;
-    conditionalVaR: number;
-    maxDrawdown: number;
-    downsideDeviation: number;
-    riskOfLoss: number;
+  // Multiple Analysis
+  multipleAnalysis: {
+    priceToFFO: number;
+    priceToAFFO: number;
+    priceToBook: number;
+    priceToSales: number;
+    evToEbitda: number;
+    multipleComparison: {
+      peer: string;
+      multiple: number;
+      difference: number;
+      relativeValue: number;
+    }[];
+    multipleEfficiency: number;
   };
   
-  // Performance Metrics
-  performanceMetrics: {
-    totalReturn: number;
-    priceReturn: number;
-    dividendReturn: number;
-    annualizedReturn: number;
-    sharpeRatio: number;
-    sortinoRatio: number;
-    calmarRatio: number;
-    treynorRatio: number;
-    informationRatio: number;
-  };
+  // Sensitivity Analysis
+  sensitivityAnalysis: {
+    variable: string;
+    baseValue: number;
+    lowValue: number;
+    highValue: number;
+    lowPrice: number;
+    highPrice: number;
+    sensitivity: number;
+  }[];
   
-  // Financial Health
-  financialHealth: {
-    debtToEquity: number;
-    interestCoverage: number;
-    fixedChargeCoverage: number;
-    debtToEBITDA: number;
-    liquidityRatio: number;
-    currentRatio: number;
-    quickRatio: number;
-    cashRatio: number;
-  };
+  // Scenario Analysis
+  scenarioAnalysis: {
+    scenarioName: string;
+    probability: number;
+    price: number;
+    dividend: number;
+    ffo: number;
+    nav: number;
+    riskLevel: string;
+  }[];
   
-  // Operating Efficiency
-  operatingEfficiency: {
-    occupancyRate: number;
-    rentPerSqFt: number;
-    expenseRatio: number;
-    NOImargin: number;
-    FFOmargin: number;
-    AFFOmargin: number;
-    sameStorePerformance: number;
-  };
-  
-  // Portfolio Quality
-  portfolioQuality: {
-    propertyQuality: number;
-    tenantQuality: number;
-    leaseQuality: number;
-    locationQuality: number;
-    overallQuality: number;
-    qualityFactors: string[];
+  // Peer Comparison
+  peerComparison: {
+    peerComparison: {
+      peer: string;
+      dividendYield: number;
+      ffoGrowth: number;
+      capRate: number;
+      multiple: number;
+      outperformance: number;
+    }[];
+    industryComparison: {
+      metric: string;
+      reit: number;
+      industry: number;
+      difference: number;
+    }[];
   };
   
   // Market Analysis
   marketAnalysis: {
     marketPosition: number;
     competitiveAdvantage: number;
-    marketShare: number;
-    marketGrowth: number;
-    marketRisk: number;
-    marketOpportunities: string[];
-    marketThreats: string[];
+    marketBreakdown: {
+      factor: string;
+      impact: number;
+      opportunity: number;
+    }[];
+    marketScore: number;
   };
   
-  // Peer Comparison
-  peerComparison: {
-    peerGroup: string[];
-    relativeValuation: number;
-    relativePerformance: number;
-    relativeRisk: number;
-    relativeGrowth: number;
-    peerRanking: number;
-    peerPercentile: number;
+  // Financial Analysis
+  financialAnalysis: {
+    // Profitability Analysis
+    profitabilityAnalysis: {
+      returnOnEquity: number;
+      returnOnAssets: number;
+      returnOnInvestment: number;
+      profitabilityBreakdown: {
+        metric: string;
+        value: number;
+        industry: number;
+        performance: string;
+      }[];
+      profitabilityScore: number;
+    };
+    
+    // Financial Health Analysis
+    financialHealthAnalysis: {
+      debtToEquity: number;
+      debtToAssets: number;
+      interestCoverage: number;
+      debtServiceCoverage: number;
+      financialHealthBreakdown: {
+        metric: string;
+        value: number;
+        industry: number;
+        performance: string;
+      }[];
+      financialHealthScore: number;
+    };
   };
   
-  // Scenario Analysis Results
-  scenarioResults: {
-    scenarioName: string;
-    reitValue: number;
-    upsidePotential: number;
-    downsideRisk: number;
-    probability: number;
-    keyAssumptions: string[];
-  }[];
+  // REIT Score
+  reitScore: {
+    overallScore: number;
+    componentScores: {
+      valuation: number;
+      dividend: number;
+      growth: number;
+      risk: number;
+      financial: number;
+    };
+    recommendation: 'buy' | 'hold' | 'sell' | 'review';
+  };
   
   // Monte Carlo Results
   monteCarloResults: {
-    meanValue: number;
-    medianValue: number;
+    meanPrice: number;
+    medianPrice: number;
     standardDeviation: number;
     percentiles: {
       p5: number;
@@ -445,63 +720,20 @@ export interface REITResults {
       p95: number;
     };
     probabilityDistribution: {
-      value: number;
+      price: number;
       probability: number;
     }[];
+    successProbability: number;
   };
   
   // Historical Analysis
   historicalAnalysis: {
-    historicalReturn: number;
-    historicalVolatility: number;
-    historicalSharpeRatio: number;
-    historicalMaxDrawdown: number;
-    priceCorrelation: number;
-    dividendCorrelation: number;
-  };
-  
-  // ESG Analysis
-  esgAnalysis: {
-    environmentalScore: number;
-    socialScore: number;
-    governanceScore: number;
-    overallScore: number;
-    esgRisk: number;
-    esgOpportunity: number;
-    esgFactors: string[];
-  };
-  
-  // Risk Analysis
-  riskAnalysis: {
-    marketRisk: number;
-    interestRateRisk: number;
-    creditRisk: number;
-    liquidityRisk: number;
-    operationalRisk: number;
-    regulatoryRisk: number;
-    environmentalRisk: number;
-    totalRisk: number;
-  };
-  
-  // Sensitivity Analysis
-  sensitivityAnalysis: {
-    parameter: string;
-    baseValue: number;
-    lowValue: number;
-    highValue: number;
-    lowPrice: number;
-    highPrice: number;
-    sensitivity: number;
-  }[];
-  
-  // Comparative Analysis
-  comparativeAnalysis: {
-    benchmark: string;
-    benchmarkReturn: number;
-    excessReturn: number;
-    trackingError: number;
-    informationRatio: number;
-    relativePerformance: number;
+    historicalPrice: number;
+    historicalDividend: number;
+    historicalFFO: number;
+    historicalNAV: number;
+    historicalTrends: string[];
+    yearOverYearChange: number;
   };
   
   // Optimization Opportunities
@@ -515,18 +747,18 @@ export interface REITResults {
   
   // Business Impact
   businessImpact: {
-    roi: number;
-    paybackPeriod: number;
-    netPresentValue: number;
-    internalRateOfReturn: number;
-    riskAdjustedReturn: number;
+    valueCreation: number;
+    returnImprovement: number;
+    riskReduction: number;
+    competitiveAdvantage: number;
+    overallBenefit: number;
   };
   
   // Comprehensive Report
   comprehensiveReport: {
     executiveSummary: string;
     keyFindings: string[];
-    riskAssessment: string;
+    reitAssessment: string;
     recommendations: string[];
     actionItems: {
       action: string;
@@ -538,12 +770,12 @@ export interface REITResults {
   
   // Executive Summary
   executiveSummary: {
-    reitValue: number;
-    totalReturn: number;
-    riskLevel: 'low' | 'medium' | 'high';
-    recommendation: 'buy' | 'sell' | 'hold';
-    keyRisks: string[];
-    keyOpportunities: string[];
+    currentPrice: number;
+    dividendYield: number;
+    ffoPerShare: number;
+    recommendation: 'buy' | 'hold' | 'sell' | 'review';
+    keyStrengths: string[];
+    keyWeaknesses: string[];
   };
   
   // Recommendations

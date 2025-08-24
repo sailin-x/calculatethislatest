@@ -1,307 +1,590 @@
-export interface NPVInputs {
-  // Cash flow data
-  cashFlows: number[]; // Array of cash flows (negative for outflows, positive for inflows)
-  initialInvestment: number; // Initial investment amount
-  projectDuration: number; // Project duration in years
-  
-  // Discount rate parameters
-  discountRate: number; // Required rate of return
-  costOfCapital: number; // Weighted average cost of capital
-  riskFreeRate: number; // Risk-free rate
-  marketRiskPremium: number; // Market risk premium
-  beta: number; // Project beta for CAPM
-  
-  // Time periods
-  timePeriod: 'daily' | 'weekly' | 'monthly' | 'quarterly' | 'yearly';
-  startDate: string;
-  endDate: string;
-  
-  // Project details
-  projectType: 'business' | 'real-estate' | 'equipment' | 'technology' | 'marketing' | 'research' | 'expansion' | 'acquisition' | 'other';
-  investmentCategory: 'capital-expenditure' | 'operating-expense' | 'research-development' | 'marketing' | 'acquisition' | 'expansion';
-  
-  // Risk factors
-  riskLevel: 'low' | 'medium' | 'high';
-  marketConditions: 'recession' | 'stable' | 'growth' | 'boom';
-  industryVolatility: number; // Industry-specific volatility
-  
-  // Cash flow assumptions
-  revenueGrowthRate: number; // Expected revenue growth
-  costInflationRate: number; // Expected cost inflation
-  taxRate: number; // Effective tax rate
-  depreciationRate: number; // Asset depreciation rate
-  
-  // Project specifics
-  salvageValue: number; // Terminal value at end of project
-  workingCapital: number; // Working capital requirements
-  maintenanceCosts: number; // Annual maintenance costs
-  operatingCosts: number; // Annual operating costs
-  
-  // Terminal value
-  terminalValueMethod: 'salvage' | 'perpetuity' | 'exit-multiple' | 'custom';
-  terminalGrowthRate: number; // Growth rate for perpetuity method
-  exitMultiple: number; // Exit multiple for terminal value
-  
-  // Risk adjustments
-  riskAdjustments: {
-    countryRisk: number;
-    currencyRisk: number;
-    politicalRisk: number;
-    regulatoryRisk: number;
-    technologyRisk: number;
+export interface NetPresentValueInputs {
+  // Project Information
+  projectInfo: {
+    projectName: string;
+    projectType: 'investment' | 'business_venture' | 'real_estate' | 'infrastructure' | 'technology' | 'acquisition' | 'expansion' | 'refinancing' | 'research_development' | 'marketing' | 'equipment' | 'other';
+    projectCategory: 'capital_expenditure' | 'operating_expense' | 'strategic_investment' | 'maintenance' | 'replacement' | 'expansion' | 'new_venture' | 'other';
+    projectStage: 'planning' | 'development' | 'implementation' | 'operation' | 'maintenance' | 'decommissioning';
+    projectDuration: number; // in years
+    projectStartDate: string;
+    projectEndDate: string;
+    projectDescription: string;
   };
   
-  // Tax considerations
+  // Cash Flows
+  cashFlows: {
+    // Initial Investment
+    initialInvestment: {
+      amount: number;
+      date: string;
+      type: 'equity' | 'debt' | 'hybrid' | 'other';
+      currency: string;
+    };
+    
+    // Operating Cash Flows
+    operatingCashFlows: {
+      year: number;
+      revenue: number;
+      operatingExpenses: number;
+      depreciation: number;
+      amortization: number;
+      taxes: number;
+      netOperatingCashFlow: number;
+    }[];
+    
+    // Capital Expenditures
+    capitalExpenditures: {
+      year: number;
+      amount: number;
+      type: 'equipment' | 'building' | 'technology' | 'infrastructure' | 'other';
+      description: string;
+    }[];
+    
+    // Working Capital
+    workingCapital: {
+      year: number;
+      currentAssets: number;
+      currentLiabilities: number;
+      netWorkingCapital: number;
+      workingCapitalChange: number;
+    }[];
+    
+    // Financing Cash Flows
+    financingCashFlows: {
+      year: number;
+      debtIssuance: number;
+      debtRepayment: number;
+      equityIssuance: number;
+      dividendPayments: number;
+      netFinancingCashFlow: number;
+    }[];
+    
+    // Terminal Value
+    terminalValue: {
+      method: 'perpetuity' | 'exit_multiple' | 'salvage_value' | 'custom';
+      value: number;
+      growthRate: number;
+      multiple: number;
+      assumptions: {
+        assumption: string;
+        value: number;
+        description: string;
+      }[];
+    };
+    
+    // Net Cash Flows
+    netCashFlows: {
+      year: number;
+      operatingCashFlow: number;
+      capitalExpenditure: number;
+      workingCapitalChange: number;
+      financingCashFlow: number;
+      netCashFlow: number;
+      cumulativeCashFlow: number;
+    }[];
+  };
+  
+  // Discount Rate
+  discountRate: {
+    // Cost of Capital Components
+    costOfEquity: number;
+    costOfDebt: number;
+    taxRate: number;
+    debtToEquityRatio: number;
+    weightedAverageCostOfCapital: number;
+    
+    // Risk Adjustments
+    riskFreeRate: number;
+    marketRiskPremium: number;
+    beta: number;
+    countryRiskPremium: number;
+    sizeRiskPremium: number;
+    liquidityRiskPremium: number;
+    
+    // Project-Specific Risk
+    projectRiskPremium: number;
+    industryRiskPremium: number;
+    technologyRiskPremium: number;
+    regulatoryRiskPremium: number;
+    
+    // Final Discount Rate
+    finalDiscountRate: number;
+    discountRateBreakdown: {
+      component: string;
+      rate: number;
+      percentage: number;
+    }[];
+  };
+  
+  // Financial Metrics
+  financialMetrics: {
+    // Revenue Projections
+    revenueProjections: {
+      year: number;
+      revenue: number;
+      growthRate: number;
+      seasonality: number;
+      marketShare: number;
+    }[];
+    
+    // Cost Projections
+    costProjections: {
+      year: number;
+      costOfGoodsSold: number;
+      operatingExpenses: number;
+      sellingExpenses: number;
+      administrativeExpenses: number;
+      researchDevelopment: number;
+      totalCosts: number;
+    }[];
+    
+    // Profitability Metrics
+    profitabilityMetrics: {
+      grossMargin: number;
+      operatingMargin: number;
+      netMargin: number;
+      ebitda: number;
+      ebitdaMargin: number;
+      returnOnInvestment: number;
+      returnOnEquity: number;
+    };
+    
+    // Balance Sheet Metrics
+    balanceSheetMetrics: {
+      totalAssets: number;
+      totalLiabilities: number;
+      netWorth: number;
+      debtToEquity: number;
+      currentRatio: number;
+      quickRatio: number;
+      assetTurnover: number;
+    };
+  };
+  
+  // Risk Analysis
+  riskAnalysis: {
+    // Risk Factors
+    riskFactors: {
+      marketRisk: number;
+      operationalRisk: number;
+      financialRisk: number;
+      regulatoryRisk: number;
+      technologyRisk: number;
+      competitiveRisk: number;
+      executionRisk: number;
+    };
+    
+    // Risk Scenarios
+    riskScenarios: {
+      scenario: string;
+      probability: number;
+      cashFlowImpact: number;
+      discountRateImpact: number;
+      npvImpact: number;
+    }[];
+    
+    // Sensitivity Analysis
+    sensitivityAnalysis: {
+      variable: string;
+      baseValue: number;
+      lowValue: number;
+      highValue: number;
+      npvImpact: number;
+    }[];
+    
+    // Overall Risk Assessment
+    overallRiskScore: number;
+    riskCategory: 'low' | 'medium' | 'high' | 'very_high';
+  };
+  
+  // Market Conditions
+  marketConditions: {
+    // Economic Environment
+    economicEnvironment: {
+      gdpGrowth: number;
+      inflationRate: number;
+      interestRate: number;
+      unemploymentRate: number;
+      consumerConfidence: number;
+    };
+    
+    // Industry Conditions
+    industryConditions: {
+      industryGrowth: number;
+      competitiveIntensity: number;
+      regulatoryEnvironment: string;
+      technologicalDisruption: number;
+      marketMaturity: 'emerging' | 'growth' | 'mature' | 'declining';
+    };
+    
+    // Market Valuation
+    marketValuation: {
+      peRatio: number;
+      evEbitda: number;
+      priceToBook: number;
+      dividendYield: number;
+      marketCap: number;
+    };
+  };
+  
+  // Tax Considerations
   taxConsiderations: {
-    taxLossCarryforward: number;
-    taxCredits: number;
-    depreciationMethod: 'straight-line' | 'declining-balance' | 'sum-of-years' | 'custom';
-    taxTiming: 'immediate' | 'deferred' | 'accelerated';
+    // Tax Status
+    taxStatus: 'taxable' | 'tax_deferred' | 'tax_free' | 'tax_advantaged';
+    effectiveTaxRate: number;
+    marginalTaxRate: number;
+    stateTaxRate: number;
+    localTaxRate: number;
+    
+    // Tax Benefits
+    taxBenefits: {
+      depreciation: number;
+      amortization: number;
+      interestDeduction: number;
+      taxCredits: number;
+      lossCarryforward: number;
+      totalTaxBenefits: number;
+    };
+    
+    // Tax Implications
+    taxImplications: {
+      afterTaxCashFlows: number;
+      taxEfficiency: number;
+      taxOptimization: number;
+    };
   };
   
-  // Inflation adjustments
-  inflationAdjustments: {
-    adjustForInflation: boolean;
-    realNPV: boolean;
+  // Inflation and Currency
+  inflationAndCurrency: {
+    // Inflation
     inflationRate: number;
-    inflationIndex: 'cpi' | 'ppi' | 'custom';
+    inflationProjection: {
+      year: number;
+      inflationRate: number;
+    }[];
+    realDiscountRate: number;
+    nominalDiscountRate: number;
+    
+    // Currency
+    baseCurrency: string;
+    foreignCurrency: string;
+    exchangeRate: number;
+    exchangeRateProjection: {
+      year: number;
+      exchangeRate: number;
+    }[];
+    currencyRisk: number;
   };
   
-  // Sensitivity analysis
-  sensitivityParameters: {
-    parameter: string;
+  // Comparable Analysis
+  comparableAnalysis: {
+    // Peer Companies
+    peerCompanies: {
+      company: string;
+      industry: string;
+      size: number;
+      npv: number;
+      irr: number;
+      paybackPeriod: number;
+      riskProfile: string;
+    }[];
+    
+    // Industry Benchmarks
+    industryBenchmarks: {
+      metric: string;
+      industry: string;
+      average: number;
+      median: number;
+      percentile25: number;
+      percentile75: number;
+    }[];
+  };
+  
+  // Analysis Parameters
+  analysisPeriod: number; // in years
+  reinvestmentRate: number;
+  includeTaxes: boolean;
+  includeInflation: boolean;
+  includeRiskAdjustment: boolean;
+  includeWorkingCapital: boolean;
+  includeFinancing: boolean;
+  
+  // Calculation Method
+  calculationMethod: 'traditional_npv' | 'adjusted_npv' | 'real_npv' | 'nominal_npv';
+  terminalValueMethod: 'perpetuity' | 'exit_multiple' | 'salvage_value' | 'custom';
+  
+  // Monte Carlo Simulation
+  monteCarloSimulations: number;
+  monteCarloTimeSteps: number;
+  includeCashFlowVolatility: boolean;
+  includeDiscountRateVolatility: boolean;
+  includeTerminalValueVolatility: boolean;
+  
+  // Historical Analysis
+  historicalData: {
+    year: number;
+    cashFlow: number;
+    discountRate: number;
+    npv: number;
+    cumulativeNpv: number;
+  }[];
+  
+  // Reporting Preferences
+  includeCashFlowAnalysis: boolean;
+  includeDiscountRateAnalysis: boolean;
+  includeRiskAnalysis: boolean;
+  includeSensitivityAnalysis: boolean;
+  includeComparableAnalysis: boolean;
+  includeTaxAnalysis: boolean;
+  includeInflationAnalysis: boolean;
+  includeMarketAnalysis: boolean;
+  includeTerminalValueAnalysis: boolean;
+  includeMonteCarlo: boolean;
+  includeHistoricalAnalysis: boolean;
+  includeScenarioAnalysis: boolean;
+  includeRecommendations: boolean;
+  includeActionItems: boolean;
+  
+  // Output Format
+  outputFormat: 'detailed' | 'summary' | 'executive';
+  includeCharts: boolean;
+  includeTables: boolean;
+  includeRecommendations: boolean;
+}
+
+export interface NetPresentValueResults {
+  // Core NPV Metrics
+  netPresentValue: number;
+  presentValueOfCashFlows: number;
+  presentValueOfInvestment: number;
+  profitabilityIndex: number;
+  internalRateOfReturn: number;
+  
+  // NPV Analysis
+  npvAnalysis: {
+    netPresentValue: number;
+    presentValueOfCashFlows: number;
+    presentValueOfInvestment: number;
+    npvBreakdown: {
+      component: string;
+      value: number;
+      percentage: number;
+    }[];
+    npvEfficiency: number;
+  };
+  
+  // Cash Flow Analysis
+  cashFlowAnalysis: {
+    totalInvestment: number;
+    totalCashFlows: number;
+    netCashFlow: number;
+    cashFlowBreakdown: {
+      year: number;
+      operatingCashFlow: number;
+      capitalExpenditure: number;
+      workingCapitalChange: number;
+      financingCashFlow: number;
+      netCashFlow: number;
+      presentValue: number;
+      cumulativeNpv: number;
+    }[];
+    cashFlowEfficiency: number;
+  };
+  
+  // Discount Rate Analysis
+  discountRateAnalysis: {
+    weightedAverageCostOfCapital: number;
+    costOfEquity: number;
+    costOfDebt: number;
+    riskAdjustments: {
+      adjustment: string;
+      rate: number;
+      impact: number;
+    }[];
+    discountRateBreakdown: {
+      component: string;
+      rate: number;
+      percentage: number;
+    }[];
+    discountRateEfficiency: number;
+  };
+  
+  // Risk Analysis
+  riskAnalysis: {
+    riskAdjustedNpv: number;
+    riskScore: number;
+    riskBreakdown: {
+      risk: string;
+      level: number;
+      impact: number;
+    }[];
+    riskMitigation: string[];
+  };
+  
+  // Sensitivity Analysis
+  sensitivityAnalysis: {
+    variable: string;
     baseValue: number;
     lowValue: number;
     highValue: number;
-  }[];
-  
-  // Scenario analysis
-  scenarios?: {
-    scenario: string;
-    probability: number;
-    cashFlows: number[];
-    discountRate: number;
-  }[];
-  
-  // Comparison projects
-  comparisonProjects?: {
-    name: string;
-    cashFlows: number[];
-    initialInvestment: number;
-    duration: number;
-    discountRate: number;
-  }[];
-  
-  // Advanced parameters
-  reinvestmentRate: number; // Rate at which positive cash flows are reinvested
-  financingRate: number; // Rate for financing negative cash flows
-  opportunityCost: number; // Opportunity cost of capital
-  
-  // Analysis parameters
-  calculationMethod: 'standard' | 'modified' | 'adjusted';
-  includeOpportunityCost: boolean;
-  includeRiskAdjustments: boolean;
-  includeTaxEffects: boolean;
-  includeInflationEffects: boolean;
-  
-  // Output preferences
-  includeIRR: boolean;
-  includePaybackPeriod: boolean;
-  includeProfitabilityIndex: boolean;
-  includeScenarioAnalysis: boolean;
-  includeSensitivityAnalysis: boolean;
-  includeMonteCarlo: boolean;
-}
-
-export interface NPVResults {
-  // Core NPV metrics
-  npv: number;
-  irr: number;
-  paybackPeriod: number;
-  discountedPaybackPeriod: number;
-  profitabilityIndex: number;
-  
-  // Time-based analysis
-  cumulativeNPV: number[];
-  discountedCashFlows: number[];
-  timeToBreakEven: number;
-  
-  // Risk-adjusted metrics
-  riskAdjustedNPV: number;
-  certaintyEquivalentNPV: number;
-  expectedNPV: number;
-  npvVolatility: number;
-  
-  // Scenario analysis
-  scenarioResults: {
-    scenario: string;
-    probability: number;
-    npv: number;
-    irr: number;
-    paybackPeriod: number;
-  }[];
-  
-  // Sensitivity analysis
-  sensitivityResults: {
-    parameter: string;
-    baseNPV: number;
-    lowNPV: number;
-    highNPV: number;
+    lowNpv: number;
+    highNpv: number;
     sensitivity: number;
   }[];
   
-  // Comparison analysis
-  comparisonResults: {
-    project: string;
+  // Scenario Analysis
+  scenarioAnalysis: {
+    scenarioName: string;
+    probability: number;
     npv: number;
     irr: number;
     paybackPeriod: number;
-    ranking: number;
+    riskLevel: string;
   }[];
   
-  // Financial metrics
-  financialMetrics: {
-    totalReturn: number;
-    annualizedReturn: number;
-    excessReturn: number;
-    riskAdjustedReturn: number;
+  // Comparable Analysis
+  comparableAnalysis: {
+    peerComparison: {
+      peer: string;
+      npv: number;
+      irr: number;
+      paybackPeriod: number;
+      riskProfile: string;
+    }[];
+    industryBenchmark: number;
+    marketPosition: number;
   };
   
-  // Risk analysis
-  riskAnalysis: {
-    worstCaseNPV: number;
-    bestCaseNPV: number;
-    expectedNPV: number;
-    npvConfidenceInterval: {
-      lower: number;
-      upper: number;
+  // Terminal Value Analysis
+  terminalValueAnalysis: {
+    terminalValue: number;
+    terminalValueMethod: string;
+    terminalValueMultiple: number;
+    growthRate: number;
+    terminalValueContribution: number;
+  };
+  
+  // Tax Analysis
+  taxAnalysis: {
+    beforeTaxNpv: number;
+    afterTaxNpv: number;
+    taxEfficiency: number;
+    taxBenefits: number;
+    taxOptimization: number;
+  };
+  
+  // Inflation Analysis
+  inflationAnalysis: {
+    nominalNpv: number;
+    realNpv: number;
+    inflationImpact: number;
+    inflationEfficiency: number;
+  };
+  
+  // Investment Score
+  investmentScore: {
+    overallScore: number;
+    componentScores: {
+      npv: number;
+      irr: number;
+      payback: number;
+      risk: number;
+      terminal: number;
+      taxes: number;
+      inflation: number;
     };
-    probabilityOfLoss: number;
-    valueAtRisk: number;
+    recommendation: 'invest' | 'consider' | 'decline' | 'modify';
   };
   
-  // Cash flow analysis
-  cashFlowAnalysis: {
-    totalInflows: number;
-    totalOutflows: number;
-    netCashFlow: number;
-    averageAnnualCashFlow: number;
-    cashFlowVolatility: number;
-    presentValueOfInflows: number;
-    presentValueOfOutflows: number;
-  };
-  
-  // Investment efficiency
-  investmentEfficiency: {
-    returnOnInvestment: number;
-    returnOnCapital: number;
-    economicValueAdded: number;
-    residualIncome: number;
-    netPresentValueRatio: number;
-  };
-  
-  // Break-even analysis
-  breakEvenAnalysis: {
-    breakEvenPoint: number;
-    breakEvenTime: number;
-    marginOfSafety: number;
-    operatingLeverage: number;
-    financialLeverage: number;
-  };
-  
-  // Monte Carlo simulation
+  // Monte Carlo Results
   monteCarloResults: {
-    meanNPV: number;
-    medianNPV: number;
+    meanNpv: number;
+    medianNpv: number;
     standardDeviation: number;
     percentiles: {
+      p5: number;
       p10: number;
       p25: number;
       p50: number;
       p75: number;
       p90: number;
+      p95: number;
     };
-    probabilityOfSuccess: number;
-    probabilityOfPositiveNPV: number;
+    probabilityDistribution: {
+      npv: number;
+      probability: number;
+    }[];
+    successProbability: number;
   };
   
-  // Inflation-adjusted results
-  inflationAdjustedResults: {
-    realNPV: number;
-    nominalNPV: number;
-    inflationImpact: number;
-    purchasingPower: number;
-    realDiscountRate: number;
+  // Historical Analysis
+  historicalAnalysis: {
+    historicalNpv: number;
+    historicalIrr: number;
+    historicalTrends: string[];
+    historicalVolatility: number;
+    yearOverYearChange: number;
   };
   
-  // Tax-adjusted results
-  taxAdjustedResults: {
-    afterTaxNPV: number;
-    taxShield: number;
-    effectiveTaxRate: number;
-    taxEfficiency: number;
-    taxImpact: number;
+  // Optimization Opportunities
+  optimizationOpportunities: {
+    category: string;
+    description: string;
+    potentialImprovement: number;
+    implementationDifficulty: 'low' | 'medium' | 'high';
+    priority: 'low' | 'medium' | 'high';
+  }[];
+  
+  // Business Impact
+  businessImpact: {
+    valueCreation: number;
+    riskReduction: number;
+    returnEnhancement: number;
+    strategicAlignment: number;
+    overallBenefit: number;
   };
   
-  // Project ranking
-  projectRanking: {
-    rank: number;
-    score: number;
-    recommendation: 'accept' | 'reject' | 'consider';
-    reasoning: string[];
+  // Comprehensive Report
+  comprehensiveReport: {
+    executiveSummary: string;
+    keyFindings: string[];
+    investmentAssessment: string;
+    recommendations: string[];
+    actionItems: {
+      action: string;
+      priority: 'low' | 'medium' | 'high';
+      timeline: string;
+      responsibleParty: string;
+    }[];
   };
   
-  // Decision criteria
-  decisionCriteria: {
-    npvPositive: boolean;
-    irrVsDiscountRate: boolean;
-    paybackAcceptable: boolean;
-    riskAcceptable: boolean;
-    overallRecommendation: 'accept' | 'reject' | 'consider';
+  // Executive Summary
+  executiveSummary: {
+    netPresentValue: number;
+    internalRateOfReturn: number;
+    paybackPeriod: number;
+    recommendation: 'invest' | 'consider' | 'decline' | 'modify';
+    keyStrengths: string[];
+    keyWeaknesses: string[];
   };
-  
-  // Performance metrics
-  performanceMetrics: {
-    npvRanking: number;
-    irrRanking: number;
-    riskAdjustedRanking: number;
-    overallScore: number;
-  };
-  
-  // Terminal value analysis
-  terminalValueAnalysis: {
-    terminalValue: number;
-    presentValueOfTerminalValue: number;
-    terminalValueMethod: string;
-    terminalValueSensitivity: number;
-  };
-  
-  // Discount rate analysis
-  discountRateAnalysis: {
-    costOfEquity: number;
-    costOfDebt: number;
-    weightedAverageCostOfCapital: number;
-    projectSpecificDiscountRate: number;
-    riskAdjustedDiscountRate: number;
-  };
-  
-  // Comprehensive report
-  report: string;
   
   // Recommendations
   recommendations: {
     category: string;
-    recommendations: string[];
-    priority: 'high' | 'medium' | 'low';
+    recommendation: string;
+    rationale: string;
     expectedImpact: number;
+    implementationSteps: string[];
   }[];
   
-  // Action items
+  // Action Items
   actionItems: {
-    priority: 'immediate' | 'short-term' | 'long-term';
     action: string;
-    owner: string;
+    description: string;
+    priority: 'low' | 'medium' | 'high';
     timeline: string;
-    expectedOutcome: string;
+    responsibleParty: string;
+    dependencies: string[];
+    successMetrics: string[];
   }[];
 }

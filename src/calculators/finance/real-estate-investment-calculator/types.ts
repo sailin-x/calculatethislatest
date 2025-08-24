@@ -1,740 +1,894 @@
-export interface RealEstateInvestmentInputs {
-  // Property information
+export interface RealEstateInvestmentCalculatorInputs {
+  // Property Information
   propertyInfo: {
-    propertyId: string;
-    propertyName: string;
-    propertyType: 'single-family' | 'multi-family' | 'condo' | 'townhouse' | 'commercial' | 'industrial' | 'retail' | 'office' | 'land' | 'mixed-use';
-    propertyAddress: {
-      street: string;
-      city: string;
-      state: string;
-      zipCode: string;
-      country: string;
-    };
+    // Property Details
     propertyDetails: {
+      propertyName: string;
+      propertyType: 'single_family' | 'multi_family' | 'condo' | 'townhouse' | 'commercial' | 'industrial' | 'retail' | 'office' | 'land' | 'mixed_use' | 'other';
+      propertyAddress: string;
+      propertyCity: string;
+      propertyState: string;
+      propertyZipCode: string;
+      propertyCounty: string;
+      yearBuilt: number;
       squareFootage: number;
       lotSize: number;
       bedrooms: number;
       bathrooms: number;
-      yearBuilt: number;
-      condition: 'excellent' | 'good' | 'fair' | 'poor';
-      amenities: string[];
+      parkingSpaces: number;
+      propertyDescription: string;
     };
+    
+    // Property Value
     propertyValue: {
       purchasePrice: number;
-      currentValue: number;
       appraisedValue: number;
+      estimatedValue: number;
       marketValue: number;
-      landValue: number;
-      buildingValue: number;
+      valueAppreciation: number;
+      valueDepreciation: number;
+      comparableSales: {
+        address: string;
+        salePrice: number;
+        saleDate: string;
+        squareFootage: number;
+        bedrooms: number;
+        bathrooms: number;
+      }[];
+    };
+    
+    // Property Condition
+    propertyCondition: {
+      overallCondition: 'excellent' | 'good' | 'fair' | 'poor' | 'needs_renovation';
+      roofCondition: 'excellent' | 'good' | 'fair' | 'poor';
+      hvacCondition: 'excellent' | 'good' | 'fair' | 'poor';
+      plumbingCondition: 'excellent' | 'good' | 'fair' | 'poor';
+      electricalCondition: 'excellent' | 'good' | 'fair' | 'poor';
+      foundationCondition: 'excellent' | 'good' | 'fair' | 'poor';
+      estimatedRenovationCost: number;
+      renovationPriority: 'low' | 'medium' | 'high';
     };
   };
   
-  // Financial information
+  // Financial Information
   financialInfo: {
-    purchaseDetails: {
+    // Purchase Information
+    purchaseInfo: {
       purchasePrice: number;
       downPayment: number;
       downPaymentPercentage: number;
       loanAmount: number;
-      loanType: 'conventional' | 'fha' | 'va' | 'usda' | 'commercial' | 'hard-money' | 'private' | 'cash';
-      interestRate: number;
-      loanTerm: number;
-      monthlyPayment: number;
+      loanToValueRatio: number;
       closingCosts: number;
       totalInvestment: number;
+      purchaseDate: string;
     };
+    
+    // Financing Information
+    financingInfo: {
+      loanType: 'conventional' | 'fha' | 'va' | 'usda' | 'hard_money' | 'private' | 'cash' | 'other';
+      interestRate: number;
+      loanTerm: number; // in years
+      monthlyPayment: number;
+      annualPayment: number;
+      totalInterest: number;
+      loanBalance: number;
+      refinanceOpportunity: boolean;
+      refinanceSavings: number;
+    };
+    
+    // Operating Expenses
     operatingExpenses: {
       propertyTaxes: number;
-      insurance: number;
+      homeownersInsurance: number;
+      propertyManagementFee: number;
+      maintenanceReserve: number;
       utilities: number;
-      maintenance: number;
-      propertyManagement: number;
-      hoaFees: number;
       landscaping: number;
       pestControl: number;
       security: number;
-      otherExpenses: number;
+      otherExpenses: {
+        expense: string;
+        amount: number;
+        frequency: 'monthly' | 'quarterly' | 'annually';
+      }[];
       totalOperatingExpenses: number;
-    };
-    income: {
-      grossRentalIncome: number;
-      otherIncome: number;
-      totalIncome: number;
-      vacancyRate: number;
-      effectiveGrossIncome: number;
     };
   };
   
-  // Market analysis
-  marketAnalysis: {
+  // Income Information
+  incomeInfo: {
+    // Rental Income
+    rentalIncome: {
+      monthlyRent: number;
+      annualRent: number;
+      rentIncrease: number;
+      rentGrowthRate: number;
+      vacancyRate: number;
+      effectiveRent: number;
+      rentComparables: {
+        address: string;
+        monthlyRent: number;
+        bedrooms: number;
+        bathrooms: number;
+        squareFootage: number;
+      }[];
+    };
+    
+    // Additional Income
+    additionalIncome: {
+      parkingFees: number;
+      storageFees: number;
+      petFees: number;
+      lateFees: number;
+      applicationFees: number;
+      otherIncome: {
+        source: string;
+        amount: number;
+        frequency: 'monthly' | 'quarterly' | 'annually';
+      }[];
+      totalAdditionalIncome: number;
+    };
+    
+    // Income Projections
+    incomeProjections: {
+      year: number;
+      grossRent: number;
+      vacancyLoss: number;
+      effectiveRent: number;
+      additionalIncome: number;
+      totalIncome: number;
+    }[];
+  };
+  
+  // Market Information
+  marketInfo: {
+    // Market Data
     marketData: {
       marketType: 'buyers' | 'sellers' | 'balanced';
       averageDaysOnMarket: number;
-      pricePerSquareFoot: number;
-      rentPerSquareFoot: number;
-      capRate: number;
-      priceToRentRatio: number;
-      grossRentMultiplier: number;
-    };
-    comparableProperties: {
-      compId: string;
-      address: string;
-      salePrice: number;
-      saleDate: Date;
-      squareFootage: number;
-      bedrooms: number;
-      bathrooms: number;
-      pricePerSquareFoot: number;
-    }[];
-    marketTrends: {
+      inventoryLevel: 'low' | 'medium' | 'high';
       priceTrend: 'increasing' | 'decreasing' | 'stable';
       rentTrend: 'increasing' | 'decreasing' | 'stable';
-      appreciationRate: number;
-      rentGrowthRate: number;
+      marketVolatility: number;
+      marketGrowth: number;
+    };
+    
+    // Economic Indicators
+    economicIndicators: {
+      gdpGrowth: number;
+      unemploymentRate: number;
+      populationGrowth: number;
+      jobGrowth: number;
+      incomeGrowth: number;
+      inflationRate: number;
+      interestRate: number;
+    };
+    
+    // Neighborhood Analysis
+    neighborhoodAnalysis: {
+      schoolRating: number;
+      crimeRate: number;
+      walkabilityScore: number;
+      transitScore: number;
+      amenities: string[];
+      developmentPlans: string[];
+      neighborhoodTrend: 'improving' | 'stable' | 'declining';
     };
   };
   
-  // Investment analysis
+  // Investment Analysis
   investmentAnalysis: {
-    investmentType: 'buy-and-hold' | 'fix-and-flip' | 'rental' | 'commercial' | 'land-development' | 'reits' | 'syndication';
-    investmentStrategy: 'cash-flow' | 'appreciation' | 'tax-benefits' | 'diversification' | 'leverage';
-    investmentHorizon: number; // Years
-    exitStrategy: 'sell' | 'refinance' | '1031-exchange' | 'hold' | 'syndicate';
-    targetReturn: number;
-    riskTolerance: 'conservative' | 'moderate' | 'aggressive';
-  };
-  
-  // Cash flow analysis
-  cashFlowAnalysis: {
-    monthlyCashFlow: {
-      rentalIncome: number;
-      otherIncome: number;
-      totalIncome: number;
-      mortgagePayment: number;
-      operatingExpenses: number;
-      netOperatingIncome: number;
-      cashFlow: number;
-    };
-    annualCashFlow: {
-      grossRentalIncome: number;
+    // Cash Flow Analysis
+    cashFlowAnalysis: {
+      grossRent: number;
       vacancyLoss: number;
-      effectiveGrossIncome: number;
+      effectiveRent: number;
       operatingExpenses: number;
       netOperatingIncome: number;
       debtService: number;
       cashFlow: number;
       cashOnCashReturn: number;
+      cashFlowProjections: {
+        year: number;
+        grossRent: number;
+        operatingExpenses: number;
+        netOperatingIncome: number;
+        debtService: number;
+        cashFlow: number;
+      }[];
     };
+    
+    // Return Metrics
+    returnMetrics: {
+      capRate: number;
+      cashOnCashReturn: number;
+      totalReturn: number;
+      internalRateOfReturn: number;
+      netPresentValue: number;
+      paybackPeriod: number;
+      returnOnInvestment: number;
+      returnOnEquity: number;
+    };
+    
+    // Appreciation Analysis
+    appreciationAnalysis: {
+      historicalAppreciation: number;
+      projectedAppreciation: number;
+      appreciationFactors: {
+        factor: string;
+        impact: number;
+        probability: number;
+      }[];
+      totalReturn: number;
+      equityBuildUp: number;
+    };
+  };
+  
+  // Risk Analysis
+  riskAnalysis: {
+    // Market Risk
+    marketRisk: {
+      marketVolatility: number;
+      priceRisk: number;
+      rentRisk: number;
+      liquidityRisk: number;
+      marketRisk: number;
+    };
+    
+    // Property Risk
+    propertyRisk: {
+      propertyCondition: number;
+      locationRisk: number;
+      environmentalRisk: number;
+      legalRisk: number;
+      propertyRisk: number;
+    };
+    
+    // Financial Risk
+    financialRisk: {
+      leverageRisk: number;
+      interestRateRisk: number;
+      cashFlowRisk: number;
+      refinanceRisk: number;
+      financialRisk: number;
+    };
+    
+    // Tenant Risk
+    tenantRisk: {
+      vacancyRisk: number;
+      creditRisk: number;
+      evictionRisk: number;
+      damageRisk: number;
+      tenantRisk: number;
+    };
+    
+    // Total Risk
+    totalRisk: number;
+    riskEfficiency: number;
+  };
+  
+  // Tax Information
+  taxInfo: {
+    // Tax Benefits
+    taxBenefits: {
+      depreciation: number;
+      mortgageInterestDeduction: number;
+      propertyTaxDeduction: number;
+      operatingExpenseDeduction: number;
+      totalDeductions: number;
+      taxSavings: number;
+      effectiveTaxRate: number;
+    };
+    
+    // Tax Implications
+    taxImplications: {
+      marginalTaxRate: number;
+      stateTaxRate: number;
+      localTaxRate: number;
+      totalTaxRate: number;
+      afterTaxCashFlow: number;
+      taxEfficiency: number;
+    };
+    
+    // 1031 Exchange
+    exchange1031: {
+      eligible: boolean;
+      exchangeValue: number;
+      taxDeferral: number;
+      exchangeTimeline: string;
+      exchangeRequirements: string[];
+    };
+  };
+  
+  // Management Information
+  managementInfo: {
+    // Property Management
+    propertyManagement: {
+      selfManaged: boolean;
+      managementCompany: string;
+      managementFee: number;
+      managementServices: string[];
+      managementQuality: 'excellent' | 'good' | 'fair' | 'poor';
+      managementCost: number;
+    };
+    
+    // Maintenance Plan
+    maintenancePlan: {
+      preventiveMaintenance: number;
+      emergencyMaintenance: number;
+      capitalImprovements: number;
+      totalMaintenance: number;
+      maintenanceSchedule: {
+        item: string;
+        frequency: string;
+        cost: number;
+        priority: 'low' | 'medium' | 'high';
+      }[];
+    };
+    
+    // Insurance Coverage
+    insuranceCoverage: {
+      propertyInsurance: number;
+      liabilityInsurance: number;
+      floodInsurance: number;
+      earthquakeInsurance: number;
+      umbrellaInsurance: number;
+      totalInsurance: number;
+      coverageLimits: {
+        coverage: string;
+        limit: number;
+        deductible: number;
+      }[];
+    };
+  };
+  
+  // Exit Strategy
+  exitStrategy: {
+    // Exit Options
+    exitOptions: {
+      hold: {
+        holdPeriod: number;
+        projectedValue: number;
+        projectedReturn: number;
+        probability: number;
+      };
+      sell: {
+        salePrice: number;
+        saleCosts: number;
+        netProceeds: number;
+        capitalGains: number;
+        probability: number;
+      };
+      refinance: {
+        refinanceAmount: number;
+        refinanceCosts: number;
+        cashOut: number;
+        newPayment: number;
+        probability: number;
+      };
+      exchange: {
+        exchangeValue: number;
+        taxDeferral: number;
+        exchangeCosts: number;
+        probability: number;
+      };
+    };
+    
+    // Exit Timeline
+    exitTimeline: {
+      preferredExit: string;
+      timeline: number; // in years
+      exitConditions: string[];
+      exitTriggers: string[];
+    };
+  };
+  
+  // Comparison Analysis
+  comparisonAnalysis: {
+    // Alternative Investments
+    alternativeInvestments: {
+      investment: string;
+      expectedReturn: number;
+      risk: number;
+      liquidity: number;
+      taxEfficiency: number;
+      comparison: number;
+    }[];
+    
+    // Similar Properties
+    similarProperties: {
+      property: string;
+      purchasePrice: number;
+      monthlyRent: number;
+      capRate: number;
+      cashOnCashReturn: number;
+      totalReturn: number;
+    }[];
+    
+    // Market Comparison
+    marketComparison: {
+      averageCapRate: number;
+      averageCashOnCashReturn: number;
+      averageAppreciation: number;
+      marketPosition: number;
+      competitiveness: number;
+    };
+  };
+  
+  // Scenario Analysis
+  scenarioAnalysis: {
+    // Market Scenarios
+    marketScenarios: {
+      scenario: string;
+      probability: number;
+      appreciationRate: number;
+      rentGrowth: number;
+      vacancyRate: number;
+      totalReturn: number;
+    }[];
+    
+    // Economic Scenarios
+    economicScenarios: {
+      scenario: string;
+      probability: number;
+      gdpGrowth: number;
+      interestRate: number;
+      inflationRate: number;
+      totalReturn: number;
+    }[];
+    
+    // Property Scenarios
+    propertyScenarios: {
+      scenario: string;
+      probability: number;
+      propertyValue: number;
+      rentalIncome: number;
+      operatingExpenses: number;
+      totalReturn: number;
+    }[];
+  };
+  
+  // Monte Carlo Simulation
+  monteCarloSimulations: number;
+  monteCarloTimeSteps: number;
+  includeAppreciationVolatility: boolean;
+  includeRentVolatility: boolean;
+  includeExpenseVolatility: boolean;
+  
+  // Analysis Parameters
+  analysisPeriod: number; // in years
+  discountRate: number;
+  inflationRate: number;
+  includeTaxes: boolean;
+  includeFees: boolean;
+  
+  // Calculation Options
+  calculationOptions: {
+    includeCashFlowAnalysis: boolean;
+    includeReturnAnalysis: boolean;
+    includeRiskAnalysis: boolean;
+    includeTaxAnalysis: boolean;
+    includeManagementAnalysis: boolean;
+    includeExitStrategy: boolean;
+    includeComparisonAnalysis: boolean;
+    includeScenarioAnalysis: boolean;
+    includeMonteCarlo: boolean;
+  };
+  
+  // Historical Analysis
+  historicalData: {
+    year: number;
+    propertyValue: number;
+    rentalIncome: number;
+    operatingExpenses: number;
+    cashFlow: number;
+    totalReturn: number;
+    capRate: number;
+  }[];
+  
+  // Reporting Preferences
+  includeCashFlowAnalysis: boolean;
+  includeReturnAnalysis: boolean;
+  includeRiskAnalysis: boolean;
+  includeTaxAnalysis: boolean;
+  includeManagementAnalysis: boolean;
+  includeExitStrategy: boolean;
+  includeComparisonAnalysis: boolean;
+  includeScenarioAnalysis: boolean;
+  includeMonteCarlo: boolean;
+  includeHistoricalAnalysis: boolean;
+  includeRecommendations: boolean;
+  includeActionItems: boolean;
+  
+  // Output Format
+  outputFormat: 'detailed' | 'summary' | 'executive';
+  includeCharts: boolean;
+  includeTables: boolean;
+  includeRecommendations: boolean;
+}
+
+export interface RealEstateInvestmentCalculatorResults {
+  // Core Investment Metrics
+  capRate: number;
+  cashOnCashReturn: number;
+  totalReturn: number;
+  internalRateOfReturn: number;
+  netPresentValue: number;
+  
+  // Investment Analysis
+  investmentAnalysis: {
+    capRate: number;
+    cashOnCashReturn: number;
+    totalReturn: number;
+    internalRateOfReturn: number;
+    netPresentValue: number;
+    investmentBreakdown: {
+      component: string;
+      value: number;
+      contribution: number;
+    }[];
+    investmentEfficiency: number;
+  };
+  
+  // Cash Flow Analysis
+  cashFlowAnalysis: {
+    grossRent: number;
+    vacancyLoss: number;
+    effectiveRent: number;
+    operatingExpenses: number;
+    netOperatingIncome: number;
+    debtService: number;
+    cashFlow: number;
+    cashOnCashReturn: number;
     cashFlowProjections: {
       year: number;
-      rentalIncome: number;
+      grossRent: number;
       operatingExpenses: number;
       netOperatingIncome: number;
       debtService: number;
       cashFlow: number;
-      cumulativeCashFlow: number;
     }[];
+    cashFlowEfficiency: number;
   };
   
-  // Return metrics
-  returnMetrics: {
-    cashOnCashReturn: number;
-    capRate: number;
-    totalReturn: number;
-    internalRateOfReturn: number;
-    netPresentValue: number;
-    paybackPeriod: number;
-    grossRentMultiplier: number;
-    priceToRentRatio: number;
-    returnOnInvestment: number;
-    returnOnEquity: number;
+  // Return Analysis
+  returnAnalysis: {
+    returnMetrics: {
+      capRate: number;
+      cashOnCashReturn: number;
+      totalReturn: number;
+      internalRateOfReturn: number;
+      netPresentValue: number;
+      paybackPeriod: number;
+      returnOnInvestment: number;
+      returnOnEquity: number;
+    };
+    appreciationAnalysis: {
+      historicalAppreciation: number;
+      projectedAppreciation: number;
+      appreciationFactors: {
+        factor: string;
+        impact: number;
+        probability: number;
+      }[];
+      totalReturn: number;
+      equityBuildUp: number;
+    };
+    returnEfficiency: number;
   };
   
-  // Tax analysis
+  // Risk Analysis
+  riskAnalysis: {
+    marketRisk: {
+      marketVolatility: number;
+      priceRisk: number;
+      rentRisk: number;
+      liquidityRisk: number;
+      marketRisk: number;
+    };
+    propertyRisk: {
+      propertyCondition: number;
+      locationRisk: number;
+      environmentalRisk: number;
+      legalRisk: number;
+      propertyRisk: number;
+    };
+    financialRisk: {
+      leverageRisk: number;
+      interestRateRisk: number;
+      cashFlowRisk: number;
+      refinanceRisk: number;
+      financialRisk: number;
+    };
+    tenantRisk: {
+      vacancyRisk: number;
+      creditRisk: number;
+      evictionRisk: number;
+      damageRisk: number;
+      tenantRisk: number;
+    };
+    totalRisk: number;
+    riskEfficiency: number;
+  };
+  
+  // Tax Analysis
   taxAnalysis: {
-    taxStatus: 'individual' | 'llc' | 'corporation' | 'partnership' | 'trust';
-    taxBracket: number;
-    depreciationMethod: 'straight-line' | 'accelerated' | 'bonus';
-    depreciationPeriod: number;
-    annualDepreciation: number;
     taxBenefits: {
-      depreciationDeduction: number;
+      depreciation: number;
       mortgageInterestDeduction: number;
       propertyTaxDeduction: number;
       operatingExpenseDeduction: number;
-      totalTaxBenefits: number;
+      totalDeductions: number;
+      taxSavings: number;
+      effectiveTaxRate: number;
     };
-    afterTaxCashFlow: number;
+    taxImplications: {
+      marginalTaxRate: number;
+      stateTaxRate: number;
+      localTaxRate: number;
+      totalTaxRate: number;
+      afterTaxCashFlow: number;
+      taxEfficiency: number;
+    };
+    exchange1031: {
+      eligible: boolean;
+      exchangeValue: number;
+      taxDeferral: number;
+      exchangeTimeline: string;
+      exchangeRequirements: string[];
+    };
     taxEfficiency: number;
   };
   
-  // Financing analysis
-  financingAnalysis: {
-    loanDetails: {
-      loanAmount: number;
-      interestRate: number;
-      loanTerm: number;
-      monthlyPayment: number;
-      annualPayment: number;
-      totalInterest: number;
-      amortizationSchedule: {
-        paymentNumber: number;
-        payment: number;
-        principal: number;
-        interest: number;
-        remainingBalance: number;
-      }[];
-    };
-    refinancing: {
-      currentLoanBalance: number;
-      refinanceRate: number;
-      refinanceCosts: number;
-      newMonthlyPayment: number;
-      monthlySavings: number;
-      breakEvenPeriod: number;
-      refinanceSavings: number;
-    };
-    leverageAnalysis: {
-      leverageRatio: number;
-      debtToEquity: number;
-      debtServiceCoverageRatio: number;
-      leverageImpact: number;
-    };
-  };
-  
-  // Property management
-  propertyManagement: {
-    managementType: 'self-managed' | 'professional' | 'hybrid';
-    managementFee: number;
-    managementServices: string[];
-    tenantScreening: {
-      creditCheck: boolean;
-      backgroundCheck: boolean;
-      incomeVerification: boolean;
-      rentalHistory: boolean;
-    };
-    leaseTerms: {
-      leaseLength: number;
-      rentIncrease: number;
-      securityDeposit: number;
-      lateFees: number;
+  // Management Analysis
+  managementAnalysis: {
+    propertyManagement: {
+      selfManaged: boolean;
+      managementCompany: string;
+      managementFee: number;
+      managementServices: string[];
+      managementQuality: string;
+      managementCost: number;
     };
     maintenancePlan: {
       preventiveMaintenance: number;
-      emergencyFund: number;
-      reserveFund: number;
-      totalMaintenanceBudget: number;
-    };
-  };
-  
-  // Market timing
-  marketTiming: {
-    marketCycle: 'recovery' | 'expansion' | 'peak' | 'contraction' | 'trough';
-    marketTiming: 'buy' | 'sell' | 'hold' | 'wait';
-    marketIndicators: {
-      inventoryLevel: 'low' | 'medium' | 'high';
-      daysOnMarket: number;
-      priceTrend: 'increasing' | 'decreasing' | 'stable';
-      rentTrend: 'increasing' | 'decreasing' | 'stable';
-      interestRateTrend: 'increasing' | 'decreasing' | 'stable';
-    };
-    optimalTiming: {
-      bestTimeToBuy: string;
-      bestTimeToSell: string;
-      holdingPeriod: number;
-    };
-  };
-  
-  // Risk analysis
-  riskAnalysis: {
-    marketRisks: {
-      risk: string;
-      probability: number;
-      impact: number;
-      mitigation: string;
-    }[];
-    propertyRisks: {
-      risk: string;
-      probability: number;
-      impact: number;
-      mitigation: string;
-    }[];
-    financialRisks: {
-      risk: string;
-      probability: number;
-      impact: number;
-      mitigation: string;
-    }[];
-    operationalRisks: {
-      risk: string;
-      probability: number;
-      impact: number;
-      mitigation: string;
-    }[];
-    overallRiskScore: number;
-    riskLevel: 'low' | 'medium' | 'high' | 'critical';
-  };
-  
-  // Scenario analysis
-  scenarioAnalysis: {
-    scenarios: {
-      scenarioName: string;
-      scenarioType: 'optimistic' | 'pessimistic' | 'most-likely' | 'stress-test' | 'custom';
-      probability: number;
-      assumptions: {
-        assumption: string;
-        value: number;
-        description: string;
+      emergencyMaintenance: number;
+      capitalImprovements: number;
+      totalMaintenance: number;
+      maintenanceSchedule: {
+        item: string;
+        frequency: string;
+        cost: number;
+        priority: string;
       }[];
-      cashFlow: number;
-      return: number;
-      risk: number;
-    }[];
-    stressTests: {
-      testName: string;
-      vacancyRate: number;
-      rentDecrease: number;
-      expenseIncrease: number;
-      interestRateIncrease: number;
-      impact: number;
-    }[];
+    };
+    insuranceCoverage: {
+      propertyInsurance: number;
+      liabilityInsurance: number;
+      floodInsurance: number;
+      earthquakeInsurance: number;
+      umbrellaInsurance: number;
+      totalInsurance: number;
+      coverageLimits: {
+        coverage: string;
+        limit: number;
+        deductible: number;
+      }[];
+    };
+    managementEfficiency: number;
   };
   
-  // Comparable analysis
-  comparableAnalysis: {
-    salesComparables: {
-      compId: string;
-      address: string;
-      salePrice: number;
-      saleDate: Date;
-      squareFootage: number;
-      pricePerSquareFoot: number;
-      adjustments: {
-        adjustment: string;
-        amount: number;
-        adjustedPrice: number;
-      }[];
-    }[];
-    rentalComparables: {
-      compId: string;
-      address: string;
-      rentAmount: number;
-      squareFootage: number;
-      rentPerSquareFoot: number;
-      adjustments: {
-        adjustment: string;
-        amount: number;
-        adjustedRent: number;
-      }[];
-    }[];
-  };
-  
-  // Exit strategy
-  exitStrategy: {
+  // Exit Strategy Analysis
+  exitStrategyAnalysis: {
     exitOptions: {
-      option: string;
-      timeline: number;
-      expectedValue: number;
-      costs: number;
-      netProceeds: number;
-      return: number;
-    }[];
-    optimalExit: {
-      strategy: string;
-      timeline: number;
-      expectedReturn: number;
-      rationale: string;
-    };
-  };
-  
-  // Analysis parameters
-  analysisParameters: {
-    analysisType: 'basic' | 'comprehensive' | 'investment' | 'comparison' | 'custom';
-    includeTaxAnalysis: boolean;
-    includeFinancingAnalysis: boolean;
-    includeScenarioAnalysis: boolean;
-    includeComparableAnalysis: boolean;
-    includeRiskAnalysis: boolean;
-    includeExitStrategy: boolean;
-    timeHorizon: number;
-    discountRate: number;
-    inflationRate: number;
-  };
-  
-  // Reporting preferences
-  reporting: {
-    includeDetailedBreakdown: boolean;
-    includeCashFlowAnalysis: boolean;
-    includeReturnMetrics: boolean;
-    includeTaxAnalysis: boolean;
-    includeFinancingAnalysis: boolean;
-    includeScenarioAnalysis: boolean;
-    includeComparableAnalysis: boolean;
-    includeRiskAnalysis: boolean;
-    includeExitStrategy: boolean;
-    includeVisualizations: boolean;
-    includeRecommendations: boolean;
-  };
-}
-
-export interface RealEstateInvestmentResults {
-  // Core investment metrics
-  investmentMetrics: {
-    totalInvestment: number;
-    downPayment: number;
-    loanAmount: number;
-    monthlyPayment: number;
-    annualPayment: number;
-    totalInterest: number;
-    cashOnCashReturn: number;
-    capRate: number;
-    totalReturn: number;
-    internalRateOfReturn: number;
-    netPresentValue: number;
-    paybackPeriod: number;
-  };
-  
-  // Cash flow analysis
-  cashFlowAnalysis: {
-    monthlyCashFlow: {
-      rentalIncome: number;
-      otherIncome: number;
-      totalIncome: number;
-      vacancyLoss: number;
-      effectiveGrossIncome: number;
-      operatingExpenses: number;
-      netOperatingIncome: number;
-      debtService: number;
-      cashFlow: number;
-    };
-    annualCashFlow: {
-      grossRentalIncome: number;
-      vacancyLoss: number;
-      effectiveGrossIncome: number;
-      operatingExpenses: number;
-      netOperatingIncome: number;
-      debtService: number;
-      cashFlow: number;
-      cashOnCashReturn: number;
-    };
-    cashFlowProjections: {
-      year: number;
-      rentalIncome: number;
-      operatingExpenses: number;
-      netOperatingIncome: number;
-      debtService: number;
-      cashFlow: number;
-      cumulativeCashFlow: number;
-      equityBuild: number;
-    }[];
-  };
-  
-  // Return analysis
-  returnAnalysis: {
-    cashOnCashReturn: number;
-    capRate: number;
-    totalReturn: number;
-    internalRateOfReturn: number;
-    netPresentValue: number;
-    paybackPeriod: number;
-    grossRentMultiplier: number;
-    priceToRentRatio: number;
-    returnOnInvestment: number;
-    returnOnEquity: number;
-    appreciationReturn: number;
-    incomeReturn: number;
-    totalReturn: number;
-  };
-  
-  // Tax analysis
-  taxAnalysis: {
-    annualDepreciation: number;
-    taxBenefits: {
-      depreciationDeduction: number;
-      mortgageInterestDeduction: number;
-      propertyTaxDeduction: number;
-      operatingExpenseDeduction: number;
-      totalTaxBenefits: number;
-    };
-    afterTaxCashFlow: number;
-    taxEfficiency: number;
-    effectiveTaxRate: number;
-    taxSavings: number;
-  };
-  
-  // Financing analysis
-  financingAnalysis: {
-    loanDetails: {
-      loanAmount: number;
-      interestRate: number;
-      loanTerm: number;
-      monthlyPayment: number;
-      annualPayment: number;
-      totalInterest: number;
-      amortizationSchedule: {
-        paymentNumber: number;
-        payment: number;
-        principal: number;
-        interest: number;
-        remainingBalance: number;
-      }[];
-    };
-    refinancing: {
-      currentLoanBalance: number;
-      refinanceRate: number;
-      refinanceCosts: number;
-      newMonthlyPayment: number;
-      monthlySavings: number;
-      breakEvenPeriod: number;
-      refinanceSavings: number;
-    };
-    leverageAnalysis: {
-      leverageRatio: number;
-      debtToEquity: number;
-      debtServiceCoverageRatio: number;
-      leverageImpact: number;
-    };
-  };
-  
-  // Market analysis
-  marketAnalysis: {
-    marketData: {
-      marketType: string;
-      averageDaysOnMarket: number;
-      pricePerSquareFoot: number;
-      rentPerSquareFoot: number;
-      capRate: number;
-      priceToRentRatio: number;
-      grossRentMultiplier: number;
-    };
-    marketTrends: {
-      priceTrend: string;
-      rentTrend: string;
-      appreciationRate: number;
-      rentGrowthRate: number;
-    };
-    marketPosition: {
-      position: string;
-      advantage: number;
-      disadvantage: number;
-    };
-  };
-  
-  // Comparable analysis
-  comparableAnalysis: {
-    salesComparables: {
-      compId: string;
-      address: string;
-      salePrice: number;
-      adjustedPrice: number;
-      pricePerSquareFoot: number;
-      comparison: string;
-    }[];
-    rentalComparables: {
-      compId: string;
-      address: string;
-      rentAmount: number;
-      adjustedRent: number;
-      rentPerSquareFoot: number;
-      comparison: string;
-    }[];
-    marketValue: {
-      estimatedValue: number;
-      confidence: number;
-      range: {
-        low: number;
-        high: number;
+      hold: {
+        holdPeriod: number;
+        projectedValue: number;
+        projectedReturn: number;
+        probability: number;
+      };
+      sell: {
+        salePrice: number;
+        saleCosts: number;
+        netProceeds: number;
+        capitalGains: number;
+        probability: number;
+      };
+      refinance: {
+        refinanceAmount: number;
+        refinanceCosts: number;
+        cashOut: number;
+        newPayment: number;
+        probability: number;
+      };
+      exchange: {
+        exchangeValue: number;
+        taxDeferral: number;
+        exchangeCosts: number;
+        probability: number;
       };
     };
+    exitTimeline: {
+      preferredExit: string;
+      timeline: number;
+      exitConditions: string[];
+      exitTriggers: string[];
+    };
+    exitEfficiency: number;
   };
   
-  // Risk analysis
-  riskAnalysis: {
-    marketRisks: {
-      risk: string;
-      probability: number;
-      impact: number;
-      riskScore: number;
-      mitigation: string;
-    }[];
-    propertyRisks: {
-      risk: string;
-      probability: number;
-      impact: number;
-      riskScore: number;
-      mitigation: string;
-    }[];
-    financialRisks: {
-      risk: string;
-      probability: number;
-      impact: number;
-      riskScore: number;
-      mitigation: string;
-    }[];
-    operationalRisks: {
-      risk: string;
-      probability: number;
-      impact: number;
-      riskScore: number;
-      mitigation: string;
-    }[];
-    overallRiskScore: number;
-    riskLevel: 'low' | 'medium' | 'high' | 'critical';
-  };
+  // Sensitivity Analysis
+  sensitivityAnalysis: {
+    variable: string;
+    baseValue: number;
+    lowValue: number;
+    highValue: number;
+    lowReturn: number;
+    highReturn: number;
+    sensitivity: number;
+  }[];
   
-  // Scenario analysis
+  // Scenario Analysis
   scenarioAnalysis: {
-    scenarios: {
-      scenarioName: string;
-      scenarioType: string;
-      probability: number;
+    scenarioName: string;
+    description: string;
+    probability: number;
+    capRate: number;
+    cashOnCashReturn: number;
+    totalReturn: number;
+    internalRateOfReturn: number;
+  }[];
+  
+  // Comparison Analysis
+  comparisonAnalysis: {
+    alternativeInvestments: {
+      investment: string;
+      expectedReturn: number;
+      risk: number;
+      liquidity: number;
+      taxEfficiency: number;
+      comparison: number;
+    }[];
+    similarProperties: {
+      property: string;
+      purchasePrice: number;
+      monthlyRent: number;
+      capRate: number;
+      cashOnCashReturn: number;
+      totalReturn: number;
+    }[];
+    marketComparison: {
+      averageCapRate: number;
+      averageCashOnCashReturn: number;
+      averageAppreciation: number;
+      marketPosition: number;
+      competitiveness: number;
+    };
+    comparisonEfficiency: number;
+  };
+  
+  // Peer Comparison
+  peerComparison: {
+    peerComparison: {
+      peer: string;
+      capRate: number;
+      cashOnCashReturn: number;
+      totalReturn: number;
+      outperformance: number;
+    }[];
+    marketComparison: {
+      metric: string;
+      investment: number;
+      market: number;
+      difference: number;
+    }[];
+  };
+  
+  // Investment Score
+  investmentScore: {
+    overallScore: number;
+    componentScores: {
       cashFlow: number;
       return: number;
       risk: number;
-      assumptions: {
-        assumption: string;
-        value: number;
-        description: string;
-      }[];
-    }[];
-    stressTests: {
-      testName: string;
-      vacancyRate: number;
-      rentDecrease: number;
-      expenseIncrease: number;
-      interestRateIncrease: number;
-      impact: number;
-      risk: number;
-    }[];
-    scenarioComparison: {
-      scenario1: string;
-      scenario2: string;
-      cashFlowDifference: number;
-      returnDifference: number;
-      riskDifference: number;
-    }[];
-  };
-  
-  // Exit strategy
-  exitStrategy: {
-    exitOptions: {
-      option: string;
-      timeline: number;
-      expectedValue: number;
-      costs: number;
-      netProceeds: number;
-      return: number;
-      risk: number;
-    }[];
-    optimalExit: {
-      strategy: string;
-      timeline: number;
-      expectedReturn: number;
-      rationale: string;
-      conditions: string[];
+      tax: number;
+      management: number;
+      exit: number;
     };
+    recommendation: 'invest' | 'consider' | 'avoid' | 'review';
   };
   
-  // Investment efficiency
-  investmentEfficiency: {
-    overallEfficiency: number;
-    efficiencyByComponent: {
-      component: string;
-      efficiency: number;
-      improvement: number;
-      potential: number;
+  // Monte Carlo Results
+  monteCarloResults: {
+    meanReturn: number;
+    medianReturn: number;
+    standardDeviation: number;
+    percentiles: {
+      p5: number;
+      p10: number;
+      p25: number;
+      p50: number;
+      p75: number;
+      p90: number;
+      p95: number;
+    };
+    probabilityDistribution: {
+      value: number;
+      probability: number;
     }[];
-    efficiencyComparison: {
-      benchmark: string;
-      efficiency: number;
-      difference: number;
-      performance: 'above' | 'below' | 'at';
-    }[];
+    successProbability: number;
   };
   
-  // Optimization opportunities
+  // Historical Analysis
+  historicalAnalysis: {
+    historicalCapRate: number;
+    historicalCashOnCashReturn: number;
+    historicalTotalReturn: number;
+    historicalTrends: string[];
+    yearOverYearChange: number;
+  };
+  
+  // Optimization Opportunities
   optimizationOpportunities: {
-    cashFlowOptimization: {
-      opportunity: string;
-      currentCashFlow: number;
-      potentialCashFlow: number;
-      improvement: number;
-      implementation: string;
-      timeline: string;
-    }[];
-    returnOptimization: {
-      opportunity: string;
-      currentReturn: number;
-      potentialReturn: number;
-      improvement: number;
-      implementation: string;
-      timeline: string;
-    }[];
-    riskOptimization: {
-      opportunity: string;
-      currentRisk: number;
-      potentialRisk: number;
-      improvement: number;
-      implementation: string;
-      timeline: string;
-    }[];
-  };
+    category: string;
+    description: string;
+    potentialImprovement: number;
+    implementationDifficulty: 'low' | 'medium' | 'high';
+    priority: 'low' | 'medium' | 'high';
+  }[];
   
-  // Business impact
+  // Business Impact
   businessImpact: {
-    cashFlowImpact: {
-      currentCashFlow: number;
-      potentialCashFlow: number;
-      cashFlowOpportunity: number;
-      impact: number;
-    };
-    returnImpact: {
-      currentReturn: number;
-      potentialReturn: number;
-      returnOpportunity: number;
-      impact: number;
-    };
-    riskImpact: {
-      currentRisk: number;
-      potentialRisk: number;
-      riskOpportunity: number;
-      impact: number;
-    };
+    cashFlowImprovement: number;
+    returnEnhancement: number;
+    riskReduction: number;
+    taxOptimization: number;
+    overallBenefit: number;
   };
   
-  // Comprehensive report
-  report: string;
-  
-  // Executive summary
-  executiveSummary: {
-    totalInvestment: number;
-    cashOnCashReturn: number;
-    capRate: number;
-    totalReturn: number;
+  // Comprehensive Report
+  comprehensiveReport: {
+    executiveSummary: string;
     keyFindings: string[];
-    criticalFactors: string[];
+    investmentAssessment: string;
     recommendations: string[];
-    riskLevel: string;
-    nextSteps: string[];
+    actionItems: {
+      action: string;
+      priority: 'low' | 'medium' | 'high';
+      timeline: string;
+      responsibleParty: string;
+    }[];
+  };
+  
+  // Executive Summary
+  executiveSummary: {
+    capRate: number;
+    cashOnCashReturn: number;
+    totalReturn: number;
+    internalRateOfReturn: number;
+    recommendation: 'invest' | 'consider' | 'avoid' | 'review';
+    keyStrengths: string[];
+    keyWeaknesses: string[];
   };
   
   // Recommendations
   recommendations: {
     category: string;
-    recommendations: string[];
-    priority: 'high' | 'medium' | 'low';
+    recommendation: string;
+    rationale: string;
     expectedImpact: number;
-    implementation: string;
+    implementationSteps: string[];
   }[];
   
-  // Action items
+  // Action Items
   actionItems: {
-    priority: 'immediate' | 'short-term' | 'long-term';
     action: string;
-    owner: string;
+    description: string;
+    priority: 'low' | 'medium' | 'high';
     timeline: string;
-    expectedOutcome: string;
-    cost: number;
+    responsibleParty: string;
+    dependencies: string[];
+    successMetrics: string[];
   }[];
 }

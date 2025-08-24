@@ -1,472 +1,653 @@
-export interface EstatePlanningInputs {
-  // Client Information
-  clientInfo: {
-    name: string;
-    age: number;
-    maritalStatus: 'single' | 'married' | 'divorced' | 'widowed';
-    citizenship: string;
-    stateOfResidence: string;
-    healthStatus: 'excellent' | 'good' | 'fair' | 'poor';
-    lifeExpectancy: number;
-    dependents: number;
-    beneficiaries: {
-      name: string;
-      relationship: string;
+export interface EstatePlanningCalculatorInputs {
+  // Personal Information
+  personalInfo: {
+    // Basic Information
+    basicInfo: {
+      firstName: string;
+      lastName: string;
+      dateOfBirth: string;
       age: number;
-      percentage: number;
+      gender: 'male' | 'female' | 'other';
+      maritalStatus: 'single' | 'married' | 'divorced' | 'widowed';
+      dependents: number;
+      occupation: string;
+      employer: string;
+      employmentStatus: 'employed' | 'self_employed' | 'retired' | 'unemployed';
+      education: string;
+      healthStatus: 'excellent' | 'good' | 'fair' | 'poor';
+      lifeExpectancy: number;
+      citizenship: string;
+      residency: string;
+    };
+    
+    // Spouse Information
+    spouseInfo: {
+      firstName: string;
+      lastName: string;
+      dateOfBirth: string;
+      age: number;
+      gender: string;
+      occupation: string;
+      employer: string;
+      employmentStatus: string;
+      education: string;
+      healthStatus: string;
+      lifeExpectancy: number;
+      citizenship: string;
+      residency: string;
+    };
+    
+    // Dependents Information
+    dependentsInfo: {
+      firstName: string;
+      lastName: string;
+      dateOfBirth: string;
+      age: number;
+      gender: string;
+      relationship: string;
+      occupation: string;
+      education: string;
+      healthStatus: string;
+      specialNeeds: string[];
+      expectedIndependence: number;
+      guardianship: string;
     }[];
+    
+    // Contact Information
+    contactInfo: {
+      address: {
+        street: string;
+        city: string;
+        state: string;
+        zipCode: string;
+        country: string;
+      };
+      phone: string;
+      email: string;
+      emergencyContact: {
+        name: string;
+        relationship: string;
+        phone: string;
+        email: string;
+      };
+    };
+    
+    // Tax Information
+    taxInfo: {
+      taxFilingStatus: 'single' | 'married_filing_jointly' | 'married_filing_separately' | 'head_of_household' | 'qualifying_widow';
+      taxBracket: number;
+      stateOfResidence: string;
+      stateTaxRate: number;
+      localTaxRate: number;
+      alternativeMinimumTax: boolean;
+      itemizedDeductions: boolean;
+      taxDeductions: number;
+      taxCredits: number;
+    };
   };
   
-  // Estate Assets
-  estateAssets: {
-    // Liquid Assets
-    liquidAssets: {
-      cash: number;
-      checkingAccounts: number;
-      savingsAccounts: number;
-      moneyMarketAccounts: number;
-      certificatesOfDeposit: number;
-      totalLiquidAssets: number;
-    };
+  // Asset Information
+  assetInfo: {
+    // Cash Assets
+    cashAssets: {
+      account: string;
+      institution: string;
+      balance: number;
+      interestRate: number;
+      liquidity: 'high' | 'medium' | 'low';
+      ownership: 'individual' | 'joint' | 'trust' | 'business';
+      beneficiary: string;
+    }[];
     
     // Investment Assets
     investmentAssets: {
-      stocks: number;
-      bonds: number;
-      mutualFunds: number;
-      exchangeTradedFunds: number;
-      realEstateInvestmentTrusts: number;
-      commodities: number;
-      cryptocurrencies: number;
-      otherInvestments: number;
-      totalInvestmentAssets: number;
-    };
+      account: string;
+      institution: string;
+      type: string;
+      balance: number;
+      expectedReturn: number;
+      riskLevel: 'low' | 'medium' | 'high';
+      liquidity: string;
+      taxStatus: 'taxable' | 'tax_deferred' | 'tax_free';
+      ownership: string;
+      beneficiary: string;
+    }[];
     
-    // Real Estate
-    realEstate: {
-      primaryResidence: {
-        address: string;
-        value: number;
-        mortgage: number;
-        equity: number;
-      };
-      vacationHomes: {
-        address: string;
-        value: number;
-        mortgage: number;
-        equity: number;
-      }[];
-      investmentProperties: {
-        address: string;
-        value: number;
-        mortgage: number;
-        equity: number;
-        rentalIncome: number;
-      }[];
-      commercialProperties: {
-        address: string;
-        value: number;
-        mortgage: number;
-        equity: number;
-        rentalIncome: number;
-      }[];
-      totalRealEstate: number;
-    };
+    // Real Estate Assets
+    realEstateAssets: {
+      property: string;
+      type: string;
+      value: number;
+      mortgage: number;
+      equity: number;
+      rentalIncome: number;
+      expenses: number;
+      appreciationRate: number;
+      liquidity: string;
+      ownership: string;
+      beneficiary: string;
+      location: string;
+      title: string;
+    }[];
     
-    // Business Interests
-    businessInterests: {
-      soleProprietorship: number;
-      partnerships: number;
-      limitedLiabilityCompanies: number;
-      sCorporations: number;
-      cCorporations: number;
-      professionalCorporations: number;
-      totalBusinessInterests: number;
-    };
+    // Business Assets
+    businessAssets: {
+      business: string;
+      type: string;
+      value: number;
+      income: number;
+      expenses: number;
+      growthRate: number;
+      liquidity: string;
+      ownership: string;
+      beneficiary: string;
+      businessStructure: string;
+      buySellAgreement: boolean;
+      keyPersonInsurance: boolean;
+    }[];
     
     // Retirement Assets
     retirementAssets: {
-      traditionalIra: number;
-      rothIra: number;
-      k401k: number;
-      k403b: number;
-      pension: number;
-      annuities: number;
-      otherRetirement: number;
-      totalRetirementAssets: number;
-    };
+      account: string;
+      type: string;
+      balance: number;
+      expectedReturn: number;
+      requiredMinimumDistribution: number;
+      distributionAge: number;
+      ownership: string;
+      beneficiary: string;
+      taxStatus: string;
+    }[];
     
     // Life Insurance
     lifeInsurance: {
-      termLife: number;
-      wholeLife: number;
-      universalLife: number;
-      variableLife: number;
-      groupLife: number;
-      totalLifeInsurance: number;
-    };
+      policyName: string;
+      insurer: string;
+      policyType: string;
+      faceAmount: number;
+      cashValue: number;
+      premium: number;
+      ownership: string;
+      beneficiary: string;
+      irrevocableBeneficiary: boolean;
+    }[];
     
     // Personal Property
     personalProperty: {
-      vehicles: number;
-      jewelry: number;
-      artwork: number;
-      collectibles: number;
-      furniture: number;
-      electronics: number;
-      otherPersonalProperty: number;
-      totalPersonalProperty: number;
-    };
+      item: string;
+      type: string;
+      value: number;
+      description: string;
+      ownership: string;
+      beneficiary: string;
+      specialValue: boolean;
+      appraisal: boolean;
+    }[];
     
     // Other Assets
     otherAssets: {
-      intellectualProperty: number;
-      royalties: number;
-      mineralRights: number;
-      oilAndGas: number;
-      otherAssets: number;
-      totalOtherAssets: number;
-    };
+      asset: string;
+      type: string;
+      value: number;
+      income: number;
+      growthRate: number;
+      liquidity: string;
+      ownership: string;
+      beneficiary: string;
+    }[];
     
-    totalEstateValue: number;
+    // Total Assets
+    totalAssets: number;
+    totalLiabilities: number;
+    netWorth: number;
   };
   
-  // Estate Liabilities
-  estateLiabilities: {
-    mortgages: number;
-    personalLoans: number;
-    creditCardDebt: number;
-    medicalDebt: number;
-    taxLiabilities: number;
-    businessDebt: number;
-    otherLiabilities: number;
-    totalLiabilities: number;
+  // Liability Information
+  liabilityInfo: {
+    // Mortgage Debt
+    mortgageDebt: {
+      property: string;
+      balance: number;
+      interestRate: number;
+      monthlyPayment: number;
+      remainingTerm: number;
+      type: 'fixed' | 'adjustable' | 'interest_only';
+      coSigner: string;
+    }[];
+    
+    // Consumer Debt
+    consumerDebt: {
+      type: string;
+      balance: number;
+      interestRate: number;
+      monthlyPayment: number;
+      priority: 'high' | 'medium' | 'low';
+      coSigner: string;
+    }[];
+    
+    // Business Debt
+    businessDebt: {
+      business: string;
+      type: string;
+      balance: number;
+      interestRate: number;
+      monthlyPayment: number;
+      remainingTerm: number;
+      personalGuarantee: boolean;
+      coSigner: string;
+    }[];
+    
+    // Other Debt
+    otherDebt: {
+      type: string;
+      balance: number;
+      interestRate: number;
+      monthlyPayment: number;
+      remainingTerm: number;
+      coSigner: string;
+    }[];
+    
+    // Total Debt
+    totalDebt: number;
+    debtToAssetRatio: number;
   };
   
   // Estate Planning Documents
   estatePlanningDocuments: {
     // Wills
-    will: {
-      hasWill: boolean;
+    wills: {
+      documentName: string;
+      type: 'simple' | 'complex' | 'pour_over' | 'holographic';
+      dateCreated: string;
       lastUpdated: string;
       executor: string;
-      backupExecutor: string;
-      guardians: string[];
-      backupGuardians: string[];
-    };
+      alternateExecutor: string;
+      beneficiaries: {
+        name: string;
+        relationship: string;
+        percentage: number;
+        specificBequests: string[];
+      }[];
+      guardians: {
+        minor: string;
+        guardian: string;
+        alternateGuardian: string;
+      }[];
+      charitableBequests: {
+        organization: string;
+        amount: number;
+        percentage: number;
+      }[];
+      conditions: string[];
+      valid: boolean;
+      probateRequired: boolean;
+    }[];
     
     // Trusts
     trusts: {
-      revocableLivingTrust: {
-        hasTrust: boolean;
-        trustee: string;
-        backupTrustee: string;
-        beneficiaries: string[];
-        trustValue: number;
-      };
-      irrevocableTrust: {
-        hasTrust: boolean;
-        trustee: string;
-        backupTrustee: string;
-        beneficiaries: string[];
-        trustValue: number;
-        trustType: string;
-      };
-      charitableTrust: {
-        hasTrust: boolean;
-        trustee: string;
-        backupTrustee: string;
-        beneficiaries: string[];
-        trustValue: number;
-        charitableOrganization: string;
-      };
-      specialNeedsTrust: {
-        hasTrust: boolean;
-        trustee: string;
-        backupTrustee: string;
-        beneficiary: string;
-        trustValue: number;
-      };
-    };
+      trustName: string;
+      type: 'revocable' | 'irrevocable' | 'charitable' | 'special_needs' | 'life_insurance' | 'qualified_personal_residence' | 'qualified_domestic';
+      dateCreated: string;
+      lastUpdated: string;
+      grantor: string;
+      trustee: string;
+      alternateTrustee: string;
+      beneficiaries: {
+        name: string;
+        relationship: string;
+        distribution: string;
+        conditions: string[];
+      }[];
+      assets: string[];
+      fundingStatus: 'funded' | 'partially_funded' | 'unfunded';
+      taxIdentificationNumber: string;
+      valid: boolean;
+    }[];
     
     // Powers of Attorney
     powersOfAttorney: {
-      financialPowerOfAttorney: {
-        hasDocument: boolean;
-        agent: string;
-        backupAgent: string;
-        effectiveDate: string;
-      };
-      healthcarePowerOfAttorney: {
-        hasDocument: boolean;
-        agent: string;
-        backupAgent: string;
-        effectiveDate: string;
-      };
-    };
+      documentName: string;
+      type: 'financial' | 'healthcare' | 'durable' | 'springing' | 'limited';
+      dateCreated: string;
+      lastUpdated: string;
+      principal: string;
+      agent: string;
+      alternateAgent: string;
+      powers: string[];
+      limitations: string[];
+      effectiveDate: string;
+      terminationDate: string;
+      valid: boolean;
+    }[];
     
-    // Advanced Directives
-    advancedDirectives: {
-      livingWill: {
-        hasDocument: boolean;
-        lastUpdated: string;
-        healthcareAgent: string;
-      };
-      doNotResuscitate: {
-        hasDocument: boolean;
-        lastUpdated: string;
-      };
-      organDonation: {
-        hasDocument: boolean;
-        preferences: string;
-      };
-    };
+    // Healthcare Directives
+    healthcareDirectives: {
+      documentName: string;
+      type: 'living_will' | 'healthcare_proxy' | 'advance_directive' | 'dnr';
+      dateCreated: string;
+      lastUpdated: string;
+      principal: string;
+      agent: string;
+      alternateAgent: string;
+      instructions: string[];
+      conditions: string[];
+      valid: boolean;
+    }[];
     
-    // Business Succession
-    businessSuccession: {
-      buySellAgreement: {
-        hasAgreement: boolean;
-        type: 'cross_purchase' | 'entity_purchase' | 'wait_and_see';
-        funding: 'life_insurance' | 'sinking_fund' | 'installment_sale';
-        value: number;
+    // Business Documents
+    businessDocuments: {
+      documentName: string;
+      type: 'buy_sell_agreement' | 'operating_agreement' | 'partnership_agreement' | 'shareholder_agreement';
+      dateCreated: string;
+      lastUpdated: string;
+      business: string;
+      parties: string[];
+      terms: string[];
+      funding: string;
+      valid: boolean;
+    }[];
+    
+    // Other Documents
+    otherDocuments: {
+      documentName: string;
+      type: string;
+      dateCreated: string;
+      lastUpdated: string;
+      description: string;
+      parties: string[];
+      valid: boolean;
+    }[];
+  };
+  
+  // Beneficiary Information
+  beneficiaryInfo: {
+    // Primary Beneficiaries
+    primaryBeneficiaries: {
+      name: string;
+      relationship: string;
+      dateOfBirth: string;
+      age: number;
+      contactInfo: {
+        address: string;
+        phone: string;
+        email: string;
       };
-      keyPersonInsurance: {
-        hasInsurance: boolean;
-        insured: string;
-        beneficiary: string;
-        amount: number;
+      financialStatus: 'dependent' | 'independent' | 'wealthy';
+      specialNeeds: string[];
+      guardianship: string;
+      percentage: number;
+      specificAssets: string[];
+      conditions: string[];
+    }[];
+    
+    // Contingent Beneficiaries
+    contingentBeneficiaries: {
+      name: string;
+      relationship: string;
+      dateOfBirth: string;
+      age: number;
+      contactInfo: {
+        address: string;
+        phone: string;
+        email: string;
       };
-    };
+      financialStatus: string;
+      specialNeeds: string[];
+      guardianship: string;
+      percentage: number;
+      specificAssets: string[];
+      conditions: string[];
+    }[];
+    
+    // Charitable Beneficiaries
+    charitableBeneficiaries: {
+      organization: string;
+      type: string;
+      taxId: string;
+      contactInfo: {
+        address: string;
+        phone: string;
+        email: string;
+      };
+      percentage: number;
+      specificAssets: string[];
+      purpose: string;
+      conditions: string[];
+    }[];
+  };
+  
+  // Estate Planning Goals
+  estatePlanningGoals: {
+    // Distribution Goals
+    distributionGoals: {
+      goal: string;
+      beneficiary: string;
+      asset: string;
+      amount: number;
+      percentage: number;
+      timing: 'immediate' | 'deferred' | 'conditional';
+      conditions: string[];
+      priority: 'high' | 'medium' | 'low';
+    }[];
+    
+    // Tax Goals
+    taxGoals: {
+      goal: string;
+      strategy: string;
+      expectedSavings: number;
+      implementation: string;
+      priority: string;
+    }[];
+    
+    // Protection Goals
+    protectionGoals: {
+      goal: string;
+      beneficiary: string;
+      protection: string;
+      amount: number;
+      duration: number;
+      priority: string;
+    }[];
+    
+    // Charitable Goals
+    charitableGoals: {
+      goal: string;
+      organization: string;
+      amount: number;
+      percentage: number;
+      timing: string;
+      purpose: string;
+      priority: string;
+    }[];
+    
+    // Business Succession Goals
+    businessSuccessionGoals: {
+      goal: string;
+      business: string;
+      successor: string;
+      timing: string;
+      method: string;
+      funding: string;
+      priority: string;
+    }[];
   };
   
   // Tax Considerations
   taxConsiderations: {
     // Federal Estate Tax
     federalEstateTax: {
-      applicableExclusionAmount: number;
-      currentExclusion: number;
+      exemption: number;
+      rate: number;
       taxableEstate: number;
-      estateTaxRate: number;
-      estimatedEstateTax: number;
+      estimatedTax: number;
+      portability: boolean;
+      portabilityAmount: number;
     };
     
     // State Estate Tax
     stateEstateTax: {
-      stateExclusion: number;
-      stateTaxableEstate: number;
-      stateEstateTaxRate: number;
-      estimatedStateEstateTax: number;
+      state: string;
+      exemption: number;
+      rate: number;
+      taxableEstate: number;
+      estimatedTax: number;
     };
     
     // Gift Tax
     giftTax: {
       annualExclusion: number;
-      lifetimeExclusion: number;
-      giftsGiven: number;
-      remainingExclusion: number;
+      lifetimeExemption: number;
+      rate: number;
+      giftsMade: number;
+      remainingExemption: number;
     };
     
-    // Generation Skipping Transfer Tax
+    // Generation-Skipping Transfer Tax
     generationSkippingTransferTax: {
-      gsttExclusion: number;
-      gsttExemptionUsed: number;
-      remainingGsttExemption: number;
+      exemption: number;
+      rate: number;
+      transfers: number;
+      estimatedTax: number;
     };
     
     // Income Tax
     incomeTax: {
-      stepUpInBasis: boolean;
-      capitalGainsTax: number;
-      incomeTaxRate: number;
+      basis: 'stepped_up' | 'carryover' | 'other';
+      capitalGains: number;
+      ordinaryIncome: number;
+      estimatedTax: number;
     };
   };
   
-  // Charitable Planning
-  charitablePlanning: {
-    charitableIntentions: {
-      hasCharitableIntentions: boolean;
-      charitableOrganizations: string[];
-      intendedAmount: number;
-      percentageOfEstate: number;
+  // Estate Planning Strategy
+  estatePlanningStrategy: {
+    // Asset Protection Strategy
+    assetProtectionStrategy: {
+      strategy: string;
+      description: string;
+      assets: string[];
+      protection: string;
+      cost: number;
+      effectiveness: number;
     };
     
-    charitableGiving: {
-      charitableGiftAnnuity: {
-        hasAnnuity: boolean;
-        amount: number;
-        organization: string;
-        annuityRate: number;
-      };
-      charitableRemainderTrust: {
-        hasTrust: boolean;
-        amount: number;
-        organization: string;
-        payoutRate: number;
-      };
-      charitableLeadTrust: {
-        hasTrust: boolean;
-        amount: number;
-        organization: string;
-        payoutRate: number;
-      };
-      donorAdvisedFund: {
-        hasFund: boolean;
-        amount: number;
-        organization: string;
-      };
+    // Tax Minimization Strategy
+    taxMinimizationStrategy: {
+      strategy: string;
+      description: string;
+      expectedSavings: number;
+      implementation: string;
+      cost: number;
+      effectiveness: number;
+    };
+    
+    // Probate Avoidance Strategy
+    probateAvoidanceStrategy: {
+      strategy: string;
+      description: string;
+      assets: string[];
+      method: string;
+      cost: number;
+      effectiveness: number;
+    };
+    
+    // Business Succession Strategy
+    businessSuccessionStrategy: {
+      strategy: string;
+      description: string;
+      business: string;
+      successor: string;
+      method: string;
+      funding: string;
+      cost: number;
+      effectiveness: number;
+    };
+    
+    // Charitable Giving Strategy
+    charitableGivingStrategy: {
+      strategy: string;
+      description: string;
+      organization: string;
+      method: string;
+      taxBenefits: number;
+      cost: number;
+      effectiveness: number;
     };
   };
   
-  // Family Dynamics
-  familyDynamics: {
-    familyStructure: {
-      spouse: {
-        name: string;
-        age: number;
-        healthStatus: string;
-        financialDependency: boolean;
-      };
-      children: {
-        name: string;
-        age: number;
-        financialDependency: boolean;
-        specialNeeds: boolean;
-        guardianship: string;
-      }[];
-      grandchildren: {
-        name: string;
-        age: number;
-        relationship: string;
-      }[];
-      parents: {
-        name: string;
-        age: number;
-        financialDependency: boolean;
-        careNeeds: boolean;
-      }[];
+  // Market Assumptions
+  marketAssumptions: {
+    // Asset Growth Assumptions
+    assetGrowthAssumptions: {
+      assetType: string;
+      currentValue: number;
+      growthRate: number;
+      projectedValue: number;
+    }[];
+    
+    // Economic Assumptions
+    economicAssumptions: {
+      inflationRate: number;
+      realGdpGrowth: number;
+      interestRate: number;
+      taxRate: number;
+      estateTaxExemption: number;
+      giftTaxExclusion: number;
     };
     
-    familyRelationships: {
-      familyHarmony: 'excellent' | 'good' | 'fair' | 'poor';
-      potentialConflicts: string[];
-      specialConsiderations: string[];
-    };
+    // Life Event Assumptions
+    lifeEventAssumptions: {
+      event: string;
+      probability: number;
+      impact: number;
+      timing: number;
+      description: string;
+    }[];
   };
-  
-  // Goals and Objectives
-  goalsAndObjectives: {
-    primaryGoals: {
-      assetProtection: boolean;
-      taxMinimization: boolean;
-      probateAvoidance: boolean;
-      familyHarmony: boolean;
-      charitableGiving: boolean;
-      businessContinuity: boolean;
-      privacy: boolean;
-      control: boolean;
-    };
-    
-    specificObjectives: {
-      provideForSpouse: boolean;
-      provideForChildren: boolean;
-      provideForGrandchildren: boolean;
-      provideForCharity: boolean;
-      minimizeTaxes: boolean;
-      avoidProbate: boolean;
-      protectAssets: boolean;
-      maintainControl: boolean;
-    };
-    
-    timeline: {
-      immediate: string[];
-      shortTerm: string[];
-      longTerm: string[];
-    };
-  };
-  
-  // Risk Assessment
-  riskAssessment: {
-    legalRisks: {
-      willContest: boolean;
-      trustChallenges: boolean;
-      beneficiaryDisputes: boolean;
-      executorIssues: boolean;
-      trusteeIssues: boolean;
-    };
-    
-    financialRisks: {
-      marketVolatility: boolean;
-      inflationRisk: boolean;
-      interestRateRisk: boolean;
-      currencyRisk: boolean;
-      concentrationRisk: boolean;
-    };
-    
-    familyRisks: {
-      divorce: boolean;
-      remarriage: boolean;
-      blendedFamily: boolean;
-      substanceAbuse: boolean;
-      financialIrresponsibility: boolean;
-      specialNeeds: boolean;
-    };
-    
-    businessRisks: {
-      businessFailure: boolean;
-      keyPersonRisk: boolean;
-      successionFailure: boolean;
-      marketChanges: boolean;
-      regulatoryChanges: boolean;
-    };
-  };
-  
-  // Analysis Parameters
-  analysisPeriod: number; // in years
-  inflationRate: number;
-  investmentReturn: number;
-  taxRateProjection: number;
-  includeFederalTaxes: boolean;
-  includeStateTaxes: boolean;
-  includeGiftTaxes: boolean;
-  includeGenerationSkippingTax: boolean;
-  
-  // Scenario Analysis
-  scenarios: {
-    name: string;
-    probability: number;
-    assetGrowth: number;
-    taxLawChanges: number;
-    familyChanges: number;
-    healthChanges: number;
-  }[];
   
   // Monte Carlo Simulation
   monteCarloSimulations: number;
   monteCarloTimeSteps: number;
-  includeTaxLawChanges: boolean;
-  includeMarketVolatility: boolean;
-  includeLifeExpectancy: boolean;
+  includeAssetGrowthRisk: boolean;
+  includeTaxRisk: boolean;
+  includeLegalRisk: boolean;
+  includeMarketRisk: boolean;
   
-  // Historical Analysis
+  // Analysis Parameters
+  analysisPeriod: number;
+  confidenceLevel: number;
+  planningHorizon: number;
+  includeTaxConsiderations: boolean;
+  includeInflationAdjustments: boolean;
+  includeLegalConsiderations: boolean;
+  
+  // Calculation Options
+  calculationOptions: {
+    includeGoalAnalysis: boolean;
+    includeTaxAnalysis: boolean;
+    includeAssetProtection: boolean;
+    includeProbateAnalysis: boolean;
+    includeBusinessSuccession: boolean;
+    includeMonteCarlo: boolean;
+  };
+  
+  // Historical Data
   historicalData: {
-    year: number;
-    estateValue: number;
-    taxLiability: number;
-    netEstate: number;
-    beneficiaries: number;
+    date: string;
+    netWorth: number;
+    estateTaxLiability: number;
+    giftTaxLiability: number;
+    assetGrowth: number;
   }[];
   
   // Reporting Preferences
-  includeAssetAnalysis: boolean;
+  includeGoalAnalysis: boolean;
   includeTaxAnalysis: boolean;
-  includeDocumentAnalysis: boolean;
-  includeCharitableAnalysis: boolean;
-  includeFamilyAnalysis: boolean;
-  includeRiskAnalysis: boolean;
-  includeScenarioAnalysis: boolean;
+  includeAssetProtection: boolean;
+  includeProbateAnalysis: boolean;
+  includeBusinessSuccession: boolean;
   includeMonteCarlo: boolean;
   includeHistoricalAnalysis: boolean;
-  includeComparativeAnalysis: boolean;
   includeRecommendations: boolean;
   includeActionItems: boolean;
   
@@ -477,189 +658,643 @@ export interface EstatePlanningInputs {
   includeRecommendations: boolean;
 }
 
-export interface EstatePlanningResults {
+export interface EstatePlanningCalculatorResults {
   // Core Estate Metrics
-  totalEstateValue: number;
-  totalLiabilities: number;
-  netEstateValue: number;
-  estimatedTaxLiability: number;
-  netToBeneficiaries: number;
+  estatePlanningScore: number;
+  estateTaxLiability: number;
+  probateCosts: number;
+  assetProtection: number;
+  estateEfficiency: number;
+  
+  // Estate Planning Analysis
+  estatePlanningAnalysis: {
+    estatePlanningScore: number;
+    estateTaxLiability: number;
+    probateCosts: number;
+    assetProtection: number;
+    estateEfficiency: number;
+    analysisBreakdown: {
+      component: string;
+      value: number;
+      contribution: number;
+    }[];
+    analysisEfficiency: number;
+  };
+  
+  // Personal Analysis
+  personalAnalysis: {
+    basicInfo: {
+      firstName: string;
+      lastName: string;
+      dateOfBirth: string;
+      age: number;
+      gender: string;
+      maritalStatus: string;
+      dependents: number;
+      occupation: string;
+      employer: string;
+      employmentStatus: string;
+      education: string;
+      healthStatus: string;
+      lifeExpectancy: number;
+      citizenship: string;
+      residency: string;
+    };
+    spouseInfo: {
+      firstName: string;
+      lastName: string;
+      dateOfBirth: string;
+      age: number;
+      gender: string;
+      occupation: string;
+      employer: string;
+      employmentStatus: string;
+      education: string;
+      healthStatus: string;
+      lifeExpectancy: number;
+      citizenship: string;
+      residency: string;
+    };
+    dependentsInfo: {
+      firstName: string;
+      lastName: string;
+      dateOfBirth: string;
+      age: number;
+      gender: string;
+      relationship: string;
+      occupation: string;
+      education: string;
+      healthStatus: string;
+      specialNeeds: string[];
+      expectedIndependence: number;
+      guardianship: string;
+    }[];
+    contactInfo: {
+      address: {
+        street: string;
+        city: string;
+        state: string;
+        zipCode: string;
+        country: string;
+      };
+      phone: string;
+      email: string;
+      emergencyContact: {
+        name: string;
+        relationship: string;
+        phone: string;
+        email: string;
+      };
+    };
+    taxInfo: {
+      taxFilingStatus: string;
+      taxBracket: number;
+      stateOfResidence: string;
+      stateTaxRate: number;
+      localTaxRate: number;
+      alternativeMinimumTax: boolean;
+      itemizedDeductions: boolean;
+      taxDeductions: number;
+      taxCredits: number;
+    };
+    personalEfficiency: number;
+  };
   
   // Asset Analysis
   assetAnalysis: {
-    totalEstateValue: number;
-    assetBreakdown: {
-      category: string;
-      value: number;
-      percentage: number;
+    cashAssets: {
+      account: string;
+      institution: string;
+      balance: number;
+      interestRate: number;
+      liquidity: string;
+      ownership: string;
+      beneficiary: string;
     }[];
-    liquidAssets: number;
-    illiquidAssets: number;
-    assetLiquidity: number;
-    assetDiversification: number;
+    investmentAssets: {
+      account: string;
+      institution: string;
+      type: string;
+      balance: number;
+      expectedReturn: number;
+      riskLevel: string;
+      liquidity: string;
+      taxStatus: string;
+      ownership: string;
+      beneficiary: string;
+    }[];
+    realEstateAssets: {
+      property: string;
+      type: string;
+      value: number;
+      mortgage: number;
+      equity: number;
+      rentalIncome: number;
+      expenses: number;
+      appreciationRate: number;
+      liquidity: string;
+      ownership: string;
+      beneficiary: string;
+      location: string;
+      title: string;
+    }[];
+    businessAssets: {
+      business: string;
+      type: string;
+      value: number;
+      income: number;
+      expenses: number;
+      growthRate: number;
+      liquidity: string;
+      ownership: string;
+      beneficiary: string;
+      businessStructure: string;
+      buySellAgreement: boolean;
+      keyPersonInsurance: boolean;
+    }[];
+    retirementAssets: {
+      account: string;
+      type: string;
+      balance: number;
+      expectedReturn: number;
+      requiredMinimumDistribution: number;
+      distributionAge: number;
+      ownership: string;
+      beneficiary: string;
+      taxStatus: string;
+    }[];
+    lifeInsurance: {
+      policyName: string;
+      insurer: string;
+      policyType: string;
+      faceAmount: number;
+      cashValue: number;
+      premium: number;
+      ownership: string;
+      beneficiary: string;
+      irrevocableBeneficiary: boolean;
+    }[];
+    personalProperty: {
+      item: string;
+      type: string;
+      value: number;
+      description: string;
+      ownership: string;
+      beneficiary: string;
+      specialValue: boolean;
+      appraisal: boolean;
+    }[];
+    otherAssets: {
+      asset: string;
+      type: string;
+      value: number;
+      income: number;
+      growthRate: number;
+      liquidity: string;
+      ownership: string;
+      beneficiary: string;
+    }[];
+    totalAssets: number;
+    totalLiabilities: number;
+    netWorth: number;
+    assetEfficiency: number;
   };
   
   // Liability Analysis
   liabilityAnalysis: {
-    totalLiabilities: number;
-    liabilityBreakdown: {
-      category: string;
-      amount: number;
-      percentage: number;
+    mortgageDebt: {
+      property: string;
+      balance: number;
+      interestRate: number;
+      monthlyPayment: number;
+      remainingTerm: number;
+      type: string;
+      coSigner: string;
     }[];
-    debtToEstateRatio: number;
-    liquidityCoverage: number;
-    liabilityRisk: number;
-  };
-  
-  // Tax Analysis
-  taxAnalysis: {
-    federalEstateTax: number;
-    stateEstateTax: number;
-    totalEstateTax: number;
-    effectiveTaxRate: number;
-    taxBreakdown: {
-      category: string;
-      amount: number;
-      percentage: number;
+    consumerDebt: {
+      type: string;
+      balance: number;
+      interestRate: number;
+      monthlyPayment: number;
+      priority: string;
+      coSigner: string;
     }[];
-    taxEfficiency: number;
+    businessDebt: {
+      business: string;
+      type: string;
+      balance: number;
+      interestRate: number;
+      monthlyPayment: number;
+      remainingTerm: number;
+      personalGuarantee: boolean;
+      coSigner: string;
+    }[];
+    otherDebt: {
+      type: string;
+      balance: number;
+      interestRate: number;
+      monthlyPayment: number;
+      remainingTerm: number;
+      coSigner: string;
+    }[];
+    totalDebt: number;
+    debtToAssetRatio: number;
+    liabilityEfficiency: number;
   };
   
   // Document Analysis
   documentAnalysis: {
-    documentCompleteness: number;
-    missingDocuments: string[];
-    documentStrengths: string[];
-    documentWeaknesses: string[];
-    documentRecommendations: string[];
+    wills: {
+      documentName: string;
+      type: string;
+      dateCreated: string;
+      lastUpdated: string;
+      executor: string;
+      alternateExecutor: string;
+      beneficiaries: {
+        name: string;
+        relationship: string;
+        percentage: number;
+        specificBequests: string[];
+      }[];
+      guardians: {
+        minor: string;
+        guardian: string;
+        alternateGuardian: string;
+      }[];
+      charitableBequests: {
+        organization: string;
+        amount: number;
+        percentage: number;
+      }[];
+      conditions: string[];
+      valid: boolean;
+      probateRequired: boolean;
+    }[];
+    trusts: {
+      trustName: string;
+      type: string;
+      dateCreated: string;
+      lastUpdated: string;
+      grantor: string;
+      trustee: string;
+      alternateTrustee: string;
+      beneficiaries: {
+        name: string;
+        relationship: string;
+        distribution: string;
+        conditions: string[];
+      }[];
+      assets: string[];
+      fundingStatus: string;
+      taxIdentificationNumber: string;
+      valid: boolean;
+    }[];
+    powersOfAttorney: {
+      documentName: string;
+      type: string;
+      dateCreated: string;
+      lastUpdated: string;
+      principal: string;
+      agent: string;
+      alternateAgent: string;
+      powers: string[];
+      limitations: string[];
+      effectiveDate: string;
+      terminationDate: string;
+      valid: boolean;
+    }[];
+    healthcareDirectives: {
+      documentName: string;
+      type: string;
+      dateCreated: string;
+      lastUpdated: string;
+      principal: string;
+      agent: string;
+      alternateAgent: string;
+      instructions: string[];
+      conditions: string[];
+      valid: boolean;
+    }[];
+    businessDocuments: {
+      documentName: string;
+      type: string;
+      dateCreated: string;
+      lastUpdated: string;
+      business: string;
+      parties: string[];
+      terms: string[];
+      funding: string;
+      valid: boolean;
+    }[];
+    otherDocuments: {
+      documentName: string;
+      type: string;
+      dateCreated: string;
+      lastUpdated: string;
+      description: string;
+      parties: string[];
+      valid: boolean;
+    }[];
+    documentEfficiency: number;
   };
   
   // Beneficiary Analysis
   beneficiaryAnalysis: {
-    totalBeneficiaries: number;
-    beneficiaryBreakdown: {
-      beneficiary: string;
+    primaryBeneficiaries: {
+      name: string;
       relationship: string;
+      dateOfBirth: string;
+      age: number;
+      contactInfo: {
+        address: string;
+        phone: string;
+        email: string;
+      };
+      financialStatus: string;
+      specialNeeds: string[];
+      guardianship: string;
       percentage: number;
+      specificAssets: string[];
+      conditions: string[];
+    }[];
+    contingentBeneficiaries: {
+      name: string;
+      relationship: string;
+      dateOfBirth: string;
+      age: number;
+      contactInfo: {
+        address: string;
+        phone: string;
+        email: string;
+      };
+      financialStatus: string;
+      specialNeeds: string[];
+      guardianship: string;
+      percentage: number;
+      specificAssets: string[];
+      conditions: string[];
+    }[];
+    charitableBeneficiaries: {
+      organization: string;
+      type: string;
+      taxId: string;
+      contactInfo: {
+        address: string;
+        phone: string;
+        email: string;
+      };
+      percentage: number;
+      specificAssets: string[];
+      purpose: string;
+      conditions: string[];
+    }[];
+    beneficiaryEfficiency: number;
+  };
+  
+  // Goal Analysis
+  goalAnalysis: {
+    distributionGoals: {
+      goal: string;
+      beneficiary: string;
+      asset: string;
       amount: number;
+      percentage: number;
+      timing: string;
+      conditions: string[];
+      priority: string;
+      goalGap: number;
+      requiredActions: string[];
     }[];
-    beneficiaryProtection: number;
-    beneficiaryFairness: number;
+    taxGoals: {
+      goal: string;
+      strategy: string;
+      expectedSavings: number;
+      implementation: string;
+      priority: string;
+      goalGap: number;
+      requiredActions: string[];
+    }[];
+    protectionGoals: {
+      goal: string;
+      beneficiary: string;
+      protection: string;
+      amount: number;
+      duration: number;
+      priority: string;
+      goalGap: number;
+      requiredActions: string[];
+    }[];
+    charitableGoals: {
+      goal: string;
+      organization: string;
+      amount: number;
+      percentage: number;
+      timing: string;
+      purpose: string;
+      priority: string;
+      goalGap: number;
+      requiredActions: string[];
+    }[];
+    businessSuccessionGoals: {
+      goal: string;
+      business: string;
+      successor: string;
+      timing: string;
+      method: string;
+      funding: string;
+      priority: string;
+      goalGap: number;
+      requiredActions: string[];
+    }[];
+    goalEfficiency: number;
   };
   
-  // Trust Analysis
-  trustAnalysis: {
-    totalTrusts: number;
-    trustBreakdown: {
-      trustType: string;
-      value: number;
-      beneficiaries: string[];
-      taxBenefits: number;
-    }[];
-    trustEfficiency: number;
-    probateAvoidance: number;
-  };
-  
-  // Charitable Analysis
-  charitableAnalysis: {
-    charitableIntentions: boolean;
-    charitableAmount: number;
-    charitablePercentage: number;
-    taxBenefits: number;
-    charitableEfficiency: number;
-  };
-  
-  // Family Analysis
-  familyAnalysis: {
-    familyStructure: string;
-    familyHarmony: number;
-    potentialConflicts: string[];
-    specialNeeds: boolean;
-    familyProtection: number;
-  };
-  
-  // Business Analysis
-  businessAnalysis: {
-    businessValue: number;
-    businessPercentage: number;
-    successionPlan: boolean;
-    keyPersonInsurance: boolean;
-    businessContinuity: number;
-  };
-  
-  // Risk Analysis
-  riskAnalysis: {
-    legalRisks: {
-      risk: string;
-      probability: number;
-      impact: number;
-      mitigation: string;
-    }[];
-    financialRisks: {
-      risk: string;
-      probability: number;
-      impact: number;
-      mitigation: string;
-    }[];
-    familyRisks: {
-      risk: string;
-      probability: number;
-      impact: number;
-      mitigation: string;
-    }[];
-    businessRisks: {
-      risk: string;
-      probability: number;
-      impact: number;
-      mitigation: string;
-    }[];
-    overallRiskScore: number;
-  };
-  
-  // Estate Planning Score
-  estatePlanningScore: {
-    overallScore: number;
-    componentScores: {
-      assetProtection: number;
-      taxEfficiency: number;
-      probateAvoidance: number;
-      familyHarmony: number;
-      charitableGiving: number;
-      businessContinuity: number;
-      privacy: number;
-      control: number;
+  // Tax Analysis
+  taxAnalysis: {
+    federalEstateTax: {
+      exemption: number;
+      rate: number;
+      taxableEstate: number;
+      estimatedTax: number;
+      portability: boolean;
+      portabilityAmount: number;
     };
-    recommendations: string[];
+    stateEstateTax: {
+      state: string;
+      exemption: number;
+      rate: number;
+      taxableEstate: number;
+      estimatedTax: number;
+    };
+    giftTax: {
+      annualExclusion: number;
+      lifetimeExemption: number;
+      rate: number;
+      giftsMade: number;
+      remainingExemption: number;
+    };
+    generationSkippingTransferTax: {
+      exemption: number;
+      rate: number;
+      transfers: number;
+      estimatedTax: number;
+    };
+    incomeTax: {
+      basis: string;
+      capitalGains: number;
+      ordinaryIncome: number;
+      estimatedTax: number;
+    };
+    totalTaxLiability: number;
+    taxEfficiency: number;
   };
   
-  // Comparative Analysis
-  comparativeAnalysis: {
-    averageEstateSize: number;
-    averageTaxRate: number;
-    peerComparison: {
-      peer: string;
-      estateSize: number;
-      taxRate: number;
-      planningScore: number;
+  // Strategy Analysis
+  strategyAnalysis: {
+    assetProtectionStrategy: {
+      strategy: string;
+      description: string;
+      assets: string[];
+      protection: string;
+      cost: number;
+      effectiveness: number;
+    };
+    taxMinimizationStrategy: {
+      strategy: string;
+      description: string;
+      expectedSavings: number;
+      implementation: string;
+      cost: number;
+      effectiveness: number;
+    };
+    probateAvoidanceStrategy: {
+      strategy: string;
+      description: string;
+      assets: string[];
+      method: string;
+      cost: number;
+      effectiveness: number;
+    };
+    businessSuccessionStrategy: {
+      strategy: string;
+      description: string;
+      business: string;
+      successor: string;
+      method: string;
+      funding: string;
+      cost: number;
+      effectiveness: number;
+    };
+    charitableGivingStrategy: {
+      strategy: string;
+      description: string;
+      organization: string;
+      method: string;
+      taxBenefits: number;
+      cost: number;
+      effectiveness: number;
+    };
+    strategyEfficiency: number;
+  };
+  
+  // Probate Analysis
+  probateAnalysis: {
+    probateAssets: {
+      asset: string;
+      value: number;
+      probateRequired: boolean;
+      estimatedCost: number;
     }[];
-    marketPosition: number;
+    probateCosts: {
+      courtFees: number;
+      attorneyFees: number;
+      executorFees: number;
+      appraisalFees: number;
+      otherFees: number;
+      totalCosts: number;
+    };
+    probateTime: {
+      estimatedDuration: number;
+      factors: string[];
+      delays: string[];
+    };
+    probateAvoidance: {
+      strategy: string;
+      assets: string[];
+      method: string;
+      cost: number;
+      savings: number;
+    };
+    probateEfficiency: number;
   };
   
-  // Scenario Analysis Results
-  scenarioResults: {
-    scenarioName: string;
-    probability: number;
-    estateValue: number;
-    taxLiability: number;
-    netToBeneficiaries: number;
-    planningScore: number;
+  // Asset Protection Analysis
+  assetProtectionAnalysis: {
+    protectedAssets: {
+      asset: string;
+      protection: string;
+      method: string;
+      effectiveness: number;
+    }[];
+    unprotectedAssets: {
+      asset: string;
+      risk: string;
+      exposure: number;
+      recommendation: string;
+    }[];
+    protectionStrategies: {
+      strategy: string;
+      description: string;
+      assets: string[];
+      cost: number;
+      effectiveness: number;
+      recommendation: string;
+    }[];
+    assetProtectionEfficiency: number;
+  };
+  
+  // Business Succession Analysis
+  businessSuccessionAnalysis: {
+    businessValue: {
+      business: string;
+      currentValue: number;
+      projectedValue: number;
+      valuationMethod: string;
+    };
+    successionPlan: {
+      business: string;
+      successor: string;
+      method: string;
+      funding: string;
+      timeline: string;
+      cost: number;
+    };
+    fundingOptions: {
+      option: string;
+      amount: number;
+      cost: number;
+      feasibility: number;
+      recommendation: string;
+    }[];
+    businessSuccessionEfficiency: number;
+  };
+  
+  // Sensitivity Analysis
+  sensitivityAnalysis: {
+    variable: string;
+    baseValue: number;
+    lowValue: number;
+    highValue: number;
+    lowEstatePlanning: number;
+    highEstatePlanning: number;
+    sensitivity: number;
   }[];
   
   // Monte Carlo Results
   monteCarloResults: {
-    meanEstateValue: number;
-    medianEstateValue: number;
+    meanEstatePlanning: number;
+    medianEstatePlanning: number;
     standardDeviation: number;
     percentiles: {
       p5: number;
@@ -671,46 +1306,82 @@ export interface EstatePlanningResults {
       p95: number;
     };
     probabilityDistribution: {
-      estateValue: number;
+      value: number;
       probability: number;
     }[];
+    successProbability: number;
+    monteCarloEfficiency: number;
+  };
+  
+  // Estate Planning Planning Analysis
+  estatePlanningPlanningAnalysis: {
+    optimizationOpportunities: {
+      category: string;
+      opportunity: string;
+      potentialImprovement: number;
+      implementationDifficulty: 'low' | 'medium' | 'high';
+      priority: 'low' | 'medium' | 'high';
+    }[];
+    planningStrategies: {
+      strategy: string;
+      description: string;
+      expectedImprovement: number;
+      implementationSteps: string[];
+      timeline: string;
+    }[];
+    planningEfficiency: number;
+  };
+  
+  // Comparison Analysis
+  comparisonAnalysis: {
+    alternativeStrategies: {
+      strategy: string;
+      expectedReturn: number;
+      risk: number;
+      efficiency: number;
+    }[];
+    benchmarkComparison: {
+      benchmark: string;
+      benchmarkScore: number;
+      planScore: number;
+      outperformance: number;
+      efficiency: number;
+    };
+    comparisonEfficiency: number;
+  };
+  
+  // Estate Planning Score
+  estatePlanningScore: {
+    overallScore: number;
+    componentScores: {
+      personal: number;
+      assets: number;
+      documents: number;
+      beneficiaries: number;
+      goals: number;
+      strategy: number;
+    };
+    recommendation: 'excellent' | 'good' | 'fair' | 'poor' | 'needs_improvement';
   };
   
   // Historical Analysis
   historicalAnalysis: {
-    historicalEstateValue: number;
-    historicalTaxLiability: number;
+    historicalProgress: {
+      date: string;
+      netWorth: number;
+      estateTaxLiability: number;
+      estatePlanningScore: number;
+    }[];
     historicalTrends: string[];
-    historicalVolatility: number;
     yearOverYearChange: number;
   };
-  
-  // Sensitivity Analysis
-  sensitivityAnalysis: {
-    parameter: string;
-    baseValue: number;
-    lowValue: number;
-    highValue: number;
-    lowEstateValue: number;
-    highEstateValue: number;
-    sensitivity: number;
-  }[];
-  
-  // Optimization Opportunities
-  optimizationOpportunities: {
-    category: string;
-    description: string;
-    potentialSavings: number;
-    implementationDifficulty: 'low' | 'medium' | 'high';
-    priority: 'low' | 'medium' | 'high';
-  }[];
   
   // Business Impact
   businessImpact: {
     taxSavings: number;
     probateSavings: number;
-    familyProtection: number;
     assetProtection: number;
+    efficiencyGain: number;
     overallBenefit: number;
   };
   
@@ -730,10 +1401,12 @@ export interface EstatePlanningResults {
   
   // Executive Summary
   executiveSummary: {
-    totalEstateValue: number;
-    netToBeneficiaries: number;
-    taxLiability: number;
-    recommendation: 'implement' | 'review' | 'maintain';
+    estatePlanningScore: number;
+    estateTaxLiability: number;
+    probateCosts: number;
+    assetProtection: number;
+    estateEfficiency: number;
+    recommendation: 'excellent' | 'good' | 'fair' | 'poor' | 'needs_improvement';
     keyStrengths: string[];
     keyWeaknesses: string[];
   };
@@ -743,7 +1416,7 @@ export interface EstatePlanningResults {
     category: string;
     recommendation: string;
     rationale: string;
-    expectedBenefit: number;
+    expectedImprovement: number;
     implementationSteps: string[];
   }[];
   

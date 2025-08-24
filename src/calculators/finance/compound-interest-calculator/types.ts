@@ -1,261 +1,616 @@
 export interface CompoundInterestInputs {
-  // Basic investment parameters
-  principal: number; // Initial investment amount
-  annualInterestRate: number; // Annual interest rate as percentage
-  timePeriod: number; // Investment time period
-  timeUnit: 'days' | 'weeks' | 'months' | 'years';
+  // Investment Information
+  investmentInfo: {
+    investmentName: string;
+    investmentType: 'savings' | 'investment' | 'retirement' | 'education' | 'real_estate' | 'business' | 'other';
+    investmentCategory: 'personal' | 'business' | 'institutional' | 'retirement' | 'education' | 'other';
+    investmentPurpose: 'savings' | 'growth' | 'income' | 'preservation' | 'speculation' | 'other';
+    investmentStrategy: 'conservative' | 'moderate' | 'aggressive' | 'custom';
+    currency: string;
+    investmentDescription: string;
+  };
   
-  // Compounding frequency
-  compoundingFrequency: 'daily' | 'weekly' | 'monthly' | 'quarterly' | 'semi-annually' | 'annually' | 'continuous';
+  // Principal and Contributions
+  principalAndContributions: {
+    // Initial Investment
+    initialInvestment: {
+      amount: number;
+      date: string;
+      type: 'lump_sum' | 'installment' | 'other';
+    };
+    
+    // Regular Contributions
+    regularContributions: {
+      amount: number;
+      frequency: 'daily' | 'weekly' | 'monthly' | 'quarterly' | 'semi_annually' | 'annually';
+      startDate: string;
+      endDate: string;
+      type: 'fixed' | 'percentage' | 'increasing' | 'decreasing';
+      growthRate: number;
+    };
+    
+    // Additional Contributions
+    additionalContributions: {
+      date: string;
+      amount: number;
+      type: 'bonus' | 'windfall' | 'refund' | 'other';
+      description: string;
+    }[];
+    
+    // Total Contributions
+    totalContributions: number;
+    contributionBreakdown: {
+      component: string;
+      amount: number;
+      percentage: number;
+    }[];
+  };
   
-  // Additional contributions
-  additionalContributions: number; // Regular additional contributions
-  contributionFrequency: 'daily' | 'weekly' | 'monthly' | 'quarterly' | 'semi-annually' | 'annually';
-  contributionGrowthRate: number; // Annual growth rate of contributions
+  // Interest Rate Information
+  interestRateInfo: {
+    // Base Interest Rate
+    baseInterestRate: number;
+    rateType: 'simple' | 'compound' | 'continuous';
+    rateFrequency: 'daily' | 'weekly' | 'monthly' | 'quarterly' | 'semi_annually' | 'annually';
+    
+    // Rate Adjustments
+    rateAdjustments: {
+      inflationAdjustment: number;
+      taxAdjustment: number;
+      riskAdjustment: number;
+      marketAdjustment: number;
+      finalRate: number;
+    };
+    
+    // Variable Rates
+    variableRates: {
+      period: string;
+      rate: number;
+      effectiveRate: number;
+    }[];
+    
+    // Rate Projections
+    rateProjections: {
+      year: number;
+      rate: number;
+      assumption: string;
+    }[];
+  };
   
-  // Withdrawals
-  withdrawals: number; // Regular withdrawals
-  withdrawalFrequency: 'daily' | 'weekly' | 'monthly' | 'quarterly' | 'semi-annually' | 'annually';
-  withdrawalGrowthRate: number; // Annual growth rate of withdrawals
+  // Time Period
+  timePeriod: {
+    startDate: string;
+    endDate: string;
+    investmentPeriod: number; // in years
+    calculationPeriod: 'daily' | 'weekly' | 'monthly' | 'quarterly' | 'semi_annually' | 'annually';
+    compoundingFrequency: 'daily' | 'weekly' | 'monthly' | 'quarterly' | 'semi_annually' | 'annually';
+  };
   
-  // Tax considerations
-  taxRate: number; // Marginal tax rate
-  taxTreatment: 'taxable' | 'tax-deferred' | 'tax-free';
-  inflationRate: number; // Annual inflation rate
+  // Tax Considerations
+  taxConsiderations: {
+    // Tax Status
+    taxStatus: 'taxable' | 'tax_deferred' | 'tax_free' | 'tax_advantaged';
+    effectiveTaxRate: number;
+    marginalTaxRate: number;
+    stateTaxRate: number;
+    localTaxRate: number;
+    
+    // Tax Implications
+    taxImplications: {
+      interestTax: number;
+      contributionTax: number;
+      withdrawalTax: number;
+      totalTax: number;
+      afterTaxReturn: number;
+    };
+    
+    // Tax Benefits
+    taxBenefits: {
+      deduction: number;
+      credit: number;
+      exemption: number;
+      totalBenefits: number;
+    };
+  };
   
-  // Investment details
-  investmentType: 'savings' | 'cd' | 'bonds' | 'stocks' | 'mutual-funds' | 'etfs' | 'real-estate' | 'crypto' | 'other';
-  riskLevel: 'low' | 'medium' | 'high';
+  // Inflation Considerations
+  inflationConsiderations: {
+    // Inflation Rate
+    inflationRate: number;
+    inflationType: 'constant' | 'variable' | 'projected';
+    
+    // Inflation Projections
+    inflationProjections: {
+      year: number;
+      rate: number;
+      cumulativeInflation: number;
+    }[];
+    
+    // Real Return
+    realReturn: number;
+    purchasingPower: number;
+    inflationAdjustedValue: number;
+  };
   
-  // Fees and expenses
-  managementFees: number; // Annual management fees as percentage
-  transactionFees: number; // Transaction fees as percentage
-  expenseRatio: number; // Fund expense ratio
+  // Fees and Expenses
+  feesAndExpenses: {
+    // Management Fees
+    managementFees: {
+      annualRate: number;
+      amount: number;
+      frequency: string;
+    };
+    
+    // Transaction Costs
+    transactionCosts: {
+      brokerage: number;
+      commissions: number;
+      spreads: number;
+      taxes: number;
+      total: number;
+    };
+    
+    // Other Fees
+    otherFees: {
+      custodian: number;
+      legal: number;
+      audit: number;
+      other: number;
+      total: number;
+    };
+    
+    // Total Costs
+    totalFees: number;
+    feeImpact: number;
+    netReturn: number;
+  };
   
-  // Market conditions
-  marketVolatility: number; // Expected market volatility
-  economicScenario: 'recession' | 'stable' | 'growth' | 'boom';
+  // Withdrawals and Distributions
+  withdrawalsAndDistributions: {
+    // Regular Withdrawals
+    regularWithdrawals: {
+      amount: number;
+      frequency: 'daily' | 'weekly' | 'monthly' | 'quarterly' | 'semi_annually' | 'annually';
+      startDate: string;
+      endDate: string;
+      type: 'fixed' | 'percentage' | 'increasing' | 'decreasing';
+    };
+    
+    // One-time Withdrawals
+    oneTimeWithdrawals: {
+      date: string;
+      amount: number;
+      type: 'emergency' | 'planned' | 'required' | 'other';
+      description: string;
+    }[];
+    
+    // Required Minimum Distributions
+    requiredMinimumDistributions: {
+      age: number;
+      percentage: number;
+      amount: number;
+      startDate: string;
+    };
+    
+    // Total Withdrawals
+    totalWithdrawals: number;
+    withdrawalBreakdown: {
+      component: string;
+      amount: number;
+      percentage: number;
+    }[];
+  };
   
-  // Advanced parameters
-  reinvestmentRate: number; // Rate at which returns are reinvested
-  earlyWithdrawalPenalty: number; // Penalty for early withdrawal
-  minimumBalance: number; // Minimum balance requirement
+  // Risk Factors
+  riskFactors: {
+    // Interest Rate Risk
+    interestRateRisk: {
+      rateVolatility: number;
+      reinvestmentRisk: number;
+      durationRisk: number;
+    };
+    
+    // Credit Risk
+    creditRisk: {
+      defaultRisk: number;
+      downgradeRisk: number;
+      counterpartyRisk: number;
+    };
+    
+    // Liquidity Risk
+    liquidityRisk: {
+      marketability: number;
+      timeToLiquidate: number;
+      penaltyRisk: number;
+    };
+    
+    // Inflation Risk
+    inflationRisk: {
+      purchasingPowerRisk: number;
+      realReturnRisk: number;
+    };
+    
+    // Other Risks
+    otherRisks: {
+      risk: string;
+      probability: number;
+      impact: number;
+      mitigation: string;
+    }[];
+  };
   
-  // Goal planning
-  targetAmount: number; // Target investment goal
-  targetDate: string; // Target date for goal
-  goalType: 'retirement' | 'education' | 'house' | 'emergency-fund' | 'vacation' | 'other';
+  // Scenario Analysis
+  scenarioAnalysis: {
+    // Scenarios
+    scenarios: {
+      scenario: string;
+      probability: number;
+      interestRate: number;
+      inflationRate: number;
+      taxRate: number;
+      finalValue: number;
+    }[];
+    
+    // Stress Testing
+    stressTesting: {
+      test: string;
+      interestRateShock: number;
+      inflationShock: number;
+      taxShock: number;
+      finalValue: number;
+    }[];
+  };
   
-  // Risk management
-  stopLossPercentage: number; // Stop loss percentage
-  rebalancingFrequency: 'monthly' | 'quarterly' | 'semi-annually' | 'annually' | 'never';
+  // Comparison Analysis
+  comparisonAnalysis: {
+    // Alternative Investments
+    alternativeInvestments: {
+      investment: string;
+      rate: number;
+      finalValue: number;
+      risk: string;
+    }[];
+    
+    // Benchmark Comparison
+    benchmarkComparison: {
+      benchmark: string;
+      rate: number;
+      finalValue: number;
+      outperformance: number;
+    }[];
+  };
   
-  // Inflation adjustment
-  adjustForInflation: boolean;
-  realReturnCalculation: boolean;
+  // Analysis Parameters
+  analysisPeriod: number; // in years
+  includeTaxes: boolean;
+  includeInflation: boolean;
+  includeFees: boolean;
+  includeWithdrawals: boolean;
+  includeRiskAdjustment: boolean;
   
-  // Comparison scenarios
-  comparisonScenarios?: {
-    scenario: string;
-    interestRate: number;
-    compoundingFrequency: string;
-    additionalContributions: number;
+  // Calculation Options
+  calculationOptions: {
+    includePartialPeriods: boolean;
+    includeContinuousCompounding: boolean;
+    includeVariableRates: boolean;
+    includeSensitivityAnalysis: boolean;
+  };
+  
+  // Monte Carlo Simulation
+  monteCarloSimulations: number;
+  monteCarloTimeSteps: number;
+  includeRateVolatility: boolean;
+  includeInflationVolatility: boolean;
+  includeContributionVolatility: boolean;
+  
+  // Historical Analysis
+  historicalData: {
+    year: number;
+    principal: number;
+    interest: number;
+    balance: number;
+    rate: number;
+    inflation: number;
   }[];
   
-  // Custom parameters
-  customCompoundingPeriods?: number;
-  customInterestRate?: number;
-  customTimePeriod?: number;
+  // Reporting Preferences
+  includePrincipalAnalysis: boolean;
+  includeInterestAnalysis: boolean;
+  includeTaxAnalysis: boolean;
+  includeInflationAnalysis: boolean;
+  includeFeeAnalysis: boolean;
+  includeWithdrawalAnalysis: boolean;
+  includeRiskAnalysis: boolean;
+  includeScenarioAnalysis: boolean;
+  includeComparisonAnalysis: boolean;
+  includeMonteCarlo: boolean;
+  includeHistoricalAnalysis: boolean;
+  includeRecommendations: boolean;
+  includeActionItems: boolean;
   
-  // Analysis parameters
-  includeTaxes: boolean;
-  includeFees: boolean;
-  includeInflation: boolean;
-  showDetailedBreakdown: boolean;
-  includeComparison: boolean;
+  // Output Format
+  outputFormat: 'detailed' | 'summary' | 'executive';
+  includeCharts: boolean;
+  includeTables: boolean;
+  includeRecommendations: boolean;
 }
 
 export interface CompoundInterestResults {
-  // Core results
-  finalAmount: number;
+  // Core Compound Interest Metrics
+  finalValue: number;
   totalInterest: number;
   totalContributions: number;
-  totalWithdrawals: number;
-  netGain: number;
+  effectiveAnnualRate: number;
+  compoundAnnualGrowthRate: number;
   
-  // Time-based breakdown
-  yearByYearBreakdown: {
-    year: number;
-    beginningBalance: number;
-    contributions: number;
-    withdrawals: number;
-    interest: number;
-    endingBalance: number;
-    cumulativeInterest: number;
-  }[];
+  // Compound Interest Analysis
+  compoundInterestAnalysis: {
+    finalValue: number;
+    totalInterest: number;
+    totalContributions: number;
+    interestBreakdown: {
+      component: string;
+      value: number;
+      percentage: number;
+    }[];
+    interestEfficiency: number;
+  };
   
-  // Compounding analysis
-  compoundingAnalysis: {
-    frequency: string;
+  // Principal Analysis
+  principalAnalysis: {
+    initialInvestment: number;
+    totalContributions: number;
+    totalWithdrawals: number;
+    netPrincipal: number;
+    principalBreakdown: {
+      component: string;
+      amount: number;
+      percentage: number;
+    }[];
+    principalEfficiency: number;
+  };
+  
+  // Interest Analysis
+  interestAnalysis: {
+    totalInterest: number;
+    simpleInterest: number;
+    compoundInterest: number;
+    interestBreakdown: {
+      period: string;
+      principal: number;
+      interest: number;
+      balance: number;
+      rate: number;
+    }[];
+    interestEfficiency: number;
+  };
+  
+  // Growth Analysis
+  growthAnalysis: {
+    compoundAnnualGrowthRate: number;
     effectiveAnnualRate: number;
-    totalPeriods: number;
-    finalAmount: number;
-    difference: number;
-  }[];
+    annualizedReturn: number;
+    growthBreakdown: {
+      year: number;
+      beginningBalance: number;
+      contributions: number;
+      interest: number;
+      withdrawals: number;
+      endingBalance: number;
+      growthRate: number;
+    }[];
+    growthEfficiency: number;
+  };
   
-  // Tax analysis
+  // Tax Analysis
   taxAnalysis: {
-    taxableInterest: number;
-    taxLiability: number;
-    afterTaxAmount: number;
-    effectiveTaxRate: number;
+    beforeTaxValue: number;
+    afterTaxValue: number;
+    totalTaxes: number;
     taxEfficiency: number;
+    taxBreakdown: {
+      tax: string;
+      amount: number;
+      impact: number;
+    }[];
+    taxOptimization: number;
   };
   
-  // Inflation analysis
+  // Inflation Analysis
   inflationAnalysis: {
-    nominalAmount: number;
-    realAmount: number;
-    inflationAdjustedReturn: number;
-    purchasingPower: number;
+    nominalValue: number;
+    realValue: number;
     inflationImpact: number;
+    purchasingPower: number;
+    inflationBreakdown: {
+      year: number;
+      nominalValue: number;
+      inflationRate: number;
+      realValue: number;
+    }[];
+    inflationEfficiency: number;
   };
   
-  // Fee analysis
+  // Fee Analysis
   feeAnalysis: {
     totalFees: number;
-    managementFees: number;
-    transactionFees: number;
-    expenseRatioFees: number;
-    netReturn: number;
     feeImpact: number;
+    netValue: number;
+    feeBreakdown: {
+      fee: string;
+      amount: number;
+      percentage: number;
+    }[];
+    feeEfficiency: number;
   };
   
-  // Goal analysis
-  goalAnalysis: {
-    targetAmount: number;
-    projectedAmount: number;
-    shortfall: number;
-    surplus: number;
-    yearsToGoal: number;
-    requiredContribution: number;
-    goalAchievement: 'ahead' | 'on-track' | 'behind';
+  // Withdrawal Analysis
+  withdrawalAnalysis: {
+    totalWithdrawals: number;
+    withdrawalImpact: number;
+    finalValue: number;
+    withdrawalBreakdown: {
+      period: string;
+      withdrawal: number;
+      remainingBalance: number;
+      impact: number;
+    }[];
+    withdrawalEfficiency: number;
   };
   
-  // Risk analysis
+  // Risk Analysis
   riskAnalysis: {
-    volatility: number;
-    worstCaseScenario: number;
-    bestCaseScenario: number;
-    expectedValue: number;
-    riskAdjustedReturn: number;
-    probabilityOfLoss: number;
+    riskAdjustedValue: number;
+    riskScore: number;
+    riskBreakdown: {
+      risk: string;
+      level: number;
+      impact: number;
+    }[];
+    riskMitigation: string[];
   };
   
-  // Comparison scenarios
-  scenarioComparison: {
-    scenario: string;
-    finalAmount: number;
-    totalInterest: number;
-    effectiveRate: number;
-    timeToGoal: number;
-    riskLevel: string;
-  }[];
-  
-  // Performance metrics
-  performanceMetrics: {
-    compoundAnnualGrowthRate: number;
-    averageAnnualReturn: number;
-    totalReturn: number;
-    annualizedReturn: number;
-    riskAdjustedReturn: number;
-  };
-  
-  // Sensitivity analysis
+  // Sensitivity Analysis
   sensitivityAnalysis: {
-    parameter: string;
+    variable: string;
     baseValue: number;
     lowValue: number;
     highValue: number;
-    lowResult: number;
-    highResult: number;
+    lowFinalValue: number;
+    highFinalValue: number;
     sensitivity: number;
   }[];
   
-  // Break-even analysis
-  breakEvenAnalysis: {
-    breakEvenPoint: number;
-    timeToBreakEven: number;
-    requiredReturn: number;
-    minimumContribution: number;
+  // Scenario Analysis
+  scenarioAnalysis: {
+    scenarioName: string;
+    probability: number;
+    finalValue: number;
+    totalInterest: number;
+    effectiveRate: number;
+    riskLevel: string;
+  }[];
+  
+  // Comparison Analysis
+  comparisonAnalysis: {
+    alternativeComparison: {
+      alternative: string;
+      finalValue: number;
+      totalInterest: number;
+      risk: string;
+      outperformance: number;
+    }[];
+    benchmarkComparison: {
+      benchmark: string;
+      finalValue: number;
+      outperformance: number;
+      relativePerformance: number;
+    }[];
   };
   
-  // Monte Carlo simulation
+  // Investment Score
+  investmentScore: {
+    overallScore: number;
+    componentScores: {
+      growth: number;
+      tax: number;
+      inflation: number;
+      fees: number;
+      risk: number;
+      efficiency: number;
+    };
+    recommendation: 'invest' | 'consider' | 'modify' | 'avoid';
+  };
+  
+  // Monte Carlo Results
   monteCarloResults: {
-    meanFinalAmount: number;
-    medianFinalAmount: number;
+    meanFinalValue: number;
+    medianFinalValue: number;
     standardDeviation: number;
     percentiles: {
+      p5: number;
       p10: number;
       p25: number;
       p50: number;
       p75: number;
       p90: number;
+      p95: number;
     };
-    probabilityOfSuccess: number;
+    probabilityDistribution: {
+      finalValue: number;
+      probability: number;
+    }[];
+    successProbability: number;
   };
   
-  // Rebalancing analysis
-  rebalancingAnalysis: {
-    frequency: string;
-    totalRebalancingCosts: number;
-    performanceImpact: number;
+  // Historical Analysis
+  historicalAnalysis: {
+    historicalGrowth: number;
+    historicalReturn: number;
+    historicalTrends: string[];
+    historicalVolatility: number;
+    yearOverYearChange: number;
+  };
+  
+  // Optimization Opportunities
+  optimizationOpportunities: {
+    category: string;
+    description: string;
+    potentialImprovement: number;
+    implementationDifficulty: 'low' | 'medium' | 'high';
+    priority: 'low' | 'medium' | 'high';
+  }[];
+  
+  // Business Impact
+  businessImpact: {
+    valueCreation: number;
+    costSavings: number;
+    taxEfficiency: number;
     riskReduction: number;
-    optimalFrequency: string;
+    overallBenefit: number;
   };
   
-  // Early withdrawal analysis
-  earlyWithdrawalAnalysis: {
-    penaltyAmount: number;
-    netAmount: number;
-    effectiveReturn: number;
-    breakEvenTime: number;
-    recommendation: string;
-  };
-  
-  // Tax optimization
-  taxOptimization: {
-    optimalContribution: number;
-    taxSavings: number;
-    effectiveReturn: number;
+  // Comprehensive Report
+  comprehensiveReport: {
+    executiveSummary: string;
+    keyFindings: string[];
+    investmentAssessment: string;
     recommendations: string[];
+    actionItems: {
+      action: string;
+      priority: 'low' | 'medium' | 'high';
+      timeline: string;
+      responsibleParty: string;
+    }[];
   };
   
-  // Inflation protection
-  inflationProtection: {
-    realReturn: number;
-    inflationAdjustedGoal: number;
-    requiredRealReturn: number;
-    inflationHedging: string[];
+  // Executive Summary
+  executiveSummary: {
+    finalValue: number;
+    totalInterest: number;
+    effectiveRate: number;
+    recommendation: 'invest' | 'consider' | 'modify' | 'avoid';
+    keyStrengths: string[];
+    keyWeaknesses: string[];
   };
-  
-  // Comprehensive report
-  report: string;
   
   // Recommendations
   recommendations: {
     category: string;
-    recommendations: string[];
-    priority: 'high' | 'medium' | 'low';
+    recommendation: string;
+    rationale: string;
     expectedImpact: number;
+    implementationSteps: string[];
   }[];
   
-  // Action items
+  // Action Items
   actionItems: {
-    priority: 'immediate' | 'short-term' | 'long-term';
     action: string;
-    owner: string;
+    description: string;
+    priority: 'low' | 'medium' | 'high';
     timeline: string;
-    expectedOutcome: string;
+    responsibleParty: string;
+    dependencies: string[];
+    successMetrics: string[];
   }[];
 }

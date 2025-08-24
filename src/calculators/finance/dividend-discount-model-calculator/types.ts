@@ -1,354 +1,699 @@
-export interface DDMInputs {
-  // Dividend data
-  currentDividend: number; // Current annual dividend per share
-  dividendHistory: number[]; // Historical dividend payments
-  dividendGrowthRate: number; // Expected dividend growth rate
-  dividendPayoutRatio: number; // Dividend payout ratio
-  
-  // Stock data
-  currentStockPrice: number; // Current stock price
-  sharesOutstanding: number; // Number of shares outstanding
-  marketCap: number; // Market capitalization
-  
-  // Growth assumptions
-  growthModel: 'constant' | 'two-stage' | 'three-stage' | 'h-model' | 'variable';
-  growthStages: {
-    stage: string;
-    growthRate: number;
-    duration: number; // Years
-  }[];
-  
-  // Required return
-  requiredReturn: number; // Required rate of return
-  riskFreeRate: number; // Risk-free rate
-  marketRiskPremium: number; // Market risk premium
-  beta: number; // Stock beta
-  
-  // Company fundamentals
-  earningsPerShare: number; // Current EPS
-  earningsGrowthRate: number; // Expected earnings growth
-  returnOnEquity: number; // Return on equity
-  retentionRatio: number; // Retention ratio (1 - payout ratio)
-  
-  // Industry and market data
-  industry: 'technology' | 'healthcare' | 'finance' | 'retail' | 'manufacturing' | 'energy' | 'utilities' | 'telecom' | 'other';
-  industryGrowthRate: number; // Industry growth rate
-  marketGrowthRate: number; // Market growth rate
-  
-  // Risk factors
-  riskLevel: 'low' | 'medium' | 'high';
-  businessRisk: number; // Business risk (1-10)
-  financialRisk: number; // Financial risk (1-10)
-  marketRisk: number; // Market risk (1-10)
-  
-  // Dividend sustainability
-  dividendSustainability: {
-    earningsCoverage: number; // Earnings coverage ratio
-    cashFlowCoverage: number; // Cash flow coverage ratio
-    debtToEquity: number; // Debt to equity ratio
-    interestCoverage: number; // Interest coverage ratio
-  };
-  
-  // Growth drivers
-  growthDrivers: {
-    revenueGrowth: number; // Revenue growth rate
-    marginExpansion: number; // Margin expansion potential
-    marketShareGrowth: number; // Market share growth
-    newProductGrowth: number; // New product growth
-  };
-  
-  // Competitive position
-  competitivePosition: {
-    marketShare: number; // Market share percentage
-    competitiveAdvantage: number; // Competitive advantage (1-10)
-    barriersToEntry: number; // Barriers to entry (1-10)
-    pricingPower: number; // Pricing power (1-10)
-  };
-  
-  // Economic factors
-  economicFactors: {
-    inflationRate: number; // Expected inflation rate
-    gdpGrowth: number; // GDP growth rate
-    interestRateEnvironment: 'low' | 'normal' | 'high' | 'rising' | 'falling';
-    economicCycle: 'recession' | 'recovery' | 'expansion' | 'peak';
-  };
-  
-  // Valuation parameters
-  terminalGrowthRate: number; // Terminal growth rate
-  terminalValueMultiple: number; // Terminal value multiple
-  discountRate: number; // Discount rate for terminal value
-  
-  // Sensitivity analysis
-  sensitivityParameters: {
-    parameter: string;
-    baseValue: number;
-    lowValue: number;
-    highValue: number;
-  }[];
-  
-  // Scenario analysis
-  scenarios: {
-    scenario: string;
-    probability: number;
-    growthRate: number;
-    requiredReturn: number;
-    terminalGrowth: number;
-  }[];
-  
-  // Comparable companies
-  comparableCompanies: {
-    company: string;
-    dividendYield: number;
-    growthRate: number;
+export interface DividendDiscountModelInputs {
+  // Company Information
+  companyInfo: {
+    companyName: string;
+    tickerSymbol: string;
+    sector: string;
+    industry: string;
+    marketCap: number;
+    companyType: 'large_cap' | 'mid_cap' | 'small_cap' | 'micro_cap';
+    dividendPolicy: 'stable' | 'growing' | 'declining' | 'irregular' | 'no_dividend';
     payoutRatio: number;
-    peRatio: number;
-    price: number;
-  }[];
-  
-  // Dividend policy
-  dividendPolicy: {
-    policy: 'stable' | 'increasing' | 'decreasing' | 'variable';
-    targetPayoutRatio: number;
-    dividendStability: number; // Dividend stability (1-10)
-    dividendHistory: number; // Years of dividend payments
+    retentionRatio: number;
+    companyDescription: string;
   };
   
-  // Market conditions
-  marketConditions: 'bull' | 'bear' | 'sideways' | 'volatile';
-  sectorPerformance: 'outperforming' | 'performing' | 'underperforming';
-  
-  // Advanced parameters
-  advancedParameters: {
-    useEarningsModel: boolean; // Use earnings-based model
-    useFreeCashFlow: boolean; // Use free cash flow model
-    useResidualIncome: boolean; // Use residual income model
-    includeShareRepurchases: boolean; // Include share repurchases
-  };
-  
-  // Time horizon
-  timeHorizon: number; // Valuation time horizon in years
-  forecastPeriod: number; // Explicit forecast period
-  
-  // Analysis parameters
-  includeSensitivityAnalysis: boolean;
-  includeScenarioAnalysis: boolean;
-  includeComparableAnalysis: boolean;
-  includeRiskAnalysis: boolean;
-  includeGrowthAnalysis: boolean;
-  
-  // Output preferences
-  includeDetailedBreakdown: boolean;
-  includeMultipleModels: boolean;
-  includeRecommendations: boolean;
-}
-
-export interface DDMResults {
-  // Core DDM valuation
-  intrinsicValue: number;
-  dividendYield: number;
-  expectedReturn: number;
-  growthRate: number;
-  
-  // Model-specific results
-  constantGrowthDDM: {
-    value: number;
-    growthRate: number;
-    dividendYield: number;
-  };
-  
-  twoStageDDM: {
-    value: number;
-    stage1Value: number;
-    stage2Value: number;
-    transitionValue: number;
-  };
-  
-  threeStageDDM: {
-    value: number;
-    stage1Value: number;
-    stage2Value: number;
-    stage3Value: number;
-  };
-  
-  hModelDDM: {
-    value: number;
-    initialGrowth: number;
-    terminalGrowth: number;
-    transitionPeriod: number;
-  };
-  
-  // Valuation comparison
-  valuationComparison: {
-    model: string;
-    intrinsicValue: number;
-    upside: number;
-    downside: number;
-    recommendation: 'buy' | 'hold' | 'sell';
-  }[];
-  
-  // Sensitivity analysis
-  sensitivityResults: {
-    parameter: string;
-    baseValue: number;
-    lowValue: number;
-    highValue: number;
-    lowIntrinsicValue: number;
-    highIntrinsicValue: number;
-    sensitivity: number;
-  }[];
-  
-  // Scenario analysis
-  scenarioResults: {
-    scenario: string;
-    probability: number;
-    intrinsicValue: number;
-    expectedReturn: number;
-    growthRate: number;
-    recommendation: 'buy' | 'hold' | 'sell';
-  }[];
-  
-  // Comparable analysis
-  comparableResults: {
-    company: string;
-    dividendYield: number;
-    growthRate: number;
-    intrinsicValue: number;
-    relativeValue: number;
-    ranking: number;
-  }[];
-  
-  // Risk analysis
-  riskAnalysis: {
-    businessRisk: number;
-    financialRisk: number;
-    marketRisk: number;
-    totalRisk: number;
-    riskAdjustedValue: number;
-  };
-  
-  // Growth analysis
-  growthAnalysis: {
-    sustainableGrowthRate: number;
-    earningsGrowthRate: number;
-    dividendGrowthRate: number;
-    growthDrivers: {
-      driver: string;
-      contribution: number;
-      sustainability: number;
+  // Dividend Information
+  dividendInfo: {
+    // Current Dividend
+    currentDividend: {
+      annualDividend: number;
+      quarterlyDividend: number;
+      monthlyDividend: number;
+      dividendPerShare: number;
+      exDividendDate: string;
+      paymentDate: string;
+      declarationDate: string;
+    };
+    
+    // Historical Dividends
+    historicalDividends: {
+      year: number;
+      dividend: number;
+      growthRate: number;
+      payoutRatio: number;
+      earningsPerShare: number;
+    }[];
+    
+    // Dividend Growth
+    dividendGrowth: {
+      historicalGrowthRate: number;
+      expectedGrowthRate: number;
+      sustainableGrowthRate: number;
+      growthPhase: 'high_growth' | 'stable_growth' | 'mature_growth' | 'declining_growth';
+      growthPeriod: number; // in years
+    };
+    
+    // Dividend Schedule
+    dividendSchedule: {
+      date: string;
+      dividend: number;
+      type: 'regular' | 'special' | 'stock_dividend';
+      exDividendDate: string;
+      paymentDate: string;
     }[];
   };
   
-  // Dividend analysis
-  dividendAnalysis: {
-    currentYield: number;
-    forwardYield: number;
+  // Financial Information
+  financialInfo: {
+    // Earnings Information
+    earningsInfo: {
+      currentEarnings: number;
+      historicalEarnings: {
+        year: number;
+        earnings: number;
+        growthRate: number;
+      }[];
+      expectedEarnings: {
+        year: number;
+        earnings: number;
+        growthRate: number;
+      }[];
+      earningsQuality: 'high' | 'medium' | 'low';
+    };
+    
+    // Balance Sheet Information
+    balanceSheetInfo: {
+      totalAssets: number;
+      totalLiabilities: number;
+      shareholdersEquity: number;
+      bookValuePerShare: number;
+      debtToEquity: number;
+      currentRatio: number;
+      quickRatio: number;
+    };
+    
+    // Cash Flow Information
+    cashFlowInfo: {
+      operatingCashFlow: number;
+      freeCashFlow: number;
+      cashFlowToDebt: number;
+      dividendCoverage: number;
+      cashFlowQuality: 'high' | 'medium' | 'low';
+    };
+    
+    // Financial Ratios
+    financialRatios: {
+      returnOnEquity: number;
+      returnOnAssets: number;
+      returnOnCapital: number;
+      profitMargin: number;
+      operatingMargin: number;
+      netMargin: number;
+    };
+  };
+  
+  // Growth Assumptions
+  growthAssumptions: {
+    // Dividend Growth Phases
+    dividendGrowthPhases: {
+      phase: string;
+      duration: number; // in years
+      growthRate: number;
+      terminalGrowthRate: number;
+      probability: number;
+    }[];
+    
+    // Earnings Growth
+    earningsGrowth: {
+      shortTermGrowth: number; // 1-3 years
+      mediumTermGrowth: number; // 4-7 years
+      longTermGrowth: number; // 8+ years
+      terminalGrowth: number;
+      growthDrivers: string[];
+    };
+    
+    // Sustainable Growth
+    sustainableGrowth: {
+      sustainableGrowthRate: number;
+      returnOnEquity: number;
+      retentionRatio: number;
+      reinvestmentRate: number;
+      growthSustainability: 'high' | 'medium' | 'low';
+    };
+  };
+  
+  // Discount Rate
+  discountRate: {
+    // Risk-Free Rate
+    riskFreeRate: {
+      rate: number;
+      source: 'treasury_bills' | 'treasury_notes' | 'treasury_bonds' | 'federal_funds' | 'libor' | 'custom';
+      maturity: number;
+      currency: string;
+    };
+    
+    // Market Risk Premium
+    marketRiskPremium: {
+      premium: number;
+      source: 'historical' | 'survey' | 'implied' | 'custom';
+      timePeriod: number;
+      market: string;
+    };
+    
+    // Beta
+    beta: {
+      unleveredBeta: number;
+      leveredBeta: number;
+      industryBeta: number;
+      fundamentalBeta: number;
+      source: 'regression' | 'industry' | 'fundamental' | 'custom';
+      confidenceInterval: {
+        lower: number;
+        upper: number;
+      };
+    };
+    
+    // Size Risk Premium
+    sizeRiskPremium: {
+      premium: number;
+      sizeCategory: 'large' | 'mid' | 'small' | 'micro';
+      marketCap: number;
+      source: string;
+    };
+    
+    // Country Risk Premium
+    countryRiskPremium: {
+      premium: number;
+      country: string;
+      sovereignRating: string;
+      source: string;
+    };
+    
+    // Company-Specific Risk Premium
+    companySpecificRiskPremium: {
+      premium: number;
+      factors: {
+        factor: string;
+        premium: number;
+        rationale: string;
+      }[];
+      totalPremium: number;
+    };
+    
+    // Required Rate of Return
+    requiredRateOfReturn: {
+      riskFreeRate: number;
+      marketRiskPremium: number;
+      beta: number;
+      sizeRiskPremium: number;
+      countryRiskPremium: number;
+      companySpecificRiskPremium: number;
+      totalRequiredReturn: number;
+    };
+  };
+  
+  // Model Parameters
+  modelParameters: {
+    // DDM Model Type
+    modelType: 'gordon_growth' | 'two_stage' | 'three_stage' | 'h_model' | 'variable_growth' | 'custom';
+    
+    // Growth Stages
+    growthStages: {
+      stage: string;
+      duration: number;
+      growthRate: number;
+      dividend: number;
+      probability: number;
+    }[];
+    
+    // Terminal Value
+    terminalValue: {
+      terminalGrowthRate: number;
+      terminalDividend: number;
+      terminalMultiple: number;
+      perpetuityValue: number;
+    };
+    
+    // Valuation Period
+    valuationPeriod: {
+      explicitPeriod: number; // in years
+      terminalPeriod: number; // in years
+      totalPeriod: number; // in years
+    };
+  };
+  
+  // Market Data
+  marketData: {
+    // Market Information
+    marketInfo: {
+      currentPrice: number;
+      marketCap: number;
+      enterpriseValue: number;
+      priceToEarnings: number;
+      priceToBook: number;
+      priceToSales: number;
+      dividendYield: number;
+    };
+    
+    // Industry Data
+    industryData: {
+      industry: string;
+      averageDividendYield: number;
+      averageGrowthRate: number;
+      averagePayoutRatio: number;
+      industryBeta: number;
+    };
+    
+    // Peer Comparison
+    peerComparison: {
+      peer: string;
+      dividendYield: number;
+      growthRate: number;
+      payoutRatio: number;
+      priceToEarnings: number;
+      beta: number;
+    }[];
+  };
+  
+  // Risk Factors
+  riskFactors: {
+    // Business Risk
+    businessRisk: {
+      competitiveRisk: number;
+      operationalRisk: number;
+      technologyRisk: number;
+      executionRisk: number;
+      managementRisk: number;
+    };
+    
+    // Financial Risk
+    financialRisk: {
+      liquidityRisk: number;
+      leverageRisk: number;
+      cashFlowRisk: number;
+      creditRisk: number;
+      interestRateRisk: number;
+    };
+    
+    // Market Risk
+    marketRisk: {
+      demandRisk: number;
+      supplyRisk: number;
+      priceRisk: number;
+      currencyRisk: number;
+      economicRisk: number;
+    };
+    
+    // Dividend Risk
+    dividendRisk: {
+      dividendCutRisk: number;
+      dividendSuspensionRisk: number;
+      growthSlowdownRisk: number;
+      payoutRatioRisk: number;
+      coverageRisk: number;
+    };
+  };
+  
+  // Economic Environment
+  economicEnvironment: {
+    // Economic Indicators
+    economicIndicators: {
+      gdpGrowth: number;
+      inflationRate: number;
+      interestRate: number;
+      unemploymentRate: number;
+      consumerConfidence: number;
+    };
+    
+    // Market Conditions
+    marketConditions: {
+      bullMarket: boolean;
+      bearMarket: boolean;
+      volatilityRegime: 'low' | 'medium' | 'high';
+      correlationRegime: 'low' | 'medium' | 'high';
+    };
+    
+    // Sector Outlook
+    sectorOutlook: {
+      sectorGrowth: number;
+      sectorRisk: number;
+      sectorOpportunities: string[];
+      sectorThreats: string[];
+    };
+  };
+  
+  // Sensitivity Analysis
+  sensitivityAnalysis: {
+    // Key Variables
+    keyVariables: {
+      variable: string;
+      baseValue: number;
+      lowValue: number;
+      highValue: number;
+      impact: number;
+    }[];
+    
+    // Scenarios
+    scenarios: {
+      scenarioName: string;
+      probability: number;
+      growthRate: number;
+      discountRate: number;
+      dividend: number;
+      description: string;
+    }[];
+  };
+  
+  // Monte Carlo Simulation
+  monteCarloSimulations: number;
+  monteCarloTimeSteps: number;
+  includeGrowthVolatility: boolean;
+  includeDiscountRateVolatility: boolean;
+  includeDividendVolatility: boolean;
+  
+  // Analysis Parameters
+  analysisPeriod: number; // in years
+  includeTaxes: boolean;
+  includeInflation: boolean;
+  includeTransactionCosts: boolean;
+  includeLiquidityDiscount: boolean;
+  
+  // Calculation Options
+  calculationOptions: {
+    includeSensitivityAnalysis: boolean;
+    includeScenarioAnalysis: boolean;
+    includeMonteCarlo: boolean;
+    includePeerComparison: boolean;
+    includeRiskAnalysis: boolean;
+  };
+  
+  // Historical Analysis
+  historicalData: {
+    year: number;
+    dividend: number;
+    earnings: number;
+    growthRate: number;
     payoutRatio: number;
-    coverageRatio: number;
-    sustainability: number;
-    growthPotential: number;
-  };
-  
-  // Performance metrics
-  performanceMetrics: {
-    totalReturn: number;
-    dividendReturn: number;
-    capitalGainsReturn: number;
-    riskAdjustedReturn: number;
-  };
-  
-  // Valuation metrics
-  valuationMetrics: {
-    priceToEarnings: number;
-    priceToBook: number;
-    priceToSales: number;
-    enterpriseValueToEBITDA: number;
+    stockPrice: number;
     dividendYield: number;
+  }[];
+  
+  // Reporting Preferences
+  includeDividendAnalysis: boolean;
+  includeGrowthAnalysis: boolean;
+  includeValuationAnalysis: boolean;
+  includeRiskAnalysis: boolean;
+  includeMarketAnalysis: boolean;
+  includePeerComparison: boolean;
+  includeSensitivityAnalysis: boolean;
+  includeMonteCarlo: boolean;
+  includeHistoricalAnalysis: boolean;
+  includeRecommendations: boolean;
+  includeActionItems: boolean;
+  
+  // Output Format
+  outputFormat: 'detailed' | 'summary' | 'executive';
+  includeCharts: boolean;
+  includeTables: boolean;
+  includeRecommendations: boolean;
+}
+
+export interface DividendDiscountModelResults {
+  // Core Valuation Metrics
+  intrinsicValue: number;
+  currentPrice: number;
+  upsidePotential: number;
+  dividendYield: number;
+  totalReturn: number;
+  
+  // DDM Analysis
+  ddmAnalysis: {
+    intrinsicValue: number;
+    currentPrice: number;
+    upsidePotential: number;
+    dividendYield: number;
+    totalReturn: number;
+    valuationBreakdown: {
+      component: string;
+      value: number;
+      percentage: number;
+    }[];
+    valuationEfficiency: number;
   };
   
-  // Break-even analysis
-  breakEvenAnalysis: {
-    breakEvenGrowthRate: number;
-    breakEvenRequiredReturn: number;
-    marginOfSafety: number;
-    requiredReturn: number;
-  };
-  
-  // Competitive analysis
-  competitiveAnalysis: {
-    marketShare: number;
-    competitiveAdvantage: number;
-    barriersToEntry: number;
-    pricingPower: number;
-    overallScore: number;
-  };
-  
-  // Economic sensitivity
-  economicSensitivity: {
-    inflationImpact: number;
-    interestRateImpact: number;
-    gdpGrowthImpact: number;
-    economicCycleImpact: number;
-  };
-  
-  // Terminal value analysis
-  terminalValueAnalysis: {
-    terminalValue: number;
-    terminalGrowthRate: number;
-    terminalValueMultiple: number;
-    presentValueOfTerminalValue: number;
-    terminalValueSensitivity: number;
-  };
-  
-  // Cash flow analysis
-  cashFlowAnalysis: {
-    freeCashFlow: number;
+  // Dividend Analysis
+  dividendAnalysis: {
+    currentDividend: number;
+    expectedDividend: number;
+    dividendGrowth: number;
+    dividendYield: number;
+    payoutRatio: number;
     dividendCoverage: number;
-    cashFlowGrowth: number;
-    reinvestmentRate: number;
+    dividendBreakdown: {
+      component: string;
+      value: number;
+      contribution: number;
+    }[];
+    dividendEfficiency: number;
   };
   
-  // Shareholder returns
-  shareholderReturns: {
+  // Growth Analysis
+  growthAnalysis: {
+    historicalGrowth: number;
+    expectedGrowth: number;
+    sustainableGrowth: number;
+    growthPhases: {
+      phase: string;
+      growthRate: number;
+      duration: number;
+      value: number;
+    }[];
+    growthBreakdown: {
+      component: string;
+      rate: number;
+      contribution: number;
+    }[];
+    growthEfficiency: number;
+  };
+  
+  // Valuation Analysis
+  valuationAnalysis: {
+    presentValue: number;
+    terminalValue: number;
+    totalValue: number;
+    valueComponents: {
+      component: string;
+      value: number;
+      percentage: number;
+    }[];
+    valuationEfficiency: number;
+  };
+  
+  // Risk Analysis
+  riskAnalysis: {
+    dividendRisk: {
+      dividendCutRisk: number;
+      dividendSuspensionRisk: number;
+      growthSlowdownRisk: number;
+      riskContribution: number;
+    };
+    businessRisk: {
+      competitiveRisk: number;
+      operationalRisk: number;
+      executionRisk: number;
+      riskContribution: number;
+    };
+    financialRisk: {
+      liquidityRisk: number;
+      leverageRisk: number;
+      cashFlowRisk: number;
+      riskContribution: number;
+    };
+    marketRisk: {
+      demandRisk: number;
+      priceRisk: number;
+      economicRisk: number;
+      riskContribution: number;
+    };
+    totalRisk: number;
+    riskEfficiency: number;
+  };
+  
+  // Sensitivity Analysis
+  sensitivityAnalysis: {
+    variable: string;
+    baseValue: number;
+    lowValue: number;
+    highValue: number;
+    lowValue: number;
+    highValue: number;
+    sensitivity: number;
+  }[];
+  
+  // Scenario Analysis
+  scenarioAnalysis: {
+    scenarioName: string;
+    probability: number;
+    intrinsicValue: number;
+    upsidePotential: number;
     dividendYield: number;
-    shareRepurchases: number;
-    totalReturn: number;
-    returnOnEquity: number;
+    riskLevel: string;
+  }[];
+  
+  // Peer Comparison
+  peerComparison: {
+    peerComparison: {
+      peer: string;
+      intrinsicValue: number;
+      dividendYield: number;
+      growthRate: number;
+      upsidePotential: number;
+      outperformance: number;
+    }[];
+    industryComparison: {
+      metric: string;
+      company: number;
+      industry: number;
+      difference: number;
+    }[];
   };
   
-  // Industry comparison
-  industryComparison: {
-    industryYield: number;
-    industryGrowth: number;
-    industryPayoutRatio: number;
-    relativeValue: number;
-    industryRanking: number;
+  // Market Analysis
+  marketAnalysis: {
+    marketPosition: number;
+    competitiveAdvantage: number;
+    marketBreakdown: {
+      factor: string;
+      impact: number;
+      opportunity: number;
+    }[];
+    marketScore: number;
   };
   
-  // Market timing
-  marketTiming: {
-    currentValuation: 'undervalued' | 'fairly-valued' | 'overvalued';
-    entryPoint: number;
-    exitPoint: number;
-    holdingPeriod: number;
+  // Financial Analysis
+  financialAnalysis: {
+    // Profitability Analysis
+    profitabilityAnalysis: {
+      returnOnEquity: number;
+      returnOnAssets: number;
+      profitMargin: number;
+      profitabilityBreakdown: {
+        metric: string;
+        value: number;
+        industry: number;
+        performance: string;
+      }[];
+      profitabilityScore: number;
+    };
+    
+    // Financial Health Analysis
+    financialHealthAnalysis: {
+      debtToEquity: number;
+      currentRatio: number;
+      cashFlowToDebt: number;
+      financialHealthBreakdown: {
+        metric: string;
+        value: number;
+        industry: number;
+        performance: string;
+      }[];
+      financialHealthScore: number;
+    };
   };
   
-  // Comprehensive report
-  report: string;
+  // Company Score
+  companyScore: {
+    overallScore: number;
+    componentScores: {
+      valuation: number;
+      dividend: number;
+      growth: number;
+      risk: number;
+      financial: number;
+    };
+    recommendation: 'buy' | 'hold' | 'sell' | 'review';
+  };
+  
+  // Monte Carlo Results
+  monteCarloResults: {
+    meanValue: number;
+    medianValue: number;
+    standardDeviation: number;
+    percentiles: {
+      p5: number;
+      p10: number;
+      p25: number;
+      p50: number;
+      p75: number;
+      p90: number;
+      p95: number;
+    };
+    probabilityDistribution: {
+      value: number;
+      probability: number;
+    }[];
+    successProbability: number;
+  };
+  
+  // Historical Analysis
+  historicalAnalysis: {
+    historicalValue: number;
+    historicalGrowth: number;
+    historicalDividend: number;
+    historicalTrends: string[];
+    yearOverYearChange: number;
+  };
+  
+  // Optimization Opportunities
+  optimizationOpportunities: {
+    category: string;
+    description: string;
+    potentialImprovement: number;
+    implementationDifficulty: 'low' | 'medium' | 'high';
+    priority: 'low' | 'medium' | 'high';
+  }[];
+  
+  // Business Impact
+  businessImpact: {
+    valueCreation: number;
+    returnImprovement: number;
+    riskReduction: number;
+    competitiveAdvantage: number;
+    overallBenefit: number;
+  };
+  
+  // Comprehensive Report
+  comprehensiveReport: {
+    executiveSummary: string;
+    keyFindings: string[];
+    companyAssessment: string;
+    recommendations: string[];
+    actionItems: {
+      action: string;
+      priority: 'low' | 'medium' | 'high';
+      timeline: string;
+      responsibleParty: string;
+    }[];
+  };
+  
+  // Executive Summary
+  executiveSummary: {
+    intrinsicValue: number;
+    upsidePotential: number;
+    dividendYield: number;
+    recommendation: 'buy' | 'hold' | 'sell' | 'review';
+    keyStrengths: string[];
+    keyWeaknesses: string[];
+  };
   
   // Recommendations
   recommendations: {
     category: string;
-    recommendations: string[];
-    priority: 'high' | 'medium' | 'low';
+    recommendation: string;
+    rationale: string;
     expectedImpact: number;
+    implementationSteps: string[];
   }[];
   
-  // Action items
+  // Action Items
   actionItems: {
-    priority: 'immediate' | 'short-term' | 'long-term';
     action: string;
-    owner: string;
+    description: string;
+    priority: 'low' | 'medium' | 'high';
     timeline: string;
-    expectedOutcome: string;
+    responsibleParty: string;
+    dependencies: string[];
+    successMetrics: string[];
   }[];
 }

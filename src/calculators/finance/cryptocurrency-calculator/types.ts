@@ -1,288 +1,555 @@
-export interface CryptocurrencyInputs {
+export interface CryptocurrencyCalculatorInputs {
   // Cryptocurrency Information
-  cryptocurrencyName: string;
-  cryptocurrencySymbol: string;
-  blockchain: string;
-  consensusMechanism: 'proof_of_work' | 'proof_of_stake' | 'delegated_proof_of_stake' | 'proof_of_authority' | 'proof_of_space' | 'proof_of_capacity' | 'hybrid';
-  tokenType: 'coin' | 'token' | 'stablecoin' | 'governance_token' | 'utility_token' | 'security_token' | 'nft';
-  
-  // Price Information
-  currentPrice: number;
-  marketCap: number;
-  circulatingSupply: number;
-  totalSupply: number;
-  maxSupply: number;
-  volume24h: number;
-  priceChange24h: number;
-  priceChange7d: number;
-  priceChange30d: number;
-  
-  // Technical Information
-  blockTime: number; // in seconds
-  blockSize: number;
-  transactionPerSecond: number;
-  totalTransactions: number;
-  activeAddresses: number;
-  networkHashRate: number;
-  
-  // Staking Information
-  stakingInfo: {
-    stakingEnabled: boolean;
-    stakingReward: number;
-    stakingAPY: number;
-    minimumStake: number;
-    stakingPeriod: number;
-    totalStaked: number;
-    stakingRatio: number;
+  cryptocurrencyInfo: {
+    // Cryptocurrency Details
+    cryptocurrencyDetails: {
+      cryptocurrencyName: string;
+      cryptocurrencySymbol: string;
+      cryptocurrencyType: 'bitcoin' | 'ethereum' | 'altcoin' | 'stablecoin' | 'meme_coin' | 'defi_token' | 'nft_token' | 'governance_token' | 'utility_token' | 'other';
+      blockchain: string;
+      consensusMechanism: 'proof_of_work' | 'proof_of_stake' | 'delegated_proof_of_stake' | 'proof_of_authority' | 'proof_of_space' | 'other';
+      maxSupply: number;
+      circulatingSupply: number;
+      totalSupply: number;
+      marketCap: number;
+      cryptocurrencyDescription: string;
+    };
+    
+    // Token Economics
+    tokenEconomics: {
+      tokenUtility: string[];
+      useCase: string[];
+      tokenDistribution: {
+        category: string;
+        percentage: number;
+        amount: number;
+      }[];
+      inflationRate: number;
+      deflationRate: number;
+      stakingRewards: number;
+      miningRewards: number;
+      burnRate: number;
+    };
   };
   
-  // Mining Information
-  miningInfo: {
-    miningEnabled: boolean;
-    miningReward: number;
-    miningDifficulty: number;
-    miningHashRate: number;
-    miningCost: number;
-    miningProfitability: number;
-  };
-  
-  // DeFi Information
-  defiInfo: {
-    totalValueLocked: number;
-    defiProtocols: number;
-    yieldFarming: boolean;
-    lendingProtocols: boolean;
-    dexVolume: number;
-    liquidityPools: number;
-  };
-  
-  // Smart Contract Information
-  smartContractInfo: {
-    smartContracts: number;
-    contractAddresses: string[];
-    contractAudits: boolean;
-    auditScore: number;
-    vulnerabilities: string[];
-  };
-  
-  // Network Information
-  networkInfo: {
-    nodes: number;
-    validators: number;
-    decentralizationScore: number;
-    networkUptime: number;
-    networkSecurity: number;
-    networkScalability: number;
-  };
-  
-  // Adoption Metrics
-  adoptionMetrics: {
-    activeUsers: number;
-    dailyTransactions: number;
-    merchantAdoption: number;
-    institutionalAdoption: number;
-    regulatoryStatus: string;
-    countryAdoption: string[];
-  };
-  
-  // Developer Activity
-  developerActivity: {
-    githubRepositories: number;
-    githubStars: number;
-    githubForks: number;
-    developerCount: number;
-    codeCommits: number;
-    developerScore: number;
-  };
-  
-  // Market Data
-  marketData: {
-    bidPrice: number;
-    askPrice: number;
-    spread: number;
-    orderBookDepth: number;
-    marketDepth: number;
-    tradingPairs: string[];
-    exchanges: string[];
-  };
-  
-  // Technical Analysis
-  technicalAnalysis: {
-    movingAverages: {
-      period: number;
-      value: number;
-      signal: 'buy' | 'sell' | 'hold';
+  // Market Information
+  marketInfo: {
+    // Price Data
+    priceData: {
+      currentPrice: number;
+      bidPrice: number;
+      askPrice: number;
+      lastPrice: number;
+      highPrice: number;
+      lowPrice: number;
+      openPrice: number;
+      previousClose: number;
+      priceChange: number;
+      priceChangePercent: number;
+      volume24h: number;
+      marketCap: number;
+      fullyDilutedMarketCap: number;
+    };
+    
+    // Historical Price Data
+    historicalPriceData: {
+      date: string;
+      openPrice: number;
+      highPrice: number;
+      lowPrice: number;
+      closePrice: number;
+      volume: number;
+      marketCap: number;
     }[];
-    supportLevels: number[];
-    resistanceLevels: number[];
-    trendDirection: 'bullish' | 'bearish' | 'sideways';
-    momentumIndicators: {
-      indicator: string;
-      value: number;
-      signal: string;
-    }[];
-  };
-  
-  // On-Chain Analysis
-  onChainAnalysis: {
-    activeAddresses: number;
-    newAddresses: number;
-    transactionCount: number;
-    averageTransactionValue: number;
-    whaleTransactions: number;
-    exchangeFlows: {
+    
+    // Exchange Data
+    exchangeData: {
       exchange: string;
-      inflow: number;
-      outflow: number;
-      netFlow: number;
+      price: number;
+      volume: number;
+      bid: number;
+      ask: number;
+      spread: number;
+      liquidity: 'high' | 'medium' | 'low';
     }[];
+    
+    // Market Conditions
+    marketConditions: {
+      marketTrend: 'bullish' | 'bearish' | 'sideways' | 'volatile';
+      volatilityRegime: 'low' | 'normal' | 'high' | 'extreme';
+      liquidityRegime: 'high' | 'medium' | 'low';
+      fearGreedIndex: number;
+      marketSentiment: 'fear' | 'greed' | 'neutral';
+      dominance: number;
+    };
+  };
+  
+  // Trading Information
+  tradingInfo: {
+    // Position Details
+    positionDetails: {
+      positionType: 'long' | 'short' | 'spot' | 'futures' | 'options' | 'margin' | 'other';
+      positionSize: number;
+      entryPrice: number;
+      currentPrice: number;
+      entryDate: string;
+      positionValue: number;
+      unrealizedPnL: number;
+      realizedPnL: number;
+      totalPnL: number;
+      leverage: number;
+    };
+    
+    // Trade Details
+    tradeDetails: {
+      tradeType: 'buy' | 'sell' | 'swap' | 'stake' | 'unstake' | 'yield_farm' | 'other';
+      quantity: number;
+      price: number;
+      commission: number;
+      fees: number;
+      slippage: number;
+      gasFees: number;
+      totalCost: number;
+      tradeDate: string;
+      tradeTime: string;
+    }[];
+    
+    // Order Management
+    orderManagement: {
+      stopLoss: number;
+      takeProfit: number;
+      trailingStop: number;
+      timeStop: string;
+      orderType: 'market' | 'limit' | 'stop' | 'stop_limit' | 'trailing_stop';
+      orderStatus: 'pending' | 'filled' | 'cancelled' | 'rejected';
+    };
   };
   
   // Fundamental Analysis
   fundamentalAnalysis: {
-    networkValue: number;
-    networkValueToTransactions: number;
-    priceToSales: number;
-    priceToBook: number;
-    fundamentalScore: number;
-    fundamentalFactors: {
-      factor: string;
-      impact: number;
-      weight: number;
+    // Network Metrics
+    networkMetrics: {
+      activeAddresses: number;
+      transactionCount: number;
+      transactionVolume: number;
+      averageTransactionSize: number;
+      networkHashRate: number;
+      difficulty: number;
+      blockTime: number;
+      blockSize: number;
+      totalTransactions: number;
+      uniqueAddresses: number;
+    };
+    
+    // Development Activity
+    developmentActivity: {
+      githubCommits: number;
+      githubStars: number;
+      githubForks: number;
+      contributors: number;
+      lastCommit: string;
+      developmentScore: number;
+      codeQuality: number;
+      documentation: number;
+    };
+    
+    // Adoption Metrics
+    adoptionMetrics: {
+      merchantAdoption: number;
+      institutionalAdoption: number;
+      retailAdoption: number;
+      regulatoryStatus: string;
+      countryAdoption: {
+        country: string;
+        adoption: number;
+        regulation: string;
+      }[];
+      useCaseAdoption: {
+        useCase: string;
+        adoption: number;
+        growth: number;
+      }[];
+    };
+    
+    // Economic Indicators
+    economicIndicators: {
+      velocity: number;
+      nvtRatio: number;
+      mcapToTvlRatio: number;
+      priceToSalesRatio: number;
+      priceToEarningsRatio: number;
+      burnRate: number;
+      stakingYield: number;
+      apy: number;
+    };
+  };
+  
+  // Technical Analysis
+  technicalAnalysis: {
+    // Price Action
+    priceAction: {
+      supportLevel: number;
+      resistanceLevel: number;
+      trendDirection: 'bullish' | 'bearish' | 'sideways';
+      trendStrength: number;
+      momentum: number;
+      volatility: number;
+      atr: number;
+    };
+    
+    // Technical Indicators
+    technicalIndicators: {
+      movingAverages: {
+        period: number;
+        value: number;
+        signal: 'buy' | 'sell' | 'hold';
+      }[];
+      rsi: number;
+      macd: {
+        macdLine: number;
+        signalLine: number;
+        histogram: number;
+        signal: 'buy' | 'sell' | 'hold';
+      };
+      bollingerBands: {
+        upper: number;
+        middle: number;
+        lower: number;
+        position: 'above' | 'between' | 'below';
+      };
+      stochastic: {
+        k: number;
+        d: number;
+        signal: 'buy' | 'sell' | 'hold';
+      };
+      fibonacci: {
+        level: number;
+        price: number;
+        retracement: number;
+      }[];
+    };
+    
+    // Chart Patterns
+    chartPatterns: {
+      pattern: string;
+      probability: number;
+      target: number;
+      stopLoss: number;
+      timeframe: string;
+    }[];
+    
+    // On-Chain Analysis
+    onChainAnalysis: {
+      whaleMovements: {
+        address: string;
+        balance: number;
+        movement: 'inflow' | 'outflow';
+        amount: number;
+      }[];
+      exchangeFlows: {
+        exchange: string;
+        flow: 'inflow' | 'outflow';
+        amount: number;
+      }[];
+      networkGrowth: number;
+      activeSupply: number;
+      hodlWaves: {
+        period: string;
+        percentage: number;
+      }[];
+    };
+  };
+  
+  // Risk Analysis
+  riskAnalysis: {
+    // Market Risk
+    marketRisk: {
+      priceRisk: number;
+      volatilityRisk: number;
+      liquidityRisk: number;
+      correlationRisk: number;
+      marketRisk: number;
+    };
+    
+    // Technology Risk
+    technologyRisk: {
+      securityRisk: number;
+      scalabilityRisk: number;
+      networkRisk: number;
+      smartContractRisk: number;
+      technologyRisk: number;
+    };
+    
+    // Regulatory Risk
+    regulatoryRisk: {
+      regulatoryUncertainty: number;
+      banRisk: number;
+      complianceRisk: number;
+      taxRisk: number;
+      regulatoryRisk: number;
+    };
+    
+    // Operational Risk
+    operationalRisk: {
+      exchangeRisk: number;
+      walletRisk: number;
+      keyManagementRisk: number;
+      counterpartyRisk: number;
+      operationalRisk: number;
+    };
+    
+    // Total Risk
+    totalRisk: number;
+    riskEfficiency: number;
+  };
+  
+  // DeFi Analysis
+  defiAnalysis: {
+    // DeFi Metrics
+    defiMetrics: {
+      totalValueLocked: number;
+      totalValueLockedChange: number;
+      protocolRevenue: number;
+      protocolRevenueChange: number;
+      userCount: number;
+      userCountChange: number;
+      transactionCount: number;
+      transactionCountChange: number;
+    };
+    
+    // Yield Farming
+    yieldFarming: {
+      pool: string;
+      apy: number;
+      apr: number;
+      rewards: {
+        token: string;
+        amount: number;
+        value: number;
+      }[];
+      impermanentLoss: number;
+      risk: number;
+    }[];
+    
+    // Liquidity Provision
+    liquidityProvision: {
+      pool: string;
+      liquidity: number;
+      fees: number;
+      impermanentLoss: number;
+      risk: number;
+    }[];
+    
+    // Lending and Borrowing
+    lendingBorrowing: {
+      protocol: string;
+      supplyApy: number;
+      borrowApr: number;
+      utilizationRate: number;
+      collateralRatio: number;
+      liquidationThreshold: number;
     }[];
   };
   
-  // Volatility Analysis
-  volatilityAnalysis: {
-    historicalVolatility: number;
-    impliedVolatility: number;
-    volatilityRegime: 'low' | 'normal' | 'high' | 'extreme';
-    volatilityForecast: number;
-    volatilitySkew: number;
-    volatilityTerm: number;
-  };
-  
-  // Correlation Analysis
-  correlationAnalysis: {
-    correlationWithBitcoin: number;
-    correlationWithEthereum: number;
-    correlationWithSP500: number;
-    correlationWithGold: number;
-    correlationWithUSD: number;
-    correlationWithCryptoIndex: number;
-  };
-  
-  // Liquidity Analysis
-  liquidityAnalysis: {
-    averageDailyVolume: number;
-    bidAskSpread: number;
-    marketDepth: number;
-    liquidityScore: number;
-    tradingHours: string;
-    marketParticipants: string[];
-  };
-  
-  // Risk Factors
-  riskFactors: {
-    category: string;
-    factor: string;
-    impact: 'low' | 'medium' | 'high';
-    probability: number;
-    mitigation: string;
-  }[];
-  
-  // Regulatory Environment
-  regulatoryEnvironment: {
-    regulatoryStatus: string;
-    regulatoryRisks: string[];
-    complianceCost: number;
-    legalUncertainty: number;
-    countryRegulations: {
-      country: string;
-      status: string;
-      restrictions: string[];
+  // Staking Analysis
+  stakingAnalysis: {
+    // Staking Metrics
+    stakingMetrics: {
+      stakingRate: number;
+      stakingRewards: number;
+      stakingApy: number;
+      validatorCount: number;
+      minimumStake: number;
+      unbondingPeriod: number;
+    };
+    
+    // Validator Information
+    validatorInfo: {
+      validator: string;
+      commission: number;
+      uptime: number;
+      delegators: number;
+      totalStake: number;
+      performance: number;
     }[];
-  };
-  
-  // Competition Analysis
-  competitionAnalysis: {
-    competitors: string[];
-    competitiveAdvantage: string[];
-    marketShare: number;
-    competitivePosition: number;
-    competitiveThreats: string[];
-  };
-  
-  // Technology Analysis
-  technologyAnalysis: {
-    technologyScore: number;
-    innovationLevel: number;
-    scalability: number;
-    security: number;
-    efficiency: number;
-    technologyRisks: string[];
-  };
-  
-  // Team and Governance
-  teamGovernance: {
-    teamSize: number;
-    teamExperience: number;
-    teamTransparency: number;
-    governanceModel: string;
-    decisionMaking: string;
-    communityParticipation: number;
-  };
-  
-  // Tokenomics
-  tokenomics: {
-    tokenDistribution: {
-      category: string;
-      percentage: number;
-      amount: number;
-    }[];
-    vestingSchedule: {
+    
+    // Staking Rewards
+    stakingRewards: {
       period: string;
-      percentage: number;
-      amount: number;
+      rewards: number;
+      apy: number;
+      compound: boolean;
     }[];
-    inflationRate: number;
-    deflationaryMechanism: boolean;
-    burnRate: number;
   };
   
-  // Use Cases
-  useCases: {
-    primaryUseCase: string;
-    useCaseCategories: string[];
-    realWorldAdoption: number;
-    useCaseStrength: number;
-    useCaseExamples: string[];
+  // Cost Analysis
+  costAnalysis: {
+    // Transaction Costs
+    transactionCosts: {
+      networkFees: number;
+      exchangeFees: number;
+      slippage: number;
+      gasFees: number;
+      totalTransactionCosts: number;
+      costAsPercentage: number;
+    };
+    
+    // Mining Costs
+    miningCosts: {
+      electricityCost: number;
+      hardwareCost: number;
+      maintenanceCost: number;
+      totalMiningCosts: number;
+      costAsPercentage: number;
+    };
+    
+    // Staking Costs
+    stakingCosts: {
+      validatorFees: number;
+      slashingRisk: number;
+      opportunityCost: number;
+      totalStakingCosts: number;
+      costAsPercentage: number;
+    };
+    
+    // Total Costs
+    totalCosts: {
+      transactionCosts: number;
+      miningCosts: number;
+      stakingCosts: number;
+      totalCosts: number;
+      costEfficiency: number;
+    };
   };
   
-  // Investment Information
-  investmentInfo: {
-    investmentAmount: number;
-    investmentDate: string;
-    investmentStrategy: 'hodl' | 'trading' | 'staking' | 'yield_farming' | 'defi' | 'nft';
-    riskTolerance: 'low' | 'medium' | 'high';
+  // Performance Analysis
+  performanceAnalysis: {
+    // Return Metrics
+    returnMetrics: {
+      totalReturn: number;
+      annualizedReturn: number;
+      excessReturn: number;
+      sharpeRatio: number;
+      sortinoRatio: number;
+      calmarRatio: number;
+      maxDrawdown: number;
+    };
+    
+    // Risk Metrics
+    riskMetrics: {
+      volatility: number;
+      var: number;
+      cvar: number;
+      downsideDeviation: number;
+      beta: number;
+      correlation: number;
+    };
+    
+    // Attribution Analysis
+    attributionAnalysis: {
+      priceContribution: number;
+      stakingContribution: number;
+      yieldContribution: number;
+      costContribution: number;
+      totalAttribution: number;
+    };
+  };
+  
+  // Comparison Analysis
+  comparisonAnalysis: {
+    // Alternative Investments
+    alternativeInvestments: {
+      investment: string;
+      expectedReturn: number;
+      risk: number;
+      correlation: number;
+      comparison: number;
+    }[];
+    
+    // Related Cryptocurrencies
+    relatedCryptocurrencies: {
+      cryptocurrency: string;
+      correlation: number;
+      marketCap: number;
+      performance: number;
+    }[];
+    
+    // Market Comparison
+    marketComparison: {
+      benchmark: string;
+      benchmarkReturn: number;
+      cryptocurrencyReturn: number;
+      outperformance: number;
+      correlation: number;
+    };
   };
   
   // Scenario Analysis
-  scenarios: {
-    name: string;
-    probability: number;
-    priceChange: number;
-    adoptionChange: number;
-    regulatoryChange: number;
-    technologyChange: number;
-  }[];
+  scenarioAnalysis: {
+    // Price Scenarios
+    priceScenarios: {
+      scenario: string;
+      probability: number;
+      priceChange: number;
+      impact: number;
+      return: number;
+    }[];
+    
+    // Adoption Scenarios
+    adoptionScenarios: {
+      scenario: string;
+      probability: number;
+      adoptionChange: number;
+      priceImpact: number;
+      return: number;
+    }[];
+    
+    // Regulatory Scenarios
+    regulatoryScenarios: {
+      scenario: string;
+      probability: number;
+      regulatoryImpact: number;
+      priceImpact: number;
+      return: number;
+    }[];
+    
+    // Technology Scenarios
+    technologyScenarios: {
+      scenario: string;
+      probability: number;
+      technologyImpact: number;
+      priceImpact: number;
+      return: number;
+    }[];
+  };
   
   // Monte Carlo Simulation
   monteCarloSimulations: number;
   monteCarloTimeSteps: number;
-  includeJumpDiffusion: boolean;
-  jumpIntensity: number;
-  jumpSize: number;
+  includePriceVolatility: boolean;
+  includeAdoptionVolatility: boolean;
+  includeRegulatoryVolatility: boolean;
+  
+  // Analysis Parameters
+  analysisPeriod: number; // in days
+  confidenceLevel: number;
+  riskHorizon: number;
+  includeTransactionCosts: boolean;
+  includeStakingRewards: boolean;
+  
+  // Calculation Options
+  calculationOptions: {
+    includeFundamentalAnalysis: boolean;
+    includeTechnicalAnalysis: boolean;
+    includeRiskAnalysis: boolean;
+    includeDefiAnalysis: boolean;
+    includeStakingAnalysis: boolean;
+    includeCostAnalysis: boolean;
+    includePerformanceAnalysis: boolean;
+    includeComparisonAnalysis: boolean;
+    includeScenarioAnalysis: boolean;
+    includeMonteCarlo: boolean;
+  };
   
   // Historical Analysis
   historicalData: {
@@ -291,34 +558,23 @@ export interface CryptocurrencyInputs {
     volume: number;
     marketCap: number;
     activeAddresses: number;
-    transactions: number;
+    transactionCount: number;
+    return: number;
+    volatility: number;
   }[];
   
-  // Analysis Parameters
-  analysisPeriod: number; // in days
-  confidenceLevel: number;
-  timeHorizon: number;
-  includeTransactionCosts: boolean;
-  includeTaxes: boolean;
-  includeStakingRewards: boolean;
-  
   // Reporting Preferences
-  includePriceAnalysis: boolean;
-  includeRiskMetrics: boolean;
-  includeTechnicalAnalysis: boolean;
   includeFundamentalAnalysis: boolean;
-  includeOnChainAnalysis: boolean;
-  includeVolatilityAnalysis: boolean;
-  includeCorrelationAnalysis: boolean;
-  includeAdoptionAnalysis: boolean;
-  includeTechnologyAnalysis: boolean;
-  includeRegulatoryAnalysis: boolean;
-  includeCompetitionAnalysis: boolean;
+  includeTechnicalAnalysis: boolean;
+  includeRiskAnalysis: boolean;
+  includeDefiAnalysis: boolean;
+  includeStakingAnalysis: boolean;
+  includeCostAnalysis: boolean;
+  includePerformanceAnalysis: boolean;
+  includeComparisonAnalysis: boolean;
   includeScenarioAnalysis: boolean;
   includeMonteCarlo: boolean;
   includeHistoricalAnalysis: boolean;
-  includeTokenomicsAnalysis: boolean;
-  includeUseCaseAnalysis: boolean;
   includeRecommendations: boolean;
   includeActionItems: boolean;
   
@@ -329,304 +585,398 @@ export interface CryptocurrencyInputs {
   includeRecommendations: boolean;
 }
 
-export interface CryptocurrencyResults {
+export interface CryptocurrencyCalculatorResults {
   // Core Cryptocurrency Metrics
-  cryptocurrencyValue: number;
-  profitLoss: number;
-  profitLossPercentage: number;
-  unrealizedPnL: number;
-  realizedPnL: number;
+  currentPrice: number;
+  marketCap: number;
   totalReturn: number;
+  volatility: number;
+  sharpeRatio: number;
   
-  // Price Analysis
-  priceAnalysis: {
+  // Cryptocurrency Analysis
+  cryptocurrencyAnalysis: {
     currentPrice: number;
-    fairValue: number;
-    intrinsicValue: number;
-    overvaluation: number;
-    undervaluation: number;
-    priceForecast: number;
-    priceVolatility: number;
-  };
-  
-  // Risk Metrics
-  riskMetrics: {
-    valueAtRisk: number;
-    conditionalVaR: number;
-    expectedShortfall: number;
-    maxDrawdown: number;
-    downsideDeviation: number;
-    riskOfLoss: number;
-  };
-  
-  // Performance Metrics
-  performanceMetrics: {
+    marketCap: number;
     totalReturn: number;
-    annualizedReturn: number;
+    volatility: number;
     sharpeRatio: number;
-    sortinoRatio: number;
-    calmarRatio: number;
-    treynorRatio: number;
-    informationRatio: number;
+    cryptocurrencyBreakdown: {
+      component: string;
+      value: number;
+      contribution: number;
+    }[];
+    cryptocurrencyEfficiency: number;
   };
   
-  // Technical Analysis Results
-  technicalAnalysis: {
-    movingAverages: {
-      period: number;
-      value: number;
-      signal: 'buy' | 'sell' | 'hold';
-    }[];
-    supportLevels: number[];
-    resistanceLevels: number[];
-    trendDirection: 'bullish' | 'bearish' | 'sideways';
-    momentumIndicators: {
-      indicator: string;
-      value: number;
-      signal: string;
-    }[];
-    technicalScore: number;
-  };
-  
-  // Fundamental Analysis Results
+  // Fundamental Analysis
   fundamentalAnalysis: {
-    networkValue: number;
-    networkValueToTransactions: number;
-    priceToSales: number;
-    priceToBook: number;
-    fundamentalScore: number;
-    fundamentalFactors: {
-      factor: string;
-      impact: number;
-      weight: number;
-    }[];
+    networkMetrics: {
+      activeAddresses: number;
+      transactionCount: number;
+      transactionVolume: number;
+      averageTransactionSize: number;
+      networkHashRate: number;
+      difficulty: number;
+      blockTime: number;
+      blockSize: number;
+      totalTransactions: number;
+      uniqueAddresses: number;
+    };
+    developmentActivity: {
+      githubCommits: number;
+      githubStars: number;
+      githubForks: number;
+      contributors: number;
+      lastCommit: string;
+      developmentScore: number;
+      codeQuality: number;
+      documentation: number;
+    };
+    adoptionMetrics: {
+      merchantAdoption: number;
+      institutionalAdoption: number;
+      retailAdoption: number;
+      regulatoryStatus: string;
+      countryAdoption: {
+        country: string;
+        adoption: number;
+        regulation: string;
+      }[];
+      useCaseAdoption: {
+        useCase: string;
+        adoption: number;
+        growth: number;
+      }[];
+    };
+    economicIndicators: {
+      velocity: number;
+      nvtRatio: number;
+      mcapToTvlRatio: number;
+      priceToSalesRatio: number;
+      priceToEarningsRatio: number;
+      burnRate: number;
+      stakingYield: number;
+      apy: number;
+    };
+    fundamentalEfficiency: number;
   };
   
-  // On-Chain Analysis Results
-  onChainAnalysis: {
-    activeAddresses: number;
-    newAddresses: number;
-    transactionCount: number;
-    averageTransactionValue: number;
-    whaleTransactions: number;
-    exchangeFlows: {
-      exchange: string;
-      inflow: number;
-      outflow: number;
-      netFlow: number;
-    }[];
-    onChainScore: number;
-  };
-  
-  // Volatility Analysis Results
-  volatilityAnalysis: {
-    historicalVolatility: number;
-    impliedVolatility: number;
-    volatilityRegime: string;
-    volatilityForecast: number;
-    volatilitySkew: number;
-    volatilityTerm: number;
-    volatilitySurface: {
-      maturity: number;
-      strike: number;
+  // Technical Analysis
+  technicalAnalysis: {
+    priceAction: {
+      supportLevel: number;
+      resistanceLevel: number;
+      trendDirection: string;
+      trendStrength: number;
+      momentum: number;
       volatility: number;
+      atr: number;
+    };
+    technicalIndicators: {
+      movingAverages: {
+        period: number;
+        value: number;
+        signal: string;
+      }[];
+      rsi: number;
+      macd: {
+        macdLine: number;
+        signalLine: number;
+        histogram: number;
+        signal: string;
+      };
+      bollingerBands: {
+        upper: number;
+        middle: number;
+        lower: number;
+        position: string;
+      };
+      stochastic: {
+        k: number;
+        d: number;
+        signal: string;
+      };
+      fibonacci: {
+        level: number;
+        price: number;
+        retracement: number;
+      }[];
+    };
+    chartPatterns: {
+      pattern: string;
+      probability: number;
+      target: number;
+      stopLoss: number;
+      timeframe: string;
     }[];
+    onChainAnalysis: {
+      whaleMovements: {
+        address: string;
+        balance: number;
+        movement: string;
+        amount: number;
+      }[];
+      exchangeFlows: {
+        exchange: string;
+        flow: string;
+        amount: number;
+      }[];
+      networkGrowth: number;
+      activeSupply: number;
+      hodlWaves: {
+        period: string;
+        percentage: number;
+      }[];
+    };
+    technicalEfficiency: number;
   };
   
-  // Correlation Analysis Results
-  correlationAnalysis: {
-    correlationWithBitcoin: number;
-    correlationWithEthereum: number;
-    correlationWithSP500: number;
-    correlationWithGold: number;
-    correlationWithUSD: number;
-    correlationWithCryptoIndex: number;
-    averageCorrelation: number;
-  };
-  
-  // Adoption Analysis
-  adoptionAnalysis: {
-    activeUsers: number;
-    dailyTransactions: number;
-    merchantAdoption: number;
-    institutionalAdoption: number;
-    regulatoryStatus: string;
-    countryAdoption: string[];
-    adoptionScore: number;
-    adoptionTrend: string;
-  };
-  
-  // Technology Analysis Results
-  technologyAnalysis: {
-    technologyScore: number;
-    innovationLevel: number;
-    scalability: number;
-    security: number;
-    efficiency: number;
-    technologyRisks: string[];
-    technologyStrengths: string[];
-  };
-  
-  // Regulatory Analysis
-  regulatoryAnalysis: {
-    regulatoryStatus: string;
-    regulatoryRisks: string[];
-    complianceCost: number;
-    legalUncertainty: number;
-    countryRegulations: {
-      country: string;
-      status: string;
-      restrictions: string[];
-    }[];
-    regulatoryScore: number;
-  };
-  
-  // Competition Analysis Results
-  competitionAnalysis: {
-    competitors: string[];
-    competitiveAdvantage: string[];
-    marketShare: number;
-    competitivePosition: number;
-    competitiveThreats: string[];
-    competitiveScore: number;
-  };
-  
-  // Liquidity Analysis Results
-  liquidityAnalysis: {
-    averageDailyVolume: number;
-    bidAskSpread: number;
-    marketDepth: number;
-    liquidityScore: number;
-    liquidityRisk: number;
-    marketImpact: number;
-  };
-  
-  // Staking Analysis
-  stakingAnalysis: {
-    stakingEnabled: boolean;
-    stakingReward: number;
-    stakingAPY: number;
-    minimumStake: number;
-    stakingPeriod: number;
-    totalStaked: number;
-    stakingRatio: number;
-    stakingValue: number;
-    stakingEfficiency: number;
-  };
-  
-  // Mining Analysis
-  miningAnalysis: {
-    miningEnabled: boolean;
-    miningReward: number;
-    miningDifficulty: number;
-    miningHashRate: number;
-    miningCost: number;
-    miningProfitability: number;
-    miningValue: number;
-    miningEfficiency: number;
+  // Risk Analysis
+  riskAnalysis: {
+    marketRisk: {
+      priceRisk: number;
+      volatilityRisk: number;
+      liquidityRisk: number;
+      correlationRisk: number;
+      marketRisk: number;
+    };
+    technologyRisk: {
+      securityRisk: number;
+      scalabilityRisk: number;
+      networkRisk: number;
+      smartContractRisk: number;
+      technologyRisk: number;
+    };
+    regulatoryRisk: {
+      regulatoryUncertainty: number;
+      banRisk: number;
+      complianceRisk: number;
+      taxRisk: number;
+      regulatoryRisk: number;
+    };
+    operationalRisk: {
+      exchangeRisk: number;
+      walletRisk: number;
+      keyManagementRisk: number;
+      counterpartyRisk: number;
+      operationalRisk: number;
+    };
+    totalRisk: number;
+    riskEfficiency: number;
   };
   
   // DeFi Analysis
   defiAnalysis: {
-    totalValueLocked: number;
-    defiProtocols: number;
-    yieldFarming: boolean;
-    lendingProtocols: boolean;
-    dexVolume: number;
-    liquidityPools: number;
-    defiValue: number;
+    defiMetrics: {
+      totalValueLocked: number;
+      totalValueLockedChange: number;
+      protocolRevenue: number;
+      protocolRevenueChange: number;
+      userCount: number;
+      userCountChange: number;
+      transactionCount: number;
+      transactionCountChange: number;
+    };
+    yieldFarming: {
+      pool: string;
+      apy: number;
+      apr: number;
+      rewards: {
+        token: string;
+        amount: number;
+        value: number;
+      }[];
+      impermanentLoss: number;
+      risk: number;
+    }[];
+    liquidityProvision: {
+      pool: string;
+      liquidity: number;
+      fees: number;
+      impermanentLoss: number;
+      risk: number;
+    }[];
+    lendingBorrowing: {
+      protocol: string;
+      supplyApy: number;
+      borrowApr: number;
+      utilizationRate: number;
+      collateralRatio: number;
+      liquidationThreshold: number;
+    }[];
     defiEfficiency: number;
   };
   
-  // Tokenomics Analysis
-  tokenomicsAnalysis: {
-    tokenDistribution: {
-      category: string;
-      percentage: number;
-      amount: number;
+  // Staking Analysis
+  stakingAnalysis: {
+    stakingMetrics: {
+      stakingRate: number;
+      stakingRewards: number;
+      stakingApy: number;
+      validatorCount: number;
+      minimumStake: number;
+      unbondingPeriod: number;
+    };
+    validatorInfo: {
+      validator: string;
+      commission: number;
+      uptime: number;
+      delegators: number;
+      totalStake: number;
+      performance: number;
     }[];
-    vestingSchedule: {
+    stakingRewards: {
       period: string;
-      percentage: number;
-      amount: number;
+      rewards: number;
+      apy: number;
+      compound: boolean;
     }[];
-    inflationRate: number;
-    deflationaryMechanism: boolean;
-    burnRate: number;
-    tokenomicsScore: number;
+    stakingEfficiency: number;
   };
   
-  // Use Case Analysis
-  useCaseAnalysis: {
-    primaryUseCase: string;
-    useCaseCategories: string[];
-    realWorldAdoption: number;
-    useCaseStrength: number;
-    useCaseExamples: string[];
-    useCaseScore: number;
+  // Cost Analysis
+  costAnalysis: {
+    transactionCosts: {
+      networkFees: number;
+      exchangeFees: number;
+      slippage: number;
+      gasFees: number;
+      totalTransactionCosts: number;
+      costAsPercentage: number;
+    };
+    miningCosts: {
+      electricityCost: number;
+      hardwareCost: number;
+      maintenanceCost: number;
+      totalMiningCosts: number;
+      costAsPercentage: number;
+    };
+    stakingCosts: {
+      validatorFees: number;
+      slashingRisk: number;
+      opportunityCost: number;
+      totalStakingCosts: number;
+      costAsPercentage: number;
+    };
+    totalCosts: {
+      transactionCosts: number;
+      miningCosts: number;
+      stakingCosts: number;
+      totalCosts: number;
+      costEfficiency: number;
+    };
+    costEfficiency: number;
   };
   
-  // Team and Governance Analysis
-  teamGovernanceAnalysis: {
-    teamSize: number;
-    teamExperience: number;
-    teamTransparency: number;
-    governanceModel: string;
-    decisionMaking: string;
-    communityParticipation: number;
-    teamGovernanceScore: number;
-  };
-  
-  // Developer Activity Analysis
-  developerActivityAnalysis: {
-    githubRepositories: number;
-    githubStars: number;
-    githubForks: number;
-    developerCount: number;
-    codeCommits: number;
-    developerScore: number;
-    developerTrend: string;
-  };
-  
-  // Network Analysis
-  networkAnalysis: {
-    nodes: number;
-    validators: number;
-    decentralizationScore: number;
-    networkUptime: number;
-    networkSecurity: number;
-    networkScalability: number;
-    networkScore: number;
-  };
-  
-  // Smart Contract Analysis
-  smartContractAnalysis: {
-    smartContracts: number;
-    contractAddresses: string[];
-    contractAudits: boolean;
-    auditScore: number;
-    vulnerabilities: string[];
-    smartContractScore: number;
-  };
-  
-  // Scenario Analysis Results
-  scenarioResults: {
-    scenarioName: string;
-    probability: number;
-    price: number;
-    profitLoss: number;
-    return: number;
-    riskMetrics: {
-      var: number;
-      cvar: number;
+  // Performance Analysis
+  performanceAnalysis: {
+    returnMetrics: {
+      totalReturn: number;
+      annualizedReturn: number;
+      excessReturn: number;
+      sharpeRatio: number;
+      sortinoRatio: number;
+      calmarRatio: number;
       maxDrawdown: number;
     };
+    riskMetrics: {
+      volatility: number;
+      var: number;
+      cvar: number;
+      downsideDeviation: number;
+      beta: number;
+      correlation: number;
+    };
+    attributionAnalysis: {
+      priceContribution: number;
+      stakingContribution: number;
+      yieldContribution: number;
+      costContribution: number;
+      totalAttribution: number;
+    };
+    performanceEfficiency: number;
+  };
+  
+  // Sensitivity Analysis
+  sensitivityAnalysis: {
+    variable: string;
+    baseValue: number;
+    lowValue: number;
+    highValue: number;
+    lowReturn: number;
+    highReturn: number;
+    sensitivity: number;
   }[];
+  
+  // Scenario Analysis
+  scenarioAnalysis: {
+    scenarioName: string;
+    description: string;
+    probability: number;
+    priceChange: number;
+    impact: number;
+    return: number;
+  }[];
+  
+  // Comparison Analysis
+  comparisonAnalysis: {
+    alternativeInvestments: {
+      investment: string;
+      expectedReturn: number;
+      risk: number;
+      correlation: number;
+      comparison: number;
+    }[];
+    relatedCryptocurrencies: {
+      cryptocurrency: string;
+      correlation: number;
+      marketCap: number;
+      performance: number;
+    }[];
+    marketComparison: {
+      benchmark: string;
+      benchmarkReturn: number;
+      cryptocurrencyReturn: number;
+      outperformance: number;
+      correlation: number;
+    };
+    comparisonEfficiency: number;
+  };
+  
+  // Peer Comparison
+  peerComparison: {
+    peerComparison: {
+      peer: string;
+      return: number;
+      risk: number;
+      outperformance: number;
+    }[];
+    marketComparison: {
+      metric: string;
+      cryptocurrency: number;
+      market: number;
+      difference: number;
+    }[];
+  };
+  
+  // Cryptocurrency Score
+  cryptocurrencyScore: {
+    overallScore: number;
+    componentScores: {
+      fundamental: number;
+      technical: number;
+      risk: number;
+      defi: number;
+      staking: number;
+      performance: number;
+    };
+    recommendation: 'buy' | 'sell' | 'hold' | 'avoid';
+  };
   
   // Monte Carlo Results
   monteCarloResults: {
-    meanPrice: number;
-    medianPrice: number;
+    meanReturn: number;
+    medianReturn: number;
     standardDeviation: number;
     percentiles: {
       p5: number;
@@ -638,40 +988,19 @@ export interface CryptocurrencyResults {
       p95: number;
     };
     probabilityDistribution: {
-      price: number;
+      value: number;
       probability: number;
     }[];
+    successProbability: number;
   };
   
   // Historical Analysis
   historicalAnalysis: {
+    historicalPrice: number;
     historicalReturn: number;
     historicalVolatility: number;
-    historicalSharpeRatio: number;
-    historicalMaxDrawdown: number;
-    priceTrend: number;
-    priceCycles: string[];
-  };
-  
-  // Sensitivity Analysis
-  sensitivityAnalysis: {
-    parameter: string;
-    baseValue: number;
-    lowValue: number;
-    highValue: number;
-    lowPrice: number;
-    highPrice: number;
-    sensitivity: number;
-  }[];
-  
-  // Comparative Analysis
-  comparativeAnalysis: {
-    benchmark: string;
-    benchmarkReturn: number;
-    excessReturn: number;
-    trackingError: number;
-    informationRatio: number;
-    relativePerformance: number;
+    historicalTrends: string[];
+    yearOverYearChange: number;
   };
   
   // Optimization Opportunities
@@ -685,18 +1014,18 @@ export interface CryptocurrencyResults {
   
   // Business Impact
   businessImpact: {
-    roi: number;
-    paybackPeriod: number;
-    netPresentValue: number;
-    internalRateOfReturn: number;
-    riskAdjustedReturn: number;
+    returnEnhancement: number;
+    riskReduction: number;
+    costSavings: number;
+    stakingRewards: number;
+    overallBenefit: number;
   };
   
   // Comprehensive Report
   comprehensiveReport: {
     executiveSummary: string;
     keyFindings: string[];
-    riskAssessment: string;
+    cryptocurrencyAssessment: string;
     recommendations: string[];
     actionItems: {
       action: string;
@@ -708,12 +1037,13 @@ export interface CryptocurrencyResults {
   
   // Executive Summary
   executiveSummary: {
-    cryptocurrencyValue: number;
+    currentPrice: number;
+    marketCap: number;
     totalReturn: number;
-    riskLevel: 'low' | 'medium' | 'high';
-    recommendation: 'buy' | 'sell' | 'hold';
-    keyRisks: string[];
-    keyOpportunities: string[];
+    sharpeRatio: number;
+    recommendation: 'buy' | 'sell' | 'hold' | 'avoid';
+    keyStrengths: string[];
+    keyWeaknesses: string[];
   };
   
   // Recommendations

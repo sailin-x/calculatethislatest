@@ -1,499 +1,1143 @@
-export interface RetirementPlanningInputs {
-  // Personal information
+export interface RetirementPlanningCalculatorInputs {
+  // Personal Information
   personalInfo: {
-    age: number; // Current age
-    retirementAge: number; // Target retirement age
-    lifeExpectancy: number; // Expected life expectancy
-    gender: 'male' | 'female' | 'other';
-    maritalStatus: 'single' | 'married' | 'divorced' | 'widowed';
-    dependents: number; // Number of dependents
-    healthStatus: 'excellent' | 'good' | 'fair' | 'poor';
-  };
-  
-  // Current financial situation
-  currentFinances: {
-    annualIncome: number; // Current annual income
-    annualExpenses: number; // Current annual expenses
-    currentSavings: number; // Current total savings
-    emergencyFund: number; // Emergency fund amount
-    debtAmount: number; // Total debt amount
-    monthlyDebtPayments: number; // Monthly debt payments
-  };
-  
-  // Retirement accounts
-  retirementAccounts: {
-    traditionalIRA: {
-      balance: number; // Current balance
-      annualContribution: number; // Annual contribution
-      employerMatch: number; // Employer match percentage
-      expectedReturn: number; // Expected annual return
+    // Basic Information
+    basicInfo: {
+      firstName: string;
+      lastName: string;
+      dateOfBirth: string;
+      age: number;
+      gender: 'male' | 'female' | 'other';
+      maritalStatus: 'single' | 'married' | 'divorced' | 'widowed';
+      dependents: number;
+      occupation: string;
+      employer: string;
+      employmentStatus: 'employed' | 'self_employed' | 'retired' | 'unemployed';
+      education: string;
+      healthStatus: 'excellent' | 'good' | 'fair' | 'poor';
+      lifeExpectancy: number;
+      expectedRetirementAge: number;
+      expectedRetirementDate: string;
+      yearsToRetirement: number;
     };
-    rothIRA: {
-      balance: number; // Current balance
-      annualContribution: number; // Annual contribution
-      expectedReturn: number; // Expected annual return
+    
+    // Spouse Information
+    spouseInfo: {
+      firstName: string;
+      lastName: string;
+      dateOfBirth: string;
+      age: number;
+      gender: string;
+      occupation: string;
+      employer: string;
+      employmentStatus: string;
+      healthStatus: string;
+      lifeExpectancy: number;
+      expectedRetirementAge: number;
+      expectedRetirementDate: string;
+      yearsToRetirement: number;
     };
-    employerPlans: {
-      balance: number; // Current balance (401k, 403b, etc.)
-      annualContribution: number; // Annual contribution
-      employerMatch: number; // Employer match percentage
-      expectedReturn: number; // Expected annual return
+    
+    // Contact Information
+    contactInfo: {
+      address: {
+        street: string;
+        city: string;
+        state: string;
+        zipCode: string;
+        country: string;
+      };
+      phone: string;
+      email: string;
+      emergencyContact: {
+        name: string;
+        relationship: string;
+        phone: string;
+        email: string;
+      };
     };
-    otherRetirement: {
-      balance: number; // Other retirement accounts
-      annualContribution: number; // Annual contribution
-      expectedReturn: number; // Expected annual return
-    };
-  };
-  
-  // Social Security
-  socialSecurity: {
-    expectedBenefit: number; // Expected monthly benefit
-    claimingAge: number; // Age when claiming benefits
-    spouseBenefit: number; // Spouse's expected benefit
-    spouseClaimingAge: number; // Spouse's claiming age
-    survivorBenefit: number; // Survivor benefit amount
-  };
-  
-  // Pension benefits
-  pensionBenefits: {
-    definedBenefit: {
-      monthlyBenefit: number; // Monthly pension benefit
-      startAge: number; // Age when benefits start
-      survivorBenefit: number; // Survivor benefit percentage
-      costOfLivingAdjustment: boolean; // COLA adjustment
-    };
-    definedContribution: {
-      balance: number; // Current balance
-      annualContribution: number; // Annual contribution
-      expectedReturn: number; // Expected annual return
-    };
-  };
-  
-  // Investment portfolio
-  investmentPortfolio: {
-    totalValue: number; // Total portfolio value
-    assetAllocation: {
-      stocks: number; // Percentage in stocks
-      bonds: number; // Percentage in bonds
-      cash: number; // Percentage in cash
-      realEstate: number; // Percentage in real estate
-      alternatives: number; // Percentage in alternatives
-    };
-    expectedReturn: number; // Expected portfolio return
-    riskTolerance: 'conservative' | 'moderate' | 'aggressive';
-    rebalancingFrequency: 'monthly' | 'quarterly' | 'annually' | 'never';
-  };
-  
-  // Real estate
-  realEstate: {
-    primaryResidence: {
-      value: number; // Current value
-      mortgage: number; // Remaining mortgage
-      monthlyPayment: number; // Monthly payment
-      expectedAppreciation: number; // Expected annual appreciation
-    };
-    investmentProperties: {
-      value: number; // Total value
-      monthlyRentalIncome: number; // Monthly rental income
-      monthlyExpenses: number; // Monthly expenses
-      expectedAppreciation: number; // Expected annual appreciation
+    
+    // Tax Information
+    taxInfo: {
+      taxFilingStatus: 'single' | 'married_filing_jointly' | 'married_filing_separately' | 'head_of_household' | 'qualifying_widow';
+      taxBracket: number;
+      stateOfResidence: string;
+      stateTaxRate: number;
+      localTaxRate: number;
+      alternativeMinimumTax: boolean;
+      itemizedDeductions: boolean;
+      taxDeductions: number;
+      taxCredits: number;
     };
   };
   
-  // Insurance
-  insurance: {
-    lifeInsurance: {
-      deathBenefit: number; // Death benefit amount
-      annualPremium: number; // Annual premium
-      policyType: 'term' | 'whole' | 'universal' | 'variable';
-      coverageDuration: number; // Years of coverage
-    };
-    longTermCare: {
-      monthlyBenefit: number; // Monthly benefit amount
-      annualPremium: number; // Annual premium
-      eliminationPeriod: number; // Elimination period (days)
-      benefitPeriod: number; // Benefit period (years)
-    };
-    healthInsurance: {
-      monthlyPremium: number; // Monthly premium
-      deductible: number; // Annual deductible
-      outOfPocketMax: number; // Out-of-pocket maximum
-    };
-  };
-  
-  // Retirement goals
-  retirementGoals: {
-    desiredAnnualIncome: number; // Desired annual income in retirement
-    replacementRatio: number; // Income replacement ratio
-    retirementLifestyle: 'basic' | 'comfortable' | 'luxury';
-    travelBudget: number; // Annual travel budget
-    healthcareBudget: number; // Annual healthcare budget
-    legacyGoals: number; // Amount to leave to heirs
-    charitableGiving: number; // Annual charitable giving
-  };
-  
-  // Inflation and taxes
-  inflationAndTaxes: {
-    inflationRate: number; // Expected annual inflation rate
-    taxRate: {
-      current: number; // Current tax rate
-      retirement: number; // Expected retirement tax rate
-    };
-    socialSecurityTaxable: boolean; // Whether SS benefits are taxable
-    requiredMinimumDistributions: boolean; // Whether RMDs apply
-  };
-  
-  // Risk factors
-  riskFactors: {
-    marketRisk: number; // Market risk tolerance (1-10)
-    longevityRisk: number; // Longevity risk concern (1-10)
-    healthcareRisk: number; // Healthcare cost concern (1-10)
-    inflationRisk: number; // Inflation risk concern (1-10)
-    sequenceRisk: number; // Sequence of returns risk (1-10)
-  };
-  
-  // Additional income sources
-  additionalIncome: {
-    partTimeWork: {
-      annualIncome: number; // Annual part-time income
-      duration: number; // Years of part-time work
-    };
-    businessIncome: {
-      annualIncome: number; // Annual business income
-      duration: number; // Years of business income
-    };
+  // Income Information
+  incomeInfo: {
+    // Employment Income
+    employmentIncome: {
+      source: string;
+      amount: number;
+      frequency: 'weekly' | 'bi_weekly' | 'monthly' | 'quarterly' | 'annually';
+      growthRate: number;
+      expectedRetirementAge: number;
+      benefits: {
+        healthInsurance: number;
+        dentalInsurance: number;
+        visionInsurance: number;
+        lifeInsurance: number;
+        disabilityInsurance: number;
+        retirementMatch: number;
+        stockOptions: number;
+        otherBenefits: number;
+      };
+    }[];
+    
+    // Self-Employment Income
+    selfEmploymentIncome: {
+      source: string;
+      amount: number;
+      frequency: string;
+      growthRate: number;
+      expectedRetirementAge: number;
+      businessExpenses: number;
+      selfEmploymentTax: number;
+    }[];
+    
+    // Investment Income
+    investmentIncome: {
+      source: string;
+      amount: number;
+      frequency: string;
+      growthRate: number;
+      taxable: boolean;
+      taxRate: number;
+    }[];
+    
+    // Rental Income
     rentalIncome: {
-      annualIncome: number; // Annual rental income
-      duration: number; // Years of rental income
-    };
+      property: string;
+      grossRentalIncome: number;
+      expenses: number;
+      netRentalIncome: number;
+      depreciation: number;
+      taxableIncome: number;
+    }[];
+    
+    // Other Income
     otherIncome: {
-      annualIncome: number; // Other income sources
-      duration: number; // Years of other income
+      source: string;
+      amount: number;
+      frequency: string;
+      growthRate: number;
+      taxable: boolean;
+      taxRate: number;
+    }[];
+    
+    // Total Income
+    totalAnnualIncome: number;
+    expectedIncomeGrowth: number;
+    afterTaxIncome: number;
+  };
+  
+  // Retirement Assets
+  retirementAssets: {
+    // Employer-Sponsored Plans
+    employerPlans: {
+      planName: string;
+      planType: '401k' | '403b' | '457' | 'pension' | 'profit_sharing' | 'other';
+      currentBalance: number;
+      employerMatch: number;
+      employeeContribution: number;
+      totalContribution: number;
+      expectedReturn: number;
+      vestingSchedule: {
+        years: number;
+        percentage: number;
+      }[];
+      expectedRetirementBalance: number;
+      requiredMinimumDistribution: number;
+      distributionAge: number;
+    }[];
+    
+    // Individual Retirement Accounts
+    individualAccounts: {
+      accountName: string;
+      accountType: 'traditional_ira' | 'roth_ira' | 'sep_ira' | 'simple_ira' | 'rollover_ira';
+      currentBalance: number;
+      annualContribution: number;
+      catchUpContribution: number;
+      expectedReturn: number;
+      expectedRetirementBalance: number;
+      requiredMinimumDistribution: number;
+      distributionAge: number;
+      taxStatus: 'tax_deferred' | 'tax_free' | 'taxable';
+    }[];
+    
+    // Social Security
+    socialSecurity: {
+      primaryInsuranceAmount: number;
+      fullRetirementAge: number;
+      earlyRetirementAge: number;
+      earlyRetirementReduction: number;
+      delayedRetirementCredit: number;
+      expectedMonthlyBenefit: number;
+      expectedAnnualBenefit: number;
+      spousalBenefit: number;
+      survivorBenefit: number;
+      costOfLivingAdjustment: number;
+      taxablePercentage: number;
+    };
+    
+    // Pension Benefits
+    pensionBenefits: {
+      pensionName: string;
+      planType: 'defined_benefit' | 'defined_contribution' | 'cash_balance';
+      currentValue: number;
+      monthlyBenefit: number;
+      annualBenefit: number;
+      startDate: string;
+      survivorBenefit: number;
+      costOfLivingAdjustment: number;
+      lumpSumOption: number;
+      expectedRetirementValue: number;
+    }[];
+    
+    // Other Retirement Assets
+    otherRetirementAssets: {
+      asset: string;
+      type: string;
+      currentValue: number;
+      expectedReturn: number;
+      expectedRetirementValue: number;
+      liquidity: 'high' | 'medium' | 'low';
+      taxStatus: string;
+    }[];
+    
+    // Total Retirement Assets
+    totalRetirementAssets: number;
+    expectedRetirementAssets: number;
+    retirementSavingsRate: number;
+  };
+  
+  // Retirement Goals
+  retirementGoals: {
+    // Retirement Lifestyle
+    retirementLifestyle: {
+      lifestyle: 'basic' | 'comfortable' | 'luxury' | 'ultra_high_net_worth';
+      annualIncomeNeeded: number;
+      monthlyIncomeNeeded: number;
+      inflationAdjustment: boolean;
+      inflationRate: number;
+      retirementLocation: string;
+      costOfLivingAdjustment: number;
+    };
+    
+    // Retirement Expenses
+    retirementExpenses: {
+      housingExpenses: {
+        category: string;
+        amount: number;
+        frequency: string;
+        inflationRate: number;
+      }[];
+      healthcareExpenses: {
+        category: string;
+        amount: number;
+        frequency: string;
+        inflationRate: number;
+        insuranceCoverage: number;
+      }[];
+      transportationExpenses: {
+        category: string;
+        amount: number;
+        frequency: string;
+        inflationRate: number;
+      }[];
+      foodExpenses: {
+        category: string;
+        amount: number;
+        frequency: string;
+        inflationRate: number;
+      }[];
+      entertainmentExpenses: {
+        category: string;
+        amount: number;
+        frequency: string;
+        inflationRate: number;
+      }[];
+      travelExpenses: {
+        category: string;
+        amount: number;
+        frequency: string;
+        inflationRate: number;
+      }[];
+      insuranceExpenses: {
+        category: string;
+        amount: number;
+        frequency: string;
+        inflationRate: number;
+      }[];
+      otherExpenses: {
+        category: string;
+        amount: number;
+        frequency: string;
+        inflationRate: number;
+      }[];
+      totalAnnualExpenses: number;
+      expectedExpenseInflation: number;
+    };
+    
+    // Retirement Phases
+    retirementPhases: {
+      phase: string;
+      startAge: number;
+      endAge: number;
+      annualIncomeNeeded: number;
+      expenses: number;
+      activities: string[];
+      healthConsiderations: string[];
+    }[];
+    
+    // Legacy Goals
+    legacyGoals: {
+      goal: string;
+      targetAmount: number;
+      beneficiary: string;
+      priority: 'high' | 'medium' | 'low';
+      taxEfficient: boolean;
+      method: string;
+    }[];
+  };
+  
+  // Risk Profile
+  riskProfile: {
+    // Risk Tolerance
+    riskTolerance: {
+      investmentHorizon: number;
+      riskCapacity: 'low' | 'medium' | 'high';
+      riskWillingness: 'low' | 'medium' | 'high';
+      riskNeed: 'low' | 'medium' | 'high';
+      overallRiskTolerance: 'conservative' | 'moderate' | 'aggressive';
+    };
+    
+    // Investment Preferences
+    investmentPreferences: {
+      preferredAssetClasses: string[];
+      excludedAssetClasses: string[];
+      preferredInvestmentTypes: string[];
+      excludedInvestmentTypes: string[];
+      liquidityRequirements: 'high' | 'medium' | 'low';
+      taxEfficiency: boolean;
+      esgConsiderations: boolean;
+      internationalExposure: boolean;
+    };
+    
+    // Behavioral Factors
+    behavioralFactors: {
+      lossAversion: 'low' | 'medium' | 'high';
+      marketTiming: boolean;
+      emotionalTrading: boolean;
+      investmentExperience: 'beginner' | 'intermediate' | 'advanced';
+      financialLiteracy: 'low' | 'medium' | 'high';
+      decisionMakingStyle: 'analytical' | 'intuitive' | 'collaborative';
     };
   };
   
-  // Estate planning
-  estatePlanning: {
-    will: boolean; // Has a will
-    trust: boolean; // Has a trust
-    powerOfAttorney: boolean; // Has power of attorney
-    healthcareDirective: boolean; // Has healthcare directive
-    beneficiaryDesignations: boolean; // Has beneficiary designations
-    estateTaxExemption: number; // Estate tax exemption amount
+  // Market Assumptions
+  marketAssumptions: {
+    // Return Assumptions
+    returnAssumptions: {
+      assetClass: string;
+      expectedReturn: number;
+      volatility: number;
+      correlation: number;
+      inflationRate: number;
+      realReturn: number;
+    }[];
+    
+    // Economic Assumptions
+    economicAssumptions: {
+      inflationRate: number;
+      realGdpGrowth: number;
+      interestRate: number;
+      taxRate: number;
+      socialSecurityGrowth: number;
+      healthcareInflation: number;
+      lifeExpectancy: number;
+      socialSecuritySolvency: number;
+    };
+    
+    // Life Event Assumptions
+    lifeEventAssumptions: {
+      event: string;
+      probability: number;
+      impact: number;
+      timing: number;
+      description: string;
+    }[];
   };
   
-  // Scenario analysis
-  scenarios: {
-    scenario: string;
-    probability: number;
-    marketReturn: number;
-    inflationRate: number;
-    lifeExpectancy: number;
-    healthcareCosts: number;
+  // Retirement Strategy
+  retirementStrategy: {
+    // Asset Allocation Strategy
+    assetAllocationStrategy: {
+      strategy: 'conservative' | 'moderate' | 'aggressive' | 'custom';
+      targetAllocation: {
+        assetClass: string;
+        targetWeight: number;
+        minWeight: number;
+        maxWeight: number;
+      }[];
+      rebalancingFrequency: 'monthly' | 'quarterly' | 'annually' | 'trigger_based';
+      rebalancingThreshold: number;
+      glidePath: boolean;
+      targetDateFund: boolean;
+    };
+    
+    // Investment Vehicles
+    investmentVehicles: {
+      vehicle: string;
+      type: string;
+      advantages: string[];
+      disadvantages: string[];
+      suitability: 'high' | 'medium' | 'low';
+      recommendation: string;
+    }[];
+    
+    // Tax Strategy
+    taxStrategy: {
+      taxLossHarvesting: boolean;
+      taxEfficientFunds: boolean;
+      assetLocation: boolean;
+      rothConversion: boolean;
+      requiredMinimumDistributions: boolean;
+      socialSecurityOptimization: boolean;
+      medicareOptimization: boolean;
+    };
+    
+    // Risk Management
+    riskManagement: {
+      diversification: boolean;
+      dollarCostAveraging: boolean;
+      stopLosses: boolean;
+      insurance: {
+        type: string;
+        coverage: number;
+        premium: number;
+        necessity: 'essential' | 'recommended' | 'optional';
+      }[];
+      longTermCare: boolean;
+      annuities: boolean;
+    };
+    
+    // Distribution Strategy
+    distributionStrategy: {
+      strategy: 'systematic_withdrawal' | 'bucket_strategy' | 'dynamic_withdrawal' | 'annuity' | 'hybrid';
+      withdrawalRate: number;
+      inflationAdjustment: boolean;
+      requiredMinimumDistributions: boolean;
+      socialSecurityTiming: 'early' | 'full_retirement' | 'delayed';
+      medicareTiming: number;
+      distributionOrder: string[];
+    };
+  };
+  
+  // Monte Carlo Simulation
+  monteCarloSimulations: number;
+  monteCarloTimeSteps: number;
+  includeMarketRisk: boolean;
+  includeLongevityRisk: boolean;
+  includeInflationRisk: boolean;
+  includeSequenceRisk: boolean;
+  includeHealthcareRisk: boolean;
+  
+  // Analysis Parameters
+  analysisPeriod: number;
+  confidenceLevel: number;
+  planningHorizon: number;
+  includeTaxConsiderations: boolean;
+  includeInflationAdjustments: boolean;
+  includeHealthcareConsiderations: boolean;
+  
+  // Calculation Options
+  calculationOptions: {
+    includeGoalAnalysis: boolean;
+    includeCashFlowAnalysis: boolean;
+    includeAssetAllocation: boolean;
+    includeTaxOptimization: boolean;
+    includeRiskManagement: boolean;
+    includeDistributionStrategy: boolean;
+    includeMonteCarlo: boolean;
+  };
+  
+  // Historical Data
+  historicalData: {
+    date: string;
+    retirementAssets: number;
+    income: number;
+    expenses: number;
+    savings: number;
+    investmentReturn: number;
   }[];
   
-  // Analysis parameters
-  includeSocialSecurity: boolean;
-  includePension: boolean;
-  includeRealEstate: boolean;
-  includeInsurance: boolean;
-  includeEstatePlanning: boolean;
-  
-  // Output preferences
-  includeDetailedBreakdown: boolean;
-  includeMultipleScenarios: boolean;
+  // Reporting Preferences
+  includeGoalAnalysis: boolean;
+  includeCashFlowAnalysis: boolean;
+  includeAssetAllocation: boolean;
+  includeTaxOptimization: boolean;
+  includeRiskManagement: boolean;
+  includeDistributionStrategy: boolean;
   includeMonteCarlo: boolean;
+  includeHistoricalAnalysis: boolean;
+  includeRecommendations: boolean;
+  includeActionItems: boolean;
+  
+  // Output Format
+  outputFormat: 'detailed' | 'summary' | 'executive';
+  includeCharts: boolean;
+  includeTables: boolean;
   includeRecommendations: boolean;
 }
 
-export interface RetirementPlanningResults {
-  // Core retirement metrics
-  retirementReadiness: number; // Retirement readiness score (0-100)
-  retirementAge: number; // Calculated retirement age
-  retirementSavings: number; // Required retirement savings
-  monthlyRetirementIncome: number; // Monthly retirement income
-  retirementIncomeGap: number; // Gap between desired and projected income
+export interface RetirementPlanningCalculatorResults {
+  // Core Retirement Metrics
+  retirementReadinessScore: number;
+  retirementIncomeGap: number;
+  requiredRetirementSavings: number;
+  retirementIncomeReplacement: number;
+  retirementSuccessProbability: number;
   
-  // Financial analysis
-  financialAnalysis: {
-    currentNetWorth: number;
-    projectedNetWorth: number;
-    retirementSavings: number;
-    totalRetirementIncome: number;
-    incomeReplacementRatio: number;
-    savingsRate: number;
-    debtToIncomeRatio: number;
-  };
-  
-  // Retirement account analysis
-  retirementAccountAnalysis: {
-    totalBalance: number;
-    projectedBalance: number;
-    annualContributions: number;
-    employerMatch: number;
-    expectedReturn: number;
-    accountBreakdown: {
-      account: string;
-      balance: number;
-      percentage: number;
+  // Retirement Planning Analysis
+  retirementPlanningAnalysis: {
+    retirementReadinessScore: number;
+    retirementIncomeGap: number;
+    requiredRetirementSavings: number;
+    retirementIncomeReplacement: number;
+    retirementSuccessProbability: number;
+    planningBreakdown: {
+      component: string;
+      value: number;
+      contribution: number;
     }[];
+    planningEfficiency: number;
   };
   
-  // Social Security analysis
-  socialSecurityAnalysis: {
-    monthlyBenefit: number;
-    annualBenefit: number;
-    totalLifetimeBenefit: number;
-    optimalClaimingAge: number;
-    spouseBenefit: number;
-    survivorBenefit: number;
-    benefitReduction: number;
-    benefitIncrease: number;
+  // Personal Analysis
+  personalAnalysis: {
+    basicInfo: {
+      firstName: string;
+      lastName: string;
+      dateOfBirth: string;
+      age: number;
+      gender: string;
+      maritalStatus: string;
+      dependents: number;
+      occupation: string;
+      employer: string;
+      employmentStatus: string;
+      education: string;
+      healthStatus: string;
+      lifeExpectancy: number;
+      expectedRetirementAge: number;
+      expectedRetirementDate: string;
+      yearsToRetirement: number;
+    };
+    spouseInfo: {
+      firstName: string;
+      lastName: string;
+      dateOfBirth: string;
+      age: number;
+      gender: string;
+      occupation: string;
+      employer: string;
+      employmentStatus: string;
+      healthStatus: string;
+      lifeExpectancy: number;
+      expectedRetirementAge: number;
+      expectedRetirementDate: string;
+      yearsToRetirement: number;
+    };
+    contactInfo: {
+      address: {
+        street: string;
+        city: string;
+        state: string;
+        zipCode: string;
+        country: string;
+      };
+      phone: string;
+      email: string;
+      emergencyContact: {
+        name: string;
+        relationship: string;
+        phone: string;
+        email: string;
+      };
+    };
+    taxInfo: {
+      taxFilingStatus: string;
+      taxBracket: number;
+      stateOfResidence: string;
+      stateTaxRate: number;
+      localTaxRate: number;
+      alternativeMinimumTax: boolean;
+      itemizedDeductions: boolean;
+      taxDeductions: number;
+      taxCredits: number;
+    };
+    personalEfficiency: number;
   };
   
-  // Pension analysis
-  pensionAnalysis: {
-    definedBenefit: {
+  // Income Analysis
+  incomeAnalysis: {
+    employmentIncome: {
+      source: string;
+      amount: number;
+      frequency: string;
+      growthRate: number;
+      expectedRetirementAge: number;
+      benefits: {
+        healthInsurance: number;
+        dentalInsurance: number;
+        visionInsurance: number;
+        lifeInsurance: number;
+        disabilityInsurance: number;
+        retirementMatch: number;
+        stockOptions: number;
+        otherBenefits: number;
+      };
+    }[];
+    selfEmploymentIncome: {
+      source: string;
+      amount: number;
+      frequency: string;
+      growthRate: number;
+      expectedRetirementAge: number;
+      businessExpenses: number;
+      selfEmploymentTax: number;
+    }[];
+    investmentIncome: {
+      source: string;
+      amount: number;
+      frequency: string;
+      growthRate: number;
+      taxable: boolean;
+      taxRate: number;
+    }[];
+    rentalIncome: {
+      property: string;
+      grossRentalIncome: number;
+      expenses: number;
+      netRentalIncome: number;
+      depreciation: number;
+      taxableIncome: number;
+    }[];
+    otherIncome: {
+      source: string;
+      amount: number;
+      frequency: string;
+      growthRate: number;
+      taxable: boolean;
+      taxRate: number;
+    }[];
+    totalAnnualIncome: number;
+    expectedIncomeGrowth: number;
+    afterTaxIncome: number;
+    incomeEfficiency: number;
+  };
+  
+  // Retirement Assets Analysis
+  retirementAssetsAnalysis: {
+    employerPlans: {
+      planName: string;
+      planType: string;
+      currentBalance: number;
+      employerMatch: number;
+      employeeContribution: number;
+      totalContribution: number;
+      expectedReturn: number;
+      vestingSchedule: {
+        years: number;
+        percentage: number;
+      }[];
+      expectedRetirementBalance: number;
+      requiredMinimumDistribution: number;
+      distributionAge: number;
+    }[];
+    individualAccounts: {
+      accountName: string;
+      accountType: string;
+      currentBalance: number;
+      annualContribution: number;
+      catchUpContribution: number;
+      expectedReturn: number;
+      expectedRetirementBalance: number;
+      requiredMinimumDistribution: number;
+      distributionAge: number;
+      taxStatus: string;
+    }[];
+    socialSecurity: {
+      primaryInsuranceAmount: number;
+      fullRetirementAge: number;
+      earlyRetirementAge: number;
+      earlyRetirementReduction: number;
+      delayedRetirementCredit: number;
+      expectedMonthlyBenefit: number;
+      expectedAnnualBenefit: number;
+      spousalBenefit: number;
+      survivorBenefit: number;
+      costOfLivingAdjustment: number;
+      taxablePercentage: number;
+    };
+    pensionBenefits: {
+      pensionName: string;
+      planType: string;
+      currentValue: number;
       monthlyBenefit: number;
       annualBenefit: number;
-      totalLifetimeBenefit: number;
+      startDate: string;
       survivorBenefit: number;
-      colaAdjustment: boolean;
-    };
-    definedContribution: {
-      balance: number;
-      projectedBalance: number;
-      annualContribution: number;
+      costOfLivingAdjustment: number;
+      lumpSumOption: number;
+      expectedRetirementValue: number;
+    }[];
+    otherRetirementAssets: {
+      asset: string;
+      type: string;
+      currentValue: number;
       expectedReturn: number;
-    };
-  };
-  
-  // Investment portfolio analysis
-  investmentPortfolioAnalysis: {
-    totalValue: number;
-    projectedValue: number;
-    assetAllocation: {
-      category: string;
-      percentage: number;
-      value: number;
+      expectedRetirementValue: number;
+      liquidity: string;
+      taxStatus: string;
     }[];
-    expectedReturn: number;
-    riskLevel: string;
-    rebalancingRecommendation: string;
+    totalRetirementAssets: number;
+    expectedRetirementAssets: number;
+    retirementSavingsRate: number;
+    retirementAssetsEfficiency: number;
   };
   
-  // Real estate analysis
-  realEstateAnalysis: {
-    primaryResidence: {
-      value: number;
-      equity: number;
-      monthlyPayment: number;
-      projectedValue: number;
+  // Goal Analysis
+  goalAnalysis: {
+    retirementLifestyle: {
+      lifestyle: string;
+      annualIncomeNeeded: number;
+      monthlyIncomeNeeded: number;
+      inflationAdjustment: boolean;
+      inflationRate: number;
+      retirementLocation: string;
+      costOfLivingAdjustment: number;
     };
-    investmentProperties: {
-      value: number;
-      monthlyCashFlow: number;
-      annualCashFlow: number;
-      projectedValue: number;
+    retirementExpenses: {
+      housingExpenses: {
+        category: string;
+        amount: number;
+        frequency: string;
+        inflationRate: number;
+      }[];
+      healthcareExpenses: {
+        category: string;
+        amount: number;
+        frequency: string;
+        inflationRate: number;
+        insuranceCoverage: number;
+      }[];
+      transportationExpenses: {
+        category: string;
+        amount: number;
+        frequency: string;
+        inflationRate: number;
+      }[];
+      foodExpenses: {
+        category: string;
+        amount: number;
+        frequency: string;
+        inflationRate: number;
+      }[];
+      entertainmentExpenses: {
+        category: string;
+        amount: number;
+        frequency: string;
+        inflationRate: number;
+      }[];
+      travelExpenses: {
+        category: string;
+        amount: number;
+        frequency: string;
+        inflationRate: number;
+      }[];
+      insuranceExpenses: {
+        category: string;
+        amount: number;
+        frequency: string;
+        inflationRate: number;
+      }[];
+      otherExpenses: {
+        category: string;
+        amount: number;
+        frequency: string;
+        inflationRate: number;
+      }[];
+      totalAnnualExpenses: number;
+      expectedExpenseInflation: number;
     };
-    totalRealEstateValue: number;
-    realEstateIncome: number;
-  };
-  
-  // Insurance analysis
-  insuranceAnalysis: {
-    lifeInsurance: {
-      deathBenefit: number;
-      annualPremium: number;
-      coverageGap: number;
-      recommendation: string;
-    };
-    longTermCare: {
-      monthlyBenefit: number;
-      annualPremium: number;
-      coverageGap: number;
-      recommendation: string;
-    };
-    healthInsurance: {
-      monthlyPremium: number;
-      annualCost: number;
-      coverageAdequacy: string;
-    };
-  };
-  
-  // Retirement income analysis
-  retirementIncomeAnalysis: {
-    totalMonthlyIncome: number;
-    totalAnnualIncome: number;
-    incomeSources: {
-      source: string;
-      monthlyAmount: number;
-      percentage: number;
-    }[];
-    incomeGap: number;
-    replacementRatio: number;
-    sustainabilityScore: number;
-  };
-  
-  // Expense analysis
-  expenseAnalysis: {
-    currentAnnualExpenses: number;
-    projectedRetirementExpenses: number;
-    expenseBreakdown: {
-      category: string;
-      currentAmount: number;
-      projectedAmount: number;
-      percentage: number;
-    }[];
-    inflationAdjustedExpenses: number;
-  };
-  
-  // Tax analysis
-  taxAnalysis: {
-    currentTaxRate: number;
-    retirementTaxRate: number;
-    socialSecurityTaxable: boolean;
-    requiredMinimumDistributions: number;
-    taxEfficiency: number;
-    taxOptimization: string[];
-  };
-  
-  // Risk analysis
-  riskAnalysis: {
-    marketRisk: number;
-    longevityRisk: number;
-    healthcareRisk: number;
-    inflationRisk: number;
-    sequenceRisk: number;
-    overallRiskScore: number;
-    riskMitigation: string[];
-  };
-  
-  // Retirement readiness assessment
-  retirementReadinessAssessment: {
-    overallScore: number;
-    savingsScore: number;
-    incomeScore: number;
-    expenseScore: number;
-    riskScore: number;
-    timelineScore: number;
-    recommendations: string[];
-  };
-  
-  // Timeline analysis
-  timelineAnalysis: {
-    yearsToRetirement: number;
-    savingsTimeline: {
-      year: number;
-      age: number;
-      projectedSavings: number;
-      projectedIncome: number;
-      projectedExpenses: number;
-    }[];
-    retirementTimeline: {
-      year: number;
-      age: number;
-      retirementIncome: number;
+    retirementPhases: {
+      phase: string;
+      startAge: number;
+      endAge: number;
+      annualIncomeNeeded: number;
       expenses: number;
-      netIncome: number;
+      activities: string[];
+      healthConsiderations: string[];
     }[];
+    legacyGoals: {
+      goal: string;
+      targetAmount: number;
+      beneficiary: string;
+      priority: string;
+      taxEfficient: boolean;
+      method: string;
+    }[];
+    goalEfficiency: number;
   };
   
-  // Scenario analysis
-  scenarioResults: {
-    scenario: string;
-    probability: number;
-    retirementReadiness: number;
-    retirementAge: number;
-    monthlyIncome: number;
-    incomeGap: number;
-    riskLevel: string;
+  // Risk Profile Analysis
+  riskProfileAnalysis: {
+    riskTolerance: {
+      investmentHorizon: number;
+      riskCapacity: string;
+      riskWillingness: string;
+      riskNeed: string;
+      overallRiskTolerance: string;
+    };
+    investmentPreferences: {
+      preferredAssetClasses: string[];
+      excludedAssetClasses: string[];
+      preferredInvestmentTypes: string[];
+      excludedInvestmentTypes: string[];
+      liquidityRequirements: string;
+      taxEfficiency: boolean;
+      esgConsiderations: boolean;
+      internationalExposure: boolean;
+    };
+    behavioralFactors: {
+      lossAversion: string;
+      marketTiming: boolean;
+      emotionalTrading: boolean;
+      investmentExperience: string;
+      financialLiteracy: string;
+      decisionMakingStyle: string;
+    };
+    riskProfileEfficiency: number;
+  };
+  
+  // Retirement Strategy Analysis
+  retirementStrategyAnalysis: {
+    assetAllocationStrategy: {
+      strategy: string;
+      targetAllocation: {
+        assetClass: string;
+        targetWeight: number;
+        minWeight: number;
+        maxWeight: number;
+      }[];
+      rebalancingFrequency: string;
+      rebalancingThreshold: number;
+      glidePath: boolean;
+      targetDateFund: boolean;
+    };
+    investmentVehicles: {
+      vehicle: string;
+      type: string;
+      advantages: string[];
+      disadvantages: string[];
+      suitability: string;
+      recommendation: string;
+    }[];
+    taxStrategy: {
+      taxLossHarvesting: boolean;
+      taxEfficientFunds: boolean;
+      assetLocation: boolean;
+      rothConversion: boolean;
+      requiredMinimumDistributions: boolean;
+      socialSecurityOptimization: boolean;
+      medicareOptimization: boolean;
+    };
+    riskManagement: {
+      diversification: boolean;
+      dollarCostAveraging: boolean;
+      stopLosses: boolean;
+      insurance: {
+        type: string;
+        coverage: number;
+        premium: number;
+        necessity: string;
+      }[];
+      longTermCare: boolean;
+      annuities: boolean;
+    };
+    distributionStrategy: {
+      strategy: string;
+      withdrawalRate: number;
+      inflationAdjustment: boolean;
+      requiredMinimumDistributions: boolean;
+      socialSecurityTiming: string;
+      medicareTiming: number;
+      distributionOrder: string[];
+    };
+    strategyEfficiency: number;
+  };
+  
+  // Cash Flow Analysis
+  cashFlowAnalysis: {
+    currentCashFlow: {
+      income: number;
+      expenses: number;
+      savings: number;
+      savingsRate: number;
+    };
+    projectedCashFlow: {
+      year: number;
+      income: number;
+      expenses: number;
+      savings: number;
+      savingsRate: number;
+    }[];
+    retirementCashFlow: {
+      year: number;
+      retirementIncome: number;
+      retirementExpenses: number;
+      netCashFlow: number;
+      withdrawalRate: number;
+    }[];
+    cashFlowGaps: {
+      period: string;
+      gap: number;
+      solution: string;
+    }[];
+    cashFlowEfficiency: number;
+  };
+  
+  // Tax Optimization Analysis
+  taxOptimizationAnalysis: {
+    currentTaxLiability: number;
+    retirementTaxLiability: number;
+    taxEfficientAllocation: {
+      account: string;
+      assetClass: string;
+      allocation: number;
+      taxEfficiency: number;
+    }[];
+    taxLossHarvesting: {
+      opportunity: string;
+      potentialSavings: number;
+      implementation: string;
+    }[];
+    rothConversion: {
+      amount: number;
+      taxImpact: number;
+      longTermBenefit: number;
+      recommendation: string;
+    };
+    requiredMinimumDistributions: {
+      age: number;
+      amount: number;
+      taxImpact: number;
+      strategy: string;
+    };
+    socialSecurityTaxation: {
+      provisionalIncome: number;
+      taxablePercentage: number;
+      taxImpact: number;
+      optimization: string;
+    };
+    taxOptimizationEfficiency: number;
+  };
+  
+  // Distribution Strategy Analysis
+  distributionStrategyAnalysis: {
+    withdrawalStrategy: {
+      strategy: string;
+      initialWithdrawalRate: number;
+      inflationAdjustment: boolean;
+      dynamicAdjustment: boolean;
+      floorAndCeiling: boolean;
+    };
+    distributionOrder: {
+      account: string;
+      type: string;
+      order: number;
+      rationale: string;
+    }[];
+    requiredMinimumDistributions: {
+      age: number;
+      account: string;
+      amount: number;
+      taxImpact: number;
+      strategy: string;
+    }[];
+    socialSecurityTiming: {
+      age: number;
+      benefit: number;
+      reduction: number;
+      recommendation: string;
+    };
+    medicareTiming: {
+      age: number;
+      premium: number;
+      penalty: number;
+      recommendation: string;
+    };
+    distributionEfficiency: number;
+  };
+  
+  // Sensitivity Analysis
+  sensitivityAnalysis: {
+    variable: string;
+    baseValue: number;
+    lowValue: number;
+    highValue: number;
+    lowRetirementReadiness: number;
+    highRetirementReadiness: number;
+    sensitivity: number;
   }[];
   
-  // Monte Carlo simulation
+  // Monte Carlo Results
   monteCarloResults: {
-    successRate: number;
-    meanRetirementAge: number;
-    medianRetirementAge: number;
+    meanRetirementReadiness: number;
+    medianRetirementReadiness: number;
     standardDeviation: number;
     percentiles: {
+      p5: number;
       p10: number;
       p25: number;
       p50: number;
       p75: number;
       p90: number;
+      p95: number;
     };
-    worstCaseScenario: number;
-    bestCaseScenario: number;
+    probabilityDistribution: {
+      value: number;
+      probability: number;
+    }[];
+    successProbability: number;
+    monteCarloEfficiency: number;
   };
   
-  // Sensitivity analysis
-  sensitivityResults: {
-    parameter: string;
-    baseValue: number;
-    lowValue: number;
-    highValue: number;
-    lowReadiness: number;
-    highReadiness: number;
-    sensitivity: number;
-  }[];
-  
-  // Performance metrics
-  performanceMetrics: {
-    savingsEfficiency: number;
-    investmentEfficiency: number;
-    taxEfficiency: number;
-    riskEfficiency: number;
-    overallEfficiency: number;
+  // Retirement Planning Planning Analysis
+  retirementPlanningPlanningAnalysis: {
+    optimizationOpportunities: {
+      category: string;
+      opportunity: string;
+      potentialImprovement: number;
+      implementationDifficulty: 'low' | 'medium' | 'high';
+      priority: 'low' | 'medium' | 'high';
+    }[];
+    planningStrategies: {
+      strategy: string;
+      description: string;
+      expectedImprovement: number;
+      implementationSteps: string[];
+      timeline: string;
+    }[];
+    planningEfficiency: number;
   };
   
-  // Retirement planning opportunities
-  planningOpportunities: {
-    opportunity: string;
-    potentialImpact: number;
-    implementation: string;
-    priority: 'high' | 'medium' | 'low';
-    timeline: string;
-  }[];
-  
-  // Cost-benefit analysis
-  costBenefitAnalysis: {
-    planningCosts: number;
-    potentialSavings: number;
-    taxSavings: number;
-    investmentGains: number;
-    netBenefit: number;
-    returnOnInvestment: number;
+  // Comparison Analysis
+  comparisonAnalysis: {
+    alternativeStrategies: {
+      strategy: string;
+      expectedReturn: number;
+      risk: number;
+      efficiency: number;
+    }[];
+    benchmarkComparison: {
+      benchmark: string;
+      benchmarkReadiness: number;
+      planReadiness: number;
+      outperformance: number;
+      efficiency: number;
+    };
+    comparisonEfficiency: number;
   };
   
-  // Break-even analysis
-  breakEvenAnalysis: {
-    breakEvenAge: number;
-    breakEvenSavings: number;
-    marginOfSafety: number;
-    requiredSavingsRate: number;
+  // Retirement Planning Score
+  retirementPlanningScore: {
+    overallScore: number;
+    componentScores: {
+      personal: number;
+      income: number;
+      assets: number;
+      goals: number;
+      risk: number;
+      strategy: number;
+    };
+    recommendation: 'excellent' | 'good' | 'fair' | 'poor' | 'needs_improvement';
   };
   
-  // Comprehensive report
-  report: string;
+  // Historical Analysis
+  historicalAnalysis: {
+    historicalProgress: {
+      date: string;
+      retirementAssets: number;
+      retirementReadiness: number;
+      savingsRate: number;
+    }[];
+    historicalTrends: string[];
+    yearOverYearChange: number;
+  };
+  
+  // Business Impact
+  businessImpact: {
+    retirementReadiness: number;
+    riskReduction: number;
+    costSavings: number;
+    efficiencyGain: number;
+    overallBenefit: number;
+  };
+  
+  // Comprehensive Report
+  comprehensiveReport: {
+    executiveSummary: string;
+    keyFindings: string[];
+    retirementAssessment: string;
+    recommendations: string[];
+    actionItems: {
+      action: string;
+      priority: 'low' | 'medium' | 'high';
+      timeline: string;
+      responsibleParty: string;
+    }[];
+  };
+  
+  // Executive Summary
+  executiveSummary: {
+    retirementReadinessScore: number;
+    retirementIncomeGap: number;
+    requiredRetirementSavings: number;
+    retirementIncomeReplacement: number;
+    retirementSuccessProbability: number;
+    recommendation: 'excellent' | 'good' | 'fair' | 'poor' | 'needs_improvement';
+    keyStrengths: string[];
+    keyWeaknesses: string[];
+  };
   
   // Recommendations
   recommendations: {
     category: string;
-    recommendations: string[];
-    priority: 'high' | 'medium' | 'low';
-    expectedImpact: number;
-    timeline: string;
+    recommendation: string;
+    rationale: string;
+    expectedImprovement: number;
+    implementationSteps: string[];
   }[];
   
-  // Action items
+  // Action Items
   actionItems: {
-    priority: 'immediate' | 'short-term' | 'long-term';
     action: string;
-    owner: string;
+    description: string;
+    priority: 'low' | 'medium' | 'high';
     timeline: string;
-    expectedOutcome: string;
-    cost: number;
+    responsibleParty: string;
+    dependencies: string[];
+    successMetrics: string[];
   }[];
 }

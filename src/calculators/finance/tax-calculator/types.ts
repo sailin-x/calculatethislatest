@@ -1,369 +1,473 @@
-export interface TaxInputs {
-  // Taxpayer Information
-  taxpayerInfo: {
-    name: string;
-    filingStatus: 'single' | 'married_filing_jointly' | 'married_filing_separately' | 'head_of_household' | 'qualifying_widow';
-    age: number;
-    dependents: number;
-    stateOfResidence: string;
-    countryOfResidence: string;
-    citizenship: string;
-    taxYear: number;
-  };
-  
-  // Income Information
-  incomeInfo: {
-    // Employment Income
-    wages: number;
-    salary: number;
-    bonuses: number;
-    tips: number;
-    commissions: number;
-    severancePay: number;
-    
-    // Business Income
-    businessIncome: number;
-    businessExpenses: number;
-    netBusinessIncome: number;
-    
-    // Investment Income
-    interestIncome: number;
-    dividendIncome: number;
-    capitalGains: {
-      shortTerm: number;
-      longTerm: number;
-      qualifiedDividends: number;
-    };
-    rentalIncome: number;
-    rentalExpenses: number;
-    netRentalIncome: number;
-    
-    // Retirement Income
-    socialSecurityBenefits: number;
-    pensionIncome: number;
-    annuityIncome: number;
-    iraDistributions: number;
-    rothIraDistributions: number;
-    k401kDistributions: number;
-    
-    // Other Income
-    alimonyReceived: number;
-    childSupport: number;
-    unemploymentBenefits: number;
-    disabilityBenefits: number;
-    gamblingWinnings: number;
-    lotteryWinnings: number;
-    inheritance: number;
-    gifts: number;
-    foreignIncome: number;
-    otherIncome: number;
-    
-    // Total Income
-    totalIncome: number;
-    adjustedGrossIncome: number;
-  };
-  
-  // Deductions
-  deductions: {
-    // Standard vs Itemized
-    useStandardDeduction: boolean;
-    standardDeduction: number;
-    
-    // Itemized Deductions
-    itemizedDeductions: {
-      // Medical Expenses
-      medicalExpenses: number;
-      dentalExpenses: number;
-      visionExpenses: number;
-      prescriptionDrugs: number;
-      healthInsurance: number;
-      longTermCare: number;
-      
-      // State and Local Taxes
-      stateIncomeTax: number;
-      localIncomeTax: number;
-      propertyTax: number;
-      salesTax: number;
-      
-      // Interest
-      mortgageInterest: number;
-      homeEquityInterest: number;
-      investmentInterest: number;
-      studentLoanInterest: number;
-      
-      // Charitable Contributions
-      cashDonations: number;
-      nonCashDonations: number;
-      charitableMileage: number;
-      
-      // Casualty and Theft Losses
-      casualtyLosses: number;
-      theftLosses: number;
-      
-      // Other Deductions
-      jobExpenses: number;
-      taxPreparationFees: number;
-      investmentExpenses: number;
-      gamblingLosses: number;
-      otherDeductions: number;
+export interface TaxCalculatorInputs {
+  // Personal Information
+  personalInfo: {
+    // Basic Information
+    basicInfo: {
+      firstName: string;
+      lastName: string;
+      dateOfBirth: string;
+      socialSecurityNumber: string;
+      filingStatus: 'single' | 'married_filing_jointly' | 'married_filing_separately' | 'head_of_household' | 'qualifying_widow';
+      taxYear: number;
+      stateOfResidence: string;
+      countryOfResidence: string;
+      citizenship: string;
+      dependents: number;
+      exemptions: number;
     };
     
-    // Above-the-Line Deductions
-    aboveTheLineDeductions: {
-      educatorExpenses: number;
-      studentLoanInterest: number;
-      hsaContributions: number;
-      traditionalIraContributions: number;
-      sepIraContributions: number;
-      simpleIraContributions: number;
-      selfEmployedHealthInsurance: number;
-      alimonyPaid: number;
-      movingExpenses: number;
-      otherAboveTheLine: number;
-    };
-    
-    totalDeductions: number;
-  };
-  
-  // Credits
-  credits: {
-    // Child and Family Credits
-    childTaxCredit: number;
-    childAndDependentCareCredit: number;
-    earnedIncomeTaxCredit: number;
-    adoptionCredit: number;
-    
-    // Education Credits
-    americanOpportunityCredit: number;
-    lifetimeLearningCredit: number;
-    
-    // Health Care Credits
-    premiumTaxCredit: number;
-    healthCoverageTaxCredit: number;
-    
-    // Energy Credits
-    residentialEnergyCredit: number;
-    electricVehicleCredit: number;
-    solarEnergyCredit: number;
-    
-    // Other Credits
-    foreignTaxCredit: number;
-    generalBusinessCredit: number;
-    workOpportunityCredit: number;
-    researchAndDevelopmentCredit: number;
-    otherCredits: number;
-    
-    totalCredits: number;
-  };
-  
-  // Business Information
-  businessInfo: {
-    businessType: 'sole_proprietorship' | 'partnership' | 'llc' | 's_corporation' | 'c_corporation';
-    businessName: string;
-    businessCode: string;
-    businessIncome: number;
-    businessExpenses: {
-      costOfGoodsSold: number;
-      advertising: number;
-      carAndTruckExpenses: number;
-      commissions: number;
-      contractLabor: number;
-      depreciation: number;
-      employeeBenefits: number;
-      insurance: number;
-      interest: number;
-      legalAndProfessional: number;
-      officeExpenses: number;
-      pensionAndProfitSharing: number;
-      rentOrLease: number;
-      repairsAndMaintenance: number;
-      supplies: number;
-      taxesAndLicenses: number;
-      travel: number;
-      meals: number;
-      utilities: number;
-      wages: number;
-      otherExpenses: number;
-    };
-    netBusinessIncome: number;
-  };
-  
-  // Investment Information
-  investmentInfo: {
-    // Capital Gains and Losses
-    capitalGains: {
-      shortTermGains: number;
-      shortTermLosses: number;
-      longTermGains: number;
-      longTermLosses: number;
-      qualifiedDividends: number;
-      collectiblesGains: number;
-      collectiblesLosses: number;
-      section1250Gains: number;
-      section1250Losses: number;
-    };
-    
-    // Investment Expenses
-    investmentExpenses: number;
-    investmentInterest: number;
-    
-    // Foreign Investments
-    foreignInvestments: number;
-    foreignTaxPaid: number;
-  };
-  
-  // Real Estate Information
-  realEstateInfo: {
-    // Rental Properties
-    rentalProperties: {
-      address: string;
-      rentalIncome: number;
-      rentalExpenses: {
-        mortgageInterest: number;
-        propertyTax: number;
-        insurance: number;
-        repairs: number;
-        maintenance: number;
-        utilities: number;
-        propertyManagement: number;
-        depreciation: number;
-        otherExpenses: number;
+    // Income Information
+    incomeInfo: {
+      // Employment Income
+      employmentIncome: {
+        employer: string;
+        wages: number;
+        tips: number;
+        bonuses: number;
+        commissions: number;
+        overtime: number;
+        severance: number;
+        totalEmploymentIncome: number;
+      }[];
+      
+      // Self-Employment Income
+      selfEmploymentIncome: {
+        businessName: string;
+        businessType: string;
+        grossReceipts: number;
+        businessExpenses: number;
+        netEarnings: number;
+        selfEmploymentTax: number;
+      }[];
+      
+      // Investment Income
+      investmentIncome: {
+        interestIncome: number;
+        dividendIncome: number;
+        capitalGains: {
+          shortTerm: number;
+          longTerm: number;
+          total: number;
+        };
+        rentalIncome: number;
+        royaltyIncome: number;
+        partnershipIncome: number;
+        sCorporationIncome: number;
+        totalInvestmentIncome: number;
       };
-      netRentalIncome: number;
+      
+      // Other Income
+      otherIncome: {
+        alimony: number;
+        unemployment: number;
+        socialSecurity: number;
+        pension: number;
+        annuity: number;
+        gambling: number;
+        prizes: number;
+        otherIncome: number;
+        totalOtherIncome: number;
+      };
+      
+      // Total Income
+      totalIncome: number;
+      adjustedGrossIncome: number;
+    };
+    
+    // Deductions Information
+    deductionsInfo: {
+      // Standard Deduction
+      standardDeduction: {
+        amount: number;
+        applicable: boolean;
+      };
+      
+      // Itemized Deductions
+      itemizedDeductions: {
+        // Medical Expenses
+        medicalExpenses: {
+          medicalExpenses: number;
+          dentalExpenses: number;
+          visionExpenses: number;
+          prescriptionDrugs: number;
+          healthInsurance: number;
+          longTermCare: number;
+          totalMedicalExpenses: number;
+          adjustedGrossIncome: number;
+          threshold: number;
+          deductibleAmount: number;
+        };
+        
+        // State and Local Taxes
+        stateLocalTaxes: {
+          stateIncomeTax: number;
+          localIncomeTax: number;
+          realEstateTax: number;
+          personalPropertyTax: number;
+          salesTax: number;
+          totalStateLocalTaxes: number;
+          limit: number;
+          deductibleAmount: number;
+        };
+        
+        // Mortgage Interest
+        mortgageInterest: {
+          primaryResidence: number;
+          secondHome: number;
+          homeEquity: number;
+          points: number;
+          totalMortgageInterest: number;
+          limit: number;
+          deductibleAmount: number;
+        };
+        
+        // Charitable Contributions
+        charitableContributions: {
+          cash: number;
+          property: number;
+          mileage: number;
+          totalCharitableContributions: number;
+          limit: number;
+          deductibleAmount: number;
+        };
+        
+        // Other Itemized Deductions
+        otherDeductions: {
+          casualtyLoss: number;
+          theftLoss: number;
+          gamblingLoss: number;
+          jobExpenses: number;
+          taxPreparation: number;
+          investmentExpenses: number;
+          otherDeductions: number;
+          totalOtherDeductions: number;
+        };
+        
+        totalItemizedDeductions: number;
+      };
+      
+      // Above-the-Line Deductions
+      aboveTheLineDeductions: {
+        educatorExpenses: number;
+        studentLoanInterest: number;
+        tuitionAndFees: number;
+        healthSavingsAccount: number;
+        traditionalIRA: number;
+        sepIRA: number;
+        simpleIRA: number;
+        selfEmployedHealthInsurance: number;
+        selfEmployedRetirement: number;
+        alimonyPaid: number;
+        movingExpenses: number;
+        totalAboveTheLineDeductions: number;
+      };
+      
+      // Total Deductions
+      totalDeductions: number;
+    };
+    
+    // Credits Information
+    creditsInfo: {
+      // Child and Dependent Care Credits
+      childDependentCare: {
+        childCareExpenses: number;
+        dependentCareExpenses: number;
+        qualifyingChildren: number;
+        qualifyingDependents: number;
+        creditPercentage: number;
+        creditAmount: number;
+      };
+      
+      // Education Credits
+      educationCredits: {
+        americanOpportunityCredit: {
+          qualifiedExpenses: number;
+          creditAmount: number;
+          refundableAmount: number;
+        };
+        lifetimeLearningCredit: {
+          qualifiedExpenses: number;
+          creditAmount: number;
+        };
+      };
+      
+      // Earned Income Credit
+      earnedIncomeCredit: {
+        earnedIncome: number;
+        adjustedGrossIncome: number;
+        qualifyingChildren: number;
+        creditAmount: number;
+        refundableAmount: number;
+      };
+      
+      // Child Tax Credit
+      childTaxCredit: {
+        qualifyingChildren: number;
+        creditAmount: number;
+        refundableAmount: number;
+      };
+      
+      // Other Credits
+      otherCredits: {
+        adoptionCredit: number;
+        saverCredit: number;
+        foreignTaxCredit: number;
+        residentialEnergyCredit: number;
+        electricVehicleCredit: number;
+        otherCredits: number;
+        totalOtherCredits: number;
+      };
+      
+      // Total Credits
+      totalCredits: number;
+    };
+    
+    // Business Information
+    businessInfo: {
+      // Business Income
+      businessIncome: {
+        businessName: string;
+        businessType: string;
+        ein: string;
+        grossReceipts: number;
+        costOfGoodsSold: number;
+        grossProfit: number;
+        businessExpenses: {
+          advertising: number;
+          carAndTruck: number;
+          commissions: number;
+          contractLabor: number;
+          depreciation: number;
+          insurance: number;
+          interest: number;
+          legal: number;
+          meals: number;
+          office: number;
+          pension: number;
+          rent: number;
+          repairs: number;
+          supplies: number;
+          taxes: number;
+          travel: number;
+          utilities: number;
+          wages: number;
+          otherExpenses: number;
+          totalExpenses: number;
+        };
+        netIncome: number;
+      }[];
+      
+      // Business Deductions
+      businessDeductions: {
+        homeOffice: {
+          squareFootage: number;
+          totalSquareFootage: number;
+          percentage: number;
+          expenses: number;
+          deduction: number;
+        };
+        vehicle: {
+          businessMiles: number;
+          totalMiles: number;
+          percentage: number;
+          expenses: number;
+          deduction: number;
+        };
+        equipment: {
+          equipment: string;
+          cost: number;
+          usefulLife: number;
+          depreciation: number;
+        }[];
+        totalBusinessDeductions: number;
+      };
+    };
+    
+    // Investment Information
+    investmentInfo: {
+      // Investment Accounts
+      investmentAccounts: {
+        accountType: 'individual' | 'joint' | 'ira' | '401k' | 'roth' | 'other';
+        accountName: string;
+        institution: string;
+        accountNumber: string;
+        beginningBalance: number;
+        endingBalance: number;
+        contributions: number;
+        distributions: number;
+        gains: number;
+        losses: number;
+      }[];
+      
+      // Capital Gains and Losses
+      capitalGainsLosses: {
+        shortTermGains: number;
+        shortTermLosses: number;
+        longTermGains: number;
+        longTermLosses: number;
+        netShortTerm: number;
+        netLongTerm: number;
+        netCapitalGain: number;
+        carryoverLosses: number;
+      };
+      
+      // Investment Expenses
+      investmentExpenses: {
+        investmentAdvisory: number;
+        custodialFees: number;
+        legalFees: number;
+        accountingFees: number;
+        otherExpenses: number;
+        totalExpenses: number;
+      };
+    };
+    
+    // Real Estate Information
+    realEstateInfo: {
+      // Rental Properties
+      rentalProperties: {
+        propertyAddress: string;
+        propertyType: string;
+        rentalIncome: number;
+        rentalExpenses: {
+          mortgageInterest: number;
+          propertyTax: number;
+          insurance: number;
+          utilities: number;
+          maintenance: number;
+          repairs: number;
+          depreciation: number;
+          management: number;
+          otherExpenses: number;
+          totalExpenses: number;
+        };
+        netRentalIncome: number;
+        passiveActivity: boolean;
+      }[];
+      
+      // Real Estate Sales
+      realEstateSales: {
+        propertyAddress: string;
+        salePrice: number;
+        costBasis: number;
+        improvements: number;
+        sellingExpenses: number;
+        gain: number;
+        exclusion: number;
+        taxableGain: number;
+      }[];
+    };
+    
+    // Retirement Information
+    retirementInfo: {
+      // Retirement Accounts
+      retirementAccounts: {
+        accountType: 'traditional_ira' | 'roth_ira' | '401k' | '403b' | '457' | 'sep_ira' | 'simple_ira' | 'other';
+        accountName: string;
+        institution: string;
+        contributions: number;
+        distributions: number;
+        requiredMinimumDistribution: number;
+        earlyWithdrawalPenalty: number;
+      }[];
+      
+      // Pension Income
+      pensionIncome: {
+        pensionName: string;
+        annualPension: number;
+        taxableAmount: number;
+        exclusion: number;
+      }[];
+      
+      // Social Security
+      socialSecurity: {
+        socialSecurityBenefits: number;
+        otherIncome: number;
+        provisionalIncome: number;
+        taxablePercentage: number;
+        taxableAmount: number;
+      };
+    };
+    
+    // Alternative Minimum Tax
+    alternativeMinimumTax: {
+      alternativeMinimumTaxableIncome: number;
+      exemption: number;
+      exemptionPhaseout: number;
+      tentativeMinimumTax: number;
+      regularTax: number;
+      alternativeMinimumTax: number;
+    };
+    
+    // Estimated Tax Payments
+    estimatedTaxPayments: {
+      firstQuarter: number;
+      secondQuarter: number;
+      thirdQuarter: number;
+      fourthQuarter: number;
+      totalEstimatedPayments: number;
+    };
+    
+    // Withholding Information
+    withholdingInfo: {
+      federalWithholding: number;
+      stateWithholding: number;
+      localWithholding: number;
+      socialSecurityWithholding: number;
+      medicareWithholding: number;
+      totalWithholding: number;
+    };
+    
+    // Prior Year Information
+    priorYearInfo: {
+      priorYearAGI: number;
+      priorYearTax: number;
+      priorYearRefund: number;
+      priorYearCarryover: number;
+    };
+  };
+  
+  // Tax Calculation Options
+  calculationOptions: {
+    includeStateTax: boolean;
+    includeLocalTax: boolean;
+    includeAlternativeMinimumTax: boolean;
+    includeSelfEmploymentTax: boolean;
+    includeMedicareSurtax: boolean;
+    includeNetInvestmentIncomeTax: boolean;
+    includeEstateTax: boolean;
+    includeGiftTax: boolean;
+    includeForeignTax: boolean;
+    includeEstimatedTax: boolean;
+  };
+  
+  // Tax Planning Scenarios
+  taxPlanningScenarios: {
+    scenario: string;
+    description: string;
+    changes: {
+      category: string;
+      change: string;
+      amount: number;
     }[];
-    
-    // Home Office
-    homeOffice: {
-      squareFootage: number;
-      totalSquareFootage: number;
-      homeOfficeExpenses: number;
-      homeOfficeDeduction: number;
-    };
-    
-    // Real Estate Professional
-    realEstateProfessional: boolean;
-    materialParticipation: boolean;
-  };
-  
-  // Retirement Information
-  retirementInfo: {
-    // Contributions
-    traditionalIraContribution: number;
-    rothIraContribution: number;
-    k401kContribution: number;
-    sepIraContribution: number;
-    simpleIraContribution: number;
-    
-    // Distributions
-    traditionalIraDistribution: number;
-    rothIraDistribution: number;
-    k401kDistribution: number;
-    requiredMinimumDistribution: number;
-    
-    // Rollovers
-    iraRollover: number;
-    k401kRollover: number;
-  };
-  
-  // Estate and Gift Information
-  estateGiftInfo: {
-    estateValue: number;
-    giftAmount: number;
-    inheritanceAmount: number;
-    trustIncome: number;
-    trustDistributions: number;
-  };
-  
-  // Alternative Minimum Tax
-  amtInfo: {
-    preferenceItems: {
-      stateAndLocalTaxes: number;
-      miscellaneousDeductions: number;
-      interestOnPrivateActivityBonds: number;
-      acceleratedDepreciation: number;
-      stockOptions: number;
-      otherPreferences: number;
-    };
-    amtExemption: number;
-  };
-  
-  // State and Local Taxes
-  stateLocalTaxes: {
-    stateIncomeTax: number;
-    localIncomeTax: number;
-    propertyTax: number;
-    salesTax: number;
-    otherStateTaxes: number;
-  };
-  
-  // International Tax
-  internationalTax: {
-    foreignIncome: number;
-    foreignTaxPaid: number;
-    foreignTaxCredit: number;
-    foreignEarnedIncomeExclusion: number;
-    foreignHousingExclusion: number;
-    foreignBankAccountReporting: boolean;
-    foreignAssetReporting: boolean;
-  };
-  
-  // Tax Planning
-  taxPlanning: {
-    // Timing Strategies
-    incomeDeferral: number;
-    expenseAcceleration: number;
-    lossHarvesting: number;
-    
-    // Entity Selection
-    entityType: string;
-    entityTaxRate: number;
-    
-    // Investment Strategies
-    taxLossHarvesting: boolean;
-    taxGainHarvesting: boolean;
-    assetLocation: string;
-    
-    // Retirement Planning
-    retirementContribution: number;
-    retirementDistribution: number;
-    requiredMinimumDistribution: number;
-  };
-  
-  // Tax Law Changes
-  taxLawChanges: {
-    newLaws: string[];
-    sunsetProvisions: string[];
-    phaseOuts: string[];
-    inflationAdjustments: number;
-  };
-  
-  // Analysis Parameters
-  analysisPeriod: number; // in years
-  inflationRate: number;
-  taxRateProjection: number;
-  includeStateTaxes: boolean;
-  includeLocalTaxes: boolean;
-  includeAlternativeMinimumTax: boolean;
-  includeEstateTax: boolean;
-  includeGiftTax: boolean;
-  
-  // Scenario Analysis
-  scenarios: {
-    name: string;
     probability: number;
-    incomeChange: number;
-    deductionChange: number;
-    creditChange: number;
-    taxRateChange: number;
   }[];
   
   // Monte Carlo Simulation
   monteCarloSimulations: number;
   monteCarloTimeSteps: number;
-  includeTaxLawChanges: boolean;
-  includeEconomicChanges: boolean;
+  includeIncomeVolatility: boolean;
+  includeDeductionVolatility: boolean;
+  includeCreditVolatility: boolean;
   
-  // Historical Analysis
+  // Analysis Parameters
+  analysisPeriod: number;
+  confidenceLevel: number;
+  taxHorizon: number;
+  includeInflation: boolean;
+  includeTaxLawChanges: boolean;
+  
+  // Historical Data
   historicalData: {
     year: number;
     income: number;
@@ -374,12 +478,11 @@ export interface TaxInputs {
   }[];
   
   // Reporting Preferences
-  includeDetailedBreakdown: boolean;
-  includeTaxOptimization: boolean;
+  includeTaxPlanning: boolean;
+  includeOptimization: boolean;
   includeScenarioAnalysis: boolean;
   includeMonteCarlo: boolean;
   includeHistoricalAnalysis: boolean;
-  includeComparativeAnalysis: boolean;
   includeRecommendations: boolean;
   includeActionItems: boolean;
   
@@ -390,199 +493,484 @@ export interface TaxInputs {
   includeRecommendations: boolean;
 }
 
-export interface TaxResults {
+export interface TaxCalculatorResults {
   // Core Tax Metrics
   totalIncome: number;
   adjustedGrossIncome: number;
   taxableIncome: number;
-  totalTaxLiability: number;
+  totalTax: number;
   effectiveTaxRate: number;
-  marginalTaxRate: number;
+  
+  // Tax Analysis
+  taxAnalysis: {
+    totalIncome: number;
+    adjustedGrossIncome: number;
+    taxableIncome: number;
+    totalTax: number;
+    effectiveTaxRate: number;
+    taxBreakdown: {
+      component: string;
+      value: number;
+      contribution: number;
+    }[];
+    taxEfficiency: number;
+  };
   
   // Income Analysis
   incomeAnalysis: {
+    employmentIncome: {
+      employer: string;
+      wages: number;
+      tips: number;
+      bonuses: number;
+      commissions: number;
+      overtime: number;
+      severance: number;
+      totalEmploymentIncome: number;
+    }[];
+    selfEmploymentIncome: {
+      businessName: string;
+      businessType: string;
+      grossReceipts: number;
+      businessExpenses: number;
+      netEarnings: number;
+      selfEmploymentTax: number;
+    }[];
+    investmentIncome: {
+      interestIncome: number;
+      dividendIncome: number;
+      capitalGains: {
+        shortTerm: number;
+        longTerm: number;
+        total: number;
+      };
+      rentalIncome: number;
+      royaltyIncome: number;
+      partnershipIncome: number;
+      sCorporationIncome: number;
+      totalInvestmentIncome: number;
+    };
+    otherIncome: {
+      alimony: number;
+      unemployment: number;
+      socialSecurity: number;
+      pension: number;
+      annuity: number;
+      gambling: number;
+      prizes: number;
+      otherIncome: number;
+      totalOtherIncome: number;
+    };
     totalIncome: number;
     adjustedGrossIncome: number;
-    incomeBreakdown: {
-      category: string;
-      amount: number;
-      percentage: number;
-    }[];
-    incomeTrend: number;
     incomeEfficiency: number;
   };
   
-  // Deduction Analysis
-  deductionAnalysis: {
-    totalDeductions: number;
-    standardDeduction: number;
-    itemizedDeductions: number;
-    aboveTheLineDeductions: number;
-    deductionBreakdown: {
-      category: string;
+  // Deductions Analysis
+  deductionsAnalysis: {
+    standardDeduction: {
       amount: number;
-      percentage: number;
-    }[];
-    deductionEfficiency: number;
+      applicable: boolean;
+    };
+    itemizedDeductions: {
+      medicalExpenses: {
+        medicalExpenses: number;
+        dentalExpenses: number;
+        visionExpenses: number;
+        prescriptionDrugs: number;
+        healthInsurance: number;
+        longTermCare: number;
+        totalMedicalExpenses: number;
+        adjustedGrossIncome: number;
+        threshold: number;
+        deductibleAmount: number;
+      };
+      stateLocalTaxes: {
+        stateIncomeTax: number;
+        localIncomeTax: number;
+        realEstateTax: number;
+        personalPropertyTax: number;
+        salesTax: number;
+        totalStateLocalTaxes: number;
+        limit: number;
+        deductibleAmount: number;
+      };
+      mortgageInterest: {
+        primaryResidence: number;
+        secondHome: number;
+        homeEquity: number;
+        points: number;
+        totalMortgageInterest: number;
+        limit: number;
+        deductibleAmount: number;
+      };
+      charitableContributions: {
+        cash: number;
+        property: number;
+        mileage: number;
+        totalCharitableContributions: number;
+        limit: number;
+        deductibleAmount: number;
+      };
+      otherDeductions: {
+        casualtyLoss: number;
+        theftLoss: number;
+        gamblingLoss: number;
+        jobExpenses: number;
+        taxPreparation: number;
+        investmentExpenses: number;
+        otherDeductions: number;
+        totalOtherDeductions: number;
+      };
+      totalItemizedDeductions: number;
+    };
+    aboveTheLineDeductions: {
+      educatorExpenses: number;
+      studentLoanInterest: number;
+      tuitionAndFees: number;
+      healthSavingsAccount: number;
+      traditionalIRA: number;
+      sepIRA: number;
+      simpleIRA: number;
+      selfEmployedHealthInsurance: number;
+      selfEmployedRetirement: number;
+      alimonyPaid: number;
+      movingExpenses: number;
+      totalAboveTheLineDeductions: number;
+    };
+    totalDeductions: number;
+    deductionsEfficiency: number;
   };
   
-  // Credit Analysis
-  creditAnalysis: {
+  // Credits Analysis
+  creditsAnalysis: {
+    childDependentCare: {
+      childCareExpenses: number;
+      dependentCareExpenses: number;
+      qualifyingChildren: number;
+      qualifyingDependents: number;
+      creditPercentage: number;
+      creditAmount: number;
+    };
+    educationCredits: {
+      americanOpportunityCredit: {
+        qualifiedExpenses: number;
+        creditAmount: number;
+        refundableAmount: number;
+      };
+      lifetimeLearningCredit: {
+        qualifiedExpenses: number;
+        creditAmount: number;
+      };
+    };
+    earnedIncomeCredit: {
+      earnedIncome: number;
+      adjustedGrossIncome: number;
+      qualifyingChildren: number;
+      creditAmount: number;
+      refundableAmount: number;
+    };
+    childTaxCredit: {
+      qualifyingChildren: number;
+      creditAmount: number;
+      refundableAmount: number;
+    };
+    otherCredits: {
+      adoptionCredit: number;
+      saverCredit: number;
+      foreignTaxCredit: number;
+      residentialEnergyCredit: number;
+      electricVehicleCredit: number;
+      otherCredits: number;
+      totalOtherCredits: number;
+    };
     totalCredits: number;
-    refundableCredits: number;
-    nonRefundableCredits: number;
-    creditBreakdown: {
-      category: string;
-      amount: number;
-      percentage: number;
-    }[];
-    creditEfficiency: number;
+    creditsEfficiency: number;
   };
   
   // Tax Liability Analysis
   taxLiabilityAnalysis: {
-    federalTax: number;
-    stateTax: number;
-    localTax: number;
-    alternativeMinimumTax: number;
-    selfEmploymentTax: number;
+    federalTax: {
+      incomeTax: number;
+      alternativeMinimumTax: number;
+      selfEmploymentTax: number;
+      medicareSurtax: number;
+      netInvestmentIncomeTax: number;
+      totalFederalTax: number;
+    };
+    stateTax: {
+      stateIncomeTax: number;
+      stateCredits: number;
+      netStateTax: number;
+    };
+    localTax: {
+      localIncomeTax: number;
+      localCredits: number;
+      netLocalTax: number;
+    };
     totalTaxLiability: number;
-    taxBreakdown: {
-      category: string;
-      amount: number;
-      percentage: number;
-    }[];
-  };
-  
-  // Tax Rate Analysis
-  taxRateAnalysis: {
     effectiveTaxRate: number;
     marginalTaxRate: number;
-    averageTaxRate: number;
-    taxBracket: string;
-    nextBracketThreshold: number;
-    taxRateEfficiency: number;
+    taxEfficiency: number;
+  };
+  
+  // Refund Analysis
+  refundAnalysis: {
+    totalWithholding: number;
+    estimatedTaxPayments: number;
+    totalPayments: number;
+    totalTaxLiability: number;
+    refund: number;
+    amountDue: number;
+    refundEfficiency: number;
   };
   
   // Business Tax Analysis
   businessTaxAnalysis: {
-    businessIncome: number;
-    businessExpenses: number;
-    netBusinessIncome: number;
+    businessIncome: {
+      businessName: string;
+      businessType: string;
+      grossReceipts: number;
+      costOfGoodsSold: number;
+      grossProfit: number;
+      businessExpenses: {
+        advertising: number;
+        carAndTruck: number;
+        commissions: number;
+        contractLabor: number;
+        depreciation: number;
+        insurance: number;
+        interest: number;
+        legal: number;
+        meals: number;
+        office: number;
+        pension: number;
+        rent: number;
+        repairs: number;
+        supplies: number;
+        taxes: number;
+        travel: number;
+        utilities: number;
+        wages: number;
+        otherExpenses: number;
+        totalExpenses: number;
+      };
+      netIncome: number;
+    }[];
+    businessDeductions: {
+      homeOffice: {
+        squareFootage: number;
+        totalSquareFootage: number;
+        percentage: number;
+        expenses: number;
+        deduction: number;
+      };
+      vehicle: {
+        businessMiles: number;
+        totalMiles: number;
+        percentage: number;
+        expenses: number;
+        deduction: number;
+      };
+      equipment: {
+        equipment: string;
+        cost: number;
+        usefulLife: number;
+        depreciation: number;
+      }[];
+      totalBusinessDeductions: number;
+    };
     selfEmploymentTax: number;
-    businessDeductions: number;
-    businessCredits: number;
-    businessTaxLiability: number;
-    businessTaxRate: number;
+    businessTaxEfficiency: number;
   };
   
   // Investment Tax Analysis
   investmentTaxAnalysis: {
-    investmentIncome: number;
-    capitalGains: {
-      shortTerm: number;
-      longTerm: number;
-      qualifiedDividends: number;
+    investmentAccounts: {
+      accountType: string;
+      accountName: string;
+      institution: string;
+      beginningBalance: number;
+      endingBalance: number;
+      contributions: number;
+      distributions: number;
+      gains: number;
+      losses: number;
+    }[];
+    capitalGainsLosses: {
+      shortTermGains: number;
+      shortTermLosses: number;
+      longTermGains: number;
+      longTermLosses: number;
+      netShortTerm: number;
+      netLongTerm: number;
+      netCapitalGain: number;
+      carryoverLosses: number;
     };
-    investmentExpenses: number;
-    investmentTaxLiability: number;
-    investmentTaxRate: number;
-    taxLossHarvesting: number;
+    investmentExpenses: {
+      investmentAdvisory: number;
+      custodialFees: number;
+      legalFees: number;
+      accountingFees: number;
+      otherExpenses: number;
+      totalExpenses: number;
+    };
+    netInvestmentIncomeTax: number;
+    investmentTaxEfficiency: number;
   };
   
   // Real Estate Tax Analysis
   realEstateTaxAnalysis: {
-    rentalIncome: number;
-    rentalExpenses: number;
-    netRentalIncome: number;
-    depreciation: number;
-    passiveActivityLoss: number;
-    realEstateTaxLiability: number;
-    realEstateTaxRate: number;
+    rentalProperties: {
+      propertyAddress: string;
+      propertyType: string;
+      rentalIncome: number;
+      rentalExpenses: {
+        mortgageInterest: number;
+        propertyTax: number;
+        insurance: number;
+        utilities: number;
+        maintenance: number;
+        repairs: number;
+        depreciation: number;
+        management: number;
+        otherExpenses: number;
+        totalExpenses: number;
+      };
+      netRentalIncome: number;
+      passiveActivity: boolean;
+    }[];
+    realEstateSales: {
+      propertyAddress: string;
+      salePrice: number;
+      costBasis: number;
+      improvements: number;
+      sellingExpenses: number;
+      gain: number;
+      exclusion: number;
+      taxableGain: number;
+    }[];
+    realEstateTaxEfficiency: number;
   };
   
   // Retirement Tax Analysis
   retirementTaxAnalysis: {
-    retirementContributions: number;
-    retirementDistributions: number;
-    retirementTaxLiability: number;
-    retirementTaxRate: number;
-    requiredMinimumDistribution: number;
-    earlyWithdrawalPenalty: number;
+    retirementAccounts: {
+      accountType: string;
+      accountName: string;
+      institution: string;
+      contributions: number;
+      distributions: number;
+      requiredMinimumDistribution: number;
+      earlyWithdrawalPenalty: number;
+    }[];
+    pensionIncome: {
+      pensionName: string;
+      annualPension: number;
+      taxableAmount: number;
+      exclusion: number;
+    }[];
+    socialSecurity: {
+      socialSecurityBenefits: number;
+      otherIncome: number;
+      provisionalIncome: number;
+      taxablePercentage: number;
+      taxableAmount: number;
+    };
+    retirementTaxEfficiency: number;
   };
   
   // Alternative Minimum Tax Analysis
-  amtAnalysis: {
-    amtIncome: number;
-    amtExemption: number;
-    amtTaxableIncome: number;
-    amtTax: number;
+  alternativeMinimumTaxAnalysis: {
+    alternativeMinimumTaxableIncome: number;
+    exemption: number;
+    exemptionPhaseout: number;
+    tentativeMinimumTax: number;
     regularTax: number;
-    amtLiability: number;
-    amtCredit: number;
+    alternativeMinimumTax: number;
+    amtEfficiency: number;
   };
   
-  // State and Local Tax Analysis
-  stateLocalTaxAnalysis: {
-    stateIncomeTax: number;
-    localIncomeTax: number;
-    propertyTax: number;
-    salesTax: number;
-    totalStateLocalTax: number;
-    stateLocalTaxRate: number;
-  };
-  
-  // International Tax Analysis
-  internationalTaxAnalysis: {
-    foreignIncome: number;
-    foreignTaxPaid: number;
-    foreignTaxCredit: number;
-    foreignEarnedIncomeExclusion: number;
-    foreignHousingExclusion: number;
-    internationalTaxLiability: number;
-  };
-  
-  // Tax Optimization Analysis
-  taxOptimizationAnalysis: {
-    currentTaxLiability: number;
-    optimizedTaxLiability: number;
-    potentialSavings: number;
-    optimizationStrategies: {
-      strategy: string;
-      savings: number;
-      implementationDifficulty: 'low' | 'medium' | 'high';
-    }[];
-    optimizationEfficiency: number;
-  };
-  
-  // Comparative Analysis
-  comparativeAnalysis: {
-    averageTaxRate: number;
-    medianTaxRate: number;
-    taxRatePercentile: number;
-    peerComparison: {
-      peer: string;
-      taxRate: number;
-      taxLiability: number;
-    }[];
-    marketPosition: number;
-  };
-  
-  // Scenario Analysis Results
-  scenarioResults: {
-    scenarioName: string;
-    probability: number;
-    income: number;
-    deductions: number;
-    credits: number;
-    taxLiability: number;
-    effectiveTaxRate: number;
+  // Sensitivity Analysis
+  sensitivityAnalysis: {
+    variable: string;
+    baseValue: number;
+    lowValue: number;
+    highValue: number;
+    lowTax: number;
+    highTax: number;
+    sensitivity: number;
   }[];
+  
+  // Scenario Analysis
+  scenarioAnalysis: {
+    scenarioName: string;
+    description: string;
+    probability: number;
+    incomeChange: number;
+    deductionChange: number;
+    creditChange: number;
+    taxChange: number;
+    recommendation: string;
+  }[];
+  
+  // Tax Planning Analysis
+  taxPlanningAnalysis: {
+    optimizationOpportunities: {
+      category: string;
+      opportunity: string;
+      potentialSavings: number;
+      implementationDifficulty: 'low' | 'medium' | 'high';
+      priority: 'low' | 'medium' | 'high';
+    }[];
+    taxStrategies: {
+      strategy: string;
+      description: string;
+      expectedSavings: number;
+      implementationSteps: string[];
+      timeline: string;
+    }[];
+    planningEfficiency: number;
+  };
+  
+  // Comparison Analysis
+  comparisonAnalysis: {
+    alternativeScenarios: {
+      scenario: string;
+      income: number;
+      deductions: number;
+      credits: number;
+      taxLiability: number;
+      efficiency: number;
+    }[];
+    benchmarkComparison: {
+      benchmark: string;
+      benchmarkTax: number;
+      actualTax: number;
+      difference: number;
+      efficiency: number;
+    };
+    comparisonEfficiency: number;
+  };
+  
+  // Tax Score
+  taxScore: {
+    overallScore: number;
+    componentScores: {
+      income: number;
+      deductions: number;
+      credits: number;
+      planning: number;
+      compliance: number;
+      efficiency: number;
+    };
+    recommendation: 'excellent' | 'good' | 'fair' | 'poor' | 'needs_improvement';
+  };
   
   // Monte Carlo Results
   monteCarloResults: {
-    meanTaxLiability: number;
-    medianTaxLiability: number;
+    meanTax: number;
+    medianTax: number;
     standardDeviation: number;
     percentiles: {
       p5: number;
@@ -594,46 +982,28 @@ export interface TaxResults {
       p95: number;
     };
     probabilityDistribution: {
-      taxLiability: number;
+      value: number;
       probability: number;
     }[];
+    successProbability: number;
   };
   
   // Historical Analysis
   historicalAnalysis: {
-    historicalTaxLiability: number;
-    historicalEffectiveTaxRate: number;
+    historicalTax: number;
+    historicalIncome: number;
+    historicalDeductions: number;
+    historicalCredits: number;
     historicalTrends: string[];
-    historicalVolatility: number;
     yearOverYearChange: number;
   };
-  
-  // Sensitivity Analysis
-  sensitivityAnalysis: {
-    parameter: string;
-    baseValue: number;
-    lowValue: number;
-    highValue: number;
-    lowTaxLiability: number;
-    highTaxLiability: number;
-    sensitivity: number;
-  }[];
-  
-  // Optimization Opportunities
-  optimizationOpportunities: {
-    category: string;
-    description: string;
-    potentialSavings: number;
-    implementationDifficulty: 'low' | 'medium' | 'high';
-    priority: 'low' | 'medium' | 'high';
-  }[];
   
   // Business Impact
   businessImpact: {
     taxSavings: number;
-    cashFlowImprovement: number;
-    complianceCost: number;
-    auditRisk: number;
+    complianceImprovement: number;
+    riskReduction: number;
+    efficiencyGain: number;
     overallBenefit: number;
   };
   
@@ -654,11 +1024,13 @@ export interface TaxResults {
   // Executive Summary
   executiveSummary: {
     totalIncome: number;
-    taxLiability: number;
+    adjustedGrossIncome: number;
+    taxableIncome: number;
+    totalTax: number;
     effectiveTaxRate: number;
-    recommendation: 'optimize' | 'maintain' | 'review';
-    keySavings: string[];
-    keyRisks: string[];
+    recommendation: 'excellent' | 'good' | 'fair' | 'poor' | 'needs_improvement';
+    keyStrengths: string[];
+    keyWeaknesses: string[];
   };
   
   // Recommendations

@@ -1,284 +1,439 @@
-export interface HedgeFundInputs {
-  // Fund Information
-  fundName: string;
-  fundSize: number;
-  fundInception: string;
-  fundType: 'long_short' | 'global_macro' | 'event_driven' | 'relative_value' | 'directional' | 'quantitative' | 'multi_strategy' | 'fund_of_funds' | 'distressed' | 'arbitrage' | 'managed_futures' | 'cta';
-  strategy: string;
-  investmentStyle: 'growth' | 'value' | 'momentum' | 'mean_reversion' | 'statistical_arbitrage' | 'pairs_trading' | 'market_neutral' | 'directional' | 'systematic' | 'discretionary';
-  
-  // Investment Information
-  investmentAmount: number;
-  investmentDate: string;
-  shareClass: string;
-  currency: string;
-  lockupPeriod: number; // in months
-  noticePeriod: number; // in days
-  redemptionFrequency: 'monthly' | 'quarterly' | 'semi_annually' | 'annually';
-  
-  // Fee Structure
-  managementFee: number; // percentage
-  performanceFee: number; // percentage
-  hurdleRate: number; // percentage
-  highWaterMark: boolean;
-  catchUp: number; // percentage
-  otherFees: {
-    fee: string;
-    amount: number;
-    frequency: string;
-  }[];
-  
-  // Performance Metrics
-  netAssetValue: number;
-  totalReturn: number;
-  annualizedReturn: number;
-  volatility: number;
-  sharpeRatio: number;
-  sortinoRatio: number;
-  calmarRatio: number;
-  treynorRatio: number;
-  informationRatio: number;
-  jensenAlpha: number;
-  beta: number;
-  rSquared: number;
-  
-  // Risk Metrics
-  valueAtRisk: number;
-  conditionalVaR: number;
-  expectedShortfall: number;
-  maxDrawdown: number;
-  downsideDeviation: number;
-  riskOfLoss: number;
-  varConfidence: number;
-  
-  // Portfolio Composition
-  portfolioComposition: {
-    assetClass: string;
-    allocation: number;
-    benchmark: string;
-    activeWeight: number;
-  }[];
-  
-  // Geographic Allocation
-  geographicAllocation: {
-    region: string;
-    allocation: number;
-    benchmark: number;
-    activeWeight: number;
-  }[];
-  
-  // Sector Allocation
-  sectorAllocation: {
-    sector: string;
-    allocation: number;
-    benchmark: number;
-    activeWeight: number;
-  }[];
-  
-  // Market Cap Allocation
-  marketCapAllocation: {
-    category: string;
-    allocation: number;
-    benchmark: number;
-    activeWeight: number;
-  }[];
-  
-  // Leverage and Exposure
-  grossExposure: number;
-  netExposure: number;
-  longExposure: number;
-  shortExposure: number;
-  leverage: number;
-  marginUtilization: number;
-  
-  // Position Sizing
-  positionSizing: {
-    maxPositionSize: number;
-    maxSectorWeight: number;
-    maxCountryWeight: number;
-    maxSingleName: number;
-    averagePositionSize: number;
-    concentrationRisk: number;
+export interface HedgeFundCalculatorInputs {
+  // Hedge Fund Information
+  hedgeFundInfo: {
+    fundName: string;
+    fundType: 'long_short' | 'global_macro' | 'event_driven' | 'relative_value' | 'managed_futures' | 'multi_strategy' | 'quantitative' | 'distressed' | 'arbitrage' | 'other';
+    strategy: string;
+    fundSize: number;
+    inceptionDate: string;
+    managementFee: number;
+    performanceFee: number;
+    hurdleRate: number;
+    highWaterMark: boolean;
+    lockupPeriod: number; // in months
+    redemptionPeriod: string;
+    fundDescription: string;
   };
   
-  // Trading Activity
-  tradingActivity: {
-    turnover: number;
-    averageHoldingPeriod: number;
-    tradeFrequency: number;
-    averageTradeSize: number;
-    slippage: number;
-    transactionCosts: number;
+  // Portfolio Information
+  portfolioInfo: {
+    // Portfolio Overview
+    portfolioOverview: {
+      totalAssets: number;
+      netAssetValue: number;
+      leverage: number;
+      grossExposure: number;
+      netExposure: number;
+      longExposure: number;
+      shortExposure: number;
+      cashPosition: number;
+    };
+    
+    // Asset Allocation
+    assetAllocation: {
+      assetClass: string;
+      allocation: number;
+      exposure: number;
+      weight: number;
+      benchmark: number;
+      activeWeight: number;
+    }[];
+    
+    // Geographic Allocation
+    geographicAllocation: {
+      region: string;
+      allocation: number;
+      exposure: number;
+      weight: number;
+      benchmark: number;
+      activeWeight: number;
+    }[];
+    
+    // Sector Allocation
+    sectorAllocation: {
+      sector: string;
+      allocation: number;
+      exposure: number;
+      weight: number;
+      benchmark: number;
+      activeWeight: number;
+    }[];
+  };
+  
+  // Performance Metrics
+  performanceMetrics: {
+    // Return Metrics
+    returnMetrics: {
+      totalReturn: number;
+      annualizedReturn: number;
+      excessReturn: number;
+      alpha: number;
+      beta: number;
+      informationRatio: number;
+      trackingError: number;
+    };
+    
+    // Risk Metrics
+    riskMetrics: {
+      volatility: number;
+      var: number;
+      cvar: number;
+      maxDrawdown: number;
+      downsideDeviation: number;
+      semiDeviation: number;
+      skewness: number;
+      kurtosis: number;
+    };
+    
+    // Risk-Adjusted Metrics
+    riskAdjustedMetrics: {
+      sharpeRatio: number;
+      sortinoRatio: number;
+      calmarRatio: number;
+      treynorRatio: number;
+      jensenAlpha: number;
+      omegaRatio: number;
+    };
+    
+    // Attribution Metrics
+    attributionMetrics: {
+      assetAllocation: number;
+      stockSelection: number;
+      interaction: number;
+      totalAttribution: number;
+    };
+  };
+  
+  // Strategy Analysis
+  strategyAnalysis: {
+    // Strategy Breakdown
+    strategyBreakdown: {
+      strategy: string;
+      allocation: number;
+      return: number;
+      risk: number;
+      sharpeRatio: number;
+      correlation: number;
+    }[];
+    
+    // Factor Exposure
+    factorExposure: {
+      factor: string;
+      exposure: number;
+      contribution: number;
+      risk: number;
+    }[];
+    
+    // Style Analysis
+    styleAnalysis: {
+      style: string;
+      exposure: number;
+      contribution: number;
+      risk: number;
+    }[];
+    
+    // Market Neutrality
+    marketNeutrality: {
+      marketBeta: number;
+      sectorNeutrality: number;
+      sizeNeutrality: number;
+      styleNeutrality: number;
+      overallNeutrality: number;
+    };
   };
   
   // Risk Management
   riskManagement: {
-    stopLoss: number;
-    positionLimits: number;
-    sectorLimits: number;
-    countryLimits: number;
-    correlationLimits: number;
-    varLimits: number;
-    stressTesting: boolean;
-    scenarioAnalysis: boolean;
-  };
-  
-  // Benchmark Information
-  benchmark: string;
-  benchmarkReturn: number;
-  benchmarkVolatility: number;
-  trackingError: number;
-  informationRatio: number;
-  activeShare: number;
-  
-  // Market Conditions
-  marketConditions: {
-    marketRegime: 'bull' | 'bear' | 'sideways' | 'volatile' | 'trending' | 'mean_reverting';
-    volatilityRegime: 'low' | 'normal' | 'high' | 'extreme';
-    correlationRegime: 'low' | 'normal' | 'high';
-    liquidityRegime: 'high' | 'normal' | 'low';
-    interestRateEnvironment: 'low' | 'normal' | 'high' | 'rising' | 'falling';
-  };
-  
-  // Factor Exposures
-  factorExposures: {
-    market: number;
-    size: number;
-    value: number;
-    momentum: number;
-    quality: number;
-    volatility: number;
-    credit: number;
-    currency: number;
-    commodity: number;
-    interestRate: number;
-  };
-  
-  // Alpha Analysis
-  alphaAnalysis: {
-    totalAlpha: number;
-    systematicAlpha: number;
-    idiosyncraticAlpha: number;
-    alphaStability: number;
-    alphaPersistence: number;
-    alphaDecay: number;
-  };
-  
-  // Attribution Analysis
-  attributionAnalysis: {
-    assetAllocation: number;
-    stockSelection: number;
-    interaction: number;
-    totalActive: number;
-    benchmarkReturn: number;
-    excessReturn: number;
-  };
-  
-  // Liquidity Analysis
-  liquidityAnalysis: {
-    liquidityScore: number;
-    averageBidAskSpread: number;
-    marketImpact: number;
-    timeToLiquidate: number;
-    liquidityRisk: number;
-    redemptionRisk: number;
-  };
-  
-  // Operational Risk
-  operationalRisk: {
-    counterpartyRisk: number;
-    settlementRisk: number;
-    custodyRisk: number;
-    technologyRisk: number;
-    complianceRisk: number;
-    regulatoryRisk: number;
-    totalOperationalRisk: number;
-  };
-  
-  // Manager Analysis
-  managerAnalysis: {
-    experience: number;
-    trackRecord: number;
-    teamSize: number;
-    infrastructure: number;
-    riskManagement: number;
-    compliance: number;
-    overallScore: number;
-  };
-  
-  // Fund Structure
-  fundStructure: {
-    domicile: string;
-    structure: string;
-    taxTreatment: string;
-    regulatoryStatus: string;
-    auditFirm: string;
-    administrator: string;
-    primeBroker: string;
-  };
-  
-  // Historical Performance
-  historicalPerformance: {
-    monthlyReturns: {
-      date: string;
-      return: number;
-      nav: number;
-      benchmark: number;
+    // Risk Limits
+    riskLimits: {
+      maxLeverage: number;
+      maxPositionSize: number;
+      maxSectorExposure: number;
+      maxCountryExposure: number;
+      maxVar: number;
+      maxDrawdown: number;
+    };
+    
+    // Risk Decomposition
+    riskDecomposition: {
+      factor: string;
+      risk: number;
+      contribution: number;
+      percentage: number;
     }[];
-    rollingMetrics: {
-      period: number;
+    
+    // Stress Testing
+    stressTesting: {
+      scenario: string;
+      impact: number;
+      probability: number;
+      var: number;
+      description: string;
+    }[];
+    
+    // Correlation Analysis
+    correlationAnalysis: {
+      asset1: string;
+      asset2: string;
+      correlation: number;
+      rollingCorrelation: number[];
+    }[];
+  };
+  
+  // Fee Structure
+  feeStructure: {
+    // Management Fees
+    managementFees: {
+      rate: number;
+      basis: 'assets' | 'equity' | 'nav';
+      frequency: 'monthly' | 'quarterly' | 'annually';
+      amount: number;
+    };
+    
+    // Performance Fees
+    performanceFees: {
+      rate: number;
+      hurdleRate: number;
+      highWaterMark: boolean;
+      catchUp: boolean;
+      amount: number;
+    };
+    
+    // Other Fees
+    otherFees: {
+      fee: string;
+      rate: number;
+      amount: number;
+      description: string;
+    }[];
+    
+    // Total Fee Analysis
+    totalFeeAnalysis: {
+      totalFees: number;
+      feeRatio: number;
+      netReturn: number;
+      grossReturn: number;
+    };
+  };
+  
+  // Market Data
+  marketData: {
+    // Market Information
+    marketInfo: {
+      marketIndex: string;
+      marketReturn: number;
+      marketVolatility: number;
+      riskFreeRate: number;
+      marketRiskPremium: number;
+    };
+    
+    // Benchmark Information
+    benchmarkInfo: {
+      benchmark: string;
+      benchmarkReturn: number;
+      benchmarkVolatility: number;
+      benchmarkSharpeRatio: number;
+      trackingError: number;
+    };
+    
+    // Peer Comparison
+    peerComparison: {
+      peer: string;
       return: number;
       volatility: number;
       sharpeRatio: number;
       maxDrawdown: number;
+      fundSize: number;
+    }[];
+    
+    // Market Conditions
+    marketConditions: {
+      bullMarket: boolean;
+      bearMarket: boolean;
+      volatilityRegime: 'low' | 'medium' | 'high';
+      correlationRegime: 'low' | 'medium' | 'high';
+    };
+  };
+  
+  // Liquidity Analysis
+  liquidityAnalysis: {
+    // Liquidity Metrics
+    liquidityMetrics: {
+      liquidityRatio: number;
+      cashRatio: number;
+      quickRatio: number;
+      currentRatio: number;
+      daysToLiquidate: number;
+    };
+    
+    // Redemption Analysis
+    redemptionAnalysis: {
+      redemptionPeriod: string;
+      noticePeriod: number;
+      lockupPeriod: number;
+      redemptionFees: number;
+      redemptionRisk: number;
+    };
+    
+    // Liquidity Stress Testing
+    liquidityStressTesting: {
+      scenario: string;
+      liquidityNeeds: number;
+      availableLiquidity: number;
+      liquidityGap: number;
+      timeToLiquidate: number;
+    }[];
+  };
+  
+  // Operational Risk
+  operationalRisk: {
+    // Operational Risk Factors
+    operationalRiskFactors: {
+      factor: string;
+      risk: number;
+      mitigation: string;
+      probability: number;
+    }[];
+    
+    // Counterparty Risk
+    counterpartyRisk: {
+      counterparty: string;
+      exposure: number;
+      creditRating: string;
+      defaultProbability: number;
+      collateral: number;
+    }[];
+    
+    // Technology Risk
+    technologyRisk: {
+      risk: string;
+      probability: number;
+      impact: number;
+      mitigation: string;
+    }[];
+    
+    // Regulatory Risk
+    regulatoryRisk: {
+      regulation: string;
+      impact: number;
+      compliance: boolean;
+      risk: number;
+    }[];
+  };
+  
+  // Performance Attribution
+  performanceAttribution: {
+    // Brinson Attribution
+    brinsonAttribution: {
+      sector: string;
+      allocation: number;
+      selection: number;
+      interaction: number;
+      total: number;
+    }[];
+    
+    // Factor Attribution
+    factorAttribution: {
+      factor: string;
+      exposure: number;
+      return: number;
+      contribution: number;
+    }[];
+    
+    // Risk Attribution
+    riskAttribution: {
+      factor: string;
+      risk: number;
+      contribution: number;
+      percentage: number;
+    }[];
+    
+    // Return Attribution
+    returnAttribution: {
+      source: string;
+      return: number;
+      contribution: number;
+      percentage: number;
     }[];
   };
   
   // Scenario Analysis
-  scenarios: {
-    name: string;
-    probability: number;
-    marketReturn: number;
-    fundReturn: number;
-    volatility: number;
-    correlation: number;
-    liquidity: number;
-  }[];
+  scenarioAnalysis: {
+    // Market Scenarios
+    marketScenarios: {
+      scenarioName: string;
+      probability: number;
+      marketReturn: number;
+      fundReturn: number;
+      var: number;
+      description: string;
+    }[];
+    
+    // Stress Scenarios
+    stressScenarios: {
+      scenarioName: string;
+      probability: number;
+      marketShock: number;
+      fundImpact: number;
+      var: number;
+      description: string;
+    }[];
+    
+    // Sensitivity Analysis
+    sensitivityAnalysis: {
+      variable: string;
+      baseValue: number;
+      lowValue: number;
+      highValue: number;
+      lowReturn: number;
+      highReturn: number;
+      sensitivity: number;
+    }[];
+  };
   
   // Monte Carlo Simulation
   monteCarloSimulations: number;
   monteCarloTimeSteps: number;
+  includeReturnVolatility: boolean;
+  includeCorrelationChanges: boolean;
   includeRegimeChanges: boolean;
-  regimeChangeProbability: number;
-  regimeChangeImpact: number;
-  
-  // Stress Testing
-  stressTests: {
-    name: string;
-    marketShock: number;
-    volatilityShock: number;
-    correlationShock: number;
-    liquidityShock: number;
-    expectedLoss: number;
-    var: number;
-  }[];
   
   // Analysis Parameters
   analysisPeriod: number; // in years
-  rebalancingFrequency: 'daily' | 'weekly' | 'monthly' | 'quarterly' | 'annually';
   includeFees: boolean;
   includeTaxes: boolean;
   includeTransactionCosts: boolean;
+  includeLiquidityConstraints: boolean;
+  
+  // Calculation Options
+  calculationOptions: {
+    includePerformanceAnalysis: boolean;
+    includeRiskAnalysis: boolean;
+    includeAttributionAnalysis: boolean;
+    includeScenarioAnalysis: boolean;
+    includeMonteCarlo: boolean;
+  };
+  
+  // Historical Analysis
+  historicalData: {
+    date: string;
+    nav: number;
+    return: number;
+    benchmarkReturn: number;
+    volatility: number;
+    sharpeRatio: number;
+    maxDrawdown: number;
+  }[];
   
   // Reporting Preferences
   includePerformanceAnalysis: boolean;
-  includeRiskMetrics: boolean;
+  includeRiskAnalysis: boolean;
   includeAttributionAnalysis: boolean;
-  includeScenarioAnalysis: boolean;
-  includeMonteCarlo: boolean;
-  includeStressTesting: boolean;
   includeLiquidityAnalysis: boolean;
   includeOperationalRisk: boolean;
+  includeScenarioAnalysis: boolean;
+  includeMonteCarlo: boolean;
+  includeHistoricalAnalysis: boolean;
   includeRecommendations: boolean;
   includeActionItems: boolean;
   
@@ -289,216 +444,255 @@ export interface HedgeFundInputs {
   includeRecommendations: boolean;
 }
 
-export interface HedgeFundResults {
-  // Core Performance Metrics
+export interface HedgeFundCalculatorResults {
+  // Core Hedge Fund Metrics
   totalReturn: number;
   annualizedReturn: number;
   volatility: number;
   sharpeRatio: number;
-  sortinoRatio: number;
-  calmarRatio: number;
-  treynorRatio: number;
+  maxDrawdown: number;
   informationRatio: number;
-  jensenAlpha: number;
-  beta: number;
-  rSquared: number;
   
-  // Risk Metrics
-  riskMetrics: {
-    valueAtRisk: number;
-    conditionalVaR: number;
-    expectedShortfall: number;
+  // Hedge Fund Analysis
+  hedgeFundAnalysis: {
+    totalReturn: number;
+    annualizedReturn: number;
+    volatility: number;
+    sharpeRatio: number;
     maxDrawdown: number;
-    downsideDeviation: number;
-    riskOfLoss: number;
-    varConfidence: number;
-    tailRisk: number;
+    informationRatio: number;
+    fundBreakdown: {
+      component: string;
+      value: number;
+      contribution: number;
+    }[];
+    fundEfficiency: number;
   };
   
   // Performance Analysis
   performanceAnalysis: {
-    totalReturn: number;
-    excessReturn: number;
-    benchmarkReturn: number;
-    trackingError: number;
-    informationRatio: number;
-    activeShare: number;
-    performanceAttribution: {
-      assetAllocation: number;
-      stockSelection: number;
-      interaction: number;
-      totalActive: number;
+    returnMetrics: {
+      totalReturn: number;
+      annualizedReturn: number;
+      excessReturn: number;
+      alpha: number;
+      beta: number;
+      informationRatio: number;
+      trackingError: number;
     };
+    riskMetrics: {
+      volatility: number;
+      var: number;
+      cvar: number;
+      maxDrawdown: number;
+      downsideDeviation: number;
+      semiDeviation: number;
+      skewness: number;
+      kurtosis: number;
+    };
+    riskAdjustedMetrics: {
+      sharpeRatio: number;
+      sortinoRatio: number;
+      calmarRatio: number;
+      treynorRatio: number;
+      jensenAlpha: number;
+      omegaRatio: number;
+    };
+    performanceEfficiency: number;
   };
   
   // Risk Analysis
   riskAnalysis: {
-    marketRisk: number;
-    systematicRisk: number;
-    idiosyncraticRisk: number;
-    liquidityRisk: number;
-    operationalRisk: number;
-    leverageRisk: number;
-    concentrationRisk: number;
-    totalRisk: number;
-  };
-  
-  // Factor Analysis
-  factorAnalysis: {
-    factorExposures: {
-      market: number;
-      size: number;
-      value: number;
-      momentum: number;
-      quality: number;
-      volatility: number;
-      credit: number;
-      currency: number;
-      commodity: number;
-      interestRate: number;
+    marketRisk: {
+      beta: number;
+      marketRisk: number;
+      systematicRisk: number;
+      riskContribution: number;
     };
-    factorContributions: {
-      factor: string;
-      contribution: number;
-      risk: number;
-      informationRatio: number;
-    }[];
-    factorTiming: number;
-    factorSelection: number;
-  };
-  
-  // Alpha Analysis
-  alphaAnalysis: {
-    totalAlpha: number;
-    systematicAlpha: number;
-    idiosyncraticAlpha: number;
-    alphaStability: number;
-    alphaPersistence: number;
-    alphaDecay: number;
-    alphaConsistency: number;
-    alphaQuality: number;
+    specificRisk: {
+      alpha: number;
+      specificRisk: number;
+      idiosyncraticRisk: number;
+      riskContribution: number;
+    };
+    factorRisk: {
+      factorExposures: {
+        factor: string;
+        exposure: number;
+        risk: number;
+        contribution: number;
+      }[];
+      totalFactorRisk: number;
+    };
+    totalRisk: number;
+    riskEfficiency: number;
   };
   
   // Attribution Analysis
   attributionAnalysis: {
-    assetAllocation: number;
-    stockSelection: number;
-    interaction: number;
-    totalActive: number;
-    benchmarkReturn: number;
-    excessReturn: number;
-    attributionBreakdown: {
-      category: string;
-      contribution: number;
-      risk: number;
-      informationRatio: number;
-    }[];
-  };
-  
-  // Portfolio Analysis
-  portfolioAnalysis: {
-    portfolioComposition: {
-      assetClass: string;
-      allocation: number;
-      benchmark: number;
-      activeWeight: number;
-      contribution: number;
-    }[];
-    geographicAllocation: {
-      region: string;
-      allocation: number;
-      benchmark: number;
-      activeWeight: number;
-      contribution: number;
-    }[];
-    sectorAllocation: {
+    brinsonAttribution: {
       sector: string;
       allocation: number;
-      benchmark: number;
-      activeWeight: number;
+      selection: number;
+      interaction: number;
+      total: number;
+    }[];
+    factorAttribution: {
+      factor: string;
+      exposure: number;
+      return: number;
       contribution: number;
     }[];
-    marketCapAllocation: {
-      category: string;
+    riskAttribution: {
+      factor: string;
+      risk: number;
+      contribution: number;
+      percentage: number;
+    }[];
+    attributionEfficiency: number;
+  };
+  
+  // Strategy Analysis
+  strategyAnalysis: {
+    strategyBreakdown: {
+      strategy: string;
       allocation: number;
-      benchmark: number;
-      activeWeight: number;
-      contribution: number;
+      return: number;
+      risk: number;
+      sharpeRatio: number;
+      correlation: number;
     }[];
+    marketNeutrality: {
+      marketBeta: number;
+      sectorNeutrality: number;
+      sizeNeutrality: number;
+      styleNeutrality: number;
+      overallNeutrality: number;
+    };
+    strategyEfficiency: number;
   };
   
-  // Exposure Analysis
-  exposureAnalysis: {
-    grossExposure: number;
-    netExposure: number;
-    longExposure: number;
-    shortExposure: number;
-    leverage: number;
-    marginUtilization: number;
-    exposureEfficiency: number;
-    exposureRisk: number;
-  };
-  
-  // Trading Analysis
-  tradingAnalysis: {
-    turnover: number;
-    averageHoldingPeriod: number;
-    tradeFrequency: number;
-    averageTradeSize: number;
-    slippage: number;
-    transactionCosts: number;
-    tradingEfficiency: number;
-    tradingImpact: number;
+  // Fee Analysis
+  feeAnalysis: {
+    managementFees: {
+      rate: number;
+      amount: number;
+      impact: number;
+    };
+    performanceFees: {
+      rate: number;
+      amount: number;
+      impact: number;
+    };
+    totalFees: {
+      totalFees: number;
+      feeRatio: number;
+      netReturn: number;
+      grossReturn: number;
+    };
+    feeEfficiency: number;
   };
   
   // Liquidity Analysis
   liquidityAnalysis: {
-    liquidityScore: number;
-    averageBidAskSpread: number;
-    marketImpact: number;
-    timeToLiquidate: number;
-    liquidityRisk: number;
-    redemptionRisk: number;
+    liquidityMetrics: {
+      liquidityRatio: number;
+      cashRatio: number;
+      quickRatio: number;
+      currentRatio: number;
+      daysToLiquidate: number;
+    };
+    redemptionAnalysis: {
+      redemptionPeriod: string;
+      noticePeriod: number;
+      lockupPeriod: number;
+      redemptionFees: number;
+      redemptionRisk: number;
+    };
     liquidityEfficiency: number;
-    liquidityCost: number;
   };
   
-  // Operational Risk Analysis
-  operationalRiskAnalysis: {
-    counterpartyRisk: number;
-    settlementRisk: number;
-    custodyRisk: number;
-    technologyRisk: number;
-    complianceRisk: number;
-    regulatoryRisk: number;
-    totalOperationalRisk: number;
-    riskMitigation: string[];
-  };
+  // Sensitivity Analysis
+  sensitivityAnalysis: {
+    variable: string;
+    baseValue: number;
+    lowValue: number;
+    highValue: number;
+    lowReturn: number;
+    highReturn: number;
+    sensitivity: number;
+  }[];
   
-  // Manager Analysis
-  managerAnalysis: {
-    experience: number;
-    trackRecord: number;
-    teamSize: number;
-    infrastructure: number;
-    riskManagement: number;
-    compliance: number;
-    overallScore: number;
-    strengths: string[];
-    weaknesses: string[];
-  };
-  
-  // Scenario Analysis Results
-  scenarioResults: {
+  // Scenario Analysis
+  scenarioAnalysis: {
     scenarioName: string;
     probability: number;
+    marketReturn: number;
     fundReturn: number;
-    benchmarkReturn: number;
-    excessReturn: number;
-    volatility: number;
-    sharpeRatio: number;
-    maxDrawdown: number;
+    var: number;
+    riskLevel: string;
   }[];
+  
+  // Peer Comparison
+  peerComparison: {
+    peerComparison: {
+      peer: string;
+      return: number;
+      volatility: number;
+      sharpeRatio: number;
+      maxDrawdown: number;
+      outperformance: number;
+    }[];
+    benchmarkComparison: {
+      metric: string;
+      fund: number;
+      benchmark: number;
+      difference: number;
+    }[];
+  };
+  
+  // Market Analysis
+  marketAnalysis: {
+    marketPosition: number;
+    marketTiming: number;
+    marketBreakdown: {
+      factor: string;
+      impact: number;
+      opportunity: number;
+    }[];
+    marketScore: number;
+  };
+  
+  // Operational Analysis
+  operationalAnalysis: {
+    operationalRisk: {
+      totalRisk: number;
+      riskBreakdown: {
+        risk: string;
+        level: number;
+        impact: number;
+      }[];
+    };
+    counterpartyRisk: {
+      totalExposure: number;
+      averageRating: string;
+      defaultProbability: number;
+    };
+    operationalEfficiency: number;
+  };
+  
+  // Hedge Fund Score
+  hedgeFundScore: {
+    overallScore: number;
+    componentScores: {
+      performance: number;
+      risk: number;
+      attribution: number;
+      liquidity: number;
+      operational: number;
+    };
+    recommendation: 'invest' | 'hold' | 'redeem' | 'review';
+  };
   
   // Monte Carlo Results
   monteCarloResults: {
@@ -518,20 +712,8 @@ export interface HedgeFundResults {
       return: number;
       probability: number;
     }[];
+    successProbability: number;
   };
-  
-  // Stress Test Results
-  stressTestResults: {
-    testName: string;
-    marketShock: number;
-    volatilityShock: number;
-    correlationShock: number;
-    liquidityShock: number;
-    expectedLoss: number;
-    var: number;
-    maxDrawdown: number;
-    recoveryTime: number;
-  }[];
   
   // Historical Analysis
   historicalAnalysis: {
@@ -539,47 +721,9 @@ export interface HedgeFundResults {
     historicalVolatility: number;
     historicalSharpeRatio: number;
     historicalMaxDrawdown: number;
-    rollingMetrics: {
-      period: number;
-      return: number;
-      volatility: number;
-      sharpeRatio: number;
-      maxDrawdown: number;
-    }[];
+    historicalTrends: string[];
+    yearOverYearChange: number;
   };
-  
-  // Comparative Analysis
-  comparativeAnalysis: {
-    peerGroup: string[];
-    peerRanking: number;
-    peerPercentile: number;
-    relativePerformance: number;
-    relativeRisk: number;
-    relativeSharpeRatio: number;
-    relativeInformationRatio: number;
-  };
-  
-  // Fee Analysis
-  feeAnalysis: {
-    totalFees: number;
-    managementFee: number;
-    performanceFee: number;
-    otherFees: number;
-    feeImpact: number;
-    afterFeeReturn: number;
-    feeEfficiency: number;
-  };
-  
-  // Sensitivity Analysis
-  sensitivityAnalysis: {
-    parameter: string;
-    baseValue: number;
-    lowValue: number;
-    highValue: number;
-    lowReturn: number;
-    highReturn: number;
-    sensitivity: number;
-  }[];
   
   // Optimization Opportunities
   optimizationOpportunities: {
@@ -592,18 +736,18 @@ export interface HedgeFundResults {
   
   // Business Impact
   businessImpact: {
-    roi: number;
-    paybackPeriod: number;
-    netPresentValue: number;
-    internalRateOfReturn: number;
-    riskAdjustedReturn: number;
+    returnImprovement: number;
+    riskReduction: number;
+    costSavings: number;
+    valueCreation: number;
+    overallBenefit: number;
   };
   
   // Comprehensive Report
   comprehensiveReport: {
     executiveSummary: string;
     keyFindings: string[];
-    riskAssessment: string;
+    fundAssessment: string;
     recommendations: string[];
     actionItems: {
       action: string;
@@ -617,10 +761,10 @@ export interface HedgeFundResults {
   executiveSummary: {
     totalReturn: number;
     sharpeRatio: number;
-    riskLevel: 'low' | 'medium' | 'high';
-    recommendation: 'invest' | 'pass' | 'hold';
-    keyRisks: string[];
-    keyOpportunities: string[];
+    maxDrawdown: number;
+    recommendation: 'invest' | 'hold' | 'redeem' | 'review';
+    keyStrengths: string[];
+    keyWeaknesses: string[];
   };
   
   // Recommendations

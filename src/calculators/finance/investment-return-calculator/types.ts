@@ -1,757 +1,791 @@
-export interface InvestmentReturnInputs {
-  // Investment information
+export interface InvestmentReturnCalculatorInputs {
+  // Investment Information
   investmentInfo: {
-    investmentId: string;
-    investmentName: string;
-    investmentType: 'stocks' | 'bonds' | 'mutual-funds' | 'etfs' | 'real-estate' | 'commodities' | 'cryptocurrency' | 'private-equity' | 'venture-capital' | 'hedge-funds' | 'options' | 'futures' | 'forex' | 'other';
-    investmentCategory: 'equity' | 'fixed-income' | 'real-estate' | 'commodities' | 'alternatives' | 'cash';
-    investmentStyle: 'growth' | 'value' | 'blend' | 'momentum' | 'dividend' | 'index' | 'sector' | 'geographic';
-    investmentStrategy: 'buy-and-hold' | 'active-trading' | 'dollar-cost-averaging' | 'value-investing' | 'growth-investing' | 'momentum-trading' | 'arbitrage' | 'hedging';
-    riskProfile: 'conservative' | 'moderate' | 'aggressive' | 'very-aggressive';
-    investmentHorizon: number; // Years
-    liquidityNeeds: 'high' | 'medium' | 'low';
-  };
-  
-  // Investment amounts
-  investmentAmounts: {
-    initialInvestment: number;
-    additionalInvestments: {
-      date: Date;
-      amount: number;
-      type: 'contribution' | 'dividend-reinvestment' | 'capital-gain-reinvestment' | 'other';
-    }[];
-    withdrawals: {
-      date: Date;
-      amount: number;
-      type: 'withdrawal' | 'distribution' | 'dividend' | 'capital-gain' | 'other';
-    }[];
-    totalInvested: number;
-    currentValue: number;
-    marketValue: number;
-  };
-  
-  // Time period
-  timePeriod: {
-    startDate: Date;
-    endDate: Date;
-    periodType: 'daily' | 'weekly' | 'monthly' | 'quarterly' | 'yearly' | 'custom';
-    holdingPeriod: number; // Days
-    tradingDays: number;
-  };
-  
-  // Price data
-  priceData: {
-    prices: {
-      date: Date;
-      openPrice: number;
-      highPrice: number;
-      lowPrice: number;
-      closePrice: number;
-      adjustedClose: number;
-      volume: number;
-    }[];
-    dividends: {
-      date: Date;
-      amount: number;
-      type: 'regular' | 'special' | 'stock' | 'other';
-    }[];
-    splits: {
-      date: Date;
-      ratio: number;
-      description: string;
-    }[];
-  };
-  
-  // Performance metrics
-  performanceMetrics: {
-    totalReturn: number;
-    annualizedReturn: number;
-    simpleReturn: number;
-    compoundReturn: number;
-    geometricMean: number;
-    arithmeticMean: number;
-    volatility: number;
-    standardDeviation: number;
-    variance: number;
-    skewness: number;
-    kurtosis: number;
-    sharpeRatio: number;
-    sortinoRatio: number;
-    calmarRatio: number;
-    treynorRatio: number;
-    informationRatio: number;
-    jensenAlpha: number;
-    beta: number;
-    rSquared: number;
-    correlation: number;
-  };
-  
-  // Risk metrics
-  riskMetrics: {
-    valueAtRisk: number;
-    conditionalValueAtRisk: number;
-    maximumDrawdown: number;
-    maximumDrawdownDuration: number;
-    downsideDeviation: number;
-    semiDeviation: number;
-    downsideRisk: number;
-    upsideRisk: number;
-    riskOfLoss: number;
-    probabilityOfLoss: number;
-    expectedShortfall: number;
-    tailRisk: number;
-  };
-  
-  // Benchmark comparison
-  benchmarkComparison: {
-    benchmark: {
-      name: string;
-      type: 'index' | 'fund' | 'custom';
-      symbol: string;
-      description: string;
+    // Investment Details
+    investmentDetails: {
+      investmentName: string;
+      investmentType: 'stock' | 'bond' | 'mutual_fund' | 'etf' | 'real_estate' | 'commodity' | 'cryptocurrency' | 'private_equity' | 'venture_capital' | 'hedge_fund' | 'other';
+      tickerSymbol: string;
+      investmentDescription: string;
+      investmentCategory: 'equity' | 'fixed_income' | 'real_assets' | 'alternatives' | 'cash_equivalents';
+      investmentStyle: 'growth' | 'value' | 'blend' | 'momentum' | 'contrarian' | 'index' | 'active' | 'passive';
+      currency: string;
     };
-    benchmarkData: {
-      date: Date;
+    
+    // Investment Parameters
+    investmentParameters: {
+      initialInvestment: number;
+      additionalInvestments: {
+        date: string;
+        amount: number;
+        type: 'purchase' | 'dividend_reinvestment' | 'capital_gain_reinvestment' | 'other';
+      }[];
+      withdrawals: {
+        date: string;
+        amount: number;
+        type: 'sale' | 'dividend' | 'capital_gain' | 'other';
+      }[];
+      currentValue: number;
+      investmentPeriod: number; // in years
+      startDate: string;
+      endDate: string;
+    };
+  };
+  
+  // Market Data
+  marketData: {
+    // Price Data
+    priceData: {
+      date: string;
+      price: number;
+      volume: number;
+      marketCap: number;
+      sharesOutstanding: number;
+    }[];
+    
+    // Dividend Data
+    dividendData: {
+      date: string;
+      dividend: number;
+      dividendYield: number;
+      payoutRatio: number;
+      exDividendDate: string;
+      paymentDate: string;
+    }[];
+    
+    // Market Index Data
+    marketIndexData: {
+      index: string;
+      date: string;
       value: number;
       return: number;
     }[];
-    benchmarkMetrics: {
+    
+    // Economic Data
+    economicData: {
+      date: string;
+      riskFreeRate: number;
+      inflationRate: number;
+      gdpGrowth: number;
+      unemploymentRate: number;
+      consumerPriceIndex: number;
+    }[];
+  };
+  
+  // Performance Metrics
+  performanceMetrics: {
+    // Return Metrics
+    returnMetrics: {
       totalReturn: number;
       annualizedReturn: number;
-      volatility: number;
-      sharpeRatio: number;
-      beta: number;
+      simpleReturn: number;
+      geometricReturn: number;
+      excessReturn: number;
       alpha: number;
+      beta: number;
       informationRatio: number;
       trackingError: number;
     };
+    
+    // Risk Metrics
+    riskMetrics: {
+      volatility: number;
+      variance: number;
+      standardDeviation: number;
+      var: number;
+      cvar: number;
+      maxDrawdown: number;
+      downsideDeviation: number;
+      semiDeviation: number;
+      skewness: number;
+      kurtosis: number;
+    };
+    
+    // Risk-Adjusted Metrics
+    riskAdjustedMetrics: {
+      sharpeRatio: number;
+      sortinoRatio: number;
+      calmarRatio: number;
+      treynorRatio: number;
+      jensenAlpha: number;
+      omegaRatio: number;
+      gainLossRatio: number;
+      ulcerIndex: number;
+    };
+    
+    // Attribution Metrics
+    attributionMetrics: {
+      assetAllocation: number;
+      stockSelection: number;
+      interaction: number;
+      totalAttribution: number;
+      factorAttribution: {
+        factor: string;
+        exposure: number;
+        return: number;
+        contribution: number;
+      }[];
+    };
   };
   
-  // Market data
-  marketData: {
-    marketIndex: {
-      name: string;
-      symbol: string;
-      data: {
-        date: Date;
+  // Benchmark Information
+  benchmarkInfo: {
+    // Benchmark Details
+    benchmarkDetails: {
+      benchmarkName: string;
+      benchmarkType: 'market_index' | 'peer_group' | 'custom' | 'risk_free_rate' | 'other';
+      benchmarkDescription: string;
+      benchmarkData: {
+        date: string;
         value: number;
         return: number;
       }[];
     };
-    riskFreeRate: {
-      rate: number;
-      source: string;
-      frequency: string;
+    
+    // Benchmark Comparison
+    benchmarkComparison: {
+      benchmarkReturn: number;
+      benchmarkVolatility: number;
+      benchmarkSharpeRatio: number;
+      benchmarkMaxDrawdown: number;
+      outperformance: number;
+      underperformance: number;
+      correlation: number;
+      rSquared: number;
     };
-    marketRiskPremium: number;
-    inflationRate: number;
-    currency: string;
-    exchangeRate: number;
+    
+    // Peer Comparison
+    peerComparison: {
+      peer: string;
+      return: number;
+      volatility: number;
+      sharpeRatio: number;
+      maxDrawdown: number;
+      outperformance: number;
+    }[];
   };
   
-  // Sector and industry analysis
-  sectorAnalysis: {
-    sector: string;
-    industry: string;
-    sectorPerformance: {
+  // Risk Analysis
+  riskAnalysis: {
+    // Market Risk
+    marketRisk: {
+      beta: number;
+      marketRisk: number;
+      systematicRisk: number;
+      riskContribution: number;
+    };
+    
+    // Specific Risk
+    specificRisk: {
+      alpha: number;
+      specificRisk: number;
+      idiosyncraticRisk: number;
+      riskContribution: number;
+    };
+    
+    // Factor Risk
+    factorRisk: {
+      factorExposures: {
+        factor: string;
+        exposure: number;
+        risk: number;
+        contribution: number;
+      }[];
+      totalFactorRisk: number;
+    };
+    
+    // Liquidity Risk
+    liquidityRisk: {
+      liquidityRatio: number;
+      bidAskSpread: number;
+      marketImpact: number;
+      timeToLiquidate: number;
+      liquidityRisk: number;
+    };
+    
+    // Credit Risk
+    creditRisk: {
+      creditRating: string;
+      defaultProbability: number;
+      creditSpread: number;
+      creditRisk: number;
+    };
+    
+    // Currency Risk
+    currencyRisk: {
+      currencyExposure: number;
+      currencyVolatility: number;
+      currencyCorrelation: number;
+      currencyRisk: number;
+    };
+    
+    // Total Risk
+    totalRisk: number;
+    riskEfficiency: number;
+  };
+  
+  // Transaction Analysis
+  transactionAnalysis: {
+    // Transaction History
+    transactionHistory: {
+      date: string;
+      type: 'buy' | 'sell' | 'dividend' | 'capital_gain' | 'fee' | 'other';
+      amount: number;
+      shares: number;
+      price: number;
+      commission: number;
+      fees: number;
+      netAmount: number;
+    }[];
+    
+    // Transaction Costs
+    transactionCosts: {
+      totalCommissions: number;
+      totalFees: number;
+      totalTaxes: number;
+      totalTransactionCosts: number;
+      transactionCostRatio: number;
+      impactOnReturn: number;
+    };
+    
+    // Trading Activity
+    tradingActivity: {
+      numberOfTrades: number;
+      averageTradeSize: number;
+      turnover: number;
+      averageHoldingPeriod: number;
+      tradeFrequency: number;
+      tradingEfficiency: number;
+    };
+  };
+  
+  // Tax Analysis
+  taxAnalysis: {
+    // Tax Treatment
+    taxTreatment: {
+      accountType: 'taxable' | 'traditional_ira' | 'roth_ira' | '401k' | '403b' | '457' | 'other';
+      taxRate: number;
+      stateTaxRate: number;
+      localTaxRate: number;
+      totalTaxRate: number;
+    };
+    
+    // Tax Implications
+    taxImplications: {
+      dividendTax: number;
+      capitalGainsTax: number;
+      interestTax: number;
+      totalTaxes: number;
+      afterTaxReturn: number;
+      taxEfficiency: number;
+    };
+    
+    // Tax Loss Harvesting
+    taxLossHarvesting: {
+      realizedLosses: number;
+      unrealizedLosses: number;
+      taxBenefit: number;
+      harvestingOpportunity: number;
+    };
+  };
+  
+  // Economic Analysis
+  economicAnalysis: {
+    // Economic Indicators
+    economicIndicators: {
+      gdpGrowth: number;
+      inflationRate: number;
+      interestRate: number;
+      unemploymentRate: number;
+      consumerConfidence: number;
+      businessConfidence: number;
+    };
+    
+    // Market Conditions
+    marketConditions: {
+      bullMarket: boolean;
+      bearMarket: boolean;
+      volatilityRegime: 'low' | 'medium' | 'high';
+      correlationRegime: 'low' | 'medium' | 'high';
+      liquidityRegime: 'high' | 'medium' | 'low';
+    };
+    
+    // Sector Analysis
+    sectorAnalysis: {
       sector: string;
-      return: number;
-      weight: number;
-      contribution: number;
+      sectorReturn: number;
+      sectorWeight: number;
+      sectorContribution: number;
     }[];
-    industryPerformance: {
-      industry: string;
-      return: number;
-      weight: number;
-      contribution: number;
-    }[];
-  };
-  
-  // Geographic analysis
-  geographicAnalysis: {
-    regions: {
+    
+    // Geographic Analysis
+    geographicAnalysis: {
       region: string;
-      return: number;
-      weight: number;
-      contribution: number;
-    }[];
-    countries: {
-      country: string;
-      return: number;
-      weight: number;
-      contribution: number;
-    }[];
-    currencies: {
-      currency: string;
-      return: number;
-      weight: number;
-      contribution: number;
+      regionReturn: number;
+      regionWeight: number;
+      regionContribution: number;
     }[];
   };
   
-  // Factor analysis
-  factorAnalysis: {
-    factors: {
+  // Scenario Analysis
+  scenarioAnalysis: {
+    // Market Scenarios
+    marketScenarios: {
+      scenario: string;
+      probability: number;
+      marketReturn: number;
+      investmentReturn: number;
+      volatility: number;
+      maxDrawdown: number;
+    }[];
+    
+    // Economic Scenarios
+    economicScenarios: {
+      scenario: string;
+      probability: number;
+      gdpGrowth: number;
+      inflationRate: number;
+      interestRate: number;
+      investmentReturn: number;
+    }[];
+    
+    // Stress Scenarios
+    stressScenarios: {
+      scenario: string;
+      probability: number;
+      marketShock: number;
+      volatilityShock: number;
+      correlationShock: number;
+      investmentReturn: number;
+    }[];
+  };
+  
+  // Monte Carlo Simulation
+  monteCarloSimulations: number;
+  monteCarloTimeSteps: number;
+  includeReturnVolatility: boolean;
+  includeCorrelationChanges: boolean;
+  includeRegimeChanges: boolean;
+  
+  // Analysis Parameters
+  analysisPeriod: number; // in years
+  rebalancingFrequency: 'daily' | 'weekly' | 'monthly' | 'quarterly' | 'annually';
+  includeFees: boolean;
+  includeTaxes: boolean;
+  includeTransactionCosts: boolean;
+  
+  // Calculation Options
+  calculationOptions: {
+    includePerformanceAnalysis: boolean;
+    includeRiskAnalysis: boolean;
+    includeAttributionAnalysis: boolean;
+    includeTransactionAnalysis: boolean;
+    includeTaxAnalysis: boolean;
+    includeEconomicAnalysis: boolean;
+    includeScenarioAnalysis: boolean;
+    includeMonteCarlo: boolean;
+  };
+  
+  // Historical Analysis
+  historicalData: {
+    date: string;
+    value: number;
+    return: number;
+    benchmarkReturn: number;
+    volatility: number;
+    sharpeRatio: number;
+    maxDrawdown: number;
+  }[];
+  
+  // Reporting Preferences
+  includePerformanceAnalysis: boolean;
+  includeRiskAnalysis: boolean;
+  includeAttributionAnalysis: boolean;
+  includeTransactionAnalysis: boolean;
+  includeTaxAnalysis: boolean;
+  includeEconomicAnalysis: boolean;
+  includeScenarioAnalysis: boolean;
+  includeMonteCarlo: boolean;
+  includeHistoricalAnalysis: boolean;
+  includeRecommendations: boolean;
+  includeActionItems: boolean;
+  
+  // Output Format
+  outputFormat: 'detailed' | 'summary' | 'executive';
+  includeCharts: boolean;
+  includeTables: boolean;
+  includeRecommendations: boolean;
+}
+
+export interface InvestmentReturnCalculatorResults {
+  // Core Investment Metrics
+  totalReturn: number;
+  annualizedReturn: number;
+  volatility: number;
+  sharpeRatio: number;
+  maxDrawdown: number;
+  
+  // Investment Analysis
+  investmentAnalysis: {
+    totalReturn: number;
+    annualizedReturn: number;
+    volatility: number;
+    sharpeRatio: number;
+    maxDrawdown: number;
+    investmentBreakdown: {
+      component: string;
+      value: number;
+      contribution: number;
+    }[];
+    investmentEfficiency: number;
+  };
+  
+  // Performance Analysis
+  performanceAnalysis: {
+    returnMetrics: {
+      totalReturn: number;
+      annualizedReturn: number;
+      simpleReturn: number;
+      geometricReturn: number;
+      excessReturn: number;
+      alpha: number;
+      beta: number;
+      informationRatio: number;
+      trackingError: number;
+    };
+    riskMetrics: {
+      volatility: number;
+      variance: number;
+      standardDeviation: number;
+      var: number;
+      cvar: number;
+      maxDrawdown: number;
+      downsideDeviation: number;
+      semiDeviation: number;
+      skewness: number;
+      kurtosis: number;
+    };
+    riskAdjustedMetrics: {
+      sharpeRatio: number;
+      sortinoRatio: number;
+      calmarRatio: number;
+      treynorRatio: number;
+      jensenAlpha: number;
+      omegaRatio: number;
+      gainLossRatio: number;
+      ulcerIndex: number;
+    };
+    performanceEfficiency: number;
+  };
+  
+  // Risk Analysis
+  riskAnalysis: {
+    marketRisk: {
+      beta: number;
+      marketRisk: number;
+      systematicRisk: number;
+      riskContribution: number;
+    };
+    specificRisk: {
+      alpha: number;
+      specificRisk: number;
+      idiosyncraticRisk: number;
+      riskContribution: number;
+    };
+    factorRisk: {
+      factorExposures: {
+        factor: string;
+        exposure: number;
+        risk: number;
+        contribution: number;
+      }[];
+      totalFactorRisk: number;
+    };
+    liquidityRisk: {
+      liquidityRatio: number;
+      bidAskSpread: number;
+      marketImpact: number;
+      timeToLiquidate: number;
+      liquidityRisk: number;
+    };
+    creditRisk: {
+      creditRating: string;
+      defaultProbability: number;
+      creditSpread: number;
+      creditRisk: number;
+    };
+    currencyRisk: {
+      currencyExposure: number;
+      currencyVolatility: number;
+      currencyCorrelation: number;
+      currencyRisk: number;
+    };
+    totalRisk: number;
+    riskEfficiency: number;
+  };
+  
+  // Attribution Analysis
+  attributionAnalysis: {
+    assetAllocation: number;
+    stockSelection: number;
+    interaction: number;
+    totalAttribution: number;
+    factorAttribution: {
       factor: string;
       exposure: number;
       return: number;
       contribution: number;
     }[];
-    factorModel: 'fama-french' | 'carhart' | 'custom';
-    factorReturns: {
-      date: Date;
-      market: number;
-      size: number;
-      value: number;
-      momentum: number;
-      quality: number;
-      lowVolatility: number;
-    }[];
+    attributionEfficiency: number;
   };
   
-  // Attribution analysis
-  attributionAnalysis: {
-    attributionPeriod: {
-      startDate: Date;
-      endDate: Date;
-    };
-    attributionFactors: {
-      factor: string;
-      contribution: number;
-      weight: number;
-      return: number;
-    }[];
-    attributionBreakdown: {
-      allocation: number;
-      selection: number;
-      interaction: number;
-      total: number;
-    };
+  // Benchmark Analysis
+  benchmarkAnalysis: {
+    benchmarkReturn: number;
+    benchmarkVolatility: number;
+    benchmarkSharpeRatio: number;
+    benchmarkMaxDrawdown: number;
+    outperformance: number;
+    underperformance: number;
+    correlation: number;
+    rSquared: number;
+    benchmarkEfficiency: number;
   };
   
-  // Transaction analysis
+  // Transaction Analysis
   transactionAnalysis: {
-    transactions: {
-      date: Date;
-      type: 'buy' | 'sell' | 'dividend' | 'split' | 'merger' | 'spinoff' | 'other';
-      quantity: number;
+    transactionHistory: {
+      date: string;
+      type: string;
+      amount: number;
+      shares: number;
       price: number;
-      value: number;
       commission: number;
-      tax: number;
-      netValue: number;
+      fees: number;
+      netAmount: number;
     }[];
     transactionCosts: {
       totalCommissions: number;
-      totalTaxes: number;
       totalFees: number;
-      totalCosts: number;
-      costImpact: number;
+      totalTaxes: number;
+      totalTransactionCosts: number;
+      transactionCostRatio: number;
+      impactOnReturn: number;
     };
-  };
-  
-  // Tax analysis
-  taxAnalysis: {
-    taxStatus: 'taxable' | 'tax-deferred' | 'tax-free';
-    taxRate: number;
-    capitalGainsRate: number;
-    dividendTaxRate: number;
-    interestTaxRate: number;
-    taxLossHarvesting: boolean;
-    taxLossCarryforward: number;
-    afterTaxReturn: number;
-    taxEfficiency: number;
-  };
-  
-  // Inflation analysis
-  inflationAnalysis: {
-    inflationRate: number;
-    inflationData: {
-      date: Date;
-      inflationRate: number;
-      cpiValue: number;
-    }[];
-    realReturn: number;
-    purchasingPower: number;
-    inflationAdjustedValue: number;
-  };
-  
-  // Currency analysis
-  currencyAnalysis: {
-    baseCurrency: string;
-    foreignCurrency: string;
-    exchangeRates: {
-      date: Date;
-      rate: number;
-      return: number;
-    }[];
-    currencyReturn: number;
-    hedgedReturn: number;
-    unhedgedReturn: number;
-    currencyRisk: number;
-  };
-  
-  // Scenario analysis
-  scenarioAnalysis: {
-    scenarios: {
-      scenarioName: string;
-      scenarioType: 'optimistic' | 'pessimistic' | 'most-likely' | 'stress-test' | 'custom';
-      probability: number;
-      return: number;
-      assumptions: {
-        assumption: string;
-        value: number;
-        description: string;
-      }[];
-    }[];
-    stressTests: {
-      testName: string;
-      marketShock: number;
-      return: number;
-      impact: number;
-    }[];
-  };
-  
-  // Monte Carlo simulation
-  monteCarloSimulation: {
-    simulations: number;
-    timeHorizon: number;
-    confidenceLevel: number;
-    results: {
-      percentile: number;
-      return: number;
-      value: number;
-    }[];
-    probabilityDistribution: {
-      range: string;
-      probability: number;
-      frequency: number;
-    }[];
-  };
-  
-  // Rebalancing analysis
-  rebalancingAnalysis: {
-    rebalancingFrequency: 'daily' | 'weekly' | 'monthly' | 'quarterly' | 'yearly' | 'never';
-    rebalancingThreshold: number;
-    rebalancingCosts: number;
-    rebalancingBenefits: number;
-    rebalancingImpact: number;
-    rebalancingHistory: {
-      date: Date;
-      action: string;
-      cost: number;
-      benefit: number;
-    }[];
-  };
-  
-  // Analysis parameters
-  analysisParameters: {
-    analysisType: 'basic' | 'comprehensive' | 'risk-adjusted' | 'attribution' | 'factor' | 'custom';
-    includeRiskMetrics: boolean;
-    includeBenchmarkComparison: boolean;
-    includeAttributionAnalysis: boolean;
-    includeFactorAnalysis: boolean;
-    includeScenarioAnalysis: boolean;
-    includeMonteCarlo: boolean;
-    includeTaxAnalysis: boolean;
-    includeInflationAnalysis: boolean;
-    includeCurrencyAnalysis: boolean;
-    confidenceLevel: number;
-    significanceLevel: number;
-  };
-  
-  // Reporting preferences
-  reporting: {
-    includeDetailedBreakdown: boolean;
-    includePerformanceMetrics: boolean;
-    includeRiskMetrics: boolean;
-    includeBenchmarkComparison: boolean;
-    includeAttributionAnalysis: boolean;
-    includeFactorAnalysis: boolean;
-    includeScenarioAnalysis: boolean;
-    includeMonteCarloResults: boolean;
-    includeTaxAnalysis: boolean;
-    includeInflationAnalysis: boolean;
-    includeCurrencyAnalysis: boolean;
-    includeVisualizations: boolean;
-    includeRecommendations: boolean;
-  };
-}
-
-export interface InvestmentReturnResults {
-  // Core return metrics
-  returnMetrics: {
-    totalReturn: number;
-    annualizedReturn: number;
-    simpleReturn: number;
-    compoundReturn: number;
-    geometricMean: number;
-    arithmeticMean: number;
-    timeWeightedReturn: number;
-    moneyWeightedReturn: number;
-    internalRateOfReturn: number;
-    modifiedInternalRateOfReturn: number;
-  };
-  
-  // Performance analysis
-  performanceAnalysis: {
-    periodReturns: {
-      period: Date;
-      return: number;
-      cumulativeReturn: number;
-      value: number;
-    }[];
-    rollingReturns: {
-      period: Date;
-      return: number;
-      average: number;
-      volatility: number;
-    }[];
-    performanceAttribution: {
-      factor: string;
-      contribution: number;
-      weight: number;
-      return: number;
-    }[];
-  };
-  
-  // Risk metrics
-  riskMetrics: {
-    volatility: number;
-    standardDeviation: number;
-    variance: number;
-    skewness: number;
-    kurtosis: number;
-    valueAtRisk: number;
-    conditionalValueAtRisk: number;
-    maximumDrawdown: number;
-    maximumDrawdownDuration: number;
-    downsideDeviation: number;
-    semiDeviation: number;
-    downsideRisk: number;
-    upsideRisk: number;
-    riskOfLoss: number;
-    probabilityOfLoss: number;
-    expectedShortfall: number;
-    tailRisk: number;
-  };
-  
-  // Risk-adjusted returns
-  riskAdjustedReturns: {
-    sharpeRatio: number;
-    sortinoRatio: number;
-    calmarRatio: number;
-    treynorRatio: number;
-    informationRatio: number;
-    jensenAlpha: number;
-    appraisalRatio: number;
-    gainToPainRatio: number;
-    calmarRatio: number;
-    sterlingRatio: number;
-  };
-  
-  // Benchmark comparison
-  benchmarkComparison: {
-    benchmarkReturn: number;
-    excessReturn: number;
-    trackingError: number;
-    informationRatio: number;
-    beta: number;
-    alpha: number;
-    rSquared: number;
-    correlation: number;
-    upCapture: number;
-    downCapture: number;
-    upDownRatio: number;
-    relativeStrength: number;
-  };
-  
-  // Attribution analysis
-  attributionAnalysis: {
-    totalAttribution: number;
-    allocationEffect: number;
-    selectionEffect: number;
-    interactionEffect: number;
-    factorAttribution: {
-      factor: string;
-      contribution: number;
-      weight: number;
-      return: number;
-    }[];
-    sectorAttribution: {
-      sector: string;
-      contribution: number;
-      weight: number;
-      return: number;
-    }[];
-    geographicAttribution: {
-      region: string;
-      contribution: number;
-      weight: number;
-      return: number;
-    }[];
-  };
-  
-  // Factor analysis
-  factorAnalysis: {
-    factorExposures: {
-      factor: string;
-      exposure: number;
-      return: number;
-      contribution: number;
-    }[];
-    factorReturns: {
-      date: Date;
-      market: number;
-      size: number;
-      value: number;
-      momentum: number;
-      quality: number;
-      lowVolatility: number;
-    }[];
-    factorRisk: {
-      factor: string;
-      risk: number;
-      contribution: number;
-    }[];
-  };
-  
-  // Sector and geographic analysis
-  sectorGeographicAnalysis: {
-    sectorPerformance: {
-      sector: string;
-      return: number;
-      weight: number;
-      contribution: number;
-      performance: 'outperform' | 'underperform' | 'neutral';
-    }[];
-    geographicPerformance: {
-      region: string;
-      return: number;
-      weight: number;
-      contribution: number;
-      performance: 'outperform' | 'underperform' | 'neutral';
-    }[];
-    currencyPerformance: {
-      currency: string;
-      return: number;
-      weight: number;
-      contribution: number;
-      performance: 'outperform' | 'underperform' | 'neutral';
-    }[];
-  };
-  
-  // Transaction analysis
-  transactionAnalysis: {
-    totalTransactions: number;
-    totalCommissions: number;
-    totalTaxes: number;
-    totalFees: number;
-    totalCosts: number;
-    costImpact: number;
+    tradingActivity: {
+      numberOfTrades: number;
+      averageTradeSize: number;
+      turnover: number;
+      averageHoldingPeriod: number;
+      tradeFrequency: number;
+      tradingEfficiency: number;
+    };
     transactionEfficiency: number;
-    turnoverRatio: number;
-    averageHoldingPeriod: number;
   };
   
-  // Tax analysis
+  // Tax Analysis
   taxAnalysis: {
-    beforeTaxReturn: number;
-    afterTaxReturn: number;
+    taxTreatment: {
+      accountType: string;
+      taxRate: number;
+      stateTaxRate: number;
+      localTaxRate: number;
+      totalTaxRate: number;
+    };
+    taxImplications: {
+      dividendTax: number;
+      capitalGainsTax: number;
+      interestTax: number;
+      totalTaxes: number;
+      afterTaxReturn: number;
+      taxEfficiency: number;
+    };
+    taxLossHarvesting: {
+      realizedLosses: number;
+      unrealizedLosses: number;
+      taxBenefit: number;
+      harvestingOpportunity: number;
+    };
     taxEfficiency: number;
-    taxLossHarvesting: number;
-    taxLossCarryforward: number;
-    capitalGainsTax: number;
-    dividendTax: number;
-    interestTax: number;
-    totalTaxes: number;
-    effectiveTaxRate: number;
   };
   
-  // Inflation analysis
-  inflationAnalysis: {
-    nominalReturn: number;
-    realReturn: number;
-    inflationRate: number;
-    purchasingPower: number;
-    inflationAdjustedValue: number;
-    inflationRisk: number;
-    realReturnVolatility: number;
+  // Economic Analysis
+  economicAnalysis: {
+    economicIndicators: {
+      gdpGrowth: number;
+      inflationRate: number;
+      interestRate: number;
+      unemploymentRate: number;
+      consumerConfidence: number;
+      businessConfidence: number;
+    };
+    marketConditions: {
+      bullMarket: boolean;
+      bearMarket: boolean;
+      volatilityRegime: string;
+      correlationRegime: string;
+      liquidityRegime: string;
+    };
+    sectorAnalysis: {
+      sector: string;
+      sectorReturn: number;
+      sectorWeight: number;
+      sectorContribution: number;
+    }[];
+    geographicAnalysis: {
+      region: string;
+      regionReturn: number;
+      regionWeight: number;
+      regionContribution: number;
+    }[];
+    economicEfficiency: number;
   };
   
-  // Currency analysis
-  currencyAnalysis: {
-    localReturn: number;
-    foreignReturn: number;
-    currencyReturn: number;
-    hedgedReturn: number;
-    unhedgedReturn: number;
-    currencyRisk: number;
-    exchangeRateRisk: number;
-    currencyContribution: number;
-  };
+  // Sensitivity Analysis
+  sensitivityAnalysis: {
+    variable: string;
+    baseValue: number;
+    lowValue: number;
+    highValue: number;
+    lowReturn: number;
+    highReturn: number;
+    sensitivity: number;
+  }[];
   
-  // Scenario analysis
+  // Scenario Analysis
   scenarioAnalysis: {
-    scenarios: {
-      scenarioName: string;
-      scenarioType: string;
-      probability: number;
-      return: number;
-      value: number;
-      risk: number;
-    }[];
-    stressTests: {
-      testName: string;
-      marketShock: number;
-      return: number;
-      impact: number;
-      risk: number;
-    }[];
-    scenarioComparison: {
-      scenario1: string;
-      scenario2: string;
-      returnDifference: number;
-      riskDifference: number;
-    }[];
-  };
+    scenarioName: string;
+    description: string;
+    probability: number;
+    marketReturn: number;
+    investmentReturn: number;
+    volatility: number;
+    maxDrawdown: number;
+  }[];
   
-  // Monte Carlo simulation
-  monteCarloSimulation: {
-    simulations: number;
-    timeHorizon: number;
-    confidenceLevel: number;
-    expectedReturn: number;
-    expectedValue: number;
-    expectedRisk: number;
-    percentiles: {
-      percentile: number;
+  // Peer Comparison
+  peerComparison: {
+    peerComparison: {
+      peer: string;
       return: number;
-      value: number;
+      volatility: number;
+      sharpeRatio: number;
+      maxDrawdown: number;
+      outperformance: number;
     }[];
-    probabilityDistribution: {
-      range: string;
-      probability: number;
-      frequency: number;
-    }[];
-    successRate: number;
-  };
-  
-  // Rebalancing analysis
-  rebalancingAnalysis: {
-    rebalancingFrequency: string;
-    rebalancingThreshold: number;
-    rebalancingCosts: number;
-    rebalancingBenefits: number;
-    rebalancingImpact: number;
-    rebalancingEfficiency: number;
-    rebalancingHistory: {
-      date: Date;
-      action: string;
-      cost: number;
-      benefit: number;
-      impact: number;
-    }[];
-  };
-  
-  // Investment efficiency
-  investmentEfficiency: {
-    overallEfficiency: number;
-    efficiencyByComponent: {
-      component: string;
-      efficiency: number;
-      improvement: number;
-      potential: number;
-    }[];
-    efficiencyComparison: {
-      benchmark: string;
-      efficiency: number;
+    benchmarkComparison: {
+      metric: string;
+      investment: number;
+      benchmark: number;
       difference: number;
-      performance: 'above' | 'below' | 'at';
     }[];
   };
   
-  // Optimization opportunities
+  // Investment Score
+  investmentScore: {
+    overallScore: number;
+    componentScores: {
+      performance: number;
+      risk: number;
+      attribution: number;
+      transaction: number;
+      tax: number;
+      economic: number;
+    };
+    recommendation: 'buy' | 'hold' | 'sell' | 'review';
+  };
+  
+  // Monte Carlo Results
+  monteCarloResults: {
+    meanReturn: number;
+    medianReturn: number;
+    standardDeviation: number;
+    percentiles: {
+      p5: number;
+      p10: number;
+      p25: number;
+      p50: number;
+      p75: number;
+      p90: number;
+      p95: number;
+    };
+    probabilityDistribution: {
+      value: number;
+      probability: number;
+    }[];
+    successProbability: number;
+  };
+  
+  // Historical Analysis
+  historicalAnalysis: {
+    historicalReturn: number;
+    historicalVolatility: number;
+    historicalSharpeRatio: number;
+    historicalMaxDrawdown: number;
+    historicalTrends: string[];
+    yearOverYearChange: number;
+  };
+  
+  // Optimization Opportunities
   optimizationOpportunities: {
-    returnOptimization: {
-      opportunity: string;
-      currentReturn: number;
-      potentialReturn: number;
-      improvement: number;
-      implementation: string;
-      timeline: string;
-    }[];
-    riskOptimization: {
-      opportunity: string;
-      currentRisk: number;
-      potentialRisk: number;
-      improvement: number;
-      implementation: string;
-      timeline: string;
-    }[];
-    costOptimization: {
-      opportunity: string;
-      currentCost: number;
-      potentialCost: number;
-      savings: number;
-      implementation: string;
-      timeline: string;
-    }[];
-  };
+    category: string;
+    description: string;
+    potentialImprovement: number;
+    implementationDifficulty: 'low' | 'medium' | 'high';
+    priority: 'low' | 'medium' | 'high';
+  }[];
   
-  // Business impact
+  // Business Impact
   businessImpact: {
-    returnImpact: {
-      currentReturn: number;
-      potentialReturn: number;
-      returnOpportunity: number;
-      impact: number;
-    };
-    riskImpact: {
-      currentRisk: number;
-      potentialRisk: number;
-      riskOpportunity: number;
-      impact: number;
-    };
-    efficiencyImpact: {
-      currentEfficiency: number;
-      potentialEfficiency: number;
-      efficiencyOpportunity: number;
-      impact: number;
-    };
+    returnImprovement: number;
+    riskReduction: number;
+    costSavings: number;
+    taxOptimization: number;
+    overallBenefit: number;
   };
   
-  // Comprehensive report
-  report: string;
+  // Comprehensive Report
+  comprehensiveReport: {
+    executiveSummary: string;
+    keyFindings: string[];
+    investmentAssessment: string;
+    recommendations: string[];
+    actionItems: {
+      action: string;
+      priority: 'low' | 'medium' | 'high';
+      timeline: string;
+      responsibleParty: string;
+    }[];
+  };
   
-  // Executive summary
+  // Executive Summary
   executiveSummary: {
     totalReturn: number;
     annualizedReturn: number;
-    riskMetrics: string[];
-    keyFindings: string[];
-    criticalFactors: string[];
-    recommendations: string[];
-    riskLevel: string;
-    nextSteps: string[];
+    sharpeRatio: number;
+    maxDrawdown: number;
+    recommendation: 'buy' | 'hold' | 'sell' | 'review';
+    keyStrengths: string[];
+    keyWeaknesses: string[];
   };
   
   // Recommendations
   recommendations: {
     category: string;
-    recommendations: string[];
-    priority: 'high' | 'medium' | 'low';
+    recommendation: string;
+    rationale: string;
     expectedImpact: number;
-    implementation: string;
+    implementationSteps: string[];
   }[];
   
-  // Action items
+  // Action Items
   actionItems: {
-    priority: 'immediate' | 'short-term' | 'long-term';
     action: string;
-    owner: string;
+    description: string;
+    priority: 'low' | 'medium' | 'high';
     timeline: string;
-    expectedOutcome: string;
-    cost: number;
+    responsibleParty: string;
+    dependencies: string[];
+    successMetrics: string[];
   }[];
 }

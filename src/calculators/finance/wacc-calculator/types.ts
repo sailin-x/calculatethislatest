@@ -1,337 +1,663 @@
 export interface WACCInputs {
-  // Capital structure
-  marketValueOfEquity: number; // Market value of equity
-  marketValueOfDebt: number; // Market value of debt
-  marketValueOfPreferredStock: number; // Market value of preferred stock
-  totalCapital: number; // Total capital (equity + debt + preferred)
-  
-  // Cost of equity
-  riskFreeRate: number; // Risk-free rate
-  marketRiskPremium: number; // Market risk premium
-  beta: number; // Equity beta
-  costOfEquity: number; // Pre-calculated cost of equity
-  
-  // Cost of debt
-  costOfDebt: number; // Pre-tax cost of debt
-  taxRate: number; // Corporate tax rate
-  debtRating: 'aaa' | 'aa' | 'a' | 'bbb' | 'bb' | 'b' | 'ccc' | 'cc' | 'c' | 'd';
-  debtSpread: number; // Credit spread over risk-free rate
-  
-  // Cost of preferred stock
-  preferredDividend: number; // Annual preferred dividend
-  preferredStockPrice: number; // Current preferred stock price
-  costOfPreferredStock: number; // Pre-calculated cost of preferred stock
-  
-  // Market data
-  marketCap: number; // Market capitalization
-  enterpriseValue: number; // Enterprise value
-  bookValueOfEquity: number; // Book value of equity
-  bookValueOfDebt: number; // Book value of debt
-  
-  // Industry and company specifics
-  industry: 'technology' | 'healthcare' | 'finance' | 'retail' | 'manufacturing' | 'energy' | 'utilities' | 'telecom' | 'other';
-  companySize: 'small' | 'medium' | 'large' | 'mega-cap';
-  geographicRegion: 'domestic' | 'international' | 'emerging-markets' | 'global';
-  
-  // Risk factors
-  countryRisk: number; // Country risk premium
-  currencyRisk: number; // Currency risk premium
-  politicalRisk: number; // Political risk premium
-  regulatoryRisk: number; // Regulatory risk premium
-  
-  // Capital structure preferences
-  targetCapitalStructure: {
-    targetDebtRatio: number;
-    targetEquityRatio: number;
-    targetPreferredRatio: number;
+  // Company Information
+  companyInfo: {
+    companyName: string;
+    companyType: 'public' | 'private' | 'startup' | 'subsidiary' | 'joint_venture' | 'other';
+    companyCategory: 'manufacturing' | 'retail' | 'service' | 'technology' | 'healthcare' | 'financial' | 'real_estate' | 'energy' | 'utilities' | 'other';
+    companyStage: 'startup' | 'growth' | 'mature' | 'decline' | 'turnaround';
+    industry: string;
+    sector: string;
+    companyDescription: string;
   };
   
-  // Debt structure
-  debtStructure: {
-    shortTermDebt: number;
-    longTermDebt: number;
-    floatingRateDebt: number;
-    fixedRateDebt: number;
-    convertibleDebt: number;
+  // Capital Structure
+  capitalStructure: {
+    // Equity Information
+    equity: {
+      commonStock: number;
+      preferredStock: number;
+      retainedEarnings: number;
+      additionalPaidInCapital: number;
+      treasuryStock: number;
+      totalEquity: number;
+      sharesOutstanding: number;
+      marketPrice: number;
+      marketValue: number;
+    };
+    
+    // Debt Information
+    debt: {
+      shortTermDebt: number;
+      longTermDebt: number;
+      capitalLeases: number;
+      operatingLeases: number;
+      totalDebt: number;
+      averageInterestRate: number;
+      averageMaturity: number;
+      marketValue: number;
+    };
+    
+    // Hybrid Securities
+    hybridSecurities: {
+      convertibleBonds: number;
+      convertiblePreferred: number;
+      warrants: number;
+      options: number;
+      totalHybrid: number;
+    };
+    
+    // Capital Structure Summary
+    capitalStructureSummary: {
+      totalCapital: number;
+      equityWeight: number;
+      debtWeight: number;
+      hybridWeight: number;
+      targetCapitalStructure: {
+        equity: number;
+        debt: number;
+        hybrid: number;
+      };
+    };
   };
   
-  // Equity structure
-  equityStructure: {
-    commonStock: number;
-    preferredStock: number;
-    retainedEarnings: number;
-    treasuryStock: number;
+  // Cost of Equity
+  costOfEquity: {
+    // Risk-Free Rate
+    riskFreeRate: {
+      rate: number;
+      source: 'treasury_bills' | 'treasury_notes' | 'treasury_bonds' | 'federal_funds' | 'libor' | 'custom';
+      maturity: number;
+      currency: string;
+    };
+    
+    // Market Risk Premium
+    marketRiskPremium: {
+      premium: number;
+      source: 'historical' | 'survey' | 'implied' | 'custom';
+      timePeriod: number;
+      market: string;
+    };
+    
+    // Beta
+    beta: {
+      unleveredBeta: number;
+      leveredBeta: number;
+      industryBeta: number;
+      fundamentalBeta: number;
+      source: 'regression' | 'industry' | 'fundamental' | 'custom';
+      confidenceInterval: {
+        lower: number;
+        upper: number;
+      };
+    };
+    
+    // Size Risk Premium
+    sizeRiskPremium: {
+      premium: number;
+      sizeCategory: 'large' | 'mid' | 'small' | 'micro';
+      marketCap: number;
+      source: string;
+    };
+    
+    // Country Risk Premium
+    countryRiskPremium: {
+      premium: number;
+      country: string;
+      sovereignRating: string;
+      source: string;
+    };
+    
+    // Company-Specific Risk Premium
+    companySpecificRiskPremium: {
+      premium: number;
+      factors: {
+        factor: string;
+        premium: number;
+        rationale: string;
+      }[];
+      totalPremium: number;
+    };
+    
+    // Cost of Equity Calculation
+    costOfEquityCalculation: {
+      riskFreeRate: number;
+      marketRiskPremium: number;
+      beta: number;
+      sizeRiskPremium: number;
+      countryRiskPremium: number;
+      companySpecificRiskPremium: number;
+      totalCostOfEquity: number;
+    };
   };
   
-  // Market conditions
-  marketConditions: 'recession' | 'stable' | 'growth' | 'boom';
-  interestRateEnvironment: 'low' | 'normal' | 'high' | 'rising' | 'falling';
-  
-  // Industry benchmarks
-  industryBenchmarks: {
-    industryBeta: number;
-    industryCostOfEquity: number;
-    industryCostOfDebt: number;
-    industryWACC: number;
+  // Cost of Debt
+  costOfDebt: {
+    // Current Debt
+    currentDebt: {
+      amount: number;
+      interestRate: number;
+      maturity: number;
+      creditRating: string;
+      marketValue: number;
+    }[];
+    
+    // Marginal Cost of Debt
+    marginalCostOfDebt: {
+      rate: number;
+      creditRating: string;
+      spread: number;
+      taxRate: number;
+      afterTaxCost: number;
+    };
+    
+    // Debt Ratings
+    debtRatings: {
+      rating: string;
+      spread: number;
+      probability: number;
+      weightedSpread: number;
+    }[];
+    
+    // Tax Considerations
+    taxConsiderations: {
+      effectiveTaxRate: number;
+      marginalTaxRate: number;
+      stateTaxRate: number;
+      localTaxRate: number;
+      taxShield: number;
+    };
   };
   
-  // Comparable companies
-  comparableCompanies: {
-    company: string;
-    beta: number;
-    costOfEquity: number;
-    costOfDebt: number;
-    wacc: number;
-    debtRatio: number;
-  }[];
+  // Cost of Preferred Stock
+  costOfPreferredStock: {
+    // Preferred Stock Details
+    preferredStock: {
+      amount: number;
+      dividendRate: number;
+      marketPrice: number;
+      parValue: number;
+      callPrice: number;
+      callDate: string;
+    }[];
+    
+    // Cost Calculation
+    costCalculation: {
+      dividendRate: number;
+      marketPrice: number;
+      flotationCosts: number;
+      costOfPreferred: number;
+    };
+  };
   
-  // Sensitivity analysis
-  sensitivityParameters: {
-    parameter: string;
-    baseValue: number;
-    lowValue: number;
-    highValue: number;
-  }[];
-  
-  // Scenario analysis
-  scenarios: {
-    scenario: string;
-    probability: number;
-    riskFreeRate: number;
-    marketRiskPremium: number;
-    beta: number;
-    costOfDebt: number;
-    taxRate: number;
-  }[];
-  
-  // Advanced parameters
-  flotationCosts: number; // Flotation costs for new equity
-  debtIssuanceCosts: number; // Debt issuance costs
-  preferredIssuanceCosts: number; // Preferred stock issuance costs
-  
-  // Time-varying parameters
-  timeVaryingParameters: {
-    useTimeVarying: boolean;
-    updateFrequency: 'monthly' | 'quarterly' | 'annually';
-    historicalData: {
-      date: string;
-      wacc: number;
+  // Market Data
+  marketData: {
+    // Market Information
+    marketInfo: {
+      marketIndex: string;
+      marketReturn: number;
+      marketVolatility: number;
+      riskFreeRate: number;
+      marketRiskPremium: number;
+    };
+    
+    // Industry Data
+    industryData: {
+      industry: string;
+      averageBeta: number;
+      averageCostOfEquity: number;
+      averageCostOfDebt: number;
+      averageWACC: number;
+    };
+    
+    // Peer Comparison
+    peerComparison: {
+      peer: string;
+      beta: number;
       costOfEquity: number;
       costOfDebt: number;
+      wacc: number;
+      capitalStructure: {
+        equity: number;
+        debt: number;
+      };
     }[];
   };
   
-  // Risk adjustments
-  riskAdjustments: {
-    sizeRiskPremium: number;
-    liquidityRiskPremium: number;
-    sectorRiskPremium: number;
-    companySpecificRisk: number;
+  // Financial Metrics
+  financialMetrics: {
+    // Profitability Metrics
+    profitabilityMetrics: {
+      returnOnEquity: number;
+      returnOnAssets: number;
+      returnOnCapital: number;
+      operatingMargin: number;
+      netMargin: number;
+    };
+    
+    // Leverage Metrics
+    leverageMetrics: {
+      debtToEquity: number;
+      debtToAssets: number;
+      interestCoverage: number;
+      debtServiceCoverage: number;
+      timesInterestEarned: number;
+    };
+    
+    // Liquidity Metrics
+    liquidityMetrics: {
+      currentRatio: number;
+      quickRatio: number;
+      cashRatio: number;
+      workingCapital: number;
+    };
   };
   
-  // Tax considerations
-  taxConsiderations: {
-    effectiveTaxRate: number;
-    marginalTaxRate: number;
-    taxLossCarryforward: number;
-    taxCredits: number;
-    internationalTaxRate: number;
+  // Risk Factors
+  riskFactors: {
+    // Business Risk
+    businessRisk: {
+      operationalRisk: number;
+      competitiveRisk: number;
+      technologyRisk: number;
+      executionRisk: number;
+      managementRisk: number;
+    };
+    
+    // Financial Risk
+    financialRisk: {
+      liquidityRisk: number;
+      leverageRisk: number;
+      cashFlowRisk: number;
+      creditRisk: number;
+      interestRateRisk: number;
+    };
+    
+    // Market Risk
+    marketRisk: {
+      demandRisk: number;
+      supplyRisk: number;
+      priceRisk: number;
+      currencyRisk: number;
+      economicRisk: number;
+    };
+    
+    // Regulatory Risk
+    regulatoryRisk: {
+      complianceRisk: number;
+      legalRisk: number;
+      taxRisk: number;
+      environmentalRisk: number;
+      politicalRisk: number;
+    };
   };
   
-  // Currency considerations
-  currencyConsiderations: {
-    baseCurrency: string;
-    foreignCurrencyExposure: number;
-    currencyRiskPremium: number;
-    hedgingCosts: number;
+  // Economic Environment
+  economicEnvironment: {
+    // Economic Indicators
+    economicIndicators: {
+      gdpGrowth: number;
+      inflationRate: number;
+      interestRate: number;
+      unemploymentRate: number;
+      consumerConfidence: number;
+    };
+    
+    // Market Conditions
+    marketConditions: {
+      bullMarket: boolean;
+      bearMarket: boolean;
+      volatilityRegime: 'low' | 'medium' | 'high';
+      correlationRegime: 'low' | 'medium' | 'high';
+    };
+    
+    // Monetary Policy
+    monetaryPolicy: {
+      federalFundsRate: number;
+      quantitativeEasing: boolean;
+      policyStance: 'accommodative' | 'neutral' | 'restrictive';
+    };
   };
   
-  // Analysis parameters
-  calculationMethod: 'standard' | 'adjusted' | 'international';
+  // Analysis Parameters
+  analysisPeriod: number; // in years
+  includeTaxes: boolean;
   includeFlotationCosts: boolean;
-  includeCountryRisk: boolean;
-  includeCurrencyRisk: boolean;
-  includeSizeRisk: boolean;
-  includeLiquidityRisk: boolean;
+  includeMarketRisk: boolean;
+  includeCompanySpecificRisk: boolean;
   
-  // Output preferences
+  // Calculation Options
+  calculationOptions: {
+    includePreferredStock: boolean;
+    includeHybridSecurities: boolean;
+    includeOperatingLeases: boolean;
+    includeSensitivityAnalysis: boolean;
+  };
+  
+  // Monte Carlo Simulation
+  monteCarloSimulations: number;
+  monteCarloTimeSteps: number;
+  includeRateVolatility: boolean;
+  includeBetaVolatility: boolean;
+  includeMarketVolatility: boolean;
+  
+  // Historical Analysis
+  historicalData: {
+    year: number;
+    costOfEquity: number;
+    costOfDebt: number;
+    wacc: number;
+    capitalStructure: {
+      equity: number;
+      debt: number;
+    };
+  }[];
+  
+  // Reporting Preferences
+  includeCapitalStructureAnalysis: boolean;
+  includeCostOfEquityAnalysis: boolean;
+  includeCostOfDebtAnalysis: boolean;
+  includeWACCAnalysis: boolean;
+  includeRiskAnalysis: boolean;
+  includeMarketAnalysis: boolean;
+  includePeerComparison: boolean;
   includeSensitivityAnalysis: boolean;
-  includeScenarioAnalysis: boolean;
-  includeComparableAnalysis: boolean;
+  includeMonteCarlo: boolean;
   includeHistoricalAnalysis: boolean;
-  includeBreakdown: boolean;
+  includeScenarioAnalysis: boolean;
+  includeRecommendations: boolean;
+  includeActionItems: boolean;
+  
+  // Output Format
+  outputFormat: 'detailed' | 'summary' | 'executive';
+  includeCharts: boolean;
+  includeTables: boolean;
+  includeRecommendations: boolean;
 }
 
 export interface WACCResults {
-  // Core WACC metrics
-  wacc: number;
+  // Core WACC Metrics
+  weightedAverageCostOfCapital: number;
   costOfEquity: number;
   costOfDebt: number;
   costOfPreferredStock: number;
+  effectiveTaxRate: number;
   
-  // Capital structure weights
-  equityWeight: number;
-  debtWeight: number;
-  preferredWeight: number;
-  
-  // Component breakdown
-  equityComponent: number;
-  debtComponent: number;
-  preferredComponent: number;
-  
-  // Risk-adjusted metrics
-  riskAdjustedWACC: number;
-  countryRiskAdjustedWACC: number;
-  currencyRiskAdjustedWACC: number;
-  
-  // Industry comparison
-  industryComparison: {
-    industryWACC: number;
-    companyWACC: number;
-    difference: number;
-    percentile: number;
-    performance: 'excellent' | 'good' | 'average' | 'below_average' | 'poor';
-  };
-  
-  // Comparable analysis
-  comparableAnalysis: {
-    company: string;
-    wacc: number;
+  // WACC Analysis
+  waccAnalysis: {
+    weightedAverageCostOfCapital: number;
     costOfEquity: number;
     costOfDebt: number;
-    debtRatio: number;
-    ranking: number;
-  }[];
+    costOfPreferredStock: number;
+    waccBreakdown: {
+      component: string;
+      cost: number;
+      weight: number;
+      contribution: number;
+    }[];
+    waccEfficiency: number;
+  };
   
-  // Sensitivity analysis
-  sensitivityResults: {
-    parameter: string;
-    baseWACC: number;
+  // Capital Structure Analysis
+  capitalStructureAnalysis: {
+    totalCapital: number;
+    equityWeight: number;
+    debtWeight: number;
+    preferredWeight: number;
+    capitalStructureBreakdown: {
+      component: string;
+      amount: number;
+      weight: number;
+      marketValue: number;
+    }[];
+    capitalStructureEfficiency: number;
+  };
+  
+  // Cost of Equity Analysis
+  costOfEquityAnalysis: {
+    costOfEquity: number;
+    riskFreeRate: number;
+    marketRiskPremium: number;
+    beta: number;
+    sizeRiskPremium: number;
+    countryRiskPremium: number;
+    companySpecificRiskPremium: number;
+    equityBreakdown: {
+      component: string;
+      rate: number;
+      contribution: number;
+    }[];
+    equityEfficiency: number;
+  };
+  
+  // Cost of Debt Analysis
+  costOfDebtAnalysis: {
+    costOfDebt: number;
+    beforeTaxCost: number;
+    afterTaxCost: number;
+    effectiveTaxRate: number;
+    taxShield: number;
+    debtBreakdown: {
+      component: string;
+      rate: number;
+      amount: number;
+      contribution: number;
+    }[];
+    debtEfficiency: number;
+  };
+  
+  // Cost of Preferred Stock Analysis
+  costOfPreferredStockAnalysis: {
+    costOfPreferred: number;
+    dividendRate: number;
+    marketPrice: number;
+    flotationCosts: number;
+    preferredBreakdown: {
+      component: string;
+      rate: number;
+      contribution: number;
+    }[];
+    preferredEfficiency: number;
+  };
+  
+  // Risk Analysis
+  riskAnalysis: {
+    riskAdjustedWACC: number;
+    riskScore: number;
+    riskBreakdown: {
+      risk: string;
+      level: number;
+      impact: number;
+    }[];
+    riskMitigation: string[];
+  };
+  
+  // Sensitivity Analysis
+  sensitivityAnalysis: {
+    variable: string;
+    baseValue: number;
+    lowValue: number;
+    highValue: number;
     lowWACC: number;
     highWACC: number;
     sensitivity: number;
   }[];
   
-  // Scenario analysis
-  scenarioResults: {
-    scenario: string;
+  // Scenario Analysis
+  scenarioAnalysis: {
+    scenarioName: string;
     probability: number;
     wacc: number;
     costOfEquity: number;
     costOfDebt: number;
-    equityWeight: number;
-    debtWeight: number;
+    riskLevel: string;
   }[];
   
-  // Historical analysis
+  // Peer Comparison
+  peerComparison: {
+    peerComparison: {
+      peer: string;
+      wacc: number;
+      costOfEquity: number;
+      costOfDebt: number;
+      capitalStructure: {
+        equity: number;
+        debt: number;
+      };
+      outperformance: number;
+    }[];
+    industryComparison: {
+      metric: string;
+      company: number;
+      industry: number;
+      difference: number;
+    }[];
+  };
+  
+  // Market Analysis
+  marketAnalysis: {
+    marketPosition: number;
+    competitiveAdvantage: number;
+    marketBreakdown: {
+      factor: string;
+      impact: number;
+      opportunity: number;
+    }[];
+    marketScore: number;
+  };
+  
+  // Financial Analysis
+  financialAnalysis: {
+    // Profitability Analysis
+    profitabilityAnalysis: {
+      returnOnEquity: number;
+      returnOnAssets: number;
+      returnOnCapital: number;
+      profitabilityBreakdown: {
+        metric: string;
+        value: number;
+        industry: number;
+        performance: string;
+      }[];
+      profitabilityScore: number;
+    };
+    
+    // Leverage Analysis
+    leverageAnalysis: {
+      debtToEquity: number;
+      debtToAssets: number;
+      interestCoverage: number;
+      leverageBreakdown: {
+        metric: string;
+        value: number;
+        industry: number;
+        performance: string;
+      }[];
+      leverageScore: number;
+    };
+  };
+  
+  // Company Score
+  companyScore: {
+    overallScore: number;
+    componentScores: {
+      wacc: number;
+      capitalStructure: number;
+      costOfEquity: number;
+      costOfDebt: number;
+      risk: number;
+      financial: number;
+    };
+    recommendation: 'optimize' | 'maintain' | 'restructure' | 'review';
+  };
+  
+  // Monte Carlo Results
+  monteCarloResults: {
+    meanWACC: number;
+    medianWACC: number;
+    standardDeviation: number;
+    percentiles: {
+      p5: number;
+      p10: number;
+      p25: number;
+      p50: number;
+      p75: number;
+      p90: number;
+      p95: number;
+    };
+    probabilityDistribution: {
+      wacc: number;
+      probability: number;
+    }[];
+    successProbability: number;
+  };
+  
+  // Historical Analysis
   historicalAnalysis: {
-    date: string;
-    wacc: number;
+    historicalWACC: number;
+    historicalTrends: string[];
+    historicalVolatility: number;
+    yearOverYearChange: number;
+  };
+  
+  // Optimization Opportunities
+  optimizationOpportunities: {
+    category: string;
+    description: string;
+    potentialImprovement: number;
+    implementationDifficulty: 'low' | 'medium' | 'high';
+    priority: 'low' | 'medium' | 'high';
+  }[];
+  
+  // Business Impact
+  businessImpact: {
+    costReduction: number;
+    valueCreation: number;
+    riskReduction: number;
+    competitiveAdvantage: number;
+    overallBenefit: number;
+  };
+  
+  // Comprehensive Report
+  comprehensiveReport: {
+    executiveSummary: string;
+    keyFindings: string[];
+    companyAssessment: string;
+    recommendations: string[];
+    actionItems: {
+      action: string;
+      priority: 'low' | 'medium' | 'high';
+      timeline: string;
+      responsibleParty: string;
+    }[];
+  };
+  
+  // Executive Summary
+  executiveSummary: {
+    weightedAverageCostOfCapital: number;
     costOfEquity: number;
     costOfDebt: number;
-    equityWeight: number;
-    debtWeight: number;
-  }[];
-  
-  // Capital structure analysis
-  capitalStructureAnalysis: {
-    currentStructure: {
-      equity: number;
-      debt: number;
-      preferred: number;
-    };
-    optimalStructure: {
-      equity: number;
-      debt: number;
-      preferred: number;
-    };
-    targetStructure: {
-      equity: number;
-      debt: number;
-      preferred: number;
-    };
-    waccAtOptimal: number;
-    waccAtTarget: number;
+    recommendation: 'optimize' | 'maintain' | 'restructure' | 'review';
+    keyStrengths: string[];
+    keyWeaknesses: string[];
   };
-  
-  // Risk analysis
-  riskAnalysis: {
-    totalRiskPremium: number;
-    countryRiskPremium: number;
-    currencyRiskPremium: number;
-    sizeRiskPremium: number;
-    liquidityRiskPremium: number;
-    companySpecificRisk: number;
-  };
-  
-  // Tax analysis
-  taxAnalysis: {
-    taxShield: number;
-    effectiveTaxRate: number;
-    marginalTaxRate: number;
-    taxBenefit: number;
-    afterTaxCostOfDebt: number;
-  };
-  
-  // Market analysis
-  marketAnalysis: {
-    marketRiskPremium: number;
-    riskFreeRate: number;
-    beta: number;
-    marketCap: number;
-    enterpriseValue: number;
-  };
-  
-  // Performance metrics
-  performanceMetrics: {
-    waccRanking: number;
-    costOfEquityRanking: number;
-    costOfDebtRanking: number;
-    overallScore: number;
-  };
-  
-  // Optimization opportunities
-  optimizationOpportunities: {
-    area: string;
-    currentValue: number;
-    potentialValue: number;
-    improvement: number;
-    recommendations: string[];
-  }[];
-  
-  // Break-even analysis
-  breakEvenAnalysis: {
-    breakEvenReturn: number;
-    marginOfSafety: number;
-    requiredReturn: number;
-    projectAcceptance: boolean;
-  };
-  
-  // Valuation implications
-  valuationImplications: {
-    discountRate: number;
-    terminalValue: number;
-    presentValue: number;
-    valuationImpact: number;
-  };
-  
-  // Comprehensive report
-  report: string;
   
   // Recommendations
   recommendations: {
     category: string;
-    recommendations: string[];
-    priority: 'high' | 'medium' | 'low';
+    recommendation: string;
+    rationale: string;
     expectedImpact: number;
+    implementationSteps: string[];
   }[];
   
-  // Action items
+  // Action Items
   actionItems: {
-    priority: 'immediate' | 'short-term' | 'long-term';
     action: string;
-    owner: string;
+    description: string;
+    priority: 'low' | 'medium' | 'high';
     timeline: string;
-    expectedOutcome: string;
+    responsibleParty: string;
+    dependencies: string[];
+    successMetrics: string[];
   }[];
 }
