@@ -45,7 +45,7 @@ import customerAcquisitionCostCalculator from './business/customer-acquisition-c
 import churnRateCalculator from './business/churn-rate';
 import paybackPeriodCalculator from './business/payback-period';
 import businessValuationCalculator from './business/business-valuation';
-import breakEvenAnalysisCalculator from './business/break-even-analysis';
+import { breakEvenAnalysisCalculator } from './business/break-even-analysis-calculator';
 import budgetOptimizationCalculator from './business/budget-optimization';
 import cohortAnalysisCalculator from './business/cohort-analysis';
 import attributionModelsCalculator from './business/attribution-models-calculator';
