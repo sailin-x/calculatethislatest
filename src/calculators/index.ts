@@ -49,6 +49,7 @@ import { breakEvenAnalysisCalculator } from './business/break-even-analysis-calc
 import { aiopsImplementationSavingsCalculator } from './business/aiops-implementation-savings-calculator';
 import { assetProtectionCalculator } from './business/asset-protection-calculator';
 import { balancedScorecardCalculator } from './business/balanced-scorecard-calculator';
+import { billOfMaterialsCalculator } from './business/bill-of-materials-calculator';
 import budgetOptimizationCalculator from './business/budget-optimization';
 import cohortAnalysisCalculator from './business/cohort-analysis';
 import attributionModelsCalculator from './business/attribution-models-calculator';
@@ -128,6 +129,7 @@ calculatorRegistry.register(mortgagePayoffCalculator);
   calculatorRegistry.register(aiopsImplementationSavingsCalculator);
   calculatorRegistry.register(assetProtectionCalculator);
   calculatorRegistry.register(balancedScorecardCalculator);
+  calculatorRegistry.register(billOfMaterialsCalculator);
   calculatorRegistry.register(budgetOptimizationCalculator);
   calculatorRegistry.register(cohortAnalysisCalculator);
   calculatorRegistry.register(attributionModelsCalculator);
