@@ -8,6 +8,7 @@ import { compoundInterestCalculator } from './finance/compound-interest-calculat
 import { retirementCalculator } from './finance/retirement-calculator';
 import { annuityCalculator } from './finance/annuity-calculator';
 import { socialSecurityCalculator } from './finance/social-security-calculator';
+import { lifeInsuranceCalculator } from './finance/life-insurance-calculator';
 import { BalloonMortgageCalculator as balloonMortgageCalculator } from './finance/balloon-mortgage';
 import { BareboatCharterCalculator as bareboatCharterCalculator } from './finance/bareboat-charter';
 import { BiweeklyMortgageCalculator as biweeklyMortgageCalculator } from './finance/biweekly-mortgage';
@@ -83,6 +84,7 @@ export function registerAllCalculators(): void {
   calculatorRegistry.register(retirementCalculator);
   calculatorRegistry.register(annuityCalculator);
   calculatorRegistry.register(socialSecurityCalculator);
+  calculatorRegistry.register(lifeInsuranceCalculator);
   calculatorRegistry.register(balloonMortgageCalculator);
   calculatorRegistry.register(bareboatCharterCalculator);
   calculatorRegistry.register(biweeklyMortgageCalculator);

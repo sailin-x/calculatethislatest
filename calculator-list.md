@@ -489,7 +489,7 @@ Each calculator must include:
 - [ ] Kidnap & Ransom Insurance Calculator
 - [ ] Lapse Rate Sensitivity Analysis
 - [ ] Liability Insurance Calculator
-- [ ] Life Insurance Calculator
+- [x] Life Insurance Calculator
 - [ ] Life Insurance Needs Calculator
 - [ ] Long-Term Care Insurance Calculator
 - [ ] Long-Term Disability (LTD) Elimination Period Calculator
@@ -1039,12 +1039,12 @@ Each calculator must include:
 ## 📊 Progress Summary
 
 **Total Calculators: ~1000**
-- **Completed: 84** ✅
+- **Completed: 85** ✅
 - **In Progress: 0** 🔄  
-- **Remaining: 916** ⏳
+- **Remaining: 915** ⏳
 
 ### Category Progress:
-- 🏛️ **Finance & Investment**: 72/235 (30.6%) ✅
+- 🏛️ **Finance & Investment**: 73/235 (31.1%) ✅
 - ⚖️ **Legal & Settlements**: 1/150 (0.7%) ✅
 - 📈 **Business & Operations**: 22/200 (11.0%) ✅
 - ❤️ **Health & Fitness**: 1/150 (0.7%) ✅
