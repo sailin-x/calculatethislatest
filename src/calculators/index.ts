@@ -4,6 +4,8 @@ import { calculatorRegistry } from '../data/calculatorRegistry';
 // Finance calculators
 import { mortgageCalculator } from './finance/mortgage';
 import { portfolioCalculator } from './finance/investment';
+import { compoundInterestCalculator } from './finance/compound-interest-calculator';
+import { retirementCalculator } from './finance/retirement-calculator';
 import { BalloonMortgageCalculator as balloonMortgageCalculator } from './finance/balloon-mortgage';
 import { BareboatCharterCalculator as bareboatCharterCalculator } from './finance/bareboat-charter';
 import { BiweeklyMortgageCalculator as biweeklyMortgageCalculator } from './finance/biweekly-mortgage';
@@ -34,6 +36,17 @@ import { personalInjuryCalculator } from './legal/personal-injury';
 
 // Business calculators
 import { saasMetricsCalculator } from './business/saas-metrics';
+import customerLifetimeValueCalculator from './business/customer-lifetime-value';
+import roiCalculator from './business/roi';
+import customerAcquisitionCostCalculator from './business/customer-acquisition-cost';
+import churnRateCalculator from './business/churn-rate';
+import paybackPeriodCalculator from './business/payback-period';
+import businessValuationCalculator from './business/business-valuation';
+import breakEvenAnalysisCalculator from './business/break-even-analysis';
+import budgetOptimizationCalculator from './business/budget-optimization';
+import cohortAnalysisCalculator from './business/cohort-analysis';
+import attributionModelsCalculator from './business/attribution-models-calculator';
+import industryBenchmarkingCalculator from './business/industry-benchmarking-calculator';
 
 // Health calculators
 import { bmrCalculator } from './health/bmr-tdee';
@@ -64,6 +77,8 @@ export function registerAllCalculators(): void {
   // Finance & Investment calculators
   calculatorRegistry.register(mortgageCalculator);
   calculatorRegistry.register(portfolioCalculator);
+  calculatorRegistry.register(compoundInterestCalculator);
+  calculatorRegistry.register(retirementCalculator);
   calculatorRegistry.register(balloonMortgageCalculator);
   calculatorRegistry.register(bareboatCharterCalculator);
   calculatorRegistry.register(biweeklyMortgageCalculator);
@@ -94,6 +109,17 @@ calculatorRegistry.register(mortgagePayoffCalculator);
   
   // Business & Operations calculators
   calculatorRegistry.register(saasMetricsCalculator);
+  calculatorRegistry.register(customerLifetimeValueCalculator);
+  calculatorRegistry.register(roiCalculator);
+  calculatorRegistry.register(customerAcquisitionCostCalculator);
+  calculatorRegistry.register(churnRateCalculator);
+  calculatorRegistry.register(paybackPeriodCalculator);
+  calculatorRegistry.register(businessValuationCalculator);
+  calculatorRegistry.register(breakEvenAnalysisCalculator);
+  calculatorRegistry.register(budgetOptimizationCalculator);
+  calculatorRegistry.register(cohortAnalysisCalculator);
+  calculatorRegistry.register(attributionModelsCalculator);
+  calculatorRegistry.register(industryBenchmarkingCalculator);
   
   // Health & Fitness calculators
   calculatorRegistry.register(bmrCalculator);
