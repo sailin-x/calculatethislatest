@@ -148,7 +148,7 @@ Each calculator must include:
 - [ ] 457 Plan Calculator
 - [ ] 529 College Savings Plan Calculator
 - [ ] Annuity Buyout Calculator
-- [ ] Annuity Calculator
+- [x] Annuity Calculator
 - [ ] Asset Protection Trust (APT) Value Calculator
 - [ ] Backdoor Roth IRA Calculator
 - [ ] Charitable Gift Annuity Calculator
@@ -194,7 +194,7 @@ Each calculator must include:
 - [ ] Savings Goal Calculator
 - [ ] SEP IRA Calculator
 - [ ] SIMPLE IRA Calculator
-- [ ] Social Security Calculator
+- [x] Social Security Calculator
 - [ ] Social Security Optimization Calculator
 - [ ] Stretch IRA Calculator
 - [ ] Structured Settlement Payout Calculator
@@ -1039,12 +1039,12 @@ Each calculator must include:
 ## 📊 Progress Summary
 
 **Total Calculators: ~1000**
-- **Completed: 82** ✅
+- **Completed: 84** ✅
 - **In Progress: 0** 🔄  
-- **Remaining: 918** ⏳
+- **Remaining: 916** ⏳
 
 ### Category Progress:
-- 🏛️ **Finance & Investment**: 70/235 (29.8%) ✅
+- 🏛️ **Finance & Investment**: 72/235 (30.6%) ✅
 - ⚖️ **Legal & Settlements**: 1/150 (0.7%) ✅
 - 📈 **Business & Operations**: 22/200 (11.0%) ✅
 - ❤️ **Health & Fitness**: 1/150 (0.7%) ✅
