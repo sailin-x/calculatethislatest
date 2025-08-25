@@ -1,4 +1,27 @@
-# Welcome to your Lovable project
+# CalculateThis.ai - Professional Calculator Platform
+
+## 🚨 IMPORTANT: Calculator Audit Completed
+
+**A comprehensive audit was conducted and significant discrepancies were found and fixed. See `CALCULATOR_AUDIT_RESULTS.md` for full details.**
+
+**Current Verified Status: 82 working calculators (not the 100+ previously claimed)**
+
+## 📋 Calculator Development Standards
+
+Before implementing any calculator, read:
+- `CALCULATOR_COMPLETION_STANDARDS.md` - What constitutes a "completed" calculator
+- `INDIVIDUAL_CALCULATOR_IMPLEMENTATION_GUIDE.md` - Step-by-step implementation guide
+- `calculator-list-CORRECTED.md` - Accurate status of all calculators
+
+## 🔍 Verification Tools
+
+```bash
+# Verify calculator completion status
+npm run verify-calculators
+
+# Alias for verification
+npm run audit-calculators
+```
 
 ## Project info
 

@@ -10,7 +10,9 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "vitest",
-    "test:ui": "vitest --ui"
+    "test:ui": "vitest --ui",
+    "verify-calculators": "ts-node scripts/verify-calculators.ts",
+    "audit-calculators": "npm run verify-calculators"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",

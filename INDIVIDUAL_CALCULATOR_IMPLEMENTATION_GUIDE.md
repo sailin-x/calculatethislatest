@@ -1,5 +1,9 @@
 # 🧮 Individual Calculator Implementation Guide
 
+## 🚨 BEFORE YOU START: READ COMPLETION STANDARDS
+
+**CRITICAL**: Before implementing any calculator, read `CALCULATOR_COMPLETION_STANDARDS.md` to understand what constitutes a "completed" calculator. Do NOT mark any calculator as "COMPLETED ✅" unless ALL requirements are met and verified.
+
 ## 🎯 CRITICAL REMINDER: For Each New Calculator
 
 When implementing any calculator from the calculator-list.md, follow this EXACT process:

@@ -34,6 +34,12 @@ import { MortgageInsuranceCalculator as mortgageInsuranceCalculator } from './fi
 import { MortgageLifeCalculator as mortgageLifeCalculator } from './finance/mortgage-life';
 import { MortgagePayoffCalculator as mortgagePayoffCalculator } from './finance/mortgage-payoff';
 
+// Missing Finance calculators that exist but weren't registered
+import { Exchange1031Calculator as exchange1031Calculator } from './finance/1031-exchange';
+import { ARMMortgageCalculator as armMortgageCalculator } from './finance/arm-mortgage';
+import { AmortizationCalculator as amortizationCalculator } from './finance/amortization';
+import { ARMvsFixedCalculator as armVsFixedCalculator } from './finance/arm-vs-fixed';
+
 // Legal calculators
 import { personalInjuryCalculator } from './legal/personal-injury';
 
@@ -114,6 +120,12 @@ calculatorRegistry.register(mortgageEquityCalculator);
 calculatorRegistry.register(mortgageInsuranceCalculator);
 calculatorRegistry.register(mortgageLifeCalculator);
 calculatorRegistry.register(mortgagePayoffCalculator);
+
+  // Register missing finance calculators
+  calculatorRegistry.register(exchange1031Calculator);
+  calculatorRegistry.register(armMortgageCalculator);
+  calculatorRegistry.register(amortizationCalculator);
+  calculatorRegistry.register(armVsFixedCalculator);
   
   // Legal & Settlement calculators
   calculatorRegistry.register(personalInjuryCalculator);
