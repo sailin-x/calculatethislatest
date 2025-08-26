@@ -4,7 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { CalculatorProvider } from "./contexts/CalculatorContext";
-// import "./calculators"; // Register all calculators - TEMPORARILY DISABLED FOR TESTING
+import "./calculators"; // Register all calculators
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 
