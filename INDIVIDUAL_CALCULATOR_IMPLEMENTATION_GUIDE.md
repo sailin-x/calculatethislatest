@@ -1,12 +1,24 @@
 # 🧮 Individual Calculator Implementation Guide
 
-## 🚨 BEFORE YOU START: READ COMPLETION STANDARDS
+## 🚨 **MANDATORY READING BEFORE ANY DEVELOPMENT**
 
-**CRITICAL**: Before implementing any calculator, read `CALCULATOR_COMPLETION_STANDARDS.md` to understand what constitutes a "completed" calculator. Do NOT mark any calculator as "COMPLETED ✅" unless ALL requirements are met and verified.
+### **READ THESE DOCUMENTS FIRST:**
+1. `PROJECT_NARRATIVE.md` - Understand the audit crisis and why standards matter
+2. `CALCULATOR_COMPLETION_STANDARDS.md` - What "COMPLETED ✅" actually means
+3. `calculator-list-CORRECTED.md` - Accurate status of all calculators
 
-## 🎯 CRITICAL REMINDER: For Each New Calculator
+### **CRITICAL RULE:**
+**NEVER mark any calculator as "COMPLETED ✅" unless you can demonstrate it working in the live application and passing all verification checks.**
 
-When implementing any calculator from the calculator-list.md, follow this EXACT process:
+## 🎯 **IMPLEMENTATION PROCESS**
+
+### **Step 0: Verification Check**
+Before starting, run: `npm run verify-calculators` to see current accurate status.
+
+### **Step 1: Choose Calculator**
+Only work on calculators marked as `[ ]` Not Started or `[!]` Needs Fix in `calculator-list-CORRECTED.md`.
+
+### **Step 2: Follow Exact File Structure**
 
 ### 📁 Required File Structure (5 files per calculator)
 ```

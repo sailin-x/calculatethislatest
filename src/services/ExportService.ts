@@ -1,4 +1,4 @@
-import { Calculator, CalculatorInput, CalculatorOutput } from '../types/Calculator';
+import { Calculator, CalculatorInput, CalculatorOutput } from '../types/calculator';
 import { CalculationRecord } from './CalculationHistoryService';
 
 export interface ExportOptions {

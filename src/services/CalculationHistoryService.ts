@@ -1,4 +1,4 @@
-import { Calculator, CalculatorInput, CalculatorOutput } from '../types/Calculator';
+import { Calculator, CalculatorInput, CalculatorOutput } from '../types/calculator';
 
 export interface CalculationRecord {
   id: string;

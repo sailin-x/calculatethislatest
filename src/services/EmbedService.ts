@@ -1,4 +1,4 @@
-import { Calculator } from '../types/Calculator';
+import { Calculator } from '../types/calculator';
 
 export interface EmbedOptions {
   calculatorId: string;
