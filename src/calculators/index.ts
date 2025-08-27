@@ -39,6 +39,12 @@ import { Exchange1031Calculator as exchange1031Calculator } from './finance/1031
 import { ARMMortgageCalculator as armMortgageCalculator } from './finance/arm-mortgage';
 import { AmortizationCalculator as amortizationCalculator } from './finance/amortization';
 import { ARMvsFixedCalculator as armVsFixedCalculator } from './finance/arm-vs-fixed';
+import { cryptoStakingCalculator } from './finance/crypto-staking';
+import { nftRoyaltyCalculator } from './finance/nft-royalty';
+import { stockOptionsCalculator } from './finance/stock-options';
+import { commercialLeaseBuyoutCalculator } from './finance/commercial-lease-buyout';
+import { commercialPropertyInsuranceCalculator } from './finance/commercial-property-insurance';
+import { commercialPropertyValuationCalculator } from './finance/commercial-property-valuation';
 
 // Legal calculators
 import { personalInjuryCalculator } from './legal/personal-injury';
@@ -77,6 +83,13 @@ import { unitConversionCalculator } from './math/unit-conversion';
 import { complexNumberCalculator } from './math/complex-numbers';
 import { matrixCalculator } from './math/matrix';
 import { scientificCalculator } from './math/scientific';
+
+// Technology calculators
+import { gpuMiningProfitabilityCalculator } from './technology/gpu-mining-profitability';
+import { aiPromptCostCalculator } from './technology/ai-prompt-cost';
+
+// Career calculators
+import { developerSalaryCalculator } from './career/developer-salary';
 
 // Lifestyle calculators
 import { automotiveCalculator } from './lifestyle/automotive';
@@ -126,6 +139,12 @@ export function registerAllCalculators(): void {
   calculatorRegistry.register(armMortgageCalculator);
   calculatorRegistry.register(amortizationCalculator);
   calculatorRegistry.register(armVsFixedCalculator);
+  calculatorRegistry.register(cryptoStakingCalculator);
+  calculatorRegistry.register(nftRoyaltyCalculator);
+  calculatorRegistry.register(stockOptionsCalculator);
+  calculatorRegistry.register(commercialLeaseBuyoutCalculator);
+  calculatorRegistry.register(commercialPropertyInsuranceCalculator);
+  calculatorRegistry.register(commercialPropertyValuationCalculator);
   
   // Legal & Settlement calculators
   calculatorRegistry.register(personalInjuryCalculator);
@@ -164,6 +183,13 @@ export function registerAllCalculators(): void {
   calculatorRegistry.register(complexNumberCalculator);
   calculatorRegistry.register(matrixCalculator);
   calculatorRegistry.register(scientificCalculator);
+  
+  // Technology calculators
+  calculatorRegistry.register(gpuMiningProfitabilityCalculator);
+  calculatorRegistry.register(aiPromptCostCalculator);
+  
+  // Career calculators
+  calculatorRegistry.register(developerSalaryCalculator);
   
   // Lifestyle & Automotive calculators
   calculatorRegistry.register(automotiveCalculator);
