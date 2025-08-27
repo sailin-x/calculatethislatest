@@ -57,6 +57,10 @@ import { costSegregationDepreciationCalculator } from './finance/cost-segregatio
 import { usdaLoanCalculator } from './finance/usda-loan';
 import { jumboLoanCalculator } from './finance/jumbo-loan';
 import { fhaLoanCalculator } from './finance/fha-loan';
+import { rentersInsuranceCalculator } from './finance/renters-insurance';
+import { titleInsuranceCalculator } from './finance/title-insurance';
+import { homeownersInsuranceCalculator } from './finance/homeowners-insurance';
+import { mortgageClosingCostCalculator } from './finance/mortgage-closing-cost';
 
 // Legal calculators
 import { personalInjuryCalculator } from './legal/personal-injury';
@@ -169,6 +173,10 @@ export function registerAllCalculators(): void {
   calculatorRegistry.register(usdaLoanCalculator);
   calculatorRegistry.register(jumboLoanCalculator);
   calculatorRegistry.register(fhaLoanCalculator);
+  calculatorRegistry.register(rentersInsuranceCalculator);
+  calculatorRegistry.register(titleInsuranceCalculator);
+  calculatorRegistry.register(homeownersInsuranceCalculator);
+  calculatorRegistry.register(mortgageClosingCostCalculator);
   
   // Legal & Settlement calculators
   calculatorRegistry.register(personalInjuryCalculator);
