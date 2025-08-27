@@ -68,6 +68,10 @@ import { cashOutRefinanceCalculator } from './finance/cash-out-refinance';
 import { reverseMortgageCalculator } from './finance/reverse-mortgage';
 import { escrowAnalysisCalculator } from './finance/escrow-analysis';
 import { investmentCalculator } from './finance/investment';
+import { loanToCostRatioCalculator } from './finance/loan-to-cost-ratio';
+import { earthquakeInsuranceCalculator } from './finance/earthquake-insurance';
+import { downPaymentAssistanceCalculator } from './finance/down-payment-assistance';
+import { hardMoneyLoanCalculator } from './finance/hard-money-loan';
 
 // Legal calculators
 import { personalInjuryCalculator } from './legal/personal-injury';
@@ -191,6 +195,10 @@ export function registerAllCalculators(): void {
   calculatorRegistry.register(reverseMortgageCalculator);
   calculatorRegistry.register(escrowAnalysisCalculator);
   calculatorRegistry.register(investmentCalculator);
+  calculatorRegistry.register(loanToCostRatioCalculator);
+  calculatorRegistry.register(earthquakeInsuranceCalculator);
+  calculatorRegistry.register(downPaymentAssistanceCalculator);
+  calculatorRegistry.register(hardMoneyLoanCalculator);
   
   // Legal & Settlement calculators
   calculatorRegistry.register(personalInjuryCalculator);
