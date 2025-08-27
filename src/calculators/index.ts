@@ -66,6 +66,8 @@ import { refinanceCalculator } from './finance/refinance';
 import { homeEquityLoanCalculator } from './finance/home-equity-loan';
 import { cashOutRefinanceCalculator } from './finance/cash-out-refinance';
 import { reverseMortgageCalculator } from './finance/reverse-mortgage';
+import { escrowAnalysisCalculator } from './finance/escrow-analysis';
+import { investmentCalculator } from './finance/investment';
 
 // Legal calculators
 import { personalInjuryCalculator } from './legal/personal-injury';
@@ -187,6 +189,8 @@ export function registerAllCalculators(): void {
   calculatorRegistry.register(homeEquityLoanCalculator);
   calculatorRegistry.register(cashOutRefinanceCalculator);
   calculatorRegistry.register(reverseMortgageCalculator);
+  calculatorRegistry.register(escrowAnalysisCalculator);
+  calculatorRegistry.register(investmentCalculator);
   
   // Legal & Settlement calculators
   calculatorRegistry.register(personalInjuryCalculator);
