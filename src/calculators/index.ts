@@ -61,6 +61,11 @@ import { rentersInsuranceCalculator } from './finance/renters-insurance';
 import { titleInsuranceCalculator } from './finance/title-insurance';
 import { homeownersInsuranceCalculator } from './finance/homeowners-insurance';
 import { mortgageClosingCostCalculator } from './finance/mortgage-closing-cost';
+import { homeAffordabilityCalculator } from './finance/home-affordability';
+import { refinanceCalculator } from './finance/refinance';
+import { homeEquityLoanCalculator } from './finance/home-equity-loan';
+import { cashOutRefinanceCalculator } from './finance/cash-out-refinance';
+import { reverseMortgageCalculator } from './finance/reverse-mortgage';
 
 // Legal calculators
 import { personalInjuryCalculator } from './legal/personal-injury';
@@ -177,6 +182,11 @@ export function registerAllCalculators(): void {
   calculatorRegistry.register(titleInsuranceCalculator);
   calculatorRegistry.register(homeownersInsuranceCalculator);
   calculatorRegistry.register(mortgageClosingCostCalculator);
+  calculatorRegistry.register(homeAffordabilityCalculator);
+  calculatorRegistry.register(refinanceCalculator);
+  calculatorRegistry.register(homeEquityLoanCalculator);
+  calculatorRegistry.register(cashOutRefinanceCalculator);
+  calculatorRegistry.register(reverseMortgageCalculator);
   
   // Legal & Settlement calculators
   calculatorRegistry.register(personalInjuryCalculator);
