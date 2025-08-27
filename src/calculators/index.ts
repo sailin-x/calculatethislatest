@@ -45,6 +45,9 @@ import { stockOptionsCalculator } from './finance/stock-options';
 import { commercialLeaseBuyoutCalculator } from './finance/commercial-lease-buyout';
 import { commercialPropertyInsuranceCalculator } from './finance/commercial-property-insurance';
 import { commercialPropertyValuationCalculator } from './finance/commercial-property-valuation';
+import { commercialRealEstateCashFlowCalculator } from './finance/commercial-real-estate-cash-flow';
+import { commercialRealEstateLoanAmortizationCalculator } from './finance/commercial-real-estate-loan-amortization';
+import { mezzanineFinancingRealEstateCalculator } from './finance/mezzanine-financing-real-estate';
 
 // Legal calculators
 import { personalInjuryCalculator } from './legal/personal-injury';
@@ -145,6 +148,9 @@ export function registerAllCalculators(): void {
   calculatorRegistry.register(commercialLeaseBuyoutCalculator);
   calculatorRegistry.register(commercialPropertyInsuranceCalculator);
   calculatorRegistry.register(commercialPropertyValuationCalculator);
+  calculatorRegistry.register(commercialRealEstateCashFlowCalculator);
+  calculatorRegistry.register(commercialRealEstateLoanAmortizationCalculator);
+  calculatorRegistry.register(mezzanineFinancingRealEstateCalculator);
   
   // Legal & Settlement calculators
   calculatorRegistry.register(personalInjuryCalculator);
