@@ -80,6 +80,7 @@ import { rentVsBuyCalculator } from './finance/rent-vs-buy';
 import { debtServiceCoverageRatioCalculator } from './finance/debt-service-coverage-ratio';
 import { taxCalculator } from './finance/tax';
 import { hoaFeeCalculator } from './finance/hoa-fee';
+import { debtYieldRatioCalculator } from './finance/debt-yield-ratio';
 
 // Legal calculators
 import { personalInjuryCalculator } from './legal/personal-injury';
@@ -215,6 +216,7 @@ export function registerAllCalculators(): void {
   calculatorRegistry.register(debtServiceCoverageRatioCalculator);
   calculatorRegistry.register(taxCalculator);
   calculatorRegistry.register(hoaFeeCalculator);
+  calculatorRegistry.register(debtYieldRatioCalculator);
   
   // Legal & Settlement calculators
   calculatorRegistry.register(personalInjuryCalculator);
