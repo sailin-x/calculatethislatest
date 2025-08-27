@@ -77,6 +77,9 @@ import { helocCalculator } from './finance/heloc';
 import { homeInsuranceCalculator } from './finance/home-insurance';
 import { constructionLoanCalculator } from './finance/construction-loan';
 import { rentVsBuyCalculator } from './finance/rent-vs-buy';
+import { debtServiceCoverageRatioCalculator } from './finance/debt-service-coverage-ratio';
+import { taxCalculator } from './finance/tax';
+import { hoaFeeCalculator } from './finance/hoa-fee';
 
 // Legal calculators
 import { personalInjuryCalculator } from './legal/personal-injury';
@@ -209,6 +212,9 @@ export function registerAllCalculators(): void {
   calculatorRegistry.register(homeInsuranceCalculator);
   calculatorRegistry.register(constructionLoanCalculator);
   calculatorRegistry.register(rentVsBuyCalculator);
+  calculatorRegistry.register(debtServiceCoverageRatioCalculator);
+  calculatorRegistry.register(taxCalculator);
+  calculatorRegistry.register(hoaFeeCalculator);
   
   // Legal & Settlement calculators
   calculatorRegistry.register(personalInjuryCalculator);
