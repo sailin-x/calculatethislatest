@@ -72,6 +72,8 @@ import { loanToCostRatioCalculator } from './finance/loan-to-cost-ratio';
 import { earthquakeInsuranceCalculator } from './finance/earthquake-insurance';
 import { downPaymentAssistanceCalculator } from './finance/down-payment-assistance';
 import { hardMoneyLoanCalculator } from './finance/hard-money-loan';
+import { tenantImprovementCalculator } from './finance/tenant-improvement';
+import { helocCalculator } from './finance/heloc';
 
 // Legal calculators
 import { personalInjuryCalculator } from './legal/personal-injury';
@@ -199,6 +201,8 @@ export function registerAllCalculators(): void {
   calculatorRegistry.register(earthquakeInsuranceCalculator);
   calculatorRegistry.register(downPaymentAssistanceCalculator);
   calculatorRegistry.register(hardMoneyLoanCalculator);
+  calculatorRegistry.register(tenantImprovementCalculator);
+  calculatorRegistry.register(helocCalculator);
   
   // Legal & Settlement calculators
   calculatorRegistry.register(personalInjuryCalculator);
