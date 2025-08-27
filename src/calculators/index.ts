@@ -52,6 +52,11 @@ import { timberlandInvestmentCalculator } from './finance/timberland-investment'
 import { farmlandInvestmentROICalculator } from './finance/farmland-investment-roi';
 import { realEstateInvestmentCalculator } from './finance/real-estate-investment';
 import { selfStorageROICalculator } from './finance/self-storage-roi';
+import { conservationEasementTaxBenefitCalculator } from './finance/conservation-easement-tax-benefit';
+import { costSegregationDepreciationCalculator } from './finance/cost-segregation-depreciation';
+import { usdaLoanCalculator } from './finance/usda-loan';
+import { jumboLoanCalculator } from './finance/jumbo-loan';
+import { fhaLoanCalculator } from './finance/fha-loan';
 
 // Legal calculators
 import { personalInjuryCalculator } from './legal/personal-injury';
@@ -159,6 +164,11 @@ export function registerAllCalculators(): void {
   calculatorRegistry.register(farmlandInvestmentROICalculator);
   calculatorRegistry.register(realEstateInvestmentCalculator);
   calculatorRegistry.register(selfStorageROICalculator);
+  calculatorRegistry.register(conservationEasementTaxBenefitCalculator);
+  calculatorRegistry.register(costSegregationDepreciationCalculator);
+  calculatorRegistry.register(usdaLoanCalculator);
+  calculatorRegistry.register(jumboLoanCalculator);
+  calculatorRegistry.register(fhaLoanCalculator);
   
   // Legal & Settlement calculators
   calculatorRegistry.register(personalInjuryCalculator);
