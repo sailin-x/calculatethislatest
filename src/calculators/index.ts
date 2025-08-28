@@ -89,6 +89,7 @@ import { studentLoanCalculator } from './finance/student-loan';
 import { fixAndFlipCalculator } from './finance/fix-and-flip';
 import { loanToValueRatioCalculator } from './finance/loan-to-value-ratio';
 import { floodInsuranceCalculator } from './finance/flood-insurance';
+import { rentalYieldCalculator } from './finance/rental-yield';
 import { hoaFeeCalculator } from './finance/hoa-fee';
 import { debtYieldRatioCalculator } from './finance/debt-yield-ratio';
 
@@ -235,6 +236,7 @@ export function registerAllCalculators(): void {
   calculatorRegistry.register(fixAndFlipCalculator);
   calculatorRegistry.register(loanToValueRatioCalculator);
   calculatorRegistry.register(floodInsuranceCalculator);
+  calculatorRegistry.register(rentalYieldCalculator);
   calculatorRegistry.register(hoaFeeCalculator);
   calculatorRegistry.register(debtYieldRatioCalculator);
   
