@@ -98,6 +98,7 @@ import { tripleNetLeaseROICalculator } from './finance/triple-net-lease';
 // Investment & Portfolio calculators
 import { AccretionDilutionCalculator } from './finance/accretion-dilution';
 import { AlphaBetaCalculator } from './finance/alpha-beta';
+import { AlphaCalculator } from './finance/alpha';
 
 // Legal calculators
 import { personalInjuryCalculator } from './legal/personal-injury';
@@ -249,6 +250,7 @@ export function registerAllCalculators(): void {
   calculatorRegistry.register(tripleNetLeaseROICalculator);
   calculatorRegistry.register(AccretionDilutionCalculator);
   calculatorRegistry.register(AlphaBetaCalculator);
+  calculatorRegistry.register(AlphaCalculator);
   calculatorRegistry.register(commercialLeaseBuyoutCalculator);
   calculatorRegistry.register(commercialPropertyInsuranceCalculator);
   calculatorRegistry.register(commercialPropertyValuationCalculator);

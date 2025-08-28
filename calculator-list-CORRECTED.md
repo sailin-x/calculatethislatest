@@ -208,7 +208,7 @@ Each calculator must include:
 - [x] **Compound Interest Calculator** ✅ **(VERIFIED WORKING)**
 - [x] **Accretion/Dilution (M&A) Model** ✅ **(VERIFIED WORKING)**
 - [x] **Alpha & Beta Calculator** ✅ **(VERIFIED WORKING)**
-- [ ] Alpha Calculator
+- [x] **Alpha Calculator** ✅ **(VERIFIED WORKING)**
 - [ ] Angel Investment Dilution Calculator
 - [ ] Angel Investment Calculator
 - [ ] Asset-Based Lending Calculator
