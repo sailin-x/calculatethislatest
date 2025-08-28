@@ -84,6 +84,7 @@ import { rentalPropertyROICalculator } from './finance/rental-property-roi';
 import { hotelFeasibilityCalculator } from './finance/hotel-feasibility';
 import { landlordInsuranceCalculator } from './finance/landlord-insurance';
 import { condoInsuranceCalculator } from './finance/condo-insurance';
+import { groundLeaseValuationCalculator } from './finance/ground-lease-valuation';
 import { hoaFeeCalculator } from './finance/hoa-fee';
 import { debtYieldRatioCalculator } from './finance/debt-yield-ratio';
 
@@ -225,6 +226,7 @@ export function registerAllCalculators(): void {
   calculatorRegistry.register(hotelFeasibilityCalculator);
   calculatorRegistry.register(landlordInsuranceCalculator);
   calculatorRegistry.register(condoInsuranceCalculator);
+  calculatorRegistry.register(groundLeaseValuationCalculator);
   calculatorRegistry.register(hoaFeeCalculator);
   calculatorRegistry.register(debtYieldRatioCalculator);
   
