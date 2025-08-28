@@ -79,6 +79,8 @@ import { constructionLoanCalculator } from './finance/construction-loan';
 import { rentVsBuyCalculator } from './finance/rent-vs-buy';
 import { debtServiceCoverageRatioCalculator } from './finance/debt-service-coverage-ratio';
 import { taxCalculator } from './finance/tax';
+import { grossRentMultiplierCalculator } from './finance/gross-rent-multiplier';
+import { rentalPropertyROICalculator } from './finance/rental-property-roi';
 import { hoaFeeCalculator } from './finance/hoa-fee';
 import { debtYieldRatioCalculator } from './finance/debt-yield-ratio';
 
@@ -215,6 +217,8 @@ export function registerAllCalculators(): void {
   calculatorRegistry.register(rentVsBuyCalculator);
   calculatorRegistry.register(debtServiceCoverageRatioCalculator);
   calculatorRegistry.register(taxCalculator);
+  calculatorRegistry.register(grossRentMultiplierCalculator);
+  calculatorRegistry.register(rentalPropertyROICalculator);
   calculatorRegistry.register(hoaFeeCalculator);
   calculatorRegistry.register(debtYieldRatioCalculator);
   
