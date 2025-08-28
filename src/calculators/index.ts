@@ -92,6 +92,8 @@ import { floodInsuranceCalculator } from './finance/flood-insurance';
 import { rentalYieldCalculator } from './finance/rental-yield';
 import { hoaFeeCalculator } from './finance/hoa-fee';
 import { debtYieldRatioCalculator } from './finance/debt-yield-ratio';
+import { industrialWarehouseProfitabilityCalculator } from './finance/industrial-warehouse-profitability';
+import { tripleNetLeaseROICalculator } from './finance/triple-net-lease';
 
 // Legal calculators
 import { personalInjuryCalculator } from './legal/personal-injury';
@@ -239,6 +241,8 @@ export function registerAllCalculators(): void {
   calculatorRegistry.register(rentalYieldCalculator);
   calculatorRegistry.register(hoaFeeCalculator);
   calculatorRegistry.register(debtYieldRatioCalculator);
+  calculatorRegistry.register(industrialWarehouseProfitabilityCalculator);
+  calculatorRegistry.register(tripleNetLeaseROICalculator);
   
   // Legal & Settlement calculators
   calculatorRegistry.register(personalInjuryCalculator);
