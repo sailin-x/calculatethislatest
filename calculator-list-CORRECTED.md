@@ -70,11 +70,11 @@ Each calculator must include:
 - [x] **Commercial Property Valuation Calculator** ✅ **(VERIFIED WORKING)**
 - [x] **Commercial Real Estate Cash Flow Calculator** ✅ **(VERIFIED WORKING)**
 - [x] **Commercial Real Estate Loan Amortization** ✅ **(VERIFIED WORKING)**
-- [ ] Condo Insurance Calculator
-- [ ] Conservation Easement Tax Benefit Calculator
-- [ ] Construction Loan Calculator
-- [ ] Cost Segregation Depreciation Calculator
-- [ ] Debt Service Coverage Ratio Calculator
+- [x] **Condo Insurance Calculator** ✅ **(VERIFIED WORKING)**
+- [x] **Conservation Easement Tax Benefit Calculator** ✅ **(VERIFIED WORKING)**
+- [x] **Construction Loan Calculator** ✅ **(VERIFIED WORKING)**
+- [x] **Cost Segregation Depreciation Calculator** ✅ **(VERIFIED WORKING)**
+- [x] **Debt Service Coverage Ratio Calculator** ✅ **(VERIFIED WORKING)**
 - [ ] Debt Yield Ratio Calculator
 - [ ] Down Payment Assistance Calculator
 - [ ] Earthquake Insurance Calculator
