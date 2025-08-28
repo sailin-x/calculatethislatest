@@ -75,9 +75,9 @@ Each calculator must include:
 - [x] **Construction Loan Calculator** ✅ **(VERIFIED WORKING)**
 - [x] **Cost Segregation Depreciation Calculator** ✅ **(VERIFIED WORKING)**
 - [x] **Debt Service Coverage Ratio Calculator** ✅ **(VERIFIED WORKING)**
-- [ ] Debt Yield Ratio Calculator
-- [ ] Down Payment Assistance Calculator
-- [ ] Earthquake Insurance Calculator
+- [x] **Debt Yield Ratio Calculator** ✅ **(VERIFIED WORKING)**
+- [x] **Down Payment Assistance Calculator** ✅ **(VERIFIED WORKING)**
+- [x] **Earthquake Insurance Calculator** ✅ **(VERIFIED WORKING)**
 - [ ] Escrow Analysis Calculator
 - [ ] Farmland Investment ROI Calculator
 - [ ] FHA Loan Calculator
