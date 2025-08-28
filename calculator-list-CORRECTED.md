@@ -209,7 +209,7 @@ Each calculator must include:
 - [x] **Accretion/Dilution (M&A) Model** ✅ **(VERIFIED WORKING)**
 - [x] **Alpha & Beta Calculator** ✅ **(VERIFIED WORKING)**
 - [x] **Alpha Calculator** ✅ **(VERIFIED WORKING)**
-- [ ] Angel Investment Dilution Calculator
+- [x] **Angel Investment Dilution Calculator** ✅ **(VERIFIED WORKING)**
 - [ ] Angel Investment Calculator
 - [ ] Asset-Based Lending Calculator
 - [ ] Beta Calculator
