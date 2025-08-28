@@ -207,7 +207,7 @@ Each calculator must include:
 - [x] **Portfolio Optimization Calculator** ✅ **(VERIFIED WORKING)**
 - [x] **Compound Interest Calculator** ✅ **(VERIFIED WORKING)**
 - [x] **Accretion/Dilution (M&A) Model** ✅ **(VERIFIED WORKING)**
-- [ ] Alpha & Beta Calculator
+- [x] **Alpha & Beta Calculator** ✅ **(VERIFIED WORKING)**
 - [ ] Alpha Calculator
 - [ ] Angel Investment Dilution Calculator
 - [ ] Angel Investment Calculator
