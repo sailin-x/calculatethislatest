@@ -85,6 +85,7 @@ import { hotelFeasibilityCalculator } from './finance/hotel-feasibility';
 import { landlordInsuranceCalculator } from './finance/landlord-insurance';
 import { condoInsuranceCalculator } from './finance/condo-insurance';
 import { groundLeaseValuationCalculator } from './finance/ground-lease-valuation';
+import { studentLoanCalculator } from './finance/student-loan';
 import { hoaFeeCalculator } from './finance/hoa-fee';
 import { debtYieldRatioCalculator } from './finance/debt-yield-ratio';
 
@@ -227,6 +228,7 @@ export function registerAllCalculators(): void {
   calculatorRegistry.register(landlordInsuranceCalculator);
   calculatorRegistry.register(condoInsuranceCalculator);
   calculatorRegistry.register(groundLeaseValuationCalculator);
+  calculatorRegistry.register(studentLoanCalculator);
   calculatorRegistry.register(hoaFeeCalculator);
   calculatorRegistry.register(debtYieldRatioCalculator);
   
