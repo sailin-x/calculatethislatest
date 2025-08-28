@@ -78,9 +78,9 @@ Each calculator must include:
 - [x] **Debt Yield Ratio Calculator** ✅ **(VERIFIED WORKING)**
 - [x] **Down Payment Assistance Calculator** ✅ **(VERIFIED WORKING)**
 - [x] **Earthquake Insurance Calculator** ✅ **(VERIFIED WORKING)**
-- [ ] Escrow Analysis Calculator
-- [ ] Farmland Investment ROI Calculator
-- [ ] FHA Loan Calculator
+- [x] **Escrow Analysis Calculator** ✅ **(VERIFIED WORKING)**
+- [x] **Farmland Investment ROI Calculator** ✅ **(VERIFIED WORKING)**
+- [x] **FHA Loan Calculator** ✅ **(VERIFIED WORKING)**
 - [ ] Fix and Flip Calculator
 - [ ] Flood Insurance Calculator
 - [ ] Ground Lease Valuation Calculator
