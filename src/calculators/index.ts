@@ -95,6 +95,9 @@ import { debtYieldRatioCalculator } from './finance/debt-yield-ratio';
 import { industrialWarehouseProfitabilityCalculator } from './finance/industrial-warehouse-profitability';
 import { tripleNetLeaseROICalculator } from './finance/triple-net-lease';
 
+// Investment & Portfolio calculators
+import { AccretionDilutionCalculator } from './finance/accretion-dilution';
+
 // Legal calculators
 import { personalInjuryCalculator } from './legal/personal-injury';
 
@@ -243,6 +246,7 @@ export function registerAllCalculators(): void {
   calculatorRegistry.register(debtYieldRatioCalculator);
   calculatorRegistry.register(industrialWarehouseProfitabilityCalculator);
   calculatorRegistry.register(tripleNetLeaseROICalculator);
+  calculatorRegistry.register(AccretionDilutionCalculator);
   calculatorRegistry.register(commercialLeaseBuyoutCalculator);
   calculatorRegistry.register(commercialPropertyInsuranceCalculator);
   calculatorRegistry.register(commercialPropertyValuationCalculator);
