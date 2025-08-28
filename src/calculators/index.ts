@@ -243,6 +243,11 @@ export function registerAllCalculators(): void {
   calculatorRegistry.register(debtYieldRatioCalculator);
   calculatorRegistry.register(industrialWarehouseProfitabilityCalculator);
   calculatorRegistry.register(tripleNetLeaseROICalculator);
+  calculatorRegistry.register(commercialLeaseBuyoutCalculator);
+  calculatorRegistry.register(commercialPropertyInsuranceCalculator);
+  calculatorRegistry.register(commercialPropertyValuationCalculator);
+  calculatorRegistry.register(commercialRealEstateCashFlowCalculator);
+  calculatorRegistry.register(commercialRealEstateLoanAmortizationCalculator);
   
   // Legal & Settlement calculators
   calculatorRegistry.register(personalInjuryCalculator);

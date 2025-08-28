@@ -65,11 +65,11 @@ Each calculator must include:
 - [x] **Mortgage Insurance Calculator** ✅ **(VERIFIED WORKING)**
 - [x] **Mortgage Life Calculator** ✅ **(VERIFIED WORKING)**
 - [x] **Mortgage Payoff Calculator** ✅ **(VERIFIED WORKING)**
-- [!] **Commercial Lease Buyout Calculator** ❌ **(EXISTS BUT NEEDS REGISTRATION)**
-- [!] **Commercial Property Insurance Calculator** ❌ **(EXISTS BUT NEEDS REGISTRATION)**
-- [!] **Commercial Property Valuation Calculator** ❌ **(EXISTS BUT NEEDS REGISTRATION)**
-- [!] **Commercial Real Estate Cash Flow Calculator** ❌ **(EXISTS BUT NEEDS REGISTRATION)**
-- [!] **Commercial Real Estate Loan Amortization** ❌ **(EXISTS BUT NEEDS REGISTRATION)**
+- [x] **Commercial Lease Buyout Calculator** ✅ **(VERIFIED WORKING)**
+- [x] **Commercial Property Insurance Calculator** ✅ **(VERIFIED WORKING)**
+- [x] **Commercial Property Valuation Calculator** ✅ **(VERIFIED WORKING)**
+- [x] **Commercial Real Estate Cash Flow Calculator** ✅ **(VERIFIED WORKING)**
+- [x] **Commercial Real Estate Loan Amortization** ✅ **(VERIFIED WORKING)**
 - [ ] Condo Insurance Calculator
 - [ ] Conservation Easement Tax Benefit Calculator
 - [ ] Construction Loan Calculator
@@ -93,7 +93,7 @@ Each calculator must include:
 - [ ] Homeowners Insurance Calculator
 - [ ] Hotel Feasibility & ADR Calculator
 - [ ] HOA Fee Calculator
-- [ ] Industrial Warehouse Profitability Calculator
+- [x] **Industrial Warehouse Profitability Calculator** ✅ **(VERIFIED WORKING)**
 - [ ] Interest-Only Mortgage Calculator
 - [ ] Jumbo Loan Calculator
 - [ ] Landlord Insurance Calculator
@@ -130,7 +130,7 @@ Each calculator must include:
 - [ ] Tenant Improvement (TI) Allowance Calculator
 - [ ] Timberland Investment Calculator
 - [ ] Title Insurance Calculator
-- [ ] Triple Net (NNN) Lease ROI Calculator
+- [x] **Triple Net (NNN) Lease ROI Calculator** ✅ **(VERIFIED WORKING)**
 - [ ] USDA Loan Calculator
 
 ### Retirement & Savings Hub (8 calculators)
