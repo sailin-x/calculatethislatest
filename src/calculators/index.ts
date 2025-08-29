@@ -86,9 +86,11 @@ import { landlordInsuranceCalculator } from './finance/landlord-insurance';
 import { condoInsuranceCalculator } from './finance/condo-insurance';
 import { groundLeaseValuationCalculator } from './finance/ground-lease-valuation';
 import { studentLoanCalculator } from './finance/student-loan';
-import { fixAndFlipCalculator } from './finance/fix-and-flip';
+import { FixAndFlipCalculator as fixAndFlipCalculator } from './finance/fix-and-flip';
 import { loanToValueRatioCalculator } from './finance/loan-to-value-ratio';
-import { floodInsuranceCalculator } from './finance/flood-insurance';
+import { FloodInsuranceCalculator as floodInsuranceCalculator } from './finance/flood-insurance';
+import { GroundLeaseValuationCalculator as groundLeaseValuationCalculator } from './finance/ground-lease-valuation';
+import { GrossRentMultiplierCalculator as grossRentMultiplierCalculator } from './finance/gross-rent-multiplier';
 import { rentalYieldCalculator } from './finance/rental-yield';
 import { hoaFeeCalculator } from './finance/hoa-fee';
 import { debtYieldRatioCalculator } from './finance/debt-yield-ratio';
@@ -100,6 +102,7 @@ import { AccretionDilutionCalculator } from './finance/accretion-dilution';
 import { AlphaBetaCalculator } from './finance/alpha-beta';
 import { AlphaCalculator } from './finance/alpha';
 import { AngelInvestmentDilutionCalculator } from './finance/angel-investment-dilution';
+import { AngelInvestmentCalculator } from './finance/angel-investment';
 
 // Legal calculators
 import { personalInjuryCalculator } from './legal/personal-injury';
@@ -244,6 +247,8 @@ export function registerAllCalculators(): void {
   calculatorRegistry.register(fixAndFlipCalculator);
   calculatorRegistry.register(loanToValueRatioCalculator);
   calculatorRegistry.register(floodInsuranceCalculator);
+  calculatorRegistry.register(groundLeaseValuationCalculator);
+  calculatorRegistry.register(grossRentMultiplierCalculator);
   calculatorRegistry.register(rentalYieldCalculator);
   calculatorRegistry.register(hoaFeeCalculator);
   calculatorRegistry.register(debtYieldRatioCalculator);
@@ -253,6 +258,7 @@ export function registerAllCalculators(): void {
   calculatorRegistry.register(AlphaBetaCalculator);
   calculatorRegistry.register(AlphaCalculator);
   calculatorRegistry.register(AngelInvestmentDilutionCalculator);
+  calculatorRegistry.register(AngelInvestmentCalculator);
   calculatorRegistry.register(commercialLeaseBuyoutCalculator);
   calculatorRegistry.register(commercialPropertyInsuranceCalculator);
   calculatorRegistry.register(commercialPropertyValuationCalculator);

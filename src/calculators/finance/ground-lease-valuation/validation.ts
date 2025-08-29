@@ -1,371 +1,402 @@
-import { CalculatorInputs } from '../../../types/calculator';
+import { GroundLeaseValuationInputs } from './types';
 
 export interface ValidationResult {
   isValid: boolean;
   errors: string[];
+  warnings: string[];
 }
 
-export function validateGroundLeaseInputs(inputs: CalculatorInputs): ValidationResult {
+export function validateGroundLeaseValuationInputs(inputs: GroundLeaseValuationInputs): ValidationResult {
   const errors: string[] = [];
+  const warnings: string[] = [];
 
-  // Required field validation
-  if (!inputs.landValue) {
-    errors.push('Land value is required');
+  // Property Information Validation
+  if (!inputs.propertyAddress || inputs.propertyAddress.trim().length === 0) {
+    errors.push('Property address is required');
   }
-  if (!inputs.leaseTerm) {
-    errors.push('Lease term is required');
-  }
-  if (!inputs.annualRent) {
-    errors.push('Annual rent is required');
-  }
-  if (!inputs.rentEscalation) {
-    errors.push('Rent escalation rate is required');
-  }
-  if (!inputs.discountRate) {
-    errors.push('Discount rate is required');
-  }
-  if (!inputs.landAppreciation) {
-    errors.push('Land appreciation rate is required');
-  }
-  if (!inputs.leaseType) {
-    errors.push('Lease type is required');
-  }
+
   if (!inputs.propertyType) {
     errors.push('Property type is required');
   }
-  if (!inputs.location) {
-    errors.push('Location is required');
-  }
-  if (!inputs.marketType) {
-    errors.push('Market type is required');
+
+  if (!inputs.propertySize || inputs.propertySize <= 0) {
+    errors.push('Property size must be greater than 0');
   }
 
-  // Data type validation
-  if (inputs.landValue && typeof inputs.landValue !== 'number') {
-    errors.push('Land value must be a number');
-  }
-  if (inputs.leaseTerm && typeof inputs.leaseTerm !== 'number') {
-    errors.push('Lease term must be a number');
-  }
-  if (inputs.annualRent && typeof inputs.annualRent !== 'number') {
-    errors.push('Annual rent must be a number');
-  }
-  if (inputs.rentEscalation && typeof inputs.rentEscalation !== 'number') {
-    errors.push('Rent escalation rate must be a number');
-  }
-  if (inputs.discountRate && typeof inputs.discountRate !== 'number') {
-    errors.push('Discount rate must be a number');
-  }
-  if (inputs.landAppreciation && typeof inputs.landAppreciation !== 'number') {
-    errors.push('Land appreciation rate must be a number');
-  }
-  if (inputs.reversionaryValue && typeof inputs.reversionaryValue !== 'number') {
-    errors.push('Reversionary value must be a number');
-  }
-  if (inputs.operatingExpenses && typeof inputs.operatingExpenses !== 'number') {
-    errors.push('Operating expenses must be a number');
-  }
-  if (inputs.propertyTaxes && typeof inputs.propertyTaxes !== 'number') {
-    errors.push('Property taxes must be a number');
-  }
-  if (inputs.insurance && typeof inputs.insurance !== 'number') {
-    errors.push('Insurance costs must be a number');
-  }
-  if (inputs.maintenance && typeof inputs.maintenance !== 'number') {
-    errors.push('Maintenance costs must be a number');
-  }
-  if (inputs.managementFees && typeof inputs.managementFees !== 'number') {
-    errors.push('Management fees must be a number');
-  }
-  if (inputs.vacancyRate && typeof inputs.vacancyRate !== 'number') {
-    errors.push('Vacancy rate must be a number');
-  }
-  if (inputs.collectionLoss && typeof inputs.collectionLoss !== 'number') {
-    errors.push('Collection loss rate must be a number');
-  }
-  if (inputs.inflationRate && typeof inputs.inflationRate !== 'number') {
-    errors.push('Inflation rate must be a number');
-  }
-  if (inputs.taxRate && typeof inputs.taxRate !== 'number') {
-    errors.push('Tax rate must be a number');
-  }
-  if (inputs.riskScore && typeof inputs.riskScore !== 'number') {
-    errors.push('Risk score must be a number');
+  if (!inputs.landSize || inputs.landSize <= 0) {
+    errors.push('Land size must be greater than 0');
   }
 
-  // Range validation
-  if (inputs.landValue && (inputs.landValue < 10000 || inputs.landValue > 100000000)) {
-    errors.push('Land value must be between $10,000 and $100,000,000');
+  if (!inputs.zoning || inputs.zoning.trim().length === 0) {
+    errors.push('Zoning classification is required');
   }
-  if (inputs.leaseTerm && (inputs.leaseTerm < 1 || inputs.leaseTerm > 999)) {
-    errors.push('Lease term must be between 1 and 999 years');
+
+  if (!inputs.currentUse || inputs.currentUse.trim().length === 0) {
+    errors.push('Current use is required');
   }
-  if (inputs.annualRent && (inputs.annualRent < 1000 || inputs.annualRent > 10000000)) {
-    errors.push('Annual rent must be between $1,000 and $10,000,000');
+
+  if (!inputs.highestBestUse || inputs.highestBestUse.trim().length === 0) {
+    errors.push('Highest and best use is required');
   }
-  if (inputs.rentEscalation && (inputs.rentEscalation < 0 || inputs.rentEscalation > 20)) {
-    errors.push('Rent escalation rate must be between 0% and 20%');
+
+  // Lease Information Validation
+  if (!inputs.leaseType) {
+    errors.push('Lease type is required');
   }
-  if (inputs.discountRate && (inputs.discountRate < 1 || inputs.discountRate > 25)) {
-    errors.push('Discount rate must be between 1% and 25%');
+
+  if (!inputs.leaseStartDate) {
+    errors.push('Lease start date is required');
+  } else {
+    const startDate = new Date(inputs.leaseStartDate);
+    if (isNaN(startDate.getTime())) {
+      errors.push('Invalid lease start date format');
+    }
   }
-  if (inputs.landAppreciation && (inputs.landAppreciation < -10 || inputs.landAppreciation > 15)) {
-    errors.push('Land appreciation rate must be between -10% and 15%');
+
+  if (!inputs.leaseEndDate) {
+    errors.push('Lease end date is required');
+  } else {
+    const endDate = new Date(inputs.leaseEndDate);
+    if (isNaN(endDate.getTime())) {
+      errors.push('Invalid lease end date format');
+    }
   }
-  if (inputs.reversionaryValue && (inputs.reversionaryValue < 0 || inputs.reversionaryValue > 100000000)) {
-    errors.push('Reversionary value must be between $0 and $100,000,000');
+
+  if (inputs.leaseStartDate && inputs.leaseEndDate) {
+    const startDate = new Date(inputs.leaseStartDate);
+    const endDate = new Date(inputs.leaseEndDate);
+    if (endDate <= startDate) {
+      errors.push('Lease end date must be after lease start date');
+    }
   }
-  if (inputs.operatingExpenses && (inputs.operatingExpenses < 0 || inputs.operatingExpenses > 1000000)) {
-    errors.push('Operating expenses must be between $0 and $1,000,000');
+
+  if (!inputs.leaseTerm || inputs.leaseTerm <= 0) {
+    errors.push('Lease term must be greater than 0');
   }
-  if (inputs.propertyTaxes && (inputs.propertyTaxes < 0 || inputs.propertyTaxes > 1000000)) {
-    errors.push('Property taxes must be between $0 and $1,000,000');
+
+  if (inputs.leaseTerm && inputs.leaseTerm > 99) {
+    errors.push('Lease term cannot exceed 99 years');
   }
-  if (inputs.insurance && (inputs.insurance < 0 || inputs.insurance > 100000)) {
-    errors.push('Insurance costs must be between $0 and $100,000');
+
+  if (inputs.remainingTerm === undefined || inputs.remainingTerm < 0) {
+    errors.push('Remaining term must be 0 or greater');
   }
-  if (inputs.maintenance && (inputs.maintenance < 0 || inputs.maintenance > 100000)) {
-    errors.push('Maintenance costs must be between $0 and $100,000');
+
+  if (inputs.remainingTerm > inputs.leaseTerm) {
+    errors.push('Remaining term cannot exceed total lease term');
   }
-  if (inputs.managementFees && (inputs.managementFees < 0 || inputs.managementFees > 100000)) {
-    errors.push('Management fees must be between $0 and $100,000');
+
+  if (inputs.renewalOptions === undefined || inputs.renewalOptions < 0) {
+    errors.push('Renewal options must be 0 or greater');
   }
-  if (inputs.vacancyRate && (inputs.vacancyRate < 0 || inputs.vacancyRate > 50)) {
-    errors.push('Vacancy rate must be between 0% and 50%');
+
+  if (inputs.renewalOptions > 10) {
+    errors.push('Renewal options cannot exceed 10');
   }
-  if (inputs.collectionLoss && (inputs.collectionLoss < 0 || inputs.collectionLoss > 20)) {
-    errors.push('Collection loss rate must be between 0% and 20%');
+
+  if (!inputs.renewalTerm || inputs.renewalTerm <= 0) {
+    errors.push('Renewal term must be greater than 0');
   }
-  if (inputs.inflationRate && (inputs.inflationRate < -5 || inputs.inflationRate > 15)) {
+
+  if (inputs.renewalTerm > 20) {
+    errors.push('Renewal term cannot exceed 20 years');
+  }
+
+  // Financial Information Validation
+  if (!inputs.currentRent || inputs.currentRent <= 0) {
+    errors.push('Current annual rent must be greater than 0');
+  }
+
+  if (inputs.rentEscalation === undefined || inputs.rentEscalation < 0) {
+    errors.push('Rent escalation rate must be 0 or greater');
+  }
+
+  if (inputs.rentEscalation > 50) {
+    errors.push('Rent escalation rate cannot exceed 50%');
+  }
+
+  if (!inputs.rentEscalationFrequency) {
+    errors.push('Rent escalation frequency is required');
+  }
+
+  if (inputs.rentReviewFrequency === undefined || inputs.rentReviewFrequency <= 0) {
+    errors.push('Rent review frequency must be greater than 0');
+  }
+
+  if (inputs.rentReviewFrequency > 20) {
+    errors.push('Rent review frequency cannot exceed 20 years');
+  }
+
+  if (!inputs.rentReviewMethod) {
+    errors.push('Rent review method is required');
+  }
+
+  // Operating Information Validation
+  if (inputs.operatingExpenses === undefined || inputs.operatingExpenses < 0) {
+    errors.push('Operating expenses must be 0 or greater');
+  }
+
+  if (inputs.propertyTaxes === undefined || inputs.propertyTaxes < 0) {
+    errors.push('Property taxes must be 0 or greater');
+  }
+
+  if (inputs.insurance === undefined || inputs.insurance < 0) {
+    errors.push('Insurance costs must be 0 or greater');
+  }
+
+  if (inputs.maintenance === undefined || inputs.maintenance < 0) {
+    errors.push('Maintenance costs must be 0 or greater');
+  }
+
+  if (inputs.utilities === undefined || inputs.utilities < 0) {
+    errors.push('Utility costs must be 0 or greater');
+  }
+
+  if (inputs.managementFees === undefined || inputs.managementFees < 0) {
+    errors.push('Management fees must be 0 or greater');
+  }
+
+  // Market Information Validation
+  if (!inputs.marketRent || inputs.marketRent <= 0) {
+    errors.push('Market rent must be greater than 0');
+  }
+
+  if (!inputs.marketCapRate || inputs.marketCapRate <= 0) {
+    errors.push('Market cap rate must be greater than 0');
+  }
+
+  if (inputs.marketCapRate > 20) {
+    errors.push('Market cap rate cannot exceed 20%');
+  }
+
+  if (!inputs.marketDiscountRate || inputs.marketDiscountRate <= 0) {
+    errors.push('Market discount rate must be greater than 0');
+  }
+
+  if (inputs.marketDiscountRate > 30) {
+    errors.push('Market discount rate cannot exceed 30%');
+  }
+
+  if (inputs.marketGrowthRate === undefined) {
+    errors.push('Market growth rate is required');
+  }
+
+  if (inputs.marketGrowthRate < -10 || inputs.marketGrowthRate > 20) {
+    errors.push('Market growth rate must be between -10% and 20%');
+  }
+
+  // Comparable Sales Validation
+  if (inputs.comparableSales && inputs.comparableSales.length > 0) {
+    inputs.comparableSales.forEach((comp, index) => {
+      if (!comp.address || comp.address.trim().length === 0) {
+        errors.push(`Comparable sale ${index + 1}: Address is required`);
+      }
+      if (!comp.salePrice || comp.salePrice <= 0) {
+        errors.push(`Comparable sale ${index + 1}: Sale price must be greater than 0`);
+      }
+      if (!comp.saleDate) {
+        errors.push(`Comparable sale ${index + 1}: Sale date is required`);
+      } else {
+        const saleDate = new Date(comp.saleDate);
+        if (isNaN(saleDate.getTime())) {
+          errors.push(`Comparable sale ${index + 1}: Invalid sale date format`);
+        }
+      }
+      if (comp.capRate === undefined || comp.capRate <= 0) {
+        errors.push(`Comparable sale ${index + 1}: Cap rate must be greater than 0`);
+      }
+      if (!comp.size || comp.size <= 0) {
+        errors.push(`Comparable sale ${index + 1}: Size must be greater than 0`);
+      }
+    });
+  }
+
+  // Improvements Validation
+  if (inputs.buildingValue === undefined || inputs.buildingValue < 0) {
+    errors.push('Building value must be 0 or greater');
+  }
+
+  if (inputs.buildingAge === undefined || inputs.buildingAge < 0) {
+    errors.push('Building age must be 0 or greater');
+  }
+
+  if (inputs.buildingAge > 100) {
+    errors.push('Building age cannot exceed 100 years');
+  }
+
+  if (!inputs.buildingCondition) {
+    errors.push('Building condition is required');
+  }
+
+  if (inputs.remainingEconomicLife === undefined || inputs.remainingEconomicLife < 0) {
+    errors.push('Remaining economic life must be 0 or greater');
+  }
+
+  if (inputs.remainingEconomicLife > 100) {
+    errors.push('Remaining economic life cannot exceed 100 years');
+  }
+
+  if (inputs.depreciationRate === undefined || inputs.depreciationRate < 0) {
+    errors.push('Depreciation rate must be 0 or greater');
+  }
+
+  if (inputs.depreciationRate > 10) {
+    errors.push('Depreciation rate cannot exceed 10%');
+  }
+
+  // Risk Factors Validation
+  if (!inputs.tenantCredit) {
+    errors.push('Tenant credit rating is required');
+  }
+
+  if (!inputs.leaseSecurity) {
+    errors.push('Lease security is required');
+  }
+
+  if (!inputs.marketRisk) {
+    errors.push('Market risk is required');
+  }
+
+  if (!inputs.redevelopmentRisk) {
+    errors.push('Redevelopment risk is required');
+  }
+
+  // Legal and Regulatory Validation
+  if (inputs.zoningRestrictions === undefined) {
+    errors.push('Zoning restrictions field is required');
+  }
+
+  if (inputs.environmentalIssues === undefined) {
+    errors.push('Environmental issues field is required');
+  }
+
+  if (inputs.titleIssues === undefined) {
+    errors.push('Title issues field is required');
+  }
+
+  if (inputs.easements === undefined) {
+    errors.push('Easements field is required');
+  }
+
+  if (inputs.restrictions && inputs.restrictions.length > 0) {
+    inputs.restrictions.forEach((restriction, index) => {
+      if (!restriction || restriction.trim().length === 0) {
+        errors.push(`Restriction ${index + 1}: Description is required`);
+      }
+    });
+  }
+
+  // Analysis Parameters Validation
+  if (!inputs.analysisPeriod || inputs.analysisPeriod <= 0) {
+    errors.push('Analysis period must be greater than 0');
+  }
+
+  if (inputs.analysisPeriod > 50) {
+    errors.push('Analysis period cannot exceed 50 years');
+  }
+
+  if (!inputs.terminalCapRate || inputs.terminalCapRate <= 0) {
+    errors.push('Terminal cap rate must be greater than 0');
+  }
+
+  if (inputs.terminalCapRate > 20) {
+    errors.push('Terminal cap rate cannot exceed 20%');
+  }
+
+  if (inputs.reversionValue === undefined || inputs.reversionValue < 0) {
+    errors.push('Reversion value must be 0 or greater');
+  }
+
+  if (!inputs.discountRate || inputs.discountRate <= 0) {
+    errors.push('Discount rate must be greater than 0');
+  }
+
+  if (inputs.discountRate > 30) {
+    errors.push('Discount rate cannot exceed 30%');
+  }
+
+  if (inputs.inflationRate === undefined) {
+    errors.push('Inflation rate is required');
+  }
+
+  if (inputs.inflationRate < -5 || inputs.inflationRate > 15) {
     errors.push('Inflation rate must be between -5% and 15%');
   }
-  if (inputs.taxRate && (inputs.taxRate < 0 || inputs.taxRate > 50)) {
-    errors.push('Tax rate must be between 0% and 50%');
-  }
-  if (inputs.riskScore && (inputs.riskScore < 1 || inputs.riskScore > 10)) {
-    errors.push('Risk score must be between 1 and 10');
+
+  // Reporting Preferences Validation
+  if (!inputs.currency) {
+    errors.push('Currency is required');
   }
 
-  // Logical validation
-  if (inputs.annualRent && inputs.landValue && inputs.annualRent > inputs.landValue) {
-    errors.push('Annual rent cannot exceed land value');
-  }
-  if (inputs.reversionaryValue && inputs.landValue && inputs.reversionaryValue < inputs.landValue * 0.1) {
-    errors.push('Reversionary value seems too low relative to land value');
-  }
-  if (inputs.reversionaryValue && inputs.landValue && inputs.reversionaryValue > inputs.landValue * 10) {
-    errors.push('Reversionary value seems too high relative to land value');
-  }
-  if (inputs.discountRate && inputs.rentEscalation && inputs.discountRate <= inputs.rentEscalation) {
-    errors.push('Discount rate should be higher than rent escalation rate for valid calculations');
-  }
-  if (inputs.landAppreciation && inputs.rentEscalation && inputs.landAppreciation > inputs.rentEscalation * 2) {
-    errors.push('Land appreciation rate seems unusually high relative to rent escalation');
+  if (!inputs.displayFormat) {
+    errors.push('Display format is required');
   }
 
-  // Enum validation
-  const validLeaseTypes = ['net', 'gross', 'triple-net', 'percentage'];
-  if (inputs.leaseType && !validLeaseTypes.includes(inputs.leaseType)) {
-    errors.push('Invalid lease type. Must be one of: net, gross, triple-net, percentage');
+  if (inputs.includeCharts === undefined) {
+    errors.push('Include charts field is required');
   }
 
-  const validPropertyTypes = ['residential', 'commercial', 'industrial', 'mixed-use', 'agricultural'];
-  if (inputs.propertyType && !validPropertyTypes.includes(inputs.propertyType)) {
-    errors.push('Invalid property type. Must be one of: residential, commercial, industrial, mixed-use, agricultural');
+  // Business Logic Validation
+  if (inputs.currentRent && inputs.operatingExpenses && inputs.currentRent <= inputs.operatingExpenses) {
+    warnings.push('Current rent is less than or equal to operating expenses, which may indicate a poor investment');
   }
 
-  const validLocations = ['urban', 'suburban', 'rural', 'coastal', 'mountain'];
-  if (inputs.location && !validLocations.includes(inputs.location)) {
-    errors.push('Invalid location. Must be one of: urban, suburban, rural, coastal, mountain');
+  if (inputs.marketCapRate && inputs.marketDiscountRate && inputs.marketCapRate >= inputs.marketDiscountRate) {
+    warnings.push('Market cap rate should typically be lower than market discount rate');
   }
 
-  const validMarketTypes = ['hot', 'stable', 'declining', 'emerging'];
-  if (inputs.marketType && !validMarketTypes.includes(inputs.marketType)) {
-    errors.push('Invalid market type. Must be one of: hot, stable, declining, emerging');
+  if (inputs.rentEscalation && inputs.inflationRate && inputs.rentEscalation < inputs.inflationRate) {
+    warnings.push('Rent escalation rate is lower than inflation rate, which may erode real returns');
   }
 
-  const validTenantCredits = ['AAA', 'AA', 'A', 'BBB', 'BB', 'B', 'CCC', 'unknown'];
-  if (inputs.tenantCredit && !validTenantCredits.includes(inputs.tenantCredit)) {
-    errors.push('Invalid tenant credit rating. Must be one of: AAA, AA, A, BBB, BB, B, CCC, unknown');
+  if (inputs.buildingAge && inputs.remainingEconomicLife && inputs.buildingAge + inputs.remainingEconomicLife > 100) {
+    warnings.push('Combined building age and remaining economic life exceeds typical building lifespan');
   }
 
-  const validPaymentFrequencies = ['monthly', 'quarterly', 'semi-annually', 'annually'];
-  if (inputs.paymentFrequency && !validPaymentFrequencies.includes(inputs.paymentFrequency)) {
-    errors.push('Invalid payment frequency. Must be one of: monthly, quarterly, semi-annually, annually');
+  if (inputs.tenantCredit && ['ccc', 'default'].includes(inputs.tenantCredit)) {
+    warnings.push('Tenant has poor credit rating, indicating high default risk');
   }
 
-  const validMarketLiquidity = ['high', 'medium', 'low'];
-  if (inputs.marketLiquidity && !validMarketLiquidity.includes(inputs.marketLiquidity)) {
-    errors.push('Invalid market liquidity. Must be one of: high, medium, low');
+  if (inputs.leaseSecurity === 'subordinated') {
+    warnings.push('Subordinated lease security indicates higher risk');
   }
 
-  // Date validation
-  if (inputs.leaseStartDate) {
-    const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
-    if (!dateRegex.test(inputs.leaseStartDate)) {
-      errors.push('Lease start date must be in YYYY-MM-DD format');
-    } else {
-      const date = new Date(inputs.leaseStartDate);
-      if (isNaN(date.getTime())) {
-        errors.push('Invalid lease start date');
-      }
+  if (inputs.marketRisk === 'high') {
+    warnings.push('High market risk may impact investment performance');
+  }
+
+  if (inputs.redevelopmentRisk === 'high') {
+    warnings.push('High redevelopment risk may affect long-term value');
+  }
+
+  if (inputs.environmentalIssues) {
+    warnings.push('Environmental issues may require remediation and affect property value');
+  }
+
+  if (inputs.titleIssues) {
+    warnings.push('Title issues may affect property ownership and value');
+  }
+
+  // Cross-field Validation
+  if (inputs.leaseTerm && inputs.remainingTerm && inputs.remainingTerm > inputs.leaseTerm) {
+    errors.push('Remaining term cannot exceed total lease term');
+  }
+
+  if (inputs.analysisPeriod && inputs.remainingTerm && inputs.analysisPeriod > inputs.remainingTerm) {
+    warnings.push('Analysis period exceeds remaining lease term');
+  }
+
+  if (inputs.marketRent && inputs.propertySize && inputs.currentRent) {
+    const marketRentTotal = inputs.marketRent * inputs.propertySize;
+    const rentDifference = Math.abs(inputs.currentRent - marketRentTotal) / marketRentTotal;
+    if (rentDifference > 0.5) {
+      warnings.push('Current rent differs significantly from market rent');
     }
   }
 
   return {
     isValid: errors.length === 0,
-    errors
+    errors,
+    warnings
   };
-}
-
-export function quickValidateGroundLeaseInput(field: string, value: any): string | null {
-  switch (field) {
-    case 'landValue':
-      if (!value) return 'Land value is required';
-      if (typeof value !== 'number') return 'Land value must be a number';
-      if (value < 10000 || value > 100000000) return 'Land value must be between $10,000 and $100,000,000';
-      return null;
-
-    case 'leaseTerm':
-      if (!value) return 'Lease term is required';
-      if (typeof value !== 'number') return 'Lease term must be a number';
-      if (value < 1 || value > 999) return 'Lease term must be between 1 and 999 years';
-      return null;
-
-    case 'annualRent':
-      if (!value) return 'Annual rent is required';
-      if (typeof value !== 'number') return 'Annual rent must be a number';
-      if (value < 1000 || value > 10000000) return 'Annual rent must be between $1,000 and $10,000,000';
-      return null;
-
-    case 'rentEscalation':
-      if (!value) return 'Rent escalation rate is required';
-      if (typeof value !== 'number') return 'Rent escalation rate must be a number';
-      if (value < 0 || value > 20) return 'Rent escalation rate must be between 0% and 20%';
-      return null;
-
-    case 'discountRate':
-      if (!value) return 'Discount rate is required';
-      if (typeof value !== 'number') return 'Discount rate must be a number';
-      if (value < 1 || value > 25) return 'Discount rate must be between 1% and 25%';
-      return null;
-
-    case 'landAppreciation':
-      if (!value) return 'Land appreciation rate is required';
-      if (typeof value !== 'number') return 'Land appreciation rate must be a number';
-      if (value < -10 || value > 15) return 'Land appreciation rate must be between -10% and 15%';
-      return null;
-
-    case 'reversionaryValue':
-      if (value && typeof value !== 'number') return 'Reversionary value must be a number';
-      if (value && (value < 0 || value > 100000000)) return 'Reversionary value must be between $0 and $100,000,000';
-      return null;
-
-    case 'leaseType':
-      if (!value) return 'Lease type is required';
-      const validLeaseTypes = ['net', 'gross', 'triple-net', 'percentage'];
-      if (!validLeaseTypes.includes(value)) return 'Invalid lease type';
-      return null;
-
-    case 'propertyType':
-      if (!value) return 'Property type is required';
-      const validPropertyTypes = ['residential', 'commercial', 'industrial', 'mixed-use', 'agricultural'];
-      if (!validPropertyTypes.includes(value)) return 'Invalid property type';
-      return null;
-
-    case 'location':
-      if (!value) return 'Location is required';
-      const validLocations = ['urban', 'suburban', 'rural', 'coastal', 'mountain'];
-      if (!validLocations.includes(value)) return 'Invalid location';
-      return null;
-
-    case 'marketType':
-      if (!value) return 'Market type is required';
-      const validMarketTypes = ['hot', 'stable', 'declining', 'emerging'];
-      if (!validMarketTypes.includes(value)) return 'Invalid market type';
-      return null;
-
-    case 'tenantCredit':
-      if (value) {
-        const validTenantCredits = ['AAA', 'AA', 'A', 'BBB', 'BB', 'B', 'CCC', 'unknown'];
-        if (!validTenantCredits.includes(value)) return 'Invalid tenant credit rating';
-      }
-      return null;
-
-    case 'paymentFrequency':
-      if (value) {
-        const validPaymentFrequencies = ['monthly', 'quarterly', 'semi-annually', 'annually'];
-        if (!validPaymentFrequencies.includes(value)) return 'Invalid payment frequency';
-      }
-      return null;
-
-    case 'marketLiquidity':
-      if (value) {
-        const validMarketLiquidity = ['high', 'medium', 'low'];
-        if (!validMarketLiquidity.includes(value)) return 'Invalid market liquidity';
-      }
-      return null;
-
-    case 'operatingExpenses':
-      if (value && typeof value !== 'number') return 'Operating expenses must be a number';
-      if (value && (value < 0 || value > 1000000)) return 'Operating expenses must be between $0 and $1,000,000';
-      return null;
-
-    case 'propertyTaxes':
-      if (value && typeof value !== 'number') return 'Property taxes must be a number';
-      if (value && (value < 0 || value > 1000000)) return 'Property taxes must be between $0 and $1,000,000';
-      return null;
-
-    case 'insurance':
-      if (value && typeof value !== 'number') return 'Insurance costs must be a number';
-      if (value && (value < 0 || value > 100000)) return 'Insurance costs must be between $0 and $100,000';
-      return null;
-
-    case 'maintenance':
-      if (value && typeof value !== 'number') return 'Maintenance costs must be a number';
-      if (value && (value < 0 || value > 100000)) return 'Maintenance costs must be between $0 and $100,000';
-      return null;
-
-    case 'managementFees':
-      if (value && typeof value !== 'number') return 'Management fees must be a number';
-      if (value && (value < 0 || value > 100000)) return 'Management fees must be between $0 and $100,000';
-      return null;
-
-    case 'vacancyRate':
-      if (value && typeof value !== 'number') return 'Vacancy rate must be a number';
-      if (value && (value < 0 || value > 50)) return 'Vacancy rate must be between 0% and 50%';
-      return null;
-
-    case 'collectionLoss':
-      if (value && typeof value !== 'number') return 'Collection loss rate must be a number';
-      if (value && (value < 0 || value > 20)) return 'Collection loss rate must be between 0% and 20%';
-      return null;
-
-    case 'inflationRate':
-      if (value && typeof value !== 'number') return 'Inflation rate must be a number';
-      if (value && (value < -5 || value > 15)) return 'Inflation rate must be between -5% and 15%';
-      return null;
-
-    case 'taxRate':
-      if (value && typeof value !== 'number') return 'Tax rate must be a number';
-      if (value && (value < 0 || value > 50)) return 'Tax rate must be between 0% and 50%';
-      return null;
-
-    case 'riskScore':
-      if (value && typeof value !== 'number') return 'Risk score must be a number';
-      if (value && (value < 1 || value > 10)) return 'Risk score must be between 1 and 10';
-      return null;
-
-    case 'leaseStartDate':
-      if (value) {
-        const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
-        if (!dateRegex.test(value)) return 'Lease start date must be in YYYY-MM-DD format';
-        const date = new Date(value);
-        if (isNaN(date.getTime())) return 'Invalid lease start date';
-      }
-      return null;
-
-    default:
-      return null;
-  }
 }

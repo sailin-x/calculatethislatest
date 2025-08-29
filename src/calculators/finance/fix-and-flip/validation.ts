@@ -1,445 +1,449 @@
-import { CalculatorInputs } from '../../../types/calculator';
+import { FixAndFlipInputs } from './types';
 
-export interface ValidationResult {
-  isValid: boolean;
-  errors: string[];
-}
-
-export function validateFixAndFlipInputs(inputs: CalculatorInputs): ValidationResult {
+export function validateFixAndFlipInputs(inputs: FixAndFlipInputs): { isValid: boolean; errors: string[] } {
   const errors: string[] = [];
 
-  const requiredFields = [
-    'purchasePrice', 'downPayment', 'interestRate', 'loanTerm', 'renovationBudget',
-    'renovationTime', 'afterRepairValue', 'sellingCosts', 'holdingCosts',
-    'propertyType', 'propertyCondition', 'marketType', 'location'
-  ];
-
-  requiredFields.forEach(field => {
-    if (!(field in inputs) || inputs[field] === undefined || inputs[field] === null) {
-      errors.push(`${field} is required`);
-    }
-  });
-
-  if (errors.length > 0) {
-    return { isValid: false, errors };
+  // Property Information Validation
+  if (!inputs.propertyAddress || inputs.propertyAddress.trim().length === 0) {
+    errors.push('Property address is required');
+  }
+  if (inputs.propertyAddress && inputs.propertyAddress.length > 200) {
+    errors.push('Property address must be 200 characters or less');
   }
 
-  // Validate purchase price
-  const purchasePrice = Number(inputs.purchasePrice);
-  if (isNaN(purchasePrice) || purchasePrice < 10000 || purchasePrice > 10000000) {
-    errors.push('Purchase price must be between $10,000 and $10,000,000');
+  if (inputs.propertySize <= 0) {
+    errors.push('Property size must be greater than zero');
+  }
+  if (inputs.propertySize > 100000) {
+    errors.push('Property size over 100,000 sq ft seems unrealistic');
   }
 
-  // Validate down payment
-  const downPayment = Number(inputs.downPayment);
-  if (isNaN(downPayment) || downPayment < 1000 || downPayment > 5000000) {
-    errors.push('Down payment must be between $1,000 and $5,000,000');
+  if (inputs.lotSize <= 0) {
+    errors.push('Lot size must be greater than zero');
+  }
+  if (inputs.lotSize > 1000000) {
+    errors.push('Lot size over 1,000,000 sq ft seems unrealistic');
   }
 
-  // Validate interest rate
-  const interestRate = Number(inputs.interestRate);
-  if (isNaN(interestRate) || interestRate < 1 || interestRate > 25) {
-    errors.push('Interest rate must be between 1% and 25%');
+  if (inputs.bedrooms < 0) {
+    errors.push('Number of bedrooms cannot be negative');
+  }
+  if (inputs.bedrooms > 20) {
+    errors.push('Number of bedrooms over 20 seems unrealistic');
   }
 
-  // Validate loan term
-  const loanTerm = Number(inputs.loanTerm);
-  if (isNaN(loanTerm) || loanTerm < 3 || loanTerm > 36) {
-    errors.push('Loan term must be between 3 and 36 months');
+  if (inputs.bathrooms < 0) {
+    errors.push('Number of bathrooms cannot be negative');
+  }
+  if (inputs.bathrooms > 20) {
+    errors.push('Number of bathrooms over 20 seems unrealistic');
   }
 
-  // Validate renovation budget
-  const renovationBudget = Number(inputs.renovationBudget);
-  if (isNaN(renovationBudget) || renovationBudget < 0 || renovationBudget > 1000000) {
-    errors.push('Renovation budget must be between $0 and $1,000,000');
+  if (inputs.yearBuilt < 1800 || inputs.yearBuilt > 2030) {
+    errors.push('Year built must be between 1800 and 2030');
   }
 
-  // Validate renovation time
-  const renovationTime = Number(inputs.renovationTime);
-  if (isNaN(renovationTime) || renovationTime < 1 || renovationTime > 24) {
-    errors.push('Renovation time must be between 1 and 24 months');
+  // Purchase Information Validation
+  if (inputs.purchasePrice <= 0) {
+    errors.push('Purchase price must be greater than zero');
+  }
+  if (inputs.purchasePrice > 10000000) {
+    errors.push('Purchase price over $10 million seems high for fix and flip');
   }
 
-  // Validate after repair value
-  const afterRepairValue = Number(inputs.afterRepairValue);
-  if (isNaN(afterRepairValue) || afterRepairValue < 10000 || afterRepairValue > 10000000) {
-    errors.push('After repair value must be between $10,000 and $10,000,000');
+  if (!inputs.purchaseDate) {
+    errors.push('Purchase date is required');
   }
 
-  // Validate selling costs
-  const sellingCosts = Number(inputs.sellingCosts);
-  if (isNaN(sellingCosts) || sellingCosts < 0 || sellingCosts > 500000) {
-    errors.push('Selling costs must be between $0 and $500,000');
+  if (inputs.closingCosts < 0) {
+    errors.push('Closing costs cannot be negative');
+  }
+  if (inputs.closingCosts > 500000) {
+    errors.push('Closing costs over $500,000 seem excessive');
   }
 
-  // Validate holding costs
-  const holdingCosts = Number(inputs.holdingCosts);
-  if (isNaN(holdingCosts) || holdingCosts < 0 || holdingCosts > 10000) {
-    errors.push('Monthly holding costs must be between $0 and $10,000');
+  if (inputs.inspectionCosts !== undefined && inputs.inspectionCosts < 0) {
+    errors.push('Inspection costs cannot be negative');
+  }
+  if (inputs.inspectionCosts !== undefined && inputs.inspectionCosts > 10000) {
+    errors.push('Inspection costs over $10,000 seem excessive');
   }
 
-  // Validate property type
-  const validPropertyTypes = ['single-family', 'duplex', 'townhouse', 'condo', 'multi-family', 'commercial'];
-  if (!validPropertyTypes.includes(inputs.propertyType)) {
-    errors.push('Invalid property type');
+  if (inputs.titleInsurance !== undefined && inputs.titleInsurance < 0) {
+    errors.push('Title insurance cost cannot be negative');
+  }
+  if (inputs.titleInsurance !== undefined && inputs.titleInsurance > 10000) {
+    errors.push('Title insurance cost over $10,000 seems excessive');
   }
 
-  // Validate property condition
-  const validPropertyConditions = ['excellent', 'good', 'fair', 'poor', 'needs-major-repairs'];
-  if (!validPropertyConditions.includes(inputs.propertyCondition)) {
-    errors.push('Invalid property condition');
+  if (inputs.transferTaxes !== undefined && inputs.transferTaxes < 0) {
+    errors.push('Transfer taxes cannot be negative');
+  }
+  if (inputs.transferTaxes !== undefined && inputs.transferTaxes > 50000) {
+    errors.push('Transfer taxes over $50,000 seem excessive');
   }
 
-  // Validate market type
-  const validMarketTypes = ['hot', 'stable', 'slow', 'declining'];
-  if (!validMarketTypes.includes(inputs.marketType)) {
-    errors.push('Invalid market type');
+  if (inputs.attorneyFees !== undefined && inputs.attorneyFees < 0) {
+    errors.push('Attorney fees cannot be negative');
+  }
+  if (inputs.attorneyFees !== undefined && inputs.attorneyFees > 10000) {
+    errors.push('Attorney fees over $10,000 seem excessive');
   }
 
-  // Validate location
-  if (!inputs.location || inputs.location.trim().length === 0) {
-    errors.push('Location is required');
+  if (inputs.otherPurchaseCosts !== undefined && inputs.otherPurchaseCosts < 0) {
+    errors.push('Other purchase costs cannot be negative');
+  }
+  if (inputs.otherPurchaseCosts !== undefined && inputs.otherPurchaseCosts > 50000) {
+    errors.push('Other purchase costs over $50,000 seem excessive');
   }
 
-  // Validate optional fields if provided
-  if (inputs.squareFootage !== undefined && inputs.squareFootage !== null) {
-    const squareFootage = Number(inputs.squareFootage);
-    if (isNaN(squareFootage) || squareFootage < 100 || squareFootage > 10000) {
-      errors.push('Square footage must be between 100 and 10,000 sq ft');
-    }
+  // Financing Information Validation
+  if (inputs.downPayment < 0) {
+    errors.push('Down payment cannot be negative');
+  }
+  if (inputs.downPayment > 5000000) {
+    errors.push('Down payment over $5 million seems excessive');
   }
 
-  if (inputs.bedrooms !== undefined && inputs.bedrooms !== null) {
-    const bedrooms = Number(inputs.bedrooms);
-    if (isNaN(bedrooms) || bedrooms < 0 || bedrooms > 10) {
-      errors.push('Number of bedrooms must be between 0 and 10');
-    }
+  if (inputs.loanAmount < 0) {
+    errors.push('Loan amount cannot be negative');
+  }
+  if (inputs.loanAmount > 10000000) {
+    errors.push('Loan amount over $10 million seems excessive');
   }
 
-  if (inputs.bathrooms !== undefined && inputs.bathrooms !== null) {
-    const bathrooms = Number(inputs.bathrooms);
-    if (isNaN(bathrooms) || bathrooms < 0 || bathrooms > 10) {
-      errors.push('Number of bathrooms must be between 0 and 10');
-    }
+  if (inputs.interestRate < 0) {
+    errors.push('Interest rate cannot be negative');
+  }
+  if (inputs.interestRate > 25) {
+    errors.push('Interest rate over 25% seems excessive');
   }
 
-  if (inputs.lotSize !== undefined && inputs.lotSize !== null) {
-    const lotSize = Number(inputs.lotSize);
-    if (isNaN(lotSize) || lotSize < 0.01 || lotSize > 100) {
-      errors.push('Lot size must be between 0.01 and 100 acres');
-    }
+  if (inputs.loanTerm <= 0) {
+    errors.push('Loan term must be greater than zero');
+  }
+  if (inputs.loanTerm > 360) {
+    errors.push('Loan term over 360 months (30 years) seems excessive for fix and flip');
   }
 
-  if (inputs.yearBuilt !== undefined && inputs.yearBuilt !== null) {
-    const yearBuilt = Number(inputs.yearBuilt);
-    if (isNaN(yearBuilt) || yearBuilt < 1800 || yearBuilt > 2024) {
-      errors.push('Year built must be between 1800 and 2024');
-    }
+  if (inputs.originationFee !== undefined && inputs.originationFee < 0) {
+    errors.push('Origination fee cannot be negative');
+  }
+  if (inputs.originationFee !== undefined && inputs.originationFee > 100000) {
+    errors.push('Origination fee over $100,000 seems excessive');
   }
 
-  if (inputs.purchaseClosingCosts !== undefined && inputs.purchaseClosingCosts !== null) {
-    const purchaseClosingCosts = Number(inputs.purchaseClosingCosts);
-    if (isNaN(purchaseClosingCosts) || purchaseClosingCosts < 0 || purchaseClosingCosts > 100000) {
-      errors.push('Purchase closing costs must be between $0 and $100,000');
-    }
+  if (inputs.points !== undefined && inputs.points < 0) {
+    errors.push('Points cannot be negative');
+  }
+  if (inputs.points !== undefined && inputs.points > 10) {
+    errors.push('Points over 10 seem excessive');
   }
 
-  if (inputs.inspectionCosts !== undefined && inputs.inspectionCosts !== null) {
-    const inspectionCosts = Number(inputs.inspectionCosts);
-    if (isNaN(inspectionCosts) || inspectionCosts < 0 || inspectionCosts > 5000) {
-      errors.push('Inspection costs must be between $0 and $5,000');
-    }
+  if (inputs.monthlyPayment !== undefined && inputs.monthlyPayment < 0) {
+    errors.push('Monthly payment cannot be negative');
+  }
+  if (inputs.monthlyPayment !== undefined && inputs.monthlyPayment > 100000) {
+    errors.push('Monthly payment over $100,000 seems excessive');
   }
 
-  if (inputs.permitCosts !== undefined && inputs.permitCosts !== null) {
-    const permitCosts = Number(inputs.permitCosts);
-    if (isNaN(permitCosts) || permitCosts < 0 || permitCosts > 50000) {
-      errors.push('Permit costs must be between $0 and $50,000');
-    }
+  // Renovation Information Validation
+  if (inputs.renovationBudget < 0) {
+    errors.push('Renovation budget cannot be negative');
+  }
+  if (inputs.renovationBudget > 1000000) {
+    errors.push('Renovation budget over $1 million seems excessive');
   }
 
-  if (inputs.insuranceCosts !== undefined && inputs.insuranceCosts !== null) {
-    const insuranceCosts = Number(inputs.insuranceCosts);
-    if (isNaN(insuranceCosts) || insuranceCosts < 0 || insuranceCosts > 10000) {
-      errors.push('Insurance costs must be between $0 and $10,000');
-    }
+  if (inputs.renovationTimeline <= 0) {
+    errors.push('Renovation timeline must be greater than zero');
+  }
+  if (inputs.renovationTimeline > 24) {
+    errors.push('Renovation timeline over 24 months seems excessive');
   }
 
-  if (inputs.utilityCosts !== undefined && inputs.utilityCosts !== null) {
-    const utilityCosts = Number(inputs.utilityCosts);
-    if (isNaN(utilityCosts) || utilityCosts < 0 || utilityCosts > 5000) {
-      errors.push('Utility costs must be between $0 and $5,000');
-    }
+  // Renovation Details Validation
+  if (inputs.structuralWorkCost !== undefined && inputs.structuralWorkCost < 0) {
+    errors.push('Structural work cost cannot be negative');
+  }
+  if (inputs.structuralWorkCost !== undefined && inputs.structuralWorkCost > 500000) {
+    errors.push('Structural work cost over $500,000 seems excessive');
   }
 
-  if (inputs.propertyTaxes !== undefined && inputs.propertyTaxes !== null) {
-    const propertyTaxes = Number(inputs.propertyTaxes);
-    if (isNaN(propertyTaxes) || propertyTaxes < 0 || propertyTaxes > 50000) {
-      errors.push('Property taxes must be between $0 and $50,000');
-    }
+  if (inputs.electricalWorkCost !== undefined && inputs.electricalWorkCost < 0) {
+    errors.push('Electrical work cost cannot be negative');
+  }
+  if (inputs.electricalWorkCost !== undefined && inputs.electricalWorkCost > 100000) {
+    errors.push('Electrical work cost over $100,000 seems excessive');
   }
 
-  if (inputs.hoaFees !== undefined && inputs.hoaFees !== null) {
-    const hoaFees = Number(inputs.hoaFees);
-    if (isNaN(hoaFees) || hoaFees < 0 || hoaFees > 2000) {
-      errors.push('HOA fees must be between $0 and $2,000');
-    }
+  if (inputs.plumbingWorkCost !== undefined && inputs.plumbingWorkCost < 0) {
+    errors.push('Plumbing work cost cannot be negative');
+  }
+  if (inputs.plumbingWorkCost !== undefined && inputs.plumbingWorkCost > 100000) {
+    errors.push('Plumbing work cost over $100,000 seems excessive');
   }
 
-  if (inputs.contingencyBudget !== undefined && inputs.contingencyBudget !== null) {
-    const contingencyBudget = Number(inputs.contingencyBudget);
-    if (isNaN(contingencyBudget) || contingencyBudget < 0 || contingencyBudget > 100000) {
-      errors.push('Contingency budget must be between $0 and $100,000');
-    }
+  if (inputs.hvacWorkCost !== undefined && inputs.hvacWorkCost < 0) {
+    errors.push('HVAC work cost cannot be negative');
+  }
+  if (inputs.hvacWorkCost !== undefined && inputs.hvacWorkCost > 50000) {
+    errors.push('HVAC work cost over $50,000 seems excessive');
   }
 
-  if (inputs.marketingCosts !== undefined && inputs.marketingCosts !== null) {
-    const marketingCosts = Number(inputs.marketingCosts);
-    if (isNaN(marketingCosts) || marketingCosts < 0 || marketingCosts > 50000) {
-      errors.push('Marketing costs must be between $0 and $50,000');
-    }
+  if (inputs.roofingWorkCost !== undefined && inputs.roofingWorkCost < 0) {
+    errors.push('Roofing work cost cannot be negative');
+  }
+  if (inputs.roofingWorkCost !== undefined && inputs.roofingWorkCost > 100000) {
+    errors.push('Roofing work cost over $100,000 seems excessive');
   }
 
-  if (inputs.carryingCosts !== undefined && inputs.carryingCosts !== null) {
-    const carryingCosts = Number(inputs.carryingCosts);
-    if (isNaN(carryingCosts) || carryingCosts < 0 || carryingCosts > 100000) {
-      errors.push('Carrying costs must be between $0 and $100,000');
-    }
+  if (inputs.kitchenRemodelCost !== undefined && inputs.kitchenRemodelCost < 0) {
+    errors.push('Kitchen remodel cost cannot be negative');
+  }
+  if (inputs.kitchenRemodelCost !== undefined && inputs.kitchenRemodelCost > 200000) {
+    errors.push('Kitchen remodel cost over $200,000 seems excessive');
   }
 
-  if (inputs.exitStrategy) {
-    const validExitStrategies = ['sell', 'rent', 'refinance', 'wholesale'];
-    if (!validExitStrategies.includes(inputs.exitStrategy)) {
-      errors.push('Invalid exit strategy');
-    }
+  if (inputs.bathroomRemodelCost !== undefined && inputs.bathroomRemodelCost < 0) {
+    errors.push('Bathroom remodel cost cannot be negative');
+  }
+  if (inputs.bathroomRemodelCost !== undefined && inputs.bathroomRemodelCost > 100000) {
+    errors.push('Bathroom remodel cost over $100,000 seems excessive');
   }
 
-  if (inputs.targetROI !== undefined && inputs.targetROI !== null) {
-    const targetROI = Number(inputs.targetROI);
-    if (isNaN(targetROI) || targetROI < 5 || targetROI > 100) {
-      errors.push('Target ROI must be between 5% and 100%');
-    }
+  if (inputs.flooringWorkCost !== undefined && inputs.flooringWorkCost < 0) {
+    errors.push('Flooring work cost cannot be negative');
+  }
+  if (inputs.flooringWorkCost !== undefined && inputs.flooringWorkCost > 50000) {
+    errors.push('Flooring work cost over $50,000 seems excessive');
   }
 
-  if (inputs.riskTolerance) {
-    const validRiskTolerances = ['conservative', 'moderate', 'aggressive'];
-    if (!validRiskTolerances.includes(inputs.riskTolerance)) {
-      errors.push('Invalid risk tolerance');
-    }
+  if (inputs.paintingWorkCost !== undefined && inputs.paintingWorkCost < 0) {
+    errors.push('Painting work cost cannot be negative');
+  }
+  if (inputs.paintingWorkCost !== undefined && inputs.paintingWorkCost > 30000) {
+    errors.push('Painting work cost over $30,000 seems excessive');
   }
 
-  if (inputs.experienceLevel) {
-    const validExperienceLevels = ['beginner', 'intermediate', 'expert'];
-    if (!validExperienceLevels.includes(inputs.experienceLevel)) {
-      errors.push('Invalid experience level');
-    }
+  if (inputs.landscapingWorkCost !== undefined && inputs.landscapingWorkCost < 0) {
+    errors.push('Landscaping work cost cannot be negative');
+  }
+  if (inputs.landscapingWorkCost !== undefined && inputs.landscapingWorkCost > 50000) {
+    errors.push('Landscaping work cost over $50,000 seems excessive');
   }
 
-  if (inputs.teamSize !== undefined && inputs.teamSize !== null) {
-    const teamSize = Number(inputs.teamSize);
-    if (isNaN(teamSize) || teamSize < 1 || teamSize > 20) {
-      errors.push('Team size must be between 1 and 20');
-    }
+  if (inputs.permitsAndFees !== undefined && inputs.permitsAndFees < 0) {
+    errors.push('Permits and fees cannot be negative');
+  }
+  if (inputs.permitsAndFees !== undefined && inputs.permitsAndFees > 20000) {
+    errors.push('Permits and fees over $20,000 seem excessive');
   }
 
-  if (inputs.contractorCosts !== undefined && inputs.contractorCosts !== null) {
-    const contractorCosts = Number(inputs.contractorCosts);
-    if (isNaN(contractorCosts) || contractorCosts < 0 || contractorCosts > 500000) {
-      errors.push('Contractor costs must be between $0 and $500,000');
-    }
+  if (inputs.contingencyBudget !== undefined && inputs.contingencyBudget < 0) {
+    errors.push('Contingency budget cannot be negative');
+  }
+  if (inputs.contingencyBudget !== undefined && inputs.contingencyBudget > 100000) {
+    errors.push('Contingency budget over $100,000 seems excessive');
   }
 
-  if (inputs.materialCosts !== undefined && inputs.materialCosts !== null) {
-    const materialCosts = Number(inputs.materialCosts);
-    if (isNaN(materialCosts) || materialCosts < 0 || materialCosts > 500000) {
-      errors.push('Material costs must be between $0 and $500,000');
-    }
+  // Holding Costs Validation
+  if (inputs.propertyTaxes < 0) {
+    errors.push('Property taxes cannot be negative');
+  }
+  if (inputs.propertyTaxes > 10000) {
+    errors.push('Property taxes over $10,000 per month seem excessive');
   }
 
-  if (inputs.designCosts !== undefined && inputs.designCosts !== null) {
-    const designCosts = Number(inputs.designCosts);
-    if (isNaN(designCosts) || designCosts < 0 || designCosts > 50000) {
-      errors.push('Design costs must be between $0 and $50,000');
-    }
+  if (inputs.insurance < 0) {
+    errors.push('Insurance cannot be negative');
+  }
+  if (inputs.insurance > 5000) {
+    errors.push('Insurance over $5,000 per month seems excessive');
   }
 
-  if (inputs.landscapingCosts !== undefined && inputs.landscapingCosts !== null) {
-    const landscapingCosts = Number(inputs.landscapingCosts);
-    if (isNaN(landscapingCosts) || landscapingCosts < 0 || landscapingCosts > 100000) {
-      errors.push('Landscaping costs must be between $0 and $100,000');
-    }
+  if (inputs.utilities !== undefined && inputs.utilities < 0) {
+    errors.push('Utilities cannot be negative');
+  }
+  if (inputs.utilities !== undefined && inputs.utilities > 2000) {
+    errors.push('Utilities over $2,000 per month seem excessive');
   }
 
-  if (inputs.applianceCosts !== undefined && inputs.applianceCosts !== null) {
-    const applianceCosts = Number(inputs.applianceCosts);
-    if (isNaN(applianceCosts) || applianceCosts < 0 || applianceCosts > 50000) {
-      errors.push('Appliance costs must be between $0 and $50,000');
-    }
+  if (inputs.hoaFees !== undefined && inputs.hoaFees < 0) {
+    errors.push('HOA fees cannot be negative');
+  }
+  if (inputs.hoaFees !== undefined && inputs.hoaFees > 2000) {
+    errors.push('HOA fees over $2,000 per month seem excessive');
   }
 
-  if (inputs.furnitureCosts !== undefined && inputs.furnitureCosts !== null) {
-    const furnitureCosts = Number(inputs.furnitureCosts);
-    if (isNaN(furnitureCosts) || furnitureCosts < 0 || furnitureCosts > 50000) {
-      errors.push('Furniture costs must be between $0 and $50,000');
-    }
+  if (inputs.propertyManagement !== undefined && inputs.propertyManagement < 0) {
+    errors.push('Property management cost cannot be negative');
+  }
+  if (inputs.propertyManagement !== undefined && inputs.propertyManagement > 5000) {
+    errors.push('Property management cost over $5,000 per month seems excessive');
   }
 
-  if (inputs.storageCosts !== undefined && inputs.storageCosts !== null) {
-    const storageCosts = Number(inputs.storageCosts);
-    if (isNaN(storageCosts) || storageCosts < 0 || storageCosts > 10000) {
-      errors.push('Storage costs must be between $0 and $10,000');
-    }
+  if (inputs.maintenance !== undefined && inputs.maintenance < 0) {
+    errors.push('Maintenance cost cannot be negative');
+  }
+  if (inputs.maintenance !== undefined && inputs.maintenance > 2000) {
+    errors.push('Maintenance cost over $2,000 per month seems excessive');
   }
 
-  if (inputs.cleanupCosts !== undefined && inputs.cleanupCosts !== null) {
-    const cleanupCosts = Number(inputs.cleanupCosts);
-    if (isNaN(cleanupCosts) || cleanupCosts < 0 || cleanupCosts > 20000) {
-      errors.push('Cleanup costs must be between $0 and $20,000');
-    }
+  if (inputs.otherHoldingCosts !== undefined && inputs.otherHoldingCosts < 0) {
+    errors.push('Other holding costs cannot be negative');
+  }
+  if (inputs.otherHoldingCosts !== undefined && inputs.otherHoldingCosts > 2000) {
+    errors.push('Other holding costs over $2,000 per month seem excessive');
   }
 
-  if (inputs.legalCosts !== undefined && inputs.legalCosts !== null) {
-    const legalCosts = Number(inputs.legalCosts);
-    if (isNaN(legalCosts) || legalCosts < 0 || legalCosts > 25000) {
-      errors.push('Legal costs must be between $0 and $25,000');
-    }
+  // Market Information Validation
+  if (inputs.averageDaysOnMarket !== undefined && inputs.averageDaysOnMarket <= 0) {
+    errors.push('Average days on market must be greater than zero');
+  }
+  if (inputs.averageDaysOnMarket !== undefined && inputs.averageDaysOnMarket > 365) {
+    errors.push('Average days on market over 365 days seems excessive');
   }
 
-  if (inputs.titleCosts !== undefined && inputs.titleCosts !== null) {
-    const titleCosts = Number(inputs.titleCosts);
-    if (isNaN(titleCosts) || titleCosts < 0 || titleCosts > 10000) {
-      errors.push('Title costs must be between $0 and $10,000');
-    }
+  if (inputs.marketAbsorptionRate !== undefined && inputs.marketAbsorptionRate <= 0) {
+    errors.push('Market absorption rate must be greater than zero');
+  }
+  if (inputs.marketAbsorptionRate !== undefined && inputs.marketAbsorptionRate > 24) {
+    errors.push('Market absorption rate over 24 months seems excessive');
   }
 
-  if (inputs.escrowCosts !== undefined && inputs.escrowCosts !== null) {
-    const escrowCosts = Number(inputs.escrowCosts);
-    if (isNaN(escrowCosts) || escrowCosts < 0 || escrowCosts > 10000) {
-      errors.push('Escrow costs must be between $0 and $10,000');
-    }
+  // Exit Strategy Validation
+  if (inputs.targetSalePrice <= 0) {
+    errors.push('Target sale price must be greater than zero');
+  }
+  if (inputs.targetSalePrice > 10000000) {
+    errors.push('Target sale price over $10 million seems high for fix and flip');
   }
 
-  if (inputs.surveyCosts !== undefined && inputs.surveyCosts !== null) {
-    const surveyCosts = Number(inputs.surveyCosts);
-    if (isNaN(surveyCosts) || surveyCosts < 0 || surveyCosts > 5000) {
-      errors.push('Survey costs must be between $0 and $5,000');
-    }
+  if (!inputs.targetSaleDate) {
+    errors.push('Target sale date is required');
   }
 
-  if (inputs.appraisalCosts !== undefined && inputs.appraisalCosts !== null) {
-    const appraisalCosts = Number(inputs.appraisalCosts);
-    if (isNaN(appraisalCosts) || appraisalCosts < 0 || appraisalCosts > 1000) {
-      errors.push('Appraisal costs must be between $0 and $1,000');
-    }
+  if (inputs.realtorCommission !== undefined && inputs.realtorCommission < 0) {
+    errors.push('Realtor commission cannot be negative');
+  }
+  if (inputs.realtorCommission !== undefined && inputs.realtorCommission > 15) {
+    errors.push('Realtor commission over 15% seems excessive');
   }
 
-  if (inputs.homeWarranty !== undefined && inputs.homeWarranty !== null) {
-    const homeWarranty = Number(inputs.homeWarranty);
-    if (isNaN(homeWarranty) || homeWarranty < 0 || homeWarranty > 1000) {
-      errors.push('Home warranty must be between $0 and $1,000');
-    }
+  if (inputs.closingCostsSeller !== undefined && inputs.closingCostsSeller < 0) {
+    errors.push('Seller closing costs cannot be negative');
+  }
+  if (inputs.closingCostsSeller !== undefined && inputs.closingCostsSeller > 100000) {
+    errors.push('Seller closing costs over $100,000 seem excessive');
   }
 
-  if (inputs.homeInspection !== undefined && inputs.homeInspection !== null) {
-    const homeInspection = Number(inputs.homeInspection);
-    if (isNaN(homeInspection) || homeInspection < 0 || homeInspection > 1000) {
-      errors.push('Home inspection must be between $0 and $1,000');
-    }
+  if (inputs.stagingCosts !== undefined && inputs.stagingCosts < 0) {
+    errors.push('Staging costs cannot be negative');
+  }
+  if (inputs.stagingCosts !== undefined && inputs.stagingCosts > 50000) {
+    errors.push('Staging costs over $50,000 seem excessive');
   }
 
-  if (inputs.creditRepair !== undefined && inputs.creditRepair !== null) {
-    const creditRepair = Number(inputs.creditRepair);
-    if (isNaN(creditRepair) || creditRepair < 0 || creditRepair > 5000) {
-      errors.push('Credit repair must be between $0 and $5,000');
-    }
+  if (inputs.marketingCosts !== undefined && inputs.marketingCosts < 0) {
+    errors.push('Marketing costs cannot be negative');
+  }
+  if (inputs.marketingCosts !== undefined && inputs.marketingCosts > 20000) {
+    errors.push('Marketing costs over $20,000 seem excessive');
   }
 
-  if (inputs.buyerIncentives !== undefined && inputs.buyerIncentives !== null) {
-    const buyerIncentives = Number(inputs.buyerIncentives);
-    if (isNaN(buyerIncentives) || buyerIncentives < 0 || buyerIncentives > 50000) {
-      errors.push('Buyer incentives must be between $0 and $50,000');
-    }
+  // Timeline Validation
+  if (inputs.acquisitionTimeline !== undefined && inputs.acquisitionTimeline <= 0) {
+    errors.push('Acquisition timeline must be greater than zero');
+  }
+  if (inputs.acquisitionTimeline !== undefined && inputs.acquisitionTimeline > 365) {
+    errors.push('Acquisition timeline over 365 days seems excessive');
   }
 
-  if (inputs.priceReduction !== undefined && inputs.priceReduction !== null) {
-    const priceReduction = Number(inputs.priceReduction);
-    if (isNaN(priceReduction) || priceReduction < 0 || priceReduction > 100000) {
-      errors.push('Price reduction must be between $0 and $100,000');
-    }
+  if (inputs.renovationTimeline !== undefined && inputs.renovationTimeline <= 0) {
+    errors.push('Renovation timeline must be greater than zero');
+  }
+  if (inputs.renovationTimeline !== undefined && inputs.renovationTimeline > 730) {
+    errors.push('Renovation timeline over 730 days seems excessive');
   }
 
-  if (inputs.timeOnMarket !== undefined && inputs.timeOnMarket !== null) {
-    const timeOnMarket = Number(inputs.timeOnMarket);
-    if (isNaN(timeOnMarket) || timeOnMarket < 1 || timeOnMarket > 365) {
-      errors.push('Time on market must be between 1 and 365 days');
-    }
+  if (inputs.marketingTimeline !== undefined && inputs.marketingTimeline <= 0) {
+    errors.push('Marketing timeline must be greater than zero');
+  }
+  if (inputs.marketingTimeline !== undefined && inputs.marketingTimeline > 365) {
+    errors.push('Marketing timeline over 365 days seems excessive');
   }
 
-  if (inputs.marketAppreciation !== undefined && inputs.marketAppreciation !== null) {
-    const marketAppreciation = Number(inputs.marketAppreciation);
-    if (isNaN(marketAppreciation) || marketAppreciation < -20 || marketAppreciation > 20) {
-      errors.push('Market appreciation must be between -20% and 20%');
-    }
+  if (inputs.totalProjectTimeline !== undefined && inputs.totalProjectTimeline <= 0) {
+    errors.push('Total project timeline must be greater than zero');
+  }
+  if (inputs.totalProjectTimeline !== undefined && inputs.totalProjectTimeline > 1095) {
+    errors.push('Total project timeline over 1095 days (3 years) seems excessive');
   }
 
-  if (inputs.inflationRate !== undefined && inputs.inflationRate !== null) {
-    const inflationRate = Number(inputs.inflationRate);
-    if (isNaN(inflationRate) || inflationRate < 0 || inflationRate > 15) {
-      errors.push('Inflation rate must be between 0% and 15%');
-    }
+  // Analysis Parameters Validation
+  if (inputs.analysisPeriod <= 0) {
+    errors.push('Analysis period must be greater than zero');
+  }
+  if (inputs.analysisPeriod > 60) {
+    errors.push('Analysis period over 60 months seems excessive');
   }
 
-  if (inputs.opportunityCost !== undefined && inputs.opportunityCost !== null) {
-    const opportunityCost = Number(inputs.opportunityCost);
-    if (isNaN(opportunityCost) || opportunityCost < 0 || opportunityCost > 25) {
-      errors.push('Opportunity cost must be between 0% and 25%');
-    }
+  if (inputs.discountRate < 0) {
+    errors.push('Discount rate cannot be negative');
+  }
+  if (inputs.discountRate > 50) {
+    errors.push('Discount rate over 50% seems excessive');
   }
 
-  // Logical consistency checks
-  if (purchasePrice && downPayment) {
-    if (downPayment > purchasePrice) {
-      errors.push('Down payment cannot exceed purchase price');
-    }
-    const downPaymentPercentage = (downPayment / purchasePrice) * 100;
-    if (downPaymentPercentage < 10) {
-      errors.push('Down payment should be at least 10% of purchase price');
-    }
-    if (downPaymentPercentage > 80) {
-      errors.push('Down payment percentage is very high - verify accuracy');
-    }
+  if (inputs.taxRate !== undefined && inputs.taxRate < 0) {
+    errors.push('Tax rate cannot be negative');
+  }
+  if (inputs.taxRate !== undefined && inputs.taxRate > 50) {
+    errors.push('Tax rate over 50% seems excessive');
   }
 
-  if (purchasePrice && afterRepairValue) {
-    if (afterRepairValue <= purchasePrice) {
-      errors.push('After repair value should be higher than purchase price');
-    }
-    const valueIncrease = ((afterRepairValue - purchasePrice) / purchasePrice) * 100;
-    if (valueIncrease < 10) {
-      errors.push('Value increase seems low for a fix and flip project');
-    }
-    if (valueIncrease > 200) {
-      errors.push('Value increase seems very high - verify ARV estimate');
-    }
+  if (inputs.inflationRate !== undefined && inputs.inflationRate < -10) {
+    errors.push('Inflation rate below -10% seems unrealistic');
+  }
+  if (inputs.inflationRate !== undefined && inputs.inflationRate > 20) {
+    errors.push('Inflation rate over 20% seems excessive');
   }
 
-  if (renovationBudget && purchasePrice) {
-    const renovationPercentage = (renovationBudget / purchasePrice) * 100;
-    if (renovationPercentage > 50) {
-      errors.push('Renovation budget is very high relative to purchase price');
-    }
+  if (inputs.appreciationRate !== undefined && inputs.appreciationRate < -20) {
+    errors.push('Appreciation rate below -20% seems unrealistic');
+  }
+  if (inputs.appreciationRate !== undefined && inputs.appreciationRate > 20) {
+    errors.push('Appreciation rate over 20% seems excessive');
   }
 
-  if (renovationTime > 12) {
-    errors.push('Renovation time over 12 months increases holding cost risk');
+  // Business Logic Validation
+  if (inputs.downPayment + inputs.loanAmount !== inputs.purchasePrice) {
+    errors.push('Down payment plus loan amount should equal purchase price');
   }
 
-  if (inputs.marketType === 'declining' && inputs.propertyCondition === 'needs-major-repairs') {
-    errors.push('High risk combination: declining market with major repairs needed');
+  if (inputs.targetSalePrice <= inputs.purchasePrice) {
+    errors.push('Target sale price should be greater than purchase price for profitable flip');
   }
 
-  if (inputs.experienceLevel === 'beginner' && renovationBudget > 100000) {
-    errors.push('Large renovation budget for beginner - consider starting smaller');
+  const totalRenovationCosts = (inputs.structuralWorkCost || 0) + 
+    (inputs.electricalWorkCost || 0) + (inputs.plumbingWorkCost || 0) + 
+    (inputs.hvacWorkCost || 0) + (inputs.roofingWorkCost || 0) + 
+    (inputs.kitchenRemodelCost || 0) + (inputs.bathroomRemodelCost || 0) + 
+    (inputs.flooringWorkCost || 0) + (inputs.paintingWorkCost || 0) + 
+    (inputs.landscapingWorkCost || 0) + (inputs.permitsAndFees || 0) + 
+    (inputs.contingencyBudget || 0);
+
+  if (totalRenovationCosts > inputs.renovationBudget * 1.2) {
+    errors.push('Total renovation costs exceed renovation budget by more than 20%');
+  }
+
+  const totalTimeline = (inputs.acquisitionTimeline || 30) + 
+    (inputs.renovationTimeline || inputs.renovationTimeline * 30) + 
+    (inputs.marketingTimeline || 45);
+
+  if (totalTimeline > 1095) {
+    errors.push('Total project timeline over 3 years suggests this may not be a fix and flip project');
   }
 
   return {

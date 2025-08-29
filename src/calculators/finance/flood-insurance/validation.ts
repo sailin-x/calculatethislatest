@@ -1,175 +1,195 @@
-import { CalculatorInputs } from '../../../types/calculator';
+import { FloodInsuranceInputs } from './types';
 
-export interface ValidationResult {
-  isValid: boolean;
-  errors: string[];
-}
-
-export function validateFloodInsuranceInputs(inputs: CalculatorInputs): ValidationResult {
+export function validateFloodInsuranceInputs(inputs: FloodInsuranceInputs): { isValid: boolean; errors: string[] } {
   const errors: string[] = [];
 
-  // Required field validation
-  if (!inputs.propertyValue) {
-    errors.push('Property value is required');
+  // Property Information Validation
+  if (!inputs.propertyAddress || inputs.propertyAddress.trim().length === 0) {
+    errors.push('Property address is required');
   }
-  if (!inputs.buildingValue) {
-    errors.push('Building value is required');
-  }
-  if (!inputs.contentsValue) {
-    errors.push('Contents value is required');
-  }
-  if (!inputs.floodZone) {
-    errors.push('Flood zone is required');
-  }
-  if (!inputs.deductible) {
-    errors.push('Deductible is required');
-  }
-  if (!inputs.policyType) {
-    errors.push('Policy type is required');
-  }
-  if (!inputs.propertyType) {
-    errors.push('Property type is required');
-  }
-  if (!inputs.occupancyType) {
-    errors.push('Occupancy type is required');
+  if (inputs.propertyAddress && inputs.propertyAddress.length > 200) {
+    errors.push('Property address must be 200 characters or less');
   }
 
-  // Data type validation
-  if (inputs.propertyValue && typeof inputs.propertyValue !== 'number') {
-    errors.push('Property value must be a number');
+  if (inputs.propertyValue <= 0) {
+    errors.push('Property value must be greater than zero');
   }
-  if (inputs.buildingValue && typeof inputs.buildingValue !== 'number') {
-    errors.push('Building value must be a number');
-  }
-  if (inputs.contentsValue && typeof inputs.contentsValue !== 'number') {
-    errors.push('Contents value must be a number');
-  }
-  if (inputs.deductible && typeof inputs.deductible !== 'number') {
-    errors.push('Deductible must be a number');
-  }
-  if (inputs.buildingElevation && typeof inputs.buildingElevation !== 'number') {
-    errors.push('Building elevation must be a number');
-  }
-  if (inputs.baseFloodElevation && typeof inputs.baseFloodElevation !== 'number') {
-    errors.push('Base flood elevation must be a number');
-  }
-  if (inputs.contentsDeductible && typeof inputs.contentsDeductible !== 'number') {
-    errors.push('Contents deductible must be a number');
-  }
-  if (inputs.additionalLivingExpenses && typeof inputs.additionalLivingExpenses !== 'number') {
-    errors.push('Additional living expenses must be a number');
-  }
-  if (inputs.businessInterruption && typeof inputs.businessInterruption !== 'number') {
-    errors.push('Business interruption must be a number');
-  }
-  if (inputs.ordinanceLaw && typeof inputs.ordinanceLaw !== 'number') {
-    errors.push('Ordinance and law coverage must be a number');
-  }
-  if (inputs.umbrellaLiability && typeof inputs.umbrellaLiability !== 'number') {
-    errors.push('Umbrella liability must be a number');
-  }
-  if (inputs.riskScore && typeof inputs.riskScore !== 'number') {
-    errors.push('Risk score must be a number');
-  }
-  if (inputs.affordabilityScore && typeof inputs.affordabilityScore !== 'number') {
-    errors.push('Affordability score must be a number');
+  if (inputs.propertyValue > 10000000) {
+    errors.push('Property value over $10 million seems excessive');
   }
 
-  // Range validation
-  if (inputs.propertyValue && (inputs.propertyValue < 10000 || inputs.propertyValue > 10000000)) {
-    errors.push('Property value must be between $10,000 and $10,000,000');
+  if (inputs.propertySize <= 0) {
+    errors.push('Property size must be greater than zero');
   }
-  if (inputs.buildingValue && (inputs.buildingValue < 5000 || inputs.buildingValue > 10000000)) {
-    errors.push('Building value must be between $5,000 and $10,000,000');
-  }
-  if (inputs.contentsValue && (inputs.contentsValue < 1000 || inputs.contentsValue > 5000000)) {
-    errors.push('Contents value must be between $1,000 and $5,000,000');
-  }
-  if (inputs.deductible && (inputs.deductible < 1000 || inputs.deductible > 100000)) {
-    errors.push('Deductible must be between $1,000 and $100,000');
-  }
-  if (inputs.buildingElevation && (inputs.buildingElevation < -50 || inputs.buildingElevation > 100)) {
-    errors.push('Building elevation must be between -50 and 100 feet');
-  }
-  if (inputs.baseFloodElevation && (inputs.baseFloodElevation < -50 || inputs.baseFloodElevation > 100)) {
-    errors.push('Base flood elevation must be between -50 and 100 feet');
-  }
-  if (inputs.contentsDeductible && (inputs.contentsDeductible < 500 || inputs.contentsDeductible > 50000)) {
-    errors.push('Contents deductible must be between $500 and $50,000');
-  }
-  if (inputs.additionalLivingExpenses && (inputs.additionalLivingExpenses < 0 || inputs.additionalLivingExpenses > 100000)) {
-    errors.push('Additional living expenses must be between $0 and $100,000');
-  }
-  if (inputs.businessInterruption && (inputs.businessInterruption < 0 || inputs.businessInterruption > 500000)) {
-    errors.push('Business interruption must be between $0 and $500,000');
-  }
-  if (inputs.ordinanceLaw && (inputs.ordinanceLaw < 0 || inputs.ordinanceLaw > 100000)) {
-    errors.push('Ordinance and law coverage must be between $0 and $100,000');
-  }
-  if (inputs.umbrellaLiability && (inputs.umbrellaLiability < 0 || inputs.umbrellaLiability > 10000000)) {
-    errors.push('Umbrella liability must be between $0 and $10,000,000');
-  }
-  if (inputs.riskScore && (inputs.riskScore < 1 || inputs.riskScore > 10)) {
-    errors.push('Risk score must be between 1 and 10');
-  }
-  if (inputs.affordabilityScore && (inputs.affordabilityScore < 1 || inputs.affordabilityScore > 10)) {
-    errors.push('Affordability score must be between 1 and 10');
+  if (inputs.propertySize > 100000) {
+    errors.push('Property size over 100,000 sq ft seems unrealistic');
   }
 
-  // Logical validation
-  if (inputs.buildingValue && inputs.propertyValue && inputs.buildingValue > inputs.propertyValue) {
-    errors.push('Building value cannot exceed property value');
-  }
-  if (inputs.contentsValue && inputs.propertyValue && inputs.contentsValue > inputs.propertyValue) {
-    errors.push('Contents value cannot exceed property value');
-  }
-  if (inputs.deductible && inputs.buildingValue && inputs.deductible > inputs.buildingValue) {
-    errors.push('Deductible cannot exceed building value');
-  }
-  if (inputs.contentsDeductible && inputs.contentsValue && inputs.contentsDeductible > inputs.contentsValue) {
-    errors.push('Contents deductible cannot exceed contents value');
-  }
-  if (inputs.buildingElevation && inputs.baseFloodElevation) {
-    const elevationDiff = inputs.buildingElevation - inputs.baseFloodElevation;
-    if (elevationDiff < -20) {
-      errors.push('Building elevation is significantly below base flood elevation');
-    }
+  if (inputs.yearBuilt < 1800 || inputs.yearBuilt > 2030) {
+    errors.push('Year built must be between 1800 and 2030');
   }
 
-  // Enum validation
-  const validFloodZones = ['A', 'AE', 'AH', 'AO', 'AR', 'A99', 'V', 'VE', 'X', 'D'];
-  if (inputs.floodZone && !validFloodZones.includes(inputs.floodZone)) {
-    errors.push('Invalid flood zone. Must be one of: A, AE, AH, AO, AR, A99, V, VE, X, D');
+  if (inputs.numberOfStories <= 0) {
+    errors.push('Number of stories must be greater than zero');
+  }
+  if (inputs.numberOfStories > 50) {
+    errors.push('Number of stories over 50 seems unrealistic');
   }
 
-  const validPolicyTypes = ['nfip', 'private', 'excess'];
-  if (inputs.policyType && !validPolicyTypes.includes(inputs.policyType)) {
-    errors.push('Invalid policy type. Must be one of: nfip, private, excess');
+  // Coverage Information Validation
+  if (inputs.buildingCoverage <= 0) {
+    errors.push('Building coverage must be greater than zero');
+  }
+  if (inputs.buildingCoverage > 10000000) {
+    errors.push('Building coverage over $10 million seems excessive');
   }
 
-  const validPropertyTypes = ['single-family', 'multi-family', 'condo', 'commercial', 'manufactured'];
-  if (inputs.propertyType && !validPropertyTypes.includes(inputs.propertyType)) {
-    errors.push('Invalid property type. Must be one of: single-family, multi-family, condo, commercial, manufactured');
+  if (inputs.contentsCoverage < 0) {
+    errors.push('Contents coverage cannot be negative');
+  }
+  if (inputs.contentsCoverage > 5000000) {
+    errors.push('Contents coverage over $5 million seems excessive');
   }
 
-  const validOccupancyTypes = ['primary', 'secondary', 'rental', 'business'];
-  if (inputs.occupancyType && !validOccupancyTypes.includes(inputs.occupancyType)) {
-    errors.push('Invalid occupancy type. Must be one of: primary, secondary, rental, business');
+  if (inputs.replacementCostValue !== undefined && inputs.replacementCostValue <= 0) {
+    errors.push('Replacement cost value must be greater than zero');
+  }
+  if (inputs.replacementCostValue !== undefined && inputs.replacementCostValue > 10000000) {
+    errors.push('Replacement cost value over $10 million seems excessive');
   }
 
-  const validElevationCertStatuses = ['yes', 'no', 'pending'];
-  if (inputs.elevationCertStatus && !validElevationCertStatuses.includes(inputs.elevationCertStatus)) {
-    errors.push('Invalid elevation certificate status. Must be one of: yes, no, pending');
+  // Deductible Information Validation
+  if (inputs.buildingDeductible < 500) {
+    errors.push('Building deductible must be at least $500');
+  }
+  if (inputs.buildingDeductible > 100000) {
+    errors.push('Building deductible over $100,000 seems excessive');
   }
 
-  const validMitigationMeasures = ['elevation', 'floodwalls', 'dry-floodproofing', 'wet-floodproofing', 'none'];
-  if (inputs.mitigationMeasures && !validMitigationMeasures.includes(inputs.mitigationMeasures)) {
-    errors.push('Invalid mitigation measures. Must be one of: elevation, floodwalls, dry-floodproofing, wet-floodproofing, none');
+  if (inputs.contentsDeductible < 500) {
+    errors.push('Contents deductible must be at least $500');
+  }
+  if (inputs.contentsDeductible > 100000) {
+    errors.push('Contents deductible over $100,000 seems excessive');
   }
 
-  const validCommunityRatings = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'none'];
-  if (inputs.communityRating && !validCommunityRatings.includes(inputs.communityRating)) {
-    errors.push('Invalid community rating. Must be one of: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, none');
+  // Policy Information Validation
+  if (inputs.policyTerm <= 0) {
+    errors.push('Policy term must be greater than zero');
+  }
+  if (inputs.policyTerm > 60) {
+    errors.push('Policy term over 60 months seems excessive');
+  }
+
+  if (!inputs.policyStartDate) {
+    errors.push('Policy start date is required');
+  }
+
+  if (!inputs.policyEndDate) {
+    errors.push('Policy end date is required');
+  }
+
+  // Risk Factors Validation
+  if (inputs.numberOfPreviousClaims !== undefined && inputs.numberOfPreviousClaims < 0) {
+    errors.push('Number of previous claims cannot be negative');
+  }
+  if (inputs.numberOfPreviousClaims !== undefined && inputs.numberOfPreviousClaims > 50) {
+    errors.push('Number of previous claims over 50 seems excessive');
+  }
+
+  if (inputs.yearsSinceLastClaim !== undefined && inputs.yearsSinceLastClaim < 0) {
+    errors.push('Years since last claim cannot be negative');
+  }
+  if (inputs.yearsSinceLastClaim !== undefined && inputs.yearsSinceLastClaim > 100) {
+    errors.push('Years since last claim over 100 seems unrealistic');
+  }
+
+  if (inputs.floodRiskScore !== undefined && (inputs.floodRiskScore < 1 || inputs.floodRiskScore > 10)) {
+    errors.push('Flood risk score must be between 1 and 10');
+  }
+
+  // Building Characteristics Validation
+  if (inputs.roofAge !== undefined && inputs.roofAge < 0) {
+    errors.push('Roof age cannot be negative');
+  }
+  if (inputs.roofAge !== undefined && inputs.roofAge > 100) {
+    errors.push('Roof age over 100 years seems unrealistic');
+  }
+
+  if (inputs.foundationHeight !== undefined && inputs.foundationHeight < 0) {
+    errors.push('Foundation height cannot be negative');
+  }
+  if (inputs.foundationHeight !== undefined && inputs.foundationHeight > 50) {
+    errors.push('Foundation height over 50 feet seems unrealistic');
+  }
+
+  if (inputs.numberOfFloodVents !== undefined && inputs.numberOfFloodVents < 0) {
+    errors.push('Number of flood vents cannot be negative');
+  }
+  if (inputs.numberOfFloodVents !== undefined && inputs.numberOfFloodVents > 100) {
+    errors.push('Number of flood vents over 100 seems excessive');
+  }
+
+  // Community Information Validation
+  if (inputs.communityRatingSystem !== undefined && (inputs.communityRatingSystem < 1 || inputs.communityRatingSystem > 10)) {
+    errors.push('Community rating system score must be between 1 and 10');
+  }
+
+  // Additional Coverage Validation
+  if (inputs.lossOfUseLimit !== undefined && inputs.lossOfUseLimit < 0) {
+    errors.push('Loss of use limit cannot be negative');
+  }
+  if (inputs.lossOfUseLimit !== undefined && inputs.lossOfUseLimit > 100000) {
+    errors.push('Loss of use limit over $100,000 seems excessive');
+  }
+
+  if (inputs.ordinanceOrLawLimit !== undefined && inputs.ordinanceOrLawLimit < 0) {
+    errors.push('Ordinance or law limit cannot be negative');
+  }
+  if (inputs.ordinanceOrLawLimit !== undefined && inputs.ordinanceOrLawLimit > 100000) {
+    errors.push('Ordinance or law limit over $100,000 seems excessive');
+  }
+
+  if (inputs.sewerBackupLimit !== undefined && inputs.sewerBackupLimit < 0) {
+    errors.push('Sewer backup limit cannot be negative');
+  }
+  if (inputs.sewerBackupLimit !== undefined && inputs.sewerBackupLimit > 100000) {
+    errors.push('Sewer backup limit over $100,000 seems excessive');
+  }
+
+  // Analysis Parameters Validation
+  if (inputs.analysisPeriod <= 0) {
+    errors.push('Analysis period must be greater than zero');
+  }
+  if (inputs.analysisPeriod > 30) {
+    errors.push('Analysis period over 30 years seems excessive');
+  }
+
+  if (inputs.inflationRate !== undefined && inputs.inflationRate < -10) {
+    errors.push('Inflation rate below -10% seems unrealistic');
+  }
+  if (inputs.inflationRate !== undefined && inputs.inflationRate > 20) {
+    errors.push('Inflation rate over 20% seems excessive');
+  }
+
+  if (inputs.propertyAppreciationRate !== undefined && inputs.propertyAppreciationRate < -20) {
+    errors.push('Property appreciation rate below -20% seems unrealistic');
+  }
+  if (inputs.propertyAppreciationRate !== undefined && inputs.propertyAppreciationRate > 20) {
+    errors.push('Property appreciation rate over 20% seems excessive');
+  }
+
+  // Business Logic Validation
+  if (inputs.buildingCoverage > inputs.propertyValue) {
+    errors.push('Building coverage cannot exceed property value');
+  }
+
+  if (inputs.contentsCoverage > inputs.propertyValue * 0.5) {
+    errors.push('Contents coverage over 50% of property value seems excessive');
+  }
+
+  if (inputs.replacementCostValue && inputs.buildingCoverage > inputs.replacementCostValue) {
+    errors.push('Building coverage cannot exceed replacement cost value');
   }
 
   return {

@@ -1,342 +1,308 @@
 export interface GroundLeaseValuationInputs {
-  landValue: number;
-  leaseTerm: number;
-  annualRent: number;
-  rentEscalation: number;
-  rentReviewPeriod: number;
-  tenantImprovements: number;
+  // Property Information
+  propertyAddress: string;
+  propertyType: 'commercial' | 'residential' | 'industrial' | 'retail' | 'office' | 'mixed_use';
+  propertySize: number; // square feet
+  landSize: number; // acres
+  zoning: string;
+  currentUse: string;
+  highestBestUse: string;
+  
+  // Lease Information
+  leaseType: 'ground_lease' | 'land_lease' | 'master_lease' | 'sublease';
+  leaseStartDate: string;
+  leaseEndDate: string;
+  leaseTerm: number; // years
+  remainingTerm: number; // years
+  renewalOptions: number;
+  renewalTerm: number; // years per renewal
+  
+  // Financial Information
+  currentRent: number; // annual
+  rentEscalation: number; // percentage
+  rentEscalationFrequency: 'annual' | 'biennial' | 'quinquennial' | 'decennial';
+  rentReviewClause: boolean;
+  rentReviewFrequency: number; // years
+  rentReviewMethod: 'market' | 'cpi' | 'fixed' | 'hybrid';
+  
+  // Operating Information
+  operatingExpenses: number; // annual
+  propertyTaxes: number; // annual
+  insurance: number; // annual
+  maintenance: number; // annual
+  utilities: number; // annual
+  managementFees: number; // annual
+  
+  // Market Information
+  marketRent: number; // annual per square foot
+  marketCapRate: number; // percentage
+  marketDiscountRate: number; // percentage
+  marketGrowthRate: number; // percentage
+  comparableSales: {
+    address: string;
+    salePrice: number;
+    saleDate: string;
+    capRate: number;
+    size: number;
+  }[];
+  
+  // Improvements
   buildingValue: number;
-  buildingLife: number;
-  residualValue: number;
-  discountRate: number;
-  propertyType: 'commercial' | 'residential' | 'industrial' | 'mixed-use' | 'agricultural';
-  propertyLocation: string;
-  marketConditions: 'strong' | 'moderate' | 'weak';
-  leaseType: 'net' | 'gross' | 'triple-net' | 'modified-gross';
-  tenantCredit: 'excellent' | 'good' | 'fair' | 'poor';
-  tenantGuarantee: boolean;
-  personalGuarantee: boolean;
-  corporateGuarantee: boolean;
-  securityDeposit: number;
-  letterOfCredit: number;
-  performanceBond: number;
-  completionBond: number;
-  warrantyPeriod: number;
-  maintenanceObligation: 'tenant' | 'landlord' | 'shared';
-  utilityObligation: 'tenant' | 'landlord' | 'shared';
-  taxObligation: 'tenant' | 'landlord' | 'shared';
-  insuranceObligation: 'tenant' | 'landlord' | 'shared';
-  permitCosts: number;
-  inspectionCosts: number;
-  architecturalFees: number;
-  engineeringFees: number;
-  legalFees: number;
-  projectManagementFees: number;
-  otherFees: number;
-  totalFees: number;
-  constructionTimeline: number;
-  completionDate: string;
-  occupancyDate: string;
-  rentCommencementDate: string;
-  baseRent: number;
-  percentageRent: number;
-  operatingExpenses: number;
-  utilities: number;
-  janitorial: number;
-  maintenance: number;
-  insurance: number;
-  propertyTaxes: number;
-  managementFees: number;
-  otherExpenses: number;
-  totalExpenses: number;
-  netOperatingIncome: number;
-  capitalizationRate: number;
-  propertyValueIncrease: number;
-  rentIncrease: number;
-  occupancyIncrease: number;
-  marketValueIncrease: number;
-  investmentReturn: number;
-  paybackPeriod: number;
-  internalRateOfReturn: number;
-  netPresentValue: number;
-  profitabilityIndex: number;
-  modifiedInternalRateOfReturn: number;
-  discountedPaybackPeriod: number;
-  averageAccountingReturn: number;
-  breakEvenAnalysis: {
-    breakEvenRent: number;
-    breakEvenOccupancy: number;
-    breakEvenTimeline: number;
-  };
-  sensitivityAnalysis: {
-    bestCase: number;
-    baseCase: number;
-    worstCase: number;
-  };
-  riskAssessment: {
-    constructionRisk: number;
-    tenantRisk: number;
-    marketRisk: number;
-    financialRisk: number;
-    regulatoryRisk: number;
-    environmentalRisk: number;
-    timelineRisk: number;
-    budgetRisk: number;
-    totalRisk: number;
-  };
+  buildingAge: number; // years
+  buildingCondition: 'excellent' | 'good' | 'fair' | 'poor';
+  remainingEconomicLife: number; // years
+  depreciationRate: number; // percentage
+  
+  // Risk Factors
+  tenantCredit: 'aaa' | 'aa' | 'a' | 'bbb' | 'bb' | 'b' | 'ccc' | 'default';
+  leaseSecurity: 'guaranteed' | 'secured' | 'unsecured' | 'subordinated';
+  marketRisk: 'low' | 'medium' | 'high';
+  redevelopmentRisk: 'low' | 'medium' | 'high';
+  
+  // Legal and Regulatory
+  zoningRestrictions: boolean;
+  environmentalIssues: boolean;
+  titleIssues: boolean;
+  easements: boolean;
+  restrictions: string[];
+  
+  // Analysis Parameters
+  analysisPeriod: number; // years
+  terminalCapRate: number; // percentage
+  reversionValue: number;
+  discountRate: number; // percentage
+  inflationRate: number; // percentage
+  
+  // Reporting Preferences
+  currency: 'USD' | 'EUR' | 'GBP' | 'JPY' | 'CAD' | 'AUD';
+  displayFormat: 'percentage' | 'decimal' | 'basis-points';
+  includeCharts: boolean;
 }
 
 export interface GroundLeaseValuationMetrics {
-  landValue: number;
-  leaseTerm: number;
-  annualRent: number;
-  rentEscalation: number;
-  rentReviewPeriod: number;
-  tenantImprovements: number;
-  buildingValue: number;
-  buildingLife: number;
-  residualValue: number;
-  discountRate: number;
+  // Valuation Analysis
+  presentValue: number;
   netPresentValue: number;
-  internalRateOfReturn: number;
-  modifiedInternalRateOfReturn: number;
-  profitabilityIndex: number;
-  discountedPaybackPeriod: number;
-  averageAccountingReturn: number;
-  capitalAssetPricingModel: number;
-  weightedAverageCostOfCapital: number;
-  hurdleRate: number;
-  riskAdjustedReturn: number;
-  riskFreeRate: number;
-  marketRiskPremium: number;
-  beta: number;
-  alpha: number;
-  sharpeRatio: number;
-  sortinoRatio: number;
-  treynorRatio: number;
-  informationRatio: number;
-  calmarRatio: number;
-  maximumDrawdown: number;
-  valueAtRisk: number;
-  conditionalValueAtRisk: number;
-  expectedShortfall: number;
-  downsideDeviation: number;
-  upsideDeviation: number;
-  skewness: number;
-  kurtosis: number;
-  correlation: number;
-  covariance: number;
-  variance: number;
-  standardDeviation: number;
-  coefficientOfVariation: number;
-  riskOfRuin: number;
-  kellyCriterion: number;
-  optimalLeverage: number;
-  positionSizing: number;
-  stopLoss: number;
-  takeProfit: number;
-  trailingStop: number;
-  rebalancingThreshold: number;
-  taxLossHarvesting: boolean;
-  taxGainHarvesting: boolean;
-  washSaleRule: boolean;
-  taxLotAccounting: 'fifo' | 'lifo' | 'specific-identification' | 'average-cost';
-  taxBracket: number;
-  stateTaxRate: number;
-  localTaxRate: number;
-  alternativeMinimumTax: boolean;
-  netInvestmentIncomeTax: boolean;
-  qualifiedDividendRate: number;
-  longTermCapitalGainsRate: number;
-  shortTermCapitalGainsRate: number;
-  municipalBondYield: number;
-  corporateBondYield: number;
-  treasuryBondYield: number;
-  inflationProtectedSecurities: number;
-  highYieldBondYield: number;
-  emergingMarketBondYield: number;
-  internationalBondYield: number;
-  realEstateInvestmentTrustYield: number;
-  masterLimitedPartnershipYield: number;
-  preferredStockYield: number;
-  convertibleBondYield: number;
-  floatingRateNoteYield: number;
-  zeroCouponBondYield: number;
-  callableBondYield: number;
-  putableBondYield: number;
-  stepUpBondYield: number;
-  stepDownBondYield: number;
-  inflationLinkedBondYield: number;
-  currencyLinkedBondYield: number;
-  commodityLinkedBondYield: number;
-  equityLinkedBondYield: number;
-  creditLinkedBondYield: number;
-  catastropheBondYield: number;
-  weatherDerivativeYield: number;
-  carbonCreditYield: number;
-  renewableEnergyYield: number;
-  infrastructureYield: number;
-  privateEquityYield: number;
-  ventureCapitalYield: number;
-  hedgeFundYield: number;
-  managedFuturesYield: number;
-  longShortEquityYield: number;
-  marketNeutralYield: number;
-  arbitrageYield: number;
-  eventDrivenYield: number;
-  distressedSecuritiesYield: number;
-  globalMacroYield: number;
-  systematicTradingYield: number;
-  discretionaryTradingYield: number;
-  quantitativeTradingYield: number;
-  highFrequencyTradingYield: number;
-  algorithmicTradingYield: number;
-  machineLearningTradingYield: number;
-  artificialIntelligenceTradingYield: number;
-  blockchainTradingYield: number;
-  cryptocurrencyTradingYield: number;
-  tokenizedAssetYield: number;
-  decentralizedFinanceYield: number;
-  nonFungibleTokenYield: number;
-  initialCoinOfferingYield: number;
-  securityTokenOfferingYield: number;
-  initialDexOfferingYield: number;
-  yieldFarmingYield: number;
-  liquidityMiningYield: number;
-  stakingYield: number;
-  lendingYield: number;
-  borrowingYield: number;
-  marginTradingYield: number;
-  futuresTradingYield: number;
-  optionsTradingYield: number;
-  swapTradingYield: number;
-  forwardTradingYield: number;
-  spotTradingYield: number;
-  crossCurrencyTradingYield: number;
-  interestRateTradingYield: number;
-  creditTradingYield: number;
-  volatilityTradingYield: number;
-  correlationTradingYield: number;
-  dispersionTradingYield: number;
-  basisTradingYield: number;
-  calendarSpreadYield: number;
-  butterflySpreadYield: number;
-  ironCondorYield: number;
-  straddleYield: number;
-  strangleYield: number;
-  collarYield: number;
-  protectivePutYield: number;
-  coveredCallYield: number;
-  cashSecuredPutYield: number;
-  nakedCallYield: number;
-  nakedPutYield: number;
-  bullCallSpreadYield: number;
-  bearPutSpreadYield: number;
-  bullPutSpreadYield: number;
-  bearCallSpreadYield: number;
-  diagonalSpreadYield: number;
-  ratioSpreadYield: number;
-  backspreadYield: number;
-  frontspreadYield: number;
-  boxSpreadYield: number;
-  jellyRollYield: number;
-  conversionYield: number;
-  reversalYield: number;
-  syntheticStockYield: number;
-  syntheticBondYield: number;
-  syntheticCurrencyYield: number;
-  syntheticCommodityYield: number;
-  syntheticVolatilityYield: number;
-  syntheticCorrelationYield: number;
-  syntheticDispersionYield: number;
-  syntheticBasisYield: number;
-  syntheticCalendarYield: number;
-  syntheticButterflyYield: number;
-  syntheticIronCondorYield: number;
-  syntheticStraddleYield: number;
-  syntheticStrangleYield: number;
-  syntheticCollarYield: number;
-  syntheticProtectivePutYield: number;
-  syntheticCoveredCallYield: number;
-  syntheticCashSecuredPutYield: number;
-  syntheticNakedCallYield: number;
-  syntheticNakedPutYield: number;
-  syntheticBullCallSpreadYield: number;
-  syntheticBearPutSpreadYield: number;
-  syntheticBullPutSpreadYield: number;
-  syntheticBearCallSpreadYield: number;
-  syntheticDiagonalSpreadYield: number;
-  syntheticRatioSpreadYield: number;
-  syntheticBackspreadYield: number;
-  syntheticFrontspreadYield: number;
-  syntheticBoxSpreadYield: number;
-  syntheticJellyRollYield: number;
-  syntheticConversionYield: number;
-  syntheticReversalYield: number;
-  syntheticSyntheticStockYield: number;
-  syntheticSyntheticBondYield: number;
-  syntheticSyntheticCurrencyYield: number;
-  syntheticSyntheticCommodityYield: number;
-  syntheticSyntheticVolatilityYield: number;
-  syntheticSyntheticCorrelationYield: number;
-  syntheticSyntheticDispersionYield: number;
-  syntheticSyntheticBasisYield: number;
-  syntheticSyntheticCalendarYield: number;
-  syntheticSyntheticButterflyYield: number;
-  syntheticSyntheticIronCondorYield: number;
-  syntheticSyntheticStraddleYield: number;
-  syntheticSyntheticStrangleYield: number;
-  syntheticSyntheticCollarYield: number;
-  syntheticSyntheticProtectivePutYield: number;
-  syntheticSyntheticCoveredCallYield: number;
-  syntheticSyntheticCashSecuredPutYield: number;
-  syntheticSyntheticNakedCallYield: number;
-  syntheticSyntheticNakedPutYield: number;
-  syntheticSyntheticBullCallSpreadYield: number;
-  syntheticSyntheticBearPutSpreadYield: number;
-  syntheticSyntheticBullPutSpreadYield: number;
-  syntheticSyntheticBearCallSpreadYield: number;
-  syntheticSyntheticDiagonalSpreadYield: number;
-  syntheticSyntheticRatioSpreadYield: number;
-  syntheticSyntheticBackspreadYield: number;
-  syntheticSyntheticFrontspreadYield: number;
-  syntheticSyntheticBoxSpreadYield: number;
-  syntheticSyntheticJellyRollYield: number;
-  syntheticSyntheticConversionYield: number;
-  syntheticSyntheticReversalYield: number;
-  cashFlowProjection: Array<{
-    year: number;
-    rent: number;
-    expenses: number;
-    netCashFlow: number;
-    cumulativeCashFlow: number;
-    presentValue: number;
-  }>;
-  sensitivityAnalysis: {
-    bestCase: number;
-    baseCase: number;
-    worstCase: number;
-  };
-  riskScore: number;
-  valuationGrade: string;
-  recommendation: string;
-  marketAnalysis: string;
-  comparableAnalysis: string;
+  internalRateOfReturn: number; // percentage
+  yieldToMaturity: number; // percentage
+  capitalizationRate: number; // percentage
+  
+  // Cash Flow Analysis
+  annualCashFlow: number;
+  totalCashFlow: number;
+  cashOnCashReturn: number; // percentage
+  debtServiceCoverage: number;
+  
+  // Income Analysis
+  grossIncome: number;
+  netOperatingIncome: number;
+  effectiveGrossIncome: number;
+  vacancyLoss: number;
+  collectionLoss: number;
+  
+  // Expense Analysis
+  totalExpenses: number;
+  expenseRatio: number; // percentage
+  netIncomeMultiplier: number;
+  
+  // Market Analysis
+  marketValue: number;
+  marketValuePerSquareFoot: number;
+  marketValuePerAcre: number;
+  comparableValue: number;
+  
+  // Risk Metrics
+  riskScore: number; // 1-10 scale
+  probabilityOfDefault: number; // percentage
+  lossGivenDefault: number; // percentage
+  expectedLoss: number;
+  
+  // Sensitivity Analysis
+  sensitivityMatrix: {
+    variable: string;
+    values: number[];
+    impacts: number[];
+  }[];
+  
+  // Scenario Analysis
+  scenarios: {
+    scenario: string;
+    probability: number;
+    value: number;
+    irr: number;
+  }[];
 }
 
 export interface GroundLeaseValuationAnalysis {
-  valuationGrade: string;
-  riskAssessment: string;
-  recommendations: string;
+  // Executive Summary
+  valuationRating: 'Excellent' | 'Good' | 'Average' | 'Poor' | 'Very Poor';
+  riskRating: 'Low' | 'Moderate' | 'High' | 'Very High';
+  recommendation: 'Invest' | 'Consider' | 'Hold' | 'Sell' | 'Avoid';
+  
+  // Key Insights
+  keyStrengths: string[];
+  keyWeaknesses: string[];
+  riskFactors: string[];
+  opportunities: string[];
+  
+  // Valuation Analysis
+  valuationSummary: string;
+  incomeAnalysis: string;
   marketAnalysis: string;
-  investmentAnalysis: string;
-  sensitivityAnalysis: {
-    bestCase: number;
-    baseCase: number;
-    worstCase: number;
-  };
+  
+  // Cash Flow Analysis
+  cashFlowSummary: string;
+  returnAnalysis: string;
+  riskAnalysis: string;
+  
+  // Market Assessment
+  marketAssessment: string;
+  comparableAnalysis: string;
+  marketPosition: string;
+  
+  // Risk Assessment
+  riskAssessment: string;
+  tenantRisk: string;
+  marketRisk: string;
+  legalRisk: string;
+  
+  // Lease Analysis
+  leaseAnalysis: string;
+  termAnalysis: string;
+  renewalAnalysis: string;
+  
+  // Property Analysis
+  propertyAnalysis: string;
+  improvementAnalysis: string;
+  landAnalysis: string;
+  
+  // Recommendations
+  investmentRecommendations: string[];
+  riskMitigation: string[];
+  optimizationSuggestions: string[];
+  
+  // Implementation
+  implementationPlan: string;
+  nextSteps: string[];
+  timeline: string;
+  
+  // Monitoring
+  monitoringPlan: string;
+  keyMetrics: string[];
+  reviewSchedule: string;
+  
+  // Risk Management
+  riskManagement: string;
+  mitigationStrategies: string[];
+  contingencyPlans: string[];
+  
+  // Performance Benchmarks
+  performanceBenchmarks: {
+    metric: string;
+    target: number;
+    benchmark: number;
+    industry: string;
+  }[];
+  
+  // Decision Support
+  decisionRecommendation: string;
+  presentationPoints: string[];
+  decisionFactors: string[];
 }
 
 export interface GroundLeaseValuationOutputs extends GroundLeaseValuationMetrics {
   analysis: GroundLeaseValuationAnalysis;
+  
+  // Additional Output Metrics
+  dataQuality: number; // Data quality score (0-100)
+  modelAccuracy: number; // Model accuracy score (0-100)
+  confidenceLevel: number; // Overall confidence level (0-100)
+  
+  // Time Series Analysis
+  cashFlowProjections: {
+    year: number;
+    grossIncome: number;
+    expenses: number;
+    netIncome: number;
+    cashFlow: number;
+    presentValue: number;
+  }[];
+  
+  // Scenario Analysis
+  scenarioAnalysis: {
+    scenario: string;
+    probability: number;
+    value: number;
+    riskLevel: 'low' | 'medium' | 'high';
+  }[];
+  
+  // Comparative Analysis
+  comparativeAnalysis: {
+    metric: string;
+    thisProperty: number;
+    marketAverage: number;
+    topQuartile: number;
+    bottomQuartile: number;
+  }[];
+  
+  // Risk Metrics
+  riskMetrics: {
+    metric: string;
+    value: number;
+    benchmark: number;
+    riskLevel: 'low' | 'medium' | 'high';
+  }[];
+  
+  // Financial Projections
+  financialProjections: {
+    year: number;
+    revenue: number;
+    expenses: number;
+    netIncome: number;
+    value: number;
+  }[];
+  
+  // Valuation Timeline
+  valuationTimeline: {
+    phase: string;
+    duration: string;
+    activities: string[];
+    deliverables: string[];
+  }[];
+  
+  // Due Diligence Checklist
+  dueDiligenceChecklist: {
+    category: string;
+    items: {
+      item: string;
+      status: 'complete' | 'pending' | 'not_applicable';
+      priority: 'high' | 'medium' | 'low';
+      notes: string;
+    }[];
+  }[];
+  
+  // Investment Analysis
+  investmentAnalysis: {
+    metric: string;
+    current: number;
+    target: number;
+    variance: number;
+  }[];
+  
+  // Market Analysis
+  marketAnalysis: {
+    metric: string;
+    current: number;
+    marketAverage: number;
+    trend: 'increasing' | 'decreasing' | 'stable';
+  }[];
+  
+  // Performance Tracking
+  performanceTracking: {
+    metric: string;
+    current: number;
+    target: number;
+    frequency: string;
+    owner: string;
+  }[];
 }

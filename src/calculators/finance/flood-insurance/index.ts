@@ -1,3 +1,5 @@
-export { floodInsuranceCalculator } from './FloodInsuranceCalculator';
-export { registerFloodInsuranceCalculator } from './register';
+export { default as FloodInsuranceCalculator } from './FloodInsuranceCalculator';
 export * from './types';
+export * from './formulas';
+export * from './validation';
+export * from './quickValidation';

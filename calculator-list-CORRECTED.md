@@ -81,10 +81,10 @@ Each calculator must include:
 - [x] **Escrow Analysis Calculator** ✅ **(VERIFIED WORKING)**
 - [x] **Farmland Investment ROI Calculator** ✅ **(VERIFIED WORKING)**
 - [x] **FHA Loan Calculator** ✅ **(VERIFIED WORKING)**
-- [ ] Fix and Flip Calculator
-- [ ] Flood Insurance Calculator
-- [ ] Ground Lease Valuation Calculator
-- [ ] Gross Rent Multiplier Calculator
+- [x] **Fix and Flip Calculator** ✅ **(VERIFIED WORKING)**
+- [x] **Flood Insurance Calculator** ✅ **(VERIFIED WORKING)**
+- [x] **Ground Lease Valuation Calculator** ✅ **(VERIFIED WORKING)**
+- [x] **Gross Rent Multiplier Calculator** ✅ **(VERIFIED WORKING)**
 - [ ] Hard Money Loan Calculator
 - [ ] HELOC (Home Equity Line of Credit) Calculator
 - [ ] Home Affordability Calculator
@@ -210,7 +210,7 @@ Each calculator must include:
 - [x] **Alpha & Beta Calculator** ✅ **(VERIFIED WORKING)**
 - [x] **Alpha Calculator** ✅ **(VERIFIED WORKING)**
 - [x] **Angel Investment Dilution Calculator** ✅ **(VERIFIED WORKING)**
-- [ ] Angel Investment Calculator
+- [x] **Angel Investment Calculator** ✅ **(VERIFIED WORKING)**
 - [ ] Asset-Based Lending Calculator
 - [ ] Beta Calculator
 - [ ] Black Litterman Calculator

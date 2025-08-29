@@ -1,473 +1,500 @@
-import { describe, it, expect } from 'vitest';
 import { GrossRentMultiplierCalculator } from './GrossRentMultiplierCalculator';
-import { calculateGrossRentMultiplier } from './formulas';
 import { validateGrossRentMultiplierInputs } from './validation';
-import { validateAllGrossRentMultiplierInputs } from './quickValidation';
+import { calculateGrossRentMultiplier } from './formulas';
 
-describe('Gross Rent Multiplier Calculator', () => {
-  describe('Calculator Structure', () => {
+describe('GrossRentMultiplierCalculator', () => {
+  const validInputs = {
+    // Property Information
+    propertyAddress: '123 Oak Street, Suburban, CA 90210',
+    propertyType: 'single_family' as const,
+    propertySize: 2000,
+    lotSize: 8000,
+    yearBuilt: 2010,
+    propertyCondition: 'good' as const,
+    bedrooms: 3,
+    bathrooms: 2,
+    
+    // Financial Information
+    purchasePrice: 450000,
+    marketValue: 475000,
+    annualGrossRent: 36000,
+    monthlyGrossRent: 3000,
+    annualOperatingExpenses: 12000,
+    monthlyOperatingExpenses: 1000,
+    annualNetOperatingIncome: 24000,
+    monthlyNetOperatingIncome: 2000,
+    
+    // Rent Information
+    numberOfUnits: 1,
+    vacancyRate: 5,
+    collectionLoss: 2,
+    effectiveGrossIncome: 33480,
+    
+    // Expense Breakdown
+    propertyTaxes: 5000,
+    insurance: 1500,
+    utilities: 0,
+    maintenance: 2000,
+    propertyManagement: 1800,
+    repairs: 1000,
+    landscaping: 500,
+    pestControl: 200,
+    otherExpenses: 1000,
+    
+    // Market Information
+    marketGRM: 12.5,
+    marketCapRate: 5.5,
+    marketRent: 18,
+    
+    // Location Information
+    city: 'Suburban',
+    state: 'CA',
+    zipCode: '90210',
+    neighborhood: 'Oak Street',
+    marketType: 'stable' as const,
+    marketTrend: 'appreciating' as const,
+    
+    // Property Features
+    parkingSpaces: 2,
+    hasPool: false,
+    hasGym: false,
+    hasLaundry: true,
+    hasStorage: true,
+    hasBalcony: false,
+    hasFireplace: true,
+    hasCentralAC: true,
+    hasDishwasher: true,
+    
+    // Analysis Parameters
+    analysisPeriod: 10,
+    rentGrowthRate: 3.0,
+    expenseGrowthRate: 2.5,
+    appreciationRate: 4.0,
+    discountRate: 8.0,
+    
+    // Reporting Preferences
+    currency: 'USD' as const,
+    displayFormat: 'percentage' as const,
+    includeCharts: true
+  };
+
+  describe('Calculator Definition', () => {
     it('should have correct basic properties', () => {
-      expect(GrossRentMultiplierCalculator.id).toBe('gross-rent-multiplier-calculator');
+      expect(GrossRentMultiplierCalculator.id).toBe('gross-rent-multiplier');
       expect(GrossRentMultiplierCalculator.name).toBe('Gross Rent Multiplier Calculator');
       expect(GrossRentMultiplierCalculator.category).toBe('finance');
-      expect(GrossRentMultiplierCalculator.subcategory).toBe('investment');
+      expect(GrossRentMultiplierCalculator.subcategory).toBe('real-estate');
     });
 
-    it('should have required inputs', () => {
-      const requiredInputs = ['propertyValue', 'grossAnnualRent', 'propertyType', 'location', 'marketType'];
-      requiredInputs.forEach(inputId => {
-        const input = GrossRentMultiplierCalculator.inputs.find(i => i.id === inputId);
-        expect(input).toBeDefined();
-        expect(input?.required).toBe(true);
+    it('should have comprehensive description', () => {
+      expect(GrossRentMultiplierCalculator.description).toBeTruthy();
+      expect(GrossRentMultiplierCalculator.longDescription).toBeTruthy();
+      expect(GrossRentMultiplierCalculator.longDescription.length).toBeGreaterThan(100);
+    });
+
+    it('should have all required input fields', () => {
+      const requiredFields = [
+        'propertyAddress', 'propertyType', 'propertySize', 'lotSize', 'yearBuilt',
+        'propertyCondition', 'bedrooms', 'bathrooms', 'purchasePrice', 'marketValue',
+        'annualGrossRent', 'monthlyGrossRent', 'annualOperatingExpenses', 'monthlyOperatingExpenses',
+        'annualNetOperatingIncome', 'monthlyNetOperatingIncome', 'numberOfUnits', 'vacancyRate',
+        'collectionLoss', 'effectiveGrossIncome', 'propertyTaxes', 'insurance', 'utilities',
+        'maintenance', 'propertyManagement', 'repairs', 'landscaping', 'pestControl',
+        'otherExpenses', 'marketGRM', 'marketCapRate', 'marketRent', 'city', 'state',
+        'zipCode', 'neighborhood', 'marketType', 'marketTrend', 'parkingSpaces',
+        'hasPool', 'hasGym', 'hasLaundry', 'hasStorage', 'hasBalcony', 'hasFireplace',
+        'hasCentralAC', 'hasDishwasher', 'analysisPeriod', 'rentGrowthRate',
+        'expenseGrowthRate', 'appreciationRate', 'discountRate', 'currency',
+        'displayFormat', 'includeCharts'
+      ];
+
+      requiredFields.forEach(field => {
+        expect(GrossRentMultiplierCalculator.inputs[field]).toBeDefined();
       });
     });
 
-    it('should have expected outputs', () => {
-      const expectedOutputs = ['grossRentMultiplier', 'netRentMultiplier', 'cashOnCashReturn', 'capRate', 'totalExpenses', 'expenseRatio', 'profitMargin'];
-      expectedOutputs.forEach(outputId => {
-        const output = GrossRentMultiplierCalculator.outputs.find(o => o.id === outputId);
-        expect(output).toBeDefined();
+    it('should have all required output fields', () => {
+      const requiredOutputs = [
+        'grossRentMultiplier', 'netRentMultiplier', 'effectiveGrossRentMultiplier',
+        'marketGRMComparison', 'totalInvestment', 'annualCashFlow', 'monthlyCashFlow',
+        'cashOnCashReturn', 'returnOnInvestment', 'grossIncome', 'netIncome',
+        'effectiveGrossIncome', 'vacancyLoss', 'collectionLoss', 'totalExpenses',
+        'expenseRatio', 'netIncomeMultiplier', 'marketValue', 'marketValuePerSquareFoot',
+        'marketValuePerUnit', 'comparableValue', 'breakEvenRent', 'breakEvenOccupancy',
+        'profitMargin', 'operatingExpenseRatio', 'riskScore', 'vacancyRisk',
+        'marketRisk', 'expenseRisk', 'sensitivityMatrix', 'scenarios', 'analysis'
+      ];
+
+      requiredOutputs.forEach(field => {
+        expect(GrossRentMultiplierCalculator.outputs[field]).toBeDefined();
       });
+    });
+
+    it('should have formulas defined', () => {
+      expect(GrossRentMultiplierCalculator.formulas).toBeDefined();
+      expect(Object.keys(GrossRentMultiplierCalculator.formulas).length).toBeGreaterThan(0);
+    });
+
+    it('should have examples defined', () => {
+      expect(GrossRentMultiplierCalculator.examples).toBeDefined();
+      expect(GrossRentMultiplierCalculator.examples.length).toBeGreaterThan(0);
+    });
+
+    it('should have tags defined', () => {
+      expect(GrossRentMultiplierCalculator.tags).toBeDefined();
+      expect(GrossRentMultiplierCalculator.tags.length).toBeGreaterThan(0);
     });
   });
 
-  describe('Validation', () => {
-    it('should validate required fields', () => {
-      const result = validateGrossRentMultiplierInputs({});
-      expect(result.isValid).toBe(false);
-      expect(result.errors).toContain('Property value is required');
-      expect(result.errors).toContain('Gross annual rent is required');
-      expect(result.errors).toContain('Property type is required');
-      expect(result.errors).toContain('Location is required');
-      expect(result.errors).toContain('Market type is required');
-    });
-
-    it('should validate data types', () => {
-      const result = validateGrossRentMultiplierInputs({
-        propertyValue: 'invalid' as any,
-        grossAnnualRent: 'invalid' as any,
-        propertyType: 'single-family',
-        location: 'urban',
-        marketType: 'stable'
-      });
-      expect(result.isValid).toBe(false);
-      expect(result.errors).toContain('Property value must be a number');
-      expect(result.errors).toContain('Gross annual rent must be a number');
-    });
-
-    it('should validate ranges', () => {
-      const result = validateGrossRentMultiplierInputs({
-        propertyValue: 5000, // Too low
-        grossAnnualRent: 500, // Too low
-        propertyType: 'single-family',
-        location: 'urban',
-        marketType: 'stable'
-      });
-      expect(result.isValid).toBe(false);
-      expect(result.errors).toContain('Property value must be between $10,000 and $100,000,000');
-      expect(result.errors).toContain('Gross annual rent must be between $1,000 and $10,000,000');
-    });
-
-    it('should validate logical relationships', () => {
-      const result = validateGrossRentMultiplierInputs({
-        propertyValue: 200000,
-        grossAnnualRent: 250000, // Exceeds property value
-        propertyType: 'single-family',
-        location: 'urban',
-        marketType: 'stable'
-      });
-      expect(result.isValid).toBe(false);
-      expect(result.errors).toContain('Gross annual rent cannot exceed property value');
-    });
-
-    it('should validate enum values', () => {
-      const result = validateGrossRentMultiplierInputs({
-        propertyValue: 200000,
-        grossAnnualRent: 25000,
-        propertyType: 'INVALID',
-        location: 'INVALID',
-        marketType: 'INVALID'
-      });
-      expect(result.isValid).toBe(false);
-      expect(result.errors).toContain('Invalid property type');
-      expect(result.errors).toContain('Invalid location');
-      expect(result.errors).toContain('Invalid market type');
-    });
-
-    it('should pass validation with valid inputs', () => {
-      const result = validateGrossRentMultiplierInputs({
-        propertyValue: 500000,
-        grossAnnualRent: 60000,
-        propertyType: 'single-family',
-        location: 'suburban',
-        marketType: 'stable',
-        squareFootage: 2000,
-        bedrooms: 3,
-        bathrooms: 2
-      });
+  describe('Input Validation', () => {
+    it('should validate correct inputs', () => {
+      const result = validateGrossRentMultiplierInputs(validInputs);
       expect(result.isValid).toBe(true);
       expect(result.errors).toHaveLength(0);
+    });
+
+    it('should reject missing required fields', () => {
+      const invalidInputs = { ...validInputs };
+      delete (invalidInputs as any).propertyAddress;
+      
+      const result = validateGrossRentMultiplierInputs(invalidInputs);
+      expect(result.isValid).toBe(false);
+      expect(result.errors).toContain('Property address is required');
+    });
+
+    it('should reject invalid property size', () => {
+      const invalidInputs = { ...validInputs, propertySize: -1000 };
+      
+      const result = validateGrossRentMultiplierInputs(invalidInputs);
+      expect(result.isValid).toBe(false);
+      expect(result.errors).toContain('Property size must be greater than 0');
+    });
+
+    it('should reject invalid year built', () => {
+      const invalidInputs = { ...validInputs, yearBuilt: 1700 };
+      
+      const result = validateGrossRentMultiplierInputs(invalidInputs);
+      expect(result.isValid).toBe(false);
+      expect(result.errors).toContain('Year built must be between 1800 and 2030');
+    });
+
+    it('should reject invalid purchase price', () => {
+      const invalidInputs = { ...validInputs, purchasePrice: 0 };
+      
+      const result = validateGrossRentMultiplierInputs(invalidInputs);
+      expect(result.isValid).toBe(false);
+      expect(result.errors).toContain('Purchase price must be greater than 0');
+    });
+
+    it('should reject invalid vacancy rate', () => {
+      const invalidInputs = { ...validInputs, vacancyRate: 150 };
+      
+      const result = validateGrossRentMultiplierInputs(invalidInputs);
+      expect(result.isValid).toBe(false);
+      expect(result.errors).toContain('Vacancy rate cannot exceed 100%');
+    });
+
+    it('should reject invalid collection loss', () => {
+      const invalidInputs = { ...validInputs, collectionLoss: 25 };
+      
+      const result = validateGrossRentMultiplierInputs(invalidInputs);
+      expect(result.isValid).toBe(false);
+      expect(result.errors).toContain('Collection loss cannot exceed 20%');
+    });
+
+    it('should reject invalid market GRM', () => {
+      const invalidInputs = { ...validInputs, marketGRM: 60 };
+      
+      const result = validateGrossRentMultiplierInputs(invalidInputs);
+      expect(result.isValid).toBe(false);
+      expect(result.errors).toContain('Market GRM cannot exceed 50');
+    });
+
+    it('should reject invalid market cap rate', () => {
+      const invalidInputs = { ...validInputs, marketCapRate: 25 };
+      
+      const result = validateGrossRentMultiplierInputs(invalidInputs);
+      expect(result.isValid).toBe(false);
+      expect(result.errors).toContain('Market cap rate cannot exceed 20%');
+    });
+
+    it('should provide warnings for business logic issues', () => {
+      const warningInputs = { 
+        ...validInputs, 
+        annualGrossRent: 10000,
+        annualOperatingExpenses: 12000 
+      };
+      
+      const result = validateGrossRentMultiplierInputs(warningInputs);
+      expect(result.isValid).toBe(true);
+      expect(result.warnings).toContain('Annual gross rent is less than or equal to annual operating expenses, which may indicate a poor investment');
     });
   });
 
   describe('Calculation Logic', () => {
-    it('should calculate basic GRM metrics correctly', () => {
-      const inputs = {
-        propertyValue: 500000,
-        grossAnnualRent: 60000,
-        propertyType: 'single-family',
-        location: 'suburban',
-        marketType: 'stable'
-      };
-
-      const outputs = calculateGrossRentMultiplier(inputs);
-      expect(outputs.grossRentMultiplier).toBe(8.33); // 500000 / 60000
-      expect(outputs.monthlyRent).toBe(5000); // 60000 / 12
-      expect(outputs.rentalYield).toBe(12.0); // (60000 / 500000) * 100
+    it('should calculate gross rent multiplier correctly', () => {
+      const metrics = calculateGrossRentMultiplier(validInputs);
+      
+      const expectedGRM = validInputs.marketValue / validInputs.annualGrossRent;
+      expect(metrics.grossRentMultiplier).toBeCloseTo(expectedGRM, 2);
+      expect(typeof metrics.grossRentMultiplier).toBe('number');
     });
 
     it('should calculate net rent multiplier correctly', () => {
-      const inputs = {
-        propertyValue: 500000,
-        grossAnnualRent: 60000,
-        propertyType: 'single-family',
-        location: 'suburban',
-        marketType: 'stable',
-        operatingExpenses: 10000,
-        propertyTaxes: 8000,
-        insurance: 3000,
-        maintenance: 5000,
-        managementFees: 2000,
-        utilities: 4000,
-        hoaFees: 0
-      };
-
-      const outputs = calculateGrossRentMultiplier(inputs);
-      const totalExpenses = 10000 + 8000 + 3000 + 5000 + 2000 + 4000 + 0;
-      const netAnnualRent = 60000 - totalExpenses;
-      const expectedNRM = 500000 / netAnnualRent;
-      expect(outputs.netRentMultiplier).toBeCloseTo(expectedNRM, 1);
+      const metrics = calculateGrossRentMultiplier(validInputs);
+      
+      const expectedNetRM = validInputs.marketValue / validInputs.annualNetOperatingIncome;
+      expect(metrics.netRentMultiplier).toBeCloseTo(expectedNetRM, 2);
+      expect(typeof metrics.netRentMultiplier).toBe('number');
     });
 
-    it('should calculate cash-on-cash return correctly', () => {
-      const inputs = {
-        propertyValue: 500000,
-        grossAnnualRent: 60000,
-        propertyType: 'single-family',
-        location: 'suburban',
-        marketType: 'stable',
-        operatingExpenses: 10000,
-        propertyTaxes: 8000,
-        insurance: 3000,
-        maintenance: 5000,
-        managementFees: 2000,
-        utilities: 4000,
-        hoaFees: 0
-      };
-
-      const outputs = calculateGrossRentMultiplier(inputs);
-      const totalExpenses = 10000 + 8000 + 3000 + 5000 + 2000 + 4000 + 0;
-      const netAnnualRent = 60000 - totalExpenses;
-      const expectedCoC = (netAnnualRent / 500000) * 100;
-      expect(outputs.cashOnCashReturn).toBeCloseTo(expectedCoC, 1);
+    it('should calculate effective gross rent multiplier correctly', () => {
+      const metrics = calculateGrossRentMultiplier(validInputs);
+      
+      const expectedEffectiveGRM = validInputs.marketValue / validInputs.effectiveGrossIncome;
+      expect(metrics.effectiveGrossRentMultiplier).toBeCloseTo(expectedEffectiveGRM, 2);
+      expect(typeof metrics.effectiveGrossRentMultiplier).toBe('number');
     });
 
-    it('should calculate price per square foot correctly', () => {
-      const inputs = {
-        propertyValue: 500000,
-        grossAnnualRent: 60000,
-        propertyType: 'single-family',
-        location: 'suburban',
-        marketType: 'stable',
-        squareFootage: 2500
-      };
-
-      const outputs = calculateGrossRentMultiplier(inputs);
-      expect(outputs.pricePerSquareFoot).toBe(200); // 500000 / 2500
-      expect(outputs.rentPerSquareFoot).toBe(24); // 60000 / 2500
+    it('should calculate market GRM comparison correctly', () => {
+      const metrics = calculateGrossRentMultiplier(validInputs);
+      
+      const expectedComparison = (validInputs.marketValue / validInputs.annualGrossRent) - validInputs.marketGRM;
+      expect(metrics.marketGRMComparison).toBeCloseTo(expectedComparison, 2);
+      expect(typeof metrics.marketGRMComparison).toBe('number');
     });
 
-    it('should calculate expense ratio correctly', () => {
-      const inputs = {
-        propertyValue: 500000,
-        grossAnnualRent: 60000,
-        propertyType: 'single-family',
-        location: 'suburban',
-        marketType: 'stable',
-        operatingExpenses: 10000,
-        propertyTaxes: 8000,
-        insurance: 3000,
-        maintenance: 5000,
-        managementFees: 2000,
-        utilities: 4000,
-        hoaFees: 0
-      };
-
-      const outputs = calculateGrossRentMultiplier(inputs);
-      const totalExpenses = 10000 + 8000 + 3000 + 5000 + 2000 + 4000 + 0;
-      const expectedExpenseRatio = (totalExpenses / 60000) * 100;
-      expect(outputs.expenseRatio).toBeCloseTo(expectedExpenseRatio, 1);
+    it('should calculate cash on cash return correctly', () => {
+      const metrics = calculateGrossRentMultiplier(validInputs);
+      
+      const expectedCoC = (validInputs.annualNetOperatingIncome / validInputs.purchasePrice) * 100;
+      expect(metrics.cashOnCashReturn).toBeCloseTo(expectedCoC, 2);
+      expect(typeof metrics.cashOnCashReturn).toBe('number');
     });
 
-    it('should calculate profit margin correctly', () => {
-      const inputs = {
-        propertyValue: 500000,
-        grossAnnualRent: 60000,
-        propertyType: 'single-family',
-        location: 'suburban',
-        marketType: 'stable',
-        operatingExpenses: 10000,
-        propertyTaxes: 8000,
-        insurance: 3000,
-        maintenance: 5000,
-        managementFees: 2000,
-        utilities: 4000,
-        hoaFees: 0
-      };
-
-      const outputs = calculateGrossRentMultiplier(inputs);
-      const totalExpenses = 10000 + 8000 + 3000 + 5000 + 2000 + 4000 + 0;
-      const netAnnualRent = 60000 - totalExpenses;
-      const expectedProfitMargin = (netAnnualRent / 60000) * 100;
-      expect(outputs.profitMargin).toBeCloseTo(expectedProfitMargin, 1);
+    it('should calculate return on investment correctly', () => {
+      const metrics = calculateGrossRentMultiplier(validInputs);
+      
+      const expectedROI = (validInputs.annualNetOperatingIncome / validInputs.marketValue) * 100;
+      expect(metrics.returnOnInvestment).toBeCloseTo(expectedROI, 2);
+      expect(typeof metrics.returnOnInvestment).toBe('number');
     });
 
-    it('should calculate break-even rent correctly', () => {
-      const inputs = {
-        propertyValue: 500000,
-        grossAnnualRent: 60000,
-        propertyType: 'single-family',
-        location: 'suburban',
-        marketType: 'stable',
-        operatingExpenses: 10000,
-        propertyTaxes: 8000,
-        insurance: 3000,
-        maintenance: 5000,
-        managementFees: 2000,
-        utilities: 4000,
-        hoaFees: 0
-      };
+    it('should calculate income metrics correctly', () => {
+      const metrics = calculateGrossRentMultiplier(validInputs);
+      
+      expect(metrics.grossIncome).toBe(validInputs.annualGrossRent);
+      expect(metrics.netIncome).toBe(validInputs.annualNetOperatingIncome);
+      expect(metrics.effectiveGrossIncome).toBe(validInputs.effectiveGrossIncome);
+      expect(metrics.vacancyLoss).toBe(validInputs.annualGrossRent * (validInputs.vacancyRate / 100));
+      expect(metrics.collectionLoss).toBe(validInputs.annualGrossRent * (validInputs.collectionLoss / 100));
+    });
 
-      const outputs = calculateGrossRentMultiplier(inputs);
-      const totalExpenses = 10000 + 8000 + 3000 + 5000 + 2000 + 4000 + 0;
-      const expectedBreakEven = totalExpenses / 12;
-      expect(outputs.breakEvenRent).toBe(expectedBreakEven);
+    it('should calculate expense metrics correctly', () => {
+      const metrics = calculateGrossRentMultiplier(validInputs);
+      
+      const expectedTotalExpenses = validInputs.propertyTaxes + validInputs.insurance + validInputs.utilities + 
+                                   validInputs.maintenance + validInputs.propertyManagement + validInputs.repairs + 
+                                   validInputs.landscaping + validInputs.pestControl + validInputs.otherExpenses;
+      
+      expect(metrics.totalExpenses).toBe(expectedTotalExpenses);
+      expect(metrics.expenseRatio).toBeCloseTo((expectedTotalExpenses / validInputs.annualGrossRent) * 100, 2);
+      expect(metrics.netIncomeMultiplier).toBeCloseTo(validInputs.marketValue / validInputs.annualNetOperatingIncome, 2);
+    });
+
+    it('should calculate market value metrics correctly', () => {
+      const metrics = calculateGrossRentMultiplier(validInputs);
+      
+      expect(metrics.marketValue).toBe(validInputs.marketValue);
+      expect(metrics.marketValuePerSquareFoot).toBe(validInputs.marketValue / validInputs.propertySize);
+      expect(metrics.marketValuePerUnit).toBe(validInputs.marketValue / validInputs.numberOfUnits);
+      expect(metrics.comparableValue).toBeDefined();
+    });
+
+    it('should calculate performance metrics correctly', () => {
+      const metrics = calculateGrossRentMultiplier(validInputs);
+      
+      expect(metrics.breakEvenRent).toBeDefined();
+      expect(metrics.breakEvenOccupancy).toBeDefined();
+      expect(metrics.profitMargin).toBeDefined();
+      expect(metrics.operatingExpenseRatio).toBeDefined();
+    });
+
+    it('should calculate risk metrics correctly', () => {
+      const metrics = calculateGrossRentMultiplier(validInputs);
+      
+      expect(metrics.riskScore).toBeGreaterThanOrEqual(1);
+      expect(metrics.riskScore).toBeLessThanOrEqual(10);
+      expect(metrics.vacancyRisk).toBe(validInputs.vacancyRate);
+      expect(metrics.marketRisk).toBeDefined();
+      expect(metrics.expenseRisk).toBeDefined();
+    });
+
+    it('should calculate sensitivity matrix correctly', () => {
+      const metrics = calculateGrossRentMultiplier(validInputs);
+      
+      expect(metrics.sensitivityMatrix).toBeDefined();
+      expect(Array.isArray(metrics.sensitivityMatrix)).toBe(true);
+      expect(metrics.sensitivityMatrix.length).toBeGreaterThan(0);
+    });
+
+    it('should calculate scenarios correctly', () => {
+      const metrics = calculateGrossRentMultiplier(validInputs);
+      
+      expect(metrics.scenarios).toBeDefined();
+      expect(Array.isArray(metrics.scenarios)).toBe(true);
+      expect(metrics.scenarios.length).toBeGreaterThan(0);
     });
   });
 
-  describe('Gross Rent Multiplier Analysis', () => {
-    it('should generate comprehensive analysis', () => {
-      const inputs = {
-        propertyValue: 500000,
-        grossAnnualRent: 60000,
-        propertyType: 'single-family',
-        location: 'suburban',
-        marketType: 'stable',
-        squareFootage: 2500,
-        bedrooms: 3,
-        bathrooms: 2,
-        condition: 'good',
-        amenities: ['central-air', 'hardwood-floors']
-      };
-
-      const outputs = calculateGrossRentMultiplier(inputs);
-      const analysis = GrossRentMultiplierCalculator.generateReport(inputs, outputs);
-
-      expect(analysis).toContain('Gross Rent Multiplier Analysis');
-      expect(analysis).toContain('Executive Summary');
-      expect(analysis).toContain('Property Analysis');
-      expect(analysis).toContain('Financial Metrics');
-      expect(analysis).toContain('Investment Analysis');
-      expect(analysis).toContain('Risk Assessment');
-      expect(analysis).toContain('Market Analysis');
-      expect(analysis).toContain('Recommendations');
+  describe('Calculator Integration', () => {
+    it('should calculate complete output with valid inputs', () => {
+      const output = GrossRentMultiplierCalculator.calculate(validInputs);
+      
+      expect(output).toBeDefined();
+      expect(output.grossRentMultiplier).toBeDefined();
+      expect(output.analysis).toBeDefined();
+      expect(output.analysis.investmentRating).toBeDefined();
+      expect(output.analysis.recommendation).toBeDefined();
     });
 
-    it('should include investment grade assessment', () => {
-      const inputs = {
-        propertyValue: 500000,
-        grossAnnualRent: 60000,
-        propertyType: 'single-family',
-        location: 'suburban',
-        marketType: 'stable'
-      };
-
-      const outputs = calculateGrossRentMultiplier(inputs);
-      const analysis = GrossRentMultiplierCalculator.generateReport(inputs, outputs);
-
-      expect(analysis).toContain('Investment Grade:');
-      expect(['A', 'B', 'C', 'D']).toContain(outputs.investmentGrade);
+    it('should throw error with invalid inputs', () => {
+      const invalidInputs = { ...validInputs };
+      delete (invalidInputs as any).propertyAddress;
+      
+      expect(() => {
+        GrossRentMultiplierCalculator.calculate(invalidInputs);
+      }).toThrow('Validation failed');
     });
 
-    it('should include recommended action', () => {
-      const inputs = {
-        propertyValue: 500000,
-        grossAnnualRent: 60000,
-        propertyType: 'single-family',
-        location: 'suburban',
-        marketType: 'stable'
-      };
-
-      const outputs = calculateGrossRentMultiplier(inputs);
-      const analysis = GrossRentMultiplierCalculator.generateReport(inputs, outputs);
-
-      expect(analysis).toContain('Recommended Action:');
-      expect(outputs.recommendedAction).toBeDefined();
-    });
-
-    it('should include market comparison', () => {
-      const inputs = {
-        propertyValue: 500000,
-        grossAnnualRent: 60000,
-        propertyType: 'single-family',
-        location: 'suburban',
-        marketType: 'stable'
-      };
-
-      const outputs = calculateGrossRentMultiplier(inputs);
-      const analysis = GrossRentMultiplierCalculator.generateReport(inputs, outputs);
-
-      expect(analysis).toContain('Market Comparison:');
-      expect(outputs.marketComparison).toBeDefined();
+    it('should generate report correctly', () => {
+      const output = GrossRentMultiplierCalculator.calculate(validInputs);
+      const report = GrossRentMultiplierCalculator.generateReport(validInputs, output);
+      
+      expect(report).toBeDefined();
+      expect(typeof report).toBe('string');
+      expect(report.length).toBeGreaterThan(100);
     });
   });
 
   describe('Edge Cases', () => {
-    it('should handle minimum values', () => {
-      const inputs = {
-        propertyValue: 10000,
-        grossAnnualRent: 1000,
-        propertyType: 'single-family',
-        location: 'rural',
-        marketType: 'declining'
-      };
-
-      const outputs = calculateGrossRentMultiplier(inputs);
-      expect(outputs.grossRentMultiplier).toBe(10.0); // 10000 / 1000
-      expect(outputs.rentalYield).toBe(10.0); // (1000 / 10000) * 100
-    });
-
-    it('should handle maximum values', () => {
-      const inputs = {
-        propertyValue: 100000000,
-        grossAnnualRent: 10000000,
-        propertyType: 'commercial',
-        location: 'urban',
-        marketType: 'hot'
-      };
-
-      const outputs = calculateGrossRentMultiplier(inputs);
-      expect(outputs.grossRentMultiplier).toBe(10.0); // 100000000 / 10000000
-      expect(outputs.rentalYield).toBe(10.0); // (10000000 / 100000000) * 100
-    });
-
-    it('should handle zero optional values', () => {
-      const inputs = {
-        propertyValue: 500000,
-        grossAnnualRent: 60000,
-        propertyType: 'single-family',
-        location: 'suburban',
-        marketType: 'stable',
-        operatingExpenses: 0,
+    it('should handle zero operating expenses', () => {
+      const zeroExpensesInputs = { 
+        ...validInputs, 
+        annualOperatingExpenses: 0,
+        monthlyOperatingExpenses: 0,
+        annualNetOperatingIncome: validInputs.annualGrossRent,
+        monthlyNetOperatingIncome: validInputs.monthlyGrossRent,
         propertyTaxes: 0,
         insurance: 0,
-        maintenance: 0,
-        managementFees: 0,
         utilities: 0,
-        hoaFees: 0
+        maintenance: 0,
+        propertyManagement: 0,
+        repairs: 0,
+        landscaping: 0,
+        pestControl: 0,
+        otherExpenses: 0
       };
-
-      const outputs = calculateGrossRentMultiplier(inputs);
-      expect(outputs.totalExpenses).toBe(0);
-      expect(outputs.netAnnualRent).toBe(60000);
-      expect(outputs.netMonthlyRent).toBe(5000);
+      const metrics = calculateGrossRentMultiplier(zeroExpensesInputs);
+      
+      expect(metrics.totalExpenses).toBe(0);
+      expect(metrics.expenseRatio).toBe(0);
+      expect(metrics.netIncome).toBe(validInputs.annualGrossRent);
     });
 
-    it('should handle missing square footage', () => {
-      const inputs = {
-        propertyValue: 500000,
-        grossAnnualRent: 60000,
-        propertyType: 'single-family',
-        location: 'suburban',
-        marketType: 'stable'
-      };
+    it('should handle zero vacancy rate', () => {
+      const zeroVacancyInputs = { ...validInputs, vacancyRate: 0 };
+      const metrics = calculateGrossRentMultiplier(zeroVacancyInputs);
+      
+      expect(metrics.vacancyLoss).toBe(0);
+      expect(metrics.vacancyRisk).toBe(0);
+    });
 
-      const outputs = calculateGrossRentMultiplier(inputs);
-      expect(outputs.pricePerSquareFoot).toBe(0);
-      expect(outputs.rentPerSquareFoot).toBe(0);
+    it('should handle high vacancy rate', () => {
+      const highVacancyInputs = { ...validInputs, vacancyRate: 20 };
+      const metrics = calculateGrossRentMultiplier(highVacancyInputs);
+      
+      expect(metrics.vacancyLoss).toBe(validInputs.annualGrossRent * 0.2);
+      expect(metrics.vacancyRisk).toBe(20);
+    });
+
+    it('should handle declining market', () => {
+      const decliningMarketInputs = { ...validInputs, marketType: 'declining' as const };
+      const metrics = calculateGrossRentMultiplier(decliningMarketInputs);
+      
+      expect(metrics.marketRisk).toBeGreaterThan(5);
+      expect(metrics.riskScore).toBeGreaterThan(5);
+    });
+
+    it('should handle poor property condition', () => {
+      const poorConditionInputs = { ...validInputs, propertyCondition: 'poor' as const };
+      const metrics = calculateGrossRentMultiplier(poorConditionInputs);
+      
+      expect(metrics.riskScore).toBeGreaterThan(5);
+    });
+
+    it('should handle multi-family properties', () => {
+      const multiFamilyInputs = { 
+        ...validInputs, 
+        propertyType: 'multi_family' as const,
+        numberOfUnits: 4,
+        bedrooms: 8,
+        bathrooms: 4
+      };
+      const metrics = calculateGrossRentMultiplier(multiFamilyInputs);
+      
+      expect(metrics.marketValuePerUnit).toBe(validInputs.marketValue / 4);
+      expect(metrics.grossRentMultiplier).toBeDefined();
+    });
+
+    it('should handle commercial properties', () => {
+      const commercialInputs = { 
+        ...validInputs, 
+        propertyType: 'commercial' as const,
+        numberOfUnits: 1,
+        bedrooms: 0,
+        bathrooms: 2
+      };
+      const metrics = calculateGrossRentMultiplier(commercialInputs);
+      
+      expect(metrics.grossRentMultiplier).toBeDefined();
+      expect(metrics.marketValuePerSquareFoot).toBeDefined();
     });
   });
 
-  describe('Quick Validation', () => {
-    it('should validate individual fields correctly', () => {
-      const result = validateAllGrossRentMultiplierInputs({
-        propertyValue: 500000,
-        grossAnnualRent: 60000,
-        propertyType: 'single-family',
-        location: 'suburban',
-        marketType: 'stable'
-      });
-
-      expect(result.isValid).toBe(true);
-      expect(result.errors).toHaveLength(0);
+  describe('Performance', () => {
+    it('should calculate results quickly', () => {
+      const startTime = Date.now();
+      const metrics = calculateGrossRentMultiplier(validInputs);
+      const endTime = Date.now();
+      
+      expect(endTime - startTime).toBeLessThan(1000); // Should complete in under 1 second
+      expect(metrics.grossRentMultiplier).toBeDefined();
     });
 
-    it('should catch individual field errors', () => {
-      const result = validateAllGrossRentMultiplierInputs({
-        propertyValue: 5000, // Too low
-        grossAnnualRent: 60000,
-        propertyType: 'INVALID',
-        location: 'suburban',
-        marketType: 'stable'
-      });
-
-      expect(result.isValid).toBe(false);
-      expect(result.errors).toContain('Property value must be between $10,000 and $100,000,000');
-      expect(result.errors).toContain('Invalid property type');
+    it('should handle large property values', () => {
+      const largeValueInputs = { 
+        ...validInputs, 
+        purchasePrice: 5000000,
+        marketValue: 5500000,
+        annualGrossRent: 400000
+      };
+      const metrics = calculateGrossRentMultiplier(largeValueInputs);
+      
+      expect(metrics.grossRentMultiplier).toBeDefined();
+      expect(metrics.cashOnCashReturn).toBeDefined();
     });
 
-    it('should validate logical relationships', () => {
-      const result = validateAllGrossRentMultiplierInputs({
-        propertyValue: 200000,
-        grossAnnualRent: 250000, // Exceeds property value
-        propertyType: 'single-family',
-        location: 'suburban',
-        marketType: 'stable'
-      });
-
-      expect(result.isValid).toBe(false);
-      expect(result.errors).toContain('Gross annual rent cannot exceed property value');
-    });
-
-    it('should validate amenities array', () => {
-      const result = validateAllGrossRentMultiplierInputs({
-        propertyValue: 500000,
-        grossAnnualRent: 60000,
-        propertyType: 'single-family',
-        location: 'suburban',
-        marketType: 'stable',
-        amenities: ['invalid-amenity']
-      });
-
-      expect(result.isValid).toBe(false);
-      expect(result.errors).toContain('Invalid amenity: invalid-amenity');
-    });
-
-    it('should validate square footage relationships', () => {
-      const result = validateAllGrossRentMultiplierInputs({
-        propertyValue: 500000,
-        grossAnnualRent: 60000,
-        propertyType: 'single-family',
-        location: 'suburban',
-        marketType: 'stable',
-        squareFootage: 1000,
-        bedrooms: 5,
-        bathrooms: 3
-      });
-
-      expect(result.isValid).toBe(false);
-      expect(result.errors).toContain('Square footage seems too low for the number of bedrooms');
-      expect(result.errors).toContain('Square footage seems too low for the number of bathrooms');
+    it('should handle high rent values', () => {
+      const highRentInputs = { 
+        ...validInputs, 
+        annualGrossRent: 200000,
+        monthlyGrossRent: 16667
+      };
+      const metrics = calculateGrossRentMultiplier(highRentInputs);
+      
+      expect(metrics.grossRentMultiplier).toBeDefined();
+      expect(metrics.netRentMultiplier).toBeDefined();
     });
   });
 });

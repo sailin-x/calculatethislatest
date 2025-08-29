@@ -1,272 +1,462 @@
-import { CalculatorInputs } from '../../../types/calculator';
+import { GroundLeaseValuationInputs } from './types';
 
-export function validateLandValue(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (!value) return { isValid: false, message: 'Land value is required' };
-  if (typeof value !== 'number') return { isValid: false, message: 'Land value must be a number' };
-  if (value < 10000 || value > 100000000) return { isValid: false, message: 'Land value must be between $10,000 and $100,000,000' };
-  return { isValid: true };
-}
-
-export function validateLeaseTerm(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (!value) return { isValid: false, message: 'Lease term is required' };
-  if (typeof value !== 'number') return { isValid: false, message: 'Lease term must be a number' };
-  if (value < 1 || value > 999) return { isValid: false, message: 'Lease term must be between 1 and 999 years' };
-  return { isValid: true };
-}
-
-export function validateAnnualRent(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (!value) return { isValid: false, message: 'Annual rent is required' };
-  if (typeof value !== 'number') return { isValid: false, message: 'Annual rent must be a number' };
-  if (value < 1000 || value > 10000000) return { isValid: false, message: 'Annual rent must be between $1,000 and $10,000,000' };
-  return { isValid: true };
-}
-
-export function validateRentEscalation(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (!value) return { isValid: false, message: 'Rent escalation rate is required' };
-  if (typeof value !== 'number') return { isValid: false, message: 'Rent escalation rate must be a number' };
-  if (value < 0 || value > 20) return { isValid: false, message: 'Rent escalation rate must be between 0% and 20%' };
-  return { isValid: true };
-}
-
-export function validateDiscountRate(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (!value) return { isValid: false, message: 'Discount rate is required' };
-  if (typeof value !== 'number') return { isValid: false, message: 'Discount rate must be a number' };
-  if (value < 1 || value > 25) return { isValid: false, message: 'Discount rate must be between 1% and 25%' };
-  return { isValid: true };
-}
-
-export function validateLandAppreciation(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (!value) return { isValid: false, message: 'Land appreciation rate is required' };
-  if (typeof value !== 'number') return { isValid: false, message: 'Land appreciation rate must be a number' };
-  if (value < -10 || value > 15) return { isValid: false, message: 'Land appreciation rate must be between -10% and 15%' };
-  return { isValid: true };
-}
-
-export function validateReversionaryValue(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && typeof value !== 'number') return { isValid: false, message: 'Reversionary value must be a number' };
-  if (value && (value < 0 || value > 100000000)) return { isValid: false, message: 'Reversionary value must be between $0 and $100,000,000' };
-  return { isValid: true };
-}
-
-export function validateLeaseType(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (!value) return { isValid: false, message: 'Lease type is required' };
-  const validTypes = ['net', 'gross', 'triple-net', 'percentage'];
-  if (!validTypes.includes(value)) return { isValid: false, message: 'Invalid lease type' };
-  return { isValid: true };
-}
-
-export function validatePropertyType(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (!value) return { isValid: false, message: 'Property type is required' };
-  const validTypes = ['residential', 'commercial', 'industrial', 'mixed-use', 'agricultural'];
-  if (!validTypes.includes(value)) return { isValid: false, message: 'Invalid property type' };
-  return { isValid: true };
-}
-
-export function validateLocation(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (!value) return { isValid: false, message: 'Location is required' };
-  const validLocations = ['urban', 'suburban', 'rural', 'coastal', 'mountain'];
-  if (!validLocations.includes(value)) return { isValid: false, message: 'Invalid location' };
-  return { isValid: true };
-}
-
-export function validateMarketType(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (!value) return { isValid: false, message: 'Market type is required' };
-  const validTypes = ['hot', 'stable', 'declining', 'emerging'];
-  if (!validTypes.includes(value)) return { isValid: false, message: 'Invalid market type' };
-  return { isValid: true };
-}
-
-export function validateTenantCredit(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value) {
-    const validCredits = ['AAA', 'AA', 'A', 'BBB', 'BB', 'B', 'CCC', 'unknown'];
-    if (!validCredits.includes(value)) return { isValid: false, message: 'Invalid tenant credit rating' };
+export function validatePropertyAddress(value: string, allInputs: GroundLeaseValuationInputs): string | null {
+  if (!value || value.trim().length === 0) {
+    return 'Property address is required';
   }
-  return { isValid: true };
-}
-
-export function validatePaymentFrequency(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value) {
-    const validFrequencies = ['monthly', 'quarterly', 'semi-annually', 'annually'];
-    if (!validFrequencies.includes(value)) return { isValid: false, message: 'Invalid payment frequency' };
+  if (value.trim().length < 5) {
+    return 'Property address must be at least 5 characters long';
   }
-  return { isValid: true };
+  return null;
 }
 
-export function validateMarketLiquidity(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value) {
-    const validLiquidity = ['high', 'medium', 'low'];
-    if (!validLiquidity.includes(value)) return { isValid: false, message: 'Invalid market liquidity' };
+export function validatePropertyType(value: string, allInputs: GroundLeaseValuationInputs): string | null {
+  if (!value) {
+    return 'Property type is required';
   }
-  return { isValid: true };
-}
-
-export function validateOperatingExpenses(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && typeof value !== 'number') return { isValid: false, message: 'Operating expenses must be a number' };
-  if (value && (value < 0 || value > 1000000)) return { isValid: false, message: 'Operating expenses must be between $0 and $1,000,000' };
-  return { isValid: true };
-}
-
-export function validatePropertyTaxes(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && typeof value !== 'number') return { isValid: false, message: 'Property taxes must be a number' };
-  if (value && (value < 0 || value > 1000000)) return { isValid: false, message: 'Property taxes must be between $0 and $1,000,000' };
-  return { isValid: true };
-}
-
-export function validateInsurance(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && typeof value !== 'number') return { isValid: false, message: 'Insurance costs must be a number' };
-  if (value && (value < 0 || value > 100000)) return { isValid: false, message: 'Insurance costs must be between $0 and $100,000' };
-  return { isValid: true };
-}
-
-export function validateMaintenance(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && typeof value !== 'number') return { isValid: false, message: 'Maintenance costs must be a number' };
-  if (value && (value < 0 || value > 100000)) return { isValid: false, message: 'Maintenance costs must be between $0 and $100,000' };
-  return { isValid: true };
-}
-
-export function validateManagementFees(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && typeof value !== 'number') return { isValid: false, message: 'Management fees must be a number' };
-  if (value && (value < 0 || value > 100000)) return { isValid: false, message: 'Management fees must be between $0 and $100,000' };
-  return { isValid: true };
-}
-
-export function validateVacancyRate(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && typeof value !== 'number') return { isValid: false, message: 'Vacancy rate must be a number' };
-  if (value && (value < 0 || value > 50)) return { isValid: false, message: 'Vacancy rate must be between 0% and 50%' };
-  return { isValid: true };
-}
-
-export function validateCollectionLoss(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && typeof value !== 'number') return { isValid: false, message: 'Collection loss rate must be a number' };
-  if (value && (value < 0 || value > 20)) return { isValid: false, message: 'Collection loss rate must be between 0% and 20%' };
-  return { isValid: true };
-}
-
-export function validateInflationRate(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && typeof value !== 'number') return { isValid: false, message: 'Inflation rate must be a number' };
-  if (value && (value < -5 || value > 15)) return { isValid: false, message: 'Inflation rate must be between -5% and 15%' };
-  return { isValid: true };
-}
-
-export function validateTaxRate(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && typeof value !== 'number') return { isValid: false, message: 'Tax rate must be a number' };
-  if (value && (value < 0 || value > 50)) return { isValid: false, message: 'Tax rate must be between 0% and 50%' };
-  return { isValid: true };
-}
-
-export function validateRiskScore(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && typeof value !== 'number') return { isValid: false, message: 'Risk score must be a number' };
-  if (value && (value < 1 || value > 10)) return { isValid: false, message: 'Risk score must be between 1 and 10' };
-  return { isValid: true };
-}
-
-export function validateLeaseStartDate(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value) {
-    const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
-    if (!dateRegex.test(value)) return { isValid: false, message: 'Lease start date must be in YYYY-MM-DD format' };
-    const date = new Date(value);
-    if (isNaN(date.getTime())) return { isValid: false, message: 'Invalid lease start date' };
+  const validTypes = ['commercial', 'residential', 'industrial', 'retail', 'office', 'mixed_use'];
+  if (!validTypes.includes(value)) {
+    return 'Invalid property type';
   }
-  return { isValid: true };
+  return null;
 }
 
-export function validateAllGroundLeaseInputs(inputs: Partial<CalculatorInputs>): { isValid: boolean; errors: string[] } {
-  const errors: string[] = [];
-
-  const landValueResult = validateLandValue(inputs.landValue);
-  if (!landValueResult.isValid) errors.push(landValueResult.message!);
-
-  const leaseTermResult = validateLeaseTerm(inputs.leaseTerm);
-  if (!leaseTermResult.isValid) errors.push(leaseTermResult.message!);
-
-  const annualRentResult = validateAnnualRent(inputs.annualRent);
-  if (!annualRentResult.isValid) errors.push(annualRentResult.message!);
-
-  const rentEscalationResult = validateRentEscalation(inputs.rentEscalation);
-  if (!rentEscalationResult.isValid) errors.push(rentEscalationResult.message!);
-
-  const discountRateResult = validateDiscountRate(inputs.discountRate);
-  if (!discountRateResult.isValid) errors.push(discountRateResult.message!);
-
-  const landAppreciationResult = validateLandAppreciation(inputs.landAppreciation);
-  if (!landAppreciationResult.isValid) errors.push(landAppreciationResult.message!);
-
-  const reversionaryValueResult = validateReversionaryValue(inputs.reversionaryValue);
-  if (!reversionaryValueResult.isValid) errors.push(reversionaryValueResult.message!);
-
-  const leaseTypeResult = validateLeaseType(inputs.leaseType);
-  if (!leaseTypeResult.isValid) errors.push(leaseTypeResult.message!);
-
-  const propertyTypeResult = validatePropertyType(inputs.propertyType);
-  if (!propertyTypeResult.isValid) errors.push(propertyTypeResult.message!);
-
-  const locationResult = validateLocation(inputs.location);
-  if (!locationResult.isValid) errors.push(locationResult.message!);
-
-  const marketTypeResult = validateMarketType(inputs.marketType);
-  if (!marketTypeResult.isValid) errors.push(marketTypeResult.message!);
-
-  const tenantCreditResult = validateTenantCredit(inputs.tenantCredit);
-  if (!tenantCreditResult.isValid) errors.push(tenantCreditResult.message!);
-
-  const paymentFrequencyResult = validatePaymentFrequency(inputs.paymentFrequency);
-  if (!paymentFrequencyResult.isValid) errors.push(paymentFrequencyResult.message!);
-
-  const marketLiquidityResult = validateMarketLiquidity(inputs.marketLiquidity);
-  if (!marketLiquidityResult.isValid) errors.push(marketLiquidityResult.message!);
-
-  const operatingExpensesResult = validateOperatingExpenses(inputs.operatingExpenses);
-  if (!operatingExpensesResult.isValid) errors.push(operatingExpensesResult.message!);
-
-  const propertyTaxesResult = validatePropertyTaxes(inputs.propertyTaxes);
-  if (!propertyTaxesResult.isValid) errors.push(propertyTaxesResult.message!);
-
-  const insuranceResult = validateInsurance(inputs.insurance);
-  if (!insuranceResult.isValid) errors.push(insuranceResult.message!);
-
-  const maintenanceResult = validateMaintenance(inputs.maintenance);
-  if (!maintenanceResult.isValid) errors.push(maintenanceResult.message!);
-
-  const managementFeesResult = validateManagementFees(inputs.managementFees);
-  if (!managementFeesResult.isValid) errors.push(managementFeesResult.message!);
-
-  const vacancyRateResult = validateVacancyRate(inputs.vacancyRate);
-  if (!vacancyRateResult.isValid) errors.push(vacancyRateResult.message!);
-
-  const collectionLossResult = validateCollectionLoss(inputs.collectionLoss);
-  if (!collectionLossResult.isValid) errors.push(collectionLossResult.message!);
-
-  const inflationRateResult = validateInflationRate(inputs.inflationRate);
-  if (!inflationRateResult.isValid) errors.push(inflationRateResult.message!);
-
-  const taxRateResult = validateTaxRate(inputs.taxRate);
-  if (!taxRateResult.isValid) errors.push(taxRateResult.message!);
-
-  const riskScoreResult = validateRiskScore(inputs.riskScore);
-  if (!riskScoreResult.isValid) errors.push(riskScoreResult.message!);
-
-  const leaseStartDateResult = validateLeaseStartDate(inputs.leaseStartDate);
-  if (!leaseStartDateResult.isValid) errors.push(leaseStartDateResult.message!);
-
-  // Logical validation
-  if (inputs.annualRent && inputs.landValue && inputs.annualRent > inputs.landValue) {
-    errors.push('Annual rent cannot exceed land value');
+export function validatePropertySize(value: number, allInputs: GroundLeaseValuationInputs): string | null {
+  if (!value || value <= 0) {
+    return 'Property size must be greater than 0';
   }
-  if (inputs.reversionaryValue && inputs.landValue && inputs.reversionaryValue < inputs.landValue * 0.1) {
-    errors.push('Reversionary value seems too low relative to land value');
+  if (value > 10000000) {
+    return 'Property size cannot exceed 10,000,000 sq ft';
   }
-  if (inputs.reversionaryValue && inputs.landValue && inputs.reversionaryValue > inputs.landValue * 10) {
-    errors.push('Reversionary value seems too high relative to land value');
-  }
-  if (inputs.discountRate && inputs.rentEscalation && inputs.discountRate <= inputs.rentEscalation) {
-    errors.push('Discount rate should be higher than rent escalation rate for valid calculations');
-  }
-  if (inputs.landAppreciation && inputs.rentEscalation && inputs.landAppreciation > inputs.rentEscalation * 2) {
-    errors.push('Land appreciation rate seems unusually high relative to rent escalation');
-  }
+  return null;
+}
 
-  return {
-    isValid: errors.length === 0,
-    errors
-  };
+export function validateLandSize(value: number, allInputs: GroundLeaseValuationInputs): string | null {
+  if (!value || value <= 0) {
+    return 'Land size must be greater than 0';
+  }
+  if (value > 10000) {
+    return 'Land size cannot exceed 10,000 acres';
+  }
+  return null;
+}
+
+export function validateZoning(value: string, allInputs: GroundLeaseValuationInputs): string | null {
+  if (!value || value.trim().length === 0) {
+    return 'Zoning classification is required';
+  }
+  return null;
+}
+
+export function validateCurrentUse(value: string, allInputs: GroundLeaseValuationInputs): string | null {
+  if (!value || value.trim().length === 0) {
+    return 'Current use is required';
+  }
+  return null;
+}
+
+export function validateHighestBestUse(value: string, allInputs: GroundLeaseValuationInputs): string | null {
+  if (!value || value.trim().length === 0) {
+    return 'Highest and best use is required';
+  }
+  return null;
+}
+
+export function validateLeaseType(value: string, allInputs: GroundLeaseValuationInputs): string | null {
+  if (!value) {
+    return 'Lease type is required';
+  }
+  const validTypes = ['ground_lease', 'land_lease', 'master_lease', 'sublease'];
+  if (!validTypes.includes(value)) {
+    return 'Invalid lease type';
+  }
+  return null;
+}
+
+export function validateLeaseStartDate(value: string, allInputs: GroundLeaseValuationInputs): string | null {
+  if (!value) {
+    return 'Lease start date is required';
+  }
+  const date = new Date(value);
+  if (isNaN(date.getTime())) {
+    return 'Invalid lease start date format';
+  }
+  return null;
+}
+
+export function validateLeaseEndDate(value: string, allInputs: GroundLeaseValuationInputs): string | null {
+  if (!value) {
+    return 'Lease end date is required';
+  }
+  const date = new Date(value);
+  if (isNaN(date.getTime())) {
+    return 'Invalid lease end date format';
+  }
+  
+  if (allInputs.leaseStartDate) {
+    const startDate = new Date(allInputs.leaseStartDate);
+    if (date <= startDate) {
+      return 'Lease end date must be after lease start date';
+    }
+  }
+  return null;
+}
+
+export function validateLeaseTerm(value: number, allInputs: GroundLeaseValuationInputs): string | null {
+  if (!value || value <= 0) {
+    return 'Lease term must be greater than 0';
+  }
+  if (value > 99) {
+    return 'Lease term cannot exceed 99 years';
+  }
+  return null;
+}
+
+export function validateRemainingTerm(value: number, allInputs: GroundLeaseValuationInputs): string | null {
+  if (value === undefined || value < 0) {
+    return 'Remaining term must be 0 or greater';
+  }
+  if (allInputs.leaseTerm && value > allInputs.leaseTerm) {
+    return 'Remaining term cannot exceed total lease term';
+  }
+  return null;
+}
+
+export function validateRenewalOptions(value: number, allInputs: GroundLeaseValuationInputs): string | null {
+  if (value === undefined || value < 0) {
+    return 'Renewal options must be 0 or greater';
+  }
+  if (value > 10) {
+    return 'Renewal options cannot exceed 10';
+  }
+  return null;
+}
+
+export function validateRenewalTerm(value: number, allInputs: GroundLeaseValuationInputs): string | null {
+  if (!value || value <= 0) {
+    return 'Renewal term must be greater than 0';
+  }
+  if (value > 20) {
+    return 'Renewal term cannot exceed 20 years';
+  }
+  return null;
+}
+
+export function validateCurrentRent(value: number, allInputs: GroundLeaseValuationInputs): string | null {
+  if (!value || value <= 0) {
+    return 'Current annual rent must be greater than 0';
+  }
+  if (value > 10000000) {
+    return 'Current annual rent cannot exceed $10,000,000';
+  }
+  return null;
+}
+
+export function validateRentEscalation(value: number, allInputs: GroundLeaseValuationInputs): string | null {
+  if (value === undefined || value < 0) {
+    return 'Rent escalation rate must be 0 or greater';
+  }
+  if (value > 50) {
+    return 'Rent escalation rate cannot exceed 50%';
+  }
+  return null;
+}
+
+export function validateRentEscalationFrequency(value: string, allInputs: GroundLeaseValuationInputs): string | null {
+  if (!value) {
+    return 'Rent escalation frequency is required';
+  }
+  const validFrequencies = ['annual', 'biennial', 'quinquennial', 'decennial'];
+  if (!validFrequencies.includes(value)) {
+    return 'Invalid rent escalation frequency';
+  }
+  return null;
+}
+
+export function validateRentReviewFrequency(value: number, allInputs: GroundLeaseValuationInputs): string | null {
+  if (value === undefined || value <= 0) {
+    return 'Rent review frequency must be greater than 0';
+  }
+  if (value > 20) {
+    return 'Rent review frequency cannot exceed 20 years';
+  }
+  return null;
+}
+
+export function validateRentReviewMethod(value: string, allInputs: GroundLeaseValuationInputs): string | null {
+  if (!value) {
+    return 'Rent review method is required';
+  }
+  const validMethods = ['market', 'cpi', 'fixed', 'hybrid'];
+  if (!validMethods.includes(value)) {
+    return 'Invalid rent review method';
+  }
+  return null;
+}
+
+export function validateOperatingExpenses(value: number, allInputs: GroundLeaseValuationInputs): string | null {
+  if (value === undefined || value < 0) {
+    return 'Operating expenses must be 0 or greater';
+  }
+  if (value > 1000000) {
+    return 'Operating expenses cannot exceed $1,000,000';
+  }
+  return null;
+}
+
+export function validatePropertyTaxes(value: number, allInputs: GroundLeaseValuationInputs): string | null {
+  if (value === undefined || value < 0) {
+    return 'Property taxes must be 0 or greater';
+  }
+  if (value > 1000000) {
+    return 'Property taxes cannot exceed $1,000,000';
+  }
+  return null;
+}
+
+export function validateInsurance(value: number, allInputs: GroundLeaseValuationInputs): string | null {
+  if (value === undefined || value < 0) {
+    return 'Insurance costs must be 0 or greater';
+  }
+  if (value > 100000) {
+    return 'Insurance costs cannot exceed $100,000';
+  }
+  return null;
+}
+
+export function validateMaintenance(value: number, allInputs: GroundLeaseValuationInputs): string | null {
+  if (value === undefined || value < 0) {
+    return 'Maintenance costs must be 0 or greater';
+  }
+  if (value > 100000) {
+    return 'Maintenance costs cannot exceed $100,000';
+  }
+  return null;
+}
+
+export function validateUtilities(value: number, allInputs: GroundLeaseValuationInputs): string | null {
+  if (value === undefined || value < 0) {
+    return 'Utility costs must be 0 or greater';
+  }
+  if (value > 100000) {
+    return 'Utility costs cannot exceed $100,000';
+  }
+  return null;
+}
+
+export function validateManagementFees(value: number, allInputs: GroundLeaseValuationInputs): string | null {
+  if (value === undefined || value < 0) {
+    return 'Management fees must be 0 or greater';
+  }
+  if (value > 100000) {
+    return 'Management fees cannot exceed $100,000';
+  }
+  return null;
+}
+
+export function validateMarketRent(value: number, allInputs: GroundLeaseValuationInputs): string | null {
+  if (!value || value <= 0) {
+    return 'Market rent must be greater than 0';
+  }
+  if (value > 1000) {
+    return 'Market rent cannot exceed $1,000 per sq ft/year';
+  }
+  return null;
+}
+
+export function validateMarketCapRate(value: number, allInputs: GroundLeaseValuationInputs): string | null {
+  if (!value || value <= 0) {
+    return 'Market cap rate must be greater than 0';
+  }
+  if (value > 20) {
+    return 'Market cap rate cannot exceed 20%';
+  }
+  return null;
+}
+
+export function validateMarketDiscountRate(value: number, allInputs: GroundLeaseValuationInputs): string | null {
+  if (!value || value <= 0) {
+    return 'Market discount rate must be greater than 0';
+  }
+  if (value > 30) {
+    return 'Market discount rate cannot exceed 30%';
+  }
+  return null;
+}
+
+export function validateMarketGrowthRate(value: number, allInputs: GroundLeaseValuationInputs): string | null {
+  if (value === undefined) {
+    return 'Market growth rate is required';
+  }
+  if (value < -10 || value > 20) {
+    return 'Market growth rate must be between -10% and 20%';
+  }
+  return null;
+}
+
+export function validateBuildingValue(value: number, allInputs: GroundLeaseValuationInputs): string | null {
+  if (value === undefined || value < 0) {
+    return 'Building value must be 0 or greater';
+  }
+  if (value > 100000000) {
+    return 'Building value cannot exceed $100,000,000';
+  }
+  return null;
+}
+
+export function validateBuildingAge(value: number, allInputs: GroundLeaseValuationInputs): string | null {
+  if (value === undefined || value < 0) {
+    return 'Building age must be 0 or greater';
+  }
+  if (value > 100) {
+    return 'Building age cannot exceed 100 years';
+  }
+  return null;
+}
+
+export function validateBuildingCondition(value: string, allInputs: GroundLeaseValuationInputs): string | null {
+  if (!value) {
+    return 'Building condition is required';
+  }
+  const validConditions = ['excellent', 'good', 'fair', 'poor'];
+  if (!validConditions.includes(value)) {
+    return 'Invalid building condition';
+  }
+  return null;
+}
+
+export function validateRemainingEconomicLife(value: number, allInputs: GroundLeaseValuationInputs): string | null {
+  if (value === undefined || value < 0) {
+    return 'Remaining economic life must be 0 or greater';
+  }
+  if (value > 100) {
+    return 'Remaining economic life cannot exceed 100 years';
+  }
+  return null;
+}
+
+export function validateDepreciationRate(value: number, allInputs: GroundLeaseValuationInputs): string | null {
+  if (value === undefined || value < 0) {
+    return 'Depreciation rate must be 0 or greater';
+  }
+  if (value > 10) {
+    return 'Depreciation rate cannot exceed 10%';
+  }
+  return null;
+}
+
+export function validateTenantCredit(value: string, allInputs: GroundLeaseValuationInputs): string | null {
+  if (!value) {
+    return 'Tenant credit rating is required';
+  }
+  const validRatings = ['aaa', 'aa', 'a', 'bbb', 'bb', 'b', 'ccc', 'default'];
+  if (!validRatings.includes(value)) {
+    return 'Invalid tenant credit rating';
+  }
+  return null;
+}
+
+export function validateLeaseSecurity(value: string, allInputs: GroundLeaseValuationInputs): string | null {
+  if (!value) {
+    return 'Lease security is required';
+  }
+  const validSecurities = ['guaranteed', 'secured', 'unsecured', 'subordinated'];
+  if (!validSecurities.includes(value)) {
+    return 'Invalid lease security';
+  }
+  return null;
+}
+
+export function validateMarketRisk(value: string, allInputs: GroundLeaseValuationInputs): string | null {
+  if (!value) {
+    return 'Market risk is required';
+  }
+  const validRisks = ['low', 'medium', 'high'];
+  if (!validRisks.includes(value)) {
+    return 'Invalid market risk level';
+  }
+  return null;
+}
+
+export function validateRedevelopmentRisk(value: string, allInputs: GroundLeaseValuationInputs): string | null {
+  if (!value) {
+    return 'Redevelopment risk is required';
+  }
+  const validRisks = ['low', 'medium', 'high'];
+  if (!validRisks.includes(value)) {
+    return 'Invalid redevelopment risk level';
+  }
+  return null;
+}
+
+export function validateAnalysisPeriod(value: number, allInputs: GroundLeaseValuationInputs): string | null {
+  if (!value || value <= 0) {
+    return 'Analysis period must be greater than 0';
+  }
+  if (value > 50) {
+    return 'Analysis period cannot exceed 50 years';
+  }
+  return null;
+}
+
+export function validateTerminalCapRate(value: number, allInputs: GroundLeaseValuationInputs): string | null {
+  if (!value || value <= 0) {
+    return 'Terminal cap rate must be greater than 0';
+  }
+  if (value > 20) {
+    return 'Terminal cap rate cannot exceed 20%';
+  }
+  return null;
+}
+
+export function validateReversionValue(value: number, allInputs: GroundLeaseValuationInputs): string | null {
+  if (value === undefined || value < 0) {
+    return 'Reversion value must be 0 or greater';
+  }
+  if (value > 100000000) {
+    return 'Reversion value cannot exceed $100,000,000';
+  }
+  return null;
+}
+
+export function validateDiscountRate(value: number, allInputs: GroundLeaseValuationInputs): string | null {
+  if (!value || value <= 0) {
+    return 'Discount rate must be greater than 0';
+  }
+  if (value > 30) {
+    return 'Discount rate cannot exceed 30%';
+  }
+  return null;
+}
+
+export function validateInflationRate(value: number, allInputs: GroundLeaseValuationInputs): string | null {
+  if (value === undefined) {
+    return 'Inflation rate is required';
+  }
+  if (value < -5 || value > 15) {
+    return 'Inflation rate must be between -5% and 15%';
+  }
+  return null;
+}
+
+export function validateCurrency(value: string, allInputs: GroundLeaseValuationInputs): string | null {
+  if (!value) {
+    return 'Currency is required';
+  }
+  const validCurrencies = ['USD', 'EUR', 'GBP', 'JPY', 'CAD', 'AUD'];
+  if (!validCurrencies.includes(value)) {
+    return 'Invalid currency';
+  }
+  return null;
+}
+
+export function validateDisplayFormat(value: string, allInputs: GroundLeaseValuationInputs): string | null {
+  if (!value) {
+    return 'Display format is required';
+  }
+  const validFormats = ['percentage', 'decimal', 'basis-points'];
+  if (!validFormats.includes(value)) {
+    return 'Invalid display format';
+  }
+  return null;
 }

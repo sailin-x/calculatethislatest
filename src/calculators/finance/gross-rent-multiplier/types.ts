@@ -1,341 +1,319 @@
 export interface GrossRentMultiplierInputs {
-  propertyValue: number;
-  grossRentalIncome: number;
-  propertyType: 'residential' | 'commercial' | 'industrial' | 'mixed-use';
-  propertyLocation: string;
-  marketConditions: 'strong' | 'moderate' | 'weak';
-  propertyAge: number;
-  squareFootage: number;
+  // Property Information
+  propertyAddress: string;
+  propertyType: 'single_family' | 'multi_family' | 'commercial' | 'industrial' | 'retail' | 'office' | 'mixed_use';
+  propertySize: number; // square feet
+  lotSize: number; // square feet
+  yearBuilt: number;
+  propertyCondition: 'excellent' | 'good' | 'fair' | 'poor' | 'needs_work';
   bedrooms: number;
   bathrooms: number;
-  lotSize: number;
-  zoning: string;
-  propertyCondition: 'excellent' | 'good' | 'fair' | 'poor';
-  occupancyRate: number;
-  vacancyRate: number;
-  creditLoss: number;
-  operatingExpenses: number;
-  propertyTaxes: number;
-  insurance: number;
-  maintenance: number;
-  utilities: number;
-  managementFees: number;
-  otherExpenses: number;
-  netOperatingIncome: number;
-  capitalizationRate: number;
-  comparableProperties: Array<{
+  
+  // Financial Information
+  purchasePrice: number;
+  marketValue: number;
+  annualGrossRent: number;
+  monthlyGrossRent: number;
+  annualOperatingExpenses: number;
+  monthlyOperatingExpenses: number;
+  annualNetOperatingIncome: number;
+  monthlyNetOperatingIncome: number;
+  
+  // Rent Information
+  rentPerUnit: number[];
+  numberOfUnits: number;
+  vacancyRate: number; // percentage
+  collectionLoss: number; // percentage
+  effectiveGrossIncome: number;
+  
+  // Expense Breakdown
+  propertyTaxes: number; // annual
+  insurance: number; // annual
+  utilities: number; // annual
+  maintenance: number; // annual
+  propertyManagement: number; // annual
+  repairs: number; // annual
+  landscaping: number; // annual
+  pestControl: number; // annual
+  otherExpenses: number; // annual
+  
+  // Market Information
+  marketGRM: number; // market gross rent multiplier
+  marketCapRate: number; // percentage
+  marketRent: number; // per square foot per year
+  comparableProperties: {
     address: string;
-    value: number;
-    grossRent: number;
+    salePrice: number;
+    annualRent: number;
     grm: number;
-    capRate: number;
-    condition: string;
-    age: number;
-  }>;
-  marketData: {
-    averageGrm: number;
-    medianGrm: number;
-    marketCapRate: number;
-    averageRent: number;
-    averageValue: number;
-    marketTrends: 'rising' | 'stable' | 'falling';
-  };
-  historicalData: Array<{
-    year: number;
-    value: number;
-    grossRent: number;
-    grm: number;
-    capRate: number;
-  }>;
-  projectedData: Array<{
-    year: number;
-    value: number;
-    grossRent: number;
-    grm: number;
-    capRate: number;
-  }>;
-  riskFactors: {
-    marketRisk: number;
-    propertyRisk: number;
-    tenantRisk: number;
-    locationRisk: number;
-    regulatoryRisk: number;
-    environmentalRisk: number;
-    totalRisk: number;
-  };
+    saleDate: string;
+    propertyType: string;
+    size: number;
+  }[];
+  
+  // Location Information
+  city: string;
+  state: string;
+  zipCode: string;
+  neighborhood: string;
+  marketType: 'hot' | 'stable' | 'declining' | 'emerging';
+  marketTrend: 'appreciating' | 'stable' | 'declining';
+  
+  // Property Features
+  amenities: string[];
+  parkingSpaces: number;
+  hasPool: boolean;
+  hasGym: boolean;
+  hasLaundry: boolean;
+  hasStorage: boolean;
+  hasBalcony: boolean;
+  hasFireplace: boolean;
+  hasCentralAC: boolean;
+  hasDishwasher: boolean;
+  
+  // Analysis Parameters
+  analysisPeriod: number; // years
+  rentGrowthRate: number; // percentage
+  expenseGrowthRate: number; // percentage
+  appreciationRate: number; // percentage
+  discountRate: number; // percentage
+  
+  // Reporting Preferences
+  currency: 'USD' | 'EUR' | 'GBP' | 'JPY' | 'CAD' | 'AUD';
+  displayFormat: 'percentage' | 'decimal' | 'basis-points';
+  includeCharts: boolean;
 }
 
 export interface GrossRentMultiplierMetrics {
+  // GRM Analysis
   grossRentMultiplier: number;
-  propertyValue: number;
-  grossRentalIncome: number;
-  netOperatingIncome: number;
-  capitalizationRate: number;
+  netRentMultiplier: number;
+  effectiveGrossRentMultiplier: number;
+  marketGRMComparison: number; // difference from market
+  
+  // Financial Metrics
+  totalInvestment: number;
+  annualCashFlow: number;
+  monthlyCashFlow: number;
+  cashOnCashReturn: number; // percentage
+  returnOnInvestment: number; // percentage
+  
+  // Income Analysis
+  grossIncome: number;
+  netIncome: number;
   effectiveGrossIncome: number;
   vacancyLoss: number;
-  creditLoss: number;
-  totalOperatingExpenses: number;
-  propertyTaxes: number;
-  insurance: number;
-  maintenance: number;
-  utilities: number;
-  managementFees: number;
-  otherExpenses: number;
-  occupancyRate: number;
-  vacancyRate: number;
-  marketGrm: number;
-  grmComparison: number;
-  grmPercentile: number;
-  marketCapRate: number;
-  capRateComparison: number;
-  capRatePercentile: number;
+  collectionLoss: number;
+  
+  // Expense Analysis
+  totalExpenses: number;
+  expenseRatio: number; // percentage
+  netIncomeMultiplier: number;
+  
+  // Market Analysis
+  marketValue: number;
+  marketValuePerSquareFoot: number;
+  marketValuePerUnit: number;
+  comparableValue: number;
+  
+  // Performance Metrics
   breakEvenRent: number;
-  breakEvenValue: number;
-  cashFlow: number;
-  cashOnCashReturn: number;
-  returnOnEquity: number;
-  returnOnInvestment: number;
-  internalRateOfReturn: number;
-  netPresentValue: number;
-  modifiedInternalRateOfReturn: number;
-  profitabilityIndex: number;
-  discountedPaybackPeriod: number;
-  averageAccountingReturn: number;
-  capitalAssetPricingModel: number;
-  weightedAverageCostOfCapital: number;
-  hurdleRate: number;
-  riskAdjustedReturn: number;
-  riskFreeRate: number;
-  marketRiskPremium: number;
-  beta: number;
-  alpha: number;
-  sharpeRatio: number;
-  sortinoRatio: number;
-  treynorRatio: number;
-  informationRatio: number;
-  calmarRatio: number;
-  maximumDrawdown: number;
-  valueAtRisk: number;
-  conditionalValueAtRisk: number;
-  expectedShortfall: number;
-  downsideDeviation: number;
-  upsideDeviation: number;
-  skewness: number;
-  kurtosis: number;
-  correlation: number;
-  covariance: number;
-  variance: number;
-  standardDeviation: number;
-  coefficientOfVariation: number;
-  riskOfRuin: number;
-  kellyCriterion: number;
-  optimalLeverage: number;
-  positionSizing: number;
-  stopLoss: number;
-  takeProfit: number;
-  trailingStop: number;
-  rebalancingThreshold: number;
-  taxLossHarvesting: boolean;
-  taxGainHarvesting: boolean;
-  washSaleRule: boolean;
-  taxLotAccounting: 'fifo' | 'lifo' | 'specific-identification' | 'average-cost';
-  taxBracket: number;
-  stateTaxRate: number;
-  localTaxRate: number;
-  alternativeMinimumTax: boolean;
-  netInvestmentIncomeTax: boolean;
-  qualifiedDividendRate: number;
-  longTermCapitalGainsRate: number;
-  shortTermCapitalGainsRate: number;
-  municipalBondYield: number;
-  corporateBondYield: number;
-  treasuryBondYield: number;
-  inflationProtectedSecurities: number;
-  highYieldBondYield: number;
-  emergingMarketBondYield: number;
-  internationalBondYield: number;
-  realEstateInvestmentTrustYield: number;
-  masterLimitedPartnershipYield: number;
-  preferredStockYield: number;
-  convertibleBondYield: number;
-  floatingRateNoteYield: number;
-  zeroCouponBondYield: number;
-  callableBondYield: number;
-  putableBondYield: number;
-  stepUpBondYield: number;
-  stepDownBondYield: number;
-  inflationLinkedBondYield: number;
-  currencyLinkedBondYield: number;
-  commodityLinkedBondYield: number;
-  equityLinkedBondYield: number;
-  creditLinkedBondYield: number;
-  catastropheBondYield: number;
-  weatherDerivativeYield: number;
-  carbonCreditYield: number;
-  renewableEnergyYield: number;
-  infrastructureYield: number;
-  privateEquityYield: number;
-  ventureCapitalYield: number;
-  hedgeFundYield: number;
-  managedFuturesYield: number;
-  longShortEquityYield: number;
-  marketNeutralYield: number;
-  arbitrageYield: number;
-  eventDrivenYield: number;
-  distressedSecuritiesYield: number;
-  globalMacroYield: number;
-  systematicTradingYield: number;
-  discretionaryTradingYield: number;
-  quantitativeTradingYield: number;
-  highFrequencyTradingYield: number;
-  algorithmicTradingYield: number;
-  machineLearningTradingYield: number;
-  artificialIntelligenceTradingYield: number;
-  blockchainTradingYield: number;
-  cryptocurrencyTradingYield: number;
-  tokenizedAssetYield: number;
-  decentralizedFinanceYield: number;
-  nonFungibleTokenYield: number;
-  initialCoinOfferingYield: number;
-  securityTokenOfferingYield: number;
-  initialDexOfferingYield: number;
-  yieldFarmingYield: number;
-  liquidityMiningYield: number;
-  stakingYield: number;
-  lendingYield: number;
-  borrowingYield: number;
-  marginTradingYield: number;
-  futuresTradingYield: number;
-  optionsTradingYield: number;
-  swapTradingYield: number;
-  forwardTradingYield: number;
-  spotTradingYield: number;
-  crossCurrencyTradingYield: number;
-  interestRateTradingYield: number;
-  creditTradingYield: number;
-  volatilityTradingYield: number;
-  correlationTradingYield: number;
-  dispersionTradingYield: number;
-  basisTradingYield: number;
-  calendarSpreadYield: number;
-  butterflySpreadYield: number;
-  ironCondorYield: number;
-  straddleYield: number;
-  strangleYield: number;
-  collarYield: number;
-  protectivePutYield: number;
-  coveredCallYield: number;
-  cashSecuredPutYield: number;
-  nakedCallYield: number;
-  nakedPutYield: number;
-  bullCallSpreadYield: number;
-  bearPutSpreadYield: number;
-  bullPutSpreadYield: number;
-  bearCallSpreadYield: number;
-  diagonalSpreadYield: number;
-  ratioSpreadYield: number;
-  backspreadYield: number;
-  frontspreadYield: number;
-  boxSpreadYield: number;
-  jellyRollYield: number;
-  conversionYield: number;
-  reversalYield: number;
-  syntheticStockYield: number;
-  syntheticBondYield: number;
-  syntheticCurrencyYield: number;
-  syntheticCommodityYield: number;
-  syntheticVolatilityYield: number;
-  syntheticCorrelationYield: number;
-  syntheticDispersionYield: number;
-  syntheticBasisYield: number;
-  syntheticCalendarYield: number;
-  syntheticButterflyYield: number;
-  syntheticIronCondorYield: number;
-  syntheticStraddleYield: number;
-  syntheticStrangleYield: number;
-  syntheticCollarYield: number;
-  syntheticProtectivePutYield: number;
-  syntheticCoveredCallYield: number;
-  syntheticCashSecuredPutYield: number;
-  syntheticNakedCallYield: number;
-  syntheticNakedPutYield: number;
-  syntheticBullCallSpreadYield: number;
-  syntheticBearPutSpreadYield: number;
-  syntheticBullPutSpreadYield: number;
-  syntheticBearCallSpreadYield: number;
-  syntheticDiagonalSpreadYield: number;
-  syntheticRatioSpreadYield: number;
-  syntheticBackspreadYield: number;
-  syntheticFrontspreadYield: number;
-  syntheticBoxSpreadYield: number;
-  syntheticJellyRollYield: number;
-  syntheticConversionYield: number;
-  syntheticReversalYield: number;
-  syntheticSyntheticStockYield: number;
-  syntheticSyntheticBondYield: number;
-  syntheticSyntheticCurrencyYield: number;
-  syntheticSyntheticCommodityYield: number;
-  syntheticSyntheticVolatilityYield: number;
-  syntheticSyntheticCorrelationYield: number;
-  syntheticSyntheticDispersionYield: number;
-  syntheticSyntheticBasisYield: number;
-  syntheticSyntheticCalendarYield: number;
-  syntheticSyntheticButterflyYield: number;
-  syntheticSyntheticIronCondorYield: number;
-  syntheticSyntheticStraddleYield: number;
-  syntheticSyntheticStrangleYield: number;
-  syntheticSyntheticCollarYield: number;
-  syntheticSyntheticProtectivePutYield: number;
-  syntheticSyntheticCoveredCallYield: number;
-  syntheticSyntheticCashSecuredPutYield: number;
-  syntheticSyntheticNakedCallYield: number;
-  syntheticSyntheticNakedPutYield: number;
-  syntheticSyntheticBullCallSpreadYield: number;
-  syntheticSyntheticBearPutSpreadYield: number;
-  syntheticSyntheticBullPutSpreadYield: number;
-  syntheticSyntheticBearCallSpreadYield: number;
-  syntheticSyntheticDiagonalSpreadYield: number;
-  syntheticSyntheticRatioSpreadYield: number;
-  syntheticSyntheticBackspreadYield: number;
-  syntheticSyntheticFrontspreadYield: number;
-  syntheticSyntheticBoxSpreadYield: number;
-  syntheticSyntheticJellyRollYield: number;
-  syntheticSyntheticConversionYield: number;
-  syntheticSyntheticReversalYield: number;
-  cashFlowProjection: Array<{
-    year: number;
-    grossRent: number;
-    noi: number;
+  breakEvenOccupancy: number;
+  profitMargin: number; // percentage
+  operatingExpenseRatio: number; // percentage
+  
+  // Risk Metrics
+  riskScore: number; // 1-10 scale
+  vacancyRisk: number; // percentage
+  marketRisk: number; // percentage
+  expenseRisk: number; // percentage
+  
+  // Sensitivity Analysis
+  sensitivityMatrix: {
+    variable: string;
+    values: number[];
+    impacts: number[];
+  }[];
+  
+  // Scenario Analysis
+  scenarios: {
+    scenario: string;
+    probability: number;
     grm: number;
-    capRate: number;
-    cashFlow: number;
-    cumulativeCashFlow: number;
-  }>;
-  sensitivityAnalysis: {
-    bestCase: number;
-    baseCase: number;
-    worstCase: number;
-  };
-  riskScore: number;
-  investmentGrade: string;
-  recommendation: string;
-  marketComparison: string;
-  comparableAnalysis: string;
+    roi: number;
+  }[];
 }
 
 export interface GrossRentMultiplierAnalysis {
-  grmGrade: string;
-  riskAssessment: string;
-  recommendations: string;
-  marketAnalysis: string;
+  // Executive Summary
+  investmentRating: 'Excellent' | 'Good' | 'Average' | 'Poor' | 'Very Poor';
+  riskRating: 'Low' | 'Moderate' | 'High' | 'Very High';
+  recommendation: 'Buy' | 'Consider' | 'Hold' | 'Sell' | 'Avoid';
+  
+  // Key Insights
+  keyStrengths: string[];
+  keyWeaknesses: string[];
+  riskFactors: string[];
+  opportunities: string[];
+  
+  // GRM Analysis
+  grmSummary: string;
+  marketComparison: string;
   investmentAnalysis: string;
-  sensitivityAnalysis: {
-    bestCase: number;
-    baseCase: number;
-    worstCase: number;
-  };
+  
+  // Financial Analysis
+  financialSummary: string;
+  cashFlowAnalysis: string;
+  returnAnalysis: string;
+  
+  // Market Assessment
+  marketAssessment: string;
+  comparableAnalysis: string;
+  marketPosition: string;
+  
+  // Risk Assessment
+  riskAssessment: string;
+  vacancyRisk: string;
+  marketRisk: string;
+  expenseRisk: string;
+  
+  // Property Analysis
+  propertyAnalysis: string;
+  locationAnalysis: string;
+  conditionAnalysis: string;
+  
+  // Income Analysis
+  incomeAnalysis: string;
+  rentAnalysis: string;
+  expenseAnalysis: string;
+  
+  // Recommendations
+  investmentRecommendations: string[];
+  riskMitigation: string[];
+  optimizationSuggestions: string[];
+  
+  // Implementation
+  implementationPlan: string;
+  nextSteps: string[];
+  timeline: string;
+  
+  // Monitoring
+  monitoringPlan: string;
+  keyMetrics: string[];
+  reviewSchedule: string;
+  
+  // Risk Management
+  riskManagement: string;
+  mitigationStrategies: string[];
+  contingencyPlans: string[];
+  
+  // Performance Benchmarks
+  performanceBenchmarks: {
+    metric: string;
+    target: number;
+    benchmark: number;
+    industry: string;
+  }[];
+  
+  // Decision Support
+  decisionRecommendation: string;
+  presentationPoints: string[];
+  decisionFactors: string[];
 }
 
 export interface GrossRentMultiplierOutputs extends GrossRentMultiplierMetrics {
   analysis: GrossRentMultiplierAnalysis;
+  
+  // Additional Output Metrics
+  dataQuality: number; // Data quality score (0-100)
+  modelAccuracy: number; // Model accuracy score (0-100)
+  confidenceLevel: number; // Overall confidence level (0-100)
+  
+  // Time Series Analysis
+  cashFlowProjections: {
+    year: number;
+    grossIncome: number;
+    expenses: number;
+    netIncome: number;
+    cashFlow: number;
+    grm: number;
+  }[];
+  
+  // Scenario Analysis
+  scenarioAnalysis: {
+    scenario: string;
+    probability: number;
+    grm: number;
+    riskLevel: 'low' | 'medium' | 'high';
+  }[];
+  
+  // Comparative Analysis
+  comparativeAnalysis: {
+    metric: string;
+    thisProperty: number;
+    marketAverage: number;
+    topQuartile: number;
+    bottomQuartile: number;
+  }[];
+  
+  // Risk Metrics
+  riskMetrics: {
+    metric: string;
+    value: number;
+    benchmark: number;
+    riskLevel: 'low' | 'medium' | 'high';
+  }[];
+  
+  // Financial Projections
+  financialProjections: {
+    year: number;
+    revenue: number;
+    expenses: number;
+    netIncome: number;
+    grm: number;
+  }[];
+  
+  // Investment Timeline
+  investmentTimeline: {
+    phase: string;
+    duration: string;
+    activities: string[];
+    deliverables: string[];
+  }[];
+  
+  // Due Diligence Checklist
+  dueDiligenceChecklist: {
+    category: string;
+    items: {
+      item: string;
+      status: 'complete' | 'pending' | 'not_applicable';
+      priority: 'high' | 'medium' | 'low';
+      notes: string;
+    }[];
+  }[];
+  
+  // Investment Analysis
+  investmentAnalysis: {
+    metric: string;
+    current: number;
+    target: number;
+    variance: number;
+  }[];
+  
+  // Market Analysis
+  marketAnalysis: {
+    metric: string;
+    current: number;
+    marketAverage: number;
+    trend: 'increasing' | 'decreasing' | 'stable';
+  }[];
+  
+  // Performance Tracking
+  performanceTracking: {
+    metric: string;
+    current: number;
+    target: number;
+    frequency: string;
+    owner: string;
+  }[];
 }

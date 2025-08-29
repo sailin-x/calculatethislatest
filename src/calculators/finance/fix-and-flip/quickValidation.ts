@@ -1,268 +1,810 @@
 import { CalculatorInputs } from '../../../types/calculator';
 
-export function validatePurchasePrice(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  const numValue = Number(value);
-  if (isNaN(numValue)) {
-    return { isValid: false, message: 'Purchase price must be a number' };
-  }
-  if (numValue < 10000) {
-    return { isValid: false, message: 'Purchase price must be at least $10,000' };
-  }
-  if (numValue > 10000000) {
-    return { isValid: false, message: 'Purchase price cannot exceed $10,000,000' };
-  }
-  return { isValid: true };
-}
+// Quick validation functions for individual inputs with allInputs parameter
 
-export function validateDownPayment(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  const numValue = Number(value);
-  if (isNaN(numValue)) {
-    return { isValid: false, message: 'Down payment must be a number' };
-  }
-  if (numValue < 1000) {
-    return { isValid: false, message: 'Down payment must be at least $1,000' };
-  }
-  if (numValue > 5000000) {
-    return { isValid: false, message: 'Down payment cannot exceed $5,000,000' };
-  }
-  return { isValid: true };
-}
-
-export function validateInterestRate(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  const numValue = Number(value);
-  if (isNaN(numValue)) {
-    return { isValid: false, message: 'Interest rate must be a number' };
-  }
-  if (numValue < 1) {
-    return { isValid: false, message: 'Interest rate must be at least 1%' };
-  }
-  if (numValue > 25) {
-    return { isValid: false, message: 'Interest rate cannot exceed 25%' };
-  }
-  return { isValid: true };
-}
-
-export function validateLoanTerm(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  const numValue = Number(value);
-  if (isNaN(numValue)) {
-    return { isValid: false, message: 'Loan term must be a number' };
-  }
-  if (numValue < 3) {
-    return { isValid: false, message: 'Loan term must be at least 3 months' };
-  }
-  if (numValue > 36) {
-    return { isValid: false, message: 'Loan term cannot exceed 36 months' };
-  }
-  return { isValid: true };
-}
-
-export function validateRenovationBudget(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  const numValue = Number(value);
-  if (isNaN(numValue)) {
-    return { isValid: false, message: 'Renovation budget must be a number' };
-  }
-  if (numValue < 0) {
-    return { isValid: false, message: 'Renovation budget cannot be negative' };
-  }
-  if (numValue > 1000000) {
-    return { isValid: false, message: 'Renovation budget cannot exceed $1,000,000' };
-  }
-  return { isValid: true };
-}
-
-export function validateRenovationTime(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  const numValue = Number(value);
-  if (isNaN(numValue)) {
-    return { isValid: false, message: 'Renovation time must be a number' };
-  }
-  if (numValue < 1) {
-    return { isValid: false, message: 'Renovation time must be at least 1 month' };
-  }
-  if (numValue > 24) {
-    return { isValid: false, message: 'Renovation time cannot exceed 24 months' };
-  }
-  return { isValid: true };
-}
-
-export function validateAfterRepairValue(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  const numValue = Number(value);
-  if (isNaN(numValue)) {
-    return { isValid: false, message: 'After repair value must be a number' };
-  }
-  if (numValue < 10000) {
-    return { isValid: false, message: 'After repair value must be at least $10,000' };
-  }
-  if (numValue > 10000000) {
-    return { isValid: false, message: 'After repair value cannot exceed $10,000,000' };
-  }
-  return { isValid: true };
-}
-
-export function validateSellingCosts(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  const numValue = Number(value);
-  if (isNaN(numValue)) {
-    return { isValid: false, message: 'Selling costs must be a number' };
-  }
-  if (numValue < 0) {
-    return { isValid: false, message: 'Selling costs cannot be negative' };
-  }
-  if (numValue > 500000) {
-    return { isValid: false, message: 'Selling costs cannot exceed $500,000' };
-  }
-  return { isValid: true };
-}
-
-export function validateHoldingCosts(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  const numValue = Number(value);
-  if (isNaN(numValue)) {
-    return { isValid: false, message: 'Monthly holding costs must be a number' };
-  }
-  if (numValue < 0) {
-    return { isValid: false, message: 'Monthly holding costs cannot be negative' };
-  }
-  if (numValue > 10000) {
-    return { isValid: false, message: 'Monthly holding costs cannot exceed $10,000' };
-  }
-  return { isValid: true };
-}
-
-export function validatePropertyType(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  const validTypes = ['single-family', 'duplex', 'townhouse', 'condo', 'multi-family', 'commercial'];
-  if (!validTypes.includes(value)) {
-    return { isValid: false, message: 'Please select a valid property type' };
-  }
-  return { isValid: true };
-}
-
-export function validatePropertyCondition(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  const validConditions = ['excellent', 'good', 'fair', 'poor', 'needs-major-repairs'];
-  if (!validConditions.includes(value)) {
-    return { isValid: false, message: 'Please select a valid property condition' };
-  }
-  return { isValid: true };
-}
-
-export function validateMarketType(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  const validTypes = ['hot', 'stable', 'slow', 'declining'];
-  if (!validTypes.includes(value)) {
-    return { isValid: false, message: 'Please select a valid market type' };
-  }
-  return { isValid: true };
-}
-
-export function validateLocation(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+export function validatePropertyAddress(value: string, allInputs?: Record<string, any>): string | null {
   if (!value || value.trim().length === 0) {
-    return { isValid: false, message: 'Location is required' };
+    return 'Property address is required';
   }
-  return { isValid: true };
+  if (value.length > 200) {
+    return 'Property address must be 200 characters or less';
+  }
+  return null;
 }
 
-export function validateAllFixAndFlipInputs(inputs: Partial<CalculatorInputs>): { isValid: boolean; errors: string[] } {
-  const errors: string[] = [];
+export function validatePropertyType(value: string, allInputs?: Record<string, any>): string | null {
+  const validTypes = ['single_family', 'townhouse', 'condo', 'multi_family', 'commercial', 'land'];
+  if (!validTypes.includes(value)) {
+    return 'Invalid property type selected';
+  }
+  return null;
+}
 
-  // Required fields validation
-  const requiredFields = [
-    'purchasePrice', 'downPayment', 'interestRate', 'loanTerm', 'renovationBudget',
-    'renovationTime', 'afterRepairValue', 'sellingCosts', 'holdingCosts',
-    'propertyType', 'propertyCondition', 'marketType', 'location'
-  ];
+export function validatePropertySize(value: number, allInputs?: Record<string, any>): string | null {
+  if (value <= 0) {
+    return 'Property size must be greater than zero';
+  }
+  if (value > 100000) {
+    return 'Property size over 100,000 sq ft seems unrealistic';
+  }
+  return null;
+}
 
-  requiredFields.forEach(field => {
-    if (!(field in inputs) || inputs[field] === undefined || inputs[field] === null || inputs[field] === '') {
-      errors.push(`${field} is required`);
+export function validateLotSize(value: number, allInputs?: Record<string, any>): string | null {
+  if (value <= 0) {
+    return 'Lot size must be greater than zero';
+  }
+  if (value > 1000000) {
+    return 'Lot size over 1,000,000 sq ft seems unrealistic';
+  }
+  return null;
+}
+
+export function validateBedrooms(value: number, allInputs?: Record<string, any>): string | null {
+  if (value < 0) {
+    return 'Number of bedrooms cannot be negative';
+  }
+  if (value > 20) {
+    return 'Number of bedrooms over 20 seems unrealistic';
+  }
+  return null;
+}
+
+export function validateBathrooms(value: number, allInputs?: Record<string, any>): string | null {
+  if (value < 0) {
+    return 'Number of bathrooms cannot be negative';
+  }
+  if (value > 20) {
+    return 'Number of bathrooms over 20 seems unrealistic';
+  }
+  return null;
+}
+
+export function validateYearBuilt(value: number, allInputs?: Record<string, any>): string | null {
+  if (value < 1800 || value > 2030) {
+    return 'Year built must be between 1800 and 2030';
+  }
+  return null;
+}
+
+export function validatePropertyCondition(value: string, allInputs?: Record<string, any>): string | null {
+  const validConditions = ['excellent', 'good', 'fair', 'poor', 'needs_work'];
+  if (!validConditions.includes(value)) {
+    return 'Invalid property condition selected';
+  }
+  return null;
+}
+
+export function validatePurchasePrice(value: number, allInputs?: Record<string, any>): string | null {
+  if (value <= 0) {
+    return 'Purchase price must be greater than zero';
+  }
+  if (value > 10000000) {
+    return 'Purchase price over $10 million seems high for fix and flip';
+  }
+  return null;
+}
+
+export function validatePurchaseDate(value: string, allInputs?: Record<string, any>): string | null {
+  if (!value) {
+    return 'Purchase date is required';
+  }
+  return null;
+}
+
+export function validateClosingCosts(value: number, allInputs?: Record<string, any>): string | null {
+  if (value < 0) {
+    return 'Closing costs cannot be negative';
+  }
+  if (value > 500000) {
+    return 'Closing costs over $500,000 seem excessive';
+  }
+  return null;
+}
+
+export function validateInspectionCosts(value: number, allInputs?: Record<string, any>): string | null {
+  if (value !== undefined) {
+    if (value < 0) {
+      return 'Inspection costs cannot be negative';
     }
-  });
-
-  // Individual field validation
-  if (inputs.purchasePrice !== undefined) {
-    const result = validatePurchasePrice(inputs.purchasePrice);
-    if (!result.isValid) errors.push(result.message!);
-  }
-
-  if (inputs.downPayment !== undefined) {
-    const result = validateDownPayment(inputs.downPayment);
-    if (!result.isValid) errors.push(result.message!);
-  }
-
-  if (inputs.interestRate !== undefined) {
-    const result = validateInterestRate(inputs.interestRate);
-    if (!result.isValid) errors.push(result.message!);
-  }
-
-  if (inputs.loanTerm !== undefined) {
-    const result = validateLoanTerm(inputs.loanTerm);
-    if (!result.isValid) errors.push(result.message!);
-  }
-
-  if (inputs.renovationBudget !== undefined) {
-    const result = validateRenovationBudget(inputs.renovationBudget);
-    if (!result.isValid) errors.push(result.message!);
-  }
-
-  if (inputs.renovationTime !== undefined) {
-    const result = validateRenovationTime(inputs.renovationTime);
-    if (!result.isValid) errors.push(result.message!);
-  }
-
-  if (inputs.afterRepairValue !== undefined) {
-    const result = validateAfterRepairValue(inputs.afterRepairValue);
-    if (!result.isValid) errors.push(result.message!);
-  }
-
-  if (inputs.sellingCosts !== undefined) {
-    const result = validateSellingCosts(inputs.sellingCosts);
-    if (!result.isValid) errors.push(result.message!);
-  }
-
-  if (inputs.holdingCosts !== undefined) {
-    const result = validateHoldingCosts(inputs.holdingCosts);
-    if (!result.isValid) errors.push(result.message!);
-  }
-
-  if (inputs.propertyType !== undefined) {
-    const result = validatePropertyType(inputs.propertyType);
-    if (!result.isValid) errors.push(result.message!);
-  }
-
-  if (inputs.propertyCondition !== undefined) {
-    const result = validatePropertyCondition(inputs.propertyCondition);
-    if (!result.isValid) errors.push(result.message!);
-  }
-
-  if (inputs.marketType !== undefined) {
-    const result = validateMarketType(inputs.marketType);
-    if (!result.isValid) errors.push(result.message!);
-  }
-
-  if (inputs.location !== undefined) {
-    const result = validateLocation(inputs.location);
-    if (!result.isValid) errors.push(result.message!);
-  }
-
-  // Cross-field validation
-  if (inputs.purchasePrice && inputs.downPayment) {
-    const purchasePrice = Number(inputs.purchasePrice);
-    const downPayment = Number(inputs.downPayment);
-    if (downPayment > purchasePrice) {
-      errors.push('Down payment cannot exceed purchase price');
-    } else {
-      const downPaymentPercentage = (downPayment / purchasePrice) * 100;
-      if (downPaymentPercentage < 10) {
-        errors.push('Down payment should be at least 10% of purchase price');
-      }
-    }
-  }
-
-  if (inputs.purchasePrice && inputs.afterRepairValue) {
-    const purchasePrice = Number(inputs.purchasePrice);
-    const afterRepairValue = Number(inputs.afterRepairValue);
-    if (afterRepairValue <= purchasePrice) {
-      errors.push('After repair value should be higher than purchase price');
+    if (value > 10000) {
+      return 'Inspection costs over $10,000 seem excessive';
     }
   }
+  return null;
+}
 
-  return {
-    isValid: errors.length === 0,
-    errors
-  };
+export function validateTitleInsurance(value: number, allInputs?: Record<string, any>): string | null {
+  if (value !== undefined) {
+    if (value < 0) {
+      return 'Title insurance cost cannot be negative';
+    }
+    if (value > 10000) {
+      return 'Title insurance cost over $10,000 seems excessive';
+    }
+  }
+  return null;
+}
+
+export function validateTransferTaxes(value: number, allInputs?: Record<string, any>): string | null {
+  if (value !== undefined) {
+    if (value < 0) {
+      return 'Transfer taxes cannot be negative';
+    }
+    if (value > 50000) {
+      return 'Transfer taxes over $50,000 seem excessive';
+    }
+  }
+  return null;
+}
+
+export function validateAttorneyFees(value: number, allInputs?: Record<string, any>): string | null {
+  if (value !== undefined) {
+    if (value < 0) {
+      return 'Attorney fees cannot be negative';
+    }
+    if (value > 10000) {
+      return 'Attorney fees over $10,000 seem excessive';
+    }
+  }
+  return null;
+}
+
+export function validateOtherPurchaseCosts(value: number, allInputs?: Record<string, any>): string | null {
+  if (value !== undefined) {
+    if (value < 0) {
+      return 'Other purchase costs cannot be negative';
+    }
+    if (value > 50000) {
+      return 'Other purchase costs over $50,000 seem excessive';
+    }
+  }
+  return null;
+}
+
+export function validateDownPayment(value: number, allInputs?: Record<string, any>): string | null {
+  if (value < 0) {
+    return 'Down payment cannot be negative';
+  }
+  if (value > 5000000) {
+    return 'Down payment over $5 million seems excessive';
+  }
+  return null;
+}
+
+export function validateLoanAmount(value: number, allInputs?: Record<string, any>): string | null {
+  if (value < 0) {
+    return 'Loan amount cannot be negative';
+  }
+  if (value > 10000000) {
+    return 'Loan amount over $10 million seems excessive';
+  }
+  return null;
+}
+
+export function validateInterestRate(value: number, allInputs?: Record<string, any>): string | null {
+  if (value < 0) {
+    return 'Interest rate cannot be negative';
+  }
+  if (value > 25) {
+    return 'Interest rate over 25% seems excessive';
+  }
+  return null;
+}
+
+export function validateLoanTerm(value: number, allInputs?: Record<string, any>): string | null {
+  if (value <= 0) {
+    return 'Loan term must be greater than zero';
+  }
+  if (value > 360) {
+    return 'Loan term over 360 months (30 years) seems excessive for fix and flip';
+  }
+  return null;
+}
+
+export function validateLoanType(value: string, allInputs?: Record<string, any>): string | null {
+  const validTypes = ['hard_money', 'private_money', 'conventional', 'cash', 'portfolio'];
+  if (!validTypes.includes(value)) {
+    return 'Invalid loan type selected';
+  }
+  return null;
+}
+
+export function validateOriginationFee(value: number, allInputs?: Record<string, any>): string | null {
+  if (value !== undefined) {
+    if (value < 0) {
+      return 'Origination fee cannot be negative';
+    }
+    if (value > 100000) {
+      return 'Origination fee over $100,000 seems excessive';
+    }
+  }
+  return null;
+}
+
+export function validatePoints(value: number, allInputs?: Record<string, any>): string | null {
+  if (value !== undefined) {
+    if (value < 0) {
+      return 'Points cannot be negative';
+    }
+    if (value > 10) {
+      return 'Points over 10 seem excessive';
+    }
+  }
+  return null;
+}
+
+export function validateMonthlyPayment(value: number, allInputs?: Record<string, any>): string | null {
+  if (value !== undefined) {
+    if (value < 0) {
+      return 'Monthly payment cannot be negative';
+    }
+    if (value > 100000) {
+      return 'Monthly payment over $100,000 seems excessive';
+    }
+  }
+  return null;
+}
+
+export function validateRenovationBudget(value: number, allInputs?: Record<string, any>): string | null {
+  if (value < 0) {
+    return 'Renovation budget cannot be negative';
+  }
+  if (value > 1000000) {
+    return 'Renovation budget over $1 million seems excessive';
+  }
+  return null;
+}
+
+export function validateRenovationTimeline(value: number, allInputs?: Record<string, any>): string | null {
+  if (value !== undefined) {
+    if (value <= 0) {
+      return 'Renovation timeline must be greater than zero';
+    }
+    if (value > 730) {
+      return 'Renovation timeline over 730 days seems excessive';
+    }
+  }
+  return null;
+}
+
+export function validateStructuralWork(value: boolean, allInputs?: Record<string, any>): string | null {
+  return null;
+}
+
+export function validateStructuralWorkCost(value: number, allInputs?: Record<string, any>): string | null {
+  if (value !== undefined) {
+    if (value < 0) {
+      return 'Structural work cost cannot be negative';
+    }
+    if (value > 500000) {
+      return 'Structural work cost over $500,000 seems excessive';
+    }
+  }
+  return null;
+}
+
+export function validateElectricalWork(value: boolean, allInputs?: Record<string, any>): string | null {
+  return null;
+}
+
+export function validateElectricalWorkCost(value: number, allInputs?: Record<string, any>): string | null {
+  if (value !== undefined) {
+    if (value < 0) {
+      return 'Electrical work cost cannot be negative';
+    }
+    if (value > 100000) {
+      return 'Electrical work cost over $100,000 seems excessive';
+    }
+  }
+  return null;
+}
+
+export function validatePlumbingWork(value: boolean, allInputs?: Record<string, any>): string | null {
+  return null;
+}
+
+export function validatePlumbingWorkCost(value: number, allInputs?: Record<string, any>): string | null {
+  if (value !== undefined) {
+    if (value < 0) {
+      return 'Plumbing work cost cannot be negative';
+    }
+    if (value > 100000) {
+      return 'Plumbing work cost over $100,000 seems excessive';
+    }
+  }
+  return null;
+}
+
+export function validateHvacWork(value: boolean, allInputs?: Record<string, any>): string | null {
+  return null;
+}
+
+export function validateHvacWorkCost(value: number, allInputs?: Record<string, any>): string | null {
+  if (value !== undefined) {
+    if (value < 0) {
+      return 'HVAC work cost cannot be negative';
+    }
+    if (value > 50000) {
+      return 'HVAC work cost over $50,000 seems excessive';
+    }
+  }
+  return null;
+}
+
+export function validateRoofingWork(value: boolean, allInputs?: Record<string, any>): string | null {
+  return null;
+}
+
+export function validateRoofingWorkCost(value: number, allInputs?: Record<string, any>): string | null {
+  if (value !== undefined) {
+    if (value < 0) {
+      return 'Roofing work cost cannot be negative';
+    }
+    if (value > 100000) {
+      return 'Roofing work cost over $100,000 seems excessive';
+    }
+  }
+  return null;
+}
+
+export function validateKitchenRemodel(value: boolean, allInputs?: Record<string, any>): string | null {
+  return null;
+}
+
+export function validateKitchenRemodelCost(value: number, allInputs?: Record<string, any>): string | null {
+  if (value !== undefined) {
+    if (value < 0) {
+      return 'Kitchen remodel cost cannot be negative';
+    }
+    if (value > 200000) {
+      return 'Kitchen remodel cost over $200,000 seems excessive';
+    }
+  }
+  return null;
+}
+
+export function validateBathroomRemodel(value: boolean, allInputs?: Record<string, any>): string | null {
+  return null;
+}
+
+export function validateBathroomRemodelCost(value: number, allInputs?: Record<string, any>): string | null {
+  if (value !== undefined) {
+    if (value < 0) {
+      return 'Bathroom remodel cost cannot be negative';
+    }
+    if (value > 100000) {
+      return 'Bathroom remodel cost over $100,000 seems excessive';
+    }
+  }
+  return null;
+}
+
+export function validateFlooringWork(value: boolean, allInputs?: Record<string, any>): string | null {
+  return null;
+}
+
+export function validateFlooringWorkCost(value: number, allInputs?: Record<string, any>): string | null {
+  if (value !== undefined) {
+    if (value < 0) {
+      return 'Flooring work cost cannot be negative';
+    }
+    if (value > 50000) {
+      return 'Flooring work cost over $50,000 seems excessive';
+    }
+  }
+  return null;
+}
+
+export function validatePaintingWork(value: boolean, allInputs?: Record<string, any>): string | null {
+  return null;
+}
+
+export function validatePaintingWorkCost(value: number, allInputs?: Record<string, any>): string | null {
+  if (value !== undefined) {
+    if (value < 0) {
+      return 'Painting work cost cannot be negative';
+    }
+    if (value > 30000) {
+      return 'Painting work cost over $30,000 seems excessive';
+    }
+  }
+  return null;
+}
+
+export function validateLandscapingWork(value: boolean, allInputs?: Record<string, any>): string | null {
+  return null;
+}
+
+export function validateLandscapingWorkCost(value: number, allInputs?: Record<string, any>): string | null {
+  if (value !== undefined) {
+    if (value < 0) {
+      return 'Landscaping work cost cannot be negative';
+    }
+    if (value > 50000) {
+      return 'Landscaping work cost over $50,000 seems excessive';
+    }
+  }
+  return null;
+}
+
+export function validatePermitsAndFees(value: number, allInputs?: Record<string, any>): string | null {
+  if (value !== undefined) {
+    if (value < 0) {
+      return 'Permits and fees cannot be negative';
+    }
+    if (value > 20000) {
+      return 'Permits and fees over $20,000 seem excessive';
+    }
+  }
+  return null;
+}
+
+export function validateContingencyBudget(value: number, allInputs?: Record<string, any>): string | null {
+  if (value !== undefined) {
+    if (value < 0) {
+      return 'Contingency budget cannot be negative';
+    }
+    if (value > 100000) {
+      return 'Contingency budget over $100,000 seems excessive';
+    }
+  }
+  return null;
+}
+
+export function validatePropertyTaxes(value: number, allInputs?: Record<string, any>): string | null {
+  if (value < 0) {
+    return 'Property taxes cannot be negative';
+  }
+  if (value > 10000) {
+    return 'Property taxes over $10,000 per month seem excessive';
+  }
+  return null;
+}
+
+export function validateInsurance(value: number, allInputs?: Record<string, any>): string | null {
+  if (value < 0) {
+    return 'Insurance cannot be negative';
+  }
+  if (value > 5000) {
+    return 'Insurance over $5,000 per month seems excessive';
+  }
+  return null;
+}
+
+export function validateUtilities(value: number, allInputs?: Record<string, any>): string | null {
+  if (value !== undefined) {
+    if (value < 0) {
+      return 'Utilities cannot be negative';
+    }
+    if (value > 2000) {
+      return 'Utilities over $2,000 per month seem excessive';
+    }
+  }
+  return null;
+}
+
+export function validateHoaFees(value: number, allInputs?: Record<string, any>): string | null {
+  if (value !== undefined) {
+    if (value < 0) {
+      return 'HOA fees cannot be negative';
+    }
+    if (value > 2000) {
+      return 'HOA fees over $2,000 per month seem excessive';
+    }
+  }
+  return null;
+}
+
+export function validatePropertyManagement(value: number, allInputs?: Record<string, any>): string | null {
+  if (value !== undefined) {
+    if (value < 0) {
+      return 'Property management cost cannot be negative';
+    }
+    if (value > 5000) {
+      return 'Property management cost over $5,000 per month seems excessive';
+    }
+  }
+  return null;
+}
+
+export function validateMaintenance(value: number, allInputs?: Record<string, any>): string | null {
+  if (value !== undefined) {
+    if (value < 0) {
+      return 'Maintenance cost cannot be negative';
+    }
+    if (value > 2000) {
+      return 'Maintenance cost over $2,000 per month seems excessive';
+    }
+  }
+  return null;
+}
+
+export function validateOtherHoldingCosts(value: number, allInputs?: Record<string, any>): string | null {
+  if (value !== undefined) {
+    if (value < 0) {
+      return 'Other holding costs cannot be negative';
+    }
+    if (value > 2000) {
+      return 'Other holding costs over $2,000 per month seem excessive';
+    }
+  }
+  return null;
+}
+
+export function validateMarketTrends(value: string, allInputs?: Record<string, any>): string | null {
+  if (value) {
+    const validTrends = ['appreciating', 'stable', 'declining'];
+    if (!validTrends.includes(value)) {
+      return 'Invalid market trends selected';
+    }
+  }
+  return null;
+}
+
+export function validateAverageDaysOnMarket(value: number, allInputs?: Record<string, any>): string | null {
+  if (value !== undefined) {
+    if (value <= 0) {
+      return 'Average days on market must be greater than zero';
+    }
+    if (value > 365) {
+      return 'Average days on market over 365 days seems excessive';
+    }
+  }
+  return null;
+}
+
+export function validateMarketAbsorptionRate(value: number, allInputs?: Record<string, any>): string | null {
+  if (value !== undefined) {
+    if (value <= 0) {
+      return 'Market absorption rate must be greater than zero';
+    }
+    if (value > 24) {
+      return 'Market absorption rate over 24 months seems excessive';
+    }
+  }
+  return null;
+}
+
+export function validateTargetSalePrice(value: number, allInputs?: Record<string, any>): string | null {
+  if (value <= 0) {
+    return 'Target sale price must be greater than zero';
+  }
+  if (value > 10000000) {
+    return 'Target sale price over $10 million seems high for fix and flip';
+  }
+  return null;
+}
+
+export function validateTargetSaleDate(value: string, allInputs?: Record<string, any>): string | null {
+  if (!value) {
+    return 'Target sale date is required';
+  }
+  return null;
+}
+
+export function validateSellingStrategy(value: string, allInputs?: Record<string, any>): string | null {
+  if (value) {
+    const validStrategies = ['mls', 'fsbo', 'wholesale', 'auction', 'investor_network'];
+    if (!validStrategies.includes(value)) {
+      return 'Invalid selling strategy selected';
+    }
+  }
+  return null;
+}
+
+export function validateRealtorCommission(value: number, allInputs?: Record<string, any>): string | null {
+  if (value !== undefined) {
+    if (value < 0) {
+      return 'Realtor commission cannot be negative';
+    }
+    if (value > 15) {
+      return 'Realtor commission over 15% seems excessive';
+    }
+  }
+  return null;
+}
+
+export function validateClosingCostsSeller(value: number, allInputs?: Record<string, any>): string | null {
+  if (value !== undefined) {
+    if (value < 0) {
+      return 'Seller closing costs cannot be negative';
+    }
+    if (value > 100000) {
+      return 'Seller closing costs over $100,000 seem excessive';
+    }
+  }
+  return null;
+}
+
+export function validateStagingCosts(value: number, allInputs?: Record<string, any>): string | null {
+  if (value !== undefined) {
+    if (value < 0) {
+      return 'Staging costs cannot be negative';
+    }
+    if (value > 50000) {
+      return 'Staging costs over $50,000 seem excessive';
+    }
+  }
+  return null;
+}
+
+export function validateMarketingCosts(value: number, allInputs?: Record<string, any>): string | null {
+  if (value !== undefined) {
+    if (value < 0) {
+      return 'Marketing costs cannot be negative';
+    }
+    if (value > 20000) {
+      return 'Marketing costs over $20,000 seem excessive';
+    }
+  }
+  return null;
+}
+
+export function validateAcquisitionTimeline(value: number, allInputs?: Record<string, any>): string | null {
+  if (value !== undefined) {
+    if (value <= 0) {
+      return 'Acquisition timeline must be greater than zero';
+    }
+    if (value > 365) {
+      return 'Acquisition timeline over 365 days seems excessive';
+    }
+  }
+  return null;
+}
+
+export function validateRenovationTimeline(value: number, allInputs?: Record<string, any>): string | null {
+  if (value !== undefined) {
+    if (value <= 0) {
+      return 'Renovation timeline must be greater than zero';
+    }
+    if (value > 730) {
+      return 'Renovation timeline over 730 days seems excessive';
+    }
+  }
+  return null;
+}
+
+export function validateMarketingTimeline(value: number, allInputs?: Record<string, any>): string | null {
+  if (value !== undefined) {
+    if (value <= 0) {
+      return 'Marketing timeline must be greater than zero';
+    }
+    if (value > 365) {
+      return 'Marketing timeline over 365 days seems excessive';
+    }
+  }
+  return null;
+}
+
+export function validateTotalProjectTimeline(value: number, allInputs?: Record<string, any>): string | null {
+  if (value !== undefined) {
+    if (value <= 0) {
+      return 'Total project timeline must be greater than zero';
+    }
+    if (value > 1095) {
+      return 'Total project timeline over 1095 days (3 years) seems excessive';
+    }
+  }
+  return null;
+}
+
+export function validateMarketRisk(value: string, allInputs?: Record<string, any>): string | null {
+  if (value) {
+    const validRisks = ['low', 'medium', 'high'];
+    if (!validRisks.includes(value)) {
+      return 'Invalid market risk selected';
+    }
+  }
+  return null;
+}
+
+export function validateRenovationRisk(value: string, allInputs?: Record<string, any>): string | null {
+  if (value) {
+    const validRisks = ['low', 'medium', 'high'];
+    if (!validRisks.includes(value)) {
+      return 'Invalid renovation risk selected';
+    }
+  }
+  return null;
+}
+
+export function validateFinancingRisk(value: string, allInputs?: Record<string, any>): string | null {
+  if (value) {
+    const validRisks = ['low', 'medium', 'high'];
+    if (!validRisks.includes(value)) {
+      return 'Invalid financing risk selected';
+    }
+  }
+  return null;
+}
+
+export function validateTimelineRisk(value: string, allInputs?: Record<string, any>): string | null {
+  if (value) {
+    const validRisks = ['low', 'medium', 'high'];
+    if (!validRisks.includes(value)) {
+      return 'Invalid timeline risk selected';
+    }
+  }
+  return null;
+}
+
+export function validateAnalysisPeriod(value: number, allInputs?: Record<string, any>): string | null {
+  if (value <= 0) {
+    return 'Analysis period must be greater than zero';
+  }
+  if (value > 60) {
+    return 'Analysis period over 60 months seems excessive';
+  }
+  return null;
+}
+
+export function validateDiscountRate(value: number, allInputs?: Record<string, any>): string | null {
+  if (value < 0) {
+    return 'Discount rate cannot be negative';
+  }
+  if (value > 50) {
+    return 'Discount rate over 50% seems excessive';
+  }
+  return null;
+}
+
+export function validateTaxRate(value: number, allInputs?: Record<string, any>): string | null {
+  if (value !== undefined) {
+    if (value < 0) {
+      return 'Tax rate cannot be negative';
+    }
+    if (value > 50) {
+      return 'Tax rate over 50% seems excessive';
+    }
+  }
+  return null;
+}
+
+export function validateInflationRate(value: number, allInputs?: Record<string, any>): string | null {
+  if (value !== undefined) {
+    if (value < -10) {
+      return 'Inflation rate below -10% seems unrealistic';
+    }
+    if (value > 20) {
+      return 'Inflation rate over 20% seems excessive';
+    }
+  }
+  return null;
+}
+
+export function validateAppreciationRate(value: number, allInputs?: Record<string, any>): string | null {
+  if (value !== undefined) {
+    if (value < -20) {
+      return 'Appreciation rate below -20% seems unrealistic';
+    }
+    if (value > 20) {
+      return 'Appreciation rate over 20% seems excessive';
+    }
+  }
+  return null;
+}
+
+export function validateCurrency(value: string, allInputs?: Record<string, any>): string | null {
+  if (value) {
+    const validCurrencies = ['USD', 'EUR', 'GBP', 'JPY', 'CAD', 'AUD'];
+    if (!validCurrencies.includes(value)) {
+      return 'Invalid currency selected';
+    }
+  }
+  return null;
+}
+
+export function validateDisplayFormat(value: string, allInputs?: Record<string, any>): string | null {
+  if (value) {
+    const validFormats = ['percentage', 'decimal', 'basis-points'];
+    if (!validFormats.includes(value)) {
+      return 'Invalid display format selected';
+    }
+  }
+  return null;
+}
+
+export function validateIncludeCharts(value: boolean, allInputs?: Record<string, any>): string | null {
+  return null;
 }

@@ -1,286 +1,452 @@
-import { CalculatorInputs } from '../../../types/calculator';
+import { GrossRentMultiplierInputs } from './types';
 
-export function validatePropertyValue(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (!value) return { isValid: false, message: 'Property value is required' };
-  if (typeof value !== 'number') return { isValid: false, message: 'Property value must be a number' };
-  if (value < 10000 || value > 100000000) return { isValid: false, message: 'Property value must be between $10,000 and $100,000,000' };
-  return { isValid: true };
-}
-
-export function validateGrossAnnualRent(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (!value) return { isValid: false, message: 'Gross annual rent is required' };
-  if (typeof value !== 'number') return { isValid: false, message: 'Gross annual rent must be a number' };
-  if (value < 1000 || value > 10000000) return { isValid: false, message: 'Gross annual rent must be between $1,000 and $10,000,000' };
-  return { isValid: true };
-}
-
-export function validatePropertyType(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (!value) return { isValid: false, message: 'Property type is required' };
-  const validTypes = ['single-family', 'multi-family', 'apartment', 'commercial', 'industrial', 'mixed-use', 'condo', 'townhouse'];
-  if (!validTypes.includes(value)) return { isValid: false, message: 'Invalid property type' };
-  return { isValid: true };
-}
-
-export function validateLocation(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (!value) return { isValid: false, message: 'Location is required' };
-  const validLocations = ['urban', 'suburban', 'rural', 'coastal', 'mountain', 'downtown', 'residential'];
-  if (!validLocations.includes(value)) return { isValid: false, message: 'Invalid location' };
-  return { isValid: true };
-}
-
-export function validateMarketType(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (!value) return { isValid: false, message: 'Market type is required' };
-  const validTypes = ['hot', 'stable', 'declining', 'emerging', 'balanced'];
-  if (!validTypes.includes(value)) return { isValid: false, message: 'Invalid market type' };
-  return { isValid: true };
-}
-
-export function validatePropertyAge(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && typeof value !== 'number') return { isValid: false, message: 'Property age must be a number' };
-  if (value && (value < 0 || value > 200)) return { isValid: false, message: 'Property age must be between 0 and 200 years' };
-  return { isValid: true };
-}
-
-export function validateSquareFootage(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && typeof value !== 'number') return { isValid: false, message: 'Square footage must be a number' };
-  if (value && (value < 100 || value > 100000)) return { isValid: false, message: 'Square footage must be between 100 and 100,000 sq ft' };
-  return { isValid: true };
-}
-
-export function validateBedrooms(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && typeof value !== 'number') return { isValid: false, message: 'Bedrooms must be a number' };
-  if (value && (value < 0 || value > 20)) return { isValid: false, message: 'Bedrooms must be between 0 and 20' };
-  return { isValid: true };
-}
-
-export function validateBathrooms(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && typeof value !== 'number') return { isValid: false, message: 'Bathrooms must be a number' };
-  if (value && (value < 0 || value > 20)) return { isValid: false, message: 'Bathrooms must be between 0 and 20' };
-  return { isValid: true };
-}
-
-export function validateParkingSpaces(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && typeof value !== 'number') return { isValid: false, message: 'Parking spaces must be a number' };
-  if (value && (value < 0 || value > 50)) return { isValid: false, message: 'Parking spaces must be between 0 and 50' };
-  return { isValid: true };
-}
-
-export function validateCondition(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value) {
-    const validConditions = ['excellent', 'good', 'fair', 'poor', 'needs-renovation'];
-    if (!validConditions.includes(value)) return { isValid: false, message: 'Invalid property condition' };
+export function validatePropertyAddress(value: string, allInputs: GrossRentMultiplierInputs): string | null {
+  if (!value || value.trim().length === 0) {
+    return 'Property address is required';
   }
-  return { isValid: true };
-}
-
-export function validateAmenities(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && Array.isArray(value)) {
-    const validAmenities = ['pool', 'gym', 'parking', 'balcony', 'fireplace', 'central-air', 'hardwood-floors', 'granite-countertops', 'stainless-steel-appliances', 'walk-in-closet', 'garden', 'patio', 'basement', 'attic', 'garage'];
-    for (const amenity of value) {
-      if (!validAmenities.includes(amenity)) return { isValid: false, message: `Invalid amenity: ${amenity}` };
-    }
+  if (value.trim().length < 5) {
+    return 'Property address must be at least 5 characters long';
   }
-  return { isValid: true };
+  return null;
 }
 
-export function validateVacancyRate(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && typeof value !== 'number') return { isValid: false, message: 'Vacancy rate must be a number' };
-  if (value && (value < 0 || value > 50)) return { isValid: false, message: 'Vacancy rate must be between 0% and 50%' };
-  return { isValid: true };
-}
-
-export function validateOperatingExpenses(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && typeof value !== 'number') return { isValid: false, message: 'Operating expenses must be a number' };
-  if (value && (value < 0 || value > 1000000)) return { isValid: false, message: 'Operating expenses must be between $0 and $1,000,000' };
-  return { isValid: true };
-}
-
-export function validatePropertyTaxes(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && typeof value !== 'number') return { isValid: false, message: 'Property taxes must be a number' };
-  if (value && (value < 0 || value > 100000)) return { isValid: false, message: 'Property taxes must be between $0 and $100,000' };
-  return { isValid: true };
-}
-
-export function validateInsurance(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && typeof value !== 'number') return { isValid: false, message: 'Insurance costs must be a number' };
-  if (value && (value < 0 || value > 100000)) return { isValid: false, message: 'Insurance costs must be between $0 and $100,000' };
-  return { isValid: true };
-}
-
-export function validateMaintenance(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && typeof value !== 'number') return { isValid: false, message: 'Maintenance costs must be a number' };
-  if (value && (value < 0 || value > 100000)) return { isValid: false, message: 'Maintenance costs must be between $0 and $100,000' };
-  return { isValid: true };
-}
-
-export function validateManagementFees(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && typeof value !== 'number') return { isValid: false, message: 'Management fees must be a number' };
-  if (value && (value < 0 || value > 100000)) return { isValid: false, message: 'Management fees must be between $0 and $100,000' };
-  return { isValid: true };
-}
-
-export function validateUtilities(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && typeof value !== 'number') return { isValid: false, message: 'Utilities must be a number' };
-  if (value && (value < 0 || value > 100000)) return { isValid: false, message: 'Utilities must be between $0 and $100,000' };
-  return { isValid: true };
-}
-
-export function validateHoaFees(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && typeof value !== 'number') return { isValid: false, message: 'HOA fees must be a number' };
-  if (value && (value < 0 || value > 100000)) return { isValid: false, message: 'HOA fees must be between $0 and $100,000' };
-  return { isValid: true };
-}
-
-export function validateMarketRent(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && typeof value !== 'number') return { isValid: false, message: 'Market rent must be a number' };
-  if (value && (value < 0 || value > 100000)) return { isValid: false, message: 'Market rent must be between $0 and $100,000' };
-  return { isValid: true };
-}
-
-export function validateComparableSales(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && typeof value !== 'number') return { isValid: false, message: 'Comparable sales must be a number' };
-  if (value && (value < 0 || value > 100000000)) return { isValid: false, message: 'Comparable sales must be between $0 and $100,000,000' };
-  return { isValid: true };
-}
-
-export function validateAppreciationRate(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && typeof value !== 'number') return { isValid: false, message: 'Appreciation rate must be a number' };
-  if (value && (value < -10 || value > 20)) return { isValid: false, message: 'Appreciation rate must be between -10% and 20%' };
-  return { isValid: true };
-}
-
-export function validateInflationRate(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && typeof value !== 'number') return { isValid: false, message: 'Inflation rate must be a number' };
-  if (value && (value < -5 || value > 15)) return { isValid: false, message: 'Inflation rate must be between -5% and 15%' };
-  return { isValid: true };
-}
-
-export function validateTaxRate(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && typeof value !== 'number') return { isValid: false, message: 'Tax rate must be a number' };
-  if (value && (value < 0 || value > 50)) return { isValid: false, message: 'Tax rate must be between 0% and 50%' };
-  return { isValid: true };
-}
-
-export function validateRiskScore(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && typeof value !== 'number') return { isValid: false, message: 'Risk score must be a number' };
-  if (value && (value < 1 || value > 10)) return { isValid: false, message: 'Risk score must be between 1 and 10' };
-  return { isValid: true };
-}
-
-export function validateMarketLiquidity(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value) {
-    const validMarketLiquidity = ['high', 'medium', 'low'];
-    if (!validMarketLiquidity.includes(value)) return { isValid: false, message: 'Invalid market liquidity' };
+export function validatePropertyType(value: string, allInputs: GrossRentMultiplierInputs): string | null {
+  if (!value) {
+    return 'Property type is required';
   }
-  return { isValid: true };
+  const validTypes = ['single_family', 'multi_family', 'commercial', 'industrial', 'retail', 'office', 'mixed_use'];
+  if (!validTypes.includes(value)) {
+    return 'Invalid property type';
+  }
+  return null;
 }
 
-export function validateAllGrossRentMultiplierInputs(inputs: Partial<CalculatorInputs>): { isValid: boolean; errors: string[] } {
-  const errors: string[] = [];
-
-  const propertyValueResult = validatePropertyValue(inputs.propertyValue);
-  if (!propertyValueResult.isValid) errors.push(propertyValueResult.message!);
-
-  const grossAnnualRentResult = validateGrossAnnualRent(inputs.grossAnnualRent);
-  if (!grossAnnualRentResult.isValid) errors.push(grossAnnualRentResult.message!);
-
-  const propertyTypeResult = validatePropertyType(inputs.propertyType);
-  if (!propertyTypeResult.isValid) errors.push(propertyTypeResult.message!);
-
-  const locationResult = validateLocation(inputs.location);
-  if (!locationResult.isValid) errors.push(locationResult.message!);
-
-  const marketTypeResult = validateMarketType(inputs.marketType);
-  if (!marketTypeResult.isValid) errors.push(marketTypeResult.message!);
-
-  const propertyAgeResult = validatePropertyAge(inputs.propertyAge);
-  if (!propertyAgeResult.isValid) errors.push(propertyAgeResult.message!);
-
-  const squareFootageResult = validateSquareFootage(inputs.squareFootage);
-  if (!squareFootageResult.isValid) errors.push(squareFootageResult.message!);
-
-  const bedroomsResult = validateBedrooms(inputs.bedrooms);
-  if (!bedroomsResult.isValid) errors.push(bedroomsResult.message!);
-
-  const bathroomsResult = validateBathrooms(inputs.bathrooms);
-  if (!bathroomsResult.isValid) errors.push(bathroomsResult.message!);
-
-  const parkingSpacesResult = validateParkingSpaces(inputs.parkingSpaces);
-  if (!parkingSpacesResult.isValid) errors.push(parkingSpacesResult.message!);
-
-  const conditionResult = validateCondition(inputs.condition);
-  if (!conditionResult.isValid) errors.push(conditionResult.message!);
-
-  const amenitiesResult = validateAmenities(inputs.amenities);
-  if (!amenitiesResult.isValid) errors.push(amenitiesResult.message!);
-
-  const vacancyRateResult = validateVacancyRate(inputs.vacancyRate);
-  if (!vacancyRateResult.isValid) errors.push(vacancyRateResult.message!);
-
-  const operatingExpensesResult = validateOperatingExpenses(inputs.operatingExpenses);
-  if (!operatingExpensesResult.isValid) errors.push(operatingExpensesResult.message!);
-
-  const propertyTaxesResult = validatePropertyTaxes(inputs.propertyTaxes);
-  if (!propertyTaxesResult.isValid) errors.push(propertyTaxesResult.message!);
-
-  const insuranceResult = validateInsurance(inputs.insurance);
-  if (!insuranceResult.isValid) errors.push(insuranceResult.message!);
-
-  const maintenanceResult = validateMaintenance(inputs.maintenance);
-  if (!maintenanceResult.isValid) errors.push(maintenanceResult.message!);
-
-  const managementFeesResult = validateManagementFees(inputs.managementFees);
-  if (!managementFeesResult.isValid) errors.push(managementFeesResult.message!);
-
-  const utilitiesResult = validateUtilities(inputs.utilities);
-  if (!utilitiesResult.isValid) errors.push(utilitiesResult.message!);
-
-  const hoaFeesResult = validateHoaFees(inputs.hoaFees);
-  if (!hoaFeesResult.isValid) errors.push(hoaFeesResult.message!);
-
-  const marketRentResult = validateMarketRent(inputs.marketRent);
-  if (!marketRentResult.isValid) errors.push(marketRentResult.message!);
-
-  const comparableSalesResult = validateComparableSales(inputs.comparableSales);
-  if (!comparableSalesResult.isValid) errors.push(comparableSalesResult.message!);
-
-  const appreciationRateResult = validateAppreciationRate(inputs.appreciationRate);
-  if (!appreciationRateResult.isValid) errors.push(appreciationRateResult.message!);
-
-  const inflationRateResult = validateInflationRate(inputs.inflationRate);
-  if (!inflationRateResult.isValid) errors.push(inflationRateResult.message!);
-
-  const taxRateResult = validateTaxRate(inputs.taxRate);
-  if (!taxRateResult.isValid) errors.push(taxRateResult.message!);
-
-  const riskScoreResult = validateRiskScore(inputs.riskScore);
-  if (!riskScoreResult.isValid) errors.push(riskScoreResult.message!);
-
-  const marketLiquidityResult = validateMarketLiquidity(inputs.marketLiquidity);
-  if (!marketLiquidityResult.isValid) errors.push(marketLiquidityResult.message!);
-
-  // Logical validation
-  if (inputs.grossAnnualRent && inputs.propertyValue && inputs.grossAnnualRent > inputs.propertyValue) {
-    errors.push('Gross annual rent cannot exceed property value');
+export function validatePropertySize(value: number, allInputs: GrossRentMultiplierInputs): string | null {
+  if (!value || value <= 0) {
+    return 'Property size must be greater than 0';
   }
-  if (inputs.marketRent && inputs.grossAnnualRent && inputs.marketRent > inputs.grossAnnualRent * 2) {
-    errors.push('Market rent seems unusually high relative to current rent');
+  if (value > 1000000) {
+    return 'Property size cannot exceed 1,000,000 sq ft';
   }
-  if (inputs.comparableSales && inputs.propertyValue) {
-    const priceDiff = Math.abs(inputs.comparableSales - inputs.propertyValue) / inputs.propertyValue;
-    if (priceDiff > 0.5) {
-      errors.push('Comparable sales price differs significantly from property value');
-    }
-  }
-  if (inputs.squareFootage && inputs.bedrooms && inputs.squareFootage < inputs.bedrooms * 200) {
-    errors.push('Square footage seems too low for the number of bedrooms');
-  }
-  if (inputs.squareFootage && inputs.bathrooms && inputs.squareFootage < inputs.bathrooms * 100) {
-    errors.push('Square footage seems too low for the number of bathrooms');
-  }
+  return null;
+}
 
-  return {
-    isValid: errors.length === 0,
-    errors
-  };
+export function validateLotSize(value: number, allInputs: GrossRentMultiplierInputs): string | null {
+  if (!value || value <= 0) {
+    return 'Lot size must be greater than 0';
+  }
+  if (value > 1000000) {
+    return 'Lot size cannot exceed 1,000,000 sq ft';
+  }
+  return null;
+}
+
+export function validateYearBuilt(value: number, allInputs: GrossRentMultiplierInputs): string | null {
+  if (!value || value < 1800 || value > 2030) {
+    return 'Year built must be between 1800 and 2030';
+  }
+  return null;
+}
+
+export function validatePropertyCondition(value: string, allInputs: GrossRentMultiplierInputs): string | null {
+  if (!value) {
+    return 'Property condition is required';
+  }
+  const validConditions = ['excellent', 'good', 'fair', 'poor', 'needs_work'];
+  if (!validConditions.includes(value)) {
+    return 'Invalid property condition';
+  }
+  return null;
+}
+
+export function validateBedrooms(value: number, allInputs: GrossRentMultiplierInputs): string | null {
+  if (!value || value < 0) {
+    return 'Number of bedrooms must be 0 or greater';
+  }
+  if (value > 50) {
+    return 'Number of bedrooms cannot exceed 50';
+  }
+  return null;
+}
+
+export function validateBathrooms(value: number, allInputs: GrossRentMultiplierInputs): string | null {
+  if (!value || value < 0) {
+    return 'Number of bathrooms must be 0 or greater';
+  }
+  if (value > 50) {
+    return 'Number of bathrooms cannot exceed 50';
+  }
+  return null;
+}
+
+export function validatePurchasePrice(value: number, allInputs: GrossRentMultiplierInputs): string | null {
+  if (!value || value <= 0) {
+    return 'Purchase price must be greater than 0';
+  }
+  if (value > 100000000) {
+    return 'Purchase price cannot exceed $100,000,000';
+  }
+  return null;
+}
+
+export function validateMarketValue(value: number, allInputs: GrossRentMultiplierInputs): string | null {
+  if (!value || value <= 0) {
+    return 'Market value must be greater than 0';
+  }
+  if (value > 100000000) {
+    return 'Market value cannot exceed $100,000,000';
+  }
+  return null;
+}
+
+export function validateAnnualGrossRent(value: number, allInputs: GrossRentMultiplierInputs): string | null {
+  if (!value || value <= 0) {
+    return 'Annual gross rent must be greater than 0';
+  }
+  if (value > 10000000) {
+    return 'Annual gross rent cannot exceed $10,000,000';
+  }
+  return null;
+}
+
+export function validateMonthlyGrossRent(value: number, allInputs: GrossRentMultiplierInputs): string | null {
+  if (!value || value <= 0) {
+    return 'Monthly gross rent must be greater than 0';
+  }
+  if (value > 1000000) {
+    return 'Monthly gross rent cannot exceed $1,000,000';
+  }
+  return null;
+}
+
+export function validateAnnualOperatingExpenses(value: number, allInputs: GrossRentMultiplierInputs): string | null {
+  if (value === undefined || value < 0) {
+    return 'Annual operating expenses must be 0 or greater';
+  }
+  if (value > 5000000) {
+    return 'Annual operating expenses cannot exceed $5,000,000';
+  }
+  return null;
+}
+
+export function validateMonthlyOperatingExpenses(value: number, allInputs: GrossRentMultiplierInputs): string | null {
+  if (value === undefined || value < 0) {
+    return 'Monthly operating expenses must be 0 or greater';
+  }
+  if (value > 500000) {
+    return 'Monthly operating expenses cannot exceed $500,000';
+  }
+  return null;
+}
+
+export function validateAnnualNetOperatingIncome(value: number, allInputs: GrossRentMultiplierInputs): string | null {
+  if (value === undefined || value < 0) {
+    return 'Annual net operating income must be 0 or greater';
+  }
+  if (value > 10000000) {
+    return 'Annual net operating income cannot exceed $10,000,000';
+  }
+  return null;
+}
+
+export function validateMonthlyNetOperatingIncome(value: number, allInputs: GrossRentMultiplierInputs): string | null {
+  if (value === undefined || value < 0) {
+    return 'Monthly net operating income must be 0 or greater';
+  }
+  if (value > 1000000) {
+    return 'Monthly net operating income cannot exceed $1,000,000';
+  }
+  return null;
+}
+
+export function validateNumberOfUnits(value: number, allInputs: GrossRentMultiplierInputs): string | null {
+  if (!value || value <= 0) {
+    return 'Number of units must be greater than 0';
+  }
+  if (value > 1000) {
+    return 'Number of units cannot exceed 1000';
+  }
+  return null;
+}
+
+export function validateVacancyRate(value: number, allInputs: GrossRentMultiplierInputs): string | null {
+  if (value === undefined || value < 0) {
+    return 'Vacancy rate must be 0 or greater';
+  }
+  if (value > 100) {
+    return 'Vacancy rate cannot exceed 100%';
+  }
+  return null;
+}
+
+export function validateCollectionLoss(value: number, allInputs: GrossRentMultiplierInputs): string | null {
+  if (value === undefined || value < 0) {
+    return 'Collection loss must be 0 or greater';
+  }
+  if (value > 20) {
+    return 'Collection loss cannot exceed 20%';
+  }
+  return null;
+}
+
+export function validateEffectiveGrossIncome(value: number, allInputs: GrossRentMultiplierInputs): string | null {
+  if (!value || value <= 0) {
+    return 'Effective gross income must be greater than 0';
+  }
+  if (value > 10000000) {
+    return 'Effective gross income cannot exceed $10,000,000';
+  }
+  return null;
+}
+
+export function validatePropertyTaxes(value: number, allInputs: GrossRentMultiplierInputs): string | null {
+  if (value === undefined || value < 0) {
+    return 'Property taxes must be 0 or greater';
+  }
+  if (value > 1000000) {
+    return 'Property taxes cannot exceed $1,000,000';
+  }
+  return null;
+}
+
+export function validateInsurance(value: number, allInputs: GrossRentMultiplierInputs): string | null {
+  if (value === undefined || value < 0) {
+    return 'Insurance costs must be 0 or greater';
+  }
+  if (value > 100000) {
+    return 'Insurance costs cannot exceed $100,000';
+  }
+  return null;
+}
+
+export function validateUtilities(value: number, allInputs: GrossRentMultiplierInputs): string | null {
+  if (value === undefined || value < 0) {
+    return 'Utility costs must be 0 or greater';
+  }
+  if (value > 100000) {
+    return 'Utility costs cannot exceed $100,000';
+  }
+  return null;
+}
+
+export function validateMaintenance(value: number, allInputs: GrossRentMultiplierInputs): string | null {
+  if (value === undefined || value < 0) {
+    return 'Maintenance costs must be 0 or greater';
+  }
+  if (value > 100000) {
+    return 'Maintenance costs cannot exceed $100,000';
+  }
+  return null;
+}
+
+export function validatePropertyManagement(value: number, allInputs: GrossRentMultiplierInputs): string | null {
+  if (value === undefined || value < 0) {
+    return 'Property management fees must be 0 or greater';
+  }
+  if (value > 100000) {
+    return 'Property management fees cannot exceed $100,000';
+  }
+  return null;
+}
+
+export function validateRepairs(value: number, allInputs: GrossRentMultiplierInputs): string | null {
+  if (value === undefined || value < 0) {
+    return 'Repair costs must be 0 or greater';
+  }
+  if (value > 100000) {
+    return 'Repair costs cannot exceed $100,000';
+  }
+  return null;
+}
+
+export function validateLandscaping(value: number, allInputs: GrossRentMultiplierInputs): string | null {
+  if (value === undefined || value < 0) {
+    return 'Landscaping costs must be 0 or greater';
+  }
+  if (value > 50000) {
+    return 'Landscaping costs cannot exceed $50,000';
+  }
+  return null;
+}
+
+export function validatePestControl(value: number, allInputs: GrossRentMultiplierInputs): string | null {
+  if (value === undefined || value < 0) {
+    return 'Pest control costs must be 0 or greater';
+  }
+  if (value > 20000) {
+    return 'Pest control costs cannot exceed $20,000';
+  }
+  return null;
+}
+
+export function validateOtherExpenses(value: number, allInputs: GrossRentMultiplierInputs): string | null {
+  if (value === undefined || value < 0) {
+    return 'Other expenses must be 0 or greater';
+  }
+  if (value > 100000) {
+    return 'Other expenses cannot exceed $100,000';
+  }
+  return null;
+}
+
+export function validateMarketGRM(value: number, allInputs: GrossRentMultiplierInputs): string | null {
+  if (!value || value <= 0) {
+    return 'Market GRM must be greater than 0';
+  }
+  if (value > 50) {
+    return 'Market GRM cannot exceed 50';
+  }
+  return null;
+}
+
+export function validateMarketCapRate(value: number, allInputs: GrossRentMultiplierInputs): string | null {
+  if (!value || value <= 0) {
+    return 'Market cap rate must be greater than 0';
+  }
+  if (value > 20) {
+    return 'Market cap rate cannot exceed 20%';
+  }
+  return null;
+}
+
+export function validateMarketRent(value: number, allInputs: GrossRentMultiplierInputs): string | null {
+  if (!value || value <= 0) {
+    return 'Market rent must be greater than 0';
+  }
+  if (value > 1000) {
+    return 'Market rent cannot exceed $1,000 per sq ft/year';
+  }
+  return null;
+}
+
+export function validateCity(value: string, allInputs: GrossRentMultiplierInputs): string | null {
+  if (!value || value.trim().length === 0) {
+    return 'City is required';
+  }
+  return null;
+}
+
+export function validateState(value: string, allInputs: GrossRentMultiplierInputs): string | null {
+  if (!value || value.trim().length === 0) {
+    return 'State is required';
+  }
+  return null;
+}
+
+export function validateZipCode(value: string, allInputs: GrossRentMultiplierInputs): string | null {
+  if (!value || value.trim().length === 0) {
+    return 'ZIP code is required';
+  }
+  return null;
+}
+
+export function validateNeighborhood(value: string, allInputs: GrossRentMultiplierInputs): string | null {
+  if (!value || value.trim().length === 0) {
+    return 'Neighborhood is required';
+  }
+  return null;
+}
+
+export function validateMarketType(value: string, allInputs: GrossRentMultiplierInputs): string | null {
+  if (!value) {
+    return 'Market type is required';
+  }
+  const validTypes = ['hot', 'stable', 'declining', 'emerging'];
+  if (!validTypes.includes(value)) {
+    return 'Invalid market type';
+  }
+  return null;
+}
+
+export function validateMarketTrend(value: string, allInputs: GrossRentMultiplierInputs): string | null {
+  if (!value) {
+    return 'Market trend is required';
+  }
+  const validTrends = ['appreciating', 'stable', 'declining'];
+  if (!validTrends.includes(value)) {
+    return 'Invalid market trend';
+  }
+  return null;
+}
+
+export function validateParkingSpaces(value: number, allInputs: GrossRentMultiplierInputs): string | null {
+  if (value === undefined || value < 0) {
+    return 'Parking spaces must be 0 or greater';
+  }
+  if (value > 1000) {
+    return 'Parking spaces cannot exceed 1000';
+  }
+  return null;
+}
+
+export function validateAnalysisPeriod(value: number, allInputs: GrossRentMultiplierInputs): string | null {
+  if (!value || value <= 0) {
+    return 'Analysis period must be greater than 0';
+  }
+  if (value > 30) {
+    return 'Analysis period cannot exceed 30 years';
+  }
+  return null;
+}
+
+export function validateRentGrowthRate(value: number, allInputs: GrossRentMultiplierInputs): string | null {
+  if (value === undefined) {
+    return 'Rent growth rate is required';
+  }
+  if (value < -10 || value > 20) {
+    return 'Rent growth rate must be between -10% and 20%';
+  }
+  return null;
+}
+
+export function validateExpenseGrowthRate(value: number, allInputs: GrossRentMultiplierInputs): string | null {
+  if (value === undefined) {
+    return 'Expense growth rate is required';
+  }
+  if (value < -5 || value > 15) {
+    return 'Expense growth rate must be between -5% and 15%';
+  }
+  return null;
+}
+
+export function validateAppreciationRate(value: number, allInputs: GrossRentMultiplierInputs): string | null {
+  if (value === undefined) {
+    return 'Appreciation rate is required';
+  }
+  if (value < -10 || value > 20) {
+    return 'Appreciation rate must be between -10% and 20%';
+  }
+  return null;
+}
+
+export function validateDiscountRate(value: number, allInputs: GrossRentMultiplierInputs): string | null {
+  if (!value || value <= 0) {
+    return 'Discount rate must be greater than 0';
+  }
+  if (value > 30) {
+    return 'Discount rate cannot exceed 30%';
+  }
+  return null;
+}
+
+export function validateCurrency(value: string, allInputs: GrossRentMultiplierInputs): string | null {
+  if (!value) {
+    return 'Currency is required';
+  }
+  const validCurrencies = ['USD', 'EUR', 'GBP', 'JPY', 'CAD', 'AUD'];
+  if (!validCurrencies.includes(value)) {
+    return 'Invalid currency';
+  }
+  return null;
+}
+
+export function validateDisplayFormat(value: string, allInputs: GrossRentMultiplierInputs): string | null {
+  if (!value) {
+    return 'Display format is required';
+  }
+  const validFormats = ['percentage', 'decimal', 'basis-points'];
+  if (!validFormats.includes(value)) {
+    return 'Invalid display format';
+  }
+  return null;
 }
