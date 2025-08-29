@@ -1,186 +1,756 @@
-import { Calculator } from '../../../types/calculator';
-import { calculateHomeownersInsurance, generateHomeownersInsuranceAnalysis } from './formulas';
+import { Calculator } from '../../types';
+import { HomeownersInsuranceInputs, HomeownersInsuranceOutputs } from './types';
+import { calculateHomeownersInsurance } from './formulas';
 import { validateHomeownersInsuranceInputs } from './validation';
 
-export const HomeownersInsuranceCalculator: Calculator = {
-  id: 'homeowners-insurance-calculator',
+export const HomeownersInsuranceCalculator: Calculator<HomeownersInsuranceInputs, HomeownersInsuranceOutputs> = {
+  id: 'homeowners-insurance',
   name: 'Homeowners Insurance Calculator',
   category: 'finance',
-  subcategory: 'investment',
-  description: 'Calculate homeowners insurance premiums, coverage options, and policy recommendations based on property details, location, and risk factors.',
-  inputs: [
-    { id: 'homeValue', name: 'Home Value', type: 'number', unit: 'USD', required: true, description: 'Current market value of the home', placeholder: '500000', min: 10000, max: 10000000 },
-    { id: 'replacementCost', name: 'Replacement Cost', type: 'number', unit: 'USD', required: false, description: 'Cost to rebuild the home', placeholder: '450000', min: 10000, max: 15000000 },
-    { id: 'propertyType', name: 'Property Type', type: 'select', required: false, description: 'Type of residential property', placeholder: 'single-family', options: ['single-family', 'condo', 'townhouse', 'duplex', 'multi-family'] },
-    { id: 'constructionType', name: 'Construction Type', type: 'select', required: false, description: 'Primary construction material', placeholder: 'frame', options: ['frame', 'brick', 'stone', 'concrete', 'steel', 'mixed'] },
-    { id: 'yearBuilt', name: 'Year Built', type: 'number', required: false, description: 'Year the home was constructed', placeholder: '1990', min: 1800, max: 2024 },
-    { id: 'squareFootage', name: 'Square Footage', type: 'number', required: false, description: 'Total living area in square feet', placeholder: '2000', min: 100, max: 50000 },
-    { id: 'location', name: 'Location Type', type: 'select', required: false, description: 'Urban, suburban, or rural location', placeholder: 'suburban', options: ['urban', 'suburban', 'rural'] },
-    { id: 'state', name: 'State', type: 'select', required: false, description: 'State where the property is located', placeholder: 'california', options: ['california', 'florida', 'texas', 'new-york', 'illinois', 'pennsylvania', 'ohio', 'georgia', 'north-carolina', 'michigan'] },
-    { id: 'zipCode', name: 'Zip Code', type: 'string', required: false, description: 'Property zip code for rate calculation', placeholder: '90210' },
-    { id: 'crimeRate', name: 'Crime Rate', type: 'select', required: false, description: 'Local crime rate level', placeholder: 'low', options: ['low', 'medium', 'high'] },
-    { id: 'fireStationDistance', name: 'Distance to Fire Station', type: 'number', unit: 'miles', required: false, description: 'Distance to nearest fire station', placeholder: '2.5', min: 0, max: 50 },
-    { id: 'floodZone', name: 'Flood Zone', type: 'select', required: false, description: 'FEMA flood zone designation', placeholder: 'none', options: ['none', 'a', 'ae', 'ah', 'ao', 'ar', 'a99', 'v', 've', 'x'] },
-    { id: 'earthquakeZone', name: 'Earthquake Zone', type: 'select', required: false, description: 'Earthquake risk zone', placeholder: 'none', options: ['none', 'low', 'moderate', 'high', 'very-high'] },
-    { id: 'hurricaneZone', name: 'Hurricane Zone', type: 'select', required: false, description: 'Hurricane risk zone', placeholder: 'none', options: ['none', 'low', 'moderate', 'high', 'very-high'] },
-    { id: 'tornadoZone', name: 'Tornado Zone', type: 'select', required: false, description: 'Tornado risk zone', placeholder: 'none', options: ['none', 'low', 'moderate', 'high', 'very-high'] },
-    { id: 'wildfireZone', name: 'Wildfire Zone', type: 'select', required: false, description: 'Wildfire risk zone', placeholder: 'none', options: ['none', 'low', 'moderate', 'high', 'very-high'] },
-    { id: 'deductible', name: 'Deductible', type: 'select', required: false, description: 'Insurance deductible amount', placeholder: '1000', options: ['500', '1000', '1500', '2000', '2500', '5000'] },
-    { id: 'coverageLevel', name: 'Coverage Level', type: 'select', required: false, description: 'Level of coverage selected', placeholder: 'standard', options: ['basic', 'standard', 'premium', 'comprehensive'] },
-    { id: 'personalPropertyValue', name: 'Personal Property Value', type: 'number', unit: 'USD', required: false, description: 'Value of personal belongings', placeholder: '50000', min: 0, max: 1000000 },
-    { id: 'liabilityCoverage', name: 'Liability Coverage', type: 'number', unit: 'USD', required: false, description: 'Personal liability coverage amount', placeholder: '300000', min: 100000, max: 5000000 },
-    { id: 'medicalPayments', name: 'Medical Payments', type: 'number', unit: 'USD', required: false, description: 'Medical payments to others coverage', placeholder: '5000', min: 1000, max: 100000 },
-    { id: 'lossOfUse', name: 'Loss of Use', type: 'number', unit: 'USD', required: false, description: 'Additional living expenses coverage', placeholder: '20000', min: 5000, max: 200000 },
-    { id: 'jewelryCoverage', name: 'Jewelry Coverage', type: 'number', unit: 'USD', required: false, description: 'Additional jewelry coverage', placeholder: '5000', min: 0, max: 100000 },
-    { id: 'electronicsCoverage', name: 'Electronics Coverage', type: 'number', unit: 'USD', required: false, description: 'Additional electronics coverage', placeholder: '10000', min: 0, max: 50000 },
-    { id: 'businessEquipmentCoverage', name: 'Business Equipment Coverage', type: 'number', unit: 'USD', required: false, description: 'Additional business equipment coverage', placeholder: '5000', min: 0, max: 100000 },
-    { id: 'creditScore', name: 'Credit Score', type: 'number', required: false, description: 'Homeowner credit score', placeholder: '750', min: 300, max: 850 },
-    { id: 'claimsHistory', name: 'Claims History', type: 'select', required: false, description: 'Number of claims in past 5 years', placeholder: 'none', options: ['none', '1-2', '3-5', '5-plus'] },
-    { id: 'occupancyType', name: 'Occupancy Type', type: 'select', required: false, description: 'How the property is occupied', placeholder: 'owner-occupied', options: ['owner-occupied', 'rental', 'vacation', 'investment'] },
-    { id: 'securityFeatures', name: 'Security Features', type: 'multiselect', required: false, description: 'Security and safety features', placeholder: 'Select features', options: ['alarm-system', 'smoke-detectors', 'fire-sprinklers', 'deadbolts', 'security-cameras', 'gated-community'] },
-    { id: 'roofAge', name: 'Roof Age', type: 'number', unit: 'years', required: false, description: 'Age of the roof in years', placeholder: '10', min: 0, max: 50 },
-    { id: 'heatingSystemAge', name: 'Heating System Age', type: 'number', unit: 'years', required: false, description: 'Age of heating system in years', placeholder: '15', min: 0, max: 50 },
-    { id: 'electricalSystemAge', name: 'Electrical System Age', type: 'number', unit: 'years', required: false, description: 'Age of electrical system in years', placeholder: '20', min: 0, max: 50 },
-    { id: 'plumbingSystemAge', name: 'Plumbing System Age', type: 'number', unit: 'years', required: false, description: 'Age of plumbing system in years', placeholder: '25', min: 0, max: 50 },
-    { id: 'waterBackup', name: 'Water Backup Coverage', type: 'number', unit: 'USD', required: false, description: 'Water backup and sump overflow coverage', placeholder: '10000', min: 0, max: 50000 },
-    { id: 'identityTheft', name: 'Identity Theft Coverage', type: 'number', unit: 'USD', required: false, description: 'Identity theft protection coverage', placeholder: '5000', min: 0, max: 25000 },
-    { id: 'taxRate', name: 'Tax Rate', type: 'number', unit: '%', required: false, description: 'Local property tax rate', placeholder: '1.2', min: 0, max: 100 },
-    { id: 'inflationRate', name: 'Inflation Rate', type: 'number', unit: '%', required: false, description: 'Expected annual inflation rate', placeholder: '2.5', min: -50, max: 100 }
-  ],
-  outputs: [
-    { id: 'annualPremium', name: 'Annual Premium', type: 'number', unit: 'USD', description: 'Annual homeowners insurance premium' },
-    { id: 'monthlyPremium', name: 'Monthly Premium', type: 'number', unit: 'USD', description: 'Monthly homeowners insurance premium' },
-    { id: 'dwellingCoverage', name: 'Dwelling Coverage', type: 'number', unit: 'USD', description: 'Coverage for the main structure' },
-    { id: 'personalPropertyCoverage', name: 'Personal Property Coverage', type: 'number', unit: 'USD', description: 'Coverage for personal belongings' },
-    { id: 'liabilityCoverageAmount', name: 'Liability Coverage Amount', type: 'number', unit: 'USD', description: 'Personal liability protection amount' },
-    { id: 'medicalPaymentsAmount', name: 'Medical Payments Amount', type: 'number', unit: 'USD', description: 'Medical payments to others coverage' },
-    { id: 'lossOfUseAmount', name: 'Loss of Use Amount', type: 'number', unit: 'USD', description: 'Additional living expenses coverage' },
-    { id: 'totalCoverage', name: 'Total Coverage', type: 'number', unit: 'USD', description: 'Total insurance coverage amount' },
-    { id: 'replacementCostRatio', name: 'Replacement Cost Ratio', type: 'number', unit: '%', description: 'Percentage of replacement cost covered' },
-    { id: 'coverageGap', name: 'Coverage Gap', type: 'number', unit: 'USD', description: 'Difference between replacement cost and coverage' },
-    { id: 'riskScore', name: 'Risk Score', type: 'number', description: 'Property risk assessment score (0-100)' },
-    { id: 'premiumScore', name: 'Premium Score', type: 'number', description: 'Premium competitiveness score (0-100)' },
-    { id: 'coverageScore', name: 'Coverage Score', type: 'number', description: 'Coverage adequacy score (0-100)' },
-    { id: 'recommendedDeductible', name: 'Recommended Deductible', type: 'number', unit: 'USD', description: 'Optimal deductible for cost savings' },
-    { id: 'premiumSavings', name: 'Premium Savings', type: 'number', unit: 'USD', description: 'Potential annual savings with recommended deductible' },
-    { id: 'riskFactors', name: 'Risk Factors', type: 'string', description: 'Identified risk factors affecting premium' },
-    { id: 'discounts', name: 'Available Discounts', type: 'string', description: 'Potential discounts available' },
-    { id: 'recommendations', name: 'Recommendations', type: 'string', description: 'Coverage and policy recommendations' },
-    { id: 'comparisonTable', name: 'Deductible Comparison', type: 'string', description: 'Premium comparison for different deductibles' },
-    { id: 'annualCost', name: 'Annual Cost', type: 'number', unit: 'USD', description: 'Total annual cost including deductible' },
-    { id: 'costPerThousand', name: 'Cost per $1000 Coverage', type: 'number', unit: 'USD', description: 'Cost per $1000 of dwelling coverage' },
-    { id: 'coverageAdequacy', name: 'Coverage Adequacy', type: 'string', description: 'Assessment of coverage adequacy' },
-    { id: 'policyGrade', name: 'Policy Grade', type: 'string', description: 'Overall policy quality grade (A-F)' },
-    { id: 'homeownersInsuranceAnalysis', name: 'Homeowners Insurance Analysis', type: 'string', description: 'Comprehensive analysis report' }
-  ],
-  calculate: (inputs) => {
+  subcategory: 'insurance',
+  description: 'Calculate homeowners insurance premiums, coverage, and costs for comprehensive property protection',
+  longDescription: `A comprehensive homeowners insurance calculator that analyzes insurance premiums, coverage options, and costs for residential properties. This calculator evaluates property characteristics, location risks, coverage needs, and policy features to provide accurate homeowners insurance cost estimates. It includes risk assessment, coverage analysis, premium comparisons, and optimization recommendations to help homeowners make informed insurance decisions.`,
+  
+  inputs: {
+    // Property Information
+    propertyValue: {
+      type: 'number',
+      label: 'Property Value ($)',
+      description: 'Current market value of the property',
+      required: true,
+      min: 50000,
+      max: 10000000,
+      step: 1000,
+      placeholder: '350000'
+    },
+    propertyAddress: {
+      type: 'text',
+      label: 'Property Address',
+      description: 'Full property address',
+      required: true,
+      placeholder: '123 Main St, City, State 12345'
+    },
+    propertyType: {
+      type: 'select',
+      label: 'Property Type',
+      description: 'Type of residential property',
+      required: true,
+      options: [
+        { value: 'single_family', label: 'Single Family' },
+        { value: 'condo', label: 'Condo' },
+        { value: 'townhouse', label: 'Townhouse' },
+        { value: 'multi_family', label: 'Multi Family' },
+        { value: 'mobile_home', label: 'Mobile Home' }
+      ],
+      placeholder: 'single_family'
+    },
+    propertyAge: {
+      type: 'number',
+      label: 'Property Age (years)',
+      description: 'Age of the property in years',
+      required: true,
+      min: 0,
+      max: 100,
+      step: 1,
+      placeholder: '15'
+    },
+    propertySize: {
+      type: 'number',
+      label: 'Property Size (sq ft)',
+      description: 'Total square footage of the property',
+      required: true,
+      min: 500,
+      max: 10000,
+      step: 100,
+      placeholder: '2500'
+    },
+    constructionType: {
+      type: 'select',
+      label: 'Construction Type',
+      description: 'Primary construction material',
+      required: true,
+      options: [
+        { value: 'wood_frame', label: 'Wood Frame' },
+        { value: 'brick', label: 'Brick' },
+        { value: 'stone', label: 'Stone' },
+        { value: 'concrete', label: 'Concrete' },
+        { value: 'steel_frame', label: 'Steel Frame' },
+        { value: 'mixed', label: 'Mixed' }
+      ],
+      placeholder: 'wood_frame'
+    },
+    roofType: {
+      type: 'select',
+      label: 'Roof Type',
+      description: 'Type of roof material',
+      required: true,
+      options: [
+        { value: 'asphalt_shingle', label: 'Asphalt Shingle' },
+        { value: 'metal', label: 'Metal' },
+        { value: 'tile', label: 'Tile' },
+        { value: 'slate', label: 'Slate' },
+        { value: 'wood_shake', label: 'Wood Shake' },
+        { value: 'flat', label: 'Flat' }
+      ],
+      placeholder: 'asphalt_shingle'
+    },
+    roofAge: {
+      type: 'number',
+      label: 'Roof Age (years)',
+      description: 'Age of the roof in years',
+      required: true,
+      min: 0,
+      max: 50,
+      step: 1,
+      placeholder: '10'
+    },
+    
+    // Location Information
+    state: {
+      type: 'text',
+      label: 'State',
+      description: 'State where property is located',
+      required: true,
+      placeholder: 'CA'
+    },
+    city: {
+      type: 'text',
+      label: 'City',
+      description: 'City where property is located',
+      required: true,
+      placeholder: 'Los Angeles'
+    },
+    zipCode: {
+      type: 'text',
+      label: 'ZIP Code',
+      description: 'ZIP code of the property',
+      required: true,
+      placeholder: '90210'
+    },
+    floodZone: {
+      type: 'select',
+      label: 'Flood Zone',
+      description: 'Flood risk zone classification',
+      required: true,
+      options: [
+        { value: 'low_risk', label: 'Low Risk' },
+        { value: 'moderate_risk', label: 'Moderate Risk' },
+        { value: 'high_risk', label: 'High Risk' },
+        { value: 'very_high_risk', label: 'Very High Risk' },
+        { value: 'unknown', label: 'Unknown' }
+      ],
+      placeholder: 'low_risk'
+    },
+    crimeRate: {
+      type: 'select',
+      label: 'Crime Rate',
+      description: 'Crime rate in the area',
+      required: true,
+      options: [
+        { value: 'low', label: 'Low' },
+        { value: 'medium', label: 'Medium' },
+        { value: 'high', label: 'High' },
+        { value: 'very_high', label: 'Very High' }
+      ],
+      placeholder: 'medium'
+    },
+    fireStationDistance: {
+      type: 'number',
+      label: 'Fire Station Distance (miles)',
+      description: 'Distance to nearest fire station',
+      required: true,
+      min: 0,
+      max: 50,
+      step: 0.1,
+      placeholder: '2.5'
+    },
+    policeStationDistance: {
+      type: 'number',
+      label: 'Police Station Distance (miles)',
+      description: 'Distance to nearest police station',
+      required: true,
+      min: 0,
+      max: 50,
+      step: 0.1,
+      placeholder: '3.0'
+    },
+    
+    // Coverage Information
+    dwellingCoverage: {
+      type: 'number',
+      label: 'Dwelling Coverage ($)',
+      description: 'Coverage for the main structure',
+      required: true,
+      min: 50000,
+      max: 5000000,
+      step: 1000,
+      placeholder: '350000'
+    },
+    personalPropertyCoverage: {
+      type: 'number',
+      label: 'Personal Property Coverage ($)',
+      description: 'Coverage for personal belongings',
+      required: true,
+      min: 10000,
+      max: 1000000,
+      step: 1000,
+      placeholder: '175000'
+    },
+    liabilityCoverage: {
+      type: 'number',
+      label: 'Liability Coverage ($)',
+      description: 'Personal liability coverage',
+      required: true,
+      min: 100000,
+      max: 1000000,
+      step: 10000,
+      placeholder: '300000'
+    },
+    medicalPaymentsCoverage: {
+      type: 'number',
+      label: 'Medical Payments Coverage ($)',
+      description: 'Medical payments to others',
+      required: true,
+      min: 1000,
+      max: 10000,
+      step: 100,
+      placeholder: '5000'
+    },
+    lossOfUseCoverage: {
+      type: 'number',
+      label: 'Loss of Use Coverage ($)',
+      description: 'Additional living expenses',
+      required: true,
+      min: 10000,
+      max: 100000,
+      step: 1000,
+      placeholder: '70000'
+    },
+    otherStructuresCoverage: {
+      type: 'number',
+      label: 'Other Structures Coverage ($)',
+      description: 'Coverage for detached structures',
+      required: true,
+      min: 0,
+      max: 500000,
+      step: 1000,
+      placeholder: '35000'
+    },
+    
+    // Deductibles
+    dwellingDeductible: {
+      type: 'number',
+      label: 'Dwelling Deductible ($)',
+      description: 'Deductible for dwelling claims',
+      required: true,
+      min: 250,
+      max: 10000,
+      step: 250,
+      placeholder: '1000'
+    },
+    personalPropertyDeductible: {
+      type: 'number',
+      label: 'Personal Property Deductible ($)',
+      description: 'Deductible for personal property claims',
+      required: true,
+      min: 250,
+      max: 5000,
+      step: 250,
+      placeholder: '1000'
+    },
+    liabilityDeductible: {
+      type: 'number',
+      label: 'Liability Deductible ($)',
+      description: 'Deductible for liability claims',
+      required: true,
+      min: 0,
+      max: 5000,
+      step: 100,
+      placeholder: '0'
+    },
+    hurricaneDeductible: {
+      type: 'number',
+      label: 'Hurricane Deductible ($)',
+      description: 'Deductible for hurricane claims',
+      required: true,
+      min: 0,
+      max: 50000,
+      step: 1000,
+      placeholder: '5000'
+    },
+    windstormDeductible: {
+      type: 'number',
+      label: 'Windstorm Deductible ($)',
+      description: 'Deductible for windstorm claims',
+      required: true,
+      min: 0,
+      max: 25000,
+      step: 500,
+      placeholder: '2500'
+    },
+    
+    // Policy Features
+    replacementCost: {
+      type: 'boolean',
+      label: 'Replacement Cost Coverage',
+      description: 'Coverage for replacement cost vs actual cash value',
+      required: true,
+      placeholder: true
+    },
+    guaranteedReplacementCost: {
+      type: 'boolean',
+      label: 'Guaranteed Replacement Cost',
+      description: 'Guaranteed replacement cost coverage',
+      required: true,
+      placeholder: false
+    },
+    ordinanceOrLawCoverage: {
+      type: 'boolean',
+      label: 'Ordinance or Law Coverage',
+      description: 'Coverage for building code upgrades',
+      required: true,
+      placeholder: false
+    },
+    waterBackupCoverage: {
+      type: 'boolean',
+      label: 'Water Backup Coverage',
+      description: 'Coverage for water backup and sump overflow',
+      required: true,
+      placeholder: false
+    },
+    identityTheftCoverage: {
+      type: 'boolean',
+      label: 'Identity Theft Coverage',
+      description: 'Identity theft protection coverage',
+      required: true,
+      placeholder: false
+    },
+    equipmentBreakdownCoverage: {
+      type: 'boolean',
+      label: 'Equipment Breakdown Coverage',
+      description: 'Coverage for mechanical equipment breakdown',
+      required: true,
+      placeholder: false
+    },
+    
+    // Discounts
+    multiPolicyDiscount: {
+      type: 'boolean',
+      label: 'Multi-Policy Discount',
+      description: 'Discount for bundling multiple policies',
+      required: true,
+      placeholder: true
+    },
+    claimsFreeDiscount: {
+      type: 'boolean',
+      label: 'Claims-Free Discount',
+      description: 'Discount for no recent claims',
+      required: true,
+      placeholder: true
+    },
+    securitySystemDiscount: {
+      type: 'boolean',
+      label: 'Security System Discount',
+      description: 'Discount for security system',
+      required: true,
+      placeholder: false
+    },
+    smokeDetectorDiscount: {
+      type: 'boolean',
+      label: 'Smoke Detector Discount',
+      description: 'Discount for smoke detectors',
+      required: true,
+      placeholder: true
+    },
+    deadboltDiscount: {
+      type: 'boolean',
+      label: 'Deadbolt Discount',
+      description: 'Discount for deadbolt locks',
+      required: true,
+      placeholder: true
+    },
+    newHomeDiscount: {
+      type: 'boolean',
+      label: 'New Home Discount',
+      description: 'Discount for newly constructed home',
+      required: true,
+      placeholder: false
+    },
+    seniorDiscount: {
+      type: 'boolean',
+      label: 'Senior Discount',
+      description: 'Discount for senior homeowners',
+      required: true,
+      placeholder: false
+    },
+    
+    // Claims History
+    claimsInLast3Years: {
+      type: 'number',
+      label: 'Claims in Last 3 Years',
+      description: 'Number of claims in the last 3 years',
+      required: true,
+      min: 0,
+      max: 10,
+      step: 1,
+      placeholder: '0'
+    },
+    claimsInLast5Years: {
+      type: 'number',
+      label: 'Claims in Last 5 Years',
+      description: 'Number of claims in the last 5 years',
+      required: true,
+      min: 0,
+      max: 15,
+      step: 1,
+      placeholder: '0'
+    },
+    claimsInLast10Years: {
+      type: 'number',
+      label: 'Claims in Last 10 Years',
+      description: 'Number of claims in the last 10 years',
+      required: true,
+      min: 0,
+      max: 25,
+      step: 1,
+      placeholder: '0'
+    },
+    totalClaimAmount: {
+      type: 'number',
+      label: 'Total Claim Amount ($)',
+      description: 'Total amount of all claims',
+      required: true,
+      min: 0,
+      max: 1000000,
+      step: 1000,
+      placeholder: '0'
+    },
+    
+    // Risk Factors
+    swimmingPool: {
+      type: 'boolean',
+      label: 'Swimming Pool',
+      description: 'Property has a swimming pool',
+      required: true,
+      placeholder: false
+    },
+    trampoline: {
+      type: 'boolean',
+      label: 'Trampoline',
+      description: 'Property has a trampoline',
+      required: true,
+      placeholder: false
+    },
+    aggressiveDog: {
+      type: 'boolean',
+      label: 'Aggressive Dog',
+      description: 'Property has an aggressive dog breed',
+      required: true,
+      placeholder: false
+    },
+    homeBusiness: {
+      type: 'boolean',
+      label: 'Home Business',
+      description: 'Business operated from home',
+      required: true,
+      placeholder: false
+    },
+    rentalUnits: {
+      type: 'number',
+      label: 'Rental Units',
+      description: 'Number of rental units on property',
+      required: true,
+      min: 0,
+      max: 10,
+      step: 1,
+      placeholder: '0'
+    },
+    vacantProperty: {
+      type: 'boolean',
+      label: 'Vacant Property',
+      description: 'Property is vacant or unoccupied',
+      required: true,
+      placeholder: false
+    },
+    
+    // Insurance Company
+    insuranceCompany: {
+      type: 'text',
+      label: 'Insurance Company',
+      description: 'Name of the insurance company',
+      required: true,
+      placeholder: 'State Farm'
+    },
+    policyType: {
+      type: 'select',
+      label: 'Policy Type',
+      description: 'Type of insurance policy',
+      required: true,
+      options: [
+        { value: 'standard', label: 'Standard' },
+        { value: 'premium', label: 'Premium' },
+        { value: 'basic', label: 'Basic' },
+        { value: 'custom', label: 'Custom' }
+      ],
+      placeholder: 'standard'
+    },
+    policyTerm: {
+      type: 'number',
+      label: 'Policy Term (months)',
+      description: 'Duration of the insurance policy',
+      required: true,
+      min: 6,
+      max: 36,
+      step: 6,
+      placeholder: '12'
+    },
+    
+    // Analysis Parameters
+    analysisPeriod: {
+      type: 'number',
+      label: 'Analysis Period (years)',
+      description: 'Period for insurance analysis',
+      required: true,
+      min: 1,
+      max: 10,
+      step: 1,
+      placeholder: '5'
+    },
+    inflationRate: {
+      type: 'number',
+      label: 'Inflation Rate (%)',
+      description: 'Expected annual inflation rate',
+      required: true,
+      min: -5,
+      max: 15,
+      step: 0.5,
+      placeholder: '2.5'
+    },
+    propertyAppreciationRate: {
+      type: 'number',
+      label: 'Property Appreciation Rate (%)',
+      description: 'Expected annual property appreciation',
+      required: true,
+      min: -10,
+      max: 20,
+      step: 0.5,
+      placeholder: '3.0'
+    },
+    
+    // Reporting Preferences
+    currency: {
+      type: 'select',
+      label: 'Currency',
+      description: 'Currency for calculations and display',
+      required: true,
+      options: [
+        { value: 'USD', label: 'USD' },
+        { value: 'EUR', label: 'EUR' },
+        { value: 'GBP', label: 'GBP' },
+        { value: 'CAD', label: 'CAD' },
+        { value: 'AUD', label: 'AUD' }
+      ],
+      placeholder: 'USD'
+    },
+    displayFormat: {
+      type: 'select',
+      label: 'Display Format',
+      description: 'Format for displaying results',
+      required: true,
+      options: [
+        { value: 'percentage', label: 'Percentage' },
+        { value: 'decimal', label: 'Decimal' },
+        { value: 'currency', label: 'Currency' }
+      ],
+      placeholder: 'currency'
+    },
+    includeCharts: {
+      type: 'boolean',
+      label: 'Include Charts',
+      description: 'Include charts in the analysis report',
+      required: true,
+      placeholder: true
+    }
+  },
+  
+  outputs: {
+    annualPremium: {
+      type: 'number',
+      label: 'Annual Premium',
+      description: 'Annual homeowners insurance premium cost'
+    },
+    monthlyPremium: {
+      type: 'number',
+      label: 'Monthly Premium',
+      description: 'Monthly homeowners insurance premium cost'
+    },
+    totalCoverage: {
+      type: 'number',
+      label: 'Total Coverage',
+      description: 'Total homeowners insurance coverage amount'
+    },
+    riskScore: {
+      type: 'number',
+      label: 'Risk Score',
+      description: 'Overall risk assessment score (1-10)'
+    },
+    premiumToValueRatio: {
+      type: 'number',
+      label: 'Premium to Value Ratio',
+      description: 'Premium as percentage of property value'
+    },
+    totalDiscounts: {
+      type: 'number',
+      label: 'Total Discounts',
+      description: 'Total discount amount'
+    },
+    effectivePremium: {
+      type: 'number',
+      label: 'Effective Premium',
+      description: 'Premium after discounts'
+    },
+    analysis: {
+      type: 'object',
+      label: 'Analysis Report',
+      description: 'Comprehensive homeowners insurance analysis'
+    }
+  },
+  
+  calculate: (inputs: HomeownersInsuranceInputs): HomeownersInsuranceOutputs => {
+    const validation = validateHomeownersInsuranceInputs(inputs);
+    if (!validation.isValid) {
+      throw new Error(`Validation failed: ${validation.errors.join(', ')}`);
+    }
+    
     return calculateHomeownersInsurance(inputs);
   },
-  generateReport: (inputs, outputs) => {
-    return generateHomeownersInsuranceAnalysis(inputs, outputs);
+  
+  generateReport: (inputs: HomeownersInsuranceInputs, outputs: HomeownersInsuranceOutputs): string => {
+    const { analysis } = outputs;
+    
+    return `
+# Homeowners Insurance Analysis Report
+
+## Executive Summary
+- **Insurance Rating**: ${analysis.insuranceRating}
+- **Risk Rating**: ${analysis.riskRating}
+- **Recommendation**: ${analysis.recommendation}
+
+## Key Metrics
+- **Annual Premium**: $${outputs.annualPremium.toLocaleString()}
+- **Monthly Premium**: $${outputs.monthlyPremium.toLocaleString()}
+- **Total Coverage**: $${outputs.totalCoverage.toLocaleString()}
+- **Premium to Value Ratio**: ${outputs.premiumToValueRatio.toFixed(2)}%
+- **Risk Score**: ${outputs.riskScore}/10
+- **Total Discounts**: $${outputs.totalDiscounts.toLocaleString()}
+- **Effective Premium**: $${outputs.effectivePremium.toLocaleString()}
+
+## Analysis
+${analysis.insuranceSummary}
+
+## Risk Assessment
+${analysis.riskAssessment}
+
+## Recommendations
+${analysis.purchaseRecommendations.join('\n')}
+
+## Next Steps
+${analysis.nextSteps.join('\n')}
+    `.trim();
   },
-  formulas: [
-    {
-      name: 'Base Premium Calculation',
-      formula: 'Base Premium = (Replacement Cost / 1000) × Base Rate × Location Factor × Construction Factor × Coverage Level Factor × Natural Disaster Factor',
-      description: 'Calculates the base premium before applying deductible discounts'
-    },
-    {
-      name: 'Deductible Discount',
-      formula: 'Final Premium = Base Premium × (1 - Deductible Discount Rate)',
-      description: 'Applies discount based on selected deductible amount'
-    },
-    {
-      name: 'Personal Property Coverage',
-      formula: 'Personal Property Coverage = Dwelling Coverage × 0.5',
-      description: 'Standard personal property coverage is 50% of dwelling coverage'
-    },
-    {
-      name: 'Risk Score Calculation',
-      formula: 'Risk Score = Location Risk + Crime Risk + Natural Disaster Risk + Property Age Risk + Claims History Risk + Construction Risk',
-      description: 'Aggregates various risk factors into a single score'
-    },
-    {
-      name: 'Coverage Score',
-      formula: 'Coverage Score = (Dwelling Coverage / Replacement Cost) × 100',
-      description: 'Measures adequacy of dwelling coverage relative to replacement cost'
-    },
-    {
-      name: 'Cost per $1000',
-      formula: 'Cost per $1000 = (Annual Premium / Dwelling Coverage) × 1000',
-      description: 'Standardized cost metric for comparing policies'
-    }
-  ],
+  
+  formulas: {
+    'Annual Premium': 'Base premium adjusted for risk factors, coverage, and discounts',
+    'Monthly Premium': 'Annual Premium / 12',
+    'Total Coverage': 'Sum of all coverage amounts',
+    'Premium to Value Ratio': 'Annual Premium / Property Value × 100',
+    'Risk Score': 'Weighted average of property, location, and coverage risk factors',
+    'Total Discounts': 'Sum of all applicable discounts',
+    'Effective Premium': 'Annual Premium - Total Discounts'
+  },
+  
   examples: [
     {
-      name: 'Standard Homeowners Policy',
+      name: 'Standard Homeowners Insurance',
       inputs: {
-        homeValue: 500000,
-        replacementCost: 450000,
-        propertyType: 'single-family',
-        constructionType: 'frame',
-        yearBuilt: 1990,
-        location: 'suburban',
-        state: 'california',
-        deductible: 1000,
-        coverageLevel: 'standard',
-        personalPropertyValue: 50000,
+        propertyValue: 350000,
+        propertyAddress: '123 Main St, Los Angeles, CA 90210',
+        propertyType: 'single_family',
+        propertyAge: 15,
+        propertySize: 2500,
+        constructionType: 'wood_frame',
+        roofType: 'asphalt_shingle',
+        roofAge: 10,
+        state: 'CA',
+        city: 'Los Angeles',
+        zipCode: '90210',
+        floodZone: 'low_risk',
+        crimeRate: 'medium',
+        fireStationDistance: 2.5,
+        policeStationDistance: 3.0,
+        dwellingCoverage: 350000,
+        personalPropertyCoverage: 175000,
         liabilityCoverage: 300000,
-        medicalPayments: 5000,
-        lossOfUse: 20000,
-        creditScore: 750,
-        claimsHistory: 'none',
-        occupancyType: 'owner-occupied'
-      },
-      description: 'Typical homeowners insurance policy for a suburban single-family home'
-    },
-    {
-      name: 'High-Risk Property',
-      inputs: {
-        homeValue: 750000,
-        replacementCost: 675000,
-        propertyType: 'single-family',
-        constructionType: 'frame',
-        yearBuilt: 1950,
-        location: 'urban',
-        state: 'florida',
-        deductible: 2500,
-        coverageLevel: 'premium',
-        personalPropertyValue: 75000,
-        liabilityCoverage: 500000,
-        medicalPayments: 10000,
-        lossOfUse: 30000,
-        floodZone: 'ae',
-        hurricaneZone: 'high',
-        crimeRate: 'high',
-        creditScore: 650,
-        claimsHistory: '1-2',
-        occupancyType: 'owner-occupied'
-      },
-      description: 'High-risk property with multiple risk factors requiring comprehensive coverage'
-    },
-    {
-      name: 'New Construction',
-      inputs: {
-        homeValue: 800000,
-        replacementCost: 720000,
-        propertyType: 'single-family',
-        constructionType: 'brick',
-        yearBuilt: 2020,
-        location: 'suburban',
-        state: 'texas',
-        deductible: 1500,
-        coverageLevel: 'comprehensive',
-        personalPropertyValue: 100000,
-        liabilityCoverage: 1000000,
-        medicalPayments: 10000,
-        lossOfUse: 50000,
-        creditScore: 800,
-        claimsHistory: 'none',
-        occupancyType: 'owner-occupied',
-        securityFeatures: ['alarm-system', 'smoke-detectors', 'security-cameras']
-      },
-      description: 'New construction with modern features and comprehensive coverage'
+        medicalPaymentsCoverage: 5000,
+        lossOfUseCoverage: 70000,
+        otherStructuresCoverage: 35000,
+        dwellingDeductible: 1000,
+        personalPropertyDeductible: 1000,
+        liabilityDeductible: 0,
+        hurricaneDeductible: 5000,
+        windstormDeductible: 2500,
+        replacementCost: true,
+        guaranteedReplacementCost: false,
+        ordinanceOrLawCoverage: false,
+        waterBackupCoverage: false,
+        identityTheftCoverage: false,
+        equipmentBreakdownCoverage: false,
+        multiPolicyDiscount: true,
+        claimsFreeDiscount: true,
+        securitySystemDiscount: false,
+        smokeDetectorDiscount: true,
+        deadboltDiscount: true,
+        newHomeDiscount: false,
+        seniorDiscount: false,
+        claimsInLast3Years: 0,
+        claimsInLast5Years: 0,
+        claimsInLast10Years: 0,
+        totalClaimAmount: 0,
+        swimmingPool: false,
+        trampoline: false,
+        aggressiveDog: false,
+        homeBusiness: false,
+        rentalUnits: 0,
+        vacantProperty: false,
+        insuranceCompany: 'State Farm',
+        policyType: 'standard',
+        policyTerm: 12,
+        analysisPeriod: 5,
+        inflationRate: 2.5,
+        propertyAppreciationRate: 3.0,
+        currency: 'USD',
+        displayFormat: 'currency',
+        includeCharts: true
+      }
     }
-  ]
+  ],
+  
+  tags: [
+    'homeowners insurance',
+    'property insurance',
+    'insurance',
+    'premium',
+    'coverage',
+    'risk assessment',
+    'property protection',
+    'liability',
+    'deductible',
+    'claims'
+  ],
+  
+  category_info: {
+    name: 'Insurance',
+    description: 'Insurance calculators for property and liability protection',
+    icon: '🛡️'
+  }
 };
