@@ -88,7 +88,7 @@ Each calculator must include:
 - [x] **Hard Money Loan Calculator** ✅ **(VERIFIED WORKING)**
 - [x] **HELOC (Home Equity Line of Credit) Calculator** ✅ **(VERIFIED WORKING)**
 - [x] **Home Affordability Calculator** ✅ **(VERIFIED WORKING)**
-- [ ] Home Equity Loan Calculator
+- [x] **Home Equity Loan Calculator** ✅ **(VERIFIED WORKING)**
 - [ ] Home Insurance Calculator
 - [ ] Homeowners Insurance Calculator
 - [ ] Hotel Feasibility & ADR Calculator
