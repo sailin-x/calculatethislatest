@@ -19,13 +19,6 @@ export interface LoanToValueInputs {
   marketValue: number;
   assessedValue: number;
   purchasePrice: number;
-  comparableSales: Array<{
-    address: string;
-    salePrice: number;
-    saleDate: string;
-    condition: string;
-    adjustments: number;
-  }>;
   
   // Down Payment Information
   downPayment: number;
