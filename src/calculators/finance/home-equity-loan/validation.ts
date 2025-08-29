@@ -1,168 +1,318 @@
-import { CalculatorInputs } from '../../../types/calculator';
+import { HomeEquityLoanInputs } from './types';
 
 export interface ValidationResult {
   isValid: boolean;
   errors: string[];
+  warnings: string[];
 }
 
-export function validateHomeEquityLoanInputs(inputs: CalculatorInputs): ValidationResult {
+export function validateHomeEquityLoanInputs(inputs: HomeEquityLoanInputs): ValidationResult {
   const errors: string[] = [];
+  const warnings: string[] = [];
 
-  // Required field validation
-  if (!inputs.homeValue) {
-    errors.push('Home value is required');
-  }
-  if (!inputs.currentMortgageBalance) {
-    errors.push('Current mortgage balance is required');
-  }
-  if (!inputs.loanAmount) {
-    errors.push('Loan amount is required');
-  }
-  if (!inputs.interestRate) {
-    errors.push('Interest rate is required');
-  }
-  if (!inputs.loanTerm) {
-    errors.push('Loan term is required');
+  // Property Information Validation
+  if (!inputs.propertyValue || inputs.propertyValue <= 0) {
+    errors.push('Property value must be greater than 0');
   }
 
-  // Numerical range validation
-  if (inputs.homeValue && (inputs.homeValue < 10000 || inputs.homeValue > 10000000)) {
-    errors.push('Home value must be between $10,000 and $10,000,000');
+  if (!inputs.propertyAddress || inputs.propertyAddress.trim().length === 0) {
+    errors.push('Property address is required');
   }
 
-  if (inputs.currentMortgageBalance && (inputs.currentMortgageBalance < 0 || inputs.currentMortgageBalance > 10000000)) {
-    errors.push('Current mortgage balance must be between $0 and $10,000,000');
+  if (!inputs.propertyType) {
+    errors.push('Property type is required');
   }
 
-  if (inputs.loanAmount && (inputs.loanAmount < 1000 || inputs.loanAmount > 1000000)) {
-    errors.push('Loan amount must be between $1,000 and $1,000,000');
+  if (inputs.propertyAge === undefined || inputs.propertyAge < 0) {
+    errors.push('Property age must be 0 or greater');
   }
 
-  if (inputs.interestRate && (inputs.interestRate < 1 || inputs.interestRate > 20)) {
-    errors.push('Interest rate must be between 1% and 20%');
+  if (inputs.propertyAge > 100) {
+    errors.push('Property age cannot exceed 100 years');
   }
 
-  if (inputs.loanTerm && (inputs.loanTerm < 1 || inputs.loanTerm > 30)) {
-    errors.push('Loan term must be between 1 and 30 years');
+  if (!inputs.propertyCondition) {
+    errors.push('Property condition is required');
   }
 
-  if (inputs.maxLTV && (inputs.maxLTV < 50 || inputs.maxLTV > 95)) {
-    errors.push('Maximum LTV must be between 50% and 95%');
+  // Current Mortgage Information Validation
+  if (inputs.currentMortgageBalance === undefined || inputs.currentMortgageBalance < 0) {
+    errors.push('Current mortgage balance must be 0 or greater');
   }
 
-  if (inputs.maxCLTV && (inputs.maxCLTV < 50 || inputs.maxCLTV > 95)) {
-    errors.push('Maximum CLTV must be between 50% and 95%');
+  if (inputs.currentMortgageBalance > inputs.propertyValue) {
+    errors.push('Current mortgage balance cannot exceed property value');
   }
 
-  if (inputs.originationFee && (inputs.originationFee < 0 || inputs.originationFee > 5000)) {
-    errors.push('Origination fee must be between $0 and $5,000');
+  if (!inputs.currentMortgageRate || inputs.currentMortgageRate <= 0) {
+    errors.push('Current mortgage rate must be greater than 0');
   }
 
-  if (inputs.appraisalFee && (inputs.appraisalFee < 0 || inputs.appraisalFee > 1000)) {
-    errors.push('Appraisal fee must be between $0 and $1,000');
+  if (inputs.currentMortgageRate > 20) {
+    errors.push('Current mortgage rate cannot exceed 20%');
   }
 
-  if (inputs.titleFees && (inputs.titleFees < 0 || inputs.titleFees > 2000)) {
-    errors.push('Title fees must be between $0 and $2,000');
+  if (inputs.currentMortgagePayment === undefined || inputs.currentMortgagePayment < 0) {
+    errors.push('Current mortgage payment must be 0 or greater');
   }
 
-  if (inputs.closingCosts && (inputs.closingCosts < 0 || inputs.closingCosts > 5000)) {
-    errors.push('Closing costs must be between $0 and $5,000');
+  if (!inputs.mortgageType) {
+    errors.push('Mortgage type is required');
   }
 
-  if (inputs.creditScore && (inputs.creditScore < 300 || inputs.creditScore > 850)) {
-    errors.push('Credit score must be between 300 and 850');
+  // Home Equity Loan Information Validation
+  if (!inputs.loanAmount || inputs.loanAmount <= 0) {
+    errors.push('Loan amount must be greater than 0');
   }
 
-  if (inputs.debtToIncomeRatio && (inputs.debtToIncomeRatio < 0 || inputs.debtToIncomeRatio > 100)) {
-    errors.push('Debt-to-income ratio must be between 0% and 100%');
+  if (inputs.loanAmount > 1000000) {
+    errors.push('Loan amount cannot exceed $1,000,000');
   }
 
-  if (inputs.monthlyIncome && (inputs.monthlyIncome < 1000 || inputs.monthlyIncome > 1000000)) {
-    errors.push('Monthly income must be between $1,000 and $1,000,000');
+  if (!inputs.interestRate || inputs.interestRate <= 0) {
+    errors.push('Interest rate must be greater than 0');
   }
 
-  if (inputs.monthlyDebtPayments && (inputs.monthlyDebtPayments < 0 || inputs.monthlyDebtPayments > 100000)) {
-    errors.push('Monthly debt payments must be between $0 and $100,000');
+  if (inputs.interestRate > 15) {
+    errors.push('Interest rate cannot exceed 15%');
   }
 
-  if (inputs.propertyTaxes && (inputs.propertyTaxes < 0 || inputs.propertyTaxes > 100000)) {
-    errors.push('Annual property taxes must be between $0 and $100,000');
+  if (!inputs.loanTerm || inputs.loanTerm <= 0) {
+    errors.push('Loan term must be greater than 0');
   }
 
-  if (inputs.homeownersInsurance && (inputs.homeownersInsurance < 0 || inputs.homeownersInsurance > 50000)) {
-    errors.push('Annual homeowners insurance must be between $0 and $50,000');
+  if (inputs.loanTerm > 30) {
+    errors.push('Loan term cannot exceed 30 years');
   }
 
-  if (inputs.hoaFees && (inputs.hoaFees < 0 || inputs.hoaFees > 5000)) {
-    errors.push('Monthly HOA fees must be between $0 and $5,000');
+  if (!inputs.paymentType) {
+    errors.push('Payment type is required');
   }
 
-  if (inputs.prepaymentPenalty && (inputs.prepaymentPenalty < 0 || inputs.prepaymentPenalty > 5)) {
-    errors.push('Prepayment penalty must be between 0% and 5%');
+  if (!inputs.paymentFrequency) {
+    errors.push('Payment frequency is required');
   }
 
-  if (inputs.lateFees && (inputs.lateFees < 0 || inputs.lateFees > 100)) {
-    errors.push('Late fees must be between $0 and $100');
+  // Borrower Information Validation
+  if (!inputs.borrowerCreditScore || inputs.borrowerCreditScore < 300 || inputs.borrowerCreditScore > 850) {
+    errors.push('Borrower credit score must be between 300 and 850');
   }
 
-  if (inputs.taxRate && (inputs.taxRate < 0 || inputs.taxRate > 50)) {
-    errors.push('Tax rate must be between 0% and 50%');
+  if (!inputs.borrowerIncome || inputs.borrowerIncome <= 0) {
+    errors.push('Borrower income must be greater than 0');
   }
 
-  if (inputs.inflationRate && (inputs.inflationRate < 0 || inputs.inflationRate > 10)) {
-    errors.push('Inflation rate must be between 0% and 10%');
+  if (inputs.borrowerDebtToIncomeRatio === undefined || inputs.borrowerDebtToIncomeRatio < 0) {
+    errors.push('Debt-to-income ratio must be 0 or greater');
   }
 
-  // Logical relationship validation
-  if (inputs.currentMortgageBalance && inputs.homeValue && inputs.currentMortgageBalance > inputs.homeValue) {
-    errors.push('Current mortgage balance cannot exceed home value');
+  if (inputs.borrowerDebtToIncomeRatio > 100) {
+    errors.push('Debt-to-income ratio cannot exceed 100%');
   }
 
-  if (inputs.loanAmount && inputs.homeValue && inputs.currentMortgageBalance) {
-    const availableEquity = inputs.homeValue - inputs.currentMortgageBalance;
-    if (inputs.loanAmount > availableEquity) {
-      errors.push('Loan amount cannot exceed available equity');
+  if (!inputs.borrowerEmploymentType) {
+    errors.push('Employment type is required');
+  }
+
+  if (inputs.borrowerEmploymentLength === undefined || inputs.borrowerEmploymentLength < 0) {
+    errors.push('Employment length must be 0 or greater');
+  }
+
+  if (inputs.borrowerEmploymentLength > 50) {
+    errors.push('Employment length cannot exceed 50 years');
+  }
+
+  // Fees and Costs Validation
+  if (inputs.originationFee === undefined || inputs.originationFee < 0) {
+    errors.push('Origination fee must be 0 or greater');
+  }
+
+  if (inputs.appraisalFee === undefined || inputs.appraisalFee < 0) {
+    errors.push('Appraisal fee must be 0 or greater');
+  }
+
+  if (inputs.titleInsuranceFee === undefined || inputs.titleInsuranceFee < 0) {
+    errors.push('Title insurance fee must be 0 or greater');
+  }
+
+  if (inputs.recordingFee === undefined || inputs.recordingFee < 0) {
+    errors.push('Recording fee must be 0 or greater');
+  }
+
+  if (inputs.attorneyFee === undefined || inputs.attorneyFee < 0) {
+    errors.push('Attorney fee must be 0 or greater');
+  }
+
+  if (inputs.creditReportFee === undefined || inputs.creditReportFee < 0) {
+    errors.push('Credit report fee must be 0 or greater');
+  }
+
+  if (inputs.floodCertificationFee === undefined || inputs.floodCertificationFee < 0) {
+    errors.push('Flood certification fee must be 0 or greater');
+  }
+
+  if (inputs.taxServiceFee === undefined || inputs.taxServiceFee < 0) {
+    errors.push('Tax service fee must be 0 or greater');
+  }
+
+  if (inputs.otherFees === undefined || inputs.otherFees < 0) {
+    errors.push('Other fees must be 0 or greater');
+  }
+
+  // Loan Purpose Validation
+  if (!inputs.loanPurpose) {
+    errors.push('Loan purpose is required');
+  }
+
+  if (!inputs.purposeDescription || inputs.purposeDescription.trim().length === 0) {
+    errors.push('Purpose description is required');
+  }
+
+  // Market Information Validation
+  if (!inputs.marketCondition) {
+    errors.push('Market condition is required');
+  }
+
+  if (inputs.marketGrowthRate === undefined) {
+    errors.push('Market growth rate is required');
+  }
+
+  if (inputs.marketGrowthRate < -10 || inputs.marketGrowthRate > 20) {
+    errors.push('Market growth rate must be between -10% and 20%');
+  }
+
+  // Risk Factors Validation
+  if (!inputs.marketRisk) {
+    errors.push('Market risk is required');
+  }
+
+  if (!inputs.propertyRisk) {
+    errors.push('Property risk is required');
+  }
+
+  if (!inputs.borrowerRisk) {
+    errors.push('Borrower risk is required');
+  }
+
+  // Analysis Parameters Validation
+  if (!inputs.analysisPeriod || inputs.analysisPeriod <= 0) {
+    errors.push('Analysis period must be greater than 0');
+  }
+
+  if (inputs.analysisPeriod > 30) {
+    errors.push('Analysis period cannot exceed 30 years');
+  }
+
+  if (inputs.inflationRate === undefined) {
+    errors.push('Inflation rate is required');
+  }
+
+  if (inputs.inflationRate < -5 || inputs.inflationRate > 15) {
+    errors.push('Inflation rate must be between -5% and 15%');
+  }
+
+  if (inputs.taxRate === undefined || inputs.taxRate < 0) {
+    errors.push('Tax rate must be 0 or greater');
+  }
+
+  if (inputs.taxRate > 50) {
+    errors.push('Tax rate cannot exceed 50%');
+  }
+
+  // Reporting Preferences Validation
+  if (!inputs.currency) {
+    errors.push('Currency is required');
+  }
+
+  if (!inputs.displayFormat) {
+    errors.push('Display format is required');
+  }
+
+  if (inputs.includeCharts === undefined) {
+    errors.push('Include charts field is required');
+  }
+
+  // Business Logic Validation
+  const totalEquity = inputs.propertyValue - inputs.currentMortgageBalance;
+  const combinedLTV = ((inputs.currentMortgageBalance + inputs.loanAmount) / inputs.propertyValue) * 100;
+
+  if (combinedLTV > 95) {
+    errors.push('Combined LTV cannot exceed 95%');
+  }
+
+  if (inputs.loanAmount > totalEquity * 0.9) {
+    errors.push('Loan amount cannot exceed 90% of available equity');
+  }
+
+  if (inputs.borrowerCreditScore < 620) {
+    warnings.push('Credit score below 620 may affect loan approval');
+  }
+
+  if (inputs.borrowerDebtToIncomeRatio > 50) {
+    warnings.push('High debt-to-income ratio may affect loan approval');
+  }
+
+  if (inputs.borrowerEmploymentType === 'unemployed') {
+    warnings.push('Unemployment may affect loan approval');
+  }
+
+  if (inputs.borrowerEmploymentLength < 2) {
+    warnings.push('Short employment history may affect loan approval');
+  }
+
+  if (inputs.propertyCondition === 'poor') {
+    warnings.push('Poor property condition may affect loan approval');
+  }
+
+  if (inputs.propertyAge > 50) {
+    warnings.push('Older property may affect loan terms');
+  }
+
+  if (inputs.interestRate > 10) {
+    warnings.push('High interest rate may indicate risk');
+  }
+
+  if (inputs.paymentType === 'balloon') {
+    warnings.push('Balloon payment structure increases risk');
+  }
+
+  if (inputs.paymentType === 'interest_only') {
+    warnings.push('Interest-only payments may increase long-term risk');
+  }
+
+  if (inputs.marketCondition === 'declining') {
+    warnings.push('Declining market conditions increase risk');
+  }
+
+  if (combinedLTV > 85) {
+    warnings.push('High combined LTV increases risk');
+  }
+
+  if (inputs.loanAmount > 500000) {
+    warnings.push('Large loan amount may require additional underwriting');
+  }
+
+  // Cross-field Validation
+  if (inputs.currentMortgagePayment && inputs.borrowerIncome) {
+    const monthlyIncome = inputs.borrowerIncome / 12;
+    const housingRatio = (inputs.currentMortgagePayment / monthlyIncome) * 100;
+    if (housingRatio > 50) {
+      warnings.push('High housing expense ratio may affect affordability');
     }
   }
 
-  if (inputs.maxLTV && inputs.maxCLTV && inputs.maxLTV > inputs.maxCLTV) {
-    errors.push('Maximum LTV cannot exceed maximum CLTV');
-  }
-
-  if (inputs.monthlyIncome && inputs.monthlyDebtPayments && inputs.monthlyDebtPayments > inputs.monthlyIncome) {
-    errors.push('Monthly debt payments cannot exceed monthly income');
-  }
-
-  // Enum validation
-  const validPropertyTypes = ['single-family', 'condo', 'townhouse', 'multi-family'];
-  if (inputs.propertyType && !validPropertyTypes.includes(inputs.propertyType)) {
-    errors.push('Invalid property type. Must be one of: single-family, condo, townhouse, multi-family');
-  }
-
-  const validOccupancyTypes = ['primary-residence', 'second-home', 'investment-property'];
-  if (inputs.occupancyType && !validOccupancyTypes.includes(inputs.occupancyType)) {
-    errors.push('Invalid occupancy type. Must be one of: primary-residence, second-home, investment-property');
-  }
-
-  const validPropertyLocations = ['urban', 'suburban', 'rural'];
-  if (inputs.propertyLocation && !validPropertyLocations.includes(inputs.propertyLocation)) {
-    errors.push('Invalid property location. Must be one of: urban, suburban, rural');
-  }
-
-  const validMarketTypes = ['hot', 'stable', 'declining'];
-  if (inputs.marketType && !validMarketTypes.includes(inputs.marketType)) {
-    errors.push('Invalid market type. Must be one of: hot, stable, declining');
-  }
-
-  const validLoanPurposes = ['home-improvement', 'debt-consolidation', 'education', 'emergency-fund', 'investment', 'other'];
-  if (inputs.loanPurpose && !validLoanPurposes.includes(inputs.loanPurpose)) {
-    errors.push('Invalid loan purpose. Must be one of: home-improvement, debt-consolidation, education, emergency-fund, investment, other');
+  if (inputs.loanAmount && inputs.borrowerIncome) {
+    const annualIncome = inputs.borrowerIncome;
+    const loanToIncomeRatio = (inputs.loanAmount / annualIncome) * 100;
+    if (loanToIncomeRatio > 200) {
+      warnings.push('High loan-to-income ratio may affect approval');
+    }
   }
 
   return {
     isValid: errors.length === 0,
-    errors
+    errors,
+    warnings
   };
 }
 

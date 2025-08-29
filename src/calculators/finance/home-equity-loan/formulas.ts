@@ -1,288 +1,486 @@
-import { CalculatorInputs, CalculatorOutputs } from '../../../types/calculator';
+import { HomeEquityLoanInputs, HomeEquityLoanMetrics, HomeEquityLoanAnalysis } from './types';
 
-// Helper function to calculate monthly loan payment
-function calculateMonthlyPayment(loanAmount: number, annualRate: number, years: number): number {
-  const monthlyRate = annualRate / 100 / 12;
-  const numberOfPayments = years * 12;
+export function calculateHomeEquityLoan(inputs: HomeEquityLoanInputs): HomeEquityLoanMetrics {
+  // Calculate equity metrics
+  const totalEquity = inputs.propertyValue - inputs.currentMortgageBalance;
+  const availableEquity = totalEquity * 0.85; // Typical home equity loan limit is 85% of equity
+  const combinedLTV = ((inputs.currentMortgageBalance + inputs.loanAmount) / inputs.propertyValue) * 100;
+  const homeEquityLTV = (inputs.loanAmount / inputs.propertyValue) * 100;
   
-  if (monthlyRate === 0) {
-    return loanAmount / numberOfPayments;
+  // Calculate payment metrics
+  const monthlyInterestRate = inputs.interestRate / 100 / 12;
+  const numberOfPayments = inputs.loanTerm * 12;
+  
+  // Calculate payment factor based on payment type
+  let paymentFactor: number;
+  if (inputs.paymentType === 'fixed') {
+    paymentFactor = (monthlyInterestRate * Math.pow(1 + monthlyInterestRate, numberOfPayments)) / 
+                   (Math.pow(1 + monthlyInterestRate, numberOfPayments) - 1);
+  } else if (inputs.paymentType === 'interest_only') {
+    paymentFactor = monthlyInterestRate;
+  } else {
+    // Variable or balloon - use fixed for calculation
+    paymentFactor = (monthlyInterestRate * Math.pow(1 + monthlyInterestRate, numberOfPayments)) / 
+                   (Math.pow(1 + monthlyInterestRate, numberOfPayments) - 1);
   }
   
-  return loanAmount * (monthlyRate * Math.pow(1 + monthlyRate, numberOfPayments)) / 
-         (Math.pow(1 + monthlyRate, numberOfPayments) - 1);
-}
-
-// Helper function to calculate feasibility score
-function calculateFeasibilityScore(
-  currentLTV: number,
-  proposedCLTV: number,
-  monthlyPayment: number,
-  monthlyIncome: number,
-  creditScore: number,
-  debtToIncomeRatio: number
-): number {
-  let score = 0;
-
-  // LTV factor
-  if (currentLTV <= 60) score += 25;
-  else if (currentLTV <= 70) score += 20;
-  else if (currentLTV <= 80) score += 15;
-  else if (currentLTV <= 85) score += 10;
-
-  // CLTV factor
-  if (proposedCLTV <= 70) score += 25;
-  else if (proposedCLTV <= 80) score += 20;
-  else if (proposedCLTV <= 85) score += 15;
-  else if (proposedCLTV <= 90) score += 10;
-
-  // Payment-to-income factor
-  if (monthlyIncome > 0) {
-    const paymentRatio = (monthlyPayment / monthlyIncome) * 100;
-    if (paymentRatio <= 10) score += 25;
-    else if (paymentRatio <= 15) score += 20;
-    else if (paymentRatio <= 20) score += 15;
-    else if (paymentRatio <= 25) score += 10;
-  }
-
-  // Credit score factor
-  if (creditScore >= 750) score += 15;
-  else if (creditScore >= 700) score += 12;
-  else if (creditScore >= 650) score += 10;
-  else if (creditScore >= 600) score += 5;
-
-  // DTI factor
-  if (debtToIncomeRatio <= 30) score += 10;
-  else if (debtToIncomeRatio <= 40) score += 8;
-  else if (debtToIncomeRatio <= 50) score += 5;
-
-  return Math.min(score, 100);
-}
-
-// Helper function to calculate risk score
-function calculateRiskScore(
-  currentLTV: number,
-  proposedCLTV: number,
-  monthlyPayment: number,
-  monthlyIncome: number,
-  creditScore: number,
-  debtToIncomeRatio: number
-): number {
-  let riskScore = 0;
-
-  // LTV risk
-  if (currentLTV > 80) riskScore += 25;
-  else if (currentLTV > 70) riskScore += 15;
-  else if (currentLTV > 60) riskScore += 10;
-
-  // CLTV risk
-  if (proposedCLTV > 85) riskScore += 25;
-  else if (proposedCLTV > 80) riskScore += 15;
-  else if (proposedCLTV > 70) riskScore += 10;
-
-  // Payment risk
-  if (monthlyIncome > 0) {
-    const paymentRatio = (monthlyPayment / monthlyIncome) * 100;
-    if (paymentRatio > 25) riskScore += 20;
-    else if (paymentRatio > 20) riskScore += 15;
-    else if (paymentRatio > 15) riskScore += 10;
-  }
-
-  // Credit risk
-  if (creditScore < 620) riskScore += 20;
-  else if (creditScore < 680) riskScore += 15;
-  else if (creditScore < 720) riskScore += 10;
-
-  // DTI risk
-  if (debtToIncomeRatio > 50) riskScore += 10;
-  else if (debtToIncomeRatio > 40) riskScore += 5;
-
-  return Math.min(riskScore, 100);
-}
-
-export function calculateHomeEquityLoan(inputs: CalculatorInputs): CalculatorOutputs {
-  // Extract inputs with defaults
-  const homeValue = inputs.homeValue || 0;
-  const currentMortgageBalance = inputs.currentMortgageBalance || 0;
-  const loanAmount = inputs.loanAmount || 0;
-  const interestRate = inputs.interestRate || 7.5;
-  const loanTerm = inputs.loanTerm || 15;
-  const maxLTV = inputs.maxLTV || 85;
-  const maxCLTV = inputs.maxCLTV || 90;
-  const originationFee = inputs.originationFee || 500;
-  const appraisalFee = inputs.appraisalFee || 400;
-  const titleFees = inputs.titleFees || 800;
-  const closingCosts = inputs.closingCosts || 1000;
-  const creditScore = inputs.creditScore || 750;
-  const debtToIncomeRatio = inputs.debtToIncomeRatio || 35;
-  const monthlyIncome = inputs.monthlyIncome || 8000;
-  const monthlyDebtPayments = inputs.monthlyDebtPayments || 1500;
-  const propertyType = inputs.propertyType || 'single-family';
-  const occupancyType = inputs.occupancyType || 'primary-residence';
-  const propertyLocation = inputs.propertyLocation || 'suburban';
-  const marketType = inputs.marketType || 'stable';
-  const loanPurpose = inputs.loanPurpose || 'home-improvement';
-  const propertyTaxes = inputs.propertyTaxes || 5000;
-  const homeownersInsurance = inputs.homeownersInsurance || 2000;
-  const hoaFees = inputs.hoaFees || 200;
-  const prepaymentPenalty = inputs.prepaymentPenalty || 2;
-  const lateFees = inputs.lateFees || 50;
-  const taxRate = inputs.taxRate || 22;
-  const inflationRate = inputs.inflationRate || 2.5;
-
-  // Calculate basic metrics
-  const availableEquity = homeValue - currentMortgageBalance;
-  const currentLTV = (currentMortgageBalance / homeValue) * 100;
+  const monthlyPayment = inputs.loanAmount * paymentFactor;
+  const totalPayments = monthlyPayment * numberOfPayments;
+  const totalInterestPaid = totalPayments - inputs.loanAmount;
   
-  // Calculate maximum loan amounts
-  const maxLoanByLTV = (homeValue * maxLTV / 100) - currentMortgageBalance;
-  const maxLoanByCLTV = (homeValue * maxCLTV / 100) - currentMortgageBalance;
-  const maxLoanAmount = Math.min(maxLoanByLTV, maxLoanByCLTV);
+  // Calculate effective interest rate
+  const effectiveInterestRate = (Math.pow(1 + (inputs.interestRate / 100), 1) - 1) * 100;
   
-  // Determine approved loan amount
-  const approvedLoanAmount = Math.min(loanAmount, maxLoanAmount);
-  const proposedCLTV = ((currentMortgageBalance + approvedLoanAmount) / homeValue) * 100;
+  // Calculate fees and costs
+  const totalFees = inputs.originationFee + inputs.appraisalFee + inputs.titleInsuranceFee + 
+                   inputs.recordingFee + inputs.attorneyFee + inputs.creditReportFee + 
+                   inputs.floodCertificationFee + inputs.taxServiceFee + inputs.otherFees;
+  const totalCost = totalFees + totalInterestPaid;
+  const costOfCredit = (totalCost / inputs.loanAmount) * 100;
   
-  // Calculate payments and costs
-  const monthlyPayment = calculateMonthlyPayment(approvedLoanAmount, interestRate, loanTerm);
-  const totalFees = originationFee + appraisalFee + titleFees + closingCosts;
-  const totalInterest = (monthlyPayment * loanTerm * 12) - approvedLoanAmount;
-  const totalCost = approvedLoanAmount + totalInterest + totalFees;
+  // Calculate cash flow metrics
+  const monthlyCashFlow = -monthlyPayment; // Negative because it's an expense
+  const totalCashFlow = monthlyCashFlow * inputs.analysisPeriod * 12;
+  const breakEvenPoint = totalFees / Math.abs(monthlyCashFlow);
   
-  // Calculate APR
-  const apr = ((Math.pow(totalCost / approvedLoanAmount, 1 / loanTerm)) - 1) * 100;
+  // Calculate risk metrics
+  const riskScore = calculateRiskScore(inputs);
+  const probabilityOfDefault = calculateProbabilityOfDefault(inputs);
+  const lossGivenDefault = calculateLossGivenDefault(inputs);
+  const expectedLoss = (probabilityOfDefault / 100) * (lossGivenDefault / 100) * inputs.loanAmount;
   
-  // Calculate effective rate (after tax benefits)
-  const annualInterest = totalInterest / loanTerm;
-  const taxBenefits = annualInterest * (taxRate / 100);
-  const effectiveRate = apr - (taxBenefits / approvedLoanAmount) * 100;
+  // Calculate sensitivity matrix
+  const sensitivityMatrix = calculateSensitivityMatrix(inputs, monthlyPayment);
   
-  // Calculate debt service metrics
-  const debtServiceCoverage = monthlyIncome / (monthlyPayment + monthlyDebtPayments);
-  const paymentToIncomeRatio = (monthlyPayment / monthlyIncome) * 100;
+  // Calculate scenarios
+  const scenarios = calculateScenarios(inputs, monthlyPayment);
   
-  // Calculate break-even months
-  const breakEvenMonths = totalFees / (monthlyPayment * 0.1); // Assuming 10% of payment goes to principal initially
-  
-  // Calculate scores
-  const feasibilityScore = calculateFeasibilityScore(
-    currentLTV, proposedCLTV, monthlyPayment, monthlyIncome, creditScore, debtToIncomeRatio
-  );
-  
-  const riskScore = calculateRiskScore(
-    currentLTV, proposedCLTV, monthlyPayment, monthlyIncome, creditScore, debtToIncomeRatio
-  );
-  
-  // Calculate cash flow impact
-  const monthlyCashFlow = monthlyIncome - monthlyPayment - monthlyDebtPayments;
-  const annualCashFlow = monthlyCashFlow * 12;
-  
-  // Calculate equity utilization
-  const equityUtilization = (approvedLoanAmount / availableEquity) * 100;
-  
-  // Calculate cost of borrowing
-  const costOfBorrowing = (totalCost / approvedLoanAmount - 1) * 100;
-  
-  // Determine investment grade
-  let investmentGrade = 'C';
-  if (feasibilityScore >= 80) investmentGrade = 'A';
-  else if (feasibilityScore >= 70) investmentGrade = 'B';
-  else if (feasibilityScore >= 60) investmentGrade = 'C';
-  else if (feasibilityScore >= 50) investmentGrade = 'D';
-  else investmentGrade = 'F';
-  
-  // Determine recommended action
-  let recommendedAction = 'Proceed with loan';
-  if (feasibilityScore < 50) recommendedAction = 'Consider alternative financing or reduce loan amount';
-  else if (feasibilityScore < 70) recommendedAction = 'Proceed with caution and consider improving credit score';
-  else if (feasibilityScore < 80) recommendedAction = 'Proceed with loan but monitor debt levels';
-  
-  // Calculate recommended loan amount (80% of maximum for safety)
-  const recommendedLoanAmount = maxLoanAmount * 0.8;
-  
-  // Calculate liquidity score (simplified)
-  const liquidityScore = Math.max(0, 100 - riskScore);
-  
-  // Calculate inflation hedge score
-  const inflationHedgeScore = Math.min(100, Math.max(0, 100 - (inflationRate * 10)));
+  // Calculate payment schedule
+  const paymentSchedule = calculatePaymentSchedule(inputs);
   
   return {
-    availableEquity: Math.round(availableEquity),
-    maxLoanAmount: Math.round(maxLoanAmount),
-    approvedLoanAmount: Math.round(approvedLoanAmount),
-    currentLTV: Math.round(currentLTV * 100) / 100,
-    proposedCLTV: Math.round(proposedCLTV * 100) / 100,
-    monthlyPayment: Math.round(monthlyPayment),
-    totalFees: Math.round(totalFees),
-    apr: Math.round(apr * 100) / 100,
-    effectiveRate: Math.round(effectiveRate * 100) / 100,
-    totalInterest: Math.round(totalInterest),
-    totalCost: Math.round(totalCost),
-    debtServiceCoverage: Math.round(debtServiceCoverage * 100) / 100,
-    paymentToIncomeRatio: Math.round(paymentToIncomeRatio * 100) / 100,
-    breakEvenMonths: Math.round(breakEvenMonths * 100) / 100,
-    taxBenefits: Math.round(taxBenefits),
-    inflationHedgeScore,
-    liquidityScore,
+    // Equity Analysis
+    totalEquity,
+    availableEquity,
+    combinedLTV,
+    homeEquityLTV,
+    
+    // Payment Analysis
+    monthlyPayment,
+    totalPayments,
+    totalInterestPaid,
+    effectiveInterestRate,
+    
+    // Cost Analysis
+    totalFees,
+    totalCost,
+    costOfCredit,
+    
+    // Cash Flow Analysis
+    monthlyCashFlow,
+    totalCashFlow,
+    breakEvenPoint,
+    
+    // Risk Metrics
     riskScore,
-    feasibilityScore,
-    maxBorrowingAmount: Math.round(maxLoanAmount),
-    recommendedLoanAmount: Math.round(recommendedLoanAmount),
-    monthlyCashFlow: Math.round(monthlyCashFlow),
-    annualCashFlow: Math.round(annualCashFlow),
-    equityUtilization: Math.round(equityUtilization * 100) / 100,
-    costOfBorrowing: Math.round(costOfBorrowing * 100) / 100,
-    investmentGrade,
-    recommendedAction,
-    homeEquityLoanAnalysis: 'Comprehensive home equity loan analysis completed'
+    probabilityOfDefault,
+    lossGivenDefault,
+    expectedLoss,
+    
+    // Sensitivity Analysis
+    sensitivityMatrix,
+    
+    // Scenario Analysis
+    scenarios,
+    
+    // Payment Schedule
+    paymentSchedule
   };
 }
 
-export function generateHomeEquityLoanAnalysis(inputs: CalculatorInputs, outputs: CalculatorOutputs): string {
-  return `# Home Equity Loan Analysis
+function calculateRiskScore(inputs: HomeEquityLoanInputs): number {
+  let riskScore = 5; // Base score
+  
+  // Borrower risk factors
+  if (inputs.borrowerCreditScore < 600) riskScore += 3;
+  else if (inputs.borrowerCreditScore < 650) riskScore += 2;
+  else if (inputs.borrowerCreditScore < 700) riskScore += 1;
+  else if (inputs.borrowerCreditScore >= 750) riskScore -= 1;
+  
+  if (inputs.borrowerDebtToIncomeRatio > 50) riskScore += 2;
+  else if (inputs.borrowerDebtToIncomeRatio > 40) riskScore += 1;
+  else if (inputs.borrowerDebtToIncomeRatio < 30) riskScore -= 1;
+  
+  const employmentScores = { employed: 0, self_employed: 1, retired: -1, unemployed: 3 };
+  riskScore += employmentScores[inputs.borrowerEmploymentType];
+  
+  if (inputs.borrowerEmploymentLength < 2) riskScore += 1;
+  else if (inputs.borrowerEmploymentLength >= 10) riskScore -= 1;
+  
+  // Property risk factors
+  const conditionScores = { excellent: -2, good: -1, fair: 0, poor: 2 };
+  riskScore += conditionScores[inputs.propertyCondition];
+  
+  if (inputs.propertyAge > 50) riskScore += 1;
+  else if (inputs.propertyAge > 30) riskScore += 0.5;
+  
+  // Loan risk factors
+  if (inputs.combinedLTV > 85) riskScore += 2;
+  else if (inputs.combinedLTV > 80) riskScore += 1;
+  else if (inputs.combinedLTV < 70) riskScore -= 1;
+  
+  if (inputs.interestRate > 10) riskScore += 1;
+  
+  if (inputs.paymentType === 'interest_only') riskScore += 1;
+  if (inputs.paymentType === 'balloon') riskScore += 2;
+  
+  // Market risk factors
+  const marketScores = { appreciating: -1, stable: 0, declining: 2 };
+  riskScore += marketScores[inputs.marketCondition];
+  
+  return Math.min(Math.max(riskScore, 1), 10);
+}
 
-## Summary
-Based on your home equity and financial profile, you can borrow up to **$${outputs.maxLoanAmount.toLocaleString()}** with an approved amount of **$${outputs.approvedLoanAmount.toLocaleString()}**.
+function calculateProbabilityOfDefault(inputs: HomeEquityLoanInputs): number {
+  let baseProbability = 3; // Base 3% default probability
+  
+  // Credit score adjustment
+  if (inputs.borrowerCreditScore < 600) baseProbability += 12;
+  else if (inputs.borrowerCreditScore < 650) baseProbability += 8;
+  else if (inputs.borrowerCreditScore < 700) baseProbability += 4;
+  else if (inputs.borrowerCreditScore >= 750) baseProbability -= 2;
+  
+  // DTI adjustment
+  if (inputs.borrowerDebtToIncomeRatio > 50) baseProbability += 8;
+  else if (inputs.borrowerDebtToIncomeRatio > 40) baseProbability += 4;
+  
+  // Employment adjustment
+  const employmentAdjustments = { employed: 0, self_employed: 2, retired: -1, unemployed: 10 };
+  baseProbability += employmentAdjustments[inputs.borrowerEmploymentType];
+  
+  // LTV adjustment
+  if (inputs.combinedLTV > 85) baseProbability += 5;
+  else if (inputs.combinedLTV > 80) baseProbability += 2;
+  
+  // Payment type adjustment
+  if (inputs.paymentType === 'interest_only') baseProbability += 3;
+  if (inputs.paymentType === 'balloon') baseProbability += 5;
+  
+  // Market condition adjustment
+  const marketAdjustments = { appreciating: -1, stable: 0, declining: 3 };
+  baseProbability += marketAdjustments[inputs.marketCondition];
+  
+  return Math.min(Math.max(baseProbability, 1), 20);
+}
 
-## Key Metrics
-- **Available Equity:** $${outputs.availableEquity.toLocaleString()}
-- **Maximum Loan Amount:** $${outputs.maxLoanAmount.toLocaleString()}
-- **Approved Loan Amount:** $${outputs.approvedLoanAmount.toLocaleString()}
-- **Monthly Payment:** $${outputs.monthlyPayment.toLocaleString()}
-- **Current LTV:** ${outputs.currentLTV}%
-- **Proposed CLTV:** ${outputs.proposedCLTV}%
-- **APR:** ${outputs.apr}%
-- **Feasibility Score:** ${outputs.feasibilityScore}/100
-- **Risk Score:** ${outputs.riskScore}/100
+function calculateLossGivenDefault(inputs: HomeEquityLoanInputs): number {
+  let baseLoss = 30; // Base 30% loss
+  
+  // Property condition adjustment
+  const conditionAdjustments = { excellent: 0.8, good: 0.9, fair: 1.0, poor: 1.3 };
+  baseLoss *= conditionAdjustments[inputs.propertyCondition];
+  
+  // Market condition adjustment
+  const marketAdjustments = { appreciating: 0.8, stable: 1.0, declining: 1.4 };
+  baseLoss *= marketAdjustments[inputs.marketCondition];
+  
+  // LTV adjustment
+  if (inputs.combinedLTV > 85) baseLoss *= 1.2;
+  else if (inputs.combinedLTV < 70) baseLoss *= 0.8;
+  
+  return Math.min(Math.max(baseLoss, 15), 60);
+}
 
-## Loan Terms
-- **Interest Rate:** ${inputs.interestRate}%
-- **Loan Term:** ${inputs.loanTerm} years
-- **Total Fees:** $${outputs.totalFees.toLocaleString()}
-- **Total Interest:** $${outputs.totalInterest.toLocaleString()}
-- **Total Cost:** $${outputs.totalCost.toLocaleString()}
+function calculateSensitivityMatrix(inputs: HomeEquityLoanInputs, basePayment: number): any[] {
+  const variables = [
+    { name: 'Interest Rate', base: inputs.interestRate, range: [-2, 2] },
+    { name: 'Property Value', base: inputs.propertyValue, range: [-10, 10] },
+    { name: 'Loan Amount', base: inputs.loanAmount, range: [-20, 20] },
+    { name: 'Market Growth', base: inputs.marketGrowthRate, range: [-2, 2] }
+  ];
+  
+  return variables.map(variable => {
+    const values = [];
+    const impacts = [];
+    
+    for (let i = variable.range[0]; i <= variable.range[1]; i++) {
+      const testInputs = { ...inputs };
+      const adjustment = 1 + (i / 100);
+      
+      if (variable.name === 'Interest Rate') {
+        testInputs.interestRate = variable.base + i;
+      } else if (variable.name === 'Property Value') {
+        testInputs.propertyValue = variable.base * adjustment;
+      } else if (variable.name === 'Loan Amount') {
+        testInputs.loanAmount = variable.base * adjustment;
+      } else if (variable.name === 'Market Growth') {
+        testInputs.marketGrowthRate = variable.base + i;
+      }
+      
+      const testMetrics = calculateHomeEquityLoan(testInputs);
+      values.push(variable.base + i);
+      impacts.push(testMetrics.monthlyPayment);
+    }
+    
+    return {
+      variable: variable.name,
+      values,
+      impacts
+    };
+  });
+}
 
-## Financial Impact
-- **Monthly Cash Flow Impact:** $${outputs.monthlyCashFlow.toLocaleString()}
-- **Payment-to-Income Ratio:** ${outputs.paymentToIncomeRatio}%
-- **Debt Service Coverage:** ${outputs.debtServiceCoverage}
-- **Break-Even Months:** ${outputs.breakEvenMonths} months
-- **Annual Tax Benefits:** $${outputs.taxBenefits.toLocaleString()}
+function calculateScenarios(inputs: HomeEquityLoanInputs, basePayment: number): any[] {
+  return [
+    {
+      scenario: 'Best Case',
+      probability: 20,
+      value: basePayment * 0.8,
+      cost: inputs.totalFees * 0.8
+    },
+    {
+      scenario: 'Base Case',
+      probability: 60,
+      value: basePayment,
+      cost: inputs.totalFees
+    },
+    {
+      scenario: 'Worst Case',
+      probability: 20,
+      value: basePayment * 1.3,
+      cost: inputs.totalFees * 1.2
+    }
+  ];
+}
 
-## Assessment
-- **Investment Grade:** ${outputs.investmentGrade}
-- **Equity Utilization:** ${outputs.equityUtilization}%
-- **Cost of Borrowing:** ${outputs.costOfBorrowing}%
-- **Liquidity Score:** ${outputs.liquidityScore}/100
-- **Inflation Hedge Score:** ${outputs.inflationHedgeScore}/100
+function calculatePaymentSchedule(inputs: HomeEquityLoanInputs): any[] {
+  const schedule = [];
+  const monthlyInterestRate = inputs.interestRate / 100 / 12;
+  let balance = inputs.loanAmount;
+  
+  for (let month = 1; month <= inputs.loanTerm * 12; month++) {
+    const interest = balance * monthlyInterestRate;
+    let principal = 0;
+    
+    if (inputs.paymentType === 'interest_only') {
+      principal = 0;
+    } else if (inputs.paymentType === 'balloon') {
+      if (month === inputs.loanTerm * 12) {
+        principal = balance; // Balloon payment
+      } else {
+        principal = 0;
+      }
+    } else {
+      // Fixed or variable payment
+      const totalPayment = inputs.loanAmount * (monthlyInterestRate * Math.pow(1 + monthlyInterestRate, inputs.loanTerm * 12)) / 
+                          (Math.pow(1 + monthlyInterestRate, inputs.loanTerm * 12) - 1);
+      principal = totalPayment - interest;
+      if (principal < 0) principal = 0;
+    }
+    
+    balance -= principal;
+    if (balance < 0) balance = 0;
+    
+    schedule.push({
+      period: month,
+      payment: interest + principal,
+      principal,
+      interest,
+      balance
+    });
+  }
+  
+  return schedule;
+}
 
-## Recommendations
-**${outputs.recommendedAction}**
-
-## Next Steps
-1. Review your credit score and consider improving it if below 700
-2. Compare rates from multiple lenders
-3. Consider the impact on your monthly budget
-4. Factor in potential property value changes
-5. Plan for the break-even period on closing costs`;
+export function generateHomeEquityLoanReport(
+  inputs: HomeEquityLoanInputs, 
+  metrics: HomeEquityLoanMetrics
+): HomeEquityLoanAnalysis {
+  // Determine loan rating
+  let loanRating: 'Excellent' | 'Good' | 'Average' | 'Poor' | 'Very Poor';
+  if (metrics.combinedLTV <= 70 && inputs.borrowerCreditScore >= 750) loanRating = 'Excellent';
+  else if (metrics.combinedLTV <= 80 && inputs.borrowerCreditScore >= 700) loanRating = 'Good';
+  else if (metrics.combinedLTV <= 85 && inputs.borrowerCreditScore >= 650) loanRating = 'Average';
+  else if (metrics.combinedLTV <= 90 && inputs.borrowerCreditScore >= 600) loanRating = 'Poor';
+  else loanRating = 'Very Poor';
+  
+  // Determine risk rating
+  let riskRating: 'Low' | 'Moderate' | 'High' | 'Very High';
+  if (metrics.riskScore <= 3) riskRating = 'Low';
+  else if (metrics.riskScore <= 5) riskRating = 'Moderate';
+  else if (metrics.riskScore <= 7) riskRating = 'High';
+  else riskRating = 'Very High';
+  
+  // Determine recommendation
+  let recommendation: 'Approve' | 'Conditional' | 'Reject' | 'Requires Review';
+  if (metrics.combinedLTV <= 80 && inputs.borrowerCreditScore >= 700) recommendation = 'Approve';
+  else if (metrics.combinedLTV <= 85 && inputs.borrowerCreditScore >= 650) recommendation = 'Conditional';
+  else if (metrics.combinedLTV <= 90 && inputs.borrowerCreditScore >= 600) recommendation = 'Requires Review';
+  else recommendation = 'Reject';
+  
+  // Generate key insights
+  const keyStrengths = [];
+  const keyWeaknesses = [];
+  const riskFactors = [];
+  const opportunities = [];
+  
+  if (metrics.combinedLTV <= 75) keyStrengths.push('Low combined LTV ratio');
+  if (inputs.borrowerCreditScore >= 750) keyStrengths.push('Excellent borrower credit');
+  if (inputs.borrowerEmploymentType === 'employed') keyStrengths.push('Stable employment');
+  if (inputs.propertyCondition === 'excellent' || inputs.propertyCondition === 'good') keyStrengths.push('Good property condition');
+  if (inputs.marketCondition === 'appreciating') keyStrengths.push('Appreciating market conditions');
+  if (inputs.paymentType === 'fixed') keyStrengths.push('Fixed payment structure');
+  
+  if (metrics.combinedLTV > 85) keyWeaknesses.push('High combined LTV ratio');
+  if (inputs.borrowerCreditScore < 650) keyWeaknesses.push('Poor borrower credit');
+  if (inputs.borrowerDebtToIncomeRatio > 50) keyWeaknesses.push('High debt-to-income ratio');
+  if (inputs.propertyCondition === 'poor') keyWeaknesses.push('Poor property condition');
+  if (inputs.marketCondition === 'declining') keyWeaknesses.push('Declining market conditions');
+  if (inputs.paymentType === 'balloon') keyWeaknesses.push('Balloon payment structure');
+  
+  if (metrics.probabilityOfDefault > 8) riskFactors.push('Elevated default risk');
+  if (inputs.borrowerEmploymentType === 'unemployed') riskFactors.push('Unemployed borrower');
+  if (inputs.combinedLTV > 90) riskFactors.push('Very high LTV ratio');
+  if (inputs.interestRate > 10) riskFactors.push('High interest rate');
+  if (inputs.paymentType === 'interest_only') riskFactors.push('Interest-only payments');
+  
+  if (inputs.marketCondition === 'appreciating') opportunities.push('Property value appreciation potential');
+  if (inputs.loanPurpose === 'home_improvement') opportunities.push('Value-add through improvements');
+  if (inputs.loanPurpose === 'debt_consolidation') opportunities.push('Debt consolidation benefits');
+  if (inputs.paymentType === 'fixed') opportunities.push('Predictable payment structure');
+  
+  return {
+    // Executive Summary
+    loanRating,
+    riskRating,
+    recommendation,
+    
+    // Key Insights
+    keyStrengths,
+    keyWeaknesses,
+    riskFactors,
+    opportunities,
+    
+    // Loan Analysis
+    loanSummary: `The home equity loan presents a ${loanRating.toLowerCase()} opportunity with a combined LTV of ${metrics.combinedLTV.toFixed(2)}% and available equity of $${metrics.availableEquity.toLocaleString()}.`,
+    equityAnalysis: `Total equity in the property is $${metrics.totalEquity.toLocaleString()} with $${metrics.availableEquity.toLocaleString()} available for home equity financing.`,
+    paymentAnalysis: `Monthly payments of $${metrics.monthlyPayment.toLocaleString()} with an effective interest rate of ${metrics.effectiveInterestRate.toFixed(2)}%.`,
+    
+    // Cost Analysis
+    costSummary: `Total costs include $${metrics.totalFees.toLocaleString()} in fees and $${metrics.totalInterestPaid.toLocaleString()} in interest over the loan term.`,
+    feeAnalysis: `Total fees of $${metrics.totalFees.toLocaleString()} represent ${metrics.costOfCredit.toFixed(2)}% of the loan amount.`,
+    comparisonAnalysis: `The home equity loan offers competitive terms compared to alternative financing options.`,
+    
+    // Risk Assessment
+    riskAssessment: `Overall risk profile is ${riskRating.toLowerCase()} with a risk score of ${metrics.riskScore}/10.`,
+    borrowerRisk: `Borrower has a credit score of ${inputs.borrowerCreditScore} with ${inputs.borrowerEmploymentType} employment status.`,
+    propertyRisk: `Property is in ${inputs.propertyCondition} condition with ${inputs.propertyAge} years of age.`,
+    marketRisk: `Market conditions are ${inputs.marketCondition} with ${inputs.marketGrowthRate}% expected growth.`,
+    
+    // Purpose Assessment
+    purposeAssessment: `The loan is intended for ${inputs.loanPurpose.replace('_', ' ')}: ${inputs.purposeDescription}.`,
+    benefitAnalysis: `The loan purpose provides clear benefits and value enhancement potential.`,
+    repaymentAnalysis: `The ${inputs.paymentType.replace('_', ' ')} payment structure provides ${inputs.paymentFrequency} payments.`,
+    
+    // Market Assessment
+    marketAssessment: `Market conditions are ${inputs.marketCondition} with ${inputs.marketGrowthRate}% annual growth rate.`,
+    comparableAnalysis: `Comparable sales analysis supports the property value of $${inputs.propertyValue.toLocaleString()}.`,
+    marketPosition: `The property is well-positioned in the current market conditions.`,
+    
+    // Recommendations
+    approvalRecommendations: [
+      'Conduct thorough borrower financial analysis',
+      'Verify property condition and value',
+      'Review market conditions and trends',
+      'Assess repayment capacity and strategy'
+    ],
+    riskMitigation: [
+      'Monitor combined LTV ratio regularly',
+      'Establish clear repayment guidelines',
+      'Maintain adequate property insurance',
+      'Review borrower financial status annually'
+    ],
+    optimizationSuggestions: [
+      'Consider fixed-rate payments for stability',
+      'Optimize loan amount and term',
+      'Explore rate lock options if available',
+      'Plan for early repayment if possible'
+    ],
+    
+    // Implementation
+    implementationPlan: 'Proceed with comprehensive underwriting and property appraisal.',
+    nextSteps: [
+      'Complete borrower financial analysis',
+      'Conduct property appraisal',
+      'Review title and insurance requirements',
+      'Finalize loan terms and conditions'
+    ],
+    timeline: '15-30 days for underwriting and closing.',
+    
+    // Monitoring
+    monitoringPlan: 'Establish quarterly monitoring of borrower performance and property value.',
+    keyMetrics: [
+      'Combined LTV ratio',
+      'Borrower payment history',
+      'Property value changes',
+      'Market condition updates'
+    ],
+    reviewSchedule: 'Annual comprehensive review with quarterly updates.',
+    
+    // Risk Management
+    riskManagement: 'Implement comprehensive risk management strategy including monitoring and mitigation measures.',
+    mitigationStrategies: [
+      'Regular property value assessments',
+      'Borrower financial monitoring',
+      'Market condition tracking',
+      'Payment performance review'
+    ],
+    contingencyPlans: [
+      'Default procedures and foreclosure options',
+      'Property value decline response',
+      'Rate increase management',
+      'Exit strategy alternatives'
+    ],
+    
+    // Performance Benchmarks
+    performanceBenchmarks: [
+      {
+        metric: 'Combined LTV',
+        target: 80,
+        benchmark: metrics.combinedLTV,
+        industry: 'Home Equity Lending'
+      },
+      {
+        metric: 'Credit Score',
+        target: 700,
+        benchmark: inputs.borrowerCreditScore,
+        industry: 'Consumer Lending'
+      },
+      {
+        metric: 'Risk Score',
+        target: 5,
+        benchmark: metrics.riskScore,
+        industry: 'Risk Management'
+      }
+    ],
+    
+    // Decision Support
+    decisionRecommendation: `Based on the analysis, we recommend ${recommendation.toLowerCase()} this home equity loan.`,
+    presentationPoints: [
+      `Strong equity position with ${metrics.combinedLTV.toFixed(2)}% combined LTV`,
+      `Favorable risk profile with score of ${metrics.riskScore}/10`,
+      `Competitive interest rate of ${inputs.interestRate}%`,
+      `Clear loan purpose and benefit analysis`
+    ],
+    decisionFactors: [
+      'Equity availability',
+      'Borrower credit quality',
+      'Property condition',
+      'Market conditions',
+      'Repayment capacity',
+      'Loan purpose',
+      'Risk tolerance'
+    ]
+  };
 }

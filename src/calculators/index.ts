@@ -94,6 +94,7 @@ import { GrossRentMultiplierCalculator as grossRentMultiplierCalculator } from '
 import { HardMoneyLoanCalculator as hardMoneyLoanCalculator } from './finance/hard-money-loan';
 import { HELOCCalculator as helocCalculator } from './finance/heloc';
 import { HomeAffordabilityCalculator as homeAffordabilityCalculator } from './finance/home-affordability';
+import { HomeEquityLoanCalculator as homeEquityLoanCalculator } from './finance/home-equity-loan';
 import { rentalYieldCalculator } from './finance/rental-yield';
 import { hoaFeeCalculator } from './finance/hoa-fee';
 import { debtYieldRatioCalculator } from './finance/debt-yield-ratio';
@@ -255,6 +256,7 @@ calculatorRegistry.register(grossRentMultiplierCalculator);
 calculatorRegistry.register(hardMoneyLoanCalculator);
 calculatorRegistry.register(helocCalculator);
 calculatorRegistry.register(homeAffordabilityCalculator);
+calculatorRegistry.register(homeEquityLoanCalculator);
 calculatorRegistry.register(rentalYieldCalculator);
   calculatorRegistry.register(hoaFeeCalculator);
   calculatorRegistry.register(debtYieldRatioCalculator);

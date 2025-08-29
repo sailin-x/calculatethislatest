@@ -1,3 +1,5 @@
-export { homeEquityLoanCalculator } from './HomeEquityLoanCalculator';
-export { registerHomeEquityLoanCalculator } from './register';
+export { default as HomeEquityLoanCalculator } from './HomeEquityLoanCalculator';
 export * from './types';
+export * from './formulas';
+export * from './validation';
+export * from './quickValidation';
