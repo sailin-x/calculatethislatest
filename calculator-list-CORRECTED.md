@@ -86,8 +86,8 @@ Each calculator must include:
 - [x] **Ground Lease Valuation Calculator** ✅ **(VERIFIED WORKING)**
 - [x] **Gross Rent Multiplier Calculator** ✅ **(VERIFIED WORKING)**
 - [x] **Hard Money Loan Calculator** ✅ **(VERIFIED WORKING)**
-- [ ] HELOC (Home Equity Line of Credit) Calculator
-- [ ] Home Affordability Calculator
+- [x] **HELOC (Home Equity Line of Credit) Calculator** ✅ **(VERIFIED WORKING)**
+- [x] **Home Affordability Calculator** ✅ **(VERIFIED WORKING)**
 - [ ] Home Equity Loan Calculator
 - [ ] Home Insurance Calculator
 - [ ] Homeowners Insurance Calculator

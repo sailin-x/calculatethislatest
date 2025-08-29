@@ -92,6 +92,8 @@ import { FloodInsuranceCalculator as floodInsuranceCalculator } from './finance/
 import { GroundLeaseValuationCalculator as groundLeaseValuationCalculator } from './finance/ground-lease-valuation';
 import { GrossRentMultiplierCalculator as grossRentMultiplierCalculator } from './finance/gross-rent-multiplier';
 import { HardMoneyLoanCalculator as hardMoneyLoanCalculator } from './finance/hard-money-loan';
+import { HELOCCalculator as helocCalculator } from './finance/heloc';
+import { HomeAffordabilityCalculator as homeAffordabilityCalculator } from './finance/home-affordability';
 import { rentalYieldCalculator } from './finance/rental-yield';
 import { hoaFeeCalculator } from './finance/hoa-fee';
 import { debtYieldRatioCalculator } from './finance/debt-yield-ratio';
@@ -251,6 +253,8 @@ export function registerAllCalculators(): void {
 calculatorRegistry.register(groundLeaseValuationCalculator);
 calculatorRegistry.register(grossRentMultiplierCalculator);
 calculatorRegistry.register(hardMoneyLoanCalculator);
+calculatorRegistry.register(helocCalculator);
+calculatorRegistry.register(homeAffordabilityCalculator);
 calculatorRegistry.register(rentalYieldCalculator);
   calculatorRegistry.register(hoaFeeCalculator);
   calculatorRegistry.register(debtYieldRatioCalculator);

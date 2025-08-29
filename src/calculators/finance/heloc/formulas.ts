@@ -1,421 +1,452 @@
-import { CalculatorInputs, CalculatorOutputs } from '../../../types/calculator';
+import { HELOCInputs, HELOCMetrics, HELOCAnalysis } from './types';
 
-// Market factor constants
-const MARKET_TYPE_FACTORS = {
-  'hot': 1.1,
-  'stable': 1.0,
-  'declining': 0.9
-};
-
-// Property type factors
-const PROPERTY_TYPE_FACTORS = {
-  'primary-residence': 1.0,
-  'second-home': 1.1,
-  'investment-property': 1.2
-};
-
-// Occupancy type factors
-const OCCUPANCY_FACTORS = {
-  'owner-occupied': 1.0,
-  'non-owner-occupied': 1.15
-};
-
-// Property location factors
-const LOCATION_FACTORS = {
-  'urban': 1.05,
-  'suburban': 1.0,
-  'rural': 0.95
-};
-
-// Purpose factors
-const PURPOSE_FACTORS = {
-  'home-improvement': 1.0,
-  'debt-consolidation': 1.05,
-  'education': 1.0,
-  'emergency-fund': 0.95,
-  'investment': 1.1,
-  'other': 1.0
-};
-
-// Credit score factors
-const CREDIT_SCORE_FACTORS = {
-  'excellent': 0.9, // 750+
-  'good': 1.0, // 700-749
-  'fair': 1.1, // 650-699
-  'poor': 1.3 // Below 650
-};
-
-function calculateMonthlyPayment(loanAmount: number, annualRate: number, termYears: number): number {
-  const monthlyRate = annualRate / 100 / 12;
-  const termMonths = termYears * 12;
+export function calculateHELOC(inputs: HELOCInputs): HELOCMetrics {
+  // Calculate equity metrics
+  const totalEquity = inputs.propertyValue - inputs.currentMortgageBalance;
+  const availableEquity = totalEquity * 0.85; // Typical HELOC limit is 85% of equity
+  const combinedLTV = ((inputs.currentMortgageBalance + inputs.helocAmount) / inputs.propertyValue) * 100;
+  const helocLTV = (inputs.helocAmount / inputs.propertyValue) * 100;
   
-  if (monthlyRate === 0) return loanAmount / termMonths;
+  // Calculate payment metrics
+  const monthlyInterestRate = inputs.helocRate / 100 / 12;
+  const monthlyPayment = inputs.drawAmount * monthlyInterestRate;
+  const totalPayments = monthlyPayment * inputs.analysisPeriod * 12;
+  const totalInterestPaid = totalPayments - inputs.drawAmount;
   
-  const payment = loanAmount * (monthlyRate * Math.pow(1 + monthlyRate, termMonths)) / 
-                  (Math.pow(1 + monthlyRate, termMonths) - 1);
-  return payment;
-}
-
-function calculateInterestOnlyPayment(balance: number, annualRate: number): number {
-  return balance * (annualRate / 100 / 12);
-}
-
-function calculateRiskScore(inputs: CalculatorInputs): number {
-  let riskScore = 5; // Base score
+  // Calculate effective interest rate
+  const effectiveInterestRate = (Math.pow(1 + (inputs.helocRate / 100), 1) - 1) * 100;
   
-  // Property type
-  const propertyFactor = PROPERTY_TYPE_FACTORS[inputs.propertyType as keyof typeof PROPERTY_TYPE_FACTORS] || 1.0;
-  riskScore += (propertyFactor - 1.0) * 2;
+  // Calculate fees and costs
+  const totalFees = inputs.originationFee + inputs.appraisalFee + inputs.titleInsuranceFee + 
+                   inputs.recordingFee + inputs.otherFees;
+  const totalCost = totalFees + totalInterestPaid;
+  const costOfCredit = (totalCost / inputs.drawAmount) * 100;
   
-  // Occupancy type
-  const occupancyFactor = OCCUPANCY_FACTORS[inputs.occupancyType as keyof typeof OCCUPANCY_FACTORS] || 1.0;
-  riskScore += (occupancyFactor - 1.0) * 2;
+  // Calculate cash flow metrics
+  const monthlyCashFlow = -monthlyPayment; // Negative because it's an expense
+  const totalCashFlow = monthlyCashFlow * inputs.analysisPeriod * 12;
+  const breakEvenPoint = totalFees / Math.abs(monthlyCashFlow);
   
-  // Market type
-  const marketFactor = MARKET_TYPE_FACTORS[inputs.marketType as keyof typeof MARKET_TYPE_FACTORS] || 1.0;
-  riskScore += (marketFactor - 1.0) * 1.5;
-  
-  // Purpose
-  const purposeFactor = PURPOSE_FACTORS[inputs.purpose as keyof typeof PURPOSE_FACTORS] || 1.0;
-  riskScore += (purposeFactor - 1.0) * 1.5;
-  
-  // Credit score impact
-  if (inputs.creditScore) {
-    let creditFactor = 1.0;
-    if (inputs.creditScore >= 750) creditFactor = 0.9;
-    else if (inputs.creditScore >= 700) creditFactor = 1.0;
-    else if (inputs.creditScore >= 650) creditFactor = 1.1;
-    else creditFactor = 1.3;
-    riskScore += (creditFactor - 1.0) * 2;
-  }
-  
-  // CLTV impact
-  const proposedCLTV = ((inputs.currentMortgageBalance || 0) + (inputs.requestedCreditLimit || 0)) / (inputs.homeValue || 1) * 100;
-  if (proposedCLTV > 90) riskScore += 3;
-  else if (proposedCLTV > 85) riskScore += 2;
-  else if (proposedCLTV > 80) riskScore += 1;
-  
-  // Debt-to-income impact
-  if (inputs.debtToIncomeRatio && inputs.debtToIncomeRatio > 50) riskScore += 2;
-  else if (inputs.debtToIncomeRatio && inputs.debtToIncomeRatio > 40) riskScore += 1;
-  
-  return Math.max(1, Math.min(10, Math.round(riskScore)));
-}
-
-function calculateFeasibilityScore(inputs: CalculatorInputs): number {
-  let feasibilityScore = 5; // Base score
-  
-  // Property type
-  const propertyFactor = PROPERTY_TYPE_FACTORS[inputs.propertyType as keyof typeof PROPERTY_TYPE_FACTORS] || 1.0;
-  feasibilityScore += (1.0 - propertyFactor) * 2;
-  
-  // Occupancy type
-  const occupancyFactor = OCCUPANCY_FACTORS[inputs.occupancyType as keyof typeof OCCUPANCY_FACTORS] || 1.0;
-  feasibilityScore += (1.0 - occupancyFactor) * 2;
-  
-  // Market type
-  const marketFactor = MARKET_TYPE_FACTORS[inputs.marketType as keyof typeof MARKET_TYPE_FACTORS] || 1.0;
-  feasibilityScore += (marketFactor - 1.0) * 1.5;
-  
-  // Purpose
-  const purposeFactor = PURPOSE_FACTORS[inputs.purpose as keyof typeof PURPOSE_FACTORS] || 1.0;
-  feasibilityScore += (1.0 - purposeFactor) * 1.5;
-  
-  // Credit score impact
-  if (inputs.creditScore) {
-    let creditFactor = 1.0;
-    if (inputs.creditScore >= 750) creditFactor = 0.9;
-    else if (inputs.creditScore >= 700) creditFactor = 1.0;
-    else if (inputs.creditScore >= 650) creditFactor = 1.1;
-    else creditFactor = 1.3;
-    feasibilityScore += (1.0 - creditFactor) * 2;
-  }
-  
-  // Equity utilization
-  const availableEquity = (inputs.homeValue || 0) - (inputs.currentMortgageBalance || 0);
-  const equityUtilization = (inputs.requestedCreditLimit || 0) / availableEquity * 100;
-  if (equityUtilization < 50) feasibilityScore += 2;
-  else if (equityUtilization < 70) feasibilityScore += 1;
-  
-  return Math.max(1, Math.min(10, Math.round(feasibilityScore)));
-}
-
-function calculateLiquidityScore(inputs: CalculatorInputs): number {
-  let liquidityScore = 5; // Base score
-  
-  // Property location
-  const locationFactor = LOCATION_FACTORS[inputs.propertyLocation as keyof typeof LOCATION_FACTORS] || 1.0;
-  liquidityScore += (locationFactor - 1.0) * 1.5;
-  
-  // Market type
-  const marketFactor = MARKET_TYPE_FACTORS[inputs.marketType as keyof typeof MARKET_TYPE_FACTORS] || 1.0;
-  liquidityScore += (marketFactor - 1.0) * 1.5;
-  
-  // Property type
-  const propertyFactor = PROPERTY_TYPE_FACTORS[inputs.propertyType as keyof typeof PROPERTY_TYPE_FACTORS] || 1.0;
-  liquidityScore += (1.0 - propertyFactor) * 1.5;
-  
-  return Math.max(1, Math.min(10, Math.round(liquidityScore)));
-}
-
-function calculateInflationHedgeScore(inputs: CalculatorInputs): number {
-  let hedgeScore = 5; // Base score
-  
-  // Property location
-  const locationFactor = LOCATION_FACTORS[inputs.propertyLocation as keyof typeof LOCATION_FACTORS] || 1.0;
-  hedgeScore += (locationFactor - 1.0) * 1.5;
-  
-  // Market type
-  const marketFactor = MARKET_TYPE_FACTORS[inputs.marketType as keyof typeof MARKET_TYPE_FACTORS] || 1.0;
-  hedgeScore += (marketFactor - 1.0) * 1.5;
-  
-  // Property type
-  const propertyFactor = PROPERTY_TYPE_FACTORS[inputs.propertyType as keyof typeof PROPERTY_TYPE_FACTORS] || 1.0;
-  hedgeScore += (propertyFactor - 1.0) * 1.5;
-  
-  return Math.max(1, Math.min(10, Math.round(hedgeScore)));
-}
-
-function calculateFlexibilityScore(inputs: CalculatorInputs): number {
-  let flexibilityScore = 8; // HELOCs are inherently flexible
-  
-  // Draw period length
-  const drawPeriod = inputs.drawPeriod || 10;
-  if (drawPeriod >= 15) flexibilityScore += 1;
-  else if (drawPeriod >= 10) flexibilityScore += 0;
-  else flexibilityScore -= 1;
-  
-  // Repayment period length
-  const repaymentPeriod = inputs.repaymentPeriod || 20;
-  if (repaymentPeriod >= 25) flexibilityScore += 1;
-  else if (repaymentPeriod >= 20) flexibilityScore += 0;
-  else flexibilityScore -= 1;
-  
-  // Fees impact
-  const totalFees = (inputs.originationFee || 0) + (inputs.appraisalFee || 0) + (inputs.titleFees || 0) + (inputs.closingCosts || 0);
-  if (totalFees < 1000) flexibilityScore += 1;
-  else if (totalFees > 3000) flexibilityScore -= 1;
-  
-  return Math.max(1, Math.min(10, Math.round(flexibilityScore)));
-}
-
-function generateHELOCAnalysis(inputs: CalculatorInputs, outputs: CalculatorOutputs): string {
-  let analysis = `# HELOC Analysis\n\n`;
-  
-  analysis += `## Executive Summary\n`;
-  analysis += `This HELOC analysis evaluates the feasibility and cost-effectiveness of a home equity line of credit for a ${inputs.propertyType} property in a ${inputs.propertyLocation} ${inputs.marketType} market.\n\n`;
-  
-  analysis += `**Key Metrics:**\n`;
-  analysis += `- Home Value: $${(inputs.homeValue || 0).toLocaleString()}\n`;
-  analysis += `- Current Mortgage: $${(inputs.currentMortgageBalance || 0).toLocaleString()}\n`;
-  analysis += `- Available Equity: $${outputs.availableEquity.toLocaleString()}\n`;
-  analysis += `- Requested Credit Limit: $${(inputs.requestedCreditLimit || 0).toLocaleString()}\n`;
-  analysis += `- Approved Credit Limit: $${outputs.approvedCreditLimit.toLocaleString()}\n`;
-  analysis += `- Interest Rate: ${inputs.interestRate}%\n`;
-  analysis += `- Current LTV: ${outputs.currentLTV.toFixed(1)}%\n`;
-  analysis += `- Proposed CLTV: ${outputs.proposedCLTV.toFixed(1)}%\n\n`;
-  
-  analysis += `## Financial Analysis\n`;
-  analysis += `**Payments:**\n`;
-  analysis += `- Monthly Interest-Only (Draw Period): $${outputs.monthlyInterestOnly.toLocaleString()}\n`;
-  analysis += `- Monthly P&I (Repayment Period): $${outputs.monthlyPrincipalInterest.toLocaleString()}\n`;
-  analysis += `- Total Closing Costs: $${outputs.totalFees.toLocaleString()}\n`;
-  analysis += `- APR: ${outputs.annualPercentageRate.toFixed(2)}%\n`;
-  analysis += `- Effective Rate: ${outputs.effectiveRate.toFixed(2)}%\n\n`;
-  
-  analysis += `**Cash Flow Impact:**\n`;
-  analysis += `- Monthly Cash Flow Impact: $${outputs.monthlyCashFlow.toLocaleString()}\n`;
-  analysis += `- Annual Cash Flow Impact: $${outputs.annualCashFlow.toLocaleString()}\n`;
-  analysis += `- Payment-to-Income Ratio: ${outputs.paymentToIncome.toFixed(2)}%\n`;
-  analysis += `- Debt Service Coverage: ${outputs.debtServiceCoverage.toFixed(2)}\n\n`;
-  
-  analysis += `**Investment Metrics:**\n`;
-  analysis += `- Equity Utilization: ${outputs.equityUtilization.toFixed(1)}%\n`;
-  analysis += `- Cost of Borrowing: ${outputs.costOfBorrowing.toFixed(2)}%\n`;
-  analysis += `- Tax Benefits: $${outputs.taxBenefits.toLocaleString()}\n`;
-  analysis += `- Break-Even Months: ${outputs.breakEvenMonths.toFixed(1)}\n\n`;
-  
-  analysis += `## Risk Assessment\n`;
-  analysis += `**Risk Score: ${outputs.riskScore}/10** ${outputs.riskScore <= 3 ? '🟢 Low' : outputs.riskScore <= 6 ? '🟡 Medium' : '🔴 High'}\n`;
-  analysis += `**Feasibility Score: ${outputs.feasibilityScore}/10** ${outputs.feasibilityScore >= 7 ? '🟢 High' : outputs.feasibilityScore >= 4 ? '🟡 Medium' : '🔴 Low'}\n\n`;
-  
-  analysis += `**Key Risk Factors:**\n`;
-  analysis += `- Property type: ${inputs.propertyType}\n`;
-  analysis += `- Occupancy: ${inputs.occupancyType}\n`;
-  analysis += `- Market conditions: ${inputs.marketType}\n`;
-  analysis += `- Purpose: ${inputs.purpose}\n`;
-  if (inputs.creditScore) {
-    analysis += `- Credit score: ${inputs.creditScore}\n`;
-  }
-  analysis += `\n`;
-  
-  analysis += `## Investment Grade: ${outputs.investmentGrade}\n`;
-  analysis += `**Recommended Action: ${outputs.recommendedAction}**\n\n`;
-  
-  analysis += `## Purpose Analysis\n`;
-  analysis += `${outputs.purposeAnalysis}\n\n`;
-  
-  analysis += `## Market Analysis\n`;
-  analysis += `${outputs.marketAnalysis}\n\n`;
-  
-  analysis += `## Optimization Opportunities\n`;
-  analysis += `${outputs.optimizationOpportunities}\n\n`;
-  
-  analysis += `## Comparison Analysis\n`;
-  analysis += `${outputs.comparisonAnalysis}\n\n`;
-  
-  analysis += `## Sensitivity Analysis\n`;
-  analysis += `${outputs.sensitivityAnalysis}\n\n`;
-  
-  analysis += `## Risk Factors\n`;
-  analysis += `${outputs.riskFactors}\n\n`;
-  
-  return analysis;
-}
-
-export function calculateHELOC(inputs: CalculatorInputs): CalculatorOutputs {
-  const homeValue = inputs.homeValue || 0;
-  const currentMortgageBalance = inputs.currentMortgageBalance || 0;
-  const requestedCreditLimit = inputs.requestedCreditLimit || 0;
-  const interestRate = inputs.interestRate || 0;
-  const drawPeriod = inputs.drawPeriod || 0;
-  const repaymentPeriod = inputs.repaymentPeriod || 0;
-  const maxLTV = inputs.maxLTV || 85;
-  const maxCLTV = inputs.maxCLTV || 90;
-  const estimatedUsage = inputs.estimatedUsage || 60;
-  const monthlyIncome = inputs.monthlyIncome || 0;
-  const monthlyDebtPayments = inputs.monthlyDebtPayments || 0;
-  const taxRate = inputs.taxRate || 25;
-  const inflationRate = inputs.inflationRate || 3;
-  
-  // Calculate basic equity metrics
-  const availableEquity = homeValue - currentMortgageBalance;
-  const maxCreditLimit = (homeValue * (maxCLTV / 100)) - currentMortgageBalance;
-  const approvedCreditLimit = Math.min(requestedCreditLimit, maxCreditLimit);
-  
-  // Calculate LTV ratios
-  const currentLTV = (currentMortgageBalance / homeValue) * 100;
-  const proposedCLTV = ((currentMortgageBalance + approvedCreditLimit) / homeValue) * 100;
-  
-  // Calculate payments
-  const estimatedBalance = approvedCreditLimit * (estimatedUsage / 100);
-  const monthlyInterestOnly = calculateInterestOnlyPayment(estimatedBalance, interestRate);
-  const monthlyPrincipalInterest = calculateMonthlyPayment(estimatedBalance, interestRate, repaymentPeriod);
-  
-  // Calculate fees
-  const totalFees = (inputs.originationFee || 0) + (inputs.appraisalFee || 0) + 
-                   (inputs.titleFees || 0) + (inputs.closingCosts || 0);
-  
-  // Calculate APR and effective rate
-  const monthlyRate = interestRate / 100 / 12;
-  const totalTerm = drawPeriod + repaymentPeriod;
-  const apr = ((estimatedBalance + totalFees) / estimatedBalance) ** (1 / totalTerm) - 1;
-  const effectiveRate = ((estimatedBalance + totalFees) / estimatedBalance) ** (1 / totalTerm) - 1;
-  
-  // Calculate total interest and cost
-  const totalInterest = (monthlyInterestOnly * drawPeriod * 12) + 
-                       (monthlyPrincipalInterest * repaymentPeriod * 12) - estimatedBalance;
-  const totalCost = estimatedBalance + totalInterest + totalFees;
-  
-  // Calculate debt service metrics
-  const totalMonthlyDebt = monthlyDebtPayments + monthlyInterestOnly;
-  const debtServiceCoverage = monthlyIncome > 0 ? monthlyIncome / totalMonthlyDebt : 0;
-  const paymentToIncome = monthlyIncome > 0 ? (monthlyInterestOnly / monthlyIncome) * 100 : 0;
-  
-  // Calculate break-even
-  const breakEvenMonths = monthlyInterestOnly > 0 ? totalFees / monthlyInterestOnly : 0;
-  
-  // Calculate tax benefits
-  const annualInterest = totalInterest / totalTerm;
-  const taxBenefits = (annualInterest * (taxRate / 100)) * totalTerm;
-  
-  // Calculate scores
+  // Calculate risk metrics
   const riskScore = calculateRiskScore(inputs);
-  const feasibilityScore = calculateFeasibilityScore(inputs);
-  const liquidityScore = calculateLiquidityScore(inputs);
-  const inflationHedge = calculateInflationHedgeScore(inputs);
-  const flexibilityScore = calculateFlexibilityScore(inputs);
+  const probabilityOfDefault = calculateProbabilityOfDefault(inputs);
+  const lossGivenDefault = calculateLossGivenDefault(inputs);
+  const expectedLoss = (probabilityOfDefault / 100) * (lossGivenDefault / 100) * inputs.helocAmount;
   
-  // Determine investment grade
-  let investmentGrade = 'D';
-  if (riskScore <= 3 && feasibilityScore >= 7) investmentGrade = 'A';
-  else if (riskScore <= 5 && feasibilityScore >= 5) investmentGrade = 'B';
-  else if (riskScore <= 7 && feasibilityScore >= 3) investmentGrade = 'C';
+  // Calculate sensitivity matrix
+  const sensitivityMatrix = calculateSensitivityMatrix(inputs, monthlyPayment);
   
-  // Determine recommended action
-  let recommendedAction = 'Proceed with caution';
-  if (investmentGrade === 'A') recommendedAction = 'Strong buy - Excellent opportunity';
-  else if (investmentGrade === 'B') recommendedAction = 'Buy - Good opportunity';
-  else if (investmentGrade === 'C') recommendedAction = 'Hold - Consider alternatives';
-  else recommendedAction = 'Avoid - High risk, low benefit';
+  // Calculate scenarios
+  const scenarios = calculateScenarios(inputs, monthlyPayment);
   
-  // Calculate maximum borrowing amount
-  const maxBorrowingAmount = monthlyIncome > 0 ? 
-    (monthlyIncome * 0.43) - monthlyDebtPayments : approvedCreditLimit;
-  
-  const recommendedCreditLimit = Math.min(approvedCreditLimit, maxBorrowingAmount);
-  
-  // Calculate cash flow impact
-  const monthlyCashFlow = -monthlyInterestOnly;
-  const annualCashFlow = monthlyCashFlow * 12;
-  
-  // Calculate equity utilization
-  const equityUtilization = (approvedCreditLimit / availableEquity) * 100;
-  
-  // Calculate cost of borrowing
-  const costOfBorrowing = ((totalCost / estimatedBalance) ** (1 / totalTerm) - 1) * 100;
-  
-  // Generate analysis components
-  const purposeAnalysis = `The HELOC is intended for ${inputs.purpose}. This purpose ${inputs.purpose === 'home-improvement' ? 'typically increases property value and may be tax-deductible' : inputs.purpose === 'debt-consolidation' ? 'can reduce overall interest costs but requires discipline' : inputs.purpose === 'emergency-fund' ? 'provides flexibility but should be used sparingly' : inputs.purpose === 'investment' ? 'offers potential returns but carries additional risk' : 'should be evaluated based on specific needs'}.`;
-  
-  const marketAnalysis = `The ${inputs.marketType} market conditions in ${inputs.propertyLocation} area ${inputs.marketType === 'hot' ? 'favor property appreciation and may support higher credit limits' : inputs.marketType === 'stable' ? 'provide predictable equity growth' : 'may limit equity growth and credit availability'}.`;
-  
-  const optimizationOpportunities = `Consider negotiating lower fees, extending the draw period for flexibility, or reducing the credit limit to minimize costs.`;
-  
-  const comparisonAnalysis = `HELOCs offer flexibility and lower rates than credit cards but higher rates than first mortgages. Compare with cash-out refinancing, personal loans, or home equity loans.`;
-  
-  const sensitivityAnalysis = `Key variables affecting costs: interest rate changes (±1% = ±${Math.round(totalInterest * 0.1)}% total interest), property value changes (±10% = ±${Math.round(availableEquity * 0.1)}% available equity), and usage changes (±20% = ±${Math.round(monthlyInterestOnly * 0.2)}% monthly payment).`;
-  
-  const riskFactors = `Primary risks include variable interest rates, potential for over-borrowing, and property value declines. Mitigation strategies include conservative borrowing limits, regular payment discipline, and monitoring market conditions.`;
+  // Calculate payment schedule
+  const paymentSchedule = calculatePaymentSchedule(inputs);
   
   return {
-    availableEquity: Math.round(availableEquity),
-    maxCreditLimit: Math.round(maxCreditLimit),
-    approvedCreditLimit: Math.round(approvedCreditLimit),
-    currentLTV: Math.round(currentLTV * 100) / 100,
-    proposedCLTV: Math.round(proposedCLTV * 100) / 100,
-    monthlyInterestOnly: Math.round(monthlyInterestOnly),
-    monthlyPrincipalInterest: Math.round(monthlyPrincipalInterest),
-    totalFees: Math.round(totalFees),
-    annualPercentageRate: Math.round(apr * 12 * 100 * 100) / 100,
-    effectiveRate: Math.round(effectiveRate * 12 * 100 * 100) / 100,
-    totalInterest: Math.round(totalInterest),
-    totalCost: Math.round(totalCost),
-    debtServiceCoverage: Math.round(debtServiceCoverage * 100) / 100,
-    paymentToIncome: Math.round(paymentToIncome * 100) / 100,
-    breakEvenMonths: Math.round(breakEvenMonths * 10) / 10,
-    taxBenefits: Math.round(taxBenefits),
-    inflationHedge,
-    liquidityScore,
-    flexibilityScore,
+    // Equity Analysis
+    totalEquity,
+    availableEquity,
+    combinedLTV,
+    helocLTV,
+    
+    // Payment Analysis
+    monthlyPayment,
+    totalPayments,
+    totalInterestPaid,
+    effectiveInterestRate,
+    
+    // Cost Analysis
+    totalFees,
+    totalCost,
+    costOfCredit,
+    
+    // Cash Flow Analysis
+    monthlyCashFlow,
+    totalCashFlow,
+    breakEvenPoint,
+    
+    // Risk Metrics
     riskScore,
-    feasibilityScore,
-    maxBorrowingAmount: Math.round(maxBorrowingAmount),
-    recommendedCreditLimit: Math.round(recommendedCreditLimit),
-    monthlyCashFlow: Math.round(monthlyCashFlow),
-    annualCashFlow: Math.round(annualCashFlow),
-    equityUtilization: Math.round(equityUtilization * 100) / 100,
-    costOfBorrowing: Math.round(costOfBorrowing * 100) / 100,
-    investmentGrade,
-    recommendedAction,
-    purposeAnalysis,
-    riskFactors,
-    optimizationOpportunities,
-    marketAnalysis,
-    comparisonAnalysis,
-    sensitivityAnalysis,
-    helocAnalysis: 'Comprehensive HELOC analysis completed'
+    probabilityOfDefault,
+    lossGivenDefault,
+    expectedLoss,
+    
+    // Sensitivity Analysis
+    sensitivityMatrix,
+    
+    // Scenario Analysis
+    scenarios,
+    
+    // Payment Schedule
+    paymentSchedule
   };
 }
 
-export { generateHELOCAnalysis };
+function calculateRiskScore(inputs: HELOCInputs): number {
+  let riskScore = 5; // Base score
+  
+  // Borrower risk factors
+  if (inputs.borrowerCreditScore < 600) riskScore += 3;
+  else if (inputs.borrowerCreditScore < 650) riskScore += 2;
+  else if (inputs.borrowerCreditScore < 700) riskScore += 1;
+  else if (inputs.borrowerCreditScore >= 750) riskScore -= 1;
+  
+  if (inputs.borrowerDebtToIncomeRatio > 50) riskScore += 2;
+  else if (inputs.borrowerDebtToIncomeRatio > 40) riskScore += 1;
+  else if (inputs.borrowerDebtToIncomeRatio < 30) riskScore -= 1;
+  
+  const employmentScores = { employed: 0, self_employed: 1, retired: -1, unemployed: 3 };
+  riskScore += employmentScores[inputs.borrowerEmploymentType];
+  
+  if (inputs.borrowerEmploymentLength < 2) riskScore += 1;
+  else if (inputs.borrowerEmploymentLength >= 10) riskScore -= 1;
+  
+  // Property risk factors
+  const conditionScores = { excellent: -2, good: -1, fair: 0, poor: 2 };
+  riskScore += conditionScores[inputs.propertyCondition];
+  
+  if (inputs.propertyAge > 50) riskScore += 1;
+  else if (inputs.propertyAge > 30) riskScore += 0.5;
+  
+  // HELOC risk factors
+  if (inputs.combinedLTV > 85) riskScore += 2;
+  else if (inputs.combinedLTV > 80) riskScore += 1;
+  else if (inputs.combinedLTV < 70) riskScore -= 1;
+  
+  if (inputs.helocRate > 10) riskScore += 1;
+  
+  // Market risk factors
+  const marketScores = { appreciating: -1, stable: 0, declining: 2 };
+  riskScore += marketScores[inputs.marketCondition];
+  
+  return Math.min(Math.max(riskScore, 1), 10);
+}
+
+function calculateProbabilityOfDefault(inputs: HELOCInputs): number {
+  let baseProbability = 3; // Base 3% default probability
+  
+  // Credit score adjustment
+  if (inputs.borrowerCreditScore < 600) baseProbability += 12;
+  else if (inputs.borrowerCreditScore < 650) baseProbability += 8;
+  else if (inputs.borrowerCreditScore < 700) baseProbability += 4;
+  else if (inputs.borrowerCreditScore >= 750) baseProbability -= 2;
+  
+  // DTI adjustment
+  if (inputs.borrowerDebtToIncomeRatio > 50) baseProbability += 8;
+  else if (inputs.borrowerDebtToIncomeRatio > 40) baseProbability += 4;
+  
+  // Employment adjustment
+  const employmentAdjustments = { employed: 0, self_employed: 2, retired: -1, unemployed: 10 };
+  baseProbability += employmentAdjustments[inputs.borrowerEmploymentType];
+  
+  // LTV adjustment
+  if (inputs.combinedLTV > 85) baseProbability += 5;
+  else if (inputs.combinedLTV > 80) baseProbability += 2;
+  
+  // Market condition adjustment
+  const marketAdjustments = { appreciating: -1, stable: 0, declining: 3 };
+  baseProbability += marketAdjustments[inputs.marketCondition];
+  
+  return Math.min(Math.max(baseProbability, 1), 20);
+}
+
+function calculateLossGivenDefault(inputs: HELOCInputs): number {
+  let baseLoss = 30; // Base 30% loss
+  
+  // Property condition adjustment
+  const conditionAdjustments = { excellent: 0.8, good: 0.9, fair: 1.0, poor: 1.3 };
+  baseLoss *= conditionAdjustments[inputs.propertyCondition];
+  
+  // Market condition adjustment
+  const marketAdjustments = { appreciating: 0.8, stable: 1.0, declining: 1.4 };
+  baseLoss *= marketAdjustments[inputs.marketCondition];
+  
+  // LTV adjustment
+  if (inputs.combinedLTV > 85) baseLoss *= 1.2;
+  else if (inputs.combinedLTV < 70) baseLoss *= 0.8;
+  
+  return Math.min(Math.max(baseLoss, 15), 60);
+}
+
+function calculateSensitivityMatrix(inputs: HELOCInputs, basePayment: number): any[] {
+  const variables = [
+    { name: 'HELOC Rate', base: inputs.helocRate, range: [-2, 2] },
+    { name: 'Property Value', base: inputs.propertyValue, range: [-10, 10] },
+    { name: 'Draw Amount', base: inputs.drawAmount, range: [-20, 20] },
+    { name: 'Market Growth', base: inputs.marketGrowthRate, range: [-2, 2] }
+  ];
+  
+  return variables.map(variable => {
+    const values = [];
+    const impacts = [];
+    
+    for (let i = variable.range[0]; i <= variable.range[1]; i++) {
+      const testInputs = { ...inputs };
+      const adjustment = 1 + (i / 100);
+      
+      if (variable.name === 'HELOC Rate') {
+        testInputs.helocRate = variable.base + i;
+      } else if (variable.name === 'Property Value') {
+        testInputs.propertyValue = variable.base * adjustment;
+      } else if (variable.name === 'Draw Amount') {
+        testInputs.drawAmount = variable.base * adjustment;
+      } else if (variable.name === 'Market Growth') {
+        testInputs.marketGrowthRate = variable.base + i;
+      }
+      
+      const testMetrics = calculateHELOC(testInputs);
+      values.push(variable.base + i);
+      impacts.push(testMetrics.monthlyPayment);
+    }
+    
+    return {
+      variable: variable.name,
+      values,
+      impacts
+    };
+  });
+}
+
+function calculateScenarios(inputs: HELOCInputs, basePayment: number): any[] {
+  return [
+    {
+      scenario: 'Best Case',
+      probability: 20,
+      value: basePayment * 0.8,
+      cost: inputs.totalFees * 0.8
+    },
+    {
+      scenario: 'Base Case',
+      probability: 60,
+      value: basePayment,
+      cost: inputs.totalFees
+    },
+    {
+      scenario: 'Worst Case',
+      probability: 20,
+      value: basePayment * 1.3,
+      cost: inputs.totalFees * 1.2
+    }
+  ];
+}
+
+function calculatePaymentSchedule(inputs: HELOCInputs): any[] {
+  const schedule = [];
+  const monthlyInterestRate = inputs.helocRate / 100 / 12;
+  let balance = inputs.drawAmount;
+  
+  for (let month = 1; month <= inputs.analysisPeriod * 12; month++) {
+    const interest = balance * monthlyInterestRate;
+    let principal = 0;
+    
+    if (inputs.repaymentStrategy === 'interest_only') {
+      principal = 0;
+    } else if (inputs.repaymentStrategy === 'principal_interest') {
+      const totalPayment = inputs.minimumPayment;
+      principal = totalPayment - interest;
+      if (principal < 0) principal = 0;
+    } else {
+      principal = balance / (inputs.analysisPeriod * 12);
+    }
+    
+    balance -= principal;
+    if (balance < 0) balance = 0;
+    
+    schedule.push({
+      period: month,
+      payment: interest + principal,
+      principal,
+      interest,
+      balance
+    });
+  }
+  
+  return schedule;
+}
+
+export function generateHELOCReport(
+  inputs: HELOCInputs, 
+  metrics: HELOCMetrics
+): HELOCAnalysis {
+  // Determine HELOC rating
+  let helocRating: 'Excellent' | 'Good' | 'Average' | 'Poor' | 'Very Poor';
+  if (metrics.combinedLTV <= 70 && inputs.borrowerCreditScore >= 750) helocRating = 'Excellent';
+  else if (metrics.combinedLTV <= 80 && inputs.borrowerCreditScore >= 700) helocRating = 'Good';
+  else if (metrics.combinedLTV <= 85 && inputs.borrowerCreditScore >= 650) helocRating = 'Average';
+  else if (metrics.combinedLTV <= 90 && inputs.borrowerCreditScore >= 600) helocRating = 'Poor';
+  else helocRating = 'Very Poor';
+  
+  // Determine risk rating
+  let riskRating: 'Low' | 'Moderate' | 'High' | 'Very High';
+  if (metrics.riskScore <= 3) riskRating = 'Low';
+  else if (metrics.riskScore <= 5) riskRating = 'Moderate';
+  else if (metrics.riskScore <= 7) riskRating = 'High';
+  else riskRating = 'Very High';
+  
+  // Determine recommendation
+  let recommendation: 'Approve' | 'Conditional' | 'Reject' | 'Requires Review';
+  if (metrics.combinedLTV <= 80 && inputs.borrowerCreditScore >= 700) recommendation = 'Approve';
+  else if (metrics.combinedLTV <= 85 && inputs.borrowerCreditScore >= 650) recommendation = 'Conditional';
+  else if (metrics.combinedLTV <= 90 && inputs.borrowerCreditScore >= 600) recommendation = 'Requires Review';
+  else recommendation = 'Reject';
+  
+  // Generate key insights
+  const keyStrengths = [];
+  const keyWeaknesses = [];
+  const riskFactors = [];
+  const opportunities = [];
+  
+  if (metrics.combinedLTV <= 75) keyStrengths.push('Low combined LTV ratio');
+  if (inputs.borrowerCreditScore >= 750) keyStrengths.push('Excellent borrower credit');
+  if (inputs.borrowerEmploymentType === 'employed') keyStrengths.push('Stable employment');
+  if (inputs.propertyCondition === 'excellent' || inputs.propertyCondition === 'good') keyStrengths.push('Good property condition');
+  if (inputs.marketCondition === 'appreciating') keyStrengths.push('Appreciating market conditions');
+  
+  if (metrics.combinedLTV > 85) keyWeaknesses.push('High combined LTV ratio');
+  if (inputs.borrowerCreditScore < 650) keyWeaknesses.push('Poor borrower credit');
+  if (inputs.borrowerDebtToIncomeRatio > 50) keyWeaknesses.push('High debt-to-income ratio');
+  if (inputs.propertyCondition === 'poor') keyWeaknesses.push('Poor property condition');
+  if (inputs.marketCondition === 'declining') keyWeaknesses.push('Declining market conditions');
+  
+  if (metrics.probabilityOfDefault > 8) riskFactors.push('Elevated default risk');
+  if (inputs.borrowerEmploymentType === 'unemployed') riskFactors.push('Unemployed borrower');
+  if (inputs.combinedLTV > 90) riskFactors.push('Very high LTV ratio');
+  if (inputs.helocRate > 10) riskFactors.push('High interest rate');
+  
+  if (inputs.marketCondition === 'appreciating') opportunities.push('Property value appreciation potential');
+  if (inputs.intendedUse === 'home_improvement') opportunities.push('Value-add through improvements');
+  if (inputs.intendedUse === 'debt_consolidation') opportunities.push('Debt consolidation benefits');
+  
+  return {
+    // Executive Summary
+    helocRating,
+    riskRating,
+    recommendation,
+    
+    // Key Insights
+    keyStrengths,
+    keyWeaknesses,
+    riskFactors,
+    opportunities,
+    
+    // HELOC Analysis
+    helocSummary: `The HELOC presents a ${helocRating.toLowerCase()} opportunity with a combined LTV of ${metrics.combinedLTV.toFixed(2)}% and available equity of $${metrics.availableEquity.toLocaleString()}.`,
+    equityAnalysis: `Total equity in the property is $${metrics.totalEquity.toLocaleString()} with $${metrics.availableEquity.toLocaleString()} available for HELOC financing.`,
+    paymentAnalysis: `Monthly payments of $${metrics.monthlyPayment.toLocaleString()} with an effective interest rate of ${metrics.effectiveInterestRate.toFixed(2)}%.`,
+    
+    // Cost Analysis
+    costSummary: `Total costs include $${metrics.totalFees.toLocaleString()} in fees and $${metrics.totalInterestPaid.toLocaleString()} in interest over the analysis period.`,
+    feeAnalysis: `Total fees of $${metrics.totalFees.toLocaleString()} represent ${metrics.costOfCredit.toFixed(2)}% of the draw amount.`,
+    comparisonAnalysis: `The HELOC offers competitive terms compared to alternative financing options.`,
+    
+    // Risk Assessment
+    riskAssessment: `Overall risk profile is ${riskRating.toLowerCase()} with a risk score of ${metrics.riskScore}/10.`,
+    borrowerRisk: `Borrower has a credit score of ${inputs.borrowerCreditScore} with ${inputs.borrowerEmploymentType} employment status.`,
+    propertyRisk: `Property is in ${inputs.propertyCondition} condition with ${inputs.propertyAge} years of age.`,
+    marketRisk: `Market conditions are ${inputs.marketCondition} with ${inputs.marketGrowthRate}% expected growth.`,
+    
+    // Usage Assessment
+    usageAssessment: `The HELOC is intended for ${inputs.intendedUse.replace('_', ' ')} with initial draw of $${inputs.drawAmount.toLocaleString()}.`,
+    drawAnalysis: `Draw frequency is ${inputs.drawFrequency.replace('_', ' ')} with ${inputs.repaymentStrategy.replace('_', ' ')} repayment strategy.`,
+    repaymentAnalysis: `The repayment strategy provides flexibility while maintaining affordability.`,
+    
+    // Market Assessment
+    marketAssessment: `Market conditions are ${inputs.marketCondition} with ${inputs.marketGrowthRate}% annual growth rate.`,
+    comparableAnalysis: `Comparable sales analysis supports the property value of $${inputs.propertyValue.toLocaleString()}.`,
+    marketPosition: `The property is well-positioned in the current market conditions.`,
+    
+    // Recommendations
+    approvalRecommendations: [
+      'Conduct thorough borrower financial analysis',
+      'Verify property condition and value',
+      'Review market conditions and trends',
+      'Assess repayment capacity and strategy'
+    ],
+    riskMitigation: [
+      'Monitor combined LTV ratio regularly',
+      'Establish clear repayment guidelines',
+      'Maintain adequate property insurance',
+      'Review borrower financial status annually'
+    ],
+    optimizationSuggestions: [
+      'Consider interest-only payments during draw period',
+      'Optimize draw timing and amounts',
+      'Explore rate lock options if available',
+      'Plan for repayment phase transition'
+    ],
+    
+    // Implementation
+    implementationPlan: 'Proceed with comprehensive underwriting and property appraisal.',
+    nextSteps: [
+      'Complete borrower financial analysis',
+      'Conduct property appraisal',
+      'Review title and insurance requirements',
+      'Finalize HELOC terms and conditions'
+    ],
+    timeline: '15-30 days for underwriting and closing.',
+    
+    // Monitoring
+    monitoringPlan: 'Establish quarterly monitoring of borrower performance and property value.',
+    keyMetrics: [
+      'Combined LTV ratio',
+      'Borrower payment history',
+      'Property value changes',
+      'Market condition updates'
+    ],
+    reviewSchedule: 'Annual comprehensive review with quarterly updates.',
+    
+    // Risk Management
+    riskManagement: 'Implement comprehensive risk management strategy including monitoring and mitigation measures.',
+    mitigationStrategies: [
+      'Regular property value assessments',
+      'Borrower financial monitoring',
+      'Market condition tracking',
+      'Payment performance review'
+    ],
+    contingencyPlans: [
+      'Default procedures and foreclosure options',
+      'Property value decline response',
+      'Rate increase management',
+      'Exit strategy alternatives'
+    ],
+    
+    // Performance Benchmarks
+    performanceBenchmarks: [
+      {
+        metric: 'Combined LTV',
+        target: 80,
+        benchmark: metrics.combinedLTV,
+        industry: 'HELOC Lending'
+      },
+      {
+        metric: 'Credit Score',
+        target: 700,
+        benchmark: inputs.borrowerCreditScore,
+        industry: 'Consumer Lending'
+      },
+      {
+        metric: 'Risk Score',
+        target: 5,
+        benchmark: metrics.riskScore,
+        industry: 'Risk Management'
+      }
+    ],
+    
+    // Decision Support
+    decisionRecommendation: `Based on the analysis, we recommend ${recommendation.toLowerCase()} this HELOC application.`,
+    presentationPoints: [
+      `Strong equity position with ${metrics.combinedLTV.toFixed(2)}% combined LTV`,
+      `Favorable risk profile with score of ${metrics.riskScore}/10`,
+      `Competitive interest rate of ${inputs.helocRate}%`,
+      `Flexible draw and repayment options`
+    ],
+    decisionFactors: [
+      'Equity availability',
+      'Borrower credit quality',
+      'Property condition',
+      'Market conditions',
+      'Repayment capacity',
+      'Risk tolerance'
+    ]
+  };
+}

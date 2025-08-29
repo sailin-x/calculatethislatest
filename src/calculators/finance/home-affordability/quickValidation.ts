@@ -1,328 +1,406 @@
-import { CalculatorInputs } from '../../../types/calculator';
+import { HomeAffordabilityInputs } from './types';
 
-export function validateAnnualIncome(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (!value) return { isValid: false, message: 'Annual income is required' };
-  if (typeof value !== 'number') return { isValid: false, message: 'Annual income must be a number' };
-  if (value < 10000 || value > 10000000) return { isValid: false, message: 'Annual income must be between $10,000 and $10,000,000' };
-  return { isValid: true };
-}
-
-export function validateMonthlyIncome(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && typeof value !== 'number') return { isValid: false, message: 'Monthly income must be a number' };
-  if (value && (value < 833 || value > 833333)) return { isValid: false, message: 'Monthly income must be between $833 and $833,333' };
-  return { isValid: true };
-}
-
-export function validateDownPayment(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (!value) return { isValid: false, message: 'Down payment is required' };
-  if (typeof value !== 'number') return { isValid: false, message: 'Down payment must be a number' };
-  if (value < 0 || value > 10000000) return { isValid: false, message: 'Down payment must be between $0 and $10,000,000' };
-  return { isValid: true };
-}
-
-export function validateDownPaymentPercent(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && typeof value !== 'number') return { isValid: false, message: 'Down payment percentage must be a number' };
-  if (value && (value < 0 || value > 100)) return { isValid: false, message: 'Down payment percentage must be between 0% and 100%' };
-  return { isValid: true };
-}
-
-export function validateInterestRate(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (!value) return { isValid: false, message: 'Interest rate is required' };
-  if (typeof value !== 'number') return { isValid: false, message: 'Interest rate must be a number' };
-  if (value < 1 || value > 20) return { isValid: false, message: 'Interest rate must be between 1% and 20%' };
-  return { isValid: true };
-}
-
-export function validateLoanTerm(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (!value) return { isValid: false, message: 'Loan term is required' };
-  if (typeof value !== 'number') return { isValid: false, message: 'Loan term must be a number' };
-  if (value < 1 || value > 50) return { isValid: false, message: 'Loan term must be between 1 and 50 years' };
-  return { isValid: true };
-}
-
-export function validateMonthlyDebtPayments(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && typeof value !== 'number') return { isValid: false, message: 'Monthly debt payments must be a number' };
-  if (value && (value < 0 || value > 100000)) return { isValid: false, message: 'Monthly debt payments must be between $0 and $100,000' };
-  return { isValid: true };
-}
-
-export function validateAnnualPropertyTaxes(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && typeof value !== 'number') return { isValid: false, message: 'Annual property taxes must be a number' };
-  if (value && (value < 0 || value > 100000)) return { isValid: false, message: 'Annual property taxes must be between $0 and $100,000' };
-  return { isValid: true };
-}
-
-export function validateAnnualHomeownersInsurance(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && typeof value !== 'number') return { isValid: false, message: 'Annual homeowners insurance must be a number' };
-  if (value && (value < 0 || value > 50000)) return { isValid: false, message: 'Annual homeowners insurance must be between $0 and $50,000' };
-  return { isValid: true };
-}
-
-export function validateMonthlyHoaFees(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && typeof value !== 'number') return { isValid: false, message: 'Monthly HOA fees must be a number' };
-  if (value && (value < 0 || value > 5000)) return { isValid: false, message: 'Monthly HOA fees must be between $0 and $5,000' };
-  return { isValid: true };
-}
-
-export function validateMonthlyUtilities(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && typeof value !== 'number') return { isValid: false, message: 'Monthly utilities must be a number' };
-  if (value && (value < 0 || value > 2000)) return { isValid: false, message: 'Monthly utilities must be between $0 and $2,000' };
-  return { isValid: true };
-}
-
-export function validateMonthlyMaintenance(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && typeof value !== 'number') return { isValid: false, message: 'Monthly maintenance must be a number' };
-  if (value && (value < 0 || value > 5000)) return { isValid: false, message: 'Monthly maintenance must be between $0 and $5,000' };
-  return { isValid: true };
-}
-
-export function validateCreditScore(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && typeof value !== 'number') return { isValid: false, message: 'Credit score must be a number' };
-  if (value && (value < 300 || value > 850)) return { isValid: false, message: 'Credit score must be between 300 and 850' };
-  return { isValid: true };
-}
-
-export function validateDebtToIncomeRatio(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && typeof value !== 'number') return { isValid: false, message: 'Target DTI ratio must be a number' };
-  if (value && (value < 20 || value > 50)) return { isValid: false, message: 'Target DTI ratio must be between 20% and 50%' };
-  return { isValid: true };
-}
-
-export function validateFrontEndDTI(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && typeof value !== 'number') return { isValid: false, message: 'Front-end DTI must be a number' };
-  if (value && (value < 20 || value > 40)) return { isValid: false, message: 'Front-end DTI must be between 20% and 40%' };
-  return { isValid: true };
-}
-
-export function validateBackEndDTI(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && typeof value !== 'number') return { isValid: false, message: 'Back-end DTI must be a number' };
-  if (value && (value < 25 || value > 50)) return { isValid: false, message: 'Back-end DTI must be between 25% and 50%' };
-  return { isValid: true };
-}
-
-export function validatePropertyTaxRate(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && typeof value !== 'number') return { isValid: false, message: 'Property tax rate must be a number' };
-  if (value && (value < 0 || value > 5)) return { isValid: false, message: 'Property tax rate must be between 0% and 5%' };
-  return { isValid: true };
-}
-
-export function validateInsuranceRate(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && typeof value !== 'number') return { isValid: false, message: 'Insurance rate must be a number' };
-  if (value && (value < 0 || value > 2)) return { isValid: false, message: 'Insurance rate must be between 0% and 2%' };
-  return { isValid: true };
-}
-
-export function validatePmiRate(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && typeof value !== 'number') return { isValid: false, message: 'PMI rate must be a number' };
-  if (value && (value < 0 || value > 2)) return { isValid: false, message: 'PMI rate must be between 0% and 2%' };
-  return { isValid: true };
-}
-
-export function validateClosingCosts(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && typeof value !== 'number') return { isValid: false, message: 'Closing costs must be a number' };
-  if (value && (value < 0 || value > 50000)) return { isValid: false, message: 'Closing costs must be between $0 and $50,000' };
-  return { isValid: true };
-}
-
-export function validateClosingCostsPercent(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && typeof value !== 'number') return { isValid: false, message: 'Closing costs percentage must be a number' };
-  if (value && (value < 0 || value > 10)) return { isValid: false, message: 'Closing costs percentage must be between 0% and 10%' };
-  return { isValid: true };
-}
-
-export function validateReserves(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && typeof value !== 'number') return { isValid: false, message: 'Required reserves must be a number' };
-  if (value && (value < 0 || value > 24)) return { isValid: false, message: 'Required reserves must be between 0 and 24 months' };
-  return { isValid: true };
-}
-
-export function validateEmergencyFund(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && typeof value !== 'number') return { isValid: false, message: 'Emergency fund must be a number' };
-  if (value && (value < 0 || value > 1000000)) return { isValid: false, message: 'Emergency fund must be between $0 and $1,000,000' };
-  return { isValid: true };
-}
-
-export function validateInflationRate(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && typeof value !== 'number') return { isValid: false, message: 'Inflation rate must be a number' };
-  if (value && (value < 0 || value > 10)) return { isValid: false, message: 'Inflation rate must be between 0% and 10%' };
-  return { isValid: true };
-}
-
-export function validateIncomeGrowthRate(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && typeof value !== 'number') return { isValid: false, message: 'Income growth rate must be a number' };
-  if (value && (value < 0 || value > 20)) return { isValid: false, message: 'Income growth rate must be between 0% and 20%' };
-  return { isValid: true };
-}
-
-export function validateHomeAppreciationRate(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && typeof value !== 'number') return { isValid: false, message: 'Home appreciation rate must be a number' };
-  if (value && (value < 0 || value > 15)) return { isValid: false, message: 'Home appreciation rate must be between 0% and 15%' };
-  return { isValid: true };
-}
-
-export function validateTaxRate(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && typeof value !== 'number') return { isValid: false, message: 'Tax rate must be a number' };
-  if (value && (value < 0 || value > 50)) return { isValid: false, message: 'Tax rate must be between 0% and 50%' };
-  return { isValid: true };
-}
-
-export function validateLoanType(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (!value) return { isValid: false, message: 'Loan type is required' };
-  const validLoanTypes = ['conventional', 'fha', 'va', 'usda'];
-  if (!validLoanTypes.includes(value)) return { isValid: false, message: 'Invalid loan type. Must be one of: conventional, fha, va, usda' };
-  return { isValid: true };
-}
-
-export function validatePropertyType(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value) {
-    const validPropertyTypes = ['single-family', 'condo', 'townhouse', 'multi-family', 'manufactured'];
-    if (!validPropertyTypes.includes(value)) return { isValid: false, message: 'Invalid property type. Must be one of: single-family, condo, townhouse, multi-family, manufactured' };
+export function validateAnnualIncome(value: number, allInputs: HomeAffordabilityInputs): string | null {
+  if (!value || value <= 0) {
+    return 'Annual income must be greater than 0';
   }
-  return { isValid: true };
-}
-
-export function validateOccupancyType(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value) {
-    const validOccupancyTypes = ['primary-residence', 'second-home', 'investment-property'];
-    if (!validOccupancyTypes.includes(value)) return { isValid: false, message: 'Invalid occupancy type. Must be one of: primary-residence, second-home, investment-property' };
+  if (value < 20000) {
+    return 'Annual income seems unusually low';
   }
-  return { isValid: true };
+  return null;
 }
 
-export function validateLocation(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value) {
-    const validLocations = ['urban', 'suburban', 'rural'];
-    if (!validLocations.includes(value)) return { isValid: false, message: 'Invalid location. Must be one of: urban, suburban, rural' };
+export function validateMonthlyIncome(value: number, allInputs: HomeAffordabilityInputs): string | null {
+  if (!value || value <= 0) {
+    return 'Monthly income must be greater than 0';
   }
-  return { isValid: true };
-}
-
-export function validateMarketType(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value) {
-    const validMarketTypes = ['hot', 'stable', 'declining'];
-    if (!validMarketTypes.includes(value)) return { isValid: false, message: 'Invalid market type. Must be one of: hot, stable, declining' };
-  }
-  return { isValid: true };
-}
-
-export function validateAllHomeAffordabilityInputs(inputs: Partial<CalculatorInputs>): { isValid: boolean; errors: string[] } {
-  const errors: string[] = [];
-
-  const annualIncomeResult = validateAnnualIncome(inputs.annualIncome);
-  if (!annualIncomeResult.isValid) errors.push(annualIncomeResult.message!);
-
-  const monthlyIncomeResult = validateMonthlyIncome(inputs.monthlyIncome);
-  if (!monthlyIncomeResult.isValid) errors.push(monthlyIncomeResult.message!);
-
-  const downPaymentResult = validateDownPayment(inputs.downPayment);
-  if (!downPaymentResult.isValid) errors.push(downPaymentResult.message!);
-
-  const downPaymentPercentResult = validateDownPaymentPercent(inputs.downPaymentPercent);
-  if (!downPaymentPercentResult.isValid) errors.push(downPaymentPercentResult.message!);
-
-  const interestRateResult = validateInterestRate(inputs.interestRate);
-  if (!interestRateResult.isValid) errors.push(interestRateResult.message!);
-
-  const loanTermResult = validateLoanTerm(inputs.loanTerm);
-  if (!loanTermResult.isValid) errors.push(loanTermResult.message!);
-
-  const monthlyDebtPaymentsResult = validateMonthlyDebtPayments(inputs.monthlyDebtPayments);
-  if (!monthlyDebtPaymentsResult.isValid) errors.push(monthlyDebtPaymentsResult.message!);
-
-  const annualPropertyTaxesResult = validateAnnualPropertyTaxes(inputs.annualPropertyTaxes);
-  if (!annualPropertyTaxesResult.isValid) errors.push(annualPropertyTaxesResult.message!);
-
-  const annualHomeownersInsuranceResult = validateAnnualHomeownersInsurance(inputs.annualHomeownersInsurance);
-  if (!annualHomeownersInsuranceResult.isValid) errors.push(annualHomeownersInsuranceResult.message!);
-
-  const monthlyHoaFeesResult = validateMonthlyHoaFees(inputs.monthlyHoaFees);
-  if (!monthlyHoaFeesResult.isValid) errors.push(monthlyHoaFeesResult.message!);
-
-  const monthlyUtilitiesResult = validateMonthlyUtilities(inputs.monthlyUtilities);
-  if (!monthlyUtilitiesResult.isValid) errors.push(monthlyUtilitiesResult.message!);
-
-  const monthlyMaintenanceResult = validateMonthlyMaintenance(inputs.monthlyMaintenance);
-  if (!monthlyMaintenanceResult.isValid) errors.push(monthlyMaintenanceResult.message!);
-
-  const creditScoreResult = validateCreditScore(inputs.creditScore);
-  if (!creditScoreResult.isValid) errors.push(creditScoreResult.message!);
-
-  const debtToIncomeRatioResult = validateDebtToIncomeRatio(inputs.debtToIncomeRatio);
-  if (!debtToIncomeRatioResult.isValid) errors.push(debtToIncomeRatioResult.message!);
-
-  const frontEndDTIResult = validateFrontEndDTI(inputs.frontEndDTI);
-  if (!frontEndDTIResult.isValid) errors.push(frontEndDTIResult.message!);
-
-  const backEndDTIResult = validateBackEndDTI(inputs.backEndDTI);
-  if (!backEndDTIResult.isValid) errors.push(backEndDTIResult.message!);
-
-  const propertyTaxRateResult = validatePropertyTaxRate(inputs.propertyTaxRate);
-  if (!propertyTaxRateResult.isValid) errors.push(propertyTaxRateResult.message!);
-
-  const insuranceRateResult = validateInsuranceRate(inputs.insuranceRate);
-  if (!insuranceRateResult.isValid) errors.push(insuranceRateResult.message!);
-
-  const pmiRateResult = validatePmiRate(inputs.pmiRate);
-  if (!pmiRateResult.isValid) errors.push(pmiRateResult.message!);
-
-  const closingCostsResult = validateClosingCosts(inputs.closingCosts);
-  if (!closingCostsResult.isValid) errors.push(closingCostsResult.message!);
-
-  const closingCostsPercentResult = validateClosingCostsPercent(inputs.closingCostsPercent);
-  if (!closingCostsPercentResult.isValid) errors.push(closingCostsPercentResult.message!);
-
-  const reservesResult = validateReserves(inputs.reserves);
-  if (!reservesResult.isValid) errors.push(reservesResult.message!);
-
-  const emergencyFundResult = validateEmergencyFund(inputs.emergencyFund);
-  if (!emergencyFundResult.isValid) errors.push(emergencyFundResult.message!);
-
-  const inflationRateResult = validateInflationRate(inputs.inflationRate);
-  if (!inflationRateResult.isValid) errors.push(inflationRateResult.message!);
-
-  const incomeGrowthRateResult = validateIncomeGrowthRate(inputs.incomeGrowthRate);
-  if (!incomeGrowthRateResult.isValid) errors.push(incomeGrowthRateResult.message!);
-
-  const homeAppreciationRateResult = validateHomeAppreciationRate(inputs.homeAppreciationRate);
-  if (!homeAppreciationRateResult.isValid) errors.push(homeAppreciationRateResult.message!);
-
-  const taxRateResult = validateTaxRate(inputs.taxRate);
-  if (!taxRateResult.isValid) errors.push(taxRateResult.message!);
-
-  const loanTypeResult = validateLoanType(inputs.loanType);
-  if (!loanTypeResult.isValid) errors.push(loanTypeResult.message!);
-
-  const propertyTypeResult = validatePropertyType(inputs.propertyType);
-  if (!propertyTypeResult.isValid) errors.push(propertyTypeResult.message!);
-
-  const occupancyTypeResult = validateOccupancyType(inputs.occupancyType);
-  if (!occupancyTypeResult.isValid) errors.push(occupancyTypeResult.message!);
-
-  const locationResult = validateLocation(inputs.location);
-  if (!locationResult.isValid) errors.push(locationResult.message!);
-
-  const marketTypeResult = validateMarketType(inputs.marketType);
-  if (!marketTypeResult.isValid) errors.push(marketTypeResult.message!);
-
-  // Logical relationship validation
-  if (inputs.monthlyIncome && inputs.annualIncome) {
-    const calculatedMonthlyIncome = inputs.annualIncome / 12;
-    const difference = Math.abs(inputs.monthlyIncome - calculatedMonthlyIncome);
-    if (difference > calculatedMonthlyIncome * 0.1) {
-      errors.push('Monthly income should be approximately annual income divided by 12');
+  if (allInputs.annualIncome) {
+    const calculatedMonthly = allInputs.annualIncome / 12;
+    const difference = Math.abs(value - calculatedMonthly) / calculatedMonthly;
+    if (difference > 0.1) {
+      return 'Monthly income differs significantly from annual income / 12';
     }
   }
+  return null;
+}
 
-  if (inputs.frontEndDTI && inputs.backEndDTI && inputs.frontEndDTI > inputs.backEndDTI) {
-    errors.push('Front-end DTI cannot exceed back-end DTI');
+export function validateCreditScore(value: number, allInputs: HomeAffordabilityInputs): string | null {
+  if (!value || value < 300 || value > 850) {
+    return 'Credit score must be between 300 and 850';
   }
-
-  if (inputs.monthlyIncome && inputs.monthlyDebtPayments && inputs.monthlyDebtPayments > inputs.monthlyIncome) {
-    errors.push('Monthly debt payments cannot exceed monthly income');
+  if (value < 650) {
+    return 'Credit score below 650 may affect loan terms';
   }
+  return null;
+}
 
-  return {
-    isValid: errors.length === 0,
-    errors
-  };
+export function validateEmploymentType(value: string, allInputs: HomeAffordabilityInputs): string | null {
+  if (!value) {
+    return 'Employment type is required';
+  }
+  const validTypes = ['employed', 'self_employed', 'retired', 'unemployed'];
+  if (!validTypes.includes(value)) {
+    return 'Invalid employment type';
+  }
+  return null;
+}
+
+export function validateEmploymentLength(value: number, allInputs: HomeAffordabilityInputs): string | null {
+  if (value === undefined || value < 0) {
+    return 'Employment length must be 0 or greater';
+  }
+  if (value > 50) {
+    return 'Employment length cannot exceed 50 years';
+  }
+  if (value < 2) {
+    return 'Short employment history may affect loan approval';
+  }
+  return null;
+}
+
+export function validateDownPayment(value: number, allInputs: HomeAffordabilityInputs): string | null {
+  if (value === undefined || value < 0) {
+    return 'Down payment must be 0 or greater';
+  }
+  return null;
+}
+
+export function validateDownPaymentPercentage(value: number, allInputs: HomeAffordabilityInputs): string | null {
+  if (value === undefined || value < 0) {
+    return 'Down payment percentage must be 0 or greater';
+  }
+  if (value > 100) {
+    return 'Down payment percentage cannot exceed 100%';
+  }
+  if (value < 20) {
+    return 'Down payment less than 20% may require PMI';
+  }
+  return null;
+}
+
+export function validateMonthlyDebtPayments(value: number, allInputs: HomeAffordabilityInputs): string | null {
+  if (value === undefined || value < 0) {
+    return 'Monthly debt payments must be 0 or greater';
+  }
+  if (allInputs.monthlyIncome && value > allInputs.monthlyIncome * 0.5) {
+    return 'Monthly debt payments exceed 50% of monthly income';
+  }
+  return null;
+}
+
+export function validateAnnualDebtPayments(value: number, allInputs: HomeAffordabilityInputs): string | null {
+  if (value === undefined || value < 0) {
+    return 'Annual debt payments must be 0 or greater';
+  }
+  if (allInputs.monthlyDebtPayments) {
+    const calculatedAnnual = allInputs.monthlyDebtPayments * 12;
+    const difference = Math.abs(value - calculatedAnnual) / calculatedAnnual;
+    if (difference > 0.1) {
+      return 'Annual debt payments differ significantly from monthly × 12';
+    }
+  }
+  return null;
+}
+
+export function validateDebtToIncomeRatio(value: number, allInputs: HomeAffordabilityInputs): string | null {
+  if (value === undefined || value < 0) {
+    return 'Debt-to-income ratio must be 0 or greater';
+  }
+  if (value > 100) {
+    return 'Debt-to-income ratio cannot exceed 100%';
+  }
+  if (value > 50) {
+    return 'High debt-to-income ratio may affect loan approval';
+  }
+  return null;
+}
+
+export function validateFrontEndRatio(value: number, allInputs: HomeAffordabilityInputs): string | null {
+  if (value === undefined || value < 0) {
+    return 'Front-end ratio must be 0 or greater';
+  }
+  if (value > 100) {
+    return 'Front-end ratio cannot exceed 100%';
+  }
+  return null;
+}
+
+export function validateBackEndRatio(value: number, allInputs: HomeAffordabilityInputs): string | null {
+  if (value === undefined || value < 0) {
+    return 'Back-end ratio must be 0 or greater';
+  }
+  if (value > 100) {
+    return 'Back-end ratio cannot exceed 100%';
+  }
+  return null;
+}
+
+export function validateLiquidAssets(value: number, allInputs: HomeAffordabilityInputs): string | null {
+  if (value === undefined || value < 0) {
+    return 'Liquid assets must be 0 or greater';
+  }
+  if (allInputs.emergencyFund && value < allInputs.emergencyFund) {
+    return 'Liquid assets are less than recommended emergency fund';
+  }
+  return null;
+}
+
+export function validateRetirementSavings(value: number, allInputs: HomeAffordabilityInputs): string | null {
+  if (value === undefined || value < 0) {
+    return 'Retirement savings must be 0 or greater';
+  }
+  return null;
+}
+
+export function validateOtherAssets(value: number, allInputs: HomeAffordabilityInputs): string | null {
+  if (value === undefined || value < 0) {
+    return 'Other assets must be 0 or greater';
+  }
+  return null;
+}
+
+export function validateTotalAssets(value: number, allInputs: HomeAffordabilityInputs): string | null {
+  if (value === undefined || value < 0) {
+    return 'Total assets must be 0 or greater';
+  }
+  return null;
+}
+
+export function validateInterestRate(value: number, allInputs: HomeAffordabilityInputs): string | null {
+  if (!value || value <= 0) {
+    return 'Interest rate must be greater than 0';
+  }
+  if (value > 15) {
+    return 'Interest rate cannot exceed 15%';
+  }
+  return null;
+}
+
+export function validateLoanTerm(value: number, allInputs: HomeAffordabilityInputs): string | null {
+  if (!value || value <= 0) {
+    return 'Loan term must be greater than 0';
+  }
+  if (value > 50) {
+    return 'Loan term cannot exceed 50 years';
+  }
+  return null;
+}
+
+export function validatePropertyTaxRate(value: number, allInputs: HomeAffordabilityInputs): string | null {
+  if (value === undefined || value < 0) {
+    return 'Property tax rate must be 0 or greater';
+  }
+  if (value > 5) {
+    return 'Property tax rate cannot exceed 5%';
+  }
+  return null;
+}
+
+export function validateHomeownersInsuranceRate(value: number, allInputs: HomeAffordabilityInputs): string | null {
+  if (value === undefined || value < 0) {
+    return 'Homeowners insurance rate must be 0 or greater';
+  }
+  if (value > 2) {
+    return 'Homeowners insurance rate cannot exceed 2%';
+  }
+  return null;
+}
+
+export function validatePmiRate(value: number, allInputs: HomeAffordabilityInputs): string | null {
+  if (value === undefined || value < 0) {
+    return 'PMI rate must be 0 or greater';
+  }
+  if (value > 2) {
+    return 'PMI rate cannot exceed 2%';
+  }
+  return null;
+}
+
+export function validateHoaFees(value: number, allInputs: HomeAffordabilityInputs): string | null {
+  if (value === undefined || value < 0) {
+    return 'HOA fees must be 0 or greater';
+  }
+  return null;
+}
+
+export function validatePropertyLocation(value: string, allInputs: HomeAffordabilityInputs): string | null {
+  if (!value || value.trim().length === 0) {
+    return 'Property location is required';
+  }
+  if (value.trim().length < 5) {
+    return 'Property location seems too short';
+  }
+  return null;
+}
+
+export function validateMarketCondition(value: string, allInputs: HomeAffordabilityInputs): string | null {
+  if (!value) {
+    return 'Market condition is required';
+  }
+  const validConditions = ['hot', 'stable', 'buyer_market', 'declining'];
+  if (!validConditions.includes(value)) {
+    return 'Invalid market condition';
+  }
+  return null;
+}
+
+export function validateMedianHomePrice(value: number, allInputs: HomeAffordabilityInputs): string | null {
+  if (!value || value <= 0) {
+    return 'Median home price must be greater than 0';
+  }
+  if (allInputs.annualIncome) {
+    const priceToIncomeRatio = value / allInputs.annualIncome;
+    if (priceToIncomeRatio > 5) {
+      return 'High price-to-income ratio may indicate affordability challenges';
+    }
+  }
+  return null;
+}
+
+export function validateAverageDaysOnMarket(value: number, allInputs: HomeAffordabilityInputs): string | null {
+  if (!value || value <= 0) {
+    return 'Average days on market must be greater than 0';
+  }
+  if (value > 365) {
+    return 'Average days on market cannot exceed 365';
+  }
+  return null;
+}
+
+export function validateLoanType(value: string, allInputs: HomeAffordabilityInputs): string | null {
+  if (!value) {
+    return 'Loan type is required';
+  }
+  const validTypes = ['conventional', 'fha', 'va', 'usda', 'jumbo'];
+  if (!validTypes.includes(value)) {
+    return 'Invalid loan type';
+  }
+  return null;
+}
+
+export function validateMaxLTV(value: number, allInputs: HomeAffordabilityInputs): string | null {
+  if (value === undefined || value <= 0) {
+    return 'Max LTV must be greater than 0';
+  }
+  if (value > 100) {
+    return 'Max LTV cannot exceed 100%';
+  }
+  return null;
+}
+
+export function validateMaxDTI(value: number, allInputs: HomeAffordabilityInputs): string | null {
+  if (value === undefined || value <= 0) {
+    return 'Max DTI must be greater than 0';
+  }
+  if (value > 60) {
+    return 'Max DTI cannot exceed 60%';
+  }
+  return null;
+}
+
+export function validateMaxFrontEndRatio(value: number, allInputs: HomeAffordabilityInputs): string | null {
+  if (value === undefined || value <= 0) {
+    return 'Max front-end ratio must be greater than 0';
+  }
+  if (value > 50) {
+    return 'Max front-end ratio cannot exceed 50%';
+  }
+  return null;
+}
+
+export function validateClosingCosts(value: number, allInputs: HomeAffordabilityInputs): string | null {
+  if (value === undefined || value < 0) {
+    return 'Closing costs must be 0 or greater';
+  }
+  return null;
+}
+
+export function validateMovingCosts(value: number, allInputs: HomeAffordabilityInputs): string | null {
+  if (value === undefined || value < 0) {
+    return 'Moving costs must be 0 or greater';
+  }
+  return null;
+}
+
+export function validateEmergencyFund(value: number, allInputs: HomeAffordabilityInputs): string | null {
+  if (value === undefined || value < 0) {
+    return 'Emergency fund must be 0 or greater';
+  }
+  return null;
+}
+
+export function validateMaintenanceReserve(value: number, allInputs: HomeAffordabilityInputs): string | null {
+  if (value === undefined || value < 0) {
+    return 'Maintenance reserve must be 0 or greater';
+  }
+  return null;
+}
+
+export function validateAnalysisPeriod(value: number, allInputs: HomeAffordabilityInputs): string | null {
+  if (!value || value <= 0) {
+    return 'Analysis period must be greater than 0';
+  }
+  if (value > 30) {
+    return 'Analysis period cannot exceed 30 years';
+  }
+  return null;
+}
+
+export function validateInflationRate(value: number, allInputs: HomeAffordabilityInputs): string | null {
+  if (value === undefined) {
+    return 'Inflation rate is required';
+  }
+  if (value < -5 || value > 15) {
+    return 'Inflation rate must be between -5% and 15%';
+  }
+  return null;
+}
+
+export function validateIncomeGrowthRate(value: number, allInputs: HomeAffordabilityInputs): string | null {
+  if (value === undefined) {
+    return 'Income growth rate is required';
+  }
+  if (value < -10 || value > 20) {
+    return 'Income growth rate must be between -10% and 20%';
+  }
+  return null;
+}
+
+export function validatePropertyAppreciationRate(value: number, allInputs: HomeAffordabilityInputs): string | null {
+  if (value === undefined) {
+    return 'Property appreciation rate is required';
+  }
+  if (value < -10 || value > 20) {
+    return 'Property appreciation rate must be between -10% and 20%';
+  }
+  return null;
+}
+
+export function validateCurrency(value: string, allInputs: HomeAffordabilityInputs): string | null {
+  if (!value) {
+    return 'Currency is required';
+  }
+  const validCurrencies = ['USD', 'EUR', 'GBP', 'CAD', 'AUD'];
+  if (!validCurrencies.includes(value)) {
+    return 'Invalid currency';
+  }
+  return null;
+}
+
+export function validateDisplayFormat(value: string, allInputs: HomeAffordabilityInputs): string | null {
+  if (!value) {
+    return 'Display format is required';
+  }
+  const validFormats = ['percentage', 'decimal', 'currency'];
+  if (!validFormats.includes(value)) {
+    return 'Invalid display format';
+  }
+  return null;
+}
+
+export function validateIncludeCharts(value: boolean, allInputs: HomeAffordabilityInputs): string | null {
+  if (value === undefined) {
+    return 'Include charts field is required';
+  }
+  return null;
 }

@@ -1,300 +1,434 @@
-import { describe, it, expect } from 'vitest';
 import { HELOCCalculator } from './HELOCCalculator';
-import { calculateHELOC } from './formulas';
 import { validateHELOCInputs } from './validation';
-import { validateAllHELOCInputs } from './quickValidation';
+import { calculateHELOC } from './formulas';
 
-describe('HELOC Calculator', () => {
-  describe('Calculator Structure', () => {
+describe('HELOCCalculator', () => {
+  const validInputs = {
+    // Property Information
+    propertyValue: 500000,
+    propertyAddress: '123 Main St, City, State 12345',
+    propertyType: 'single_family' as const,
+    propertyAge: 15,
+    propertyCondition: 'good' as const,
+    
+    // Current Mortgage Information
+    currentMortgageBalance: 300000,
+    currentMortgageRate: 4.5,
+    currentMortgagePayment: 1500,
+    mortgageType: 'conventional' as const,
+    
+    // HELOC Information
+    helocAmount: 100000,
+    helocRate: 6.5,
+    helocRateType: 'variable' as const,
+    drawPeriod: 10,
+    repaymentPeriod: 15,
+    minimumPayment: 100,
+    minimumPaymentType: 'interest_only' as const,
+    
+    // Borrower Information
+    borrowerCreditScore: 720,
+    borrowerIncome: 80000,
+    borrowerDebtToIncomeRatio: 35,
+    borrowerEmploymentType: 'employed' as const,
+    borrowerEmploymentLength: 5,
+    
+    // Fees and Costs
+    originationFee: 500,
+    appraisalFee: 400,
+    titleInsuranceFee: 800,
+    recordingFee: 150,
+    annualFee: 50,
+    inactivityFee: 25,
+    earlyClosureFee: 100,
+    otherFees: 200,
+    
+    // Usage Information
+    intendedUse: 'home_improvement' as const,
+    drawAmount: 50000,
+    drawFrequency: 'as_needed' as const,
+    repaymentStrategy: 'interest_only' as const,
+    
+    // Market Information
+    marketCondition: 'stable' as const,
+    marketGrowthRate: 3.0,
+    
+    // Risk Factors
+    marketRisk: 'medium' as const,
+    propertyRisk: 'medium' as const,
+    borrowerRisk: 'medium' as const,
+    
+    // Analysis Parameters
+    analysisPeriod: 10,
+    inflationRate: 2.5,
+    taxRate: 25,
+    
+    // Reporting Preferences
+    currency: 'USD' as const,
+    displayFormat: 'currency' as const,
+    includeCharts: true
+  };
+
+  describe('Calculator Definition', () => {
     it('should have correct basic properties', () => {
-      expect(HELOCCalculator.id).toBe('heloc-calculator');
+      expect(HELOCCalculator.id).toBe('heloc');
       expect(HELOCCalculator.name).toBe('HELOC (Home Equity Line of Credit) Calculator');
       expect(HELOCCalculator.category).toBe('finance');
-      expect(HELOCCalculator.subcategory).toBe('investment');
+      expect(HELOCCalculator.subcategory).toBe('real-estate');
     });
 
-    it('should have required input fields', () => {
-      const requiredInputs = [
-        'homeValue', 'currentMortgageBalance', 'requestedCreditLimit', 'interestRate',
-        'drawPeriod', 'repaymentPeriod', 'propertyType', 'occupancyType', 'propertyLocation',
-        'marketType', 'purpose'
+    it('should have comprehensive description', () => {
+      expect(HELOCCalculator.description).toBeTruthy();
+      expect(HELOCCalculator.longDescription).toBeTruthy();
+      expect(HELOCCalculator.longDescription.length).toBeGreaterThan(100);
+    });
+
+    it('should have all required input fields', () => {
+      const requiredFields = [
+        'propertyValue', 'propertyAddress', 'propertyType', 'propertyAge',
+        'propertyCondition', 'currentMortgageBalance', 'currentMortgageRate',
+        'currentMortgagePayment', 'mortgageType', 'helocAmount', 'helocRate',
+        'helocRateType', 'drawPeriod', 'repaymentPeriod', 'minimumPayment',
+        'minimumPaymentType', 'borrowerCreditScore', 'borrowerIncome',
+        'borrowerDebtToIncomeRatio', 'borrowerEmploymentType',
+        'borrowerEmploymentLength', 'originationFee', 'appraisalFee',
+        'titleInsuranceFee', 'recordingFee', 'annualFee', 'inactivityFee',
+        'earlyClosureFee', 'otherFees', 'intendedUse', 'drawAmount',
+        'drawFrequency', 'repaymentStrategy', 'marketCondition',
+        'marketGrowthRate', 'marketRisk', 'propertyRisk', 'borrowerRisk',
+        'analysisPeriod', 'inflationRate', 'taxRate', 'currency',
+        'displayFormat', 'includeCharts'
       ];
-      
-      requiredInputs.forEach(inputId => {
-        const input = HELOCCalculator.inputs.find(i => i.id === inputId);
-        expect(input).toBeDefined();
-        expect(input?.required).toBe(true);
+
+      requiredFields.forEach(field => {
+        expect(HELOCCalculator.inputs[field]).toBeDefined();
       });
     });
 
-    it('should have correct output fields', () => {
-      const expectedOutputs = [
-        'availableEquity', 'maxCreditLimit', 'approvedCreditLimit', 'currentLTV',
-        'proposedCLTV', 'monthlyInterestOnlyPayment', 'monthlyPIPayment', 'totalFees',
-        'apr', 'effectiveRate', 'totalInterest', 'totalCost', 'debtServiceCoverage',
-        'paymentToIncomeRatio', 'breakEvenMonths', 'taxBenefits', 'inflationHedgeScore',
-        'liquidityScore', 'flexibilityScore', 'riskScore', 'feasibilityScore',
-        'maxBorrowingAmount', 'recommendedCreditLimit', 'monthlyCashFlowImpact',
-        'annualCashFlowImpact', 'equityUtilization', 'costOfBorrowing', 'investmentGrade',
-        'recommendedAction', 'helocAnalysis'
+    it('should have all required output fields', () => {
+      const requiredOutputs = [
+        'totalEquity', 'availableEquity', 'combinedLTV', 'monthlyPayment',
+        'totalInterestPaid', 'effectiveInterestRate', 'totalFees',
+        'riskScore', 'analysis'
       ];
-      
-      expectedOutputs.forEach(outputId => {
-        const output = HELOCCalculator.outputs.find(o => o.id === outputId);
-        expect(output).toBeDefined();
+
+      requiredOutputs.forEach(field => {
+        expect(HELOCCalculator.outputs[field]).toBeDefined();
       });
     });
-  });
 
-  describe('Validation', () => {
-    it('should validate required fields', () => {
-      const result = validateHELOCInputs({});
-      expect(result.isValid).toBe(false);
-      expect(result.errors).toContain('Home value is required');
-      expect(result.errors).toContain('Current mortgage balance is required');
-      expect(result.errors).toContain('Requested credit limit is required');
+    it('should have formulas defined', () => {
+      expect(HELOCCalculator.formulas).toBeDefined();
+      expect(Object.keys(HELOCCalculator.formulas).length).toBeGreaterThan(0);
     });
 
-    it('should validate numerical ranges', () => {
-      const result = validateHELOCInputs({
-        homeValue: 500000,
-        currentMortgageBalance: 300000,
-        requestedCreditLimit: 100000,
-        interestRate: 5.5,
-        drawPeriod: 10,
-        repaymentPeriod: 20,
-        propertyType: 'primary-residence',
-        occupancyType: 'owner-occupied',
-        propertyLocation: 'suburban',
-        marketType: 'stable',
-        purpose: 'home-improvement',
-        homeValue: -1000
-      });
-      expect(result.isValid).toBe(false);
-      expect(result.errors).toContain('Home value must be between $10,000 and $10,000,000');
+    it('should have examples defined', () => {
+      expect(HELOCCalculator.examples).toBeDefined();
+      expect(HELOCCalculator.examples.length).toBeGreaterThan(0);
     });
 
-    it('should validate logical relationships', () => {
-      const result = validateHELOCInputs({
-        homeValue: 500000,
-        currentMortgageBalance: 600000,
-        requestedCreditLimit: 100000,
-        interestRate: 5.5,
-        drawPeriod: 10,
-        repaymentPeriod: 20,
-        propertyType: 'primary-residence',
-        occupancyType: 'owner-occupied',
-        propertyLocation: 'suburban',
-        marketType: 'stable',
-        purpose: 'home-improvement'
-      });
-      expect(result.isValid).toBe(false);
-      expect(result.errors).toContain('Current mortgage balance cannot exceed home value');
-    });
-
-    it('should validate enum values', () => {
-      const result = validateHELOCInputs({
-        homeValue: 500000,
-        currentMortgageBalance: 300000,
-        requestedCreditLimit: 100000,
-        interestRate: 5.5,
-        drawPeriod: 10,
-        repaymentPeriod: 20,
-        propertyType: 'invalid-type',
-        occupancyType: 'owner-occupied',
-        propertyLocation: 'suburban',
-        marketType: 'stable',
-        purpose: 'home-improvement'
-      });
-      expect(result.isValid).toBe(false);
-      expect(result.errors).toContain('Invalid property type');
+    it('should have tags defined', () => {
+      expect(HELOCCalculator.tags).toBeDefined();
+      expect(HELOCCalculator.tags.length).toBeGreaterThan(0);
     });
   });
 
-  describe('Calculation Logic', () => {
-    it('should calculate basic HELOC metrics correctly', () => {
-      const inputs = {
-        homeValue: 500000,
-        currentMortgageBalance: 300000,
-        requestedCreditLimit: 100000,
-        interestRate: 5.5,
-        drawPeriod: 10,
-        repaymentPeriod: 20,
-        propertyType: 'primary-residence',
-        occupancyType: 'owner-occupied',
-        propertyLocation: 'suburban',
-        marketType: 'stable',
-        purpose: 'home-improvement'
-      };
-
-      const outputs = calculateHELOC(inputs);
-
-      expect(outputs.availableEquity).toBe(200000);
-      expect(outputs.currentLTV).toBe(60);
-      expect(outputs.proposedCLTV).toBe(80);
-      expect(outputs.monthlyInterestOnlyPayment).toBeGreaterThan(0);
-      expect(outputs.totalFees).toBeGreaterThan(0);
-    });
-
-    it('should calculate risk and feasibility scores', () => {
-      const inputs = {
-        homeValue: 500000,
-        currentMortgageBalance: 300000,
-        requestedCreditLimit: 100000,
-        interestRate: 5.5,
-        drawPeriod: 10,
-        repaymentPeriod: 20,
-        propertyType: 'primary-residence',
-        occupancyType: 'owner-occupied',
-        propertyLocation: 'suburban',
-        marketType: 'stable',
-        purpose: 'home-improvement',
-        creditScore: 750,
-        debtToIncomeRatio: 35,
-        monthlyIncome: 8000
-      };
-
-      const outputs = calculateHELOC(inputs);
-
-      expect(outputs.riskScore).toBeGreaterThan(0);
-      expect(outputs.riskScore).toBeLessThanOrEqual(100);
-      expect(outputs.feasibilityScore).toBeGreaterThan(0);
-      expect(outputs.feasibilityScore).toBeLessThanOrEqual(100);
-    });
-
-    it('should handle edge cases', () => {
-      const inputs = {
-        homeValue: 10000000,
-        currentMortgageBalance: 5000000,
-        requestedCreditLimit: 1000000,
-        interestRate: 1,
-        drawPeriod: 1,
-        repaymentPeriod: 1,
-        propertyType: 'investment-property',
-        occupancyType: 'non-owner-occupied',
-        propertyLocation: 'urban',
-        marketType: 'hot',
-        purpose: 'investment'
-      };
-
-      const outputs = calculateHELOC(inputs);
-
-      expect(outputs.availableEquity).toBe(5000000);
-      expect(outputs.currentLTV).toBe(50);
-      expect(outputs.proposedCLTV).toBe(60);
-    });
-  });
-
-  describe('HELOC Analysis', () => {
-    it('should generate comprehensive analysis', () => {
-      const inputs = {
-        homeValue: 500000,
-        currentMortgageBalance: 300000,
-        requestedCreditLimit: 100000,
-        interestRate: 5.5,
-        drawPeriod: 10,
-        repaymentPeriod: 20,
-        propertyType: 'primary-residence',
-        occupancyType: 'owner-occupied',
-        propertyLocation: 'suburban',
-        marketType: 'stable',
-        purpose: 'home-improvement'
-      };
-
-      const outputs = calculateHELOC(inputs);
-      const analysis = HELOCCalculator.generateReport(inputs, outputs);
-
-      expect(analysis).toContain('HELOC Analysis');
-      expect(analysis).toContain('Available Equity');
-      expect(analysis).toContain('Risk Assessment');
-      expect(analysis).toContain('Recommendations');
-    });
-  });
-
-  describe('Edge Cases', () => {
-    it('should handle maximum values', () => {
-      const inputs = {
-        homeValue: 10000000,
-        currentMortgageBalance: 5000000,
-        requestedCreditLimit: 1000000,
-        interestRate: 20,
-        drawPeriod: 30,
-        repaymentPeriod: 30,
-        propertyType: 'investment-property',
-        occupancyType: 'non-owner-occupied',
-        propertyLocation: 'urban',
-        marketType: 'hot',
-        purpose: 'investment'
-      };
-
-      const outputs = calculateHELOC(inputs);
-      expect(outputs.availableEquity).toBe(5000000);
-      expect(outputs.riskScore).toBeGreaterThan(0);
-    });
-
-    it('should handle minimum values', () => {
-      const inputs = {
-        homeValue: 10000,
-        currentMortgageBalance: 0,
-        requestedCreditLimit: 1000,
-        interestRate: 1,
-        drawPeriod: 1,
-        repaymentPeriod: 1,
-        propertyType: 'primary-residence',
-        occupancyType: 'owner-occupied',
-        propertyLocation: 'rural',
-        marketType: 'declining',
-        purpose: 'emergency-fund'
-      };
-
-      const outputs = calculateHELOC(inputs);
-      expect(outputs.availableEquity).toBe(10000);
-      expect(outputs.currentLTV).toBe(0);
-    });
-  });
-
-  describe('Quick Validation', () => {
-    it('should validate individual fields', () => {
-      const { validateHomeValue, validateInterestRate } = require('./quickValidation');
-      
-      expect(validateHomeValue(500000).isValid).toBe(true);
-      expect(validateHomeValue(-1000).isValid).toBe(false);
-      expect(validateInterestRate(5.5).isValid).toBe(true);
-      expect(validateInterestRate(25).isValid).toBe(false);
-    });
-
-    it('should validate all inputs together', () => {
-      const inputs = {
-        homeValue: 500000,
-        currentMortgageBalance: 300000,
-        requestedCreditLimit: 100000,
-        interestRate: 5.5,
-        drawPeriod: 10,
-        repaymentPeriod: 20,
-        propertyType: 'primary-residence',
-        occupancyType: 'owner-occupied',
-        propertyLocation: 'suburban',
-        marketType: 'stable',
-        purpose: 'home-improvement'
-      };
-
-      const result = validateAllHELOCInputs(inputs);
+  describe('Input Validation', () => {
+    it('should validate correct inputs', () => {
+      const result = validateHELOCInputs(validInputs);
       expect(result.isValid).toBe(true);
       expect(result.errors).toHaveLength(0);
     });
 
-    it('should catch validation errors in quick validation', () => {
-      const inputs = {
-        homeValue: -1000,
-        currentMortgageBalance: 300000,
-        requestedCreditLimit: 100000,
-        interestRate: 25,
-        propertyType: 'invalid-type'
-      };
-
-      const result = validateAllHELOCInputs(inputs);
+    it('should reject missing required fields', () => {
+      const invalidInputs = { ...validInputs };
+      delete (invalidInputs as any).propertyValue;
+      
+      const result = validateHELOCInputs(invalidInputs);
       expect(result.isValid).toBe(false);
-      expect(result.errors.length).toBeGreaterThan(0);
+      expect(result.errors).toContain('Property value must be greater than 0');
+    });
+
+    it('should reject invalid property value', () => {
+      const invalidInputs = { ...validInputs, propertyValue: -1000 };
+      
+      const result = validateHELOCInputs(invalidInputs);
+      expect(result.isValid).toBe(false);
+      expect(result.errors).toContain('Property value must be greater than 0');
+    });
+
+    it('should reject invalid HELOC amount', () => {
+      const invalidInputs = { ...validInputs, helocAmount: 0 };
+      
+      const result = validateHELOCInputs(invalidInputs);
+      expect(result.isValid).toBe(false);
+      expect(result.errors).toContain('HELOC amount must be greater than 0');
+    });
+
+    it('should reject invalid credit score', () => {
+      const invalidInputs = { ...validInputs, borrowerCreditScore: 200 };
+      
+      const result = validateHELOCInputs(invalidInputs);
+      expect(result.isValid).toBe(false);
+      expect(result.errors).toContain('Borrower credit score must be between 300 and 850');
+    });
+
+    it('should reject mortgage balance exceeding property value', () => {
+      const invalidInputs = { ...validInputs, currentMortgageBalance: 600000 };
+      
+      const result = validateHELOCInputs(invalidInputs);
+      expect(result.isValid).toBe(false);
+      expect(result.errors).toContain('Current mortgage balance cannot exceed property value');
+    });
+
+    it('should provide warnings for business logic issues', () => {
+      const warningInputs = { 
+        ...validInputs, 
+        borrowerCreditScore: 550,
+        borrowerDebtToIncomeRatio: 55
+      };
+      
+      const result = validateHELOCInputs(warningInputs);
+      expect(result.isValid).toBe(true);
+      expect(result.warnings).toContain('Borrower has poor credit score, which may affect approval');
+      expect(result.warnings).toContain('High debt-to-income ratio may affect approval');
+    });
+  });
+
+  describe('Calculation Logic', () => {
+    it('should calculate total equity correctly', () => {
+      const metrics = calculateHELOC(validInputs);
+      
+      expect(metrics.totalEquity).toBe(validInputs.propertyValue - validInputs.currentMortgageBalance);
+      expect(metrics.totalEquity).toBeGreaterThan(0);
+      expect(typeof metrics.totalEquity).toBe('number');
+    });
+
+    it('should calculate available equity correctly', () => {
+      const metrics = calculateHELOC(validInputs);
+      
+      expect(metrics.availableEquity).toBeCloseTo(metrics.totalEquity * 0.85, 2);
+      expect(metrics.availableEquity).toBeGreaterThan(0);
+      expect(typeof metrics.availableEquity).toBe('number');
+    });
+
+    it('should calculate combined LTV correctly', () => {
+      const metrics = calculateHELOC(validInputs);
+      
+      const expectedCombinedLTV = ((validInputs.currentMortgageBalance + validInputs.helocAmount) / validInputs.propertyValue) * 100;
+      expect(metrics.combinedLTV).toBeCloseTo(expectedCombinedLTV, 2);
+      expect(metrics.combinedLTV).toBeGreaterThan(0);
+      expect(metrics.combinedLTV).toBeLessThan(100);
+    });
+
+    it('should calculate monthly payment correctly', () => {
+      const metrics = calculateHELOC(validInputs);
+      
+      expect(metrics.monthlyPayment).toBeGreaterThan(0);
+      expect(typeof metrics.monthlyPayment).toBe('number');
+    });
+
+    it('should calculate total interest paid correctly', () => {
+      const metrics = calculateHELOC(validInputs);
+      
+      expect(metrics.totalInterestPaid).toBeGreaterThan(0);
+      expect(typeof metrics.totalInterestPaid).toBe('number');
+    });
+
+    it('should calculate effective interest rate correctly', () => {
+      const metrics = calculateHELOC(validInputs);
+      
+      expect(metrics.effectiveInterestRate).toBeGreaterThan(0);
+      expect(metrics.effectiveInterestRate).toBeLessThan(30);
+      expect(typeof metrics.effectiveInterestRate).toBe('number');
+    });
+
+    it('should calculate total fees correctly', () => {
+      const metrics = calculateHELOC(validInputs);
+      
+      const expectedTotalFees = validInputs.originationFee + validInputs.appraisalFee + 
+                               validInputs.titleInsuranceFee + validInputs.recordingFee + 
+                               validInputs.otherFees;
+      expect(metrics.totalFees).toBe(expectedTotalFees);
+      expect(typeof metrics.totalFees).toBe('number');
+    });
+
+    it('should calculate risk score correctly', () => {
+      const metrics = calculateHELOC(validInputs);
+      
+      expect(metrics.riskScore).toBeGreaterThanOrEqual(1);
+      expect(metrics.riskScore).toBeLessThanOrEqual(10);
+      expect(typeof metrics.riskScore).toBe('number');
+    });
+
+    it('should calculate risk metrics correctly', () => {
+      const metrics = calculateHELOC(validInputs);
+      
+      expect(metrics.probabilityOfDefault).toBeGreaterThanOrEqual(0);
+      expect(metrics.probabilityOfDefault).toBeLessThanOrEqual(20);
+      expect(metrics.lossGivenDefault).toBeGreaterThanOrEqual(15);
+      expect(metrics.lossGivenDefault).toBeLessThanOrEqual(60);
+      expect(metrics.expectedLoss).toBeDefined();
+    });
+
+    it('should calculate sensitivity matrix correctly', () => {
+      const metrics = calculateHELOC(validInputs);
+      
+      expect(metrics.sensitivityMatrix).toBeDefined();
+      expect(Array.isArray(metrics.sensitivityMatrix)).toBe(true);
+      expect(metrics.sensitivityMatrix.length).toBeGreaterThan(0);
+    });
+
+    it('should calculate scenarios correctly', () => {
+      const metrics = calculateHELOC(validInputs);
+      
+      expect(metrics.scenarios).toBeDefined();
+      expect(Array.isArray(metrics.scenarios)).toBe(true);
+      expect(metrics.scenarios.length).toBeGreaterThan(0);
+    });
+
+    it('should calculate payment schedule correctly', () => {
+      const metrics = calculateHELOC(validInputs);
+      
+      expect(metrics.paymentSchedule).toBeDefined();
+      expect(Array.isArray(metrics.paymentSchedule)).toBe(true);
+      expect(metrics.paymentSchedule.length).toBeGreaterThan(0);
+    });
+  });
+
+  describe('Calculator Integration', () => {
+    it('should calculate complete output with valid inputs', () => {
+      const output = HELOCCalculator.calculate(validInputs);
+      
+      expect(output).toBeDefined();
+      expect(output.totalEquity).toBeDefined();
+      expect(output.analysis).toBeDefined();
+      expect(output.analysis.helocRating).toBeDefined();
+      expect(output.analysis.recommendation).toBeDefined();
+    });
+
+    it('should throw error with invalid inputs', () => {
+      const invalidInputs = { ...validInputs };
+      delete (invalidInputs as any).propertyValue;
+      
+      expect(() => {
+        HELOCCalculator.calculate(invalidInputs);
+      }).toThrow('Validation failed');
+    });
+
+    it('should generate report correctly', () => {
+      const output = HELOCCalculator.calculate(validInputs);
+      const report = HELOCCalculator.generateReport(validInputs, output);
+      
+      expect(report).toBeDefined();
+      expect(typeof report).toBe('string');
+      expect(report.length).toBeGreaterThan(100);
+    });
+  });
+
+  describe('Edge Cases', () => {
+    it('should handle high HELOC rates', () => {
+      const highRateInputs = { ...validInputs, helocRate: 12 };
+      const metrics = calculateHELOC(highRateInputs);
+      
+      expect(metrics.monthlyPayment).toBeDefined();
+      expect(metrics.totalInterestPaid).toBeDefined();
+      expect(metrics.effectiveInterestRate).toBeDefined();
+    });
+
+    it('should handle low credit scores', () => {
+      const lowCreditInputs = { ...validInputs, borrowerCreditScore: 550 };
+      const metrics = calculateHELOC(lowCreditInputs);
+      
+      expect(metrics.riskScore).toBeGreaterThan(5);
+      expect(metrics.probabilityOfDefault).toBeGreaterThan(10);
+    });
+
+    it('should handle high LTV ratios', () => {
+      const highLTVInputs = { 
+        ...validInputs, 
+        currentMortgageBalance: 400000,
+        helocAmount: 100000
+      };
+      const metrics = calculateHELOC(highLTVInputs);
+      
+      expect(metrics.combinedLTV).toBeGreaterThan(90);
+      expect(metrics.riskScore).toBeGreaterThan(5);
+    });
+
+    it('should handle declining markets', () => {
+      const decliningMarketInputs = { 
+        ...validInputs, 
+        marketCondition: 'declining' as const,
+        marketGrowthRate: -5
+      };
+      const metrics = calculateHELOC(decliningMarketInputs);
+      
+      expect(metrics.riskScore).toBeGreaterThan(5);
+    });
+
+    it('should handle unemployed borrowers', () => {
+      const unemployedInputs = { 
+        ...validInputs, 
+        borrowerEmploymentType: 'unemployed' as const
+      };
+      const metrics = calculateHELOC(unemployedInputs);
+      
+      expect(metrics.riskScore).toBeGreaterThan(5);
+      expect(metrics.probabilityOfDefault).toBeGreaterThan(10);
+    });
+
+    it('should handle poor property conditions', () => {
+      const poorConditionInputs = { 
+        ...validInputs, 
+        propertyCondition: 'poor' as const
+      };
+      const metrics = calculateHELOC(poorConditionInputs);
+      
+      expect(metrics.riskScore).toBeGreaterThan(5);
+    });
+
+    it('should handle zero draw amounts', () => {
+      const zeroDrawInputs = { ...validInputs, drawAmount: 0 };
+      const metrics = calculateHELOC(zeroDrawInputs);
+      
+      expect(metrics.monthlyPayment).toBe(0);
+      expect(metrics.totalInterestPaid).toBe(0);
+    });
+
+    it('should handle large draw amounts', () => {
+      const largeDrawInputs = { ...validInputs, drawAmount: 80000 };
+      const metrics = calculateHELOC(largeDrawInputs);
+      
+      expect(metrics.monthlyPayment).toBeDefined();
+      expect(metrics.totalInterestPaid).toBeDefined();
+    });
+  });
+
+  describe('Performance', () => {
+    it('should calculate results quickly', () => {
+      const startTime = Date.now();
+      const metrics = calculateHELOC(validInputs);
+      const endTime = Date.now();
+      
+      expect(endTime - startTime).toBeLessThan(1000); // Should complete in under 1 second
+      expect(metrics.totalEquity).toBeDefined();
+    });
+
+    it('should handle large property values', () => {
+      const largePropertyInputs = { ...validInputs, propertyValue: 2000000 };
+      const metrics = calculateHELOC(largePropertyInputs);
+      
+      expect(metrics.totalEquity).toBeDefined();
+      expect(metrics.availableEquity).toBeDefined();
+    });
+
+    it('should handle high HELOC amounts', () => {
+      const highHELOCInputs = { ...validInputs, helocAmount: 500000 };
+      const metrics = calculateHELOC(highHELOCInputs);
+      
+      expect(metrics.combinedLTV).toBeDefined();
+      expect(metrics.monthlyPayment).toBeDefined();
     });
   });
 });
