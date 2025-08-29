@@ -1,427 +1,227 @@
 export interface HELOCInputs {
+  // Property Information
   propertyValue: number;
-  firstMortgageBalance: number;
-  creditLimit: number;
-  interestRate: number;
+  propertyAddress: string;
+  propertyType: 'single_family' | 'condo' | 'townhouse' | 'multi_family' | 'commercial';
+  propertyAge: number;
+  propertyCondition: 'excellent' | 'good' | 'fair' | 'poor';
+  
+  // Current Mortgage Information
+  currentMortgageBalance: number;
+  currentMortgageRate: number;
+  currentMortgagePayment: number;
+  mortgageType: 'conventional' | 'fha' | 'va' | 'usda' | 'jumbo';
+  
+  // HELOC Information
+  helocAmount: number;
+  helocRate: number;
+  helocRateType: 'variable' | 'fixed' | 'introductory';
   drawPeriod: number;
   repaymentPeriod: number;
-  propertyType: 'single-family' | 'multi-family' | 'condo' | 'townhouse' | 'manufactured';
-  propertyLocation: string;
-  creditScore: number;
-  debtToIncomeRatio: number;
-  loanToValueRatio: number;
-  combinedLoanToValueRatio: number;
-  annualFee: number;
-  applicationFee: number;
-  appraisalFee: number;
-  titleInsurance: number;
-  recordingFees: number;
-  otherFees: number;
-  totalFees: number;
-  propertyTaxes: number;
-  homeownersInsurance: number;
-  escrowAccount: boolean;
-  escrowAmount: number;
-  purpose: 'home-improvement' | 'debt-consolidation' | 'education' | 'medical' | 'business' | 'investment' | 'other';
-  monthlyIncome: number;
-  monthlyDebtPayments: number;
-  employmentStatus: 'employed' | 'self-employed' | 'retired' | 'unemployed';
-  employmentLength: number;
-  bankruptcy: boolean;
-  foreclosure: boolean;
-  shortSale: boolean;
-  drawAmount: number;
-  monthlyPayment: number;
   minimumPayment: number;
-  interestOnlyPayment: number;
-  principalAndInterestPayment: number;
-  balloonPayment: number;
-  totalPayment: number;
-  totalInterest: number;
-  effectiveInterestRate: number;
-  annualPercentageRate: number;
-  costOfCredit: number;
-  breakEvenMonths: number;
-  paybackPeriod: number;
-  netPresentValue: number;
-  internalRateOfReturn: number;
-  modifiedInternalRateOfReturn: number;
-  profitabilityIndex: number;
-  discountedPaybackPeriod: number;
-  averageAccountingReturn: number;
-  capitalAssetPricingModel: number;
-  weightedAverageCostOfCapital: number;
-  hurdleRate: number;
-  riskAdjustedReturn: number;
-  riskFreeRate: number;
-  marketRiskPremium: number;
-  beta: number;
-  alpha: number;
-  sharpeRatio: number;
-  sortinoRatio: number;
-  treynorRatio: number;
-  informationRatio: number;
-  calmarRatio: number;
-  maximumDrawdown: number;
-  valueAtRisk: number;
-  conditionalValueAtRisk: number;
-  expectedShortfall: number;
-  downsideDeviation: number;
-  upsideDeviation: number;
-  skewness: number;
-  kurtosis: number;
-  correlation: number;
-  covariance: number;
-  variance: number;
-  standardDeviation: number;
-  coefficientOfVariation: number;
-  riskOfRuin: number;
-  kellyCriterion: number;
-  optimalLeverage: number;
-  positionSizing: number;
-  stopLoss: number;
-  takeProfit: number;
-  trailingStop: number;
-  rebalancingThreshold: number;
-  taxLossHarvesting: boolean;
-  taxGainHarvesting: boolean;
-  washSaleRule: boolean;
-  taxLotAccounting: 'fifo' | 'lifo' | 'specific-identification' | 'average-cost';
-  taxBracket: number;
-  stateTaxRate: number;
-  localTaxRate: number;
-  alternativeMinimumTax: boolean;
-  netInvestmentIncomeTax: boolean;
-  qualifiedDividendRate: number;
-  longTermCapitalGainsRate: number;
-  shortTermCapitalGainsRate: number;
-  municipalBondYield: number;
-  corporateBondYield: number;
-  treasuryBondYield: number;
-  inflationProtectedSecurities: number;
-  highYieldBondYield: number;
-  emergingMarketBondYield: number;
-  internationalBondYield: number;
-  realEstateInvestmentTrustYield: number;
-  masterLimitedPartnershipYield: number;
-  preferredStockYield: number;
-  convertibleBondYield: number;
-  floatingRateNoteYield: number;
-  zeroCouponBondYield: number;
-  callableBondYield: number;
-  putableBondYield: number;
-  stepUpBondYield: number;
-  stepDownBondYield: number;
-  inflationLinkedBondYield: number;
-  currencyLinkedBondYield: number;
-  commodityLinkedBondYield: number;
-  equityLinkedBondYield: number;
-  creditLinkedBondYield: number;
-  catastropheBondYield: number;
-  weatherDerivativeYield: number;
-  carbonCreditYield: number;
-  renewableEnergyYield: number;
-  infrastructureYield: number;
-  privateEquityYield: number;
-  ventureCapitalYield: number;
-  hedgeFundYield: number;
-  managedFuturesYield: number;
-  longShortEquityYield: number;
-  marketNeutralYield: number;
-  arbitrageYield: number;
-  eventDrivenYield: number;
-  distressedSecuritiesYield: number;
-  globalMacroYield: number;
-  systematicTradingYield: number;
-  discretionaryTradingYield: number;
-  quantitativeTradingYield: number;
-  highFrequencyTradingYield: number;
-  algorithmicTradingYield: number;
-  machineLearningTradingYield: number;
-  artificialIntelligenceTradingYield: number;
-  blockchainTradingYield: number;
-  cryptocurrencyTradingYield: number;
-  tokenizedAssetYield: number;
-  decentralizedFinanceYield: number;
-  nonFungibleTokenYield: number;
-  initialCoinOfferingYield: number;
-  securityTokenOfferingYield: number;
-  initialDexOfferingYield: number;
-  yieldFarmingYield: number;
-  liquidityMiningYield: number;
-  stakingYield: number;
-  lendingYield: number;
-  borrowingYield: number;
-  marginTradingYield: number;
-  futuresTradingYield: number;
-  optionsTradingYield: number;
-  swapTradingYield: number;
-  forwardTradingYield: number;
-  spotTradingYield: number;
-  crossCurrencyTradingYield: number;
-  interestRateTradingYield: number;
-  creditTradingYield: number;
-  volatilityTradingYield: number;
-  correlationTradingYield: number;
-  dispersionTradingYield: number;
-  basisTradingYield: number;
-  calendarSpreadYield: number;
-  butterflySpreadYield: number;
-  ironCondorYield: number;
-  straddleYield: number;
-  strangleYield: number;
-  collarYield: number;
-  protectivePutYield: number;
-  coveredCallYield: number;
-  cashSecuredPutYield: number;
-  nakedCallYield: number;
-  nakedPutYield: number;
-  bullCallSpreadYield: number;
-  bearPutSpreadYield: number;
-  bullPutSpreadYield: number;
-  bearCallSpreadYield: number;
-  diagonalSpreadYield: number;
-  ratioSpreadYield: number;
-  backspreadYield: number;
-  frontspreadYield: number;
-  boxSpreadYield: number;
-  jellyRollYield: number;
-  conversionYield: number;
-  reversalYield: number;
-  syntheticStockYield: number;
-  syntheticBondYield: number;
-  syntheticCurrencyYield: number;
-  syntheticCommodityYield: number;
-  syntheticVolatilityYield: number;
-  syntheticCorrelationYield: number;
-  syntheticDispersionYield: number;
-  syntheticBasisYield: number;
-  syntheticCalendarYield: number;
-  syntheticButterflyYield: number;
-  syntheticIronCondorYield: number;
-  syntheticStraddleYield: number;
-  syntheticStrangleYield: number;
-  syntheticCollarYield: number;
-  syntheticProtectivePutYield: number;
-  syntheticCoveredCallYield: number;
-  syntheticCashSecuredPutYield: number;
-  syntheticNakedCallYield: number;
-  syntheticNakedPutYield: number;
-  syntheticBullCallSpreadYield: number;
-  syntheticBearPutSpreadYield: number;
-  syntheticBullPutSpreadYield: number;
-  syntheticBearCallSpreadYield: number;
-  syntheticDiagonalSpreadYield: number;
-  syntheticRatioSpreadYield: number;
-  syntheticBackspreadYield: number;
-  syntheticFrontspreadYield: number;
-  syntheticBoxSpreadYield: number;
-  syntheticJellyRollYield: number;
-  syntheticConversionYield: number;
-  syntheticReversalYield: number;
+  minimumPaymentType: 'interest_only' | 'principal_interest' | 'percentage';
+  
+  // Borrower Information
+  borrowerCreditScore: number;
+  borrowerIncome: number;
+  borrowerDebtToIncomeRatio: number;
+  borrowerEmploymentType: 'employed' | 'self_employed' | 'retired' | 'unemployed';
+  borrowerEmploymentLength: number;
+  
+  // Fees and Costs
+  originationFee: number;
+  appraisalFee: number;
+  titleInsuranceFee: number;
+  recordingFee: number;
+  annualFee: number;
+  inactivityFee: number;
+  earlyClosureFee: number;
+  otherFees: number;
+  
+  // Usage Information
+  intendedUse: 'home_improvement' | 'debt_consolidation' | 'education' | 'emergency_fund' | 'investment' | 'other';
+  drawAmount: number;
+  drawFrequency: 'monthly' | 'quarterly' | 'annually' | 'as_needed';
+  repaymentStrategy: 'interest_only' | 'principal_interest' | 'balloon' | 'custom';
+  
+  // Market Information
+  marketCondition: 'appreciating' | 'stable' | 'declining';
+  marketGrowthRate: number;
+  comparableSales: Array<{
+    address: string;
+    salePrice: number;
+    saleDate: string;
+    condition: string;
+  }>;
+  
+  // Risk Factors
+  marketRisk: 'low' | 'medium' | 'high';
+  propertyRisk: 'low' | 'medium' | 'high';
+  borrowerRisk: 'low' | 'medium' | 'high';
+  
+  // Analysis Parameters
+  analysisPeriod: number;
+  inflationRate: number;
+  taxRate: number;
+  
+  // Reporting Preferences
+  currency: 'USD' | 'EUR' | 'GBP' | 'CAD' | 'AUD';
+  displayFormat: 'percentage' | 'decimal' | 'currency';
+  includeCharts: boolean;
 }
 
 export interface HELOCMetrics {
+  // Equity Analysis
+  totalEquity: number;
+  availableEquity: number;
+  combinedLTV: number;
+  helocLTV: number;
+  
+  // Payment Analysis
   monthlyPayment: number;
-  totalPayment: number;
-  totalInterest: number;
-  totalCost: number;
+  totalPayments: number;
+  totalInterestPaid: number;
   effectiveInterestRate: number;
-  annualPercentageRate: number;
+  
+  // Cost Analysis
+  totalFees: number;
+  totalCost: number;
   costOfCredit: number;
-  breakEvenMonths: number;
-  paybackPeriod: number;
-  netPresentValue: number;
-  internalRateOfReturn: number;
-  modifiedInternalRateOfReturn: number;
-  profitabilityIndex: number;
-  discountedPaybackPeriod: number;
-  averageAccountingReturn: number;
-  capitalAssetPricingModel: number;
-  weightedAverageCostOfCapital: number;
-  hurdleRate: number;
-  riskAdjustedReturn: number;
-  riskFreeRate: number;
-  marketRiskPremium: number;
-  beta: number;
-  alpha: number;
-  sharpeRatio: number;
-  sortinoRatio: number;
-  treynorRatio: number;
-  informationRatio: number;
-  calmarRatio: number;
-  maximumDrawdown: number;
-  valueAtRisk: number;
-  conditionalValueAtRisk: number;
-  expectedShortfall: number;
-  downsideDeviation: number;
-  upsideDeviation: number;
-  skewness: number;
-  kurtosis: number;
-  correlation: number;
-  covariance: number;
-  variance: number;
-  standardDeviation: number;
-  coefficientOfVariation: number;
-  riskOfRuin: number;
-  kellyCriterion: number;
-  optimalLeverage: number;
-  positionSizing: number;
-  stopLoss: number;
-  takeProfit: number;
-  trailingStop: number;
-  rebalancingThreshold: number;
-  taxLossHarvesting: boolean;
-  taxGainHarvesting: boolean;
-  washSaleRule: boolean;
-  taxLotAccounting: 'fifo' | 'lifo' | 'specific-identification' | 'average-cost';
-  taxBracket: number;
-  stateTaxRate: number;
-  localTaxRate: number;
-  alternativeMinimumTax: boolean;
-  netInvestmentIncomeTax: boolean;
-  qualifiedDividendRate: number;
-  longTermCapitalGainsRate: number;
-  shortTermCapitalGainsRate: number;
-  municipalBondYield: number;
-  corporateBondYield: number;
-  treasuryBondYield: number;
-  inflationProtectedSecurities: number;
-  highYieldBondYield: number;
-  emergingMarketBondYield: number;
-  internationalBondYield: number;
-  realEstateInvestmentTrustYield: number;
-  masterLimitedPartnershipYield: number;
-  preferredStockYield: number;
-  convertibleBondYield: number;
-  floatingRateNoteYield: number;
-  zeroCouponBondYield: number;
-  callableBondYield: number;
-  putableBondYield: number;
-  stepUpBondYield: number;
-  stepDownBondYield: number;
-  inflationLinkedBondYield: number;
-  currencyLinkedBondYield: number;
-  commodityLinkedBondYield: number;
-  equityLinkedBondYield: number;
-  creditLinkedBondYield: number;
-  catastropheBondYield: number;
-  weatherDerivativeYield: number;
-  carbonCreditYield: number;
-  renewableEnergyYield: number;
-  infrastructureYield: number;
-  privateEquityYield: number;
-  ventureCapitalYield: number;
-  hedgeFundYield: number;
-  managedFuturesYield: number;
-  longShortEquityYield: number;
-  marketNeutralYield: number;
-  arbitrageYield: number;
-  eventDrivenYield: number;
-  distressedSecuritiesYield: number;
-  globalMacroYield: number;
-  systematicTradingYield: number;
-  discretionaryTradingYield: number;
-  quantitativeTradingYield: number;
-  highFrequencyTradingYield: number;
-  algorithmicTradingYield: number;
-  machineLearningTradingYield: number;
-  artificialIntelligenceTradingYield: number;
-  blockchainTradingYield: number;
-  cryptocurrencyTradingYield: number;
-  tokenizedAssetYield: number;
-  decentralizedFinanceYield: number;
-  nonFungibleTokenYield: number;
-  initialCoinOfferingYield: number;
-  securityTokenOfferingYield: number;
-  initialDexOfferingYield: number;
-  yieldFarmingYield: number;
-  liquidityMiningYield: number;
-  stakingYield: number;
-  lendingYield: number;
-  borrowingYield: number;
-  marginTradingYield: number;
-  futuresTradingYield: number;
-  optionsTradingYield: number;
-  swapTradingYield: number;
-  forwardTradingYield: number;
-  spotTradingYield: number;
-  crossCurrencyTradingYield: number;
-  interestRateTradingYield: number;
-  creditTradingYield: number;
-  volatilityTradingYield: number;
-  correlationTradingYield: number;
-  dispersionTradingYield: number;
-  basisTradingYield: number;
-  calendarSpreadYield: number;
-  butterflySpreadYield: number;
-  ironCondorYield: number;
-  straddleYield: number;
-  strangleYield: number;
-  collarYield: number;
-  protectivePutYield: number;
-  coveredCallYield: number;
-  cashSecuredPutYield: number;
-  nakedCallYield: number;
-  nakedPutYield: number;
-  bullCallSpreadYield: number;
-  bearPutSpreadYield: number;
-  bullPutSpreadYield: number;
-  bearCallSpreadYield: number;
-  diagonalSpreadYield: number;
-  ratioSpreadYield: number;
-  backspreadYield: number;
-  frontspreadYield: number;
-  boxSpreadYield: number;
-  jellyRollYield: number;
-  conversionYield: number;
-  reversalYield: number;
-  syntheticStockYield: number;
-  syntheticBondYield: number;
-  syntheticCurrencyYield: number;
-  syntheticCommodityYield: number;
-  syntheticVolatilityYield: number;
-  syntheticCorrelationYield: number;
-  syntheticDispersionYield: number;
-  syntheticBasisYield: number;
-  syntheticCalendarYield: number;
-  syntheticButterflyYield: number;
-  syntheticIronCondorYield: number;
-  syntheticStraddleYield: number;
-  syntheticStrangleYield: number;
-  syntheticCollarYield: number;
-  syntheticProtectivePutYield: number;
-  syntheticCoveredCallYield: number;
-  syntheticCashSecuredPutYield: number;
-  syntheticNakedCallYield: number;
-  syntheticNakedPutYield: number;
-  syntheticBullCallSpreadYield: number;
-  syntheticBearPutSpreadYield: number;
-  syntheticBullPutSpreadYield: number;
-  syntheticBearCallSpreadYield: number;
-  syntheticDiagonalSpreadYield: number;
-  syntheticRatioSpreadYield: number;
-  syntheticBackspreadYield: number;
-  syntheticFrontspreadYield: number;
-  syntheticBoxSpreadYield: number;
-  syntheticJellyRollYield: number;
-  syntheticConversionYield: number;
-  syntheticReversalYield: number;
+  
+  // Cash Flow Analysis
+  monthlyCashFlow: number;
+  totalCashFlow: number;
+  breakEvenPoint: number;
+  
+  // Risk Metrics
+  riskScore: number;
+  probabilityOfDefault: number;
+  lossGivenDefault: number;
+  expectedLoss: number;
+  
+  // Sensitivity Analysis
+  sensitivityMatrix: Array<{
+    variable: string;
+    values: number[];
+    impacts: number[];
+  }>;
+  
+  // Scenario Analysis
+  scenarios: Array<{
+    scenario: string;
+    probability: number;
+    value: number;
+    cost: number;
+  }>;
+  
+  // Payment Schedule
+  paymentSchedule: Array<{
+    period: number;
+    payment: number;
+    principal: number;
+    interest: number;
+    balance: number;
+  }>;
 }
 
 export interface HELOCAnalysis {
-  helocGrade: string;
+  // Executive Summary
+  helocRating: 'Excellent' | 'Good' | 'Average' | 'Poor' | 'Very Poor';
+  riskRating: 'Low' | 'Moderate' | 'High' | 'Very High';
+  recommendation: 'Approve' | 'Conditional' | 'Reject' | 'Requires Review';
+  
+  // Key Insights
+  keyStrengths: string[];
+  keyWeaknesses: string[];
+  riskFactors: string[];
+  opportunities: string[];
+  
+  // HELOC Analysis
+  helocSummary: string;
+  equityAnalysis: string;
+  paymentAnalysis: string;
+  
+  // Cost Analysis
+  costSummary: string;
+  feeAnalysis: string;
+  comparisonAnalysis: string;
+  
+  // Risk Assessment
   riskAssessment: string;
-  recommendations: string;
-  marketComparison: string;
-  affordabilityAnalysis: string;
-  sensitivityAnalysis: {
-    bestCase: number;
-    baseCase: number;
-    worstCase: number;
-  };
+  borrowerRisk: string;
+  propertyRisk: string;
+  marketRisk: string;
+  
+  // Usage Assessment
+  usageAssessment: string;
+  drawAnalysis: string;
+  repaymentAnalysis: string;
+  
+  // Market Assessment
+  marketAssessment: string;
+  comparableAnalysis: string;
+  marketPosition: string;
+  
+  // Recommendations
+  approvalRecommendations: string[];
+  riskMitigation: string[];
+  optimizationSuggestions: string[];
+  
+  // Implementation
+  implementationPlan: string;
+  nextSteps: string[];
+  timeline: string;
+  
+  // Monitoring
+  monitoringPlan: string;
+  keyMetrics: string[];
+  reviewSchedule: string;
+  
+  // Risk Management
+  riskManagement: string;
+  mitigationStrategies: string[];
+  contingencyPlans: string[];
+  
+  // Performance Benchmarks
+  performanceBenchmarks: Array<{
+    metric: string;
+    target: number;
+    benchmark: number;
+    industry: string;
+  }>;
+  
+  // Decision Support
+  decisionRecommendation: string;
+  presentationPoints: string[];
+  decisionFactors: string[];
 }
 
-export interface HELOCOutputs extends HELOCMetrics {
+export interface HELOCOutputs {
+  // Core Metrics
+  totalEquity: number;
+  availableEquity: number;
+  combinedLTV: number;
+  monthlyPayment: number;
+  totalInterestPaid: number;
+  effectiveInterestRate: number;
+  totalFees: number;
+  riskScore: number;
+  
+  // Analysis
   analysis: HELOCAnalysis;
+  
+  // Additional Metrics
+  helocLTV: number;
+  totalPayments: number;
+  totalCost: number;
+  costOfCredit: number;
+  monthlyCashFlow: number;
+  totalCashFlow: number;
+  breakEvenPoint: number;
+  probabilityOfDefault: number;
+  lossGivenDefault: number;
+  expectedLoss: number;
+  sensitivityMatrix: any[];
+  scenarios: any[];
+  paymentSchedule: any[];
 }

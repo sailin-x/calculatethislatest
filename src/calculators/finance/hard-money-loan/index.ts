@@ -1,3 +1,5 @@
-export { hardMoneyLoanCalculator } from './HardMoneyLoanCalculator';
-export { registerHardMoneyLoanCalculator } from './register';
+export { default as HardMoneyLoanCalculator } from './HardMoneyLoanCalculator';
 export * from './types';
+export * from './formulas';
+export * from './validation';
+export * from './quickValidation';
