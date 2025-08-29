@@ -103,7 +103,7 @@ Each calculator must include:
 - [ ] Mortgage Closing Cost Calculator
 - [x] **Mortgage Payment Calculator** ✅ **(VERIFIED WORKING)**
 - [x] ✅ (VERIFIED WORKING) Mortgage Points Calculator
-- [ ] Mortgage Qualification Calculator
+- [x] ✅ (VERIFIED WORKING) Mortgage Qualification Calculator
 - [ ] Mortgage Rate Lock Calculator
 - [ ] Mortgage Refinance Calculator
 - [ ] Mortgage vs. Rent Calculator
