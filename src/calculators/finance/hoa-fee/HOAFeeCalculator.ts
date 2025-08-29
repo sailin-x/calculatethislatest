@@ -1,225 +1,638 @@
-import { Calculator } from '../../../types/calculator';
-import { calculateHOAFee, generateHOAFeeAnalysis } from './formulas';
+import { Calculator } from '../../types';
+import { HOAFeeInputs, HOAFeeOutputs } from './types';
+import { calculateHOAFee } from './formulas';
 import { validateHOAFeeInputs } from './validation';
 
-export const HOAFeeCalculator: Calculator = {
-  id: 'hoa-fee-calculator',
+export const HOAFeeCalculator: Calculator<HOAFeeInputs, HOAFeeOutputs> = {
+  id: 'hoa-fee',
   name: 'HOA Fee Calculator',
   category: 'finance',
-  subcategory: 'investment',
-  description: 'Calculate HOA fees, assessments, and total monthly housing costs including maintenance, amenities, and special assessments.',
-  inputs: [
-    { id: 'monthlyHOAFee', name: 'Monthly HOA Fee', type: 'number', unit: 'USD', required: true, description: 'Base monthly HOA fee', placeholder: '300', min: 0, max: 5000 },
-    { id: 'propertyType', name: 'Property Type', type: 'select', required: false, description: 'Type of property', options: ['condo', 'townhouse', 'single-family', 'co-op', 'pud'] },
-    { id: 'squareFootage', name: 'Square Footage', type: 'number', unit: 'sqft', required: false, description: 'Property square footage', placeholder: '1500', min: 100, max: 10000 },
-    { id: 'bedrooms', name: 'Bedrooms', type: 'number', required: false, description: 'Number of bedrooms', placeholder: '3', min: 0, max: 10 },
-    { id: 'bathrooms', name: 'Bathrooms', type: 'number', required: false, description: 'Number of bathrooms', placeholder: '2', min: 0, max: 10 },
-    { id: 'parkingSpaces', name: 'Parking Spaces', type: 'number', required: false, description: 'Number of parking spaces included', placeholder: '2', min: 0, max: 10 },
-    { id: 'amenities', name: 'Amenities', type: 'multiselect', required: false, description: 'Available amenities', options: ['pool', 'gym', 'spa', 'tennis-court', 'basketball-court', 'playground', 'clubhouse', 'concierge', 'security', 'elevator', 'parking-garage', 'storage-unit', 'rooftop-deck', 'garden', 'bbq-area', 'dog-park', 'bike-storage', 'package-reception', 'valet-parking', 'shuttle-service'] },
-    { id: 'utilitiesIncluded', name: 'Utilities Included', type: 'multiselect', required: false, description: 'Utilities covered by HOA', options: ['water', 'sewer', 'trash', 'electricity', 'gas', 'internet', 'cable', 'heat', 'ac', 'none'] },
-    { id: 'maintenanceIncluded', name: 'Maintenance Included', type: 'multiselect', required: false, description: 'Maintenance covered by HOA', options: ['exterior-painting', 'roof-repairs', 'landscaping', 'snow-removal', 'pest-control', 'window-cleaning', 'gutter-cleaning', 'exterior-lighting', 'sidewalk-repairs', 'none'] },
-    { id: 'insuranceIncluded', name: 'Insurance Included', type: 'multiselect', required: false, description: 'Insurance covered by HOA', options: ['building-insurance', 'liability-insurance', 'flood-insurance', 'earthquake-insurance', 'none'] },
-    { id: 'reserveFund', name: 'Reserve Fund', type: 'number', unit: 'USD', required: false, description: 'Monthly reserve fund contribution', placeholder: '50', min: 0, max: 1000 },
-    { id: 'specialAssessment', name: 'Special Assessment', type: 'number', unit: 'USD', required: false, description: 'Monthly special assessment payment', placeholder: '0', min: 0, max: 5000 },
-    { id: 'lateFees', name: 'Late Fees', type: 'number', unit: 'USD', required: false, description: 'Late payment fees', placeholder: '25', min: 0, max: 500 },
-    { id: 'transferFees', name: 'Transfer Fees', type: 'number', unit: 'USD', required: false, description: 'Property transfer fees', placeholder: '500', min: 0, max: 10000 },
-    { id: 'applicationFees', name: 'Application Fees', type: 'number', unit: 'USD', required: false, description: 'Rental application fees', placeholder: '200', min: 0, max: 2000 },
-    { id: 'petFees', name: 'Pet Fees', type: 'number', unit: 'USD', required: false, description: 'Monthly pet fees', placeholder: '25', min: 0, max: 500 },
-    { id: 'guestParkingFees', name: 'Guest Parking Fees', type: 'number', unit: 'USD', required: false, description: 'Guest parking fees per day', placeholder: '5', min: 0, max: 100 },
-    { id: 'rentalRestrictions', name: 'Rental Restrictions', type: 'select', required: false, description: 'Rental restrictions', options: ['none', 'minimum-lease', 'rental-cap', 'owner-occupancy-required', 'no-rentals'] },
-    { id: 'rentalCap', name: 'Rental Cap', type: 'number', required: false, description: 'Percentage of units that can be rented', placeholder: '25', min: 0, max: 100 },
-    { id: 'minimumLease', name: 'Minimum Lease', type: 'number', required: false, description: 'Minimum lease term in months', placeholder: '12', min: 1, max: 60 },
-    { id: 'hoaAge', name: 'HOA Age', type: 'number', required: false, description: 'Age of HOA in years', placeholder: '10', min: 0, max: 100 },
-    { id: 'totalUnits', name: 'Total Units', type: 'number', required: false, description: 'Total number of units in community', placeholder: '100', min: 1, max: 10000 },
-    { id: 'occupancyRate', name: 'Occupancy Rate', type: 'number', required: false, description: 'Current occupancy rate percentage', placeholder: '95', min: 0, max: 100 },
-    { id: 'annualBudget', name: 'Annual Budget', type: 'number', unit: 'USD', required: false, description: 'Annual HOA budget', placeholder: '500000', min: 0, max: 10000000 },
-    { id: 'reserveFundBalance', name: 'Reserve Fund Balance', type: 'number', unit: 'USD', required: false, description: 'Current reserve fund balance', placeholder: '100000', min: 0, max: 10000000 },
-    { id: 'debtObligations', name: 'Debt Obligations', type: 'number', unit: 'USD', required: false, description: 'Outstanding debt obligations', placeholder: '0', min: 0, max: 10000000 },
-    { id: 'pendingLitigation', name: 'Pending Litigation', type: 'select', required: false, description: 'Pending litigation status', options: ['none', 'minor', 'moderate', 'major'] },
-    { id: 'managementCompany', name: 'Management Company', type: 'select', required: false, description: 'Professional management', options: ['self-managed', 'professional-management', 'hybrid'] },
-    { id: 'managementFees', name: 'Management Fees', type: 'number', unit: 'USD', required: false, description: 'Monthly management fees', placeholder: '1000', min: 0, max: 10000 },
-    { id: 'legalFees', name: 'Legal Fees', type: 'number', unit: 'USD', required: false, description: 'Monthly legal fees', placeholder: '500', min: 0, max: 5000 },
-    { id: 'accountingFees', name: 'Accounting Fees', type: 'number', unit: 'USD', required: false, description: 'Monthly accounting fees', placeholder: '300', min: 0, max: 3000 },
-    { id: 'insuranceFees', name: 'Insurance Fees', type: 'number', unit: 'USD', required: false, description: 'Monthly insurance fees', placeholder: '2000', min: 0, max: 20000 },
-    { id: 'utilityCosts', name: 'Utility Costs', type: 'number', unit: 'USD', required: false, description: 'Monthly utility costs', placeholder: '5000', min: 0, max: 100000 },
-    { id: 'maintenanceCosts', name: 'Maintenance Costs', type: 'number', unit: 'USD', required: false, description: 'Monthly maintenance costs', placeholder: '3000', min: 0, max: 100000 },
-    { id: 'landscapingCosts', name: 'Landscaping Costs', type: 'number', unit: 'USD', required: false, description: 'Monthly landscaping costs', placeholder: '1500', min: 0, max: 50000 },
-    { id: 'securityCosts', name: 'Security Costs', type: 'number', unit: 'USD', required: false, description: 'Monthly security costs', placeholder: '2000', min: 0, max: 50000 },
-    { id: 'poolMaintenance', name: 'Pool Maintenance', type: 'number', unit: 'USD', required: false, description: 'Monthly pool maintenance costs', placeholder: '800', min: 0, max: 20000 },
-    { id: 'elevatorMaintenance', name: 'Elevator Maintenance', type: 'number', unit: 'USD', required: false, description: 'Monthly elevator maintenance costs', placeholder: '1200', min: 0, max: 30000 },
-    { id: 'parkingMaintenance', name: 'Parking Maintenance', type: 'number', unit: 'USD', required: false, description: 'Monthly parking maintenance costs', placeholder: '600', min: 0, max: 15000 },
-    { id: 'commonAreaUtilities', name: 'Common Area Utilities', type: 'number', unit: 'USD', required: false, description: 'Monthly common area utility costs', placeholder: '1000', min: 0, max: 20000 },
-    { id: 'inflationRate', name: 'Inflation Rate', type: 'number', required: false, description: 'Annual inflation rate for fee increases', placeholder: '3', min: 0, max: 20 },
-    { id: 'feeIncreaseHistory', name: 'Fee Increase History', type: 'select', required: false, description: 'Historical fee increase pattern', options: ['none', 'minimal', 'moderate', 'frequent', 'aggressive'] },
-    { id: 'lastFeeIncrease', name: 'Last Fee Increase', type: 'number', required: false, description: 'Years since last fee increase', placeholder: '2', min: 0, max: 20 },
-    { id: 'projectedIncrease', name: 'Projected Increase', type: 'number', required: false, description: 'Projected annual fee increase percentage', placeholder: '5', min: 0, max: 50 },
-    { id: 'marketComparison', name: 'Market Comparison', type: 'select', required: false, description: 'HOA fees compared to market', options: ['below-market', 'market-rate', 'above-market', 'premium'] },
-    { id: 'competitionLevel', name: 'Competition Level', type: 'select', required: false, description: 'Competition in the area', options: ['low', 'medium', 'high', 'very-high'] },
-    { id: 'locationQuality', name: 'Location Quality', type: 'select', required: false, description: 'Quality of location', options: ['poor', 'fair', 'good', 'excellent', 'premium'] },
-    { id: 'schoolDistrict', name: 'School District', type: 'select', required: false, description: 'School district quality', options: ['poor', 'fair', 'good', 'excellent'] },
-    { id: 'crimeRate', name: 'Crime Rate', type: 'select', required: false, description: 'Area crime rate', options: ['high', 'medium', 'low', 'very-low'] },
-    { id: 'publicTransportation', name: 'Public Transportation', type: 'select', required: false, description: 'Public transportation access', options: ['none', 'limited', 'good', 'excellent'] },
-    { id: 'shoppingAccess', name: 'Shopping Access', type: 'select', required: false, description: 'Shopping access', options: ['none', 'limited', 'good', 'excellent'] },
-    { id: 'entertainmentAccess', name: 'Entertainment Access', type: 'select', required: false, description: 'Entertainment access', options: ['none', 'limited', 'good', 'excellent'] },
-    { id: 'medicalAccess', name: 'Medical Access', type: 'select', required: false, description: 'Medical facility access', options: ['none', 'limited', 'good', 'excellent'] },
-    { id: 'employmentAccess', name: 'Employment Access', type: 'select', required: false, description: 'Employment center access', options: ['none', 'limited', 'good', 'excellent'] }
-  ],
-  outputs: [
-    { id: 'totalMonthlyFee', name: 'Total Monthly Fee', type: 'number', unit: 'USD', description: 'Total monthly HOA fee including all components' },
-    { id: 'annualHOACost', name: 'Annual HOA Cost', type: 'number', unit: 'USD', description: 'Total annual HOA costs' },
-    { id: 'costPerSquareFoot', name: 'Cost per Square Foot', type: 'number', unit: 'USD/sqft', description: 'Monthly HOA cost per square foot' },
-    { id: 'costPerBedroom', name: 'Cost per Bedroom', type: 'number', unit: 'USD/bedroom', description: 'Monthly HOA cost per bedroom' },
-    { id: 'amenityValue', name: 'Amenity Value', type: 'number', unit: 'USD', description: 'Estimated monthly value of included amenities' },
-    { id: 'utilitySavings', name: 'Utility Savings', type: 'number', unit: 'USD', description: 'Monthly savings from included utilities' },
-    { id: 'maintenanceSavings', name: 'Maintenance Savings', type: 'number', unit: 'USD', description: 'Monthly savings from included maintenance' },
-    { id: 'insuranceSavings', name: 'Insurance Savings', type: 'number', unit: 'USD', description: 'Monthly savings from included insurance' },
-    { id: 'totalSavings', name: 'Total Savings', type: 'number', unit: 'USD', description: 'Total monthly savings from HOA services' },
-    { id: 'netHOACost', name: 'Net HOA Cost', type: 'number', unit: 'USD', description: 'Net monthly HOA cost after savings' },
-    { id: 'reserveFundHealth', name: 'Reserve Fund Health', type: 'string', description: 'Assessment of reserve fund health' },
-    { id: 'financialHealth', name: 'Financial Health', type: 'string', description: 'Overall HOA financial health' },
-    { id: 'feeCompetitiveness', name: 'Fee Competitiveness', type: 'string', description: 'How competitive the fees are' },
-    { id: 'valueScore', name: 'Value Score', type: 'number', description: 'Overall value score (0-100)' },
-    { id: 'riskScore', name: 'Risk Score', type: 'number', description: 'Risk assessment score (0-100)' },
-    { id: 'recommendation', name: 'Recommendation', type: 'string', description: 'Overall recommendation' },
-    { id: 'keyMetrics', name: 'Key Metrics', type: 'string', description: 'Key financial and operational metrics' },
-    { id: 'costBreakdown', name: 'Cost Breakdown', type: 'string', description: 'Detailed cost breakdown' },
-    { id: 'savingsBreakdown', name: 'Savings Breakdown', type: 'string', description: 'Detailed savings breakdown' },
-    { id: 'comparisonTable', name: 'Comparison Table', type: 'string', description: 'Comparison with market rates' },
-    { id: 'projectedCosts', name: 'Projected Costs', type: 'string', description: '5-year cost projections' },
-    { id: 'hoaFeeAnalysis', name: 'HOA Fee Analysis', type: 'string', description: 'Comprehensive HOA fee analysis' }
-  ],
-  calculate: (inputs) => {
+  subcategory: 'real-estate',
+  description: 'Calculate HOA fees, costs, and financial health for homeowners associations',
+  longDescription: `A comprehensive HOA fee calculator that analyzes homeowners association costs, financial health, and value for property owners. This calculator evaluates monthly fees, special assessments, reserve funds, operating expenses, and amenities to provide accurate cost analysis. It includes financial health assessment, market comparisons, budget analysis, and long-term projections to help property owners understand the true cost and value of HOA membership.`,
+  
+  inputs: {
+    // Property Information
+    propertyAddress: {
+      type: 'text',
+      label: 'Property Address',
+      description: 'Property address',
+      required: true,
+      placeholder: '123 Main St, Unit 4B, City, State 12345'
+    },
+    propertyType: {
+      type: 'select',
+      label: 'Property Type',
+      description: 'Type of property',
+      required: true,
+      options: [
+        { value: 'condo', label: 'Condo' },
+        { value: 'townhouse', label: 'Townhouse' },
+        { value: 'single-family', label: 'Single Family' },
+        { value: 'co-op', label: 'Co-op' },
+        { value: 'pud', label: 'PUD' }
+      ],
+      placeholder: 'condo'
+    },
+    propertySize: {
+      type: 'number',
+      label: 'Property Size (sq ft)',
+      description: 'Square footage of the property',
+      required: true,
+      min: 500,
+      max: 10000,
+      step: 100,
+      placeholder: '1200'
+    },
+    unitNumber: {
+      type: 'text',
+      label: 'Unit Number',
+      description: 'Unit or apartment number',
+      required: true,
+      placeholder: '4B'
+    },
+    buildingNumber: {
+      type: 'text',
+      label: 'Building Number',
+      description: 'Building number if applicable',
+      required: true,
+      placeholder: 'Building A'
+    },
+    
+    // HOA Information
+    hoaName: {
+      type: 'text',
+      label: 'HOA Name',
+      description: 'Name of the homeowners association',
+      required: true,
+      placeholder: 'Sunset Gardens HOA'
+    },
+    hoaType: {
+      type: 'select',
+      label: 'HOA Type',
+      description: 'Type of homeowners association',
+      required: true,
+      options: [
+        { value: 'condo_association', label: 'Condo Association' },
+        { value: 'homeowners_association', label: 'Homeowners Association' },
+        { value: 'coop_board', label: 'Co-op Board' },
+        { value: 'master_association', label: 'Master Association' }
+      ],
+      placeholder: 'condo_association'
+    },
+    totalUnits: {
+      type: 'number',
+      label: 'Total Units',
+      description: 'Total number of units in the association',
+      required: true,
+      min: 2,
+      max: 1000,
+      step: 1,
+      placeholder: '50'
+    },
+    totalBuildings: {
+      type: 'number',
+      label: 'Total Buildings',
+      description: 'Total number of buildings',
+      required: true,
+      min: 1,
+      max: 100,
+      step: 1,
+      placeholder: '4'
+    },
+    associationAge: {
+      type: 'number',
+      label: 'Association Age (years)',
+      description: 'Age of the association in years',
+      required: true,
+      min: 0,
+      max: 100,
+      step: 1,
+      placeholder: '15'
+    },
+    
+    // Fee Structure
+    monthlyFee: {
+      type: 'number',
+      label: 'Monthly HOA Fee ($)',
+      description: 'Monthly HOA assessment',
+      required: true,
+      min: 0,
+      max: 5000,
+      step: 10,
+      placeholder: '350'
+    },
+    quarterlyFee: {
+      type: 'number',
+      label: 'Quarterly Fee ($)',
+      description: 'Additional quarterly fees',
+      required: true,
+      min: 0,
+      max: 10000,
+      step: 50,
+      placeholder: '0'
+    },
+    annualFee: {
+      type: 'number',
+      label: 'Annual Fee ($)',
+      description: 'Additional annual fees',
+      required: true,
+      min: 0,
+      max: 20000,
+      step: 100,
+      placeholder: '0'
+    },
+    specialAssessment: {
+      type: 'number',
+      label: 'Special Assessment ($)',
+      description: 'Current or recent special assessment',
+      required: true,
+      min: 0,
+      max: 50000,
+      step: 100,
+      placeholder: '0'
+    },
+    transferFee: {
+      type: 'number',
+      label: 'Transfer Fee ($)',
+      description: 'Fee when selling the property',
+      required: true,
+      min: 0,
+      max: 10000,
+      step: 100,
+      placeholder: '500'
+    },
+    lateFee: {
+      type: 'number',
+      label: 'Late Fee ($)',
+      description: 'Late payment fee',
+      required: true,
+      min: 0,
+      max: 1000,
+      step: 10,
+      placeholder: '25'
+    },
+    otherFees: {
+      type: 'number',
+      label: 'Other Fees ($)',
+      description: 'Other miscellaneous fees',
+      required: true,
+      min: 0,
+      max: 5000,
+      step: 50,
+      placeholder: '0'
+    },
+    
+    // Budget Information
+    totalAnnualBudget: {
+      type: 'number',
+      label: 'Total Annual Budget ($)',
+      description: 'Total annual HOA budget',
+      required: true,
+      min: 10000,
+      max: 10000000,
+      step: 1000,
+      placeholder: '250000'
+    },
+    reserveFund: {
+      type: 'number',
+      label: 'Reserve Fund ($)',
+      description: 'Current reserve fund balance',
+      required: true,
+      min: 0,
+      max: 10000000,
+      step: 1000,
+      placeholder: '500000'
+    },
+    operatingExpenses: {
+      type: 'number',
+      label: 'Operating Expenses ($)',
+      description: 'Annual operating expenses',
+      required: true,
+      min: 10000,
+      max: 5000000,
+      step: 1000,
+      placeholder: '180000'
+    },
+    insuranceCosts: {
+      type: 'number',
+      label: 'Insurance Costs ($)',
+      description: 'Annual insurance costs',
+      required: true,
+      min: 0,
+      max: 1000000,
+      step: 1000,
+      placeholder: '25000'
+    },
+    maintenanceCosts: {
+      type: 'number',
+      label: 'Maintenance Costs ($)',
+      description: 'Annual maintenance costs',
+      required: true,
+      min: 0,
+      max: 1000000,
+      step: 1000,
+      placeholder: '45000'
+    },
+    utilityCosts: {
+      type: 'number',
+      label: 'Utility Costs ($)',
+      description: 'Annual utility costs',
+      required: true,
+      min: 0,
+      max: 500000,
+      step: 1000,
+      placeholder: '30000'
+    },
+    managementFees: {
+      type: 'number',
+      label: 'Management Fees ($)',
+      description: 'Annual management company fees',
+      required: true,
+      min: 0,
+      max: 500000,
+      step: 1000,
+      placeholder: '15000'
+    },
+    legalFees: {
+      type: 'number',
+      label: 'Legal Fees ($)',
+      description: 'Annual legal fees',
+      required: true,
+      min: 0,
+      max: 100000,
+      step: 1000,
+      placeholder: '5000'
+    },
+    accountingFees: {
+      type: 'number',
+      label: 'Accounting Fees ($)',
+      description: 'Annual accounting fees',
+      required: true,
+      min: 0,
+      max: 50000,
+      step: 500,
+      placeholder: '3000'
+    },
+    otherExpenses: {
+      type: 'number',
+      label: 'Other Expenses ($)',
+      description: 'Other annual expenses',
+      required: true,
+      min: 0,
+      max: 200000,
+      step: 1000,
+      placeholder: '7000'
+    },
+    
+    // Insurance Coverage
+    masterInsurance: {
+      type: 'boolean',
+      label: 'Master Insurance',
+      description: 'HOA provides master insurance policy',
+      required: true,
+      placeholder: true
+    },
+    insuranceDeductible: {
+      type: 'number',
+      label: 'Insurance Deductible ($)',
+      description: 'Master insurance deductible',
+      required: true,
+      min: 0,
+      max: 100000,
+      step: 1000,
+      placeholder: '5000'
+    },
+    coverageAmount: {
+      type: 'number',
+      label: 'Coverage Amount ($)',
+      description: 'Master insurance coverage amount',
+      required: true,
+      min: 0,
+      max: 100000000,
+      step: 100000,
+      placeholder: '10000000'
+    },
+    personalLiabilityCoverage: {
+      type: 'number',
+      label: 'Personal Liability Coverage ($)',
+      description: 'Personal liability coverage amount',
+      required: true,
+      min: 0,
+      max: 1000000,
+      step: 10000,
+      placeholder: '100000'
+    },
+    
+    // Maintenance and Repairs
+    maintenanceSchedule: {
+      type: 'select',
+      label: 'Maintenance Schedule',
+      description: 'Frequency of maintenance',
+      required: true,
+      options: [
+        { value: 'monthly', label: 'Monthly' },
+        { value: 'quarterly', label: 'Quarterly' },
+        { value: 'semi_annual', label: 'Semi-Annual' },
+        { value: 'annual', label: 'Annual' }
+      ],
+      placeholder: 'quarterly'
+    },
+    lastMajorRenovation: {
+      type: 'number',
+      label: 'Last Major Renovation (years ago)',
+      description: 'Years since last major renovation',
+      required: true,
+      min: 0,
+      max: 50,
+      step: 1,
+      placeholder: '8'
+    },
+    
+    // Financial Health
+    reserveStudy: {
+      type: 'boolean',
+      label: 'Reserve Study',
+      description: 'HOA has conducted reserve study',
+      required: true,
+      placeholder: true
+    },
+    reserveStudyDate: {
+      type: 'text',
+      label: 'Reserve Study Date',
+      description: 'Date of last reserve study',
+      required: true,
+      placeholder: '2023-01-15'
+    },
+    reserveFundingLevel: {
+      type: 'number',
+      label: 'Reserve Funding Level (%)',
+      description: 'Current reserve funding percentage',
+      required: true,
+      min: 0,
+      max: 200,
+      step: 1,
+      placeholder: '85'
+    },
+    reserveFundingTarget: {
+      type: 'number',
+      label: 'Reserve Funding Target (%)',
+      description: 'Target reserve funding percentage',
+      required: true,
+      min: 50,
+      max: 150,
+      step: 5,
+      placeholder: '100'
+    },
+    
+    // Market Information
+    marketLocation: {
+      type: 'text',
+      label: 'Market Location',
+      description: 'Market location for comparisons',
+      required: true,
+      placeholder: 'Downtown Area'
+    },
+    
+    // Analysis Parameters
+    analysisPeriod: {
+      type: 'number',
+      label: 'Analysis Period (years)',
+      description: 'Period for financial analysis',
+      required: true,
+      min: 1,
+      max: 10,
+      step: 1,
+      placeholder: '5'
+    },
+    inflationRate: {
+      type: 'number',
+      label: 'Inflation Rate (%)',
+      description: 'Expected annual inflation rate',
+      required: true,
+      min: -5,
+      max: 15,
+      step: 0.5,
+      placeholder: '2.5'
+    },
+    propertyAppreciationRate: {
+      type: 'number',
+      label: 'Property Appreciation Rate (%)',
+      description: 'Expected annual property appreciation',
+      required: true,
+      min: -10,
+      max: 20,
+      step: 0.5,
+      placeholder: '3.0'
+    },
+    
+    // Reporting Preferences
+    currency: {
+      type: 'select',
+      label: 'Currency',
+      description: 'Currency for calculations and display',
+      required: true,
+      options: [
+        { value: 'USD', label: 'USD' },
+        { value: 'EUR', label: 'EUR' },
+        { value: 'GBP', label: 'GBP' },
+        { value: 'CAD', label: 'CAD' },
+        { value: 'AUD', label: 'AUD' }
+      ],
+      placeholder: 'USD'
+    },
+    displayFormat: {
+      type: 'select',
+      label: 'Display Format',
+      description: 'Format for displaying results',
+      required: true,
+      options: [
+        { value: 'percentage', label: 'Percentage' },
+        { value: 'decimal', label: 'Decimal' },
+        { value: 'currency', label: 'Currency' }
+      ],
+      placeholder: 'currency'
+    },
+    includeCharts: {
+      type: 'boolean',
+      label: 'Include Charts',
+      description: 'Include charts in the analysis report',
+      required: true,
+      placeholder: true
+    }
+  },
+  
+  outputs: {
+    totalMonthlyCost: {
+      type: 'number',
+      label: 'Total Monthly Cost',
+      description: 'Total monthly HOA costs'
+    },
+    totalAnnualCost: {
+      type: 'number',
+      label: 'Total Annual Cost',
+      description: 'Total annual HOA costs'
+    },
+    costPerSquareFoot: {
+      type: 'number',
+      label: 'Cost per Square Foot',
+      description: 'HOA cost per square foot annually'
+    },
+    costPerUnit: {
+      type: 'number',
+      label: 'Cost per Unit',
+      description: 'Average cost per unit'
+    },
+    budgetPerUnit: {
+      type: 'number',
+      label: 'Budget per Unit',
+      description: 'Annual budget allocation per unit'
+    },
+    reserveHealth: {
+      type: 'number',
+      label: 'Reserve Health',
+      description: 'Reserve fund health score (1-10)'
+    },
+    marketComparison: {
+      type: 'number',
+      label: 'Market Comparison',
+      description: 'Comparison to market average'
+    },
+    hoaRating: {
+      type: 'string',
+      label: 'HOA Rating',
+      description: 'Overall HOA financial health rating'
+    },
+    analysis: {
+      type: 'object',
+      label: 'Analysis Report',
+      description: 'Comprehensive HOA analysis'
+    }
+  },
+  
+  calculate: (inputs: HOAFeeInputs): HOAFeeOutputs => {
+    const validation = validateHOAFeeInputs(inputs);
+    if (!validation.isValid) {
+      throw new Error(`Validation failed: ${validation.errors.join(', ')}`);
+    }
+    
     return calculateHOAFee(inputs);
   },
-  generateReport: (inputs, outputs) => {
-    return generateHOAFeeAnalysis(inputs, outputs);
+  
+  generateReport: (inputs: HOAFeeInputs, outputs: HOAFeeOutputs): string => {
+    const { analysis } = outputs;
+    
+    return `
+# HOA Fee Analysis Report
+
+## Executive Summary
+- **HOA Rating**: ${analysis.hoaRating}
+- **Financial Health**: ${analysis.financialHealth}
+- **Recommendation**: ${analysis.recommendation}
+
+## Key Metrics
+- **Total Monthly Cost**: $${outputs.totalMonthlyCost.toLocaleString()}
+- **Total Annual Cost**: $${outputs.totalAnnualCost.toLocaleString()}
+- **Cost per Square Foot**: $${outputs.costPerSquareFoot.toFixed(2)}
+- **Cost per Unit**: $${outputs.costPerUnit.toLocaleString()}
+- **Budget per Unit**: $${outputs.budgetPerUnit.toLocaleString()}
+- **Reserve Health**: ${outputs.reserveHealth}/10
+- **Market Comparison**: ${outputs.marketComparison.toFixed(1)}%
+- **HOA Rating**: ${outputs.hoaRating}
+
+## Analysis
+${analysis.feeSummary}
+
+## Financial Health
+${analysis.financialSummary}
+
+## Recommendations
+${analysis.valueRecommendations.join('\n')}
+
+## Next Steps
+${analysis.nextSteps.join('\n')}
+    `.trim();
   },
-  formulas: [
-    {
-      name: 'Total Monthly Fee',
-      formula: 'Total Monthly Fee = Base HOA Fee + Reserve Fund + Special Assessment + Pet Fees',
-      description: 'Calculates the total monthly HOA fee including all components'
-    },
-    {
-      name: 'Cost per Square Foot',
-      formula: 'Cost per Square Foot = Total Monthly Fee / Square Footage',
-      description: 'Calculates the monthly HOA cost per square foot'
-    },
-    {
-      name: 'Cost per Bedroom',
-      formula: 'Cost per Bedroom = Total Monthly Fee / Number of Bedrooms',
-      description: 'Calculates the monthly HOA cost per bedroom'
-    },
-    {
-      name: 'Amenity Value',
-      formula: 'Amenity Value = Sum of Individual Amenity Values',
-      description: 'Calculates the estimated monthly value of included amenities'
-    },
-    {
-      name: 'Utility Savings',
-      formula: 'Utility Savings = Sum of Included Utility Costs',
-      description: 'Calculates monthly savings from included utilities'
-    },
-    {
-      name: 'Maintenance Savings',
-      formula: 'Maintenance Savings = Sum of Included Maintenance Costs',
-      description: 'Calculates monthly savings from included maintenance services'
-    },
-    {
-      name: 'Insurance Savings',
-      formula: 'Insurance Savings = Sum of Included Insurance Costs',
-      description: 'Calculates monthly savings from included insurance coverage'
-    },
-    {
-      name: 'Net HOA Cost',
-      formula: 'Net HOA Cost = Total Monthly Fee - Total Savings',
-      description: 'Calculates the net monthly HOA cost after accounting for savings'
-    },
-    {
-      name: 'Reserve Fund Health',
-      formula: 'Reserve Fund Health = (Reserve Fund Balance / Annual Budget) * 100',
-      description: 'Assesses the health of the reserve fund as a percentage of annual budget'
-    },
-    {
-      name: 'Value Score',
-      formula: 'Value Score = (Amenity Value + Utility Savings + Maintenance Savings + Insurance Savings) / Total Monthly Fee * 100',
-      description: 'Calculates overall value score based on benefits received'
-    },
-    {
-      name: 'Risk Score',
-      formula: 'Risk Score = Base Risk + Financial Risk + Litigation Risk + Management Risk',
-      description: 'Calculates risk assessment score based on various factors'
-    }
-  ],
+  
+  formulas: {
+    'Total Monthly Cost': 'Monthly Fee + (Quarterly Fee / 3) + (Annual Fee / 12) + (Special Assessment / 12)',
+    'Total Annual Cost': 'Monthly Cost × 12 + Transfer Fee + Other Fees',
+    'Cost per Square Foot': 'Total Annual Cost / Property Size',
+    'Cost per Unit': 'Total Annual Budget / Total Units',
+    'Budget per Unit': 'Total Annual Budget / Total Units',
+    'Reserve Health': 'Weighted assessment of reserve funding, age, and financial stability',
+    'Market Comparison': 'Comparison to similar properties in the market',
+    'HOA Rating': 'Overall assessment of financial health and value'
+  },
+  
   examples: [
     {
       name: 'Standard Condo HOA',
       inputs: {
-        monthlyHOAFee: 350,
+        propertyAddress: '123 Main St, Unit 4B, City, State 12345',
         propertyType: 'condo',
-        squareFootage: 1200,
-        bedrooms: 2,
-        bathrooms: 2,
-        parkingSpaces: 1,
-        amenities: ['pool', 'gym', 'concierge'],
-        utilitiesIncluded: ['water', 'sewer', 'trash'],
-        maintenanceIncluded: ['exterior-painting', 'landscaping'],
-        insuranceIncluded: ['building-insurance'],
-        reserveFund: 75,
+        propertySize: 1200,
+        unitNumber: '4B',
+        buildingNumber: 'Building A',
+        hoaName: 'Sunset Gardens HOA',
+        hoaType: 'condo_association',
+        totalUnits: 50,
+        totalBuildings: 4,
+        associationAge: 15,
+        monthlyFee: 350,
+        quarterlyFee: 0,
+        annualFee: 0,
         specialAssessment: 0,
-        petFees: 25,
-        marketComparison: 'market-rate',
-        locationQuality: 'good',
-        schoolDistrict: 'good',
-        crimeRate: 'low'
-      },
-      description: 'Standard condo with typical amenities and services'
-    },
-    {
-      name: 'Luxury High-Rise HOA',
-      inputs: {
-        monthlyHOAFee: 800,
-        propertyType: 'condo',
-        squareFootage: 2000,
-        bedrooms: 3,
-        bathrooms: 2.5,
-        parkingSpaces: 2,
-        amenities: ['pool', 'spa', 'gym', 'concierge', 'valet-parking', 'rooftop-deck'],
-        utilitiesIncluded: ['water', 'sewer', 'trash', 'electricity', 'internet'],
-        maintenanceIncluded: ['exterior-painting', 'landscaping', 'window-cleaning', 'exterior-lighting'],
-        insuranceIncluded: ['building-insurance', 'liability-insurance'],
-        reserveFund: 150,
-        specialAssessment: 0,
-        petFees: 50,
-        marketComparison: 'premium',
-        locationQuality: 'excellent',
-        schoolDistrict: 'excellent',
-        crimeRate: 'very-low'
-      },
-      description: 'Luxury high-rise with premium amenities and services'
-    },
-    {
-      name: 'Townhouse HOA',
-      inputs: {
-        monthlyHOAFee: 250,
-        propertyType: 'townhouse',
-        squareFootage: 1800,
-        bedrooms: 3,
-        bathrooms: 2.5,
-        parkingSpaces: 2,
-        amenities: ['pool', 'playground', 'bbq-area'],
-        utilitiesIncluded: ['water', 'sewer', 'trash'],
-        maintenanceIncluded: ['exterior-painting', 'roof-repairs', 'landscaping'],
-        insuranceIncluded: ['building-insurance'],
-        reserveFund: 50,
-        specialAssessment: 0,
-        petFees: 0,
-        marketComparison: 'below-market',
-        locationQuality: 'good',
-        schoolDistrict: 'good',
-        crimeRate: 'low'
-      },
-      description: 'Townhouse community with family-friendly amenities'
+        transferFee: 500,
+        lateFee: 25,
+        otherFees: 0,
+        totalAnnualBudget: 250000,
+        reserveFund: 500000,
+        operatingExpenses: 180000,
+        insuranceCosts: 25000,
+        maintenanceCosts: 45000,
+        utilityCosts: 30000,
+        managementFees: 15000,
+        legalFees: 5000,
+        accountingFees: 3000,
+        otherExpenses: 7000,
+        masterInsurance: true,
+        insuranceDeductible: 5000,
+        coverageAmount: 10000000,
+        personalLiabilityCoverage: 100000,
+        maintenanceSchedule: 'quarterly',
+        lastMajorRenovation: 8,
+        reserveStudy: true,
+        reserveStudyDate: '2023-01-15',
+        reserveFundingLevel: 85,
+        reserveFundingTarget: 100,
+        marketLocation: 'Downtown Area',
+        analysisPeriod: 5,
+        inflationRate: 2.5,
+        propertyAppreciationRate: 3.0,
+        currency: 'USD',
+        displayFormat: 'currency',
+        includeCharts: true
+      }
     }
-  ]
+  ],
+  
+  tags: [
+    'HOA fees',
+    'homeowners association',
+    'condo fees',
+    'property management',
+    'reserve funds',
+    'maintenance costs',
+    'community fees',
+    'property ownership',
+    'association costs',
+    'financial health'
+  ],
+  
+  category_info: {
+    name: 'Real Estate Finance',
+    description: 'Financial calculators for real estate investment and financing',
+    icon: '🏠'
+  }
 };
