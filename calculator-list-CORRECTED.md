@@ -104,7 +104,7 @@ Each calculator must include:
 - [x] **Mortgage Payment Calculator** ✅ **(VERIFIED WORKING)**
 - [x] ✅ (VERIFIED WORKING) Mortgage Points Calculator
 - [x] ✅ (VERIFIED WORKING) Mortgage Qualification Calculator
-- [ ] Mortgage Rate Lock Calculator
+- [x] ✅ (VERIFIED WORKING) Mortgage Rate Lock Calculator
 - [ ] Mortgage Refinance Calculator
 - [ ] Mortgage vs. Rent Calculator
 - [ ] Net Operating Income (NOI) Calculator

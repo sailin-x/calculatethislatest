@@ -36,6 +36,7 @@ import { MortgagePayoffCalculator as mortgagePayoffCalculator } from './finance/
 import { mortgagePaymentCalculator } from './finance/mortgage-payment';
 import { mortgagePointsCalculator } from './finance/mortgage-points';
 import { mortgageQualificationCalculator } from './finance/mortgage-qualification';
+import { mortgageRateLockCalculator } from './finance/mortgage-rate-lock';
 
 // Missing Finance calculators that exist but weren't registered
 import { Exchange1031Calculator as exchange1031Calculator } from './finance/1031-exchange';
@@ -201,6 +202,7 @@ export function registerAllCalculators(): void {
     calculatorRegistry.register(mortgagePaymentCalculator);
     calculatorRegistry.register(mortgagePointsCalculator);
     calculatorRegistry.register(mortgageQualificationCalculator);
+    calculatorRegistry.register(mortgageRateLockCalculator);
 
     // Register missing finance calculators
     calculatorRegistry.register(exchange1031Calculator);
