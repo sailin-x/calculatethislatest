@@ -101,8 +101,8 @@ Each calculator must include:
 - [ ] Loan-to-Value (LTV) Ratio Calculator
 - [ ] Mezzanine Financing for Real Estate Calculator
 - [ ] Mortgage Closing Cost Calculator
-- [ ] Mortgage Payment Calculator
-- [ ] Mortgage Points Calculator
+- [x] **Mortgage Payment Calculator** ✅ **(VERIFIED WORKING)**
+- [x] ✅ (VERIFIED WORKING) Mortgage Points Calculator
 - [ ] Mortgage Qualification Calculator
 - [ ] Mortgage Rate Lock Calculator
 - [ ] Mortgage Refinance Calculator
