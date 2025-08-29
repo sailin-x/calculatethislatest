@@ -1,196 +1,235 @@
 export interface LandlordInsuranceInputs {
-  propertyValue: number;
+  // Property Information
+  propertyAddress: string;
+  propertyType: 'single_family' | 'multi_family' | 'condo' | 'townhouse' | 'apartment' | 'commercial';
+  propertySize: number;
+  numberOfUnits: number;
+  propertyAge: number;
+  constructionType: 'wood_frame' | 'brick' | 'stone' | 'concrete' | 'steel_frame' | 'mixed';
+  roofType: 'asphalt_shingle' | 'metal' | 'tile' | 'slate' | 'wood_shake' | 'flat';
+  roofAge: number;
+  
+  // Location Information
+  state: string;
+  city: string;
+  zipCode: string;
+  floodZone: 'low_risk' | 'moderate_risk' | 'high_risk' | 'very_high_risk' | 'unknown';
+  crimeRate: 'low' | 'medium' | 'high' | 'very_high';
+  fireStationDistance: number;
+  policeStationDistance: number;
+  
+  // Coverage Information
   dwellingCoverage: number;
   personalPropertyCoverage: number;
   liabilityCoverage: number;
+  medicalPaymentsCoverage: number;
   lossOfRentCoverage: number;
-  additionalLivingExpenses: number;
-  deductible: number;
-  propertyType: 'single-family' | 'multi-family' | 'condo' | 'townhouse' | 'manufactured' | 'apartment';
-  constructionType: 'frame' | 'brick' | 'stone' | 'stucco' | 'siding' | 'log' | 'steel';
-  yearBuilt: number;
-  squareFootage: number;
-  propertyLocation: string;
-  claimsHistory: number;
-  creditScore: number;
-  coverageOptions: {
-    earthquake: boolean;
-    flood: boolean;
-    hurricane: boolean;
-    windstorm: boolean;
-    hail: boolean;
-    waterBackup: boolean;
-    equipmentBreakdown: boolean;
-    ordinanceOrLaw: boolean;
-    buildingCodeUpgrade: boolean;
-    rentalIncome: boolean;
-    tenantImprovements: boolean;
-    landlordFurnishings: boolean;
-    appliances: boolean;
-    landscaping: boolean;
-    swimmingPool: boolean;
-    trampoline: boolean;
-    woodStove: boolean;
-    businessEquipment: boolean;
-    identityTheft: boolean;
-    cyberLiability: boolean;
-  };
-  safetyFeatures: {
-    alarm: boolean;
-    deadbolt: boolean;
-    smokeDetector: boolean;
-    sprinkler: boolean;
-    gated: boolean;
-    securityCamera: boolean;
-    fireExtinguisher: boolean;
-    carbonMonoxideDetector: boolean;
-  };
-  occupancyType: 'owner-occupied' | 'rental' | 'vacation' | 'vacant';
+  otherStructuresCoverage: number;
+  
+  // Deductibles
+  dwellingDeductible: number;
+  personalPropertyDeductible: number;
+  liabilityDeductible: number;
+  lossOfRentDeductible: number;
+  
+  // Policy Features
+  replacementCost: boolean;
+  ordinanceOrLawCoverage: boolean;
+  waterBackupCoverage: boolean;
+  equipmentBreakdownCoverage: boolean;
+  identityTheftCoverage: boolean;
+  
+  // Rental Information
+  monthlyRent: number;
+  annualRent: number;
+  vacancyRate: number;
   tenantType: 'residential' | 'commercial' | 'mixed';
-  tenantScreening: boolean;
-  leaseTerms: Array<{
-    tenant: string;
-    rent: number;
-    term: number;
-    startDate: string;
-    endDate: string;
-    creditRating: string;
-    securityDeposit: number;
-  }>;
-  propertyManagement: boolean;
-  propertyManager: string;
-  managementFees: number;
-  maintenanceObligation: 'tenant' | 'landlord' | 'shared';
-  utilityObligation: 'tenant' | 'landlord' | 'shared';
-  taxObligation: 'tenant' | 'landlord' | 'shared';
-  insuranceObligation: 'tenant' | 'landlord' | 'shared';
-  permitCosts: number;
-  inspectionCosts: number;
-  architecturalFees: number;
-  engineeringFees: number;
-  legalFees: number;
-  projectManagementFees: number;
-  otherFees: number;
-  totalFees: number;
-  constructionTimeline: number;
-  completionDate: string;
-  occupancyDate: string;
-  rentCommencementDate: string;
-  baseRent: number;
-  percentageRent: number;
-  operatingExpenses: number;
-  utilities: number;
-  janitorial: number;
-  maintenance: number;
-  insurance: number;
-  propertyTaxes: number;
-  managementFees: number;
-  otherExpenses: number;
-  totalExpenses: number;
-  netOperatingIncome: number;
-  capitalizationRate: number;
-  propertyValueIncrease: number;
-  rentIncrease: number;
-  occupancyIncrease: number;
-  marketValueIncrease: number;
-  investmentReturn: number;
-  paybackPeriod: number;
-  internalRateOfReturn: number;
-  netPresentValue: number;
-  profitabilityIndex: number;
-  modifiedInternalRateOfReturn: number;
-  discountedPaybackPeriod: number;
-  averageAccountingReturn: number;
-  breakEvenAnalysis: {
-    breakEvenRent: number;
-    breakEvenOccupancy: number;
-    breakEvenTimeline: number;
-  };
-  sensitivityAnalysis: {
-    bestCase: number;
-    baseCase: number;
-    worstCase: number;
-  };
-  riskAssessment: {
-    constructionRisk: number;
-    tenantRisk: number;
-    marketRisk: number;
-    financialRisk: number;
-    regulatoryRisk: number;
-    environmentalRisk: number;
-    timelineRisk: number;
-    budgetRisk: number;
-    totalRisk: number;
-  };
+  leaseTerm: number;
+  
+  // Risk Factors
+  tenantRisk: 'low' | 'medium' | 'high';
+  propertyRisk: 'low' | 'medium' | 'high';
+  marketRisk: 'low' | 'medium' | 'high';
+  
+  // Claims History
+  claimsInLast3Years: number;
+  claimsInLast5Years: number;
+  totalClaimAmount: number;
+  
+  // Insurance Company
+  insuranceCompany: string;
+  policyType: 'standard' | 'premium' | 'basic' | 'custom';
+  policyTerm: number;
+  
+  // Analysis Parameters
+  analysisPeriod: number;
+  inflationRate: number;
+  propertyAppreciationRate: number;
+  
+  // Reporting Preferences
+  currency: 'USD' | 'EUR' | 'GBP' | 'CAD' | 'AUD';
+  displayFormat: 'percentage' | 'decimal' | 'currency';
+  includeCharts: boolean;
 }
 
 export interface LandlordInsuranceMetrics {
-  basePremium: number;
-  dwellingPremium: number;
-  personalPropertyPremium: number;
-  liabilityPremium: number;
-  lossOfRentPremium: number;
-  additionalCoveragePremium: number;
-  discounts: number;
-  surcharges: number;
-  totalAnnualPremium: number;
+  // Premium Analysis
+  annualPremium: number;
   monthlyPremium: number;
-  premiumPerThousand: number;
-  coverageRatio: number;
-  riskScore: number;
-  recommendedCoverage: number;
+  premiumPerUnit: number;
+  premiumToRentRatio: number;
+  
+  // Coverage Analysis
+  totalCoverage: number;
   coverageGap: number;
-  savingsOpportunities: number;
-  marketComparison: number;
-  deductibleImpact: number;
-  safetyFeaturesImpact: number;
-  occupancyTypeImpact: number;
-  tenantTypeImpact: number;
-  propertyTypeImpact: number;
-  constructionTypeImpact: number;
-  claimsHistoryImpact: number;
-  creditScoreImpact: number;
-  coverageOptionsImpact: number;
-  propertyManagementImpact: number;
-  totalImpact: number;
-  cashFlowProjection: Array<{
-    year: number;
-    income: number;
-    expenses: number;
-    insurance: number;
-    netCashFlow: number;
-    cumulativeCashFlow: number;
-  }>;
-  sensitivityAnalysis: {
-    bestCase: number;
-    baseCase: number;
-    worstCase: number;
-  };
+  overInsuranceAmount: number;
+  underInsuranceAmount: number;
+  
+  // Cost Analysis
+  totalDeductibles: number;
+  outOfPocketMaximum: number;
+  costOfInsurance: number;
+  
+  // Risk Metrics
   riskScore: number;
-  approvalProbability: number;
-  recommendedAction: string;
-  alternativeScenarios: Array<{
+  probabilityOfClaim: number;
+  expectedLoss: number;
+  riskRating: 'low' | 'medium' | 'high' | 'very_high';
+  
+  // Rental Analysis
+  rentalIncome: number;
+  netRentalIncome: number;
+  insuranceCostPercentage: number;
+  
+  // Comparison Metrics
+  marketAveragePremium: number;
+  premiumComparison: number;
+  valueForMoney: number;
+  
+  // Sensitivity Analysis
+  sensitivityMatrix: Array<{
+    variable: string;
+    values: number[];
+    impacts: number[];
+  }>;
+  
+  // Scenario Analysis
+  scenarios: Array<{
     scenario: string;
-    cost: number;
+    probability: number;
+    premium: number;
     coverage: number;
-    risk: number;
-    recommendation: string;
+  }>;
+  
+  // Coverage Breakdown
+  coverageBreakdown: Array<{
+    coverage: string;
+    amount: number;
+    percentage: number;
   }>;
 }
 
 export interface LandlordInsuranceAnalysis {
-  insuranceGrade: string;
+  // Executive Summary
+  insuranceRating: 'Excellent' | 'Good' | 'Average' | 'Poor' | 'Very Poor';
+  riskRating: 'Low' | 'Moderate' | 'High' | 'Very High';
+  recommendation: 'Purchase' | 'Consider' | 'Avoid' | 'Requires Review';
+  
+  // Key Insights
+  keyStrengths: string[];
+  keyWeaknesses: string[];
+  riskFactors: string[];
+  opportunities: string[];
+  
+  // Insurance Analysis
+  insuranceSummary: string;
+  coverageAnalysis: string;
+  premiumAnalysis: string;
+  
+  // Cost Analysis
+  costSummary: string;
+  valueAnalysis: string;
+  comparisonAnalysis: string;
+  
+  // Risk Assessment
   riskAssessment: string;
-  recommendations: string;
-  marketAnalysis: string;
-  financialAnalysis: string;
-  sensitivityAnalysis: {
-    bestCase: number;
-    baseCase: number;
-    worstCase: number;
-  };
+  tenantRisk: string;
+  propertyRisk: string;
+  marketRisk: string;
+  
+  // Rental Analysis
+  rentalAnalysis: string;
+  incomeAnalysis: string;
+  profitabilityAnalysis: string;
+  
+  // Market Assessment
+  marketAssessment: string;
+  competitiveAnalysis: string;
+  marketPosition: string;
+  
+  // Recommendations
+  purchaseRecommendations: string[];
+  coverageRecommendations: string[];
+  optimizationSuggestions: string[];
+  
+  // Implementation
+  implementationPlan: string;
+  nextSteps: string[];
+  timeline: string;
+  
+  // Monitoring
+  monitoringPlan: string;
+  keyMetrics: string[];
+  reviewSchedule: string;
+  
+  // Risk Management
+  riskManagement: string;
+  mitigationStrategies: string[];
+  contingencyPlans: string[];
+  
+  // Performance Benchmarks
+  performanceBenchmarks: Array<{
+    metric: string;
+    target: number;
+    benchmark: number;
+    industry: string;
+  }>;
+  
+  // Decision Support
+  decisionRecommendation: string;
+  presentationPoints: string[];
+  decisionFactors: string[];
 }
 
-export interface LandlordInsuranceOutputs extends LandlordInsuranceMetrics {
+export interface LandlordInsuranceOutputs {
+  // Core Metrics
+  annualPremium: number;
+  monthlyPremium: number;
+  totalCoverage: number;
+  riskScore: number;
+  premiumToRentRatio: number;
+  rentalIncome: number;
+  netRentalIncome: number;
+  
+  // Analysis
   analysis: LandlordInsuranceAnalysis;
+  
+  // Additional Metrics
+  premiumPerUnit: number;
+  coverageGap: number;
+  overInsuranceAmount: number;
+  underInsuranceAmount: number;
+  totalDeductibles: number;
+  outOfPocketMaximum: number;
+  costOfInsurance: number;
+  probabilityOfClaim: number;
+  expectedLoss: number;
+  riskRating: string;
+  insuranceCostPercentage: number;
+  marketAveragePremium: number;
+  premiumComparison: number;
+  valueForMoney: number;
+  sensitivityMatrix: any[];
+  scenarios: any[];
+  coverageBreakdown: any[];
 }
