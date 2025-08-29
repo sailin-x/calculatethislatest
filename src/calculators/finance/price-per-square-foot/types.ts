@@ -12,23 +12,35 @@ export interface PricePerSquareFootInputs {
   propertyPrice: number;
   listPrice: number;
   salePrice: number;
+  appraisalValue: number;
   assessedValue: number;
-  appraisedValue: number;
+  
+  // Comparable Properties
+  comparableProperties: Array<{
+    address: string;
+    salePrice: number;
+    size: number;
+    age: number;
+    bedrooms: number;
+    bathrooms: number;
+    saleDate: string;
+    condition: string;
+    location: string;
+    adjustments: number;
+  }>;
+  
+  // Market Information
+  marketLocation: string;
+  marketCondition: 'declining' | 'stable' | 'growing' | 'hot';
+  marketGrowthRate: number;
+  daysOnMarket: number;
   
   // Property Features
   propertyCondition: 'excellent' | 'good' | 'average' | 'poor' | 'needs_repair';
   propertyStyle: 'modern' | 'traditional' | 'contemporary' | 'colonial' | 'ranch' | 'other';
-  constructionType: 'wood_frame' | 'brick' | 'stone' | 'concrete' | 'steel_frame' | 'mixed';
-  roofType: 'asphalt_shingle' | 'metal' | 'tile' | 'slate' | 'wood_shake' | 'flat';
-  roofAge: number;
-  
-  // Location Information
-  marketLocation: string;
-  neighborhood: string;
-  schoolDistrict: string;
-  crimeRate: 'low' | 'medium' | 'high' | 'very_high';
-  walkScore: number;
-  transitScore: number;
+  lotSize: number;
+  garageSpaces: number;
+  parkingSpaces: number;
   
   // Amenities and Features
   amenities: Array<{
@@ -36,31 +48,14 @@ export interface PricePerSquareFootInputs {
     value: number;
     included: boolean;
   }>;
-  upgrades: Array<{
-    upgrade: string;
-    cost: number;
-    value: number;
-  }>;
   
-  // Comparable Properties
-  comparableProperties: Array<{
-    address: string;
-    salePrice: number;
-    size: number;
-    pricePerSqFt: number;
-    saleDate: string;
-    condition: string;
-    bedrooms: number;
-    bathrooms: number;
-    age: number;
-    distance: number;
-  }>;
-  
-  // Market Information
-  marketCondition: 'declining' | 'stable' | 'growing' | 'hot';
-  marketGrowthRate: number;
-  daysOnMarket: number;
-  marketInventory: number;
+  // Location Factors
+  schoolDistrict: string;
+  schoolRating: number;
+  crimeRate: 'low' | 'medium' | 'high';
+  walkScore: number;
+  transitScore: number;
+  bikeScore: number;
   
   // Analysis Parameters
   analysisPeriod: number;
@@ -79,47 +74,48 @@ export interface PricePerSquareFootMetrics {
   pricePerSquareFoot: number;
   listPricePerSquareFoot: number;
   salePricePerSquareFoot: number;
+  appraisalPricePerSquareFoot: number;
   assessedPricePerSquareFoot: number;
-  appraisedPricePerSquareFoot: number;
-  
-  // Market Analysis
-  marketAveragePricePerSqFt: number;
-  marketMedianPricePerSqFt: number;
-  marketRange: {
-    min: number;
-    max: number;
-    range: number;
-  };
   
   // Comparable Analysis
-  comparableAveragePricePerSqFt: number;
-  comparableMedianPricePerSqFt: number;
-  comparableRange: {
+  averageComparablePrice: number;
+  medianComparablePrice: number;
+  comparablePriceRange: {
     min: number;
     max: number;
     range: number;
   };
+  pricePosition: number;
+  pricePercentile: number;
   
-  // Valuation Analysis
+  // Market Analysis
+  marketAveragePrice: number;
+  marketMedianPrice: number;
+  marketPriceRange: {
+    min: number;
+    max: number;
+    range: number;
+  };
+  marketPosition: string;
+  
+  // Value Analysis
   estimatedValue: number;
-  estimatedValueRange: {
+  valueRange: {
     low: number;
     high: number;
     confidence: number;
   };
-  valuePerSquareFoot: number;
-  
-  // Market Position
-  marketPosition: 'above_market' | 'at_market' | 'below_market';
-  marketPercentile: number;
-  priceDifference: number;
-  priceDifferencePercentage: number;
+  overUnderPriced: number;
+  overUnderPricedPercentage: number;
   
   // Trend Analysis
-  priceTrend: 'increasing' | 'stable' | 'decreasing';
-  trendStrength: number;
-  projectedValue: number;
-  projectedPricePerSqFt: number;
+  priceTrend: Array<{
+    period: string;
+    averagePrice: number;
+    medianPrice: number;
+    change: number;
+    changePercentage: number;
+  }>;
   
   // Sensitivity Analysis
   sensitivityMatrix: Array<{
@@ -132,7 +128,7 @@ export interface PricePerSquareFootMetrics {
   scenarios: Array<{
     scenario: string;
     probability: number;
-    pricePerSqFt: number;
+    pricePerSquareFoot: number;
     totalValue: number;
   }>;
   
@@ -140,38 +136,36 @@ export interface PricePerSquareFootMetrics {
   comparisonAnalysis: Array<{
     metric: string;
     property: number;
-    market: number;
     comparable: number;
     difference: number;
+    percentage: number;
   }>;
   
   // Risk Analysis
   riskScore: number;
-  volatility: number;
-  probabilityOfAppreciation: number;
-  probabilityOfDepreciation: number;
+  priceVolatility: number;
+  marketRisk: number;
+  valuationRisk: number;
   
-  // Market Analysis
-  marketAnalysis: Array<{
-    factor: string;
-    impact: number;
-    risk: string;
-    opportunity: string;
-  }>;
+  // Performance Metrics
+  pricePerformance: number;
+  marketPerformance: number;
+  relativePerformance: number;
   
-  // Performance Benchmarks
-  performanceBenchmarks: Array<{
+  // Benchmark Analysis
+  benchmarkAnalysis: Array<{
     metric: string;
-    target: number;
+    property: number;
     benchmark: number;
-    industry: string;
+    difference: number;
+    percentile: number;
   }>;
 }
 
 export interface PricePerSquareFootAnalysis {
   // Executive Summary
-  valuationRating: 'Excellent' | 'Good' | 'Average' | 'Poor' | 'Very Poor';
-  marketPosition: 'Above Market' | 'At Market' | 'Below Market';
+  priceRating: 'Excellent' | 'Good' | 'Average' | 'Poor' | 'Very Poor';
+  valueRating: 'High Value' | 'Good Value' | 'Fair Value' | 'Low Value' | 'Overpriced';
   recommendation: 'Buy' | 'Consider' | 'Negotiate' | 'Avoid' | 'Requires Review';
   
   // Key Insights
@@ -182,38 +176,38 @@ export interface PricePerSquareFootAnalysis {
   
   // Price Analysis
   priceSummary: string;
-  pricePerSqFtAnalysis: string;
-  valueAnalysis: string;
+  comparableAnalysis: string;
+  marketAnalysis: string;
+  
+  // Value Analysis
+  valueSummary: string;
+  valuationAnalysis: string;
+  pricePosition: string;
   
   // Market Analysis
   marketSummary: string;
-  comparableAnalysis: string;
-  marketPosition: string;
+  trendAnalysis: string;
+  competitiveAnalysis: string;
   
-  // Valuation Analysis
-  valuationSummary: string;
-  estimatedValueAnalysis: string;
-  confidenceAnalysis: string;
-  
-  // Trend Analysis
-  trendSummary: string;
-  marketTrendAnalysis: string;
-  projectionAnalysis: string;
+  // Location Analysis
+  locationSummary: string;
+  neighborhoodAnalysis: string;
+  amenityAnalysis: string;
   
   // Risk Assessment
   riskAssessment: string;
+  priceRisk: string;
   marketRisk: string;
-  valuationRisk: string;
-  timingRisk: string;
+  locationRisk: string;
   
-  // Comparable Analysis
-  comparableSummary: string;
-  adjustmentAnalysis: string;
-  comparisonAnalysis: string;
+  // Performance Analysis
+  performanceSummary: string;
+  trendPerformance: string;
+  relativePerformance: string;
   
   // Recommendations
-  valuationRecommendations: string[];
-  pricingSuggestions: string[];
+  pricingRecommendations: string[];
+  negotiationSuggestions: string[];
   optimizationStrategies: string[];
   
   // Implementation
@@ -248,13 +242,13 @@ export interface PricePerSquareFootAnalysis {
 export interface PricePerSquareFootOutputs {
   // Core Metrics
   pricePerSquareFoot: number;
-  marketAveragePricePerSqFt: number;
-  marketPosition: string;
+  averageComparablePrice: number;
+  medianComparablePrice: number;
   estimatedValue: number;
-  valuePerSquareFoot: number;
-  marketPercentile: number;
-  priceDifference: number;
+  overUnderPricedPercentage: number;
+  pricePosition: string;
   riskScore: number;
+  pricePerformance: number;
   
   // Analysis
   analysis: PricePerSquareFootAnalysis;
@@ -262,25 +256,23 @@ export interface PricePerSquareFootOutputs {
   // Additional Metrics
   listPricePerSquareFoot: number;
   salePricePerSquareFoot: number;
+  appraisalPricePerSquareFoot: number;
   assessedPricePerSquareFoot: number;
-  appraisedPricePerSquareFoot: number;
-  marketMedianPricePerSqFt: number;
-  marketRange: any;
-  comparableAveragePricePerSqFt: number;
-  comparableMedianPricePerSqFt: number;
-  comparableRange: any;
-  estimatedValueRange: any;
-  priceDifferencePercentage: number;
-  priceTrend: string;
-  trendStrength: number;
-  projectedValue: number;
-  projectedPricePerSqFt: number;
+  comparablePriceRange: any;
+  pricePercentile: number;
+  marketAveragePrice: number;
+  marketMedianPrice: number;
+  marketPriceRange: any;
+  valueRange: any;
+  overUnderPriced: number;
+  priceTrend: any[];
   sensitivityMatrix: any[];
   scenarios: any[];
   comparisonAnalysis: any[];
-  volatility: number;
-  probabilityOfAppreciation: number;
-  probabilityOfDepreciation: number;
-  marketAnalysis: any[];
-  performanceBenchmarks: any[];
+  priceVolatility: number;
+  marketRisk: number;
+  valuationRisk: number;
+  marketPerformance: number;
+  relativePerformance: number;
+  benchmarkAnalysis: any[];
 }
