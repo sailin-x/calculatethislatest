@@ -111,8 +111,8 @@ Each calculator must include:
 - [x] ✅ (VERIFIED WORKING) Opportunity Zone Investment ROI Calculator
 - [x] ✅ (VERIFIED WORKING) PMI Cancellation Calculator
 - [x] ✅ (VERIFIED WORKING) Price Per Square Foot Calculator
-- [ ] Private Mortgage Insurance Calculator
-- [ ] Property Tax Calculator
+- [x] ✅ (VERIFIED WORKING) Private Mortgage Insurance Calculator
+- [x] ✅ (VERIFIED WORKING) Property Tax Calculator
 - [ ] Property Tax Proration Calculator
 - [ ] Real Estate Crowdfunding Calculator
 - [ ] Real Estate Development Pro-Forma Calculator

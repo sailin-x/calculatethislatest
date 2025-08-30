@@ -108,9 +108,11 @@ This tracker enables continuous autonomous progress without conversation context
 113. **Opportunity Zone Investment ROI Calculator** - Task 113 ✅ **COMPLETED**
 114. **PMI Cancellation Calculator** - Task 114 ✅ **COMPLETED**
 115. **Price Per Square Foot Calculator** - Task 115 ✅ **COMPLETED**
+116. **Private Mortgage Insurance Calculator** - Task 116 ✅ **COMPLETED**
+117. **Property Tax Calculator** - Task 117 ✅ **COMPLETED**
 
 ## Session Management
-- **Current Focus:** Completing Price Per Square Foot Calculator
+- **Current Focus:** Completing Property Tax Calculator
 - **Batch Target:** 3-5 calculators before starting fresh session
 - **Resume Method:** Check this tracker, continue from current focus
 - **No Context Transfer:** This tracker contains all needed state
@@ -159,7 +161,29 @@ This tracker enables continuous autonomous progress without conversation context
 - ✅ Updated main index.ts - **COMPLETED**
 - ✅ PROGRESS_TRACKER.md - **COMPLETED**
 
-**CURRENT:** Price Per Square Foot Calculator completed successfully - Moving to next calculator
+**CURRENT:** Property Tax Calculator completed successfully - Moving to next calculator
+
+## Implementation Status - Property Tax Calculator ✅ COMPLETED
+- ✅ PropertyTaxCalculator.ts - **COMPLETED**
+- ✅ formulas.ts - **COMPLETED**
+- ✅ validation.ts - **COMPLETED**
+- ✅ quickValidation.ts - **COMPLETED**
+- ✅ PropertyTaxCalculator.test.ts - **COMPLETED**
+- ✅ register.ts - **COMPLETED**
+- ✅ index.ts - **COMPLETED**
+- ✅ Updated main index.ts - **COMPLETED**
+- ✅ PROGRESS_TRACKER.md - **COMPLETED**
+
+## Implementation Status - Private Mortgage Insurance Calculator ✅ COMPLETED
+- ✅ PrivateMortgageInsuranceCalculator.ts - **COMPLETED**
+- ✅ formulas.ts - **COMPLETED**
+- ✅ validation.ts - **COMPLETED**
+- ✅ quickValidation.ts - **COMPLETED**
+- ✅ PrivateMortgageInsuranceCalculator.test.ts - **COMPLETED**
+- ✅ register.ts - **COMPLETED**
+- ✅ index.ts - **COMPLETED**
+- ✅ Updated main index.ts - **COMPLETED**
+- ✅ PROGRESS_TRACKER.md - **COMPLETED**
 
 ## Implementation Status - Price Per Square Foot Calculator ✅ COMPLETED
 - ✅ PricePerSquareFootCalculator.ts - **COMPLETED**
