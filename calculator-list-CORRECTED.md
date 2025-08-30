@@ -114,8 +114,8 @@ Each calculator must include:
 - [x] ✅ (VERIFIED WORKING) Private Mortgage Insurance Calculator
 - [x] ✅ (VERIFIED WORKING) Property Tax Calculator
 - [x] ✅ (VERIFIED WORKING) Property Tax Proration Calculator
-- [ ] Real Estate Crowdfunding Calculator
-- [ ] Real Estate Development Pro-Forma Calculator
+- [x] ✅ (VERIFIED WORKING) Real Estate Crowdfunding Calculator
+- [x] ✅ (VERIFIED WORKING) Real Estate Development Pro-Forma Calculator
 - [ ] Real Estate Depreciation Schedule Calculator
 - [ ] Real Estate Syndication Calculator
 - [ ] Real Estate Tax Deductions Calculator
@@ -747,8 +747,8 @@ Each calculator must include:
 
 ## 📊 ACCURATE TOTALS
 
-**VERIFIED WORKING CALCULATORS: 82**
-- Finance & Investment: 44
+**VERIFIED WORKING CALCULATORS: 84**
+- Finance & Investment: 46
 - Legal & Settlements: 1  
 - Business & Operations: 15
 - Health & Fitness: 1
@@ -759,9 +759,9 @@ Each calculator must include:
 
 **EXIST BUT NEED REGISTRATION: ~15**
 
-**TOTAL IMPLEMENTED: ~97**
+**TOTAL IMPLEMENTED: ~99**
 
-**REMAINING TO BUILD: ~903**
+**REMAINING TO BUILD: ~901**
 
 ---
 
