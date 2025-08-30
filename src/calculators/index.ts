@@ -48,6 +48,7 @@ import { propertyTaxCalculator } from './finance/property-tax';
 import { propertyTaxProrationCalculator } from './finance/property-tax-proration';
 import { realEstateCrowdfundingCalculator } from './finance/real-estate-crowdfunding';
 import { realEstateDevelopmentProFormaCalculator } from './finance/real-estate-development-pro-forma';
+import { realEstateDepreciationScheduleCalculator } from './finance/real-estate-depreciation-schedule';
 
 // Missing Finance calculators that exist but weren't registered
 import { Exchange1031Calculator as exchange1031Calculator } from './finance/1031-exchange';
@@ -225,6 +226,7 @@ export function registerAllCalculators(): void {
     calculatorRegistry.register(propertyTaxProrationCalculator);
     calculatorRegistry.register(realEstateCrowdfundingCalculator);
     calculatorRegistry.register(realEstateDevelopmentProFormaCalculator);
+    calculatorRegistry.register(realEstateDepreciationScheduleCalculator);
 
     // Register missing finance calculators
     calculatorRegistry.register(exchange1031Calculator);
