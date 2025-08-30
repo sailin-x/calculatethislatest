@@ -113,7 +113,7 @@ Each calculator must include:
 - [x] ✅ (VERIFIED WORKING) Price Per Square Foot Calculator
 - [x] ✅ (VERIFIED WORKING) Private Mortgage Insurance Calculator
 - [x] ✅ (VERIFIED WORKING) Property Tax Calculator
-- [ ] Property Tax Proration Calculator
+- [x] ✅ (VERIFIED WORKING) Property Tax Proration Calculator
 - [ ] Real Estate Crowdfunding Calculator
 - [ ] Real Estate Development Pro-Forma Calculator
 - [ ] Real Estate Depreciation Schedule Calculator
