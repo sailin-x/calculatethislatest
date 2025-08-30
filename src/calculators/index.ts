@@ -37,6 +37,10 @@ import { mortgagePaymentCalculator } from './finance/mortgage-payment';
 import { mortgagePointsCalculator } from './finance/mortgage-points';
 import { mortgageQualificationCalculator } from './finance/mortgage-qualification';
 import { mortgageRateLockCalculator } from './finance/mortgage-rate-lock';
+import { mortgageRefinanceCalculator } from './finance/mortgage-refinance';
+import { mortgageVsRentCalculator } from './finance/mortgage-vs-rent';
+import { netOperatingIncomeCalculator } from './finance/net-operating-income';
+import { opportunityZoneInvestmentCalculator } from './finance/opportunity-zone-investment';
 
 // Missing Finance calculators that exist but weren't registered
 import { Exchange1031Calculator as exchange1031Calculator } from './finance/1031-exchange';
@@ -203,6 +207,10 @@ export function registerAllCalculators(): void {
     calculatorRegistry.register(mortgagePointsCalculator);
     calculatorRegistry.register(mortgageQualificationCalculator);
     calculatorRegistry.register(mortgageRateLockCalculator);
+    calculatorRegistry.register(mortgageRefinanceCalculator);
+    calculatorRegistry.register(mortgageVsRentCalculator);
+    calculatorRegistry.register(netOperatingIncomeCalculator);
+    calculatorRegistry.register(opportunityZoneInvestmentCalculator);
 
     // Register missing finance calculators
     calculatorRegistry.register(exchange1031Calculator);
