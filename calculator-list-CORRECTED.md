@@ -110,7 +110,7 @@ Each calculator must include:
 - [x] ✅ (VERIFIED WORKING) Net Operating Income (NOI) Calculator
 - [x] ✅ (VERIFIED WORKING) Opportunity Zone Investment ROI Calculator
 - [x] ✅ (VERIFIED WORKING) PMI Cancellation Calculator
-- [ ] Price Per Square Foot Calculator
+- [x] ✅ (VERIFIED WORKING) Price Per Square Foot Calculator
 - [ ] Private Mortgage Insurance Calculator
 - [ ] Property Tax Calculator
 - [ ] Property Tax Proration Calculator

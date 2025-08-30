@@ -42,6 +42,7 @@ import { mortgageVsRentCalculator } from './finance/mortgage-vs-rent';
 import { netOperatingIncomeCalculator } from './finance/net-operating-income';
 import { opportunityZoneInvestmentCalculator } from './finance/opportunity-zone-investment';
 import { pmiCancellationCalculator } from './finance/pmi-cancellation';
+import { pricePerSquareFootCalculator } from './finance/price-per-square-foot';
 
 // Missing Finance calculators that exist but weren't registered
 import { Exchange1031Calculator as exchange1031Calculator } from './finance/1031-exchange';
@@ -213,6 +214,7 @@ export function registerAllCalculators(): void {
     calculatorRegistry.register(netOperatingIncomeCalculator);
     calculatorRegistry.register(opportunityZoneInvestmentCalculator);
     calculatorRegistry.register(pmiCancellationCalculator);
+    calculatorRegistry.register(pricePerSquareFootCalculator);
 
     // Register missing finance calculators
     calculatorRegistry.register(exchange1031Calculator);
