@@ -33,6 +33,23 @@ import { MortgageEquityCalculator as mortgageEquityCalculator } from './finance/
 import { MortgageInsuranceCalculator as mortgageInsuranceCalculator } from './finance/mortgage-insurance';
 import { MortgageLifeCalculator as mortgageLifeCalculator } from './finance/mortgage-life';
 import { MortgagePayoffCalculator as mortgagePayoffCalculator } from './finance/mortgage-payoff';
+import { mortgagePaymentCalculator } from './finance/mortgage-payment';
+import { mortgagePointsCalculator } from './finance/mortgage-points';
+import { mortgageQualificationCalculator } from './finance/mortgage-qualification';
+import { mortgageRateLockCalculator } from './finance/mortgage-rate-lock';
+import { mortgageRefinanceCalculator } from './finance/mortgage-refinance';
+import { mortgageVsRentCalculator } from './finance/mortgage-vs-rent';
+import { netOperatingIncomeCalculator } from './finance/net-operating-income';
+import { opportunityZoneInvestmentCalculator } from './finance/opportunity-zone-investment';
+import { pmiCancellationCalculator } from './finance/pmi-cancellation';
+import { pricePerSquareFootCalculator } from './finance/price-per-square-foot';
+import { privateMortgageInsuranceCalculator } from './finance/private-mortgage-insurance';
+import { propertyTaxCalculator } from './finance/property-tax';
+import { propertyTaxProrationCalculator } from './finance/property-tax-proration';
+import { realEstateCrowdfundingCalculator } from './finance/real-estate-crowdfunding';
+import { realEstateDevelopmentProFormaCalculator } from './finance/real-estate-development-pro-forma';
+import { realEstateDepreciationScheduleCalculator } from './finance/real-estate-depreciation-schedule';
+import { realEstateSyndicationCalculator } from './finance/real-estate-syndication';
 
 // Missing Finance calculators that exist but weren't registered
 import { Exchange1031Calculator as exchange1031Calculator } from './finance/1031-exchange';
@@ -193,11 +210,28 @@ export function registerAllCalculators(): void {
   calculatorRegistry.register(mortgageAPRComparisonCalculator);
   calculatorRegistry.register(mortgageEquityCalculator);
   calculatorRegistry.register(mortgageInsuranceCalculator);
-  calculatorRegistry.register(mortgageLifeCalculator);
-  calculatorRegistry.register(mortgagePayoffCalculator);
+      calculatorRegistry.register(mortgageLifeCalculator);
+    calculatorRegistry.register(mortgagePayoffCalculator);
+    calculatorRegistry.register(mortgagePaymentCalculator);
+    calculatorRegistry.register(mortgagePointsCalculator);
+    calculatorRegistry.register(mortgageQualificationCalculator);
+    calculatorRegistry.register(mortgageRateLockCalculator);
+    calculatorRegistry.register(mortgageRefinanceCalculator);
+    calculatorRegistry.register(mortgageVsRentCalculator);
+    calculatorRegistry.register(netOperatingIncomeCalculator);
+    calculatorRegistry.register(opportunityZoneInvestmentCalculator);
+    calculatorRegistry.register(pmiCancellationCalculator);
+    calculatorRegistry.register(pricePerSquareFootCalculator);
+    calculatorRegistry.register(privateMortgageInsuranceCalculator);
+    calculatorRegistry.register(propertyTaxCalculator);
+    calculatorRegistry.register(propertyTaxProrationCalculator);
+    calculatorRegistry.register(realEstateCrowdfundingCalculator);
+    calculatorRegistry.register(realEstateDevelopmentProFormaCalculator);
+    calculatorRegistry.register(realEstateDepreciationScheduleCalculator);
+    calculatorRegistry.register(realEstateSyndicationCalculator);
 
-  // Register missing finance calculators
-  calculatorRegistry.register(exchange1031Calculator);
+    // Register missing finance calculators
+    calculatorRegistry.register(exchange1031Calculator);
   calculatorRegistry.register(armMortgageCalculator);
   calculatorRegistry.register(amortizationCalculator);
   calculatorRegistry.register(armVsFixedCalculator);

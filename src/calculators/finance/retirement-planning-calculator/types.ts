@@ -1141,3 +1141,85 @@ export interface RetirementPlanningCalculatorResults {
     successMetrics: string[];
   }[];
 }
+
+export interface RetirementPlanningCalculatorOutputs {
+  // Core Retirement Planning Results
+  retirementReadinessScore: number;
+  retirementIncomeGap: number;
+  requiredRetirementSavings: number;
+  retirementIncomeReplacement: number;
+  retirementSuccessProbability: number;
+  recommendation: 'excellent' | 'good' | 'fair' | 'poor' | 'needs_improvement';
+  
+  // Financial Projections
+  projectedRetirementAssets: number;
+  projectedRetirementIncome: number;
+  projectedRetirementExpenses: number;
+  
+  // Savings Analysis
+  currentSavingsRate: number;
+  targetSavingsRate: number;
+  savingsGap: number;
+  yearsToRetirement: number;
+  
+  // Investment Analysis
+  expectedInvestmentReturn: number;
+  inflationAdjustedReturn: number;
+  portfolioGrowth: number;
+  
+  // Risk Analysis
+  riskAssessment: {
+    inflationRisk: number;
+    marketRisk: number;
+    longevityRisk: number;
+    healthcareRisk: number;
+    totalRisk: number;
+  };
+  
+  // Monte Carlo Results
+  monteCarloResults: {
+    meanRetirementReadiness: number;
+    medianRetirementReadiness: number;
+    standardDeviation: number;
+    percentiles: {
+      p5: number;
+      p10: number;
+      p25: number;
+      p50: number;
+      p75: number;
+      p90: number;
+      p95: number;
+    };
+    successProbability: number;
+  };
+  
+  // Recommendations
+  recommendations: {
+    category: string;
+    recommendation: string;
+    rationale: string;
+    expectedImprovement: number;
+    implementationSteps: string[];
+  }[];
+  
+  // Key Metrics
+  keyMetrics: {
+    savingsRate: number;
+    investmentReturn: number;
+    expenseRatio: number;
+    debtToIncome: number;
+    emergencyFund: number;
+  };
+  
+  // Timeline Analysis
+  timelineAnalysis: {
+    milestones: {
+      year: number;
+      age: number;
+      projectedAssets: number;
+      projectedIncome: number;
+      projectedExpenses: number;
+      readinessScore: number;
+    }[];
+  };
+}

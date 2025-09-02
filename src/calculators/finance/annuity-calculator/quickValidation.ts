@@ -1,238 +1,93 @@
-import { ValidationResult } from '../../../types/calculator';
+import { AnnuityInputs } from './types';
 
-/**
- * Quick validation functions for annuity calculator
- * Each function validates a single field and includes the allInputs parameter
- */
-
-export function validatePrincipal(value: any, allInputs?: Record<string, any>): ValidationResult {
-  const num = Number(value);
-  if (isNaN(num)) {
-    return { isValid: false, errors: { principal: 'Principal must be a valid number' } };
-  }
-  if (num <= 0) {
-    return { isValid: false, errors: { principal: 'Principal must be greater than 0' } };
-  }
-  if (num > 10000000) {
-    return { isValid: false, errors: { principal: 'Principal cannot exceed $10 million' } };
-  }
-  return { isValid: true, errors: {} };
+export interface FieldValidationResult {
+  isValid: boolean;
+  error?: string;
+  warning?: string;
 }
 
-export function validateAnnualRate(value: any, allInputs?: Record<string, any>): ValidationResult {
-  const num = Number(value);
-  if (isNaN(num)) {
-    return { isValid: false, errors: { annualRate: 'Annual rate must be a valid number' } };
+export function validateField(field: keyof AnnuityInputs, value: any, inputs: AnnuityInputs): FieldValidationResult {
+  switch (field) {
+    case 'principal':
+      return validatePrincipal(value);
+    case 'annualRate':
+      return validateAnnualRate(value);
+    case 'years':
+      return validateYears(value);
+    case 'paymentFrequency':
+      return validatePaymentFrequency(value);
+    case 'annuityType':
+      return validateAnnuityType(value);
+    case 'taxRate':
+      return validateTaxRate(value);
+    case 'inflationRate':
+      return validateInflationRate(value);
+    default:
+      return { isValid: true };
   }
-  if (num < 0) {
-    return { isValid: false, errors: { annualRate: 'Annual rate cannot be negative' } };
-  }
-  if (num > 20) {
-    return { isValid: false, errors: { annualRate: 'Annual rate above 20% is unusual' } };
-  }
-  return { isValid: true, errors: {} };
 }
 
-export function validateTerm(value: any, allInputs?: Record<string, any>): ValidationResult {
-  const num = Number(value);
-  if (isNaN(num)) {
-    return { isValid: false, errors: { term: 'Term must be a valid number' } };
+function validatePrincipal(value: any): FieldValidationResult {
+  const numValue = parseFloat(value);
+  if (isNaN(numValue) || numValue <= 0) {
+    return { isValid: false, error: 'Principal must be greater than 0' };
   }
-  if (num <= 0) {
-    return { isValid: false, errors: { term: 'Term must be greater than 0' } };
+  if (numValue > 1000000000) {
+    return { isValid: false, warning: 'Principal seems unusually high' };
   }
-  if (num > 50) {
-    return { isValid: false, errors: { term: 'Term cannot exceed 50 years' } };
-  }
-  return { isValid: true, errors: {} };
+  return { isValid: true };
 }
 
-export function validatePaymentFrequency(value: any, allInputs?: Record<string, any>): ValidationResult {
-  const num = Number(value);
-  if (isNaN(num)) {
-    return { isValid: false, errors: { paymentFrequency: 'Payment frequency must be a valid number' } };
+function validateAnnualRate(value: any): FieldValidationResult {
+  const numValue = parseFloat(value);
+  if (isNaN(numValue) || numValue < 0 || numValue > 100) {
+    return { isValid: false, error: 'Annual rate must be between 0% and 100%' };
   }
-  if (num <= 0) {
-    return { isValid: false, errors: { paymentFrequency: 'Payment frequency must be greater than 0' } };
+  if (numValue > 50) {
+    return { isValid: false, warning: 'Annual rate seems unusually high' };
   }
-  if (num > 365) {
-    return { isValid: false, errors: { paymentFrequency: 'Payment frequency cannot exceed 365 times per year' } };
-  }
-  return { isValid: true, errors: {} };
+  return { isValid: true };
 }
 
-export function validateDeferralPeriod(value: any, allInputs?: Record<string, any>): ValidationResult {
-  if (!value) {
-    return { isValid: true, errors: {} }; // Optional field
+function validateYears(value: any): FieldValidationResult {
+  const numValue = parseFloat(value);
+  if (isNaN(numValue) || numValue <= 0) {
+    return { isValid: false, error: 'Years must be greater than 0' };
   }
-  
-  const num = Number(value);
-  if (isNaN(num)) {
-    return { isValid: false, errors: { deferralPeriod: 'Deferral period must be a valid number' } };
+  if (numValue > 100) {
+    return { isValid: false, error: 'Years cannot exceed 100' };
   }
-  if (num < 0) {
-    return { isValid: false, errors: { deferralPeriod: 'Deferral period cannot be negative' } };
-  }
-  if (num > 30) {
-    return { isValid: false, errors: { deferralPeriod: 'Deferral period cannot exceed 30 years' } };
-  }
-  
-  // Check if deferral period is less than term
-  if (allInputs?.term && num >= Number(allInputs.term)) {
-    return { isValid: false, errors: { deferralPeriod: 'Deferral period must be less than the annuity term' } };
-  }
-  
-  return { isValid: true, errors: {} };
+  return { isValid: true };
 }
 
-export function validateAccumulationRate(value: any, allInputs?: Record<string, any>): ValidationResult {
-  if (!value) {
-    return { isValid: true, errors: {} }; // Optional field
+function validatePaymentFrequency(value: any): FieldValidationResult {
+  const numValue = parseInt(value);
+  if (isNaN(numValue) || numValue < 1 || numValue > 365) {
+    return { isValid: false, error: 'Payment frequency must be between 1 and 365' };
   }
-  
-  const num = Number(value);
-  if (isNaN(num)) {
-    return { isValid: false, errors: { accumulationRate: 'Accumulation rate must be a valid number' } };
-  }
-  if (num < 0) {
-    return { isValid: false, errors: { accumulationRate: 'Accumulation rate cannot be negative' } };
-  }
-  if (num > 20) {
-    return { isValid: false, errors: { accumulationRate: 'Accumulation rate above 20% is unusual' } };
-  }
-  return { isValid: true, errors: {} };
+  return { isValid: true };
 }
 
-export function validateExpectedReturn(value: any, allInputs?: Record<string, any>): ValidationResult {
-  if (!value) {
-    return { isValid: true, errors: {} }; // Optional field
-  }
-  
-  const num = Number(value);
-  if (isNaN(num)) {
-    return { isValid: false, errors: { expectedReturn: 'Expected return must be a valid number' } };
-  }
-  if (num < -50) {
-    return { isValid: false, errors: { expectedReturn: 'Expected return cannot be below -50%' } };
-  }
-  if (num > 50) {
-    return { isValid: false, errors: { expectedReturn: 'Expected return above 50% is unrealistic' } };
-  }
-  return { isValid: true, errors: {} };
-}
-
-export function validateVolatility(value: any, allInputs?: Record<string, any>): ValidationResult {
-  if (!value) {
-    return { isValid: true, errors: {} }; // Optional field
-  }
-  
-  const num = Number(value);
-  if (isNaN(num)) {
-    return { isValid: false, errors: { volatility: 'Volatility must be a valid number' } };
-  }
-  if (num < 0) {
-    return { isValid: false, errors: { volatility: 'Volatility cannot be negative' } };
-  }
-  if (num > 100) {
-    return { isValid: false, errors: { volatility: 'Volatility cannot exceed 100%' } };
-  }
-  return { isValid: true, errors: {} };
-}
-
-export function validateTaxRate(value: any, allInputs?: Record<string, any>): ValidationResult {
-  const num = Number(value);
-  if (isNaN(num)) {
-    return { isValid: false, errors: { taxRate: 'Tax rate must be a valid number' } };
-  }
-  if (num < 0) {
-    return { isValid: false, errors: { taxRate: 'Tax rate cannot be negative' } };
-  }
-  if (num > 100) {
-    return { isValid: false, errors: { taxRate: 'Tax rate cannot exceed 100%' } };
-  }
-  return { isValid: true, errors: {} };
-}
-
-export function validateInflationRate(value: any, allInputs?: Record<string, any>): ValidationResult {
-  const num = Number(value);
-  if (isNaN(num)) {
-    return { isValid: false, errors: { inflationRate: 'Inflation rate must be a valid number' } };
-  }
-  if (num < -20) {
-    return { isValid: false, errors: { inflationRate: 'Inflation rate cannot be below -20%' } };
-  }
-  if (num > 50) {
-    return { isValid: false, errors: { inflationRate: 'Inflation rate above 50% is unusual' } };
-  }
-  return { isValid: true, errors: {} };
-}
-
-export function validateDeathBenefitAmount(value: any, allInputs?: Record<string, any>): ValidationResult {
-  if (!value) {
-    return { isValid: true, errors: {} }; // Optional field
-  }
-  
-  const num = Number(value);
-  if (isNaN(num)) {
-    return { isValid: false, errors: { deathBenefitAmount: 'Death benefit amount must be a valid number' } };
-  }
-  if (num < 0) {
-    return { isValid: false, errors: { deathBenefitAmount: 'Death benefit amount cannot be negative' } };
-  }
-  if (num > 10000000) {
-    return { isValid: false, errors: { deathBenefitAmount: 'Death benefit amount cannot exceed $10 million' } };
-  }
-  return { isValid: true, errors: {} };
-}
-
-export function validateMonteCarloSamples(value: any, allInputs?: Record<string, any>): ValidationResult {
-  const num = Number(value);
-  if (isNaN(num)) {
-    return { isValid: false, errors: { monteCarloSamples: 'Monte Carlo samples must be a valid number' } };
-  }
-  if (num < 1000) {
-    return { isValid: false, errors: { monteCarloSamples: 'Monte Carlo samples must be at least 1,000' } };
-  }
-  if (num > 100000) {
-    return { isValid: false, errors: { monteCarloSamples: 'Monte Carlo samples cannot exceed 100,000' } };
-  }
-  return { isValid: true, errors: {} };
-}
-
-export function validateConfidenceLevel(value: any, allInputs?: Record<string, any>): ValidationResult {
-  const num = Number(value);
-  if (isNaN(num)) {
-    return { isValid: false, errors: { confidenceLevel: 'Confidence level must be a valid number' } };
-  }
-  if (num < 50) {
-    return { isValid: false, errors: { confidenceLevel: 'Confidence level must be at least 50%' } };
-  }
-  if (num > 99) {
-    return { isValid: false, errors: { confidenceLevel: 'Confidence level cannot exceed 99%' } };
-  }
-  return { isValid: true, errors: {} };
-}
-
-export function validateAnnuityType(value: any, allInputs?: Record<string, any>): ValidationResult {
-  const validTypes = ['immediate', 'deferred', 'fixed', 'variable'];
+function validateAnnuityType(value: any): FieldValidationResult {
+  const validTypes = ['ordinary', 'due'];
   if (!validTypes.includes(value)) {
-    return { isValid: false, errors: { annuityType: 'Invalid annuity type selected' } };
+    return { isValid: false, error: 'Invalid annuity type' };
   }
-  return { isValid: true, errors: {} };
+  return { isValid: true };
 }
 
-export function validatePaymentType(value: any, allInputs?: Record<string, any>): ValidationResult {
-  const validTypes = ['single-premium', 'flexible-premium'];
-  if (!validTypes.includes(value)) {
-    return { isValid: false, errors: { paymentType: 'Invalid payment type selected' } };
+function validateTaxRate(value: any): FieldValidationResult {
+  const numValue = parseFloat(value);
+  if (isNaN(numValue) || numValue < 0 || numValue > 100) {
+    return { isValid: false, error: 'Tax rate must be between 0% and 100%' };
   }
-  return { isValid: true, errors: {} };
+  return { isValid: true };
 }
 
-export function validatePaymentMode(value: any, allInputs?: Record<string, any>): ValidationResult {
-  const validModes = ['receive', 'pay'];
-  if (!validModes.includes(value)) {
-    return { isValid: false, errors: { paymentMode: 'Invalid payment mode selected' } };
+function validateInflationRate(value: any): FieldValidationResult {
+  const numValue = parseFloat(value);
+  if (isNaN(numValue) || numValue < 0 || numValue > 100) {
+    return { isValid: false, error: 'Inflation rate must be between 0% and 100%' };
   }
-  return { isValid: true, errors: {} };
+  return { isValid: true };
 }

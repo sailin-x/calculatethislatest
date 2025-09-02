@@ -1,290 +1,230 @@
+// Net Operating Income (NOI) Calculator Types
+
 export interface NetOperatingIncomeInputs {
   // Property Information
-  propertyName: string;
-  propertyAddress: string;
-  propertyType: 'office' | 'retail' | 'industrial' | 'multifamily' | 'hotel' | 'mixed_use' | 'land' | 'other';
+  propertyValue: number;
+  propertyAddress?: string;
+  propertyType: 'residential' | 'commercial' | 'industrial' | 'retail' | 'office' | 'multifamily' | 'hotel' | 'warehouse' | 'land' | 'other';
   propertySize: number;
   propertyAge: number;
-  numberOfUnits: number;
-  occupancyRate: number;
+  propertyClass: 'class_a' | 'class_b' | 'class_c' | 'class_d';
+  propertyCondition: 'excellent' | 'good' | 'fair' | 'poor';
   
-  // Revenue Information
+  // Income Information
   grossRentalIncome: number;
   otherIncome: number;
+  vacancyRate: number;
+  creditLossRate: number;
+  lateFeeIncome: number;
   parkingIncome: number;
-  laundryIncome: number;
   storageIncome: number;
-  amenityIncome: number;
-  lateFees: number;
-  applicationFees: number;
+  laundryIncome: number;
+  vendingIncome: number;
+  advertisingIncome: number;
+  utilityReimbursement: number;
   petFees: number;
-  otherFees: number;
+  applicationFees: number;
+  leaseTerminationFees: number;
+  otherMiscellaneousIncome: number;
   
   // Operating Expenses
-  propertyManagementFee: number;
-  propertyManagementRate: number;
+  propertyManagementFees: number;
   propertyTaxes: number;
   propertyInsurance: number;
   utilities: number;
-  maintenance: number;
-  repairs: number;
+  maintenanceAndRepairs: number;
   landscaping: number;
   janitorial: number;
   security: number;
+  pestControl: number;
+  trashRemoval: number;
+  snowRemoval: number;
   advertising: number;
   legalFees: number;
   accountingFees: number;
-  otherExpenses: number;
+  professionalServices: number;
+  licensesAndPermits: number;
+  supplies: number;
+  equipmentRental: number;
+  contractServices: number;
+  otherOperatingExpenses: number;
   
-  // Vacancy and Collection Loss
-  vacancyRate: number;
-  collectionLossRate: number;
-  badDebtExpense: number;
+  // Capital Expenditures
+  roofReplacement: number;
+  hvacReplacement: number;
+  plumbingReplacement: number;
+  electricalReplacement: number;
+  flooringReplacement: number;
+  painting: number;
+  applianceReplacement: number;
+  structuralRepairs: number;
+  otherCapitalExpenditures: number;
   
   // Market Information
-  marketLocation: string;
-  marketCondition: 'declining' | 'stable' | 'growing' | 'hot';
+  marketLocation: 'urban' | 'suburban' | 'rural';
+  marketCondition: 'growing' | 'stable' | 'declining';
   marketGrowthRate: number;
-  comparableProperties: Array<{
-    property: string;
-    noi: number;
-    noiPerSqFt: number;
-    capRate: number;
-  }>;
+  comparableNOI: number;
+  comparableCapRate: number;
   
   // Analysis Parameters
   analysisPeriod: number;
   inflationRate: number;
-  rentGrowthRate: number;
   expenseGrowthRate: number;
-  discountRate: number;
+  incomeGrowthRate: number;
+  vacancyTrend: number;
   
   // Reporting Preferences
   currency: 'USD' | 'EUR' | 'GBP' | 'CAD' | 'AUD';
-  displayFormat: 'percentage' | 'decimal' | 'currency';
+  displayFormat: 'currency' | 'percentage' | 'number';
   includeCharts: boolean;
 }
 
 export interface NetOperatingIncomeMetrics {
-  // Revenue Analysis
-  totalRevenue: number;
+  // Income Metrics
+  totalGrossIncome: number;
   effectiveGrossIncome: number;
-  grossRentalIncome: number;
-  otherIncome: number;
   vacancyLoss: number;
-  collectionLoss: number;
+  creditLoss: number;
   netRentalIncome: number;
   
-  // Expense Analysis
+  // Expense Metrics
   totalOperatingExpenses: number;
-  propertyManagementExpense: number;
-  propertyTaxes: number;
-  propertyInsurance: number;
-  utilities: number;
-  maintenance: number;
-  repairs: number;
-  landscaping: number;
-  janitorial: number;
-  security: number;
-  advertising: number;
-  legalFees: number;
-  accountingFees: number;
-  otherExpenses: number;
+  totalCapitalExpenditures: number;
+  totalExpenses: number;
   
-  // NOI Analysis
+  // NOI Metrics
   netOperatingIncome: number;
   noiMargin: number;
   noiPerSquareFoot: number;
   noiPerUnit: number;
   
   // Performance Metrics
-  grossRentMultiplier: number;
-  netRentMultiplier: number;
   expenseRatio: number;
+  incomeRatio: number;
   vacancyLossRatio: number;
-  collectionLossRatio: number;
+  creditLossRatio: number;
   
-  // Cash Flow Analysis
-  monthlyCashFlow: number;
-  annualCashFlow: number;
-  cashFlowMargin: number;
-  
-  // Sensitivity Analysis
-  sensitivityMatrix: Array<{
-    variable: string;
-    values: number[];
-    impacts: number[];
-  }>;
-  
-  // Scenario Analysis
-  scenarios: Array<{
-    scenario: string;
-    probability: number;
-    noi: number;
-    noiMargin: number;
-    cashFlow: number;
-  }>;
-  
-  // Trend Analysis
-  trendAnalysis: Array<{
-    year: number;
-    revenue: number;
-    expenses: number;
-    noi: number;
-    noiMargin: number;
-  }>;
-  
-  // Benchmark Analysis
-  benchmarkAnalysis: Array<{
-    metric: string;
-    property: number;
-    market: number;
-    difference: number;
-    percentile: number;
-  }>;
-  
-  // Risk Analysis
-  riskScore: number;
-  noiVolatility: number;
-  expenseVolatility: number;
-  revenueVolatility: number;
-  
-  // Market Analysis
-  marketPosition: string;
-  competitiveAnalysis: Array<{
-    property: string;
-    noi: number;
-    noiPerSqFt: number;
-    noiMargin: number;
-    ranking: number;
-  }>;
+  // Efficiency Metrics
+  operatingEfficiency: number;
+  expenseEfficiency: number;
+  incomeEfficiency: number;
 }
 
 export interface NetOperatingIncomeAnalysis {
-  // Executive Summary
-  noiRating: 'Excellent' | 'Good' | 'Average' | 'Poor' | 'Very Poor';
-  performanceRating: 'High Performance' | 'Good Performance' | 'Average Performance' | 'Low Performance' | 'Poor Performance';
-  recommendation: 'Optimize' | 'Maintain' | 'Improve' | 'Requires Review';
+  recommendation: string;
+  noiRating: 'excellent' | 'good' | 'fair' | 'poor';
+  efficiencyRating: 'excellent' | 'good' | 'fair' | 'poor';
+  marketRating: 'excellent' | 'good' | 'fair' | 'poor';
+  confidenceRating: 'high' | 'medium' | 'low';
   
-  // Key Insights
   keyStrengths: string[];
   keyWeaknesses: string[];
-  performanceFactors: string[];
-  opportunities: string[];
+  improvementOpportunities: string[];
+  riskFactors: string[];
   
-  // NOI Analysis
-  noiSummary: string;
-  revenueAnalysis: string;
-  expenseAnalysis: string;
+  marketComparison: {
+    noiVsMarket: number;
+    efficiencyVsMarket: number;
+    marketPosition: string;
+  };
   
-  // Performance Analysis
-  performanceSummary: string;
-  marginAnalysis: string;
-  efficiencyAnalysis: string;
+  trendAnalysis: {
+    noiTrend: 'increasing' | 'stable' | 'decreasing';
+    expenseTrend: 'increasing' | 'stable' | 'decreasing';
+    incomeTrend: 'increasing' | 'stable' | 'decreasing';
+    projectedNOI: number;
+  };
   
-  // Cash Flow Analysis
-  cashFlowSummary: string;
-  profitabilityAnalysis: string;
-  sustainabilityAnalysis: string;
-  
-  // Market Analysis
-  marketSummary: string;
-  competitiveAnalysis: string;
-  marketPosition: string;
-  
-  // Risk Assessment
-  riskAssessment: string;
-  revenueRisk: string;
-  expenseRisk: string;
-  marketRisk: string;
-  
-  // Benchmark Analysis
-  benchmarkSummary: string;
-  comparisonAnalysis: string;
-  performanceGap: string;
-  
-  // Recommendations
-  optimizationRecommendations: string[];
-  improvementSuggestions: string[];
-  riskMitigation: string[];
-  
-  // Implementation
-  implementationPlan: string;
-  nextSteps: string[];
-  timeline: string;
-  
-  // Monitoring
-  monitoringPlan: string;
-  keyMetrics: string[];
-  reviewSchedule: string;
-  
-  // Risk Management
-  riskManagement: string;
-  mitigationStrategies: string[];
-  contingencyPlans: string[];
-  
-  // Performance Benchmarks
-  performanceBenchmarks: Array<{
-    metric: string;
-    target: number;
-    benchmark: number;
-    industry: string;
-  }>;
-  
-  // Decision Support
-  decisionRecommendation: string;
-  presentationPoints: string[];
-  decisionFactors: string[];
+  sensitivityAnalysis: {
+    incomeSensitivity: number;
+    expenseSensitivity: number;
+    vacancySensitivity: number;
+    breakEvenVacancy: number;
+  };
 }
 
 export interface NetOperatingIncomeOutputs {
-  // Core Metrics
+  // Core NOI
   netOperatingIncome: number;
   noiMargin: number;
   noiPerSquareFoot: number;
   noiPerUnit: number;
-  totalRevenue: number;
-  totalOperatingExpenses: number;
-  effectiveGrossIncome: number;
-  riskScore: number;
   
-  // Analysis
+  // Income Breakdown
+  totalGrossIncome: number;
+  effectiveGrossIncome: number;
+  vacancyLoss: number;
+  creditLoss: number;
+  netRentalIncome: number;
+  
+  // Expense Breakdown
+  totalOperatingExpenses: number;
+  totalCapitalExpenditures: number;
+  totalExpenses: number;
+  
+  // Performance Ratios
+  expenseRatio: number;
+  incomeRatio: number;
+  vacancyLossRatio: number;
+  creditLossRatio: number;
+  operatingEfficiency: number;
+  
+  // Market Analysis
+  noiVsMarket: number;
+  efficiencyVsMarket: number;
+  marketPosition: string;
+  
+  // Trend Analysis
+  noiTrend: string;
+  projectedNOI: number;
+  noiGrowthRate: number;
+  
+  // Sensitivity Analysis
+  incomeSensitivity: number;
+  expenseSensitivity: number;
+  vacancySensitivity: number;
+  breakEvenVacancy: number;
+  
+  // Detailed Analysis
   analysis: NetOperatingIncomeAnalysis;
   
   // Additional Metrics
-  grossRentalIncome: number;
-  otherIncome: number;
-  vacancyLoss: number;
-  collectionLoss: number;
-  netRentalIncome: number;
-  propertyManagementExpense: number;
-  propertyTaxes: number;
-  propertyInsurance: number;
-  utilities: number;
-  maintenance: number;
-  repairs: number;
-  landscaping: number;
-  janitorial: number;
-  security: number;
-  advertising: number;
-  legalFees: number;
-  accountingFees: number;
-  otherExpenses: number;
-  grossRentMultiplier: number;
-  netRentMultiplier: number;
-  expenseRatio: number;
-  vacancyLossRatio: number;
-  collectionLossRatio: number;
-  monthlyCashFlow: number;
-  annualCashFlow: number;
-  cashFlowMargin: number;
-  sensitivityMatrix: any[];
-  scenarios: any[];
-  trendAnalysis: any[];
-  benchmarkAnalysis: any[];
-  noiVolatility: number;
-  expenseVolatility: number;
-  revenueVolatility: number;
-  marketPosition: string;
-  competitiveAnalysis: any[];
+  metrics: NetOperatingIncomeMetrics;
+  
+  // Breakdowns
+  incomeBreakdown: {
+    category: string;
+    amount: number;
+    percentage: number;
+  }[];
+  
+  expenseBreakdown: {
+    category: string;
+    amount: number;
+    percentage: number;
+  }[];
+  
+  capitalExpenditureBreakdown: {
+    category: string;
+    amount: number;
+    percentage: number;
+  }[];
+  
+  // Projections
+  projections: {
+    year: number;
+    grossIncome: number;
+    operatingExpenses: number;
+    noi: number;
+    noiMargin: number;
+  }[];
+  
+  // Sensitivity Matrix
+  sensitivityMatrix: {
+    scenario: string;
+    noi: number;
+    noiMargin: number;
+    change: number;
+  }[];
 }

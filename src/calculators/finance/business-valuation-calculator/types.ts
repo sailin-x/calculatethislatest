@@ -1333,3 +1333,107 @@ export interface BusinessValuationCalculatorResults {
     successMetrics: string[];
   }[];
 }
+
+export interface BusinessValuationCalculatorOutputs {
+  // Core Valuation Results
+  enterpriseValue: number;
+  equityValue: number;
+  valuePerShare: number;
+  valuationMultiple: number;
+  discountRate: number;
+  recommendation: 'excellent' | 'good' | 'fair' | 'poor' | 'needs_improvement';
+  
+  // Valuation Methods
+  incomeApproach: number;
+  marketApproach: number;
+  assetApproach: number;
+  
+  // Detailed Analysis
+  discountedCashFlow: {
+    presentValue: number;
+    terminalValue: number;
+    totalValue: number;
+  };
+  
+  capitalizationOfEarnings: {
+    normalizedEarnings: number;
+    capitalizationRate: number;
+    value: number;
+  };
+  
+  comparableCompanyAnalysis: {
+    averageMultiple: number;
+    medianMultiple: number;
+    value: number;
+  };
+  
+  comparableTransactionAnalysis: {
+    averageMultiple: number;
+    medianMultiple: number;
+    value: number;
+  };
+  
+  adjustedBookValue: {
+    bookValue: number;
+    adjustments: number;
+    value: number;
+  };
+  
+  liquidationValue: {
+    assetValue: number;
+    liquidationCosts: number;
+    value: number;
+  };
+  
+  // Risk Analysis
+  riskAssessment: {
+    businessRisk: number;
+    financialRisk: number;
+    marketRisk: number;
+    totalRisk: number;
+  };
+  
+  // Sensitivity Analysis
+  sensitivityAnalysis: {
+    scenarios: {
+      scenario: string;
+      enterpriseValue: number;
+      equityValue: number;
+      change: number;
+    }[];
+  };
+  
+  // Monte Carlo Results
+  monteCarloResults: {
+    meanValue: number;
+    medianValue: number;
+    standardDeviation: number;
+    percentiles: {
+      p5: number;
+      p10: number;
+      p25: number;
+      p50: number;
+      p75: number;
+      p90: number;
+      p95: number;
+    };
+  };
+  
+  // Key Metrics
+  keyMetrics: {
+    returnOnEquity: number;
+    returnOnAssets: number;
+    profitMargin: number;
+    debtToEquity: number;
+    currentRatio: number;
+    quickRatio: number;
+  };
+  
+  // Recommendations
+  recommendations: {
+    category: string;
+    recommendation: string;
+    rationale: string;
+    expectedValue: number;
+  }[];
+}
