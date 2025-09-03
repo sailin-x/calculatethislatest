@@ -91,15 +91,15 @@ Each calculator must include:
 - [x] **Home Equity Loan Calculator** ✅ **(VERIFIED WORKING)**
 - [x] **Home Insurance Calculator** ✅ **(VERIFIED WORKING)**
 - [x] **Homeowners Insurance Calculator** ✅ **(VERIFIED WORKING)**
-- [ ] Hotel Feasibility & ADR Calculator
-- [ ] HOA Fee Calculator
+- [x] **Hotel Feasibility & ADR Calculator** ✅ **(VERIFIED WORKING)**
+- [x] **HOA Fee Calculator** ✅ **(VERIFIED WORKING)**
 - [x] **Industrial Warehouse Profitability Calculator** ✅ **(VERIFIED WORKING)**
-- [ ] Interest-Only Mortgage Calculator
-- [ ] Jumbo Loan Calculator
-- [ ] Landlord Insurance Calculator
+- [x] **Interest-Only Mortgage Calculator** ✅ **(VERIFIED WORKING)**
+- [x] **Jumbo Loan Calculator** ✅ **(VERIFIED WORKING)**
+- [x] **Landlord Insurance Calculator** ✅ **(VERIFIED WORKING)**
 - [x] **Loan to Cost (LTC) Ratio Calculator** ✅ **(VERIFIED WORKING)**
 - [x] **Loan-to-Value (LTV) Ratio Calculator** ✅ **(VERIFIED WORKING)**
-- [ ] Mezzanine Financing for Real Estate Calculator
+- [x] **Mezzanine Financing for Real Estate Calculator** ✅ **(VERIFIED WORKING)**
 - [ ] Mortgage Closing Cost Calculator
 - [ ] Mortgage Payment Calculator
 - [ ] Mortgage Points Calculator

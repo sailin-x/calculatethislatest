@@ -1,4 +1,4 @@
-export { hoaFeeCalculator } from './HOAFeeCalculator';
+export { interestOnlyMortgageCalculator } from './InterestOnlyMortgageCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

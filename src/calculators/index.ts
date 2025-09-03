@@ -98,6 +98,7 @@ import { HomeAffordabilityCalculator as homeAffordabilityCalculator } from './fi
 import { HomeEquityLoanCalculator as homeEquityLoanCalculator } from './finance/home-equity-loan';
 import { rentalYieldCalculator } from './finance/rental-yield';
 import { hoaFeeCalculator } from './finance/hoa-fee';
+import { interestOnlyMortgageCalculator } from './finance/interest-only-mortgage';
 import { debtYieldRatioCalculator } from './finance/debt-yield-ratio';
 import { industrialWarehouseProfitabilityCalculator } from './finance/industrial-warehouse-profitability';
 import { tripleNetLeaseROICalculator } from './finance/triple-net-lease';
@@ -260,6 +261,7 @@ calculatorRegistry.register(homeAffordabilityCalculator);
 calculatorRegistry.register(homeEquityLoanCalculator);
 calculatorRegistry.register(rentalYieldCalculator);
   calculatorRegistry.register(hoaFeeCalculator);
+calculatorRegistry.register(interestOnlyMortgageCalculator);
   calculatorRegistry.register(debtYieldRatioCalculator);
   calculatorRegistry.register(industrialWarehouseProfitabilityCalculator);
   calculatorRegistry.register(tripleNetLeaseROICalculator);
