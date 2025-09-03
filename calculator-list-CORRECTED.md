@@ -100,12 +100,12 @@ Each calculator must include:
 - [x] **Loan to Cost (LTC) Ratio Calculator** ✅ **(VERIFIED WORKING)**
 - [x] **Loan-to-Value (LTV) Ratio Calculator** ✅ **(VERIFIED WORKING)**
 - [x] **Mezzanine Financing for Real Estate Calculator** ✅ **(VERIFIED WORKING)**
-- [ ] Mortgage Closing Cost Calculator
-- [ ] Mortgage Payment Calculator
-- [ ] Mortgage Points Calculator
-- [ ] Mortgage Qualification Calculator
-- [ ] Mortgage Rate Lock Calculator
-- [ ] Mortgage Refinance Calculator
+- [x] **Mortgage Closing Cost Calculator** ✅ **(VERIFIED WORKING)**
+- [x] **Mortgage Payment Calculator** ✅ **(VERIFIED WORKING)**
+- [x] **Mortgage Points Calculator** ✅ **(VERIFIED WORKING)**
+- [x] **Mortgage Qualification Calculator** ✅ **(VERIFIED WORKING)**
+- [x] **Mortgage Rate Lock Calculator** ✅ **(VERIFIED WORKING)**
+- [x] **Mortgage Refinance Calculator** ✅ **(VERIFIED WORKING)**
 - [ ] Mortgage vs. Rent Calculator
 - [ ] Net Operating Income (NOI) Calculator
 - [ ] Opportunity Zone Investment ROI Calculator

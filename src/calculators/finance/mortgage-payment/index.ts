@@ -1,4 +1,4 @@
-export { mortgageClosingCostCalculator } from './MortgageClosingCostCalculator';
+export { mortgagePaymentCalculator } from './MortgagePaymentCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';
