@@ -88,6 +88,7 @@ import { groundLeaseValuationCalculator } from './finance/ground-lease-valuation
 import { studentLoanCalculator } from './finance/student-loan';
 import { FixAndFlipCalculator as fixAndFlipCalculator } from './finance/fix-and-flip';
 import { loanToValueRatioCalculator } from './finance/loan-to-value-ratio';
+import { loanToCostRatioCalculator } from './finance/loan-to-cost-ratio';
 import { FloodInsuranceCalculator as floodInsuranceCalculator } from './finance/flood-insurance';
 import { GroundLeaseValuationCalculator as groundLeaseValuationCalculator } from './finance/ground-lease-valuation';
 import { GrossRentMultiplierCalculator as grossRentMultiplierCalculator } from './finance/gross-rent-multiplier';

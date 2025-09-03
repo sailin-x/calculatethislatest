@@ -97,8 +97,8 @@ Each calculator must include:
 - [ ] Interest-Only Mortgage Calculator
 - [ ] Jumbo Loan Calculator
 - [ ] Landlord Insurance Calculator
-- [ ] Loan to Cost (LTC) Ratio Calculator
-- [ ] Loan-to-Value (LTV) Ratio Calculator
+- [x] **Loan to Cost (LTC) Ratio Calculator** ✅ **(VERIFIED WORKING)**
+- [x] **Loan-to-Value (LTV) Ratio Calculator** ✅ **(VERIFIED WORKING)**
 - [ ] Mezzanine Financing for Real Estate Calculator
 - [ ] Mortgage Closing Cost Calculator
 - [ ] Mortgage Payment Calculator

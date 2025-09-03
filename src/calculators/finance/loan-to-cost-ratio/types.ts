@@ -1,117 +1,101 @@
 export interface LoanToCostRatioInputs {
-  loanAmount: number;
-  totalCost: number;
-  propertyValue: number;
-  constructionCost: number;
-  landCost: number;
-  softCosts: number;
-  hardCosts: number;
-  contingency: number;
-  developerProfit: number;
-  propertyType: 'residential' | 'commercial' | 'industrial' | 'mixed-use';
-  projectType: 'new-construction' | 'renovation' | 'rehabilitation' | 'conversion';
-  location: string;
-  marketConditions: 'strong' | 'moderate' | 'weak';
-  interestRate: number;
-  loanTerm: number;
-  loanType: 'construction' | 'permanent' | 'bridge' | 'mezzanine';
-  lenderType: 'bank' | 'credit-union' | 'private-lender' | 'hard-money';
-  borrowerCreditScore: number;
-  borrowerExperience: number;
-  projectTimeline: number;
-  constructionPhase: 'pre-construction' | 'foundation' | 'framing' | 'finishing' | 'complete';
-  completionPercentage: number;
-  drawSchedule: Array<{
-    phase: string;
-    percentage: number;
-    amount: number;
-    date: string;
-  }>;
-  costBreakdown: {
-    siteWork: number;
-    foundation: number;
-    structural: number;
-    exterior: number;
-    interior: number;
-    mechanical: number;
-    electrical: number;
-    plumbing: number;
-    finishes: number;
-    fixtures: number;
-    appliances: number;
-    landscaping: number;
-    permits: number;
-    inspections: number;
-    insurance: number;
-    legal: number;
-    architecture: number;
-    engineering: number;
-    surveying: number;
-    environmental: number;
-    other: number;
+  projectInformation: {
+    projectName: string;
+    projectType: 'residential' | 'commercial' | 'industrial' | 'mixed-use' | 'hospitality' | 'healthcare' | 'educational' | 'retail' | 'office' | 'warehouse';
+    projectLocation: string;
+    totalProjectCost: number;
+    landCost: number;
+    constructionCost: number;
+    softCosts: number;
+    contingency: number;
+    developerProfit: number;
+  };
+  financingDetails: {
+    requestedLoanAmount: number;
+    loanType: 'construction' | 'permanent' | 'bridge' | 'mezzanine';
+    interestRate: number;
+    loanTerm: number;
+    interestOnlyPeriod: number;
+    originationFee: number;
+    otherFees: number;
+  };
+  projectTimeline: {
+    constructionStartDate: string;
+    estimatedCompletionDate: string;
+    constructionDuration: number;
+    stabilizationPeriod: number;
+  };
+  marketAssumptions: {
+    projectedRentalIncome: number;
+    projectedOperatingExpenses: number;
+    projectedPropertyValue: number;
+    marketGrowthRate: number;
+    capRate: number;
   };
   riskFactors: {
-    marketRisk: number;
-    constructionRisk: number;
-    financingRisk: number;
-    regulatoryRisk: number;
-    environmentalRisk: number;
-    weatherRisk: number;
-    laborRisk: number;
-    materialRisk: number;
-    timelineRisk: number;
-    budgetRisk: number;
+    marketRisk: 'low' | 'medium' | 'high';
+    constructionRisk: 'low' | 'medium' | 'high';
+    leasingRisk: 'low' | 'medium' | 'high';
+    interestRateRisk: 'low' | 'medium' | 'high';
   };
 }
 
-export interface LoanToCostRatioMetrics {
-  loanToCostRatio: number;
-  loanToValueRatio: number;
-  costToValueRatio: number;
+export interface LoanToCostRatioResults {
+  ltcRatio: number;
+  loanAmount: number;
+  totalProjectCost: number;
   equityRequirement: number;
-  maximumLoanAmount: number;
-  availableEquity: number;
-  projectFeasibility: number;
-  riskScore: number;
-  lenderComfortLevel: string;
-  approvalProbability: number;
-  recommendedLoanAmount: number;
-  recommendedEquity: number;
-  costOverrunBuffer: number;
-  profitMargin: number;
-  returnOnEquity: number;
-  returnOnInvestment: number;
-  breakEvenPoint: number;
-  paybackPeriod: number;
-  internalRateOfReturn: number;
-  netPresentValue: number;
-  cashFlowProjection: Array<{
-    period: string;
-    income: number;
-    expenses: number;
-    netCashFlow: number;
-    cumulativeCashFlow: number;
-  }>;
+  monthlyPayment: number;
+  totalInterest: number;
+  totalFees: number;
+  breakEvenAnalysis: {
+    breakEvenRent: number;
+    breakEvenOccupancy: number;
+    breakEvenTimeline: number;
+  };
+  riskAssessment: {
+    riskScore: number;
+    riskLevel: 'low' | 'medium' | 'high';
+    riskFactors: string[];
+    recommendations: string[];
+  };
+  cashFlowProjection: {
+    monthlyCashFlow: Array<{
+      month: number;
+      income: number;
+      expenses: number;
+      netCashFlow: number;
+      cumulativeCashFlow: number;
+    }>;
+    annualCashFlow: Array<{
+      year: number;
+      income: number;
+      expenses: number;
+      netCashFlow: number;
+      cumulativeCashFlow: number;
+    }>;
+    cumulativeCashFlow: number[];
+  };
   sensitivityAnalysis: {
-    bestCase: number;
-    baseCase: number;
-    worstCase: number;
+    scenarios: Array<{
+      scenario: string;
+      ltcRatio: number;
+      loanAmount: number;
+      equityRequirement: number;
+      monthlyPayment: number;
+      riskScore: number;
+    }>;
+    keyAssumptions: Array<{
+      assumption: string;
+      currentValue: number;
+      impact: string;
+    }>;
+    riskMitigation: string[];
   };
 }
 
-export interface LoanToCostRatioAnalysis {
-  feasibilityGrade: string;
-  riskAssessment: string;
-  recommendations: string;
-  marketAnalysis: string;
-  financingAnalysis: string;
-  sensitivityAnalysis: {
-    bestCase: number;
-    baseCase: number;
-    worstCase: number;
-  };
-}
-
-export interface LoanToCostRatioOutputs extends LoanToCostRatioMetrics {
-  analysis: LoanToCostRatioAnalysis;
+export interface ValidationResult {
+  isValid: boolean;
+  errors: string[];
+  warnings: string[];
 }

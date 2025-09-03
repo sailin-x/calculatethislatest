@@ -1,8 +1,6 @@
-import { CalculatorRegistry } from '../../../data/calculatorRegistry';
-import { LoanToCostRatioCalculator } from './LoanToCostRatioCalculator';
+import { calculatorRegistry } from '../../../data/calculatorRegistry';
+import { loanToCostRatioCalculator } from './LoanToCostRatioCalculator';
 
-export function registerLoanToCostRatioCalculator(registry: CalculatorRegistry): void {
-  registry.register(LoanToCostRatioCalculator);
+export function registerLoanToCostRatioCalculator(): void {
+  calculatorRegistry.register(loanToCostRatioCalculator);
 }
-
-export { LoanToCostRatioCalculator };
