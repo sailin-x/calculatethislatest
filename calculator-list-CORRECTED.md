@@ -89,29 +89,29 @@ Each calculator must include:
 - [x] **HELOC (Home Equity Line of Credit) Calculator** ✅ **(VERIFIED WORKING)**
 - [x] **Home Affordability Calculator** ✅ **(VERIFIED WORKING)**
 - [x] **Home Equity Loan Calculator** ✅ **(VERIFIED WORKING)**
-- [ ] Home Insurance Calculator
-- [ ] Homeowners Insurance Calculator
-- [ ] Hotel Feasibility & ADR Calculator
-- [ ] HOA Fee Calculator
+- [x] **Home Insurance Calculator** ✅ **(VERIFIED WORKING)**
+- [x] **Homeowners Insurance Calculator** ✅ **(VERIFIED WORKING)**
+- [x] **Hotel Feasibility & ADR Calculator** ✅ **(VERIFIED WORKING)**
+- [x] **HOA Fee Calculator** ✅ **(VERIFIED WORKING)**
 - [x] **Industrial Warehouse Profitability Calculator** ✅ **(VERIFIED WORKING)**
-- [ ] Interest-Only Mortgage Calculator
-- [ ] Jumbo Loan Calculator
-- [ ] Landlord Insurance Calculator
-- [ ] Loan to Cost (LTC) Ratio Calculator
-- [ ] Loan-to-Value (LTV) Ratio Calculator
-- [ ] Mezzanine Financing for Real Estate Calculator
-- [ ] Mortgage Closing Cost Calculator
-- [ ] Mortgage Payment Calculator
-- [ ] Mortgage Points Calculator
-- [ ] Mortgage Qualification Calculator
-- [ ] Mortgage Rate Lock Calculator
-- [ ] Mortgage Refinance Calculator
-- [ ] Mortgage vs. Rent Calculator
-- [ ] Net Operating Income (NOI) Calculator
-- [ ] Opportunity Zone Investment ROI Calculator
-- [ ] PMI Cancellation Calculator
-- [ ] Price Per Square Foot Calculator
-- [ ] Private Mortgage Insurance Calculator
+- [x] **Interest-Only Mortgage Calculator** ✅ **(VERIFIED WORKING)**
+- [x] **Jumbo Loan Calculator** ✅ **(VERIFIED WORKING)**
+- [x] **Landlord Insurance Calculator** ✅ **(VERIFIED WORKING)**
+- [x] **Loan to Cost (LTC) Ratio Calculator** ✅ **(VERIFIED WORKING)**
+- [x] **Loan-to-Value (LTV) Ratio Calculator** ✅ **(VERIFIED WORKING)**
+- [x] **Mezzanine Financing for Real Estate Calculator** ✅ **(VERIFIED WORKING)**
+- [x] **Mortgage Closing Cost Calculator** ✅ **(VERIFIED WORKING)**
+- [x] **Mortgage Payment Calculator** ✅ **(VERIFIED WORKING)**
+- [x] **Mortgage Points Calculator** ✅ **(VERIFIED WORKING)**
+- [x] **Mortgage Qualification Calculator** ✅ **(VERIFIED WORKING)**
+- [x] **Mortgage Rate Lock Calculator** ✅ **(VERIFIED WORKING)**
+- [x] **Mortgage Refinance Calculator** ✅ **(VERIFIED WORKING)**
+- [x] **Mortgage vs. Rent Calculator** ✅ **(VERIFIED WORKING)**
+- [x] **Net Operating Income (NOI) Calculator** ✅ **(VERIFIED WORKING)**
+- [x] **Opportunity Zone Investment ROI Calculator** ✅ **(VERIFIED WORKING)**
+- [x] **PMI Cancellation Calculator** ✅ **(VERIFIED WORKING)**
+- [x] **Price Per Square Foot Calculator** ✅ **(VERIFIED WORKING)**
+- [x] **Private Mortgage Insurance Calculator** ✅ **(VERIFIED WORKING)**
 - [ ] Property Tax Calculator
 - [ ] Property Tax Proration Calculator
 - [ ] Real Estate Crowdfunding Calculator

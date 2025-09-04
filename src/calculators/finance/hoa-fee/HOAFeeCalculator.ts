@@ -1,29 +1,25 @@
-import { Calculator } from '../../types';
-import { HOAFeeInputs, HOAFeeOutputs } from './types';
-import { calculateHOAFee } from './formulas';
-import { validateHOAFeeInputs } from './validation';
+import { Calculator } from '../../../types/calculator';
 
-export const HOAFeeCalculator: Calculator<HOAFeeInputs, HOAFeeOutputs> = {
+export const hoaFeeCalculator: Calculator = {
   id: 'hoa-fee',
-  name: 'HOA Fee Calculator',
+  title: 'HOA Fee Calculator',
   category: 'finance',
-  subcategory: 'real-estate',
+  subcategory: 'Real Estate & Property Management',
   description: 'Calculate HOA fees, costs, and financial health for homeowners associations',
-  longDescription: `A comprehensive HOA fee calculator that analyzes homeowners association costs, financial health, and value for property owners. This calculator evaluates monthly fees, special assessments, reserve funds, operating expenses, and amenities to provide accurate cost analysis. It includes financial health assessment, market comparisons, budget analysis, and long-term projections to help property owners understand the true cost and value of HOA membership.`,
   
-  inputs: {
-    // Property Information
-    propertyAddress: {
-      type: 'text',
-      label: 'Property Address',
-      description: 'Property address',
-      required: true,
-      placeholder: '123 Main St, Unit 4B, City, State 12345'
-    },
-    propertyType: {
-      type: 'select',
+  usageInstructions: [
+    'Enter property information including type, size, and unit details',
+    'Input HOA information including association type and total units',
+    'Set monthly fees, special assessments, and reserve fund details',
+    'Provide operating expenses and amenity costs',
+    'Review comprehensive HOA cost analysis with financial health assessment'
+  ],
+
+  inputs: [
+    {
+      id: 'propertyType',
       label: 'Property Type',
-      description: 'Type of property',
+      type: 'select',
       required: true,
       options: [
         { value: 'condo', label: 'Condo' },
@@ -32,607 +28,565 @@ export const HOAFeeCalculator: Calculator<HOAFeeInputs, HOAFeeOutputs> = {
         { value: 'co-op', label: 'Co-op' },
         { value: 'pud', label: 'PUD' }
       ],
-      placeholder: 'condo'
+      tooltip: 'Type of property',
+      defaultValue: 'condo'
     },
-    propertySize: {
-      type: 'number',
-      label: 'Property Size (sq ft)',
-      description: 'Square footage of the property',
-      required: true,
-      min: 500,
-      max: 10000,
-      step: 100,
-      placeholder: '1200'
-    },
-    unitNumber: {
-      type: 'text',
-      label: 'Unit Number',
-      description: 'Unit or apartment number',
-      required: true,
-      placeholder: '4B'
-    },
-    buildingNumber: {
-      type: 'text',
-      label: 'Building Number',
-      description: 'Building number if applicable',
-      required: true,
-      placeholder: 'Building A'
-    },
-    
-    // HOA Information
-    hoaName: {
-      type: 'text',
-      label: 'HOA Name',
-      description: 'Name of the homeowners association',
-      required: true,
-      placeholder: 'Sunset Gardens HOA'
-    },
-    hoaType: {
-      type: 'select',
-      label: 'HOA Type',
-      description: 'Type of homeowners association',
-      required: true,
-      options: [
-        { value: 'condo_association', label: 'Condo Association' },
-        { value: 'homeowners_association', label: 'Homeowners Association' },
-        { value: 'coop_board', label: 'Co-op Board' },
-        { value: 'master_association', label: 'Master Association' }
-      ],
-      placeholder: 'condo_association'
-    },
-    totalUnits: {
-      type: 'number',
-      label: 'Total Units',
-      description: 'Total number of units in the association',
-      required: true,
-      min: 2,
-      max: 1000,
-      step: 1,
-      placeholder: '50'
-    },
-    totalBuildings: {
-      type: 'number',
-      label: 'Total Buildings',
-      description: 'Total number of buildings',
-      required: true,
-      min: 1,
-      max: 100,
-      step: 1,
-      placeholder: '4'
-    },
-    associationAge: {
-      type: 'number',
-      label: 'Association Age (years)',
-      description: 'Age of the association in years',
-      required: true,
-      min: 0,
-      max: 100,
-      step: 1,
-      placeholder: '15'
-    },
-    
-    // Fee Structure
-    monthlyFee: {
-      type: 'number',
-      label: 'Monthly HOA Fee ($)',
-      description: 'Monthly HOA assessment',
-      required: true,
-      min: 0,
-      max: 5000,
-      step: 10,
-      placeholder: '350'
-    },
-    quarterlyFee: {
-      type: 'number',
-      label: 'Quarterly Fee ($)',
-      description: 'Additional quarterly fees',
-      required: true,
-      min: 0,
-      max: 10000,
-      step: 50,
-      placeholder: '0'
-    },
-    annualFee: {
-      type: 'number',
-      label: 'Annual Fee ($)',
-      description: 'Additional annual fees',
-      required: true,
-      min: 0,
-      max: 20000,
-      step: 100,
-      placeholder: '0'
-    },
-    specialAssessment: {
-      type: 'number',
-      label: 'Special Assessment ($)',
-      description: 'Current or recent special assessment',
-      required: true,
-      min: 0,
-      max: 50000,
-      step: 100,
-      placeholder: '0'
-    },
-    transferFee: {
-      type: 'number',
-      label: 'Transfer Fee ($)',
-      description: 'Fee when selling the property',
-      required: true,
-      min: 0,
-      max: 10000,
-      step: 100,
-      placeholder: '500'
-    },
-    lateFee: {
-      type: 'number',
-      label: 'Late Fee ($)',
-      description: 'Late payment fee',
-      required: true,
-      min: 0,
-      max: 1000,
-      step: 10,
-      placeholder: '25'
-    },
-    otherFees: {
-      type: 'number',
-      label: 'Other Fees ($)',
-      description: 'Other miscellaneous fees',
-      required: true,
-      min: 0,
-      max: 5000,
-      step: 50,
-      placeholder: '0'
-    },
-    
-    // Budget Information
-    totalAnnualBudget: {
-      type: 'number',
-      label: 'Total Annual Budget ($)',
-      description: 'Total annual HOA budget',
-      required: true,
-      min: 10000,
-      max: 10000000,
-      step: 1000,
-      placeholder: '250000'
-    },
-    reserveFund: {
-      type: 'number',
-      label: 'Reserve Fund ($)',
-      description: 'Current reserve fund balance',
-      required: true,
-      min: 0,
-      max: 10000000,
-      step: 1000,
-      placeholder: '500000'
-    },
-    operatingExpenses: {
-      type: 'number',
-      label: 'Operating Expenses ($)',
-      description: 'Annual operating expenses',
-      required: true,
-      min: 10000,
-      max: 5000000,
-      step: 1000,
-      placeholder: '180000'
-    },
-    insuranceCosts: {
-      type: 'number',
-      label: 'Insurance Costs ($)',
-      description: 'Annual insurance costs',
-      required: true,
-      min: 0,
-      max: 1000000,
-      step: 1000,
-      placeholder: '25000'
-    },
-    maintenanceCosts: {
-      type: 'number',
-      label: 'Maintenance Costs ($)',
-      description: 'Annual maintenance costs',
-      required: true,
-      min: 0,
-      max: 1000000,
-      step: 1000,
-      placeholder: '45000'
-    },
-    utilityCosts: {
-      type: 'number',
-      label: 'Utility Costs ($)',
-      description: 'Annual utility costs',
-      required: true,
-      min: 0,
-      max: 500000,
-      step: 1000,
-      placeholder: '30000'
-    },
-    managementFees: {
-      type: 'number',
-      label: 'Management Fees ($)',
-      description: 'Annual management company fees',
-      required: true,
-      min: 0,
-      max: 500000,
-      step: 1000,
-      placeholder: '15000'
-    },
-    legalFees: {
-      type: 'number',
-      label: 'Legal Fees ($)',
-      description: 'Annual legal fees',
-      required: true,
-      min: 0,
-      max: 100000,
-      step: 1000,
-      placeholder: '5000'
-    },
-    accountingFees: {
-      type: 'number',
-      label: 'Accounting Fees ($)',
-      description: 'Annual accounting fees',
-      required: true,
-      min: 0,
-      max: 50000,
-      step: 500,
-      placeholder: '3000'
-    },
-    otherExpenses: {
-      type: 'number',
-      label: 'Other Expenses ($)',
-      description: 'Other annual expenses',
-      required: true,
-      min: 0,
-      max: 200000,
-      step: 1000,
-      placeholder: '7000'
-    },
-    
-    // Insurance Coverage
-    masterInsurance: {
-      type: 'boolean',
-      label: 'Master Insurance',
-      description: 'HOA provides master insurance policy',
-      required: true,
-      placeholder: true
-    },
-    insuranceDeductible: {
-      type: 'number',
-      label: 'Insurance Deductible ($)',
-      description: 'Master insurance deductible',
-      required: true,
-      min: 0,
-      max: 100000,
-      step: 1000,
-      placeholder: '5000'
-    },
-    coverageAmount: {
-      type: 'number',
-      label: 'Coverage Amount ($)',
-      description: 'Master insurance coverage amount',
-      required: true,
-      min: 0,
-      max: 100000000,
-      step: 100000,
-      placeholder: '10000000'
-    },
-    personalLiabilityCoverage: {
-      type: 'number',
-      label: 'Personal Liability Coverage ($)',
-      description: 'Personal liability coverage amount',
-      required: true,
-      min: 0,
-      max: 1000000,
-      step: 10000,
-      placeholder: '100000'
-    },
-    
-    // Maintenance and Repairs
-    maintenanceSchedule: {
-      type: 'select',
-      label: 'Maintenance Schedule',
-      description: 'Frequency of maintenance',
-      required: true,
-      options: [
-        { value: 'monthly', label: 'Monthly' },
-        { value: 'quarterly', label: 'Quarterly' },
-        { value: 'semi_annual', label: 'Semi-Annual' },
-        { value: 'annual', label: 'Annual' }
-      ],
-      placeholder: 'quarterly'
-    },
-    lastMajorRenovation: {
-      type: 'number',
-      label: 'Last Major Renovation (years ago)',
-      description: 'Years since last major renovation',
-      required: true,
-      min: 0,
-      max: 50,
-      step: 1,
-      placeholder: '8'
-    },
-    
-    // Financial Health
-    reserveStudy: {
-      type: 'boolean',
-      label: 'Reserve Study',
-      description: 'HOA has conducted reserve study',
-      required: true,
-      placeholder: true
-    },
-    reserveStudyDate: {
-      type: 'text',
-      label: 'Reserve Study Date',
-      description: 'Date of last reserve study',
-      required: true,
-      placeholder: '2023-01-15'
-    },
-    reserveFundingLevel: {
-      type: 'number',
-      label: 'Reserve Funding Level (%)',
-      description: 'Current reserve funding percentage',
-      required: true,
-      min: 0,
-      max: 200,
-      step: 1,
-      placeholder: '85'
-    },
-    reserveFundingTarget: {
-      type: 'number',
-      label: 'Reserve Funding Target (%)',
-      description: 'Target reserve funding percentage',
-      required: true,
-      min: 50,
-      max: 150,
-      step: 5,
-      placeholder: '100'
-    },
-    
-    // Market Information
-    marketLocation: {
-      type: 'text',
-      label: 'Market Location',
-      description: 'Market location for comparisons',
-      required: true,
-      placeholder: 'Downtown Area'
-    },
-    
-    // Analysis Parameters
-    analysisPeriod: {
-      type: 'number',
-      label: 'Analysis Period (years)',
-      description: 'Period for financial analysis',
-      required: true,
-      min: 1,
-      max: 10,
-      step: 1,
-      placeholder: '5'
-    },
-    inflationRate: {
-      type: 'number',
-      label: 'Inflation Rate (%)',
-      description: 'Expected annual inflation rate',
-      required: true,
-      min: -5,
-      max: 15,
-      step: 0.5,
-      placeholder: '2.5'
-    },
-    propertyAppreciationRate: {
-      type: 'number',
-      label: 'Property Appreciation Rate (%)',
-      description: 'Expected annual property appreciation',
-      required: true,
-      min: -10,
-      max: 20,
-      step: 0.5,
-      placeholder: '3.0'
-    },
-    
-    // Reporting Preferences
-    currency: {
-      type: 'select',
-      label: 'Currency',
-      description: 'Currency for calculations and display',
-      required: true,
-      options: [
-        { value: 'USD', label: 'USD' },
-        { value: 'EUR', label: 'EUR' },
-        { value: 'GBP', label: 'GBP' },
-        { value: 'CAD', label: 'CAD' },
-        { value: 'AUD', label: 'AUD' }
-      ],
-      placeholder: 'USD'
-    },
-    displayFormat: {
-      type: 'select',
-      label: 'Display Format',
-      description: 'Format for displaying results',
-      required: true,
-      options: [
-        { value: 'percentage', label: 'Percentage' },
-        { value: 'decimal', label: 'Decimal' },
-        { value: 'currency', label: 'Currency' }
-      ],
-      placeholder: 'currency'
-    },
-    includeCharts: {
-      type: 'boolean',
-      label: 'Include Charts',
-      description: 'Include charts in the analysis report',
-      required: true,
-      placeholder: true
-    }
-  },
-  
-  outputs: {
-    totalMonthlyCost: {
-      type: 'number',
-      label: 'Total Monthly Cost',
-      description: 'Total monthly HOA costs'
-    },
-    totalAnnualCost: {
-      type: 'number',
-      label: 'Total Annual Cost',
-      description: 'Total annual HOA costs'
-    },
-    costPerSquareFoot: {
-      type: 'number',
-      label: 'Cost per Square Foot',
-      description: 'HOA cost per square foot annually'
-    },
-    costPerUnit: {
-      type: 'number',
-      label: 'Cost per Unit',
-      description: 'Average cost per unit'
-    },
-    budgetPerUnit: {
-      type: 'number',
-      label: 'Budget per Unit',
-      description: 'Annual budget allocation per unit'
-    },
-    reserveHealth: {
-      type: 'number',
-      label: 'Reserve Health',
-      description: 'Reserve fund health score (1-10)'
-    },
-    marketComparison: {
-      type: 'number',
-      label: 'Market Comparison',
-      description: 'Comparison to market average'
-    },
-    hoaRating: {
-      type: 'string',
-      label: 'HOA Rating',
-      description: 'Overall HOA financial health rating'
-    },
-    analysis: {
-      type: 'object',
-      label: 'Analysis Report',
-      description: 'Comprehensive HOA analysis'
-    }
-  },
-  
-  calculate: (inputs: HOAFeeInputs): HOAFeeOutputs => {
-    const validation = validateHOAFeeInputs(inputs);
-    if (!validation.isValid) {
-      throw new Error(`Validation failed: ${validation.errors.join(', ')}`);
-    }
-    
-    return calculateHOAFee(inputs);
-  },
-  
-  generateReport: (inputs: HOAFeeInputs, outputs: HOAFeeOutputs): string => {
-    const { analysis } = outputs;
-    
-    return `
-# HOA Fee Analysis Report
-
-## Executive Summary
-- **HOA Rating**: ${analysis.hoaRating}
-- **Financial Health**: ${analysis.financialHealth}
-- **Recommendation**: ${analysis.recommendation}
-
-## Key Metrics
-- **Total Monthly Cost**: $${outputs.totalMonthlyCost.toLocaleString()}
-- **Total Annual Cost**: $${outputs.totalAnnualCost.toLocaleString()}
-- **Cost per Square Foot**: $${outputs.costPerSquareFoot.toFixed(2)}
-- **Cost per Unit**: $${outputs.costPerUnit.toLocaleString()}
-- **Budget per Unit**: $${outputs.budgetPerUnit.toLocaleString()}
-- **Reserve Health**: ${outputs.reserveHealth}/10
-- **Market Comparison**: ${outputs.marketComparison.toFixed(1)}%
-- **HOA Rating**: ${outputs.hoaRating}
-
-## Analysis
-${analysis.feeSummary}
-
-## Financial Health
-${analysis.financialSummary}
-
-## Recommendations
-${analysis.valueRecommendations.join('\n')}
-
-## Next Steps
-${analysis.nextSteps.join('\n')}
-    `.trim();
-  },
-  
-  formulas: {
-    'Total Monthly Cost': 'Monthly Fee + (Quarterly Fee / 3) + (Annual Fee / 12) + (Special Assessment / 12)',
-    'Total Annual Cost': 'Monthly Cost × 12 + Transfer Fee + Other Fees',
-    'Cost per Square Foot': 'Total Annual Cost / Property Size',
-    'Cost per Unit': 'Total Annual Budget / Total Units',
-    'Budget per Unit': 'Total Annual Budget / Total Units',
-    'Reserve Health': 'Weighted assessment of reserve funding, age, and financial stability',
-    'Market Comparison': 'Comparison to similar properties in the market',
-    'HOA Rating': 'Overall assessment of financial health and value'
-  },
-  
-  examples: [
     {
-      name: 'Standard Condo HOA',
-      inputs: {
-        propertyAddress: '123 Main St, Unit 4B, City, State 12345',
-        propertyType: 'condo',
-        propertySize: 1200,
-        unitNumber: '4B',
-        buildingNumber: 'Building A',
-        hoaName: 'Sunset Gardens HOA',
-        hoaType: 'condo_association',
-        totalUnits: 50,
-        totalBuildings: 4,
-        associationAge: 15,
-        monthlyFee: 350,
-        quarterlyFee: 0,
-        annualFee: 0,
-        specialAssessment: 0,
-        transferFee: 500,
-        lateFee: 25,
-        otherFees: 0,
-        totalAnnualBudget: 250000,
-        reserveFund: 500000,
-        operatingExpenses: 180000,
-        insuranceCosts: 25000,
-        maintenanceCosts: 45000,
-        utilityCosts: 30000,
-        managementFees: 15000,
-        legalFees: 5000,
-        accountingFees: 3000,
-        otherExpenses: 7000,
-        masterInsurance: true,
-        insuranceDeductible: 5000,
-        coverageAmount: 10000000,
-        personalLiabilityCoverage: 100000,
-        maintenanceSchedule: 'quarterly',
-        lastMajorRenovation: 8,
-        reserveStudy: true,
-        reserveStudyDate: '2023-01-15',
-        reserveFundingLevel: 85,
-        reserveFundingTarget: 100,
-        marketLocation: 'Downtown Area',
-        analysisPeriod: 5,
-        inflationRate: 2.5,
-        propertyAppreciationRate: 3.0,
-        currency: 'USD',
-        displayFormat: 'currency',
-        includeCharts: true
+      id: 'propertySize',
+      label: 'Property Size (sq ft)',
+      type: 'number',
+      required: true,
+      placeholder: '1200',
+      tooltip: 'Square footage of the property',
+      defaultValue: 1200,
+      min: 500,
+      max: 10000
+    },
+    {
+      id: 'hoaType',
+      label: 'HOA Type',
+      type: 'select',
+      required: true,
+      options: [
+        { value: 'condo-association', label: 'Condo Association' },
+        { value: 'homeowners-association', label: 'Homeowners Association' },
+        { value: 'coop-board', label: 'Co-op Board' },
+        { value: 'master-association', label: 'Master Association' }
+      ],
+      tooltip: 'Type of homeowners association',
+      defaultValue: 'condo-association'
+    },
+    {
+      id: 'totalUnits',
+      label: 'Total Units',
+      type: 'number',
+      required: true,
+      placeholder: '50',
+      tooltip: 'Total number of units in the association',
+      defaultValue: 50,
+      min: 2,
+      max: 1000
+    },
+    {
+      id: 'totalBuildings',
+      label: 'Total Buildings',
+      type: 'number',
+      required: true,
+      placeholder: '2',
+      tooltip: 'Total number of buildings',
+      defaultValue: 2,
+      min: 1,
+      max: 100
+    },
+    {
+      id: 'monthlyFee',
+      label: 'Monthly HOA Fee',
+      type: 'currency',
+      required: true,
+      placeholder: '300',
+      tooltip: 'Monthly HOA fee amount',
+      defaultValue: 300,
+      min: 50,
+      max: 2000
+    },
+    {
+      id: 'specialAssessment',
+      label: 'Special Assessment',
+      type: 'currency',
+      required: false,
+      placeholder: '0',
+      tooltip: 'Special assessment amount (if any)',
+      defaultValue: 0,
+      min: 0,
+      max: 50000
+    },
+    {
+      id: 'reserveFund',
+      label: 'Reserve Fund Balance',
+      type: 'currency',
+      required: false,
+      placeholder: '50000',
+      tooltip: 'Current reserve fund balance',
+      defaultValue: 50000,
+      min: 0,
+      max: 1000000
+    },
+    {
+      id: 'reserveFundTarget',
+      label: 'Reserve Fund Target',
+      type: 'currency',
+      required: false,
+      placeholder: '100000',
+      tooltip: 'Target reserve fund balance',
+      defaultValue: 100000,
+      min: 0,
+      max: 2000000
+    },
+    {
+      id: 'operatingExpenses',
+      label: 'Annual Operating Expenses',
+      type: 'currency',
+      required: false,
+      placeholder: '150000',
+      tooltip: 'Annual operating expenses for the association',
+      defaultValue: 150000,
+      min: 10000,
+      max: 1000000
+    },
+    {
+      id: 'insuranceCosts',
+      label: 'Annual Insurance Costs',
+      type: 'currency',
+      required: false,
+      placeholder: '25000',
+      tooltip: 'Annual insurance costs for the association',
+      defaultValue: 25000,
+      min: 5000,
+      max: 200000
+    },
+    {
+      id: 'maintenanceCosts',
+      label: 'Annual Maintenance Costs',
+      type: 'currency',
+      required: false,
+      placeholder: '30000',
+      tooltip: 'Annual maintenance costs for the association',
+      defaultValue: 30000,
+      min: 5000,
+      max: 150000
+    },
+    {
+      id: 'utilityCosts',
+      label: 'Annual Utility Costs',
+      type: 'currency',
+      required: false,
+      placeholder: '20000',
+      tooltip: 'Annual utility costs for the association',
+      defaultValue: 20000,
+      min: 5000,
+      max: 100000
+    },
+    {
+      id: 'managementFees',
+      label: 'Annual Management Fees',
+      type: 'currency',
+      required: false,
+      placeholder: '15000',
+      tooltip: 'Annual property management fees',
+      defaultValue: 15000,
+      min: 5000,
+      max: 100000
+    },
+    {
+      id: 'amenityCosts',
+      label: 'Annual Amenity Costs',
+      type: 'currency',
+      required: false,
+      placeholder: '10000',
+      tooltip: 'Annual costs for amenities (pool, gym, etc.)',
+      defaultValue: 10000,
+      min: 0,
+      max: 100000
+    },
+    {
+      id: 'legalFees',
+      label: 'Annual Legal Fees',
+      type: 'currency',
+      required: false,
+      placeholder: '5000',
+      tooltip: 'Annual legal and accounting fees',
+      defaultValue: 5000,
+      min: 0,
+      max: 50000
+    },
+    {
+      id: 'inflationRate',
+      label: 'Inflation Rate',
+      type: 'percentage',
+      required: false,
+      placeholder: '2.5',
+      tooltip: 'Expected annual inflation rate',
+      defaultValue: 2.5,
+      min: 0,
+      max: 10
+    },
+    {
+      id: 'feeIncreaseRate',
+      label: 'Annual Fee Increase Rate',
+      type: 'percentage',
+      required: false,
+      placeholder: '3.0',
+      tooltip: 'Expected annual HOA fee increase rate',
+      defaultValue: 3.0,
+      min: 0,
+      max: 15
+    },
+    {
+      id: 'analysisPeriod',
+      label: 'Analysis Period (years)',
+      type: 'number',
+      required: false,
+      placeholder: '10',
+      tooltip: 'Period for long-term cost analysis',
+      defaultValue: 10,
+      min: 1,
+      max: 30
+    }
+  ],
+
+  outputs: [
+    {
+      id: 'annualHOAFee',
+      label: 'Annual HOA Fee',
+      type: 'currency',
+      format: '$0,0',
+      explanation: 'Total annual HOA fees'
+    },
+    {
+      id: 'totalAnnualCost',
+      label: 'Total Annual Cost',
+      type: 'currency',
+      format: '$0,0',
+      explanation: 'Total annual cost including fees and assessments'
+    },
+    {
+      id: 'costPerSqFt',
+      label: 'Cost per Square Foot',
+      type: 'currency',
+      format: '$0.00',
+      explanation: 'Annual HOA cost per square foot'
+    },
+    {
+      id: 'reserveFundHealth',
+      label: 'Reserve Fund Health',
+      type: 'text',
+      explanation: 'Assessment of reserve fund adequacy'
+    },
+    {
+      id: 'reserveFundPercentage',
+      label: 'Reserve Fund Percentage',
+      type: 'percentage',
+      format: '0.0%',
+      explanation: 'Reserve fund as percentage of target'
+    },
+    {
+      id: 'financialHealthScore',
+      label: 'Financial Health Score',
+      type: 'number',
+      format: '0',
+      explanation: 'Overall financial health score (0-100)'
+    },
+    {
+      id: 'feeEfficiency',
+      label: 'Fee Efficiency',
+      type: 'percentage',
+      format: '0.0%',
+      explanation: 'Percentage of fees going to essential services'
+    },
+    {
+      id: 'projectedFee10Years',
+      label: 'Projected Fee (10 Years)',
+      type: 'currency',
+      format: '$0,0',
+      explanation: 'Projected monthly fee in 10 years'
+    },
+    {
+      id: 'totalCost10Years',
+      label: 'Total Cost (10 Years)',
+      type: 'currency',
+      format: '$0,0',
+      explanation: 'Total projected cost over 10 years'
+    },
+    {
+      id: 'costComparison',
+      label: 'Cost Comparison',
+      type: 'text',
+      explanation: 'Comparison with market average HOA costs'
+    },
+    {
+      id: 'recommendations',
+      label: 'Recommendations',
+      type: 'text',
+      explanation: 'Recommendations for HOA cost optimization'
+    }
+  ],
+
+  formulas: [
+    {
+      id: 'hoa-fee-analysis',
+      name: 'HOA Fee Analysis',
+      description: 'Calculate comprehensive HOA fee analysis and financial health assessment',
+      calculate: (inputs: Record<string, any>) => {
+        const monthlyFee = inputs.monthlyFee || 0;
+        const specialAssessment = inputs.specialAssessment || 0;
+        const propertySize = inputs.propertySize || 0;
+        const totalUnits = inputs.totalUnits || 0;
+        const reserveFund = inputs.reserveFund || 0;
+        const reserveFundTarget = inputs.reserveFundTarget || 0;
+        const operatingExpenses = inputs.operatingExpenses || 0;
+        const insuranceCosts = inputs.insuranceCosts || 0;
+        const maintenanceCosts = inputs.maintenanceCosts || 0;
+        const utilityCosts = inputs.utilityCosts || 0;
+        const managementFees = inputs.managementFees || 0;
+        const amenityCosts = inputs.amenityCosts || 0;
+        const legalFees = inputs.legalFees || 0;
+        const inflationRate = (inputs.inflationRate || 2.5) / 100;
+        const feeIncreaseRate = (inputs.feeIncreaseRate || 3.0) / 100;
+        const analysisPeriod = inputs.analysisPeriod || 10;
+        
+        // Calculate annual costs
+        const annualHOAFee = monthlyFee * 12;
+        const totalAnnualCost = annualHOAFee + specialAssessment;
+        
+        // Calculate cost per square foot
+        const costPerSqFt = propertySize > 0 ? totalAnnualCost / propertySize : 0;
+        
+        // Calculate reserve fund health
+        const reserveFundPercentage = reserveFundTarget > 0 ? (reserveFund / reserveFundTarget) * 100 : 0;
+        const reserveFundHealth = determineReserveFundHealth(reserveFundPercentage);
+        
+        // Calculate financial health score
+        const financialHealthScore = calculateFinancialHealthScore(
+          inputs, reserveFundPercentage, totalAnnualCost, totalUnits
+        );
+        
+        // Calculate fee efficiency
+        const essentialCosts = operatingExpenses + insuranceCosts + maintenanceCosts + utilityCosts;
+        const totalCosts = essentialCosts + managementFees + amenityCosts + legalFees;
+        const feeEfficiency = totalCosts > 0 ? (essentialCosts / totalCosts) * 100 : 0;
+        
+        // Calculate projected costs
+        const projectedFee10Years = monthlyFee * Math.pow(1 + feeIncreaseRate, 10);
+        const totalCost10Years = calculateTotalCostOverPeriod(monthlyFee, feeIncreaseRate, analysisPeriod);
+        
+        // Generate cost comparison and recommendations
+        const costComparison = generateCostComparison(costPerSqFt, totalAnnualCost);
+        const recommendations = generateRecommendations(
+          financialHealthScore, reserveFundPercentage, feeEfficiency
+        );
+        
+        return {
+          outputs: {
+            annualHOAFee: Math.round(annualHOAFee),
+            totalAnnualCost: Math.round(totalAnnualCost),
+            costPerSqFt: Math.round(costPerSqFt * 100) / 100,
+            reserveFundHealth,
+            reserveFundPercentage: Math.round(reserveFundPercentage * 100) / 100,
+            financialHealthScore,
+            feeEfficiency: Math.round(feeEfficiency * 100) / 100,
+            projectedFee10Years: Math.round(projectedFee10Years),
+            totalCost10Years: Math.round(totalCost10Years),
+            costComparison,
+            recommendations
+          },
+          explanation: `HOA fee analysis complete. Annual cost: $${totalAnnualCost.toLocaleString()}. Financial health score: ${financialHealthScore}/100. Reserve fund health: ${reserveFundHealth}.`,
+          intermediateSteps: {
+            essentialCosts: Math.round(essentialCosts),
+            totalCosts: Math.round(totalCosts),
+            monthlyFee: Math.round(monthlyFee),
+            specialAssessment: Math.round(specialAssessment)
+          }
+        };
       }
     }
   ],
-  
-  tags: [
-    'HOA fees',
-    'homeowners association',
-    'condo fees',
-    'property management',
-    'reserve funds',
-    'maintenance costs',
-    'community fees',
-    'property ownership',
-    'association costs',
-    'financial health'
+
+  validationRules: [
+    {
+      field: 'monthlyFee',
+      type: 'required',
+      message: 'Monthly HOA fee is required',
+      validator: (value: any) => value !== null && value !== undefined && value > 0
+    },
+    {
+      field: 'propertySize',
+      type: 'required',
+      message: 'Property size is required',
+      validator: (value: any) => value !== null && value !== undefined && value > 0
+    },
+    {
+      field: 'totalUnits',
+      type: 'required',
+      message: 'Total units is required',
+      validator: (value: any) => value !== null && value !== undefined && value > 1
+    },
+    {
+      field: 'monthlyFee',
+      type: 'range',
+      message: 'Monthly HOA fee must be reasonable (between $50 and $2,000)',
+      validator: (value: any) => value === null || value === undefined || (value >= 50 && value <= 2000)
+    }
   ],
-  
-  category_info: {
-    name: 'Real Estate Finance',
-    description: 'Financial calculators for real estate investment and financing',
-    icon: '🏠'
-  }
+
+  examples: [
+    {
+      title: 'Standard Condo HOA',
+      description: 'A typical condo association with standard amenities and good financial health',
+      inputs: {
+        propertyType: 'condo',
+        propertySize: 1200,
+        hoaType: 'condo-association',
+        totalUnits: 50,
+        totalBuildings: 2,
+        monthlyFee: 300,
+        specialAssessment: 0,
+        reserveFund: 50000,
+        reserveFundTarget: 100000,
+        operatingExpenses: 150000,
+        insuranceCosts: 25000,
+        maintenanceCosts: 30000,
+        utilityCosts: 20000,
+        managementFees: 15000,
+        amenityCosts: 10000,
+        legalFees: 5000,
+        inflationRate: 2.5,
+        feeIncreaseRate: 3.0,
+        analysisPeriod: 10
+      },
+      expectedOutputs: {
+        annualHOAFee: 3600,
+        totalAnnualCost: 3600,
+        costPerSqFt: 3.00,
+        reserveFundHealth: 'Good',
+        reserveFundPercentage: 50.0,
+        financialHealthScore: 75,
+        feeEfficiency: 80.0,
+        projectedFee10Years: 403,
+        totalCost10Years: 41300,
+        costComparison: 'Below market average',
+        recommendations: 'Maintain current fee structure and continue building reserves'
+      }
+    },
+    {
+      title: 'Luxury Townhouse HOA',
+      description: 'A high-end townhouse community with extensive amenities and premium services',
+      inputs: {
+        propertyType: 'townhouse',
+        propertySize: 2500,
+        hoaType: 'homeowners-association',
+        totalUnits: 25,
+        totalBuildings: 25,
+        monthlyFee: 600,
+        specialAssessment: 5000,
+        reserveFund: 200000,
+        reserveFundTarget: 300000,
+        operatingExpenses: 200000,
+        insuranceCosts: 40000,
+        maintenanceCosts: 50000,
+        utilityCosts: 30000,
+        managementFees: 25000,
+        amenityCosts: 50000,
+        legalFees: 15000,
+        inflationRate: 3.0,
+        feeIncreaseRate: 4.0,
+        analysisPeriod: 10
+      },
+      expectedOutputs: {
+        annualHOAFee: 7200,
+        totalAnnualCost: 12200,
+        costPerSqFt: 4.88,
+        reserveFundHealth: 'Excellent',
+        reserveFundPercentage: 66.7,
+        financialHealthScore: 85,
+        feeEfficiency: 70.0,
+        projectedFee10Years: 888,
+        totalCost10Years: 102000,
+        costComparison: 'Above market average - premium services',
+        recommendations: 'Excellent financial health. Consider reducing fee increases to maintain affordability'
+      }
+    }
+  ]
 };
+
+// Helper functions for calculations
+function determineReserveFundHealth(percentage: number): string {
+  if (percentage >= 80) return 'Excellent';
+  else if (percentage >= 60) return 'Good';
+  else if (percentage >= 40) return 'Fair';
+  else if (percentage >= 20) return 'Poor';
+  else return 'Critical';
+}
+
+function calculateFinancialHealthScore(
+  inputs: Record<string, any>, 
+  reserveFundPercentage: number, 
+  totalAnnualCost: number, 
+  totalUnits: number
+): number {
+  let score = 50; // Base score
+  
+  // Reserve fund health
+  if (reserveFundPercentage >= 80) score += 25;
+  else if (reserveFundPercentage >= 60) score += 20;
+  else if (reserveFundPercentage >= 40) score += 15;
+  else if (reserveFundPercentage >= 20) score += 10;
+  else score -= 10;
+  
+  // Cost per unit analysis
+  const costPerUnit = totalAnnualCost / totalUnits;
+  if (costPerUnit < 5000) score += 15;
+  else if (costPerUnit < 8000) score += 10;
+  else if (costPerUnit < 12000) score += 5;
+  else if (costPerUnit > 20000) score -= 15;
+  
+  // Property type considerations
+  const propertyType = inputs.propertyType;
+  if (propertyType === 'condo') score += 5;
+  else if (propertyType === 'townhouse') score += 3;
+  
+  // HOA type considerations
+  const hoaType = inputs.hoaType;
+  if (hoaType === 'condo-association') score += 5;
+  else if (hoaType === 'homeowners-association') score += 3;
+  
+  return Math.min(100, Math.max(0, score));
+}
+
+function calculateTotalCostOverPeriod(monthlyFee: number, increaseRate: number, years: number): number {
+  let totalCost = 0;
+  for (let year = 1; year <= years; year++) {
+    const annualFee = monthlyFee * 12 * Math.pow(1 + increaseRate, year - 1);
+    totalCost += annualFee;
+  }
+  return totalCost;
+}
+
+function generateCostComparison(costPerSqFt: number, totalAnnualCost: number): string {
+  // Market average HOA costs (simplified)
+  const marketAveragePerSqFt = 3.50;
+  const marketAverageAnnual = 4000;
+  
+  if (costPerSqFt < marketAveragePerSqFt * 0.8 && totalAnnualCost < marketAverageAnnual * 0.8) {
+    return 'Below market average - good value';
+  } else if (costPerSqFt > marketAveragePerSqFt * 1.2 && totalAnnualCost > marketAverageAnnual * 1.2) {
+    return 'Above market average - premium services';
+  } else {
+    return 'At market average';
+  }
+}
+
+function generateRecommendations(
+  financialHealthScore: number, 
+  reserveFundPercentage: number, 
+  feeEfficiency: number
+): string {
+  const recommendations = [];
+  
+  if (financialHealthScore >= 80) {
+    recommendations.push('Excellent financial health - maintain current practices');
+  } else if (financialHealthScore >= 60) {
+    recommendations.push('Good financial health - monitor reserve fund growth');
+  } else {
+    recommendations.push('Improve financial health - increase reserve fund contributions');
+  }
+  
+  if (reserveFundPercentage < 50) {
+    recommendations.push('Build reserve fund to target levels');
+  }
+  
+  if (feeEfficiency < 70) {
+    recommendations.push('Review amenity costs and optimize spending');
+  }
+  
+  return recommendations.join('. ');
+}

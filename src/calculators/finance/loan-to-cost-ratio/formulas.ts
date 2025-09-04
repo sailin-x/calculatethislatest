@@ -1,370 +1,430 @@
-import { CalculatorInputs, CalculatorOutputs } from '../../../types/calculator';
+import { LoanToCostRatioInputs, LoanToCostRatioResults } from './types';
 
-// Project type risk factors
-const PROJECT_TYPE_RISK = {
-  'Residential': 15,
-  'Commercial': 20,
-  'Industrial': 12,
-  'Mixed-Use': 25,
-  'Hospitality': 30,
-  'Healthcare': 18,
-  'Educational': 16,
-  'Retail': 22,
-  'Office': 20,
-  'Warehouse': 10
-};
-
-// Location risk factors
-const LOCATION_RISK = {
-  'Urban': 18,
-  'Suburban': 12,
-  'Rural': 20,
-  'Downtown': 15,
-  'Airport Area': 16,
-  'University Area': 14,
-  'Medical District': 13,
-  'Business District': 16,
-  'Residential Area': 12,
-  'Industrial Zone': 10
-};
-
-// Market condition adjustments
-const MARKET_CONDITION_ADJUSTMENTS = {
-  'Strong': 10,
-  'Stable': 0,
-  'Weak': -10,
-  'Recovering': 5,
-  'Declining': -15,
-  'Volatile': -20
-};
-
-// Lender type adjustments
-const LENDER_TYPE_ADJUSTMENTS = {
-  'Commercial Bank': 0,
-  'Credit Union': -5,
-  'Private Lender': 10,
-  'Hard Money Lender': 25,
-  'CMBS Lender': 5,
-  'Life Insurance Company': -10,
-  'Government Agency': -15,
-  'Regional Bank': -2,
-  'National Bank': 0,
-  'Investment Fund': 15
-};
-
-// Borrower experience adjustments
-const BORROWER_EXPERIENCE_ADJUSTMENTS = {
-  'Novice': 20,
-  'Experienced': 0,
-  'Expert': -10,
-  'Institutional': -20
-};
-
-// Pre-leasing adjustments
-const PRE_LEASING_ADJUSTMENTS = {
-  'None': 0,
-  'Partial': -5,
-  'Substantial': -15,
-  'Fully Leased': -25
-};
-
-// Environmental issues adjustments
-const ENVIRONMENTAL_ADJUSTMENTS = {
-  'None': 0,
-  'Minor': 5,
-  'Moderate': 15,
-  'Significant': 30,
-  'Unknown': 20
-};
-
-// Zoning issues adjustments
-const ZONING_ADJUSTMENTS = {
-  'None': 0,
-  'Minor': 8,
-  'Moderate': 18,
-  'Significant': 35,
-  'Pending Approval': 25
-};
-
-// Construction risk adjustments
-const CONSTRUCTION_RISK_ADJUSTMENTS = {
-  'Low': 0,
-  'Moderate': 10,
-  'High': 20,
-  'Very High': 35
-};
-
-// Market risk adjustments
-const MARKET_RISK_ADJUSTMENTS = {
-  'Low': 0,
-  'Moderate': 12,
-  'High': 25,
-  'Very High': 40
-};
-
-// Helper function to calculate risk score
-function calculateRiskScore(inputs: CalculatorInputs): number {
-  let riskScore = 30; // Base risk score
-
-  // Project type risk
-  if (inputs.projectType && PROJECT_TYPE_RISK[inputs.projectType as keyof typeof PROJECT_TYPE_RISK]) {
-    riskScore += PROJECT_TYPE_RISK[inputs.projectType as keyof typeof PROJECT_TYPE_RISK];
-  }
-
-  // Location risk
-  if (inputs.location && LOCATION_RISK[inputs.location as keyof typeof LOCATION_RISK]) {
-    riskScore += LOCATION_RISK[inputs.location as keyof typeof LOCATION_RISK];
-  }
-
-  // Market condition adjustment
-  if (inputs.marketCondition && MARKET_CONDITION_ADJUSTMENTS[inputs.marketCondition as keyof typeof MARKET_CONDITION_ADJUSTMENTS]) {
-    riskScore += MARKET_CONDITION_ADJUSTMENTS[inputs.marketCondition as keyof typeof MARKET_CONDITION_ADJUSTMENTS];
-  }
-
-  // Lender type adjustment
-  if (inputs.lenderType && LENDER_TYPE_ADJUSTMENTS[inputs.lenderType as keyof typeof LENDER_TYPE_ADJUSTMENTS]) {
-    riskScore += LENDER_TYPE_ADJUSTMENTS[inputs.lenderType as keyof typeof LENDER_TYPE_ADJUSTMENTS];
-  }
-
-  // Borrower experience adjustment
-  if (inputs.borrowerExperience && BORROWER_EXPERIENCE_ADJUSTMENTS[inputs.borrowerExperience as keyof typeof BORROWER_EXPERIENCE_ADJUSTMENTS]) {
-    riskScore += BORROWER_EXPERIENCE_ADJUSTMENTS[inputs.borrowerExperience as keyof typeof BORROWER_EXPERIENCE_ADJUSTMENTS];
-  }
-
-  // Pre-leasing adjustment
-  if (inputs.preLeasing && PRE_LEASING_ADJUSTMENTS[inputs.preLeasing as keyof typeof PRE_LEASING_ADJUSTMENTS]) {
-    riskScore += PRE_LEASING_ADJUSTMENTS[inputs.preLeasing as keyof typeof PRE_LEASING_ADJUSTMENTS];
-  }
-
-  // Environmental issues adjustment
-  if (inputs.environmentalIssues && ENVIRONMENTAL_ADJUSTMENTS[inputs.environmentalIssues as keyof typeof ENVIRONMENTAL_ADJUSTMENTS]) {
-    riskScore += ENVIRONMENTAL_ADJUSTMENTS[inputs.environmentalIssues as keyof typeof ENVIRONMENTAL_ADJUSTMENTS];
-  }
-
-  // Zoning issues adjustment
-  if (inputs.zoningIssues && ZONING_ADJUSTMENTS[inputs.zoningIssues as keyof typeof ZONING_ADJUSTMENTS]) {
-    riskScore += ZONING_ADJUSTMENTS[inputs.zoningIssues as keyof typeof ZONING_ADJUSTMENTS];
-  }
-
-  // Construction risk adjustment
-  if (inputs.constructionRisk && CONSTRUCTION_RISK_ADJUSTMENTS[inputs.constructionRisk as keyof typeof CONSTRUCTION_RISK_ADJUSTMENTS]) {
-    riskScore += CONSTRUCTION_RISK_ADJUSTMENTS[inputs.constructionRisk as keyof typeof CONSTRUCTION_RISK_ADJUSTMENTS];
-  }
-
-  // Market risk adjustment
-  if (inputs.marketRisk && MARKET_RISK_ADJUSTMENTS[inputs.marketRisk as keyof typeof MARKET_RISK_ADJUSTMENTS]) {
-    riskScore += MARKET_RISK_ADJUSTMENTS[inputs.marketRisk as keyof typeof MARKET_RISK_ADJUSTMENTS];
-  }
-
-  // Credit score adjustment
-  if (inputs.borrowerCreditScore) {
-    if (inputs.borrowerCreditScore >= 800) riskScore -= 15;
-    else if (inputs.borrowerCreditScore >= 750) riskScore -= 10;
-    else if (inputs.borrowerCreditScore >= 700) riskScore -= 5;
-    else if (inputs.borrowerCreditScore >= 650) riskScore += 5;
-    else riskScore += 15;
-  }
-
-  // Project timeline adjustment
-  if (inputs.projectTimeline) {
-    if (inputs.projectTimeline <= 12) riskScore -= 5;
-    else if (inputs.projectTimeline <= 18) riskScore += 0;
-    else if (inputs.projectTimeline <= 24) riskScore += 8;
-    else riskScore += 15;
-  }
-
-  // Pre-leasing percentage adjustment
-  if (inputs.preLeasingPercentage) {
-    if (inputs.preLeasingPercentage >= 80) riskScore -= 10;
-    else if (inputs.preLeasingPercentage >= 60) riskScore -= 5;
-    else if (inputs.preLeasingPercentage >= 40) riskScore += 0;
-    else if (inputs.preLeasingPercentage >= 20) riskScore += 5;
-    else riskScore += 10;
-  }
-
-  return Math.max(0, Math.min(100, riskScore));
-}
-
-// Helper function to calculate feasibility score
-function calculateFeasibilityScore(riskScore: number, inputs: CalculatorInputs): number {
-  let feasibilityScore = 100 - riskScore;
-
-  // Market condition bonus
-  if (inputs.marketCondition === 'Strong') feasibilityScore += 10;
-  else if (inputs.marketCondition === 'Recovering') feasibilityScore += 5;
-
-  // Pre-leasing bonus
-  if (inputs.preLeasing === 'Fully Leased') feasibilityScore += 15;
-  else if (inputs.preLeasing === 'Substantial') feasibilityScore += 10;
-  else if (inputs.preLeasing === 'Partial') feasibilityScore += 5;
-
-  // Borrower experience bonus
-  if (inputs.borrowerExperience === 'Expert') feasibilityScore += 10;
-  else if (inputs.borrowerExperience === 'Institutional') feasibilityScore += 15;
-
-  return Math.max(0, Math.min(100, feasibilityScore));
-}
-
-// Helper function to calculate lender approval probability
-function calculateApprovalProbability(riskScore: number, feasibilityScore: number, ltcRatio: number): number {
-  let probability = 50; // Base probability
-
-  // Risk score adjustment
-  if (riskScore <= 20) probability += 30;
-  else if (riskScore <= 40) probability += 20;
-  else if (riskScore <= 60) probability += 10;
-  else if (riskScore <= 80) probability -= 10;
-  else probability -= 30;
-
-  // Feasibility score adjustment
-  if (feasibilityScore >= 80) probability += 20;
-  else if (feasibilityScore >= 60) probability += 10;
-  else if (feasibilityScore <= 40) probability -= 20;
-
-  // LTC ratio adjustment
-  if (ltcRatio <= 65) probability += 15;
-  else if (ltcRatio <= 75) probability += 5;
-  else if (ltcRatio >= 85) probability -= 15;
-
-  return Math.max(0, Math.min(100, probability));
-}
-
-// Helper function to generate recommendation
-function generateRecommendation(riskScore: number, feasibilityScore: number, approvalProbability: number, ltcRatio: number): string {
-  if (approvalProbability >= 80 && feasibilityScore >= 75) {
-    return 'Strongly Recommended - Excellent project profile with high approval probability';
-  } else if (approvalProbability >= 65 && feasibilityScore >= 60) {
-    return 'Recommended - Good project profile with favorable approval prospects';
-  } else if (approvalProbability >= 50 && feasibilityScore >= 45) {
-    return 'Conditionally Recommended - Project may require additional equity or risk mitigation';
-  } else if (approvalProbability >= 35 && feasibilityScore >= 30) {
-    return 'Proceed with Caution - Significant risks present, consider restructuring';
-  } else {
-    return 'Not Recommended - High risk profile with low approval probability';
-  }
-}
-
-export function calculateLoanToCostRatio(inputs: CalculatorInputs): CalculatorOutputs {
-  // Extract inputs with defaults
-  const landCost = inputs.landCost || 0;
-  const constructionCost = inputs.constructionCost || 0;
-  const softCosts = inputs.softCosts || 0;
-  const furnitureFixturesEquipment = inputs.furnitureFixturesEquipment || 0;
-  const contingency = inputs.contingency || 0;
-  const ltcRatio = inputs.ltcRatio || 75;
-
+export function calculateLoanToCostRatio(inputs: LoanToCostRatioInputs): LoanToCostRatioResults {
   // Calculate total project cost
-  const totalProjectCost = landCost + constructionCost + softCosts + furnitureFixturesEquipment + contingency;
-
-  // Calculate maximum loan amount
-  const maximumLoanAmount = totalProjectCost * (ltcRatio / 100);
-
-  // Calculate required equity
-  const requiredEquity = totalProjectCost - maximumLoanAmount;
-
-  // Calculate actual LTC ratio
-  const ltcRatioActual = (maximumLoanAmount / totalProjectCost) * 100;
-
-  // Calculate risk and feasibility scores
-  const riskScore = calculateRiskScore(inputs);
-  const feasibilityScore = calculateFeasibilityScore(riskScore, inputs);
-  const lenderApprovalProbability = calculateApprovalProbability(riskScore, feasibilityScore, ltcRatio);
-
-  // Generate recommendation
-  const recommendation = generateRecommendation(riskScore, feasibilityScore, lenderApprovalProbability, ltcRatio);
-
-  // Cost breakdown
-  const costBreakdown = {
-    landCost: Math.round(landCost),
-    constructionCost: Math.round(constructionCost),
-    softCosts: Math.round(softCosts),
-    furnitureFixturesEquipment: Math.round(furnitureFixturesEquipment),
-    contingency: Math.round(contingency),
-    totalProjectCost: Math.round(totalProjectCost)
-  };
-
-  // Key metrics
-  const keyMetrics = {
-    costPerSquareFoot: totalProjectCost > 0 ? totalProjectCost / 1000 : 0, // Assuming 1000 sqft for calculation
-    equityPercentage: totalProjectCost > 0 ? (requiredEquity / totalProjectCost) * 100 : 0,
-    debtServiceCoverageRatio: 1.25, // Placeholder
-    returnOnEquity: 15, // Placeholder percentage
-    projectIRR: 18, // Placeholder percentage
-    paybackPeriod: 7.5 // Placeholder years
-  };
-
+  const totalProjectCost = inputs.projectInformation.totalProjectCost;
+  
+  // Calculate LTC ratio
+  const ltcRatio = (inputs.financingDetails.requestedLoanAmount / totalProjectCost) * 100;
+  
+  // Calculate equity requirement
+  const equityRequirement = totalProjectCost - inputs.financingDetails.requestedLoanAmount;
+  
+  // Calculate loan payments
+  const { monthlyPayment, totalInterest } = calculateLoanPayments(
+    inputs.financingDetails.requestedLoanAmount,
+    inputs.financingDetails.interestRate,
+    inputs.financingDetails.loanTerm,
+    inputs.financingDetails.interestOnlyPeriod
+  );
+  
+  // Calculate total fees
+  const totalFees = inputs.financingDetails.originationFee + inputs.financingDetails.otherFees;
+  
+  // Calculate break-even analysis
+  const breakEvenAnalysis = calculateBreakEvenAnalysis(
+    inputs.financingDetails.requestedLoanAmount,
+    inputs.financingDetails.interestRate,
+    inputs.marketAssumptions.projectedRentalIncome,
+    inputs.marketAssumptions.projectedOperatingExpenses,
+    inputs.projectTimeline.stabilizationPeriod
+  );
+  
+  // Calculate risk assessment
+  const riskAssessment = calculateRiskAssessment(inputs);
+  
+  // Calculate cash flow projections
+  const cashFlowProjection = calculateCashFlowProjection(
+    inputs,
+    monthlyPayment,
+    inputs.projectTimeline.constructionDuration + inputs.projectTimeline.stabilizationPeriod
+  );
+  
+  // Calculate sensitivity analysis
+  const sensitivityAnalysis = calculateSensitivityAnalysis(inputs, totalProjectCost);
+  
   return {
-    totalProjectCost: Math.round(totalProjectCost),
-    maximumLoanAmount: Math.round(maximumLoanAmount),
-    requiredEquity: Math.round(requiredEquity),
-    ltcRatioActual: Math.round(ltcRatioActual * 100) / 100,
-    costBreakdown,
-    riskScore: Math.round(riskScore),
-    feasibilityScore: Math.round(feasibilityScore),
-    lenderApprovalProbability: Math.round(lenderApprovalProbability),
-    recommendation,
-    keyMetrics,
-    loanToCostRatioAnalysis: 'Comprehensive LTC ratio analysis completed'
+    ltcRatio,
+    loanAmount: inputs.financingDetails.requestedLoanAmount,
+    totalProjectCost,
+    equityRequirement,
+    monthlyPayment,
+    totalInterest,
+    totalFees,
+    breakEvenAnalysis,
+    riskAssessment,
+    cashFlowProjection,
+    sensitivityAnalysis
   };
 }
 
-export function generateLoanToCostRatioAnalysis(inputs: CalculatorInputs, outputs: CalculatorOutputs): string {
-  return `# Loan to Cost (LTC) Ratio Analysis
+function calculateLoanPayments(
+  loanAmount: number,
+  interestRate: number,
+  loanTerm: number,
+  interestOnlyPeriod: number
+): { monthlyPayment: number; totalInterest: number } {
+  const monthlyRate = interestRate / 100 / 12;
+  const totalPayments = loanTerm;
+  
+  let totalInterest = 0;
+  let monthlyPayment = 0;
+  
+  if (interestOnlyPeriod > 0) {
+    // Interest-only period
+    const interestOnlyPayment = loanAmount * monthlyRate;
+    totalInterest += interestOnlyPayment * interestOnlyPeriod;
+    
+    // Remaining term with principal and interest
+    const remainingTerm = totalPayments - interestOnlyPeriod;
+    const remainingPayment = (loanAmount * monthlyRate * Math.pow(1 + monthlyRate, remainingTerm)) / 
+                            (Math.pow(1 + monthlyRate, remainingTerm) - 1);
+    
+    totalInterest += (remainingPayment * remainingTerm) - loanAmount;
+    monthlyPayment = remainingPayment; // Use the higher payment for planning
+  } else {
+    // Standard amortization
+    monthlyPayment = (loanAmount * monthlyRate * Math.pow(1 + monthlyRate, totalPayments)) / 
+                     (Math.pow(1 + monthlyRate, totalPayments) - 1);
+    totalInterest = (monthlyPayment * totalPayments) - loanAmount;
+  }
+  
+  return { monthlyPayment, totalInterest };
+}
 
-## Executive Summary
-**Recommendation:** ${outputs.recommendation}
+function calculateBreakEvenAnalysis(
+  loanAmount: number,
+  interestRate: number,
+  projectedRentalIncome: number,
+  projectedOperatingExpenses: number,
+  stabilizationPeriod: number
+): {
+  breakEvenRent: number;
+  breakEvenOccupancy: number;
+  breakEvenTimeline: number;
+} {
+  const annualInterest = loanAmount * (interestRate / 100);
+  const annualOperatingExpenses = projectedOperatingExpenses;
+  const totalAnnualExpenses = annualInterest + annualOperatingExpenses;
+  
+  // Break-even rent (assuming 100% occupancy)
+  const breakEvenRent = totalAnnualExpenses;
+  
+  // Break-even occupancy (assuming projected rent)
+  const breakEvenOccupancy = projectedRentalIncome > 0 ? 
+    (totalAnnualExpenses / projectedRentalIncome) * 100 : 0;
+  
+  // Break-even timeline (months to reach positive cash flow)
+  const monthlyNetIncome = (projectedRentalIncome - projectedOperatingExpenses) / 12;
+  const monthlyInterest = annualInterest / 12;
+  const monthlyNetCashFlow = monthlyNetIncome - monthlyInterest;
+  
+  const breakEvenTimeline = monthlyNetCashFlow > 0 ? 
+    Math.ceil(loanAmount / monthlyNetCashFlow) : 
+    stabilizationPeriod;
+  
+  return {
+    breakEvenRent,
+    breakEvenOccupancy: Math.min(breakEvenOccupancy, 100),
+    breakEvenTimeline
+  };
+}
 
-**Risk Score:** ${outputs.riskScore}/100
-**Feasibility Score:** ${outputs.feasibilityScore}/100
-**Lender Approval Probability:** ${outputs.lenderApprovalProbability}%
+function calculateRiskAssessment(inputs: LoanToCostRatioInputs): {
+  riskScore: number;
+  riskLevel: 'low' | 'medium' | 'high';
+  riskFactors: string[];
+  recommendations: string[];
+} {
+  let riskScore = 0;
+  const riskFactors: string[] = [];
+  const recommendations: string[] = [];
+  
+  // LTC Ratio Risk (0-30 points)
+  const ltcRatio = (inputs.financingDetails.requestedLoanAmount / inputs.projectInformation.totalProjectCost) * 100;
+  if (ltcRatio > 85) {
+    riskScore += 30;
+    riskFactors.push('Very high LTC ratio (>85%)');
+    recommendations.push('Consider reducing loan amount or increasing equity');
+  } else if (ltcRatio > 75) {
+    riskScore += 20;
+    riskFactors.push('High LTC ratio (75-85%)');
+    recommendations.push('Monitor project costs closely and maintain contingency reserves');
+  } else if (ltcRatio > 65) {
+    riskScore += 10;
+    riskFactors.push('Moderate LTC ratio (65-75%)');
+  }
+  
+  // Market Risk (0-25 points)
+  if (inputs.riskFactors.marketRisk === 'high') {
+    riskScore += 25;
+    riskFactors.push('High market risk');
+    recommendations.push('Consider delaying project or reducing exposure');
+  } else if (inputs.riskFactors.marketRisk === 'medium') {
+    riskScore += 15;
+    riskFactors.push('Medium market risk');
+    recommendations.push('Monitor market conditions and have contingency plans');
+  }
+  
+  // Construction Risk (0-20 points)
+  if (inputs.riskFactors.constructionRisk === 'high') {
+    riskScore += 20;
+    riskFactors.push('High construction risk');
+    recommendations.push('Engage experienced contractors and increase contingency');
+  } else if (inputs.riskFactors.constructionRisk === 'medium') {
+    riskScore += 10;
+    riskFactors.push('Medium construction risk');
+  }
+  
+  // Leasing Risk (0-15 points)
+  if (inputs.riskFactors.leasingRisk === 'high') {
+    riskScore += 15;
+    riskFactors.push('High leasing risk');
+    recommendations.push('Focus on pre-leasing and market research');
+  } else if (inputs.riskFactors.leasingRisk === 'medium') {
+    riskScore += 8;
+    riskFactors.push('Medium leasing risk');
+  }
+  
+  // Interest Rate Risk (0-10 points)
+  if (inputs.riskFactors.interestRateRisk === 'high') {
+    riskScore += 10;
+    riskFactors.push('High interest rate risk');
+    recommendations.push('Consider interest rate hedging or shorter loan terms');
+  } else if (inputs.riskFactors.interestRateRisk === 'medium') {
+    riskScore += 5;
+    riskFactors.push('Medium interest rate risk');
+  }
+  
+  // Determine risk level
+  let riskLevel: 'low' | 'medium' | 'high';
+  if (riskScore <= 30) {
+    riskLevel = 'low';
+  } else if (riskScore <= 60) {
+    riskLevel = 'medium';
+  } else {
+    riskLevel = 'high';
+  }
+  
+  // Add general recommendations based on risk level
+  if (riskLevel === 'high') {
+    recommendations.push('Consider reducing project scope or increasing equity contribution');
+    recommendations.push('Implement comprehensive risk management strategies');
+  } else if (riskLevel === 'medium') {
+    recommendations.push('Maintain adequate contingency reserves');
+    recommendations.push('Monitor key risk factors regularly');
+  } else {
+    recommendations.push('Proceed with standard project management practices');
+  }
+  
+  return {
+    riskScore,
+    riskLevel,
+    riskFactors,
+    recommendations
+  };
+}
 
-## Project Cost Breakdown
-- **Land Cost:** $${outputs.costBreakdown.landCost.toLocaleString()}
-- **Construction Cost:** $${outputs.costBreakdown.constructionCost.toLocaleString()}
-- **Soft Costs:** $${outputs.costBreakdown.softCosts.toLocaleString()}
-- **FF&E:** $${outputs.costBreakdown.furnitureFixturesEquipment.toLocaleString()}
-- **Contingency:** $${outputs.costBreakdown.contingency.toLocaleString()}
-- **Total Project Cost:** $${outputs.totalProjectCost.toLocaleString()}
+function calculateCashFlowProjection(
+  inputs: LoanToCostRatioInputs,
+  monthlyPayment: number,
+  totalMonths: number
+): {
+  monthlyCashFlow: Array<{
+    month: number;
+    income: number;
+    expenses: number;
+    netCashFlow: number;
+    cumulativeCashFlow: number;
+  }>;
+  annualCashFlow: Array<{
+    year: number;
+    income: number;
+    expenses: number;
+    netCashFlow: number;
+    cumulativeCashFlow: number;
+  }>;
+  cumulativeCashFlow: number[];
+} {
+  const monthlyCashFlow: Array<{
+    month: number;
+    income: number;
+    expenses: number;
+    netCashFlow: number;
+    cumulativeCashFlow: number;
+  }> = [];
+  
+  const annualCashFlow: Array<{
+    year: number;
+    income: number;
+    expenses: number;
+    netCashFlow: number;
+    cumulativeCashFlow: number;
+  }> = [];
+  
+  const cumulativeCashFlow: number[] = [];
+  
+  let cumulative = 0;
+  let annualIncome = 0;
+  let annualExpenses = 0;
+  let currentYear = 1;
+  
+  for (let month = 1; month <= totalMonths; month++) {
+    // During construction, no income, only expenses
+    const isConstructionPhase = month <= inputs.projectTimeline.constructionDuration;
+    
+    let monthlyIncome = 0;
+    let monthlyExpenses = monthlyPayment; // Always have loan payment
+    
+    if (isConstructionPhase) {
+      // Construction phase - additional construction costs
+      monthlyExpenses += inputs.projectInformation.constructionCost / inputs.projectTimeline.constructionDuration;
+    } else {
+      // Stabilization phase - start generating income
+      const stabilizationMonth = month - inputs.projectTimeline.constructionDuration;
+      const occupancyRate = Math.min(stabilizationMonth / inputs.projectTimeline.stabilizationPeriod, 1);
+      
+      monthlyIncome = (inputs.marketAssumptions.projectedRentalIncome / 12) * occupancyRate;
+      monthlyExpenses += (inputs.marketAssumptions.projectedOperatingExpenses / 12) * occupancyRate;
+    }
+    
+    const netCashFlow = monthlyIncome - monthlyExpenses;
+    cumulative += netCashFlow;
+    
+    monthlyCashFlow.push({
+      month,
+      income: monthlyIncome,
+      expenses: monthlyExpenses,
+      netCashFlow,
+      cumulativeCashFlow: cumulative
+    });
+    
+    cumulativeCashFlow.push(cumulative);
+    
+    // Track annual totals
+    annualIncome += monthlyIncome;
+    annualExpenses += monthlyExpenses;
+    
+    // Create annual summary
+    if (month % 12 === 0 || month === totalMonths) {
+      annualCashFlow.push({
+        year: currentYear,
+        income: annualIncome,
+        expenses: annualExpenses,
+        netCashFlow: annualIncome - annualExpenses,
+        cumulativeCashFlow: cumulative
+      });
+      
+      currentYear++;
+      annualIncome = 0;
+      annualExpenses = 0;
+    }
+  }
+  
+  return {
+    monthlyCashFlow,
+    annualCashFlow,
+    cumulativeCashFlow
+  };
+}
 
-## Financing Structure
-- **Maximum Loan Amount:** $${outputs.maximumLoanAmount.toLocaleString()}
-- **Required Equity:** $${outputs.requiredEquity.toLocaleString()}
-- **LTC Ratio:** ${outputs.ltcRatioActual}%
-- **Equity Percentage:** ${outputs.keyMetrics.equityPercentage.toFixed(1)}%
-
-## Key Metrics
-- **Cost per Square Foot:** $${outputs.keyMetrics.costPerSquareFoot.toLocaleString()}
-- **Debt Service Coverage Ratio:** ${outputs.keyMetrics.debtServiceCoverageRatio}
-- **Return on Equity:** ${outputs.keyMetrics.returnOnEquity}%
-- **Project IRR:** ${outputs.keyMetrics.projectIRR}%
-- **Payback Period:** ${outputs.keyMetrics.paybackPeriod} years
-
-## Risk Analysis
-**Risk Factors:**
-${inputs.projectType ? `- Project Type: ${inputs.projectType}` : ''}
-${inputs.location ? `- Location: ${inputs.location}` : ''}
-${inputs.marketCondition ? `- Market Condition: ${inputs.marketCondition}` : ''}
-${inputs.constructionRisk ? `- Construction Risk: ${inputs.constructionRisk}` : ''}
-${inputs.marketRisk ? `- Market Risk: ${inputs.marketRisk}` : ''}
-
-## Lender Considerations
-- **Lender Type:** ${inputs.lenderType || 'Not specified'}
-- **Borrower Experience:** ${inputs.borrowerExperience || 'Not specified'}
-- **Credit Score:** ${inputs.borrowerCreditScore || 'Not specified'}
-- **Pre-Leasing Status:** ${inputs.preLeasing || 'Not specified'}
-${inputs.preLeasingPercentage ? `- Pre-Leasing Percentage: ${inputs.preLeasingPercentage}%` : ''}
-
-## Recommendations
-1. **Equity Requirements:** Ensure adequate equity funding of $${outputs.requiredEquity.toLocaleString()}
-2. **Risk Mitigation:** ${outputs.riskScore > 60 ? 'Consider additional risk mitigation strategies' : 'Current risk profile is acceptable'}
-3. **Lender Selection:** ${outputs.lenderApprovalProbability > 70 ? 'Multiple lender options available' : 'Focus on specialized lenders'}
-4. **Timeline Management:** ${inputs.projectTimeline && inputs.projectTimeline > 18 ? 'Consider accelerating timeline to reduce risk' : 'Timeline appears reasonable'}
-
-## Next Steps
-- Secure equity commitments
-- Begin lender discussions
-- Finalize project timeline
-- Address any identified risk factors
-- Prepare detailed project documentation
-`;
+function calculateSensitivityAnalysis(
+  inputs: LoanToCostRatioInputs,
+  totalProjectCost: number
+): {
+  scenarios: Array<{
+    scenario: string;
+    ltcRatio: number;
+    loanAmount: number;
+    equityRequirement: number;
+    monthlyPayment: number;
+    riskScore: number;
+  }>;
+  keyAssumptions: Array<{
+    assumption: string;
+    currentValue: number;
+    impact: string;
+  }>;
+  riskMitigation: string[];
+} {
+  const scenarios = [
+    {
+      scenario: 'Base Case',
+      ltcRatio: (inputs.financingDetails.requestedLoanAmount / totalProjectCost) * 100,
+      loanAmount: inputs.financingDetails.requestedLoanAmount,
+      equityRequirement: totalProjectCost - inputs.financingDetails.requestedLoanAmount,
+      monthlyPayment: calculateLoanPayments(
+        inputs.financingDetails.requestedLoanAmount,
+        inputs.financingDetails.interestRate,
+        inputs.financingDetails.loanTerm,
+        inputs.financingDetails.interestOnlyPeriod
+      ).monthlyPayment,
+      riskScore: calculateRiskAssessment(inputs).riskScore
+    },
+    {
+      scenario: 'Conservative (70% LTC)',
+      ltcRatio: 70,
+      loanAmount: totalProjectCost * 0.7,
+      equityRequirement: totalProjectCost * 0.3,
+      monthlyPayment: calculateLoanPayments(
+        totalProjectCost * 0.7,
+        inputs.financingDetails.interestRate,
+        inputs.financingDetails.loanTerm,
+        inputs.financingDetails.interestOnlyPeriod
+      ).monthlyPayment,
+      riskScore: Math.max(0, calculateRiskAssessment(inputs).riskScore - 20)
+    },
+    {
+      scenario: 'Aggressive (85% LTC)',
+      ltcRatio: 85,
+      loanAmount: totalProjectCost * 0.85,
+      equityRequirement: totalProjectCost * 0.15,
+      monthlyPayment: calculateLoanPayments(
+        totalProjectCost * 0.85,
+        inputs.financingDetails.interestRate,
+        inputs.financingDetails.loanTerm,
+        inputs.financingDetails.interestOnlyPeriod
+      ).monthlyPayment,
+      riskScore: calculateRiskAssessment(inputs).riskScore + 25
+    }
+  ];
+  
+  const keyAssumptions = [
+    {
+      assumption: 'Interest Rate',
+      currentValue: inputs.financingDetails.interestRate,
+      impact: 'Higher rates increase monthly payments and total interest costs'
+    },
+    {
+      assumption: 'Construction Duration',
+      currentValue: inputs.projectTimeline.constructionDuration,
+      impact: 'Longer construction increases interest costs and delays income generation'
+    },
+    {
+      assumption: 'Market Growth Rate',
+      currentValue: inputs.marketAssumptions.marketGrowthRate,
+      impact: 'Lower growth reduces projected rental income and property value'
+    },
+    {
+      assumption: 'Cap Rate',
+      currentValue: inputs.marketAssumptions.capRate,
+      impact: 'Higher cap rates reduce property value and refinancing options'
+    }
+  ];
+  
+  const riskMitigation = [
+    'Maintain adequate contingency reserves (10-15% of total cost)',
+    'Secure pre-leasing commitments before construction',
+    'Use experienced contractors with proven track records',
+    'Implement comprehensive project management and oversight',
+    'Consider interest rate hedging strategies',
+    'Maintain strong relationships with lenders and investors',
+    'Regular monitoring of market conditions and project progress'
+  ];
+  
+  return {
+    scenarios,
+    keyAssumptions,
+    riskMitigation
+  };
 }
