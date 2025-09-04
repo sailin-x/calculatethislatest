@@ -353,13 +353,14 @@ export const mortgageVsRentCalculator: Calculator = {
         const netWorthBuying = homeEquity - totalHomeownershipCost + totalTaxBenefits;
         const netWorthComparison = netWorthBuying - netWorthRenting;
 
+        // Calculate monthly savings
+        const monthlySavings = monthlyHomeownershipCost - currentRent;
+
         // Calculate break-even years
         const breakEvenYears = calculateBreakEvenYears(currentRent, rentIncreaseRate, monthlyHomeownershipCost, downPayment, closingCosts, homePrice, homeAppreciationRate, interestRate, loanTerm, propertyTaxRate, homeownersInsuranceRate, maintenanceRate, hoaFees);
 
         // Determine recommendation
         const recommendation = generateRecommendation(netWorthComparison, breakEvenYears, timeHorizon, monthlySavings);
-
-        const monthlySavings = monthlyHomeownershipCost - currentRent;
 
         return {
           outputs: {

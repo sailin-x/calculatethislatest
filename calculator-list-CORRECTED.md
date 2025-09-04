@@ -106,12 +106,12 @@ Each calculator must include:
 - [x] **Mortgage Qualification Calculator** ✅ **(VERIFIED WORKING)**
 - [x] **Mortgage Rate Lock Calculator** ✅ **(VERIFIED WORKING)**
 - [x] **Mortgage Refinance Calculator** ✅ **(VERIFIED WORKING)**
-- [ ] Mortgage vs. Rent Calculator
-- [ ] Net Operating Income (NOI) Calculator
-- [ ] Opportunity Zone Investment ROI Calculator
-- [ ] PMI Cancellation Calculator
-- [ ] Price Per Square Foot Calculator
-- [ ] Private Mortgage Insurance Calculator
+- [x] **Mortgage vs. Rent Calculator** ✅ **(VERIFIED WORKING)**
+- [x] **Net Operating Income (NOI) Calculator** ✅ **(VERIFIED WORKING)**
+- [x] **Opportunity Zone Investment ROI Calculator** ✅ **(VERIFIED WORKING)**
+- [x] **PMI Cancellation Calculator** ✅ **(VERIFIED WORKING)**
+- [x] **Price Per Square Foot Calculator** ✅ **(VERIFIED WORKING)**
+- [x] **Private Mortgage Insurance Calculator** ✅ **(VERIFIED WORKING)**
 - [ ] Property Tax Calculator
 - [ ] Property Tax Proration Calculator
 - [ ] Real Estate Crowdfunding Calculator
