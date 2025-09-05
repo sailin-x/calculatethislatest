@@ -119,7 +119,7 @@ Each calculator must include:
 - [ ] Real Estate Depreciation Schedule Calculator
 - [ ] Real Estate Syndication Calculator
 - [ ] Real Estate Tax Deductions Calculator
-- [ ] Real Estate Waterfall Model Calculator
+- [x] **Real Estate Waterfall Model Calculator** ✅ **(VERIFIED WORKING)**
 - [ ] Refinance Calculator
 - [ ] Rental Property ROI Calculator
 - [ ] Rental Yield Calculator
