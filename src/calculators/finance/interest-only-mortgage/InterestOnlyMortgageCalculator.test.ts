@@ -1,597 +1,241 @@
-import { describe, it, expect } from 'vitest';
-import { InterestOnlyMortgageCalculator } from './InterestOnlyMortgageCalculator';
 import { calculateInterestOnlyMortgage } from './formulas';
 import { validateInterestOnlyMortgageInputs } from './validation';
-import { validateAllInterestOnlyMortgageInputs } from './quickValidation';
+import { InterestOnlyMortgageInputs } from './types';
 
-describe('Interest-Only Mortgage Calculator', () => {
-  describe('Calculator Structure', () => {
-    it('should have correct basic properties', () => {
-      expect(InterestOnlyMortgageCalculator.id).toBe('interest-only-mortgage-calculator');
-      expect(InterestOnlyMortgageCalculator.name).toBe('Interest-Only Mortgage Calculator');
-      expect(InterestOnlyMortgageCalculator.category).toBe('finance');
-      expect(InterestOnlyMortgageCalculator.subcategory).toBe('investment');
+describe('InterestOnlyMortgageCalculator', () => {
+  const mockInputs: InterestOnlyMortgageInputs = {
+    loanAmount: 400000,
+    interestRate: 0.065,
+    interestOnlyPeriod: 10,
+    totalLoanTerm: 30,
+    loanType: 'fixed',
+    propertyValue: 500000,
+    propertyAddress: '123 Main St, City, State 12345',
+    propertyType: 'primary_residence',
+    creditScore: 'good',
+    debtToIncomeRatio: 0.35,
+    downPayment: 100000,
+    loanToValueRatio: 0.8,
+    interestOnlyPayment: 2167,
+    principalAndInterestPayment: 2528,
+    totalMonthlyPayment: 3200,
+    propertyTaxes: 6000,
+    homeownersInsurance: 1200,
+    privateMortgageInsurance: 0,
+    hoaFees: 2400,
+    otherMonthlyExpenses: 0,
+    refinanceAfterInterestOnly: false,
+    refinanceRate: 0.055,
+    refinanceTerm: 30,
+    expectedPropertyAppreciation: 0.03,
+    rentalIncome: 0,
+    taxDeductionBenefit: 5000,
+    opportunityCost: 0.08
+  };
+
+  describe('calculateInterestOnlyMortgage', () => {
+    it('should calculate basic payment metrics', () => {
+      const result = calculateInterestOnlyMortgage(mockInputs);
+      
+      expect(result).toBeDefined();
+      expect(result.interestOnlyPayment).toBeGreaterThan(0);
+      expect(result.principalAndInterestPayment).toBeGreaterThan(0);
+      expect(result.totalMonthlyPayment).toBeGreaterThan(0);
+      expect(result.totalAnnualPayment).toBeGreaterThan(0);
     });
 
-    it('should have required inputs', () => {
-      const requiredInputs = InterestOnlyMortgageCalculator.inputs.filter(input => input.required);
-      expect(requiredInputs.length).toBeGreaterThan(0);
-      expect(requiredInputs.some(input => input.id === 'loanAmount')).toBe(true);
-      expect(requiredInputs.some(input => input.id === 'interestRate')).toBe(true);
-      expect(requiredInputs.some(input => input.id === 'interestOnlyPeriod')).toBe(true);
-      expect(requiredInputs.some(input => input.id === 'totalLoanTerm')).toBe(true);
+    it('should calculate interest-only period analysis', () => {
+      const result = calculateInterestOnlyMortgage(mockInputs);
+      
+      expect(result.interestOnlyPeriodPayments).toBeGreaterThan(0);
+      expect(result.totalInterestPaidDuringIO).toBeGreaterThan(0);
+      expect(result.remainingBalanceAfterIO).toBe(mockInputs.loanAmount);
     });
 
-    it('should have expected outputs', () => {
-      const outputIds = InterestOnlyMortgageCalculator.outputs.map(output => output.id);
-      expect(outputIds).toContain('monthlyInterestPayment');
-      expect(outputIds).toContain('balloonPayment');
-      expect(outputIds).toContain('totalInterestPaid');
-      expect(outputIds).toContain('debtToIncomeRatio');
-      expect(outputIds).toContain('affordabilityScore');
-      expect(outputIds).toContain('riskScore');
-      expect(outputIds).toContain('suitabilityScore');
+    it('should calculate full loan analysis', () => {
+      const result = calculateInterestOnlyMortgage(mockInputs);
+      
+      expect(result.totalInterestPaid).toBeGreaterThan(0);
+      expect(result.totalPrincipalPaid).toBe(mockInputs.loanAmount);
+      expect(result.totalPayments).toBeGreaterThan(0);
+      expect(result.loanPayoffDate).toBeDefined();
     });
 
-    it('should have calculate and generateReport functions', () => {
-      expect(typeof InterestOnlyMortgageCalculator.calculate).toBe('function');
-      expect(typeof InterestOnlyMortgageCalculator.generateReport).toBe('function');
+    it('should generate payment schedule', () => {
+      const result = calculateInterestOnlyMortgage(mockInputs);
+      
+      expect(Array.isArray(result.paymentSchedule)).toBe(true);
+      expect(result.paymentSchedule.length).toBeGreaterThan(0);
+      
+      const firstPayment = result.paymentSchedule[0];
+      expect(firstPayment.paymentNumber).toBe(1);
+      expect(firstPayment.interestPayment).toBeGreaterThan(0);
+      expect(firstPayment.principalPayment).toBe(0); // First payment should be interest-only
+      expect(firstPayment.remainingBalance).toBe(mockInputs.loanAmount);
+    });
+
+    it('should provide traditional mortgage comparison', () => {
+      const result = calculateInterestOnlyMortgage(mockInputs);
+      
+      expect(result.traditionalMortgageComparison).toBeDefined();
+      expect(result.traditionalMortgageComparison.traditionalPayment).toBeGreaterThan(0);
+      expect(result.traditionalMortgageComparison.interestOnlyPayment).toBeGreaterThan(0);
+      expect(result.traditionalMortgageComparison.paymentDifference).toBeGreaterThan(0);
+      expect(result.traditionalMortgageComparison.totalInterestDifference).toBeGreaterThan(0);
+      expect(result.traditionalMortgageComparison.breakEvenPoint).toBeGreaterThan(0);
+    });
+
+    it('should calculate investment analysis', () => {
+      const result = calculateInterestOnlyMortgage(mockInputs);
+      
+      expect(result.investmentAnalysis).toBeDefined();
+      expect(result.investmentAnalysis.monthlySavings).toBeGreaterThan(0);
+      expect(result.investmentAnalysis.annualSavings).toBeGreaterThan(0);
+      expect(result.investmentAnalysis.totalSavingsOverIO).toBeGreaterThan(0);
+      expect(result.investmentAnalysis.potentialInvestmentReturn).toBeGreaterThan(0);
+      expect(result.investmentAnalysis.netBenefit).toBeDefined();
+    });
+
+    it('should assess risks', () => {
+      const result = calculateInterestOnlyMortgage(mockInputs);
+      
+      expect(Array.isArray(result.riskFactors)).toBe(true);
+      expect(Array.isArray(result.riskMitigationStrategies)).toBe(true);
+      expect(result.riskFactors.length).toBeGreaterThan(0);
+      expect(result.riskMitigationStrategies.length).toBeGreaterThan(0);
+    });
+
+    it('should provide refinancing analysis', () => {
+      const result = calculateInterestOnlyMortgage(mockInputs);
+      
+      expect(result.refinancingAnalysis).toBeDefined();
+      expect(result.refinancingAnalysis.shouldRefinance).toBeDefined();
+      expect(result.refinancingAnalysis.refinancePayment).toBeGreaterThanOrEqual(0);
+      expect(result.refinancingAnalysis.paymentReduction).toBeGreaterThanOrEqual(0);
+      expect(result.refinancingAnalysis.breakEvenMonths).toBeGreaterThanOrEqual(0);
+      expect(result.refinancingAnalysis.totalSavings).toBeGreaterThanOrEqual(0);
+    });
+
+    it('should calculate tax implications', () => {
+      const result = calculateInterestOnlyMortgage(mockInputs);
+      
+      expect(result.taxImplications).toBeDefined();
+      expect(result.taxImplications.annualInterestDeduction).toBeGreaterThan(0);
+      expect(result.taxImplications.estimatedTaxSavings).toBeGreaterThan(0);
+      expect(result.taxImplications.netAfterTaxCost).toBeGreaterThan(0);
+    });
+
+    it('should generate recommendations', () => {
+      const result = calculateInterestOnlyMortgage(mockInputs);
+      
+      expect(result.recommendations).toBeDefined();
+      expect(result.recommendations.suitability).toBeDefined();
+      expect(Array.isArray(result.recommendations.keyRecommendations)).toBe(true);
+      expect(Array.isArray(result.recommendations.riskWarnings)).toBe(true);
+      expect(Array.isArray(result.recommendations.optimizationTips)).toBe(true);
+    });
+
+    it('should provide summary', () => {
+      const result = calculateInterestOnlyMortgage(mockInputs);
+      
+      expect(result.summary).toBeDefined();
+      expect(result.summary.totalLoanCost).toBeGreaterThan(0);
+      expect(result.summary.monthlyPayment).toBeGreaterThan(0);
+      expect(Array.isArray(result.summary.keyBenefits)).toBe(true);
+      expect(Array.isArray(result.summary.keyRisks)).toBe(true);
+      expect(Array.isArray(result.summary.nextSteps)).toBe(true);
     });
   });
 
-  describe('Validation', () => {
-    it('should validate required fields', () => {
-      const result = validateInterestOnlyMortgageInputs({});
-      expect(result.isValid).toBe(false);
-      expect(result.errors).toContain('Loan amount is required');
-      expect(result.errors).toContain('Interest rate is required');
-      expect(result.errors).toContain('Interest-only period is required');
-      expect(result.errors).toContain('Total loan term is required');
-    });
-
-    it('should validate loan amount range', () => {
-      const result = validateInterestOnlyMortgageInputs({
-        loanAmount: 5000
-      });
-      expect(result.isValid).toBe(false);
-      expect(result.errors).toContain('Loan amount must be between $10,000 and $10,000,000');
-    });
-
-    it('should validate interest rate range', () => {
-      const result = validateInterestOnlyMortgageInputs({
-        loanAmount: 500000,
-        interestRate: 25
-      });
-      expect(result.isValid).toBe(false);
-      expect(result.errors).toContain('Interest rate must be between 0.1% and 20%');
-    });
-
-    it('should validate interest-only period range', () => {
-      const result = validateInterestOnlyMortgageInputs({
-        loanAmount: 500000,
-        interestRate: 5.5,
-        interestOnlyPeriod: 35
-      });
-      expect(result.isValid).toBe(false);
-      expect(result.errors).toContain('Interest-only period must be between 1 and 30 years');
-    });
-
-    it('should validate total loan term range', () => {
-      const result = validateInterestOnlyMortgageInputs({
-        loanAmount: 500000,
-        interestRate: 5.5,
-        interestOnlyPeriod: 10,
-        totalLoanTerm: 3
-      });
-      expect(result.isValid).toBe(false);
-      expect(result.errors).toContain('Total loan term must be between 5 and 50 years');
-    });
-
-    it('should validate logical constraints', () => {
-      const result = validateInterestOnlyMortgageInputs({
-        loanAmount: 500000,
-        interestRate: 5.5,
-        interestOnlyPeriod: 30,
-        totalLoanTerm: 25
-      });
-      expect(result.isValid).toBe(false);
-      expect(result.errors).toContain('Interest-only period must be less than total loan term');
-    });
-
-    it('should accept valid inputs', () => {
-      const result = validateInterestOnlyMortgageInputs({
-        loanAmount: 500000,
-        interestRate: 5.5,
-        interestOnlyPeriod: 10,
-        totalLoanTerm: 30
-      });
+  describe('validateInterestOnlyMortgageInputs', () => {
+    it('should validate valid inputs', () => {
+      const result = validateInterestOnlyMortgageInputs(mockInputs);
+      
       expect(result.isValid).toBe(true);
       expect(result.errors).toHaveLength(0);
     });
-  });
 
-  describe('Calculation Logic', () => {
-    it('should calculate basic metrics correctly', () => {
-      const inputs = {
-        loanAmount: 500000,
-        interestRate: 5.5,
-        interestOnlyPeriod: 10,
-        totalLoanTerm: 30
-      };
-
-      const outputs = calculateInterestOnlyMortgage(inputs);
-
-      expect(outputs.monthlyInterestPayment).toBeGreaterThan(0);
-      expect(outputs.balloonPayment).toBe(500000);
-      expect(outputs.totalInterestPaid).toBeGreaterThan(0);
-      expect(outputs.affordabilityScore).toBeGreaterThan(0);
-      expect(outputs.riskScore).toBeGreaterThan(0);
-      expect(outputs.suitabilityScore).toBeGreaterThan(0);
-    });
-
-    it('should calculate monthly interest payment correctly', () => {
-      const inputs = {
-        loanAmount: 500000,
-        interestRate: 6.0
-      };
-
-      const outputs = calculateInterestOnlyMortgage(inputs);
-      const expectedMonthlyInterest = (500000 * 6.0 / 100) / 12; // $2,500
-      expect(outputs.monthlyInterestPayment).toBe(Math.round(expectedMonthlyInterest));
-    });
-
-    it('should calculate balloon payment correctly', () => {
-      const inputs = {
-        loanAmount: 400000,
-        interestRate: 5.5,
-        interestOnlyPeriod: 7
-      };
-
-      const outputs = calculateInterestOnlyMortgage(inputs);
-      expect(outputs.balloonPayment).toBe(400000); // Should equal original loan amount
-    });
-
-    it('should calculate debt-to-income ratio correctly', () => {
-      const inputs = {
-        loanAmount: 500000,
-        interestRate: 5.5,
-        interestOnlyPeriod: 10,
-        totalLoanTerm: 30,
-        monthlyIncome: 8000
-      };
-
-      const outputs = calculateInterestOnlyMortgage(inputs);
-      expect(outputs.debtToIncomeRatio).toBeGreaterThan(0);
-      expect(outputs.debtToIncomeRatio).toBeLessThan(100);
-    });
-
-    it('should calculate loan-to-value ratio correctly', () => {
-      const inputs = {
-        loanAmount: 400000,
-        interestRate: 5.5,
-        interestOnlyPeriod: 10,
-        totalLoanTerm: 30,
-        propertyValue: 500000
-      };
-
-      const outputs = calculateInterestOnlyMortgage(inputs);
-      expect(outputs.loanToValueRatio).toBe(80); // 400,000 / 500,000 * 100
-    });
-
-    it('should calculate tax savings correctly', () => {
-      const inputs = {
-        loanAmount: 500000,
-        interestRate: 6.0,
-        interestOnlyPeriod: 10,
-        totalLoanTerm: 30,
-        incomeTaxRate: 24
-      };
-
-      const outputs = calculateInterestOnlyMortgage(inputs);
-      const annualInterest = (500000 * 6.0 / 100);
-      const expectedTaxSavings = (annualInterest * 24 / 100);
-      expect(outputs.taxSavings).toBe(Math.round(expectedTaxSavings));
-    });
-
-    it('should calculate investment opportunity correctly', () => {
-      const inputs = {
-        loanAmount: 500000,
-        interestRate: 5.5,
-        interestOnlyPeriod: 10,
-        totalLoanTerm: 30,
-        alternativeInvestmentReturn: 7
-      };
-
-      const outputs = calculateInterestOnlyMortgage(inputs);
-      expect(outputs.investmentOpportunity).toBeGreaterThan(0);
-    });
-
-    it('should calculate affordability score correctly', () => {
-      const inputs = {
-        loanAmount: 500000,
-        interestRate: 5.5,
-        interestOnlyPeriod: 10,
-        totalLoanTerm: 30,
-        monthlyIncome: 8000,
-        monthlyDebts: 500,
-        emergencyFund: 25000
-      };
-
-      const outputs = calculateInterestOnlyMortgage(inputs);
-      expect(outputs.affordabilityScore).toBeGreaterThan(0);
-      expect(outputs.affordabilityScore).toBeLessThanOrEqual(100);
-    });
-
-    it('should calculate risk score correctly', () => {
-      const inputs = {
-        loanAmount: 500000,
-        interestRate: 5.5,
-        interestOnlyPeriod: 10,
-        totalLoanTerm: 30,
-        propertyValue: 600000,
-        monthlyIncome: 8000,
-        monthlyDebts: 500,
-        emergencyFund: 25000,
-        creditScore: 750,
-        exitStrategy: 'refinance',
-        riskTolerance: 'moderate'
-      };
-
-      const outputs = calculateInterestOnlyMortgage(inputs);
-      expect(outputs.riskScore).toBeGreaterThan(0);
-      expect(outputs.riskScore).toBeLessThanOrEqual(100);
-    });
-
-    it('should calculate suitability score correctly', () => {
-      const inputs = {
-        loanAmount: 500000,
-        interestRate: 5.5,
-        interestOnlyPeriod: 10,
-        totalLoanTerm: 30,
-        investmentHorizon: 10,
-        exitStrategy: 'refinance'
-      };
-
-      const outputs = calculateInterestOnlyMortgage(inputs);
-      expect(outputs.suitabilityScore).toBeGreaterThan(0);
-      expect(outputs.suitabilityScore).toBeLessThanOrEqual(100);
-    });
-  });
-
-  describe('Interest-Only Mortgage Analysis', () => {
-    it('should generate analysis report', () => {
-      const inputs = {
-        loanAmount: 500000,
-        interestRate: 5.5,
-        interestOnlyPeriod: 10,
-        totalLoanTerm: 30
-      };
-
-      const outputs = calculateInterestOnlyMortgage(inputs);
-      const report = InterestOnlyMortgageCalculator.generateReport(inputs, outputs);
-
-      expect(report).toContain('Interest-Only Mortgage Analysis');
-      expect(report).toContain('Executive Summary');
-      expect(report).toContain('Payment Overview');
-      expect(report).toContain('Key Metrics');
-      expect(report).toContain('Payment Schedule');
-      expect(report).toContain('Comparison Analysis');
-    });
-
-    it('should include recommendation in report', () => {
-      const inputs = {
-        loanAmount: 500000,
-        interestRate: 5.5,
-        interestOnlyPeriod: 10,
-        totalLoanTerm: 30
-      };
-
-      const outputs = calculateInterestOnlyMortgage(inputs);
-      const report = InterestOnlyMortgageCalculator.generateReport(inputs, outputs);
-
-      expect(report).toContain('Recommendation:');
-      expect(outputs.recommendation).toBeTruthy();
-    });
-
-    it('should include payment schedule in report', () => {
-      const inputs = {
-        loanAmount: 500000,
-        interestRate: 5.5,
-        interestOnlyPeriod: 10,
-        totalLoanTerm: 30
-      };
-
-      const outputs = calculateInterestOnlyMortgage(inputs);
-      const report = InterestOnlyMortgageCalculator.generateReport(inputs, outputs);
-
-      expect(report).toContain('Payment Schedule');
-      expect(report).toContain('Interest-Only Period');
-      expect(report).toContain('Amortization Period');
-    });
-  });
-
-  describe('Edge Cases', () => {
-    it('should handle zero interest rate', () => {
-      const inputs = {
-        loanAmount: 500000,
-        interestRate: 0,
-        interestOnlyPeriod: 10,
-        totalLoanTerm: 30
-      };
-
-      const outputs = calculateInterestOnlyMortgage(inputs);
-      expect(outputs.monthlyInterestPayment).toBe(0);
-    });
-
-    it('should handle minimum loan amount', () => {
-      const inputs = {
-        loanAmount: 10000,
-        interestRate: 5.5,
-        interestOnlyPeriod: 5,
-        totalLoanTerm: 30
-      };
-
-      const outputs = calculateInterestOnlyMortgage(inputs);
-      expect(outputs.monthlyInterestPayment).toBeGreaterThan(0);
-    });
-
-    it('should handle maximum loan amount', () => {
-      const inputs = {
-        loanAmount: 10000000,
-        interestRate: 5.5,
-        interestOnlyPeriod: 10,
-        totalLoanTerm: 30
-      };
-
-      const outputs = calculateInterestOnlyMortgage(inputs);
-      expect(outputs.monthlyInterestPayment).toBeGreaterThan(0);
-    });
-
-    it('should handle short interest-only period', () => {
-      const inputs = {
-        loanAmount: 500000,
-        interestRate: 5.5,
-        interestOnlyPeriod: 1,
-        totalLoanTerm: 30
-      };
-
-      const outputs = calculateInterestOnlyMortgage(inputs);
-      expect(outputs.balloonPayment).toBe(500000);
-    });
-
-    it('should handle long interest-only period', () => {
-      const inputs = {
-        loanAmount: 500000,
-        interestRate: 5.5,
-        interestOnlyPeriod: 30,
-        totalLoanTerm: 30
-      };
-
-      const outputs = calculateInterestOnlyMortgage(inputs);
-      expect(outputs.balloonPayment).toBe(500000);
-    });
-
-    it('should handle high interest rate', () => {
-      const inputs = {
-        loanAmount: 500000,
-        interestRate: 20,
-        interestOnlyPeriod: 10,
-        totalLoanTerm: 30
-      };
-
-      const outputs = calculateInterestOnlyMortgage(inputs);
-      expect(outputs.monthlyInterestPayment).toBeGreaterThan(0);
-    });
-  });
-
-  describe('Quick Validation', () => {
-    it('should validate loan amount quickly', () => {
-      const result = validateInterestOnlyMortgageInputs({ loanAmount: 5000 });
+    it('should catch invalid loan amount', () => {
+      const invalidInputs = { ...mockInputs, loanAmount: 10000 };
+      const result = validateInterestOnlyMortgageInputs(invalidInputs);
+      
       expect(result.isValid).toBe(false);
-      expect(result.errors).toContain('Loan amount must be between $10,000 and $10,000,000');
-
-      const validResult = validateInterestOnlyMortgageInputs({ loanAmount: 500000 });
-      expect(validResult.isValid).toBe(true);
+      expect(result.errors).toContain('Loan amount must be at least $50,000');
     });
 
-    it('should validate interest rate quickly', () => {
-      const result = validateInterestOnlyMortgageInputs({
-        loanAmount: 500000,
-        interestRate: 25
-      });
+    it('should catch invalid interest rate', () => {
+      const invalidInputs = { ...mockInputs, interestRate: 0.6 };
+      const result = validateInterestOnlyMortgageInputs(invalidInputs);
+      
       expect(result.isValid).toBe(false);
-      expect(result.errors).toContain('Interest rate must be between 0.1% and 20%');
-
-      const validResult = validateInterestOnlyMortgageInputs({
-        loanAmount: 500000,
-        interestRate: 5.5
-      });
-      expect(validResult.isValid).toBe(true);
+      expect(result.errors).toContain('Interest rate must be between 0% and 50%');
     });
 
-    it('should validate interest-only period quickly', () => {
-      const result = validateInterestOnlyMortgageInputs({
-        loanAmount: 500000,
-        interestRate: 5.5,
-        interestOnlyPeriod: 35
-      });
+    it('should catch invalid interest-only period', () => {
+      const invalidInputs = { ...mockInputs, interestOnlyPeriod: 0 };
+      const result = validateInterestOnlyMortgageInputs(invalidInputs);
+      
       expect(result.isValid).toBe(false);
-      expect(result.errors).toContain('Interest-only period must be between 1 and 30 years');
-
-      const validResult = validateInterestOnlyMortgageInputs({
-        loanAmount: 500000,
-        interestRate: 5.5,
-        interestOnlyPeriod: 10
-      });
-      expect(validResult.isValid).toBe(true);
+      expect(result.errors).toContain('Interest-only period must be at least 1 year');
     });
 
-    it('should validate all inputs quickly', () => {
-      const inputs = {
-        loanAmount: 5000,
-        interestRate: 25,
-        interestOnlyPeriod: 35
-      };
-
-      const result = validateAllInterestOnlyMortgageInputs(inputs);
+    it('should catch invalid total loan term', () => {
+      const invalidInputs = { ...mockInputs, totalLoanTerm: 5 };
+      const result = validateInterestOnlyMortgageInputs(invalidInputs);
+      
       expect(result.isValid).toBe(false);
-      expect(result.errors.length).toBeGreaterThan(0);
+      expect(result.errors).toContain('Total loan term must be greater than interest-only period');
     });
 
-    it('should pass validation for valid inputs', () => {
-      const inputs = {
-        loanAmount: 500000,
-        interestRate: 5.5,
-        interestOnlyPeriod: 10,
-        totalLoanTerm: 30
-      };
-
-      const result = validateAllInterestOnlyMortgageInputs(inputs);
-      expect(result.isValid).toBe(true);
-      expect(result.errors).toHaveLength(0);
-    });
-  });
-
-  describe('Comparison Analysis', () => {
-    it('should compare with traditional mortgage', () => {
-      const inputs = {
-        loanAmount: 500000,
-        interestRate: 5.5,
-        interestOnlyPeriod: 10,
-        totalLoanTerm: 30
-      };
-
-      const outputs = calculateInterestOnlyMortgage(inputs);
-      expect(outputs.amortizationComparison).toBeGreaterThan(outputs.monthlyInterestPayment);
-      expect(outputs.savingsDuringInterestOnly).toBeGreaterThan(0);
-      expect(outputs.totalSavings).toBeGreaterThan(0);
+    it('should catch invalid property value', () => {
+      const invalidInputs = { ...mockInputs, propertyValue: 50000 };
+      const result = validateInterestOnlyMortgageInputs(invalidInputs);
+      
+      expect(result.isValid).toBe(false);
+      expect(result.errors).toContain('Property value must be at least $100,000');
     });
 
-    it('should calculate break-even point', () => {
-      const inputs = {
-        loanAmount: 500000,
-        interestRate: 5.5,
-        interestOnlyPeriod: 10,
-        totalLoanTerm: 30
-      };
-
-      const outputs = calculateInterestOnlyMortgage(inputs);
-      expect(outputs.breakEvenPoint).toBeGreaterThan(0);
-    });
-  });
-
-  describe('Risk Assessment', () => {
-    it('should assess risk based on LTV', () => {
-      const highLTVInputs = {
-        loanAmount: 450000,
-        interestRate: 5.5,
-        interestOnlyPeriod: 10,
-        totalLoanTerm: 30,
-        propertyValue: 500000 // 90% LTV
-      };
-
-      const lowLTVInputs = {
-        loanAmount: 300000,
-        interestRate: 5.5,
-        interestOnlyPeriod: 10,
-        totalLoanTerm: 30,
-        propertyValue: 500000 // 60% LTV
-      };
-
-      const highLTVOutputs = calculateInterestOnlyMortgage(highLTVInputs);
-      const lowLTVOutputs = calculateInterestOnlyMortgage(lowLTVInputs);
-
-      expect(highLTVOutputs.riskScore).toBeGreaterThan(lowLTVOutputs.riskScore);
+    it('should catch invalid property address', () => {
+      const invalidInputs = { ...mockInputs, propertyAddress: '123' };
+      const result = validateInterestOnlyMortgageInputs(invalidInputs);
+      
+      expect(result.isValid).toBe(false);
+      expect(result.errors).toContain('Property address is required and must be at least 10 characters');
     });
 
-    it('should assess risk based on DTI', () => {
-      const highDTIInputs = {
-        loanAmount: 500000,
-        interestRate: 5.5,
-        interestOnlyPeriod: 10,
-        totalLoanTerm: 30,
-        monthlyIncome: 5000,
-        monthlyDebts: 2000
-      };
-
-      const lowDTIInputs = {
-        loanAmount: 500000,
-        interestRate: 5.5,
-        interestOnlyPeriod: 10,
-        totalLoanTerm: 30,
-        monthlyIncome: 15000,
-        monthlyDebts: 500
-      };
-
-      const highDTIOutputs = calculateInterestOnlyMortgage(highDTIInputs);
-      const lowDTIOutputs = calculateInterestOnlyMortgage(lowDTIInputs);
-
-      expect(highDTIOutputs.riskScore).toBeGreaterThan(lowDTIOutputs.riskScore);
+    it('should catch invalid debt-to-income ratio', () => {
+      const invalidInputs = { ...mockInputs, debtToIncomeRatio: 1.5 };
+      const result = validateInterestOnlyMortgageInputs(invalidInputs);
+      
+      expect(result.isValid).toBe(false);
+      expect(result.errors).toContain('Debt-to-income ratio must be between 0% and 100%');
     });
 
-    it('should assess risk based on credit score', () => {
-      const lowCreditInputs = {
-        loanAmount: 500000,
-        interestRate: 5.5,
-        interestOnlyPeriod: 10,
-        totalLoanTerm: 30,
-        creditScore: 650
-      };
-
-      const highCreditInputs = {
-        loanAmount: 500000,
-        interestRate: 5.5,
-        interestOnlyPeriod: 10,
-        totalLoanTerm: 30,
-        creditScore: 800
-      };
-
-      const lowCreditOutputs = calculateInterestOnlyMortgage(lowCreditInputs);
-      const highCreditOutputs = calculateInterestOnlyMortgage(highCreditInputs);
-
-      expect(lowCreditOutputs.riskScore).toBeGreaterThan(highCreditOutputs.riskScore);
+    it('should catch invalid loan-to-value ratio', () => {
+      const invalidInputs = { ...mockInputs, loanToValueRatio: 1.2 };
+      const result = validateInterestOnlyMortgageInputs(invalidInputs);
+      
+      expect(result.isValid).toBe(false);
+      expect(result.errors).toContain('Loan-to-value ratio must be between 0% and 100%');
     });
-  });
 
-  describe('Exit Strategy Analysis', () => {
-    it('should analyze different exit strategies', () => {
-      const refinanceInputs = {
-        loanAmount: 500000,
-        interestRate: 5.5,
-        interestOnlyPeriod: 10,
-        totalLoanTerm: 30,
-        exitStrategy: 'refinance',
-        refinanceRate: 6.0
+    it('should provide warnings for high-risk scenarios', () => {
+      const highRiskInputs = { 
+        ...mockInputs, 
+        interestOnlyPeriod: 15,
+        debtToIncomeRatio: 0.5,
+        loanToValueRatio: 0.9,
+        creditScore: 'poor' as const,
+        loanType: 'adjustable' as const
       };
-
-      const sellInputs = {
-        loanAmount: 500000,
-        interestRate: 5.5,
-        interestOnlyPeriod: 10,
-        totalLoanTerm: 30,
-        exitStrategy: 'sell'
-      };
-
-      const refinanceOutputs = calculateInterestOnlyMortgage(refinanceInputs);
-      const sellOutputs = calculateInterestOnlyMortgage(sellInputs);
-
-      expect(refinanceOutputs.riskScore).toBeLessThan(sellOutputs.riskScore);
-    });
-  });
-
-  describe('Tax Implications', () => {
-    it('should calculate after-tax cost correctly', () => {
-      const inputs = {
-        loanAmount: 500000,
-        interestRate: 6.0,
-        interestOnlyPeriod: 10,
-        totalLoanTerm: 30,
-        incomeTaxRate: 24
-      };
-
-      const outputs = calculateInterestOnlyMortgage(inputs);
-      expect(outputs.afterTaxCost).toBeLessThan(outputs.monthlyPITI);
-      expect(outputs.taxSavings).toBeGreaterThan(0);
+      const result = validateInterestOnlyMortgageInputs(highRiskInputs);
+      
+      expect(result.warnings).toContain('Interest-only period over 10 years increases payment shock risk');
+      expect(result.warnings).toContain('Debt-to-income ratio above 40% may limit borrowing capacity');
+      expect(result.warnings).toContain('Loan-to-value ratio above 80% may require PMI');
+      expect(result.warnings).toContain('Lower credit score may result in higher interest rates');
+      expect(result.warnings).toContain('Adjustable rate mortgages carry interest rate risk');
+      expect(result.warnings).toContain('Interest-only period is more than half of total loan term');
     });
   });
 });

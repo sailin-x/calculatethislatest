@@ -1,371 +1,481 @@
-import { CalculatorInputs, CalculatorOutputs } from '../../../types/calculator';
+import { HotelFeasibilityInputs, HotelFeasibilityOutputs, FinancialProjection } from './types';
 
-// Market factor adjustments
-const MARKET_FACTORS = {
-  'business': 1.0,
-  'leisure': 0.9,
-  'mixed': 1.05,
-  'convention': 1.1,
-  'airport': 0.95,
-  'resort': 0.85
-};
-
-// Location factor adjustments
-const LOCATION_FACTORS = {
-  'urban': 1.0,
-  'suburban': 0.9,
-  'airport': 0.95,
-  'resort': 0.85,
-  'highway': 0.8,
-  'downtown': 1.1,
-  'business-district': 1.05
-};
-
-// Seasonality adjustments
-const SEASONALITY_FACTORS = {
-  'low': 0.95,
-  'moderate': 1.0,
-  'high': 0.9,
-  'extreme': 0.8
-};
-
-// Competition level adjustments
-const COMPETITION_FACTORS = {
-  'low': 1.1,
-  'medium': 1.0,
-  'high': 0.9,
-  'very-high': 0.8
-};
-
-// Market demand adjustments
-const DEMAND_FACTORS = {
-  'weak': 0.8,
-  'moderate': 0.9,
-  'strong': 1.0,
-  'very-strong': 1.1
-};
-
-// Additional revenue multipliers by source
-const ADDITIONAL_REVENUE_MULTIPLIERS = {
-  'restaurant': 0.15,
-  'bar': 0.08,
-  'spa': 0.12,
-  'fitness-center': 0.03,
-  'conference-rooms': 0.20,
-  'parking': 0.05,
-  'shuttle-service': 0.02,
-  'gift-shop': 0.03,
-  'laundry-service': 0.02,
-  'room-service': 0.10
-};
-
-// Helper function to calculate monthly payment
-function calculateMonthlyPayment(principal: number, annualRate: number, years: number): number {
-  const monthlyRate = annualRate / 100 / 12;
-  const numberOfPayments = years * 12;
+export function calculateHotelFeasibility(inputs: HotelFeasibilityInputs): HotelFeasibilityOutputs {
+  // Calculate total revenue
+  const totalRevenue = inputs.roomRevenue + inputs.foodBeverageRevenue + 
+                      inputs.meetingSpaceRevenue + inputs.otherRevenue;
   
-  if (monthlyRate === 0) return principal / numberOfPayments;
+  // Calculate total operating expenses
+  const totalLaborCosts = Object.values(inputs.laborCosts).reduce((sum, cost) => sum + cost, 0);
+  const totalUtilityCosts = Object.values(inputs.utilityCosts).reduce((sum, cost) => sum + cost, 0);
+  const totalMaintenanceCosts = Object.values(inputs.maintenanceCosts).reduce((sum, cost) => sum + cost, 0);
+  const totalInsuranceCosts = Object.values(inputs.insuranceCosts).reduce((sum, cost) => sum + cost, 0);
+  const totalMarketingCosts = Object.values(inputs.marketingCosts).reduce((sum, cost) => sum + cost, 0);
+  const totalOtherOperatingCosts = Object.values(inputs.otherOperatingCosts).reduce((sum, cost) => sum + cost, 0);
   
-  return principal * (monthlyRate * Math.pow(1 + monthlyRate, numberOfPayments)) / 
-         (Math.pow(1 + monthlyRate, numberOfPayments) - 1);
-}
-
-// Helper function to calculate feasibility score
-function calculateFeasibilityScore(
-  cashOnCashReturn: number, 
-  capRate: number, 
-  debtServiceCoverage: number,
-  breakEvenOccupancy: number,
-  marketDemand: string,
-  competitionLevel: string
-): number {
-  let score = 0;
-
-  // Cash-on-cash return factor (30%)
-  if (cashOnCashReturn >= 12) score += 30;
-  else if (cashOnCashReturn >= 10) score += 25;
-  else if (cashOnCashReturn >= 8) score += 20;
-  else if (cashOnCashReturn >= 6) score += 15;
-  else if (cashOnCashReturn >= 4) score += 10;
-  else score += 5;
-
-  // Cap rate factor (25%)
-  if (capRate >= 10) score += 25;
-  else if (capRate >= 8) score += 20;
-  else if (capRate >= 6) score += 15;
-  else if (capRate >= 4) score += 10;
-  else score += 5;
-
-  // Debt service coverage factor (20%)
-  if (debtServiceCoverage >= 1.5) score += 20;
-  else if (debtServiceCoverage >= 1.3) score += 15;
-  else if (debtServiceCoverage >= 1.2) score += 10;
-  else if (debtServiceCoverage >= 1.1) score += 5;
-  else score += 0;
-
-  // Break-even occupancy factor (15%)
-  if (breakEvenOccupancy <= 50) score += 15;
-  else if (breakEvenOccupancy <= 60) score += 12;
-  else if (breakEvenOccupancy <= 70) score += 8;
-  else if (breakEvenOccupancy <= 80) score += 4;
-  else score += 0;
-
-  // Market demand factor (10%)
-  const demandFactor = DEMAND_FACTORS[marketDemand] || 1.0;
-  score += demandFactor * 10;
-
-  return Math.min(score, 100);
-}
-
-// Helper function to calculate risk score
-function calculateRiskScore(
-  debtServiceCoverage: number,
-  breakEvenOccupancy: number,
-  competitionLevel: string,
-  seasonality: string,
-  marketDemand: string,
-  totalInvestment: number
-): number {
-  let riskScore = 0;
-
-  // Debt service coverage risk
-  if (debtServiceCoverage < 1.1) riskScore += 25;
-  else if (debtServiceCoverage < 1.3) riskScore += 15;
-  else if (debtServiceCoverage < 1.5) riskScore += 10;
-
-  // Break-even occupancy risk
-  if (breakEvenOccupancy > 80) riskScore += 20;
-  else if (breakEvenOccupancy > 70) riskScore += 15;
-  else if (breakEvenOccupancy > 60) riskScore += 10;
-
-  // Competition risk
-  if (competitionLevel === 'very-high') riskScore += 20;
-  else if (competitionLevel === 'high') riskScore += 15;
-  else if (competitionLevel === 'medium') riskScore += 10;
-
-  // Seasonality risk
-  if (seasonality === 'extreme') riskScore += 15;
-  else if (seasonality === 'high') riskScore += 10;
-
-  // Market demand risk
-  if (marketDemand === 'weak') riskScore += 20;
-  else if (marketDemand === 'moderate') riskScore += 10;
-
-  return Math.min(riskScore, 100);
-}
-
-export function calculateHotelFeasibility(inputs: CalculatorInputs): CalculatorOutputs {
-  // Extract inputs with defaults
-  const totalRooms = inputs.totalRooms || 100;
-  const hotelType = inputs.hotelType || 'midscale';
-  const starRating = inputs.starRating || '3';
-  const location = inputs.location || 'urban';
-  const market = inputs.market || 'business';
-  const seasonality = inputs.seasonality || 'moderate';
-  const competitionLevel = inputs.competitionLevel || 'medium';
-  const marketDemand = inputs.marketDemand || 'strong';
-  const occupancyRate = inputs.occupancyRate || 75;
-  const baseADR = inputs.baseADR || 150;
-  const constructionCost = inputs.constructionCost || 150000;
-  const landCost = inputs.landCost || 5000000;
-  const softCosts = inputs.softCosts || 2000000;
-  const furnitureCost = inputs.furnitureCost || 25000;
-  const operatingExpenses = inputs.operatingExpenses || 25000;
-  const laborCosts = inputs.laborCosts || 35000;
-  const utilityCosts = inputs.utilityCosts || 8000;
-  const maintenanceCosts = inputs.maintenanceCosts || 5000;
-  const insuranceCosts = inputs.insuranceCosts || 3000;
-  const propertyTaxes = inputs.propertyTaxes || 4000;
-  const managementFees = inputs.managementFees || 3;
-  const franchiseFees = inputs.franchiseFees || 5;
-  const financingRate = inputs.financingRate || 6.5;
-  const loanTerm = inputs.loanTerm || 25;
-  const downPayment = inputs.downPayment || 25;
-  const taxRate = inputs.taxRate || 25;
-  const inflationRate = inputs.inflationRate || 2.5;
-  const revenueGrowth = inputs.revenueGrowth || 3;
-  const expenseGrowth = inputs.expenseGrowth || 2.5;
-  const exitYear = inputs.exitYear || 10;
-  const exitCapRate = inputs.exitCapRate || 7;
-
-  // Calculate total investment
-  const constructionCostTotal = totalRooms * constructionCost;
-  const furnitureCostTotal = totalRooms * furnitureCost;
-  const totalProjectCost = landCost + constructionCostTotal + softCosts + furnitureCostTotal;
-  const totalInvestment = totalProjectCost;
-
-  // Calculate adjusted ADR based on market factors
-  const marketFactor = MARKET_FACTORS[market] || 1.0;
-  const locationFactor = LOCATION_FACTORS[location] || 1.0;
-  const seasonalityFactor = SEASONALITY_FACTORS[seasonality] || 1.0;
-  const competitionFactor = COMPETITION_FACTORS[competitionLevel] || 1.0;
-  const demandFactor = DEMAND_FACTORS[marketDemand] || 1.0;
-
-  const adjustedADR = baseADR * marketFactor * locationFactor * seasonalityFactor * 
-                     competitionFactor * demandFactor;
-
-  // Calculate annual revenue
-  const roomRevenue = totalRooms * (occupancyRate / 100) * adjustedADR * 365;
+  const totalOperatingExpenses = totalLaborCosts + totalUtilityCosts + totalMaintenanceCosts + 
+                                totalInsuranceCosts + totalMarketingCosts + totalOtherOperatingCosts;
   
-  // Calculate additional revenue
-  let additionalRevenue = 0;
-  if (inputs.additionalRevenue && Array.isArray(inputs.additionalRevenue)) {
-    for (const source of inputs.additionalRevenue) {
-      const multiplier = ADDITIONAL_REVENUE_MULTIPLIERS[source] || 0;
-      additionalRevenue += roomRevenue * multiplier;
-    }
-  }
-
-  const annualRevenue = roomRevenue + additionalRevenue;
-
-  // Calculate annual expenses
-  const totalOperatingExpenses = totalRooms * (
-    operatingExpenses + laborCosts + utilityCosts + maintenanceCosts + 
-    insuranceCosts + propertyTaxes
-  );
-
-  const managementFeesAmount = annualRevenue * (managementFees / 100);
-  const franchiseFeesAmount = annualRevenue * (franchiseFees / 100);
-  const annualExpenses = totalOperatingExpenses + managementFeesAmount + franchiseFeesAmount;
-
-  // Calculate NOI
-  const netOperatingIncome = annualRevenue - annualExpenses;
-
-  // Calculate financing
-  const loanAmount = totalInvestment * (1 - downPayment / 100);
-  const equityRequired = totalInvestment * (downPayment / 100);
-  const monthlyPayment = calculateMonthlyPayment(loanAmount, financingRate, loanTerm);
-  const annualDebtService = monthlyPayment * 12;
-
-  // Calculate cash flow and returns
-  const cashFlow = netOperatingIncome - annualDebtService;
-  const cashOnCashReturn = (cashFlow / equityRequired) * 100;
-  const capRate = (netOperatingIncome / totalInvestment) * 100;
-  const debtServiceCoverage = netOperatingIncome / annualDebtService;
-
-  // Calculate break-even metrics
-  const breakEvenOccupancy = ((annualExpenses + annualDebtService) / (adjustedADR * 365)) * 100;
-  const breakEvenADR = (annualExpenses + annualDebtService) / (totalRooms * (occupancyRate / 100) * 365);
-
+  // Calculate net operating income
+  const netOperatingIncome = totalRevenue - totalOperatingExpenses;
+  
+  // Calculate debt service
+  const monthlyRate = inputs.interestRate / 12;
+  const totalPayments = inputs.loanTerm * 12;
+  const debtService = inputs.loanAmount * (monthlyRate * Math.pow(1 + monthlyRate, totalPayments)) / 
+                     (Math.pow(1 + monthlyRate, totalPayments) - 1) * 12;
+  
+  // Calculate cash flow
+  const cashFlow = netOperatingIncome - debtService;
+  
   // Calculate profit margin
-  const profitMargin = (cashFlow / annualRevenue) * 100;
-
-  // Calculate IRR (simplified)
-  const irr = cashOnCashReturn + (revenueGrowth - expenseGrowth);
-
-  // Calculate payback period
-  const paybackPeriod = equityRequired / cashFlow;
-
-  // Calculate exit value
-  const exitValue = netOperatingIncome * (1 + revenueGrowth / 100) ** exitYear / (exitCapRate / 100);
-  const totalReturn = ((exitValue - equityRequired) / equityRequired) * 100;
-
-  // Calculate scores
-  const feasibilityScore = calculateFeasibilityScore(
-    cashOnCashReturn, capRate, debtServiceCoverage, breakEvenOccupancy, marketDemand, competitionLevel
-  );
-
-  const riskScore = calculateRiskScore(
-    debtServiceCoverage, breakEvenOccupancy, competitionLevel, seasonality, marketDemand, totalInvestment
-  );
-
-  // Generate recommendation
-  let recommendation = 'Proceed with caution';
-  if (feasibilityScore >= 80 && riskScore <= 30) recommendation = 'Strong buy recommendation';
-  else if (feasibilityScore >= 70 && riskScore <= 40) recommendation = 'Buy recommendation';
-  else if (feasibilityScore >= 60 && riskScore <= 50) recommendation = 'Consider with modifications';
-  else if (feasibilityScore < 50 || riskScore > 70) recommendation = 'Not recommended';
-
-  // Generate key metrics
-  const keyMetrics = `RevPAR: $${(adjustedADR * (occupancyRate / 100)).toFixed(2)} | 
-                     ADR: $${adjustedADR.toFixed(2)} | 
-                     Occupancy: ${occupancyRate}% | 
-                     DSCR: ${debtServiceCoverage.toFixed(2)}`;
-
-  // Generate sensitivity analysis
-  const sensitivityAnalysis = `ADR ±10%: ${(cashOnCashReturn * 0.1).toFixed(1)}% | 
-                              Occupancy ±10%: ${(cashOnCashReturn * 0.15).toFixed(1)}% | 
-                              Expenses ±10%: ${(cashOnCashReturn * 0.08).toFixed(1)}%`;
-
+  const profitMargin = (netOperatingIncome / totalRevenue) * 100;
+  
+  // Calculate key performance indicators
+  const averageDailyRate = calculateWeightedADR(inputs);
+  const occupancyRate = inputs.projectedOccupancy;
+  const revenuePerAvailableRoom = (averageDailyRate * occupancyRate) / 100;
+  const averageRevenuePerUser = totalRevenue / (inputs.totalRooms * occupancyRate / 100 * 365);
+  const costPerOccupiedRoom = totalOperatingExpenses / (inputs.totalRooms * occupancyRate / 100 * 365);
+  const grossOperatingProfit = totalRevenue - totalOperatingExpenses;
+  const grossOperatingProfitMargin = (grossOperatingProfit / totalRevenue) * 100;
+  
+  // Calculate investment analysis
+  const totalInvestment = inputs.acquisitionCost + inputs.renovationCost + 
+                         inputs.furnitureFixturesEquipment + inputs.workingCapital;
+  
+  const netPresentValue = calculateNPV(cashFlow, inputs.interestRate, 10);
+  const internalRateOfReturn = calculateIRR(totalInvestment, cashFlow, 10);
+  const paybackPeriod = totalInvestment / cashFlow;
+  const returnOnInvestment = (netOperatingIncome / totalInvestment) * 100;
+  const returnOnEquity = (cashFlow / inputs.equityContribution) * 100;
+  
+  // Market analysis
+  const marketPosition = analyzeMarketPosition(averageDailyRate, inputs.averageMarketADR);
+  const competitivePosition = analyzeCompetitivePosition(inputs);
+  const marketShare = calculateMarketShare(inputs);
+  const priceElasticity = calculatePriceElasticity(inputs);
+  
+  // Risk assessment
+  const overallRiskScore = calculateOverallRiskScore(inputs);
+  const riskFactors = identifyRiskFactors(inputs);
+  const riskMitigationStrategies = generateRiskMitigationStrategies(inputs);
+  
+  // Sensitivity analysis
+  const breakevenOccupancy = calculateBreakevenOccupancy(totalOperatingExpenses, averageDailyRate, inputs.totalRooms);
+  const breakevenADR = calculateBreakevenADR(totalOperatingExpenses, occupancyRate, inputs.totalRooms);
+  const sensitivityAnalysis = calculateSensitivityAnalysis(inputs);
+  
+  // Generate recommendations
+  const feasibilityRecommendation = determineFeasibility(cashFlow, returnOnInvestment, overallRiskScore);
+  const keyRecommendations = generateKeyRecommendations(inputs, cashFlow, returnOnInvestment);
+  const operationalRecommendations = generateOperationalRecommendations(inputs);
+  const financialRecommendations = generateFinancialRecommendations(inputs, cashFlow);
+  const marketingRecommendations = generateMarketingRecommendations(inputs);
+  
+  // Five-year projections
+  const fiveYearProjections = generateFiveYearProjections(inputs);
+  
+  // Summary
+  const summary = {
+    totalAnnualRevenue: totalRevenue,
+    totalAnnualExpenses: totalOperatingExpenses,
+    netAnnualIncome: netOperatingIncome,
+    keyStrengths: identifyKeyStrengths(inputs),
+    keyChallenges: identifyKeyChallenges(inputs),
+    nextSteps: generateNextSteps(feasibilityRecommendation)
+  };
+  
   return {
-    totalInvestment: Math.round(totalInvestment),
-    constructionCostTotal: Math.round(constructionCostTotal),
-    totalProjectCost: Math.round(totalProjectCost),
-    annualRevenue: Math.round(annualRevenue),
-    annualExpenses: Math.round(annualExpenses),
-    netOperatingIncome: Math.round(netOperatingIncome),
-    cashFlow: Math.round(cashFlow),
-    cashOnCashReturn: Math.round(cashOnCashReturn * 100) / 100,
-    capRate: Math.round(capRate * 100) / 100,
-    irr: Math.round(irr * 100) / 100,
-    paybackPeriod: Math.round(paybackPeriod * 100) / 100,
-    breakEvenOccupancy: Math.round(breakEvenOccupancy * 100) / 100,
-    breakEvenADR: Math.round(breakEvenADR * 100) / 100,
-    profitMargin: Math.round(profitMargin * 100) / 100,
-    debtServiceCoverage: Math.round(debtServiceCoverage * 100) / 100,
-    loanAmount: Math.round(loanAmount),
-    monthlyPayment: Math.round(monthlyPayment),
-    annualDebtService: Math.round(annualDebtService),
-    equityRequired: Math.round(equityRequired),
-    exitValue: Math.round(exitValue),
-    totalReturn: Math.round(totalReturn * 100) / 100,
-    feasibilityScore,
-    riskScore,
-    recommendation,
-    keyMetrics,
+    totalRevenue,
+    totalOperatingExpenses,
+    netOperatingIncome,
+    debtService,
+    cashFlow,
+    profitMargin,
+    averageDailyRate,
+    occupancyRate,
+    revenuePerAvailableRoom,
+    averageRevenuePerUser,
+    costPerOccupiedRoom,
+    grossOperatingProfit,
+    grossOperatingProfitMargin,
+    totalInvestment,
+    netPresentValue,
+    internalRateOfReturn,
+    paybackPeriod,
+    returnOnInvestment,
+    returnOnEquity,
+    marketPosition,
+    competitivePosition,
+    marketShare,
+    priceElasticity,
+    overallRiskScore,
+    riskFactors,
+    riskMitigationStrategies,
+    breakevenOccupancy,
+    breakevenADR,
     sensitivityAnalysis,
-    hotelFeasibilityAnalysis: 'Comprehensive hotel feasibility analysis completed'
+    feasibilityRecommendation,
+    keyRecommendations,
+    operationalRecommendations,
+    financialRecommendations,
+    marketingRecommendations,
+    fiveYearProjections,
+    summary
   };
 }
 
-export function generateHotelFeasibilityAnalysis(inputs: CalculatorInputs, outputs: CalculatorOutputs): string {
-  return `# Hotel Feasibility & ADR Analysis
+function calculateWeightedADR(inputs: HotelFeasibilityInputs): number {
+  const totalRooms = inputs.totalRooms;
+  const standardADR = inputs.projectedADR.standard * inputs.roomTypes.standard;
+  const deluxeADR = inputs.projectedADR.deluxe * inputs.roomTypes.deluxe;
+  const suiteADR = inputs.projectedADR.suite * inputs.roomTypes.suite;
+  const presidentialADR = inputs.projectedADR.presidential * inputs.roomTypes.presidential;
+  
+  return (standardADR + deluxeADR + suiteADR + presidentialADR) / totalRooms;
+}
 
-## Executive Summary
-**Recommendation:** ${outputs.recommendation}
+function calculateNPV(cashFlow: number, discountRate: number, years: number): number {
+  let npv = 0;
+  for (let i = 1; i <= years; i++) {
+    npv += cashFlow / Math.pow(1 + discountRate, i);
+  }
+  return npv;
+}
 
-**Feasibility Score:** ${outputs.feasibilityScore}/100
-**Risk Score:** ${outputs.riskScore}/100
+function calculateIRR(initialInvestment: number, annualCashFlow: number, years: number): number {
+  // Simplified IRR calculation
+  const totalCashFlow = annualCashFlow * years;
+  return Math.pow(totalCashFlow / initialInvestment, 1 / years) - 1;
+}
 
-## Investment Overview
-- **Total Investment:** $${outputs.totalInvestment.toLocaleString()}
-- **Equity Required:** $${outputs.equityRequired.toLocaleString()}
-- **Loan Amount:** $${outputs.loanAmount.toLocaleString()}
-- **Monthly Payment:** $${outputs.monthlyPayment.toLocaleString()}
+function analyzeMarketPosition(projectedADR: number, marketADR: number): 'below_market' | 'at_market' | 'above_market' {
+  const difference = (projectedADR - marketADR) / marketADR;
+  if (difference < -0.1) return 'below_market';
+  if (difference > 0.1) return 'above_market';
+  return 'at_market';
+}
 
-## Financial Performance
-- **Annual Revenue:** $${outputs.annualRevenue.toLocaleString()}
-- **Net Operating Income:** $${outputs.netOperatingIncome.toLocaleString()}
-- **Annual Cash Flow:** $${outputs.cashFlow.toLocaleString()}
-- **Cash-on-Cash Return:** ${outputs.cashOnCashReturn}%
-- **Cap Rate:** ${outputs.capRate}%
-- **IRR:** ${outputs.irr}%
+function analyzeCompetitivePosition(inputs: HotelFeasibilityInputs): 'weak' | 'average' | 'strong' | 'dominant' {
+  let score = 50; // Base score
+  
+  if (inputs.competitionLevel === 'low') score += 20;
+  else if (inputs.competitionLevel === 'high') score -= 20;
+  
+  if (inputs.marketDemand === 'high') score += 15;
+  else if (inputs.marketDemand === 'low') score -= 15;
+  
+  if (inputs.buildingAge < 10) score += 10;
+  else if (inputs.buildingAge > 30) score -= 10;
+  
+  if (score >= 80) return 'dominant';
+  if (score >= 60) return 'strong';
+  if (score >= 40) return 'average';
+  return 'weak';
+}
 
-## Key Metrics
-**${outputs.keyMetrics}**
+function calculateMarketShare(inputs: HotelFeasibilityInputs): number {
+  // Simplified market share calculation
+  const totalMarketRooms = inputs.totalRooms * 10; // Assume 10x market size
+  return (inputs.totalRooms / totalMarketRooms) * 100;
+}
 
-## Break-Even Analysis
-- **Break-Even Occupancy:** ${outputs.breakEvenOccupancy}%
-- **Break-Even ADR:** $${outputs.breakEvenADR.toFixed(2)}
-- **Debt Service Coverage:** ${outputs.debtServiceCoverage}
-- **Payback Period:** ${outputs.paybackPeriod} years
+function calculatePriceElasticity(inputs: HotelFeasibilityInputs): number {
+  // Simplified price elasticity calculation
+  return -1.5; // Typical hotel price elasticity
+}
 
-## Risk Assessment
-- **Risk Score:** ${outputs.riskScore}/100
-- **Profit Margin:** ${outputs.profitMargin}%
-- **Sensitivity Analysis:** ${outputs.sensitivityAnalysis}
+function calculateOverallRiskScore(inputs: HotelFeasibilityInputs): number {
+  let score = 50; // Base score
+  
+  // Market risk
+  switch (inputs.marketRisk) {
+    case 'low': score -= 10; break;
+    case 'moderate': break;
+    case 'high': score += 15; break;
+    case 'very_high': score += 25; break;
+  }
+  
+  // Operational risk
+  switch (inputs.operationalRisk) {
+    case 'low': score -= 10; break;
+    case 'moderate': break;
+    case 'high': score += 15; break;
+    case 'very_high': score += 25; break;
+  }
+  
+  // Financial risk
+  switch (inputs.financialRisk) {
+    case 'low': score -= 10; break;
+    case 'moderate': break;
+    case 'high': score += 15; break;
+    case 'very_high': score += 25; break;
+  }
+  
+  // Regulatory risk
+  switch (inputs.regulatoryRisk) {
+    case 'low': score -= 5; break;
+    case 'moderate': break;
+    case 'high': score += 10; break;
+    case 'very_high': score += 20; break;
+  }
+  
+  return Math.min(Math.max(score, 1), 100);
+}
 
-## Exit Strategy
-- **Exit Year:** ${inputs.exitYear || 10} years
-- **Exit Value:** $${outputs.exitValue.toLocaleString()}
-- **Total Return:** ${outputs.totalReturn}%
+function identifyRiskFactors(inputs: HotelFeasibilityInputs): string[] {
+  const factors: string[] = [];
+  
+  if (inputs.marketRisk === 'high' || inputs.marketRisk === 'very_high') {
+    factors.push('High market risk');
+  }
+  if (inputs.operationalRisk === 'high' || inputs.operationalRisk === 'very_high') {
+    factors.push('High operational risk');
+  }
+  if (inputs.financialRisk === 'high' || inputs.financialRisk === 'very_high') {
+    factors.push('High financial risk');
+  }
+  if (inputs.regulatoryRisk === 'high' || inputs.regulatoryRisk === 'very_high') {
+    factors.push('High regulatory risk');
+  }
+  if (inputs.competitionLevel === 'high' || inputs.competitionLevel === 'very_high') {
+    factors.push('High competition');
+  }
+  if (inputs.buildingAge > 30) {
+    factors.push('Older building requiring maintenance');
+  }
+  if (inputs.seasonality === 'high' || inputs.seasonality === 'extreme') {
+    factors.push('High seasonality');
+  }
+  
+  return factors;
+}
 
-## Next Steps
-1. Conduct detailed market analysis
-2. Review competitive landscape
-3. Validate construction costs
-4. Secure financing commitments
-5. Develop operational plan
-6. Consider franchise options
-7. Plan for market fluctuations`;
+function generateRiskMitigationStrategies(inputs: HotelFeasibilityInputs): string[] {
+  const strategies: string[] = [];
+  
+  if (inputs.marketRisk === 'high' || inputs.marketRisk === 'very_high') {
+    strategies.push('Diversify revenue streams');
+    strategies.push('Develop strong brand positioning');
+  }
+  if (inputs.operationalRisk === 'high' || inputs.operationalRisk === 'very_high') {
+    strategies.push('Implement robust operational systems');
+    strategies.push('Invest in staff training');
+  }
+  if (inputs.financialRisk === 'high' || inputs.financialRisk === 'very_high') {
+    strategies.push('Maintain adequate cash reserves');
+    strategies.push('Consider insurance coverage');
+  }
+  if (inputs.seasonality === 'high' || inputs.seasonality === 'extreme') {
+    strategies.push('Develop off-season programs');
+    strategies.push('Target business travelers');
+  }
+  
+  return strategies;
+}
+
+function calculateBreakevenOccupancy(totalExpenses: number, adr: number, totalRooms: number): number {
+  return (totalExpenses / (adr * totalRooms * 365)) * 100;
+}
+
+function calculateBreakevenADR(totalExpenses: number, occupancy: number, totalRooms: number): number {
+  return totalExpenses / (totalRooms * occupancy / 100 * 365);
+}
+
+function calculateSensitivityAnalysis(inputs: HotelFeasibilityInputs) {
+  return {
+    occupancyImpact: 0.15, // 15% impact for 1% occupancy change
+    adrImpact: 0.20, // 20% impact for 1% ADR change
+    costImpact: -0.10 // -10% impact for 1% cost change
+  };
+}
+
+function determineFeasibility(cashFlow: number, roi: number, riskScore: number): 'not_feasible' | 'marginal' | 'feasible' | 'highly_feasible' {
+  if (cashFlow < 0 || roi < 5 || riskScore > 80) return 'not_feasible';
+  if (cashFlow < 50000 || roi < 10 || riskScore > 60) return 'marginal';
+  if (cashFlow > 200000 && roi > 15 && riskScore < 40) return 'highly_feasible';
+  return 'feasible';
+}
+
+function generateKeyRecommendations(inputs: HotelFeasibilityInputs, cashFlow: number, roi: number): string[] {
+  const recommendations: string[] = [];
+  
+  if (cashFlow < 0) {
+    recommendations.push('Improve operational efficiency to achieve positive cash flow');
+  }
+  if (roi < 10) {
+    recommendations.push('Optimize revenue management and cost control');
+  }
+  if (inputs.competitionLevel === 'high') {
+    recommendations.push('Develop unique value proposition to differentiate from competitors');
+  }
+  if (inputs.buildingAge > 20) {
+    recommendations.push('Plan for major renovation to maintain competitiveness');
+  }
+  
+  return recommendations;
+}
+
+function generateOperationalRecommendations(inputs: HotelFeasibilityInputs): string[] {
+  const recommendations: string[] = [];
+  
+  recommendations.push('Implement revenue management system');
+  recommendations.push('Optimize staffing levels based on demand patterns');
+  recommendations.push('Develop standard operating procedures');
+  recommendations.push('Invest in technology for operational efficiency');
+  
+  return recommendations;
+}
+
+function generateFinancialRecommendations(inputs: HotelFeasibilityInputs, cashFlow: number): string[] {
+  const recommendations: string[] = [];
+  
+  if (cashFlow < 100000) {
+    recommendations.push('Review and optimize cost structure');
+  }
+  recommendations.push('Maintain adequate working capital reserves');
+  recommendations.push('Consider refinancing if interest rates improve');
+  recommendations.push('Implement regular financial reporting and analysis');
+  
+  return recommendations;
+}
+
+function generateMarketingRecommendations(inputs: HotelFeasibilityInputs): string[] {
+  const recommendations: string[] = [];
+  
+  recommendations.push('Develop strong online presence and digital marketing strategy');
+  recommendations.push('Build relationships with corporate clients and travel agents');
+  recommendations.push('Implement loyalty program to increase repeat business');
+  recommendations.push('Focus on direct bookings to reduce commission costs');
+  
+  return recommendations;
+}
+
+function generateFiveYearProjections(inputs: HotelFeasibilityInputs): {
+  year1: FinancialProjection;
+  year2: FinancialProjection;
+  year3: FinancialProjection;
+  year4: FinancialProjection;
+  year5: FinancialProjection;
+} {
+  const baseRevenue = inputs.roomRevenue + inputs.foodBeverageRevenue + inputs.meetingSpaceRevenue + inputs.otherRevenue;
+  const baseExpenses = Object.values(inputs.laborCosts).reduce((sum, cost) => sum + cost, 0) +
+                      Object.values(inputs.utilityCosts).reduce((sum, cost) => sum + cost, 0) +
+                      Object.values(inputs.maintenanceCosts).reduce((sum, cost) => sum + cost, 0) +
+                      Object.values(inputs.insuranceCosts).reduce((sum, cost) => sum + cost, 0) +
+                      Object.values(inputs.marketingCosts).reduce((sum, cost) => sum + cost, 0) +
+                      Object.values(inputs.otherOperatingCosts).reduce((sum, cost) => sum + cost, 0);
+  
+  const growthRate = 0.03; // 3% annual growth
+  
+  return {
+    year1: {
+      revenue: baseRevenue,
+      expenses: baseExpenses,
+      netIncome: baseRevenue - baseExpenses,
+      occupancy: inputs.projectedOccupancy,
+      adr: calculateWeightedADR(inputs),
+      revpar: (calculateWeightedADR(inputs) * inputs.projectedOccupancy) / 100
+    },
+    year2: {
+      revenue: baseRevenue * (1 + growthRate),
+      expenses: baseExpenses * (1 + growthRate * 0.8),
+      netIncome: baseRevenue * (1 + growthRate) - baseExpenses * (1 + growthRate * 0.8),
+      occupancy: inputs.projectedOccupancy + 2,
+      adr: calculateWeightedADR(inputs) * (1 + growthRate),
+      revpar: (calculateWeightedADR(inputs) * (1 + growthRate) * (inputs.projectedOccupancy + 2)) / 100
+    },
+    year3: {
+      revenue: baseRevenue * Math.pow(1 + growthRate, 2),
+      expenses: baseExpenses * Math.pow(1 + growthRate * 0.8, 2),
+      netIncome: baseRevenue * Math.pow(1 + growthRate, 2) - baseExpenses * Math.pow(1 + growthRate * 0.8, 2),
+      occupancy: inputs.projectedOccupancy + 3,
+      adr: calculateWeightedADR(inputs) * Math.pow(1 + growthRate, 2),
+      revpar: (calculateWeightedADR(inputs) * Math.pow(1 + growthRate, 2) * (inputs.projectedOccupancy + 3)) / 100
+    },
+    year4: {
+      revenue: baseRevenue * Math.pow(1 + growthRate, 3),
+      expenses: baseExpenses * Math.pow(1 + growthRate * 0.8, 3),
+      netIncome: baseRevenue * Math.pow(1 + growthRate, 3) - baseExpenses * Math.pow(1 + growthRate * 0.8, 3),
+      occupancy: inputs.projectedOccupancy + 4,
+      adr: calculateWeightedADR(inputs) * Math.pow(1 + growthRate, 3),
+      revpar: (calculateWeightedADR(inputs) * Math.pow(1 + growthRate, 3) * (inputs.projectedOccupancy + 4)) / 100
+    },
+    year5: {
+      revenue: baseRevenue * Math.pow(1 + growthRate, 4),
+      expenses: baseExpenses * Math.pow(1 + growthRate * 0.8, 4),
+      netIncome: baseRevenue * Math.pow(1 + growthRate, 4) - baseExpenses * Math.pow(1 + growthRate * 0.8, 4),
+      occupancy: inputs.projectedOccupancy + 5,
+      adr: calculateWeightedADR(inputs) * Math.pow(1 + growthRate, 4),
+      revpar: (calculateWeightedADR(inputs) * Math.pow(1 + growthRate, 4) * (inputs.projectedOccupancy + 5)) / 100
+    }
+  };
+}
+
+function identifyKeyStrengths(inputs: HotelFeasibilityInputs): string[] {
+  const strengths: string[] = [];
+  
+  if (inputs.competitionLevel === 'low') {
+    strengths.push('Limited competition in market');
+  }
+  if (inputs.marketDemand === 'high' || inputs.marketDemand === 'very_high') {
+    strengths.push('Strong market demand');
+  }
+  if (inputs.buildingAge < 10) {
+    strengths.push('Modern, well-maintained property');
+  }
+  if (inputs.totalRooms > 100) {
+    strengths.push('Economies of scale with room count');
+  }
+  
+  return strengths;
+}
+
+function identifyKeyChallenges(inputs: HotelFeasibilityInputs): string[] {
+  const challenges: string[] = [];
+  
+  if (inputs.competitionLevel === 'high' || inputs.competitionLevel === 'very_high') {
+    challenges.push('Intense competition');
+  }
+  if (inputs.marketDemand === 'low') {
+    challenges.push('Weak market demand');
+  }
+  if (inputs.buildingAge > 30) {
+    challenges.push('Older property requiring significant investment');
+  }
+  if (inputs.seasonality === 'high' || inputs.seasonality === 'extreme') {
+    challenges.push('High seasonality affecting cash flow');
+  }
+  
+  return challenges;
+}
+
+function generateNextSteps(feasibility: string): string[] {
+  const steps: string[] = [];
+  
+  switch (feasibility) {
+    case 'highly_feasible':
+      steps.push('Proceed with acquisition');
+      steps.push('Secure financing');
+      steps.push('Develop detailed business plan');
+      break;
+    case 'feasible':
+      steps.push('Conduct detailed due diligence');
+      steps.push('Negotiate purchase terms');
+      steps.push('Develop risk mitigation strategies');
+      break;
+    case 'marginal':
+      steps.push('Reconsider investment parameters');
+      steps.push('Explore alternative strategies');
+      steps.push('Conduct additional market research');
+      break;
+    case 'not_feasible':
+      steps.push('Consider alternative investments');
+      steps.push('Reassess market assumptions');
+      steps.push('Look for other opportunities');
+      break;
+  }
+  
+  return steps;
 }

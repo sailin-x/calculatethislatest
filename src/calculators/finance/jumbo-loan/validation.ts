@@ -1,370 +1,198 @@
-import { CalculatorInputs } from '../../../types/calculator';
+import { JumboLoanInputs } from './types';
 
 export interface ValidationResult {
   isValid: boolean;
   errors: string[];
+  warnings: string[];
 }
 
-export function validateJumboLoanInputs(inputs: CalculatorInputs): ValidationResult {
+export function validateJumboLoanInputs(inputs: JumboLoanInputs): ValidationResult {
   const errors: string[] = [];
+  const warnings: string[] = [];
 
-  // Required field validation
-  if (!inputs.loanAmount) {
-    errors.push('Loan amount is required');
-  } else if (typeof inputs.loanAmount !== 'number' || inputs.loanAmount <= 0) {
-    errors.push('Loan amount must be a positive number');
-  } else if (inputs.loanAmount < 548250) {
-    errors.push('Loan amount must be at least $548,250 for jumbo loans');
-  } else if (inputs.loanAmount > 10000000) {
-    errors.push('Loan amount must be $10,000,000 or less');
+  // Loan amount validation
+  if (!inputs.loanAmount || inputs.loanAmount < 100000) {
+    errors.push('Loan amount must be at least $100,000');
+  }
+  if (inputs.loanAmount > 50000000) {
+    errors.push('Loan amount cannot exceed $50,000,000');
   }
 
-  if (!inputs.interestRate) {
-    errors.push('Interest rate is required');
-  } else if (typeof inputs.interestRate !== 'number' || inputs.interestRate <= 0) {
-    errors.push('Interest rate must be a positive number');
-  } else if (inputs.interestRate < 0.1 || inputs.interestRate > 20) {
-    errors.push('Interest rate must be between 0.1% and 20%');
+  // Interest rate validation
+  if (inputs.interestRate < 0 || inputs.interestRate > 0.5) {
+    errors.push('Interest rate must be between 0% and 50%');
   }
 
-  if (!inputs.loanTerm) {
-    errors.push('Loan term is required');
-  } else if (typeof inputs.loanTerm !== 'number' || inputs.loanTerm <= 0) {
-    errors.push('Loan term must be a positive number');
-  } else if (inputs.loanTerm < 5 || inputs.loanTerm > 50) {
-    errors.push('Loan term must be between 5 and 50 years');
+  // Loan term validation
+  if (inputs.loanTerm < 1 || inputs.loanTerm > 50) {
+    errors.push('Loan term must be between 1 and 50 years');
   }
 
-  if (!inputs.downPayment) {
-    errors.push('Down payment is required');
-  } else if (typeof inputs.downPayment !== 'number' || inputs.downPayment < 0) {
-    errors.push('Down payment must be a non-negative number');
-  } else if (inputs.downPayment > 5000000) {
-    errors.push('Down payment must be $5,000,000 or less');
+  // Down payment validation
+  if (inputs.downPayment < 0) {
+    errors.push('Down payment cannot be negative');
+  }
+  if (inputs.downPayment > inputs.propertyValue) {
+    errors.push('Down payment cannot exceed property value');
+  }
+
+  // Loan-to-value ratio validation
+  if (inputs.loanToValueRatio < 0 || inputs.loanToValueRatio > 1) {
+    errors.push('Loan-to-value ratio must be between 0% and 100%');
   }
 
   // Property value validation
-  if (inputs.propertyValue) {
-    if (typeof inputs.propertyValue !== 'number' || inputs.propertyValue <= 0) {
-      errors.push('Property value must be a positive number');
-    } else if (inputs.propertyValue < 100000 || inputs.propertyValue > 20000000) {
-      errors.push('Property value must be between $100,000 and $20,000,000');
-    }
+  if (!inputs.propertyValue || inputs.propertyValue < 100000) {
+    errors.push('Property value must be at least $100,000');
   }
 
-  // Income validation
-  if (inputs.annualIncome) {
-    if (typeof inputs.annualIncome !== 'number' || inputs.annualIncome <= 0) {
-      errors.push('Annual income must be a positive number');
-    } else if (inputs.annualIncome < 50000 || inputs.annualIncome > 5000000) {
-      errors.push('Annual income must be between $50,000 and $5,000,000');
-    }
+  // Property address validation
+  if (!inputs.propertyAddress || inputs.propertyAddress.trim().length < 10) {
+    errors.push('Property address is required and must be at least 10 characters');
   }
 
-  // Monthly debts validation
-  if (inputs.monthlyDebts) {
-    if (typeof inputs.monthlyDebts !== 'number' || inputs.monthlyDebts < 0) {
-      errors.push('Monthly debts must be a non-negative number');
-    } else if (inputs.monthlyDebts > 50000) {
-      errors.push('Monthly debts must be $50,000 or less');
-    }
+  // Debt-to-income ratio validation
+  if (inputs.debtToIncomeRatio < 0 || inputs.debtToIncomeRatio > 1) {
+    errors.push('Debt-to-income ratio must be between 0% and 100%');
   }
 
-  // Credit score validation
-  if (inputs.creditScore) {
-    if (typeof inputs.creditScore !== 'number' || inputs.creditScore <= 0) {
-      errors.push('Credit score must be a positive number');
-    } else if (inputs.creditScore < 300 || inputs.creditScore > 850) {
-      errors.push('Credit score must be between 300 and 850');
-    }
+  // Annual income validation
+  if (!inputs.annualIncome || inputs.annualIncome < 50000) {
+    errors.push('Annual income must be at least $50,000');
   }
 
-  // Reserves validation
-  if (inputs.reserves) {
-    if (typeof inputs.reserves !== 'number' || inputs.reserves < 0) {
-      errors.push('Reserves must be a non-negative number');
-    } else if (inputs.reserves > 10000000) {
-      errors.push('Reserves must be $10,000,000 or less');
-    }
-  }
-
-  // ARM period validation
-  if (inputs.armPeriod) {
-    if (typeof inputs.armPeriod !== 'number' || inputs.armPeriod <= 0) {
-      errors.push('ARM period must be a positive number');
-    } else if (inputs.armPeriod < 1 || inputs.armPeriod > 30) {
-      errors.push('ARM period must be between 1 and 30 years');
-    }
-  }
-
-  // Points validation
-  if (inputs.points) {
-    if (typeof inputs.points !== 'number' || inputs.points < 0) {
-      errors.push('Points must be a non-negative number');
-    } else if (inputs.points > 5) {
-      errors.push('Points must be 5 or less');
-    }
-  }
-
-  // Closing costs validation
-  if (inputs.closingCosts) {
-    if (typeof inputs.closingCosts !== 'number' || inputs.closingCosts < 0) {
-      errors.push('Closing costs must be a non-negative number');
-    } else if (inputs.closingCosts > 100000) {
-      errors.push('Closing costs must be $100,000 or less');
-    }
-  }
-
-  // Property taxes validation
-  if (inputs.propertyTaxes) {
-    if (typeof inputs.propertyTaxes !== 'number' || inputs.propertyTaxes < 0) {
-      errors.push('Property taxes must be a non-negative number');
-    } else if (inputs.propertyTaxes > 100000) {
-      errors.push('Property taxes must be $100,000 or less');
-    }
-  }
-
-  // Home insurance validation
-  if (inputs.homeInsurance) {
-    if (typeof inputs.homeInsurance !== 'number' || inputs.homeInsurance < 0) {
-      errors.push('Home insurance must be a non-negative number');
-    } else if (inputs.homeInsurance > 50000) {
-      errors.push('Home insurance must be $50,000 or less');
-    }
-  }
-
-  // PMI validation
-  if (inputs.pmi) {
-    if (typeof inputs.pmi !== 'number' || inputs.pmi < 0) {
-      errors.push('PMI must be a non-negative number');
-    } else if (inputs.pmi > 1000) {
-      errors.push('PMI must be $1,000 or less');
-    }
-  }
-
-  // HOA fees validation
-  if (inputs.hoaFees) {
-    if (typeof inputs.hoaFees !== 'number' || inputs.hoaFees < 0) {
-      errors.push('HOA fees must be a non-negative number');
-    } else if (inputs.hoaFees > 2000) {
-      errors.push('HOA fees must be $2,000 or less');
-    }
-  }
-
-  // Years employed validation
-  if (inputs.yearsEmployed) {
-    if (typeof inputs.yearsEmployed !== 'number' || inputs.yearsEmployed < 0) {
-      errors.push('Years employed must be a non-negative number');
-    } else if (inputs.yearsEmployed > 50) {
-      errors.push('Years employed must be 50 or less');
-    }
+  // Employment length validation
+  if (inputs.employmentLength < 0) {
+    errors.push('Employment length cannot be negative');
   }
 
   // Liquid assets validation
-  if (inputs.liquidAssets) {
-    if (typeof inputs.liquidAssets !== 'number' || inputs.liquidAssets < 0) {
-      errors.push('Liquid assets must be a non-negative number');
-    } else if (inputs.liquidAssets > 10000000) {
-      errors.push('Liquid assets must be $10,000,000 or less');
-    }
+  if (inputs.liquidAssets < 0) {
+    errors.push('Liquid assets cannot be negative');
   }
 
-  // Investment assets validation
-  if (inputs.investmentAssets) {
-    if (typeof inputs.investmentAssets !== 'number' || inputs.investmentAssets < 0) {
-      errors.push('Investment assets must be a non-negative number');
-    } else if (inputs.investmentAssets > 10000000) {
-      errors.push('Investment assets must be $10,000,000 or less');
-    }
+  // Reserves validation
+  if (inputs.reserves < 0) {
+    errors.push('Reserves cannot be negative');
   }
 
-  // Target DTI validation
-  if (inputs.debtToIncomeRatio) {
-    if (typeof inputs.debtToIncomeRatio !== 'number' || inputs.debtToIncomeRatio <= 0) {
-      errors.push('Target DTI ratio must be a positive number');
-    } else if (inputs.debtToIncomeRatio < 20 || inputs.debtToIncomeRatio > 50) {
-      errors.push('Target DTI ratio must be between 20% and 50%');
-    }
+  // Other properties validation
+  if (inputs.otherProperties < 0) {
+    errors.push('Other properties cannot be negative');
   }
 
-  // Target LTV validation
-  if (inputs.loanToValueRatio) {
-    if (typeof inputs.loanToValueRatio !== 'number' || inputs.loanToValueRatio <= 0) {
-      errors.push('Target LTV ratio must be a positive number');
-    } else if (inputs.loanToValueRatio < 50 || inputs.loanToValueRatio > 95) {
-      errors.push('Target LTV ratio must be between 50% and 95%');
-    }
+  // Existing debt validation
+  if (inputs.existingDebt < 0) {
+    errors.push('Existing debt cannot be negative');
   }
 
-  // Enum validation
-  const validPropertyTypes = ['Single Family', 'Condo', 'Townhouse', 'Multi-Family', 'Investment Property'];
-  if (inputs.propertyType && !validPropertyTypes.includes(inputs.propertyType)) {
-    errors.push('Property type must be one of: ' + validPropertyTypes.join(', '));
+  // Conforming limit validation
+  if (!inputs.conformingLimit || inputs.conformingLimit < 100000) {
+    errors.push('Conforming limit must be at least $100,000');
   }
 
-  const validOccupancyTypes = ['Primary Residence', 'Second Home', 'Investment Property'];
-  if (inputs.occupancyType && !validOccupancyTypes.includes(inputs.occupancyType)) {
-    errors.push('Occupancy type must be one of: ' + validOccupancyTypes.join(', '));
+  // Jumbo premium validation
+  if (inputs.jumboPremium < 0 || inputs.jumboPremium > 0.1) {
+    errors.push('Jumbo premium must be between 0% and 10%');
   }
 
-  const validLoanTypes = ['Fixed Rate', 'Adjustable Rate', 'Interest Only', 'Hybrid ARM'];
-  if (inputs.loanType && !validLoanTypes.includes(inputs.loanType)) {
-    errors.push('Loan type must be one of: ' + validLoanTypes.join(', '));
+  // Additional costs validation
+  if (inputs.propertyTaxes < 0) {
+    errors.push('Property taxes cannot be negative');
   }
 
-  const validIncomeVerifications = ['Full Documentation', 'Stated Income', 'Bank Statement', 'Asset Depletion'];
-  if (inputs.incomeVerification && !validIncomeVerifications.includes(inputs.incomeVerification)) {
-    errors.push('Income verification must be one of: ' + validIncomeVerifications.join(', '));
+  if (inputs.homeownersInsurance < 0) {
+    errors.push('Homeowners insurance cannot be negative');
   }
 
-  const validEmploymentTypes = ['W-2 Employee', 'Self-Employed', 'Business Owner', 'Retired', 'Other'];
-  if (inputs.employmentType && !validEmploymentTypes.includes(inputs.employmentType)) {
-    errors.push('Employment type must be one of: ' + validEmploymentTypes.join(', '));
+  if (inputs.privateMortgageInsurance < 0) {
+    errors.push('Private mortgage insurance cannot be negative');
   }
 
-  const validMarketConditions = ['Favorable', 'Normal', 'Tight', 'Very Tight'];
-  if (inputs.marketConditions && !validMarketConditions.includes(inputs.marketConditions)) {
-    errors.push('Market conditions must be one of: ' + validMarketConditions.join(', '));
+  if (inputs.hoaFees < 0) {
+    errors.push('HOA fees cannot be negative');
   }
 
-  const validLenderTypes = ['Traditional Bank', 'Credit Union', 'Mortgage Banker', 'Portfolio Lender', 'Private Lender'];
-  if (inputs.lenderType && !validLenderTypes.includes(inputs.lenderType)) {
-    errors.push('Lender type must be one of: ' + validLenderTypes.join(', '));
+  if (inputs.otherMonthlyExpenses < 0) {
+    errors.push('Other monthly expenses cannot be negative');
   }
 
-  // Logical validation
-  if (inputs.loanAmount && inputs.downPayment && inputs.propertyValue) {
-    const calculatedLTV = ((inputs.loanAmount + inputs.downPayment) / inputs.propertyValue) * 100;
-    if (calculatedLTV > 100) {
-      errors.push('Loan amount plus down payment cannot exceed property value');
-    }
+  // Interest-only period validation
+  if (inputs.interestOnlyOption && inputs.interestOnlyPeriod < 1) {
+    errors.push('Interest-only period must be at least 1 year');
   }
 
-  if (inputs.loanAmount && inputs.downPayment) {
-    const totalCost = inputs.loanAmount + inputs.downPayment;
-    if (inputs.propertyValue && totalCost > inputs.propertyValue * 1.05) {
-      errors.push('Total loan cost should not significantly exceed property value');
-    }
+  if (inputs.interestOnlyOption && inputs.interestOnlyPeriod > inputs.loanTerm) {
+    errors.push('Interest-only period cannot exceed loan term');
+  }
+
+  // Prepayment penalty period validation
+  if (inputs.prepaymentPenalty && inputs.prepaymentPenaltyPeriod < 1) {
+    errors.push('Prepayment penalty period must be at least 1 year');
+  }
+
+  if (inputs.prepaymentPenalty && inputs.prepaymentPenaltyPeriod > inputs.loanTerm) {
+    errors.push('Prepayment penalty period cannot exceed loan term');
+  }
+
+  // Rate lock period validation
+  if (inputs.rateLockPeriod < 0 || inputs.rateLockPeriod > 365) {
+    errors.push('Rate lock period must be between 0 and 365 days');
+  }
+
+  // Qualification requirements validation
+  if (inputs.minimumCreditScore < 300 || inputs.minimumCreditScore > 850) {
+    errors.push('Minimum credit score must be between 300 and 850');
+  }
+
+  if (inputs.maximumDTI < 0 || inputs.maximumDTI > 1) {
+    errors.push('Maximum DTI must be between 0% and 100%');
+  }
+
+  if (inputs.minimumReserves < 0) {
+    errors.push('Minimum reserves cannot be negative');
+  }
+
+  if (inputs.maximumLTV < 0 || inputs.maximumLTV > 1) {
+    errors.push('Maximum LTV must be between 0% and 100%');
+  }
+
+  // Warnings
+  if (inputs.loanAmount > inputs.conformingLimit * 2) {
+    warnings.push('Loan amount significantly exceeds conforming limit');
+  }
+
+  if (inputs.debtToIncomeRatio > 0.43) {
+    warnings.push('Debt-to-income ratio above 43% may limit options');
+  }
+
+  if (inputs.loanToValueRatio > 0.90) {
+    warnings.push('Loan-to-value ratio above 90% may require additional documentation');
+  }
+
+  if (inputs.creditScore === 'poor' || inputs.creditScore === 'fair') {
+    warnings.push('Lower credit score may result in higher rates');
+  }
+
+  if (inputs.employmentType === 'self_employed' || inputs.employmentType === 'business_owner') {
+    warnings.push('Self-employed or business owner may require additional documentation');
+  }
+
+  if (inputs.reserves < 6) {
+    warnings.push('Reserves below 6 months may limit options');
+  }
+
+  if (inputs.loanType === 'adjustable') {
+    warnings.push('Adjustable rate mortgages carry interest rate risk');
+  }
+
+  if (inputs.jumboPremium > 0.05) {
+    warnings.push('High jumbo premium may impact affordability');
   }
 
   return {
     isValid: errors.length === 0,
-    errors
+    errors,
+    warnings
   };
-}
-
-export function quickValidateJumboLoanInput(field: string, value: any): string | null {
-  switch (field) {
-    case 'loanAmount':
-      if (!value) return 'Loan amount is required';
-      if (typeof value !== 'number' || value <= 0) return 'Must be a positive number';
-      if (value < 548250) return 'Must be at least $548,250 for jumbo loans';
-      if (value > 10000000) return 'Must be $10,000,000 or less';
-      break;
-
-    case 'interestRate':
-      if (!value) return 'Interest rate is required';
-      if (typeof value !== 'number' || value <= 0) return 'Must be a positive number';
-      if (value < 0.1 || value > 20) return 'Must be between 0.1% and 20%';
-      break;
-
-    case 'loanTerm':
-      if (!value) return 'Loan term is required';
-      if (typeof value !== 'number' || value <= 0) return 'Must be a positive number';
-      if (value < 5 || value > 50) return 'Must be between 5 and 50 years';
-      break;
-
-    case 'downPayment':
-      if (!value) return 'Down payment is required';
-      if (typeof value !== 'number' || value < 0) return 'Must be a non-negative number';
-      if (value > 5000000) return 'Must be $5,000,000 or less';
-      break;
-
-    case 'propertyValue':
-      if (value && (typeof value !== 'number' || value <= 0)) return 'Must be a positive number';
-      if (value && (value < 100000 || value > 20000000)) return 'Must be between $100,000 and $20,000,000';
-      break;
-
-    case 'annualIncome':
-      if (value && (typeof value !== 'number' || value <= 0)) return 'Must be a positive number';
-      if (value && (value < 50000 || value > 5000000)) return 'Must be between $50,000 and $5,000,000';
-      break;
-
-    case 'monthlyDebts':
-      if (value && (typeof value !== 'number' || value < 0)) return 'Must be a non-negative number';
-      if (value && value > 50000) return 'Must be $50,000 or less';
-      break;
-
-    case 'creditScore':
-      if (value && (typeof value !== 'number' || value <= 0)) return 'Must be a positive number';
-      if (value && (value < 300 || value > 850)) return 'Must be between 300 and 850';
-      break;
-
-    case 'reserves':
-      if (value && (typeof value !== 'number' || value < 0)) return 'Must be a non-negative number';
-      if (value && value > 10000000) return 'Must be $10,000,000 or less';
-      break;
-
-    case 'armPeriod':
-      if (value && (typeof value !== 'number' || value <= 0)) return 'Must be a positive number';
-      if (value && (value < 1 || value > 30)) return 'Must be between 1 and 30 years';
-      break;
-
-    case 'points':
-      if (value && (typeof value !== 'number' || value < 0)) return 'Must be a non-negative number';
-      if (value && value > 5) return 'Must be 5 or less';
-      break;
-
-    case 'closingCosts':
-      if (value && (typeof value !== 'number' || value < 0)) return 'Must be a non-negative number';
-      if (value && value > 100000) return 'Must be $100,000 or less';
-      break;
-
-    case 'propertyTaxes':
-      if (value && (typeof value !== 'number' || value < 0)) return 'Must be a non-negative number';
-      if (value && value > 100000) return 'Must be $100,000 or less';
-      break;
-
-    case 'homeInsurance':
-      if (value && (typeof value !== 'number' || value < 0)) return 'Must be a non-negative number';
-      if (value && value > 50000) return 'Must be $50,000 or less';
-      break;
-
-    case 'pmi':
-      if (value && (typeof value !== 'number' || value < 0)) return 'Must be a non-negative number';
-      if (value && value > 1000) return 'Must be $1,000 or less';
-      break;
-
-    case 'hoaFees':
-      if (value && (typeof value !== 'number' || value < 0)) return 'Must be a non-negative number';
-      if (value && value > 2000) return 'Must be $2,000 or less';
-      break;
-
-    case 'yearsEmployed':
-      if (value && (typeof value !== 'number' || value < 0)) return 'Must be a non-negative number';
-      if (value && value > 50) return 'Must be 50 or less';
-      break;
-
-    case 'liquidAssets':
-      if (value && (typeof value !== 'number' || value < 0)) return 'Must be a non-negative number';
-      if (value && value > 10000000) return 'Must be $10,000,000 or less';
-      break;
-
-    case 'investmentAssets':
-      if (value && (typeof value !== 'number' || value < 0)) return 'Must be a non-negative number';
-      if (value && value > 10000000) return 'Must be $10,000,000 or less';
-      break;
-
-    case 'debtToIncomeRatio':
-      if (value && (typeof value !== 'number' || value <= 0)) return 'Must be a positive number';
-      if (value && (value < 20 || value > 50)) return 'Must be between 20% and 50%';
-      break;
-
-    case 'loanToValueRatio':
-      if (value && (typeof value !== 'number' || value <= 0)) return 'Must be a positive number';
-      if (value && (value < 50 || value > 95)) return 'Must be between 50% and 95%';
-      break;
-  }
-
-  return null;
 }

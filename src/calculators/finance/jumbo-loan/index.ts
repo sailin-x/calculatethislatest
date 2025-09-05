@@ -1,3 +1,4 @@
-export { jumboLoanCalculator } from './JumboLoanCalculator';
-export { registerJumboLoanCalculator } from './register';
+export { JumboLoanCalculator } from './JumboLoanCalculator';
+export { calculateJumboLoan } from './formulas';
+export { validateJumboLoanInputs } from './validation';
 export * from './types';

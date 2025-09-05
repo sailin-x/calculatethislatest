@@ -1,522 +1,265 @@
-import { describe, it, expect } from 'vitest';
-import { HotelFeasibilityCalculator } from './HotelFeasibilityCalculator';
 import { calculateHotelFeasibility } from './formulas';
 import { validateHotelFeasibilityInputs } from './validation';
-import { validateAllHotelFeasibilityInputs } from './quickValidation';
+import { HotelFeasibilityInputs } from './types';
 
-describe('Hotel Feasibility Calculator', () => {
-  describe('Calculator Structure', () => {
-    it('should have correct basic properties', () => {
-      expect(HotelFeasibilityCalculator.id).toBe('hotel-feasibility-calculator');
-      expect(HotelFeasibilityCalculator.name).toBe('Hotel Feasibility & ADR Calculator');
-      expect(HotelFeasibilityCalculator.category).toBe('finance');
-      expect(HotelFeasibilityCalculator.subcategory).toBe('investment');
+describe('HotelFeasibilityCalculator', () => {
+  const mockInputs: HotelFeasibilityInputs = {
+    propertyAddress: '123 Hotel Blvd, Miami, FL 33101',
+    city: 'Miami',
+    state: 'FL',
+    zipCode: '33101',
+    totalRooms: 150,
+    roomTypes: {
+      standard: 120,
+      deluxe: 25,
+      suite: 4,
+      presidential: 1
+    },
+    totalSquareFootage: 150000,
+    landArea: 5.0,
+    buildingAge: 15,
+    lastRenovationYear: 2020,
+    marketType: 'urban',
+    competitionLevel: 'moderate',
+    marketDemand: 'high',
+    seasonality: 'moderate',
+    averageMarketADR: 150,
+    averageMarketOccupancy: 70,
+    projectedADR: {
+      standard: 140,
+      deluxe: 180,
+      suite: 300,
+      presidential: 500
+    },
+    projectedOccupancy: 75,
+    averageLengthOfStay: 2.5,
+    revenuePerAvailableRoom: 112,
+    acquisitionCost: 15000000,
+    renovationCost: 2000000,
+    furnitureFixturesEquipment: 1000000,
+    workingCapital: 500000,
+    totalInvestment: 18500000,
+    loanAmount: 12000000,
+    interestRate: 0.065,
+    loanTerm: 25,
+    downPayment: 3000000,
+    equityContribution: 6500000,
+    roomRevenue: 6000000,
+    foodBeverageRevenue: 1200000,
+    meetingSpaceRevenue: 300000,
+    otherRevenue: 100000,
+    targetMarket: ['Business travelers', 'Leisure guests'],
+    competitiveAdvantages: ['Prime location', 'Modern amenities'],
+    marketChallenges: ['Seasonal demand', 'Competition'],
+    growthPotential: 'high',
+    marketRisk: 'moderate',
+    operationalRisk: 'moderate',
+    financialRisk: 'moderate',
+    regulatoryRisk: 'low',
+    laborCosts: {
+      management: 500000,
+      frontDesk: 300000,
+      housekeeping: 400000,
+      maintenance: 200000,
+      foodBeverage: 350000,
+      other: 150000
+    },
+    utilityCosts: {
+      electricity: 200000,
+      gas: 50000,
+      water: 30000,
+      internet: 20000,
+      other: 10000
+    },
+    maintenanceCosts: {
+      routine: 150000,
+      capital: 200000,
+      emergency: 50000
+    },
+    insuranceCosts: {
+      property: 100000,
+      liability: 50000,
+      business: 25000
+    },
+    marketingCosts: {
+      advertising: 100000,
+      online: 75000,
+      promotions: 25000
+    },
+    otherOperatingCosts: {
+      supplies: 100000,
+      professional: 50000,
+      taxes: 200000,
+      other: 50000
+    }
+  };
+
+  describe('calculateHotelFeasibility', () => {
+    it('should calculate basic financial metrics', () => {
+      const result = calculateHotelFeasibility(mockInputs);
+      
+      expect(result).toBeDefined();
+      expect(result.totalRevenue).toBeGreaterThan(0);
+      expect(result.totalOperatingExpenses).toBeGreaterThan(0);
+      expect(result.netOperatingIncome).toBeDefined();
+      expect(result.debtService).toBeGreaterThan(0);
+      expect(result.cashFlow).toBeDefined();
     });
 
-    it('should have required inputs', () => {
-      const requiredInputs = HotelFeasibilityCalculator.inputs.filter(input => input.required);
-      expect(requiredInputs.length).toBeGreaterThan(0);
-      expect(requiredInputs.some(input => input.id === 'totalRooms')).toBe(true);
+    it('should calculate key performance indicators', () => {
+      const result = calculateHotelFeasibility(mockInputs);
+      
+      expect(result.averageDailyRate).toBeGreaterThan(0);
+      expect(result.occupancyRate).toBe(mockInputs.projectedOccupancy);
+      expect(result.revenuePerAvailableRoom).toBeGreaterThan(0);
+      expect(result.averageRevenuePerUser).toBeGreaterThan(0);
+      expect(result.costPerOccupiedRoom).toBeGreaterThan(0);
+      expect(result.grossOperatingProfit).toBeDefined();
+      expect(result.grossOperatingProfitMargin).toBeDefined();
     });
 
-    it('should have expected outputs', () => {
-      const outputIds = HotelFeasibilityCalculator.outputs.map(output => output.id);
-      expect(outputIds).toContain('totalInvestment');
-      expect(outputIds).toContain('annualRevenue');
-      expect(outputIds).toContain('netOperatingIncome');
-      expect(outputIds).toContain('cashFlow');
-      expect(outputIds).toContain('feasibilityScore');
-      expect(outputIds).toContain('riskScore');
+    it('should calculate investment analysis metrics', () => {
+      const result = calculateHotelFeasibility(mockInputs);
+      
+      expect(result.totalInvestment).toBeGreaterThan(0);
+      expect(result.netPresentValue).toBeDefined();
+      expect(result.internalRateOfReturn).toBeDefined();
+      expect(result.paybackPeriod).toBeGreaterThan(0);
+      expect(result.returnOnInvestment).toBeDefined();
+      expect(result.returnOnEquity).toBeDefined();
     });
 
-    it('should have calculate function', () => {
-      expect(typeof HotelFeasibilityCalculator.calculate).toBe('function');
+    it('should provide market analysis', () => {
+      const result = calculateHotelFeasibility(mockInputs);
+      
+      expect(result.marketPosition).toBeDefined();
+      expect(result.competitivePosition).toBeDefined();
+      expect(result.marketShare).toBeGreaterThan(0);
+      expect(result.priceElasticity).toBeDefined();
     });
 
-    it('should have generateReport function', () => {
-      expect(typeof HotelFeasibilityCalculator.generateReport).toBe('function');
+    it('should assess risks', () => {
+      const result = calculateHotelFeasibility(mockInputs);
+      
+      expect(result.overallRiskScore).toBeGreaterThanOrEqual(1);
+      expect(result.overallRiskScore).toBeLessThanOrEqual(100);
+      expect(Array.isArray(result.riskFactors)).toBe(true);
+      expect(Array.isArray(result.riskMitigationStrategies)).toBe(true);
+    });
+
+    it('should provide sensitivity analysis', () => {
+      const result = calculateHotelFeasibility(mockInputs);
+      
+      expect(result.breakevenOccupancy).toBeGreaterThan(0);
+      expect(result.breakevenADR).toBeGreaterThan(0);
+      expect(result.sensitivityAnalysis).toBeDefined();
+      expect(result.sensitivityAnalysis.occupancyImpact).toBeDefined();
+      expect(result.sensitivityAnalysis.adrImpact).toBeDefined();
+      expect(result.sensitivityAnalysis.costImpact).toBeDefined();
+    });
+
+    it('should generate recommendations', () => {
+      const result = calculateHotelFeasibility(mockInputs);
+      
+      expect(result.feasibilityRecommendation).toBeDefined();
+      expect(Array.isArray(result.keyRecommendations)).toBe(true);
+      expect(Array.isArray(result.operationalRecommendations)).toBe(true);
+      expect(Array.isArray(result.financialRecommendations)).toBe(true);
+      expect(Array.isArray(result.marketingRecommendations)).toBe(true);
+    });
+
+    it('should provide five-year projections', () => {
+      const result = calculateHotelFeasibility(mockInputs);
+      
+      expect(result.fiveYearProjections).toBeDefined();
+      expect(result.fiveYearProjections.year1).toBeDefined();
+      expect(result.fiveYearProjections.year2).toBeDefined();
+      expect(result.fiveYearProjections.year3).toBeDefined();
+      expect(result.fiveYearProjections.year4).toBeDefined();
+      expect(result.fiveYearProjections.year5).toBeDefined();
+      
+      expect(result.fiveYearProjections.year1.revenue).toBeGreaterThan(0);
+      expect(result.fiveYearProjections.year1.expenses).toBeGreaterThan(0);
+      expect(result.fiveYearProjections.year1.netIncome).toBeDefined();
+    });
+
+    it('should provide summary', () => {
+      const result = calculateHotelFeasibility(mockInputs);
+      
+      expect(result.summary).toBeDefined();
+      expect(result.summary.totalAnnualRevenue).toBeGreaterThan(0);
+      expect(result.summary.totalAnnualExpenses).toBeGreaterThan(0);
+      expect(result.summary.netAnnualIncome).toBeDefined();
+      expect(Array.isArray(result.summary.keyStrengths)).toBe(true);
+      expect(Array.isArray(result.summary.keyChallenges)).toBe(true);
+      expect(Array.isArray(result.summary.nextSteps)).toBe(true);
     });
   });
 
-  describe('Validation', () => {
-    it('should validate required fields', () => {
-      const result = validateHotelFeasibilityInputs({});
-      expect(result.isValid).toBe(false);
-      expect(result.errors).toContain('Total rooms is required');
-    });
-
-    it('should validate total rooms range', () => {
-      const result = validateHotelFeasibilityInputs({ totalRooms: 0 });
-      expect(result.isValid).toBe(false);
-      expect(result.errors).toContain('Total rooms must be a positive number');
-
-      const result2 = validateHotelFeasibilityInputs({ totalRooms: 15000 });
-      expect(result2.isValid).toBe(false);
-      expect(result2.errors).toContain('Total rooms must be between 1 and 10,000');
-    });
-
-    it('should validate hotel type', () => {
-      const result = validateHotelFeasibilityInputs({ 
-        totalRooms: 100, 
-        hotelType: 'invalid-type' 
-      });
-      expect(result.isValid).toBe(false);
-      expect(result.errors).toContain('Invalid hotel type');
-    });
-
-    it('should validate star rating', () => {
-      const result = validateHotelFeasibilityInputs({ 
-        totalRooms: 100, 
-        starRating: '6' 
-      });
-      expect(result.isValid).toBe(false);
-      expect(result.errors).toContain('Invalid star rating');
-    });
-
-    it('should validate location type', () => {
-      const result = validateHotelFeasibilityInputs({ 
-        totalRooms: 100, 
-        location: 'invalid-location' 
-      });
-      expect(result.isValid).toBe(false);
-      expect(result.errors).toContain('Invalid location type');
-    });
-
-    it('should validate market type', () => {
-      const result = validateHotelFeasibilityInputs({ 
-        totalRooms: 100, 
-        market: 'invalid-market' 
-      });
-      expect(result.isValid).toBe(false);
-      expect(result.errors).toContain('Invalid market type');
-    });
-
-    it('should validate occupancy rate range', () => {
-      const result = validateHotelFeasibilityInputs({ 
-        totalRooms: 100, 
-        occupancyRate: 150 
-      });
-      expect(result.isValid).toBe(false);
-      expect(result.errors).toContain('Occupancy rate must be between 0 and 100');
-    });
-
-    it('should validate base ADR range', () => {
-      const result = validateHotelFeasibilityInputs({ 
-        totalRooms: 100, 
-        baseADR: 10 
-      });
-      expect(result.isValid).toBe(false);
-      expect(result.errors).toContain('Base ADR must be between $20 and $2,000');
-    });
-
-    it('should validate construction cost range', () => {
-      const result = validateHotelFeasibilityInputs({ 
-        totalRooms: 100, 
-        constructionCost: 10000 
-      });
-      expect(result.isValid).toBe(false);
-      expect(result.errors).toContain('Construction cost must be between $50,000 and $1,000,000 per room');
-    });
-
+  describe('validateHotelFeasibilityInputs', () => {
     it('should validate valid inputs', () => {
-      const validInputs = {
-        totalRooms: 100,
-        hotelType: 'upscale',
-        starRating: '4',
-        location: 'urban',
-        market: 'business',
-        occupancyRate: 75,
-        baseADR: 200,
-        constructionCost: 300000,
-        landCost: 5000000,
-        softCosts: 2000000,
-        furnitureCost: 50000,
-        operatingExpenses: 25000,
-        laborCosts: 40000,
-        utilityCosts: 8000,
-        maintenanceCosts: 5000,
-        insuranceCosts: 3000,
-        propertyTaxes: 4000,
-        managementFees: 3,
-        franchiseFees: 5,
-        financingRate: 6,
-        loanTerm: 25,
-        downPayment: 20,
-        taxRate: 25,
-        depreciationPeriod: 39,
-        inflationRate: 2,
-        revenueGrowth: 3,
-        expenseGrowth: 2,
-        exitYear: 10,
-        exitCapRate: 7,
-        additionalRevenue: ['restaurant', 'bar'],
-        amenities: ['pool', 'gym', 'spa']
-      };
-
-      const result = validateHotelFeasibilityInputs(validInputs);
+      const result = validateHotelFeasibilityInputs(mockInputs);
+      
       expect(result.isValid).toBe(true);
       expect(result.errors).toHaveLength(0);
     });
-  });
 
-  describe('Calculation Logic', () => {
-    it('should calculate basic hotel feasibility', () => {
-      const inputs = {
-        totalRooms: 100,
-        hotelType: 'upscale',
-        starRating: '4',
-        location: 'urban',
-        market: 'business',
-        occupancyRate: 75,
-        baseADR: 200,
-        constructionCost: 300000,
-        landCost: 5000000,
-        softCosts: 2000000,
-        furnitureCost: 50000,
-        operatingExpenses: 25000,
-        laborCosts: 40000,
-        utilityCosts: 8000,
-        maintenanceCosts: 5000,
-        insuranceCosts: 3000,
-        propertyTaxes: 4000,
-        managementFees: 3,
-        franchiseFees: 5,
-        financingRate: 6,
-        loanTerm: 25,
-        downPayment: 20,
-        taxRate: 25,
-        depreciationPeriod: 39,
-        inflationRate: 2,
-        revenueGrowth: 3,
-        expenseGrowth: 2,
-        exitYear: 10,
-        exitCapRate: 7,
-        additionalRevenue: ['restaurant', 'bar'],
-        amenities: ['pool', 'gym', 'spa']
-      };
-
-      const outputs = calculateHotelFeasibility(inputs);
-
-      expect(outputs.totalInvestment).toBeGreaterThan(0);
-      expect(outputs.annualRevenue).toBeGreaterThan(0);
-      expect(outputs.netOperatingIncome).toBeGreaterThan(0);
-      expect(outputs.cashFlow).toBeDefined();
-      expect(outputs.feasibilityScore).toBeGreaterThanOrEqual(0);
-      expect(outputs.feasibilityScore).toBeLessThanOrEqual(100);
-      expect(outputs.riskScore).toBeGreaterThanOrEqual(0);
-      expect(outputs.riskScore).toBeLessThanOrEqual(100);
-    });
-
-    it('should calculate construction cost total', () => {
-      const inputs = {
-        totalRooms: 50,
-        constructionCost: 400000
-      };
-
-      const outputs = calculateHotelFeasibility(inputs);
-      expect(outputs.constructionCostTotal).toBe(20000000); // 50 * 400000
-    });
-
-    it('should calculate total project cost', () => {
-      const inputs = {
-        totalRooms: 100,
-        constructionCost: 300000,
-        landCost: 5000000,
-        softCosts: 2000000,
-        furnitureCost: 50000
-      };
-
-      const outputs = calculateHotelFeasibility(inputs);
-      const expectedTotal = 100 * 300000 + 5000000 + 2000000 + 100 * 50000;
-      expect(outputs.totalProjectCost).toBe(expectedTotal);
-    });
-
-    it('should calculate annual revenue', () => {
-      const inputs = {
-        totalRooms: 100,
-        occupancyRate: 80,
-        baseADR: 250,
-        additionalRevenue: ['restaurant', 'bar']
-      };
-
-      const outputs = calculateHotelFeasibility(inputs);
-      const expectedRevenue = 100 * 0.8 * 250 * 365 * 1.23; // Including additional revenue
-      expect(outputs.annualRevenue).toBeCloseTo(expectedRevenue, -2);
-    });
-
-    it('should calculate net operating income', () => {
-      const inputs = {
-        totalRooms: 100,
-        occupancyRate: 75,
-        baseADR: 200,
-        operatingExpenses: 30000,
-        laborCosts: 50000,
-        utilityCosts: 10000,
-        maintenanceCosts: 8000,
-        insuranceCosts: 5000,
-        propertyTaxes: 6000
-      };
-
-      const outputs = calculateHotelFeasibility(inputs);
-      expect(outputs.netOperatingIncome).toBeGreaterThan(0);
-      expect(outputs.annualExpenses).toBeGreaterThan(0);
-    });
-
-    it('should calculate cash flow', () => {
-      const inputs = {
-        totalRooms: 100,
-        financingRate: 6,
-        loanTerm: 25,
-        downPayment: 20
-      };
-
-      const outputs = calculateHotelFeasibility(inputs);
-      expect(outputs.cashFlow).toBeDefined();
-      expect(outputs.monthlyPayment).toBeGreaterThan(0);
-      expect(outputs.annualDebtService).toBeGreaterThan(0);
-    });
-
-    it('should calculate cash-on-cash return', () => {
-      const inputs = {
-        totalRooms: 100,
-        downPayment: 25
-      };
-
-      const outputs = calculateHotelFeasibility(inputs);
-      expect(outputs.cashOnCashReturn).toBeGreaterThan(0);
-      expect(outputs.cashOnCashReturn).toBeLessThanOrEqual(100);
-    });
-
-    it('should calculate cap rate', () => {
-      const inputs = {
-        totalRooms: 100
-      };
-
-      const outputs = calculateHotelFeasibility(inputs);
-      expect(outputs.capRate).toBeGreaterThan(0);
-      expect(outputs.capRate).toBeLessThanOrEqual(20);
-    });
-
-    it('should calculate IRR', () => {
-      const inputs = {
-        totalRooms: 100,
-        exitYear: 10
-      };
-
-      const outputs = calculateHotelFeasibility(inputs);
-      expect(outputs.IRR).toBeDefined();
-    });
-
-    it('should calculate payback period', () => {
-      const inputs = {
-        totalRooms: 100
-      };
-
-      const outputs = calculateHotelFeasibility(inputs);
-      expect(outputs.paybackPeriod).toBeGreaterThan(0);
-    });
-
-    it('should calculate break-even occupancy', () => {
-      const inputs = {
-        totalRooms: 100,
-        baseADR: 200
-      };
-
-      const outputs = calculateHotelFeasibility(inputs);
-      expect(outputs.breakEvenOccupancy).toBeGreaterThan(0);
-      expect(outputs.breakEvenOccupancy).toBeLessThanOrEqual(100);
-    });
-
-    it('should calculate break-even ADR', () => {
-      const inputs = {
-        totalRooms: 100,
-        occupancyRate: 75
-      };
-
-      const outputs = calculateHotelFeasibility(inputs);
-      expect(outputs.breakEvenADR).toBeGreaterThan(0);
-    });
-  });
-
-  describe('Hotel Feasibility Analysis', () => {
-    it('should generate analysis report', () => {
-      const inputs = {
-        totalRooms: 100,
-        hotelType: 'upscale',
-        starRating: '4',
-        location: 'urban',
-        market: 'business',
-        occupancyRate: 75,
-        baseADR: 200
-      };
-
-      const outputs = calculateHotelFeasibility(inputs);
-      const report = HotelFeasibilityCalculator.generateReport(inputs, outputs);
-
-      expect(report).toContain('Hotel Feasibility & ADR Analysis');
-      expect(report).toContain('Executive Summary');
-      expect(report).toContain('Investment Overview');
-      expect(report).toContain('Financial Projections');
-      expect(report).toContain('Risk Assessment');
-      expect(report).toContain('Market Analysis');
-      expect(report).toContain('Recommendations');
-    });
-
-    it('should include feasibility score in report', () => {
-      const inputs = { totalRooms: 100 };
-      const outputs = calculateHotelFeasibility(inputs);
-      const report = HotelFeasibilityCalculator.generateReport(inputs, outputs);
-
-      expect(report).toContain(`Feasibility Score: ${outputs.feasibilityScore}/100`);
-    });
-
-    it('should include risk score in report', () => {
-      const inputs = { totalRooms: 100 };
-      const outputs = calculateHotelFeasibility(inputs);
-      const report = HotelFeasibilityCalculator.generateReport(inputs, outputs);
-
-      expect(report).toContain(`Risk Score: ${outputs.riskScore}/100`);
-    });
-
-    it('should include recommendation in report', () => {
-      const inputs = { totalRooms: 100 };
-      const outputs = calculateHotelFeasibility(inputs);
-      const report = HotelFeasibilityCalculator.generateReport(inputs, outputs);
-
-      expect(report).toContain(`Recommendation: ${outputs.recommendation}`);
-    });
-  });
-
-  describe('Edge Cases', () => {
-    it('should handle minimum values', () => {
-      const inputs = {
-        totalRooms: 1,
-        occupancyRate: 0,
-        baseADR: 20,
-        constructionCost: 50000
-      };
-
-      const outputs = calculateHotelFeasibility(inputs);
-      expect(outputs.totalInvestment).toBeGreaterThan(0);
-      expect(outputs.annualRevenue).toBeGreaterThanOrEqual(0);
-    });
-
-    it('should handle maximum values', () => {
-      const inputs = {
-        totalRooms: 10000,
-        occupancyRate: 100,
-        baseADR: 2000,
-        constructionCost: 1000000
-      };
-
-      const outputs = calculateHotelFeasibility(inputs);
-      expect(outputs.totalInvestment).toBeGreaterThan(0);
-      expect(outputs.annualRevenue).toBeGreaterThan(0);
-    });
-
-    it('should handle zero land cost', () => {
-      const inputs = {
-        totalRooms: 100,
-        landCost: 0
-      };
-
-      const outputs = calculateHotelFeasibility(inputs);
-      expect(outputs.totalInvestment).toBeGreaterThan(0);
-    });
-
-    it('should handle zero soft costs', () => {
-      const inputs = {
-        totalRooms: 100,
-        softCosts: 0
-      };
-
-      const outputs = calculateHotelFeasibility(inputs);
-      expect(outputs.totalInvestment).toBeGreaterThan(0);
-    });
-
-    it('should handle no additional revenue', () => {
-      const inputs = {
-        totalRooms: 100,
-        additionalRevenue: []
-      };
-
-      const outputs = calculateHotelFeasibility(inputs);
-      expect(outputs.annualRevenue).toBeGreaterThan(0);
-    });
-
-    it('should handle no amenities', () => {
-      const inputs = {
-        totalRooms: 100,
-        amenities: []
-      };
-
-      const outputs = calculateHotelFeasibility(inputs);
-      expect(outputs.feasibilityScore).toBeGreaterThanOrEqual(0);
-    });
-  });
-
-  describe('Quick Validation', () => {
-    it('should validate total rooms individually', () => {
-      const result = validateAllHotelFeasibilityInputs({ totalRooms: 0 });
+    it('should catch invalid property address', () => {
+      const invalidInputs = { ...mockInputs, propertyAddress: '123' };
+      const result = validateHotelFeasibilityInputs(invalidInputs);
+      
       expect(result.isValid).toBe(false);
-      expect(result.errors).toContain('Must be a positive number');
+      expect(result.errors).toContain('Property address is required and must be at least 10 characters');
     });
 
-    it('should validate hotel type individually', () => {
-      const result = validateAllHotelFeasibilityInputs({ hotelType: 'invalid' });
+    it('should catch invalid total rooms', () => {
+      const invalidInputs = { ...mockInputs, totalRooms: 0 };
+      const result = validateHotelFeasibilityInputs(invalidInputs);
+      
       expect(result.isValid).toBe(false);
-      expect(result.errors).toContain('Invalid hotel type');
+      expect(result.errors).toContain('Total rooms must be at least 1');
     });
 
-    it('should validate star rating individually', () => {
-      const result = validateAllHotelFeasibilityInputs({ starRating: '6' });
+    it('should catch invalid acquisition cost', () => {
+      const invalidInputs = { ...mockInputs, acquisitionCost: 50000 };
+      const result = validateHotelFeasibilityInputs(invalidInputs);
+      
       expect(result.isValid).toBe(false);
-      expect(result.errors).toContain('Invalid star rating');
+      expect(result.errors).toContain('Acquisition cost must be at least $100,000');
     });
 
-    it('should validate location individually', () => {
-      const result = validateAllHotelFeasibilityInputs({ location: 'invalid' });
+    it('should catch invalid interest rate', () => {
+      const invalidInputs = { ...mockInputs, interestRate: 0.6 };
+      const result = validateHotelFeasibilityInputs(invalidInputs);
+      
       expect(result.isValid).toBe(false);
-      expect(result.errors).toContain('Invalid location type');
+      expect(result.errors).toContain('Interest rate must be between 0% and 50%');
     });
 
-    it('should validate market individually', () => {
-      const result = validateAllHotelFeasibilityInputs({ market: 'invalid' });
+    it('should catch invalid occupancy', () => {
+      const invalidInputs = { ...mockInputs, projectedOccupancy: 150 };
+      const result = validateHotelFeasibilityInputs(invalidInputs);
+      
       expect(result.isValid).toBe(false);
-      expect(result.errors).toContain('Invalid market type');
+      expect(result.errors).toContain('Projected occupancy must be between 0% and 100%');
     });
 
-    it('should validate occupancy rate individually', () => {
-      const result = validateAllHotelFeasibilityInputs({ occupancyRate: 150 });
-      expect(result.isValid).toBe(false);
-      expect(result.errors).toContain('Must be between 0 and 100');
-    });
-
-    it('should validate base ADR individually', () => {
-      const result = validateAllHotelFeasibilityInputs({ baseADR: 10 });
-      expect(result.isValid).toBe(false);
-      expect(result.errors).toContain('Must be between $20 and $2,000');
-    });
-
-    it('should validate construction cost individually', () => {
-      const result = validateAllHotelFeasibilityInputs({ constructionCost: 10000 });
-      expect(result.isValid).toBe(false);
-      expect(result.errors).toContain('Must be between $50,000 and $1,000,000 per room');
-    });
-
-    it('should validate valid inputs individually', () => {
-      const result = validateAllHotelFeasibilityInputs({
-        totalRooms: 100,
-        hotelType: 'upscale',
-        starRating: '4',
-        location: 'urban',
-        market: 'business',
-        occupancyRate: 75,
-        baseADR: 200,
-        constructionCost: 300000
-      });
-      expect(result.isValid).toBe(true);
-      expect(result.errors).toHaveLength(0);
+    it('should provide warnings for high-risk scenarios', () => {
+      const highRiskInputs = { 
+        ...mockInputs, 
+        buildingAge: 35,
+        competitionLevel: 'very_high' as const,
+        marketDemand: 'low' as const,
+        seasonality: 'extreme' as const,
+        projectedOccupancy: 40
+      };
+      const result = validateHotelFeasibilityInputs(highRiskInputs);
+      
+      expect(result.warnings).toContain('Building age is over 30 years - consider renovation needs');
+      expect(result.warnings).toContain('Very high competition level may impact profitability');
+      expect(result.warnings).toContain('Low market demand may affect occupancy rates');
+      expect(result.warnings).toContain('Extreme seasonality may create cash flow challenges');
+      expect(result.warnings).toContain('Projected occupancy below 50% may indicate market challenges');
     });
   });
 });
