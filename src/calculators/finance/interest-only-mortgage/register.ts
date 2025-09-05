@@ -1,8 +1,4 @@
-import { CalculatorRegistry } from '../../../data/calculatorRegistry';
 import { InterestOnlyMortgageCalculator } from './InterestOnlyMortgageCalculator';
+import { registerCalculator } from '../../index';
 
-export function registerInterestOnlyMortgageCalculator(registry: CalculatorRegistry): void {
-  registry.register(InterestOnlyMortgageCalculator);
-}
-
-export { InterestOnlyMortgageCalculator };
+registerCalculator(InterestOnlyMortgageCalculator);

@@ -7,41 +7,31 @@ export const InterestOnlyMortgageCalculator: Calculator<InterestOnlyMortgageInpu
   id: 'interest-only-mortgage',
   name: 'Interest-Only Mortgage Calculator',
   category: 'finance',
-  subcategory: 'real-estate',
-  description: 'Calculate interest-only mortgage payments, costs, and financial implications',
-  longDescription: `A comprehensive interest-only mortgage calculator that analyzes the financial implications of interest-only loan structures. This calculator evaluates monthly payments, total interest costs, principal reduction strategies, and the impact of payment adjustments. It includes payment schedule analysis, cost comparisons with traditional mortgages, and risk assessment to help borrowers understand the benefits and risks of interest-only financing.`,
+  subcategory: 'mortgage',
+  description: 'Calculate interest-only mortgage payments, savings, and investment potential',
+  longDescription: `A comprehensive interest-only mortgage calculator that analyzes payment structures, cash flow benefits, and investment opportunities. This calculator helps borrowers understand the financial implications of interest-only mortgages, including payment schedules, total interest costs, and potential investment returns from saved cash flow. It includes risk assessment, refinancing analysis, and strategic recommendations for optimizing interest-only mortgage benefits.`,
   
   inputs: {
     // Loan Information
     loanAmount: {
       type: 'number',
       label: 'Loan Amount ($)',
-      description: 'Principal loan amount',
+      description: 'Total loan amount',
       required: true,
-      min: 10000,
+      min: 50000,
       max: 10000000,
       step: 1000,
-      placeholder: '300000'
+      placeholder: '400000'
     },
     interestRate: {
       type: 'number',
       label: 'Interest Rate (%)',
       description: 'Annual interest rate',
       required: true,
-      min: 1,
-      max: 15,
-      step: 0.125,
-      placeholder: '6.5'
-    },
-    loanTerm: {
-      type: 'number',
-      label: 'Loan Term (years)',
-      description: 'Total loan term in years',
-      required: true,
-      min: 5,
+      min: 0,
       max: 50,
-      step: 1,
-      placeholder: '30'
+      step: 0.01,
+      placeholder: '6.5'
     },
     interestOnlyPeriod: {
       type: 'number',
@@ -49,45 +39,50 @@ export const InterestOnlyMortgageCalculator: Calculator<InterestOnlyMortgageInpu
       description: 'Number of years for interest-only payments',
       required: true,
       min: 1,
-      max: 20,
+      max: 30,
       step: 1,
       placeholder: '10'
     },
-    
-    // Payment Information
-    paymentFrequency: {
+    totalLoanTerm: {
+      type: 'number',
+      label: 'Total Loan Term (years)',
+      description: 'Total loan term in years',
+      required: true,
+      min: 1,
+      max: 50,
+      step: 1,
+      placeholder: '30'
+    },
+    loanType: {
       type: 'select',
-      label: 'Payment Frequency',
-      description: 'Frequency of payments',
+      label: 'Loan Type',
+      description: 'Type of mortgage loan',
       required: true,
       options: [
-        { value: 'monthly', label: 'Monthly' },
-        { value: 'biweekly', label: 'Biweekly' },
-        { value: 'weekly', label: 'Weekly' }
+        { value: 'fixed', label: 'Fixed Rate' },
+        { value: 'adjustable', label: 'Adjustable Rate' },
+        { value: 'hybrid', label: 'Hybrid ARM' }
       ],
-      placeholder: 'monthly'
-    },
-    additionalPrincipalPayment: {
-      type: 'number',
-      label: 'Additional Principal Payment ($)',
-      description: 'Additional principal payment during interest-only period',
-      required: true,
-      min: 0,
-      max: 10000,
-      step: 100,
-      placeholder: '0'
+      placeholder: 'fixed'
     },
     
     // Property Information
     propertyValue: {
       type: 'number',
       label: 'Property Value ($)',
-      description: 'Current property value',
+      description: 'Current market value of the property',
       required: true,
-      min: 10000,
-      max: 10000000,
+      min: 100000,
+      max: 20000000,
       step: 1000,
-      placeholder: '400000'
+      placeholder: '500000'
+    },
+    propertyAddress: {
+      type: 'text',
+      label: 'Property Address',
+      description: 'Full property address',
+      required: true,
+      placeholder: '123 Main St, City, State 12345'
     },
     propertyType: {
       type: 'select',
@@ -96,384 +91,215 @@ export const InterestOnlyMortgageCalculator: Calculator<InterestOnlyMortgageInpu
       required: true,
       options: [
         { value: 'primary_residence', label: 'Primary Residence' },
-        { value: 'secondary_home', label: 'Secondary Home' },
-        { value: 'investment_property', label: 'Investment Property' }
+        { value: 'investment', label: 'Investment Property' },
+        { value: 'second_home', label: 'Second Home' },
+        { value: 'commercial', label: 'Commercial' }
       ],
       placeholder: 'primary_residence'
     },
     
     // Borrower Information
-    borrowerIncome: {
-      type: 'number',
-      label: 'Borrower Annual Income ($)',
-      description: 'Annual income of the borrower',
+    creditScore: {
+      type: 'select',
+      label: 'Credit Score',
+      description: 'Credit score range',
       required: true,
-      min: 10000,
-      max: 1000000,
-      step: 1000,
-      placeholder: '80000'
+      options: [
+        { value: 'poor', label: 'Poor (300-579)' },
+        { value: 'fair', label: 'Fair (580-669)' },
+        { value: 'good', label: 'Good (670-739)' },
+        { value: 'very_good', label: 'Very Good (740-799)' },
+        { value: 'excellent', label: 'Excellent (800-850)' }
+      ],
+      placeholder: 'good'
     },
-    borrowerCreditScore: {
-      type: 'number',
-      label: 'Borrower Credit Score',
-      description: 'FICO credit score',
-      required: true,
-      min: 300,
-      max: 850,
-      step: 1,
-      placeholder: '720'
-    },
-    borrowerDebtToIncomeRatio: {
+    debtToIncomeRatio: {
       type: 'number',
       label: 'Debt-to-Income Ratio (%)',
-      description: 'Current debt-to-income ratio',
+      description: 'Monthly debt payments divided by monthly income',
       required: true,
       min: 0,
       max: 100,
       step: 1,
       placeholder: '35'
     },
-    
-    // Fees and Costs
-    originationFee: {
+    downPayment: {
       type: 'number',
-      label: 'Origination Fee ($)',
-      description: 'Loan origination fee',
+      label: 'Down Payment ($)',
+      description: 'Down payment amount',
+      required: true,
+      min: 0,
+      max: 20000000,
+      step: 1000,
+      placeholder: '100000'
+    },
+    loanToValueRatio: {
+      type: 'number',
+      label: 'Loan-to-Value Ratio (%)',
+      description: 'Loan amount divided by property value',
+      required: true,
+      min: 0,
+      max: 100,
+      step: 1,
+      placeholder: '80'
+    },
+    
+    // Payment Information
+    interestOnlyPayment: {
+      type: 'number',
+      label: 'Interest-Only Payment ($)',
+      description: 'Monthly interest-only payment',
+      required: true,
+      min: 0,
+      max: 100000,
+      step: 1,
+      placeholder: '2167'
+    },
+    principalAndInterestPayment: {
+      type: 'number',
+      label: 'Principal & Interest Payment ($)',
+      description: 'Monthly P&I payment after interest-only period',
+      required: true,
+      min: 0,
+      max: 100000,
+      step: 1,
+      placeholder: '2528'
+    },
+    totalMonthlyPayment: {
+      type: 'number',
+      label: 'Total Monthly Payment ($)',
+      description: 'Total monthly payment including taxes and insurance',
+      required: true,
+      min: 0,
+      max: 100000,
+      step: 1,
+      placeholder: '3200'
+    },
+    
+    // Additional Costs
+    propertyTaxes: {
+      type: 'number',
+      label: 'Property Taxes ($)',
+      description: 'Annual property taxes',
+      required: true,
+      min: 0,
+      max: 100000,
+      step: 100,
+      placeholder: '6000'
+    },
+    homeownersInsurance: {
+      type: 'number',
+      label: 'Homeowners Insurance ($)',
+      description: 'Annual homeowners insurance',
+      required: true,
+      min: 0,
+      max: 50000,
+      step: 100,
+      placeholder: '1200'
+    },
+    privateMortgageInsurance: {
+      type: 'number',
+      label: 'Private Mortgage Insurance ($)',
+      description: 'Annual PMI (if applicable)',
       required: true,
       min: 0,
       max: 10000,
       step: 100,
-      placeholder: '1500'
+      placeholder: '0'
     },
-    appraisalFee: {
+    hoaFees: {
       type: 'number',
-      label: 'Appraisal Fee ($)',
-      description: 'Property appraisal cost',
+      label: 'HOA Fees ($)',
+      description: 'Annual HOA fees',
       required: true,
       min: 0,
-      max: 1000,
-      step: 50,
-      placeholder: '400'
-    },
-    titleInsuranceFee: {
-      type: 'number',
-      label: 'Title Insurance ($)',
-      description: 'Title insurance premium',
-      required: true,
-      min: 0,
-      max: 2000,
+      max: 50000,
       step: 100,
-      placeholder: '800'
+      placeholder: '2400'
     },
-    recordingFee: {
+    otherMonthlyExpenses: {
       type: 'number',
-      label: 'Recording Fee ($)',
-      description: 'Document recording fees',
+      label: 'Other Monthly Expenses ($)',
+      description: 'Other monthly housing expenses',
       required: true,
       min: 0,
-      max: 500,
-      step: 25,
-      placeholder: '150'
-    },
-    otherFees: {
-      type: 'number',
-      label: 'Other Fees ($)',
-      description: 'Additional fees and costs',
-      required: true,
-      min: 0,
-      max: 2000,
+      max: 10000,
       step: 100,
-      placeholder: '500'
+      placeholder: '0'
     },
     
-    // Tax Information
-    taxRate: {
+    // Refinancing Options
+    refinanceAfterInterestOnly: {
+      type: 'boolean',
+      label: 'Refinance After Interest-Only Period',
+      description: 'Plan to refinance after interest-only period',
+      required: false,
+      placeholder: false
+    },
+    refinanceRate: {
       type: 'number',
-      label: 'Tax Rate (%)',
-      description: 'Applicable tax rate for interest deductions',
-      required: true,
+      label: 'Refinance Rate (%)',
+      description: 'Expected refinance interest rate',
+      required: false,
       min: 0,
       max: 50,
-      step: 1,
-      placeholder: '25'
+      step: 0.01,
+      placeholder: '5.5'
     },
-    propertyTaxRate: {
+    refinanceTerm: {
       type: 'number',
-      label: 'Property Tax Rate (%)',
-      description: 'Annual property tax rate',
-      required: true,
-      min: 0,
-      max: 5,
-      step: 0.1,
-      placeholder: '1.2'
+      label: 'Refinance Term (years)',
+      description: 'Refinance loan term',
+      required: false,
+      min: 1,
+      max: 50,
+      step: 1,
+      placeholder: '30'
     },
     
-    // Market Information
-    marketCondition: {
-      type: 'select',
-      label: 'Market Condition',
-      description: 'Current market conditions',
-      required: true,
-      options: [
-        { value: 'appreciating', label: 'Appreciating' },
-        { value: 'stable', label: 'Stable' },
-        { value: 'declining', label: 'Declining' }
-      ],
-      placeholder: 'stable'
-    },
-    propertyAppreciationRate: {
+    // Investment Analysis
+    expectedPropertyAppreciation: {
       type: 'number',
-      label: 'Property Appreciation Rate (%)',
+      label: 'Expected Property Appreciation (%)',
       description: 'Expected annual property appreciation',
       required: true,
-      min: -10,
-      max: 20,
-      step: 0.5,
+      min: -20,
+      max: 50,
+      step: 0.1,
       placeholder: '3.0'
     },
-    
-    // Risk Factors
-    marketRisk: {
-      type: 'select',
-      label: 'Market Risk',
-      description: 'Level of market risk',
-      required: true,
-      options: [
-        { value: 'low', label: 'Low' },
-        { value: 'medium', label: 'Medium' },
-        { value: 'high', label: 'High' }
-      ],
-      placeholder: 'medium'
-    },
-    paymentShockRisk: {
-      type: 'select',
-      label: 'Payment Shock Risk',
-      description: 'Risk of payment shock after interest-only period',
-      required: true,
-      options: [
-        { value: 'low', label: 'Low' },
-        { value: 'medium', label: 'Medium' },
-        { value: 'high', label: 'High' }
-      ],
-      placeholder: 'medium'
-    },
-    
-    // Analysis Parameters
-    analysisPeriod: {
+    rentalIncome: {
       type: 'number',
-      label: 'Analysis Period (years)',
-      description: 'Period for financial analysis',
+      label: 'Rental Income ($)',
+      description: 'Monthly rental income (if investment property)',
       required: true,
-      min: 1,
-      max: 30,
-      step: 1,
-      placeholder: '10'
+      min: 0,
+      max: 50000,
+      step: 100,
+      placeholder: '0'
     },
-    inflationRate: {
+    taxDeductionBenefit: {
       type: 'number',
-      label: 'Inflation Rate (%)',
-      description: 'Expected annual inflation rate',
+      label: 'Tax Deduction Benefit ($)',
+      description: 'Annual tax deduction benefit',
       required: true,
-      min: -5,
-      max: 15,
-      step: 0.5,
-      placeholder: '2.5'
+      min: 0,
+      max: 100000,
+      step: 100,
+      placeholder: '5000'
     },
-    discountRate: {
+    opportunityCost: {
       type: 'number',
-      label: 'Discount Rate (%)',
-      description: 'Discount rate for present value calculations',
+      label: 'Opportunity Cost (%)',
+      description: 'Expected return on alternative investment',
       required: true,
-      min: 1,
-      max: 20,
-      step: 0.5,
+      min: 0,
+      max: 100,
+      step: 0.1,
       placeholder: '8.0'
-    },
-    
-    // Reporting Preferences
-    currency: {
-      type: 'select',
-      label: 'Currency',
-      description: 'Currency for calculations and display',
-      required: true,
-      options: [
-        { value: 'USD', label: 'USD' },
-        { value: 'EUR', label: 'EUR' },
-        { value: 'GBP', label: 'GBP' },
-        { value: 'CAD', label: 'CAD' },
-        { value: 'AUD', label: 'AUD' }
-      ],
-      placeholder: 'USD'
-    },
-    displayFormat: {
-      type: 'select',
-      label: 'Display Format',
-      description: 'Format for displaying results',
-      required: true,
-      options: [
-        { value: 'percentage', label: 'Percentage' },
-        { value: 'decimal', label: 'Decimal' },
-        { value: 'currency', label: 'Currency' }
-      ],
-      placeholder: 'currency'
-    },
-    includeCharts: {
-      type: 'boolean',
-      label: 'Include Charts',
-      description: 'Include charts in the analysis report',
-      required: true,
-      placeholder: true
     }
   },
   
-  outputs: {
-    interestOnlyPayment: {
-      type: 'number',
-      label: 'Interest-Only Payment',
-      description: 'Monthly interest-only payment'
-    },
-    fullyAmortizedPayment: {
-      type: 'number',
-      label: 'Fully Amortized Payment',
-      description: 'Monthly payment after interest-only period'
-    },
-    paymentIncrease: {
-      type: 'number',
-      label: 'Payment Increase',
-      description: 'Increase in payment after interest-only period'
-    },
-    totalInterestPaid: {
-      type: 'number',
-      label: 'Total Interest Paid',
-      description: 'Total interest paid over loan term'
-    },
-    principalBalance: {
-      type: 'number',
-      label: 'Principal Balance',
-      description: 'Remaining principal after interest-only period'
-    },
-    loanToValueRatio: {
-      type: 'number',
-      label: 'Loan-to-Value Ratio',
-      description: 'Current loan-to-value ratio'
-    },
-    riskScore: {
-      type: 'number',
-      label: 'Risk Score',
-      description: 'Overall risk assessment score (1-10)'
-    },
-    analysis: {
-      type: 'object',
-      label: 'Analysis Report',
-      description: 'Comprehensive mortgage analysis'
-    }
-  },
-  
-  calculate: (inputs: InterestOnlyMortgageInputs): InterestOnlyMortgageOutputs => {
-    const validation = validateInterestOnlyMortgageInputs(inputs);
-    if (!validation.isValid) {
-      throw new Error(`Validation failed: ${validation.errors.join(', ')}`);
-    }
-    
-    return calculateInterestOnlyMortgage(inputs);
-  },
-  
-  generateReport: (inputs: InterestOnlyMortgageInputs, outputs: InterestOnlyMortgageOutputs): string => {
-    const { analysis } = outputs;
-    
-    return `
-# Interest-Only Mortgage Analysis Report
-
-## Executive Summary
-- **Mortgage Rating**: ${analysis.mortgageRating}
-- **Risk Rating**: ${analysis.riskRating}
-- **Recommendation**: ${analysis.recommendation}
-
-## Key Metrics
-- **Interest-Only Payment**: $${outputs.interestOnlyPayment.toLocaleString()}
-- **Fully Amortized Payment**: $${outputs.fullyAmortizedPayment.toLocaleString()}
-- **Payment Increase**: $${outputs.paymentIncrease.toLocaleString()}
-- **Total Interest Paid**: $${outputs.totalInterestPaid.toLocaleString()}
-- **Principal Balance**: $${outputs.principalBalance.toLocaleString()}
-- **Loan-to-Value Ratio**: ${outputs.loanToValueRatio.toFixed(2)}%
-- **Risk Score**: ${outputs.riskScore}/10
-
-## Analysis
-${analysis.mortgageSummary}
-
-## Risk Assessment
-${analysis.riskAssessment}
-
-## Recommendations
-${analysis.recommendations.join('\n')}
-
-## Next Steps
-${analysis.nextSteps.join('\n')}
-    `.trim();
-  },
-  
-  formulas: {
-    'Interest-Only Payment': 'Loan Amount × Monthly Interest Rate',
-    'Fully Amortized Payment': 'Standard amortization formula after interest-only period',
-    'Payment Increase': 'Fully Amortized Payment - Interest-Only Payment',
-    'Total Interest Paid': 'Sum of all interest payments over loan term',
-    'Principal Balance': 'Original loan amount (no principal reduction during interest-only period)',
-    'Loan-to-Value Ratio': 'Loan Amount / Property Value × 100',
-    'Risk Score': 'Weighted assessment of payment shock, market, and financial risks'
-  },
-  
-  examples: [
-    {
-      name: 'Standard Interest-Only Mortgage',
-      inputs: {
-        loanAmount: 300000,
-        interestRate: 6.5,
-        loanTerm: 30,
-        interestOnlyPeriod: 10,
-        paymentFrequency: 'monthly',
-        additionalPrincipalPayment: 0,
-        propertyValue: 400000,
-        propertyType: 'primary_residence',
-        borrowerIncome: 80000,
-        borrowerCreditScore: 720,
-        borrowerDebtToIncomeRatio: 35,
-        originationFee: 1500,
-        appraisalFee: 400,
-        titleInsuranceFee: 800,
-        recordingFee: 150,
-        otherFees: 500,
-        taxRate: 25,
-        propertyTaxRate: 1.2,
-        marketCondition: 'stable',
-        propertyAppreciationRate: 3.0,
-        marketRisk: 'medium',
-        paymentShockRisk: 'medium',
-        analysisPeriod: 10,
-        inflationRate: 2.5,
-        discountRate: 8.0,
-        currency: 'USD',
-        displayFormat: 'currency',
-        includeCharts: true
-      }
-    }
-  ],
-  
-  tags: [
-    'interest-only mortgage',
-    'mortgage calculator',
-    'loan payments',
-    'real estate',
-    'financing',
-    'payment shock',
-    'mortgage risk',
-    'loan analysis',
-    'principal reduction',
-    'mortgage comparison'
-  ],
-  
-  category_info: {
-    name: 'Real Estate Finance',
-    description: 'Financial calculators for real estate investment and financing',
-    icon: '🏠'
-  }
+  calculate: calculateInterestOnlyMortgage,
+  validate: validateInterestOnlyMortgageInputs
 };

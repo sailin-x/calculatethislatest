@@ -1,8 +1,4 @@
-import { CalculatorRegistry } from '../../../data/calculatorRegistry';
 import { LandlordInsuranceCalculator } from './LandlordInsuranceCalculator';
+import { registerCalculator } from '../../index';
 
-export function registerLandlordInsuranceCalculator(registry: CalculatorRegistry): void {
-  registry.register(LandlordInsuranceCalculator);
-}
-
-export { LandlordInsuranceCalculator };
+registerCalculator(LandlordInsuranceCalculator);

@@ -1,393 +1,189 @@
 export interface HotelFeasibilityInputs {
-  propertyValue: number;
-  landValue: number;
-  constructionCost: number;
-  softCosts: number;
-  hardCosts: number;
-  contingency: number;
-  totalProjectCost: number;
-  hotelType: 'luxury' | 'upscale' | 'midscale' | 'economy' | 'extended-stay' | 'boutique' | 'resort';
-  hotelBrand: string;
-  roomCount: number;
-  averageRoomRate: number;
-  occupancyRate: number;
-  revenuePerAvailableRoom: number;
-  averageDailyRate: number;
-  totalRevenue: number;
-  roomRevenue: number;
-  foodAndBeverageRevenue: number;
-  otherRevenue: number;
-  operatingExpenses: number;
-  laborCosts: number;
-  utilities: number;
-  insurance: number;
-  propertyTaxes: number;
-  managementFees: number;
-  franchiseFees: number;
-  marketingFees: number;
-  maintenance: number;
-  otherExpenses: number;
-  netOperatingIncome: number;
-  debtService: number;
-  cashFlow: number;
-  capitalizationRate: number;
-  propertyLocation: string;
-  marketConditions: 'strong' | 'moderate' | 'weak';
-  competition: Array<{
-    hotel: string;
-    rooms: number;
-    rate: number;
-    occupancy: number;
-    distance: number;
-  }>;
-  marketData: {
-    averageOccupancy: number;
-    averageRate: number;
-    marketRevPAR: number;
-    supplyGrowth: number;
-    demandGrowth: number;
-    marketTrends: 'rising' | 'stable' | 'falling';
+  // Property Information
+  propertyAddress: string;
+  city: string;
+  state: string;
+  zipCode: string;
+  totalRooms: number;
+  roomTypes: {
+    standard: number;
+    deluxe: number;
+    suite: number;
+    presidential: number;
   };
-  seasonality: Array<{
-    month: string;
-    occupancyRate: number;
-    averageRate: number;
-    revenue: number;
-  }>;
-  amenities: Array<{
-    amenity: string;
-    cost: number;
-    revenue: number;
-    utilization: number;
-  }>;
-  targetMarket: {
-    business: number;
-    leisure: number;
-    group: number;
-    other: number;
+  totalSquareFootage: number;
+  landArea: number; // acres
+  buildingAge: number;
+  lastRenovationYear: number;
+  
+  // Market Information
+  marketType: 'urban' | 'suburban' | 'airport' | 'resort' | 'business' | 'leisure' | 'mixed';
+  competitionLevel: 'low' | 'moderate' | 'high' | 'very_high';
+  marketDemand: 'low' | 'moderate' | 'high' | 'very_high';
+  seasonality: 'low' | 'moderate' | 'high' | 'extreme';
+  averageMarketADR: number; // Average Daily Rate
+  averageMarketOccupancy: number; // percentage
+  
+  // Financial Projections
+  projectedADR: {
+    standard: number;
+    deluxe: number;
+    suite: number;
+    presidential: number;
   };
-  marketingChannels: {
-    direct: number;
-    onlineTravelAgency: number;
-    corporate: number;
-    group: number;
-    other: number;
+  projectedOccupancy: number; // percentage
+  averageLengthOfStay: number; // days
+  revenuePerAvailableRoom: number; // RevPAR
+  
+  // Operating Costs
+  laborCosts: {
+    management: number; // annual
+    frontDesk: number; // annual
+    housekeeping: number; // annual
+    maintenance: number; // annual
+    foodBeverage: number; // annual
+    other: number; // annual
   };
-  operatingMetrics: {
-    averageLengthOfStay: number;
-    repeatGuestRate: number;
-    guestSatisfactionScore: number;
-    employeeTurnoverRate: number;
+  utilityCosts: {
+    electricity: number; // annual
+    gas: number; // annual
+    water: number; // annual
+    internet: number; // annual
+    other: number; // annual
   };
-  financialProjections: Array<{
-    year: number;
-    revenue: number;
-    expenses: number;
-    noi: number;
-    cashFlow: number;
-    occupancy: number;
-    adr: number;
-    revpar: number;
-  }>;
-  riskFactors: {
-    marketRisk: number;
-    constructionRisk: number;
-    operationalRisk: number;
-    financialRisk: number;
-    regulatoryRisk: number;
-    environmentalRisk: number;
-    totalRisk: number;
+  maintenanceCosts: {
+    routine: number; // annual
+    capital: number; // annual
+    emergency: number; // annual
   };
+  insuranceCosts: {
+    property: number; // annual
+    liability: number; // annual
+    business: number; // annual
+  };
+  marketingCosts: {
+    advertising: number; // annual
+    online: number; // annual
+    promotions: number; // annual
+  };
+  otherOperatingCosts: {
+    supplies: number; // annual
+    professional: number; // annual
+    taxes: number; // annual
+    other: number; // annual
+  };
+  
+  // Capital Investment
+  acquisitionCost: number;
+  renovationCost: number;
+  furnitureFixturesEquipment: number;
+  workingCapital: number;
+  totalInvestment: number;
+  
+  // Financing
+  loanAmount: number;
+  interestRate: number;
+  loanTerm: number; // years
+  downPayment: number;
+  equityContribution: number;
+  
+  // Revenue Streams
+  roomRevenue: number; // annual
+  foodBeverageRevenue: number; // annual
+  meetingSpaceRevenue: number; // annual
+  otherRevenue: number; // annual
+  
+  // Market Analysis
+  targetMarket: string[];
+  competitiveAdvantages: string[];
+  marketChallenges: string[];
+  growthPotential: 'low' | 'moderate' | 'high' | 'very_high';
+  
+  // Risk Factors
+  marketRisk: 'low' | 'moderate' | 'high' | 'very_high';
+  operationalRisk: 'low' | 'moderate' | 'high' | 'very_high';
+  financialRisk: 'low' | 'moderate' | 'high' | 'very_high';
+  regulatoryRisk: 'low' | 'moderate' | 'high' | 'very_high';
 }
 
-export interface HotelFeasibilityMetrics {
-  totalProjectCost: number;
-  propertyValue: number;
-  landValue: number;
-  constructionCost: number;
-  softCosts: number;
-  hardCosts: number;
-  contingency: number;
-  roomCount: number;
-  averageRoomRate: number;
-  occupancyRate: number;
-  revenuePerAvailableRoom: number;
-  averageDailyRate: number;
+export interface HotelFeasibilityOutputs {
+  // Financial Performance
   totalRevenue: number;
-  roomRevenue: number;
-  foodAndBeverageRevenue: number;
-  otherRevenue: number;
-  operatingExpenses: number;
-  laborCosts: number;
-  utilities: number;
-  insurance: number;
-  propertyTaxes: number;
-  managementFees: number;
-  franchiseFees: number;
-  marketingFees: number;
-  maintenance: number;
-  otherExpenses: number;
+  totalOperatingExpenses: number;
   netOperatingIncome: number;
   debtService: number;
   cashFlow: number;
-  capitalizationRate: number;
-  marketOccupancy: number;
-  marketRate: number;
-  marketRevPAR: number;
-  occupancyGap: number;
-  rateGap: number;
-  revparGap: number;
-  breakEvenOccupancy: number;
-  breakEvenRate: number;
-  cashOnCashReturn: number;
-  returnOnEquity: number;
-  returnOnInvestment: number;
-  internalRateOfReturn: number;
+  profitMargin: number;
+  
+  // Key Performance Indicators
+  averageDailyRate: number;
+  occupancyRate: number;
+  revenuePerAvailableRoom: number;
+  averageRevenuePerUser: number;
+  costPerOccupiedRoom: number;
+  grossOperatingProfit: number;
+  grossOperatingProfitMargin: number;
+  
+  // Investment Analysis
+  totalInvestment: number;
   netPresentValue: number;
-  modifiedInternalRateOfReturn: number;
-  profitabilityIndex: number;
-  discountedPaybackPeriod: number;
-  averageAccountingReturn: number;
-  capitalAssetPricingModel: number;
-  weightedAverageCostOfCapital: number;
-  hurdleRate: number;
-  riskAdjustedReturn: number;
-  riskFreeRate: number;
-  marketRiskPremium: number;
-  beta: number;
-  alpha: number;
-  sharpeRatio: number;
-  sortinoRatio: number;
-  treynorRatio: number;
-  informationRatio: number;
-  calmarRatio: number;
-  maximumDrawdown: number;
-  valueAtRisk: number;
-  conditionalValueAtRisk: number;
-  expectedShortfall: number;
-  downsideDeviation: number;
-  upsideDeviation: number;
-  skewness: number;
-  kurtosis: number;
-  correlation: number;
-  covariance: number;
-  variance: number;
-  standardDeviation: number;
-  coefficientOfVariation: number;
-  riskOfRuin: number;
-  kellyCriterion: number;
-  optimalLeverage: number;
-  positionSizing: number;
-  stopLoss: number;
-  takeProfit: number;
-  trailingStop: number;
-  rebalancingThreshold: number;
-  taxLossHarvesting: boolean;
-  taxGainHarvesting: boolean;
-  washSaleRule: boolean;
-  taxLotAccounting: 'fifo' | 'lifo' | 'specific-identification' | 'average-cost';
-  taxBracket: number;
-  stateTaxRate: number;
-  localTaxRate: number;
-  alternativeMinimumTax: boolean;
-  netInvestmentIncomeTax: boolean;
-  qualifiedDividendRate: number;
-  longTermCapitalGainsRate: number;
-  shortTermCapitalGainsRate: number;
-  municipalBondYield: number;
-  corporateBondYield: number;
-  treasuryBondYield: number;
-  inflationProtectedSecurities: number;
-  highYieldBondYield: number;
-  emergingMarketBondYield: number;
-  internationalBondYield: number;
-  realEstateInvestmentTrustYield: number;
-  masterLimitedPartnershipYield: number;
-  preferredStockYield: number;
-  convertibleBondYield: number;
-  floatingRateNoteYield: number;
-  zeroCouponBondYield: number;
-  callableBondYield: number;
-  putableBondYield: number;
-  stepUpBondYield: number;
-  stepDownBondYield: number;
-  inflationLinkedBondYield: number;
-  currencyLinkedBondYield: number;
-  commodityLinkedBondYield: number;
-  equityLinkedBondYield: number;
-  creditLinkedBondYield: number;
-  catastropheBondYield: number;
-  weatherDerivativeYield: number;
-  carbonCreditYield: number;
-  renewableEnergyYield: number;
-  infrastructureYield: number;
-  privateEquityYield: number;
-  ventureCapitalYield: number;
-  hedgeFundYield: number;
-  managedFuturesYield: number;
-  longShortEquityYield: number;
-  marketNeutralYield: number;
-  arbitrageYield: number;
-  eventDrivenYield: number;
-  distressedSecuritiesYield: number;
-  globalMacroYield: number;
-  systematicTradingYield: number;
-  discretionaryTradingYield: number;
-  quantitativeTradingYield: number;
-  highFrequencyTradingYield: number;
-  algorithmicTradingYield: number;
-  machineLearningTradingYield: number;
-  artificialIntelligenceTradingYield: number;
-  blockchainTradingYield: number;
-  cryptocurrencyTradingYield: number;
-  tokenizedAssetYield: number;
-  decentralizedFinanceYield: number;
-  nonFungibleTokenYield: number;
-  initialCoinOfferingYield: number;
-  securityTokenOfferingYield: number;
-  initialDexOfferingYield: number;
-  yieldFarmingYield: number;
-  liquidityMiningYield: number;
-  stakingYield: number;
-  lendingYield: number;
-  borrowingYield: number;
-  marginTradingYield: number;
-  futuresTradingYield: number;
-  optionsTradingYield: number;
-  swapTradingYield: number;
-  forwardTradingYield: number;
-  spotTradingYield: number;
-  crossCurrencyTradingYield: number;
-  interestRateTradingYield: number;
-  creditTradingYield: number;
-  volatilityTradingYield: number;
-  correlationTradingYield: number;
-  dispersionTradingYield: number;
-  basisTradingYield: number;
-  calendarSpreadYield: number;
-  butterflySpreadYield: number;
-  ironCondorYield: number;
-  straddleYield: number;
-  strangleYield: number;
-  collarYield: number;
-  protectivePutYield: number;
-  coveredCallYield: number;
-  cashSecuredPutYield: number;
-  nakedCallYield: number;
-  nakedPutYield: number;
-  bullCallSpreadYield: number;
-  bearPutSpreadYield: number;
-  bullPutSpreadYield: number;
-  bearCallSpreadYield: number;
-  diagonalSpreadYield: number;
-  ratioSpreadYield: number;
-  backspreadYield: number;
-  frontspreadYield: number;
-  boxSpreadYield: number;
-  jellyRollYield: number;
-  conversionYield: number;
-  reversalYield: number;
-  syntheticStockYield: number;
-  syntheticBondYield: number;
-  syntheticCurrencyYield: number;
-  syntheticCommodityYield: number;
-  syntheticVolatilityYield: number;
-  syntheticCorrelationYield: number;
-  syntheticDispersionYield: number;
-  syntheticBasisYield: number;
-  syntheticCalendarYield: number;
-  syntheticButterflyYield: number;
-  syntheticIronCondorYield: number;
-  syntheticStraddleYield: number;
-  syntheticStrangleYield: number;
-  syntheticCollarYield: number;
-  syntheticProtectivePutYield: number;
-  syntheticCoveredCallYield: number;
-  syntheticCashSecuredPutYield: number;
-  syntheticNakedCallYield: number;
-  syntheticNakedPutYield: number;
-  syntheticBullCallSpreadYield: number;
-  syntheticBearPutSpreadYield: number;
-  syntheticBullPutSpreadYield: number;
-  syntheticBearCallSpreadYield: number;
-  syntheticDiagonalSpreadYield: number;
-  syntheticRatioSpreadYield: number;
-  syntheticBackspreadYield: number;
-  syntheticFrontspreadYield: number;
-  syntheticBoxSpreadYield: number;
-  syntheticJellyRollYield: number;
-  syntheticConversionYield: number;
-  syntheticReversalYield: number;
-  syntheticSyntheticStockYield: number;
-  syntheticSyntheticBondYield: number;
-  syntheticSyntheticCurrencyYield: number;
-  syntheticSyntheticCommodityYield: number;
-  syntheticSyntheticVolatilityYield: number;
-  syntheticSyntheticCorrelationYield: number;
-  syntheticSyntheticDispersionYield: number;
-  syntheticSyntheticBasisYield: number;
-  syntheticSyntheticCalendarYield: number;
-  syntheticSyntheticButterflyYield: number;
-  syntheticSyntheticIronCondorYield: number;
-  syntheticSyntheticStraddleYield: number;
-  syntheticSyntheticStrangleYield: number;
-  syntheticSyntheticCollarYield: number;
-  syntheticSyntheticProtectivePutYield: number;
-  syntheticSyntheticCoveredCallYield: number;
-  syntheticSyntheticCashSecuredPutYield: number;
-  syntheticSyntheticNakedCallYield: number;
-  syntheticSyntheticNakedPutYield: number;
-  syntheticSyntheticBullCallSpreadYield: number;
-  syntheticSyntheticBearPutSpreadYield: number;
-  syntheticSyntheticBullPutSpreadYield: number;
-  syntheticSyntheticBearCallSpreadYield: number;
-  syntheticSyntheticDiagonalSpreadYield: number;
-  syntheticSyntheticRatioSpreadYield: number;
-  syntheticSyntheticBackspreadYield: number;
-  syntheticSyntheticFrontspreadYield: number;
-  syntheticSyntheticBoxSpreadYield: number;
-  syntheticSyntheticJellyRollYield: number;
-  syntheticSyntheticConversionYield: number;
-  syntheticSyntheticReversalYield: number;
-  cashFlowProjection: Array<{
-    year: number;
-    revenue: number;
-    expenses: number;
-    noi: number;
-    debtService: number;
-    cashFlow: number;
-    cumulativeCashFlow: number;
-    occupancy: number;
-    adr: number;
-    revpar: number;
-  }>;
+  internalRateOfReturn: number;
+  paybackPeriod: number;
+  returnOnInvestment: number;
+  returnOnEquity: number;
+  
+  // Market Analysis
+  marketPosition: 'below_market' | 'at_market' | 'above_market';
+  competitivePosition: 'weak' | 'average' | 'strong' | 'dominant';
+  marketShare: number;
+  priceElasticity: number;
+  
+  // Risk Assessment
+  overallRiskScore: number; // 1-100 scale
+  riskFactors: string[];
+  riskMitigationStrategies: string[];
+  
+  // Sensitivity Analysis
+  breakevenOccupancy: number;
+  breakevenADR: number;
   sensitivityAnalysis: {
-    bestCase: number;
-    baseCase: number;
-    worstCase: number;
+    occupancyImpact: number;
+    adrImpact: number;
+    costImpact: number;
   };
-  riskScore: number;
-  feasibilityGrade: string;
-  recommendation: string;
-  marketAnalysis: string;
-  competitiveAnalysis: string;
-  operationalAnalysis: string;
-}
-
-export interface HotelFeasibilityAnalysis {
-  feasibilityGrade: string;
-  riskAssessment: string;
-  recommendations: string;
-  marketAnalysis: string;
-  competitiveAnalysis: string;
-  operationalAnalysis: string;
-  sensitivityAnalysis: {
-    bestCase: number;
-    baseCase: number;
-    worstCase: number;
+  
+  // Recommendations
+  feasibilityRecommendation: 'not_feasible' | 'marginal' | 'feasible' | 'highly_feasible';
+  keyRecommendations: string[];
+  operationalRecommendations: string[];
+  financialRecommendations: string[];
+  marketingRecommendations: string[];
+  
+  // Projections
+  fiveYearProjections: {
+    year1: FinancialProjection;
+    year2: FinancialProjection;
+    year3: FinancialProjection;
+    year4: FinancialProjection;
+    year5: FinancialProjection;
+  };
+  
+  // Summary
+  summary: {
+    totalAnnualRevenue: number;
+    totalAnnualExpenses: number;
+    netAnnualIncome: number;
+    keyStrengths: string[];
+    keyChallenges: string[];
+    nextSteps: string[];
   };
 }
 
-export interface HotelFeasibilityOutputs extends HotelFeasibilityMetrics {
-  analysis: HotelFeasibilityAnalysis;
+export interface FinancialProjection {
+  revenue: number;
+  expenses: number;
+  netIncome: number;
+  occupancy: number;
+  adr: number;
+  revpar: number;
 }

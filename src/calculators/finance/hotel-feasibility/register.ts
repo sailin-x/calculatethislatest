@@ -1,8 +1,4 @@
-import { CalculatorRegistry } from '../../../data/calculatorRegistry';
 import { HotelFeasibilityCalculator } from './HotelFeasibilityCalculator';
+import { registerCalculator } from '../../index';
 
-export function registerHotelFeasibilityCalculator(registry: CalculatorRegistry): void {
-  registry.register(HotelFeasibilityCalculator);
-}
-
-export { HotelFeasibilityCalculator };
+registerCalculator(HotelFeasibilityCalculator);

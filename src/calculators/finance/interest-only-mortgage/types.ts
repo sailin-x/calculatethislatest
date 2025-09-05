@@ -2,195 +2,129 @@ export interface InterestOnlyMortgageInputs {
   // Loan Information
   loanAmount: number;
   interestRate: number;
-  loanTerm: number;
-  interestOnlyPeriod: number;
-  paymentFrequency: 'monthly' | 'biweekly' | 'weekly';
+  interestOnlyPeriod: number; // years
+  totalLoanTerm: number; // years
+  loanType: 'fixed' | 'adjustable' | 'hybrid';
   
   // Property Information
   propertyValue: number;
-  propertyType: 'single_family' | 'condo' | 'townhouse' | 'multi_family' | 'commercial';
   propertyAddress: string;
+  propertyType: 'primary_residence' | 'investment' | 'second_home' | 'commercial';
   
   // Borrower Information
-  borrowerIncome: number;
-  borrowerCreditScore: number;
-  borrowerDebtToIncomeRatio: number;
+  creditScore: 'poor' | 'fair' | 'good' | 'very_good' | 'excellent';
+  debtToIncomeRatio: number;
+  downPayment: number;
+  loanToValueRatio: number;
   
-  // Additional Costs
-  propertyTaxes: number;
-  homeownersInsurance: number;
-  privateMortgageInsurance: number;
-  hoaFees: number;
-  
-  // Balloon Payment
-  balloonPayment: number;
-  balloonPaymentDate: string;
-  
-  // Analysis Parameters
-  analysisPeriod: number;
-  inflationRate: number;
-  propertyAppreciationRate: number;
-  
-  // Reporting Preferences
-  currency: 'USD' | 'EUR' | 'GBP' | 'CAD' | 'AUD';
-  displayFormat: 'percentage' | 'decimal' | 'currency';
-  includeCharts: boolean;
-}
-
-export interface InterestOnlyMortgageMetrics {
-  // Payment Analysis
+  // Payment Information
   interestOnlyPayment: number;
   principalAndInterestPayment: number;
   totalMonthlyPayment: number;
-  balloonPaymentAmount: number;
   
-  // Interest Analysis
-  totalInterestPaid: number;
-  interestPaidDuringIO: number;
-  interestPaidAfterIO: number;
-  effectiveInterestRate: number;
+  // Additional Costs
+  propertyTaxes: number; // annual
+  homeownersInsurance: number; // annual
+  privateMortgageInsurance: number; // annual
+  hoaFees: number; // annual
+  otherMonthlyExpenses: number; // annual
   
-  // Principal Analysis
-  principalBalance: number;
-  principalPaid: number;
-  remainingBalance: number;
+  // Refinancing Options
+  refinanceAfterInterestOnly: boolean;
+  refinanceRate: number;
+  refinanceTerm: number;
   
-  // Cost Analysis
-  totalCost: number;
-  costOfCredit: number;
-  totalPayments: number;
-  
-  // Risk Metrics
-  riskScore: number;
-  paymentShock: number;
-  refinanceRisk: number;
-  
-  // Comparison Metrics
-  traditionalPayment: number;
-  savingsDuringIO: number;
-  additionalCostAfterIO: number;
-  
-  // Amortization Schedule
-  amortizationSchedule: Array<{
-    paymentNumber: number;
-    payment: number;
-    principal: number;
-    interest: number;
-    balance: number;
-    period: 'interest_only' | 'principal_interest';
-  }>;
-  
-  // Sensitivity Analysis
-  sensitivityMatrix: Array<{
-    variable: string;
-    values: number[];
-    impacts: number[];
-  }>;
-  
-  // Scenario Analysis
-  scenarios: Array<{
-    scenario: string;
-    probability: number;
-    payment: number;
-    totalCost: number;
-  }>;
-}
-
-export interface InterestOnlyMortgageAnalysis {
-  // Executive Summary
-  loanRating: 'Excellent' | 'Good' | 'Average' | 'Poor' | 'Very Poor';
-  riskRating: 'Low' | 'Moderate' | 'High' | 'Very High';
-  recommendation: 'Proceed' | 'Consider' | 'Avoid' | 'Requires Review';
-  
-  // Key Insights
-  keyStrengths: string[];
-  keyWeaknesses: string[];
-  riskFactors: string[];
-  opportunities: string[];
-  
-  // Payment Analysis
-  paymentSummary: string;
-  interestAnalysis: string;
-  principalAnalysis: string;
-  
-  // Cost Analysis
-  costSummary: string;
-  comparisonAnalysis: string;
-  savingsAnalysis: string;
-  
-  // Risk Assessment
-  riskAssessment: string;
-  paymentShockRisk: string;
-  refinanceRisk: string;
-  marketRisk: string;
-  
-  // Balloon Payment Analysis
-  balloonAnalysis: string;
-  refinanceAnalysis: string;
-  exitStrategy: string;
-  
-  // Recommendations
-  loanRecommendations: string[];
-  riskMitigation: string[];
-  optimizationSuggestions: string[];
-  
-  // Implementation
-  implementationPlan: string;
-  nextSteps: string[];
-  timeline: string;
-  
-  // Monitoring
-  monitoringPlan: string;
-  keyMetrics: string[];
-  reviewSchedule: string;
-  
-  // Risk Management
-  riskManagement: string;
-  mitigationStrategies: string[];
-  contingencyPlans: string[];
-  
-  // Performance Benchmarks
-  performanceBenchmarks: Array<{
-    metric: string;
-    target: number;
-    benchmark: number;
-    industry: string;
-  }>;
-  
-  // Decision Support
-  decisionRecommendation: string;
-  presentationPoints: string[];
-  decisionFactors: string[];
+  // Investment Analysis
+  expectedPropertyAppreciation: number; // annual percentage
+  rentalIncome: number; // monthly (if investment property)
+  taxDeductionBenefit: number; // annual
+  opportunityCost: number; // annual return on alternative investment
 }
 
 export interface InterestOnlyMortgageOutputs {
-  // Core Metrics
+  // Payment Analysis
   interestOnlyPayment: number;
   principalAndInterestPayment: number;
   totalMonthlyPayment: number;
-  balloonPaymentAmount: number;
+  totalAnnualPayment: number;
+  
+  // Interest-Only Period Analysis
+  interestOnlyPeriodPayments: number;
+  totalInterestPaidDuringIO: number;
+  remainingBalanceAfterIO: number;
+  
+  // Full Loan Analysis
   totalInterestPaid: number;
-  riskScore: number;
-  paymentShock: number;
-  traditionalPayment: number;
-  
-  // Analysis
-  analysis: InterestOnlyMortgageAnalysis;
-  
-  // Additional Metrics
-  effectiveInterestRate: number;
-  principalBalance: number;
-  principalPaid: number;
-  remainingBalance: number;
-  totalCost: number;
-  costOfCredit: number;
+  totalPrincipalPaid: number;
   totalPayments: number;
-  interestPaidDuringIO: number;
-  interestPaidAfterIO: number;
-  savingsDuringIO: number;
-  additionalCostAfterIO: number;
-  refinanceRisk: number;
-  amortizationSchedule: any[];
-  sensitivityMatrix: any[];
-  scenarios: any[];
+  loanPayoffDate: string;
+  
+  // Payment Schedule
+  paymentSchedule: PaymentScheduleEntry[];
+  
+  // Comparison Analysis
+  traditionalMortgageComparison: {
+    traditionalPayment: number;
+    interestOnlyPayment: number;
+    paymentDifference: number;
+    totalInterestDifference: number;
+    breakEvenPoint: number; // months
+  };
+  
+  // Investment Analysis
+  investmentAnalysis: {
+    monthlySavings: number;
+    annualSavings: number;
+    totalSavingsOverIO: number;
+    potentialInvestmentReturn: number;
+    netBenefit: number;
+  };
+  
+  // Risk Analysis
+  riskFactors: string[];
+  riskMitigationStrategies: string[];
+  
+  // Refinancing Analysis
+  refinancingAnalysis: {
+    shouldRefinance: boolean;
+    refinancePayment: number;
+    paymentReduction: number;
+    breakEvenMonths: number;
+    totalSavings: number;
+  };
+  
+  // Tax Implications
+  taxImplications: {
+    annualInterestDeduction: number;
+    estimatedTaxSavings: number;
+    netAfterTaxCost: number;
+  };
+  
+  // Recommendations
+  recommendations: {
+    suitability: 'not_suitable' | 'marginal' | 'suitable' | 'highly_suitable';
+    keyRecommendations: string[];
+    riskWarnings: string[];
+    optimizationTips: string[];
+  };
+  
+  // Summary
+  summary: {
+    totalLoanCost: number;
+    monthlyPayment: number;
+    keyBenefits: string[];
+    keyRisks: string[];
+    nextSteps: string[];
+  };
+}
+
+export interface PaymentScheduleEntry {
+  paymentNumber: number;
+  paymentDate: string;
+  interestPayment: number;
+  principalPayment: number;
+  totalPayment: number;
+  remainingBalance: number;
+  cumulativeInterest: number;
+  cumulativePrincipal: number;
 }

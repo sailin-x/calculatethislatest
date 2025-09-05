@@ -1,349 +1,534 @@
-import { CalculatorInputs, CalculatorOutputs } from '../../../types/calculator';
+import { JumboLoanInputs, JumboLoanOutputs } from './types';
 
-// Conforming loan limits by year (simplified)
-const CONFORMING_LIMITS = {
-  2024: 766550,
-  2023: 726200,
-  2022: 647200,
-  2021: 548250
-};
-
-// Jumbo loan requirements by lender type
-const LENDER_REQUIREMENTS = {
-  'Traditional Bank': { minCredit: 700, minDTI: 43, minReserves: 6, minDownPayment: 20 },
-  'Credit Union': { minCredit: 680, minDTI: 45, minReserves: 6, minDownPayment: 20 },
-  'Mortgage Banker': { minCredit: 720, minDTI: 43, minReserves: 8, minDownPayment: 20 },
-  'Portfolio Lender': { minCredit: 650, minDTI: 50, minReserves: 4, minDownPayment: 15 },
-  'Private Lender': { minCredit: 600, minDTI: 55, minReserves: 3, minDownPayment: 10 }
-};
-
-// Market condition adjustments
-const MARKET_ADJUSTMENTS = {
-  'Favorable': { rateAdjustment: -0.25, creditAdjustment: -20, dtiAdjustment: 2 },
-  'Normal': { rateAdjustment: 0, creditAdjustment: 0, dtiAdjustment: 0 },
-  'Tight': { rateAdjustment: 0.5, creditAdjustment: 30, dtiAdjustment: -3 },
-  'Very Tight': { rateAdjustment: 1.0, creditAdjustment: 50, dtiAdjustment: -5 }
-};
-
-// Property type adjustments
-const PROPERTY_TYPE_ADJUSTMENTS = {
-  'Single Family': { rateAdjustment: 0, downPaymentAdjustment: 0 },
-  'Condo': { rateAdjustment: 0.25, downPaymentAdjustment: 5 },
-  'Townhouse': { rateAdjustment: 0.125, downPaymentAdjustment: 2.5 },
-  'Multi-Family': { rateAdjustment: 0.5, downPaymentAdjustment: 10 },
-  'Investment Property': { rateAdjustment: 0.75, downPaymentAdjustment: 15 }
-};
-
-// Occupancy type adjustments
-const OCCUPANCY_ADJUSTMENTS = {
-  'Primary Residence': { rateAdjustment: 0, downPaymentAdjustment: 0 },
-  'Second Home': { rateAdjustment: 0.375, downPaymentAdjustment: 10 },
-  'Investment Property': { rateAdjustment: 0.75, downPaymentAdjustment: 15 }
-};
-
-// Employment type adjustments
-const EMPLOYMENT_ADJUSTMENTS = {
-  'W-2 Employee': { rateAdjustment: 0, incomeMultiplier: 1.0 },
-  'Self-Employed': { rateAdjustment: 0.5, incomeMultiplier: 0.8 },
-  'Business Owner': { rateAdjustment: 0.375, incomeMultiplier: 0.85 },
-  'Retired': { rateAdjustment: 0.25, incomeMultiplier: 0.9 },
-  'Other': { rateAdjustment: 0.625, incomeMultiplier: 0.75 }
-};
-
-// Income verification adjustments
-const INCOME_VERIFICATION_ADJUSTMENTS = {
-  'Full Documentation': { rateAdjustment: 0, incomeMultiplier: 1.0 },
-  'Stated Income': { rateAdjustment: 0.75, incomeMultiplier: 0.7 },
-  'Bank Statement': { rateAdjustment: 0.5, incomeMultiplier: 0.8 },
-  'Asset Depletion': { rateAdjustment: 0.25, incomeMultiplier: 0.9 }
-};
-
-// Helper function to calculate monthly payment
-function calculateMonthlyPayment(principal: number, annualRate: number, years: number): number {
-  const monthlyRate = annualRate / 100 / 12;
-  const totalPayments = years * 12;
+export function calculateJumboLoan(inputs: JumboLoanInputs): JumboLoanOutputs {
+  // Calculate jumbo loan components
+  const conformingPortion = Math.min(inputs.loanAmount, inputs.conformingLimit);
+  const jumboPortion = Math.max(0, inputs.loanAmount - inputs.conformingLimit);
+  const jumboPremiumCost = jumboPortion * inputs.jumboPremium;
   
-  if (monthlyRate === 0) return principal / totalPayments;
+  // Calculate blended rate
+  const conformingRate = inputs.interestRate;
+  const jumboRate = inputs.interestRate + inputs.jumboPremium;
+  const blendedRate = (conformingPortion * conformingRate + jumboPortion * jumboRate) / inputs.loanAmount;
   
-  return principal * (monthlyRate * Math.pow(1 + monthlyRate, totalPayments)) / 
-         (Math.pow(1 + monthlyRate, totalPayments) - 1);
-}
-
-// Helper function to calculate total interest
-function calculateTotalInterest(principal: number, monthlyPayment: number, years: number): number {
-  const totalPayments = years * 12;
-  return (monthlyPayment * totalPayments) - principal;
-}
-
-// Helper function to calculate qualification score
-function calculateQualificationScore(inputs: CalculatorInputs): number {
-  let score = 0;
+  // Calculate monthly payment
+  const monthlyRate = blendedRate / 12;
+  const totalPayments = inputs.loanTerm * 12;
+  const monthlyPayment = inputs.loanAmount * 
+    (monthlyRate * Math.pow(1 + monthlyRate, totalPayments)) / 
+    (Math.pow(1 + monthlyRate, totalPayments) - 1);
   
-  // Credit score component (30%)
-  if (inputs.creditScore) {
-    const creditScore = Math.min(inputs.creditScore, 850);
-    const creditComponent = Math.max(0, (creditScore - 300) / (850 - 300)) * 30;
-    score += creditComponent;
-  }
+  // Calculate total costs
+  const totalInterest = (monthlyPayment * totalPayments) - inputs.loanAmount;
+  const totalPrincipal = inputs.loanAmount;
+  const totalPayments = totalInterest + totalPrincipal;
   
-  // DTI component (25%)
-  if (inputs.debtToIncomeRatio) {
-    const dti = inputs.debtToIncomeRatio;
-    const dtiComponent = Math.max(0, (50 - dti) / 30) * 25;
-    score += dtiComponent;
-  }
+  // Calculate additional monthly costs
+  const monthlyPropertyTaxes = inputs.propertyTaxes / 12;
+  const monthlyInsurance = inputs.homeownersInsurance / 12;
+  const monthlyPMI = inputs.privateMortgageInsurance / 12;
+  const monthlyHOA = inputs.hoaFees / 12;
+  const monthlyOtherExpenses = inputs.otherMonthlyExpenses / 12;
   
-  // LTV component (25%)
-  if (inputs.loanToValueRatio) {
-    const ltv = inputs.loanToValueRatio;
-    const ltvComponent = Math.max(0, (95 - ltv) / 45) * 25;
-    score += ltvComponent;
-  }
+  const totalMonthlyPayment = monthlyPayment + monthlyPropertyTaxes + 
+                             monthlyInsurance + monthlyPMI + monthlyHOA + monthlyOtherExpenses;
   
-  // Reserves component (20%)
-  if (inputs.reserves && inputs.monthlyPITI) {
-    const reserveMonths = inputs.reserves / inputs.monthlyPITI;
-    const reserveComponent = Math.min(20, (reserveMonths / 12) * 20);
-    score += reserveComponent;
-  }
+  // Qualification analysis
+  const qualificationStatus = analyzeQualification(inputs);
+  const qualificationFactors = identifyQualificationFactors(inputs);
+  const qualificationRecommendations = generateQualificationRecommendations(inputs);
   
-  return Math.round(score);
-}
-
-// Helper function to calculate risk score
-function calculateRiskScore(inputs: CalculatorInputs, outputs: CalculatorOutputs): number {
-  let riskScore = 0;
+  // Cost analysis
+  const costPerThousand = (totalMonthlyPayment / inputs.loanAmount) * 1000;
+  const effectiveRate = blendedRate;
+  const breakEvenPoint = calculateBreakEvenPoint(inputs);
   
-  // LTV risk (25%)
-  if (outputs.loanToValueRatio) {
-    const ltvRisk = Math.min(25, (outputs.loanToValueRatio - 50) / 2);
-    riskScore += ltvRisk;
-  }
+  // Comparison analysis
+  const conformingLoanComparison = calculateConformingLoanComparison(inputs);
   
-  // DTI risk (25%)
-  if (outputs.debtToIncomeRatio) {
-    const dtiRisk = Math.min(25, (outputs.debtToIncomeRatio - 20) / 1.2);
-    riskScore += dtiRisk;
-  }
+  // Risk assessment
+  const riskFactors = identifyRiskFactors(inputs);
+  const riskMitigationStrategies = generateRiskMitigationStrategies(inputs);
+  const overallRiskScore = calculateOverallRiskScore(inputs);
   
-  // Credit risk (20%)
-  if (inputs.creditScore) {
-    const creditRisk = Math.min(20, (850 - inputs.creditScore) / 7.5);
-    riskScore += creditRisk;
-  }
+  // Alternative options
+  const alternativeOptions = calculateAlternativeOptions(inputs);
   
-  // Reserve risk (15%)
-  if (inputs.reserves && outputs.monthlyPITI) {
-    const reserveMonths = inputs.reserves / outputs.monthlyPITI;
-    const reserveRisk = Math.min(15, (12 - reserveMonths) * 1.25);
-    riskScore += Math.max(0, reserveRisk);
-  }
+  // Refinancing analysis
+  const refinancingAnalysis = calculateRefinancingAnalysis(inputs);
   
-  // Employment risk (15%)
-  if (inputs.employmentType) {
-    const employmentRisk = {
-      'W-2 Employee': 0,
-      'Self-Employed': 8,
-      'Business Owner': 6,
-      'Retired': 4,
-      'Other': 10
-    }[inputs.employmentType] || 0;
-    riskScore += employmentRisk;
-  }
+  // Tax implications
+  const taxImplications = calculateTaxImplications(inputs, totalInterest);
   
-  return Math.min(100, Math.round(riskScore));
-}
-
-// Helper function to calculate approval probability
-function calculateApprovalProbability(qualificationScore: number, riskScore: number): number {
-  const baseProbability = Math.min(95, qualificationScore);
-  const riskAdjustment = (100 - riskScore) * 0.3;
-  return Math.max(5, Math.min(95, Math.round(baseProbability + riskAdjustment)));
-}
-
-// Helper function to calculate jumbo premium
-function calculateJumboPremium(loanAmount: number, jumboRate: number, conformingRate: number, years: number): number {
-  const rateDifference = jumboRate - conformingRate;
-  const monthlyDifference = (loanAmount * rateDifference / 100 / 12);
-  return Math.round(monthlyDifference * years * 12);
-}
-
-// Helper function to generate recommendation
-function generateRecommendation(qualificationScore: number, riskScore: number, approvalProbability: number): string {
-  if (approvalProbability >= 85) {
-    return 'Strong approval likelihood. Consider proceeding with application.';
-  } else if (approvalProbability >= 70) {
-    return 'Good approval likelihood. May need to strengthen certain areas.';
-  } else if (approvalProbability >= 50) {
-    return 'Moderate approval likelihood. Consider improving qualifications before applying.';
-  } else {
-    return 'Low approval likelihood. Significant improvements needed before application.';
-  }
-}
-
-export function calculateJumboLoan(inputs: CalculatorInputs): CalculatorOutputs {
-  // Extract inputs with defaults
-  const {
-    loanAmount = 0,
-    interestRate = 0,
-    loanTerm = 30,
-    downPayment = 0,
-    propertyValue = loanAmount + downPayment,
-    annualIncome = 0,
-    monthlyDebts = 0,
-    creditScore = 0,
-    reserves = 0,
-    propertyType = 'Single Family',
-    occupancyType = 'Primary Residence',
-    loanType = 'Fixed Rate',
-    armPeriod = 7,
-    points = 0,
-    closingCosts = 0,
-    propertyTaxes = 0,
-    homeInsurance = 0,
-    pmi = 0,
-    hoaFees = 0,
-    incomeVerification = 'Full Documentation',
-    employmentType = 'W-2 Employee',
-    yearsEmployed = 0,
-    liquidAssets = 0,
-    investmentAssets = 0,
-    debtToIncomeRatio: targetDTI = 43,
-    loanToValueRatio: targetLTV = 80,
-    marketConditions = 'Normal',
-    lenderType = 'Traditional Bank'
-  } = inputs;
-
-  // Calculate base monthly payment
-  const monthlyPayment = calculateMonthlyPayment(loanAmount, interestRate, loanTerm);
+  // Generate recommendations
+  const recommendations = generateRecommendations(inputs, qualificationStatus, riskFactors);
   
-  // Calculate total interest
-  const totalInterest = calculateTotalInterest(loanAmount, monthlyPayment, loanTerm);
-  
-  // Calculate total payment
-  const totalPayment = monthlyPayment * loanTerm * 12;
-  
-  // Calculate down payment percentage
-  const downPaymentPercent = propertyValue > 0 ? (downPayment / propertyValue) * 100 : 0;
-  
-  // Calculate loan-to-value ratio
-  const loanToValueRatio = propertyValue > 0 ? (loanAmount / propertyValue) * 100 : 0;
-  
-  // Calculate monthly income
-  const monthlyIncome = annualIncome / 12;
-  
-  // Calculate monthly PITI
-  const monthlyTaxes = propertyTaxes / 12;
-  const monthlyInsurance = homeInsurance / 12;
-  const monthlyPITI = monthlyPayment + monthlyTaxes + monthlyInsurance + pmi + hoaFees;
-  
-  // Calculate debt-to-income ratios
-  const debtToIncomeRatio = monthlyIncome > 0 ? ((monthlyPITI + monthlyDebts) / monthlyIncome) * 100 : 0;
-  const frontEndDTI = monthlyIncome > 0 ? (monthlyPITI / monthlyIncome) * 100 : 0;
-  const backEndDTI = monthlyIncome > 0 ? ((monthlyPITI + monthlyDebts) / monthlyIncome) * 100 : 0;
-  
-  // Calculate qualification score
-  const qualificationScore = calculateQualificationScore(inputs);
-  
-  // Calculate risk score
-  const riskScore = calculateRiskScore(inputs, { loanToValueRatio, debtToIncomeRatio } as CalculatorOutputs);
-  
-  // Calculate approval probability
-  const approvalProbability = calculateApprovalProbability(qualificationScore, riskScore);
-  
-  // Calculate jumbo premium (assuming 0.5% higher than conforming)
-  const conformingRate = interestRate - 0.5;
-  const jumboPremium = calculateJumboPremium(loanAmount, interestRate, conformingRate, loanTerm);
-  
-  // Calculate conforming comparison
-  const conformingPayment = calculateMonthlyPayment(loanAmount, conformingRate, loanTerm);
-  const conformingComparison = monthlyPayment - conformingPayment;
-  
-  // Calculate requirements based on lender type
-  const requirements = LENDER_REQUIREMENTS[lenderType as keyof typeof LENDER_REQUIREMENTS] || LENDER_REQUIREMENTS['Traditional Bank'];
-  const marketAdjustment = MARKET_ADJUSTMENTS[marketConditions as keyof typeof MARKET_ADJUSTMENTS] || MARKET_ADJUSTMENTS['Normal'];
-  
-  const reserveRequirement = monthlyPITI * (requirements.minReserves + marketAdjustment.dtiAdjustment);
-  const incomeRequirement = monthlyPITI * (requirements.minDTI + marketAdjustment.dtiAdjustment) / 100;
-  const creditRequirement = requirements.minCredit + marketAdjustment.creditAdjustment;
-  const downPaymentRequirement = requirements.minDownPayment;
-  
-  // Generate recommendation
-  const recommendation = generateRecommendation(qualificationScore, riskScore, approvalProbability);
+  // Summary
+  const summary = {
+    totalLoanAmount: inputs.loanAmount,
+    monthlyPayment: totalMonthlyPayment,
+    totalLoanCost: totalPayments,
+    keyBenefits: [
+      'Higher loan amounts available',
+      'Flexible qualification criteria',
+      'Competitive rates for qualified borrowers',
+      'No PMI required for high LTV loans'
+    ],
+    keyRisks: riskFactors.slice(0, 3),
+    nextSteps: [
+      'Gather required documentation',
+      'Compare multiple lenders',
+      'Consider alternative loan structures',
+      'Evaluate refinancing opportunities'
+    ]
+  };
   
   return {
-    monthlyPayment: Math.round(monthlyPayment),
-    monthlyPITI: Math.round(monthlyPITI),
-    totalPayment: Math.round(totalPayment),
-    totalInterest: Math.round(totalInterest),
-    downPaymentPercent: Math.round(downPaymentPercent * 100) / 100,
-    loanToValueRatio: Math.round(loanToValueRatio * 100) / 100,
-    debtToIncomeRatio: Math.round(debtToIncomeRatio * 100) / 100,
-    frontEndDTI: Math.round(frontEndDTI * 100) / 100,
-    backEndDTI: Math.round(backEndDTI * 100) / 100,
-    qualificationScore,
-    riskScore,
-    approvalProbability,
-    jumboPremium,
-    conformingComparison: Math.round(conformingComparison),
-    reserveRequirement: Math.round(reserveRequirement),
-    incomeRequirement: Math.round(incomeRequirement),
-    creditRequirement,
-    downPaymentRequirement,
-    amortizationSchedule: 'Complete amortization schedule available',
-    paymentBreakdown: `Principal & Interest: $${Math.round(monthlyPayment)}, Taxes: $${Math.round(monthlyTaxes)}, Insurance: $${Math.round(monthlyInsurance)}, PMI: $${pmi}, HOA: $${hoaFees}`,
-    costAnalysis: `Total cost over ${loanTerm} years: $${Math.round(totalPayment).toLocaleString()}`,
-    qualificationAnalysis: `Qualification score: ${qualificationScore}/100, Risk score: ${riskScore}/100`,
-    recommendation,
-    jumboLoanAnalysis: 'Comprehensive jumbo loan analysis completed'
+    monthlyPayment,
+    annualPayment: totalMonthlyPayment * 12,
+    totalPayments,
+    totalInterest,
+    totalPrincipal,
+    conformingPortion,
+    jumboPortion,
+    jumboPremiumCost,
+    blendedRate,
+    qualificationStatus,
+    qualificationFactors,
+    qualificationRecommendations,
+    totalLoanCost: totalPayments,
+    costPerThousand,
+    effectiveRate,
+    breakEvenPoint,
+    conformingLoanComparison,
+    riskFactors,
+    riskMitigationStrategies,
+    overallRiskScore,
+    alternativeOptions,
+    refinancingAnalysis,
+    taxImplications,
+    recommendations,
+    summary
   };
 }
 
-export function generateJumboLoanAnalysis(inputs: CalculatorInputs, outputs: CalculatorOutputs): string {
-  return `# Jumbo Loan Analysis
+function analyzeQualification(inputs: JumboLoanInputs): 'qualified' | 'marginal' | 'not_qualified' {
+  let score = 0;
+  
+  // Credit score analysis
+  switch (inputs.creditScore) {
+    case 'excellent': score += 30; break;
+    case 'very_good': score += 25; break;
+    case 'good': score += 20; break;
+    case 'fair': score += 10; break;
+    case 'poor': score += 0; break;
+  }
+  
+  // Debt-to-income ratio analysis
+  if (inputs.debtToIncomeRatio <= 0.35) score += 25;
+  else if (inputs.debtToIncomeRatio <= 0.43) score += 20;
+  else if (inputs.debtToIncomeRatio <= 0.50) score += 10;
+  else score += 0;
+  
+  // Loan-to-value ratio analysis
+  if (inputs.loanToValueRatio <= 0.80) score += 20;
+  else if (inputs.loanToValueRatio <= 0.85) score += 15;
+  else if (inputs.loanToValueRatio <= 0.90) score += 10;
+  else score += 5;
+  
+  // Reserves analysis
+  if (inputs.reserves >= 12) score += 15;
+  else if (inputs.reserves >= 6) score += 10;
+  else if (inputs.reserves >= 3) score += 5;
+  else score += 0;
+  
+  // Employment analysis
+  if (inputs.employmentType === 'w2' && inputs.employmentLength >= 2) score += 10;
+  else if (inputs.employmentType === 'self_employed' && inputs.employmentLength >= 3) score += 8;
+  else if (inputs.employmentType === 'business_owner' && inputs.employmentLength >= 3) score += 6;
+  else score += 2;
+  
+  if (score >= 80) return 'qualified';
+  if (score >= 60) return 'marginal';
+  return 'not_qualified';
+}
 
-## Executive Summary
-**Recommendation:** ${outputs.recommendation}
+function identifyQualificationFactors(inputs: JumboLoanInputs): string[] {
+  const factors: string[] = [];
+  
+  if (inputs.creditScore === 'excellent' || inputs.creditScore === 'very_good') {
+    factors.push('Strong credit score');
+  } else if (inputs.creditScore === 'poor' || inputs.creditScore === 'fair') {
+    factors.push('Credit score may limit options');
+  }
+  
+  if (inputs.debtToIncomeRatio <= 0.35) {
+    factors.push('Low debt-to-income ratio');
+  } else if (inputs.debtToIncomeRatio > 0.43) {
+    factors.push('High debt-to-income ratio');
+  }
+  
+  if (inputs.loanToValueRatio <= 0.80) {
+    factors.push('Low loan-to-value ratio');
+  } else if (inputs.loanToValueRatio > 0.90) {
+    factors.push('High loan-to-value ratio');
+  }
+  
+  if (inputs.reserves >= 12) {
+    factors.push('Strong reserve position');
+  } else if (inputs.reserves < 6) {
+    factors.push('Limited reserves');
+  }
+  
+  if (inputs.employmentType === 'w2' && inputs.employmentLength >= 2) {
+    factors.push('Stable employment history');
+  } else if (inputs.employmentType === 'self_employed' || inputs.employmentType === 'business_owner') {
+    factors.push('Self-employed or business owner');
+  }
+  
+  if (inputs.liquidAssets > inputs.loanAmount * 0.1) {
+    factors.push('Strong liquid asset position');
+  }
+  
+  return factors;
+}
 
-**Approval Probability:** ${outputs.approvalProbability}%
-**Qualification Score:** ${outputs.qualificationScore}/100
-**Risk Score:** ${outputs.riskScore}/100
+function generateQualificationRecommendations(inputs: JumboLoanInputs): string[] {
+  const recommendations: string[] = [];
+  
+  if (inputs.creditScore === 'poor' || inputs.creditScore === 'fair') {
+    recommendations.push('Improve credit score before applying');
+  }
+  
+  if (inputs.debtToIncomeRatio > 0.43) {
+    recommendations.push('Reduce debt-to-income ratio');
+  }
+  
+  if (inputs.loanToValueRatio > 0.90) {
+    recommendations.push('Consider larger down payment');
+  }
+  
+  if (inputs.reserves < 6) {
+    recommendations.push('Build up cash reserves');
+  }
+  
+  if (inputs.employmentType === 'self_employed' || inputs.employmentType === 'business_owner') {
+    recommendations.push('Prepare detailed financial documentation');
+  }
+  
+  recommendations.push('Gather all required documentation');
+  recommendations.push('Consider working with a mortgage broker');
+  
+  return recommendations;
+}
 
-## Payment Overview
-- **Monthly Payment (P&I):** $${outputs.monthlyPayment.toLocaleString()}
-- **Monthly PITI:** $${outputs.monthlyPITI.toLocaleString()}
-- **Total Interest:** $${outputs.totalInterest.toLocaleString()}
-- **Total Cost:** $${outputs.totalPayment.toLocaleString()}
+function calculateBreakEvenPoint(inputs: JumboLoanInputs): number {
+  // Simplified break-even calculation
+  const monthlySavings = inputs.jumboPremium * inputs.jumboPortion / 12;
+  const closingCosts = inputs.loanAmount * 0.02; // 2% of loan amount
+  return Math.ceil(closingCosts / monthlySavings);
+}
 
-## Key Metrics
-- **Loan-to-Value Ratio:** ${outputs.loanToValueRatio}%
-- **Debt-to-Income Ratio:** ${outputs.debtToIncomeRatio}%
-- **Down Payment:** ${outputs.downPaymentPercent}%
-- **Jumbo Premium:** $${outputs.jumboPremium.toLocaleString()}
+function calculateConformingLoanComparison(inputs: JumboLoanInputs): {
+  conformingPayment: number;
+  jumboPayment: number;
+  paymentDifference: number;
+  totalCostDifference: number;
+  breakEvenMonths: number;
+} {
+  const conformingAmount = Math.min(inputs.loanAmount, inputs.conformingLimit);
+  const jumboAmount = Math.max(0, inputs.loanAmount - inputs.conformingLimit);
+  
+  const monthlyRate = inputs.interestRate / 12;
+  const totalPayments = inputs.loanTerm * 12;
+  
+  const conformingPayment = conformingAmount * 
+    (monthlyRate * Math.pow(1 + monthlyRate, totalPayments)) / 
+    (Math.pow(1 + monthlyRate, totalPayments) - 1);
+  
+  const jumboRate = inputs.interestRate + inputs.jumboPremium;
+  const jumboMonthlyRate = jumboRate / 12;
+  const jumboPayment = jumboAmount * 
+    (jumboMonthlyRate * Math.pow(1 + jumboMonthlyRate, totalPayments)) / 
+    (Math.pow(1 + jumboMonthlyRate, totalPayments) - 1);
+  
+  const paymentDifference = jumboPayment - conformingPayment;
+  const totalCostDifference = (jumboPayment - conformingPayment) * totalPayments;
+  const breakEvenMonths = Math.ceil(totalCostDifference / paymentDifference);
+  
+  return {
+    conformingPayment,
+    jumboPayment,
+    paymentDifference,
+    totalCostDifference,
+    breakEvenMonths
+  };
+}
 
-## Requirements Analysis
-- **Minimum Credit Score:** ${outputs.creditRequirement}
-- **Minimum Income:** $${outputs.incomeRequirement.toLocaleString()}/month
-- **Minimum Reserves:** $${outputs.reserveRequirement.toLocaleString()}
-- **Minimum Down Payment:** ${outputs.downPaymentRequirement}%
+function identifyRiskFactors(inputs: JumboLoanInputs): string[] {
+  const factors: string[] = [];
+  
+  if (inputs.creditScore === 'poor' || inputs.creditScore === 'fair') {
+    factors.push('Lower credit score');
+  }
+  
+  if (inputs.debtToIncomeRatio > 0.43) {
+    factors.push('High debt-to-income ratio');
+  }
+  
+  if (inputs.loanToValueRatio > 0.90) {
+    factors.push('High loan-to-value ratio');
+  }
+  
+  if (inputs.reserves < 6) {
+    factors.push('Limited cash reserves');
+  }
+  
+  if (inputs.employmentType === 'self_employed' || inputs.employmentType === 'business_owner') {
+    factors.push('Self-employed or business owner');
+  }
+  
+  if (inputs.loanType === 'adjustable') {
+    factors.push('Adjustable rate mortgage');
+  }
+  
+  if (inputs.jumboPortion > inputs.loanAmount * 0.5) {
+    factors.push('Large jumbo portion');
+  }
+  
+  if (inputs.marketConditions === 'challenging') {
+    factors.push('Challenging market conditions');
+  }
+  
+  if (inputs.rateEnvironment === 'rising') {
+    factors.push('Rising interest rate environment');
+  }
+  
+  return factors;
+}
 
-## Cost Comparison
-- **vs Conforming Loan:** +$${outputs.conformingComparison.toLocaleString()}/month
-- **Total Premium Cost:** $${outputs.jumboPremium.toLocaleString()}
+function generateRiskMitigationStrategies(inputs: JumboLoanInputs): string[] {
+  const strategies: string[] = [];
+  
+  strategies.push('Maintain strong credit score');
+  strategies.push('Keep debt-to-income ratio low');
+  strategies.push('Build adequate cash reserves');
+  strategies.push('Consider fixed-rate option');
+  
+  if (inputs.employmentType === 'self_employed' || inputs.employmentType === 'business_owner') {
+    strategies.push('Maintain consistent income documentation');
+  }
+  
+  if (inputs.loanType === 'adjustable') {
+    strategies.push('Consider rate caps and conversion options');
+  }
+  
+  strategies.push('Monitor market conditions');
+  strategies.push('Consider refinancing when rates improve');
+  
+  return strategies;
+}
 
-## Qualification Assessment
-${outputs.qualificationAnalysis}
+function calculateOverallRiskScore(inputs: JumboLoanInputs): number {
+  let score = 50; // Base score
+  
+  // Credit score impact
+  switch (inputs.creditScore) {
+    case 'excellent': score -= 10; break;
+    case 'very_good': score -= 5; break;
+    case 'good': break;
+    case 'fair': score += 10; break;
+    case 'poor': score += 20; break;
+  }
+  
+  // DTI impact
+  if (inputs.debtToIncomeRatio > 0.43) score += 15;
+  else if (inputs.debtToIncomeRatio > 0.35) score += 5;
+  
+  // LTV impact
+  if (inputs.loanToValueRatio > 0.90) score += 15;
+  else if (inputs.loanToValueRatio > 0.80) score += 5;
+  
+  // Reserves impact
+  if (inputs.reserves < 6) score += 10;
+  else if (inputs.reserves < 12) score += 5;
+  
+  // Employment impact
+  if (inputs.employmentType === 'self_employed' || inputs.employmentType === 'business_owner') {
+    score += 5;
+  }
+  
+  // Market conditions impact
+  if (inputs.marketConditions === 'challenging') score += 10;
+  if (inputs.rateEnvironment === 'rising') score += 5;
+  
+  return Math.min(Math.max(score, 1), 100);
+}
 
-## Payment Breakdown
-${outputs.paymentBreakdown}
+function calculateAlternativeOptions(inputs: JumboLoanInputs) {
+  const conformingMax = inputs.conformingLimit;
+  const monthlyRate = inputs.interestRate / 12;
+  const totalPayments = inputs.loanTerm * 12;
+  
+  const conformingPayment = conformingMax * 
+    (monthlyRate * Math.pow(1 + monthlyRate, totalPayments)) / 
+    (Math.pow(1 + monthlyRate, totalPayments) - 1);
+  
+  const conformingTotalCost = conformingPayment * totalPayments;
+  
+  // Piggyback loan (80/10/10 structure)
+  const firstMortgage = inputs.loanAmount * 0.8;
+  const secondMortgage = inputs.loanAmount * 0.1;
+  const downPayment = inputs.loanAmount * 0.1;
+  
+  const firstPayment = firstMortgage * 
+    (monthlyRate * Math.pow(1 + monthlyRate, totalPayments)) / 
+    (Math.pow(1 + monthlyRate, totalPayments) - 1);
+  
+  const secondRate = inputs.interestRate + 0.02; // 2% higher for second mortgage
+  const secondMonthlyRate = secondRate / 12;
+  const secondPayment = secondMortgage * 
+    (secondMonthlyRate * Math.pow(1 + secondMonthlyRate, totalPayments)) / 
+    (Math.pow(1 + secondMonthlyRate, totalPayments) - 1);
+  
+  const combinedPayment = firstPayment + secondPayment;
+  const combinedTotalCost = combinedPayment * totalPayments;
+  
+  return {
+    conformingLoan: {
+      maxAmount: conformingMax,
+      payment: conformingPayment,
+      totalCost: conformingTotalCost,
+      pros: ['Lower interest rate', 'No jumbo premium', 'Standard qualification'],
+      cons: ['Limited loan amount', 'May require larger down payment']
+    },
+    piggybackLoan: {
+      firstMortgage,
+      secondMortgage,
+      combinedPayment,
+      totalCost: combinedTotalCost,
+      pros: ['Avoid jumbo premium', 'Lower first mortgage rate', 'No PMI'],
+      cons: ['Higher second mortgage rate', 'Two loans to manage', 'Complex structure']
+    },
+    portfolioLoan: {
+      payment: inputs.loanAmount * 
+        (monthlyRate * Math.pow(1 + monthlyRate, totalPayments)) / 
+        (Math.pow(1 + monthlyRate, totalPayments) - 1),
+      totalCost: inputs.loanAmount * 
+        (monthlyRate * Math.pow(1 + monthlyRate, totalPayments)) / 
+        (Math.pow(1 + monthlyRate, totalPayments) - 1) * totalPayments,
+      pros: ['Flexible qualification', 'No jumbo premium', 'Portfolio lender benefits'],
+      cons: ['Higher interest rate', 'Limited availability', 'Less standardized']
+    }
+  };
+}
 
-## Cost Analysis
-${outputs.costAnalysis}
+function calculateRefinancingAnalysis(inputs: JumboLoanInputs): {
+  shouldConsiderRefinancing: boolean;
+  refinanceTriggers: string[];
+  refinanceBenefits: string[];
+  refinanceCosts: number;
+} {
+  const refinanceTriggers: string[] = [];
+  const refinanceBenefits: string[] = [];
+  
+  if (inputs.rateEnvironment === 'low') {
+    refinanceTriggers.push('Low interest rate environment');
+    refinanceBenefits.push('Lower monthly payments');
+  }
+  
+  if (inputs.creditScore === 'excellent' || inputs.creditScore === 'very_good') {
+    refinanceTriggers.push('Improved credit score');
+    refinanceBenefits.push('Better interest rate');
+  }
+  
+  if (inputs.loanToValueRatio < 0.80) {
+    refinanceTriggers.push('Improved loan-to-value ratio');
+    refinanceBenefits.push('Eliminate PMI');
+  }
+  
+  const refinanceCosts = inputs.loanAmount * 0.02; // 2% of loan amount
+  
+  return {
+    shouldConsiderRefinancing: refinanceTriggers.length > 0,
+    refinanceTriggers,
+    refinanceBenefits,
+    refinanceCosts
+  };
+}
 
-## Next Steps
-1. Review qualification requirements
-2. Consider improving credit score if needed
-3. Increase reserves if below requirement
-4. Compare with conforming loan options
-5. Consult with jumbo loan specialist`;
+function calculateTaxImplications(inputs: JumboLoanInputs, totalInterest: number): {
+  annualInterestDeduction: number;
+  estimatedTaxSavings: number;
+  netAfterTaxCost: number;
+  taxBenefitRatio: number;
+} {
+  const annualInterestDeduction = inputs.loanAmount * inputs.interestRate;
+  
+  // Assume 25% tax bracket
+  const taxRate = 0.25;
+  const estimatedTaxSavings = annualInterestDeduction * taxRate;
+  
+  const netAfterTaxCost = annualInterestDeduction - estimatedTaxSavings;
+  const taxBenefitRatio = estimatedTaxSavings / annualInterestDeduction;
+  
+  return {
+    annualInterestDeduction,
+    estimatedTaxSavings,
+    netAfterTaxCost,
+    taxBenefitRatio
+  };
+}
+
+function generateRecommendations(inputs: JumboLoanInputs, qualificationStatus: string, riskFactors: string[]): {
+  loanSuitability: 'not_suitable' | 'marginal' | 'suitable' | 'highly_suitable';
+  keyRecommendations: string[];
+  optimizationStrategies: string[];
+  riskWarnings: string[];
+} {
+  let loanSuitability: 'not_suitable' | 'marginal' | 'suitable' | 'highly_suitable' = 'suitable';
+  
+  if (qualificationStatus === 'not_qualified' || riskFactors.length > 5) {
+    loanSuitability = 'not_suitable';
+  } else if (qualificationStatus === 'marginal' || riskFactors.length > 3) {
+    loanSuitability = 'marginal';
+  } else if (qualificationStatus === 'qualified' && riskFactors.length <= 2) {
+    loanSuitability = 'highly_suitable';
+  }
+  
+  const keyRecommendations: string[] = [];
+  const optimizationStrategies: string[] = [];
+  const riskWarnings: string[] = [];
+  
+  if (qualificationStatus === 'qualified') {
+    keyRecommendations.push('Strong qualification profile for jumbo loan');
+  } else if (qualificationStatus === 'marginal') {
+    keyRecommendations.push('Consider improving qualification factors');
+  } else {
+    keyRecommendations.push('Consider alternative loan structures');
+  }
+  
+  if (inputs.jumboPortion > inputs.loanAmount * 0.5) {
+    keyRecommendations.push('Large jumbo portion - consider piggyback loan');
+  }
+  
+  optimizationStrategies.push('Compare multiple lenders');
+  optimizationStrategies.push('Consider rate lock options');
+  optimizationStrategies.push('Evaluate prepayment penalties');
+  optimizationStrategies.push('Review loan features and options');
+  
+  if (riskFactors.length > 0) {
+    riskWarnings.push('Monitor risk factors closely');
+  }
+  
+  if (inputs.loanType === 'adjustable') {
+    riskWarnings.push('Consider rate caps and conversion options');
+  }
+  
+  return {
+    loanSuitability,
+    keyRecommendations,
+    optimizationStrategies,
+    riskWarnings
+  };
 }

@@ -1,395 +1,776 @@
-import { CalculatorInputs, CalculatorOutputs } from '../../../types/calculator';
+import { LandlordInsuranceInputs, LandlordInsuranceOutputs } from './types';
 
-// Base rates per $1000 of coverage by state (simplified)
-const BASE_RATES: { [key: string]: number } = {
-  'California': 2.5, 'New York': 3.2, 'Texas': 2.1, 'Florida': 3.8, 'Illinois': 2.8,
-  'Pennsylvania': 2.3, 'Ohio': 2.0, 'Georgia': 2.4, 'Michigan': 2.6, 'North Carolina': 2.2,
-  'New Jersey': 3.0, 'Virginia': 2.3, 'Washington': 2.7, 'Arizona': 2.4, 'Massachusetts': 2.9,
-  'Tennessee': 2.1, 'Indiana': 2.0, 'Missouri': 2.2, 'Maryland': 2.5, 'Colorado': 2.6,
-  'Minnesota': 2.3, 'Wisconsin': 2.1, 'Alabama': 2.3, 'South Carolina': 2.4, 'Louisiana': 3.2,
-  'Kentucky': 2.1, 'Oregon': 2.5, 'Oklahoma': 2.2, 'Connecticut': 2.8, 'Utah': 2.3,
-  'Iowa': 2.0, 'Nevada': 2.6, 'Arkansas': 2.2, 'Mississippi': 2.4, 'Kansas': 2.1,
-  'New Mexico': 2.3, 'Nebraska': 2.0, 'West Virginia': 2.2, 'Idaho': 2.1, 'Hawaii': 3.5,
-  'New Hampshire': 2.4, 'Maine': 2.3, 'Montana': 2.2, 'Rhode Island': 2.7, 'Delaware': 2.4,
-  'South Dakota': 2.0, 'North Dakota': 2.0, 'Alaska': 3.0, 'Vermont': 2.3, 'Wyoming': 2.1
-};
-
-// Location factors
-const LOCATION_FACTORS = {
-  'Urban': 1.2, 'Suburban': 1.0, 'Rural': 0.9, 'Coastal': 1.4, 'Mountain': 1.1, 'Desert': 1.0
-};
-
-// Construction type factors
-const CONSTRUCTION_FACTORS = {
-  'Frame': 1.0, 'Brick': 0.9, 'Masonry': 0.95, 'Steel': 0.85, 'Concrete': 0.8, 'Mixed': 1.0
-};
-
-// Risk zone factors
-const RISK_ZONE_FACTORS = {
-  'Low': 0.9, 'Medium': 1.0, 'High': 1.3, 'Very High': 1.6
-};
-
-// Coverage level factors
-const COVERAGE_LEVEL_FACTORS = {
-  'Basic': 0.8, 'Standard': 1.0, 'Comprehensive': 1.3, 'Premium': 1.6
-};
-
-// Property type factors
-const PROPERTY_TYPE_FACTORS = {
-  'Single Family': 1.0, 'Multi-Family': 1.2, 'Condo': 0.9, 'Townhouse': 1.0, 'Apartment Building': 1.3, 'Commercial': 1.4
-};
-
-// Tenant type factors
-const TENANT_TYPE_FACTORS = {
-  'Residential': 1.0, 'Student': 1.3, 'Section 8': 1.2, 'Corporate': 0.9, 'Short-term': 1.4, 'Vacant': 1.1
-};
-
-// Claims history factors
-const CLAIMS_HISTORY_FACTORS = {
-  'None': 1.0, '1-2 Claims': 1.2, '3-5 Claims': 1.5, '5+ Claims': 2.0
-};
-
-// Insurance score factors
-const INSURANCE_SCORE_FACTORS = {
-  'Excellent': 0.8, 'Good': 1.0, 'Fair': 1.3, 'Poor': 1.8
-};
-
-// Discount percentages
-const DISCOUNT_PERCENTAGES = {
-  'multiPolicy': { 'None': 0, 'Auto': 10, 'Umbrella': 5, 'Life': 5, 'Multiple': 15 },
-  'loyalty': { '0': 0, '1': 2, '2': 4, '3': 6, '4': 8, '5': 10 },
-  'paymentMethod': { 'Monthly': 0, 'Quarterly': 2, 'Semi-Annual': 4, 'Annual': 8 },
-  'paperless': { 'Yes': 3, 'No': 0 },
-  'autoPay': { 'Yes': 2, 'No': 0 },
-  'newCustomer': { 'Yes': 5, 'No': 0 },
-  'bundling': { 'None': 0, 'Auto': 8, 'Umbrella': 4, 'Life': 4, 'Multiple': 12 },
-  'safety': { 'None': 0, 'Basic': 5, 'Advanced': 10, 'Premium': 15 },
-  'claimsFree': { 'None': 0, '1-3 Years': 5, '3-5 Years': 10, '5+ Years': 15 }
-};
-
-// Security feature discounts
-const SECURITY_FEATURE_DISCOUNTS = {
-  'Alarm System': 5, 'Security Cameras': 3, 'Deadbolts': 2, 'Fire Sprinklers': 8,
-  'Smoke Detectors': 2, 'Carbon Monoxide Detectors': 2, 'Gated Community': 4, 'Doorman': 3
-};
-
-// Helper function to calculate risk score
-function calculateRiskScore(inputs: CalculatorInputs): number {
-  let riskScore = 50; // Base risk score
-
-  // Property type risk
-  if (inputs.propertyType) {
-    const propertyRisk = {
-      'Single Family': 0, 'Multi-Family': 10, 'Condo': -5, 'Townhouse': 0, 'Apartment Building': 15, 'Commercial': 20
-    }[inputs.propertyType] || 0;
-    riskScore += propertyRisk;
-  }
-
-  // Location risk
-  if (inputs.location) {
-    const locationRisk = {
-      'Urban': 10, 'Suburban': 0, 'Rural': -5, 'Coastal': 20, 'Mountain': 5, 'Desert': 0
-    }[inputs.location] || 0;
-    riskScore += locationRisk;
-  }
-
-  // Risk zone
-  if (inputs.riskZone) {
-    const zoneRisk = {
-      'Low': -10, 'Medium': 0, 'High': 15, 'Very High': 30
-    }[inputs.riskZone] || 0;
-    riskScore += zoneRisk;
-  }
-
-  // Construction type
-  if (inputs.constructionType) {
-    const constructionRisk = {
-      'Frame': 10, 'Brick': 0, 'Masonry': 5, 'Steel': -5, 'Concrete': -10, 'Mixed': 5
-    }[inputs.constructionType] || 0;
-    riskScore += constructionRisk;
-  }
-
-  // Tenant type
-  if (inputs.tenantType) {
-    const tenantRisk = {
-      'Residential': 0, 'Student': 15, 'Section 8': 10, 'Corporate': -5, 'Short-term': 20, 'Vacant': 5
-    }[inputs.tenantType] || 0;
-    riskScore += tenantRisk;
-  }
-
-  // Claims history
-  if (inputs.claimsHistory) {
-    const claimsRisk = {
-      'None': -10, '1-2 Claims': 10, '3-5 Claims': 25, '5+ Claims': 40
-    }[inputs.claimsHistory] || 0;
-    riskScore += claimsRisk;
-  }
-
-  // Age of property
-  if (inputs.yearBuilt) {
-    const currentYear = new Date().getFullYear();
-    const age = currentYear - inputs.yearBuilt;
-    if (age > 50) riskScore += 20;
-    else if (age > 30) riskScore += 10;
-    else if (age > 20) riskScore += 5;
-    else if (age < 5) riskScore -= 5;
-  }
-
-  return Math.max(0, Math.min(100, riskScore));
-}
-
-// Helper function to calculate premium score
-function calculatePremiumScore(annualPremium: number, propertyValue: number): number {
-  const premiumToValueRatio = (annualPremium / propertyValue) * 100;
+export function calculateLandlordInsurance(inputs: LandlordInsuranceInputs): LandlordInsuranceOutputs {
+  // Base premium calculation
+  const baseRate = 0.004; // Base rate per $1000 of dwelling coverage (higher than homeowners)
+  const dwellingPremium = (inputs.dwellingCoverage / 1000) * baseRate;
   
-  if (premiumToValueRatio < 0.5) return 90;
-  if (premiumToValueRatio < 0.8) return 80;
-  if (premiumToValueRatio < 1.2) return 70;
-  if (premiumToValueRatio < 1.8) return 60;
-  if (premiumToValueRatio < 2.5) return 50;
-  return 30;
-}
-
-// Helper function to calculate coverage score
-function calculateCoverageScore(totalCoverage: number, propertyValue: number, replacementCost: number): number {
-  const targetCoverage = replacementCost || propertyValue * 0.9;
-  const coverageRatio = totalCoverage / targetCoverage;
+  // Personal property premium (typically 50-70% of dwelling coverage)
+  const personalPropertyRate = 0.0025;
+  const personalPropertyPremium = (inputs.personalPropertyCoverage / 1000) * personalPropertyRate;
   
-  if (coverageRatio >= 1.0) return 100;
-  if (coverageRatio >= 0.9) return 90;
-  if (coverageRatio >= 0.8) return 80;
-  if (coverageRatio >= 0.7) return 70;
-  if (coverageRatio >= 0.6) return 60;
-  return 40;
-}
-
-// Helper function to calculate overall score
-function calculateOverallScore(riskScore: number, premiumScore: number, coverageScore: number): number {
-  const weightedScore = (riskScore * 0.3) + (premiumScore * 0.4) + (coverageScore * 0.3);
-  return Math.round(weightedScore);
-}
-
-// Helper function to generate recommendation
-function generateRecommendation(overallScore: number, riskScore: number, premiumScore: number): string {
-  if (overallScore >= 80) {
-    return 'Excellent policy with competitive pricing and comprehensive coverage.';
-  } else if (overallScore >= 70) {
-    return 'Good policy with reasonable pricing and adequate coverage.';
-  } else if (overallScore >= 60) {
-    return 'Acceptable policy but consider shopping around for better rates.';
-  } else {
-    return 'Policy needs improvement. Consider adjusting coverage or shopping for alternatives.';
-  }
-}
-
-export function calculateLandlordInsurance(inputs: CalculatorInputs): CalculatorOutputs {
-  // Extract inputs with defaults
-  const {
-    propertyValue = 0,
-    replacementCost = propertyValue * 0.9,
-    annualRent = 0,
-    propertyType = 'Single Family',
-    constructionType = 'Frame',
-    yearBuilt = 2000,
-    squareFootage = 2000,
-    numberOfUnits = 1,
-    location = 'Suburban',
-    state = 'California',
-    riskZone = 'Low',
-    coverageLevel = 'Standard',
-    liabilityLimit = 300000,
-    medicalPayments = 5000,
-    lossOfRent = 12000,
-    personalProperty = 5000,
-    deductible = 1000,
-    securityFeatures = [],
-    tenantType = 'Residential',
-    occupancyRate = 95,
-    claimsHistory = 'None',
-    creditScore = 750,
-    insuranceScore = 'Good',
-    multiPolicyDiscount = 'None',
-    loyaltyDiscount = 0,
-    paymentMethod = 'Monthly',
-    paperlessDiscount = 'No',
-    autoPayDiscount = 'No',
-    newCustomerDiscount = 'No',
-    bundlingDiscount = 'None',
-    safetyDiscount = 'None',
-    claimsFreeDiscount = 'None'
-  } = inputs;
-
-  // Calculate base premium
-  const baseRate = BASE_RATES[state] || 2.5;
-  const basePremium = (propertyValue * baseRate / 1000) + (squareFootage * 0.5);
-
-  // Apply risk factors
-  const locationFactor = LOCATION_FACTORS[location as keyof typeof LOCATION_FACTORS] || 1.0;
-  const constructionFactor = CONSTRUCTION_FACTORS[constructionType as keyof typeof CONSTRUCTION_FACTORS] || 1.0;
-  const riskZoneFactor = RISK_ZONE_FACTORS[riskZone as keyof typeof RISK_ZONE_FACTORS] || 1.0;
-  const propertyTypeFactor = PROPERTY_TYPE_FACTORS[propertyType as keyof typeof PROPERTY_TYPE_FACTORS] || 1.0;
-  const tenantTypeFactor = TENANT_TYPE_FACTORS[tenantType as keyof typeof TENANT_TYPE_FACTORS] || 1.0;
-  const claimsHistoryFactor = CLAIMS_HISTORY_FACTORS[claimsHistory as keyof typeof CLAIMS_HISTORY_FACTORS] || 1.0;
-  const insuranceScoreFactor = INSURANCE_SCORE_FACTORS[insuranceScore as keyof typeof INSURANCE_SCORE_FACTORS] || 1.0;
-
-  // Calculate risk-adjusted premium
-  let riskAdjustedPremium = basePremium * locationFactor * constructionFactor * riskZoneFactor * 
-                           propertyTypeFactor * tenantTypeFactor * claimsHistoryFactor * insuranceScoreFactor;
-
-  // Apply coverage level factor
-  const coverageLevelFactor = COVERAGE_LEVEL_FACTORS[coverageLevel as keyof typeof COVERAGE_LEVEL_FACTORS] || 1.0;
-  let coverageAdjustedPremium = riskAdjustedPremium * coverageLevelFactor;
-
-  // Apply liability factor
-  const liabilityFactor = 1 + (liabilityLimit / 1000000) * 0.2;
-  coverageAdjustedPremium *= liabilityFactor;
-
+  // Liability premium (typically $1-3 per $1000 of coverage)
+  const liabilityRate = 0.0025;
+  const liabilityPremium = (inputs.liabilityCoverage / 1000) * liabilityRate;
+  
+  // Medical payments premium (typically $0.50-1.50 per $1000 of coverage)
+  const medicalPaymentsRate = 0.0015;
+  const medicalPaymentsPremium = (inputs.medicalPaymentsCoverage / 1000) * medicalPaymentsRate;
+  
+  // Loss of rents premium (typically 10-20% of annual rent)
+  const lossOfRentsRate = 0.15;
+  const lossOfRentsPremium = inputs.annualRent * lossOfRentsRate;
+  
+  // Additional living expenses premium (typically 20-30% of dwelling premium)
+  const additionalLivingExpensesPremium = dwellingPremium * 0.25;
+  
   // Calculate discounts
-  let totalDiscount = 0;
-
-  // Multi-policy discount
-  totalDiscount += DISCOUNT_PERCENTAGES.multiPolicy[multiPolicyDiscount as keyof typeof DISCOUNT_PERCENTAGES.multiPolicy] || 0;
-
-  // Loyalty discount
-  const loyaltyYears = Math.min(loyaltyDiscount, 5);
-  totalDiscount += DISCOUNT_PERCENTAGES.loyalty[loyaltyYears.toString() as keyof typeof DISCOUNT_PERCENTAGES.loyalty] || 0;
-
-  // Payment method discount
-  totalDiscount += DISCOUNT_PERCENTAGES.paymentMethod[paymentMethod as keyof typeof DISCOUNT_PERCENTAGES.paymentMethod] || 0;
-
-  // Paperless discount
-  totalDiscount += DISCOUNT_PERCENTAGES.paperless[paperlessDiscount as keyof typeof DISCOUNT_PERCENTAGES.paperless] || 0;
-
-  // Auto-pay discount
-  totalDiscount += DISCOUNT_PERCENTAGES.autoPay[autoPayDiscount as keyof typeof DISCOUNT_PERCENTAGES.autoPay] || 0;
-
-  // New customer discount
-  totalDiscount += DISCOUNT_PERCENTAGES.newCustomer[newCustomerDiscount as keyof typeof DISCOUNT_PERCENTAGES.newCustomer] || 0;
-
-  // Bundling discount
-  totalDiscount += DISCOUNT_PERCENTAGES.bundling[bundlingDiscount as keyof typeof DISCOUNT_PERCENTAGES.bundling] || 0;
-
-  // Safety discount
-  totalDiscount += DISCOUNT_PERCENTAGES.safety[safetyDiscount as keyof typeof DISCOUNT_PERCENTAGES.safety] || 0;
-
-  // Claims-free discount
-  totalDiscount += DISCOUNT_PERCENTAGES.claimsFree[claimsFreeDiscount as keyof typeof DISCOUNT_PERCENTAGES.claimsFree] || 0;
-
-  // Security features discount
-  if (Array.isArray(securityFeatures)) {
-    securityFeatures.forEach(feature => {
-      totalDiscount += SECURITY_FEATURE_DISCOUNTS[feature as keyof typeof SECURITY_FEATURE_DISCOUNTS] || 0;
-    });
-  }
-
-  // Cap total discount at 40%
-  totalDiscount = Math.min(totalDiscount, 40);
-
-  // Calculate final premium
-  const annualPremium = coverageAdjustedPremium * (1 - totalDiscount / 100);
+  const multiPolicyDiscount = inputs.multiPolicyDiscount ? dwellingPremium * 0.15 : 0;
+  const securitySystemDiscount = inputs.securitySystemDiscount ? dwellingPremium * 0.05 : 0;
+  const smokeDetectorDiscount = inputs.smokeDetectorDiscount ? dwellingPremium * 0.02 : 0;
+  const deadboltDiscount = inputs.deadboltDiscount ? dwellingPremium * 0.02 : 0;
+  const newHomeDiscount = inputs.newHomeDiscount ? dwellingPremium * 0.10 : 0;
+  const claimsFreeDiscount = inputs.claimsFreeDiscount ? dwellingPremium * 0.10 : 0;
+  const loyaltyDiscount = inputs.loyaltyDiscount ? dwellingPremium * 0.05 : 0;
+  const paperlessDiscount = inputs.paperlessDiscount ? dwellingPremium * 0.02 : 0;
+  const autopayDiscount = inputs.autopayDiscount ? dwellingPremium * 0.02 : 0;
+  
+  const totalDiscounts = multiPolicyDiscount + securitySystemDiscount + smokeDetectorDiscount + 
+                        deadboltDiscount + newHomeDiscount + claimsFreeDiscount + 
+                        loyaltyDiscount + paperlessDiscount + autopayDiscount;
+  
+  // Risk adjustments
+  const locationRiskAdjustment = calculateLocationRiskAdjustment(inputs);
+  const propertyRiskAdjustment = calculatePropertyRiskAdjustment(inputs);
+  const landlordRiskAdjustment = calculateLandlordRiskAdjustment(inputs);
+  const rentalRiskAdjustment = calculateRentalRiskAdjustment(inputs);
+  const totalRiskAdjustments = locationRiskAdjustment + propertyRiskAdjustment + 
+                              landlordRiskAdjustment + rentalRiskAdjustment;
+  
+  // Calculate base premium
+  const basePremium = dwellingPremium + personalPropertyPremium + liabilityPremium + 
+                     medicalPaymentsPremium + lossOfRentsPremium + additionalLivingExpensesPremium;
+  
+  // Apply discounts and risk adjustments
+  const adjustedPremium = basePremium - totalDiscounts + totalRiskAdjustments;
+  
+  // Calculate payment frequencies
+  const annualPremium = Math.max(adjustedPremium, 500); // Minimum premium for landlord insurance
   const monthlyPremium = annualPremium / 12;
-
-  // Calculate coverage amounts
-  const dwellingCoverage = replacementCost;
-  const liabilityCoverage = liabilityLimit;
-  const medicalPaymentsCoverage = medicalPayments;
-  const lossOfRentCoverage = lossOfRent;
-  const personalPropertyCoverage = personalProperty;
-  const totalCoverage = dwellingCoverage + liabilityCoverage + medicalPaymentsCoverage + 
-                       lossOfRentCoverage + personalPropertyCoverage;
-
-  // Calculate ratios
-  const coverageToValueRatio = (totalCoverage / propertyValue) * 100;
-  const premiumToRentRatio = annualRent > 0 ? (annualPremium / annualRent) * 100 : 0;
-
-  // Calculate scores
-  const riskScore = calculateRiskScore(inputs);
-  const premiumScore = calculatePremiumScore(annualPremium, propertyValue);
-  const coverageScore = calculateCoverageScore(totalCoverage, propertyValue, replacementCost);
-  const overallScore = calculateOverallScore(riskScore, premiumScore, coverageScore);
-
-  // Generate recommendation
-  const recommendation = generateRecommendation(overallScore, riskScore, premiumScore);
-
+  const quarterlyPremium = annualPremium / 4;
+  const semiannualPremium = annualPremium / 2;
+  
+  // Coverage analysis
+  const coverageAdequacy = analyzeCoverageAdequacy(inputs);
+  const recommendedDwellingCoverage = calculateRecommendedDwellingCoverage(inputs);
+  const recommendedPersonalPropertyCoverage = recommendedDwellingCoverage * 0.6;
+  const recommendedLiabilityCoverage = Math.max(inputs.liabilityCoverage, 500000); // Higher for landlords
+  const recommendedLossOfRentsCoverage = inputs.annualRent * 1.2; // 120% of annual rent
+  
+  // Risk assessment
+  const overallRiskScore = calculateOverallRiskScore(inputs);
+  const riskFactors = identifyRiskFactors(inputs);
+  const riskMitigationRecommendations = generateRiskMitigationRecommendations(inputs);
+  
+  // Cost analysis
+  const costPerThousand = (annualPremium / inputs.dwellingCoverage) * 1000;
+  const premiumToValueRatio = annualPremium / inputs.propertyValue;
+  const premiumToRentRatio = annualPremium / inputs.annualRent;
+  
+  // Deductible impact analysis
+  const deductibleImpact = calculateDeductibleImpact(inputs, annualPremium);
+  
+  // Rental income analysis
+  const rentalIncomeAnalysis = calculateRentalIncomeAnalysis(inputs, annualPremium);
+  
+  // Generate recommendations
+  const coverageRecommendations = generateCoverageRecommendations(inputs);
+  const discountRecommendations = generateDiscountRecommendations(inputs);
+  const riskReductionRecommendations = generateRiskReductionRecommendations(inputs);
+  const policyOptimizationRecommendations = generatePolicyOptimizationRecommendations(inputs);
+  
+  // Market comparison
+  const marketComparison = calculateMarketComparison(annualPremium, inputs.propertyValue);
+  
+  // Summary
+  const summary = {
+    totalAnnualCost: annualPremium,
+    totalMonthlyCost: monthlyPremium,
+    keyBenefits: [
+      'Comprehensive property protection',
+      'Liability coverage for rental activities',
+      'Loss of rents coverage',
+      'Landlord-specific protections'
+    ],
+    keyRisks: riskFactors.slice(0, 3),
+    nextSteps: [
+      'Review coverage limits',
+      'Consider additional endorsements',
+      'Shop for competitive rates',
+      'Implement risk mitigation measures'
+    ]
+  };
+  
   return {
-    annualPremium: Math.round(annualPremium),
-    monthlyPremium: Math.round(monthlyPremium),
-    dwellingCoverage: Math.round(dwellingCoverage),
-    liabilityCoverage: Math.round(liabilityCoverage),
-    medicalPaymentsCoverage: Math.round(medicalPaymentsCoverage),
-    lossOfRentCoverage: Math.round(lossOfRentCoverage),
-    personalPropertyCoverage: Math.round(personalPropertyCoverage),
-    totalCoverage: Math.round(totalCoverage),
-    coverageToValueRatio: Math.round(coverageToValueRatio * 100) / 100,
-    premiumToRentRatio: Math.round(premiumToRentRatio * 100) / 100,
-    riskScore,
-    premiumScore,
-    coverageScore,
-    overallScore,
-    recommendation,
-    coverageBreakdown: `Dwelling: $${Math.round(dwellingCoverage).toLocaleString()}, Liability: $${Math.round(liabilityCoverage).toLocaleString()}, Medical: $${Math.round(medicalPaymentsCoverage).toLocaleString()}, Loss of Rent: $${Math.round(lossOfRentCoverage).toLocaleString()}, Personal Property: $${Math.round(personalPropertyCoverage).toLocaleString()}`,
-    discountBreakdown: `Total discount: ${totalDiscount}% (Multi-policy: ${DISCOUNT_PERCENTAGES.multiPolicy[multiPolicyDiscount as keyof typeof DISCOUNT_PERCENTAGES.multiPolicy] || 0}%, Loyalty: ${DISCOUNT_PERCENTAGES.loyalty[Math.min(loyaltyDiscount, 5).toString() as keyof typeof DISCOUNT_PERCENTAGES.loyalty] || 0}%, Payment: ${DISCOUNT_PERCENTAGES.paymentMethod[paymentMethod as keyof typeof DISCOUNT_PERCENTAGES.paymentMethod] || 0}%)`,
-    riskAnalysis: `Risk score: ${riskScore}/100. Factors: ${location} location (${locationFactor}x), ${constructionType} construction (${constructionFactor}x), ${riskZone} risk zone (${riskZoneFactor}x)`,
-    costAnalysis: `Annual premium: $${Math.round(annualPremium).toLocaleString()}, Monthly: $${Math.round(monthlyPremium).toLocaleString()}, Premium to rent ratio: ${Math.round(premiumToRentRatio * 100) / 100}%`,
-    comparisonAnalysis: `Market comparison: Premium score ${premiumScore}/100, Coverage score ${coverageScore}/100, Overall score ${overallScore}/100`,
-    landlordInsuranceAnalysis: 'Comprehensive landlord insurance analysis completed'
+    basePremium,
+    dwellingPremium,
+    personalPropertyPremium,
+    liabilityPremium,
+    medicalPaymentsPremium,
+    lossOfRentsPremium,
+    additionalLivingExpensesPremium,
+    multiPolicyDiscount,
+    securitySystemDiscount,
+    smokeDetectorDiscount,
+    deadboltDiscount,
+    newHomeDiscount,
+    claimsFreeDiscount,
+    loyaltyDiscount,
+    paperlessDiscount,
+    autopayDiscount,
+    totalDiscounts,
+    locationRiskAdjustment,
+    propertyRiskAdjustment,
+    landlordRiskAdjustment,
+    rentalRiskAdjustment,
+    totalRiskAdjustments,
+    annualPremium,
+    monthlyPremium,
+    quarterlyPremium,
+    semiannualPremium,
+    coverageAdequacy,
+    recommendedDwellingCoverage,
+    recommendedPersonalPropertyCoverage,
+    recommendedLiabilityCoverage,
+    recommendedLossOfRentsCoverage,
+    overallRiskScore,
+    riskFactors,
+    riskMitigationRecommendations,
+    costPerThousand,
+    premiumToValueRatio,
+    premiumToRentRatio,
+    deductibleImpact,
+    rentalIncomeAnalysis,
+    coverageRecommendations,
+    discountRecommendations,
+    riskReductionRecommendations,
+    policyOptimizationRecommendations,
+    marketComparison,
+    summary
   };
 }
 
-export function generateLandlordInsuranceAnalysis(inputs: CalculatorInputs, outputs: CalculatorOutputs): string {
-  return `# Landlord Insurance Analysis
+function calculateLocationRiskAdjustment(inputs: LandlordInsuranceInputs): number {
+  let adjustment = 0;
+  
+  // Flood zone adjustment
+  switch (inputs.floodZone) {
+    case 'low_risk':
+      adjustment += 0;
+      break;
+    case 'moderate_risk':
+      adjustment += 75;
+      break;
+    case 'high_risk':
+      adjustment += 250;
+      break;
+    case 'very_high_risk':
+      adjustment += 600;
+      break;
+  }
+  
+  // Earthquake risk adjustment
+  switch (inputs.earthquakeRisk) {
+    case 'low':
+      adjustment += 0;
+      break;
+    case 'moderate':
+      adjustment += 125;
+      break;
+    case 'high':
+      adjustment += 350;
+      break;
+    case 'very_high':
+      adjustment += 700;
+      break;
+  }
+  
+  // Wildfire risk adjustment
+  switch (inputs.wildfireRisk) {
+    case 'low':
+      adjustment += 0;
+      break;
+    case 'moderate':
+      adjustment += 100;
+      break;
+    case 'high':
+      adjustment += 250;
+      break;
+    case 'very_high':
+      adjustment += 500;
+      break;
+  }
+  
+  // Crime rate adjustment
+  switch (inputs.crimeRate) {
+    case 'low':
+      adjustment += 0;
+      break;
+    case 'moderate':
+      adjustment += 50;
+      break;
+    case 'high':
+      adjustment += 125;
+      break;
+    case 'very_high':
+      adjustment += 250;
+      break;
+  }
+  
+  // Distance to fire station adjustment
+  if (inputs.distanceToFireStation > 5) {
+    adjustment += 150;
+  } else if (inputs.distanceToFireStation > 2) {
+    adjustment += 75;
+  }
+  
+  return adjustment;
+}
 
-## Executive Summary
-**Recommendation:** ${outputs.recommendation}
+function calculatePropertyRiskAdjustment(inputs: LandlordInsuranceInputs): number {
+  let adjustment = 0;
+  
+  // Property age adjustment
+  if (inputs.propertyAge > 50) {
+    adjustment += 300;
+  } else if (inputs.propertyAge > 30) {
+    adjustment += 150;
+  } else if (inputs.propertyAge > 15) {
+    adjustment += 75;
+  }
+  
+  // Construction type adjustment
+  switch (inputs.constructionType) {
+    case 'frame':
+      adjustment += 150;
+      break;
+    case 'brick':
+      adjustment += 0;
+      break;
+    case 'stone':
+      adjustment += 0;
+      break;
+    case 'stucco':
+      adjustment += 50;
+      break;
+    case 'concrete':
+      adjustment += 0;
+      break;
+    case 'steel':
+      adjustment += 0;
+      break;
+  }
+  
+  // Roof type adjustment
+  switch (inputs.roofType) {
+    case 'asphalt_shingle':
+      adjustment += 0;
+      break;
+    case 'metal':
+      adjustment += 0;
+      break;
+    case 'tile':
+      adjustment += 0;
+      break;
+    case 'slate':
+      adjustment += 0;
+      break;
+    case 'wood_shake':
+      adjustment += 200;
+      break;
+    case 'flat':
+      adjustment += 100;
+      break;
+  }
+  
+  // Additional features adjustment
+  if (inputs.swimmingPool) adjustment += 150;
+  if (inputs.trampoline) adjustment += 100;
+  if (inputs.aggressiveDog) adjustment += 200;
+  if (inputs.homeBusiness) adjustment += 300;
+  if (inputs.vacantProperty) adjustment += 500;
+  if (inputs.shortTermRental) adjustment += 400;
+  if (inputs.furnishedRental) adjustment += 200;
+  
+  return adjustment;
+}
 
-**Overall Score:** ${outputs.overallScore}/100
-**Risk Score:** ${outputs.riskScore}/100
-**Premium Score:** ${outputs.premiumScore}/100
-**Coverage Score:** ${outputs.coverageScore}/100
+function calculateLandlordRiskAdjustment(inputs: LandlordInsuranceInputs): number {
+  let adjustment = 0;
+  
+  // Credit score adjustment
+  switch (inputs.creditScore) {
+    case 'excellent':
+      adjustment -= 75;
+      break;
+    case 'very_good':
+      adjustment -= 50;
+      break;
+    case 'good':
+      adjustment += 0;
+      break;
+    case 'fair':
+      adjustment += 150;
+      break;
+    case 'poor':
+      adjustment += 350;
+      break;
+  }
+  
+  // Claims history adjustment
+  if (inputs.claimsHistory > 3) {
+    adjustment += 500;
+  } else if (inputs.claimsHistory > 1) {
+    adjustment += 250;
+  } else if (inputs.claimsHistory === 1) {
+    adjustment += 125;
+  }
+  
+  // Insurance score adjustment
+  switch (inputs.insuranceScore) {
+    case 'excellent':
+      adjustment -= 50;
+      break;
+    case 'very_good':
+      adjustment -= 25;
+      break;
+    case 'good':
+      adjustment += 0;
+      break;
+    case 'fair':
+      adjustment += 75;
+      break;
+    case 'poor':
+      adjustment += 200;
+      break;
+  }
+  
+  // Landlord experience adjustment
+  if (inputs.landlordExperience < 1) {
+    adjustment += 200;
+  } else if (inputs.landlordExperience < 3) {
+    adjustment += 100;
+  } else if (inputs.landlordExperience > 10) {
+    adjustment -= 50;
+  }
+  
+  // Number of properties adjustment
+  if (inputs.numberOfProperties > 10) {
+    adjustment += 100;
+  } else if (inputs.numberOfProperties > 5) {
+    adjustment += 50;
+  }
+  
+  return adjustment;
+}
 
-## Premium Overview
-- **Annual Premium:** $${outputs.annualPremium.toLocaleString()}
-- **Monthly Premium:** $${outputs.monthlyPremium.toLocaleString()}
-- **Premium to Rent Ratio:** ${outputs.premiumToRentRatio}%
+function calculateRentalRiskAdjustment(inputs: LandlordInsuranceInputs): number {
+  let adjustment = 0;
+  
+  // Occupancy rate adjustment
+  if (inputs.occupancyRate < 70) {
+    adjustment += 200;
+  } else if (inputs.occupancyRate < 85) {
+    adjustment += 100;
+  } else if (inputs.occupancyRate > 95) {
+    adjustment -= 50;
+  }
+  
+  // Average tenant length adjustment
+  if (inputs.averageTenantLength < 6) {
+    adjustment += 150;
+  } else if (inputs.averageTenantLength < 12) {
+    adjustment += 75;
+  } else if (inputs.averageTenantLength > 24) {
+    adjustment -= 25;
+  }
+  
+  // Tenant screening adjustment
+  if (!inputs.tenantScreening) {
+    adjustment += 100;
+  }
+  
+  // Lease agreement adjustment
+  if (!inputs.leaseAgreement) {
+    adjustment += 150;
+  }
+  
+  // Security deposit adjustment
+  if (inputs.securityDeposit < inputs.monthlyRent) {
+    adjustment += 75;
+  } else if (inputs.securityDeposit > inputs.monthlyRent * 2) {
+    adjustment -= 25;
+  }
+  
+  // Risk management adjustments
+  if (!inputs.propertyManagement) {
+    adjustment += 100;
+  }
+  
+  if (!inputs.regularInspections) {
+    adjustment += 75;
+  }
+  
+  if (!inputs.maintenanceProgram) {
+    adjustment += 50;
+  }
+  
+  if (!inputs.tenantInsurance) {
+    adjustment += 100;
+  }
+  
+  return adjustment;
+}
 
-## Coverage Breakdown
-- **Dwelling Coverage:** $${outputs.dwellingCoverage.toLocaleString()}
-- **Liability Coverage:** $${outputs.liabilityCoverage.toLocaleString()}
-- **Medical Payments:** $${outputs.medicalPaymentsCoverage.toLocaleString()}
-- **Loss of Rent:** $${outputs.lossOfRentCoverage.toLocaleString()}
-- **Personal Property:** $${outputs.personalPropertyCoverage.toLocaleString()}
-- **Total Coverage:** $${outputs.totalCoverage.toLocaleString()}
+function analyzeCoverageAdequacy(inputs: LandlordInsuranceInputs): 'inadequate' | 'adequate' | 'excessive' {
+  const dwellingRatio = inputs.dwellingCoverage / inputs.propertyValue;
+  const personalPropertyRatio = inputs.personalPropertyCoverage / inputs.dwellingCoverage;
+  const liabilityRatio = inputs.liabilityCoverage / 500000; // Minimum recommended for landlords
+  
+  if (dwellingRatio < 0.8 || personalPropertyRatio < 0.5 || liabilityRatio < 1) {
+    return 'inadequate';
+  } else if (dwellingRatio > 1.2 || personalPropertyRatio > 0.8 || liabilityRatio > 2) {
+    return 'excessive';
+  } else {
+    return 'adequate';
+  }
+}
 
-## Key Metrics
-- **Coverage to Value Ratio:** ${outputs.coverageToValueRatio}%
-- **Premium to Rent Ratio:** ${outputs.premiumToRentRatio}%
+function calculateRecommendedDwellingCoverage(inputs: LandlordInsuranceInputs): number {
+  // Base recommendation on property value with construction cost multiplier
+  const constructionCostMultiplier = 1.25; // 25% above market value for replacement cost
+  return inputs.propertyValue * constructionCostMultiplier;
+}
 
-## Risk Analysis
-${outputs.riskAnalysis}
+function calculateOverallRiskScore(inputs: LandlordInsuranceInputs): number {
+  let score = 50; // Base score
+  
+  // Location risk factors
+  if (inputs.floodZone === 'high_risk' || inputs.floodZone === 'very_high_risk') score += 25;
+  if (inputs.earthquakeRisk === 'high' || inputs.earthquakeRisk === 'very_high') score += 20;
+  if (inputs.wildfireRisk === 'high' || inputs.wildfireRisk === 'very_high') score += 20;
+  if (inputs.crimeRate === 'high' || inputs.crimeRate === 'very_high') score += 15;
+  
+  // Property risk factors
+  if (inputs.propertyAge > 30) score += 15;
+  if (inputs.constructionType === 'frame') score += 10;
+  if (inputs.roofType === 'wood_shake') score += 15;
+  if (inputs.swimmingPool || inputs.trampoline) score += 10;
+  if (inputs.aggressiveDog) score += 15;
+  if (inputs.homeBusiness) score += 20;
+  if (inputs.vacantProperty) score += 25;
+  if (inputs.shortTermRental) score += 20;
+  
+  // Landlord risk factors
+  if (inputs.creditScore === 'poor' || inputs.creditScore === 'fair') score += 15;
+  if (inputs.claimsHistory > 2) score += 20;
+  if (inputs.insuranceScore === 'poor' || inputs.insuranceScore === 'fair') score += 10;
+  if (inputs.landlordExperience < 2) score += 15;
+  
+  // Rental risk factors
+  if (inputs.occupancyRate < 80) score += 15;
+  if (inputs.averageTenantLength < 12) score += 10;
+  if (!inputs.tenantScreening) score += 15;
+  if (!inputs.leaseAgreement) score += 20;
+  if (!inputs.propertyManagement) score += 10;
+  
+  return Math.min(Math.max(score, 1), 100);
+}
 
-## Cost Analysis
-${outputs.costAnalysis}
+function identifyRiskFactors(inputs: LandlordInsuranceInputs): string[] {
+  const factors: string[] = [];
+  
+  if (inputs.floodZone === 'high_risk' || inputs.floodZone === 'very_high_risk') {
+    factors.push('High flood risk area');
+  }
+  if (inputs.earthquakeRisk === 'high' || inputs.earthquakeRisk === 'very_high') {
+    factors.push('High earthquake risk');
+  }
+  if (inputs.wildfireRisk === 'high' || inputs.wildfireRisk === 'very_high') {
+    factors.push('High wildfire risk');
+  }
+  if (inputs.crimeRate === 'high' || inputs.crimeRate === 'very_high') {
+    factors.push('High crime area');
+  }
+  if (inputs.propertyAge > 30) {
+    factors.push('Older property');
+  }
+  if (inputs.constructionType === 'frame') {
+    factors.push('Frame construction');
+  }
+  if (inputs.roofType === 'wood_shake') {
+    factors.push('Wood shake roof');
+  }
+  if (inputs.swimmingPool) {
+    factors.push('Swimming pool');
+  }
+  if (inputs.trampoline) {
+    factors.push('Trampoline');
+  }
+  if (inputs.aggressiveDog) {
+    factors.push('Aggressive dog breed');
+  }
+  if (inputs.homeBusiness) {
+    factors.push('Home business');
+  }
+  if (inputs.vacantProperty) {
+    factors.push('Vacant property');
+  }
+  if (inputs.shortTermRental) {
+    factors.push('Short-term rental');
+  }
+  if (inputs.claimsHistory > 2) {
+    factors.push('Multiple recent claims');
+  }
+  if (inputs.creditScore === 'poor' || inputs.creditScore === 'fair') {
+    factors.push('Lower credit score');
+  }
+  if (inputs.landlordExperience < 2) {
+    factors.push('Limited landlord experience');
+  }
+  if (inputs.occupancyRate < 80) {
+    factors.push('Low occupancy rate');
+  }
+  if (inputs.averageTenantLength < 12) {
+    factors.push('Short tenant stays');
+  }
+  if (!inputs.tenantScreening) {
+    factors.push('No tenant screening');
+  }
+  if (!inputs.leaseAgreement) {
+    factors.push('No lease agreement');
+  }
+  if (!inputs.propertyManagement) {
+    factors.push('No property management');
+  }
+  
+  return factors;
+}
 
-## Discount Breakdown
-${outputs.discountBreakdown}
+function generateRiskMitigationRecommendations(inputs: LandlordInsuranceInputs): string[] {
+  const recommendations: string[] = [];
+  
+  if (inputs.floodZone === 'high_risk' || inputs.floodZone === 'very_high_risk') {
+    recommendations.push('Consider flood insurance');
+  }
+  if (inputs.earthquakeRisk === 'high' || inputs.earthquakeRisk === 'very_high') {
+    recommendations.push('Consider earthquake insurance');
+  }
+  if (inputs.wildfireRisk === 'high' || inputs.wildfireRisk === 'very_high') {
+    recommendations.push('Create defensible space around property');
+  }
+  if (inputs.crimeRate === 'high' || inputs.crimeRate === 'very_high') {
+    recommendations.push('Install security system');
+  }
+  if (inputs.propertyAge > 30) {
+    recommendations.push('Update electrical and plumbing systems');
+  }
+  if (inputs.constructionType === 'frame') {
+    recommendations.push('Consider fire-resistant materials');
+  }
+  if (inputs.roofType === 'wood_shake') {
+    recommendations.push('Consider fire-resistant roofing');
+  }
+  if (inputs.swimmingPool) {
+    recommendations.push('Install pool safety features');
+  }
+  if (inputs.trampoline) {
+    recommendations.push('Install safety netting');
+  }
+  if (inputs.aggressiveDog) {
+    recommendations.push('Consider liability umbrella policy');
+  }
+  if (inputs.homeBusiness) {
+    recommendations.push('Consider business insurance');
+  }
+  if (inputs.vacantProperty) {
+    recommendations.push('Implement vacancy protection measures');
+  }
+  if (inputs.shortTermRental) {
+    recommendations.push('Consider short-term rental insurance');
+  }
+  if (inputs.landlordExperience < 2) {
+    recommendations.push('Consider property management services');
+  }
+  if (inputs.occupancyRate < 80) {
+    recommendations.push('Improve marketing and tenant retention');
+  }
+  if (inputs.averageTenantLength < 12) {
+    recommendations.push('Implement tenant retention strategies');
+  }
+  if (!inputs.tenantScreening) {
+    recommendations.push('Implement comprehensive tenant screening');
+  }
+  if (!inputs.leaseAgreement) {
+    recommendations.push('Use written lease agreements');
+  }
+  if (!inputs.propertyManagement) {
+    recommendations.push('Consider professional property management');
+  }
+  if (!inputs.regularInspections) {
+    recommendations.push('Implement regular property inspections');
+  }
+  if (!inputs.maintenanceProgram) {
+    recommendations.push('Develop preventive maintenance program');
+  }
+  if (!inputs.tenantInsurance) {
+    recommendations.push('Require tenant insurance');
+  }
+  
+  return recommendations;
+}
 
-## Coverage Breakdown
-${outputs.coverageBreakdown}
+function calculateDeductibleImpact(inputs: LandlordInsuranceInputs, annualPremium: number) {
+  const currentDeductible = inputs.deductible;
+  const higherDeductible = Math.min(currentDeductible * 2, 10000);
+  const deductibleSavingsRate = 0.20; // 20% savings for doubling deductible
+  const higherDeductiblePremium = annualPremium * (1 - deductibleSavingsRate);
+  const savings = annualPremium - higherDeductiblePremium;
+  
+  return {
+    currentDeductible,
+    currentPremium: annualPremium,
+    higherDeductible,
+    higherDeductiblePremium,
+    savings
+  };
+}
 
-## Comparison Analysis
-${outputs.comparisonAnalysis}
+function calculateRentalIncomeAnalysis(inputs: LandlordInsuranceInputs, annualPremium: number) {
+  const monthlyRent = inputs.monthlyRent;
+  const annualRent = inputs.annualRent;
+  const insuranceCostPerMonth = annualPremium / 12;
+  const insuranceCostPercentage = (annualPremium / annualRent) * 100;
+  const netRentalIncome = annualRent - annualPremium;
+  const breakEvenOccupancy = (annualPremium / annualRent) * 100;
+  
+  return {
+    monthlyRent,
+    annualRent,
+    insuranceCostPerMonth,
+    insuranceCostPercentage,
+    netRentalIncome,
+    breakEvenOccupancy
+  };
+}
 
-## Recommendations
-1. Review coverage limits for adequacy
-2. Consider increasing liability coverage if needed
-3. Evaluate loss of rent coverage based on rental income
-4. Compare with other insurers for competitive pricing
-5. Consider bundling with other policies for additional savings
+function generateCoverageRecommendations(inputs: LandlordInsuranceInputs): string[] {
+  const recommendations: string[] = [];
+  
+  if (inputs.dwellingCoverage < inputs.propertyValue * 0.8) {
+    recommendations.push('Increase dwelling coverage to at least 80% of property value');
+  }
+  if (inputs.personalPropertyCoverage < inputs.dwellingCoverage * 0.5) {
+    recommendations.push('Increase personal property coverage to at least 50% of dwelling coverage');
+  }
+  if (inputs.liabilityCoverage < 500000) {
+    recommendations.push('Consider increasing liability coverage to at least $500,000');
+  }
+  if (inputs.lossOfRentsCoverage < inputs.annualRent) {
+    recommendations.push('Increase loss of rents coverage to at least 100% of annual rent');
+  }
+  if (!inputs.replacementCost) {
+    recommendations.push('Consider replacement cost coverage');
+  }
+  if (!inputs.extendedReplacementCost) {
+    recommendations.push('Consider extended replacement cost coverage');
+  }
+  if (!inputs.waterBackupCoverage) {
+    recommendations.push('Consider water backup coverage');
+  }
+  if (!inputs.rentalIncomeProtection) {
+    recommendations.push('Consider rental income protection');
+  }
+  
+  return recommendations;
+}
 
-## Next Steps
-1. Obtain quotes from multiple insurers
-2. Review policy exclusions and limitations
-3. Consider umbrella liability coverage
-4. Evaluate deductible options
-5. Review policy annually for updates`;
+function generateDiscountRecommendations(inputs: LandlordInsuranceInputs): string[] {
+  const recommendations: string[] = [];
+  
+  if (!inputs.multiPolicyDiscount) {
+    recommendations.push('Bundle with other insurance policies for multi-policy discount');
+  }
+  if (!inputs.securitySystemDiscount) {
+    recommendations.push('Install security system for discount');
+  }
+  if (!inputs.smokeDetectorDiscount) {
+    recommendations.push('Install smoke detectors for discount');
+  }
+  if (!inputs.deadboltDiscount) {
+    recommendations.push('Install deadbolt locks for discount');
+  }
+  if (!inputs.paperlessDiscount) {
+    recommendations.push('Switch to paperless billing for discount');
+  }
+  if (!inputs.autopayDiscount) {
+    recommendations.push('Set up automatic payments for discount');
+  }
+  
+  return recommendations;
+}
+
+function generateRiskReductionRecommendations(inputs: LandlordInsuranceInputs): string[] {
+  const recommendations: string[] = [];
+  
+  if (inputs.distanceToFireStation > 5) {
+    recommendations.push('Consider proximity to fire station when purchasing');
+  }
+  if (inputs.distanceToHydrant > 1000) {
+    recommendations.push('Consider proximity to fire hydrant');
+  }
+  if (inputs.propertyAge > 20) {
+    recommendations.push('Regular maintenance and updates');
+  }
+  if (inputs.claimsHistory > 0) {
+    recommendations.push('Maintain claims-free record');
+  }
+  if (inputs.landlordExperience < 3) {
+    recommendations.push('Consider landlord education and training');
+  }
+  if (inputs.occupancyRate < 90) {
+    recommendations.push('Improve tenant retention strategies');
+  }
+  
+  return recommendations;
+}
+
+function generatePolicyOptimizationRecommendations(inputs: LandlordInsuranceInputs): string[] {
+  const recommendations: string[] = [];
+  
+  recommendations.push('Review policy annually');
+  recommendations.push('Compare rates with other insurers');
+  recommendations.push('Consider higher deductible for lower premium');
+  recommendations.push('Evaluate coverage needs as property value changes');
+  recommendations.push('Keep detailed records of rental income and expenses');
+  recommendations.push('Consider umbrella policy for additional liability protection');
+  
+  return recommendations;
+}
+
+function calculateMarketComparison(annualPremium: number, propertyValue: number): {
+  averagePremium: number;
+  premiumPercentile: number;
+  savingsOpportunity: number;
+} {
+  // Market averages (simplified)
+  const averagePremium = (propertyValue / 1000) * 4.0; // $4.00 per $1000 of property value
+  const premiumPercentile = (annualPremium / averagePremium) * 50; // Simplified calculation
+  const savingsOpportunity = Math.max(0, annualPremium - averagePremium * 0.8);
+  
+  return {
+    averagePremium,
+    premiumPercentile: Math.min(Math.max(premiumPercentile, 10), 90),
+    savingsOpportunity
+  };
 }

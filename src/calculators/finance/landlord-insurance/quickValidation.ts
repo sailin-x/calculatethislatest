@@ -1,305 +1,164 @@
-import { CalculatorInputs } from '../../../types/calculator';
+import { ValidationResult } from './validation';
 
-export function validatePropertyValue(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (!value) return { isValid: false, message: 'Property value is required' };
-  if (typeof value !== 'number' || value <= 0) return { isValid: false, message: 'Must be a positive number' };
-  if (value < 50000 || value > 10000000) return { isValid: false, message: 'Must be between $50,000 and $10,000,000' };
-  return { isValid: true };
-}
-
-export function validateReplacementCost(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && (typeof value !== 'number' || value <= 0)) return { isValid: false, message: 'Must be a positive number' };
-  if (value && (value < 50000 || value > 15000000)) return { isValid: false, message: 'Must be between $50,000 and $15,000,000' };
-  return { isValid: true };
-}
-
-export function validateAnnualRent(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && (typeof value !== 'number' || value < 0)) return { isValid: false, message: 'Must be a non-negative number' };
-  if (value && value > 500000) return { isValid: false, message: 'Must be $500,000 or less' };
-  return { isValid: true };
-}
-
-export function validateYearBuilt(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && (typeof value !== 'number' || value <= 0)) return { isValid: false, message: 'Must be a positive number' };
-  if (value && (value < 1800 || value > 2024)) return { isValid: false, message: 'Must be between 1800 and 2024' };
-  return { isValid: true };
-}
-
-export function validateSquareFootage(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && (typeof value !== 'number' || value <= 0)) return { isValid: false, message: 'Must be a positive number' };
-  if (value && (value < 500 || value > 50000)) return { isValid: false, message: 'Must be between 500 and 50,000 sqft' };
-  return { isValid: true };
-}
-
-export function validateNumberOfUnits(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && (typeof value !== 'number' || value <= 0)) return { isValid: false, message: 'Must be a positive number' };
-  if (value && (value < 1 || value > 100)) return { isValid: false, message: 'Must be between 1 and 100' };
-  return { isValid: true };
-}
-
-export function validateLiabilityLimit(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && (typeof value !== 'number' || value <= 0)) return { isValid: false, message: 'Must be a positive number' };
-  if (value && (value < 100000 || value > 5000000)) return { isValid: false, message: 'Must be between $100,000 and $5,000,000' };
-  return { isValid: true };
-}
-
-export function validateMedicalPayments(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && (typeof value !== 'number' || value <= 0)) return { isValid: false, message: 'Must be a positive number' };
-  if (value && (value < 1000 || value > 100000)) return { isValid: false, message: 'Must be between $1,000 and $100,000' };
-  return { isValid: true };
-}
-
-export function validateLossOfRent(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && (typeof value !== 'number' || value < 0)) return { isValid: false, message: 'Must be a non-negative number' };
-  if (value && value > 100000) return { isValid: false, message: 'Must be $100,000 or less' };
-  return { isValid: true };
-}
-
-export function validatePersonalProperty(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && (typeof value !== 'number' || value < 0)) return { isValid: false, message: 'Must be a non-negative number' };
-  if (value && value > 100000) return { isValid: false, message: 'Must be $100,000 or less' };
-  return { isValid: true };
-}
-
-export function validateDeductible(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && (typeof value !== 'number' || value <= 0)) return { isValid: false, message: 'Must be a positive number' };
-  if (value && (value < 250 || value > 10000)) return { isValid: false, message: 'Must be between $250 and $10,000' };
-  return { isValid: true };
-}
-
-export function validateOccupancyRate(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && (typeof value !== 'number' || value < 0)) return { isValid: false, message: 'Must be a non-negative number' };
-  if (value && value > 100) return { isValid: false, message: 'Must be 100% or less' };
-  return { isValid: true };
-}
-
-export function validateCreditScore(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && (typeof value !== 'number' || value <= 0)) return { isValid: false, message: 'Must be a positive number' };
-  if (value && (value < 300 || value > 850)) return { isValid: false, message: 'Must be between 300 and 850' };
-  return { isValid: true };
-}
-
-export function validateLoyaltyDiscount(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && (typeof value !== 'number' || value < 0)) return { isValid: false, message: 'Must be a non-negative number' };
-  if (value && value > 50) return { isValid: false, message: 'Must be 50 or less' };
-  return { isValid: true };
-}
-
-export function validatePropertyType(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  const validTypes = ['Single Family', 'Multi-Family', 'Condo', 'Townhouse', 'Apartment Building', 'Commercial'];
-  if (value && !validTypes.includes(value)) return { isValid: false, message: `Must be one of: ${validTypes.join(', ')}` };
-  return { isValid: true };
-}
-
-export function validateConstructionType(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  const validTypes = ['Frame', 'Brick', 'Masonry', 'Steel', 'Concrete', 'Mixed'];
-  if (value && !validTypes.includes(value)) return { isValid: false, message: `Must be one of: ${validTypes.join(', ')}` };
-  return { isValid: true };
-}
-
-export function validateLocation(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  const validTypes = ['Urban', 'Suburban', 'Rural', 'Coastal', 'Mountain', 'Desert'];
-  if (value && !validTypes.includes(value)) return { isValid: false, message: `Must be one of: ${validTypes.join(', ')}` };
-  return { isValid: true };
-}
-
-export function validateState(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  const validStates = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'];
-  if (value && !validStates.includes(value)) return { isValid: false, message: `Must be one of: ${validStates.join(', ')}` };
-  return { isValid: true };
-}
-
-export function validateRiskZone(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  const validTypes = ['Low', 'Medium', 'High', 'Very High'];
-  if (value && !validTypes.includes(value)) return { isValid: false, message: `Must be one of: ${validTypes.join(', ')}` };
-  return { isValid: true };
-}
-
-export function validateCoverageLevel(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  const validTypes = ['Basic', 'Standard', 'Comprehensive', 'Premium'];
-  if (value && !validTypes.includes(value)) return { isValid: false, message: `Must be one of: ${validTypes.join(', ')}` };
-  return { isValid: true };
-}
-
-export function validateTenantType(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  const validTypes = ['Residential', 'Student', 'Section 8', 'Corporate', 'Short-term', 'Vacant'];
-  if (value && !validTypes.includes(value)) return { isValid: false, message: `Must be one of: ${validTypes.join(', ')}` };
-  return { isValid: true };
-}
-
-export function validateClaimsHistory(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  const validTypes = ['None', '1-2 Claims', '3-5 Claims', '5+ Claims'];
-  if (value && !validTypes.includes(value)) return { isValid: false, message: `Must be one of: ${validTypes.join(', ')}` };
-  return { isValid: true };
-}
-
-export function validateInsuranceScore(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  const validTypes = ['Excellent', 'Good', 'Fair', 'Poor'];
-  if (value && !validTypes.includes(value)) return { isValid: false, message: `Must be one of: ${validTypes.join(', ')}` };
-  return { isValid: true };
-}
-
-export function validateMultiPolicyDiscount(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  const validTypes = ['None', 'Auto', 'Umbrella', 'Life', 'Multiple'];
-  if (value && !validTypes.includes(value)) return { isValid: false, message: `Must be one of: ${validTypes.join(', ')}` };
-  return { isValid: true };
-}
-
-export function validatePaymentMethod(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  const validTypes = ['Monthly', 'Quarterly', 'Semi-Annual', 'Annual'];
-  if (value && !validTypes.includes(value)) return { isValid: false, message: `Must be one of: ${validTypes.join(', ')}` };
-  return { isValid: true };
-}
-
-export function validatePaperlessDiscount(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  const validTypes = ['Yes', 'No'];
-  if (value && !validTypes.includes(value)) return { isValid: false, message: `Must be one of: ${validTypes.join(', ')}` };
-  return { isValid: true };
-}
-
-export function validateAutoPayDiscount(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  const validTypes = ['Yes', 'No'];
-  if (value && !validTypes.includes(value)) return { isValid: false, message: `Must be one of: ${validTypes.join(', ')}` };
-  return { isValid: true };
-}
-
-export function validateNewCustomerDiscount(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  const validTypes = ['Yes', 'No'];
-  if (value && !validTypes.includes(value)) return { isValid: false, message: `Must be one of: ${validTypes.join(', ')}` };
-  return { isValid: true };
-}
-
-export function validateBundlingDiscount(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  const validTypes = ['None', 'Auto', 'Umbrella', 'Life', 'Multiple'];
-  if (value && !validTypes.includes(value)) return { isValid: false, message: `Must be one of: ${validTypes.join(', ')}` };
-  return { isValid: true };
-}
-
-export function validateSafetyDiscount(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  const validTypes = ['None', 'Basic', 'Advanced', 'Premium'];
-  if (value && !validTypes.includes(value)) return { isValid: false, message: `Must be one of: ${validTypes.join(', ')}` };
-  return { isValid: true };
-}
-
-export function validateClaimsFreeDiscount(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  const validTypes = ['None', '1-3 Years', '3-5 Years', '5+ Years'];
-  if (value && !validTypes.includes(value)) return { isValid: false, message: `Must be one of: ${validTypes.join(', ')}` };
-  return { isValid: true };
-}
-
-export function validateSecurityFeatures(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  const validFeatures = ['Alarm System', 'Security Cameras', 'Deadbolts', 'Fire Sprinklers', 'Smoke Detectors', 'Carbon Monoxide Detectors', 'Gated Community', 'Doorman', 'None'];
-  if (Array.isArray(value)) {
-    for (const feature of value) {
-      if (!validFeatures.includes(feature)) {
-        return { isValid: false, message: `Must be one of: ${validFeatures.join(', ')}` };
-      }
-    }
-  }
-  return { isValid: true };
-}
-
-export function validateAllLandlordInsuranceInputs(inputs: Partial<CalculatorInputs>): { isValid: boolean; errors: string[] } {
+export function validatePropertyValue(value: any, allInputs?: Record<string, any>): ValidationResult {
   const errors: string[] = [];
+  const warnings: string[] = [];
 
-  const propertyValueResult = validatePropertyValue(inputs.propertyValue);
-  if (!propertyValueResult.isValid) errors.push(propertyValueResult.message!);
+  if (value === null || value === undefined || value === '') {
+    errors.push('Property value is required');
+    return { isValid: false, errors, warnings };
+  }
 
-  const replacementCostResult = validateReplacementCost(inputs.replacementCost);
-  if (!replacementCostResult.isValid) errors.push(replacementCostResult.message!);
+  const numValue = Number(value);
+  if (isNaN(numValue)) {
+    errors.push('Property value must be a valid number');
+    return { isValid: false, errors, warnings };
+  }
 
-  const annualRentResult = validateAnnualRent(inputs.annualRent);
-  if (!annualRentResult.isValid) errors.push(annualRentResult.message!);
+  if (numValue < 100000) {
+    errors.push('Property value must be at least $100,000');
+  }
+  if (numValue > 50000000) {
+    errors.push('Property value cannot exceed $50,000,000');
+  }
 
-  const yearBuiltResult = validateYearBuilt(inputs.yearBuilt);
-  if (!yearBuiltResult.isValid) errors.push(yearBuiltResult.message!);
+  return { isValid: errors.length === 0, errors, warnings };
+}
 
-  const squareFootageResult = validateSquareFootage(inputs.squareFootage);
-  if (!squareFootageResult.isValid) errors.push(squareFootageResult.message!);
+export function validatePropertyAddress(value: any, allInputs?: Record<string, any>): ValidationResult {
+  const errors: string[] = [];
+  const warnings: string[] = [];
 
-  const numberOfUnitsResult = validateNumberOfUnits(inputs.numberOfUnits);
-  if (!numberOfUnitsResult.isValid) errors.push(numberOfUnitsResult.message!);
+  if (!value || typeof value !== 'string' || value.trim().length < 10) {
+    errors.push('Property address is required and must be at least 10 characters');
+  }
 
-  const liabilityLimitResult = validateLiabilityLimit(inputs.liabilityLimit);
-  if (!liabilityLimitResult.isValid) errors.push(liabilityLimitResult.message!);
+  return { isValid: errors.length === 0, errors, warnings };
+}
 
-  const medicalPaymentsResult = validateMedicalPayments(inputs.medicalPayments);
-  if (!medicalPaymentsResult.isValid) errors.push(medicalPaymentsResult.message!);
+export function validateDwellingCoverage(value: any, allInputs?: Record<string, any>): ValidationResult {
+  const errors: string[] = [];
+  const warnings: string[] = [];
 
-  const lossOfRentResult = validateLossOfRent(inputs.lossOfRent);
-  if (!lossOfRentResult.isValid) errors.push(lossOfRentResult.message!);
+  if (value === null || value === undefined || value === '') {
+    errors.push('Dwelling coverage is required');
+    return { isValid: false, errors, warnings };
+  }
 
-  const personalPropertyResult = validatePersonalProperty(inputs.personalProperty);
-  if (!personalPropertyResult.isValid) errors.push(personalPropertyResult.message!);
+  const numValue = Number(value);
+  if (isNaN(numValue)) {
+    errors.push('Dwelling coverage must be a valid number');
+    return { isValid: false, errors, warnings };
+  }
 
-  const deductibleResult = validateDeductible(inputs.deductible);
-  if (!deductibleResult.isValid) errors.push(deductibleResult.message!);
+  if (numValue < 100000) {
+    errors.push('Dwelling coverage must be at least $100,000');
+  }
 
-  const occupancyRateResult = validateOccupancyRate(inputs.occupancyRate);
-  if (!occupancyRateResult.isValid) errors.push(occupancyRateResult.message!);
+  if (allInputs?.propertyValue && numValue > allInputs.propertyValue * 2) {
+    warnings.push('Dwelling coverage exceeds 200% of property value');
+  }
 
-  const creditScoreResult = validateCreditScore(inputs.creditScore);
-  if (!creditScoreResult.isValid) errors.push(creditScoreResult.message!);
+  return { isValid: errors.length === 0, errors, warnings };
+}
 
-  const loyaltyDiscountResult = validateLoyaltyDiscount(inputs.loyaltyDiscount);
-  if (!loyaltyDiscountResult.isValid) errors.push(loyaltyDiscountResult.message!);
+export function validateLiabilityCoverage(value: any, allInputs?: Record<string, any>): ValidationResult {
+  const errors: string[] = [];
+  const warnings: string[] = [];
 
-  const propertyTypeResult = validatePropertyType(inputs.propertyType);
-  if (!propertyTypeResult.isValid) errors.push(propertyTypeResult.message!);
+  if (value === null || value === undefined || value === '') {
+    errors.push('Liability coverage is required');
+    return { isValid: false, errors, warnings };
+  }
 
-  const constructionTypeResult = validateConstructionType(inputs.constructionType);
-  if (!constructionTypeResult.isValid) errors.push(constructionTypeResult.message!);
+  const numValue = Number(value);
+  if (isNaN(numValue)) {
+    errors.push('Liability coverage must be a valid number');
+    return { isValid: false, errors, warnings };
+  }
 
-  const locationResult = validateLocation(inputs.location);
-  if (!locationResult.isValid) errors.push(locationResult.message!);
+  if (numValue < 100000) {
+    errors.push('Liability coverage must be at least $100,000');
+  }
+  if (numValue < 500000) {
+    warnings.push('Consider increasing liability coverage to at least $500,000 for landlords');
+  }
 
-  const stateResult = validateState(inputs.state);
-  if (!stateResult.isValid) errors.push(stateResult.message!);
+  return { isValid: errors.length === 0, errors, warnings };
+}
 
-  const riskZoneResult = validateRiskZone(inputs.riskZone);
-  if (!riskZoneResult.isValid) errors.push(riskZoneResult.message!);
+export function validateDeductible(value: any, allInputs?: Record<string, any>): ValidationResult {
+  const errors: string[] = [];
+  const warnings: string[] = [];
 
-  const coverageLevelResult = validateCoverageLevel(inputs.coverageLevel);
-  if (!coverageLevelResult.isValid) errors.push(coverageLevelResult.message!);
+  if (value === null || value === undefined || value === '') {
+    errors.push('Deductible is required');
+    return { isValid: false, errors, warnings };
+  }
 
-  const tenantTypeResult = validateTenantType(inputs.tenantType);
-  if (!tenantTypeResult.isValid) errors.push(tenantTypeResult.message!);
+  const numValue = Number(value);
+  if (isNaN(numValue)) {
+    errors.push('Deductible must be a valid number');
+    return { isValid: false, errors, warnings };
+  }
 
-  const claimsHistoryResult = validateClaimsHistory(inputs.claimsHistory);
-  if (!claimsHistoryResult.isValid) errors.push(claimsHistoryResult.message!);
+  if (numValue < 500) {
+    errors.push('Deductible must be at least $500');
+  }
+  if (numValue > 25000) {
+    errors.push('Deductible cannot exceed $25,000');
+  }
 
-  const insuranceScoreResult = validateInsuranceScore(inputs.insuranceScore);
-  if (!insuranceScoreResult.isValid) errors.push(insuranceScoreResult.message!);
+  return { isValid: errors.length === 0, errors, warnings };
+}
 
-  const multiPolicyDiscountResult = validateMultiPolicyDiscount(inputs.multiPolicyDiscount);
-  if (!multiPolicyDiscountResult.isValid) errors.push(multiPolicyDiscountResult.message!);
+export function validateMonthlyRent(value: any, allInputs?: Record<string, any>): ValidationResult {
+  const errors: string[] = [];
+  const warnings: string[] = [];
 
-  const paymentMethodResult = validatePaymentMethod(inputs.paymentMethod);
-  if (!paymentMethodResult.isValid) errors.push(paymentMethodResult.message!);
+  if (value === null || value === undefined || value === '') {
+    errors.push('Monthly rent is required');
+    return { isValid: false, errors, warnings };
+  }
 
-  const paperlessDiscountResult = validatePaperlessDiscount(inputs.paperlessDiscount);
-  if (!paperlessDiscountResult.isValid) errors.push(paperlessDiscountResult.message!);
+  const numValue = Number(value);
+  if (isNaN(numValue)) {
+    errors.push('Monthly rent must be a valid number');
+    return { isValid: false, errors, warnings };
+  }
 
-  const autoPayDiscountResult = validateAutoPayDiscount(inputs.autoPayDiscount);
-  if (!autoPayDiscountResult.isValid) errors.push(autoPayDiscountResult.message!);
+  if (numValue < 0) {
+    errors.push('Monthly rent cannot be negative');
+  }
+  if (numValue > 100000) {
+    errors.push('Monthly rent cannot exceed $100,000');
+  }
 
-  const newCustomerDiscountResult = validateNewCustomerDiscount(inputs.newCustomerDiscount);
-  if (!newCustomerDiscountResult.isValid) errors.push(newCustomerDiscountResult.message!);
+  return { isValid: errors.length === 0, errors, warnings };
+}
 
-  const bundlingDiscountResult = validateBundlingDiscount(inputs.bundlingDiscount);
-  if (!bundlingDiscountResult.isValid) errors.push(bundlingDiscountResult.message!);
+export function validateOccupancyRate(value: any, allInputs?: Record<string, any>): ValidationResult {
+  const errors: string[] = [];
+  const warnings: string[] = [];
 
-  const safetyDiscountResult = validateSafetyDiscount(inputs.safetyDiscount);
-  if (!safetyDiscountResult.isValid) errors.push(safetyDiscountResult.message!);
+  if (value === null || value === undefined || value === '') {
+    errors.push('Occupancy rate is required');
+    return { isValid: false, errors, warnings };
+  }
 
-  const claimsFreeDiscountResult = validateClaimsFreeDiscount(inputs.claimsFreeDiscount);
-  if (!claimsFreeDiscountResult.isValid) errors.push(claimsFreeDiscountResult.message!);
+  const numValue = Number(value);
+  if (isNaN(numValue)) {
+    errors.push('Occupancy rate must be a valid number');
+    return { isValid: false, errors, warnings };
+  }
 
-  const securityFeaturesResult = validateSecurityFeatures(inputs.securityFeatures);
-  if (!securityFeaturesResult.isValid) errors.push(securityFeaturesResult.message!);
+  if (numValue < 0 || numValue > 100) {
+    errors.push('Occupancy rate must be between 0% and 100%');
+  }
 
-  return {
-    isValid: errors.length === 0,
-    errors
-  };
+  if (numValue < 70) {
+    warnings.push('Low occupancy rate may indicate market challenges');
+  }
+
+  return { isValid: errors.length === 0, errors, warnings };
 }

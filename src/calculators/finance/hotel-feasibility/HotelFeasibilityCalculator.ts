@@ -1,197 +1,516 @@
-import { Calculator } from '../../../types/calculator';
-import { calculateHotelFeasibility, generateHotelFeasibilityAnalysis } from './formulas';
+import { Calculator } from '../../types';
+import { HotelFeasibilityInputs, HotelFeasibilityOutputs } from './types';
+import { calculateHotelFeasibility } from './formulas';
 import { validateHotelFeasibilityInputs } from './validation';
 
-export const HotelFeasibilityCalculator: Calculator = {
-  id: 'hotel-feasibility-calculator',
+export const HotelFeasibilityCalculator: Calculator<HotelFeasibilityInputs, HotelFeasibilityOutputs> = {
+  id: 'hotel-feasibility',
   name: 'Hotel Feasibility & ADR Calculator',
   category: 'finance',
-  subcategory: 'investment',
-  description: 'Calculate hotel feasibility, Average Daily Rate (ADR), revenue projections, and investment returns based on market analysis, operating costs, and competitive factors.',
-  inputs: [
-    { id: 'totalRooms', name: 'Total Rooms', type: 'number', required: true, description: 'Number of hotel rooms', placeholder: '100', min: 1, max: 10000 },
-    { id: 'roomTypes', name: 'Room Types', type: 'multiselect', required: false, description: 'Types of rooms available', placeholder: 'Select room types', options: ['standard', 'deluxe', 'suite', 'presidential-suite', 'accessible', 'connecting'] },
-    { id: 'averageRoomSize', name: 'Average Room Size', type: 'number', unit: 'sq ft', required: false, description: 'Average size of hotel rooms', placeholder: '350', min: 100, max: 2000 },
-    { id: 'hotelType', name: 'Hotel Type', type: 'select', required: false, description: 'Type of hotel property', placeholder: 'full-service', options: ['budget', 'midscale', 'upscale', 'luxury', 'boutique', 'resort', 'business', 'airport', 'extended-stay'] },
-    { id: 'starRating', name: 'Star Rating', type: 'select', required: false, description: 'Hotel star rating', placeholder: '3', options: ['1', '2', '3', '4', '5'] },
-    { id: 'location', name: 'Location Type', type: 'select', required: false, description: 'Location of the hotel', placeholder: 'urban', options: ['urban', 'suburban', 'airport', 'resort', 'highway', 'downtown', 'business-district'] },
-    { id: 'market', name: 'Market Type', type: 'select', required: false, description: 'Type of market', placeholder: 'business', options: ['business', 'leisure', 'mixed', 'convention', 'airport', 'resort'] },
-    { id: 'seasonality', name: 'Seasonality Factor', type: 'select', required: false, description: 'Seasonal demand variation', placeholder: 'moderate', options: ['low', 'moderate', 'high', 'extreme'] },
-    { id: 'competitionLevel', name: 'Competition Level', type: 'select', required: false, description: 'Level of local competition', placeholder: 'medium', options: ['low', 'medium', 'high', 'very-high'] },
-    { id: 'marketDemand', name: 'Market Demand', type: 'select', required: false, description: 'Overall market demand', placeholder: 'strong', options: ['weak', 'moderate', 'strong', 'very-strong'] },
-    { id: 'occupancyRate', name: 'Expected Occupancy Rate', type: 'number', unit: '%', required: false, description: 'Expected average occupancy rate', placeholder: '75', min: 0, max: 100 },
-    { id: 'baseADR', name: 'Base ADR', type: 'number', unit: 'USD', required: false, description: 'Base Average Daily Rate', placeholder: '150', min: 20, max: 2000 },
-    { id: 'revPAR', name: 'Expected RevPAR', type: 'number', unit: 'USD', required: false, description: 'Expected Revenue Per Available Room', placeholder: '112.5', min: 10, max: 1500 },
-    { id: 'constructionCost', name: 'Construction Cost per Room', type: 'number', unit: 'USD', required: false, description: 'Construction cost per room', placeholder: '150000', min: 50000, max: 1000000 },
-    { id: 'landCost', name: 'Land Cost', type: 'number', unit: 'USD', required: false, description: 'Total land acquisition cost', placeholder: '5000000', min: 0, max: 100000000 },
-    { id: 'softCosts', name: 'Soft Costs', type: 'number', unit: 'USD', required: false, description: 'Architecture, engineering, permits, etc.', placeholder: '2000000', min: 0, max: 50000000 },
-    { id: 'furnitureCost', name: 'Furniture, Fixtures & Equipment', type: 'number', unit: 'USD', required: false, description: 'FF&E cost per room', placeholder: '25000', min: 5000, max: 200000 },
-    { id: 'operatingExpenses', name: 'Operating Expenses per Room', type: 'number', unit: 'USD', required: false, description: 'Annual operating expenses per room', placeholder: '25000', min: 5000, max: 100000 },
-    { id: 'laborCosts', name: 'Labor Costs per Room', type: 'number', unit: 'USD', required: false, description: 'Annual labor costs per room', placeholder: '35000', min: 10000, max: 150000 },
-    { id: 'utilityCosts', name: 'Utility Costs per Room', type: 'number', unit: 'USD', required: false, description: 'Annual utility costs per room', placeholder: '8000', min: 1000, max: 30000 },
-    { id: 'maintenanceCosts', name: 'Maintenance Costs per Room', type: 'number', unit: 'USD', required: false, description: 'Annual maintenance costs per room', placeholder: '5000', min: 1000, max: 25000 },
-    { id: 'insuranceCosts', name: 'Insurance Costs per Room', type: 'number', unit: 'USD', required: false, description: 'Annual insurance costs per room', placeholder: '3000', min: 500, max: 15000 },
-    { id: 'propertyTaxes', name: 'Property Taxes per Room', type: 'number', unit: 'USD', required: false, description: 'Annual property taxes per room', placeholder: '4000', min: 500, max: 20000 },
-    { id: 'managementFees', name: 'Management Fees', type: 'number', unit: '%', required: false, description: 'Hotel management fees percentage', placeholder: '3', min: 0, max: 10 },
-    { id: 'franchiseFees', name: 'Franchise Fees', type: 'number', unit: '%', required: false, description: 'Franchise fees percentage', placeholder: '5', min: 0, max: 15 },
-    { id: 'financingRate', name: 'Financing Rate', type: 'number', unit: '%', required: false, description: 'Interest rate on construction loan', placeholder: '6.5', min: 0, max: 20 },
-    { id: 'loanTerm', name: 'Loan Term', type: 'number', unit: 'years', required: false, description: 'Loan term in years', placeholder: '25', min: 5, max: 40 },
-    { id: 'downPayment', name: 'Down Payment', type: 'number', unit: '%', required: false, description: 'Down payment percentage', placeholder: '25', min: 10, max: 50 },
-    { id: 'taxRate', name: 'Tax Rate', type: 'number', unit: '%', required: false, description: 'Effective tax rate', placeholder: '25', min: 0, max: 50 },
-    { id: 'depreciationPeriod', name: 'Depreciation Period', type: 'number', unit: 'years', required: false, description: 'Depreciation period for tax purposes', placeholder: '39', min: 15, max: 50 },
-    { id: 'inflationRate', name: 'Inflation Rate', type: 'number', unit: '%', required: false, description: 'Expected annual inflation rate', placeholder: '2.5', min: -10, max: 20 },
-    { id: 'revenueGrowth', name: 'Revenue Growth Rate', type: 'number', unit: '%', required: false, description: 'Expected annual revenue growth', placeholder: '3', min: -20, max: 30 },
-    { id: 'expenseGrowth', name: 'Expense Growth Rate', type: 'number', unit: '%', required: false, description: 'Expected annual expense growth', placeholder: '2.5', min: -10, max: 20 },
-    { id: 'exitYear', name: 'Exit Year', type: 'number', required: false, description: 'Year to exit investment', placeholder: '10', min: 3, max: 30 },
-    { id: 'exitCapRate', name: 'Exit Cap Rate', type: 'number', unit: '%', required: false, description: 'Cap rate at exit', placeholder: '7', min: 3, max: 15 },
-    { id: 'additionalRevenue', name: 'Additional Revenue Sources', type: 'multiselect', required: false, description: 'Additional revenue sources', placeholder: 'Select sources', options: ['restaurant', 'bar', 'spa', 'fitness-center', 'conference-rooms', 'parking', 'shuttle-service', 'gift-shop', 'laundry-service', 'room-service'] },
-    { id: 'amenities', name: 'Hotel Amenities', type: 'multiselect', required: false, description: 'Hotel amenities and services', placeholder: 'Select amenities', options: ['pool', 'gym', 'spa', 'restaurant', 'bar', 'concierge', 'valet-parking', 'free-wifi', 'business-center', 'meeting-rooms', 'event-space', 'shuttle-service', 'room-service', 'laundry-service', 'gift-shop'] }
-  ],
-  outputs: [
-    { id: 'totalInvestment', name: 'Total Investment', type: 'number', unit: 'USD', description: 'Total project investment required' },
-    { id: 'constructionCostTotal', name: 'Total Construction Cost', type: 'number', unit: 'USD', description: 'Total construction cost' },
-    { id: 'totalProjectCost', name: 'Total Project Cost', type: 'number', unit: 'USD', description: 'Total project cost including land and soft costs' },
-    { id: 'annualRevenue', name: 'Annual Revenue', type: 'number', unit: 'USD', description: 'Projected annual revenue' },
-    { id: 'annualExpenses', name: 'Annual Expenses', type: 'number', unit: 'USD', description: 'Projected annual operating expenses' },
-    { id: 'netOperatingIncome', name: 'Net Operating Income', type: 'number', unit: 'USD', description: 'Annual net operating income' },
-    { id: 'cashFlow', name: 'Annual Cash Flow', type: 'number', unit: 'USD', description: 'Annual cash flow after debt service' },
-    { id: 'cashOnCashReturn', name: 'Cash-on-Cash Return', type: 'number', unit: '%', description: 'Cash-on-cash return on investment' },
-    { id: 'capRate', name: 'Cap Rate', type: 'number', unit: '%', description: 'Capitalization rate' },
-    { id: 'irr', name: 'Internal Rate of Return', type: 'number', unit: '%', description: 'Projected IRR over investment period' },
-    { id: 'paybackPeriod', name: 'Payback Period', type: 'number', unit: 'years', description: 'Time to recover initial investment' },
-    { id: 'breakEvenOccupancy', name: 'Break-Even Occupancy', type: 'number', unit: '%', description: 'Occupancy rate needed to break even' },
-    { id: 'breakEvenADR', name: 'Break-Even ADR', type: 'number', unit: 'USD', description: 'ADR needed to break even' },
-    { id: 'profitMargin', name: 'Profit Margin', type: 'number', unit: '%', description: 'Net profit margin' },
-    { id: 'debtServiceCoverage', name: 'Debt Service Coverage Ratio', type: 'number', description: 'DSCR - ability to cover debt payments' },
-    { id: 'loanAmount', name: 'Loan Amount', type: 'number', unit: 'USD', description: 'Required loan amount' },
-    { id: 'monthlyPayment', name: 'Monthly Loan Payment', type: 'number', unit: 'USD', description: 'Monthly debt service payment' },
-    { id: 'annualDebtService', name: 'Annual Debt Service', type: 'number', unit: 'USD', description: 'Annual debt service payments' },
-    { id: 'equityRequired', name: 'Equity Required', type: 'number', unit: 'USD', description: 'Required equity investment' },
-    { id: 'exitValue', name: 'Exit Value', type: 'number', unit: 'USD', description: 'Projected property value at exit' },
-    { id: 'totalReturn', name: 'Total Return', type: 'number', unit: '%', description: 'Total return including appreciation' },
-    { id: 'feasibilityScore', name: 'Feasibility Score', type: 'number', description: 'Overall project feasibility score (0-100)' },
-    { id: 'riskScore', name: 'Risk Score', type: 'number', description: 'Project risk assessment (0-100)' },
-    { id: 'recommendation', name: 'Recommendation', type: 'string', description: 'Investment recommendation' },
-    { id: 'keyMetrics', name: 'Key Performance Metrics', type: 'string', description: 'Summary of key performance indicators' },
-    { id: 'sensitivityAnalysis', name: 'Sensitivity Analysis', type: 'string', description: 'Impact of key variables on returns' },
-    { id: 'hotelFeasibilityAnalysis', name: 'Hotel Feasibility Analysis', type: 'string', description: 'Comprehensive feasibility analysis report' }
-  ],
-  calculate: (inputs) => {
-    return calculateHotelFeasibility(inputs);
-  },
-  generateReport: (inputs, outputs) => {
-    return generateHotelFeasibilityAnalysis(inputs, outputs);
-  },
-  formulas: [
-    {
-      name: 'Total Investment Calculation',
-      formula: 'Total Investment = Land Cost + Construction Cost + Soft Costs + FF&E',
-      description: 'Calculates the total capital required for the project'
+  subcategory: 'real_estate',
+  description: 'Analyze hotel investment feasibility, ADR projections, and financial performance',
+  longDescription: `A comprehensive hotel feasibility calculator that analyzes investment potential, market positioning, and financial performance for hotel properties. This calculator evaluates market conditions, competitive landscape, revenue projections, operating costs, and investment returns to determine the feasibility of hotel investments. It includes detailed financial modeling, risk assessment, and strategic recommendations for hotel development and acquisition projects.`,
+  
+  inputs: {
+    // Property Information
+    propertyAddress: {
+      type: 'text',
+      label: 'Property Address',
+      description: 'Full property address',
+      required: true,
+      placeholder: '123 Hotel Blvd, City, State 12345'
     },
-    {
-      name: 'Annual Revenue Calculation',
-      formula: 'Annual Revenue = Total Rooms × Occupancy Rate × ADR × 365',
-      description: 'Calculates projected annual room revenue'
+    city: {
+      type: 'text',
+      label: 'City',
+      description: 'City where property is located',
+      required: true,
+      placeholder: 'Miami'
     },
-    {
-      name: 'Net Operating Income',
-      formula: 'NOI = Annual Revenue - Operating Expenses',
-      description: 'Net operating income before debt service and taxes'
+    state: {
+      type: 'text',
+      label: 'State',
+      description: 'State where property is located',
+      required: true,
+      placeholder: 'FL'
     },
-    {
-      name: 'Cap Rate',
-      formula: 'Cap Rate = NOI / Total Investment',
-      description: 'Capitalization rate based on NOI and total investment'
+    zipCode: {
+      type: 'text',
+      label: 'ZIP Code',
+      description: 'ZIP code of the property',
+      required: true,
+      placeholder: '33101'
     },
-    {
-      name: 'Cash-on-Cash Return',
-      formula: 'Cash-on-Cash = (NOI - Debt Service) / Equity Investment',
-      description: 'Return on equity investment'
+    totalRooms: {
+      type: 'number',
+      label: 'Total Rooms',
+      description: 'Total number of guest rooms',
+      required: true,
+      min: 1,
+      max: 1000,
+      step: 1,
+      placeholder: '150'
     },
-    {
-      name: 'Debt Service Coverage Ratio',
-      formula: 'DSCR = NOI / Annual Debt Service',
-      description: 'Ability to cover debt payments from operating income'
+    roomTypes: {
+      type: 'object',
+      label: 'Room Types',
+      description: 'Breakdown of room types',
+      required: true,
+      properties: {
+        standard: {
+          type: 'number',
+          label: 'Standard Rooms',
+          min: 0,
+          step: 1
+        },
+        deluxe: {
+          type: 'number',
+          label: 'Deluxe Rooms',
+          min: 0,
+          step: 1
+        },
+        suite: {
+          type: 'number',
+          label: 'Suites',
+          min: 0,
+          step: 1
+        },
+        presidential: {
+          type: 'number',
+          label: 'Presidential Suites',
+          min: 0,
+          step: 1
+        }
+      }
     },
-    {
-      name: 'Break-Even Occupancy',
-      formula: 'Break-Even Occupancy = (Operating Expenses + Debt Service) / (ADR × 365)',
-      description: 'Minimum occupancy needed to cover all costs'
+    totalSquareFootage: {
+      type: 'number',
+      label: 'Total Square Footage',
+      description: 'Total square footage of the property',
+      required: true,
+      min: 1000,
+      max: 1000000,
+      step: 100,
+      placeholder: '150000'
+    },
+    landArea: {
+      type: 'number',
+      label: 'Land Area (acres)',
+      description: 'Total land area in acres',
+      required: true,
+      min: 0.1,
+      max: 1000,
+      step: 0.1,
+      placeholder: '5.0'
+    },
+    buildingAge: {
+      type: 'number',
+      label: 'Building Age (years)',
+      description: 'Age of the building in years',
+      required: true,
+      min: 0,
+      max: 200,
+      step: 1,
+      placeholder: '15'
+    },
+    lastRenovationYear: {
+      type: 'number',
+      label: 'Last Renovation Year',
+      description: 'Year of last major renovation',
+      required: true,
+      min: 1900,
+      max: 2030,
+      step: 1,
+      placeholder: '2020'
+    },
+    
+    // Market Information
+    marketType: {
+      type: 'select',
+      label: 'Market Type',
+      description: 'Primary market type',
+      required: true,
+      options: [
+        { value: 'urban', label: 'Urban' },
+        { value: 'suburban', label: 'Suburban' },
+        { value: 'airport', label: 'Airport' },
+        { value: 'resort', label: 'Resort' },
+        { value: 'business', label: 'Business' },
+        { value: 'leisure', label: 'Leisure' },
+        { value: 'mixed', label: 'Mixed' }
+      ],
+      placeholder: 'urban'
+    },
+    competitionLevel: {
+      type: 'select',
+      label: 'Competition Level',
+      description: 'Level of competition in the market',
+      required: true,
+      options: [
+        { value: 'low', label: 'Low' },
+        { value: 'moderate', label: 'Moderate' },
+        { value: 'high', label: 'High' },
+        { value: 'very_high', label: 'Very High' }
+      ],
+      placeholder: 'moderate'
+    },
+    marketDemand: {
+      type: 'select',
+      label: 'Market Demand',
+      description: 'Overall market demand level',
+      required: true,
+      options: [
+        { value: 'low', label: 'Low' },
+        { value: 'moderate', label: 'Moderate' },
+        { value: 'high', label: 'High' },
+        { value: 'very_high', label: 'Very High' }
+      ],
+      placeholder: 'high'
+    },
+    seasonality: {
+      type: 'select',
+      label: 'Seasonality',
+      description: 'Level of seasonal variation',
+      required: true,
+      options: [
+        { value: 'low', label: 'Low' },
+        { value: 'moderate', label: 'Moderate' },
+        { value: 'high', label: 'High' },
+        { value: 'extreme', label: 'Extreme' }
+      ],
+      placeholder: 'moderate'
+    },
+    averageMarketADR: {
+      type: 'number',
+      label: 'Average Market ADR ($)',
+      description: 'Average daily rate in the market',
+      required: true,
+      min: 50,
+      max: 2000,
+      step: 10,
+      placeholder: '150'
+    },
+    averageMarketOccupancy: {
+      type: 'number',
+      label: 'Average Market Occupancy (%)',
+      description: 'Average occupancy rate in the market',
+      required: true,
+      min: 0,
+      max: 100,
+      step: 1,
+      placeholder: '70'
+    },
+    
+    // Financial Projections
+    projectedADR: {
+      type: 'object',
+      label: 'Projected ADR by Room Type',
+      description: 'Projected average daily rates',
+      required: true,
+      properties: {
+        standard: {
+          type: 'number',
+          label: 'Standard Room ADR ($)',
+          min: 0,
+          step: 5
+        },
+        deluxe: {
+          type: 'number',
+          label: 'Deluxe Room ADR ($)',
+          min: 0,
+          step: 5
+        },
+        suite: {
+          type: 'number',
+          label: 'Suite ADR ($)',
+          min: 0,
+          step: 5
+        },
+        presidential: {
+          type: 'number',
+          label: 'Presidential Suite ADR ($)',
+          min: 0,
+          step: 10
+        }
+      }
+    },
+    projectedOccupancy: {
+      type: 'number',
+      label: 'Projected Occupancy (%)',
+      description: 'Projected occupancy rate',
+      required: true,
+      min: 0,
+      max: 100,
+      step: 1,
+      placeholder: '75'
+    },
+    averageLengthOfStay: {
+      type: 'number',
+      label: 'Average Length of Stay (days)',
+      description: 'Average guest length of stay',
+      required: true,
+      min: 1,
+      max: 365,
+      step: 0.1,
+      placeholder: '2.5'
+    },
+    revenuePerAvailableRoom: {
+      type: 'number',
+      label: 'Revenue Per Available Room ($)',
+      description: 'Projected RevPAR',
+      required: true,
+      min: 0,
+      max: 1000,
+      step: 1,
+      placeholder: '112'
+    },
+    
+    // Capital Investment
+    acquisitionCost: {
+      type: 'number',
+      label: 'Acquisition Cost ($)',
+      description: 'Total acquisition cost',
+      required: true,
+      min: 100000,
+      max: 1000000000,
+      step: 10000,
+      placeholder: '15000000'
+    },
+    renovationCost: {
+      type: 'number',
+      label: 'Renovation Cost ($)',
+      description: 'Estimated renovation costs',
+      required: true,
+      min: 0,
+      max: 50000000,
+      step: 10000,
+      placeholder: '2000000'
+    },
+    furnitureFixturesEquipment: {
+      type: 'number',
+      label: 'Furniture, Fixtures & Equipment ($)',
+      description: 'FF&E costs',
+      required: true,
+      min: 0,
+      max: 20000000,
+      step: 10000,
+      placeholder: '1000000'
+    },
+    workingCapital: {
+      type: 'number',
+      label: 'Working Capital ($)',
+      description: 'Working capital requirements',
+      required: true,
+      min: 0,
+      max: 5000000,
+      step: 10000,
+      placeholder: '500000'
+    },
+    totalInvestment: {
+      type: 'number',
+      label: 'Total Investment ($)',
+      description: 'Total investment amount',
+      required: true,
+      min: 100000,
+      max: 1000000000,
+      step: 10000,
+      placeholder: '18500000'
+    },
+    
+    // Financing
+    loanAmount: {
+      type: 'number',
+      label: 'Loan Amount ($)',
+      description: 'Total loan amount',
+      required: true,
+      min: 0,
+      max: 1000000000,
+      step: 10000,
+      placeholder: '12000000'
+    },
+    interestRate: {
+      type: 'number',
+      label: 'Interest Rate (%)',
+      description: 'Annual interest rate',
+      required: true,
+      min: 0,
+      max: 50,
+      step: 0.1,
+      placeholder: '6.5'
+    },
+    loanTerm: {
+      type: 'number',
+      label: 'Loan Term (years)',
+      description: 'Loan term in years',
+      required: true,
+      min: 1,
+      max: 50,
+      step: 1,
+      placeholder: '25'
+    },
+    downPayment: {
+      type: 'number',
+      label: 'Down Payment ($)',
+      description: 'Down payment amount',
+      required: true,
+      min: 0,
+      max: 1000000000,
+      step: 10000,
+      placeholder: '3000000'
+    },
+    equityContribution: {
+      type: 'number',
+      label: 'Equity Contribution ($)',
+      description: 'Total equity contribution',
+      required: true,
+      min: 0,
+      max: 1000000000,
+      step: 10000,
+      placeholder: '6500000'
+    },
+    
+    // Revenue Streams
+    roomRevenue: {
+      type: 'number',
+      label: 'Room Revenue ($)',
+      description: 'Annual room revenue',
+      required: true,
+      min: 0,
+      max: 100000000,
+      step: 10000,
+      placeholder: '6000000'
+    },
+    foodBeverageRevenue: {
+      type: 'number',
+      label: 'Food & Beverage Revenue ($)',
+      description: 'Annual F&B revenue',
+      required: true,
+      min: 0,
+      max: 50000000,
+      step: 10000,
+      placeholder: '1200000'
+    },
+    meetingSpaceRevenue: {
+      type: 'number',
+      label: 'Meeting Space Revenue ($)',
+      description: 'Annual meeting space revenue',
+      required: true,
+      min: 0,
+      max: 20000000,
+      step: 10000,
+      placeholder: '300000'
+    },
+    otherRevenue: {
+      type: 'number',
+      label: 'Other Revenue ($)',
+      description: 'Other revenue streams',
+      required: true,
+      min: 0,
+      max: 10000000,
+      step: 10000,
+      placeholder: '100000'
+    },
+    
+    // Market Analysis
+    targetMarket: {
+      type: 'array',
+      label: 'Target Market',
+      description: 'Primary target markets',
+      required: true,
+      items: {
+        type: 'text'
+      },
+      placeholder: ['Business travelers', 'Leisure guests', 'Groups']
+    },
+    competitiveAdvantages: {
+      type: 'array',
+      label: 'Competitive Advantages',
+      description: 'Key competitive advantages',
+      required: true,
+      items: {
+        type: 'text'
+      },
+      placeholder: ['Prime location', 'Modern amenities', 'Excellent service']
+    },
+    marketChallenges: {
+      type: 'array',
+      label: 'Market Challenges',
+      description: 'Key market challenges',
+      required: true,
+      items: {
+        type: 'text'
+      },
+      placeholder: ['Seasonal demand', 'Competition', 'Economic factors']
+    },
+    growthPotential: {
+      type: 'select',
+      label: 'Growth Potential',
+      description: 'Market growth potential',
+      required: true,
+      options: [
+        { value: 'low', label: 'Low' },
+        { value: 'moderate', label: 'Moderate' },
+        { value: 'high', label: 'High' },
+        { value: 'very_high', label: 'Very High' }
+      ],
+      placeholder: 'high'
+    },
+    
+    // Risk Factors
+    marketRisk: {
+      type: 'select',
+      label: 'Market Risk',
+      description: 'Market-related risk level',
+      required: true,
+      options: [
+        { value: 'low', label: 'Low' },
+        { value: 'moderate', label: 'Moderate' },
+        { value: 'high', label: 'High' },
+        { value: 'very_high', label: 'Very High' }
+      ],
+      placeholder: 'moderate'
+    },
+    operationalRisk: {
+      type: 'select',
+      label: 'Operational Risk',
+      description: 'Operational risk level',
+      required: true,
+      options: [
+        { value: 'low', label: 'Low' },
+        { value: 'moderate', label: 'Moderate' },
+        { value: 'high', label: 'High' },
+        { value: 'very_high', label: 'Very High' }
+      ],
+      placeholder: 'moderate'
+    },
+    financialRisk: {
+      type: 'select',
+      label: 'Financial Risk',
+      description: 'Financial risk level',
+      required: true,
+      options: [
+        { value: 'low', label: 'Low' },
+        { value: 'moderate', label: 'Moderate' },
+        { value: 'high', label: 'High' },
+        { value: 'very_high', label: 'Very High' }
+      ],
+      placeholder: 'moderate'
+    },
+    regulatoryRisk: {
+      type: 'select',
+      label: 'Regulatory Risk',
+      description: 'Regulatory risk level',
+      required: true,
+      options: [
+        { value: 'low', label: 'Low' },
+        { value: 'moderate', label: 'Moderate' },
+        { value: 'high', label: 'High' },
+        { value: 'very_high', label: 'Very High' }
+      ],
+      placeholder: 'low'
     }
-  ],
-  examples: [
-    {
-      name: 'Midscale Business Hotel',
-      inputs: {
-        totalRooms: 120,
-        hotelType: 'midscale',
-        starRating: '3',
-        location: 'business-district',
-        market: 'business',
-        occupancyRate: 75,
-        baseADR: 140,
-        constructionCost: 120000,
-        landCost: 3000000,
-        softCosts: 1500000,
-        furnitureCost: 20000,
-        operatingExpenses: 22000,
-        laborCosts: 30000,
-        financingRate: 6.5,
-        loanTerm: 25,
-        downPayment: 25,
-        additionalRevenue: ['restaurant', 'conference-rooms', 'parking'],
-        amenities: ['pool', 'gym', 'free-wifi', 'business-center']
-      },
-      description: 'Typical midscale business hotel in a business district'
-    },
-    {
-      name: 'Luxury Resort',
-      inputs: {
-        totalRooms: 200,
-        hotelType: 'resort',
-        starRating: '5',
-        location: 'resort',
-        market: 'leisure',
-        seasonality: 'high',
-        occupancyRate: 65,
-        baseADR: 350,
-        constructionCost: 300000,
-        landCost: 15000000,
-        softCosts: 5000000,
-        furnitureCost: 50000,
-        operatingExpenses: 45000,
-        laborCosts: 60000,
-        financingRate: 6.0,
-        loanTerm: 30,
-        downPayment: 30,
-        additionalRevenue: ['restaurant', 'spa', 'conference-rooms', 'gift-shop'],
-        amenities: ['pool', 'spa', 'restaurant', 'concierge', 'valet-parking', 'room-service']
-      },
-      description: 'High-end luxury resort with extensive amenities'
-    },
-    {
-      name: 'Budget Airport Hotel',
-      inputs: {
-        totalRooms: 80,
-        hotelType: 'airport',
-        starRating: '2',
-        location: 'airport',
-        market: 'airport',
-        occupancyRate: 80,
-        baseADR: 85,
-        constructionCost: 80000,
-        landCost: 2000000,
-        softCosts: 800000,
-        furnitureCost: 12000,
-        operatingExpenses: 18000,
-        laborCosts: 22000,
-        financingRate: 7.0,
-        loanTerm: 20,
-        downPayment: 20,
-        additionalRevenue: ['shuttle-service', 'parking'],
-        amenities: ['free-wifi', 'shuttle-service']
-      },
-      description: 'Budget-friendly airport hotel with basic amenities'
-    }
-  ]
+  },
+  
+  calculate: calculateHotelFeasibility,
+  validate: validateHotelFeasibilityInputs
 };

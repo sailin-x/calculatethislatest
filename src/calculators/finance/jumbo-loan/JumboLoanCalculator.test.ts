@@ -1,704 +1,261 @@
-import { describe, it, expect } from 'vitest';
-import { JumboLoanCalculator } from './JumboLoanCalculator';
 import { calculateJumboLoan } from './formulas';
 import { validateJumboLoanInputs } from './validation';
-import { validateAllJumboLoanInputs } from './quickValidation';
+import { JumboLoanInputs } from './types';
 
-describe('Jumbo Loan Calculator', () => {
-  describe('Calculator Structure', () => {
-    it('should have correct basic properties', () => {
-      expect(JumboLoanCalculator.id).toBe('jumbo-loan-calculator');
-      expect(JumboLoanCalculator.name).toBe('Jumbo Loan Calculator');
-      expect(JumboLoanCalculator.category).toBe('finance');
-      expect(JumboLoanCalculator.subcategory).toBe('investment');
+describe('JumboLoanCalculator', () => {
+  const mockInputs: JumboLoanInputs = {
+    loanAmount: 800000,
+    interestRate: 0.065,
+    loanTerm: 30,
+    loanType: 'fixed',
+    downPayment: 200000,
+    loanToValueRatio: 0.8,
+    propertyValue: 1000000,
+    propertyAddress: '123 Main St, City, State 12345',
+    propertyType: 'primary_residence',
+    propertyState: 'CA',
+    propertyCounty: 'Los Angeles',
+    creditScore: 'good',
+    debtToIncomeRatio: 0.35,
+    annualIncome: 200000,
+    employmentType: 'w2',
+    employmentLength: 5,
+    liquidAssets: 100000,
+    reserves: 12,
+    otherProperties: 0,
+    existingDebt: 0,
+    conformingLimit: 766550,
+    jumboAmount: 33450,
+    jumboPremium: 0.0025,
+    propertyTaxes: 12000,
+    homeownersInsurance: 2400,
+    privateMortgageInsurance: 0,
+    hoaFees: 4800,
+    otherMonthlyExpenses: 0,
+    interestOnlyOption: false,
+    interestOnlyPeriod: 10,
+    prepaymentPenalty: false,
+    prepaymentPenaltyPeriod: 3,
+    rateLockPeriod: 60,
+    minimumCreditScore: 680,
+    maximumDTI: 0.43,
+    minimumReserves: 6,
+    maximumLTV: 0.9,
+    marketConditions: 'neutral',
+    rateEnvironment: 'moderate',
+    competitionLevel: 'moderate'
+  };
+
+  describe('calculateJumboLoan', () => {
+    it('should calculate basic loan metrics', () => {
+      const result = calculateJumboLoan(mockInputs);
+      
+      expect(result).toBeDefined();
+      expect(result.monthlyPayment).toBeGreaterThan(0);
+      expect(result.annualPayment).toBeGreaterThan(0);
+      expect(result.totalPayments).toBeGreaterThan(0);
+      expect(result.totalInterest).toBeGreaterThan(0);
+      expect(result.totalPrincipal).toBe(mockInputs.loanAmount);
     });
 
-    it('should have required inputs', () => {
-      const requiredInputs = JumboLoanCalculator.inputs.filter(input => input.required);
-      expect(requiredInputs.length).toBeGreaterThan(0);
-      expect(requiredInputs.some(input => input.id === 'loanAmount')).toBe(true);
-      expect(requiredInputs.some(input => input.id === 'interestRate')).toBe(true);
-      expect(requiredInputs.some(input => input.id === 'loanTerm')).toBe(true);
-      expect(requiredInputs.some(input => input.id === 'downPayment')).toBe(true);
+    it('should calculate jumbo loan components', () => {
+      const result = calculateJumboLoan(mockInputs);
+      
+      expect(result.conformingPortion).toBeGreaterThan(0);
+      expect(result.jumboPortion).toBeGreaterThan(0);
+      expect(result.jumboPremiumCost).toBeGreaterThan(0);
+      expect(result.blendedRate).toBeGreaterThan(0);
     });
 
-    it('should have expected outputs', () => {
-      const outputIds = JumboLoanCalculator.outputs.map(output => output.id);
-      expect(outputIds).toContain('monthlyPayment');
-      expect(outputIds).toContain('monthlyPITI');
-      expect(outputIds).toContain('totalPayment');
-      expect(outputIds).toContain('totalInterest');
-      expect(outputIds).toContain('loanToValueRatio');
-      expect(outputIds).toContain('debtToIncomeRatio');
-      expect(outputIds).toContain('qualificationScore');
-      expect(outputIds).toContain('riskScore');
-      expect(outputIds).toContain('approvalProbability');
-      expect(outputIds).toContain('jumboPremium');
+    it('should analyze qualification', () => {
+      const result = calculateJumboLoan(mockInputs);
+      
+      expect(result.qualificationStatus).toBeDefined();
+      expect(Array.isArray(result.qualificationFactors)).toBe(true);
+      expect(Array.isArray(result.qualificationRecommendations)).toBe(true);
     });
 
-    it('should have calculate and generateReport functions', () => {
-      expect(typeof JumboLoanCalculator.calculate).toBe('function');
-      expect(typeof JumboLoanCalculator.generateReport).toBe('function');
+    it('should provide cost analysis', () => {
+      const result = calculateJumboLoan(mockInputs);
+      
+      expect(result.totalLoanCost).toBeGreaterThan(0);
+      expect(result.costPerThousand).toBeGreaterThan(0);
+      expect(result.effectiveRate).toBeGreaterThan(0);
+      expect(result.breakEvenPoint).toBeGreaterThan(0);
+    });
+
+    it('should provide conforming loan comparison', () => {
+      const result = calculateJumboLoan(mockInputs);
+      
+      expect(result.conformingLoanComparison).toBeDefined();
+      expect(result.conformingLoanComparison.conformingPayment).toBeGreaterThan(0);
+      expect(result.conformingLoanComparison.jumboPayment).toBeGreaterThan(0);
+      expect(result.conformingLoanComparison.paymentDifference).toBeDefined();
+      expect(result.conformingLoanComparison.totalCostDifference).toBeDefined();
+      expect(result.conformingLoanComparison.breakEvenMonths).toBeGreaterThan(0);
+    });
+
+    it('should assess risks', () => {
+      const result = calculateJumboLoan(mockInputs);
+      
+      expect(Array.isArray(result.riskFactors)).toBe(true);
+      expect(Array.isArray(result.riskMitigationStrategies)).toBe(true);
+      expect(result.overallRiskScore).toBeGreaterThanOrEqual(1);
+      expect(result.overallRiskScore).toBeLessThanOrEqual(100);
+    });
+
+    it('should provide alternative options', () => {
+      const result = calculateJumboLoan(mockInputs);
+      
+      expect(result.alternativeOptions).toBeDefined();
+      expect(result.alternativeOptions.conformingLoan).toBeDefined();
+      expect(result.alternativeOptions.piggybackLoan).toBeDefined();
+      expect(result.alternativeOptions.portfolioLoan).toBeDefined();
+      
+      expect(result.alternativeOptions.conformingLoan.maxAmount).toBeGreaterThan(0);
+      expect(result.alternativeOptions.conformingLoan.payment).toBeGreaterThan(0);
+      expect(result.alternativeOptions.conformingLoan.totalCost).toBeGreaterThan(0);
+      expect(Array.isArray(result.alternativeOptions.conformingLoan.pros)).toBe(true);
+      expect(Array.isArray(result.alternativeOptions.conformingLoan.cons)).toBe(true);
+    });
+
+    it('should provide refinancing analysis', () => {
+      const result = calculateJumboLoan(mockInputs);
+      
+      expect(result.refinancingAnalysis).toBeDefined();
+      expect(result.refinancingAnalysis.shouldConsiderRefinancing).toBeDefined();
+      expect(Array.isArray(result.refinancingAnalysis.refinanceTriggers)).toBe(true);
+      expect(Array.isArray(result.refinancingAnalysis.refinanceBenefits)).toBe(true);
+      expect(result.refinancingAnalysis.refinanceCosts).toBeGreaterThan(0);
+    });
+
+    it('should calculate tax implications', () => {
+      const result = calculateJumboLoan(mockInputs);
+      
+      expect(result.taxImplications).toBeDefined();
+      expect(result.taxImplications.annualInterestDeduction).toBeGreaterThan(0);
+      expect(result.taxImplications.estimatedTaxSavings).toBeGreaterThan(0);
+      expect(result.taxImplications.netAfterTaxCost).toBeGreaterThan(0);
+      expect(result.taxImplications.taxBenefitRatio).toBeGreaterThan(0);
+    });
+
+    it('should generate recommendations', () => {
+      const result = calculateJumboLoan(mockInputs);
+      
+      expect(result.recommendations).toBeDefined();
+      expect(result.recommendations.loanSuitability).toBeDefined();
+      expect(Array.isArray(result.recommendations.keyRecommendations)).toBe(true);
+      expect(Array.isArray(result.recommendations.optimizationStrategies)).toBe(true);
+      expect(Array.isArray(result.recommendations.riskWarnings)).toBe(true);
+    });
+
+    it('should provide summary', () => {
+      const result = calculateJumboLoan(mockInputs);
+      
+      expect(result.summary).toBeDefined();
+      expect(result.summary.totalLoanAmount).toBe(mockInputs.loanAmount);
+      expect(result.summary.monthlyPayment).toBeGreaterThan(0);
+      expect(result.summary.totalLoanCost).toBeGreaterThan(0);
+      expect(Array.isArray(result.summary.keyBenefits)).toBe(true);
+      expect(Array.isArray(result.summary.keyRisks)).toBe(true);
+      expect(Array.isArray(result.summary.nextSteps)).toBe(true);
     });
   });
 
-  describe('Validation', () => {
-    it('should validate required fields', () => {
-      const result = validateJumboLoanInputs({});
-      expect(result.isValid).toBe(false);
-      expect(result.errors).toContain('Loan amount is required');
-      expect(result.errors).toContain('Interest rate is required');
-      expect(result.errors).toContain('Loan term is required');
-      expect(result.errors).toContain('Down payment is required');
-    });
-
-    it('should validate loan amount range', () => {
-      const result = validateJumboLoanInputs({
-        loanAmount: 500000
-      });
-      expect(result.isValid).toBe(false);
-      expect(result.errors).toContain('Loan amount must be at least $548,250 for jumbo loans');
-    });
-
-    it('should validate interest rate range', () => {
-      const result = validateJumboLoanInputs({
-        loanAmount: 750000,
-        interestRate: 25
-      });
-      expect(result.isValid).toBe(false);
-      expect(result.errors).toContain('Interest rate must be between 0.1% and 20%');
-    });
-
-    it('should validate loan term range', () => {
-      const result = validateJumboLoanInputs({
-        loanAmount: 750000,
-        interestRate: 6.5,
-        loanTerm: 3
-      });
-      expect(result.isValid).toBe(false);
-      expect(result.errors).toContain('Loan term must be between 5 and 50 years');
-    });
-
-    it('should validate down payment range', () => {
-      const result = validateJumboLoanInputs({
-        loanAmount: 750000,
-        interestRate: 6.5,
-        loanTerm: 30,
-        downPayment: 6000000
-      });
-      expect(result.isValid).toBe(false);
-      expect(result.errors).toContain('Down payment must be $5,000,000 or less');
-    });
-
-    it('should accept valid inputs', () => {
-      const result = validateJumboLoanInputs({
-        loanAmount: 750000,
-        interestRate: 6.5,
-        loanTerm: 30,
-        downPayment: 150000
-      });
+  describe('validateJumboLoanInputs', () => {
+    it('should validate valid inputs', () => {
+      const result = validateJumboLoanInputs(mockInputs);
+      
       expect(result.isValid).toBe(true);
       expect(result.errors).toHaveLength(0);
     });
 
-    it('should validate property value range', () => {
-      const result = validateJumboLoanInputs({
-        loanAmount: 750000,
-        interestRate: 6.5,
-        loanTerm: 30,
-        downPayment: 150000,
-        propertyValue: 50000
-      });
+    it('should catch invalid loan amount', () => {
+      const invalidInputs = { ...mockInputs, loanAmount: 50000 };
+      const result = validateJumboLoanInputs(invalidInputs);
+      
       expect(result.isValid).toBe(false);
-      expect(result.errors).toContain('Property value must be between $100,000 and $20,000,000');
+      expect(result.errors).toContain('Loan amount must be at least $100,000');
     });
 
-    it('should validate credit score range', () => {
-      const result = validateJumboLoanInputs({
-        loanAmount: 750000,
-        interestRate: 6.5,
-        loanTerm: 30,
-        downPayment: 150000,
-        creditScore: 200
-      });
+    it('should catch invalid interest rate', () => {
+      const invalidInputs = { ...mockInputs, interestRate: 0.6 };
+      const result = validateJumboLoanInputs(invalidInputs);
+      
       expect(result.isValid).toBe(false);
-      expect(result.errors).toContain('Credit score must be between 300 and 850');
+      expect(result.errors).toContain('Interest rate must be between 0% and 50%');
     });
 
-    it('should validate enum values', () => {
-      const result = validateJumboLoanInputs({
-        loanAmount: 750000,
-        interestRate: 6.5,
-        loanTerm: 30,
-        downPayment: 150000,
-        propertyType: 'Invalid Type'
-      });
+    it('should catch invalid loan term', () => {
+      const invalidInputs = { ...mockInputs, loanTerm: 0 };
+      const result = validateJumboLoanInputs(invalidInputs);
+      
       expect(result.isValid).toBe(false);
-      expect(result.errors).toContain('Property type must be one of:');
-    });
-  });
-
-  describe('Calculation Logic', () => {
-    it('should calculate basic metrics correctly', () => {
-      const inputs = {
-        loanAmount: 750000,
-        interestRate: 6.5,
-        loanTerm: 30,
-        downPayment: 150000
-      };
-
-      const outputs = calculateJumboLoan(inputs);
-
-      expect(outputs.monthlyPayment).toBeGreaterThan(0);
-      expect(outputs.monthlyPITI).toBeGreaterThan(outputs.monthlyPayment);
-      expect(outputs.totalPayment).toBeGreaterThan(0);
-      expect(outputs.totalInterest).toBeGreaterThan(0);
-      expect(outputs.qualificationScore).toBeGreaterThan(0);
-      expect(outputs.riskScore).toBeGreaterThan(0);
-      expect(outputs.approvalProbability).toBeGreaterThan(0);
+      expect(result.errors).toContain('Loan term must be between 1 and 50 years');
     });
 
-    it('should calculate monthly payment correctly', () => {
-      const inputs = {
-        loanAmount: 750000,
-        interestRate: 6.5,
-        loanTerm: 30
-      };
-
-      const outputs = calculateJumboLoan(inputs);
-      expect(outputs.monthlyPayment).toBeGreaterThan(0);
-      expect(outputs.monthlyPayment).toBeLessThan(10000);
-    });
-
-    it('should calculate loan-to-value ratio correctly', () => {
-      const inputs = {
-        loanAmount: 600000,
-        interestRate: 6.5,
-        loanTerm: 30,
-        downPayment: 150000,
-        propertyValue: 750000
-      };
-
-      const outputs = calculateJumboLoan(inputs);
-      expect(outputs.loanToValueRatio).toBe(80); // 600,000 / 750,000 * 100
-    });
-
-    it('should calculate debt-to-income ratio correctly', () => {
-      const inputs = {
-        loanAmount: 750000,
-        interestRate: 6.5,
-        loanTerm: 30,
-        downPayment: 150000,
-        annualIncome: 150000,
-        monthlyDebts: 1500
-      };
-
-      const outputs = calculateJumboLoan(inputs);
-      expect(outputs.debtToIncomeRatio).toBeGreaterThan(0);
-      expect(outputs.debtToIncomeRatio).toBeLessThan(100);
-    });
-
-    it('should calculate down payment percentage correctly', () => {
-      const inputs = {
-        loanAmount: 600000,
-        interestRate: 6.5,
-        loanTerm: 30,
-        downPayment: 150000,
-        propertyValue: 750000
-      };
-
-      const outputs = calculateJumboLoan(inputs);
-      expect(outputs.downPaymentPercent).toBe(20); // 150,000 / 750,000 * 100
-    });
-
-    it('should calculate jumbo premium correctly', () => {
-      const inputs = {
-        loanAmount: 750000,
-        interestRate: 6.5,
-        loanTerm: 30,
-        downPayment: 150000
-      };
-
-      const outputs = calculateJumboLoan(inputs);
-      expect(outputs.jumboPremium).toBeGreaterThan(0);
-    });
-
-    it('should calculate conforming comparison correctly', () => {
-      const inputs = {
-        loanAmount: 750000,
-        interestRate: 6.5,
-        loanTerm: 30,
-        downPayment: 150000
-      };
-
-      const outputs = calculateJumboLoan(inputs);
-      expect(outputs.conformingComparison).toBeGreaterThan(0);
-    });
-
-    it('should calculate qualification score correctly', () => {
-      const inputs = {
-        loanAmount: 750000,
-        interestRate: 6.5,
-        loanTerm: 30,
-        downPayment: 150000,
-        creditScore: 750,
-        debtToIncomeRatio: 35,
-        loanToValueRatio: 80,
-        reserves: 50000
-      };
-
-      const outputs = calculateJumboLoan(inputs);
-      expect(outputs.qualificationScore).toBeGreaterThan(0);
-      expect(outputs.qualificationScore).toBeLessThanOrEqual(100);
-    });
-
-    it('should calculate risk score correctly', () => {
-      const inputs = {
-        loanAmount: 750000,
-        interestRate: 6.5,
-        loanTerm: 30,
-        downPayment: 150000,
-        propertyValue: 900000,
-        annualIncome: 150000,
-        monthlyDebts: 1500,
-        creditScore: 750,
-        reserves: 50000,
-        employmentType: 'W-2 Employee'
-      };
-
-      const outputs = calculateJumboLoan(inputs);
-      expect(outputs.riskScore).toBeGreaterThan(0);
-      expect(outputs.riskScore).toBeLessThanOrEqual(100);
-    });
-
-    it('should calculate approval probability correctly', () => {
-      const inputs = {
-        loanAmount: 750000,
-        interestRate: 6.5,
-        loanTerm: 30,
-        downPayment: 150000
-      };
-
-      const outputs = calculateJumboLoan(inputs);
-      expect(outputs.approvalProbability).toBeGreaterThan(0);
-      expect(outputs.approvalProbability).toBeLessThanOrEqual(100);
-    });
-
-    it('should calculate requirements correctly', () => {
-      const inputs = {
-        loanAmount: 750000,
-        interestRate: 6.5,
-        loanTerm: 30,
-        downPayment: 150000,
-        lenderType: 'Traditional Bank'
-      };
-
-      const outputs = calculateJumboLoan(inputs);
-      expect(outputs.reserveRequirement).toBeGreaterThan(0);
-      expect(outputs.incomeRequirement).toBeGreaterThan(0);
-      expect(outputs.creditRequirement).toBeGreaterThan(0);
-      expect(outputs.downPaymentRequirement).toBeGreaterThan(0);
-    });
-  });
-
-  describe('Jumbo Loan Analysis', () => {
-    it('should generate analysis report', () => {
-      const inputs = {
-        loanAmount: 750000,
-        interestRate: 6.5,
-        loanTerm: 30,
-        downPayment: 150000
-      };
-
-      const outputs = calculateJumboLoan(inputs);
-      const report = JumboLoanCalculator.generateReport(inputs, outputs);
-
-      expect(report).toContain('Jumbo Loan Analysis');
-      expect(report).toContain('Executive Summary');
-      expect(report).toContain('Payment Overview');
-      expect(report).toContain('Key Metrics');
-      expect(report).toContain('Requirements Analysis');
-      expect(report).toContain('Cost Comparison');
-    });
-
-    it('should include recommendation in report', () => {
-      const inputs = {
-        loanAmount: 750000,
-        interestRate: 6.5,
-        loanTerm: 30,
-        downPayment: 150000
-      };
-
-      const outputs = calculateJumboLoan(inputs);
-      const report = JumboLoanCalculator.generateReport(inputs, outputs);
-
-      expect(report).toContain('Recommendation:');
-      expect(outputs.recommendation).toBeTruthy();
-    });
-
-    it('should include payment breakdown in report', () => {
-      const inputs = {
-        loanAmount: 750000,
-        interestRate: 6.5,
-        loanTerm: 30,
-        downPayment: 150000
-      };
-
-      const outputs = calculateJumboLoan(inputs);
-      const report = JumboLoanCalculator.generateReport(inputs, outputs);
-
-      expect(report).toContain('Payment Breakdown');
-      expect(report).toContain('Cost Analysis');
-    });
-  });
-
-  describe('Edge Cases', () => {
-    it('should handle minimum jumbo loan amount', () => {
-      const inputs = {
-        loanAmount: 548250,
-        interestRate: 6.5,
-        loanTerm: 30,
-        downPayment: 109650
-      };
-
-      const outputs = calculateJumboLoan(inputs);
-      expect(outputs.monthlyPayment).toBeGreaterThan(0);
-    });
-
-    it('should handle maximum loan amount', () => {
-      const inputs = {
-        loanAmount: 10000000,
-        interestRate: 6.5,
-        loanTerm: 30,
-        downPayment: 2000000
-      };
-
-      const outputs = calculateJumboLoan(inputs);
-      expect(outputs.monthlyPayment).toBeGreaterThan(0);
-    });
-
-    it('should handle zero interest rate', () => {
-      const inputs = {
-        loanAmount: 750000,
-        interestRate: 0,
-        loanTerm: 30,
-        downPayment: 150000
-      };
-
-      const outputs = calculateJumboLoan(inputs);
-      expect(outputs.monthlyPayment).toBeGreaterThan(0);
-    });
-
-    it('should handle high interest rate', () => {
-      const inputs = {
-        loanAmount: 750000,
-        interestRate: 20,
-        loanTerm: 30,
-        downPayment: 150000
-      };
-
-      const outputs = calculateJumboLoan(inputs);
-      expect(outputs.monthlyPayment).toBeGreaterThan(0);
-    });
-
-    it('should handle short loan term', () => {
-      const inputs = {
-        loanAmount: 750000,
-        interestRate: 6.5,
-        loanTerm: 5,
-        downPayment: 150000
-      };
-
-      const outputs = calculateJumboLoan(inputs);
-      expect(outputs.monthlyPayment).toBeGreaterThan(0);
-    });
-
-    it('should handle long loan term', () => {
-      const inputs = {
-        loanAmount: 750000,
-        interestRate: 6.5,
-        loanTerm: 50,
-        downPayment: 150000
-      };
-
-      const outputs = calculateJumboLoan(inputs);
-      expect(outputs.monthlyPayment).toBeGreaterThan(0);
-    });
-  });
-
-  describe('Quick Validation', () => {
-    it('should validate loan amount quickly', () => {
-      const result = validateLoanAmount(500000);
+    it('should catch invalid property value', () => {
+      const invalidInputs = { ...mockInputs, propertyValue: 50000 };
+      const result = validateJumboLoanInputs(invalidInputs);
+      
       expect(result.isValid).toBe(false);
-      expect(result.message).toContain('at least $548,250 for jumbo loans');
-
-      const validResult = validateLoanAmount(750000);
-      expect(validResult.isValid).toBe(true);
+      expect(result.errors).toContain('Property value must be at least $100,000');
     });
 
-    it('should validate interest rate quickly', () => {
-      const result = validateInterestRate(25);
+    it('should catch invalid property address', () => {
+      const invalidInputs = { ...mockInputs, propertyAddress: '123' };
+      const result = validateJumboLoanInputs(invalidInputs);
+      
       expect(result.isValid).toBe(false);
-      expect(result.message).toContain('between 0.1% and 20%');
-
-      const validResult = validateInterestRate(6.5);
-      expect(validResult.isValid).toBe(true);
+      expect(result.errors).toContain('Property address is required and must be at least 10 characters');
     });
 
-    it('should validate loan term quickly', () => {
-      const result = validateLoanTerm(3);
+    it('should catch invalid debt-to-income ratio', () => {
+      const invalidInputs = { ...mockInputs, debtToIncomeRatio: 1.5 };
+      const result = validateJumboLoanInputs(invalidInputs);
+      
       expect(result.isValid).toBe(false);
-      expect(result.message).toContain('between 5 and 50 years');
-
-      const validResult = validateLoanTerm(30);
-      expect(validResult.isValid).toBe(true);
+      expect(result.errors).toContain('Debt-to-income ratio must be between 0% and 100%');
     });
 
-    it('should validate down payment quickly', () => {
-      const result = validateDownPayment(6000000);
+    it('should catch invalid loan-to-value ratio', () => {
+      const invalidInputs = { ...mockInputs, loanToValueRatio: 1.2 };
+      const result = validateJumboLoanInputs(invalidInputs);
+      
       expect(result.isValid).toBe(false);
-      expect(result.message).toContain('$5,000,000 or less');
-
-      const validResult = validateDownPayment(150000);
-      expect(validResult.isValid).toBe(true);
+      expect(result.errors).toContain('Loan-to-value ratio must be between 0% and 100%');
     });
 
-    it('should validate all inputs quickly', () => {
-      const inputs = {
-        loanAmount: 500000,
-        interestRate: 25,
-        loanTerm: 3,
-        downPayment: 6000000
-      };
-
-      const result = validateAllJumboLoanInputs(inputs);
+    it('should catch invalid annual income', () => {
+      const invalidInputs = { ...mockInputs, annualIncome: 25000 };
+      const result = validateJumboLoanInputs(invalidInputs);
+      
       expect(result.isValid).toBe(false);
-      expect(result.errors.length).toBeGreaterThan(0);
+      expect(result.errors).toContain('Annual income must be at least $50,000');
     });
 
-    it('should pass validation for valid inputs', () => {
-      const inputs = {
-        loanAmount: 750000,
-        interestRate: 6.5,
-        loanTerm: 30,
-        downPayment: 150000
+    it('should provide warnings for high-risk scenarios', () => {
+      const highRiskInputs = { 
+        ...mockInputs, 
+        loanAmount: 2000000,
+        debtToIncomeRatio: 0.5,
+        loanToValueRatio: 0.95,
+        creditScore: 'poor' as const,
+        employmentType: 'self_employed' as const,
+        reserves: 3,
+        loanType: 'adjustable' as const,
+        jumboPremium: 0.08
       };
-
-      const result = validateAllJumboLoanInputs(inputs);
-      expect(result.isValid).toBe(true);
-      expect(result.errors).toHaveLength(0);
-    });
-  });
-
-  describe('Lender Type Analysis', () => {
-    it('should adjust requirements based on lender type', () => {
-      const traditionalBankInputs = {
-        loanAmount: 750000,
-        interestRate: 6.5,
-        loanTerm: 30,
-        downPayment: 150000,
-        lenderType: 'Traditional Bank'
-      };
-
-      const privateLenderInputs = {
-        loanAmount: 750000,
-        interestRate: 6.5,
-        loanTerm: 30,
-        downPayment: 150000,
-        lenderType: 'Private Lender'
-      };
-
-      const traditionalOutputs = calculateJumboLoan(traditionalBankInputs);
-      const privateOutputs = calculateJumboLoan(privateLenderInputs);
-
-      expect(traditionalOutputs.creditRequirement).toBeGreaterThan(privateOutputs.creditRequirement);
-      expect(traditionalOutputs.downPaymentRequirement).toBeGreaterThan(privateOutputs.downPaymentRequirement);
-    });
-  });
-
-  describe('Market Conditions Analysis', () => {
-    it('should adjust requirements based on market conditions', () => {
-      const favorableInputs = {
-        loanAmount: 750000,
-        interestRate: 6.5,
-        loanTerm: 30,
-        downPayment: 150000,
-        marketConditions: 'Favorable'
-      };
-
-      const tightInputs = {
-        loanAmount: 750000,
-        interestRate: 6.5,
-        loanTerm: 30,
-        downPayment: 150000,
-        marketConditions: 'Tight'
-      };
-
-      const favorableOutputs = calculateJumboLoan(favorableInputs);
-      const tightOutputs = calculateJumboLoan(tightInputs);
-
-      expect(tightOutputs.creditRequirement).toBeGreaterThan(favorableOutputs.creditRequirement);
-    });
-  });
-
-  describe('Employment Type Analysis', () => {
-    it('should assess risk based on employment type', () => {
-      const w2Inputs = {
-        loanAmount: 750000,
-        interestRate: 6.5,
-        loanTerm: 30,
-        downPayment: 150000,
-        employmentType: 'W-2 Employee'
-      };
-
-      const selfEmployedInputs = {
-        loanAmount: 750000,
-        interestRate: 6.5,
-        loanTerm: 30,
-        downPayment: 150000,
-        employmentType: 'Self-Employed'
-      };
-
-      const w2Outputs = calculateJumboLoan(w2Inputs);
-      const selfEmployedOutputs = calculateJumboLoan(selfEmployedInputs);
-
-      expect(selfEmployedOutputs.riskScore).toBeGreaterThan(w2Outputs.riskScore);
-    });
-  });
-
-  describe('Property Type Analysis', () => {
-    it('should adjust requirements based on property type', () => {
-      const singleFamilyInputs = {
-        loanAmount: 750000,
-        interestRate: 6.5,
-        loanTerm: 30,
-        downPayment: 150000,
-        propertyType: 'Single Family'
-      };
-
-      const investmentInputs = {
-        loanAmount: 750000,
-        interestRate: 6.5,
-        loanTerm: 30,
-        downPayment: 150000,
-        propertyType: 'Investment Property'
-      };
-
-      const singleFamilyOutputs = calculateJumboLoan(singleFamilyInputs);
-      const investmentOutputs = calculateJumboLoan(investmentInputs);
-
-      expect(investmentOutputs.riskScore).toBeGreaterThan(singleFamilyOutputs.riskScore);
-    });
-  });
-
-  describe('Income Verification Analysis', () => {
-    it('should assess risk based on income verification type', () => {
-      const fullDocInputs = {
-        loanAmount: 750000,
-        interestRate: 6.5,
-        loanTerm: 30,
-        downPayment: 150000,
-        incomeVerification: 'Full Documentation'
-      };
-
-      const statedIncomeInputs = {
-        loanAmount: 750000,
-        interestRate: 6.5,
-        loanTerm: 30,
-        downPayment: 150000,
-        incomeVerification: 'Stated Income'
-      };
-
-      const fullDocOutputs = calculateJumboLoan(fullDocInputs);
-      const statedIncomeOutputs = calculateJumboLoan(statedIncomeInputs);
-
-      expect(statedIncomeOutputs.riskScore).toBeGreaterThan(fullDocOutputs.riskScore);
-    });
-  });
-
-  describe('Credit Score Impact', () => {
-    it('should assess risk based on credit score', () => {
-      const highCreditInputs = {
-        loanAmount: 750000,
-        interestRate: 6.5,
-        loanTerm: 30,
-        downPayment: 150000,
-        creditScore: 800
-      };
-
-      const lowCreditInputs = {
-        loanAmount: 750000,
-        interestRate: 6.5,
-        loanTerm: 30,
-        downPayment: 150000,
-        creditScore: 650
-      };
-
-      const highCreditOutputs = calculateJumboLoan(highCreditInputs);
-      const lowCreditOutputs = calculateJumboLoan(lowCreditInputs);
-
-      expect(lowCreditOutputs.riskScore).toBeGreaterThan(highCreditOutputs.riskScore);
-      expect(highCreditOutputs.qualificationScore).toBeGreaterThan(lowCreditOutputs.qualificationScore);
-    });
-  });
-
-  describe('DTI Impact', () => {
-    it('should assess risk based on debt-to-income ratio', () => {
-      const lowDTIInputs = {
-        loanAmount: 750000,
-        interestRate: 6.5,
-        loanTerm: 30,
-        downPayment: 150000,
-        annualIncome: 200000,
-        monthlyDebts: 1000
-      };
-
-      const highDTIInputs = {
-        loanAmount: 750000,
-        interestRate: 6.5,
-        loanTerm: 30,
-        downPayment: 150000,
-        annualIncome: 100000,
-        monthlyDebts: 3000
-      };
-
-      const lowDTIOutputs = calculateJumboLoan(lowDTIInputs);
-      const highDTIOutputs = calculateJumboLoan(highDTIInputs);
-
-      expect(highDTIOutputs.riskScore).toBeGreaterThan(lowDTIOutputs.riskScore);
-      expect(lowDTIOutputs.qualificationScore).toBeGreaterThan(highDTIOutputs.qualificationScore);
-    });
-  });
-
-  describe('Reserve Requirements', () => {
-    it('should calculate reserve requirements correctly', () => {
-      const inputs = {
-        loanAmount: 750000,
-        interestRate: 6.5,
-        loanTerm: 30,
-        downPayment: 150000,
-        lenderType: 'Traditional Bank'
-      };
-
-      const outputs = calculateJumboLoan(inputs);
-      expect(outputs.reserveRequirement).toBeGreaterThan(0);
-      expect(outputs.reserveRequirement).toBeLessThan(1000000);
-    });
-  });
-
-  describe('Income Requirements', () => {
-    it('should calculate income requirements correctly', () => {
-      const inputs = {
-        loanAmount: 750000,
-        interestRate: 6.5,
-        loanTerm: 30,
-        downPayment: 150000,
-        lenderType: 'Traditional Bank'
-      };
-
-      const outputs = calculateJumboLoan(inputs);
-      expect(outputs.incomeRequirement).toBeGreaterThan(0);
-      expect(outputs.incomeRequirement).toBeLessThan(100000);
+      const result = validateJumboLoanInputs(highRiskInputs);
+      
+      expect(result.warnings).toContain('Loan amount significantly exceeds conforming limit');
+      expect(result.warnings).toContain('Debt-to-income ratio above 43% may limit options');
+      expect(result.warnings).toContain('Loan-to-value ratio above 90% may require additional documentation');
+      expect(result.warnings).toContain('Lower credit score may result in higher rates');
+      expect(result.warnings).toContain('Self-employed or business owner may require additional documentation');
+      expect(result.warnings).toContain('Reserves below 6 months may limit options');
+      expect(result.warnings).toContain('Adjustable rate mortgages carry interest rate risk');
+      expect(result.warnings).toContain('High jumbo premium may impact affordability');
     });
   });
 });
