@@ -1,0 +1,1 @@
+export { TermLifeInsuranceCalculator as termLifeInsuranceCalculator } from './TermLifeInsuranceCalculator';

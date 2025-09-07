@@ -1,799 +1,305 @@
-import { Calculator } from '../../../types/calculator';
-import { calculateMortgageAPRComparison } from './formulas';
-import { generateMortgageAPRComparisonAnalysis } from './formulas';
+import { Calculator } from '@/lib/Calculator';
+import { MortgageAPRComparisonInputs, MortgageAPRComparisonResults } from './types';
+import { calculateAPR } from './formulas';
 
-export const MortgageAPRComparisonCalculator: Calculator = {
-  id: 'mortgage-apr-comparison-calculator',
-  name: 'Mortgage APR Comparison Calculator',
-  category: 'finance',
-  subcategory: 'mortgage',
-  description: 'Compare mortgage offers using APR calculations including all costs, fees, and closing expenses to determine the true cost of borrowing.',
-  inputs: {
+export class MortgageAPRComparisonCalculator extends Calculator<
+  MortgageAPRComparisonInputs,
+  MortgageAPRComparisonResults
+> {
+  name = 'Mortgage APR Comparison Calculator';
+  description = 'Compare mortgage offers by calculating their true Annual Percentage Rate (APR) including all closing costs and fees.';
+  category = 'Finance';
+  inputs = {
     loanAmount: {
-      type: 'currency',
-      value: 300000,
-      unit: 'USD',
-      description: 'Loan amount',
-      placeholder: 'Enter loan amount',
-      validation: {
-        required: true,
-        min: 10000,
-        max: 10000000
-      }
+      type: 'number',
+      label: 'Loan Amount ($)',
+      placeholder: '300000',
+      required: true,
+      min: 10000,
+      max: 10000000,
+      step: 1000,
     },
     loanTerm: {
+      type: 'select',
+      label: 'Loan Term',
+      options: [
+        { value: '15', label: '15 years' },
+        { value: '20', label: '20 years' },
+        { value: '30', label: '30 years' },
+      ],
+      required: true,
+      defaultValue: '30',
+    },
+    // Mortgage Offer 1
+    offer1Name: {
+      type: 'text',
+      label: 'Offer 1 Name',
+      placeholder: 'Bank A 30yr Fixed',
+      required: true,
+    },
+    offer1InterestRate: {
       type: 'number',
-      value: 30,
-      unit: 'years',
-      description: 'Loan term in years',
-      placeholder: 'Enter loan term',
-      validation: {
-        required: true,
-        min: 1,
-        max: 50
-      }
+      label: 'Offer 1 Interest Rate (%)',
+      placeholder: '6.5',
+      required: true,
+      min: 0.1,
+      max: 20,
+      step: 0.01,
     },
-    interestRate1: {
-      type: 'percentage',
-      value: 6.5,
-      unit: '%',
-      description: 'Interest rate for offer 1',
-      placeholder: 'Enter interest rate',
-      validation: {
-        required: true,
-        min: 0,
-        max: 20
-      }
-    },
-    interestRate2: {
-      type: 'percentage',
-      value: 6.25,
-      unit: '%',
-      description: 'Interest rate for offer 2',
-      placeholder: 'Enter interest rate',
-      validation: {
-        required: true,
-        min: 0,
-        max: 20
-      }
-    },
-    interestRate3: {
-      type: 'percentage',
-      value: 6.75,
-      unit: '%',
-      description: 'Interest rate for offer 3',
-      placeholder: 'Enter interest rate',
-      validation: {
-        required: true,
-        min: 0,
-        max: 20
-      }
-    },
-    originationFee1: {
-      type: 'currency',
-      value: 1500,
-      unit: 'USD',
-      description: 'Origination fee for offer 1',
-      placeholder: 'Enter origination fee',
-      validation: {
-        required: true,
-        min: 0,
-        max: 100000
-      }
-    },
-    originationFee2: {
-      type: 'currency',
-      value: 2000,
-      unit: 'USD',
-      description: 'Origination fee for offer 2',
-      placeholder: 'Enter origination fee',
-      validation: {
-        required: true,
-        min: 0,
-        max: 100000
-      }
-    },
-    originationFee3: {
-      type: 'currency',
-      value: 1000,
-      unit: 'USD',
-      description: 'Origination fee for offer 3',
-      placeholder: 'Enter origination fee',
-      validation: {
-        required: true,
-        min: 0,
-        max: 100000
-      }
-    },
-    discountPoints1: {
+    offer1ClosingCosts: {
       type: 'number',
-      value: 0,
-      unit: 'points',
-      description: 'Discount points for offer 1',
-      placeholder: 'Enter discount points',
-      validation: {
-        required: true,
-        min: 0,
-        max: 10
-      }
+      label: 'Offer 1 Closing Costs ($)',
+      placeholder: '5000',
+      required: true,
+      min: 0,
+      max: 50000,
+      step: 100,
     },
-    discountPoints2: {
+    offer1Points: {
       type: 'number',
-      value: 1,
-      unit: 'points',
-      description: 'Discount points for offer 2',
-      placeholder: 'Enter discount points',
-      validation: {
-        required: true,
-        min: 0,
-        max: 10
-      }
+      label: 'Offer 1 Points ($)',
+      placeholder: '2000',
+      required: true,
+      min: 0,
+      max: 10000,
+      step: 100,
     },
-    discountPoints3: {
+    // Mortgage Offer 2
+    offer2Name: {
+      type: 'text',
+      label: 'Offer 2 Name',
+      placeholder: 'Credit Union 30yr Fixed',
+      required: true,
+    },
+    offer2InterestRate: {
       type: 'number',
-      value: 0.5,
-      unit: 'points',
-      description: 'Discount points for offer 3',
-      placeholder: 'Enter discount points',
-      validation: {
-        required: true,
-        min: 0,
-        max: 10
-      }
+      label: 'Offer 2 Interest Rate (%)',
+      placeholder: '6.25',
+      required: true,
+      min: 0.1,
+      max: 20,
+      step: 0.01,
     },
-    appraisalFee1: {
-      type: 'currency',
-      value: 500,
-      unit: 'USD',
-      description: 'Appraisal fee for offer 1',
-      placeholder: 'Enter appraisal fee',
-      validation: {
-        required: true,
-        min: 0,
-        max: 10000
-      }
+    offer2ClosingCosts: {
+      type: 'number',
+      label: 'Offer 2 Closing Costs ($)',
+      placeholder: '3000',
+      required: true,
+      min: 0,
+      max: 50000,
+      step: 100,
     },
-    appraisalFee2: {
-      type: 'currency',
-      value: 450,
-      unit: 'USD',
-      description: 'Appraisal fee for offer 2',
-      placeholder: 'Enter appraisal fee',
-      validation: {
-        required: true,
-        min: 0,
-        max: 10000
-      }
+    offer2Points: {
+      type: 'number',
+      label: 'Offer 2 Points ($)',
+      placeholder: '1000',
+      required: true,
+      min: 0,
+      max: 10000,
+      step: 100,
     },
-    appraisalFee3: {
-      type: 'currency',
-      value: 550,
-      unit: 'USD',
-      description: 'Appraisal fee for offer 3',
-      placeholder: 'Enter appraisal fee',
-      validation: {
-        required: true,
-        min: 0,
-        max: 10000
-      }
+    // Mortgage Offer 3 (Optional)
+    offer3Name: {
+      type: 'text',
+      label: 'Offer 3 Name (Optional)',
+      placeholder: 'Online Lender 30yr Fixed',
+      required: false,
     },
-    titleInsurance1: {
-      type: 'currency',
-      value: 1200,
-      unit: 'USD',
-      description: 'Title insurance for offer 1',
-      placeholder: 'Enter title insurance cost',
-      validation: {
-        required: true,
-        min: 0,
-        max: 50000
-      }
+    offer3InterestRate: {
+      type: 'number',
+      label: 'Offer 3 Interest Rate (%)',
+      placeholder: '6.0',
+      required: false,
+      min: 0.1,
+      max: 20,
+      step: 0.01,
     },
-    titleInsurance2: {
-      type: 'currency',
-      value: 1100,
-      unit: 'USD',
-      description: 'Title insurance for offer 2',
-      placeholder: 'Enter title insurance cost',
-      validation: {
-        required: true,
-        min: 0,
-        max: 50000
-      }
+    offer3ClosingCosts: {
+      type: 'number',
+      label: 'Offer 3 Closing Costs ($)',
+      placeholder: '4000',
+      required: false,
+      min: 0,
+      max: 50000,
+      step: 100,
     },
-    titleInsurance3: {
-      type: 'currency',
-      value: 1300,
-      unit: 'USD',
-      description: 'Title insurance for offer 3',
-      placeholder: 'Enter title insurance cost',
-      validation: {
-        required: true,
-        min: 0,
-        max: 50000
-      }
+    offer3Points: {
+      type: 'number',
+      label: 'Offer 3 Points ($)',
+      placeholder: '1500',
+      required: false,
+      min: 0,
+      max: 10000,
+      step: 100,
     },
-    escrowFees1: {
-      type: 'currency',
-      value: 800,
-      unit: 'USD',
-      description: 'Escrow fees for offer 1',
-      placeholder: 'Enter escrow fees',
-      validation: {
-        required: true,
-        min: 0,
-        max: 10000
-      }
+  };
+
+  outputs = {
+    offer1APR: {
+      type: 'number',
+      label: 'Offer 1 APR (%)',
+      formatter: (value: number) => `${value.toFixed(3)}%`,
     },
-    escrowFees2: {
-      type: 'currency',
-      value: 750,
-      unit: 'USD',
-      description: 'Escrow fees for offer 2',
-      placeholder: 'Enter escrow fees',
-      validation: {
-        required: true,
-        min: 0,
-        max: 10000
-      }
+    offer1MonthlyPayment: {
+      type: 'number',
+      label: 'Offer 1 Monthly Payment ($)',
+      formatter: (value: number) => `$${value.toFixed(2)}`,
     },
-    escrowFees3: {
-      type: 'currency',
-      value: 850,
-      unit: 'USD',
-      description: 'Escrow fees for offer 3',
-      placeholder: 'Enter escrow fees',
-      validation: {
-        required: true,
-        min: 0,
-        max: 10000
-      }
+    offer1TotalCost: {
+      type: 'number',
+      label: 'Offer 1 Total Cost ($)',
+      formatter: (value: number) => `$${value.toLocaleString()}`,
     },
-    creditReportFee1: {
-      type: 'currency',
-      value: 50,
-      unit: 'USD',
-      description: 'Credit report fee for offer 1',
-      placeholder: 'Enter credit report fee',
-      validation: {
-        required: true,
-        min: 0,
-        max: 1000
-      }
+    offer2APR: {
+      type: 'number',
+      label: 'Offer 2 APR (%)',
+      formatter: (value: number) => `${value.toFixed(3)}%`,
     },
-    creditReportFee2: {
-      type: 'currency',
-      value: 45,
-      unit: 'USD',
-      description: 'Credit report fee for offer 2',
-      placeholder: 'Enter credit report fee',
-      validation: {
-        required: true,
-        min: 0,
-        max: 1000
-      }
+    offer2MonthlyPayment: {
+      type: 'number',
+      label: 'Offer 2 Monthly Payment ($)',
+      formatter: (value: number) => `$${value.toFixed(2)}`,
     },
-    creditReportFee3: {
-      type: 'currency',
-      value: 55,
-      unit: 'USD',
-      description: 'Credit report fee for offer 3',
-      placeholder: 'Enter credit report fee',
-      validation: {
-        required: true,
-        min: 0,
-        max: 1000
-      }
+    offer2TotalCost: {
+      type: 'number',
+      label: 'Offer 2 Total Cost ($)',
+      formatter: (value: number) => `$${value.toLocaleString()}`,
     },
-    processingFee1: {
-      type: 'currency',
-      value: 300,
-      unit: 'USD',
-      description: 'Processing fee for offer 1',
-      placeholder: 'Enter processing fee',
-      validation: {
-        required: true,
-        min: 0,
-        max: 5000
-      }
+    offer3APR: {
+      type: 'number',
+      label: 'Offer 3 APR (%)',
+      formatter: (value: number) => `${value.toFixed(3)}%`,
     },
-    processingFee2: {
-      type: 'currency',
-      value: 250,
-      unit: 'USD',
-      description: 'Processing fee for offer 2',
-      placeholder: 'Enter processing fee',
-      validation: {
-        required: true,
-        min: 0,
-        max: 5000
-      }
+    offer3MonthlyPayment: {
+      type: 'number',
+      label: 'Offer 3 Monthly Payment ($)',
+      formatter: (value: number) => `$${value.toFixed(2)}`,
     },
-    processingFee3: {
-      type: 'currency',
-      value: 350,
-      unit: 'USD',
-      description: 'Processing fee for offer 3',
-      placeholder: 'Enter processing fee',
-      validation: {
-        required: true,
-        min: 0,
-        max: 5000
-      }
+    offer3TotalCost: {
+      type: 'number',
+      label: 'Offer 3 Total Cost ($)',
+      formatter: (value: number) => `$${value.toLocaleString()}`,
     },
-    underwritingFee1: {
-      type: 'currency',
-      value: 400,
-      unit: 'USD',
-      description: 'Underwriting fee for offer 1',
-      placeholder: 'Enter underwriting fee',
-      validation: {
-        required: true,
-        min: 0,
-        max: 5000
-      }
+    bestOffer: {
+      type: 'text',
+      label: 'Best Offer (Lowest APR)',
     },
-    underwritingFee2: {
-      type: 'currency',
-      value: 350,
-      unit: 'USD',
-      description: 'Underwriting fee for offer 2',
-      placeholder: 'Enter underwriting fee',
-      validation: {
-        required: true,
-        min: 0,
-        max: 5000
-      }
+    savings: {
+      type: 'number',
+      label: 'Potential Monthly Savings ($)',
+      formatter: (value: number) => `$${value.toFixed(2)}`,
     },
-    underwritingFee3: {
-      type: 'currency',
-      value: 450,
-      unit: 'USD',
-      description: 'Underwriting fee for offer 3',
-      placeholder: 'Enter underwriting fee',
-      validation: {
-        required: true,
-        min: 0,
-        max: 5000
-      }
+    totalSavings: {
+      type: 'number',
+      label: 'Potential Total Savings ($)',
+      formatter: (value: number) => `$${value.toLocaleString()}`,
     },
-    documentPreparationFee1: {
-      type: 'currency',
-      value: 200,
-      unit: 'USD',
-      description: 'Document preparation fee for offer 1',
-      placeholder: 'Enter document preparation fee',
-      validation: {
-        required: true,
-        min: 0,
-        max: 2000
-      }
+  };
+
+  examples = [
+    {
+      name: 'Compare Three Mortgage Offers',
+      inputs: {
+        loanAmount: 400000,
+        loanTerm: '30',
+        offer1Name: 'Bank A',
+        offer1InterestRate: 6.5,
+        offer1ClosingCosts: 5000,
+        offer1Points: 2000,
+        offer2Name: 'Credit Union',
+        offer2InterestRate: 6.25,
+        offer2ClosingCosts: 3000,
+        offer2Points: 1000,
+        offer3Name: 'Online Lender',
+        offer3InterestRate: 6.0,
+        offer3ClosingCosts: 4000,
+        offer3Points: 1500,
+      },
     },
-    documentPreparationFee2: {
-      type: 'currency',
-      value: 180,
-      unit: 'USD',
-      description: 'Document preparation fee for offer 2',
-      placeholder: 'Enter document preparation fee',
-      validation: {
-        required: true,
-        min: 0,
-        max: 2000
-      }
-    },
-    documentPreparationFee3: {
-      type: 'currency',
-      value: 220,
-      unit: 'USD',
-      description: 'Document preparation fee for offer 3',
-      placeholder: 'Enter document preparation fee',
-      validation: {
-        required: true,
-        min: 0,
-        max: 2000
-      }
-    },
-    floodCertificationFee1: {
-      type: 'currency',
-      value: 20,
-      unit: 'USD',
-      description: 'Flood certification fee for offer 1',
-      placeholder: 'Enter flood certification fee',
-      validation: {
-        required: true,
-        min: 0,
-        max: 500
-      }
-    },
-    floodCertificationFee2: {
-      type: 'currency',
-      value: 18,
-      unit: 'USD',
-      description: 'Flood certification fee for offer 2',
-      placeholder: 'Enter flood certification fee',
-      validation: {
-        required: true,
-        min: 0,
-        max: 500
-      }
-    },
-    floodCertificationFee3: {
-      type: 'currency',
-      value: 22,
-      unit: 'USD',
-      description: 'Flood certification fee for offer 3',
-      placeholder: 'Enter flood certification fee',
-      validation: {
-        required: true,
-        min: 0,
-        max: 500
-      }
-    },
-    taxServiceFee1: {
-      type: 'currency',
-      value: 75,
-      unit: 'USD',
-      description: 'Tax service fee for offer 1',
-      placeholder: 'Enter tax service fee',
-      validation: {
-        required: true,
-        min: 0,
-        max: 1000
-      }
-    },
-    taxServiceFee2: {
-      type: 'currency',
-      value: 70,
-      unit: 'USD',
-      description: 'Tax service fee for offer 2',
-      placeholder: 'Enter tax service fee',
-      validation: {
-        required: true,
-        min: 0,
-        max: 1000
-      }
-    },
-    taxServiceFee3: {
-      type: 'currency',
-      value: 80,
-      unit: 'USD',
-      description: 'Tax service fee for offer 3',
-      placeholder: 'Enter tax service fee',
-      validation: {
-        required: true,
-        min: 0,
-        max: 1000
-      }
-    },
-    prepaidInterest1: {
-      type: 'currency',
-      value: 500,
-      unit: 'USD',
-      description: 'Prepaid interest for offer 1',
-      placeholder: 'Enter prepaid interest',
-      validation: {
-        required: true,
-        min: 0,
-        max: 10000
-      }
-    },
-    prepaidInterest2: {
-      type: 'currency',
-      value: 480,
-      unit: 'USD',
-      description: 'Prepaid interest for offer 2',
-      placeholder: 'Enter prepaid interest',
-      validation: {
-        required: true,
-        min: 0,
-        max: 10000
-      }
-    },
-    prepaidInterest3: {
-      type: 'currency',
-      value: 520,
-      unit: 'USD',
-      description: 'Prepaid interest for offer 3',
-      placeholder: 'Enter prepaid interest',
-      validation: {
-        required: true,
-        min: 0,
-        max: 10000
-      }
-    },
-    prepaidInsurance1: {
-      type: 'currency',
-      value: 600,
-      unit: 'USD',
-      description: 'Prepaid insurance for offer 1',
-      placeholder: 'Enter prepaid insurance',
-      validation: {
-        required: true,
-        min: 0,
-        max: 10000
-      }
-    },
-    prepaidInsurance2: {
-      type: 'currency',
-      value: 580,
-      unit: 'USD',
-      description: 'Prepaid insurance for offer 2',
-      placeholder: 'Enter prepaid insurance',
-      validation: {
-        required: true,
-        min: 0,
-        max: 10000
-      }
-    },
-    prepaidInsurance3: {
-      type: 'currency',
-      value: 620,
-      unit: 'USD',
-      description: 'Prepaid insurance for offer 3',
-      placeholder: 'Enter prepaid insurance',
-      validation: {
-        required: true,
-        min: 0,
-        max: 10000
-      }
-    },
-    prepaidTaxes1: {
-      type: 'currency',
-      value: 1200,
-      unit: 'USD',
-      description: 'Prepaid taxes for offer 1',
-      placeholder: 'Enter prepaid taxes',
-      validation: {
-        required: true,
-        min: 0,
-        max: 20000
-      }
-    },
-    prepaidTaxes2: {
-      type: 'currency',
-      value: 1150,
-      unit: 'USD',
-      description: 'Prepaid taxes for offer 2',
-      placeholder: 'Enter prepaid taxes',
-      validation: {
-        required: true,
-        min: 0,
-        max: 20000
-      }
-    },
-    prepaidTaxes3: {
-      type: 'currency',
-      value: 1250,
-      unit: 'USD',
-      description: 'Prepaid taxes for offer 3',
-      placeholder: 'Enter prepaid taxes',
-      validation: {
-        required: true,
-        min: 0,
-        max: 20000
-      }
-    },
-    lenderCredits1: {
-      type: 'currency',
-      value: 0,
-      unit: 'USD',
-      description: 'Lender credits for offer 1',
-      placeholder: 'Enter lender credits (negative for costs)',
-      validation: {
-        required: true,
-        min: -50000,
-        max: 50000
-      }
-    },
-    lenderCredits2: {
-      type: 'currency',
-      value: -500,
-      unit: 'USD',
-      description: 'Lender credits for offer 2',
-      placeholder: 'Enter lender credits (negative for costs)',
-      validation: {
-        required: true,
-        min: -50000,
-        max: 50000
-      }
-    },
-    lenderCredits3: {
-      type: 'currency',
-      value: 200,
-      unit: 'USD',
-      description: 'Lender credits for offer 3',
-      placeholder: 'Enter lender credits (negative for costs)',
-      validation: {
-        required: true,
-        min: -50000,
-        max: 50000
-      }
+  ];
+
+  calculate(inputs: MortgageAPRComparisonInputs): MortgageAPRComparisonResults {
+    const loanTermYears = parseInt(inputs.loanTerm);
+    const loanTermMonths = loanTermYears * 12;
+
+    // Calculate Offer 1
+    const offer1APR = calculateAPR(
+      inputs.loanAmount,
+      inputs.offer1InterestRate / 100,
+      loanTermMonths,
+      inputs.offer1ClosingCosts + inputs.offer1Points
+    );
+
+    const offer1MonthlyRate = inputs.offer1InterestRate / 100 / 12;
+    const offer1MonthlyPayment = (inputs.loanAmount * offer1MonthlyRate * Math.pow(1 + offer1MonthlyRate, loanTermMonths)) /
+      (Math.pow(1 + offer1MonthlyRate, loanTermMonths) - 1);
+
+    const offer1TotalCost = (offer1MonthlyPayment * loanTermMonths) + inputs.offer1ClosingCosts + inputs.offer1Points;
+
+    // Calculate Offer 2
+    const offer2APR = calculateAPR(
+      inputs.loanAmount,
+      inputs.offer2InterestRate / 100,
+      loanTermMonths,
+      inputs.offer2ClosingCosts + inputs.offer2Points
+    );
+
+    const offer2MonthlyRate = inputs.offer2InterestRate / 100 / 12;
+    const offer2MonthlyPayment = (inputs.loanAmount * offer2MonthlyRate * Math.pow(1 + offer2MonthlyRate, loanTermMonths)) /
+      (Math.pow(1 + offer2MonthlyRate, loanTermMonths) - 1);
+
+    const offer2TotalCost = (offer2MonthlyPayment * loanTermMonths) + inputs.offer2ClosingCosts + inputs.offer2Points;
+
+    // Calculate Offer 3 (if provided)
+    let offer3APR = 0;
+    let offer3MonthlyPayment = 0;
+    let offer3TotalCost = 0;
+
+    if (inputs.offer3Name && inputs.offer3InterestRate && inputs.offer3ClosingCosts !== undefined && inputs.offer3Points !== undefined) {
+      offer3APR = calculateAPR(
+        inputs.loanAmount,
+        inputs.offer3InterestRate / 100,
+        loanTermMonths,
+        inputs.offer3ClosingCosts + inputs.offer3Points
+      );
+
+      const offer3MonthlyRate = inputs.offer3InterestRate / 100 / 12;
+      offer3MonthlyPayment = (inputs.loanAmount * offer3MonthlyRate * Math.pow(1 + offer3MonthlyRate, loanTermMonths)) /
+        (Math.pow(1 + offer3MonthlyRate, loanTermMonths) - 1);
+
+      offer3TotalCost = (offer3MonthlyPayment * loanTermMonths) + inputs.offer3ClosingCosts + inputs.offer3Points;
     }
-  },
-  outputs: [
-    {
-      name: 'apr1',
-      label: 'APR for Offer 1',
-      type: 'percentage',
-      unit: '%',
-      description: 'Annual Percentage Rate for offer 1'
-    },
-    {
-      name: 'apr2',
-      label: 'APR for Offer 2',
-      type: 'percentage',
-      unit: '%',
-      description: 'Annual Percentage Rate for offer 2'
-    },
-    {
-      name: 'apr3',
-      label: 'APR for Offer 3',
-      type: 'percentage',
-      unit: '%',
-      description: 'Annual Percentage Rate for offer 3'
-    },
-    {
-      name: 'monthlyPayment1',
-      label: 'Monthly Payment - Offer 1',
-      type: 'currency',
-      unit: 'USD/month',
-      description: 'Monthly payment for offer 1'
-    },
-    {
-      name: 'monthlyPayment2',
-      label: 'Monthly Payment - Offer 2',
-      type: 'currency',
-      unit: 'USD/month',
-      description: 'Monthly payment for offer 2'
-    },
-    {
-      name: 'monthlyPayment3',
-      label: 'Monthly Payment - Offer 3',
-      type: 'currency',
-      unit: 'USD/month',
-      description: 'Monthly payment for offer 3'
-    },
-    {
-      name: 'totalCost1',
-      label: 'Total Cost - Offer 1',
-      type: 'currency',
-      unit: 'USD',
-      description: 'Total cost including all fees for offer 1'
-    },
-    {
-      name: 'totalCost2',
-      label: 'Total Cost - Offer 2',
-      type: 'currency',
-      unit: 'USD',
-      description: 'Total cost including all fees for offer 2'
-    },
-    {
-      name: 'totalCost3',
-      label: 'Total Cost - Offer 3',
-      type: 'currency',
-      unit: 'USD',
-      description: 'Total cost including all fees for offer 3'
-    },
-    {
-      name: 'closingCosts1',
-      label: 'Closing Costs - Offer 1',
-      type: 'currency',
-      unit: 'USD',
-      description: 'Total closing costs for offer 1'
-    },
-    {
-      name: 'closingCosts2',
-      label: 'Closing Costs - Offer 2',
-      type: 'currency',
-      unit: 'USD',
-      description: 'Total closing costs for offer 2'
-    },
-    {
-      name: 'closingCosts3',
-      label: 'Closing Costs - Offer 3',
-      type: 'currency',
-      unit: 'USD',
-      description: 'Total closing costs for offer 3'
-    },
-    {
-      name: 'totalInterest1',
-      label: 'Total Interest - Offer 1',
-      type: 'currency',
-      unit: 'USD',
-      description: 'Total interest paid over loan term for offer 1'
-    },
-    {
-      name: 'totalInterest2',
-      label: 'Total Interest - Offer 2',
-      type: 'currency',
-      unit: 'USD',
-      description: 'Total interest paid over loan term for offer 2'
-    },
-    {
-      name: 'totalInterest3',
-      label: 'Total Interest - Offer 3',
-      type: 'currency',
-      unit: 'USD',
-      description: 'Total interest paid over loan term for offer 3'
-    },
-    {
-      name: 'costComparison',
-      label: 'Cost Comparison',
-      type: 'string',
-      unit: '',
-      description: 'Comparison of total costs between offers'
-    },
-    {
-      name: 'bestOffer',
-      label: 'Best Offer',
-      type: 'string',
-      unit: '',
-      description: 'Recommendation for the best offer based on APR'
-    },
-    {
-      name: 'savingsAnalysis',
-      label: 'Savings Analysis',
-      type: 'string',
-      unit: '',
-      description: 'Analysis of potential savings between offers'
-    },
-    {
-      name: 'breakEvenAnalysis',
-      label: 'Break-Even Analysis',
-      type: 'string',
-      unit: '',
-      description: 'Break-even analysis for different offers'
-    },
-    {
-      name: 'feeBreakdown1',
-      label: 'Fee Breakdown - Offer 1',
-      type: 'string',
-      unit: '',
-      description: 'Detailed breakdown of fees for offer 1'
-    },
-    {
-      name: 'feeBreakdown2',
-      label: 'Fee Breakdown - Offer 2',
-      type: 'string',
-      unit: '',
-      description: 'Detailed breakdown of fees for offer 2'
-    },
-    {
-      name: 'feeBreakdown3',
-      label: 'Fee Breakdown - Offer 3',
-      type: 'string',
-      unit: '',
-      description: 'Detailed breakdown of fees for offer 3'
-    },
-    {
-      name: 'aprDifference',
-      label: 'APR Differences',
-      type: 'string',
-      unit: '',
-      description: 'APR differences between offers'
-    },
-    {
-      name: 'monthlySavings',
-      label: 'Monthly Savings',
-      type: 'string',
-      unit: '',
-      description: 'Monthly payment differences between offers'
-    },
-    {
-      name: 'totalSavings',
-      label: 'Total Savings',
-      type: 'string',
-      unit: '',
-      description: 'Total cost differences between offers'
-    },
-    {
-      name: 'recommendation',
-      label: 'Recommendation',
-      type: 'string',
-      unit: '',
-      description: 'Detailed recommendation with reasoning'
+
+    // Determine best offer
+    const offers = [
+      { name: inputs.offer1Name, apr: offer1APR, monthly: offer1MonthlyPayment },
+      { name: inputs.offer2Name, apr: offer2APR, monthly: offer2MonthlyPayment },
+    ];
+
+    if (offer3APR > 0) {
+      offers.push({ name: inputs.offer3Name!, apr: offer3APR, monthly: offer3MonthlyPayment });
     }
-  ],
-  calculate: calculateMortgageAPRComparison,
-  generateReport: generateMortgageAPRComparisonAnalysis
-};
+
+    const bestOffer = offers.reduce((best, current) => current.apr < best.apr ? current : best);
+
+    // Calculate savings compared to worst offer
+    const worstOffer = offers.reduce((worst, current) => current.apr > worst.apr ? current : worst);
+    const monthlySavings = worstOffer.monthly - bestOffer.monthly;
+    const totalSavings = (worstOffer.monthly - bestOffer.monthly) * loanTermMonths;
+
+    return {
+      offer1APR: offer1APR * 100,
+      offer1MonthlyPayment,
+      offer1TotalCost,
+      offer2APR: offer2APR * 100,
+      offer2MonthlyPayment,
+      offer2TotalCost,
+      offer3APR: offer3APR * 100,
+      offer3MonthlyPayment,
+      offer3TotalCost,
+      bestOffer: bestOffer.name,
+      savings: monthlySavings,
+      totalSavings,
+    };
+  }
+}

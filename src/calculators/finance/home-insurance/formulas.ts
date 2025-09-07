@@ -119,157 +119,125 @@ function calculateCoverageScore(dwellingCoverage: number, replacementCost: numbe
   else return 45;
 }
 
-export function calculateHomeInsurance(inputs: CalculatorInputs): CalculatorOutputs {
+export function calculateHomeInsurance(inputs: any): any {
   // Extract inputs with defaults
-  const homeValue = inputs.homeValue || 0;
-  const replacementCost = inputs.replacementCost || homeValue * 0.9;
-  const propertyType = inputs.propertyType || 'single-family';
-  const constructionType = inputs.constructionType || 'frame';
-  const yearBuilt = inputs.yearBuilt || 1990;
-  const squareFootage = inputs.squareFootage || 2000;
-  const location = inputs.location || 'suburban';
-  const state = inputs.state || 'california';
-  const deductible = inputs.deductible || 1000;
-  const coverageLevel = inputs.coverageLevel || 'standard';
-  const personalPropertyValue = inputs.personalPropertyValue || 50000;
+  const propertyValue = inputs.propertyValue || 0;
+  const dwellingCoverage = inputs.dwellingCoverage || propertyValue;
+  const personalPropertyCoverage = inputs.personalPropertyCoverage || dwellingCoverage * 0.5;
   const liabilityCoverage = inputs.liabilityCoverage || 300000;
-  const medicalPayments = inputs.medicalPayments || 5000;
-  const lossOfUse = inputs.lossOfUse || 20000;
-  const creditScore = inputs.creditScore || 750;
-  const claimsHistory = inputs.claimsHistory || 'none';
-  const occupancyType = inputs.occupancyType || 'owner-occupied';
+  const medicalPaymentsCoverage = inputs.medicalPaymentsCoverage || 5000;
+  const lossOfUseCoverage = inputs.lossOfUseCoverage || dwellingCoverage * 0.2;
+  const otherStructuresCoverage = inputs.otherStructuresCoverage || dwellingCoverage * 0.1;
+  const propertyType = inputs.propertyType || 'single_family';
+  const constructionType = inputs.constructionType || 'wood_frame';
+  const propertyAge = inputs.propertyAge || 15;
+  const roofAge = inputs.roofAge || 10;
+  const state = inputs.state || 'CA';
+  const floodZone = inputs.floodZone || 'low_risk';
+  const crimeRate = inputs.crimeRate || 'medium';
+  const dwellingDeductible = inputs.dwellingDeductible || 1000;
+  const personalPropertyDeductible = inputs.personalPropertyDeductible || 1000;
+  const liabilityDeductible = inputs.liabilityDeductible || 0;
+  const hurricaneDeductible = inputs.hurricaneDeductible || 5000;
+  const windstormDeductible = inputs.windstormDeductible || 2500;
+  const claimsInLast3Years = inputs.claimsInLast3Years || 0;
+  const claimsInLast5Years = inputs.claimsInLast5Years || 0;
+  const claimsInLast10Years = inputs.claimsInLast10Years || 0;
+  const totalClaimAmount = inputs.totalClaimAmount || 0;
+  const rentalUnits = inputs.rentalUnits || 0;
 
   // Calculate base premium
-  const baseRate = BASE_RATES[state] || BASE_RATES.default;
-  const locationFactor = LOCATION_FACTORS[location] || 1.0;
+  const baseRate = BASE_RATES[state.toLowerCase()] || BASE_RATES.default;
   const constructionFactor = CONSTRUCTION_FACTORS[constructionType] || 1.0;
-  const coverageLevelFactor = COVERAGE_LEVEL_FACTORS[coverageLevel] || 1.0;
 
-  // Calculate natural disaster factors
-  let naturalDisasterFactor = 1.0;
-  if (inputs.floodZone && ['a', 'ae', 'ah', 'ao', 'ar', 'a99', 'v', 've'].includes(inputs.floodZone)) {
-    naturalDisasterFactor *= 1.5;
-  }
-  if (inputs.earthquakeZone) {
-    naturalDisasterFactor *= RISK_ZONE_FACTORS[inputs.earthquakeZone] || 1.0;
-  }
-  if (inputs.hurricaneZone) {
-    naturalDisasterFactor *= RISK_ZONE_FACTORS[inputs.hurricaneZone] || 1.0;
-  }
-  if (inputs.tornadoZone) {
-    naturalDisasterFactor *= RISK_ZONE_FACTORS[inputs.tornadoZone] || 1.0;
-  }
-  if (inputs.wildfireZone) {
-    naturalDisasterFactor *= RISK_ZONE_FACTORS[inputs.wildfireZone] || 1.0;
-  }
+  // Calculate risk factors
+  let riskFactor = 1.0;
+
+  // Property age risk
+  if (propertyAge > 30) riskFactor *= 1.2;
+  else if (propertyAge > 20) riskFactor *= 1.1;
+
+  // Roof age risk
+  if (roofAge > 15) riskFactor *= 1.1;
+
+  // Flood zone risk
+  if (floodZone === 'high_risk' || floodZone === 'very_high_risk') riskFactor *= 1.5;
+  else if (floodZone === 'moderate_risk') riskFactor *= 1.2;
+
+  // Crime rate risk
+  if (crimeRate === 'high' || crimeRate === 'very_high') riskFactor *= 1.1;
+
+  // Claims history risk
+  if (claimsInLast3Years > 0) riskFactor *= 1.1;
+  if (claimsInLast5Years > 2) riskFactor *= 1.2;
+  if (totalClaimAmount > 10000) riskFactor *= 1.1;
+
+  // Rental units risk
+  if (rentalUnits > 0) riskFactor *= 1.1;
 
   // Calculate base premium
-  let basePremium = (replacementCost / 1000) * baseRate * locationFactor * constructionFactor * coverageLevelFactor * naturalDisasterFactor;
+  let basePremium = (dwellingCoverage / 1000) * baseRate * constructionFactor * riskFactor;
 
-  // Apply deductible discount
-  const deductibleDiscount = DEDUCTIBLE_DISCOUNTS[deductible] || 0;
+  // Apply deductible discount (simplified)
+  let deductibleDiscount = 0;
+  if (dwellingDeductible >= 2500) deductibleDiscount = 0.1;
+  else if (dwellingDeductible >= 1500) deductibleDiscount = 0.05;
+
   const annualPremium = basePremium * (1 - deductibleDiscount);
 
-  // Calculate coverage amounts
-  const dwellingCoverage = replacementCost;
-  const personalPropertyCoverage = dwellingCoverage * 0.5;
-  const liabilityCoverageAmount = liabilityCoverage;
-  const medicalPaymentsAmount = medicalPayments;
-  const lossOfUseAmount = lossOfUse;
-
   // Calculate total coverage
-  const totalCoverage = dwellingCoverage + personalPropertyCoverage + liabilityCoverageAmount + medicalPaymentsAmount + lossOfUseAmount;
+  const totalCoverage = dwellingCoverage + personalPropertyCoverage + liabilityCoverage + medicalPaymentsCoverage + lossOfUseCoverage + otherStructuresCoverage;
 
-  // Calculate ratios and gaps
-  const replacementCostRatio = (dwellingCoverage / replacementCost) * 100;
-  const coverageGap = Math.max(0, replacementCost - dwellingCoverage);
+  // Calculate ratios
+  const premiumToValueRatio = (annualPremium / propertyValue) * 100;
 
-  // Calculate scores
-  const riskScore = calculateRiskScore(inputs);
-  const premiumScore = calculatePremiumScore(annualPremium, dwellingCoverage);
-  const coverageScore = calculateCoverageScore(dwellingCoverage, replacementCost);
+  // Calculate risk score (1-10 scale)
+  let riskScore = 5; // Base score
+  if (propertyAge > 30) riskScore += 1;
+  if (roofAge > 15) riskScore += 1;
+  if (floodZone === 'high_risk' || floodZone === 'very_high_risk') riskScore += 2;
+  if (crimeRate === 'high' || crimeRate === 'very_high') riskScore += 1;
+  if (claimsInLast3Years > 0) riskScore += 1;
+  if (rentalUnits > 0) riskScore += 1;
+  riskScore = Math.min(Math.max(riskScore, 1), 10);
 
-  // Calculate recommended deductible
-  let recommendedDeductible = 1000;
-  if (annualPremium > 2000) recommendedDeductible = 2500;
-  else if (annualPremium > 1500) recommendedDeductible = 2000;
-  else if (annualPremium > 1000) recommendedDeductible = 1500;
+  // Calculate total discounts (simplified)
+  const totalDiscounts = basePremium - annualPremium;
 
-  // Calculate potential savings
-  const recommendedDiscount = DEDUCTIBLE_DISCOUNTS[recommendedDeductible] || 0;
-  const currentDiscount = DEDUCTIBLE_DISCOUNTS[deductible] || 0;
-  const premiumSavings = basePremium * (recommendedDiscount - currentDiscount);
-
-  // Determine risk factors
-  const riskFactors = [];
-  if (inputs.location === 'urban') riskFactors.push('Urban location');
-  if (inputs.crimeRate === 'high') riskFactors.push('High crime area');
-  if (inputs.floodZone && ['a', 'ae', 'ah', 'ao', 'ar', 'a99', 'v', 've'].includes(inputs.floodZone)) riskFactors.push('Flood zone');
-  if (inputs.earthquakeZone === 'high' || inputs.earthquakeZone === 'very-high') riskFactors.push('High earthquake risk');
-  if (inputs.hurricaneZone === 'high' || inputs.hurricaneZone === 'very-high') riskFactors.push('High hurricane risk');
-  if (inputs.yearBuilt && inputs.yearBuilt < 1980) riskFactors.push('Older construction');
-  if (inputs.claimsHistory && inputs.claimsHistory !== 'none') riskFactors.push('Claims history');
-
-  // Determine available discounts
-  const discounts = [];
-  if (inputs.securityFeatures && inputs.securityFeatures.includes('alarm-system')) discounts.push('Security system');
-  if (inputs.securityFeatures && inputs.securityFeatures.includes('smoke-detectors')) discounts.push('Smoke detectors');
-  if (inputs.securityFeatures && inputs.securityFeatures.includes('fire-sprinklers')) discounts.push('Fire sprinklers');
-  if (inputs.creditScore && inputs.creditScore >= 750) discounts.push('Good credit');
-  if (inputs.occupancyType === 'owner-occupied') discounts.push('Owner occupied');
-  if (inputs.fireStationDistance && inputs.fireStationDistance <= 1) discounts.push('Near fire station');
-
-  // Determine coverage recommendations
-  const recommendations = [];
-  if (coverageGap > 0) recommendations.push(`Increase dwelling coverage by $${coverageGap.toLocaleString()}`);
-  if (inputs.personalPropertyValue > personalPropertyCoverage) recommendations.push('Consider additional personal property coverage');
-  if (inputs.liabilityCoverage && inputs.liabilityCoverage < 500000) recommendations.push('Consider higher liability coverage');
-  if (recommendedDeductible !== deductible) recommendations.push(`Consider $${recommendedDeductible} deductible for savings`);
-
-  // Calculate additional metrics
+  // Calculate monthly premium
   const monthlyPremium = annualPremium / 12;
-  const annualCost = annualPremium + deductible;
-  const costPerThousand = (annualPremium / dwellingCoverage) * 1000;
 
-  // Determine coverage adequacy
-  let coverageAdequacy = 'Adequate';
-  if (coverageRatio < 0.8) coverageAdequacy = 'Inadequate';
-  else if (coverageRatio < 0.9) coverageAdequacy = 'Marginal';
+  // Calculate effective premium (after discounts)
+  const effectivePremium = annualPremium;
 
-  // Determine policy grade
-  let policyGrade = 'C';
-  const averageScore = (riskScore + premiumScore + coverageScore) / 3;
-  if (averageScore >= 80) policyGrade = 'A';
-  else if (averageScore >= 70) policyGrade = 'B';
-  else if (averageScore >= 60) policyGrade = 'C';
-  else if (averageScore >= 50) policyGrade = 'D';
-  else policyGrade = 'F';
+  // Create analysis object
+  const analysis = {
+    insuranceRating: riskScore <= 3 ? 'Excellent' : riskScore <= 6 ? 'Good' : 'Needs Improvement',
+    riskRating: riskScore <= 4 ? 'Low' : riskScore <= 7 ? 'Medium' : 'High',
+    recommendation: riskScore <= 5 ? 'Current coverage appears adequate' : 'Consider reviewing coverage options',
+    insuranceSummary: `Based on your property details, estimated annual premium is $${annualPremium.toLocaleString()}. Risk score: ${riskScore}/10.`,
+    riskAssessment: `Property risk factors include age (${propertyAge} years), location (${state}), and flood zone (${floodZone}).`,
+    purchaseRecommendations: [
+      'Compare quotes from multiple insurance providers',
+      'Review coverage limits annually',
+      'Consider bundling with auto insurance for discounts'
+    ],
+    nextSteps: [
+      'Get quotes from at least 3 providers',
+      'Review policy exclusions and limitations',
+      'Update coverage as property value changes'
+    ]
+  };
 
   return {
     annualPremium: Math.round(annualPremium),
     monthlyPremium: Math.round(monthlyPremium),
-    dwellingCoverage: Math.round(dwellingCoverage),
-    personalPropertyCoverage: Math.round(personalPropertyCoverage),
-    liabilityCoverageAmount: Math.round(liabilityCoverageAmount),
-    medicalPaymentsAmount: Math.round(medicalPaymentsAmount),
-    lossOfUseAmount: Math.round(lossOfUseAmount),
     totalCoverage: Math.round(totalCoverage),
-    replacementCostRatio: Math.round(replacementCostRatio * 100) / 100,
-    coverageGap: Math.round(coverageGap),
     riskScore,
-    premiumScore,
-    coverageScore,
-    recommendedDeductible,
-    premiumSavings: Math.round(premiumSavings),
-    riskFactors: riskFactors.join(', ') || 'None identified',
-    discounts: discounts.join(', ') || 'None available',
-    recommendations: recommendations.join('; ') || 'Coverage appears adequate',
-    comparisonTable: `Deductible Comparison:\n$500: $${Math.round(basePremium * 0.95)}\n$1000: $${Math.round(basePremium)}\n$2500: $${Math.round(basePremium * 0.85)}`,
-    annualCost: Math.round(annualCost),
-    costPerThousand: Math.round(costPerThousand * 100) / 100,
-    coverageAdequacy,
-    policyGrade,
-    homeInsuranceAnalysis: 'Comprehensive home insurance analysis completed'
+    premiumToValueRatio: Math.round(premiumToValueRatio * 100) / 100,
+    totalDiscounts: Math.round(totalDiscounts),
+    effectivePremium: Math.round(effectivePremium),
+    analysis
   };
 }
 

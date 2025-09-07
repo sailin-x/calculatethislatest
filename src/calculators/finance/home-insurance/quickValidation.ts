@@ -1,244 +1,304 @@
 import { CalculatorInputs } from '../../../types/calculator';
 
-export function validateHomeValue(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (!value) return { isValid: false, message: 'Home value is required' };
+// Property Information Validators
+export function validatePropertyValue(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (!value) return { isValid: false, message: 'Property value is required' };
   if (typeof value !== 'number' || value <= 0) return { isValid: false, message: 'Must be a positive number' };
-  if (value < 10000 || value > 10000000) return { isValid: false, message: 'Must be between $10,000 and $10,000,000' };
+  if (value < 50000 || value > 10000000) return { isValid: false, message: 'Must be between $50,000 and $10,000,000' };
   return { isValid: true };
 }
 
-export function validateReplacementCost(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value !== undefined && (typeof value !== 'number' || value <= 0)) return { isValid: false, message: 'Must be a positive number' };
-  if (value !== undefined && (value < 10000 || value > 15000000)) return { isValid: false, message: 'Must be between $10,000 and $15,000,000' };
+export function validatePropertyAddress(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (!value || typeof value !== 'string' || value.trim().length === 0) return { isValid: false, message: 'Property address is required' };
   return { isValid: true };
 }
 
-export function validatePropertyType(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && !['single-family', 'condo', 'townhouse', 'duplex', 'multi-family'].includes(value)) return { isValid: false, message: 'Invalid property type' };
+export function validatePropertyType(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (!value) return { isValid: false, message: 'Property type is required' };
+  const validTypes = ['single_family', 'condo', 'townhouse', 'multi_family', 'mobile_home'];
+  if (!validTypes.includes(value)) return { isValid: false, message: 'Invalid property type' };
   return { isValid: true };
 }
 
-export function validateConstructionType(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && !['frame', 'brick', 'stone', 'concrete', 'steel', 'mixed'].includes(value)) return { isValid: false, message: 'Invalid construction type' };
+export function validatePropertyAge(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value === undefined || value === null) return { isValid: false, message: 'Property age is required' };
+  if (typeof value !== 'number' || value < 0) return { isValid: false, message: 'Must be a non-negative number' };
+  if (value > 100) return { isValid: false, message: 'Must be 100 years or less' };
   return { isValid: true };
 }
 
-export function validateYearBuilt(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value !== undefined && (typeof value !== 'number' || value < 1800 || value > new Date().getFullYear())) return { isValid: false, message: 'Must be between 1800 and current year' };
+export function validatePropertySize(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value === undefined || value === null) return { isValid: false, message: 'Property size is required' };
+  if (typeof value !== 'number' || value <= 0) return { isValid: false, message: 'Must be a positive number' };
+  if (value < 500 || value > 10000) return { isValid: false, message: 'Must be between 500 and 10,000 sq ft' };
   return { isValid: true };
 }
 
-export function validateSquareFootage(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value !== undefined && (typeof value !== 'number' || value <= 0)) return { isValid: false, message: 'Must be a positive number' };
-  if (value !== undefined && (value < 100 || value > 50000)) return { isValid: false, message: 'Must be between 100 and 50,000' };
+export function validateConstructionType(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (!value) return { isValid: false, message: 'Construction type is required' };
+  const validTypes = ['wood_frame', 'brick', 'stone', 'concrete', 'steel_frame', 'mixed'];
+  if (!validTypes.includes(value)) return { isValid: false, message: 'Invalid construction type' };
   return { isValid: true };
 }
 
-export function validateLocation(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && !['urban', 'suburban', 'rural'].includes(value)) return { isValid: false, message: 'Invalid location type' };
+export function validateRoofType(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (!value) return { isValid: false, message: 'Roof type is required' };
+  const validTypes = ['asphalt_shingle', 'metal', 'tile', 'slate', 'wood_shake', 'flat'];
+  if (!validTypes.includes(value)) return { isValid: false, message: 'Invalid roof type' };
   return { isValid: true };
 }
 
-export function validateState(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && !['california', 'florida', 'texas', 'new-york', 'illinois', 'pennsylvania', 'ohio', 'georgia', 'north-carolina', 'michigan'].includes(value)) return { isValid: false, message: 'Invalid state' };
+export function validateRoofAge(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value === undefined || value === null) return { isValid: false, message: 'Roof age is required' };
+  if (typeof value !== 'number' || value < 0) return { isValid: false, message: 'Must be a non-negative number' };
+  if (value > 50) return { isValid: false, message: 'Must be 50 years or less' };
   return { isValid: true };
 }
 
-export function validateZipCode(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && !/^\d{5}(-\d{4})?$/.test(value)) return { isValid: false, message: 'Invalid zip code format' };
+// Location Validators
+export function validateState(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (!value || typeof value !== 'string' || value.trim().length === 0) return { isValid: false, message: 'State is required' };
   return { isValid: true };
 }
 
-export function validateCrimeRate(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && !['low', 'medium', 'high'].includes(value)) return { isValid: false, message: 'Invalid crime rate' };
+export function validateCity(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (!value || typeof value !== 'string' || value.trim().length === 0) return { isValid: false, message: 'City is required' };
   return { isValid: true };
 }
 
-export function validateFireStationDistance(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value !== undefined && (typeof value !== 'number' || value < 0)) return { isValid: false, message: 'Must be a non-negative number' };
-  if (value !== undefined && value > 50) return { isValid: false, message: 'Must be 50 miles or less' };
+export function validateZipCode(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (!value || typeof value !== 'string' || value.trim().length === 0) return { isValid: false, message: 'ZIP code is required' };
+  if (!/^\d{5}(-\d{4})?$/.test(value)) return { isValid: false, message: 'Invalid ZIP code format' };
   return { isValid: true };
 }
 
-export function validateFloodZone(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && !['none', 'a', 'ae', 'ah', 'ao', 'ar', 'a99', 'v', 've', 'x'].includes(value)) return { isValid: false, message: 'Invalid flood zone' };
+export function validateFloodZone(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (!value) return { isValid: false, message: 'Flood zone is required' };
+  const validZones = ['low_risk', 'moderate_risk', 'high_risk', 'very_high_risk', 'unknown'];
+  if (!validZones.includes(value)) return { isValid: false, message: 'Invalid flood zone' };
   return { isValid: true };
 }
 
-export function validateEarthquakeZone(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && !['none', 'low', 'moderate', 'high', 'very-high'].includes(value)) return { isValid: false, message: 'Invalid earthquake zone' };
+export function validateCrimeRate(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (!value) return { isValid: false, message: 'Crime rate is required' };
+  const validRates = ['low', 'medium', 'high', 'very_high'];
+  if (!validRates.includes(value)) return { isValid: false, message: 'Invalid crime rate' };
   return { isValid: true };
 }
 
-export function validateHurricaneZone(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && !['none', 'low', 'moderate', 'high', 'very-high'].includes(value)) return { isValid: false, message: 'Invalid hurricane zone' };
+export function validateFireStationDistance(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value === undefined || value === null) return { isValid: false, message: 'Fire station distance is required' };
+  if (typeof value !== 'number' || value < 0) return { isValid: false, message: 'Must be a non-negative number' };
+  if (value > 50) return { isValid: false, message: 'Must be 50 miles or less' };
   return { isValid: true };
 }
 
-export function validateTornadoZone(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && !['none', 'low', 'moderate', 'high', 'very-high'].includes(value)) return { isValid: false, message: 'Invalid tornado zone' };
+export function validatePoliceStationDistance(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value === undefined || value === null) return { isValid: false, message: 'Police station distance is required' };
+  if (typeof value !== 'number' || value < 0) return { isValid: false, message: 'Must be a non-negative number' };
+  if (value > 50) return { isValid: false, message: 'Must be 50 miles or less' };
   return { isValid: true };
 }
 
-export function validateWildfireZone(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && !['none', 'low', 'moderate', 'high', 'very-high'].includes(value)) return { isValid: false, message: 'Invalid wildfire zone' };
+// Coverage Validators
+export function validateDwellingCoverage(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value === undefined || value === null) return { isValid: false, message: 'Dwelling coverage is required' };
+  if (typeof value !== 'number' || value <= 0) return { isValid: false, message: 'Must be a positive number' };
+  if (value < 50000 || value > 5000000) return { isValid: false, message: 'Must be between $50,000 and $5,000,000' };
   return { isValid: true };
 }
 
-export function validateDeductible(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value !== undefined && (typeof value !== 'number' || value <= 0)) return { isValid: false, message: 'Must be a positive number' };
-  if (value !== undefined && ![500, 1000, 1500, 2000, 2500, 5000].includes(value)) return { isValid: false, message: 'Must be one of: 500, 1000, 1500, 2000, 2500, 5000' };
+export function validatePersonalPropertyCoverage(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value === undefined || value === null) return { isValid: false, message: 'Personal property coverage is required' };
+  if (typeof value !== 'number' || value < 0) return { isValid: false, message: 'Must be a non-negative number' };
+  if (value > 1000000) return { isValid: false, message: 'Must be $1,000,000 or less' };
   return { isValid: true };
 }
 
-export function validateCoverageLevel(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && !['basic', 'standard', 'premium', 'comprehensive'].includes(value)) return { isValid: false, message: 'Invalid coverage level' };
+export function validateLiabilityCoverage(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value === undefined || value === null) return { isValid: false, message: 'Liability coverage is required' };
+  if (typeof value !== 'number' || value <= 0) return { isValid: false, message: 'Must be a positive number' };
+  if (value < 100000 || value > 1000000) return { isValid: false, message: 'Must be between $100,000 and $1,000,000' };
   return { isValid: true };
 }
 
-export function validatePersonalPropertyValue(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value !== undefined && (typeof value !== 'number' || value < 0)) return { isValid: false, message: 'Must be a non-negative number' };
-  if (value !== undefined && value > 1000000) return { isValid: false, message: 'Must be $1,000,000 or less' };
+export function validateMedicalPaymentsCoverage(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value === undefined || value === null) return { isValid: false, message: 'Medical payments coverage is required' };
+  if (typeof value !== 'number' || value <= 0) return { isValid: false, message: 'Must be a positive number' };
+  if (value < 1000 || value > 10000) return { isValid: false, message: 'Must be between $1,000 and $10,000' };
   return { isValid: true };
 }
 
-export function validateLiabilityCoverage(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value !== undefined && (typeof value !== 'number' || value <= 0)) return { isValid: false, message: 'Must be a positive number' };
-  if (value !== undefined && (value < 100000 || value > 5000000)) return { isValid: false, message: 'Must be between $100,000 and $5,000,000' };
+export function validateLossOfUseCoverage(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value === undefined || value === null) return { isValid: false, message: 'Loss of use coverage is required' };
+  if (typeof value !== 'number' || value <= 0) return { isValid: false, message: 'Must be a positive number' };
+  if (value < 10000 || value > 100000) return { isValid: false, message: 'Must be between $10,000 and $100,000' };
   return { isValid: true };
 }
 
-export function validateMedicalPayments(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value !== undefined && (typeof value !== 'number' || value <= 0)) return { isValid: false, message: 'Must be a positive number' };
-  if (value !== undefined && (value < 1000 || value > 100000)) return { isValid: false, message: 'Must be between $1,000 and $100,000' };
+export function validateOtherStructuresCoverage(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value === undefined || value === null) return { isValid: false, message: 'Other structures coverage is required' };
+  if (typeof value !== 'number' || value < 0) return { isValid: false, message: 'Must be a non-negative number' };
+  if (value > 500000) return { isValid: false, message: 'Must be $500,000 or less' };
   return { isValid: true };
 }
 
-export function validateLossOfUse(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value !== undefined && (typeof value !== 'number' || value <= 0)) return { isValid: false, message: 'Must be a positive number' };
-  if (value !== undefined && (value < 5000 || value > 200000)) return { isValid: false, message: 'Must be between $5,000 and $200,000' };
+// Deductible Validators
+export function validateDwellingDeductible(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value === undefined || value === null) return { isValid: false, message: 'Dwelling deductible is required' };
+  if (typeof value !== 'number' || value <= 0) return { isValid: false, message: 'Must be a positive number' };
+  const validDeductibles = [250, 500, 1000, 1500, 2000, 2500, 5000, 10000];
+  if (!validDeductibles.includes(value)) return { isValid: false, message: 'Must be one of: 250, 500, 1000, 1500, 2000, 2500, 5000, 10000' };
   return { isValid: true };
 }
 
-export function validateJewelryCoverage(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value !== undefined && (typeof value !== 'number' || value < 0)) return { isValid: false, message: 'Must be a non-negative number' };
-  if (value !== undefined && value > 100000) return { isValid: false, message: 'Must be $100,000 or less' };
+export function validatePersonalPropertyDeductible(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value === undefined || value === null) return { isValid: false, message: 'Personal property deductible is required' };
+  if (typeof value !== 'number' || value <= 0) return { isValid: false, message: 'Must be a positive number' };
+  const validDeductibles = [250, 500, 1000, 1500, 2000, 2500, 5000];
+  if (!validDeductibles.includes(value)) return { isValid: false, message: 'Must be one of: 250, 500, 1000, 1500, 2000, 2500, 5000' };
   return { isValid: true };
 }
 
-export function validateElectronicsCoverage(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value !== undefined && (typeof value !== 'number' || value < 0)) return { isValid: false, message: 'Must be a non-negative number' };
-  if (value !== undefined && value > 50000) return { isValid: false, message: 'Must be $50,000 or less' };
+export function validateLiabilityDeductible(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value === undefined || value === null) return { isValid: false, message: 'Liability deductible is required' };
+  if (typeof value !== 'number' || value < 0) return { isValid: false, message: 'Must be a non-negative number' };
+  if (value > 5000) return { isValid: false, message: 'Must be $5,000 or less' };
   return { isValid: true };
 }
 
-export function validateBusinessEquipmentCoverage(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value !== undefined && (typeof value !== 'number' || value < 0)) return { isValid: false, message: 'Must be a non-negative number' };
-  if (value !== undefined && value > 100000) return { isValid: false, message: 'Must be $100,000 or less' };
+export function validateHurricaneDeductible(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value === undefined || value === null) return { isValid: false, message: 'Hurricane deductible is required' };
+  if (typeof value !== 'number' || value < 0) return { isValid: false, message: 'Must be a non-negative number' };
+  if (value > 50000) return { isValid: false, message: 'Must be $50,000 or less' };
   return { isValid: true };
 }
 
-export function validateCreditScore(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value !== undefined && (typeof value !== 'number' || value < 300 || value > 850)) return { isValid: false, message: 'Must be between 300 and 850' };
+export function validateWindstormDeductible(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value === undefined || value === null) return { isValid: false, message: 'Windstorm deductible is required' };
+  if (typeof value !== 'number' || value < 0) return { isValid: false, message: 'Must be a non-negative number' };
+  if (value > 25000) return { isValid: false, message: 'Must be $25,000 or less' };
   return { isValid: true };
 }
 
-export function validateClaimsHistory(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && !['none', '1-2', '3-5', '5-plus'].includes(value)) return { isValid: false, message: 'Invalid claims history' };
+// Claims History Validators
+export function validateClaimsInLast3Years(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value === undefined || value === null) return { isValid: false, message: 'Claims in last 3 years is required' };
+  if (typeof value !== 'number' || value < 0) return { isValid: false, message: 'Must be a non-negative number' };
+  if (value > 10) return { isValid: false, message: 'Must be 10 or less' };
   return { isValid: true };
 }
 
-export function validateOccupancyType(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && !['owner-occupied', 'rental', 'vacation', 'investment'].includes(value)) return { isValid: false, message: 'Invalid occupancy type' };
+export function validateClaimsInLast5Years(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value === undefined || value === null) return { isValid: false, message: 'Claims in last 5 years is required' };
+  if (typeof value !== 'number' || value < 0) return { isValid: false, message: 'Must be a non-negative number' };
+  if (value > 15) return { isValid: false, message: 'Must be 15 or less' };
   return { isValid: true };
 }
 
-export function validateSecurityFeatures(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && !Array.isArray(value)) return { isValid: false, message: 'Must be an array' };
-  if (value) {
-    const validFeatures = ['alarm-system', 'smoke-detectors', 'fire-sprinklers', 'deadbolts', 'security-cameras', 'gated-community'];
-    for (const feature of value) {
-      if (!validFeatures.includes(feature)) return { isValid: false, message: `Invalid security feature: ${feature}` };
-    }
-  }
+export function validateClaimsInLast10Years(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value === undefined || value === null) return { isValid: false, message: 'Claims in last 10 years is required' };
+  if (typeof value !== 'number' || value < 0) return { isValid: false, message: 'Must be a non-negative number' };
+  if (value > 25) return { isValid: false, message: 'Must be 25 or less' };
   return { isValid: true };
 }
 
-export function validateRoofAge(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value !== undefined && (typeof value !== 'number' || value < 0)) return { isValid: false, message: 'Must be a non-negative number' };
-  if (value !== undefined && value > 50) return { isValid: false, message: 'Must be 50 years or less' };
+export function validateTotalClaimAmount(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value === undefined || value === null) return { isValid: false, message: 'Total claim amount is required' };
+  if (typeof value !== 'number' || value < 0) return { isValid: false, message: 'Must be a non-negative number' };
+  if (value > 1000000) return { isValid: false, message: 'Must be $1,000,000 or less' };
   return { isValid: true };
 }
 
-export function validateHeatingSystemAge(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value !== undefined && (typeof value !== 'number' || value < 0)) return { isValid: false, message: 'Must be a non-negative number' };
-  if (value !== undefined && value > 50) return { isValid: false, message: 'Must be 50 years or less' };
+// Policy Information Validators
+export function validateInsuranceCompany(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (!value || typeof value !== 'string' || value.trim().length === 0) return { isValid: false, message: 'Insurance company is required' };
   return { isValid: true };
 }
 
-export function validateElectricalSystemAge(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value !== undefined && (typeof value !== 'number' || value < 0)) return { isValid: false, message: 'Must be a non-negative number' };
-  if (value !== undefined && value > 50) return { isValid: false, message: 'Must be 50 years or less' };
+export function validatePolicyType(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (!value) return { isValid: false, message: 'Policy type is required' };
+  const validTypes = ['standard', 'premium', 'basic', 'custom'];
+  if (!validTypes.includes(value)) return { isValid: false, message: 'Invalid policy type' };
   return { isValid: true };
 }
 
-export function validatePlumbingSystemAge(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value !== undefined && (typeof value !== 'number' || value < 0)) return { isValid: false, message: 'Must be a non-negative number' };
-  if (value !== undefined && value > 50) return { isValid: false, message: 'Must be 50 years or less' };
+export function validatePolicyTerm(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value === undefined || value === null) return { isValid: false, message: 'Policy term is required' };
+  if (typeof value !== 'number' || value < 6) return { isValid: false, message: 'Must be at least 6 months' };
+  if (value > 36) return { isValid: false, message: 'Must be 36 months or less' };
   return { isValid: true };
 }
 
-export function validateWaterBackup(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value !== undefined && (typeof value !== 'number' || value < 0)) return { isValid: false, message: 'Must be a non-negative number' };
-  if (value !== undefined && value > 50000) return { isValid: false, message: 'Must be $50,000 or less' };
+// Analysis Parameters Validators
+export function validateAnalysisPeriod(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value === undefined || value === null) return { isValid: false, message: 'Analysis period is required' };
+  if (typeof value !== 'number' || value < 1) return { isValid: false, message: 'Must be at least 1 year' };
+  if (value > 10) return { isValid: false, message: 'Must be 10 years or less' };
   return { isValid: true };
 }
 
-export function validateIdentityTheft(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value !== undefined && (typeof value !== 'number' || value < 0)) return { isValid: false, message: 'Must be a non-negative number' };
-  if (value !== undefined && value > 25000) return { isValid: false, message: 'Must be $25,000 or less' };
+export function validateInflationRate(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value === undefined || value === null) return { isValid: false, message: 'Inflation rate is required' };
+  if (typeof value !== 'number' || value < -5) return { isValid: false, message: 'Must be -5% or higher' };
+  if (value > 15) return { isValid: false, message: 'Must be 15% or less' };
   return { isValid: true };
 }
 
-export function validateTaxRate(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value !== undefined && (typeof value !== 'number' || value < 0 || value > 100)) return { isValid: false, message: 'Must be between 0 and 100' };
+export function validatePropertyAppreciationRate(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value === undefined || value === null) return { isValid: false, message: 'Property appreciation rate is required' };
+  if (typeof value !== 'number' || value < -10) return { isValid: false, message: 'Must be -10% or higher' };
+  if (value > 20) return { isValid: false, message: 'Must be 20% or less' };
   return { isValid: true };
 }
 
-export function validateInflationRate(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value !== undefined && (typeof value !== 'number' || value < -50 || value > 100)) return { isValid: false, message: 'Must be between -50 and 100' };
+export function validateRentalUnits(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value === undefined || value === null) return { isValid: false, message: 'Rental units is required' };
+  if (typeof value !== 'number' || value < 0) return { isValid: false, message: 'Must be a non-negative number' };
+  if (value > 10) return { isValid: false, message: 'Must be 10 or less' };
   return { isValid: true };
 }
 
-export function validateAllHomeInsuranceInputs(inputs: Partial<CalculatorInputs>): { isValid: boolean; errors: string[] } {
+export function validateAllHomeInsuranceInputs(inputs: Record<string, any>): { isValid: boolean; errors: string[] } {
   const errors: string[] = [];
 
-  const homeValueResult = validateHomeValue(inputs.homeValue);
-  if (!homeValueResult.isValid) errors.push(homeValueResult.message!);
+  // Property Information
+  const propertyValueResult = validatePropertyValue(inputs.propertyValue);
+  if (!propertyValueResult.isValid) errors.push(propertyValueResult.message!);
 
-  const replacementCostResult = validateReplacementCost(inputs.replacementCost);
-  if (!replacementCostResult.isValid) errors.push(replacementCostResult.message!);
+  const propertyAddressResult = validatePropertyAddress(inputs.propertyAddress);
+  if (!propertyAddressResult.isValid) errors.push(propertyAddressResult.message!);
 
   const propertyTypeResult = validatePropertyType(inputs.propertyType);
   if (!propertyTypeResult.isValid) errors.push(propertyTypeResult.message!);
 
+  const propertyAgeResult = validatePropertyAge(inputs.propertyAge);
+  if (!propertyAgeResult.isValid) errors.push(propertyAgeResult.message!);
+
+  const propertySizeResult = validatePropertySize(inputs.propertySize);
+  if (!propertySizeResult.isValid) errors.push(propertySizeResult.message!);
+
   const constructionTypeResult = validateConstructionType(inputs.constructionType);
   if (!constructionTypeResult.isValid) errors.push(constructionTypeResult.message!);
 
-  const yearBuiltResult = validateYearBuilt(inputs.yearBuilt);
-  if (!yearBuiltResult.isValid) errors.push(yearBuiltResult.message!);
+  const roofTypeResult = validateRoofType(inputs.roofType);
+  if (!roofTypeResult.isValid) errors.push(roofTypeResult.message!);
 
-  const squareFootageResult = validateSquareFootage(inputs.squareFootage);
-  if (!squareFootageResult.isValid) errors.push(squareFootageResult.message!);
+  const roofAgeResult = validateRoofAge(inputs.roofAge);
+  if (!roofAgeResult.isValid) errors.push(roofAgeResult.message!);
 
-  const locationResult = validateLocation(inputs.location);
-  if (!locationResult.isValid) errors.push(locationResult.message!);
-
+  // Location Information
   const stateResult = validateState(inputs.state);
   if (!stateResult.isValid) errors.push(stateResult.message!);
 
+  const cityResult = validateCity(inputs.city);
+  if (!cityResult.isValid) errors.push(cityResult.message!);
+
   const zipCodeResult = validateZipCode(inputs.zipCode);
   if (!zipCodeResult.isValid) errors.push(zipCodeResult.message!);
+
+  const floodZoneResult = validateFloodZone(inputs.floodZone);
+  if (!floodZoneResult.isValid) errors.push(floodZoneResult.message!);
 
   const crimeRateResult = validateCrimeRate(inputs.crimeRate);
   if (!crimeRateResult.isValid) errors.push(crimeRateResult.message!);
@@ -246,83 +306,80 @@ export function validateAllHomeInsuranceInputs(inputs: Partial<CalculatorInputs>
   const fireStationDistanceResult = validateFireStationDistance(inputs.fireStationDistance);
   if (!fireStationDistanceResult.isValid) errors.push(fireStationDistanceResult.message!);
 
-  const floodZoneResult = validateFloodZone(inputs.floodZone);
-  if (!floodZoneResult.isValid) errors.push(floodZoneResult.message!);
+  const policeStationDistanceResult = validatePoliceStationDistance(inputs.policeStationDistance);
+  if (!policeStationDistanceResult.isValid) errors.push(policeStationDistanceResult.message!);
 
-  const earthquakeZoneResult = validateEarthquakeZone(inputs.earthquakeZone);
-  if (!earthquakeZoneResult.isValid) errors.push(earthquakeZoneResult.message!);
+  // Coverage Information
+  const dwellingCoverageResult = validateDwellingCoverage(inputs.dwellingCoverage);
+  if (!dwellingCoverageResult.isValid) errors.push(dwellingCoverageResult.message!);
 
-  const hurricaneZoneResult = validateHurricaneZone(inputs.hurricaneZone);
-  if (!hurricaneZoneResult.isValid) errors.push(hurricaneZoneResult.message!);
-
-  const tornadoZoneResult = validateTornadoZone(inputs.tornadoZone);
-  if (!tornadoZoneResult.isValid) errors.push(tornadoZoneResult.message!);
-
-  const wildfireZoneResult = validateWildfireZone(inputs.wildfireZone);
-  if (!wildfireZoneResult.isValid) errors.push(wildfireZoneResult.message!);
-
-  const deductibleResult = validateDeductible(inputs.deductible);
-  if (!deductibleResult.isValid) errors.push(deductibleResult.message!);
-
-  const coverageLevelResult = validateCoverageLevel(inputs.coverageLevel);
-  if (!coverageLevelResult.isValid) errors.push(coverageLevelResult.message!);
-
-  const personalPropertyValueResult = validatePersonalPropertyValue(inputs.personalPropertyValue);
-  if (!personalPropertyValueResult.isValid) errors.push(personalPropertyValueResult.message!);
+  const personalPropertyCoverageResult = validatePersonalPropertyCoverage(inputs.personalPropertyCoverage);
+  if (!personalPropertyCoverageResult.isValid) errors.push(personalPropertyCoverageResult.message!);
 
   const liabilityCoverageResult = validateLiabilityCoverage(inputs.liabilityCoverage);
   if (!liabilityCoverageResult.isValid) errors.push(liabilityCoverageResult.message!);
 
-  const medicalPaymentsResult = validateMedicalPayments(inputs.medicalPayments);
-  if (!medicalPaymentsResult.isValid) errors.push(medicalPaymentsResult.message!);
+  const medicalPaymentsCoverageResult = validateMedicalPaymentsCoverage(inputs.medicalPaymentsCoverage);
+  if (!medicalPaymentsCoverageResult.isValid) errors.push(medicalPaymentsCoverageResult.message!);
 
-  const lossOfUseResult = validateLossOfUse(inputs.lossOfUse);
-  if (!lossOfUseResult.isValid) errors.push(lossOfUseResult.message!);
+  const lossOfUseCoverageResult = validateLossOfUseCoverage(inputs.lossOfUseCoverage);
+  if (!lossOfUseCoverageResult.isValid) errors.push(lossOfUseCoverageResult.message!);
 
-  const jewelryCoverageResult = validateJewelryCoverage(inputs.jewelryCoverage);
-  if (!jewelryCoverageResult.isValid) errors.push(jewelryCoverageResult.message!);
+  const otherStructuresCoverageResult = validateOtherStructuresCoverage(inputs.otherStructuresCoverage);
+  if (!otherStructuresCoverageResult.isValid) errors.push(otherStructuresCoverageResult.message!);
 
-  const electronicsCoverageResult = validateElectronicsCoverage(inputs.electronicsCoverage);
-  if (!electronicsCoverageResult.isValid) errors.push(electronicsCoverageResult.message!);
+  // Deductibles
+  const dwellingDeductibleResult = validateDwellingDeductible(inputs.dwellingDeductible);
+  if (!dwellingDeductibleResult.isValid) errors.push(dwellingDeductibleResult.message!);
 
-  const businessEquipmentCoverageResult = validateBusinessEquipmentCoverage(inputs.businessEquipmentCoverage);
-  if (!businessEquipmentCoverageResult.isValid) errors.push(businessEquipmentCoverageResult.message!);
+  const personalPropertyDeductibleResult = validatePersonalPropertyDeductible(inputs.personalPropertyDeductible);
+  if (!personalPropertyDeductibleResult.isValid) errors.push(personalPropertyDeductibleResult.message!);
 
-  const creditScoreResult = validateCreditScore(inputs.creditScore);
-  if (!creditScoreResult.isValid) errors.push(creditScoreResult.message!);
+  const liabilityDeductibleResult = validateLiabilityDeductible(inputs.liabilityDeductible);
+  if (!liabilityDeductibleResult.isValid) errors.push(liabilityDeductibleResult.message!);
 
-  const claimsHistoryResult = validateClaimsHistory(inputs.claimsHistory);
-  if (!claimsHistoryResult.isValid) errors.push(claimsHistoryResult.message!);
+  const hurricaneDeductibleResult = validateHurricaneDeductible(inputs.hurricaneDeductible);
+  if (!hurricaneDeductibleResult.isValid) errors.push(hurricaneDeductibleResult.message!);
 
-  const occupancyTypeResult = validateOccupancyType(inputs.occupancyType);
-  if (!occupancyTypeResult.isValid) errors.push(occupancyTypeResult.message!);
+  const windstormDeductibleResult = validateWindstormDeductible(inputs.windstormDeductible);
+  if (!windstormDeductibleResult.isValid) errors.push(windstormDeductibleResult.message!);
 
-  const securityFeaturesResult = validateSecurityFeatures(inputs.securityFeatures);
-  if (!securityFeaturesResult.isValid) errors.push(securityFeaturesResult.message!);
+  // Claims History
+  const claimsInLast3YearsResult = validateClaimsInLast3Years(inputs.claimsInLast3Years);
+  if (!claimsInLast3YearsResult.isValid) errors.push(claimsInLast3YearsResult.message!);
 
-  const roofAgeResult = validateRoofAge(inputs.roofAge);
-  if (!roofAgeResult.isValid) errors.push(roofAgeResult.message!);
+  const claimsInLast5YearsResult = validateClaimsInLast5Years(inputs.claimsInLast5Years);
+  if (!claimsInLast5YearsResult.isValid) errors.push(claimsInLast5YearsResult.message!);
 
-  const heatingSystemAgeResult = validateHeatingSystemAge(inputs.heatingSystemAge);
-  if (!heatingSystemAgeResult.isValid) errors.push(heatingSystemAgeResult.message!);
+  const claimsInLast10YearsResult = validateClaimsInLast10Years(inputs.claimsInLast10Years);
+  if (!claimsInLast10YearsResult.isValid) errors.push(claimsInLast10YearsResult.message!);
 
-  const electricalSystemAgeResult = validateElectricalSystemAge(inputs.electricalSystemAge);
-  if (!electricalSystemAgeResult.isValid) errors.push(electricalSystemAgeResult.message!);
+  const totalClaimAmountResult = validateTotalClaimAmount(inputs.totalClaimAmount);
+  if (!totalClaimAmountResult.isValid) errors.push(totalClaimAmountResult.message!);
 
-  const plumbingSystemAgeResult = validatePlumbingSystemAge(inputs.plumbingSystemAge);
-  if (!plumbingSystemAgeResult.isValid) errors.push(plumbingSystemAgeResult.message!);
+  // Policy Information
+  const insuranceCompanyResult = validateInsuranceCompany(inputs.insuranceCompany);
+  if (!insuranceCompanyResult.isValid) errors.push(insuranceCompanyResult.message!);
 
-  const waterBackupResult = validateWaterBackup(inputs.waterBackup);
-  if (!waterBackupResult.isValid) errors.push(waterBackupResult.message!);
+  const policyTypeResult = validatePolicyType(inputs.policyType);
+  if (!policyTypeResult.isValid) errors.push(policyTypeResult.message!);
 
-  const identityTheftResult = validateIdentityTheft(inputs.identityTheft);
-  if (!identityTheftResult.isValid) errors.push(identityTheftResult.message!);
+  const policyTermResult = validatePolicyTerm(inputs.policyTerm);
+  if (!policyTermResult.isValid) errors.push(policyTermResult.message!);
 
-  const taxRateResult = validateTaxRate(inputs.taxRate);
-  if (!taxRateResult.isValid) errors.push(taxRateResult.message!);
+  // Analysis Parameters
+  const analysisPeriodResult = validateAnalysisPeriod(inputs.analysisPeriod);
+  if (!analysisPeriodResult.isValid) errors.push(analysisPeriodResult.message!);
 
   const inflationRateResult = validateInflationRate(inputs.inflationRate);
   if (!inflationRateResult.isValid) errors.push(inflationRateResult.message!);
+
+  const propertyAppreciationRateResult = validatePropertyAppreciationRate(inputs.propertyAppreciationRate);
+  if (!propertyAppreciationRateResult.isValid) errors.push(propertyAppreciationRateResult.message!);
+
+  // Risk Factors
+  const rentalUnitsResult = validateRentalUnits(inputs.rentalUnits);
+  if (!rentalUnitsResult.isValid) errors.push(rentalUnitsResult.message!);
 
   return {
     isValid: errors.length === 0,
