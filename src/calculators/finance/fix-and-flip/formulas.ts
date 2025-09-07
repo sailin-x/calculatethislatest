@@ -176,7 +176,7 @@ export function calculateFixAndFlip(inputs: FixAndFlipInputs): FixAndFlipOutputs
     confidenceLevel,
 
     // Time Series Analysis
-    projectTimeline: generateProjectTimeline(inputs, totalTimeline),
+    timeSeriesAnalysis: generateProjectTimeline(inputs, totalTimeline),
 
     // Cash Flow Projections
     cashFlowProjections: generateCashFlowProjections(inputs, totalTimeline),
@@ -361,7 +361,6 @@ function generateAnalysis(inputs: FixAndFlipInputs, metrics: any): FixAndFlipAna
     cashFlowAnalysis: `Monthly cash flow of $${(metrics.monthlyCashFlow || 0).toLocaleString()} over ${metrics.totalTimeline} days.`,
     marketAssessment: `Market trends: ${inputs.marketTrends || 'stable'} with ${inputs.averageDaysOnMarket || 45} days on market.`,
     comparableAnalysis: `Target price of $${inputs.targetSalePrice.toLocaleString()} based on market comparables.`,
-    pricingStrategy: `Pricing strategy: ${inputs.sellingStrategy || 'mls'} with ${inputs.realtorCommission || 6}% commission.`,
     riskProfile: `Risk score of ${metrics.riskScore.toFixed(1)}/10 with ${metrics.probabilityOfProfit.toFixed(0)}% success probability.`,
     marketRisk: inputs.marketRisk === 'high' ? 'High market risk requires careful timing' : 'Market risk is manageable',
     renovationRisk: inputs.renovationRisk === 'high' ? 'High renovation risk requires experienced contractors' : 'Renovation risk is manageable',
@@ -375,12 +374,6 @@ function generateAnalysis(inputs: FixAndFlipInputs, metrics: any): FixAndFlipAna
     equityAnalysis: `Equity investment of $${inputs.downPayment.toLocaleString()} with ${(metrics.debtToEquityRatio || 0).toFixed(2)} debt-to-equity ratio.`,
     exitStrategy: `Exit strategy: ${inputs.sellingStrategy || 'mls'} with target sale date of ${inputs.targetSaleDate}.`,
     marketingPlan: `Marketing plan includes staging, professional photos, and MLS listing.`,
-    contingencyPlans: [
-      'Extended holding period',
-      'Price reduction strategy',
-      'Rental conversion option',
-      'Wholesale exit option'
-    ],
     approvalConditions: [
       'Complete due diligence',
       'Secure financing',

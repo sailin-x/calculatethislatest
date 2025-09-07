@@ -101,7 +101,7 @@ export const StudentLoanCalculator: Calculator = {
     { id: 'repaymentEfficiency', name: 'Repayment Efficiency', type: 'number', unit: '%', description: 'Efficiency of repayment strategy' },
     { id: 'savingsImpact', name: 'Savings Impact', type: 'number', unit: 'USD', description: 'Impact on monthly savings' },
     { id: 'emergencyFundImpact', name: 'Emergency Fund Impact', type: 'number', unit: 'USD', description: 'Impact on emergency fund building' },
-    { id: 'refinanceSavings', name: 'Refinance Savings', name: 'number', unit: 'USD', description: 'Potential savings from refinancing' },
+    { id: 'refinanceSavings', name: 'Refinance Savings', type: 'number', unit: 'USD', description: 'Potential savings from refinancing' },
     { id: 'refinancePayoffDate', name: 'Refinance Payoff Date', type: 'string', description: 'Payoff date with refinancing' },
     { id: 'incomeBasedPayment', name: 'Income-Based Payment', type: 'number', unit: 'USD', description: 'Monthly payment under income-based plan' },
     { id: 'forgivenessAmount', name: 'Forgiveness Amount', type: 'number', unit: 'USD', description: 'Potential loan forgiveness amount' },
