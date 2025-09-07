@@ -158,7 +158,6 @@ import { balancedScorecardCalculator } from './business/balanced-scorecard-calcu
 import { billOfMaterialsCalculator } from './business/bill-of-materials-calculator';
 import { breakevenPointCalculator } from './business/breakeven-point-calculator';
 import budgetOptimizationCalculator from './business/budget-optimization-calculator';
-import cohortAnalysisCalculator from './business/cohort-analysis-calculator';
 import attributionModelsCalculator from './business/attribution-models-calculator';
 import industryBenchmarkingCalculator from './business/industry-benchmarking-calculator';
 
@@ -353,7 +352,6 @@ calculatorRegistry.register(rentalYieldCalculator);
   calculatorRegistry.register(billOfMaterialsCalculator);
   calculatorRegistry.register(breakevenPointCalculator);
   calculatorRegistry.register(budgetOptimizationCalculator);
-  calculatorRegistry.register(cohortAnalysisCalculator);
   calculatorRegistry.register(attributionModelsCalculator);
   calculatorRegistry.register(industryBenchmarkingCalculator);
   
