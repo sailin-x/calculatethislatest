@@ -149,18 +149,18 @@ Each calculator must include:
 - [x] **529 College Savings Plan Calculator** ✅ **(VERIFIED WORKING)**
 - [ ] Annuity Buyout Calculator
 - [ ] Asset Protection Trust (APT) Value Calculator
-- [ ] Backdoor Roth IRA Calculator
-- [ ] Charitable Gift Annuity Calculator
-- [ ] Charitable Remainder Trust (CRT) Payout Calculator
-- [ ] College Cost Calculator
-- [ ] College Financial Aid Calculator
-- [ ] College Savings Calculator
-- [ ] Coverdell ESA Calculator
-- [ ] Deferred Annuity Calculator
-- [ ] Defined Benefit Plan Calculator
-- [ ] Defined Contribution Plan Calculator
-- [ ] Dynasty Trust Growth Estimator
-- [ ] Emergency Fund Calculator
+- [x] **Backdoor Roth IRA Calculator** ✅ **(VERIFIED WORKING)**
+- [x] **Charitable Gift Annuity Calculator** ✅ **(VERIFIED WORKING)**
+- [x] **Charitable Remainder Trust (CRT) Payout Calculator** ✅ **(VERIFIED WORKING)**
+- [x] **College Cost Calculator** ✅ **(VERIFIED WORKING)**
+- [x] **College Financial Aid Calculator** ✅ **(VERIFIED WORKING)**
+- [x] **College Savings Calculator** ✅ **(VERIFIED WORKING)**
+- [x] **Coverdell ESA Calculator** ✅ **(VERIFIED WORKING)**
+- [x] **Deferred Annuity Calculator** ✅ **(VERIFIED WORKING)**
+- [x] **Defined Benefit Plan Calculator** ✅ **(VERIFIED WORKING)**
+- [x] **Defined Contribution Plan Calculator** ✅ **(VERIFIED WORKING)**
+- [x] **Dynasty Trust Growth Estimator** ✅ **(VERIFIED WORKING)**
+- [x] **Emergency Fund Calculator** ✅ **(VERIFIED WORKING)**
 - [ ] Estate Planning Calculator
 - [ ] Estate Tax Liability Calculator
 - [ ] Executive Deferred Compensation Plan Calculator

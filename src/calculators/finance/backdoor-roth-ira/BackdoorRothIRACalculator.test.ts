@@ -252,3 +252,21 @@ describe('BackdoorRothIRACalculator', () => {
       BackdoorRothIRACalculator.examples.forEach(example => {
         const result = calculateBackdoorRothIRA(example.inputs as any);
         expect(result).toBeDefined();
+        expect(result.totalConverted).toBeDefined();
+        expect(result.netBenefit).toBeDefined();
+      });
+    });
+  });
+
+  describe('Usage Instructions', () => {
+    it('should have comprehensive usage instructions', () => {
+      expect(BackdoorRothIRACalculator.usageInstructions).toBeInstanceOf(Array);
+      expect(BackdoorRothIRACalculator.usageInstructions.length).toBeGreaterThan(0);
+
+      BackdoorRothIRACalculator.usageInstructions.forEach(instruction => {
+        expect(typeof instruction).toBe('string');
+        expect(instruction.length).toBeGreaterThan(0);
+      });
+    });
+  });
+});
