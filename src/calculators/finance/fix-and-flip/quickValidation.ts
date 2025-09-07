@@ -256,17 +256,6 @@ export function validateRenovationBudget(value: number, allInputs?: Record<strin
   return null;
 }
 
-export function validateRenovationTimeline(value: number, allInputs?: Record<string, any>): string | null {
-  if (value !== undefined) {
-    if (value <= 0) {
-      return 'Renovation timeline must be greater than zero';
-    }
-    if (value > 730) {
-      return 'Renovation timeline over 730 days seems excessive';
-    }
-  }
-  return null;
-}
 
 export function validateStructuralWork(value: boolean, allInputs?: Record<string, any>): string | null {
   return null;
