@@ -1,4 +1,4 @@
-import { ValidationRule } from '../../../types/Calculator';
+import { ValidationRule } from '../../../types/calculator';
 
 export const armVsFixedValidationRules: ValidationRule[] = [
   {
@@ -361,8 +361,7 @@ export function validateComparisonInputs(inputs: any): {
     errors,
     recommendations
   };
-}: string[] = [];
-  const errors: string[] = [];
+}
   const recommendations: string[] = [];
   
   const loanAmount = Number(inputs.loanAmount) || 0;

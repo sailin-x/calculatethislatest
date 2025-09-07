@@ -64,7 +64,7 @@ export const AngelInvestmentDilutionCalculator: Calculator = {
     
     // Analysis Parameters
     { id: 'analysisPeriod', name: 'Analysis Period', type: 'number', unit: 'years', required: true, description: 'Number of years to analyze', placeholder: '5', min: 1, max: 20 },
-    { id: 'discountRate', name: 'Required Rate of Return', type: 'number', unit: '%', required: true, description: 'Required rate of return for analysis', placeholder: '25.0', min: 5, max: 100 },
+    { id: 'requiredRateOfReturn', name: 'Required Rate of Return', type: 'number', unit: '%', required: true, description: 'Required rate of return for analysis', placeholder: '25.0', min: 5, max: 100 },
     { id: 'sensitivityAnalysis', name: 'Sensitivity Analysis', type: 'boolean', required: false, description: 'Include sensitivity analysis', placeholder: 'true' },
     { id: 'monteCarloSimulation', name: 'Monte Carlo Simulation', type: 'boolean', required: false, description: 'Include Monte Carlo simulation', placeholder: 'false' },
     { id: 'numberOfSimulations', name: 'Number of Simulations', type: 'number', unit: 'simulations', required: false, description: 'Number of Monte Carlo simulations', placeholder: '10000', min: 1000, max: 100000 },
@@ -193,7 +193,7 @@ export const AngelInvestmentDilutionCalculator: Calculator = {
         vestingPeriod: 48,
         cliffPeriod: 12,
         analysisPeriod: 5,
-        discountRate: 25.0
+        requiredRateOfReturn: 25.0
       }
     },
     {
@@ -216,7 +216,7 @@ export const AngelInvestmentDilutionCalculator: Calculator = {
         vestingPeriod: 48,
         cliffPeriod: 12,
         analysisPeriod: 5,
-        discountRate: 30.0
+        requiredRateOfReturn: 30.0
       }
     }
   ],
