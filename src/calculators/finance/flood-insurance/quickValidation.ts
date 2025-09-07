@@ -12,13 +12,6 @@ export function validatePropertyAddress(value: string, allInputs?: Record<string
   return null;
 }
 
-export function validatePropertyType(value: string, allInputs?: Record<string, any>): string | null {
-  const validTypes = ['single_family', 'multi_family', 'condo', 'townhouse', 'commercial', 'rental'];
-  if (!validTypes.includes(value)) {
-    return 'Invalid property type selected';
-  }
-  return null;
-}
 
 export function validatePropertyValue(value: number, allInputs?: Record<string, any>): string | null {
   if (value <= 0) {
@@ -65,26 +58,11 @@ export function validateFoundationType(value: string, allInputs?: Record<string,
   return null;
 }
 
-export function validateFloodZone(value: string, allInputs?: Record<string, any>): string | null {
-  const validZones = ['A', 'AE', 'AH', 'AO', 'AR', 'A99', 'V', 'VE', 'B', 'C', 'D', 'X', 'M', 'P'];
-  if (!validZones.includes(value)) {
-    return 'Invalid flood zone selected';
-  }
-  return null;
-}
 
 export function validateElevationCertificate(value: boolean, allInputs?: Record<string, any>): string | null {
   return null;
 }
 
-export function validateBaseFloodElevation(value: number, allInputs?: Record<string, any>): string | null {
-  if (value !== undefined) {
-    if (value < -50 || value > 10000) {
-      return 'Base flood elevation must be between -50 and 10,000 feet';
-    }
-  }
-  return null;
-}
 
 export function validatePropertyElevation(value: number, allInputs?: Record<string, any>): string | null {
   if (value !== undefined) {
@@ -161,27 +139,11 @@ export function validateBuildingDeductible(value: number, allInputs?: Record<str
   return null;
 }
 
-export function validateContentsDeductible(value: number, allInputs?: Record<string, any>): string | null {
-  if (value < 500) {
-    return 'Contents deductible must be at least $500';
-  }
-  if (value > 100000) {
-    return 'Contents deductible over $100,000 seems excessive';
-  }
-  return null;
-}
 
 export function validateSeparateDeductibles(value: boolean, allInputs?: Record<string, any>): string | null {
   return null;
 }
 
-export function validatePolicyType(value: string, allInputs?: Record<string, any>): string | null {
-  const validTypes = ['standard', 'preferred', 'excess', 'private'];
-  if (!validTypes.includes(value)) {
-    return 'Invalid policy type selected';
-  }
-  return null;
-}
 
 export function validatePolicyTerm(value: number, allInputs?: Record<string, any>): string | null {
   if (value <= 0) {
@@ -624,65 +586,125 @@ export function validateAffordabilityScore(value: any, allInputs?: Record<string
 export function validateAllFloodInsuranceInputs(inputs: Partial<CalculatorInputs>): { isValid: boolean; errors: string[] } {
   const errors: string[] = [];
 
-  const propertyValueResult = validatePropertyValue(inputs.propertyValue);
-  if (!propertyValueResult.isValid) errors.push(propertyValueResult.message!);
+  // Validate property value
+  if (inputs.propertyValue !== undefined) {
+    const result = validatePropertyValue(inputs.propertyValue);
+    if (result) errors.push(result);
+  }
 
-  const buildingValueResult = validateBuildingValue(inputs.buildingValue);
-  if (!buildingValueResult.isValid) errors.push(buildingValueResult.message!);
+  // Validate building value
+  if (inputs.buildingValue !== undefined) {
+    const result = validateBuildingValue(inputs.buildingValue);
+    if (!result.isValid && result.message) errors.push(result.message);
+  }
 
-  const contentsValueResult = validateContentsValue(inputs.contentsValue);
-  if (!contentsValueResult.isValid) errors.push(contentsValueResult.message!);
+  // Validate contents value
+  if (inputs.contentsValue !== undefined) {
+    const result = validateContentsValue(inputs.contentsValue);
+    if (!result.isValid && result.message) errors.push(result.message);
+  }
 
-  const floodZoneResult = validateFloodZone(inputs.floodZone);
-  if (!floodZoneResult.isValid) errors.push(floodZoneResult.message!);
+  // Validate flood zone
+  if (inputs.floodZone !== undefined) {
+    const result = validateFloodZone(inputs.floodZone);
+    if (!result.isValid && result.message) errors.push(result.message);
+  }
 
-  const deductibleResult = validateDeductible(inputs.deductible);
-  if (!deductibleResult.isValid) errors.push(deductibleResult.message!);
+  // Validate deductible
+  if (inputs.deductible !== undefined) {
+    const result = validateDeductible(inputs.deductible);
+    if (!result.isValid && result.message) errors.push(result.message);
+  }
 
-  const policyTypeResult = validatePolicyType(inputs.policyType);
-  if (!policyTypeResult.isValid) errors.push(policyTypeResult.message!);
+  // Validate policy type
+  if (inputs.policyType !== undefined) {
+    const result = validatePolicyType(inputs.policyType);
+    if (!result.isValid && result.message) errors.push(result.message);
+  }
 
-  const propertyTypeResult = validatePropertyType(inputs.propertyType);
-  if (!propertyTypeResult.isValid) errors.push(propertyTypeResult.message!);
+  // Validate property type
+  if (inputs.propertyType !== undefined) {
+    const result = validatePropertyType(inputs.propertyType);
+    if (!result.isValid && result.message) errors.push(result.message);
+  }
 
-  const occupancyTypeResult = validateOccupancyType(inputs.occupancyType);
-  if (!occupancyTypeResult.isValid) errors.push(occupancyTypeResult.message!);
+  // Validate occupancy type
+  if (inputs.occupancyType !== undefined) {
+    const result = validateOccupancyType(inputs.occupancyType);
+    if (!result.isValid && result.message) errors.push(result.message);
+  }
 
-  const buildingElevationResult = validateBuildingElevation(inputs.buildingElevation);
-  if (!buildingElevationResult.isValid) errors.push(buildingElevationResult.message!);
+  // Validate building elevation
+  if (inputs.buildingElevation !== undefined) {
+    const result = validateBuildingElevation(inputs.buildingElevation);
+    if (!result.isValid && result.message) errors.push(result.message);
+  }
 
-  const baseFloodElevationResult = validateBaseFloodElevation(inputs.baseFloodElevation);
-  if (!baseFloodElevationResult.isValid) errors.push(baseFloodElevationResult.message!);
+  // Validate base flood elevation
+  if (inputs.baseFloodElevation !== undefined) {
+    const result = validateBaseFloodElevation(inputs.baseFloodElevation);
+    if (!result.isValid && result.message) errors.push(result.message);
+  }
 
-  const contentsDeductibleResult = validateContentsDeductible(inputs.contentsDeductible);
-  if (!contentsDeductibleResult.isValid) errors.push(contentsDeductibleResult.message!);
+  // Validate contents deductible
+  if (inputs.contentsDeductible !== undefined) {
+    const result = validateContentsDeductible(inputs.contentsDeductible);
+    if (!result.isValid && result.message) errors.push(result.message);
+  }
 
-  const additionalLivingExpensesResult = validateAdditionalLivingExpenses(inputs.additionalLivingExpenses);
-  if (!additionalLivingExpensesResult.isValid) errors.push(additionalLivingExpensesResult.message!);
+  // Validate additional living expenses
+  if (inputs.additionalLivingExpenses !== undefined) {
+    const result = validateAdditionalLivingExpenses(inputs.additionalLivingExpenses);
+    if (!result.isValid && result.message) errors.push(result.message);
+  }
 
-  const businessInterruptionResult = validateBusinessInterruption(inputs.businessInterruption);
-  if (!businessInterruptionResult.isValid) errors.push(businessInterruptionResult.message!);
+  // Validate business interruption
+  if (inputs.businessInterruption !== undefined) {
+    const result = validateBusinessInterruption(inputs.businessInterruption);
+    if (!result.isValid && result.message) errors.push(result.message);
+  }
 
-  const ordinanceLawResult = validateOrdinanceLaw(inputs.ordinanceLaw);
-  if (!ordinanceLawResult.isValid) errors.push(ordinanceLawResult.message!);
+  // Validate ordinance law
+  if (inputs.ordinanceLaw !== undefined) {
+    const result = validateOrdinanceLaw(inputs.ordinanceLaw);
+    if (!result.isValid && result.message) errors.push(result.message);
+  }
 
-  const umbrellaLiabilityResult = validateUmbrellaLiability(inputs.umbrellaLiability);
-  if (!umbrellaLiabilityResult.isValid) errors.push(umbrellaLiabilityResult.message!);
+  // Validate umbrella liability
+  if (inputs.umbrellaLiability !== undefined) {
+    const result = validateUmbrellaLiability(inputs.umbrellaLiability);
+    if (!result.isValid && result.message) errors.push(result.message);
+  }
 
-  const elevationCertStatusResult = validateElevationCertStatus(inputs.elevationCertStatus);
-  if (!elevationCertStatusResult.isValid) errors.push(elevationCertStatusResult.message!);
+  // Validate elevation cert status
+  if (inputs.elevationCertStatus !== undefined) {
+    const result = validateElevationCertStatus(inputs.elevationCertStatus);
+    if (!result.isValid && result.message) errors.push(result.message);
+  }
 
-  const mitigationMeasuresResult = validateMitigationMeasures(inputs.mitigationMeasures);
-  if (!mitigationMeasuresResult.isValid) errors.push(mitigationMeasuresResult.message!);
+  // Validate mitigation measures
+  if (inputs.mitigationMeasures !== undefined) {
+    const result = validateMitigationMeasures(inputs.mitigationMeasures);
+    if (!result.isValid && result.message) errors.push(result.message);
+  }
 
-  const communityRatingResult = validateCommunityRating(inputs.communityRating);
-  if (!communityRatingResult.isValid) errors.push(communityRatingResult.message!);
+  // Validate community rating
+  if (inputs.communityRating !== undefined) {
+    const result = validateCommunityRating(inputs.communityRating);
+    if (!result.isValid && result.message) errors.push(result.message);
+  }
 
-  const riskScoreResult = validateRiskScore(inputs.riskScore);
-  if (!riskScoreResult.isValid) errors.push(riskScoreResult.message!);
+  // Validate risk score
+  if (inputs.riskScore !== undefined) {
+    const result = validateRiskScore(inputs.riskScore);
+    if (!result.isValid && result.message) errors.push(result.message);
+  }
 
-  const affordabilityScoreResult = validateAffordabilityScore(inputs.affordabilityScore);
-  if (!affordabilityScoreResult.isValid) errors.push(affordabilityScoreResult.message!);
+  // Validate affordability score
+  if (inputs.affordabilityScore !== undefined) {
+    const result = validateAffordabilityScore(inputs.affordabilityScore);
+    if (!result.isValid && result.message) errors.push(result.message);
+  }
 
   // Logical validation
   if (inputs.buildingValue && inputs.propertyValue && inputs.buildingValue > inputs.propertyValue) {
