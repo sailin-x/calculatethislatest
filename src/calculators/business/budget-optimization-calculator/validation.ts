@@ -1,4 +1,4 @@
-import { ValidationRuleFactory } from '../../utils/validation-rule-factory';
+import { ValidationRuleFactory } from '../../../utils/validation';
 import { BudgetOptimizationInputs } from './types';
 
 export const budgetOptimizationValidationRules = [
@@ -96,22 +96,19 @@ export const budgetOptimizationValidationRules = [
   ValidationRuleFactory.range('riskFactors.technologyRisk', 1, 10, 'Technology risk must be between 1 and 10'),
   
   // Cross-field validations
-  ValidationRuleFactory.custom('budgetInfo.totalBudget', (value, allInputs) => {
-    if (!allInputs) return null;
-    const totalExpenses = this.calculateTotalExpenses(allInputs.expenses);
-    if (value < totalExpenses * 0.8) {
-      return 'Total budget should be at least 80% of total expenses';
-    }
-    return null;
+  ValidationRuleFactory.createRule('budgetInfo.totalBudget', 'Total budget should be at least 80% of total expenses', (value, allInputs) => {
+    if (!allInputs) return true;
+    const totalExpenses = calculateTotalExpenses(allInputs.expenses);
+    return value >= totalExpenses * 0.8;
   }),
   
-  ValidationRuleFactory.custom('revenue.totalRevenue', (value, allInputs) => {
-    if (!allInputs) return null;
+  ValidationRuleFactory.createRule('revenue.totalRevenue', 'Total revenue should be at least 50% of total budget', (value, allInputs) => {
+    if (!allInputs) return true;
     const totalBudget = allInputs.budgetInfo?.totalBudget;
-    if (totalBudget && value < totalBudget * 0.5) {
-      return 'Total revenue should be at least 50% of total budget';
+    if (totalBudget) {
+      return value >= totalBudget * 0.5;
     }
-    return null;
+    return true;
   }),
   
   ValidationRuleFactory.custom('objectives.targetSavings', (value, allInputs) => {
