@@ -64,7 +64,7 @@ export interface MortgageClosingCostOutputs {
   costProjection: string;
 }
 
-export function calculateMortgageClosingCost(inputs: MortgageClosingCostInputs): CalculationResult<MortgageClosingCostOutputs> {
+export function calculateMortgageClosingCost(inputs: MortgageClosingCostInputs): CalculationResult {
   // Calculate lender fees
   const lenderFees = inputs.originationFee + 
     (inputs.discountPoints * inputs.loanAmount / 100) +
@@ -145,7 +145,7 @@ export function calculateMortgageClosingCost(inputs: MortgageClosingCostInputs):
   const savingsOpportunities = generateSavingsOpportunities(inputs, totalClosingCosts);
   const comparisonAnalysis = generateComparisonAnalysis(totalClosingCosts, inputs.loanAmount, inputs.homePrice);
   const timelineAnalysis = generateTimelineAnalysis(inputs, prepaidInterest, prepaidPropertyTax, prepaidInsurance);
-  const escrowAnalysis = generateEscrowAnalysis(inputs, escrowAccount, monthlyTaxes, monthlyInsurance);
+  const escrowAnalysis = generateEscrowAnalysis(inputs, escrowAccount, monthlyTaxes, monthlyInsurance, totalMonthlyPayment);
   const recommendations = generateRecommendations(inputs, totalClosingCosts, closingCostPercentage);
   const feeBreakdown = generateFeeBreakdown(inputs, lenderFees, thirdPartyFees, prepaidItems);
   const prepaidBreakdown = generatePrepaidBreakdown(inputs, prepaidPropertyTax, prepaidInsurance, prepaidInterest);
@@ -188,7 +188,7 @@ function generateBreakdownAnalysis(inputs: MortgageClosingCostInputs, lenderFees
   
   return `## Closing Cost Breakdown Analysis
 
-**Total Closing Costs: $${total.toLocaleString()}`
+**Total Closing Costs: $${total.toLocaleString()}
 
 ### Cost Categories:
 - **Lender Fees (${((lenderFees/total)*100).toFixed(1)}%):** $${lenderFees.toLocaleString()}
@@ -289,10 +289,10 @@ ${inputs.propertyTaxMonths > 6 ? '• Extended property tax prepayment period' :
 ${inputs.insuranceMonths === 12 ? '• Full year of insurance prepaid' : '• Partial year of insurance prepaid'}`;
 }
 
-function generateEscrowAnalysis(inputs: MortgageClosingCostInputs, escrowAccount: number, monthlyTaxes: number, monthlyInsurance: number): string {
+function generateEscrowAnalysis(inputs: MortgageClosingCostInputs, escrowAccount: number, monthlyTaxes: number, monthlyInsurance: number, totalMonthlyPayment: number): string {
   const monthlyEscrowPayment = monthlyTaxes + monthlyInsurance;
   const escrowBuffer = escrowAccount - (monthlyEscrowPayment * 2); // 2-month buffer
-  
+
   return `## Escrow Account Analysis
 
 **Initial Escrow Balance:** $${escrowAccount.toLocaleString()}
