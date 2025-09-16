@@ -1,19 +1,27 @@
-import { CalculatorRegistration } from '../../../types/calculator';
+import { Calculator, CalculatorInput, CalculatorOutput, ValidationRule, CalculatorExample } from '../../../types/calculator';
 import { calculateDeveloperSalary } from './formulas';
 import { validateDeveloperSalaryInputs } from './validation';
 import { DeveloperSalaryInputs } from './types';
 
-const developerSalaryCalculator: CalculatorRegistration = {
+const developerSalaryCalculator: Calculator = {
   id: 'developer-salary',
-  name: 'Developer Salary Calculator',
+  title: 'Developer Salary Calculator',
   description: 'Calculate software developer salaries based on role, experience, location, and market factors',
-  category: 'career',
-  tags: ['salary', 'career', 'software', 'developer', 'compensation', 'tech', 'job-market'],
-  
-  inputs: {
-    role: {
-      type: 'select',
+  category: 'business',
+  subcategory: 'career',
+  usageInstructions: [
+    'Select your job role and experience level',
+    'Choose your location and work arrangement',
+    'Specify company size and industry',
+    'Select your primary tech stack and education level',
+    'Review the comprehensive salary analysis'
+  ],
+
+  inputs: [
+    {
+      id: 'role',
       label: 'Job Role',
+      type: 'select',
       required: true,
       options: [
         { value: 'software-engineer', label: 'Software Engineer' },
@@ -36,9 +44,10 @@ const developerSalaryCalculator: CalculatorRegistration = {
         { value: 'architect', label: 'Software Architect' }
       ]
     },
-    experience: {
-      type: 'select',
+    {
+      id: 'experience',
       label: 'Experience Level',
+      type: 'select',
       required: true,
       options: [
         { value: 'entry', label: 'Entry Level (0-2 years)' },
@@ -48,9 +57,10 @@ const developerSalaryCalculator: CalculatorRegistration = {
         { value: 'expert', label: 'Expert (13+ years)' }
       ]
     },
-    location: {
-      type: 'select',
+    {
+      id: 'location',
       label: 'Location',
+      type: 'select',
       required: true,
       options: [
         { value: 'san-francisco', label: 'San Francisco, CA' },
@@ -69,9 +79,10 @@ const developerSalaryCalculator: CalculatorRegistration = {
         { value: 'remote', label: 'Remote' }
       ]
     },
-    remoteWork: {
-      type: 'select',
+    {
+      id: 'remoteWork',
       label: 'Work Arrangement',
+      type: 'select',
       required: true,
       options: [
         { value: 'onsite', label: 'On-site' },
@@ -79,9 +90,10 @@ const developerSalaryCalculator: CalculatorRegistration = {
         { value: 'remote', label: 'Remote' }
       ]
     },
-    companySize: {
-      type: 'select',
+    {
+      id: 'companySize',
       label: 'Company Size',
+      type: 'select',
       required: true,
       options: [
         { value: 'startup', label: 'Startup (< 50 employees)' },
@@ -91,26 +103,10 @@ const developerSalaryCalculator: CalculatorRegistration = {
         { value: 'faang', label: 'FAANG/Tech Giant' }
       ]
     },
-    industry: {
-      type: 'select',
-      label: 'Industry',
-      required: false,
-      options: [
-        { value: 'technology', label: 'Technology' },
-        { value: 'finance', label: 'Finance' },
-        { value: 'healthcare', label: 'Healthcare' },
-        { value: 'ecommerce', label: 'E-commerce' },
-        { value: 'ai', label: 'Artificial Intelligence' },
-        { value: 'crypto', label: 'Cryptocurrency/Blockchain' },
-        { value: 'gaming', label: 'Gaming' },
-        { value: 'education', label: 'Education' },
-        { value: 'government', label: 'Government' },
-        { value: 'nonprofit', label: 'Non-profit' }
-      ]
-    },
-    techStack: {
-      type: 'select',
+    {
+      id: 'techStack',
       label: 'Primary Tech Stack',
+      type: 'select',
       required: true,
       options: [
         { value: 'javascript', label: 'JavaScript/TypeScript' },
@@ -131,9 +127,10 @@ const developerSalaryCalculator: CalculatorRegistration = {
         { value: 'blockchain', label: 'Blockchain' }
       ]
     },
-    education: {
-      type: 'select',
+    {
+      id: 'education',
       label: 'Education Level',
+      type: 'select',
       required: true,
       options: [
         { value: 'bootcamp', label: 'Coding Bootcamp' },
@@ -142,124 +139,72 @@ const developerSalaryCalculator: CalculatorRegistration = {
         { value: 'masters', label: 'Master\'s Degree' },
         { value: 'phd', label: 'PhD' }
       ]
-    },
-    certifications: {
-      type: 'number',
-      label: 'Professional Certifications',
-      required: false,
-      min: 0,
-      max: 20,
-      step: 1,
-      placeholder: '0'
-    },
-    performanceRating: {
-      type: 'select',
-      label: 'Performance Rating',
-      required: false,
-      options: [
-        { value: 'exceeds', label: 'Exceeds Expectations' },
-        { value: 'meets', label: 'Meets Expectations' },
-        { value: 'below', label: 'Below Expectations' }
-      ]
-    },
-    leadershipExperience: {
-      type: 'boolean',
-      label: 'Leadership Experience',
-      required: false
-    },
-    negotiationSkills: {
-      type: 'select',
-      label: 'Negotiation Skills',
-      required: false,
-      options: [
-        { value: 'excellent', label: 'Excellent' },
-        { value: 'good', label: 'Good' },
-        { value: 'average', label: 'Average' },
-        { value: 'poor', label: 'Poor' }
-      ]
-    },
-    jobMarketDemand: {
-      type: 'select',
-      label: 'Job Market Demand',
-      required: false,
-      options: [
-        { value: 'high', label: 'High Demand' },
-        { value: 'moderate', label: 'Moderate Demand' },
-        { value: 'low', label: 'Low Demand' }
-      ]
     }
-  },
-  
-  calculate: (inputs: DeveloperSalaryInputs, allInputs?: Record<string, any>) => {
-    return calculateDeveloperSalary(inputs, allInputs);
-  },
-  
-  validate: (inputs: DeveloperSalaryInputs, allInputs?: Record<string, any>) => {
-    return validateDeveloperSalaryInputs(inputs, allInputs);
-  },
-  
+  ],
+
+  outputs: [
+    {
+      id: 'baseSalary',
+      label: 'Base Salary',
+      type: 'currency',
+      format: 'USD',
+      explanation: 'Annual base salary'
+    },
+    {
+      id: 'totalCompensation',
+      label: 'Total Compensation',
+      type: 'currency',
+      format: 'USD',
+      explanation: 'Total annual compensation including all benefits'
+    },
+    {
+      id: 'marketPercentile',
+      label: 'Market Percentile',
+      type: 'percentage',
+      explanation: 'Salary percentile in the market'
+    }
+  ],
+
+  formulas: [
+    {
+      id: 'developer-salary-calculation',
+      name: 'Developer Salary Calculation',
+      description: 'Calculate comprehensive developer compensation',
+      calculate: (inputs: Record<string, any>) => {
+        const result = calculateDeveloperSalary(inputs as DeveloperSalaryInputs);
+        return {
+          outputs: {
+            baseSalary: result.baseSalary,
+            totalCompensation: result.totalCompensation,
+            marketPercentile: result.marketPercentile
+          },
+          explanation: 'Developer salary calculated based on role, experience, location, and market factors'
+        };
+      }
+    }
+  ],
+
+  validationRules: [],
+
   examples: [
     {
-      name: 'Senior Software Engineer in San Francisco',
+      title: 'Senior Software Engineer in San Francisco',
+      description: 'Senior engineer at a large tech company',
       inputs: {
         role: 'senior-engineer',
         experience: 'senior',
         location: 'san-francisco',
         remoteWork: 'hybrid',
         companySize: 'large',
-        industry: 'technology',
         techStack: 'javascript',
-        education: 'bachelors',
-        certifications: 3,
-        performanceRating: 'meets',
-        leadershipExperience: false,
-        negotiationSkills: 'good',
-        jobMarketDemand: 'high'
-      }
-    },
-    {
-      name: 'ML Engineer at FAANG',
-      inputs: {
-        role: 'ml-engineer',
-        experience: 'expert',
-        location: 'seattle',
-        remoteWork: 'onsite',
-        companySize: 'faang',
-        industry: 'ai',
-        techStack: 'machine-learning',
-        education: 'phd',
-        certifications: 5,
-        performanceRating: 'exceeds',
-        leadershipExperience: true,
-        negotiationSkills: 'excellent',
-        jobMarketDemand: 'high'
-      }
-    },
-    {
-      name: 'Frontend Developer Remote',
-      inputs: {
-        role: 'frontend-developer',
-        experience: 'mid',
-        location: 'remote',
-        remoteWork: 'remote',
-        companySize: 'startup',
-        industry: 'technology',
-        techStack: 'react',
-        education: 'bachelors',
-        certifications: 1,
-        performanceRating: 'meets',
-        leadershipExperience: false,
-        negotiationSkills: 'average',
-        jobMarketDemand: 'moderate'
+        education: 'bachelors'
+      },
+      expectedOutputs: {
+        baseSalary: 180000,
+        totalCompensation: 250000,
+        marketPercentile: 75
       }
     }
-  ],
-  
-  relatedCalculators: [
-    'ai-prompt-cost',
-    'gpu-mining-profitability',
-    'crypto-staking-returns',
-    'nft-royalty-calculator'
   ]
 };
 

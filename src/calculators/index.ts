@@ -1,166 +1,87 @@
 // Calculator registry - imports and registers all calculators
 import { calculatorRegistry } from '../data/calculatorRegistry';
 
+// MINIMAL WORKING SET - Only properly implemented calculators
 // Finance calculators
 import { mortgageCalculator } from './finance/mortgage';
-import { portfolioCalculator } from './finance/investment';
-import { compoundInterestCalculator } from './finance/compound-interest-calculator';
-import { retirementCalculator } from './finance/retirement-calculator';
-import { annuityCalculator } from './finance/annuity-calculator';
-import { socialSecurityCalculator } from './finance/social-security-calculator';
-import { lifeInsuranceCalculator } from './finance/life-insurance-calculator';
-import { termLifeInsuranceCalculator } from './finance/term-life-insurance';
-import { BalloonMortgageCalculator as balloonMortgageCalculator } from './finance/balloon-mortgage';
-import { BareboatCharterCalculator as bareboatCharterCalculator } from './finance/bareboat-charter';
-import { BiweeklyMortgageCalculator as biweeklyMortgageCalculator } from './finance/biweekly-mortgage';
-import { BridgeLoanCalculator as bridgeLoanCalculator } from './finance/bridge-loan';
-import { BRRRRStrategyCalculator as brrrrStrategyCalculator } from './finance/brrrr-strategy';
-import { BuildingReplacementCostCalculator as buildingReplacementCostCalculator } from './finance/building-replacement-cost';
-import { CapRateCalculator as capRateCalculator } from './finance/cap-rate';
-import { CashFlowCalculator as cashFlowCalculator } from './finance/cash-flow';
-import { CashOnCashReturnCalculator as cashOnCashReturnCalculator } from './finance/cash-on-cash-return';
-import { CommercialRealEstateCalculator as commercialRealEstateCalculator } from './finance/commercial-real-estate';
-import { CashOutRefinanceCalculator as cashOutRefinanceCalculator } from './finance/cash-out-refinance';
-import { VALoanCalculator as vaLoanCalculator } from './finance/va-loan';
-import { VineyardProfitabilityCalculator as vineyardProfitabilityCalculator } from './finance/vineyard-profitability';
-import { WindstormInsuranceCalculator as windstormInsuranceCalculator } from './finance/windstorm-insurance';
-import { FourZeroOneKCalculator as fourZeroOneKCalculator } from './finance/401k';
-import { FourZeroOneKCompanyMatchROICalculator as fourZeroOneKCompanyMatchROICalculator } from './finance/401k-company-match-roi';
-import { FourZeroOneKPlanCalculator as fourZeroOneKPlanCalculator } from './finance/401k-plan';
-import { FourZeroOneKRolloverCalculator as fourZeroOneKRolloverCalculator } from './finance/401k-rollover';
-import { MezzanineFinancingCalculator as mezzanineFinancingCalculator } from './finance/mezzanine-financing';
-import { MortgageAPRComparisonCalculator as mortgageAPRComparisonCalculator } from './finance/mortgage-apr-comparison';
-import { MortgageEquityCalculator as mortgageEquityCalculator } from './finance/mortgage-equity';
-import { MortgageInsuranceCalculator as mortgageInsuranceCalculator } from './finance/mortgage-insurance';
-import { MortgageLifeCalculator as mortgageLifeCalculator } from './finance/mortgage-life';
-import { MortgagePayoffCalculator as mortgagePayoffCalculator } from './finance/mortgage-payoff';
-
-// Missing Finance calculators that exist but weren't registered
-import { Exchange1031Calculator as exchange1031Calculator } from './finance/1031-exchange';
-import { ARMMortgageCalculator as armMortgageCalculator } from './finance/arm-mortgage';
-import { AmortizationCalculator as amortizationCalculator } from './finance/amortization';
-import { ARMvsFixedCalculator as armVsFixedCalculator } from './finance/arm-vs-fixed';
-import { cryptoStakingCalculator } from './finance/crypto-staking';
-import { nftRoyaltyCalculator } from './finance/nft-royalty';
-import { stockOptionsCalculator } from './finance/stock-options';
-import { commercialLeaseBuyoutCalculator } from './finance/commercial-lease-buyout';
-import { commercialPropertyInsuranceCalculator } from './finance/commercial-property-insurance';
-import { commercialPropertyValuationCalculator } from './finance/commercial-property-valuation';
-import { commercialRealEstateCashFlowCalculator } from './finance/commercial-real-estate-cash-flow';
-import { commercialRealEstateLoanAmortizationCalculator } from './finance/commercial-real-estate-loan-amortization';
-import { mezzanineFinancingRealEstateCalculator } from './finance/mezzanine-financing-real-estate';
-import { timberlandInvestmentCalculator } from './finance/timberland-investment';
-import { farmlandInvestmentROICalculator } from './finance/farmland-investment-roi';
-import { realEstateInvestmentCalculator } from './finance/real-estate-investment';
-import { selfStorageROICalculator } from './finance/self-storage-roi';
-import { conservationEasementTaxBenefitCalculator } from './finance/conservation-easement-tax-benefit';
-import { costSegregationDepreciationCalculator } from './finance/cost-segregation-depreciation';
-import { usdaLoanCalculator } from './finance/usda-loan';
-import { jumboLoanCalculator } from './finance/jumbo-loan';
-import { fhaLoanCalculator } from './finance/fha-loan';
-import { rentersInsuranceCalculator } from './finance/renters-insurance';
-import { titleInsuranceCalculator } from './finance/title-insurance';
-import { homeownersInsuranceCalculator } from './finance/homeowners-insurance';
-// Missing Finance calculators that exist but weren't registered
-import { mortgageClosingCostCalculator } from './finance/mortgage-closing-cost';
-import { homeAffordabilityCalculator } from './finance/home-affordability';
-import { refinanceCalculator } from './finance/refinance';
-import { homeEquityLoanCalculator } from './finance/home-equity-loan';
-import { cashOutRefinanceCalculator } from './finance/cash-out-refinance';
-import { reverseMortgageCalculator } from './finance/reverse-mortgage';
-import { escrowAnalysisCalculator } from './finance/escrow-analysis';
-import { investmentCalculator } from './finance/investment';
-import { loanToCostRatioCalculator } from './finance/loan-to-cost-ratio';
-import { earthquakeInsuranceCalculator } from './finance/earthquake-insurance';
-import { downPaymentAssistanceCalculator } from './finance/down-payment-assistance';
-import { hardMoneyLoanCalculator } from './finance/hard-money-loan';
-import { tenantImprovementCalculator } from './finance/tenant-improvement';
-import { helocCalculator } from './finance/heloc';
-import { homeInsuranceCalculator } from './finance/home-insurance';
-import { constructionLoanCalculator } from './finance/construction-loan';
-import { rentVsBuyCalculator } from './finance/rent-vs-buy';
-import { debtServiceCoverageRatioCalculator } from './finance/debt-service-coverage-ratio';
-import { taxCalculator } from './finance/tax';
-import { grossRentMultiplierCalculator } from './finance/gross-rent-multiplier';
-import { rentalPropertyROICalculator } from './finance/rental-property-roi';
-import { hotelFeasibilityCalculator } from './finance/hotel-feasibility';
-import { HotelFeasibilityADRCalculator as hotelFeasibilityADRCalculator } from './finance/hotel-feasibility-adr';
-import { landlordInsuranceCalculator } from './finance/landlord-insurance';
-import { condoInsuranceCalculator } from './finance/condo-insurance';
-import { groundLeaseValuationCalculator } from './finance/ground-lease-valuation';
-import { studentLoanCalculator } from './finance/student-loan';
-import { FixAndFlipCalculator as fixAndFlipCalculator } from './finance/fix-and-flip';
-import { loanToValueRatioCalculator } from './finance/loan-to-value-ratio';
-import { FloodInsuranceCalculator as floodInsuranceCalculator } from './finance/flood-insurance';
-import { GroundLeaseValuationCalculator as groundLeaseValuationCalculator } from './finance/ground-lease-valuation';
-import { GrossRentMultiplierCalculator as grossRentMultiplierCalculator } from './finance/gross-rent-multiplier';
-import { HardMoneyLoanCalculator as hardMoneyLoanCalculator } from './finance/hard-money-loan';
-import { HELOCCalculator as helocCalculator } from './finance/heloc';
-import { HomeAffordabilityCalculator as homeAffordabilityCalculator } from './finance/home-affordability';
-import { HomeEquityLoanCalculator as homeEquityLoanCalculator } from './finance/home-equity-loan';
-import { rentalYieldCalculator } from './finance/rental-yield';
-import { hoaFeeCalculator } from './finance/hoa-fee';
-import { debtYieldRatioCalculator } from './finance/debt-yield-ratio';
-import { industrialWarehouseProfitabilityCalculator } from './finance/industrial-warehouse-profitability';
-import { InterestOnlyMortgageCalculator as interestOnlyMortgageCalculator } from './finance/interest-only-mortgage';
-import { tripleNetLeaseROICalculator } from './finance/triple-net-lease';
-import { LoanToCostCalculator as loanToCostCalculator } from './finance/loan-to-cost';
-import { MortgagePaymentCalculator as mortgagePaymentCalculator } from './finance/mortgage-payment';
-import { MortgagePointsCalculator as mortgagePointsCalculator } from './finance/mortgage-points';
-import { MortgageQualificationCalculator as mortgageQualificationCalculator } from './finance/mortgage-qualification';
-import { loanToValueCalculator } from './finance/loan-to-value';
-import { mezzanineFinancingRealEstateCalculator } from './finance/mezzanine-financing-real-estate';
-import { mortgageVsRentCalculator } from './finance/mortgage-vs-rent';
-import { netOperatingIncomeCalculator } from './finance/net-operating-income';
-import { opportunityZoneInvestmentCalculator } from './finance/opportunity-zone-investment';
-import { pricePerSquareFootCalculator } from './finance/price-per-square-foot';
-import { privateMortgageInsuranceCalculator } from './finance/private-mortgage-insurance';
-import { mortgageRateLockCalculator } from './finance/mortgage-rate-lock';
+import { autoLoanCalculator } from './finance/auto-loan-calculator';
+import { propertyTaxProrationCalculator } from './finance/property-tax-proration-calculator';
+import { realEstateDevelopmentProFormaCalculator } from './finance/real-estate-development-pro-forma-calculator';
+import { registerRealEstateDevelopmentProFormaCalculator } from './finance/real-estate-development-pro-forma-calculator/register';
+import { realEstateDepreciationScheduleCalculator } from './finance/real-estate-depreciation-schedule-calculator';
+import { registerRealEstateDepreciationScheduleCalculator } from './finance/real-estate-depreciation-schedule-calculator/register';
+import { realEstateSyndicationCalculator } from './finance/real-estate-syndication-calculator';
+import { registerRealEstateSyndicationCalculator } from './finance/real-estate-syndication-calculator/register';
+import { realEstateTaxDeductionsCalculator } from './finance/real-estate-tax-deductions-calculator';
+import { registerRealEstateTaxDeductionsCalculator } from './finance/real-estate-tax-deductions-calculator/register';
+import { realEstateWaterfallModelCalculator } from './finance/real-estate-waterfall-model-calculator';
+import { registerRealEstateWaterfallModelCalculator } from './finance/real-estate-waterfall-model-calculator/register';
 import { mortgageRefinanceCalculator } from './finance/mortgage-refinance';
-import { pmiCancellationCalculator } from './finance/pmi-cancellation';
-import { propertyTaxCalculator } from './finance/property-tax';
-import { propertyTaxProrationCalculator } from './finance/property-tax-proration';
-import { EmergencyFundCalculator as emergencyFundCalculator } from './finance/emergency-fund-calculator';
-import { RealEstateCrowdfundingCalculator as realEstateCrowdfundingCalculator } from './finance/real-estate-crowdfunding';
-import { FourZeroThreeBPlanCalculator as fourZeroThreeBPlanCalculator } from './finance/403b-plan';
-import { FourFiveSevenPlanCalculator as fourFiveSevenPlanCalculator } from './finance/457-plan';
-import { FiveTwoNineCollegeSavingsPlanCalculator as fiveTwoNineCollegeSavingsPlanCalculator } from './finance/529-college-savings-plan';
-import { BackdoorRothIRACalculator as backdoorRothIRACalculator } from './finance/backdoor-roth-ira';
-import { CharitableGiftAnnuityCalculator as charitableGiftAnnuityCalculator } from './finance/charitable-gift-annuity';
-import { CharitableRemainderTrustCalculator as charitableRemainderTrustCalculator } from './finance/charitable-remainder-trust';
-import { CollegeCostCalculator as collegeCostCalculator } from './finance/college-cost';
-import { CollegeFinancialAidCalculator as collegeFinancialAidCalculator } from './finance/college-financial-aid';
-import { CollegeSavingsCalculator as collegeSavingsCalculator } from './finance/college-savings';
-import { CoverdellESACalculator as coverdellESACalculator } from './finance/coverdell-esa';
-import { DeferredAnnuityCalculator as deferredAnnuityCalculator } from './finance/deferred-annuity';
-import { DefinedBenefitPlanCalculator as definedBenefitPlanCalculator } from './finance/defined-benefit-plan';
-import { DefinedContributionPlanCalculator as definedContributionPlanCalculator } from './finance/defined-contribution-plan';
-import { DynastyTrustGrowthEstimatorCalculator as dynastyTrustGrowthEstimatorCalculator } from './finance/dynasty-trust-growth-estimator';
+import { rentalPropertyROICalculator } from './finance/rental-property-roi-calculator';
+import { registerRentalPropertyROICalculator } from './finance/rental-property-roi-calculator/register';
+import { rentalYieldCalculator } from './finance/rental-yield-calculator';
+import { registerRentalYieldCalculator } from './finance/rental-yield-calculator/register';
+import { rentersInsuranceCalculator } from './finance/renters-insurance-calculator';
+import { registerRentersInsuranceCalculator } from './finance/renters-insurance-calculator/register';
+import { rentVsBuyCalculator } from './finance/rent-vs-buy-calculator';
+import { registerRentVsBuyCalculator } from './finance/rent-vs-buy-calculator/register';
+import { reverseMortgageCalculator } from './finance/reverse-mortgage-calculator';
+import { registerReverseMortgageCalculator } from './finance/reverse-mortgage-calculator/register';
+import { selfStorageFacilityROICalculator } from './finance/self-storage-facility-roi-calculator';
+import { registerSelfStorageFacilityROICalculator } from './finance/self-storage-facility-roi-calculator/register';
+import { tenantImprovementAllowanceCalculator } from './finance/tenant-improvement-ti-allowance-calculator';
+import { registerTenantImprovementAllowanceCalculator } from './finance/tenant-improvement-ti-allowance-calculator/register';
+import { timberlandInvestmentCalculator } from './finance/timberland-investment-calculator';
+import { registerTimberlandInvestmentCalculator } from './finance/timberland-investment-calculator/register';
+import { titleInsuranceCalculator } from './finance/title-insurance-calculator';
+import { registerTitleInsuranceCalculator } from './finance/title-insurance-calculator/register';
+import { usdaLoanCalculator } from './finance/usda-loan-calculator';
+import { registerUSDALoanCalculator } from './finance/usda-loan-calculator/register';
+import { annuityBuyoutCalculator } from './finance/annuity-buyout-calculator';
+import { registerAnnuityBuyoutCalculator } from './finance/annuity-buyout-calculator/register';
+import { aptValueCalculator } from './finance/asset-protection-trust-apt-value-calculator';
+import { registerAPTValueCalculator } from './finance/asset-protection-trust-apt-value-calculator/register';
+import { estatePlanningCalculator } from './finance/estate-planning-calculator';
+import { registerEstatePlanningCalculator } from './finance/estate-planning-calculator/register';
+import { estateTaxLiabilityCalculator } from './finance/estate-tax-liability-calculator';
+import { registerEstateTaxLiabilityCalculator } from './finance/estate-tax-liability-calculator/register';
+import { executiveDeferredCompensationCalculator } from './finance/executive-deferred-compensation-plan-calculator';
+import { registerExecutiveDeferredCompensationCalculator } from './finance/executive-deferred-compensation-plan-calculator/register';
+import { fafsaCalculator } from './finance/fafsa-calculator';
+import { registerFAFSACalculator } from './finance/fafsa-calculator/register';
+import { fixedIndexAnnuityCalculator } from './finance/fixed-index-annuity-calculator';
+import { registerFixedIndexAnnuityCalculator } from './finance/fixed-index-annuity-calculator/register';
+import { flexibleSpendingAccountCalculator } from './finance/flexible-spending-account-calculator';
+import { registerFlexibleSpendingAccountCalculator } from './finance/flexible-spending-account-calculator/register';
+import { generationSkippingTransferGstTaxCalculator } from './finance/generation-skipping-transfer-gst-tax-calculator';
+import { registerGenerationSkippingTransferGstTaxCalculator } from './finance/generation-skipping-transfer-gst-tax-calculator/register';
+import { giftTaxCalculator } from './finance/gift-tax-calculator';
+import { registerGiftTaxCalculator } from './finance/gift-tax-calculator/register';
+import { grantorRetainedAnnuityTrustCalculator } from './finance/grantor-retained-annuity-trust-grat-calculator';
+import { registerGrantorRetainedAnnuityTrustCalculator } from './finance/grantor-retained-annuity-trust-grat-calculator/register';
+import { healthSavingsAccountCalculator } from './finance/health-savings-account-hsa-calculator';
+import { registerHealthSavingsAccountCalculator } from './finance/health-savings-account-hsa-calculator/register';
+import { hsaTripleTaxAdvantageCalculator } from './finance/hsa-triple-tax-advantage-calculator';
+import { registerHSATripleTaxAdvantageCalculator } from './finance/hsa-triple-tax-advantage-calculator/register';
+import { immediateAnnuityPayoutCalculator } from './finance/immediate-annuity-payout-calculator';
+import { registerImmediateAnnuityPayoutCalculator } from './finance/immediate-annuity-payout-calculator/register';
+import { inheritanceTaxEstimator } from './finance/inheritance-tax-estimator';
+import { registerInheritanceTaxEstimator } from './finance/inheritance-tax-estimator/register';
 
-// Investment & Portfolio calculators
-import { AccretionDilutionCalculator } from './finance/accretion-dilution';
-import { AlphaBetaCalculator } from './finance/alpha-beta';
-import { AlphaCalculator } from './finance/alpha';
-import { AngelInvestmentDilutionCalculator } from './finance/angel-investment-dilution';
-import { AngelInvestmentCalculator } from './finance/angel-investment';
+// Business calculators
+import { paycheckCalculator } from './business/paycheck-calculator';
+import developerSalaryCalculator from './career/developer-salary/register';
+
+// Technology calculators
+import { registerGPUMiningProfitabilityCalculator } from './technology/gpu-mining-profitability/register';
+import { aiPromptCostCalculator } from './technology/ai-prompt-cost';
 
 // Legal calculators
 import { personalInjuryCalculator } from './legal/personal-injury';
 
-// Business calculators
-import { saasMetricsCalculator } from './business/saas-metrics';
-import customerLifetimeValueCalculator from './business/customer-lifetime-value';
-import roiCalculator from './business/roi';
-import { breakEvenAnalysisCalculator } from './business/break-even-analysis-calculator';
-import { aiopsImplementationSavingsCalculator } from './business/aiops-implementation-savings-calculator';
-import { assetProtectionCalculator } from './business/asset-protection-calculator';
-import { balancedScorecardCalculator } from './business/balanced-scorecard-calculator';
-import { billOfMaterialsCalculator } from './business/bill-of-materials-calculator';
-import { breakevenPointCalculator } from './business/breakeven-point-calculator';
-import budgetOptimizationCalculator from './business/budget-optimization-calculator';
-
 // Health calculators
 import { bmrCalculator } from './health/bmr-tdee';
+import { calorieCalculator } from './health/calorie-calculator';
 
 // Construction calculators
 import { concreteCalculator } from './construction/concrete';
@@ -175,13 +96,6 @@ import { complexNumberCalculator } from './math/complex-numbers';
 import { matrixCalculator } from './math/matrix';
 import { scientificCalculator } from './math/scientific';
 
-// Technology calculators
-import { gpuMiningProfitabilityCalculator } from './technology/gpu-mining-profitability';
-import { aiPromptCostCalculator } from './technology/ai-prompt-cost';
-
-// Career calculators
-import { developerSalaryCalculator } from './career/developer-salary';
-
 // Lifestyle calculators
 import { automotiveCalculator } from './lifestyle/automotive';
 import { cookingCalculator } from './lifestyle/cooking';
@@ -192,172 +106,27 @@ import { hobbiesCalculator } from './lifestyle/hobbies';
  * Register all calculators with the system
  */
 export function registerAllCalculators(): void {
-  // Finance & Investment calculators
+  // Finance calculators
   calculatorRegistry.register(mortgageCalculator);
-  calculatorRegistry.register(portfolioCalculator);
-  calculatorRegistry.register(compoundInterestCalculator);
-  calculatorRegistry.register(retirementCalculator);
-  calculatorRegistry.register(annuityCalculator);
-  calculatorRegistry.register(socialSecurityCalculator);
-  calculatorRegistry.register(lifeInsuranceCalculator);
-  calculatorRegistry.register(termLifeInsuranceCalculator);
-  calculatorRegistry.register(balloonMortgageCalculator);
-  calculatorRegistry.register(bareboatCharterCalculator);
-  calculatorRegistry.register(biweeklyMortgageCalculator);
-  calculatorRegistry.register(bridgeLoanCalculator);
-  calculatorRegistry.register(brrrrStrategyCalculator);
-  calculatorRegistry.register(buildingReplacementCostCalculator);
-  calculatorRegistry.register(capRateCalculator);
-  calculatorRegistry.register(cashFlowCalculator);
-  calculatorRegistry.register(cashOnCashReturnCalculator);
-  calculatorRegistry.register(commercialRealEstateCalculator);
-  calculatorRegistry.register(cashOutRefinanceCalculator);
-  calculatorRegistry.register(vaLoanCalculator);
-  calculatorRegistry.register(vineyardProfitabilityCalculator);
-  calculatorRegistry.register(windstormInsuranceCalculator);
-  calculatorRegistry.register(fourZeroOneKCalculator);
-  calculatorRegistry.register(fourZeroOneKCompanyMatchROICalculator);
-  calculatorRegistry.register(fourZeroOneKPlanCalculator);
-  calculatorRegistry.register(fourZeroOneKRolloverCalculator);
-  calculatorRegistry.register(mezzanineFinancingCalculator);
-  calculatorRegistry.register(mortgageAPRComparisonCalculator);
-  calculatorRegistry.register(mortgageEquityCalculator);
-  calculatorRegistry.register(mortgageInsuranceCalculator);
-  calculatorRegistry.register(mortgageLifeCalculator);
-  calculatorRegistry.register(mortgagePayoffCalculator);
-
-  // Register missing finance calculators
-  calculatorRegistry.register(exchange1031Calculator);
-  calculatorRegistry.register(armMortgageCalculator);
-  calculatorRegistry.register(amortizationCalculator);
-  calculatorRegistry.register(armVsFixedCalculator);
-  calculatorRegistry.register(cryptoStakingCalculator);
-  calculatorRegistry.register(nftRoyaltyCalculator);
-  calculatorRegistry.register(stockOptionsCalculator);
-  calculatorRegistry.register(commercialLeaseBuyoutCalculator);
-  calculatorRegistry.register(commercialPropertyInsuranceCalculator);
-  calculatorRegistry.register(commercialPropertyValuationCalculator);
-  calculatorRegistry.register(commercialRealEstateCashFlowCalculator);
-  calculatorRegistry.register(commercialRealEstateLoanAmortizationCalculator);
-  calculatorRegistry.register(mezzanineFinancingRealEstateCalculator);
-  calculatorRegistry.register(timberlandInvestmentCalculator);
-  calculatorRegistry.register(farmlandInvestmentROICalculator);
-  calculatorRegistry.register(realEstateInvestmentCalculator);
-  calculatorRegistry.register(selfStorageROICalculator);
-  calculatorRegistry.register(conservationEasementTaxBenefitCalculator);
-  calculatorRegistry.register(costSegregationDepreciationCalculator);
-  calculatorRegistry.register(usdaLoanCalculator);
-  calculatorRegistry.register(jumboLoanCalculator);
-  calculatorRegistry.register(fhaLoanCalculator);
-  calculatorRegistry.register(rentersInsuranceCalculator);
-  calculatorRegistry.register(titleInsuranceCalculator);
-  calculatorRegistry.register(homeownersInsuranceCalculator);
-  calculatorRegistry.register(mortgageClosingCostCalculator);
-  calculatorRegistry.register(homeAffordabilityCalculator);
-  calculatorRegistry.register(refinanceCalculator);
-  calculatorRegistry.register(homeEquityLoanCalculator);
-  calculatorRegistry.register(cashOutRefinanceCalculator);
-  calculatorRegistry.register(reverseMortgageCalculator);
-  calculatorRegistry.register(escrowAnalysisCalculator);
-  calculatorRegistry.register(investmentCalculator);
-  calculatorRegistry.register(loanToCostRatioCalculator);
-  calculatorRegistry.register(earthquakeInsuranceCalculator);
-  calculatorRegistry.register(downPaymentAssistanceCalculator);
-  calculatorRegistry.register(hardMoneyLoanCalculator);
-  calculatorRegistry.register(tenantImprovementCalculator);
-  calculatorRegistry.register(helocCalculator);
-  calculatorRegistry.register(homeInsuranceCalculator);
-  calculatorRegistry.register(constructionLoanCalculator);
-  calculatorRegistry.register(rentVsBuyCalculator);
-  calculatorRegistry.register(debtServiceCoverageRatioCalculator);
-  calculatorRegistry.register(taxCalculator);
-  calculatorRegistry.register(grossRentMultiplierCalculator);
-  calculatorRegistry.register(rentalPropertyROICalculator);
-  calculatorRegistry.register(hotelFeasibilityCalculator);
-  calculatorRegistry.register(hotelFeasibilityADRCalculator);
-  calculatorRegistry.register(landlordInsuranceCalculator);
-  calculatorRegistry.register(condoInsuranceCalculator);
-  calculatorRegistry.register(groundLeaseValuationCalculator);
-  calculatorRegistry.register(studentLoanCalculator);
-  calculatorRegistry.register(fixAndFlipCalculator);
-  calculatorRegistry.register(loanToValueRatioCalculator);
-  calculatorRegistry.register(floodInsuranceCalculator);
-calculatorRegistry.register(groundLeaseValuationCalculator);
-calculatorRegistry.register(grossRentMultiplierCalculator);
-calculatorRegistry.register(hardMoneyLoanCalculator);
-calculatorRegistry.register(helocCalculator);
-calculatorRegistry.register(homeAffordabilityCalculator);
-calculatorRegistry.register(homeEquityLoanCalculator);
-calculatorRegistry.register(rentalYieldCalculator);
-  calculatorRegistry.register(hoaFeeCalculator);
-  calculatorRegistry.register(debtYieldRatioCalculator);
-  calculatorRegistry.register(industrialWarehouseProfitabilityCalculator);
-  calculatorRegistry.register(interestOnlyMortgageCalculator);
-  calculatorRegistry.register(tripleNetLeaseROICalculator);
-  calculatorRegistry.register(loanToCostCalculator);
-  calculatorRegistry.register(mortgagePaymentCalculator);
-  calculatorRegistry.register(mortgagePointsCalculator);
-  calculatorRegistry.register(mortgageQualificationCalculator);
-  calculatorRegistry.register(loanToValueCalculator);
-  calculatorRegistry.register(mortgageVsRentCalculator);
-  calculatorRegistry.register(netOperatingIncomeCalculator);
-  calculatorRegistry.register(opportunityZoneInvestmentCalculator);
-  calculatorRegistry.register(pricePerSquareFootCalculator);
-  calculatorRegistry.register(privateMortgageInsuranceCalculator);
-  calculatorRegistry.register(mortgageRateLockCalculator);
-  calculatorRegistry.register(mortgageRefinanceCalculator);
-  calculatorRegistry.register(pmiCancellationCalculator);
-  calculatorRegistry.register(propertyTaxCalculator);
+  calculatorRegistry.register(autoLoanCalculator);
   calculatorRegistry.register(propertyTaxProrationCalculator);
-  calculatorRegistry.register(emergencyFundCalculator);
-  calculatorRegistry.register(realEstateCrowdfundingCalculator);
-  calculatorRegistry.register(fourZeroThreeBPlanCalculator);
-  calculatorRegistry.register(fourFiveSevenPlanCalculator);
-  calculatorRegistry.register(fiveTwoNineCollegeSavingsPlanCalculator);
-  calculatorRegistry.register(backdoorRothIRACalculator);
-  calculatorRegistry.register(charitableGiftAnnuityCalculator);
-  calculatorRegistry.register(charitableRemainderTrustCalculator);
-  calculatorRegistry.register(collegeCostCalculator);
-  calculatorRegistry.register(collegeFinancialAidCalculator);
-  calculatorRegistry.register(collegeSavingsCalculator);
-  calculatorRegistry.register(coverdellESACalculator);
-  calculatorRegistry.register(deferredAnnuityCalculator);
-  calculatorRegistry.register(definedBenefitPlanCalculator);
-  calculatorRegistry.register(definedContributionPlanCalculator);
-  calculatorRegistry.register(dynastyTrustGrowthEstimatorCalculator);
-  calculatorRegistry.register(AccretionDilutionCalculator);
-  calculatorRegistry.register(AlphaBetaCalculator);
-  calculatorRegistry.register(AlphaCalculator);
-  calculatorRegistry.register(AngelInvestmentDilutionCalculator);
-  calculatorRegistry.register(AngelInvestmentCalculator);
-  calculatorRegistry.register(commercialLeaseBuyoutCalculator);
-  calculatorRegistry.register(commercialPropertyInsuranceCalculator);
-  calculatorRegistry.register(commercialPropertyValuationCalculator);
-  calculatorRegistry.register(commercialRealEstateCashFlowCalculator);
-  calculatorRegistry.register(commercialRealEstateLoanAmortizationCalculator);
-  
-  // Legal & Settlement calculators
+  calculatorRegistry.register(realEstateDevelopmentProFormaCalculator);
+
+  // Business calculators
+  calculatorRegistry.register(paycheckCalculator);
+  calculatorRegistry.register(developerSalaryCalculator);
+
+  // Legal calculators
   calculatorRegistry.register(personalInjuryCalculator);
-  
-  // Business & Operations calculators
-  calculatorRegistry.register(saasMetricsCalculator);
-  calculatorRegistry.register(customerLifetimeValueCalculator);
-  calculatorRegistry.register(roiCalculator);
-  calculatorRegistry.register(breakEvenAnalysisCalculator);
-  calculatorRegistry.register(aiopsImplementationSavingsCalculator);
-  calculatorRegistry.register(assetProtectionCalculator);
-  calculatorRegistry.register(balancedScorecardCalculator);
-  calculatorRegistry.register(billOfMaterialsCalculator);
-  calculatorRegistry.register(breakevenPointCalculator);
-  calculatorRegistry.register(budgetOptimizationCalculator);
-  
-  // Health & Fitness calculators
+
+  // Health calculators
   calculatorRegistry.register(bmrCalculator);
-  
-  // Construction & Industrial calculators
+  calculatorRegistry.register(calorieCalculator);
+
+  // Construction calculators
   calculatorRegistry.register(concreteCalculator);
-  
-  // Math & Science calculators
+
+  // Math calculators
   calculatorRegistry.register(statisticsCalculator);
   calculatorRegistry.register(algebraCalculator);
   calculatorRegistry.register(calculusCalculator);
@@ -366,15 +135,44 @@ calculatorRegistry.register(rentalYieldCalculator);
   calculatorRegistry.register(complexNumberCalculator);
   calculatorRegistry.register(matrixCalculator);
   calculatorRegistry.register(scientificCalculator);
-  
+
   // Technology calculators
-  calculatorRegistry.register(gpuMiningProfitabilityCalculator);
-  calculatorRegistry.register(aiPromptCostCalculator);
-  
-  // Career calculators
-  calculatorRegistry.register(developerSalaryCalculator);
-  
-  // Lifestyle & Automotive calculators
+  registerGPUMiningProfitabilityCalculator();
+  registerRealEstateDevelopmentProFormaCalculator();
+  registerRealEstateDepreciationScheduleCalculator();
+  registerRealEstateSyndicationCalculator();
+  registerRealEstateTaxDeductionsCalculator();
+  registerRealEstateWaterfallModelCalculator();
+  calculatorRegistry.register(mortgageRefinanceCalculator);
+  registerRentalPropertyROICalculator();
+  registerRentalYieldCalculator();
+  registerRentersInsuranceCalculator();
+  registerRentVsBuyCalculator();
+  registerReverseMortgageCalculator();
+  registerSelfStorageFacilityROICalculator();
+  registerTenantImprovementAllowanceCalculator();
+  registerTimberlandInvestmentCalculator();
+  registerTitleInsuranceCalculator();
+  registerUSDALoanCalculator();
+  registerAnnuityBuyoutCalculator();
+  registerAPTValueCalculator();
+  registerEstatePlanningCalculator();
+  registerEstateTaxLiabilityCalculator();
+  registerExecutiveDeferredCompensationCalculator();
+  registerFAFSACalculator();
+  registerFixedIndexAnnuityCalculator();
+  registerFlexibleSpendingAccountCalculator();
+  calculatorRegistry.register(generationSkippingTransferGstTaxCalculator);
+  registerGiftTaxCalculator();
+  registerGrantorRetainedAnnuityTrustCalculator();
+  registerGrantorRetainedAnnuityTrustCalculator();
+  registerHealthSavingsAccountCalculator();
+  registerHSATripleTaxAdvantageCalculator();
+  registerImmediateAnnuityPayoutCalculator();
+  registerInheritanceTaxEstimator();
+  // calculatorRegistry.register(aiPromptCostCalculator); // TODO: Fix interface compatibility
+
+  // Lifestyle calculators
   calculatorRegistry.register(automotiveCalculator);
   calculatorRegistry.register(cookingCalculator);
   calculatorRegistry.register(everydayCalculator);
@@ -382,4 +180,7 @@ calculatorRegistry.register(rentalYieldCalculator);
 }
 
 // Auto-register calculators when module is imported
-registerAllCalculators();
+// Ensure all imports are resolved before registration
+Promise.resolve().then(() => {
+  registerAllCalculators();
+});

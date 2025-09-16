@@ -144,7 +144,7 @@ export const mortgageValidationRules: ValidationRule[] = [
     'interestRate',
     (interestRate, allInputs) => {
       if (!allInputs?.loanType) return true;
-      
+
       // Current market rate ranges (2024)
       const rateRanges = {
         conventional: { min: 6.0, max: 8.5 },
@@ -153,19 +153,19 @@ export const mortgageValidationRules: ValidationRule[] = [
         usda: { min: 5.5, max: 8.0 },
         jumbo: { min: 6.5, max: 9.0 }
       };
-      
+
       const range = rateRanges[allInputs.loanType as keyof typeof rateRanges];
       if (!range) return true;
-      
+
       // This is a warning, not an error
       if (interestRate < range.min || interestRate > range.max) {
         // We'll handle this as a warning in the UI
         return true;
       }
-      
+
       return true;
     },
-    `Interest rate may be outside typical range for ${allInputs?.loanType} loans`
+    'Interest rate may be outside typical range for selected loan type'
   ),
 
   // Property tax reasonableness check

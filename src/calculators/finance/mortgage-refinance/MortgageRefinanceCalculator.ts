@@ -1,4 +1,5 @@
 import { Calculator } from '../../../types/calculator';
+import { calculateMortgageRefinance, validateMortgageRefinanceInputs } from './formulas';
 
 export const MortgageRefinanceCalculator: Calculator = {
   id: 'mortgage-refinance-calculator',
@@ -52,7 +53,43 @@ export const MortgageRefinanceCalculator: Calculator = {
     { id: 'newLoanToValue', label: 'New Loan-to-Value Ratio (%)', type: 'percentage', explanation: 'LTV ratio after refinance' },
     { id: 'recommendation', label: 'Refinance Recommendation', type: 'text', explanation: 'Whether refinancing is recommended based on analysis' }
   ],
-  formulas: [],
-  validationRules: [],
-  examples: []
+  formulas: [calculateMortgageRefinance as any],
+  validationRules: [validateMortgageRefinanceInputs as any],
+  examples: [
+    {
+      title: 'Rate Reduction Refinance',
+      description: 'Refinancing to lower interest rate with minimal cash out',
+      inputs: {
+        currentLoanBalance: 250000,
+        currentRate: 6.5,
+        currentTermRemaining: 25,
+        newLoanAmount: 250000,
+        newRate: 5.5,
+        newTerm: 25,
+        closingCosts: 5000,
+        originationFee: 2000,
+        appraisalFee: 500,
+        titleInsurance: 1000,
+        cashOut: 0,
+        points: 0,
+        pointCost: 2500,
+        homeValue: 350000,
+        yearsToStay: 10
+      },
+      expectedOutputs: {
+        currentMonthlyPayment: 1658,
+        newMonthlyPayment: 1435,
+        monthlySavings: 223,
+        totalRefinanceCosts: 8500,
+        breakEvenMonths: 38,
+        breakEvenYears: 3.2,
+        totalSavings5Years: 66900,
+        totalSavings10Years: 144300,
+        totalSavingsRemaining: 144300,
+        roiPercentage: 1597,
+        newLoanToValue: 71.4,
+        recommendation: 'Consider carefully - longer break-even period'
+      }
+    }
+  ]
 };

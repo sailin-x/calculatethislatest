@@ -147,3 +147,134 @@ export function calculatePotentialSavings(
 ): number {
   return (higherMonthlyPayment - lowerMonthlyPayment) * numPayments;
 }
+
+/**
+ * Main function to calculate mortgage APR comparison for three offers
+ */
+export function calculateMortgageAPRComparison(inputs: any): any {
+  const {
+    homePrice,
+    downPayment,
+    loanTerm,
+    interestRate1,
+    interestRate2,
+    interestRate3,
+    closingCosts1 = 0,
+    closingCosts2 = 0,
+    closingCosts3 = 0,
+    points1 = 0,
+    points2 = 0,
+    points3 = 0,
+    lenderCredits1 = 0,
+    lenderCredits2 = 0,
+    lenderCredits3 = 0,
+    otherFees1 = 0,
+    otherFees2 = 0,
+    otherFees3 = 0
+  } = inputs;
+
+  const loanAmount = homePrice - downPayment;
+  const numPayments = loanTerm * 12;
+
+  // Calculate for each offer
+  const results = [1, 2, 3].map(offerNum => {
+    const interestRate = inputs[`interestRate${offerNum}`];
+    const closingCosts = inputs[`closingCosts${offerNum}`] || 0;
+    const points = inputs[`points${offerNum}`] || 0;
+    const lenderCredits = inputs[`lenderCredits${offerNum}`] || 0;
+    const otherFees = inputs[`otherFees${offerNum}`] || 0;
+
+    const totalUpfrontCosts = closingCosts + points + otherFees - lenderCredits;
+    const monthlyRate = interestRate / 100 / 12;
+
+    const monthlyPayment = calculateMonthlyPayment(loanAmount, monthlyRate, numPayments);
+    const apr = calculateAPR(loanAmount, interestRate / 100, numPayments, totalUpfrontCosts);
+    const totalCost = calculateTotalCost(monthlyPayment, numPayments, totalUpfrontCosts);
+    const totalInterest = totalCost - loanAmount;
+
+    return {
+      monthlyPayment,
+      apr: apr * 100, // Convert to percentage
+      totalCost,
+      totalInterest,
+      totalUpfrontCosts
+    };
+  });
+
+  return {
+    monthlyPayment1: results[0].monthlyPayment,
+    monthlyPayment2: results[1].monthlyPayment,
+    monthlyPayment3: results[2].monthlyPayment,
+    apr1: results[0].apr,
+    apr2: results[1].apr,
+    apr3: results[2].apr,
+    totalCost1: results[0].totalCost,
+    totalCost2: results[1].totalCost,
+    totalCost3: results[2].totalCost,
+    totalInterest1: results[0].totalInterest,
+    totalInterest2: results[1].totalInterest,
+    totalInterest3: results[2].totalInterest,
+    upfrontCosts1: results[0].totalUpfrontCosts,
+    upfrontCosts2: results[1].totalUpfrontCosts,
+    upfrontCosts3: results[2].totalUpfrontCosts
+  };
+}
+
+/**
+ * Generate comprehensive analysis report for mortgage APR comparison
+ */
+export function generateMortgageAPRComparisonAnalysis(inputs: any, outputs: any): any {
+  const { homePrice, downPayment, loanTerm } = inputs;
+  const loanAmount = homePrice - downPayment;
+
+  // Find the best offer based on APR
+  const aprs = [outputs.apr1, outputs.apr2, outputs.apr3];
+  const bestOfferIndex = aprs.indexOf(Math.min(...aprs)) + 1;
+
+  // Calculate savings
+  const monthlyPayments = [outputs.monthlyPayment1, outputs.monthlyPayment2, outputs.monthlyPayment3];
+  const bestMonthlyPayment = monthlyPayments[bestOfferIndex - 1];
+  const worstMonthlyPayment = Math.max(...monthlyPayments);
+
+  const monthlySavings = worstMonthlyPayment - bestMonthlyPayment;
+  const totalSavings = monthlySavings * loanTerm * 12;
+
+  // APR differences
+  const aprDifferences = aprs.map(apr => apr - aprs[bestOfferIndex - 1]);
+
+  return {
+    summary: {
+      loanAmount,
+      loanTerm,
+      bestOffer: bestOfferIndex,
+      monthlySavings,
+      totalSavings,
+      aprDifferences
+    },
+    recommendations: [
+      `Choose Offer ${bestOfferIndex} for the lowest APR of ${aprs[bestOfferIndex - 1].toFixed(3)}%`,
+      `Monthly savings: $${monthlySavings.toFixed(2)}`,
+      `Total savings over ${loanTerm} years: $${totalSavings.toLocaleString()}`
+    ],
+    breakdown: {
+      offer1: {
+        apr: outputs.apr1,
+        monthlyPayment: outputs.monthlyPayment1,
+        totalCost: outputs.totalCost1,
+        totalInterest: outputs.totalInterest1
+      },
+      offer2: {
+        apr: outputs.apr2,
+        monthlyPayment: outputs.monthlyPayment2,
+        totalCost: outputs.totalCost2,
+        totalInterest: outputs.totalInterest2
+      },
+      offer3: {
+        apr: outputs.apr3,
+        monthlyPayment: outputs.monthlyPayment3,
+        totalCost: outputs.totalCost3,
+        totalInterest: outputs.totalInterest3
+      }
+    }
+  };
+}

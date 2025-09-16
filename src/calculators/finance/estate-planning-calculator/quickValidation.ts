@@ -1,573 +1,186 @@
-export function quickValidateTotalAssets(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value === null || value === undefined || value === '') {
-    return { isValid: false, message: 'Total assets is required' };
+import { ValidationResult } from '../../../types/calculator';
+
+export function validateAge(value: any, allInputs?: Record<string, any>): ValidationResult {
+  if (!value || value < 18 || value > 120) {
+    return { isValid: false, errors: { age: 'Age must be between 18 and 120' } };
   }
-  const numValue = Number(value);
-  if (isNaN(numValue)) {
-    return { isValid: false, message: 'Total assets must be a valid number' };
-  }
-  if (numValue < 0) {
-    return { isValid: false, message: 'Total assets cannot be negative' };
-  }
-  if (numValue > 1000000000) {
-    return { isValid: false, message: 'Total assets seems too high' };
-  }
-  return { isValid: true };
+  return { isValid: true, errors: {} };
 }
 
-export function quickValidateTotalLiabilities(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value === null || value === undefined || value === '') {
-    return { isValid: false, message: 'Total liabilities is required' };
+export function validateMaritalStatus(value: any, allInputs?: Record<string, any>): ValidationResult {
+  if (!value || !['single', 'married', 'divorced', 'widowed'].includes(value)) {
+    return { isValid: false, errors: { maritalStatus: 'Please select a valid marital status' } };
   }
-  const numValue = Number(value);
-  if (isNaN(numValue)) {
-    return { isValid: false, message: 'Total liabilities must be a valid number' };
-  }
-  if (numValue < 0) {
-    return { isValid: false, message: 'Total liabilities cannot be negative' };
-  }
-  
-  const totalAssets = allInputs?.estateInfo?.totalAssets;
-  if (totalAssets && numValue > totalAssets * 1.1) {
-    return { isValid: false, message: 'Total liabilities should not exceed total assets' };
-  }
-  
-  return { isValid: true };
+  return { isValid: true, errors: {} };
 }
 
-export function quickValidateNetEstate(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value === null || value === undefined || value === '') {
-    return { isValid: false, message: 'Net estate is required' };
+export function validateTotalAssets(value: any, allInputs?: Record<string, any>): ValidationResult {
+  if (value === undefined || value < 0) {
+    return { isValid: false, errors: { totalAssets: 'Total assets cannot be negative' } };
   }
-  const numValue = Number(value);
-  if (isNaN(numValue)) {
-    return { isValid: false, message: 'Net estate must be a valid number' };
+  if (value > 1000000000) {
+    return { isValid: false, errors: { totalAssets: 'Total assets cannot exceed $1,000,000,000' } };
   }
-  
-  const totalAssets = allInputs?.estateInfo?.totalAssets;
-  const totalLiabilities = allInputs?.estateInfo?.totalLiabilities;
-  
-  if (totalAssets && totalLiabilities) {
-    const expectedNetEstate = totalAssets - totalLiabilities;
-    const tolerance = Math.abs(expectedNetEstate) * 0.01; // 1% tolerance
-    if (Math.abs(numValue - expectedNetEstate) > tolerance) {
-      return { isValid: false, message: 'Net estate should equal total assets minus total liabilities' };
-    }
-  }
-  
-  return { isValid: true };
+  return { isValid: true, errors: {} };
 }
 
-export function quickValidateEstateOwner(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (!value || value.trim().length === 0) {
-    return { isValid: false, message: 'Estate owner name is required' };
+export function validateAnnualIncome(value: any, allInputs?: Record<string, any>): ValidationResult {
+  if (value === undefined || value < 0) {
+    return { isValid: false, errors: { annualIncome: 'Annual income cannot be negative' } };
   }
-  if (value.trim().length < 2) {
-    return { isValid: false, message: 'Estate owner name must be at least 2 characters' };
+  if (value > 100000000) {
+    return { isValid: false, errors: { annualIncome: 'Annual income cannot exceed $100,000,000' } };
   }
-  if (value.trim().length > 100) {
-    return { isValid: false, message: 'Estate owner name is too long' };
-  }
-  return { isValid: true };
+  return { isValid: true, errors: {} };
 }
 
-export function quickValidateAge(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value === null || value === undefined || value === '') {
-    return { isValid: false, message: 'Age is required' };
+export function validateAnnualExpenses(value: any, allInputs?: Record<string, any>): ValidationResult {
+  if (value === undefined || value < 0) {
+    return { isValid: false, errors: { annualExpenses: 'Annual expenses cannot be negative' } };
   }
-  const numValue = Number(value);
-  if (isNaN(numValue)) {
-    return { isValid: false, message: 'Age must be a valid number' };
+  if (value > 100000000) {
+    return { isValid: false, errors: { annualExpenses: 'Annual expenses cannot exceed $100,000,000' } };
   }
-  if (numValue < 18) {
-    return { isValid: false, message: 'Age must be at least 18' };
-  }
-  if (numValue > 120) {
-    return { isValid: false, message: 'Age must be 120 or less' };
-  }
-  return { isValid: true };
+  return { isValid: true, errors: {} };
 }
 
-export function quickValidateHealthStatus(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  const validStatuses = ['excellent', 'good', 'fair', 'poor'];
-  if (!validStatuses.includes(value)) {
-    return { isValid: false, message: 'Health status must be excellent, good, fair, or poor' };
+export function validateFederalTaxBracket(value: any, allInputs?: Record<string, any>): ValidationResult {
+  if (value === undefined || value < 0 || value > 50) {
+    return { isValid: false, errors: { federalTaxBracket: 'Federal tax bracket must be between 0% and 50%' } };
   }
-  return { isValid: true };
+  return { isValid: true, errors: {} };
 }
 
-export function quickValidateCash(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value === null || value === undefined || value === '') {
-    return { isValid: true }; // Optional field
+export function validateStateTaxBracket(value: any, allInputs?: Record<string, any>): ValidationResult {
+  if (value === undefined || value < 0 || value > 20) {
+    return { isValid: false, errors: { stateTaxBracket: 'State tax bracket must be between 0% and 20%' } };
   }
-  const numValue = Number(value);
-  if (isNaN(numValue)) {
-    return { isValid: false, message: 'Cash must be a valid number' };
-  }
-  if (numValue < 0) {
-    return { isValid: false, message: 'Cash cannot be negative' };
-  }
-  
-  const totalAssets = allInputs?.estateInfo?.totalAssets;
-  if (totalAssets && numValue > totalAssets) {
-    return { isValid: false, message: 'Cash cannot exceed total assets' };
-  }
-  
-  return { isValid: true };
+  return { isValid: true, errors: {} };
 }
 
-export function quickValidateStocks(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value === null || value === undefined || value === '') {
-    return { isValid: true }; // Optional field
+export function validateEstateTaxExemption(value: any, allInputs?: Record<string, any>): ValidationResult {
+  if (value === undefined || value < 0) {
+    return { isValid: false, errors: { estateTaxExemption: 'Estate tax exemption cannot be negative' } };
   }
-  const numValue = Number(value);
-  if (isNaN(numValue)) {
-    return { isValid: false, message: 'Stocks value must be a valid number' };
+  if (value > 50000000) {
+    return { isValid: false, errors: { estateTaxExemption: 'Estate tax exemption cannot exceed $50,000,000' } };
   }
-  if (numValue < 0) {
-    return { isValid: false, message: 'Stocks value cannot be negative' };
-  }
-  
-  const totalAssets = allInputs?.estateInfo?.totalAssets;
-  if (totalAssets && numValue > totalAssets) {
-    return { isValid: false, message: 'Stocks value cannot exceed total assets' };
-  }
-  
-  return { isValid: true };
+  return { isValid: true, errors: {} };
 }
 
-export function quickValidatePrimaryResidence(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value === null || value === undefined || value === '') {
-    return { isValid: true }; // Optional field
+export function validatePlanningHorizon(value: any, allInputs?: Record<string, any>): ValidationResult {
+  if (!value || value < 1 || value > 50) {
+    return { isValid: false, errors: { planningHorizon: 'Planning horizon must be between 1 and 50 years' } };
   }
-  const numValue = Number(value);
-  if (isNaN(numValue)) {
-    return { isValid: false, message: 'Primary residence value must be a valid number' };
-  }
-  if (numValue < 0) {
-    return { isValid: false, message: 'Primary residence value cannot be negative' };
-  }
-  
-  const totalAssets = allInputs?.estateInfo?.totalAssets;
-  if (totalAssets && numValue > totalAssets) {
-    return { isValid: false, message: 'Primary residence value cannot exceed total assets' };
-  }
-  
-  return { isValid: true };
+  return { isValid: true, errors: {} };
 }
 
-export function quickValidateBusinessValue(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value === null || value === undefined || value === '') {
-    return { isValid: true }; // Optional field
+export function validateExpectedInflation(value: any, allInputs?: Record<string, any>): ValidationResult {
+  if (value === undefined || value < 0 || value > 10) {
+    return { isValid: false, errors: { expectedInflation: 'Expected inflation must be between 0% and 10%' } };
   }
-  const numValue = Number(value);
-  if (isNaN(numValue)) {
-    return { isValid: false, message: 'Business value must be a valid number' };
-  }
-  if (numValue < 0) {
-    return { isValid: false, message: 'Business value cannot be negative' };
-  }
-  
-  const totalAssets = allInputs?.estateInfo?.totalAssets;
-  if (totalAssets && numValue > totalAssets) {
-    return { isValid: false, message: 'Business value cannot exceed total assets' };
-  }
-  
-  return { isValid: true };
+  return { isValid: true, errors: {} };
 }
 
-export function quickValidateTraditionalIRA(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value === null || value === undefined || value === '') {
-    return { isValid: true }; // Optional field
+export function validateExpectedReturn(value: any, allInputs?: Record<string, any>): ValidationResult {
+  if (value === undefined || value < -10 || value > 30) {
+    return { isValid: false, errors: { expectedReturn: 'Expected return must be between -10% and 30%' } };
   }
-  const numValue = Number(value);
-  if (isNaN(numValue)) {
-    return { isValid: false, message: 'Traditional IRA value must be a valid number' };
-  }
-  if (numValue < 0) {
-    return { isValid: false, message: 'Traditional IRA value cannot be negative' };
-  }
-  
-  const totalAssets = allInputs?.estateInfo?.totalAssets;
-  if (totalAssets && numValue > totalAssets) {
-    return { isValid: false, message: 'Traditional IRA value cannot exceed total assets' };
-  }
-  
-  return { isValid: true };
+  return { isValid: true, errors: {} };
 }
 
-export function quickValidateDeathBenefit(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value === null || value === undefined || value === '') {
-    return { isValid: true }; // Optional field
+export function validateNumberOfChildren(value: any, allInputs?: Record<string, any>): ValidationResult {
+  if (value === undefined || value < 0 || value > 20) {
+    return { isValid: false, errors: { numberOfChildren: 'Number of children must be between 0 and 20' } };
   }
-  const numValue = Number(value);
-  if (isNaN(numValue)) {
-    return { isValid: false, message: 'Death benefit must be a valid number' };
-  }
-  if (numValue < 0) {
-    return { isValid: false, message: 'Death benefit cannot be negative' };
-  }
-  
-  const totalAssets = allInputs?.estateInfo?.totalAssets;
-  if (totalAssets && numValue > totalAssets * 10) {
-    return { isValid: false, message: 'Death benefit seems too high relative to total assets' };
-  }
-  
-  return { isValid: true };
+  return { isValid: true, errors: {} };
 }
 
-export function quickValidateMortgages(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value === null || value === undefined || value === '') {
-    return { isValid: true }; // Optional field
+export function validateNumberOfGrandchildren(value: any, allInputs?: Record<string, any>): ValidationResult {
+  if (value === undefined || value < 0 || value > 50) {
+    return { isValid: false, errors: { numberOfGrandchildren: 'Number of grandchildren must be between 0 and 50' } };
   }
-  const numValue = Number(value);
-  if (isNaN(numValue)) {
-    return { isValid: false, message: 'Mortgage amount must be a valid number' };
-  }
-  if (numValue < 0) {
-    return { isValid: false, message: 'Mortgage amount cannot be negative' };
-  }
-  
-  const totalLiabilities = allInputs?.estateInfo?.totalLiabilities;
-  if (totalLiabilities && numValue > totalLiabilities) {
-    return { isValid: false, message: 'Mortgage amount cannot exceed total liabilities' };
-  }
-  
-  return { isValid: true };
+  return { isValid: true, errors: {} };
 }
 
-export function quickValidateCreditCardDebt(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value === null || value === undefined || value === '') {
-    return { isValid: true }; // Optional field
+export function validateDesiredLegacy(value: any, allInputs?: Record<string, any>): ValidationResult {
+  if (value === undefined || value < 0) {
+    return { isValid: false, errors: { desiredLegacy: 'Desired legacy cannot be negative' } };
   }
-  const numValue = Number(value);
-  if (isNaN(numValue)) {
-    return { isValid: false, message: 'Credit card debt must be a valid number' };
+  if (value > 1000000000) {
+    return { isValid: false, errors: { desiredLegacy: 'Desired legacy cannot exceed $1,000,000,000' } };
   }
-  if (numValue < 0) {
-    return { isValid: false, message: 'Credit card debt cannot be negative' };
-  }
-  
-  const totalLiabilities = allInputs?.estateInfo?.totalLiabilities;
-  if (totalLiabilities && numValue > totalLiabilities) {
-    return { isValid: false, message: 'Credit card debt cannot exceed total liabilities' };
-  }
-  
-  return { isValid: true };
+  return { isValid: true, errors: {} };
 }
 
-export function quickValidateBeneficiaryName(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (!value || value.trim().length === 0) {
-    return { isValid: false, message: 'Beneficiary name is required' };
+export function validateEducationFunding(value: any, allInputs?: Record<string, any>): ValidationResult {
+  if (value === undefined || value < 0) {
+    return { isValid: false, errors: { educationFunding: 'Education funding cannot be negative' } };
   }
-  if (value.trim().length < 2) {
-    return { isValid: false, message: 'Beneficiary name must be at least 2 characters' };
+  if (value > 100000000) {
+    return { isValid: false, errors: { educationFunding: 'Education funding cannot exceed $100,000,000' } };
   }
-  if (value.trim().length > 100) {
-    return { isValid: false, message: 'Beneficiary name is too long' };
-  }
-  return { isValid: true };
+  return { isValid: true, errors: {} };
 }
 
-export function quickValidateBeneficiaryPercentage(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value === null || value === undefined || value === '') {
-    return { isValid: false, message: 'Beneficiary percentage is required' };
+export function validateCharitableGiving(value: any, allInputs?: Record<string, any>): ValidationResult {
+  if (value === undefined || value < 0) {
+    return { isValid: false, errors: { charitableGiving: 'Charitable giving cannot be negative' } };
   }
-  const numValue = Number(value);
-  if (isNaN(numValue)) {
-    return { isValid: false, message: 'Beneficiary percentage must be a valid number' };
+  if (value > 1000000000) {
+    return { isValid: false, errors: { charitableGiving: 'Charitable giving cannot exceed $1,000,000,000' } };
   }
-  if (numValue < 0) {
-    return { isValid: false, message: 'Beneficiary percentage cannot be negative' };
-  }
-  if (numValue > 100) {
-    return { isValid: false, message: 'Beneficiary percentage cannot exceed 100%' };
-  }
-  return { isValid: true };
+  return { isValid: true, errors: {} };
 }
 
-export function quickValidateBeneficiaryAge(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value === null || value === undefined || value === '') {
-    return { isValid: false, message: 'Beneficiary age is required' };
+export function validateHealthStatus(value: any, allInputs?: Record<string, any>): ValidationResult {
+  if (!value || !['excellent', 'good', 'fair', 'poor'].includes(value)) {
+    return { isValid: false, errors: { healthStatus: 'Please select a valid health status' } };
   }
-  const numValue = Number(value);
-  if (isNaN(numValue)) {
-    return { isValid: false, message: 'Beneficiary age must be a valid number' };
-  }
-  if (numValue < 0) {
-    return { isValid: false, message: 'Beneficiary age cannot be negative' };
-  }
-  if (numValue > 120) {
-    return { isValid: false, message: 'Beneficiary age must be 120 or less' };
-  }
-  return { isValid: true };
+  return { isValid: true, errors: {} };
 }
 
-export function quickValidateFederalExemption(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value === null || value === undefined || value === '') {
-    return { isValid: false, message: 'Federal estate tax exemption is required' };
+export function validateLifeExpectancy(value: any, allInputs?: Record<string, any>): ValidationResult {
+  if (!value || value < 1 || value > 150) {
+    return { isValid: false, errors: { lifeExpectancy: 'Life expectancy must be between 1 and 150 years' } };
   }
-  const numValue = Number(value);
-  if (isNaN(numValue)) {
-    return { isValid: false, message: 'Federal estate tax exemption must be a valid number' };
+  if (allInputs?.age && value <= allInputs.age) {
+    return { isValid: false, errors: { lifeExpectancy: 'Life expectancy must be greater than current age' } };
   }
-  if (numValue < 0) {
-    return { isValid: false, message: 'Federal estate tax exemption cannot be negative' };
-  }
-  if (numValue > 100000000) {
-    return { isValid: false, message: 'Federal estate tax exemption seems too high' };
-  }
-  return { isValid: true };
+  return { isValid: true, errors: {} };
 }
 
-export function quickValidateFederalRate(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value === null || value === undefined || value === '') {
-    return { isValid: false, message: 'Federal estate tax rate is required' };
+export function validateHasWill(value: any, allInputs?: Record<string, any>): ValidationResult {
+  if (typeof value !== 'boolean' && value !== undefined) {
+    return { isValid: false, errors: { hasWill: 'Has Will must be true or false' } };
   }
-  const numValue = Number(value);
-  if (isNaN(numValue)) {
-    return { isValid: false, message: 'Federal estate tax rate must be a valid number' };
-  }
-  if (numValue < 0) {
-    return { isValid: false, message: 'Federal estate tax rate cannot be negative' };
-  }
-  if (numValue > 100) {
-    return { isValid: false, message: 'Federal estate tax rate cannot exceed 100%' };
-  }
-  return { isValid: true };
+  return { isValid: true, errors: {} };
 }
 
-export function quickValidateStateExemption(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value === null || value === undefined || value === '') {
-    return { isValid: true }; // Optional field
+export function validateHasTrust(value: any, allInputs?: Record<string, any>): ValidationResult {
+  if (typeof value !== 'boolean' && value !== undefined) {
+    return { isValid: false, errors: { hasTrust: 'Has Trust must be true or false' } };
   }
-  const numValue = Number(value);
-  if (isNaN(numValue)) {
-    return { isValid: false, message: 'State estate tax exemption must be a valid number' };
-  }
-  if (numValue < 0) {
-    return { isValid: false, message: 'State estate tax exemption cannot be negative' };
-  }
-  if (numValue > 100000000) {
-    return { isValid: false, message: 'State estate tax exemption seems too high' };
-  }
-  return { isValid: true };
+  return { isValid: true, errors: {} };
 }
 
-export function quickValidateStateRate(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value === null || value === undefined || value === '') {
-    return { isValid: true }; // Optional field
+export function validateHasPowerOfAttorney(value: any, allInputs?: Record<string, any>): ValidationResult {
+  if (typeof value !== 'boolean' && value !== undefined) {
+    return { isValid: false, errors: { hasPowerOfAttorney: 'Has Power of Attorney must be true or false' } };
   }
-  const numValue = Number(value);
-  if (isNaN(numValue)) {
-    return { isValid: false, message: 'State estate tax rate must be a valid number' };
-  }
-  if (numValue < 0) {
-    return { isValid: false, message: 'State estate tax rate cannot be negative' };
-  }
-  if (numValue > 100) {
-    return { isValid: false, message: 'State estate tax rate cannot exceed 100%' };
-  }
-  return { isValid: true };
+  return { isValid: true, errors: {} };
 }
 
-export function quickValidateAnnualExclusion(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value === null || value === undefined || value === '') {
-    return { isValid: false, message: 'Annual gift tax exclusion is required' };
+export function validateHasHealthcareDirective(value: any, allInputs?: Record<string, any>): ValidationResult {
+  if (typeof value !== 'boolean' && value !== undefined) {
+    return { isValid: false, errors: { hasHealthcareDirective: 'Has Healthcare Directive must be true or false' } };
   }
-  const numValue = Number(value);
-  if (isNaN(numValue)) {
-    return { isValid: false, message: 'Annual gift tax exclusion must be a valid number' };
-  }
-  if (numValue < 0) {
-    return { isValid: false, message: 'Annual gift tax exclusion cannot be negative' };
-  }
-  if (numValue > 100000) {
-    return { isValid: false, message: 'Annual gift tax exclusion seems too high' };
-  }
-  return { isValid: true };
+  return { isValid: true, errors: {} };
 }
 
-export function quickValidateLifetimeExemption(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value === null || value === undefined || value === '') {
-    return { isValid: false, message: 'Lifetime gift tax exemption is required' };
+export function validateLongTermCare(value: any, allInputs?: Record<string, any>): ValidationResult {
+  if (typeof value !== 'boolean' && value !== undefined) {
+    return { isValid: false, errors: { longTermCare: 'Long-term care must be true or false' } };
   }
-  const numValue = Number(value);
-  if (isNaN(numValue)) {
-    return { isValid: false, message: 'Lifetime gift tax exemption must be a valid number' };
-  }
-  if (numValue < 0) {
-    return { isValid: false, message: 'Lifetime gift tax exemption cannot be negative' };
-  }
-  if (numValue > 100000000) {
-    return { isValid: false, message: 'Lifetime gift tax exemption seems too high' };
-  }
-  return { isValid: true };
-}
-
-export function quickValidateGiftsMade(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value === null || value === undefined || value === '') {
-    return { isValid: true }; // Optional field
-  }
-  const numValue = Number(value);
-  if (isNaN(numValue)) {
-    return { isValid: false, message: 'Gifts made must be a valid number' };
-  }
-  if (numValue < 0) {
-    return { isValid: false, message: 'Gifts made cannot be negative' };
-  }
-  
-  const lifetimeExemption = allInputs?.taxConsiderations?.giftTax?.lifetimeExemption;
-  if (lifetimeExemption && numValue > lifetimeExemption * 1.1) {
-    return { isValid: false, message: 'Gifts made should not exceed lifetime exemption' };
-  }
-  
-  return { isValid: true };
-}
-
-export function quickValidateTrustValue(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value === null || value === undefined || value === '') {
-    return { isValid: true }; // Optional field
-  }
-  const numValue = Number(value);
-  if (isNaN(numValue)) {
-    return { isValid: false, message: 'Trust value must be a valid number' };
-  }
-  if (numValue < 0) {
-    return { isValid: false, message: 'Trust value cannot be negative' };
-  }
-  
-  const totalAssets = allInputs?.estateInfo?.totalAssets;
-  if (totalAssets && numValue > totalAssets) {
-    return { isValid: false, message: 'Trust value cannot exceed total assets' };
-  }
-  
-  return { isValid: true };
-}
-
-export function quickValidateIncomeReplacement(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value === null || value === undefined || value === '') {
-    return { isValid: true }; // Optional field
-  }
-  const numValue = Number(value);
-  if (isNaN(numValue)) {
-    return { isValid: false, message: 'Income replacement needs must be a valid number' };
-  }
-  if (numValue < 0) {
-    return { isValid: false, message: 'Income replacement needs cannot be negative' };
-  }
-  
-  const totalAssets = allInputs?.estateInfo?.totalAssets;
-  if (totalAssets && numValue > totalAssets * 3) {
-    return { isValid: false, message: 'Income replacement needs seem too high relative to total assets' };
-  }
-  
-  return { isValid: true };
-}
-
-export function quickValidateDebtPayoff(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value === null || value === undefined || value === '') {
-    return { isValid: true }; // Optional field
-  }
-  const numValue = Number(value);
-  if (isNaN(numValue)) {
-    return { isValid: false, message: 'Debt payoff needs must be a valid number' };
-  }
-  if (numValue < 0) {
-    return { isValid: false, message: 'Debt payoff needs cannot be negative' };
-  }
-  
-  const totalLiabilities = allInputs?.estateInfo?.totalLiabilities;
-  if (totalLiabilities && numValue > totalLiabilities * 1.2) {
-    return { isValid: false, message: 'Debt payoff needs seem too high relative to total liabilities' };
-  }
-  
-  return { isValid: true };
-}
-
-export function quickValidateEducationFunding(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value === null || value === undefined || value === '') {
-    return { isValid: true }; // Optional field
-  }
-  const numValue = Number(value);
-  if (isNaN(numValue)) {
-    return { isValid: false, message: 'Education funding needs must be a valid number' };
-  }
-  if (numValue < 0) {
-    return { isValid: false, message: 'Education funding needs cannot be negative' };
-  }
-  if (numValue > 1000000) {
-    return { isValid: false, message: 'Education funding needs seem too high' };
-  }
-  return { isValid: true };
-}
-
-export function quickValidateEstateTaxFunding(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value === null || value === undefined || value === '') {
-    return { isValid: true }; // Optional field
-  }
-  const numValue = Number(value);
-  if (isNaN(numValue)) {
-    return { isValid: false, message: 'Estate tax funding needs must be a valid number' };
-  }
-  if (numValue < 0) {
-    return { isValid: false, message: 'Estate tax funding needs cannot be negative' };
-  }
-  
-  const totalAssets = allInputs?.estateInfo?.totalAssets;
-  if (totalAssets && numValue > totalAssets * 0.5) {
-    return { isValid: false, message: 'Estate tax funding needs seem too high relative to total assets' };
-  }
-  
-  return { isValid: true };
-}
-
-export function quickValidateBusinessValue(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value === null || value === undefined || value === '') {
-    return { isValid: true }; // Optional field
-  }
-  const numValue = Number(value);
-  if (isNaN(numValue)) {
-    return { isValid: false, message: 'Business value must be a valid number' };
-  }
-  if (numValue < 0) {
-    return { isValid: false, message: 'Business value cannot be negative' };
-  }
-  
-  const totalAssets = allInputs?.estateInfo?.totalAssets;
-  if (totalAssets && numValue > totalAssets) {
-    return { isValid: false, message: 'Business value cannot exceed total assets' };
-  }
-  
-  return { isValid: true };
-}
-
-export function quickValidateExecutor(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (!value || value.trim().length === 0) {
-    return { isValid: false, message: 'Executor name is required' };
-  }
-  if (value.trim().length < 2) {
-    return { isValid: false, message: 'Executor name must be at least 2 characters' };
-  }
-  if (value.trim().length > 100) {
-    return { isValid: false, message: 'Executor name is too long' };
-  }
-  return { isValid: true };
-}
-
-export function quickValidateEstimatedCosts(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value === null || value === undefined || value === '') {
-    return { isValid: true }; // Optional field
-  }
-  const numValue = Number(value);
-  if (isNaN(numValue)) {
-    return { isValid: false, message: 'Estimated administration costs must be a valid number' };
-  }
-  if (numValue < 0) {
-    return { isValid: false, message: 'Estimated administration costs cannot be negative' };
-  }
-  if (numValue > 1000000) {
-    return { isValid: false, message: 'Estimated administration costs seem too high' };
-  }
-  return { isValid: true };
+  return { isValid: true, errors: {} };
 }

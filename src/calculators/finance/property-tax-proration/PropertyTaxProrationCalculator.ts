@@ -1,4 +1,6 @@
 import { Calculator } from '../../../types/calculator';
+import { calculatePropertyTaxProration } from './formulas';
+import { ValidationRuleFactory } from '../../../utils/validation';
 
 export const PropertyTaxProrationCalculator: Calculator = {
   id: 'property-tax-proration-calculator',
@@ -46,7 +48,72 @@ export const PropertyTaxProrationCalculator: Calculator = {
     { id: 'prorationDate', label: 'Proration Date', type: 'text', explanation: 'Date used for proration calculation' },
     { id: 'adjustmentAmount', label: 'Adjustment Amount', type: 'currency', explanation: 'Amount to adjust at closing (positive = seller pays buyer, negative = buyer pays seller)' }
   ],
-  formulas: [],
-  validationRules: [],
-  examples: []
+  formulas: [calculatePropertyTaxProration],
+  validationRules: [
+    ValidationRuleFactory.required('annualPropertyTax', 'Annual property tax is required'),
+    ValidationRuleFactory.required('taxYearStart', 'Tax year start date is required'),
+    ValidationRuleFactory.required('taxYearEnd', 'Tax year end date is required'),
+    ValidationRuleFactory.required('closingDate', 'Closing date is required'),
+    ValidationRuleFactory.required('prorationMethod', 'Proration method is required'),
+    ValidationRuleFactory.range('annualPropertyTax', 0, 1000000, 'Annual property tax must be between $0 and $1,000,000'),
+    ValidationRuleFactory.businessRule(
+      'interestAmount',
+      (interestAmount, allInputs) => {
+        if (!allInputs?.includeInterest) return true;
+        return interestAmount !== undefined && interestAmount >= 0;
+      },
+      'Interest amount must be provided and non-negative when including interest'
+    ),
+    ValidationRuleFactory.businessRule(
+      'closingDate',
+      (closingDate, allInputs) => {
+        if (!allInputs?.taxYearStart || !allInputs?.taxYearEnd) return true;
+        const closing = new Date(closingDate);
+        const start = new Date(allInputs.taxYearStart);
+        const end = new Date(allInputs.taxYearEnd);
+        return closing >= start && closing <= end;
+      },
+      'Closing date must be within the tax year'
+    ),
+    ValidationRuleFactory.businessRule(
+      'taxYearEnd',
+      (taxYearEnd, allInputs) => {
+        if (!allInputs?.taxYearStart) return true;
+        const start = new Date(allInputs.taxYearStart);
+        const end = new Date(taxYearEnd);
+        return end > start;
+      },
+      'Tax year end must be after tax year start'
+    )
+  ],
+  examples: [
+    {
+      title: 'Standard Property Sale',
+      description: 'Mid-year property sale with standard proration',
+      inputs: {
+        annualPropertyTax: 4800,
+        taxYearStart: '2024-01-01',
+        taxYearEnd: '2024-12-31',
+        closingDate: '2024-06-15',
+        prorationMethod: '365-day',
+        includeInterest: false,
+        interestAmount: 0,
+        buyerPaysClosingCosts: false
+      },
+      expectedOutputs: {
+        daysInTaxYear: 365,
+        daysOwnedBySeller: 167,
+        daysOwnedByBuyer: 198,
+        sellerTaxPortion: 2193.15,
+        buyerTaxPortion: 2606.85,
+        dailyTaxRate: 13.15,
+        sellerInterestPortion: 0,
+        buyerInterestPortion: 0,
+        totalSellerResponsibility: 2193.15,
+        totalBuyerResponsibility: 2606.85,
+        prorationDate: '2024-06-15',
+        adjustmentAmount: 2193.15
+      }
+    }
+  ]
 };

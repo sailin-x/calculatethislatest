@@ -1,335 +1,128 @@
-import { ValidationRuleFactory } from '../../utils/ValidationRuleFactory';
-import { EstatePlanningInputs } from './types';
+import { ValidationRule } from '../../../types/calculator';
+import { ValidationRuleFactory } from '../../../utils/validation';
 
-export const estatePlanningValidationRules = [
+/**
+ * Estate planning validation rules
+ */
+export const estatePlanningValidationRules: ValidationRule[] = [
   // Required fields
-  ValidationRuleFactory.createRule('estateInfo.totalAssets', 'Total assets is required', (value: any) => {
-    return value !== null && value !== undefined && value !== '';
-  }),
-  
-  ValidationRuleFactory.createRule('estateInfo.totalLiabilities', 'Total liabilities is required', (value: any) => {
-    return value !== null && value !== undefined && value !== '';
-  }),
-  
-  ValidationRuleFactory.createRule('estateInfo.estateOwner', 'Estate owner name is required', (value: any) => {
-    return value && value.trim().length > 0;
-  }),
-  
-  ValidationRuleFactory.createRule('estateInfo.age', 'Age is required', (value: any) => {
-    return value !== null && value !== undefined && value !== '';
-  }),
-  
-  // Numeric ranges
-  ValidationRuleFactory.createRule('estateInfo.totalAssets', 'Total assets must be a positive number', (value: any) => {
-    const numValue = Number(value);
-    return !isNaN(numValue) && numValue >= 0;
-  }),
-  
-  ValidationRuleFactory.createRule('estateInfo.totalLiabilities', 'Total liabilities must be a positive number', (value: any) => {
-    const numValue = Number(value);
-    return !isNaN(numValue) && numValue >= 0;
-  }),
-  
-  ValidationRuleFactory.createRule('estateInfo.age', 'Age must be between 18 and 120', (value: any) => {
-    const numValue = Number(value);
-    return !isNaN(numValue) && numValue >= 18 && numValue <= 120;
-  }),
-  
-  // Asset validations
-  ValidationRuleFactory.createRule('assets.liquidAssets.cash', 'Cash must be a positive number', (value: any) => {
-    const numValue = Number(value);
-    return !isNaN(numValue) && numValue >= 0;
-  }),
-  
-  ValidationRuleFactory.createRule('assets.liquidAssets.stocks', 'Stocks value must be a positive number', (value: any) => {
-    const numValue = Number(value);
-    return !isNaN(numValue) && numValue >= 0;
-  }),
-  
-  ValidationRuleFactory.createRule('assets.realEstate.primaryResidence', 'Primary residence value must be a positive number', (value: any) => {
-    const numValue = Number(value);
-    return !isNaN(numValue) && numValue >= 0;
-  }),
-  
-  ValidationRuleFactory.createRule('assets.businessInterests.businessValue', 'Business value must be a positive number', (value: any) => {
-    const numValue = Number(value);
-    return !isNaN(numValue) && numValue >= 0;
-  }),
-  
-  ValidationRuleFactory.createRule('assets.retirementAccounts.traditionalIRA', 'Traditional IRA value must be a positive number', (value: any) => {
-    const numValue = Number(value);
-    return !isNaN(numValue) && numValue >= 0;
-  }),
-  
-  ValidationRuleFactory.createRule('assets.lifeInsurance.deathBenefit', 'Life insurance death benefit must be a positive number', (value: any) => {
-    const numValue = Number(value);
-    return !isNaN(numValue) && numValue >= 0;
-  }),
-  
-  // Liability validations
-  ValidationRuleFactory.createRule('liabilities.mortgages', 'Mortgage amount must be a positive number', (value: any) => {
-    const numValue = Number(value);
-    return !isNaN(numValue) && numValue >= 0;
-  }),
-  
-  ValidationRuleFactory.createRule('liabilities.creditCardDebt', 'Credit card debt must be a positive number', (value: any) => {
-    const numValue = Number(value);
-    return !isNaN(numValue) && numValue >= 0;
-  }),
-  
-  // Beneficiary validations
-  ValidationRuleFactory.createRule('beneficiaries', 'At least one beneficiary is required', (value: any) => {
-    return Array.isArray(value) && value.length > 0;
-  }),
-  
-  ValidationRuleFactory.createRule('beneficiaries[].name', 'Beneficiary name is required', (value: any) => {
-    return value && value.trim().length > 0;
-  }),
-  
-  ValidationRuleFactory.createRule('beneficiaries[].percentage', 'Beneficiary percentage must be between 0 and 100', (value: any) => {
-    const numValue = Number(value);
-    return !isNaN(numValue) && numValue >= 0 && numValue <= 100;
-  }),
-  
-  ValidationRuleFactory.createRule('beneficiaries[].age', 'Beneficiary age must be between 0 and 120', (value: any) => {
-    const numValue = Number(value);
-    return !isNaN(numValue) && numValue >= 0 && numValue <= 120;
-  }),
-  
-  // Tax consideration validations
-  ValidationRuleFactory.createRule('taxConsiderations.federalEstateTax.exemption', 'Federal estate tax exemption must be a positive number', (value: any) => {
-    const numValue = Number(value);
-    return !isNaN(numValue) && numValue >= 0;
-  }),
-  
-  ValidationRuleFactory.createRule('taxConsiderations.federalEstateTax.rate', 'Federal estate tax rate must be between 0 and 100', (value: any) => {
-    const numValue = Number(value);
-    return !isNaN(numValue) && numValue >= 0 && numValue <= 100;
-  }),
-  
-  ValidationRuleFactory.createRule('taxConsiderations.stateEstateTax.exemption', 'State estate tax exemption must be a positive number', (value: any) => {
-    const numValue = Number(value);
-    return !isNaN(numValue) && numValue >= 0;
-  }),
-  
-  ValidationRuleFactory.createRule('taxConsiderations.stateEstateTax.rate', 'State estate tax rate must be between 0 and 100', (value: any) => {
-    const numValue = Number(value);
-    return !isNaN(numValue) && numValue >= 0 && numValue <= 100;
-  }),
-  
-  ValidationRuleFactory.createRule('taxConsiderations.giftTax.annualExclusion', 'Annual gift tax exclusion must be a positive number', (value: any) => {
-    const numValue = Number(value);
-    return !isNaN(numValue) && numValue >= 0;
-  }),
-  
-  ValidationRuleFactory.createRule('taxConsiderations.giftTax.lifetimeExemption', 'Lifetime gift tax exemption must be a positive number', (value: any) => {
-    const numValue = Number(value);
-    return !isNaN(numValue) && numValue >= 0;
-  }),
-  
-  ValidationRuleFactory.createRule('taxConsiderations.giftTax.giftsMade', 'Gifts made must be a positive number', (value: any) => {
-    const numValue = Number(value);
-    return !isNaN(numValue) && numValue >= 0;
-  }),
-  
-  // Trust validations
-  ValidationRuleFactory.createRule('trustInfo.trustValue', 'Trust value must be a positive number', (value: any) => {
-    const numValue = Number(value);
-    return !isNaN(numValue) && numValue >= 0;
-  }),
-  
-  ValidationRuleFactory.createRule('trustInfo.beneficiaries', 'Trust beneficiaries are required', (value: any) => {
-    return Array.isArray(value) && value.length > 0;
-  }),
-  
-  // Life insurance validations
-  ValidationRuleFactory.createRule('lifeInsurancePlanning.insuranceNeeds.incomeReplacement', 'Income replacement needs must be a positive number', (value: any) => {
-    const numValue = Number(value);
-    return !isNaN(numValue) && numValue >= 0;
-  }),
-  
-  ValidationRuleFactory.createRule('lifeInsurancePlanning.insuranceNeeds.debtPayoff', 'Debt payoff needs must be a positive number', (value: any) => {
-    const numValue = Number(value);
-    return !isNaN(numValue) && numValue >= 0;
-  }),
-  
-  ValidationRuleFactory.createRule('lifeInsurancePlanning.insuranceNeeds.educationFunding', 'Education funding needs must be a positive number', (value: any) => {
-    const numValue = Number(value);
-    return !isNaN(numValue) && numValue >= 0;
-  }),
-  
-  ValidationRuleFactory.createRule('lifeInsurancePlanning.insuranceNeeds.estateTaxFunding', 'Estate tax funding needs must be a positive number', (value: any) => {
-    const numValue = Number(value);
-    return !isNaN(numValue) && numValue >= 0;
-  }),
-  
-  // Business succession validations
-  ValidationRuleFactory.createRule('businessSuccession.businessValue', 'Business value must be a positive number', (value: any) => {
-    const numValue = Number(value);
-    return !isNaN(numValue) && numValue >= 0;
-  }),
-  
-  ValidationRuleFactory.createRule('businessSuccession.keyEmployees', 'Key employees list is required', (value: any) => {
-    return Array.isArray(value);
-  }),
-  
-  // Estate administration validations
-  ValidationRuleFactory.createRule('estateAdministration.executor', 'Executor name is required', (value: any) => {
-    return value && value.trim().length > 0;
-  }),
-  
-  ValidationRuleFactory.createRule('estateAdministration.estimatedCosts', 'Estimated administration costs must be a positive number', (value: any) => {
-    const numValue = Number(value);
-    return !isNaN(numValue) && numValue >= 0;
-  }),
-  
-  // Cross-field validations
-  ValidationRuleFactory.createRule('netEstateConsistency', 'Net estate should equal total assets minus total liabilities', (value: any, allInputs?: Record<string, any>) => {
-    const totalAssets = allInputs?.estateInfo?.totalAssets;
-    const totalLiabilities = allInputs?.estateInfo?.totalLiabilities;
-    const netEstate = allInputs?.estateInfo?.netEstate;
-    
-    if (!totalAssets || !totalLiabilities || !netEstate) return true;
-    
-    const calculatedNetEstate = totalAssets - totalLiabilities;
-    const tolerance = Math.abs(calculatedNetEstate) * 0.01; // 1% tolerance
-    return Math.abs(netEstate - calculatedNetEstate) <= tolerance;
-  }),
-  
-  ValidationRuleFactory.createRule('beneficiaryPercentageSum', 'Total beneficiary percentages should equal 100%', (value: any, allInputs?: Record<string, any>) => {
-    const beneficiaries = allInputs?.beneficiaries;
-    if (!beneficiaries || !Array.isArray(beneficiaries)) return true;
-    
-    const totalPercentage = beneficiaries.reduce((sum, beneficiary) => sum + (beneficiary.percentage || 0), 0);
-    return Math.abs(totalPercentage - 100) <= 1; // 1% tolerance
-  }),
-  
-  ValidationRuleFactory.createRule('giftTaxConsistency', 'Gifts made should not exceed lifetime exemption', (value: any, allInputs?: Record<string, any>) => {
-    const giftsMade = allInputs?.taxConsiderations?.giftTax?.giftsMade;
-    const lifetimeExemption = allInputs?.taxConsiderations?.giftTax?.lifetimeExemption;
-    
-    if (!giftsMade || !lifetimeExemption) return true;
-    
-    return giftsMade <= lifetimeExemption * 1.1; // Allow 10% overage for planning
-  }),
-  
-  ValidationRuleFactory.createRule('trustFundingConsistency', 'Trust value should be reasonable relative to total assets', (value: any, allInputs?: Record<string, any>) => {
-    const trustValue = allInputs?.trustInfo?.trustValue;
-    const totalAssets = allInputs?.estateInfo?.totalAssets;
-    
-    if (!trustValue || !totalAssets) return true;
-    
-    const ratio = trustValue / totalAssets;
-    return ratio >= 0 && ratio <= 1; // Trust value should not exceed total assets
-  }),
-  
-  ValidationRuleFactory.createRule('insuranceNeedsConsistency', 'Insurance needs should be reasonable relative to estate size', (value: any, allInputs?: Record<string, any>) => {
-    const insuranceNeeds = allInputs?.lifeInsurancePlanning?.insuranceNeeds;
-    const totalAssets = allInputs?.estateInfo?.totalAssets;
-    
-    if (!insuranceNeeds || !totalAssets) return true;
-    
-    const totalNeeds = 
-      (insuranceNeeds.incomeReplacement || 0) +
-      (insuranceNeeds.debtPayoff || 0) +
-      (insuranceNeeds.educationFunding || 0) +
-      (insuranceNeeds.estateTaxFunding || 0) +
-      (insuranceNeeds.businessContinuation || 0);
-    
-    const ratio = totalNeeds / totalAssets;
-    return ratio >= 0 && ratio <= 5; // Insurance needs should not exceed 5x total assets
-  }),
-  
-  ValidationRuleFactory.createRule('businessValueConsistency', 'Business value should be reasonable relative to total assets', (value: any, allInputs?: Record<string, any>) => {
-    const businessValue = allInputs?.businessSuccession?.businessValue;
-    const totalAssets = allInputs?.estateInfo?.totalAssets;
-    
-    if (!businessValue || !totalAssets) return true;
-    
-    const ratio = businessValue / totalAssets;
-    return ratio >= 0 && ratio <= 1; // Business value should not exceed total assets
-  }),
-  
-  ValidationRuleFactory.createRule('liabilityConsistency', 'Total liabilities should not exceed total assets', (value: any, allInputs?: Record<string, any>) => {
-    const totalLiabilities = allInputs?.estateInfo?.totalLiabilities;
-    const totalAssets = allInputs?.estateInfo?.totalAssets;
-    
-    if (!totalLiabilities || !totalAssets) return true;
-    
-    return totalLiabilities <= totalAssets * 1.1; // Allow 10% overage for planning
-  }),
-  
-  ValidationRuleFactory.createRule('ageConsistency', 'Estate owner age should be reasonable for estate planning', (value: any, allInputs?: Record<string, any>) => {
-    const age = allInputs?.estateInfo?.age;
-    const healthStatus = allInputs?.estateInfo?.healthStatus;
-    
-    if (!age) return true;
-    
-    // Younger individuals with poor health might need more urgent planning
-    if (age < 30 && healthStatus === 'poor') return true;
-    if (age > 100) return false; // Unrealistic age
-    
-    return true;
-  }),
-  
-  ValidationRuleFactory.createRule('estateSizeConsistency', 'Estate size should be reasonable for the individual', (value: any, allInputs?: Record<string, any>) => {
-    const totalAssets = allInputs?.estateInfo?.totalAssets;
-    const age = allInputs?.estateInfo?.age;
-    
-    if (!totalAssets || !age) return true;
-    
-    // Very large estates for young individuals might need verification
-    if (age < 25 && totalAssets > 10000000) return false;
-    if (age < 30 && totalAssets > 50000000) return false;
-    
-    return true;
-  }),
-  
-  ValidationRuleFactory.createRule('documentConsistency', 'Estate documents should be consistent with estate size', (value: any, allInputs?: Record<string, any>) => {
-    const totalAssets = allInputs?.estateInfo?.totalAssets;
-    const estateDocuments = allInputs?.estateDocuments;
-    
-    if (!totalAssets || !estateDocuments) return true;
-    
-    // Large estates should have comprehensive planning
-    if (totalAssets > 5000000 && !estateDocuments.will) return false;
-    if (totalAssets > 10000000 && !estateDocuments.trust) return false;
-    
-    return true;
-  }),
-  
-  ValidationRuleFactory.createRule('specialSituationsConsistency', 'Special situations should have appropriate planning', (value: any, allInputs?: Record<string, any>) => {
-    const specialSituations = allInputs?.specialSituations;
-    const estateDocuments = allInputs?.estateDocuments;
-    
-    if (!specialSituations || !estateDocuments) return true;
-    
-    // Special needs beneficiaries should have trust planning
-    if (specialSituations.specialNeedsBeneficiary && !estateDocuments.trust) return false;
-    
-    // Minor children should have guardianship planning
-    if (specialSituations.minorChildren && !estateDocuments.will) return false;
-    
-    return true;
-  })
+  ValidationRuleFactory.required('age', 'Age is required'),
+  ValidationRuleFactory.required('maritalStatus', 'Marital status is required'),
+  ValidationRuleFactory.required('totalAssets', 'Total assets is required'),
+  ValidationRuleFactory.required('annualIncome', 'Annual income is required'),
+  ValidationRuleFactory.required('annualExpenses', 'Annual expenses is required'),
+  ValidationRuleFactory.required('federalTaxBracket', 'Federal tax bracket is required'),
+  ValidationRuleFactory.required('planningHorizon', 'Planning horizon is required'),
+
+  // Personal information validation
+  ValidationRuleFactory.range('age', 18, 120, 'Age must be between 18 and 120'),
+  ValidationRuleFactory.range('numberOfChildren', 0, 20, 'Number of children must be between 0 and 20'),
+  ValidationRuleFactory.range('numberOfGrandchildren', 0, 50, 'Number of grandchildren must be between 0 and 50'),
+
+  // Financial validation
+  ValidationRuleFactory.range('totalAssets', 0, 1000000000, 'Total assets must be between $0 and $1,000,000,000'),
+  ValidationRuleFactory.range('liquidAssets', 0, 1000000000, 'Liquid assets must be between $0 and $1,000,000,000'),
+  ValidationRuleFactory.range('realEstateValue', 0, 1000000000, 'Real estate value must be between $0 and $1,000,000,000'),
+  ValidationRuleFactory.range('retirementAccounts', 0, 1000000000, 'Retirement accounts must be between $0 and $1,000,000,000'),
+  ValidationRuleFactory.range('businessInterests', 0, 1000000000, 'Business interests must be between $0 and $1,000,000,000'),
+
+  // Income and expense validation
+  ValidationRuleFactory.range('annualIncome', 0, 100000000, 'Annual income must be between $0 and $100,000,000'),
+  ValidationRuleFactory.range('annualExpenses', 0, 100000000, 'Annual expenses must be between $0 and $100,000,000'),
+  ValidationRuleFactory.range('annualTaxes', 0, 50000000, 'Annual taxes must be between $0 and $50,000,000'),
+
+  // Estate goals validation
+  ValidationRuleFactory.range('desiredLegacy', 0, 1000000000, 'Desired legacy must be between $0 and $1,000,000,000'),
+  ValidationRuleFactory.range('educationFunding', 0, 100000000, 'Education funding must be between $0 and $100,000,000'),
+  ValidationRuleFactory.range('charitableGiving', 0, 1000000000, 'Charitable giving must be between $0 and $1,000,000,000'),
+
+  // Tax information validation
+  ValidationRuleFactory.range('federalTaxBracket', 0, 50, 'Federal tax bracket must be between 0% and 50%'),
+  ValidationRuleFactory.range('stateTaxBracket', 0, 20, 'State tax bracket must be between 0% and 20%'),
+  ValidationRuleFactory.range('estateTaxExemption', 0, 50000000, 'Estate tax exemption must be between $0 and $50,000,000'),
+
+  // Planning parameters validation
+  ValidationRuleFactory.range('planningHorizon', 1, 50, 'Planning horizon must be between 1 and 50 years'),
+  ValidationRuleFactory.range('expectedInflation', 0, 10, 'Expected inflation must be between 0% and 10%'),
+  ValidationRuleFactory.range('expectedReturn', -10, 30, 'Expected return must be between -10% and 30%'),
+
+  // Life expectancy validation
+  ValidationRuleFactory.businessRule(
+    'lifeExpectancy',
+    (lifeExpectancy, allInputs) => {
+      if (!allInputs?.age) return true;
+      return lifeExpectancy > allInputs.age && lifeExpectancy <= 150;
+    },
+    'Life expectancy must be greater than age and less than or equal to 150'
+  ),
+
+  // Asset allocation validation
+  ValidationRuleFactory.businessRule(
+    'totalAssets',
+    (totalAssets, allInputs) => {
+      if (!allInputs?.liquidAssets || !allInputs?.realEstateValue ||
+          !allInputs?.retirementAccounts || !allInputs?.businessInterests) return true;
+
+      const sumOfComponents = (allInputs.liquidAssets || 0) +
+                             (allInputs.realEstateValue || 0) +
+                             (allInputs.retirementAccounts || 0) +
+                             (allInputs.businessInterests || 0);
+
+      return Math.abs(totalAssets - sumOfComponents) / totalAssets <= 0.1; // Allow 10% variance
+    },
+    'Sum of asset components should approximately equal total assets'
+  ),
+
+  // Income vs expenses validation
+  ValidationRuleFactory.businessRule(
+    'annualExpenses',
+    (annualExpenses, allInputs) => {
+      if (!allInputs?.annualIncome) return true;
+      return annualExpenses <= allInputs.annualIncome * 2; // Expenses shouldn't exceed 2x income
+    },
+    'Annual expenses seem unusually high relative to income'
+  ),
+
+  // Legacy vs assets validation
+  ValidationRuleFactory.businessRule(
+    'desiredLegacy',
+    (desiredLegacy, allInputs) => {
+      if (!allInputs?.totalAssets) return true;
+      return desiredLegacy <= allInputs.totalAssets * 2; // Legacy shouldn't exceed 2x current assets
+    },
+    'Desired legacy seems unusually high relative to current assets'
+  ),
+
+  // Tax bracket consistency
+  ValidationRuleFactory.businessRule(
+    'federalTaxBracket',
+    (federalTaxBracket, allInputs) => {
+      if (!allInputs?.annualIncome) return true;
+
+      // Rough validation of tax bracket vs income
+      const estimatedBracket = estimateTaxBracket(allInputs.annualIncome);
+      return Math.abs(federalTaxBracket - estimatedBracket) <= 10; // Allow 10% variance
+    },
+    'Federal tax bracket seems inconsistent with reported income'
+  )
 ];
 
-export function validateEstatePlanningInputs(inputs: EstatePlanningInputs): { isValid: boolean; errors: string[] } {
-  const errors: string[] = [];
-  
-  for (const rule of estatePlanningValidationRules) {
-    try {
-      const isValid = rule.validate(inputs);
-      if (!isValid) {
-        errors.push(rule.message);
-      }
-    } catch (error) {
-      errors.push(`Validation error for ${rule.field}: ${error}`);
-    }
-  }
-  
-  return {
-    isValid: errors.length === 0,
-    errors
-  };
+/**
+ * Estimate tax bracket based on income (simplified)
+ */
+function estimateTaxBracket(annualIncome: number): number {
+  if (annualIncome <= 11000) return 10;
+  if (annualIncome <= 44725) return 12;
+  if (annualIncome <= 95375) return 22;
+  if (annualIncome <= 182100) return 24;
+  if (annualIncome <= 231250) return 32;
+  if (annualIncome <= 578125) return 35;
+  return 37;
+}
+
+/**
+ * Get validation rules for estate planning calculator
+ */
+export function getEstatePlanningValidationRules(): ValidationRule[] {
+  return estatePlanningValidationRules;
 }

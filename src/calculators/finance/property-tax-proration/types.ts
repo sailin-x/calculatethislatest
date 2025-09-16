@@ -1,35 +1,25 @@
 export interface PropertyTaxProrationInputs {
-  propertyValue: number;
-  annualTaxRate: number;
-  closingDate: string;
-  prorationDate: string;
-  sellerPaysTaxes: boolean;
-  buyerPaysTaxes: boolean;
+  annualPropertyTax: number;
   taxYearStart: string;
   taxYearEnd: string;
-  prepaidTaxes: number;
-  taxAssessment: number;
+  closingDate: string;
+  prorationMethod: '365-day' | '366-day' | '360-day' | 'actual-days';
+  includeInterest: boolean;
+  interestAmount: number;
+  buyerPaysClosingCosts: boolean;
 }
 
 export interface PropertyTaxProrationResults {
-  annualPropertyTax: number;
-  dailyTaxRate: number;
   daysInTaxYear: number;
-  daysSellerOwns: number;
-  daysBuyerOwns: number;
-  sellerTaxProration: number;
-  buyerTaxProration: number;
-  netProrationAmount: number;
-  adjustmentToSeller: number;
-  adjustmentToBuyer: number;
-  totalTaxDue: number;
-  prepaidTaxAdjustment: number;
-}
-
-export interface PropertyTaxProrationMetrics {
-  prorationAccuracy: number;
-  taxYearProgress: number;
-  sellerPortion: number;
-  buyerPortion: number;
-  adjustmentDirection: 'seller' | 'buyer' | 'neutral';
+  daysOwnedBySeller: number;
+  daysOwnedByBuyer: number;
+  sellerTaxPortion: number;
+  buyerTaxPortion: number;
+  dailyTaxRate: number;
+  sellerInterestPortion: number;
+  buyerInterestPortion: number;
+  totalSellerResponsibility: number;
+  totalBuyerResponsibility: number;
+  prorationDate: string;
+  adjustmentAmount: number;
 }
