@@ -1,8 +1,8 @@
 import { describe, it, expect } from 'vitest';
-import { 401kCalculatorCalculator } from './401kCalculatorCalculator';
+import { Four01kCalculatorCalculator } from './Four01kCalculatorCalculator';
 
-describe('401kCalculatorCalculator', () => {
-  const calculator = new 401kCalculatorCalculator();
+describe('Four01kCalculatorCalculator', () => {
+  const calculator = new Four01kCalculatorCalculator();
 
   it('should calculate correctly', () => {
     const inputs = { value: 100, rate: 0.1 };

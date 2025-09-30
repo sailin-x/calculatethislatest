@@ -24,7 +24,7 @@ import { svod_streaming_content_licensing_valuationCalculatorCalculator as svod_
 import { annuityBuyoutCalculatorCalculator as annuityBuyoutCalculatorCalculator } from './annuityBuyoutCalculator';
 import { mortgage_qualificationCalculatorCalculator as mortgage_qualificationCalculatorCalculator } from './mortgage_qualificationCalculator';
 import { mortgage_paymentCalculatorCalculator as mortgage_paymentCalculatorCalculator } from './mortgage_paymentCalculator';
-import { 401kCalculatorCalculator as 401kCalculatorCalculator } from './401kCalculator';
+import { Four01kCalculatorCalculator as Four01kCalculatorCalculator } from './401kCalculator';
 import { clinical_trial_cost_estimatorCalculatorCalculator as clinical_trial_cost_estimatorCalculatorCalculator } from './clinical_trial_cost_estimatorCalculator';
 import { futures_trading_profitability_calculatorCalculatorCalculator as futures_trading_profitability_calculatorCalculatorCalculator } from './futures_trading_profitability_calculatorCalculator';
 import { property_tax_prorationCalculatorCalculator as property_tax_prorationCalculatorCalculator } from './property_tax_prorationCalculator';
@@ -1198,7 +1198,7 @@ export function registerAllCalculators(): void {
   calculatorRegistry.register(annuityBuyoutCalculatorCalculator);
   calculatorRegistry.register(mortgage_qualificationCalculatorCalculator);
   calculatorRegistry.register(mortgage_paymentCalculatorCalculator);
-  calculatorRegistry.register(401kCalculatorCalculator);
+  calculatorRegistry.register(new Four01kCalculatorCalculator());
   calculatorRegistry.register(clinical_trial_cost_estimatorCalculatorCalculator);
   calculatorRegistry.register(futures_trading_profitability_calculatorCalculatorCalculator);
   calculatorRegistry.register(property_tax_prorationCalculatorCalculator);
