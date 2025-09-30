@@ -1,4 +1,4 @@
-export interface 401k_calculatorCalculatorInputs {
+export interface Four01kCalculatorCalculatorInputs {
   // Calculator-specific input fields
   value?: number;
   rate?: number;
@@ -7,17 +7,17 @@ export interface 401k_calculatorCalculatorInputs {
   // Add more fields as needed for this calculator
 }
 
-export interface 401k_calculatorCalculatorResults {
+export interface Four01kCalculatorCalculatorResults {
   result: number;
   analysis?: string;
 }
 
-export interface 401k_calculatorCalculatorMetrics {
+export interface Four01kCalculatorCalculatorMetrics {
   result: number;
   // Add more metrics as needed
 }
 
-export interface 401k_calculatorCalculatorAnalysis {
+export interface Four01kCalculatorCalculatorAnalysis {
   recommendation: string;
   riskLevel: 'Low' | 'Medium' | 'High';
 }

@@ -1,4 +1,4 @@
-import { 401k_calculatorCalculatorInputs, 401k_calculatorCalculatorMetrics, 401k_calculatorCalculatorAnalysis } from './types';
+import { Four01kCalculatorCalculatorInputs, Four01kCalculatorCalculatorMetrics, Four01kCalculatorCalculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: 401k_calculatorCalculatorInputs): number {
+export function calculateResult(inputs: Four01kCalculatorCalculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: 401k_calculatorCalculatorInputs): number
   }
 }
 
-export function generateAnalysis(inputs: 401k_calculatorCalculatorInputs, metrics: 401k_calculatorCalculatorMetrics): 401k_calculatorCalculatorAnalysis {
+export function generateAnalysis(inputs: Four01kCalculatorCalculatorInputs, metrics: Four01kCalculatorCalculatorMetrics): Four01kCalculatorCalculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
