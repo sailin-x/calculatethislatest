@@ -1,6 +1,5 @@
-export { requiredMinimumDistributionRMDCalculator } from './RequiredMinimumDistributionRMDCalculator';
-export { registerRequiredMinimumDistributionRMDCalculator } from './register';
+export { RequiredMinimumDistributionRmdCalculator } from './RequiredMinimumDistributionRmdCalculator';
+export * from './types';
 export * from './formulas';
 export * from './validation';
 export * from './quickValidation';
-export * from './types';

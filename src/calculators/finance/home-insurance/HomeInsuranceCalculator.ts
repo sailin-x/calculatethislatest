@@ -1,73 +1,79 @@
-import { Calculator } from '../../types';
-import { HomeInsuranceInputs, HomeInsuranceOutputs } from './types';
+import { Calculator } from '../../../types/calculator';
+import { HomeInsuranceCalculatorInputs, HomeInsuranceCalculatorOutputs } from './types';
 import { calculateHomeInsurance } from './formulas';
 import { validateHomeInsuranceInputs } from './validation';
 
-export const HomeInsuranceCalculator: Calculator<HomeInsuranceInputs, HomeInsuranceOutputs> = {
+export const HomeInsuranceCalculator: Calculator & {
+  calculate: (inputs: HomeInsuranceCalculatorInputs) => HomeInsuranceCalculatorOutputs;
+  generateReport: (inputs: HomeInsuranceCalculatorInputs, outputs: HomeInsuranceCalculatorOutputs) => string;
+} = {
   id: 'home-insurance',
+  title: 'Home Insurance Calculator',
   name: 'Home Insurance Calculator',
   category: 'finance',
   subcategory: 'insurance',
-  description: 'Calculate home insurance premiums, coverage, and costs for property protection',
-  longDescription: `A comprehensive home insurance calculator that analyzes insurance premiums, coverage options, and costs for residential properties. This calculator evaluates property characteristics, location risks, coverage needs, and policy features to provide accurate insurance cost estimates. It includes risk assessment, coverage analysis, premium comparisons, and optimization recommendations to help homeowners make informed insurance decisions.`,
-  
-  inputs: {
-    // Property Information
-    propertyValue: {
-      type: 'number',
+  description: 'Calculate comprehensive home insurance premiums and coverage analysis.',
+  usageInstructions: [
+    'Enter your property details and location',
+    'Specify coverage amounts and deductibles',
+    'Review risk factors and claims history',
+    'Compare premium options and discounts',
+    'Generate detailed insurance analysis report'
+  ],
+
+  inputs = [
+    {
+      id: 'propertyValue',
       label: 'Property Value ($)',
-      description: 'Current market value of the property',
+      type: 'currency' as const,
       required: true,
       min: 50000,
       max: 10000000,
-      step: 1000,
-      placeholder: '350000'
+      tooltip: 'Current market value of the property'
     },
-    propertyAddress: {
-      type: 'text',
+    {
+      id: 'propertyAddress',
       label: 'Property Address',
-      description: 'Full property address',
+      type: 'text' as const,
       required: true,
-      placeholder: '123 Main St, City, State 12345'
+      tooltip: 'Full address of the property'
     },
-    propertyType: {
-      type: 'select',
+    {
+      id: 'propertyType',
       label: 'Property Type',
-      description: 'Type of residential property',
+      type: 'select' as const,
       required: true,
       options: [
-        { value: 'single_family', label: 'Single Family' },
-        { value: 'condo', label: 'Condo' },
+        { value: 'single_family', label: 'Single Family Home' },
+        { value: 'condo', label: 'Condominium' },
         { value: 'townhouse', label: 'Townhouse' },
-        { value: 'multi_family', label: 'Multi Family' },
+        { value: 'multi_family', label: 'Multi-Family' },
         { value: 'mobile_home', label: 'Mobile Home' }
       ],
-      placeholder: 'single_family'
+      tooltip: 'Type of property being insured'
     },
-    propertyAge: {
-      type: 'number',
+    {
+      id: 'propertyAge',
       label: 'Property Age (years)',
-      description: 'Age of the property in years',
+      type: 'number' as const,
       required: true,
       min: 0,
       max: 100,
-      step: 1,
-      placeholder: '15'
+      tooltip: 'Age of the property in years'
     },
-    propertySize: {
-      type: 'number',
+    {
+      id: 'propertySize',
       label: 'Property Size (sq ft)',
-      description: 'Total square footage of the property',
+      type: 'number' as const,
       required: true,
       min: 500,
       max: 10000,
-      step: 100,
-      placeholder: '2500'
+      tooltip: 'Total square footage of the property'
     },
-    constructionType: {
-      type: 'select',
+    {
+      id: 'constructionType',
       label: 'Construction Type',
-      description: 'Primary construction material',
+      type: 'select' as const,
       required: true,
       options: [
         { value: 'wood_frame', label: 'Wood Frame' },
@@ -77,12 +83,12 @@ export const HomeInsuranceCalculator: Calculator<HomeInsuranceInputs, HomeInsura
         { value: 'steel_frame', label: 'Steel Frame' },
         { value: 'mixed', label: 'Mixed' }
       ],
-      placeholder: 'wood_frame'
+      tooltip: 'Primary construction material'
     },
-    roofType: {
-      type: 'select',
+    {
+      id: 'roofType',
       label: 'Roof Type',
-      description: 'Type of roof material',
+      type: 'select' as const,
       required: true,
       options: [
         { value: 'asphalt_shingle', label: 'Asphalt Shingle' },
@@ -92,45 +98,42 @@ export const HomeInsuranceCalculator: Calculator<HomeInsuranceInputs, HomeInsura
         { value: 'wood_shake', label: 'Wood Shake' },
         { value: 'flat', label: 'Flat' }
       ],
-      placeholder: 'asphalt_shingle'
+      tooltip: 'Type of roof material'
     },
-    roofAge: {
-      type: 'number',
+    {
+      id: 'roofAge',
       label: 'Roof Age (years)',
-      description: 'Age of the roof in years',
+      type: 'number' as const,
       required: true,
       min: 0,
       max: 50,
-      step: 1,
-      placeholder: '10'
+      tooltip: 'Age of the roof in years'
     },
-    
-    // Location Information
-    state: {
-      type: 'text',
+    {
+      id: 'state',
       label: 'State',
-      description: 'State where property is located',
+      type: 'text' as const,
       required: true,
-      placeholder: 'CA'
+      tooltip: 'State where property is located'
     },
-    city: {
-      type: 'text',
+    {
+      id: 'city',
       label: 'City',
-      description: 'City where property is located',
+      type: 'text' as const,
       required: true,
-      placeholder: 'Los Angeles'
+      tooltip: 'City where property is located'
     },
-    zipCode: {
-      type: 'text',
+    {
+      id: 'zipCode',
       label: 'ZIP Code',
-      description: 'ZIP code of the property',
+      type: 'text' as const,
       required: true,
-      placeholder: '90210'
+      tooltip: 'ZIP code of the property'
     },
-    floodZone: {
-      type: 'select',
+    {
+      id: 'floodZone',
       label: 'Flood Zone',
-      description: 'Flood risk zone classification',
+      type: 'select' as const,
       required: true,
       options: [
         { value: 'low_risk', label: 'Low Risk' },
@@ -139,12 +142,12 @@ export const HomeInsuranceCalculator: Calculator<HomeInsuranceInputs, HomeInsura
         { value: 'very_high_risk', label: 'Very High Risk' },
         { value: 'unknown', label: 'Unknown' }
       ],
-      placeholder: 'low_risk'
+      tooltip: 'Flood risk zone designation'
     },
-    crimeRate: {
-      type: 'select',
+    {
+      id: 'crimeRate',
       label: 'Crime Rate',
-      description: 'Crime rate in the area',
+      type: 'select' as const,
       required: true,
       options: [
         { value: 'low', label: 'Low' },
@@ -152,339 +155,187 @@ export const HomeInsuranceCalculator: Calculator<HomeInsuranceInputs, HomeInsura
         { value: 'high', label: 'High' },
         { value: 'very_high', label: 'Very High' }
       ],
-      placeholder: 'medium'
+      tooltip: 'Local crime rate level'
     },
-    fireStationDistance: {
-      type: 'number',
+    {
+      id: 'fireStationDistance',
       label: 'Fire Station Distance (miles)',
-      description: 'Distance to nearest fire station',
+      type: 'number' as const,
       required: true,
       min: 0,
       max: 50,
-      step: 0.1,
-      placeholder: '2.5'
+      tooltip: 'Distance to nearest fire station'
     },
-    policeStationDistance: {
-      type: 'number',
+    {
+      id: 'policeStationDistance',
       label: 'Police Station Distance (miles)',
-      description: 'Distance to nearest police station',
+      type: 'number' as const,
       required: true,
       min: 0,
       max: 50,
-      step: 0.1,
-      placeholder: '3.0'
+      tooltip: 'Distance to nearest police station'
     },
-    
-    // Coverage Information
-    dwellingCoverage: {
-      type: 'number',
+    {
+      id: 'dwellingCoverage',
       label: 'Dwelling Coverage ($)',
-      description: 'Coverage for the main structure',
+      type: 'currency' as const,
       required: true,
       min: 50000,
       max: 5000000,
-      step: 1000,
-      placeholder: '350000'
+      tooltip: 'Coverage for the main dwelling'
     },
-    personalPropertyCoverage: {
-      type: 'number',
+    {
+      id: 'personalPropertyCoverage',
       label: 'Personal Property Coverage ($)',
-      description: 'Coverage for personal belongings',
+      type: 'currency' as const,
       required: true,
-      min: 10000,
+      min: 0,
       max: 1000000,
-      step: 1000,
-      placeholder: '175000'
+      tooltip: 'Coverage for personal belongings'
     },
-    liabilityCoverage: {
-      type: 'number',
+    {
+      id: 'liabilityCoverage',
       label: 'Liability Coverage ($)',
-      description: 'Personal liability coverage',
+      type: 'currency' as const,
       required: true,
       min: 100000,
       max: 1000000,
-      step: 10000,
-      placeholder: '300000'
+      tooltip: 'Coverage for liability claims'
     },
-    medicalPaymentsCoverage: {
-      type: 'number',
+    {
+      id: 'medicalPaymentsCoverage',
       label: 'Medical Payments Coverage ($)',
-      description: 'Medical payments to others',
+      type: 'currency' as const,
       required: true,
       min: 1000,
       max: 10000,
-      step: 100,
-      placeholder: '5000'
+      tooltip: 'Coverage for medical payments'
     },
-    lossOfUseCoverage: {
-      type: 'number',
+    {
+      id: 'lossOfUseCoverage',
       label: 'Loss of Use Coverage ($)',
-      description: 'Additional living expenses',
+      type: 'currency' as const,
       required: true,
       min: 10000,
       max: 100000,
-      step: 1000,
-      placeholder: '70000'
+      tooltip: 'Coverage for additional living expenses'
     },
-    otherStructuresCoverage: {
-      type: 'number',
+    {
+      id: 'otherStructuresCoverage',
       label: 'Other Structures Coverage ($)',
-      description: 'Coverage for detached structures',
+      type: 'currency' as const,
       required: true,
       min: 0,
       max: 500000,
-      step: 1000,
-      placeholder: '35000'
+      tooltip: 'Coverage for other structures on property'
     },
-    
-    // Deductibles
-    dwellingDeductible: {
-      type: 'number',
+    {
+      id: 'dwellingDeductible',
       label: 'Dwelling Deductible ($)',
-      description: 'Deductible for dwelling claims',
+      type: 'select' as const,
       required: true,
-      min: 250,
-      max: 10000,
-      step: 250,
-      placeholder: '1000'
+      options: [
+        { value: '250', label: '$250' },
+        { value: '500', label: '$500' },
+        { value: '1000', label: '$1,000' },
+        { value: '1500', label: '$1,500' },
+        { value: '2000', label: '$2,000' },
+        { value: '2500', label: '$2,500' },
+        { value: '5000', label: '$5,000' },
+        { value: '10000', label: '$10,000' }
+      ],
+      tooltip: 'Deductible for dwelling claims'
     },
-    personalPropertyDeductible: {
-      type: 'number',
+    {
+      id: 'personalPropertyDeductible',
       label: 'Personal Property Deductible ($)',
-      description: 'Deductible for personal property claims',
+      type: 'select' as const,
       required: true,
-      min: 250,
-      max: 5000,
-      step: 250,
-      placeholder: '1000'
+      options: [
+        { value: '250', label: '$250' },
+        { value: '500', label: '$500' },
+        { value: '1000', label: '$1,000' },
+        { value: '1500', label: '$1,500' },
+        { value: '2000', label: '$2,000' },
+        { value: '2500', label: '$2,500' },
+        { value: '5000', label: '$5,000' }
+      ],
+      tooltip: 'Deductible for personal property claims'
     },
-    liabilityDeductible: {
-      type: 'number',
+    {
+      id: 'liabilityDeductible',
       label: 'Liability Deductible ($)',
-      description: 'Deductible for liability claims',
+      type: 'number' as const,
       required: true,
       min: 0,
       max: 5000,
-      step: 100,
-      placeholder: '0'
+      tooltip: 'Deductible for liability claims'
     },
-    hurricaneDeductible: {
-      type: 'number',
+    {
+      id: 'hurricaneDeductible',
       label: 'Hurricane Deductible ($)',
-      description: 'Deductible for hurricane claims',
+      type: 'number' as const,
       required: true,
       min: 0,
       max: 50000,
-      step: 1000,
-      placeholder: '5000'
+      tooltip: 'Deductible for hurricane claims'
     },
-    windstormDeductible: {
-      type: 'number',
+    {
+      id: 'windstormDeductible',
       label: 'Windstorm Deductible ($)',
-      description: 'Deductible for windstorm claims',
+      type: 'number' as const,
       required: true,
       min: 0,
       max: 25000,
-      step: 500,
-      placeholder: '2500'
+      tooltip: 'Deductible for windstorm claims'
     },
-    
-    // Policy Features
-    replacementCost: {
-      type: 'boolean',
-      label: 'Replacement Cost Coverage',
-      description: 'Coverage for replacement cost vs actual cash value',
-      required: true,
-      placeholder: true
-    },
-    guaranteedReplacementCost: {
-      type: 'boolean',
-      label: 'Guaranteed Replacement Cost',
-      description: 'Guaranteed replacement cost coverage',
-      required: true,
-      placeholder: false
-    },
-    ordinanceOrLawCoverage: {
-      type: 'boolean',
-      label: 'Ordinance or Law Coverage',
-      description: 'Coverage for building code upgrades',
-      required: true,
-      placeholder: false
-    },
-    waterBackupCoverage: {
-      type: 'boolean',
-      label: 'Water Backup Coverage',
-      description: 'Coverage for water backup and sump overflow',
-      required: true,
-      placeholder: false
-    },
-    identityTheftCoverage: {
-      type: 'boolean',
-      label: 'Identity Theft Coverage',
-      description: 'Identity theft protection coverage',
-      required: true,
-      placeholder: false
-    },
-    equipmentBreakdownCoverage: {
-      type: 'boolean',
-      label: 'Equipment Breakdown Coverage',
-      description: 'Coverage for mechanical equipment breakdown',
-      required: true,
-      placeholder: false
-    },
-    
-    // Discounts
-    multiPolicyDiscount: {
-      type: 'boolean',
-      label: 'Multi-Policy Discount',
-      description: 'Discount for bundling multiple policies',
-      required: true,
-      placeholder: true
-    },
-    claimsFreeDiscount: {
-      type: 'boolean',
-      label: 'Claims-Free Discount',
-      description: 'Discount for no recent claims',
-      required: true,
-      placeholder: true
-    },
-    securitySystemDiscount: {
-      type: 'boolean',
-      label: 'Security System Discount',
-      description: 'Discount for security system',
-      required: true,
-      placeholder: false
-    },
-    smokeDetectorDiscount: {
-      type: 'boolean',
-      label: 'Smoke Detector Discount',
-      description: 'Discount for smoke detectors',
-      required: true,
-      placeholder: true
-    },
-    deadboltDiscount: {
-      type: 'boolean',
-      label: 'Deadbolt Discount',
-      description: 'Discount for deadbolt locks',
-      required: true,
-      placeholder: true
-    },
-    newHomeDiscount: {
-      type: 'boolean',
-      label: 'New Home Discount',
-      description: 'Discount for newly constructed home',
-      required: true,
-      placeholder: false
-    },
-    seniorDiscount: {
-      type: 'boolean',
-      label: 'Senior Discount',
-      description: 'Discount for senior homeowners',
-      required: true,
-      placeholder: false
-    },
-    
-    // Claims History
-    claimsInLast3Years: {
-      type: 'number',
+    {
+      id: 'claimsInLast3Years',
       label: 'Claims in Last 3 Years',
-      description: 'Number of claims in the last 3 years',
+      type: 'number' as const,
       required: true,
       min: 0,
       max: 10,
-      step: 1,
-      placeholder: '0'
+      tooltip: 'Number of claims filed in the last 3 years'
     },
-    claimsInLast5Years: {
-      type: 'number',
+    {
+      id: 'claimsInLast5Years',
       label: 'Claims in Last 5 Years',
-      description: 'Number of claims in the last 5 years',
+      type: 'number' as const,
       required: true,
       min: 0,
       max: 15,
-      step: 1,
-      placeholder: '0'
+      tooltip: 'Number of claims filed in the last 5 years'
     },
-    claimsInLast10Years: {
-      type: 'number',
+    {
+      id: 'claimsInLast10Years',
       label: 'Claims in Last 10 Years',
-      description: 'Number of claims in the last 10 years',
+      type: 'number' as const,
       required: true,
       min: 0,
       max: 25,
-      step: 1,
-      placeholder: '0'
+      tooltip: 'Number of claims filed in the last 10 years'
     },
-    totalClaimAmount: {
-      type: 'number',
+    {
+      id: 'totalClaimAmount',
       label: 'Total Claim Amount ($)',
-      description: 'Total amount of all claims',
+      type: 'currency' as const,
       required: true,
       min: 0,
       max: 1000000,
-      step: 1000,
-      placeholder: '0'
+      tooltip: 'Total amount of previous claims'
     },
-    
-    // Risk Factors
-    swimmingPool: {
-      type: 'boolean',
-      label: 'Swimming Pool',
-      description: 'Property has a swimming pool',
-      required: true,
-      placeholder: false
-    },
-    trampoline: {
-      type: 'boolean',
-      label: 'Trampoline',
-      description: 'Property has a trampoline',
-      required: true,
-      placeholder: false
-    },
-    aggressiveDog: {
-      type: 'boolean',
-      label: 'Aggressive Dog',
-      description: 'Property has an aggressive dog breed',
-      required: true,
-      placeholder: false
-    },
-    homeBusiness: {
-      type: 'boolean',
-      label: 'Home Business',
-      description: 'Business operated from home',
-      required: true,
-      placeholder: false
-    },
-    rentalUnits: {
-      type: 'number',
-      label: 'Rental Units',
-      description: 'Number of rental units on property',
-      required: true,
-      min: 0,
-      max: 10,
-      step: 1,
-      placeholder: '0'
-    },
-    vacantProperty: {
-      type: 'boolean',
-      label: 'Vacant Property',
-      description: 'Property is vacant or unoccupied',
-      required: true,
-      placeholder: false
-    },
-    
-    // Insurance Company
-    insuranceCompany: {
-      type: 'text',
+    {
+      id: 'insuranceCompany',
       label: 'Insurance Company',
-      description: 'Name of the insurance company',
+      type: 'text' as const,
       required: true,
-      placeholder: 'State Farm'
+      tooltip: 'Name of the insurance company'
     },
-    policyType: {
-      type: 'select',
+    {
+      id: 'policyType',
       label: 'Policy Type',
-      description: 'Type of insurance policy',
+      type: 'select' as const,
       required: true,
       options: [
         { value: 'standard', label: 'Standard' },
@@ -492,265 +343,153 @@ export const HomeInsuranceCalculator: Calculator<HomeInsuranceInputs, HomeInsura
         { value: 'basic', label: 'Basic' },
         { value: 'custom', label: 'Custom' }
       ],
-      placeholder: 'standard'
+      tooltip: 'Type of insurance policy'
     },
-    policyTerm: {
-      type: 'number',
+    {
+      id: 'policyTerm',
       label: 'Policy Term (months)',
-      description: 'Duration of the insurance policy',
+      type: 'number' as const,
       required: true,
       min: 6,
       max: 36,
-      step: 6,
-      placeholder: '12'
+      tooltip: 'Length of the policy term'
     },
-    
-    // Analysis Parameters
-    analysisPeriod: {
-      type: 'number',
+    {
+      id: 'analysisPeriod',
       label: 'Analysis Period (years)',
-      description: 'Period for insurance analysis',
+      type: 'number' as const,
       required: true,
       min: 1,
       max: 10,
-      step: 1,
-      placeholder: '5'
+      tooltip: 'Period for analysis and projections'
     },
-    inflationRate: {
-      type: 'number',
+    {
+      id: 'inflationRate',
       label: 'Inflation Rate (%)',
-      description: 'Expected annual inflation rate',
+      type: 'percentage' as const,
       required: true,
       min: -5,
       max: 15,
-      step: 0.5,
-      placeholder: '2.5'
+      tooltip: 'Expected annual inflation rate'
     },
-    propertyAppreciationRate: {
-      type: 'number',
+    {
+      id: 'propertyAppreciationRate',
       label: 'Property Appreciation Rate (%)',
-      description: 'Expected annual property appreciation',
+      type: 'percentage' as const,
       required: true,
       min: -10,
       max: 20,
-      step: 0.5,
-      placeholder: '3.0'
+      tooltip: 'Expected annual property appreciation'
     },
-    
-    // Reporting Preferences
-    currency: {
-      type: 'select',
-      label: 'Currency',
-      description: 'Currency for calculations and display',
+    {
+      id: 'rentalUnits',
+      label: 'Rental Units',
+      type: 'number' as const,
       required: true,
-      options: [
-        { value: 'USD', label: 'USD' },
-        { value: 'EUR', label: 'EUR' },
-        { value: 'GBP', label: 'GBP' },
-        { value: 'CAD', label: 'CAD' },
-        { value: 'AUD', label: 'AUD' }
-      ],
-      placeholder: 'USD'
-    },
-    displayFormat: {
-      type: 'select',
-      label: 'Display Format',
-      description: 'Format for displaying results',
-      required: true,
-      options: [
-        { value: 'percentage', label: 'Percentage' },
-        { value: 'decimal', label: 'Decimal' },
-        { value: 'currency', label: 'Currency' }
-      ],
-      placeholder: 'currency'
-    },
-    includeCharts: {
-      type: 'boolean',
-      label: 'Include Charts',
-      description: 'Include charts in the analysis report',
-      required: true,
-      placeholder: true
+      min: 0,
+      max: 10,
+      tooltip: 'Number of rental units on property'
     }
-  },
-  
-  outputs: {
-    annualPremium: {
-      type: 'number',
+  ];
+
+  outputs = [
+    {
+      id: 'annualPremium',
       label: 'Annual Premium',
-      description: 'Annual insurance premium cost'
+      type: 'currency' as const,
+      explanation: 'Total annual insurance premium'
     },
-    monthlyPremium: {
-      type: 'number',
+    {
+      id: 'monthlyPremium',
       label: 'Monthly Premium',
-      description: 'Monthly insurance premium cost'
+      type: 'currency' as const,
+      explanation: 'Monthly insurance premium payment'
     },
-    totalCoverage: {
-      type: 'number',
+    {
+      id: 'totalCoverage',
       label: 'Total Coverage',
-      description: 'Total insurance coverage amount'
+      type: 'currency' as const,
+      explanation: 'Total coverage amount across all policies'
     },
-    riskScore: {
-      type: 'number',
+    {
+      id: 'riskScore',
       label: 'Risk Score',
-      description: 'Overall risk assessment score (1-10)'
+      type: 'number' as const,
+      explanation: 'Property risk score (1-10 scale)'
     },
-    premiumToValueRatio: {
-      type: 'number',
-      label: 'Premium to Value Ratio',
-      description: 'Premium as percentage of property value'
+    {
+      id: 'premiumToValueRatio',
+      label: 'Premium to Value Ratio (%)',
+      type: 'percentage' as const,
+      explanation: 'Ratio of annual premium to property value'
     },
-    totalDiscounts: {
-      type: 'number',
-      label: 'Total Discounts',
-      description: 'Total discount amount'
+    {
+      id: 'totalDiscounts',
+      label: 'Total Discounts (%)',
+      type: 'percentage' as const,
+      explanation: 'Total discount applied to base premium'
     },
-    effectivePremium: {
-      type: 'number',
+    {
+      id: 'effectivePremium',
       label: 'Effective Premium',
-      description: 'Premium after discounts'
-    },
-    analysis: {
-      type: 'object',
-      label: 'Analysis Report',
-      description: 'Comprehensive insurance analysis'
+      type: 'currency' as const,
+      explanation: 'Premium after applying all discounts'
     }
-  },
-  
-  calculate: (inputs: HomeInsuranceInputs): HomeInsuranceOutputs => {
+  ],
+
+  formulas: [],
+
+  validationRules: [],
+
+  examples: [],
+
+  calculate(inputs: HomeInsuranceCalculatorInputs): HomeInsuranceCalculatorOutputs {
     const validation = validateHomeInsuranceInputs(inputs);
     if (!validation.isValid) {
-      throw new Error(`Validation failed: ${validation.errors.join(', ')}`);
+      throw new Error(`Invalid inputs: ${validation.errors.join(', ')}`);
     }
-    
+
     return calculateHomeInsurance(inputs);
-  },
-  
-  generateReport: (inputs: HomeInsuranceInputs, outputs: HomeInsuranceOutputs): string => {
-    const { analysis } = outputs;
-    
+  }
+
+  generateReport: (inputs: HomeInsuranceCalculatorInputs, outputs: HomeInsuranceCalculatorOutputs): string => {
     return `
 # Home Insurance Analysis Report
 
 ## Executive Summary
-- **Insurance Rating**: ${analysis.insuranceRating}
-- **Risk Rating**: ${analysis.riskRating}
-- **Recommendation**: ${analysis.recommendation}
+This report provides a comprehensive analysis of your home insurance needs based on the provided property information and coverage requirements.
 
 ## Key Metrics
 - **Annual Premium**: $${outputs.annualPremium.toLocaleString()}
-- **Monthly Premium**: $${outputs.monthlyPremium.toLocaleString()}
+- **Monthly Premium**: $${outputs.monthlyPremium.toFixed(2)}
 - **Total Coverage**: $${outputs.totalCoverage.toLocaleString()}
-- **Premium to Value Ratio**: ${outputs.premiumToValueRatio.toFixed(2)}%
 - **Risk Score**: ${outputs.riskScore}/10
-- **Total Discounts**: $${outputs.totalDiscounts.toLocaleString()}
-- **Effective Premium**: $${outputs.effectivePremium.toLocaleString()}
+- **Premium to Value Ratio**: ${outputs.premiumToValueRatio}%
 
-## Analysis
-${analysis.insuranceSummary}
+## Property Information
+- **Property Value**: $${inputs.propertyValue.toLocaleString()}
+- **Location**: ${inputs.city}, ${inputs.state} ${inputs.zipCode}
+- **Property Type**: ${inputs.propertyType.replace('_', ' ')}
+- **Age**: ${inputs.propertyAge} years
+- **Size**: ${inputs.propertySize} sq ft
+
+## Coverage Details
+- **Dwelling Coverage**: $${inputs.dwellingCoverage.toLocaleString()}
+- **Personal Property**: $${inputs.personalPropertyCoverage.toLocaleString()}
+- **Liability**: $${inputs.liabilityCoverage.toLocaleString()}
+- **Medical Payments**: $${inputs.medicalPaymentsCoverage.toLocaleString()}
 
 ## Risk Assessment
-${analysis.riskAssessment}
+Your property has a risk score of ${outputs.riskScore}/10, which is considered ${outputs.riskScore < 4 ? 'low' : outputs.riskScore < 7 ? 'moderate' : 'high'} risk.
 
 ## Recommendations
-${analysis.purchaseRecommendations.join('\n')}
+${outputs.riskScore > 7 ? '- Consider additional safety features to reduce risk\n- Review deductibles for potential savings\n- Consider bundling policies for discounts' : '- Your risk profile appears reasonable\n- Monitor for changes in local risk factors\n- Regular maintenance can help maintain low premiums'}
 
-## Next Steps
-${analysis.nextSteps.join('\n')}
+## Analysis Period: ${inputs.analysisPeriod} years
+- **Inflation Rate**: ${inputs.inflationRate}%
+- **Property Appreciation**: ${inputs.propertyAppreciationRate}%
+
+*This analysis is for informational purposes only and should not replace professional insurance advice.*
     `.trim();
-  },
-  
-  formulas: {
-    'Annual Premium': 'Base premium adjusted for risk factors, coverage, and discounts',
-    'Monthly Premium': 'Annual Premium / 12',
-    'Total Coverage': 'Sum of all coverage amounts',
-    'Premium to Value Ratio': 'Annual Premium / Property Value × 100',
-    'Risk Score': 'Weighted average of property, location, and coverage risk factors',
-    'Total Discounts': 'Sum of all applicable discounts',
-    'Effective Premium': 'Annual Premium - Total Discounts'
-  },
-  
-  examples: [
-    {
-      name: 'Standard Home Insurance',
-      inputs: {
-        propertyValue: 350000,
-        propertyAddress: '123 Main St, Los Angeles, CA 90210',
-        propertyType: 'single_family',
-        propertyAge: 15,
-        propertySize: 2500,
-        constructionType: 'wood_frame',
-        roofType: 'asphalt_shingle',
-        roofAge: 10,
-        state: 'CA',
-        city: 'Los Angeles',
-        zipCode: '90210',
-        floodZone: 'low_risk',
-        crimeRate: 'medium',
-        fireStationDistance: 2.5,
-        policeStationDistance: 3.0,
-        dwellingCoverage: 350000,
-        personalPropertyCoverage: 175000,
-        liabilityCoverage: 300000,
-        medicalPaymentsCoverage: 5000,
-        lossOfUseCoverage: 70000,
-        otherStructuresCoverage: 35000,
-        dwellingDeductible: 1000,
-        personalPropertyDeductible: 1000,
-        liabilityDeductible: 0,
-        hurricaneDeductible: 5000,
-        windstormDeductible: 2500,
-        replacementCost: true,
-        guaranteedReplacementCost: false,
-        ordinanceOrLawCoverage: false,
-        waterBackupCoverage: false,
-        identityTheftCoverage: false,
-        equipmentBreakdownCoverage: false,
-        multiPolicyDiscount: true,
-        claimsFreeDiscount: true,
-        securitySystemDiscount: false,
-        smokeDetectorDiscount: true,
-        deadboltDiscount: true,
-        newHomeDiscount: false,
-        seniorDiscount: false,
-        claimsInLast3Years: 0,
-        claimsInLast5Years: 0,
-        claimsInLast10Years: 0,
-        totalClaimAmount: 0,
-        swimmingPool: false,
-        trampoline: false,
-        aggressiveDog: false,
-        homeBusiness: false,
-        rentalUnits: 0,
-        vacantProperty: false,
-        insuranceCompany: 'State Farm',
-        policyType: 'standard',
-        policyTerm: 12,
-        analysisPeriod: 5,
-        inflationRate: 2.5,
-        propertyAppreciationRate: 3.0,
-        currency: 'USD',
-        displayFormat: 'currency',
-        includeCharts: true
-      }
-    }
-  ],
-  
-  tags: [
-    'home insurance',
-    'property insurance',
-    'insurance',
-    'premium',
-    'coverage',
-    'risk assessment',
-    'property protection',
-    'liability',
-    'deductible',
-    'claims'
-  ],
-  
-  category_info: {
-    name: 'Insurance',
-    description: 'Insurance calculators for property and liability protection',
-    icon: '🛡️'
   }
-};
+}

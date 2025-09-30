@@ -1,19 +1,8 @@
 import { calculatorRegistry } from '../../../data/calculatorRegistry';
-import { autoLoanCalculator } from './AutoLoanCalculator';
+import { AutoLoanCalculator } from './AutoLoanCalculator';
 
-/**
- * Register the Auto Loan Calculator with the system
- */
 export function registerAutoLoanCalculator(): void {
-  calculatorRegistry.register(autoLoanCalculator);
+  calculatorRegistry.register(AutoLoanCalculator);
 }
 
-/**
- * Unregister the Auto Loan Calculator from the system
- */
-export function unregisterAutoLoanCalculator(): boolean {
-  return calculatorRegistry.unregister('auto-loan-calculator');
-}
-
-// Auto-register when this module is imported
-registerAutoLoanCalculator();
+export { AutoLoanCalculator };

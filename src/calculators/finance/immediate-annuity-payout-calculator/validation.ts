@@ -1,69 +1,29 @@
-import { ValidationRule } from '../../../types/calculator';
-import { ValidationRuleFactory } from '../../../utils/validation';
+import { ImmediateAnnuityPayoutCalculatorInputs } from './types';
 
-/**
- * Immediate Annuity validation rules
- */
-export const immediateAnnuityValidationRules: ValidationRule[] = [
-  // Required fields
-  ValidationRuleFactory.required('principalAmount', 'Principal amount is required'),
-  ValidationRuleFactory.required('age', 'Age is required'),
-  ValidationRuleFactory.required('gender', 'Gender is required'),
-  ValidationRuleFactory.required('payoutType', 'Payout type is required'),
-  ValidationRuleFactory.required('payoutFrequency', 'Payout frequency is required'),
-  ValidationRuleFactory.required('annuityType', 'Annuity type is required'),
-  ValidationRuleFactory.required('interestRate', 'Interest rate is required'),
-  ValidationRuleFactory.required('lifeExpectancy', 'Life expectancy is required'),
+export function validateImmediateAnnuityPayoutCalculatorInputs(inputs: ImmediateAnnuityPayoutCalculatorInputs): Array<{ field: string; message: string }> {
+  const errors: Array<{ field: string; message: string }> = [];
 
-  // Value validations
-  ValidationRuleFactory.range('principalAmount', 0, 10000000, 'Principal amount must be between $0 and $10,000,000'),
-  ValidationRuleFactory.range('age', 0, 120, 'Age must be between 0 and 120'),
-  ValidationRuleFactory.range('lifeExpectancy', 0, 120, 'Life expectancy must be between 0 and 120'),
-  ValidationRuleFactory.range('interestRate', 0, 20, 'Interest rate must be between 0% and 20%'),
-  ValidationRuleFactory.range('guaranteePeriod', 0, 40, 'Guarantee period must be between 0 and 40 years'),
-  ValidationRuleFactory.range('jointAge', 0, 120, 'Joint age must be between 0 and 120'),
+  // Add specific validation based on calculator type
+  const inputKeys = Object.keys(inputs) as Array<keyof ImmediateAnnuityPayoutCalculatorInputs>;
 
-  // Business logic validations
-  ValidationRuleFactory.businessRule(
-    'lifeExpectancy',
-    (lifeExpectancy, allInputs) => {
-      if (!allInputs?.age) return true;
-      return lifeExpectancy > allInputs.age;
-    },
-    'Life expectancy must be greater than current age'
-  ),
+  inputKeys.forEach(key => {
+    const value = inputs[key];
+    if (typeof value === 'number' && (isNaN(value) || !isFinite(value))) {
+      errors.push({ field: key, message: `${key} must be a valid number` });
+    }
+    if (typeof value === 'number' && value < 0) {
+      errors.push({ field: key, message: `${key} cannot be negative` });
+    }
+  });
 
-  ValidationRuleFactory.businessRule(
-    'jointAge',
-    (jointAge, allInputs) => {
-      if (!allInputs?.payoutType || allInputs.payoutType !== 'joint-life') return true;
-      return jointAge !== undefined && jointAge >= 0 && jointAge <= 120;
-    },
-    'Joint age is required for joint-life payout and must be between 0 and 120'
-  ),
+  return errors;
+}
 
-  ValidationRuleFactory.businessRule(
-    'jointGender',
-    (jointGender, allInputs) => {
-      if (!allInputs?.payoutType || allInputs.payoutType !== 'joint-life') return true;
-      return jointGender !== undefined;
-    },
-    'Joint gender is required for joint-life payout'
-  ),
+export function validateImmediateAnnuityPayoutCalculatorBusinessRules(inputs: ImmediateAnnuityPayoutCalculatorInputs): Array<{ field: string; message: string }> {
+  const warnings: Array<{ field: string; message: string }> = [];
 
-  ValidationRuleFactory.businessRule(
-    'guaranteePeriod',
-    (guaranteePeriod, allInputs) => {
-      if (!allInputs?.payoutType || allInputs.payoutType !== 'period-certain') return true;
-      return guaranteePeriod > 0;
-    },
-    'Guarantee period is required for period-certain payout'
-  )
-];
+  // Add business rule validations based on calculator type
+  // These are examples - customize based on specific calculator requirements
 
-/**
- * Get validation rules for Immediate Annuity calculator
- */
-export function getImmediateAnnuityValidationRules(): ValidationRule[] {
-  return immediateAnnuityValidationRules;
+  return warnings;
 }

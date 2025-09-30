@@ -1,242 +1,319 @@
 import { ValidationResult } from '../../../types/calculator';
 
-/**
- * Quick validation functions for retirement calculator
- * Each function validates a single field and includes the allInputs parameter
- */
-
+// Age Validators
 export function validateCurrentAge(value: any, allInputs?: Record<string, any>): ValidationResult {
-  const num = Number(value);
-  if (isNaN(num)) {
-    return { isValid: false, errors: { currentAge: 'Current age must be a valid number' } };
+  const errors: Record<string, string> = {};
+
+  if (value === undefined || value === null) {
+    errors.currentAge = 'Current age is required';
+  } else if (typeof value !== 'number' || isNaN(value)) {
+    errors.currentAge = 'Current age must be a valid number';
+  } else if (value < 18) {
+    errors.currentAge = 'Current age must be at least 18';
+  } else if (value > 80) {
+    errors.currentAge = 'Current age cannot exceed 80';
   }
-  if (num < 18) {
-    return { isValid: false, errors: { currentAge: 'Current age must be at least 18' } };
-  }
-  if (num > 100) {
-    return { isValid: false, errors: { currentAge: 'Current age cannot exceed 100' } };
-  }
-  return { isValid: true, errors: {} };
+
+  return { isValid: Object.keys(errors).length === 0, errors };
 }
 
 export function validateRetirementAge(value: any, allInputs?: Record<string, any>): ValidationResult {
-  const num = Number(value);
-  if (isNaN(num)) {
-    return { isValid: false, errors: { retirementAge: 'Retirement age must be a valid number' } };
+  const errors: Record<string, string> = {};
+
+  if (value === undefined || value === null) {
+    errors.retirementAge = 'Retirement age is required';
+  } else if (typeof value !== 'number' || isNaN(value)) {
+    errors.retirementAge = 'Retirement age must be a valid number';
+  } else if (value < 50) {
+    errors.retirementAge = 'Retirement age must be at least 50';
+  } else if (value > 80) {
+    errors.retirementAge = 'Retirement age cannot exceed 80';
+  } else if (allInputs?.currentAge && value <= allInputs.currentAge) {
+    errors.retirementAge = 'Retirement age must be greater than current age';
   }
-  if (num < 55) {
-    return { isValid: false, errors: { retirementAge: 'Retirement age must be at least 55' } };
-  }
-  if (num > 85) {
-    return { isValid: false, errors: { retirementAge: 'Retirement age cannot exceed 85' } };
-  }
-  
-  // Check if retirement age is after current age
-  if (allInputs?.currentAge && num <= Number(allInputs.currentAge)) {
-    return { isValid: false, errors: { retirementAge: 'Retirement age must be after current age' } };
-  }
-  
-  return { isValid: true, errors: {} };
+
+  return { isValid: Object.keys(errors).length === 0, errors };
 }
 
 export function validateLifeExpectancy(value: any, allInputs?: Record<string, any>): ValidationResult {
-  const num = Number(value);
-  if (isNaN(num)) {
-    return { isValid: false, errors: { lifeExpectancy: 'Life expectancy must be a valid number' } };
+  const errors: Record<string, string> = {};
+
+  if (value === undefined || value === null) {
+    errors.lifeExpectancy = 'Life expectancy is required';
+  } else if (typeof value !== 'number' || isNaN(value)) {
+    errors.lifeExpectancy = 'Life expectancy must be a valid number';
+  } else if (value < 70) {
+    errors.lifeExpectancy = 'Life expectancy must be at least 70';
+  } else if (value > 100) {
+    errors.lifeExpectancy = 'Life expectancy cannot exceed 100';
+  } else if (allInputs?.retirementAge && value <= allInputs.retirementAge) {
+    errors.lifeExpectancy = 'Life expectancy must be greater than retirement age';
   }
-  if (num < 70) {
-    return { isValid: false, errors: { lifeExpectancy: 'Life expectancy must be at least 70' } };
-  }
-  if (num > 120) {
-    return { isValid: false, errors: { lifeExpectancy: 'Life expectancy cannot exceed 120' } };
-  }
-  
-  // Check if life expectancy is after retirement age
-  if (allInputs?.retirementAge && num <= Number(allInputs.retirementAge)) {
-    return { isValid: false, errors: { lifeExpectancy: 'Life expectancy must be after retirement age' } };
-  }
-  
-  return { isValid: true, errors: {} };
+
+  return { isValid: Object.keys(errors).length === 0, errors };
 }
 
-export function validateCurrentIncome(value: any, allInputs?: Record<string, any>): ValidationResult {
-  const num = Number(value);
-  if (isNaN(num)) {
-    return { isValid: false, errors: { currentIncome: 'Current income must be a valid number' } };
+// Financial Validators
+export function validateCurrentSavings(value: any, allInputs?: Record<string, any>): ValidationResult {
+  const errors: Record<string, string> = {};
+
+  if (value === undefined || value === null) {
+    errors.currentSavings = 'Current savings is required';
+  } else if (typeof value !== 'number' || isNaN(value)) {
+    errors.currentSavings = 'Current savings must be a valid number';
+  } else if (value < 0) {
+    errors.currentSavings = 'Current savings cannot be negative';
   }
-  if (num <= 0) {
-    return { isValid: false, errors: { currentIncome: 'Current income must be greater than 0' } };
-  }
-  if (num > 10000000) {
-    return { isValid: false, errors: { currentIncome: 'Current income cannot exceed $10 million' } };
-  }
-  return { isValid: true, errors: {} };
+
+  return { isValid: Object.keys(errors).length === 0, errors };
 }
 
-export function validateExpectedReturn(value: any, allInputs?: Record<string, any>): ValidationResult {
-  const num = Number(value);
-  if (isNaN(num)) {
-    return { isValid: false, errors: { expectedReturn: 'Expected return must be a valid number' } };
+export function validateMonthlySavings(value: any, allInputs?: Record<string, any>): ValidationResult {
+  const errors: Record<string, string> = {};
+
+  if (value === undefined || value === null) {
+    errors.monthlySavings = 'Monthly savings is required';
+  } else if (typeof value !== 'number' || isNaN(value)) {
+    errors.monthlySavings = 'Monthly savings must be a valid number';
+  } else if (value < 0) {
+    errors.monthlySavings = 'Monthly savings cannot be negative';
   }
-  if (num < 0) {
-    return { isValid: false, errors: { expectedReturn: 'Expected return cannot be negative' } };
+
+  return { isValid: Object.keys(errors).length === 0, errors };
+}
+
+export function validateAnnualIncome(value: any, allInputs?: Record<string, any>): ValidationResult {
+  const errors: Record<string, string> = {};
+
+  if (value === undefined || value === null) {
+    errors.annualIncome = 'Annual income is required';
+  } else if (typeof value !== 'number' || isNaN(value)) {
+    errors.annualIncome = 'Annual income must be a valid number';
+  } else if (value <= 0) {
+    errors.annualIncome = 'Annual income must be positive';
   }
-  if (num > 20) {
-    return { isValid: false, errors: { expectedReturn: 'Expected return above 20% is unrealistic' } };
+
+  return { isValid: Object.keys(errors).length === 0, errors };
+}
+
+export function validateAnnualExpenses(value: any, allInputs?: Record<string, any>): ValidationResult {
+  const errors: Record<string, string> = {};
+
+  if (value === undefined || value === null) {
+    errors.annualExpenses = 'Annual expenses is required';
+  } else if (typeof value !== 'number' || isNaN(value)) {
+    errors.annualExpenses = 'Annual expenses must be a valid number';
+  } else if (value <= 0) {
+    errors.annualExpenses = 'Annual expenses must be positive';
   }
-  return { isValid: true, errors: {} };
+
+  return { isValid: Object.keys(errors).length === 0, errors };
+}
+
+// Rate Validators
+export function validateExpectedAnnualReturn(value: any, allInputs?: Record<string, any>): ValidationResult {
+  const errors: Record<string, string> = {};
+
+  if (value === undefined || value === null) {
+    errors.expectedAnnualReturn = 'Expected annual return is required';
+  } else if (typeof value !== 'number' || isNaN(value)) {
+    errors.expectedAnnualReturn = 'Expected annual return must be a valid number';
+  } else if (value < -10) {
+    errors.expectedAnnualReturn = 'Expected annual return cannot be less than -10%';
+  } else if (value > 50) {
+    errors.expectedAnnualReturn = 'Expected annual return cannot exceed 50%';
+  }
+
+  return { isValid: Object.keys(errors).length === 0, errors };
 }
 
 export function validateInflationRate(value: any, allInputs?: Record<string, any>): ValidationResult {
-  const num = Number(value);
-  if (isNaN(num)) {
-    return { isValid: false, errors: { inflationRate: 'Inflation rate must be a valid number' } };
+  const errors: Record<string, string> = {};
+
+  if (value === undefined || value === null) {
+    errors.inflationRate = 'Inflation rate is required';
+  } else if (typeof value !== 'number' || isNaN(value)) {
+    errors.inflationRate = 'Inflation rate must be a valid number';
+  } else if (value < -5) {
+    errors.inflationRate = 'Inflation rate cannot be less than -5%';
+  } else if (value > 20) {
+    errors.inflationRate = 'Inflation rate cannot exceed 20%';
   }
-  if (num < -10) {
-    return { isValid: false, errors: { inflationRate: 'Inflation rate cannot be below -10%' } };
-  }
-  if (num > 20) {
-    return { isValid: false, errors: { inflationRate: 'Inflation rate above 20% is unusual' } };
-  }
-  return { isValid: true, errors: {} };
+
+  return { isValid: Object.keys(errors).length === 0, errors };
 }
 
-export function validateDesiredRetirementIncome(value: any, allInputs?: Record<string, any>): ValidationResult {
-  const num = Number(value);
-  if (isNaN(num)) {
-    return { isValid: false, errors: { desiredRetirementIncome: 'Desired retirement income must be a valid number' } };
+// Risk Validators
+export function validateRiskTolerance(value: any, allInputs?: Record<string, any>): ValidationResult {
+  const errors: Record<string, string> = {};
+
+  if (value === undefined || value === null) {
+    errors.riskTolerance = 'Risk tolerance is required';
+  } else if (!['conservative', 'moderate', 'aggressive'].includes(value)) {
+    errors.riskTolerance = 'Risk tolerance must be conservative, moderate, or aggressive';
   }
-  if (num <= 0) {
-    return { isValid: false, errors: { desiredRetirementIncome: 'Desired retirement income must be greater than 0' } };
-  }
-  if (num > 1000000) {
-    return { isValid: false, errors: { desiredRetirementIncome: 'Desired retirement income cannot exceed $1 million' } };
-  }
-  return { isValid: true, errors: {} };
+
+  return { isValid: Object.keys(errors).length === 0, errors };
 }
 
-export function validateMonthly401kContribution(value: any, allInputs?: Record<string, any>): ValidationResult {
-  const num = Number(value);
-  if (isNaN(num)) {
-    return { isValid: false, errors: { monthly401kContribution: '401(k) contribution must be a valid number' } };
+export function validateMarketVolatility(value: any, allInputs?: Record<string, any>): ValidationResult {
+  const errors: Record<string, string> = {};
+
+  if (value === undefined || value === null) {
+    errors.marketVolatility = 'Market volatility is required';
+  } else if (typeof value !== 'number' || isNaN(value)) {
+    errors.marketVolatility = 'Market volatility must be a valid number';
+  } else if (value < 0) {
+    errors.marketVolatility = 'Market volatility cannot be negative';
+  } else if (value > 100) {
+    errors.marketVolatility = 'Market volatility cannot exceed 100%';
   }
-  if (num < 0) {
-    return { isValid: false, errors: { monthly401kContribution: '401(k) contribution cannot be negative' } };
-  }
-  if (num > 50000) {
-    return { isValid: false, errors: { monthly401kContribution: '401(k) contribution cannot exceed $50,000/month' } };
-  }
-  return { isValid: true, errors: {} };
+
+  return { isValid: Object.keys(errors).length === 0, errors };
 }
 
-export function validateMonthlyIRAContribution(value: any, allInputs?: Record<string, any>): ValidationResult {
-  const num = Number(value);
-  if (isNaN(num)) {
-    return { isValid: false, errors: { monthlyIRAContribution: 'IRA contribution must be a valid number' } };
+// Tax Validators
+export function validateCurrentTaxRate(value: any, allInputs?: Record<string, any>): ValidationResult {
+  const errors: Record<string, string> = {};
+
+  if (value === undefined || value === null) {
+    errors.currentTaxRate = 'Current tax rate is required';
+  } else if (typeof value !== 'number' || isNaN(value)) {
+    errors.currentTaxRate = 'Current tax rate must be a valid number';
+  } else if (value < 0) {
+    errors.currentTaxRate = 'Current tax rate cannot be negative';
+  } else if (value > 50) {
+    errors.currentTaxRate = 'Current tax rate cannot exceed 50%';
   }
-  if (num < 0) {
-    return { isValid: false, errors: { monthlyIRAContribution: 'IRA contribution cannot be negative' } };
-  }
-  if (num > 10000) {
-    return { isValid: false, errors: { monthlyIRAContribution: 'IRA contribution cannot exceed $10,000/month' } };
-  }
-  return { isValid: true, errors: {} };
+
+  return { isValid: Object.keys(errors).length === 0, errors };
 }
 
-export function validateCurrentSavings(value: any, allInputs?: Record<string, any>): ValidationResult {
-  const num = Number(value);
-  if (isNaN(num)) {
-    return { isValid: false, errors: { currentSavings: 'Current savings must be a valid number' } };
+export function validateRetirementTaxRate(value: any, allInputs?: Record<string, any>): ValidationResult {
+  const errors: Record<string, string> = {};
+
+  if (value === undefined || value === null) {
+    errors.retirementTaxRate = 'Retirement tax rate is required';
+  } else if (typeof value !== 'number' || isNaN(value)) {
+    errors.retirementTaxRate = 'Retirement tax rate must be a valid number';
+  } else if (value < 0) {
+    errors.retirementTaxRate = 'Retirement tax rate cannot be negative';
+  } else if (value > 50) {
+    errors.retirementTaxRate = 'Retirement tax rate cannot exceed 50%';
   }
-  if (num < 0) {
-    return { isValid: false, errors: { currentSavings: 'Current savings cannot be negative' } };
-  }
-  if (num > 10000000) {
-    return { isValid: false, errors: { currentSavings: 'Current savings cannot exceed $10 million' } };
-  }
-  return { isValid: true, errors: {} };
+
+  return { isValid: Object.keys(errors).length === 0, errors };
 }
 
-export function validateCurrent401k(value: any, allInputs?: Record<string, any>): ValidationResult {
-  const num = Number(value);
-  if (isNaN(num)) {
-    return { isValid: false, errors: { current401k: 'Current 401(k) balance must be a valid number' } };
+// Social Security Validators
+export function validateSocialSecurityBenefit(value: any, allInputs?: Record<string, any>): ValidationResult {
+  const errors: Record<string, string> = {};
+
+  if (value === undefined || value === null) {
+    // Optional field
+  } else if (typeof value !== 'number' || isNaN(value)) {
+    errors.socialSecurityBenefit = 'Social Security benefit must be a valid number';
+  } else if (value < 0) {
+    errors.socialSecurityBenefit = 'Social Security benefit cannot be negative';
+  } else if (value > 50000) {
+    errors.socialSecurityBenefit = 'Social Security benefit cannot exceed $50,000';
   }
-  if (num < 0) {
-    return { isValid: false, errors: { current401k: 'Current 401(k) balance cannot be negative' } };
-  }
-  if (num > 10000000) {
-    return { isValid: false, errors: { current401k: 'Current 401(k) balance cannot exceed $10 million' } };
-  }
-  return { isValid: true, errors: {} };
+
+  return { isValid: Object.keys(errors).length === 0, errors };
 }
 
-export function validateCurrentIRA(value: any, allInputs?: Record<string, any>): ValidationResult {
-  const num = Number(value);
-  if (isNaN(num)) {
-    return { isValid: false, errors: { currentIRA: 'Current IRA balance must be a valid number' } };
+export function validateSocialSecurityStartAge(value: any, allInputs?: Record<string, any>): ValidationResult {
+  const errors: Record<string, string> = {};
+
+  if (value === undefined || value === null) {
+    // Optional field
+  } else if (typeof value !== 'number' || isNaN(value)) {
+    errors.socialSecurityStartAge = 'Social Security start age must be a valid number';
+  } else if (value < 62) {
+    errors.socialSecurityStartAge = 'Social Security start age must be at least 62';
+  } else if (value > 70) {
+    errors.socialSecurityStartAge = 'Social Security start age cannot exceed 70';
   }
-  if (num < 0) {
-    return { isValid: false, errors: { currentIRA: 'Current IRA balance cannot be negative' } };
-  }
-  if (num > 10000000) {
-    return { isValid: false, errors: { currentIRA: 'Current IRA balance cannot exceed $10 million' } };
-  }
-  return { isValid: true, errors: {} };
+
+  return { isValid: Object.keys(errors).length === 0, errors };
 }
 
-export function validateOtherInvestments(value: any, allInputs?: Record<string, any>): ValidationResult {
-  const num = Number(value);
-  if (isNaN(num)) {
-    return { isValid: false, errors: { otherInvestments: 'Other investments must be a valid number' } };
+// Pension Validators
+export function validatePensionAmount(value: any, allInputs?: Record<string, any>): ValidationResult {
+  const errors: Record<string, string> = {};
+
+  if (value === undefined || value === null) {
+    // Optional field
+  } else if (typeof value !== 'number' || isNaN(value)) {
+    errors.pensionAmount = 'Pension amount must be a valid number';
+  } else if (value < 0) {
+    errors.pensionAmount = 'Pension amount cannot be negative';
   }
-  if (num < 0) {
-    return { isValid: false, errors: { otherInvestments: 'Other investments cannot be negative' } };
-  }
-  if (num > 10000000) {
-    return { isValid: false, errors: { otherInvestments: 'Other investments cannot exceed $10 million' } };
-  }
-  return { isValid: true, errors: {} };
+
+  return { isValid: Object.keys(errors).length === 0, errors };
 }
 
-export function validateSocialSecurityMonthly(value: any, allInputs?: Record<string, any>): ValidationResult {
-  const num = Number(value);
-  if (isNaN(num)) {
-    return { isValid: false, errors: { socialSecurityMonthly: 'Social Security benefit must be a valid number' } };
+// Healthcare Validators
+export function validateHealthcareCosts(value: any, allInputs?: Record<string, any>): ValidationResult {
+  const errors: Record<string, string> = {};
+
+  if (value === undefined || value === null) {
+    // Optional field
+  } else if (typeof value !== 'number' || isNaN(value)) {
+    errors.healthcareCosts = 'Healthcare costs must be a valid number';
+  } else if (value < 0) {
+    errors.healthcareCosts = 'Healthcare costs cannot be negative';
   }
-  if (num < 0) {
-    return { isValid: false, errors: { socialSecurityMonthly: 'Social Security benefit cannot be negative' } };
-  }
-  if (num > 50000) {
-    return { isValid: false, errors: { socialSecurityMonthly: 'Social Security benefit cannot exceed $50,000/month' } };
-  }
-  return { isValid: true, errors: {} };
+
+  return { isValid: Object.keys(errors).length === 0, errors };
 }
 
-export function validatePensionMonthly(value: any, allInputs?: Record<string, any>): ValidationResult {
-  const num = Number(value);
-  if (isNaN(num)) {
-    return { isValid: false, errors: { pensionMonthly: 'Pension benefit must be a valid number' } };
+export function validateMedicareStartAge(value: any, allInputs?: Record<string, any>): ValidationResult {
+  const errors: Record<string, string> = {};
+
+  if (value === undefined || value === null) {
+    // Optional field
+  } else if (typeof value !== 'number' || isNaN(value)) {
+    errors.medicareStartAge = 'Medicare start age must be a valid number';
+  } else if (value < 65) {
+    errors.medicareStartAge = 'Medicare start age must be at least 65';
+  } else if (value > 70) {
+    errors.medicareStartAge = 'Medicare start age cannot exceed 70';
   }
-  if (num < 0) {
-    return { isValid: false, errors: { pensionMonthly: 'Pension benefit cannot be negative' } };
-  }
-  if (num > 100000) {
-    return { isValid: false, errors: { pensionMonthly: 'Pension benefit cannot exceed $100,000/month' } };
-  }
-  return { isValid: true, errors: {} };
+
+  return { isValid: Object.keys(errors).length === 0, errors };
 }
 
-export function validateOtherIncomeMonthly(value: any, allInputs?: Record<string, any>): ValidationResult {
-  const num = Number(value);
-  if (isNaN(num)) {
-    return { isValid: false, errors: { otherIncomeMonthly: 'Other income must be a valid number' } };
+// Withdrawal Validators
+export function validateWithdrawalRate(value: any, allInputs?: Record<string, any>): ValidationResult {
+  const errors: Record<string, string> = {};
+
+  if (value === undefined || value === null) {
+    // Optional field
+  } else if (typeof value !== 'number' || isNaN(value)) {
+    errors.withdrawalRate = 'Withdrawal rate must be a valid number';
+  } else if (value < 2) {
+    errors.withdrawalRate = 'Withdrawal rate must be at least 2%';
+  } else if (value > 10) {
+    errors.withdrawalRate = 'Withdrawal rate cannot exceed 10%';
   }
-  if (num < 0) {
-    return { isValid: false, errors: { otherIncomeMonthly: 'Other income cannot be negative' } };
+
+  return { isValid: Object.keys(errors).length === 0, errors };
+}
+
+// Legacy Planning Validators
+export function validateLegacyAmount(value: any, allInputs?: Record<string, any>): ValidationResult {
+  const errors: Record<string, string> = {};
+
+  if (allInputs?.leaveLegacy) {
+    if (value === undefined || value === null) {
+      errors.legacyAmount = 'Legacy amount is required when leaving a legacy';
+    } else if (typeof value !== 'number' || isNaN(value)) {
+      errors.legacyAmount = 'Legacy amount must be a valid number';
+    } else if (value <= 0) {
+      errors.legacyAmount = 'Legacy amount must be positive';
+    }
   }
-  if (num > 100000) {
-    return { isValid: false, errors: { otherIncomeMonthly: 'Other income cannot exceed $100,000/month' } };
-  }
-  return { isValid: true, errors: {} };
+
+  return { isValid: Object.keys(errors).length === 0, errors };
 }

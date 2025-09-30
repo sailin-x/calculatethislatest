@@ -1,9 +1,8 @@
 import { calculatorRegistry } from '../../../data/calculatorRegistry';
-import { plannedGivingCalculator } from './PlannedGivingCalculator';
+import { PlannedGivingCalculator } from './PlannedGivingCalculator';
 
-/**
- * Register the Planned Giving Calculator
- */
 export function registerPlannedGivingCalculator(): void {
-  calculatorRegistry.register(plannedGivingCalculator);
+  calculatorRegistry.register(PlannedGivingCalculator);
 }
+
+export { PlannedGivingCalculator };

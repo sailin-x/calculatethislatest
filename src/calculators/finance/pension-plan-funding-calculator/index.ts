@@ -1,6 +1,5 @@
-export { pensionPlanFundingCalculator } from './PensionPlanFundingCalculator';
-export { registerPensionPlanFundingCalculator } from './register';
+export { PensionPlanFundingCalculator } from './PensionPlanFundingCalculator';
+export * from './types';
 export * from './formulas';
 export * from './validation';
 export * from './quickValidation';
-export * from './types';

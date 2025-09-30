@@ -1,9 +1,8 @@
 import { calculatorRegistry } from '../../../data/calculatorRegistry';
-import { inheritanceTaxEstimator } from './InheritanceTaxEstimator';
+import { InheritanceTaxEstimator } from './InheritanceTaxEstimator';
 
-/**
- * Register the Inheritance Tax Estimator
- */
 export function registerInheritanceTaxEstimator(): void {
-  calculatorRegistry.register(inheritanceTaxEstimator);
+  calculatorRegistry.register(InheritanceTaxEstimator);
 }
+
+export { InheritanceTaxEstimator };

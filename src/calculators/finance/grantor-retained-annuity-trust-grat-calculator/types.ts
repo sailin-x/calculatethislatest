@@ -1,32 +1,32 @@
-export interface GRATInputs {
+export interface GrantorRetainedAnnuityTrustGratCalculatorInputs {
   initialValue: number;
   annuityRate: number;
   termYears: number;
   growthRate: number;
   discountRate: number;
-  gstTaxRate: number;
-  estateTaxRate: number;
-  includeStateTax: boolean;
-  stateTaxRate: number;
-  inflationRate: number;
-  trustType: 'standard' | 'zeroed-out' | 'rollover';
+  isZeroedOut: boolean;
 }
 
-export interface GRATResults {
-  annuityPayment: number;
-  remainderValue: number;
-  gstTaxLiability: number;
-  estateTaxLiability: number;
-  totalTaxLiability: number;
-  netBenefit: number;
-  internalRateOfReturn: number;
-  breakEvenPoint: number;
-  optimalStrategy: string;
+export interface GrantorRetainedAnnuityTrustGratCalculatorMetrics {
+  annualAnnuityPayment: number;
+  totalAnnuityPayments: number;
+  remainingValue: number;
+  taxSavings: number;
+  effectiveTransfer: number;
 }
 
-export interface GRATMetrics {
-  efficiencyRatio: number;
-  taxSavingsPercentage: number;
-  riskAssessment: 'low' | 'medium' | 'high';
-  successProbability: number;
+export interface GrantorRetainedAnnuityTrustGratCalculatorAnalysis {
+  gratEfficiency: string;
+  riskAssessment: string;
+  planningConsiderations: string[];
+  alternativeStrategies: string[];
+}
+
+export interface GrantorRetainedAnnuityTrustGratCalculatorOutputs {
+  annualAnnuityPayment: number;
+  totalAnnuityPayments: number;
+  remainingValue: number;
+  taxSavings: number;
+  effectiveTransfer: number;
+  analysis: GrantorRetainedAnnuityTrustGratCalculatorAnalysis;
 }

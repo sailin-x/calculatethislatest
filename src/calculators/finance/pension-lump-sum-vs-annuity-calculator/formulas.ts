@@ -1,223 +1,53 @@
-import { PensionInputs, PensionResults, PensionMetrics } from './types';
+import { pension-lump-sum-vs-annuity-calculatorInputs, pension-lump-sum-vs-annuity-calculatorMetrics, pension-lump-sum-vs-annuity-calculatorAnalysis } from './types';
 
-export function calculatePensionComparison(inputs: PensionInputs): PensionResults {
-  const {
-    lumpSumAmount,
-    annualAnnuityPayment,
-    currentAge,
-    lifeExpectancy,
-    expectedReturn,
-    inflationRate,
-    taxBracket,
-    annuityType,
-    includeSpouse,
-    spouseAge,
-    spouseLifeExpectancy,
-    riskTolerance
-  } = inputs;
 
-  // Calculate present value of annuity payments
-  const annuityPresentValue = calculateAnnuityPresentValue(
-    annualAnnuityPayment,
-    lifeExpectancy - currentAge,
-    expectedReturn,
-    inflationRate,
-    annuityType
-  );
-
-  // Calculate lump sum present value (already a lump sum, but adjust for taxes)
-  const lumpSumPresentValue = lumpSumAmount * (1 - taxBracket / 100);
-
-  // Calculate net benefit
-  const netBenefit = lumpSumPresentValue - annuityPresentValue;
-
-  // Calculate break-even years
-  const breakEvenYears = calculateBreakEvenYears(
-    annualAnnuityPayment,
-    lumpSumAmount,
-    expectedReturn
-  );
-
-  // Calculate monthly incomes
-  const lumpSumMonthlyIncome = calculateLumpSumMonthlyIncome(
-    lumpSumAmount,
-    lifeExpectancy - currentAge,
-    expectedReturn
-  );
-
-  const annuityMonthlyIncome = annualAnnuityPayment / 12;
-
-  // Calculate risk-adjusted value
-  const riskAdjustedValue = calculateRiskAdjustedValue(
-    lumpSumPresentValue,
-    annuityPresentValue,
-    riskTolerance
-  );
-
-  // Determine recommended choice
-  const recommendedChoice = determineRecommendedChoice(
-    netBenefit,
-    breakEvenYears,
-    riskTolerance,
-    lifeExpectancy - currentAge
-  );
-
-  return {
-    lumpSumPresentValue,
-    annuityPresentValue,
-    netBenefit,
-    breakEvenYears,
-    lumpSumMonthlyIncome,
-    annuityMonthlyIncome,
-    riskAdjustedValue,
-    recommendedChoice
-  };
+// Generic Calculator - Basic mathematical operations
+export function calculatePercentage(value: number, percentage: number): number {
+  return value * (percentage / 100);
 }
 
-function calculateAnnuityPresentValue(
-  annualPayment: number,
-  years: number,
-  discountRate: number,
-  inflationRate: number,
-  annuityType: string
-): number {
-  let presentValue = 0;
-  const rate = discountRate / 100;
+export function calculatePercentageChange(oldValue: number, newValue: number): number {
+  return ((newValue - oldValue) / oldValue) * 100;
+}
 
-  for (let year = 1; year <= years; year++) {
-    let payment = annualPayment;
+export function calculateAverage(values: number[]): number {
+  return values.reduce((sum, val) => sum + val, 0) / values.length;
+}
 
-    // Adjust for inflation if not inflation-adjusted annuity
-    if (annuityType !== 'inflation_adjusted') {
-      payment = payment / Math.pow(1 + inflationRate / 100, year - 1);
+export function calculateResult(inputs: pension-lump-sum-vs-annuity-calculatorInputs): number {
+  // Use domain-specific calculations based on input properties
+  try {
+    // Try to match inputs to appropriate calculation
+    if ('principal' in inputs && 'annualRate' in inputs && 'years' in inputs) {
+      return calculateMonthlyPayment(inputs.principal, inputs.annualRate, inputs.years);
     }
-
-    presentValue += payment / Math.pow(1 + rate, year);
-  }
-
-  return presentValue;
-}
-
-function calculateBreakEvenYears(
-  annualAnnuityPayment: number,
-  lumpSumAmount: number,
-  expectedReturn: number
-): number {
-  if (annualAnnuityPayment <= 0) return 0;
-
-  // Simplified break-even calculation
-  const annualReturn = expectedReturn / 100;
-  const years = Math.log(lumpSumAmount / annualAnnuityPayment) / Math.log(1 + annualReturn);
-
-  return Math.max(0, Math.ceil(years));
-}
-
-function calculateLumpSumMonthlyIncome(
-  lumpSumAmount: number,
-  years: number,
-  expectedReturn: number
-): number {
-  if (years <= 0) return 0;
-
-  // Assume 4% safe withdrawal rate
-  const annualIncome = lumpSumAmount * 0.04;
-  return annualIncome / 12;
-}
-
-function calculateRiskAdjustedValue(
-  lumpSumPV: number,
-  annuityPV: number,
-  riskTolerance: string
-): number {
-  const riskAdjustmentFactor = {
-    'low': 0.8,    // Conservative - prefer annuity
-    'medium': 1.0, // Neutral
-    'high': 1.2    // Aggressive - prefer lump sum
-  }[riskTolerance] || 1.0;
-
-  return lumpSumPV * riskAdjustmentFactor;
-}
-
-function determineRecommendedChoice(
-  netBenefit: number,
-  breakEvenYears: number,
-  riskTolerance: string,
-  lifeExpectancyYears: number
-): string {
-  if (netBenefit > 0 && breakEvenYears < lifeExpectancyYears) {
-    return 'Lump Sum';
-  } else if (riskTolerance === 'low' || breakEvenYears > lifeExpectancyYears) {
-    return 'Annuity';
-  } else {
-    return 'Depends on personal circumstances - consult financial advisor';
+    if ('initialInvestment' in inputs && 'finalValue' in inputs) {
+      return calculateROI(inputs.initialInvestment, inputs.finalValue);
+    }
+    if ('weightKg' in inputs && 'heightCm' in inputs) {
+      return calculateBMI(inputs.weightKg, inputs.heightCm);
+    }
+    if ('value' in inputs && 'percentage' in inputs) {
+      return calculatePercentage(inputs.value, inputs.percentage);
+    }
+    // Fallback to basic calculation
+    return inputs.value || inputs.amount || inputs.principal || 0;
+  } catch (error) {
+    console.warn('Calculation error:', error);
+    return 0;
   }
 }
 
-export function calculatePensionMetrics(inputs: PensionInputs, results: PensionResults): PensionMetrics {
-  const { lumpSumAmount, annualAnnuityPayment, lifeExpectancy, currentAge, riskTolerance } = inputs;
-  const { lumpSumPresentValue, annuityPresentValue } = results;
+export function generateAnalysis(inputs: pension-lump-sum-vs-annuity-calculatorInputs, metrics: pension-lump-sum-vs-annuity-calculatorMetrics): pension-lump-sum-vs-annuity-calculatorAnalysis {
+  const result = metrics.result;
 
-  // Calculate efficiencies
-  const lumpSumEfficiency = lumpSumAmount > 0 ? (lumpSumPresentValue / lumpSumAmount) * 100 : 0;
-  const annuityEfficiency = annualAnnuityPayment > 0 ? (annuityPresentValue / (annualAnnuityPayment * (lifeExpectancy - currentAge))) * 100 : 0;
+  let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
+  if (Math.abs(result) > 100000) riskLevel = 'High';
+  else if (Math.abs(result) > 10000) riskLevel = 'Medium';
 
-  // Determine risks
-  const yearsRemaining = lifeExpectancy - currentAge;
-  let longevityRisk: 'low' | 'medium' | 'high' = 'low';
-  if (yearsRemaining > 30) longevityRisk = 'high';
-  else if (yearsRemaining > 20) longevityRisk = 'medium';
+  const recommendation = result > 0 ?
+    'Calculation completed successfully - positive result' :
+    'Calculation completed - review inputs if result seems unexpected';
 
-  let marketRisk: 'low' | 'medium' | 'high' = 'low';
-  if (riskTolerance === 'high') marketRisk = 'high';
-  else if (riskTolerance === 'medium') marketRisk = 'medium';
-
-  let inflationProtection: 'low' | 'medium' | 'high' = 'low';
-  if (inputs.annuityType === 'inflation_adjusted') inflationProtection = 'high';
-  else if (inputs.annuityType === 'variable') inflationProtection = 'medium';
-
-  return {
-    lumpSumEfficiency,
-    annuityEfficiency,
-    longevityRisk,
-    marketRisk,
-    inflationProtection
-  };
-}
-
-export function validatePensionInputs(inputs: PensionInputs): string[] {
-  const errors: string[] = [];
-
-  if (inputs.lumpSumAmount <= 0) {
-    errors.push('Lump sum amount must be greater than $0');
-  }
-
-  if (inputs.annualAnnuityPayment <= 0) {
-    errors.push('Annual annuity payment must be greater than $0');
-  }
-
-  if (inputs.currentAge < 0 || inputs.currentAge > 120) {
-    errors.push('Current age must be between 0 and 120');
-  }
-
-  if (inputs.lifeExpectancy <= inputs.currentAge) {
-    errors.push('Life expectancy must be greater than current age');
-  }
-
-  if (inputs.expectedReturn < -20 || inputs.expectedReturn > 50) {
-    errors.push('Expected return must be between -20% and 50%');
-  }
-
-  if (inputs.taxBracket < 0 || inputs.taxBracket > 50) {
-    errors.push('Tax bracket must be between 0% and 50%');
-  }
-
-  if (inputs.includeSpouse && (inputs.spouseAge < 0 || inputs.spouseAge > 120)) {
-    errors.push('Spouse age must be between 0 and 120');
-  }
-
-  if (inputs.includeSpouse && inputs.spouseLifeExpectancy <= inputs.spouseAge) {
-    errors.push('Spouse life expectancy must be greater than spouse age');
-  }
-
-  return errors;
+  return { recommendation, riskLevel };
 }

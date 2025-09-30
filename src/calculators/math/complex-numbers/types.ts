@@ -1,61 +1,45 @@
-export interface ComplexNumberInputs {
-  realPart: number;
-  imaginaryPart: number;
-  operation: 'add' | 'subtract' | 'multiply' | 'divide' | 'power' | 'root' | 'conjugate' | 'absolute' | 'argument' | 'exponential' | 'logarithm' | 'trigonometric';
-  secondRealPart?: number;
-  secondImaginaryPart?: number;
-  power?: number;
-  rootIndex?: number;
-  angleUnit: 'radians' | 'degrees';
+export interface ComplexNumbersCalculatorInputs {
+  operation: 'add' | 'subtract' | 'multiply' | 'divide' | 'power' | 'root' | 'conjugate' | 'magnitude' | 'argument' | 'polar' | 'rectangular';
+  complexNumber1: {
+    real: number;
+    imaginary: number;
+  };
+  complexNumber2: {
+    real: number;
+    imaginary: number;
+  };
+  exponent: number;
+  rootOrder: number;
   precision: number;
-  trigonometricFunction?: 'sin' | 'cos' | 'tan' | 'asin' | 'acos' | 'atan';
 }
 
-export interface ComplexNumberMetrics {
+export interface ComplexNumbersCalculatorMetrics {
   result: {
-    realPart: number;
-    imaginaryPart: number;
-    magnitude: number;
-    argument: number;
-    conjugate: {
-      realPart: number;
-      imaginaryPart: number;
-    };
+    real: number;
+    imaginary: number;
   };
-  polarForm: {
-    magnitude: number;
-    argument: number;
-  };
-  exponentialForm: {
-    magnitude: number;
-    argument: number;
-  };
-  operation: string;
-  precision: number;
-  angleUnit: string;
-}
-
-export interface ComplexNumberAnalysis {
-  isReal: boolean;
-  isImaginary: boolean;
-  isZero: boolean;
-  isUnit: boolean;
-  quadrant: number;
-  recommendation: string;
-  keyFeatures: string[];
-  limitations: string[];
-  mathematicalProperties: {
-    isAlgebraic: boolean;
-    isTranscendental: boolean;
-    isRational: boolean;
-    isIrrational: boolean;
-  };
-  visualization: {
-    cartesianCoordinates: [number, number];
-    polarCoordinates: [number, number];
+  magnitude: number;
+  argument: number;
+  polarForm: string;
+  rectangularForm: string;
+  conjugate: {
+    real: number;
+    imaginary: number;
   };
 }
 
-export interface ComplexNumberOutputs extends ComplexNumberMetrics {
-  analysis: ComplexNumberAnalysis;
+export interface ComplexNumbersCalculatorAnalysis {
+  operationType: string;
+  resultType: string;
+  properties: string[];
+  applications: string[];
+}
+
+export interface ComplexNumbersCalculatorOutputs {
+  result: {
+    real: number;
+    imaginary: number;
+  };
+  magnitude: number;
+  analysis: ComplexNumbersCalculatorAnalysis;
 }

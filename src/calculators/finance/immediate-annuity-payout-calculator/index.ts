@@ -1,6 +1,5 @@
-export { immediateAnnuityPayoutCalculator } from './ImmediateAnnuityPayoutCalculator';
-export { registerImmediateAnnuityPayoutCalculator } from './register';
+export { ImmediateAnnuityPayoutCalculator } from './ImmediateAnnuityPayoutCalculator';
+export * from './types';
 export * from './formulas';
 export * from './validation';
 export * from './quickValidation';
-export * from './types';

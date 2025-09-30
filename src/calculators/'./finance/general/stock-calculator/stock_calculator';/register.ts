@@ -1,0 +1,6 @@
+import { calculatorRegistry } from '../../data/calculatorRegistry';
+import { './finance/general/stock-calculator/stock_calculator';Calculator } from './'./finance/general/stock-calculator/stock_calculator';Calculator';
+
+export function register'./finance/general/stock-calculator/stock_calculator';Calculator(): void {
+  calculatorRegistry.register(new './finance/general/stock-calculator/stock_calculator';Calculator());
+}

@@ -1,9 +1,8 @@
 import { calculatorRegistry } from '../../../data/calculatorRegistry';
-import { immediateAnnuityPayoutCalculator } from './ImmediateAnnuityPayoutCalculator';
+import { ImmediateAnnuityPayoutCalculator } from './ImmediateAnnuityPayoutCalculator';
 
-/**
- * Register the Immediate Annuity Payout Calculator
- */
 export function registerImmediateAnnuityPayoutCalculator(): void {
-  calculatorRegistry.register(immediateAnnuityPayoutCalculator);
+  calculatorRegistry.register(ImmediateAnnuityPayoutCalculator);
 }
+
+export { ImmediateAnnuityPayoutCalculator };

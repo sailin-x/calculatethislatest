@@ -1,37 +1,27 @@
-export interface RothVsTraditionalInputs {
-  currentAge: number;
-  retirementAge: number;
-  currentIncome: number;
-  expectedIncomeGrowth: number;
-  currentTaxBracket: number;
-  retirementTaxBracket: number;
-  expectedReturn: number;
-  annualContribution: number;
-  employerMatch: number;
-  employerMatchLimit: number;
-  timeHorizon: number;
-  inflationRate: number;
-  rothConversionAmount: number;
-  fiveYearRule: boolean;
+export interface Roth401kVsTraditional401kCalculatorInputs {
+  principalAmount: number;
+  interestRate: number;
+  timePeriod: number;
+  compoundingFrequency: number;
 }
 
-export interface RothVsTraditionalResults {
-  traditional401kValue: number;
-  roth401kValue: number;
-  traditionalTaxSavings: number;
-  rothTaxSavings: number;
-  traditionalNetValue: number;
-  rothNetValue: number;
-  breakevenTaxRate: number;
-  recommendedStrategy: string;
-  taxEfficiency: number;
-  riskAdjustedReturn: number;
+export interface Roth401kVsTraditional401kCalculatorMetrics {
+  totalAmount: number;
+  totalInterest: number;
+  monthlyPayment: number;
+  effectiveRate: number;
 }
 
-export interface RothVsTraditionalMetrics {
-  contributionEfficiency: number;
-  taxAdvantage: 'roth' | 'traditional' | 'neutral';
-  retirementIncome: number;
-  legacyValue: number;
-  riskLevel: 'low' | 'medium' | 'high';
+export interface Roth401kVsTraditional401kCalculatorAnalysis {
+  profitability: string;
+  riskLevel: string;
+  recommendations: string[];
+}
+
+export interface Roth401kVsTraditional401kCalculatorOutputs {
+  totalAmount: number;
+  totalInterest: number;
+  monthlyPayment: number;
+  effectiveRate: number;
+  analysis: Roth401kVsTraditional401kCalculatorAnalysis;
 }

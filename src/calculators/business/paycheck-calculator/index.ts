@@ -1,5 +1,5 @@
-export { paycheckCalculator } from './PaycheckCalculator';
-export { calculatePaycheck } from './formulas';
-export { getPaycheckValidationRules } from './validation';
+export { PaycheckCalculator } from './PaycheckCalculator';
+export * from './types';
+export * from './formulas';
+export * from './validation';
 export * from './quickValidation';
-export { registerPaycheckCalculator, unregisterPaycheckCalculator } from './register';

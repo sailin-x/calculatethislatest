@@ -1,85 +1,53 @@
-import { Calculator, CalculatorInput, CalculatorOutput, CalculatorExample } from '../../../types/calculator';
-import { calculatePaycheck } from './formulas';
-import { getPaycheckValidationRules } from './validation';
+import { Calculator } from '../../../types/calculator';
+import { PaycheckCalculatorInputs, PaycheckCalculatorOutputs } from './types';
+import {
+  calculateFederalIncomeTax,
+  calculateStateIncomeTax,
+  calculateSocialSecurityTax,
+  calculateMedicareTax,
+  calculateTotalDeductions,
+  calculateNetPay,
+  calculateTakeHomePercentage,
+  generatePaycheckAnalysis
+} from './formulas';
+import { validatePaycheckCalculatorInputs, validatePaycheckCalculatorBusinessRules } from './validation';
 
-/**
- * Paycheck Calculator
- * Industry-standard payroll calculations for hourly and salaried employees
- */
-export const paycheckCalculator: Calculator = {
+export const PaycheckCalculator: Calculator = {
   id: 'paycheck-calculator',
   title: 'Paycheck Calculator',
   category: 'business',
-  subcategory: 'payroll',
-  description: 'Calculate your take-home pay including federal, state, and local taxes, Social Security, Medicare, and other deductions.',
+  subcategory: 'HR & Payroll',
+  description: 'Calculate take-home pay, tax deductions, and net paycheck amounts with support for federal and state taxes, pre-tax deductions, and various pay frequencies.',
   usageInstructions: [
-    'Select your pay type (hourly or salary)',
-    'Enter your pay rate and hours worked (for hourly)',
-    'Enter your annual salary and pay period (for salary)',
-    'Provide your filing status and number of dependents',
-    'Enter any additional withholding or state tax information',
-    'Review your calculated take-home pay and tax breakdown'
+    'Enter gross pay amount and pay frequency',
+    'Select filing status and number of dependents',
+    'Choose state for accurate state tax calculations',
+    'Include pre-tax deductions (401k, health insurance)',
+    'Review tax breakdown and net take-home pay'
   ],
+
   inputs: [
     {
-      id: 'payType',
-      label: 'Pay Type',
-      type: 'select',
+      id: 'grossPay',
+      label: 'Gross Pay ($)',
+      type: 'currency',
       required: true,
-      options: [
-        { value: 'hourly', label: 'Hourly' },
-        { value: 'salary', label: 'Salary' }
-      ],
-      tooltip: 'Select whether you are paid hourly or receive a fixed salary'
-    },
-    {
-      id: 'hourlyRate',
-      label: 'Hourly Rate ($)',
-      type: 'currency',
-      required: false,
-      min: 7.25,
-      max: 500,
-      tooltip: 'Your hourly wage (must be at least federal minimum wage of $7.25)'
-    },
-    {
-      id: 'hoursWorked',
-      label: 'Hours Worked',
-      type: 'number',
-      required: false,
       min: 0,
-      max: 168,
-      tooltip: 'Total hours worked in this pay period (maximum 168 hours/week)'
+      tooltip: 'Total gross pay before deductions'
     },
     {
-      id: 'overtimeHours',
-      label: 'Overtime Hours',
-      type: 'number',
-      required: false,
-      min: 0,
-      max: 40,
-      tooltip: 'Overtime hours worked (requires working at least 40 hours total)'
-    },
-    {
-      id: 'annualSalary',
-      label: 'Annual Salary ($)',
-      type: 'currency',
-      required: false,
-      min: 16000,
-      max: 10000000,
-      tooltip: 'Your annual salary before taxes and deductions'
-    },
-    {
-      id: 'payPeriod',
-      label: 'Pay Period',
+      id: 'payFrequency',
+      label: 'Pay Frequency',
       type: 'select',
       required: true,
       options: [
         { value: 'weekly', label: 'Weekly' },
-        { value: 'biweekly', label: 'Biweekly (every 2 weeks)' },
-        { value: 'semimonthly', label: 'Semimonthly (twice per month)' },
-        { value: 'monthly', label: 'Monthly' }
+        { value: 'biweekly', label: 'Biweekly' },
+        { value: 'semimonthly', label: 'Semimonthly' },
+        { value: 'monthly', label: 'Monthly' },
+        { value: 'annually', label: 'Annually' }
       ],
-      tooltip: 'How often you receive your paycheck'
+      tooltip: 'How often you get paid'
     },
     {
       id: 'filingStatus',
@@ -88,10 +56,11 @@ export const paycheckCalculator: Calculator = {
       required: true,
       options: [
         { value: 'single', label: 'Single' },
-        { value: 'married', label: 'Married Filing Jointly' },
-        { value: 'headOfHousehold', label: 'Head of Household' }
+        { value: 'married_filing_jointly', label: 'Married Filing Jointly' },
+        { value: 'married_filing_separately', label: 'Married Filing Separately' },
+        { value: 'head_of_household', label: 'Head of Household' }
       ],
-      tooltip: 'Your federal income tax filing status'
+      tooltip: 'Federal tax filing status'
     },
     {
       id: 'dependents',
@@ -100,167 +69,100 @@ export const paycheckCalculator: Calculator = {
       required: false,
       min: 0,
       max: 10,
-      defaultValue: 0,
-      tooltip: 'Number of dependents claimed on your tax return'
+      tooltip: 'Number of dependents claimed on taxes'
     },
     {
-      id: 'additionalWithholding',
-      label: 'Additional Federal Withholding ($)',
+      id: 'state',
+      label: 'State',
+      type: 'select',
+      required: false,
+      options: [
+        { value: 'CA', label: 'California' },
+        { value: 'TX', label: 'Texas' },
+        { value: 'FL', label: 'Florida' },
+        { value: 'NY', label: 'New York' },
+        { value: 'IL', label: 'Illinois' }
+      ],
+      tooltip: 'State for state income tax calculation'
+    },
+    {
+      id: 'preTaxDeductions',
+      label: 'Pre-Tax Deductions ($)',
       type: 'currency',
       required: false,
       min: 0,
-      max: 10000,
-      defaultValue: 0,
-      tooltip: 'Extra amount to withhold from federal taxes'
+      tooltip: '401k, HSA, and other pre-tax deductions'
     },
     {
-      id: 'additionalMedicareTax',
-      label: 'Additional Medicare Tax ($)',
+      id: 'retirementContributions',
+      label: 'Retirement Contributions ($)',
       type: 'currency',
       required: false,
       min: 0,
-      max: 10000,
-      defaultValue: 0,
-      tooltip: 'Additional Medicare tax for high earners (over $200,000)'
+      tooltip: '401k, IRA, and retirement plan contributions'
     },
     {
-      id: 'stateTaxRate',
-      label: 'State Tax Rate (%)',
-      type: 'percentage',
-      required: false,
-      min: 0,
-      max: 20,
-      defaultValue: 0,
-      tooltip: 'Your state income tax rate (varies by state)'
-    },
-    {
-      id: 'otherDeductions',
-      label: 'Other Deductions ($)',
+      id: 'healthInsurance',
+      label: 'Health Insurance ($)',
       type: 'currency',
       required: false,
       min: 0,
-      max: 10000,
-      defaultValue: 0,
-      tooltip: 'Health insurance, retirement contributions, etc.'
+      tooltip: 'Monthly health insurance premium'
+    },
+    {
+      id: 'additionalDeductions',
+      label: 'Additional Deductions ($)',
+      type: 'currency',
+      required: false,
+      min: 0,
+      tooltip: 'Other deductions (union dues, parking, etc.)'
     }
   ],
+
   outputs: [
     {
-      id: 'grossPay',
-      label: 'Gross Pay',
+      id: 'netPay',
+      label: 'Net Pay',
       type: 'currency',
-      format: 'currency',
-      explanation: 'Your total earnings before taxes and deductions'
-    },
-    {
-      id: 'federalTax',
-      label: 'Federal Income Tax',
-      type: 'currency',
-      format: 'currency',
-      explanation: 'Federal income tax withheld based on 2024 tax brackets'
-    },
-    {
-      id: 'socialSecurityTax',
-      label: 'Social Security Tax',
-      type: 'currency',
-      format: 'currency',
-      explanation: 'Social Security tax (6.2% of gross pay, up to $168,600 limit)'
-    },
-    {
-      id: 'medicareTax',
-      label: 'Medicare Tax',
-      type: 'currency',
-      format: 'currency',
-      explanation: 'Medicare tax (1.45% of gross pay, plus additional tax for high earners)'
-    },
-    {
-      id: 'stateTax',
-      label: 'State Income Tax',
-      type: 'currency',
-      format: 'currency',
-      explanation: 'State income tax based on your specified rate'
+      explanation: 'Take-home pay after all deductions'
     },
     {
       id: 'totalDeductions',
       label: 'Total Deductions',
       type: 'currency',
-      format: 'currency',
-      explanation: 'Sum of all taxes and deductions'
+      explanation: 'Sum of all tax and non-tax deductions'
     },
     {
-      id: 'netPay',
-      label: 'Net Pay (Take-Home)',
-      type: 'currency',
-      format: 'currency',
-      explanation: 'Your actual take-home pay after all deductions'
+      id: 'takeHomePercentage',
+      label: 'Take-Home Percentage',
+      type: 'percentage',
+      explanation: 'Percentage of gross pay that is take-home'
     }
   ],
-  formulas: [
-    {
-      id: 'gross-pay-calculation',
-      name: 'Gross Pay Calculation',
-      description: 'Calculate gross pay based on hourly rate and hours worked, or annual salary and pay period',
-      calculate: (inputs) => {
-        const result = calculatePaycheck(inputs);
-        return {
-          outputs: {
-            grossPay: result.grossPay,
-            federalTax: result.federalTax,
-            socialSecurityTax: result.socialSecurityTax,
-            medicareTax: result.medicareTax,
-            stateTax: result.stateTax,
-            totalDeductions: result.totalDeductions,
-            netPay: result.netPay
-          },
-          explanation: `Calculated paycheck for ${inputs.payPeriod} pay period`
-        };
-      }
-    }
-  ],
-  validationRules: getPaycheckValidationRules(),
+
+  formulas: [], // Will be implemented with the calculation engine
+
+  validationRules: [], // Will be implemented with validation rules
+
   examples: [
     {
-      title: 'Hourly Employee Example',
-      description: 'Calculate paycheck for an hourly employee working 45 hours with overtime',
+      title: 'Software Engineer - Monthly Pay',
+      description: 'Monthly paycheck calculation for a software engineer',
       inputs: {
-        payType: 'hourly',
-        hourlyRate: 25,
-        hoursWorked: 45,
-        overtimeHours: 5,
-        payPeriod: 'biweekly',
+        grossPay: 8000,
+        payFrequency: 'monthly',
         filingStatus: 'single',
-        dependents: 1,
-        stateTaxRate: 5.0
+        dependents: 0,
+        state: 'CA',
+        preTaxDeductions: 800,
+        retirementContributions: 400,
+        healthInsurance: 200,
+        additionalDeductions: 50
       },
       expectedOutputs: {
-        grossPay: 1187.50,
-        federalTax: 89.25,
-        socialSecurityTax: 73.73,
-        medicareTax: 17.24,
-        stateTax: 59.38,
-        totalDeductions: 239.60,
-        netPay: 947.90
-      }
-    },
-    {
-      title: 'Salaried Employee Example',
-      description: 'Calculate paycheck for a salaried employee earning $75,000 annually',
-      inputs: {
-        payType: 'salary',
-        annualSalary: 75000,
-        payPeriod: 'biweekly',
-        filingStatus: 'married',
-        dependents: 2,
-        stateTaxRate: 6.5
-      },
-      expectedOutputs: {
-        grossPay: 2884.62,
-        federalTax: 256.78,
-        socialSecurityTax: 178.83,
-        medicareTax: 41.83,
-        stateTax: 187.50,
-        totalDeductions: 664.94,
-        netPay: 2219.68
+        netPay: 5200,
+        totalDeductions: 2800,
+        takeHomePercentage: 65
       }
     }
   ]

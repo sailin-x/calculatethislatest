@@ -1,84 +1,126 @@
-import { ValidationRule } from '../../../types/calculator';
-import { ValidationRuleFactory } from '../../../utils/validation';
+import { IRAInputs } from './types';
 
 /**
- * IRA validation rules
+ * Validate IRA inputs
  */
-export const iraValidationRules: ValidationRule[] = [
-  // Required fields
-  ValidationRuleFactory.required('currentBalance', 'Current balance is required'),
-  ValidationRuleFactory.required('annualContribution', 'Annual contribution is required'),
-  ValidationRuleFactory.required('expectedReturn', 'Expected return is required'),
-  ValidationRuleFactory.required('yearsToRetirement', 'Years to retirement is required'),
-  ValidationRuleFactory.required('currentAge', 'Current age is required'),
-  ValidationRuleFactory.required('iraType', 'IRA type is required'),
-  ValidationRuleFactory.required('taxBracket', 'Tax bracket is required'),
+export function validateIRAInputs(inputs: IRAInputs): { isValid: boolean; errors: string[] } {
+  const errors: string[] = [];
 
-  // Value validations
-  ValidationRuleFactory.range('currentBalance', 0, 10000000, 'Current balance must be between $0 and $10,000,000'),
-  ValidationRuleFactory.range('annualContribution', 0, 23000, 'Annual contribution must be between $0 and $23,000'),
-  ValidationRuleFactory.range('expectedReturn', -20, 50, 'Expected return must be between -20% and 50%'),
-  ValidationRuleFactory.range('yearsToRetirement', 0, 100, 'Years to retirement must be between 0 and 100'),
-  ValidationRuleFactory.range('currentAge', 0, 120, 'Current age must be between 0 and 120'),
-  ValidationRuleFactory.range('taxBracket', 0, 50, 'Tax bracket must be between 0% and 50%'),
-  ValidationRuleFactory.range('inflationRate', -10, 20, 'Inflation rate must be between -10% and 20%'),
+  // Basic validation
+  if (inputs.currentBalance < 0) {
+    errors.push('Current balance cannot be negative');
+  }
 
-  // Business logic validations
-  ValidationRuleFactory.businessRule(
-    'annualContribution',
-    (annualContribution, allInputs) => {
-      if (!allInputs?.iraType || !allInputs?.currentAge || !allInputs?.catchUpContributions) return true;
+  if (inputs.annualContribution < 0) {
+    errors.push('Annual contribution cannot be negative');
+  }
 
-      const limits = {
-        traditional: 7000,
-        roth: 7000,
-        sep: 69000,
-        simple: 16000
-      };
+  if (inputs.expectedReturnRate < -10 || inputs.expectedReturnRate > 25) {
+    errors.push('Expected return rate must be between -10% and 25%');
+  }
 
-      let limit = limits[allInputs.iraType as keyof typeof limits] || 7000;
+  // Age validation
+  if (inputs.currentAge < 18 || inputs.currentAge > 70) {
+    errors.push('Current age must be between 18 and 70');
+  }
 
-      if (allInputs.catchUpContributions && allInputs.currentAge >= 50) {
-        limit += 1000;
-      }
+  if (inputs.retirementAge <= inputs.currentAge || inputs.retirementAge > 100) {
+    errors.push('Retirement age must be greater than current age and less than 100');
+  }
 
-      if (allInputs.spousalIRA) {
-        limit *= 2;
-      }
+  // Contribution years validation
+  if (inputs.yearsToContribute < 0 || inputs.yearsToContribute > 50) {
+    errors.push('Years to contribute must be between 0 and 50');
+  }
 
-      return annualContribution <= limit;
-    },
-    'Contribution exceeds IRS annual limit for selected IRA type and age'
-  ),
+  // Tax rate validation
+  if (inputs.currentTaxRate !== undefined && (inputs.currentTaxRate < 0 || inputs.currentTaxRate > 50)) {
+    errors.push('Current tax rate must be between 0% and 50%');
+  }
 
-  ValidationRuleFactory.businessRule(
-    'currentAge',
-    (currentAge, allInputs) => {
-      if (!allInputs?.yearsToRetirement) return true;
-      return currentAge + allInputs.yearsToRetirement <= 120;
-    },
-    'Age at retirement cannot exceed 120 years'
-  ),
+  if (inputs.expectedRetirementTaxRate !== undefined && (inputs.expectedRetirementTaxRate < 0 || inputs.expectedRetirementTaxRate > 50)) {
+    errors.push('Expected retirement tax rate must be between 0% and 50%');
+  }
 
-  ValidationRuleFactory.businessRule(
-    'iraType',
-    (iraType, allInputs) => {
-      if (!allInputs?.currentAge) return true;
+  // Roth IRA specific validation
+  if (inputs.iraType === 'roth') {
+    if (inputs.currentIncome !== undefined && inputs.currentIncome < 0) {
+      errors.push('Current income cannot be negative');
+    }
 
-      // SEP and SIMPLE IRAs have age restrictions
-      if (iraType === 'sep' && allInputs.currentAge < 21) {
-        return false;
-      }
+    if (inputs.contributionLimit !== undefined && inputs.contributionLimit < 0) {
+      errors.push('Contribution limit cannot be negative');
+    }
+  }
 
-      return true;
-    },
-    'SEP IRAs require minimum age of 21'
-  )
-];
+  // Inflation rate validation
+  if (inputs.inflationRate !== undefined && (inputs.inflationRate < 0 || inputs.inflationRate > 10)) {
+    errors.push('Inflation rate must be between 0% and 10%');
+  }
+
+  // Business logic validation
+  const yearsToRetirement = inputs.retirementAge - inputs.currentAge;
+  if (inputs.yearsToContribute > yearsToRetirement) {
+    errors.push('Years to contribute cannot exceed years to retirement');
+  }
+
+  // IRA type specific validation
+  if (inputs.iraType === 'traditional' && inputs.includeRequiredMinimumDistributions) {
+    if (inputs.currentAge >= 72) {
+      // RMD rules apply
+    }
+  }
+
+  return {
+    isValid: errors.length === 0,
+    errors
+  };
+}
 
 /**
- * Get validation rules for IRA calculator
+ * Get validation rules for the IRA calculator
  */
-export function getIRAValidationRules(): ValidationRule[] {
-  return iraValidationRules;
+export function getIRAValidationRules() {
+  return [
+    {
+      field: 'currentBalance',
+      type: 'range' as const,
+      message: 'Current balance must be non-negative',
+      validator: (value: any) => value >= 0
+    },
+    {
+      field: 'annualContribution',
+      type: 'range' as const,
+      message: 'Annual contribution must be non-negative',
+      validator: (value: any) => value >= 0
+    },
+    {
+      field: 'expectedReturnRate',
+      type: 'range' as const,
+      message: 'Expected return rate must be between -10% and 25%',
+      validator: (value: any) => value >= -10 && value <= 25
+    },
+    {
+      field: 'currentAge',
+      type: 'range' as const,
+      message: 'Current age must be between 18 and 70',
+      validator: (value: any) => value >= 18 && value <= 70
+    },
+    {
+      field: 'retirementAge',
+      type: 'business' as const,
+      message: 'Retirement age must be greater than current age',
+      validator: (retirementAge: any, allInputs: any) =>
+        retirementAge > (allInputs?.currentAge || 0)
+    },
+    {
+      field: 'yearsToContribute',
+      type: 'business' as const,
+      message: 'Years to contribute cannot exceed years to retirement',
+      validator: (yearsToContribute: any, allInputs: any) => {
+        const yearsToRetirement = (allInputs?.retirementAge || 0) - (allInputs?.currentAge || 0);
+        return yearsToContribute <= yearsToRetirement;
+      }
+    }
+  ];
 }

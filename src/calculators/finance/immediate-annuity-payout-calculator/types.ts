@@ -1,33 +1,27 @@
-export interface ImmediateAnnuityInputs {
+export interface ImmediateAnnuityPayoutCalculatorInputs {
   principalAmount: number;
-  age: number;
-  gender: 'male' | 'female';
-  payoutType: 'single-life' | 'joint-life' | 'period-certain';
-  payoutFrequency: 'monthly' | 'quarterly' | 'semi-annual' | 'annual';
-  annuityType: 'fixed' | 'variable' | 'inflation-adjusted';
-  guaranteePeriod: number;
-  jointAge?: number;
-  jointGender?: 'male' | 'female';
-  inflationRate: number;
   interestRate: number;
-  lifeExpectancy: number;
+  timePeriod: number;
+  compoundingFrequency: number;
 }
 
-export interface ImmediateAnnuityResults {
-  monthlyPayout: number;
-  annualPayout: number;
-  totalPayments: number;
-  totalPayoutAmount: number;
-  payoutDuration: number;
-  remainingPrincipal: number;
-  effectiveYield: number;
-  breakEvenPoint: number;
-  survivorBenefit: number;
+export interface ImmediateAnnuityPayoutCalculatorMetrics {
+  totalAmount: number;
+  totalInterest: number;
+  monthlyPayment: number;
+  effectiveRate: number;
 }
 
-export interface ImmediateAnnuityMetrics {
-  payoutEfficiency: number;
-  longevityProtection: number;
-  inflationProtection: number;
-  riskAssessment: 'low' | 'medium' | 'high';
+export interface ImmediateAnnuityPayoutCalculatorAnalysis {
+  profitability: string;
+  riskLevel: string;
+  recommendations: string[];
+}
+
+export interface ImmediateAnnuityPayoutCalculatorOutputs {
+  totalAmount: number;
+  totalInterest: number;
+  monthlyPayment: number;
+  effectiveRate: number;
+  analysis: ImmediateAnnuityPayoutCalculatorAnalysis;
 }

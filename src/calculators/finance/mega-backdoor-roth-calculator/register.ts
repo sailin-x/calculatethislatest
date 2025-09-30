@@ -1,9 +1,8 @@
 import { calculatorRegistry } from '../../../data/calculatorRegistry';
-import { megaBackdoorRothCalculator } from './MegaBackdoorRothCalculator';
+import { MegaBackdoorRothCalculator } from './MegaBackdoorRothCalculator';
 
-/**
- * Register the Mega Backdoor Roth Calculator
- */
 export function registerMegaBackdoorRothCalculator(): void {
-  calculatorRegistry.register(megaBackdoorRothCalculator);
+  calculatorRegistry.register(MegaBackdoorRothCalculator);
 }
+
+export { MegaBackdoorRothCalculator };

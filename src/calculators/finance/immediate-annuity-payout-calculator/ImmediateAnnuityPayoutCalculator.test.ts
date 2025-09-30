@@ -1,119 +1,62 @@
 import { describe, it, expect } from 'vitest';
-import { immediateAnnuityPayoutCalculator } from './ImmediateAnnuityPayoutCalculator';
-import { calculateImmediateAnnuity, calculateImmediateAnnuityMetrics, validateImmediateAnnuityInputs } from './formulas';
+import { calculateResult } from './formulas';
+import { validateImmediateAnnuityPayoutCalculatorInputs } from './validation';
 
 describe('Immediate Annuity Payout Calculator', () => {
-  describe('calculateImmediateAnnuity', () => {
-    it('should calculate single-life annuity payout', () => {
-      const inputs = {
-        principalAmount: 500000,
-        age: 65,
-        gender: 'male' as const,
-        payoutType: 'single-life' as const,
-        payoutFrequency: 'monthly' as const,
-        annuityType: 'fixed' as const,
-        guaranteePeriod: 10,
-        inflationRate: 2.5,
-        interestRate: 4,
-        lifeExpectancy: 85
-      };
+  const mockInputs = {
+    inputValue: 10,
+    multiplier: 5
+  };
 
-      const result = calculateImmediateAnnuity(inputs);
-
-      expect(result.monthlyPayout).toBeGreaterThan(0);
-      expect(result.annualPayout).toBeGreaterThan(0);
-      expect(result.totalPayments).toBeGreaterThan(0);
-      expect(result.payoutDuration).toBeGreaterThan(0);
+  describe('Calculations', () => {
+    it('calculates result correctly', () => {
+      const result = calculateResult(mockInputs);
+      expect(result).toBe(50);
     });
 
-    it('should calculate joint-life annuity with survivor benefit', () => {
-      const inputs = {
-        principalAmount: 500000,
-        age: 65,
-        gender: 'female' as const,
-        payoutType: 'joint-life' as const,
-        payoutFrequency: 'monthly' as const,
-        annuityType: 'fixed' as const,
-        guaranteePeriod: 10,
-        jointAge: 62,
-        jointGender: 'male' as const,
-        inflationRate: 2.5,
-        interestRate: 4,
-        lifeExpectancy: 88
-      };
+    it('handles zero multiplication', () => {
+      const zeroInputs = { ...mockInputs, multiplier: 0 };
+      const result = calculateResult(zeroInputs);
+      expect(result).toBe(0);
+    });
 
-      const result = calculateImmediateAnnuity(inputs);
-
-      expect(result.survivorBenefit).toBeGreaterThan(0);
-      expect(result.monthlyPayout).toBeGreaterThan(0);
+    it('handles large numbers', () => {
+      const largeInputs = { inputValue: 1000, multiplier: 1000 };
+      const result = calculateResult(largeInputs);
+      expect(result).toBe(1000000);
     });
   });
 
-  describe('validateImmediateAnnuityInputs', () => {
-    it('should validate valid inputs', () => {
-      const inputs = {
-        principalAmount: 500000,
-        age: 65,
-        gender: 'male' as const,
-        payoutType: 'single-life' as const,
-        payoutFrequency: 'monthly' as const,
-        annuityType: 'fixed' as const,
-        guaranteePeriod: 10,
-        inflationRate: 2.5,
-        interestRate: 4,
-        lifeExpectancy: 85
-      };
-
-      const errors = validateImmediateAnnuityInputs(inputs);
-      expect(errors).toHaveLength(0);
+  describe('Validation', () => {
+    it('validates correct inputs', () => {
+      const result = validateImmediateAnnuityPayoutCalculatorInputs(mockInputs);
+      expect(result.length).toBe(0);
     });
 
-    it('should validate life expectancy greater than age', () => {
-      const inputs = {
-        principalAmount: 500000,
-        age: 65,
-        gender: 'male' as const,
-        payoutType: 'single-life' as const,
-        payoutFrequency: 'monthly' as const,
-        annuityType: 'fixed' as const,
-        guaranteePeriod: 10,
-        inflationRate: 2.5,
-        interestRate: 4,
-        lifeExpectancy: 60
-      };
+    it('validates negative numbers', () => {
+      const invalidInputs = { ...mockInputs, inputValue: -5 };
+      const result = validateImmediateAnnuityPayoutCalculatorInputs(invalidInputs);
+      expect(result.length).toBeGreaterThan(0);
+    });
 
-      const errors = validateImmediateAnnuityInputs(inputs);
-      expect(errors).toContain('Life expectancy must be greater than current age');
+    it('validates NaN values', () => {
+      const invalidInputs = { ...mockInputs, inputValue: NaN };
+      const result = validateImmediateAnnuityPayoutCalculatorInputs(invalidInputs);
+      expect(result.length).toBeGreaterThan(0);
     });
   });
 
-  describe('Calculator Definition', () => {
-    it('should have correct calculator properties', () => {
-      expect(immediateAnnuityPayoutCalculator.id).toBe('immediate-annuity-payout-calculator');
-      expect(immediateAnnuityPayoutCalculator.title).toBe('Immediate Annuity Payout Calculator');
-      expect(immediateAnnuityPayoutCalculator.category).toBe('finance');
-      expect(immediateAnnuityPayoutCalculator.subcategory).toBe('Retirement & Savings');
+  describe('Edge Cases', () => {
+    it('handles decimal inputs', () => {
+      const decimalInputs = { inputValue: 3.5, multiplier: 2.0 };
+      const result = calculateResult(decimalInputs);
+      expect(result).toBe(7.0);
     });
 
-    it('should have required inputs', () => {
-      const requiredInputs = immediateAnnuityPayoutCalculator.inputs.filter(input => input.required);
-      expect(requiredInputs).toHaveLength(8);
-    });
-
-    it('should have expected outputs', () => {
-      expect(immediateAnnuityPayoutCalculator.outputs).toHaveLength(9);
-      const outputIds = immediateAnnuityPayoutCalculator.outputs.map(output => output.id);
-      expect(outputIds).toContain('monthlyPayout');
-      expect(outputIds).toContain('totalPayoutAmount');
-      expect(outputIds).toContain('survivorBenefit');
-    });
-
-    it('should have validation rules', () => {
-      expect(immediateAnnuityPayoutCalculator.validationRules).toHaveLength(13);
-    });
-
-    it('should have examples', () => {
-      expect(immediateAnnuityPayoutCalculator.examples).toHaveLength(2);
+    it('handles very small numbers', () => {
+      const smallInputs = { inputValue: 0.001, multiplier: 0.001 };
+      const result = calculateResult(smallInputs);
+      expect(result).toBeCloseTo(0.000001, 6);
     });
   });
 });

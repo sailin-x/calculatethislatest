@@ -1,33 +1,34 @@
-export interface GiftTaxInputs {
+export interface GiftTaxCalculatorInputs {
   giftAmount: number;
-  annualExclusionAmount: number;
+  annualExclusionUsed: number;
   lifetimeExclusionUsed: number;
-  lifetimeExclusionLimit: number;
+  relationship: 'spouse' | 'child' | 'grandchild' | 'other';
+  isAnnualExclusion: boolean;
+  isLifetimeExclusion: boolean;
   giftTaxRate: number;
-  numberOfRecipients: number;
-  maritalStatus: 'single' | 'married';
-  includeSpousalPortion: boolean;
-  inflationAdjustment: number;
-  planningHorizon: number;
-  expectedGrowthRate: number;
 }
 
-export interface GiftTaxResults {
-  taxableGiftAmount: number;
-  giftTaxLiability: number;
-  effectiveTaxRate: number;
+export interface GiftTaxCalculatorMetrics {
+  taxableAmount: number;
+  giftTaxDue: number;
+  remainingAnnualExclusion: number;
   remainingLifetimeExclusion: number;
-  totalAnnualExclusions: number;
-  netGiftAmount: number;
-  projectedFutureValue: number;
-  taxSavingsFromExclusions: number;
-  breakEvenGiftAmount: number;
-  optimalGiftStrategy: string;
+  afterTaxGiftAmount: number;
+  effectiveTaxRate: number;
 }
 
-export interface GiftTaxMetrics {
-  taxEfficiencyScore: number;
-  exclusionUtilizationRate: number;
-  projectedTaxSavings: number;
-  riskAssessment: 'low' | 'medium' | 'high';
+export interface GiftTaxCalculatorAnalysis {
+  taxEfficiency: string;
+  exemptionUtilization: string;
+  planningRecommendations: string[];
+  riskConsiderations: string[];
+}
+
+export interface GiftTaxCalculatorOutputs {
+  giftTaxDue: number;
+  remainingAnnualExclusion: number;
+  remainingLifetimeExclusion: number;
+  afterTaxGiftAmount: number;
+  effectiveTaxRate: number;
+  analysis: GiftTaxCalculatorAnalysis;
 }

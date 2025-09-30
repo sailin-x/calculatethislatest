@@ -1,35 +1,36 @@
-export interface HSAInputs {
-  annualContribution: number;
-  currentBalance: number;
-  age: number;
+export interface HealthSavingsAccountHsaCalculatorInputs {
   coverageType: 'self-only' | 'family';
-  contributionType: 'employee' | 'self-employed' | 'catch-up';
-  investmentReturn: number;
-  inflationRate: number;
-  yearsUntilRetirement: number;
-  qualifiedExpenses: number;
-  nonQualifiedWithdrawals: number;
-  penaltyRate: number;
-  incomeTaxRate: number;
-}
-
-export interface HSAResults {
-  totalContributions: number;
-  investmentGrowth: number;
-  totalBalance: number;
+  age: number;
+  currentBalance: number;
+  annualContribution: number;
+  expectedGrowthRate: number;
+  yearsToRetirement: number;
   qualifiedWithdrawals: number;
   nonQualifiedWithdrawals: number;
-  penaltiesPaid: number;
-  taxesPaid: number;
-  netBenefit: number;
-  taxSavings: number;
-  futureValue: number;
-  breakEvenAge: number;
 }
 
-export interface HSAMetrics {
-  contributionUtilization: number;
-  taxEfficiency: number;
-  riskAssessment: 'low' | 'medium' | 'high';
-  savingsPotential: number;
+export interface HealthSavingsAccountHsaCalculatorMetrics {
+  annualContributionLimit: number;
+  totalContributions: number;
+  investmentGrowth: number;
+  qualifiedWithdrawalTaxSavings: number;
+  nonQualifiedWithdrawalTax: number;
+  netTaxAdvantage: number;
+}
+
+export interface HealthSavingsAccountHsaCalculatorAnalysis {
+  contributionEfficiency: string;
+  taxAdvantageSummary: string;
+  retirementReadiness: string[];
+  strategyRecommendations: string[];
+}
+
+export interface HealthSavingsAccountHsaCalculatorOutputs {
+  annualContributionLimit: number;
+  totalContributions: number;
+  investmentGrowth: number;
+  qualifiedWithdrawalTaxSavings: number;
+  nonQualifiedWithdrawalTax: number;
+  netTaxAdvantage: number;
+  analysis: HealthSavingsAccountHsaCalculatorAnalysis;
 }

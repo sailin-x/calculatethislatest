@@ -1,9 +1,8 @@
 import { calculatorRegistry } from '../../../data/calculatorRegistry';
-import { pensionPlanFundingCalculator } from './PensionPlanFundingCalculator';
+import { PensionPlanFundingCalculator } from './PensionPlanFundingCalculator';
 
-/**
- * Register the Pension Plan Funding Calculator
- */
 export function registerPensionPlanFundingCalculator(): void {
-  calculatorRegistry.register(pensionPlanFundingCalculator);
+  calculatorRegistry.register(PensionPlanFundingCalculator);
 }
+
+export { PensionPlanFundingCalculator };

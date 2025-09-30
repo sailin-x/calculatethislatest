@@ -1,9 +1,7 @@
-import { calculatorRegistry } from '../../../data/calculatorRegistry';
-import { grantorRetainedAnnuityTrustCalculator } from './GrantorRetainedAnnuityTrustCalculator';
+import { GrantorRetainedAnnuityTrustGratCalculator } from './GrantorRetainedAnnuityTrustGratCalculator';
 
-/**
- * Register the Grantor Retained Annuity Trust (GRAT) Calculator
- */
-export function registerGrantorRetainedAnnuityTrustCalculator(): void {
-  calculatorRegistry.register(grantorRetainedAnnuityTrustCalculator);
+export { GrantorRetainedAnnuityTrustGratCalculator };
+
+export function registerGrantorRetainedAnnuityTrustGratCalculator(): void {
+  // Registration logic if needed
 }

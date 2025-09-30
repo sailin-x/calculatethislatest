@@ -1,33 +1,27 @@
-export interface ILITInputs {
-  trustValue: number;
-  annualPremium: number;
-  deathBenefit: number;
-  trustDuration: number;
-  discountRate: number;
-  inflationRate: number;
-  taxRate: number;
-  administrativeCosts: number;
-  numberOfBeneficiaries: number;
-  trustType: 'life-insurance' | 'charitable-remainder' | 'grantor';
-  includeCrummeyPowers: boolean;
-  stateOfResidence: string;
+export interface IrrevocableLifeInsuranceTrustIlitValueCalculatorInputs {
+  principalAmount: number;
+  interestRate: number;
+  timePeriod: number;
+  compoundingFrequency: number;
 }
 
-export interface ILITResults {
-  presentValue: number;
-  futureValue: number;
-  taxSavings: number;
-  netBenefit: number;
-  beneficiaryShare: number;
-  administrativeCostTotal: number;
-  effectiveYield: number;
-  breakEvenPeriod: number;
-  riskAssessment: string;
+export interface IrrevocableLifeInsuranceTrustIlitValueCalculatorMetrics {
+  totalAmount: number;
+  totalInterest: number;
+  monthlyPayment: number;
+  effectiveRate: number;
 }
 
-export interface ILITMetrics {
-  trustEfficiency: number;
-  taxOptimizationScore: number;
-  beneficiaryProtection: number;
-  estatePlanningBenefit: 'low' | 'medium' | 'high';
+export interface IrrevocableLifeInsuranceTrustIlitValueCalculatorAnalysis {
+  profitability: string;
+  riskLevel: string;
+  recommendations: string[];
+}
+
+export interface IrrevocableLifeInsuranceTrustIlitValueCalculatorOutputs {
+  totalAmount: number;
+  totalInterest: number;
+  monthlyPayment: number;
+  effectiveRate: number;
+  analysis: IrrevocableLifeInsuranceTrustIlitValueCalculatorAnalysis;
 }

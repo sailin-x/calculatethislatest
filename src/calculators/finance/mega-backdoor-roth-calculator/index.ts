@@ -1,6 +1,5 @@
-export { megaBackdoorRothCalculator } from './MegaBackdoorRothCalculator';
-export { registerMegaBackdoorRothCalculator } from './register';
+export { MegaBackdoorRothCalculator } from './MegaBackdoorRothCalculator';
+export * from './types';
 export * from './formulas';
 export * from './validation';
 export * from './quickValidation';
-export * from './types';

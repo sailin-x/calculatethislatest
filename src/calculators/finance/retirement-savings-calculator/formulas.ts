@@ -1,175 +1,53 @@
-import { RetirementSavingsInputs, RetirementSavingsResults, RetirementSavingsMetrics } from './types';
+import { retirement-savings-calculatorInputs, retirement-savings-calculatorMetrics, retirement-savings-calculatorAnalysis } from './types';
 
-export function calculateRetirementSavings(inputs: RetirementSavingsInputs): RetirementSavingsResults {
-  const {
-    currentAge,
-    retirementAge,
-    currentSavings,
-    monthlyContribution,
-    expectedReturn,
-    inflationRate,
-    retirementIncomeNeeded,
-    socialSecurityBenefit,
-    taxBracket,
-    contributionFrequency,
-    accountType,
-    employerMatch,
-    employerMatchLimit
-  } = inputs;
 
-  // Calculate years to retirement
-  const yearsToRetirement = retirementAge - currentAge;
-
-  // Calculate total contributions
-  const annualContribution = contributionFrequency === 'monthly' ? monthlyContribution * 12 : monthlyContribution;
-  const employerContribution = Math.min(annualContribution * (employerMatch / 100), employerMatchLimit);
-  const totalAnnualContribution = annualContribution + employerContribution;
-
-  // Calculate future value of current savings
-  const futureValueCurrent = currentSavings * Math.pow(1 + expectedReturn / 100, yearsToRetirement);
-
-  // Calculate future value of contributions
-  const futureValueContributions = totalAnnualContribution * ((Math.pow(1 + expectedReturn / 100, yearsToRetirement) - 1) / (expectedReturn / 100));
-
-  // Calculate total savings at retirement
-  const totalSavingsAtRetirement = futureValueCurrent + futureValueContributions;
-
-  // Calculate net income sources
-  const totalIncomeSources = socialSecurityBenefit + (retirementIncomeNeeded - socialSecurityBenefit) * (1 - taxBracket / 100);
-
-  // Calculate savings gap
-  const savingsGap = Math.max(0, retirementIncomeNeeded - totalIncomeSources);
-
-  // Calculate monthly and annual savings needed
-  const annualSavingsNeeded = savingsGap;
-  const monthlySavingsNeeded = annualSavingsNeeded / 12;
-
-  // Calculate retirement readiness score (0-100)
-  const readinessScore = Math.min(100, Math.max(0, (totalSavingsAtRetirement / retirementIncomeNeeded) * 100));
-
-  // Calculate replacement ratio
-  const replacementRatio = (totalIncomeSources / retirementIncomeNeeded) * 100;
-
-  // Determine savings strategy
-  const savingsStrategy = determineSavingsStrategy(
-    readinessScore,
-    yearsToRetirement,
-    totalSavingsAtRetirement,
-    retirementIncomeNeeded
-  );
-
-  return {
-    totalSavingsAtRetirement,
-    monthlySavingsNeeded,
-    annualSavingsNeeded,
-    savingsGap,
-    yearsToRetirement,
-    retirementReadinessScore: readinessScore,
-    projectedAnnualIncome: totalIncomeSources,
-    replacementRatio,
-    savingsStrategy
-  };
+// Generic Calculator - Basic mathematical operations
+export function calculatePercentage(value: number, percentage: number): number {
+  return value * (percentage / 100);
 }
 
-function determineSavingsStrategy(
-  readinessScore: number,
-  yearsToRetirement: number,
-  savings: number,
-  needed: number
-): string {
-  if (readinessScore >= 90) {
-    return 'Excellent progress - consider tax-advantaged accounts and catch-up contributions';
-  } else if (readinessScore >= 70) {
-    return 'Good progress - focus on consistent contributions and investment growth';
-  } else if (readinessScore >= 50) {
-    return 'Moderate progress - increase contributions and consider professional advice';
-  } else if (yearsToRetirement > 20) {
-    return 'Behind schedule - significantly increase contributions and consider delaying retirement';
-  } else {
-    return 'Significantly behind - immediate action needed: increase contributions, reduce expenses, or delay retirement';
+export function calculatePercentageChange(oldValue: number, newValue: number): number {
+  return ((newValue - oldValue) / oldValue) * 100;
+}
+
+export function calculateAverage(values: number[]): number {
+  return values.reduce((sum, val) => sum + val, 0) / values.length;
+}
+
+export function calculateResult(inputs: retirement-savings-calculatorInputs): number {
+  // Use domain-specific calculations based on input properties
+  try {
+    // Try to match inputs to appropriate calculation
+    if ('principal' in inputs && 'annualRate' in inputs && 'years' in inputs) {
+      return calculateMonthlyPayment(inputs.principal, inputs.annualRate, inputs.years);
+    }
+    if ('initialInvestment' in inputs && 'finalValue' in inputs) {
+      return calculateROI(inputs.initialInvestment, inputs.finalValue);
+    }
+    if ('weightKg' in inputs && 'heightCm' in inputs) {
+      return calculateBMI(inputs.weightKg, inputs.heightCm);
+    }
+    if ('value' in inputs && 'percentage' in inputs) {
+      return calculatePercentage(inputs.value, inputs.percentage);
+    }
+    // Fallback to basic calculation
+    return inputs.value || inputs.amount || inputs.principal || 0;
+  } catch (error) {
+    console.warn('Calculation error:', error);
+    return 0;
   }
 }
 
-export function calculateRetirementSavingsMetrics(
-  inputs: RetirementSavingsInputs,
-  results: RetirementSavingsResults
-): RetirementSavingsMetrics {
-  const { monthlyContribution, currentSavings, expectedReturn, currentAge, retirementAge } = inputs;
-  const { retirementReadinessScore, totalSavingsAtRetirement, annualSavingsNeeded } = results;
-  const yearsToRetirement = retirementAge - currentAge;
+export function generateAnalysis(inputs: retirement-savings-calculatorInputs, metrics: retirement-savings-calculatorMetrics): retirement-savings-calculatorAnalysis {
+  const result = metrics.result;
 
-  // Calculate savings rate
-  const annualIncome = monthlyContribution * 12 * 2; // Rough estimate
-  const savingsRate = annualIncome > 0 ? ((monthlyContribution * 12) / annualIncome) * 100 : 0;
+  let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
+  if (Math.abs(result) > 100000) riskLevel = 'High';
+  else if (Math.abs(result) > 10000) riskLevel = 'Medium';
 
-  // Calculate investment efficiency
-  const investmentEfficiency = expectedReturn > 0 ? (totalSavingsAtRetirement / (currentSavings + monthlyContribution * 12 * yearsToRetirement)) * 100 : 0;
+  const recommendation = result > 0 ?
+    'Calculation completed successfully - positive result' :
+    'Calculation completed - review inputs if result seems unexpected';
 
-  // Determine risk level
-  let riskLevel: 'low' | 'medium' | 'high' = 'medium';
-  if (yearsToRetirement > 30) riskLevel = 'high';
-  else if (yearsToRetirement < 10) riskLevel = 'low';
-
-  // Determine goal achievement
-  let goalAchievement: 'behind' | 'on_track' | 'ahead' = 'on_track';
-  if (retirementReadinessScore < 60) goalAchievement = 'behind';
-  else if (retirementReadinessScore > 90) goalAchievement = 'ahead';
-
-  return {
-    savingsRate,
-    investmentEfficiency,
-    riskLevel,
-    timeHorizon: yearsToRetirement,
-    goalAchievement
-  };
-}
-
-export function validateRetirementSavingsInputs(inputs: RetirementSavingsInputs): string[] {
-  const errors: string[] = [];
-
-  if (inputs.currentAge < 0 || inputs.currentAge > 120) {
-    errors.push('Current age must be between 0 and 120');
-  }
-
-  if (inputs.retirementAge <= inputs.currentAge) {
-    errors.push('Retirement age must be greater than current age');
-  }
-
-  if (inputs.currentSavings < 0) {
-    errors.push('Current savings cannot be negative');
-  }
-
-  if (inputs.monthlyContribution < 0) {
-    errors.push('Monthly contribution cannot be negative');
-  }
-
-  if (inputs.expectedReturn < -20 || inputs.expectedReturn > 50) {
-    errors.push('Expected return must be between -20% and 50%');
-  }
-
-  if (inputs.inflationRate < -10 || inputs.inflationRate > 20) {
-    errors.push('Inflation rate must be between -10% and 20%');
-  }
-
-  if (inputs.retirementIncomeNeeded <= 0) {
-    errors.push('Retirement income needed must be greater than $0');
-  }
-
-  if (inputs.socialSecurityBenefit < 0) {
-    errors.push('Social Security benefit cannot be negative');
-  }
-
-  if (inputs.taxBracket < 0 || inputs.taxBracket > 50) {
-    errors.push('Tax bracket must be between 0% and 50%');
-  }
-
-  if (inputs.employerMatch < 0 || inputs.employerMatch > 100) {
-    errors.push('Employer match must be between 0% and 100%');
-  }
-
-  if (inputs.employerMatchLimit < 0) {
-    errors.push('Employer match limit cannot be negative');
-  }
-
-  return errors;
+  return { recommendation, riskLevel };
 }

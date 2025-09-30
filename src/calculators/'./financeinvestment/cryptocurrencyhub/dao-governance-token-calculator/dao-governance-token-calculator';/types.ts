@@ -1,0 +1,23 @@
+export interface './financeinvestment/cryptocurrencyhub/dao-governance-token-calculator/dao-governance-token-calculator';Inputs {
+  // Calculator-specific input fields
+  value?: number;
+  rate?: number;
+  amount?: number;
+  quantity?: number;
+  // Add more fields as needed for this calculator
+}
+
+export interface './financeinvestment/cryptocurrencyhub/dao-governance-token-calculator/dao-governance-token-calculator';Results {
+  result: number;
+  analysis?: string;
+}
+
+export interface './financeinvestment/cryptocurrencyhub/dao-governance-token-calculator/dao-governance-token-calculator';Metrics {
+  result: number;
+  // Add more metrics as needed
+}
+
+export interface './financeinvestment/cryptocurrencyhub/dao-governance-token-calculator/dao-governance-token-calculator';Analysis {
+  recommendation: string;
+  riskLevel: 'Low' | 'Medium' | 'High';
+}

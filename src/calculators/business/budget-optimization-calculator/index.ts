@@ -1,5 +1,5 @@
-export { calculateBudgetOptimization } from './formulas';
-export { validateBudgetOptimizationInputs } from './validation';
-export { budgetOptimizationCalculator } from './register';
-export type { BudgetOptimizationInputs, BudgetOptimizationResults } from './types';
+export { BudgetOptimizationCalculator } from './BudgetOptimizationCalculator';
+export * from './types';
+export * from './formulas';
+export * from './validation';
 export * from './quickValidation';

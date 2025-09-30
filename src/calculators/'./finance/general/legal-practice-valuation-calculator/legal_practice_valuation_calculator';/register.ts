@@ -1,0 +1,6 @@
+import { calculatorRegistry } from '../../data/calculatorRegistry';
+import { './finance/general/legal-practice-valuation-calculator/legal_practice_valuation_calculator';Calculator } from './'./finance/general/legal-practice-valuation-calculator/legal_practice_valuation_calculator';Calculator';
+
+export function register'./finance/general/legal-practice-valuation-calculator/legal_practice_valuation_calculator';Calculator(): void {
+  calculatorRegistry.register(new './finance/general/legal-practice-valuation-calculator/legal_practice_valuation_calculator';Calculator());
+}

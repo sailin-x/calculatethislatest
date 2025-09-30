@@ -1,59 +1,74 @@
-import { ValidationRule } from '../../../types/calculator';
-import { ValidationRuleFactory } from '../../../utils/validation';
+import { HsaTripleTaxAdvantageCalculatorInputs } from './types';
 
-/**
- * HSA Triple Tax validation rules
- */
-export const hsaTripleTaxValidationRules: ValidationRule[] = [
-  // Required fields
-  ValidationRuleFactory.required('annualContribution', 'Annual contribution is required'),
-  ValidationRuleFactory.required('currentBalance', 'Current balance is required'),
-  ValidationRuleFactory.required('age', 'Age is required'),
-  ValidationRuleFactory.required('coverageType', 'Coverage type is required'),
-  ValidationRuleFactory.required('contributionType', 'Contribution type is required'),
-  ValidationRuleFactory.required('investmentReturn', 'Investment return is required'),
-  ValidationRuleFactory.required('yearsToRetirement', 'Years to retirement is required'),
-  ValidationRuleFactory.required('incomeTaxRate', 'Income tax rate is required'),
-  ValidationRuleFactory.required('capitalGainsTaxRate', 'Capital gains tax rate is required'),
-  ValidationRuleFactory.required('comparisonInvestmentReturn', 'Comparison investment return is required'),
+export function validateHsaTripleTaxAdvantageCalculatorInputs(inputs: HsaTripleTaxAdvantageCalculatorInputs): Array<{ field: string; message: string }> {
+  const errors: Array<{ field: string; message: string }> = [];
 
-  // Value validations
-  ValidationRuleFactory.range('annualContribution', 0, 10000, 'Annual contribution must be between $0 and $10,000'),
-  ValidationRuleFactory.range('currentBalance', 0, 10000000, 'Current balance must be between $0 and $10,000,000'),
-  ValidationRuleFactory.range('age', 0, 120, 'Age must be between 0 and 120'),
-  ValidationRuleFactory.range('investmentReturn', -20, 50, 'Investment return must be between -20% and 50%'),
-  ValidationRuleFactory.range('yearsToRetirement', 0, 100, 'Years to retirement must be between 0 and 100'),
-  ValidationRuleFactory.range('incomeTaxRate', 0, 50, 'Income tax rate must be between 0% and 50%'),
-  ValidationRuleFactory.range('capitalGainsTaxRate', 0, 50, 'Capital gains tax rate must be between 0% and 50%'),
+  if (!inputs.annualContribution || inputs.annualContribution <= 0) {
+    errors.push({ field: 'annualContribution', message: 'Annual contribution must be greater than 0' });
+  }
+  if (inputs.annualContribution && inputs.annualContribution > 100000) {
+    errors.push({ field: 'annualContribution', message: 'Annual contribution cannot exceed $100,000' });
+  }
 
-  // Business logic validations
-  ValidationRuleFactory.businessRule(
-    'annualContribution',
-    (annualContribution, allInputs) => {
-      if (!allInputs?.coverageType || !allInputs?.contributionType) return true;
-      const maxLimits = {
-        'self-only': { employee: 4150, 'self-employed': 4150, 'catch-up': 4950 },
-        family: { employee: 8300, 'self-employed': 8300, 'catch-up': 9100 }
-      };
-      const limit = maxLimits[allInputs.coverageType]?.[allInputs.contributionType] || 10000;
-      return annualContribution <= limit;
-    },
-    'Contribution exceeds IRS annual limit for selected coverage and contribution type'
-  ),
+  if (!inputs.taxRate || inputs.taxRate <= 0) {
+    errors.push({ field: 'taxRate', message: 'Tax rate must be greater than 0' });
+  }
+  if (inputs.taxRate && inputs.taxRate > 50) {
+    errors.push({ field: 'taxRate', message: 'Tax rate cannot exceed 50%' });
+  }
 
-  ValidationRuleFactory.businessRule(
-    'capitalGainsTaxRate',
-    (capitalGainsTaxRate, allInputs) => {
-      if (!allInputs?.incomeTaxRate) return true;
-      return capitalGainsTaxRate <= allInputs.incomeTaxRate;
-    },
-    'Capital gains tax rate should not exceed income tax rate'
-  )
-];
+  if (!inputs.yearsOfContributions || inputs.yearsOfContributions <= 0) {
+    errors.push({ field: 'yearsOfContributions', message: 'Years of contributions must be greater than 0' });
+  }
+  if (inputs.yearsOfContributions && inputs.yearsOfContributions > 50) {
+    errors.push({ field: 'yearsOfContributions', message: 'Years of contributions cannot exceed 50' });
+  }
 
-/**
- * Get validation rules for HSA Triple Tax calculator
- */
-export function getHSATripleTaxValidationRules(): ValidationRule[] {
-  return hsaTripleTaxValidationRules;
+  if (inputs.expectedGrowthRate < -50 || inputs.expectedGrowthRate > 50) {
+    errors.push({ field: 'expectedGrowthRate', message: 'Expected growth rate must be between -50% and 50%' });
+  }
+
+  if (inputs.qualifiedWithdrawals < 0) {
+    errors.push({ field: 'qualifiedWithdrawals', message: 'Qualified withdrawals cannot be negative' });
+  }
+
+  if (inputs.nonQualifiedWithdrawals < 0) {
+    errors.push({ field: 'nonQualifiedWithdrawals', message: 'Non-qualified withdrawals cannot be negative' });
+  }
+
+  return errors;
+}
+
+export function validateHsaTripleTaxAdvantageCalculatorBusinessRules(inputs: HsaTripleTaxAdvantageCalculatorInputs): Array<{ field: string; message: string }> {
+  const warnings: Array<{ field: string; message: string }> = [];
+
+  if (inputs.annualContribution > 8000) {
+    warnings.push({
+      field: 'annualContribution',
+      message: 'Contribution exceeds typical HSA limit - verify eligibility and limits'
+    });
+  }
+
+  if (inputs.expectedGrowthRate > 15) {
+    warnings.push({
+      field: 'expectedGrowthRate',
+      message: 'High growth rate assumption may be unrealistic for HSA investments'
+    });
+  }
+
+  if (inputs.nonQualifiedWithdrawals > 0 && inputs.yearsOfContributions < 10) {
+    warnings.push({
+      field: 'nonQualifiedWithdrawals',
+      message: 'Early non-qualified withdrawals incur 20% penalty plus income tax'
+    });
+  }
+
+  if (inputs.qualifiedWithdrawals === 0 && inputs.yearsOfContributions > 5) {
+    warnings.push({
+      field: 'qualifiedWithdrawals',
+      message: 'Consider using HSA funds for qualified medical expenses to maximize tax benefits'
+    });
+  }
+
+  return warnings;
 }

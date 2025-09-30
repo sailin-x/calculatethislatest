@@ -1,31 +1,27 @@
-export interface NUAInputs {
-  currentSharePrice: number;
-  originalPurchasePrice: number;
-  numberOfShares: number;
-  yearsHeld: number;
-  taxBracket: number;
-  stateTaxRate: number;
-  expectedGrowthRate: number;
-  yearsToSale: number;
-  lumpSumDistribution: boolean;
-  includeStateTax: boolean;
-  employerStock: boolean;
+export interface NetUnrealizedAppreciationNuaTaxCalculatorInputs {
+  principalAmount: number;
+  interestRate: number;
+  timePeriod: number;
+  compoundingFrequency: number;
 }
 
-export interface NUAResults {
-  netUnrealizedAppreciation: number;
-  capitalGainsTax: number;
-  ordinaryIncomeTax: number;
-  totalTaxLiability: number;
-  afterTaxValue: number;
-  taxSavingsVsOrdinary: number;
-  breakEvenSharePrice: number;
-  optimalHoldingPeriod: number;
+export interface NetUnrealizedAppreciationNuaTaxCalculatorMetrics {
+  totalAmount: number;
+  totalInterest: number;
+  monthlyPayment: number;
+  effectiveRate: number;
 }
 
-export interface NUAMetrics {
-  nuaEfficiency: number;
-  taxOptimizationScore: number;
-  holdingStrategy: 'sell-now' | 'hold-longer' | 'lump-sum';
-  riskAssessment: 'low' | 'medium' | 'high';
+export interface NetUnrealizedAppreciationNuaTaxCalculatorAnalysis {
+  profitability: string;
+  riskLevel: string;
+  recommendations: string[];
+}
+
+export interface NetUnrealizedAppreciationNuaTaxCalculatorOutputs {
+  totalAmount: number;
+  totalInterest: number;
+  monthlyPayment: number;
+  effectiveRate: number;
+  analysis: NetUnrealizedAppreciationNuaTaxCalculatorAnalysis;
 }

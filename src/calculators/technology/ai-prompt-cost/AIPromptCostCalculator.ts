@@ -1,61 +1,70 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator, CalculatorInput, CalculatorOutput, Formula, ValidationRule, CalculatorExample } from '../../../types/calculator';
 import { AIPromptCostInputs, AIPromptCostOutputs } from './types';
 import { validateAIPromptCostInputs } from './validation';
-import { 
+import {
   calculateAIPromptCostMetrics,
   generateAIPromptCostReport
 } from './formulas';
 
-export class AIPromptCostCalculator implements Calculator<AIPromptCostInputs, AIPromptCostOutputs> {
+export class AIPromptCostCalculator implements Calculator {
   readonly id = 'ai-prompt-cost';
-  readonly name = 'AI Prompt Cost & Token Estimator';
+  readonly title = 'AI Prompt Cost & Token Estimator';
   readonly description = 'Calculate costs for AI API usage including tokens, requests, and pricing models';
-  readonly category = 'technology';
+  readonly category = 'business';
+  readonly subcategory = 'Technology';
+  readonly usageInstructions = [
+    'Enter your expected token usage per request',
+    'Specify the price per token or select a model for preset pricing',
+    'Choose your expected number of API requests',
+    'Select usage pattern for cost projections',
+    'Review the detailed cost analysis and recommendations'
+  ];
   readonly tags = ['ai', 'api', 'tokens', 'cost', 'gpt', 'llm'];
 
-  readonly inputs = {
+  readonly inputs: CalculatorInput[] = [
     // Basic Usage
-    tokensPerRequest: {
-      type: 'number' as const,
+    {
+      id: 'tokensPerRequest',
       label: 'Tokens per Request',
-      description: 'Average number of tokens consumed per API request',
+      type: 'number',
+      required: true,
       min: 1,
       max: 100000,
       step: 1,
       placeholder: 'e.g., 1500',
-      unit: 'tokens',
-      category: 'Basic Usage'
+      tooltip: 'Average number of tokens consumed per API request'
     },
-    
-    pricePerToken: {
-      type: 'number' as const,
+
+    {
+      id: 'pricePerToken',
       label: 'Price per Token',
-      description: 'Cost per token in USD (e.g., GPT-4: $0.00003)',
+      type: 'number',
+      required: true,
       min: 0.000001,
       max: 1,
       step: 0.000001,
       placeholder: 'e.g., 0.00003',
-      unit: '$',
-      category: 'Basic Usage'
+      tooltip: 'Cost per token in USD (e.g., GPT-4: $0.00003)'
     },
 
-    numberOfRequests: {
-      type: 'number' as const,
+    {
+      id: 'numberOfRequests',
       label: 'Number of Requests',
-      description: 'Total number of API requests planned',
+      type: 'number',
+      required: true,
       min: 1,
       max: 10000000,
       step: 1,
       placeholder: 'e.g., 1000',
-      unit: 'requests',
-      category: 'Basic Usage'
+      tooltip: 'Total number of API requests planned'
     },
 
     // Advanced Options
-    modelType: {
-      type: 'select' as const,
+    {
+      id: 'modelType',
       label: 'AI Model Type',
-      description: 'Select the AI model for preset pricing',
+      type: 'select',
+      required: false,
       options: [
         { value: 'custom', label: 'Custom Pricing' },
         { value: 'gpt-4', label: 'GPT-4 ($0.00003/token)' },
@@ -65,13 +74,14 @@ export class AIPromptCostCalculator implements Calculator<AIPromptCostInputs, AI
         { value: 'claude-3-haiku', label: 'Claude 3 Haiku ($0.00000025/token)' }
       ],
       defaultValue: 'custom',
-      category: 'Advanced Options'
+      tooltip: 'Select the AI model for preset pricing'
     },
 
-    usagePattern: {
-      type: 'select' as const,
+    {
+      id: 'usagePattern',
       label: 'Usage Pattern',
-      description: 'Expected usage frequency',
+      type: 'select',
+      required: false,
       options: [
         { value: 'one-time', label: 'One-time Usage' },
         { value: 'daily', label: 'Daily Usage' },
@@ -79,142 +89,202 @@ export class AIPromptCostCalculator implements Calculator<AIPromptCostInputs, AI
         { value: 'monthly', label: 'Monthly Usage' }
       ],
       defaultValue: 'one-time',
-      category: 'Advanced Options'
+      tooltip: 'Expected usage frequency'
     },
 
     // Optional Parameters
-    inputTokens: {
-      type: 'number' as const,
+    {
+      id: 'inputTokens',
       label: 'Input Tokens (Optional)',
-      description: 'Number of input tokens if different pricing applies',
+      type: 'number',
+      required: false,
       min: 0,
       max: 50000,
       step: 1,
       placeholder: 'e.g., 800',
-      unit: 'tokens',
-      category: 'Advanced Options',
-      isOptional: true
+      tooltip: 'Number of input tokens if different pricing applies'
     },
 
-    outputTokens: {
-      type: 'number' as const,
+    {
+      id: 'outputTokens',
       label: 'Output Tokens (Optional)',
-      description: 'Number of output tokens if different pricing applies',
+      type: 'number',
+      required: false,
       min: 0,
       max: 50000,
       step: 1,
       placeholder: 'e.g., 700',
-      unit: 'tokens',
-      category: 'Advanced Options',
-      isOptional: true
+      tooltip: 'Number of output tokens if different pricing applies'
     },
 
-    inputPricePerToken: {
-      type: 'number' as const,
+    {
+      id: 'inputPricePerToken',
       label: 'Input Token Price (Optional)',
-      description: 'Price per input token if different from output',
+      type: 'number',
+      required: false,
       min: 0.000001,
       max: 1,
       step: 0.000001,
       placeholder: 'e.g., 0.000015',
-      unit: '$',
-      category: 'Advanced Options',
-      isOptional: true
+      tooltip: 'Price per input token if different from output'
     },
 
-    outputPricePerToken: {
-      type: 'number' as const,
+    {
+      id: 'outputPricePerToken',
       label: 'Output Token Price (Optional)',
-      description: 'Price per output token if different from input',
+      type: 'number',
+      required: false,
       min: 0.000001,
       max: 1,
       step: 0.000001,
       placeholder: 'e.g., 0.00006',
-      unit: '$',
-      category: 'Advanced Options',
-      isOptional: true
+      tooltip: 'Price per output token if different from input'
     }
-  };
+  ];
 
-  readonly outputs = {
+  readonly outputs: CalculatorOutput[] = [
     // Cost Breakdown
-    totalCost: {
-      type: 'number' as const,
+    {
+      id: 'totalCost',
       label: 'Total Cost',
-      description: 'Total cost for all API requests',
-      unit: '$',
-      precision: 6
+      type: 'currency',
+      explanation: 'Total cost for all API requests'
     },
 
-    costPerRequest: {
-      type: 'number' as const,
+    {
+      id: 'costPerRequest',
       label: 'Cost per Request',
-      description: 'Average cost per individual API request',
-      unit: '$',
-      precision: 6
+      type: 'currency',
+      explanation: 'Average cost per individual API request'
     },
 
-    costPerToken: {
-      type: 'number' as const,
+    {
+      id: 'costPerToken',
       label: 'Effective Cost per Token',
-      description: 'Actual cost per token including all factors',
-      unit: '$',
-      precision: 8
+      type: 'currency',
+      explanation: 'Actual cost per token including all factors'
     },
 
     // Usage Metrics
-    totalTokens: {
-      type: 'number' as const,
+    {
+      id: 'totalTokens',
       label: 'Total Tokens',
-      description: 'Total number of tokens that will be consumed',
-      unit: 'tokens',
-      precision: 0
+      type: 'number',
+      explanation: 'Total number of tokens that will be consumed'
     },
 
     // Time-based Projections
-    dailyCost: {
-      type: 'number' as const,
+    {
+      id: 'dailyCost',
       label: 'Daily Cost',
-      description: 'Projected daily cost based on usage pattern',
-      unit: '$',
-      precision: 4
+      type: 'currency',
+      explanation: 'Projected daily cost based on usage pattern'
     },
 
-    monthlyCost: {
-      type: 'number' as const,
+    {
+      id: 'monthlyCost',
       label: 'Monthly Cost',
-      description: 'Projected monthly cost based on usage pattern',
-      unit: '$',
-      precision: 2
+      type: 'currency',
+      explanation: 'Projected monthly cost based on usage pattern'
     },
 
-    yearlyCost: {
-      type: 'number' as const,
+    {
+      id: 'yearlyCost',
       label: 'Yearly Cost',
-      description: 'Projected yearly cost based on usage pattern',
-      unit: '$',
-      precision: 2
+      type: 'currency',
+      explanation: 'Projected yearly cost based on usage pattern'
     },
 
     // Budget Analysis
-    costEfficiency: {
-      type: 'text' as const,
+    {
+      id: 'costEfficiency',
       label: 'Cost Efficiency Rating',
-      description: 'Assessment of cost efficiency for the selected model'
+      type: 'text',
+      explanation: 'Assessment of cost efficiency for the selected model'
     },
 
-    budgetRecommendation: {
-      type: 'text' as const,
+    {
+      id: 'budgetRecommendation',
       label: 'Budget Recommendation',
-      description: 'Recommended budget allocation and optimization tips'
+      type: 'text',
+      explanation: 'Recommended budget allocation and optimization tips'
     },
 
-    report: {
-      type: 'text' as const,
+    {
+      id: 'report',
       label: 'Detailed Cost Analysis',
-      description: 'Comprehensive AI usage cost analysis and recommendations'
+      type: 'text',
+      explanation: 'Comprehensive AI usage cost analysis and recommendations'
     }
-  };
+  ];
+
+  readonly formulas: Formula[] = [
+    {
+      id: 'ai-cost-calculation',
+      name: 'AI Cost Calculation',
+      description: 'Calculate total cost for AI API usage based on tokens and pricing',
+      calculate: (inputs: Record<string, any>) => {
+        const metrics = calculateAIPromptCostMetrics(inputs as AIPromptCostInputs);
+        return {
+          outputs: metrics
+        };
+      }
+    }
+  ];
+
+  readonly validationRules: ValidationRule[] = [
+    {
+      field: 'tokensPerRequest',
+      type: 'range',
+      message: 'Tokens per request must be between 1 and 100,000',
+      validator: (value: any) => typeof value === 'number' && value >= 1 && value <= 100000
+    },
+    {
+      field: 'pricePerToken',
+      type: 'range',
+      message: 'Price per token must be between $0.000001 and $1.00',
+      validator: (value: any) => typeof value === 'number' && value >= 0.000001 && value <= 1
+    },
+    {
+      field: 'numberOfRequests',
+      type: 'range',
+      message: 'Number of requests must be between 1 and 10,000,000',
+      validator: (value: any) => typeof value === 'number' && value >= 1 && value <= 10000000
+    }
+  ];
+
+  readonly examples: CalculatorExample[] = [
+    {
+      title: 'GPT-4 Monthly Usage',
+      description: 'Calculate monthly cost for GPT-4 API usage',
+      inputs: {
+        tokensPerRequest: 1500,
+        pricePerToken: 0.00003,
+        numberOfRequests: 10000,
+        usagePattern: 'monthly'
+      },
+      expectedOutputs: {
+        totalCost: 450,
+        monthlyCost: 450,
+        costEfficiency: 'High efficiency for GPT-4 usage'
+      }
+    },
+    {
+      title: 'Small Business Chatbot',
+      description: 'Cost analysis for a small business chatbot',
+      inputs: {
+        tokensPerRequest: 800,
+        pricePerToken: 0.0000015,
+        numberOfRequests: 50000,
+        usagePattern: 'monthly'
+      },
+      expectedOutputs: {
+        totalCost: 60,
+        monthlyCost: 60,
+        costEfficiency: 'Cost-effective for GPT-3.5 Turbo'
+      }
+    }
+  ];
 
   calculate(inputs: AIPromptCostInputs): AIPromptCostOutputs {
     const validation = validateAIPromptCostInputs(inputs);

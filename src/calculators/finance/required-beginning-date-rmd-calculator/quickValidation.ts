@@ -1,81 +1,107 @@
-import { ValidationResult } from '../../../types/calculator';
+import { RequiredBeginningDateRmdInputs } from './types';
 
-export function validateBirthYear(value: any, allInputs?: Record<string, any>): ValidationResult {
-  if (value === undefined || value < 1900 || value > 2010) {
-    return { isValid: false, errors: { birthYear: 'Birth year must be between 1900 and 2010' } };
+export function validateAccountBalance(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value < 0) {
+    return { isValid: false, message: 'Account balance cannot be negative' };
   }
-  return { isValid: true, errors: {} };
+  if (value > 100000000) {
+    return { isValid: false, message: 'Account balance cannot exceed $100,000,000' };
+  }
+  return { isValid: true };
 }
 
-export function validateCurrentYear(value: any, allInputs?: Record<string, any>): ValidationResult {
-  if (value === undefined || value < 2020 || value > 2050) {
-    return { isValid: false, errors: { currentYear: 'Current year must be between 2020 and 2050' } };
+export function validateCurrentAge(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (!value || value < 18) {
+    return { isValid: false, message: 'Current age must be at least 18' };
   }
-  return { isValid: true, errors: {} };
+  if (value > 120) {
+    return { isValid: false, message: 'Current age cannot exceed 120' };
+  }
+  return { isValid: true };
 }
 
-export function validateAccountBalance(value: any, allInputs?: Record<string, any>): ValidationResult {
-  if (value === undefined || value < 0) {
-    return { isValid: false, errors: { accountBalance: 'Account balance cannot be negative' } };
+export function validateLifeExpectancy(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (!value || value < 18) {
+    return { isValid: false, message: 'Life expectancy must be at least 18' };
   }
-  if (value > 10000000) {
-    return { isValid: false, errors: { accountBalance: 'Account balance cannot exceed $10,000,000' } };
+  if (value > 130) {
+    return { isValid: false, message: 'Life expectancy cannot exceed 130' };
   }
-  return { isValid: true, errors: {} };
+  if (allInputs?.currentAge && value <= allInputs.currentAge) {
+    return { isValid: false, message: 'Life expectancy must be greater than current age' };
+  }
+  return { isValid: true };
 }
 
-export function validateLifeExpectancy(value: any, allInputs?: Record<string, any>): ValidationResult {
-  if (value === undefined || value < 1 || value > 120) {
-    return { isValid: false, errors: { lifeExpectancy: 'Life expectancy must be between 1 and 120' } };
+export function validateMarginalTaxRate(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value < 0) {
+    return { isValid: false, message: 'Marginal tax rate cannot be negative' };
   }
-  return { isValid: true, errors: {} };
+  if (value > 50) {
+    return { isValid: false, message: 'Marginal tax rate cannot exceed 50%' };
+  }
+  return { isValid: true };
 }
 
-export function validateAccountType(value: any, allInputs?: Record<string, any>): ValidationResult {
-  if (!value || !['traditional_ira', 'roth_ira', '401k', '403b', 'sep_ira', 'simple_ira'].includes(value)) {
-    return { isValid: false, errors: { accountType: 'Please select a valid account type' } };
+export function validateStateTaxRate(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value < 0) {
+    return { isValid: false, message: 'State tax rate cannot be negative' };
   }
-  return { isValid: true, errors: {} };
+  if (value > 20) {
+    return { isValid: false, message: 'State tax rate cannot exceed 20%' };
+  }
+  return { isValid: true };
 }
 
-export function validateBeneficiaryType(value: any, allInputs?: Record<string, any>): ValidationResult {
-  if (!value || !['spouse', 'non_spouse', 'charity', 'estate'].includes(value)) {
-    return { isValid: false, errors: { beneficiaryType: 'Please select a valid beneficiary type' } };
+export function validateExpectedReturnRate(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value < -20) {
+    return { isValid: false, message: 'Expected return rate cannot be less than -20%' };
   }
-  return { isValid: true, errors: {} };
+  if (value > 50) {
+    return { isValid: false, message: 'Expected return rate cannot exceed 50%' };
+  }
+  return { isValid: true };
 }
 
-export function validateIncludeSpouse(value: any, allInputs?: Record<string, any>): ValidationResult {
-  if (typeof value !== 'boolean' && value !== undefined) {
-    return { isValid: false, errors: { includeSpouse: 'Include spouse must be true or false' } };
+export function validateInflationRate(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value < -5) {
+    return { isValid: false, message: 'Inflation rate cannot be less than -5%' };
   }
-  return { isValid: true, errors: {} };
+  if (value > 20) {
+    return { isValid: false, message: 'Inflation rate cannot exceed 20%' };
+  }
+  return { isValid: true };
 }
 
-export function validateSpouseBirthYear(value: any, allInputs?: Record<string, any>): ValidationResult {
-  if (value === undefined || value < 1900 || value > 2010) {
-    return { isValid: false, errors: { spouseBirthYear: 'Spouse birth year must be between 1900 and 2010' } };
+export function validateSpouseAge(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (allInputs?.includeSpouse) {
+    if (!value || value < 18) {
+      return { isValid: false, message: 'Spouse age must be at least 18' };
+    }
+    if (value > 120) {
+      return { isValid: false, message: 'Spouse age cannot exceed 120' };
+    }
   }
-  return { isValid: true, errors: {} };
+  return { isValid: true };
 }
 
-export function validateTaxBracket(value: any, allInputs?: Record<string, any>): ValidationResult {
-  if (value === undefined || value < 0 || value > 50) {
-    return { isValid: false, errors: { taxBracket: 'Tax bracket must be between 0% and 50%' } };
+export function validateInheritanceDate(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (allInputs?.accountType === 'inherited_ira' && !value) {
+    return { isValid: false, message: 'Inheritance date is required for inherited IRAs' };
   }
-  return { isValid: true, errors: {} };
+  return { isValid: true };
 }
 
-export function validateExpectedReturn(value: any, allInputs?: Record<string, any>): ValidationResult {
-  if (value === undefined || value < -20 || value > 50) {
-    return { isValid: false, errors: { expectedReturn: 'Expected return must be between -20% and 50%' } };
+export function validateDecedentBirthDate(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (allInputs?.accountType === 'inherited_ira' && !value) {
+    return { isValid: false, message: 'Decedent birth date is required for inherited IRAs' };
   }
-  return { isValid: true, errors: {} };
+  return { isValid: true };
 }
 
-export function validateInflationRate(value: any, allInputs?: Record<string, any>): ValidationResult {
-  if (value === undefined || value < -10 || value > 20) {
-    return { isValid: false, errors: { inflationRate: 'Inflation rate must be between -10% and 20%' } };
+export function validateDecedentDeathDate(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (allInputs?.accountType === 'inherited_ira' && !value) {
+    return { isValid: false, message: 'Decedent death date is required for inherited IRAs' };
   }
-  return { isValid: true, errors: {} };
+  return { isValid: true };
 }

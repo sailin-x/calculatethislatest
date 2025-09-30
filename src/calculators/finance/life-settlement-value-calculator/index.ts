@@ -1,6 +1,5 @@
-export { lifeSettlementValueCalculator } from './LifeSettlementValueCalculator';
-export { registerLifeSettlementValueCalculator } from './register';
+export { LifeSettlementValueCalculator } from './LifeSettlementValueCalculator';
+export * from './types';
 export * from './formulas';
 export * from './validation';
 export * from './quickValidation';
-export * from './types';

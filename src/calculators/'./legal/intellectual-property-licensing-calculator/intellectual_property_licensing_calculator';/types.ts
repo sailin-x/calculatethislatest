@@ -1,0 +1,23 @@
+export interface './legal/intellectual-property-licensing-calculator/intellectual_property_licensing_calculator';Inputs {
+  // Calculator-specific input fields
+  value?: number;
+  rate?: number;
+  amount?: number;
+  quantity?: number;
+  // Add more fields as needed for this calculator
+}
+
+export interface './legal/intellectual-property-licensing-calculator/intellectual_property_licensing_calculator';Results {
+  result: number;
+  analysis?: string;
+}
+
+export interface './legal/intellectual-property-licensing-calculator/intellectual_property_licensing_calculator';Metrics {
+  result: number;
+  // Add more metrics as needed
+}
+
+export interface './legal/intellectual-property-licensing-calculator/intellectual_property_licensing_calculator';Analysis {
+  recommendation: string;
+  riskLevel: 'Low' | 'Medium' | 'High';
+}

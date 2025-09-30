@@ -1,6 +1,8 @@
 import { calculatorRegistry } from '../../../data/calculatorRegistry';
-import { AIOpsImplementationSavingsCalculator } from './AIOpsImplementationSavingsCalculator';
+import { AiopsImplementationSavingsCalculator } from './AiopsImplementationSavingsCalculator';
 
-export function registerAIOpsImplementationSavingsCalculator() {
-  calculatorRegistry.register(AIOpsImplementationSavingsCalculator);
+export function registerAiopsImplementationSavingsCalculator(): void {
+  calculatorRegistry.register(AiopsImplementationSavingsCalculator);
 }
+
+export { AiopsImplementationSavingsCalculator };

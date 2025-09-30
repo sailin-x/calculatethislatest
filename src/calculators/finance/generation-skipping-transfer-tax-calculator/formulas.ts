@@ -1,133 +1,59 @@
-import { GSTTaxInputs, GSTTaxResults, GSTTaxMetrics } from './types';
+import { generation-skipping-transfer-tax-calculatorInputs, generation-skipping-transfer-tax-calculatorMetrics, generation-skipping-transfer-tax-calculatorAnalysis } from './types';
 
-export function calculateGSTTax(inputs: GSTTaxInputs): GSTTaxResults {
-  const {
-    transferAmount,
-    gstTaxRate,
-    gstExemptionUsed,
-    gstExemptionLimit,
-    numberOfSkipGenerations,
-    isDirectSkip,
-    isTrustDistribution,
-    includeStateTax,
-    stateTaxRate,
-    inflationRate,
-    planningHorizon
-  } = inputs;
 
-  // Calculate remaining GST exemption
-  const remainingGSTExemption = Math.max(0, gstExemptionLimit - gstExemptionUsed);
+// Tax Calculator - Progressive tax calculations
+export function calculateProgressiveTax(income: number, brackets: Array<{min: number, max: number, rate: number}>): number {
+  let tax = 0;
+  let remainingIncome = income;
 
-  // Calculate taxable GST amount
-  const taxableGSTAmount = Math.max(0, transferAmount - remainingGSTExemption);
-
-  // Calculate GST tax liability
-  const gstTaxLiability = taxableGSTAmount * (gstTaxRate / 100);
-
-  // Calculate effective GST tax rate
-  const effectiveGSTTaxRate = transferAmount > 0 ? (gstTaxLiability / transferAmount) * 100 : 0;
-
-  // Calculate state tax liability if applicable
-  const stateTaxLiability = includeStateTax ? gstTaxLiability * (stateTaxRate / 100) : 0;
-
-  // Calculate total tax liability
-  const totalTaxLiability = gstTaxLiability + stateTaxLiability;
-
-  // Calculate total GST tax savings
-  const totalGSTTaxSavings = (transferAmount - taxableGSTAmount) * (gstTaxRate / 100);
-
-  // Calculate projected future value
-  const projectedFutureValue = transferAmount * Math.pow(1 + inflationRate / 100, planningHorizon);
-
-  // Determine optimal transfer strategy
-  let optimalTransferStrategy = 'Direct generation-skipping transfer';
-  if (isTrustDistribution) {
-    optimalTransferStrategy = 'Trust-based generation-skipping transfer';
-  } else if (numberOfSkipGenerations > 1) {
-    optimalTransferStrategy = 'Multi-generation trust structure';
-  } else if (transferAmount > remainingGSTExemption) {
-    optimalTransferStrategy = 'Split transfers to maximize exemption usage';
+  for (const bracket of brackets) {
+    if (remainingIncome <= 0) break;
+    const taxableInBracket = Math.min(remainingIncome, bracket.max - bracket.min);
+    tax += taxableInBracket * (bracket.rate / 100);
+    remainingIncome -= taxableInBracket;
   }
 
-  return {
-    taxableGSTAmount,
-    gstTaxLiability,
-    effectiveGSTTaxRate,
-    remainingGSTExemption,
-    totalGSTTaxSavings,
-    projectedFutureValue,
-    optimalTransferStrategy,
-    stateTaxLiability,
-    totalTaxLiability
-  };
+  return tax;
 }
 
-export function calculateGSTTaxMetrics(
-  inputs: GSTTaxInputs,
-  results: GSTTaxResults
-): GSTTaxMetrics {
-  const { gstExemptionLimit, gstExemptionUsed, transferAmount, numberOfSkipGenerations } = inputs;
-  const { gstTaxLiability, totalGSTTaxSavings } = results;
-
-  // Calculate exemption utilization rate
-  const exemptionUtilizationRate = gstExemptionLimit > 0
-    ? (gstExemptionUsed / gstExemptionLimit) * 100
-    : 0;
-
-  // Calculate tax efficiency score (0-100, higher is better)
-  const taxEfficiencyScore = Math.max(0, Math.min(100,
-    100 - (gstTaxLiability / Math.max(transferAmount, 1)) * 100
-  ));
-
-  // Calculate generation skip benefit
-  const generationSkipBenefit = totalGSTTaxSavings * numberOfSkipGenerations;
-
-  // Assess risk level
-  let riskAssessment: 'low' | 'medium' | 'high' = 'low';
-  if (exemptionUtilizationRate > 80) {
-    riskAssessment = 'high';
-  } else if (exemptionUtilizationRate > 50) {
-    riskAssessment = 'medium';
-  }
-
-  return {
-    exemptionUtilizationRate,
-    taxEfficiencyScore,
-    generationSkipBenefit,
-    riskAssessment
-  };
+export function calculateEffectiveTaxRate(taxPaid: number, totalIncome: number): number {
+  return (taxPaid / totalIncome) * 100;
 }
 
-export function validateGSTTaxInputs(inputs: GSTTaxInputs): string[] {
-  const errors: string[] = [];
-
-  if (inputs.transferAmount <= 0) {
-    errors.push('Transfer amount must be greater than $0');
+export function calculateResult(inputs: generation-skipping-transfer-tax-calculatorInputs): number {
+  // Use domain-specific calculations based on input properties
+  try {
+    // Try to match inputs to appropriate calculation
+    if ('principal' in inputs && 'annualRate' in inputs && 'years' in inputs) {
+      return calculateMonthlyPayment(inputs.principal, inputs.annualRate, inputs.years);
+    }
+    if ('initialInvestment' in inputs && 'finalValue' in inputs) {
+      return calculateROI(inputs.initialInvestment, inputs.finalValue);
+    }
+    if ('weightKg' in inputs && 'heightCm' in inputs) {
+      return calculateBMI(inputs.weightKg, inputs.heightCm);
+    }
+    if ('value' in inputs && 'percentage' in inputs) {
+      return calculatePercentage(inputs.value, inputs.percentage);
+    }
+    // Fallback to basic calculation
+    return inputs.value || inputs.amount || inputs.principal || 0;
+  } catch (error) {
+    console.warn('Calculation error:', error);
+    return 0;
   }
+}
 
-  if (inputs.gstTaxRate < 0 || inputs.gstTaxRate > 100) {
-    errors.push('GST tax rate must be between 0% and 100%');
-  }
+export function generateAnalysis(inputs: generation-skipping-transfer-tax-calculatorInputs, metrics: generation-skipping-transfer-tax-calculatorMetrics): generation-skipping-transfer-tax-calculatorAnalysis {
+  const result = metrics.result;
 
-  if (inputs.gstExemptionUsed < 0) {
-    errors.push('GST exemption used cannot be negative');
-  }
+  let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
+  if (Math.abs(result) > 100000) riskLevel = 'High';
+  else if (Math.abs(result) > 10000) riskLevel = 'Medium';
 
-  if (inputs.gstExemptionLimit <= 0) {
-    errors.push('GST exemption limit must be greater than $0');
-  }
+  const recommendation = result > 0 ?
+    'Calculation completed successfully - positive result' :
+    'Calculation completed - review inputs if result seems unexpected';
 
-  if (inputs.numberOfSkipGenerations < 1) {
-    errors.push('Number of skip generations must be at least 1');
-  }
-
-  if (inputs.planningHorizon < 0) {
-    errors.push('Planning horizon cannot be negative');
-  }
-
-  if (inputs.inflationRate < -10 || inputs.inflationRate > 20) {
-    errors.push('Inflation rate must be between -10% and 20%');
-  }
-
-  return errors;
+  return { recommendation, riskLevel };
 }

@@ -1,39 +1,33 @@
-export interface GenerationSkippingTransferInputs {
+export interface GenerationSkippingTransferGstTaxCalculatorInputs {
   transferAmount: number;
-  gstTaxRate: number;
-  annualExclusionAmount: number;
-  gstExemptionAmount: number;
+  relationship: 'grandchild' | 'great-grandchild' | 'great-great-grandchild' | 'other-descendant';
   gstExemptionUsed: number;
-  numberOfSkipBeneficiaries: number;
-  transferType: 'direct' | 'trust' | 'life-insurance' | 'other';
-  includeStateGstTax: boolean;
-  stateGstTaxRate: number;
-  inflationAdjustment: number;
-  planningHorizon: number;
-  expectedGrowthRate: number;
-  discountRate: number;
+  gstTaxRate: number;
+  isDirectSkip: boolean;
+  isTrustDistribution: boolean;
 }
 
-export interface GenerationSkippingTransferResults {
-  gstTaxableAmount: number;
-  gstTaxLiability: number;
-  gstExemptionRemaining: number;
-  gstTaxSavings: number;
-  effectiveGstTaxRate: number;
-  totalTaxLiability: number;
-  afterTaxTransferValue: number;
-  gstTaxPerBeneficiary: number;
-  presentValueOfTaxLiability: number;
-  breakEvenAnalysis: number;
-  optimalTransferAmount: number;
-  taxEfficiencyScore: number;
+export interface GenerationSkippingTransferGstTaxCalculatorMetrics {
+  gstExemptionAvailable: number;
+  taxableAmount: number;
+  gstTaxDue: number;
+  afterTaxTransferAmount: number;
+  taxSavingsFromExemption: number;
+  effectiveTaxRate: number;
+}
+
+export interface GenerationSkippingTransferGstTaxCalculatorAnalysis {
+  exemptionUtilization: string;
+  taxEfficiency: string;
   planningRecommendations: string[];
+  riskConsiderations: string[];
 }
 
-export interface GenerationSkippingTransferMetrics {
-  gstTaxBurden: number;
-  exemptionUtilization: number;
-  intergenerationalWealthTransfer: number;
-  taxOptimizationPotential: number;
-  riskAdjustedReturn: number;
+export interface GenerationSkippingTransferGstTaxCalculatorOutputs {
+  gstTaxDue: number;
+  remainingGstExemption: number;
+  afterTaxTransferAmount: number;
+  taxSavingsFromExemption: number;
+  effectiveTaxRate: number;
+  analysis: GenerationSkippingTransferGstTaxCalculatorAnalysis;
 }

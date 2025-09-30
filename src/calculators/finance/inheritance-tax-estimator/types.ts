@@ -1,40 +1,27 @@
-export interface InheritanceTaxInputs {
-  estateValue: number;
-  maritalStatus: 'single' | 'married' | 'widowed' | 'divorced';
-  numberOfChildren: number;
-  stateOfResidence: string;
-  hasWill: boolean;
-  hasTrust: boolean;
-  charitableDonations: number;
-  funeralExpenses: number;
-  medicalExpenses: number;
-  administrativeExpenses: number;
-  debtsAndLiabilities: number;
-  lifeInsuranceProceeds: boolean;
-  retirementAccounts: number;
-  realEstateValue: number;
-  businessInterests: number;
-  personalProperty: number;
-  cashAndInvestments: number;
+export interface InheritanceTaxEstimatorInputs {
+  principalAmount: number;
+  interestRate: number;
+  timePeriod: number;
+  compoundingFrequency: number;
 }
 
-export interface InheritanceTaxResults {
-  grossEstateValue: number;
-  totalDeductions: number;
-  taxableEstate: number;
-  federalEstateTax: number;
-  stateEstateTax: number;
-  totalEstateTax: number;
-  netEstateValue: number;
-  executorFees: number;
-  attorneyFees: number;
-  totalAdministrativeCosts: number;
-  finalDistribution: number;
+export interface InheritanceTaxEstimatorMetrics {
+  totalAmount: number;
+  totalInterest: number;
+  monthlyPayment: number;
+  effectiveRate: number;
 }
 
-export interface InheritanceTaxMetrics {
-  taxEfficiency: number;
-  estatePlanningScore: number;
-  riskAssessment: 'low' | 'medium' | 'high';
-  optimizationPotential: number;
+export interface InheritanceTaxEstimatorAnalysis {
+  profitability: string;
+  riskLevel: string;
+  recommendations: string[];
+}
+
+export interface InheritanceTaxEstimatorOutputs {
+  totalAmount: number;
+  totalInterest: number;
+  monthlyPayment: number;
+  effectiveRate: number;
+  analysis: InheritanceTaxEstimatorAnalysis;
 }

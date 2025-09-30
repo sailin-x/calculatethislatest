@@ -1,521 +1,187 @@
 import { Calculator } from '../../../types/calculator';
-import { breakevenPointCalculatorFormula } from './formulas';
-import { BreakevenPointCalculatorInputs, BreakevenPointCalculatorResults } from './types';
-import * as quickValidation from './quickValidation';
+import { BreakevenPointCalculatorInputs, BreakevenPointCalculatorOutputs } from './types';
+import { calculateBreakevenPointResults } from './formulas';
+import { validateBreakevenPointCalculatorInputs } from './validation';
+import {
+  quickValidateFixedCosts,
+  quickValidateVariableCostPerUnit,
+  quickValidateSellingPricePerUnit,
+  quickValidateTargetProfit
+} from './quickValidation';
 
-export const breakevenPointCalculator: Calculator = {
+export const BreakevenPointCalculator: Calculator = {
   id: 'breakeven-point-calculator',
   title: 'Breakeven Point Calculator',
-  description: 'Comprehensive breakeven analysis with sensitivity analysis, scenario planning, and risk assessment for business decision making',
-  category: 'Business Operations & Finance Hub',
+  category: 'business',
   subcategory: 'Financial Analysis',
-  tags: ['breakeven', 'profitability', 'cost analysis', 'business planning', 'financial modeling'],
-  
-  inputs: {
-    productName: {
-      type: 'string',
-      label: 'Product Name',
-      description: 'Name of the product or service being analyzed',
+  description: 'Calculate the breakeven point where total revenue equals total costs',
+  usageInstructions: [
+    'Enter your fixed costs (rent, salaries, etc.)',
+    'Specify variable cost per unit (cost to produce each item)',
+    'Set selling price per unit',
+    'Optionally enter target profit',
+    'Review breakeven analysis and recommendations'
+  ],
+
+  inputs: [
+    {
+      id: 'fixedCosts',
+      label: 'Fixed Costs ($)',
+      type: 'currency',
       required: true,
-      validation: quickValidation.validateProductName
+      min: 0,
+      tooltip: 'Total fixed costs (rent, salaries, insurance, etc.)'
     },
-    productDescription: {
-      type: 'string',
-      label: 'Product Description',
-      description: 'Brief description of the product or service',
+    {
+      id: 'variableCostPerUnit',
+      label: 'Variable Cost per Unit ($)',
+      type: 'currency',
       required: true,
-      validation: quickValidation.validateProductDescription
+      min: 0,
+      tooltip: 'Cost to produce or acquire each unit'
     },
-    sellingPrice: {
-      type: 'number',
-      label: 'Selling Price per Unit',
-      description: 'Price at which the product is sold to customers',
+    {
+      id: 'sellingPricePerUnit',
+      label: 'Selling Price per Unit ($)',
+      type: 'currency',
       required: true,
-      unit: 'currency',
-      validation: quickValidation.validateSellingPrice
+      min: 0.01,
+      tooltip: 'Price at which each unit is sold'
     },
-    variableCostPerUnit: {
-      type: 'number',
-      label: 'Variable Cost per Unit',
-      description: 'Cost that varies directly with production volume',
-      required: true,
-      unit: 'currency',
-      validation: quickValidation.validateVariableCostPerUnit
-    },
-    fixedCosts: {
-      type: 'number',
-      label: 'Total Fixed Costs',
-      description: 'Costs that remain constant regardless of production volume',
-      required: true,
-      unit: 'currency',
-      validation: quickValidation.validateFixedCosts
-    },
-    targetProfit: {
-      type: 'number',
-      label: 'Target Profit',
-      description: 'Desired profit level for the analysis',
+    {
+      id: 'targetProfit',
+      label: 'Target Profit ($)',
+      type: 'currency',
       required: false,
-      default: 0,
-      unit: 'currency',
-      validation: quickValidation.validateTargetProfit
+      tooltip: 'Optional: Desired profit amount (leave blank for basic breakeven)'
+    }
+  ],
+
+  outputs: [
+    {
+      id: 'breakevenUnits',
+      label: 'Breakeven Units',
+      type: 'number',
+      explanation: 'Number of units needed to break even'
     },
-    costStructure: {
-      type: 'object',
-      label: 'Cost Structure Breakdown',
-      description: 'Detailed breakdown of all costs',
-      required: true,
-      validation: quickValidation.validateCostStructure,
-      properties: {
-        directMaterials: {
-          type: 'number',
-          label: 'Direct Materials Cost per Unit',
-          description: 'Cost of raw materials per unit',
-          unit: 'currency'
-        },
-        directLabor: {
-          type: 'number',
-          label: 'Direct Labor Cost per Unit',
-          description: 'Cost of direct labor per unit',
-          unit: 'currency'
-        },
-        variableOverhead: {
-          type: 'number',
-          label: 'Variable Overhead per Unit',
-          description: 'Variable overhead costs per unit',
-          unit: 'currency'
-        },
-        fixedOverhead: {
-          type: 'number',
-          label: 'Fixed Overhead',
-          description: 'Fixed overhead costs',
-          unit: 'currency'
-        },
-        sellingExpenses: {
-          type: 'number',
-          label: 'Selling Expenses',
-          description: 'Marketing and sales costs',
-          unit: 'currency'
-        },
-        administrativeExpenses: {
-          type: 'number',
-          label: 'Administrative Expenses',
-          description: 'General and administrative costs',
-          unit: 'currency'
-        },
-        depreciation: {
-          type: 'number',
-          label: 'Depreciation',
-          description: 'Depreciation expense',
-          unit: 'currency'
-        },
-        interest: {
-          type: 'number',
-          label: 'Interest Expense',
-          description: 'Interest on debt',
-          unit: 'currency'
-        },
-        taxes: {
-          type: 'number',
-          label: 'Taxes',
-          description: 'Tax expenses',
-          unit: 'currency'
-        }
-      }
+    {
+      id: 'breakevenRevenue',
+      label: 'Breakeven Revenue',
+      type: 'currency',
+      explanation: 'Revenue needed to cover all costs'
     },
-    revenueAnalysis: {
-      type: 'object',
-      label: 'Revenue Analysis',
-      description: 'Revenue projections and analysis',
-      required: true,
-      validation: quickValidation.validateRevenueAnalysis,
-      properties: {
-        expectedSalesVolume: {
-          type: 'number',
-          label: 'Expected Sales Volume',
-          description: 'Expected number of units to be sold',
-          unit: 'units'
-        },
-        growthRate: {
-          type: 'number',
-          label: 'Revenue Growth Rate',
-          description: 'Expected annual revenue growth rate',
-          unit: 'percentage'
-        }
-      }
+    {
+      id: 'contributionMargin',
+      label: 'Contribution Margin per Unit',
+      type: 'currency',
+      explanation: 'Selling price minus variable cost per unit'
     },
-    productionAnalysis: {
-      type: 'object',
-      label: 'Production Analysis',
-      description: 'Production capacity and efficiency analysis',
-      required: true,
-      validation: quickValidation.validateProductionAnalysis,
-      properties: {
-        productionCapacity: {
-          type: 'number',
-          label: 'Production Capacity',
-          description: 'Maximum production capacity',
-          unit: 'units'
-        },
-        utilizationRate: {
-          type: 'number',
-          label: 'Capacity Utilization Rate',
-          description: 'Percentage of capacity being utilized',
-          unit: 'percentage'
-        },
-        efficiencyRate: {
-          type: 'number',
-          label: 'Production Efficiency Rate',
-          description: 'Production efficiency percentage',
-          unit: 'percentage'
-        }
-      }
+    {
+      id: 'contributionMarginRatio',
+      label: 'Contribution Margin Ratio',
+      type: 'percentage',
+      explanation: 'Contribution margin as percentage of selling price'
     },
-    marketAnalysis: {
-      type: 'object',
-      label: 'Market Analysis',
-      description: 'Market size and competitive analysis',
-      required: true,
-      validation: quickValidation.validateMarketAnalysis,
-      properties: {
-        marketSize: {
-          type: 'number',
-          label: 'Market Size',
-          description: 'Total addressable market size',
-          unit: 'currency'
-        },
-        marketShare: {
-          type: 'number',
-          label: 'Target Market Share',
-          description: 'Target market share percentage',
-          unit: 'percentage'
-        },
-        competitionLevel: {
-          type: 'number',
-          label: 'Competition Level',
-          description: 'Level of competition (1-10 scale)',
-          min: 1,
-          max: 10
-        }
-      }
+    {
+      id: 'profitVolume',
+      label: 'Profit Volume',
+      type: 'currency',
+      explanation: 'Estimated profit at current sales level'
     },
-    financialParameters: {
-      type: 'object',
-      label: 'Financial Parameters',
-      description: 'Financial assumptions and parameters',
-      required: true,
-      validation: quickValidation.validateFinancialParameters,
-      properties: {
-        discountRate: {
-          type: 'number',
-          label: 'Discount Rate',
-          description: 'Discount rate for present value calculations',
-          unit: 'percentage'
-        },
-        taxRate: {
-          type: 'number',
-          label: 'Tax Rate',
-          description: 'Effective tax rate',
-          unit: 'percentage'
-        },
-        inflationRate: {
-          type: 'number',
-          label: 'Inflation Rate',
-          description: 'Expected inflation rate',
-          unit: 'percentage'
-        },
-        currency: {
-          type: 'string',
-          label: 'Currency',
-          description: 'Currency for financial calculations',
-          validation: quickValidation.validateCurrency
-        }
-      }
-    },
-    analysisOptions: {
-      type: 'object',
-      label: 'Analysis Options',
-      description: 'Options for different types of analysis',
-      required: true,
-      validation: quickValidation.validateAnalysisOptions,
-      properties: {
-        includeSensitivityAnalysis: {
-          type: 'boolean',
-          label: 'Include Sensitivity Analysis',
-          description: 'Perform sensitivity analysis on key variables',
-          default: true
-        },
-        includeScenarioAnalysis: {
-          type: 'boolean',
-          label: 'Include Scenario Analysis',
-          description: 'Perform scenario analysis with different assumptions',
-          default: true
-        },
-        includeRiskAssessment: {
-          type: 'boolean',
-          label: 'Include Risk Assessment',
-          description: 'Assess business and financial risks',
-          default: true
-        },
-        includeCashFlowAnalysis: {
-          type: 'boolean',
-          label: 'Include Cash Flow Analysis',
-          description: 'Analyze cash flow implications',
-          default: true
-        },
-        includeROIAnalysis: {
-          type: 'boolean',
-          label: 'Include ROI Analysis',
-          description: 'Calculate return on investment metrics',
-          default: true
-        },
-        includeMonteCarloSimulation: {
-          type: 'boolean',
-          label: 'Include Monte Carlo Simulation',
-          description: 'Perform Monte Carlo simulation for risk analysis',
-          default: false
-        }
-      }
-    },
-    simulationParameters: {
-      type: 'object',
-      label: 'Simulation Parameters',
-      description: 'Parameters for Monte Carlo simulation and scenario analysis',
-      required: true,
-      validation: quickValidation.validateSimulationParameters,
-      properties: {
-        monteCarloSamples: {
-          type: 'number',
-          label: 'Monte Carlo Samples',
-          description: 'Number of simulation samples',
-          default: 10000,
-          min: 1000,
-          max: 100000
-        },
-        confidenceLevel: {
-          type: 'number',
-          label: 'Confidence Level',
-          description: 'Confidence level for statistical analysis',
-          default: 0.95,
-          min: 0.8,
-          max: 0.99
-        },
-        scenarios: {
-          type: 'array',
-          label: 'Analysis Scenarios',
-          description: 'Different scenarios to analyze',
-          items: {
-            type: 'object',
-            properties: {
-              name: {
-                type: 'string',
-                label: 'Scenario Name',
-                description: 'Name of the scenario'
-              },
-              probability: {
-                type: 'number',
-                label: 'Probability',
-                description: 'Probability of this scenario occurring',
-                min: 0,
-                max: 1
-              },
-              sellingPriceVariation: {
-                type: 'number',
-                label: 'Selling Price Variation',
-                description: 'Variation in selling price',
-                unit: 'percentage'
-              },
-              costVariation: {
-                type: 'number',
-                label: 'Cost Variation',
-                description: 'Variation in costs',
-                unit: 'percentage'
-              },
-              volumeVariation: {
-                type: 'number',
-                label: 'Volume Variation',
-                description: 'Variation in sales volume',
-                unit: 'percentage'
-              }
-            }
-          }
-        }
+    {
+      id: 'safetyMargin',
+      label: 'Safety Margin',
+      type: 'percentage',
+      explanation: 'Percentage above breakeven point'
+    }
+  ],
+
+  formulas: [
+    {
+      id: 'breakeven-analysis',
+      name: 'Breakeven Analysis',
+      description: 'Calculate breakeven point and profitability analysis',
+      calculate: (inputs: Record<string, any>) => {
+        const results = calculateBreakevenPointResults(inputs as BreakevenPointCalculatorInputs);
+        return {
+          outputs: {
+            breakevenUnits: results.breakevenUnits,
+            breakevenRevenue: results.breakevenRevenue,
+            contributionMargin: results.contributionMargin,
+            contributionMarginRatio: results.contributionMarginRatio,
+            profitVolume: results.profitVolume,
+            safetyMargin: results.safetyMargin,
+            analysis: results.analysis
+          },
+          explanation: `Breakeven analysis shows ${results.breakevenUnits} units needed to break even with $${results.breakevenRevenue} revenue.`
+        };
       }
     }
-  },
-  
-  outputs: {
-    basicBreakeven: {
-      type: 'object',
-      label: 'Basic Breakeven Analysis',
-      description: 'Core breakeven point calculations'
+  ],
+
+  validationRules: [
+    {
+      field: 'fixedCosts',
+      type: 'required',
+      message: 'Fixed costs are required',
+      validator: (value) => value !== undefined && value !== null && value > 0
     },
-    costAnalysis: {
-      type: 'object',
-      label: 'Cost Analysis',
-      description: 'Detailed cost structure analysis'
+    {
+      field: 'variableCostPerUnit',
+      type: 'required',
+      message: 'Variable cost per unit is required',
+      validator: (value) => value !== undefined && value !== null && value >= 0
     },
-    revenueAnalysis: {
-      type: 'object',
-      label: 'Revenue Analysis',
-      description: 'Revenue projections and efficiency metrics'
+    {
+      field: 'sellingPricePerUnit',
+      type: 'required',
+      message: 'Selling price per unit is required',
+      validator: (value) => value !== undefined && value !== null && value > 0
     },
-    profitabilityAnalysis: {
-      type: 'object',
-      label: 'Profitability Analysis',
-      description: 'Profit margins and profitability metrics'
-    },
-    sensitivityAnalysis: {
-      type: 'object',
-      label: 'Sensitivity Analysis',
-      description: 'Impact of changes in key variables'
-    },
-    scenarioAnalysis: {
-      type: 'object',
-      label: 'Scenario Analysis',
-      description: 'Analysis of different business scenarios'
-    },
-    riskAssessment: {
-      type: 'object',
-      label: 'Risk Assessment',
-      description: 'Business and financial risk analysis'
-    },
-    cashFlowAnalysis: {
-      type: 'object',
-      label: 'Cash Flow Analysis',
-      description: 'Cash flow projections and metrics'
-    },
-    roiAnalysis: {
-      type: 'object',
-      label: 'ROI Analysis',
-      description: 'Return on investment calculations'
-    },
-    strategicInsights: {
-      type: 'object',
-      label: 'Strategic Insights',
-      description: 'Key insights and recommendations'
-    },
-    monteCarloResults: {
-      type: 'object',
-      label: 'Monte Carlo Simulation Results',
-      description: 'Statistical analysis results'
-    },
-    summary: {
-      type: 'object',
-      label: 'Executive Summary',
-      description: 'Summary of key findings and recommendations'
+    {
+      field: 'variableCostPerUnit',
+      type: 'business',
+      message: 'Variable cost cannot exceed selling price',
+      validator: (value, allInputs) => !allInputs?.sellingPricePerUnit || value < allInputs.sellingPricePerUnit
     }
-  },
-  
-  calculate: breakevenPointCalculatorFormula.calculate,
-  
+  ],
+
   examples: [
     {
-      name: 'Software Product Launch',
+      title: 'Manufacturing Business Breakeven',
+      description: 'Calculate breakeven for a manufacturing business with $50,000 fixed costs',
       inputs: {
-        productName: 'Cloud Management Platform',
-        productDescription: 'Enterprise cloud infrastructure management solution',
-        sellingPrice: 500,
-        variableCostPerUnit: 50,
-        fixedCosts: 500000,
-        targetProfit: 100000,
-        costStructure: {
-          directMaterials: 20,
-          directLabor: 15,
-          variableOverhead: 15,
-          fixedOverhead: 200000,
-          sellingExpenses: 150000,
-          administrativeExpenses: 100000,
-          depreciation: 25000,
-          interest: 15000,
-          taxes: 10000
-        },
-        revenueAnalysis: {
-          expectedSalesVolume: 2000,
-          growthRate: 25
-        },
-        productionAnalysis: {
-          productionCapacity: 3000,
-          utilizationRate: 75,
-          efficiencyRate: 85
-        },
-        marketAnalysis: {
-          marketSize: 10000000,
-          marketShare: 5,
-          competitionLevel: 7
-        },
-        financialParameters: {
-          discountRate: 12,
-          taxRate: 25,
-          inflationRate: 2.5,
-          currency: 'USD'
-        },
-        analysisOptions: {
-          includeSensitivityAnalysis: true,
-          includeScenarioAnalysis: true,
-          includeRiskAssessment: true,
-          includeCashFlowAnalysis: true,
-          includeROIAnalysis: true,
-          includeMonteCarloSimulation: true
-        },
-        simulationParameters: {
-          monteCarloSamples: 10000,
-          confidenceLevel: 0.95,
-          scenarios: [
-            {
-              name: 'Optimistic',
-              probability: 0.3,
-              sellingPriceVariation: 10,
-              costVariation: -5,
-              volumeVariation: 20
-            },
-            {
-              name: 'Most Likely',
-              probability: 0.5,
-              sellingPriceVariation: 0,
-              costVariation: 0,
-              volumeVariation: 0
-            },
-            {
-              name: 'Pessimistic',
-              probability: 0.2,
-              sellingPriceVariation: -10,
-              costVariation: 10,
-              volumeVariation: -20
-            }
-          ]
-        }
+        fixedCosts: 50000,
+        variableCostPerUnit: 25,
+        sellingPricePerUnit: 50,
+        targetProfit: 0
+      },
+      expectedOutputs: {
+        breakevenUnits: 1667,
+        breakevenRevenue: 83350,
+        contributionMargin: 25,
+        contributionMarginRatio: 50,
+        profitVolume: 0,
+        safetyMargin: 0
+      }
+    },
+    {
+      title: 'Service Business with Target Profit',
+      description: 'Calculate breakeven for a service business aiming for $20,000 profit',
+      inputs: {
+        fixedCosts: 30000,
+        variableCostPerUnit: 15,
+        sellingPricePerUnit: 75,
+        targetProfit: 20000
+      },
+      expectedOutputs: {
+        breakevenUnits: 667,
+        breakevenRevenue: 50025,
+        contributionMargin: 60,
+        contributionMarginRatio: 80,
+        profitVolume: 20000,
+        safetyMargin: 0
       }
     }
-  ],
-  
-  usageInstructions: [
-    'Enter the basic product information including name and description',
-    'Specify the selling price and variable cost per unit',
-    'Input total fixed costs for the business',
-    'Set optional target profit if desired',
-    'Provide detailed cost structure breakdown',
-    'Enter revenue projections and market analysis',
-    'Configure analysis options based on your needs',
-    'Set up simulation parameters for advanced analysis',
-    'Review the comprehensive results and insights'
-  ],
-  
-  tips: [
-    'Ensure variable costs are truly variable with production volume',
-    'Include all relevant fixed costs in your analysis',
-    'Use realistic market assumptions for better accuracy',
-    'Consider multiple scenarios for comprehensive planning',
-    'Monitor key variables regularly and update analysis',
-    'Use sensitivity analysis to identify critical factors',
-    'Consider seasonal variations in your projections',
-    'Include contingency planning in your breakeven analysis'
-  ],
-  
-  relatedCalculators: [
-    'profit-margin-calculator',
-    'cost-volume-profit-calculator',
-    'contribution-margin-calculator',
-    'pricing-strategy-calculator',
-    'business-planning-calculator'
   ]
 };

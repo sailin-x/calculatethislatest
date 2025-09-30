@@ -1,46 +1,30 @@
-export interface UnitConversionInputs {
-  value: number;
+export interface UnitConversionCalculatorInputs {
+  fromValue: number;
   fromUnit: string;
   toUnit: string;
-  category: string;
+  category: 'length' | 'weight' | 'volume' | 'temperature' | 'area' | 'speed' | 'time' | 'energy' | 'pressure' | 'currency';
   precision: number;
-  temperature?: number;
-  pressure?: number;
-  density?: number;
-  molecularWeight?: number;
+  exchangeRate: number;
 }
 
-export interface UnitConversionMetrics {
+export interface UnitConversionCalculatorMetrics {
   convertedValue: number;
-  originalValue: number;
-  fromUnit: string;
-  toUnit: string;
-  category: string;
   conversionFactor: number;
   precision: number;
-  scientificNotation: string;
-  percentageChange: number;
-  relativeError: number;
+  category: string;
+  fromUnit: string;
+  toUnit: string;
 }
 
-export interface UnitConversionAnalysis {
-  isAccurate: boolean;
-  precision: 'Low' | 'Medium' | 'High';
-  recommendation: string;
-  keyFeatures: string[];
-  limitations: string[];
-  categoryInfo: {
-    name: string;
-    description: string;
-    commonUnits: string[];
-  };
-  conversionNotes: {
-    formula: string;
-    assumptions: string[];
-    specialCases: string[];
-  };
+export interface UnitConversionCalculatorAnalysis {
+  conversionPath: string[];
+  accuracy: string;
+  commonUses: string[];
+  relatedConversions: string[];
 }
 
-export interface UnitConversionOutputs extends UnitConversionMetrics {
-  analysis: UnitConversionAnalysis;
+export interface UnitConversionCalculatorOutputs {
+  convertedValue: number;
+  conversionFactor: number;
+  analysis: UnitConversionCalculatorAnalysis;
 }

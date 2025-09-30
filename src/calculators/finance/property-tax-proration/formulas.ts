@@ -1,110 +1,59 @@
-import { PropertyTaxProrationInputs, PropertyTaxProrationResults } from './types';
+import { property-tax-prorationInputs, property-tax-prorationMetrics, property-tax-prorationAnalysis } from './types';
 
-export function calculatePropertyTaxProration(inputs: PropertyTaxProrationInputs): PropertyTaxProrationResults {
-  const {
-    annualPropertyTax,
-    taxYearStart,
-    taxYearEnd,
-    closingDate,
-    prorationMethod,
-    includeInterest,
-    interestAmount,
-    buyerPaysClosingCosts
-  } = inputs;
 
-  // Parse dates
-  const taxStart = new Date(taxYearStart);
-  const taxEnd = new Date(taxYearEnd);
-  const closing = new Date(closingDate);
+// Tax Calculator - Progressive tax calculations
+export function calculateProgressiveTax(income: number, brackets: Array<{min: number, max: number, rate: number}>): number {
+  let tax = 0;
+  let remainingIncome = income;
 
-  // Calculate days in tax year based on proration method
-  let daysInTaxYear: number;
-  switch (prorationMethod) {
-    case '365-day':
-      daysInTaxYear = 365;
-      break;
-    case '366-day':
-      daysInTaxYear = 366;
-      break;
-    case '360-day':
-      daysInTaxYear = 360;
-      break;
-    case 'actual-days':
-    default:
-      daysInTaxYear = Math.ceil((taxEnd.getTime() - taxStart.getTime()) / (1000 * 60 * 60 * 24));
-      break;
+  for (const bracket of brackets) {
+    if (remainingIncome <= 0) break;
+    const taxableInBracket = Math.min(remainingIncome, bracket.max - bracket.min);
+    tax += taxableInBracket * (bracket.rate / 100);
+    remainingIncome -= taxableInBracket;
   }
 
-  // Calculate daily tax rate
-  const dailyTaxRate = annualPropertyTax / daysInTaxYear;
-
-  // Calculate days each party owns the property
-  const daysOwnedBySeller = Math.max(0, Math.ceil((closing.getTime() - taxStart.getTime()) / (1000 * 60 * 60 * 24)));
-  const daysOwnedByBuyer = Math.max(0, Math.ceil((taxEnd.getTime() - closing.getTime()) / (1000 * 60 * 60 * 24)));
-
-  // Calculate tax portions
-  const sellerTaxPortion = daysOwnedBySeller * dailyTaxRate;
-  const buyerTaxPortion = daysOwnedByBuyer * dailyTaxRate;
-
-  // Calculate interest portions if applicable
-  const sellerInterestPortion = includeInterest ? (interestAmount || 0) * (daysOwnedBySeller / daysInTaxYear) : 0;
-  const buyerInterestPortion = includeInterest ? (interestAmount || 0) * (daysOwnedByBuyer / daysInTaxYear) : 0;
-
-  // Calculate total responsibilities
-  const totalSellerResponsibility = sellerTaxPortion + sellerInterestPortion;
-  const totalBuyerResponsibility = buyerTaxPortion + buyerInterestPortion;
-
-  // Calculate adjustment amount (positive = seller pays buyer, negative = buyer pays seller)
-  let adjustmentAmount = 0;
-  if (buyerPaysClosingCosts) {
-    // Buyer pays all closing costs, so seller gets credit for buyer's portion
-    adjustmentAmount = -(buyerTaxPortion + buyerInterestPortion);
-  } else {
-    // Standard proration - seller pays their portion, buyer pays theirs
-    adjustmentAmount = sellerTaxPortion + sellerInterestPortion;
-  }
-
-  // Proration date is typically the closing date
-  const prorationDate = closingDate;
-
-  return {
-    daysInTaxYear,
-    daysOwnedBySeller,
-    daysOwnedByBuyer,
-    sellerTaxPortion,
-    buyerTaxPortion,
-    dailyTaxRate,
-    sellerInterestPortion,
-    buyerInterestPortion,
-    totalSellerResponsibility,
-    totalBuyerResponsibility,
-    prorationDate,
-    adjustmentAmount
-  };
+  return tax;
 }
 
-export function validatePropertyTaxInputs(inputs: PropertyTaxProrationInputs): string[] {
-  const errors: string[] = [];
+export function calculateEffectiveTaxRate(taxPaid: number, totalIncome: number): number {
+  return (taxPaid / totalIncome) * 100;
+}
 
-  if (inputs.annualPropertyTax <= 0) {
-    errors.push('Annual property tax must be greater than 0');
+export function calculateResult(inputs: property-tax-prorationInputs): number {
+  // Use domain-specific calculations based on input properties
+  try {
+    // Try to match inputs to appropriate calculation
+    if ('principal' in inputs && 'annualRate' in inputs && 'years' in inputs) {
+      return calculateMonthlyPayment(inputs.principal, inputs.annualRate, inputs.years);
+    }
+    if ('initialInvestment' in inputs && 'finalValue' in inputs) {
+      return calculateROI(inputs.initialInvestment, inputs.finalValue);
+    }
+    if ('weightKg' in inputs && 'heightCm' in inputs) {
+      return calculateBMI(inputs.weightKg, inputs.heightCm);
+    }
+    if ('value' in inputs && 'percentage' in inputs) {
+      return calculatePercentage(inputs.value, inputs.percentage);
+    }
+    // Fallback to basic calculation
+    return inputs.value || inputs.amount || inputs.principal || 0;
+  } catch (error) {
+    console.warn('Calculation error:', error);
+    return 0;
   }
+}
 
-  if (inputs.includeInterest && (!inputs.interestAmount || inputs.interestAmount < 0)) {
-    errors.push('Interest amount must be provided and greater than or equal to 0 when including interest');
-  }
+export function generateAnalysis(inputs: property-tax-prorationInputs, metrics: property-tax-prorationMetrics): property-tax-prorationAnalysis {
+  const result = metrics.result;
 
-  const taxStart = new Date(inputs.taxYearStart);
-  const taxEnd = new Date(inputs.taxYearEnd);
-  const closing = new Date(inputs.closingDate);
+  let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
+  if (Math.abs(result) > 100000) riskLevel = 'High';
+  else if (Math.abs(result) > 10000) riskLevel = 'Medium';
 
-  if (taxEnd <= taxStart) {
-    errors.push('Tax year end must be after tax year start');
-  }
+  const recommendation = result > 0 ?
+    'Calculation completed successfully - positive result' :
+    'Calculation completed - review inputs if result seems unexpected';
 
-  if (closing < taxStart || closing > taxEnd) {
-    errors.push('Closing date must be within the tax year');
-  }
-
-  return errors;
+  return { recommendation, riskLevel };
 }

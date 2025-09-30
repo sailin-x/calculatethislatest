@@ -1,6 +1,5 @@
-export { healthSavingsAccountCalculator } from './HealthSavingsAccountCalculator';
-export { registerHealthSavingsAccountCalculator } from './register';
+export { HealthSavingsAccountHsaCalculator } from './HealthSavingsAccountHsaCalculator';
+export * from './types';
 export * from './formulas';
 export * from './validation';
 export * from './quickValidation';
-export * from './types';

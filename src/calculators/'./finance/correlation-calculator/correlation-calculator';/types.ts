@@ -1,0 +1,23 @@
+export interface './finance/correlation-calculator/correlation-calculator';Inputs {
+  // Calculator-specific input fields
+  value?: number;
+  rate?: number;
+  amount?: number;
+  quantity?: number;
+  // Add more fields as needed for this calculator
+}
+
+export interface './finance/correlation-calculator/correlation-calculator';Results {
+  result: number;
+  analysis?: string;
+}
+
+export interface './finance/correlation-calculator/correlation-calculator';Metrics {
+  result: number;
+  // Add more metrics as needed
+}
+
+export interface './finance/correlation-calculator/correlation-calculator';Analysis {
+  recommendation: string;
+  riskLevel: 'Low' | 'Medium' | 'High';
+}

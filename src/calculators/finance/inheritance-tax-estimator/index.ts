@@ -1,6 +1,5 @@
-export { inheritanceTaxEstimator } from './InheritanceTaxEstimator';
-export { registerInheritanceTaxEstimator } from './register';
+export { InheritanceTaxEstimator } from './InheritanceTaxEstimator';
+export * from './types';
 export * from './formulas';
 export * from './validation';
 export * from './quickValidation';
-export * from './types';

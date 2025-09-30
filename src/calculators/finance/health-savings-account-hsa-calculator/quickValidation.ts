@@ -1,63 +1,64 @@
-import { ValidationResult } from '../../../types/calculator';
+import { HealthSavingsAccountHsaCalculatorInputs } from './types';
 
-export function validateAnnualContribution(value: any, allInputs?: Record<string, any>): ValidationResult {
-  if (value === undefined || value < 0) {
-    return { isValid: false, errors: { annualContribution: 'Annual contribution cannot be negative' } };
+export function validateAge(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (!value || value <= 0) {
+    return { isValid: false, message: 'Age must be greater than 0' };
   }
-  if (value > 10000) {
-    return { isValid: false, errors: { annualContribution: 'Annual contribution cannot exceed $10,000' } };
+  if (value > 120) {
+    return { isValid: false, message: 'Age cannot exceed 120' };
   }
-  return { isValid: true, errors: {} };
+  return { isValid: true };
 }
 
-export function validateCurrentBalance(value: any, allInputs?: Record<string, any>): ValidationResult {
-  if (value === undefined || value < 0) {
-    return { isValid: false, errors: { currentBalance: 'Current balance cannot be negative' } };
+export function validateCurrentBalance(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value < 0) {
+    return { isValid: false, message: 'Current balance cannot be negative' };
   }
-  if (value > 10000000) {
-    return { isValid: false, errors: { currentBalance: 'Current balance cannot exceed $10,000,000' } };
-  }
-  return { isValid: true, errors: {} };
+  return { isValid: true };
 }
 
-export function validateAge(value: any, allInputs?: Record<string, any>): ValidationResult {
-  if (value === undefined || value < 0 || value > 120) {
-    return { isValid: false, errors: { age: 'Age must be between 0 and 120' } };
+export function validateAnnualContribution(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value < 0) {
+    return { isValid: false, message: 'Annual contribution cannot be negative' };
   }
-  return { isValid: true, errors: {} };
+  return { isValid: true };
 }
 
-export function validateCoverageType(value: any, allInputs?: Record<string, any>): ValidationResult {
-  if (!value || !['self-only', 'family'].includes(value)) {
-    return { isValid: false, errors: { coverageType: 'Please select a valid coverage type' } };
+export function validateExpectedGrowthRate(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value < -50 || value > 50) {
+    return { isValid: false, message: 'Expected growth rate must be between -50% and 50%' };
   }
-  return { isValid: true, errors: {} };
+  return { isValid: true };
 }
 
-export function validateContributionType(value: any, allInputs?: Record<string, any>): ValidationResult {
-  if (!value || !['employee', 'self-employed', 'catch-up'].includes(value)) {
-    return { isValid: false, errors: { contributionType: 'Please select a valid contribution type' } };
+export function validateYearsToRetirement(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value < 0) {
+    return { isValid: false, message: 'Years to retirement cannot be negative' };
   }
-  return { isValid: true, errors: {} };
+  if (value > 100) {
+    return { isValid: false, message: 'Years to retirement cannot exceed 100' };
+  }
+  return { isValid: true };
 }
 
-export function validateInvestmentReturn(value: any, allInputs?: Record<string, any>): ValidationResult {
-  if (value === undefined || value < -20 || value > 50) {
-    return { isValid: false, errors: { investmentReturn: 'Investment return must be between -20% and 50%' } };
+export function validateQualifiedWithdrawals(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value < 0) {
+    return { isValid: false, message: 'Qualified withdrawals cannot be negative' };
   }
-  return { isValid: true, errors: {} };
+  return { isValid: true };
 }
 
-export function validateYearsUntilRetirement(value: any, allInputs?: Record<string, any>): ValidationResult {
-  if (value === undefined || value < 0 || value > 100) {
-    return { isValid: false, errors: { yearsUntilRetirement: 'Years until retirement must be between 0 and 100' } };
+export function validateNonQualifiedWithdrawals(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value < 0) {
+    return { isValid: false, message: 'Non-qualified withdrawals cannot be negative' };
   }
-  return { isValid: true, errors: {} };
+  return { isValid: true };
 }
 
-export function validateIncomeTaxRate(value: any, allInputs?: Record<string, any>): ValidationResult {
-  if (value === undefined || value < 0 || value > 50) {
-    return { isValid: false, errors: { incomeTaxRate: 'Income tax rate must be between 0% and 50%' } };
+export function validateCoverageType(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  const validTypes = ['self-only', 'family'];
+  if (!value || !validTypes.includes(value)) {
+    return { isValid: false, message: 'Please select a valid coverage type' };
   }
-  return { isValid: true, errors: {} };
+  return { isValid: true };
 }

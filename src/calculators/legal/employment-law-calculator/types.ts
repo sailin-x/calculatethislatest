@@ -1,0 +1,27 @@
+export interface EmploymentLawCalculatorInputs {
+  claimAmount: number;
+  settlementPercentage: number;
+  attorneyFees: number;
+  courtCosts: number;
+  jurisdiction: string;
+}
+
+export interface EmploymentLawCalculatorMetrics {
+  settlementAmount: number;
+  totalCosts: number;
+  netRecovery: number;
+  attorneyFeeAmount: number;
+}
+
+export interface EmploymentLawCalculatorAnalysis {
+  settlementViability: string;
+  costEfficiency: string;
+  recommendations: string[];
+}
+
+export interface EmploymentLawCalculatorOutputs {
+  settlementAmount: number;
+  netRecovery: number;
+  totalCosts: number;
+  analysis: EmploymentLawCalculatorAnalysis;
+}

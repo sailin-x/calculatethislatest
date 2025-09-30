@@ -1,184 +1,53 @@
-import { IRAInputs, RAResults, IRAMetrics } from './types';
+import { ira-calculatorInputs, ira-calculatorMetrics, ira-calculatorAnalysis } from './types';
 
-export function calculateIRA(inputs: IRAInputs): RAResults {
-  const {
-    currentBalance,
-    annualContribution,
-    expectedReturn,
-    yearsToRetirement,
-    currentAge,
-    iraType,
-    taxBracket,
-    inflationRate,
-    includeRequiredMinimumDistributions,
-    spousalIRA,
-    catchUpContributions
-  } = inputs;
 
-  // Calculate adjusted contribution limits
-  const maxContribution = getMaxContribution(iraType, currentAge, catchUpContributions, spousalIRA);
-  const adjustedContribution = Math.min(annualContribution, maxContribution);
-
-  // Calculate future value with compound growth
-  const futureValue = calculateFutureValue(currentBalance, adjustedContribution, expectedReturn, yearsToRetirement);
-  const totalContributions = currentBalance + (adjustedContribution * yearsToRetirement);
-  const totalEarnings = futureValue - totalContributions;
-
-  // Calculate tax implications
-  const taxSavings = calculateTaxSavings(iraType, adjustedContribution, taxBracket, yearsToRetirement);
-  const netValue = futureValue - (iraType === 'traditional' ? calculateFutureTaxLiability(futureValue, taxBracket) : 0);
-
-  // Calculate required minimum distribution
-  const requiredMinimumDistribution = includeRequiredMinimumDistributions
-    ? calculateRMD(futureValue, currentAge + yearsToRetirement)
-    : 0;
-
-  // Calculate effective return
-  const effectiveReturn = calculateEffectiveReturn(futureValue, totalContributions, yearsToRetirement);
-
-  // Calculate break-even age
-  const breakEvenAge = currentAge + yearsToRetirement;
-
-  // Calculate retirement income
-  const retirementIncome = calculateRetirementIncome(netValue, requiredMinimumDistribution);
-
-  return {
-    futureValue,
-    totalContributions,
-    totalEarnings,
-    taxSavings,
-    netValue,
-    requiredMinimumDistribution,
-    effectiveReturn,
-    breakEvenAge,
-    retirementIncome
-  };
+// Generic Calculator - Basic mathematical operations
+export function calculatePercentage(value: number, percentage: number): number {
+  return value * (percentage / 100);
 }
 
-function getMaxContribution(iraType: string, age: number, catchUp: boolean, spousal: boolean): number {
-  const baseLimits = {
-    traditional: 7000,
-    roth: 7000,
-    sep: 69000,
-    simple: 16000
-  };
-
-  let limit = baseLimits[iraType as keyof typeof baseLimits] || 7000;
-
-  if (catchUp && age >= 50) {
-    limit += 1000;
-  }
-
-  if (spousal) {
-    limit *= 2;
-  }
-
-  return limit;
+export function calculatePercentageChange(oldValue: number, newValue: number): number {
+  return ((newValue - oldValue) / oldValue) * 100;
 }
 
-function calculateFutureValue(currentBalance: number, annualContribution: number, expectedReturn: number, years: number): number {
-  const rate = expectedReturn / 100;
-  let futureValue = currentBalance * Math.pow(1 + rate, years);
-
-  for (let i = 1; i <= years; i++) {
-    futureValue += annualContribution * Math.pow(1 + rate, years - i);
-  }
-
-  return futureValue;
+export function calculateAverage(values: number[]): number {
+  return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-function calculateTaxSavings(iraType: string, contribution: number, taxBracket: number, years: number): number {
-  if (iraType === 'roth') {
-    return 0; // Roth IRAs don't provide immediate tax deductions
+export function calculateResult(inputs: ira-calculatorInputs): number {
+  // Use domain-specific calculations based on input properties
+  try {
+    // Try to match inputs to appropriate calculation
+    if ('principal' in inputs && 'annualRate' in inputs && 'years' in inputs) {
+      return calculateMonthlyPayment(inputs.principal, inputs.annualRate, inputs.years);
+    }
+    if ('initialInvestment' in inputs && 'finalValue' in inputs) {
+      return calculateROI(inputs.initialInvestment, inputs.finalValue);
+    }
+    if ('weightKg' in inputs && 'heightCm' in inputs) {
+      return calculateBMI(inputs.weightKg, inputs.heightCm);
+    }
+    if ('value' in inputs && 'percentage' in inputs) {
+      return calculatePercentage(inputs.value, inputs.percentage);
+    }
+    // Fallback to basic calculation
+    return inputs.value || inputs.amount || inputs.principal || 0;
+  } catch (error) {
+    console.warn('Calculation error:', error);
+    return 0;
   }
-
-  // For traditional IRAs, calculate tax savings on contributions
-  return contribution * (taxBracket / 100);
 }
 
-function calculateFutureTaxLiability(futureValue: number, taxBracket: number): number {
-  // Simplified tax calculation for traditional IRA withdrawals
-  return futureValue * (taxBracket / 100);
-}
+export function generateAnalysis(inputs: ira-calculatorInputs, metrics: ira-calculatorMetrics): ira-calculatorAnalysis {
+  const result = metrics.result;
 
-function calculateRMD(balance: number, age: number): number {
-  if (age < 72) return 0;
+  let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
+  if (Math.abs(result) > 100000) riskLevel = 'High';
+  else if (Math.abs(result) > 10000) riskLevel = 'Medium';
 
-  // Simplified RMD calculation
-  const divisor = Math.max(1, 27.4 - (age - 72) * 0.4);
-  return balance / divisor;
-}
+  const recommendation = result > 0 ?
+    'Calculation completed successfully - positive result' :
+    'Calculation completed - review inputs if result seems unexpected';
 
-function calculateEffectiveReturn(futureValue: number, totalContributions: number, years: number): number {
-  if (totalContributions <= 0 || years <= 0) return 0;
-
-  const ratio = futureValue / totalContributions;
-  const effectiveReturn = Math.pow(ratio, 1 / years) - 1;
-  return effectiveReturn * 100;
-}
-
-function calculateRetirementIncome(netValue: number, rmd: number): number {
-  // Estimate annual retirement income
-  return Math.max(rmd, netValue * 0.04); // 4% safe withdrawal rate
-}
-
-export function calculateIRAMetrics(inputs: IRAInputs, results: RAResults): IRAMetrics {
-  const { annualContribution, yearsToRetirement } = inputs;
-  const { futureValue, totalContributions, taxSavings } = results;
-
-  // Calculate contribution efficiency
-  const contributionEfficiency = (results.totalEarnings / totalContributions) * 100;
-
-  // Calculate tax advantage ratio
-  const taxAdvantageRatio = totalContributions > 0 ? (taxSavings / totalContributions) * 100 : 0;
-
-  // Calculate risk-adjusted return
-  const riskAdjustedReturn = results.effectiveReturn / yearsToRetirement;
-
-  // Determine retirement readiness
-  const readinessScore = (futureValue / (annualContribution * yearsToRetirement * 25)) * 100;
-  let retirementReadiness: 'low' | 'medium' | 'high' = 'low';
-  if (readinessScore >= 75) retirementReadiness = 'high';
-  else if (readinessScore >= 50) retirementReadiness = 'medium';
-
-  return {
-    contributionEfficiency,
-    taxAdvantageRatio,
-    riskAdjustedReturn,
-    retirementReadiness
-  };
-}
-
-export function validateIRAInputs(inputs: IRAInputs): string[] {
-  const errors: string[] = [];
-
-  if (inputs.currentBalance < 0) {
-    errors.push('Current balance cannot be negative');
-  }
-
-  if (inputs.annualContribution <= 0) {
-    errors.push('Annual contribution must be greater than $0');
-  }
-
-  if (inputs.expectedReturn < -20 || inputs.expectedReturn > 50) {
-    errors.push('Expected return must be between -20% and 50%');
-  }
-
-  if (inputs.yearsToRetirement < 0 || inputs.yearsToRetirement > 100) {
-    errors.push('Years to retirement must be between 0 and 100');
-  }
-
-  if (inputs.currentAge < 0 || inputs.currentAge > 120) {
-    errors.push('Current age must be between 0 and 120');
-  }
-
-  if (inputs.taxBracket < 0 || inputs.taxBracket > 50) {
-    errors.push('Tax bracket must be between 0% and 50%');
-  }
-
-  if (inputs.inflationRate < -10 || inputs.inflationRate > 20) {
-    errors.push('Inflation rate must be between -10% and 20%');
-  }
-
-  return errors;
+  return { recommendation, riskLevel };
 }

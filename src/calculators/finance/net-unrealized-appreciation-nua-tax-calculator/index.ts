@@ -1,6 +1,5 @@
-export { netUnrealizedAppreciationNUATaxCalculator } from './NetUnrealizedAppreciationNUATaxCalculator';
-export { registerNetUnrealizedAppreciationNUATaxCalculator } from './register';
+export { NetUnrealizedAppreciationNuaTaxCalculator } from './NetUnrealizedAppreciationNuaTaxCalculator';
+export * from './types';
 export * from './formulas';
 export * from './validation';
 export * from './quickValidation';
-export * from './types';

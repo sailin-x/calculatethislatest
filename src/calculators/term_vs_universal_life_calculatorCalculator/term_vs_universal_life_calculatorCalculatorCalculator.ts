@@ -1,0 +1,31 @@
+import { Calculator } from '../../engines/CalculatorEngine';
+import { term_vs_universal_life_calculatorCalculatorInputs, term_vs_universal_life_calculatorCalculatorResults, term_vs_universal_life_calculatorCalculatorMetrics } from './types';
+import { calculateResult, generateAnalysis } from './formulas';
+import { validateInputs } from './validation';
+
+export class term_vs_universal_life_calculatorCalculatorCalculator implements Calculator<term_vs_universal_life_calculatorCalculatorInputs, term_vs_universal_life_calculatorCalculatorResults> {
+  readonly id = 'term_vs_universal_life_calculatorCalculator';
+  readonly name = 'term_vs_universal_life_calculatorCalculator Calculator';
+  readonly description = 'Calculate term_vs_universal_life_calculatorCalculator values';
+
+  calculate(inputs: term_vs_universal_life_calculatorCalculatorInputs): term_vs_universal_life_calculatorCalculatorResults {
+    const validation = validateInputs(inputs);
+    if (!validation.isValid) {
+      throw new Error(`Validation failed: ${validation.errors.join(', ')}`);
+    }
+
+    const result = calculateResult(inputs);
+    const metrics: term_vs_universal_life_calculatorCalculatorMetrics = { result };
+    const analysis = generateAnalysis(inputs, metrics);
+
+    return {
+      result,
+      analysis: analysis.recommendation
+    };
+  }
+
+  validate(inputs: term_vs_universal_life_calculatorCalculatorInputs): boolean {
+    const validation = validateInputs(inputs);
+    return validation.isValid;
+  }
+}

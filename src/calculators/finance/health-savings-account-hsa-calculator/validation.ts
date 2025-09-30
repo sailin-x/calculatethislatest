@@ -1,66 +1,79 @@
-import { ValidationRule } from '../../../types/calculator';
-import { ValidationRuleFactory } from '../../../utils/validation';
+import { HealthSavingsAccountHsaCalculatorInputs } from './types';
 
-/**
- * HSA validation rules
- */
-export const hsaValidationRules: ValidationRule[] = [
-  // Required fields
-  ValidationRuleFactory.required('annualContribution', 'Annual contribution is required'),
-  ValidationRuleFactory.required('currentBalance', 'Current balance is required'),
-  ValidationRuleFactory.required('age', 'Age is required'),
-  ValidationRuleFactory.required('coverageType', 'Coverage type is required'),
-  ValidationRuleFactory.required('contributionType', 'Contribution type is required'),
-  ValidationRuleFactory.required('investmentReturn', 'Investment return is required'),
-  ValidationRuleFactory.required('yearsUntilRetirement', 'Years until retirement is required'),
-  ValidationRuleFactory.required('incomeTaxRate', 'Income tax rate is required'),
+export function validateHealthSavingsAccountHsaCalculatorInputs(inputs: HealthSavingsAccountHsaCalculatorInputs): Array<{ field: string; message: string }> {
+  const errors: Array<{ field: string; message: string }> = [];
 
-  // Value validations
-  ValidationRuleFactory.range('annualContribution', 0, 10000, 'Annual contribution must be between $0 and $10,000'),
-  ValidationRuleFactory.range('currentBalance', 0, 10000000, 'Current balance must be between $0 and $10,000,000'),
-  ValidationRuleFactory.range('age', 0, 120, 'Age must be between 0 and 120'),
-  ValidationRuleFactory.range('investmentReturn', -20, 50, 'Investment return must be between -20% and 50%'),
-  ValidationRuleFactory.range('yearsUntilRetirement', 0, 100, 'Years until retirement must be between 0 and 100'),
-  ValidationRuleFactory.range('incomeTaxRate', 0, 50, 'Income tax rate must be between 0% and 50%'),
+  if (!inputs.age || inputs.age <= 0) {
+    errors.push({ field: 'age', message: 'Age must be greater than 0' });
+  }
+  if (inputs.age && inputs.age > 120) {
+    errors.push({ field: 'age', message: 'Age cannot exceed 120' });
+  }
 
-  // Business logic validations
-  ValidationRuleFactory.businessRule(
-    'annualContribution',
-    (annualContribution, allInputs) => {
-      if (!allInputs?.coverageType || !allInputs?.contributionType) return true;
-      const maxLimits = {
-        'self-only': { employee: 4150, 'self-employed': 4150, 'catch-up': 4950 },
-        family: { employee: 8300, 'self-employed': 8300, 'catch-up': 9100 }
-      };
-      const limit = maxLimits[allInputs.coverageType]?.[allInputs.contributionType] || 10000;
-      return annualContribution <= limit;
-    },
-    'Contribution exceeds IRS annual limit for selected coverage and contribution type'
-  ),
+  if (inputs.currentBalance < 0) {
+    errors.push({ field: 'currentBalance', message: 'Current balance cannot be negative' });
+  }
 
-  ValidationRuleFactory.businessRule(
-    'nonQualifiedWithdrawals',
-    (nonQualifiedWithdrawals, allInputs) => {
-      if (!allInputs?.age) return true;
-      if (allInputs.age >= 65) return true; // No penalty after 65
-      return nonQualifiedWithdrawals >= 0;
-    },
-    'Non-qualified withdrawals before age 65 are subject to penalties'
-  ),
+  if (!inputs.annualContribution || inputs.annualContribution < 0) {
+    errors.push({ field: 'annualContribution', message: 'Annual contribution cannot be negative' });
+  }
 
-  ValidationRuleFactory.businessRule(
-    'qualifiedExpenses',
-    (qualifiedExpenses, allInputs) => {
-      if (!allInputs?.currentBalance) return true;
-      return qualifiedExpenses <= allInputs.currentBalance;
-    },
-    'Qualified expenses cannot exceed current HSA balance'
-  )
-];
+  if (inputs.expectedGrowthRate < -50 || inputs.expectedGrowthRate > 50) {
+    errors.push({ field: 'expectedGrowthRate', message: 'Expected growth rate must be between -50% and 50%' });
+  }
 
-/**
- * Get validation rules for HSA calculator
- */
-export function getHSAValidationRules(): ValidationRule[] {
-  return hsaValidationRules;
+  if (!inputs.yearsToRetirement || inputs.yearsToRetirement < 0) {
+    errors.push({ field: 'yearsToRetirement', message: 'Years to retirement cannot be negative' });
+  }
+  if (inputs.yearsToRetirement && inputs.yearsToRetirement > 100) {
+    errors.push({ field: 'yearsToRetirement', message: 'Years to retirement cannot exceed 100' });
+  }
+
+  if (inputs.qualifiedWithdrawals < 0) {
+    errors.push({ field: 'qualifiedWithdrawals', message: 'Qualified withdrawals cannot be negative' });
+  }
+
+  if (inputs.nonQualifiedWithdrawals < 0) {
+    errors.push({ field: 'nonQualifiedWithdrawals', message: 'Non-qualified withdrawals cannot be negative' });
+  }
+
+  return errors;
+}
+
+export function validateHealthSavingsAccountHsaCalculatorBusinessRules(inputs: HealthSavingsAccountHsaCalculatorInputs): Array<{ field: string; message: string }> {
+  const warnings: Array<{ field: string; message: string }> = [];
+
+  const contributionLimit = inputs.coverageType === 'family' ? 8200 : 4100;
+  const catchUpLimit = inputs.age >= 55 ? 1000 : 0;
+  const totalLimit = contributionLimit + catchUpLimit;
+
+  if (inputs.annualContribution > totalLimit) {
+    warnings.push({
+      field: 'annualContribution',
+      message: `Contribution exceeds annual limit of $${totalLimit.toLocaleString()}`
+    });
+  }
+
+  if (inputs.age < 65 && inputs.nonQualifiedWithdrawals > 0) {
+    warnings.push({
+      field: 'nonQualifiedWithdrawals',
+      message: 'Non-qualified withdrawals before age 65 incur 20% penalty plus income tax'
+    });
+  }
+
+  if (inputs.expectedGrowthRate > 15) {
+    warnings.push({
+      field: 'expectedGrowthRate',
+      message: 'High growth rate assumption may be unrealistic for HSA investments'
+    });
+  }
+
+  if (inputs.yearsToRetirement < 5 && inputs.expectedGrowthRate > 10) {
+    warnings.push({
+      field: 'expectedGrowthRate',
+      message: 'Conservative investing recommended for short time horizons'
+    });
+  }
+
+  return warnings;
 }

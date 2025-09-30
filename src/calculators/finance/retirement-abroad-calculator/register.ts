@@ -1,9 +1,6 @@
-import { calculatorRegistry } from '../../../data/calculatorRegistry';
-import { retirementAbroadCalculator } from './RetirementAbroadCalculator';
+import { calculatorRegistry } from '../../data/calculatorRegistry';
+import { retirementabroadcalculatorCalculator } from './retirementabroadcalculatorCalculator';
 
-/**
- * Register the Retirement Abroad Calculator
- */
-export function registerRetirementAbroadCalculator(): void {
-  calculatorRegistry.register(retirementAbroadCalculator);
+export function registerretirementabroadcalculatorCalculator(): void {
+  calculatorRegistry.register(new retirementabroadcalculatorCalculator());
 }

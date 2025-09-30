@@ -1,35 +1,27 @@
-export interface RMDRMDInputs {
-  accountBalance: number;
-  currentAge: number;
-  lifeExpectancy: number;
-  accountType: 'traditional_ira' | 'roth_ira' | '401k' | '403b' | 'sep_ira' | 'simple_ira';
-  beneficiaryType: 'spouse' | 'non_spouse' | 'charity' | 'estate';
-  spouseAge: number;
-  includeSpouse: boolean;
-  taxBracket: number;
-  expectedReturn: number;
-  inflationRate: number;
-  previousYearBalance: number;
-  qualifiedCharitableDistribution: number;
+export interface RequiredMinimumDistributionRmdCalculatorInputs {
+  principalAmount: number;
+  interestRate: number;
+  timePeriod: number;
+  compoundingFrequency: number;
 }
 
-export interface RMDRMDResults {
-  annualRMD: number;
-  monthlyRMD: number;
-  quarterlyRMD: number;
-  remainingLifeExpectancy: number;
-  rmdPercentage: number;
-  taxOnRMD: number;
-  netRMD: number;
-  penaltyAmount: number;
-  totalRMDRequired: number;
-  rmdStrategy: string;
+export interface RequiredMinimumDistributionRmdCalculatorMetrics {
+  totalAmount: number;
+  totalInterest: number;
+  monthlyPayment: number;
+  effectiveRate: number;
 }
 
-export interface RMDRMDMetrics {
-  rmdEfficiency: number;
-  taxOptimization: number;
-  penaltyRisk: 'low' | 'medium' | 'high';
-  beneficiaryOptimization: 'low' | 'medium' | 'high';
-  withdrawalStrategy: 'lump_sum' | 'monthly' | 'quarterly' | 'annually';
+export interface RequiredMinimumDistributionRmdCalculatorAnalysis {
+  profitability: string;
+  riskLevel: string;
+  recommendations: string[];
+}
+
+export interface RequiredMinimumDistributionRmdCalculatorOutputs {
+  totalAmount: number;
+  totalInterest: number;
+  monthlyPayment: number;
+  effectiveRate: number;
+  analysis: RequiredMinimumDistributionRmdCalculatorAnalysis;
 }

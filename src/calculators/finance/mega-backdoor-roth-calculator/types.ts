@@ -1,35 +1,27 @@
-export interface MegaBackdoorRothInputs {
-  currentAge: number;
-  annualSalary: number;
-  employerMatch: number;
-  current401kBalance: number;
-  currentRothBalance: number;
-  expectedReturn: number;
-  yearsToRetirement: number;
-  taxBracket: number;
-  stateTaxRate: number;
-  inflationRate: number;
-  includeAfterTaxContributions: boolean;
-  includeEmployerMatch: boolean;
-  recharacterizationStrategy: boolean;
+export interface MegaBackdoorRothCalculatorInputs {
+  principalAmount: number;
+  interestRate: number;
+  timePeriod: number;
+  compoundingFrequency: number;
 }
 
-export interface MegaBackdoorRothResults {
-  maxAnnualContribution: number;
-  afterTaxContribution: number;
-  rothConversionAmount: number;
-  taxSavings: number;
-  futureRothValue: number;
-  futureTraditionalValue: number;
-  netBenefit: number;
-  breakEvenYears: number;
-  effectiveTaxRate: number;
-  retirementIncome: number;
+export interface MegaBackdoorRothCalculatorMetrics {
+  totalAmount: number;
+  totalInterest: number;
+  monthlyPayment: number;
+  effectiveRate: number;
 }
 
-export interface MegaBackdoorRothMetrics {
-  contributionEfficiency: number;
-  taxOptimizationScore: number;
-  retirementReadiness: 'low' | 'medium' | 'high';
-  strategyViability: 'low' | 'medium' | 'high';
+export interface MegaBackdoorRothCalculatorAnalysis {
+  profitability: string;
+  riskLevel: string;
+  recommendations: string[];
+}
+
+export interface MegaBackdoorRothCalculatorOutputs {
+  totalAmount: number;
+  totalInterest: number;
+  monthlyPayment: number;
+  effectiveRate: number;
+  analysis: MegaBackdoorRothCalculatorAnalysis;
 }

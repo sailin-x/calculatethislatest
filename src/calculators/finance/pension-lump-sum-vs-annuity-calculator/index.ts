@@ -1,6 +1,5 @@
-export { pensionLumpSumVsAnnuityCalculator } from './PensionLumpSumVsAnnuityCalculator';
-export { registerPensionLumpSumVsAnnuityCalculator } from './register';
+export { PensionLumpSumVsAnnuityCalculator } from './PensionLumpSumVsAnnuityCalculator';
+export * from './types';
 export * from './formulas';
 export * from './validation';
 export * from './quickValidation';
-export * from './types';

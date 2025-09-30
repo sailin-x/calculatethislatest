@@ -8,13 +8,14 @@ export type CalculatorCategory =
   | 'math'
   | 'lifestyle';
 
-export type InputType = 
+export type InputType =
   | 'number'
   | 'currency'
   | 'percentage'
   | 'date'
   | 'select'
-  | 'boolean';
+  | 'boolean'
+  | 'text';
 
 export type OutputType = 
   | 'currency'

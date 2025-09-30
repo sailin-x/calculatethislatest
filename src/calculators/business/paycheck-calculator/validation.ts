@@ -1,186 +1,96 @@
-import { ValidationRule } from '../../../types/calculator';
-import { ValidationRuleFactory } from '../../../utils/validation';
+import { PaycheckCalculatorInputs } from './types';
 
-/**
- * Paycheck Calculator Validation Rules
- * Comprehensive validation for payroll calculations
- */
-export const paycheckValidationRules: ValidationRule[] = [
-  // Pay type validation
-  ValidationRuleFactory.required('payType', 'Pay type is required'),
+export function validatePaycheckCalculatorInputs(inputs: PaycheckCalculatorInputs): Array<{ field: string; message: string }> {
+  const errors: Array<{ field: string; message: string }> = [];
 
-  // Hourly pay validation
-  ValidationRuleFactory.businessRule(
-    'hourlyRate',
-    (hourlyRate, allInputs) => {
-      if (allInputs?.payType !== 'hourly') return true;
-      if (!hourlyRate || hourlyRate <= 0) {
-        return false;
-      }
-      return hourlyRate >= 7.25; // Federal minimum wage
-    },
-    'Hourly rate must be at least federal minimum wage ($7.25)'
-  ),
+  // Gross Pay Validation
+  if (!inputs.grossPay || inputs.grossPay <= 0) {
+    errors.push({ field: 'grossPay', message: 'Gross pay must be greater than 0' });
+  }
+  if (inputs.grossPay && inputs.grossPay > 10000000) {
+    errors.push({ field: 'grossPay', message: 'Gross pay cannot exceed $10,000,000' });
+  }
 
-  ValidationRuleFactory.businessRule(
-    'hoursWorked',
-    (hoursWorked, allInputs) => {
-      if (allInputs?.payType !== 'hourly') return true;
-      if (!hoursWorked || hoursWorked < 0) {
-        return false;
-      }
-      return hoursWorked <= 168; // Maximum hours in a week
-    },
-    'Hours worked cannot exceed 168 hours per week'
-  ),
+  // Pay Frequency Validation
+  if (!inputs.payFrequency) {
+    errors.push({ field: 'payFrequency', message: 'Pay frequency is required' });
+  }
 
-  ValidationRuleFactory.businessRule(
-    'overtimeHours',
-    (overtimeHours, allInputs) => {
-      if (allInputs?.payType !== 'hourly') return true;
-      if (!overtimeHours && overtimeHours !== 0) return true;
-      if (overtimeHours < 0) {
-        return false;
-      }
-      return overtimeHours <= 40; // Reasonable overtime limit
-    },
-    'Overtime hours cannot exceed 40 hours'
-  ),
+  // Filing Status Validation
+  if (!inputs.filingStatus) {
+    errors.push({ field: 'filingStatus', message: 'Filing status is required' });
+  }
 
-  // Salary validation
-  ValidationRuleFactory.businessRule(
-    'annualSalary',
-    (annualSalary, allInputs) => {
-      if (allInputs?.payType !== 'salary') return true;
-      if (!annualSalary || annualSalary <= 0) {
-        return false;
-      }
-      return annualSalary >= 16000; // Approximate minimum annual salary
-    },
-    'Annual salary must be at least $16,000'
-  ),
+  // Dependents Validation
+  if (inputs.dependents && inputs.dependents < 0) {
+    errors.push({ field: 'dependents', message: 'Number of dependents cannot be negative' });
+  }
+  if (inputs.dependents && inputs.dependents > 10) {
+    errors.push({ field: 'dependents', message: 'Number of dependents cannot exceed 10' });
+  }
 
-  // Pay period validation
-  ValidationRuleFactory.required('payPeriod', 'Pay period is required'),
+  // Deductions Validation
+  if (inputs.preTaxDeductions && inputs.preTaxDeductions < 0) {
+    errors.push({ field: 'preTaxDeductions', message: 'Pre-tax deductions cannot be negative' });
+  }
+  if (inputs.retirementContributions && inputs.retirementContributions < 0) {
+    errors.push({ field: 'retirementContributions', message: 'Retirement contributions cannot be negative' });
+  }
+  if (inputs.healthInsurance && inputs.healthInsurance < 0) {
+    errors.push({ field: 'healthInsurance', message: 'Health insurance cannot be negative' });
+  }
+  if (inputs.additionalDeductions && inputs.additionalDeductions < 0) {
+    errors.push({ field: 'additionalDeductions', message: 'Additional deductions cannot be negative' });
+  }
 
-  // Filing status validation
-  ValidationRuleFactory.required('filingStatus', 'Filing status is required'),
+  // Total deductions validation
+  const totalDeductions = (inputs.preTaxDeductions || 0) +
+                         (inputs.retirementContributions || 0) +
+                         (inputs.healthInsurance || 0) +
+                         (inputs.additionalDeductions || 0);
 
-  // Dependents validation
-  ValidationRuleFactory.businessRule(
-    'dependents',
-    (dependents, allInputs) => {
-      if (!dependents && dependents !== 0) return true;
-      if (dependents < 0) {
-        return false;
-      }
-      return dependents <= 10; // Reasonable maximum
-    },
-    'Number of dependents cannot exceed 10'
-  ),
+  if (inputs.grossPay && totalDeductions > inputs.grossPay) {
+    errors.push({ field: 'preTaxDeductions', message: 'Total deductions cannot exceed gross pay' });
+  }
 
-  // Additional withholding validation
-  ValidationRuleFactory.businessRule(
-    'additionalWithholding',
-    (additionalWithholding, allInputs) => {
-      if (!additionalWithholding && additionalWithholding !== 0) return true;
-      return additionalWithholding >= 0;
-    },
-    'Additional withholding cannot be negative'
-  ),
-
-  // State tax rate validation
-  ValidationRuleFactory.businessRule(
-    'stateTaxRate',
-    (stateTaxRate, allInputs) => {
-      if (!stateTaxRate && stateTaxRate !== 0) return true;
-      if (stateTaxRate < 0) {
-        return false;
-      }
-      return stateTaxRate <= 20; // Maximum reasonable state tax rate
-    },
-    'State tax rate cannot exceed 20%'
-  ),
-
-  // Other deductions validation
-  ValidationRuleFactory.businessRule(
-    'otherDeductions',
-    (otherDeductions, allInputs) => {
-      if (!otherDeductions && otherDeductions !== 0) return true;
-      return otherDeductions >= 0;
-    },
-    'Other deductions cannot be negative'
-  ),
-
-  // Business rule: Overtime eligibility
-  ValidationRuleFactory.businessRule(
-    'overtimeHours',
-    (overtimeHours, allInputs) => {
-      if (allInputs?.payType !== 'hourly') return true;
-      if (!overtimeHours || overtimeHours === 0) return true;
-      if (!allInputs?.hoursWorked) return true;
-
-      // Must work at least 40 hours to be eligible for overtime
-      return allInputs.hoursWorked >= 40;
-    },
-    'Overtime requires working at least 40 hours in the pay period'
-  ),
-
-  // Business rule: Salary vs hourly consistency
-  ValidationRuleFactory.businessRule(
-    'payType',
-    (payType, allInputs) => {
-      if (payType === 'hourly') {
-        return allInputs?.hourlyRate !== undefined && allInputs?.hourlyRate !== null;
-      } else if (payType === 'salary') {
-        return allInputs?.annualSalary !== undefined && allInputs?.annualSalary !== null;
-      }
-      return true;
-    },
-    'Please provide the required fields for your pay type'
-  )
-];
-
-/**
- * Get validation rules with contextual help messages
- */
-export function getPaycheckValidationRules(): ValidationRule[] {
-  return paycheckValidationRules;
+  return errors;
 }
 
-/**
- * Paycheck calculation type information
- */
-export const paycheckTypeInfo = {
-  hourly: {
-    description: 'Paid based on hours worked',
-    minimumWage: 7.25,
-    overtimeThreshold: 40
-  },
-  salary: {
-    description: 'Fixed annual salary paid in regular intervals',
-    payPeriods: ['weekly', 'biweekly', 'semimonthly', 'monthly']
-  }
-};
+export function validatePaycheckCalculatorBusinessRules(inputs: PaycheckCalculatorInputs): Array<{ field: string; message: string }> {
+  const warnings: Array<{ field: string; message: string }> = [];
 
-/**
- * Tax information for validation context
- */
-export const taxInfo = {
-  federal: {
-    brackets2024: {
-      single: [11000, 44725, 95375, 182100],
-      married: [22000, 89450, 190750, 364200],
-      headOfHousehold: [15700, 59850, 96850, 182100]
-    }
-  },
-  socialSecurity: {
-    rate: 0.062,
-    limit2024: 168600
-  },
-  medicare: {
-    rate: 0.0145,
-    additionalThreshold: 200000,
-    additionalRate: 0.009
+  // High deduction warnings
+  const totalDeductions = (inputs.preTaxDeductions || 0) +
+                         (inputs.retirementContributions || 0) +
+                         (inputs.healthInsurance || 0) +
+                         (inputs.additionalDeductions || 0);
+
+  if (inputs.grossPay && (totalDeductions / inputs.grossPay) > 0.5) {
+    warnings.push({ field: 'preTaxDeductions', message: 'Total deductions exceed 50% of gross pay' });
   }
-};
+
+  // Retirement contribution limits
+  const annualRetirement = (inputs.retirementContributions || 0) * getPayPeriodsPerYear(inputs.payFrequency);
+  if (annualRetirement > 23000) { // 2024 401k limit
+    warnings.push({ field: 'retirementContributions', message: 'Retirement contributions may exceed annual IRS limits' });
+  }
+
+  // Low take-home pay warnings
+  const estimatedNetPay = inputs.grossPay - totalDeductions;
+  if (inputs.grossPay && (estimatedNetPay / inputs.grossPay) < 0.6) {
+    warnings.push({ field: 'grossPay', message: 'Take-home pay is less than 60% of gross pay' });
+  }
+
+  return warnings;
+}
+
+function getPayPeriodsPerYear(frequency: string): number {
+  switch (frequency) {
+    case 'weekly': return 52;
+    case 'biweekly': return 26;
+    case 'semimonthly': return 24;
+    case 'monthly': return 12;
+    case 'annually': return 1;
+    default: return 12;
+  }
+}

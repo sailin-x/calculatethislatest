@@ -1,550 +1,957 @@
 import { Calculator } from '../../../types/calculator';
-import { retirementCalculatorFormula } from './formulas';
-import { RetirementCalculatorInputs, RetirementCalculatorResults } from './types';
+import { RetirementInputs, RetirementResults } from './types';
+import { calculateRetirement } from './formulas';
+import { getRetirementValidationRules } from './validation';
 
-/**
- * Comprehensive Retirement Planning Calculator
- * 
- * Features:
- * - Multiple income sources (savings, Social Security, pension, other)
- * - Inflation adjustment calculations
- * - Healthcare cost projections
- * - Monte Carlo risk analysis
- * - Tax considerations
- * - Comprehensive recommendations
- * - Detailed savings schedule
- */
 export const retirementCalculator: Calculator = {
   id: 'retirement-calculator',
-  title: 'Retirement Planning Calculator',
-  description: 'Comprehensive retirement planning with multiple income sources, inflation adjustment, healthcare costs, and Monte Carlo analysis',
+  title: 'Retirement Calculator',
   category: 'finance',
-  subcategory: 'retirement',
-  tags: ['retirement', 'financial-planning', 'savings', 'social-security', '401k', 'ira', 'pension'],
-  
-  // Input fields
+  subcategory: 'Retirement Planning',
+  description: 'Comprehensive retirement planning calculator with Social Security optimization, healthcare costs, tax planning, and scenario analysis for secure retirement.',
+  usageInstructions: [
+    'Enter your current age, retirement age, and life expectancy',
+    'Input current savings, monthly contributions, and income',
+    'Specify expected returns, inflation, and risk tolerance',
+    'Include Social Security benefits and pension information',
+    'Review retirement projections, income sources, and recommendations',
+    'Analyze different scenarios and risk factors',
+    'Get personalized retirement planning advice'
+  ],
+
   inputs: [
+    // Personal Information
     {
       id: 'currentAge',
       label: 'Current Age',
       type: 'number',
       required: true,
-      min: 18,
-      max: 100,
-      step: 1,
       placeholder: '35',
-      description: 'Your current age'
+      tooltip: 'Your current age',
+      defaultValue: 35,
+      min: 18,
+      max: 80,
+      step: 1
     },
     {
       id: 'retirementAge',
-      label: 'Planned Retirement Age',
+      label: 'Retirement Age',
       type: 'number',
       required: true,
-      min: 55,
-      max: 85,
-      step: 1,
       placeholder: '65',
-      description: 'Age when you plan to retire'
+      tooltip: 'Age you plan to retire',
+      defaultValue: 65,
+      min: 50,
+      max: 80,
+      step: 1
     },
     {
       id: 'lifeExpectancy',
       label: 'Life Expectancy',
       type: 'number',
       required: true,
-      min: 70,
-      max: 120,
-      step: 1,
       placeholder: '85',
-      description: 'Expected life expectancy'
+      tooltip: 'Expected lifespan',
+      defaultValue: 85,
+      min: 70,
+      max: 100,
+      step: 1
     },
-    {
-      id: 'currentIncome',
-      label: 'Current Annual Income',
-      type: 'number',
-      required: true,
-      min: 1000,
-      max: 10000000,
-      step: 1000,
-      placeholder: '75000',
-      description: 'Your current annual income'
-    },
-    {
-      id: 'expectedIncomeGrowth',
-      label: 'Expected Income Growth (%)',
-      type: 'number',
-      required: true,
-      min: -10,
-      max: 20,
-      step: 0.5,
-      placeholder: '3',
-      description: 'Expected annual income growth rate'
-    },
+
+    // Current Financial Situation
     {
       id: 'currentSavings',
-      label: 'Current Savings',
-      type: 'number',
+      label: 'Current Retirement Savings',
+      type: 'currency',
       required: true,
-      min: 0,
-      max: 10000000,
-      step: 1000,
-      placeholder: '50000',
-      description: 'Current savings outside retirement accounts'
-    },
-    {
-      id: 'current401k',
-      label: 'Current 401(k) Balance',
-      type: 'number',
-      required: true,
-      min: 0,
-      max: 10000000,
-      step: 1000,
       placeholder: '100000',
-      description: 'Current 401(k) account balance'
-    },
-    {
-      id: 'currentIRA',
-      label: 'Current IRA Balance',
-      type: 'number',
-      required: true,
+      tooltip: 'Current amount in retirement accounts',
+      defaultValue: 100000,
       min: 0,
       max: 10000000,
-      step: 1000,
-      placeholder: '25000',
-      description: 'Current IRA account balance'
+      step: 1000
     },
     {
-      id: 'otherInvestments',
-      label: 'Other Investments',
-      type: 'number',
+      id: 'monthlySavings',
+      label: 'Monthly Retirement Savings',
+      type: 'currency',
       required: true,
+      placeholder: '1000',
+      tooltip: 'Monthly contribution to retirement accounts',
+      defaultValue: 1000,
+      min: 0,
+      max: 100000,
+      step: 100
+    },
+    {
+      id: 'annualIncome',
+      label: 'Annual Income',
+      type: 'currency',
+      required: true,
+      placeholder: '75000',
+      tooltip: 'Current annual income before taxes',
+      defaultValue: 75000,
       min: 0,
       max: 10000000,
-      step: 1000,
-      placeholder: '15000',
-      description: 'Other investment account balances'
+      step: 1000
     },
     {
-      id: 'monthly401kContribution',
-      label: 'Monthly 401(k) Contribution',
-      type: 'number',
+      id: 'annualExpenses',
+      label: 'Annual Expenses',
+      type: 'currency',
       required: true,
+      placeholder: '50000',
+      tooltip: 'Current annual expenses',
+      defaultValue: 50000,
       min: 0,
-      max: 50000,
-      step: 100,
-      placeholder: '1500',
-      description: 'Monthly contribution to 401(k)'
+      max: 10000000,
+      step: 1000
     },
+
+    // Expected Returns & Inflation
     {
-      id: 'monthlyIRAContribution',
-      label: 'Monthly IRA Contribution',
-      type: 'number',
-      required: true,
-      min: 0,
-      max: 10000,
-      step: 100,
-      placeholder: '500',
-      description: 'Monthly contribution to IRA'
-    },
-    {
-      id: 'otherMonthlyContributions',
-      label: 'Other Monthly Contributions',
-      type: 'number',
-      required: true,
-      min: 0,
-      max: 100000,
-      step: 100,
-      placeholder: '200',
-      description: 'Other monthly investment contributions'
-    },
-    {
-      id: 'employerMatch',
-      label: 'Employer 401(k) Match',
-      type: 'number',
-      required: true,
-      min: 0,
-      max: 100000,
-      step: 100,
-      placeholder: '750',
-      description: 'Monthly employer 401(k) match'
-    },
-    {
-      id: 'expectedReturn',
+      id: 'expectedAnnualReturn',
       label: 'Expected Annual Return (%)',
-      type: 'number',
+      type: 'percentage',
       required: true,
-      min: 0,
-      max: 20,
-      step: 0.1,
       placeholder: '7',
-      description: 'Expected annual investment return'
+      tooltip: 'Expected annual investment return',
+      defaultValue: 7,
+      min: -10,
+      max: 50,
+      step: 0.5
     },
     {
       id: 'inflationRate',
-      label: 'Expected Inflation Rate (%)',
-      type: 'number',
+      label: 'Inflation Rate (%)',
+      type: 'percentage',
       required: true,
-      min: -10,
+      placeholder: '3',
+      tooltip: 'Expected annual inflation rate',
+      defaultValue: 3,
+      min: -5,
       max: 20,
-      step: 0.1,
-      placeholder: '2.5',
-      description: 'Expected annual inflation rate'
+      step: 0.1
     },
     {
-      id: 'taxRate',
-      label: 'Tax Rate (%)',
-      type: 'number',
-      required: true,
-      min: 0,
-      max: 50,
-      step: 0.1,
-      placeholder: '22',
-      description: 'Effective tax rate in retirement'
+      id: 'salaryGrowthRate',
+      label: 'Salary Growth Rate (%)',
+      type: 'percentage',
+      required: false,
+      placeholder: '3',
+      tooltip: 'Expected annual salary increase',
+      defaultValue: 3,
+      min: -5,
+      max: 15,
+      step: 0.5
     },
+
+    // Retirement Income Sources
     {
-      id: 'socialSecurityMonthly',
-      label: 'Expected Social Security (Monthly)',
-      type: 'number',
-      required: true,
+      id: 'socialSecurityBenefit',
+      label: 'Monthly Social Security Benefit',
+      type: 'currency',
+      required: false,
+      placeholder: '2000',
+      tooltip: 'Expected monthly Social Security benefit',
+      defaultValue: 2000,
       min: 0,
       max: 50000,
-      step: 100,
-      placeholder: '2500',
-      description: 'Expected monthly Social Security benefit'
+      step: 100
     },
     {
-      id: 'pensionMonthly',
-      label: 'Pension Income (Monthly)',
+      id: 'socialSecurityStartAge',
+      label: 'Social Security Start Age',
       type: 'number',
-      required: true,
+      required: false,
+      placeholder: '67',
+      tooltip: 'Age to start Social Security benefits',
+      defaultValue: 67,
+      min: 62,
+      max: 70,
+      step: 1
+    },
+    {
+      id: 'pensionAmount',
+      label: 'Monthly Pension Amount',
+      type: 'currency',
+      required: false,
+      placeholder: '1500',
+      tooltip: 'Expected monthly pension benefit',
+      defaultValue: 1500,
       min: 0,
       max: 100000,
-      step: 100,
-      placeholder: '0',
-      description: 'Expected monthly pension income'
+      step: 100
     },
     {
-      id: 'otherIncomeMonthly',
-      label: 'Other Income (Monthly)',
-      type: 'number',
-      required: true,
+      id: 'otherIncome',
+      label: 'Other Monthly Income',
+      type: 'currency',
+      required: false,
+      placeholder: '500',
+      tooltip: 'Other retirement income sources',
+      defaultValue: 500,
       min: 0,
       max: 100000,
-      step: 100,
-      placeholder: '0',
-      description: 'Other monthly retirement income'
+      step: 100
     },
+
+    // Retirement Expenses
     {
-      id: 'desiredRetirementIncome',
-      label: 'Desired Annual Retirement Income',
-      type: 'number',
-      required: true,
-      min: 10000,
-      max: 1000000,
-      step: 1000,
-      placeholder: '60000',
-      description: 'Desired annual income in retirement'
-    },
-    {
-      id: 'retirementIncomeReplacement',
-      label: 'Income Replacement Rate (%)',
-      type: 'number',
-      required: true,
-      min: 50,
-      max: 150,
-      step: 5,
-      placeholder: '80',
-      description: 'Percentage of current income needed in retirement'
+      id: 'retirementAnnualExpenses',
+      label: 'Retirement Annual Expenses',
+      type: 'currency',
+      required: false,
+      placeholder: '45000',
+      tooltip: 'Expected annual expenses in retirement',
+      defaultValue: 45000,
+      min: 0,
+      max: 10000000,
+      step: 1000
     },
     {
       id: 'healthcareCosts',
       label: 'Annual Healthcare Costs',
-      type: 'number',
-      required: true,
+      type: 'currency',
+      required: false,
+      placeholder: '8000',
+      tooltip: 'Expected annual healthcare expenses',
+      defaultValue: 8000,
       min: 0,
       max: 100000,
-      step: 1000,
-      placeholder: '8000',
-      description: 'Expected annual healthcare costs in retirement'
+      step: 500
     },
     {
       id: 'longTermCareCosts',
       label: 'Annual Long-Term Care Costs',
-      type: 'number',
-      required: true,
-      min: 0,
-      max: 200000,
-      step: 1000,
+      type: 'currency',
+      required: false,
       placeholder: '0',
-      description: 'Expected annual long-term care costs'
+      tooltip: 'Expected annual long-term care expenses',
+      defaultValue: 0,
+      min: 0,
+      max: 500000,
+      step: 1000
+    },
+
+    // Tax Considerations
+    {
+      id: 'currentTaxRate',
+      label: 'Current Tax Rate (%)',
+      type: 'percentage',
+      required: true,
+      placeholder: '25',
+      tooltip: 'Current marginal tax rate',
+      defaultValue: 25,
+      min: 0,
+      max: 50,
+      step: 1
     },
     {
-      id: 'includeInflation',
-      label: 'Include Inflation Adjustment',
-      type: 'checkbox',
+      id: 'retirementTaxRate',
+      label: 'Retirement Tax Rate (%)',
+      type: 'percentage',
+      required: true,
+      placeholder: '20',
+      tooltip: 'Expected tax rate in retirement',
+      defaultValue: 20,
+      min: 0,
+      max: 50,
+      step: 1
+    },
+    {
+      id: 'taxDeferred',
+      label: 'Tax-Deferred Accounts',
+      type: 'boolean',
       required: false,
-      defaultValue: true,
-      description: 'Adjust calculations for inflation'
+      tooltip: 'Whether savings are in tax-deferred accounts',
+      defaultValue: true
+    },
+
+    // Risk Parameters
+    {
+      id: 'riskTolerance',
+      label: 'Risk Tolerance',
+      type: 'select',
+      required: true,
+      options: [
+        { value: 'conservative', label: 'Conservative - Lower risk, stable returns' },
+        { value: 'moderate', label: 'Moderate - Balanced risk and returns' },
+        { value: 'aggressive', label: 'Aggressive - Higher risk, higher potential returns' }
+      ],
+      defaultValue: 'moderate',
+      tooltip: 'Your willingness to accept investment risk'
     },
     {
-      id: 'includeTaxes',
-      label: 'Include Tax Impact',
-      type: 'checkbox',
+      id: 'marketVolatility',
+      label: 'Market Volatility (%)',
+      type: 'percentage',
+      required: true,
+      placeholder: '12',
+      tooltip: 'Expected market volatility',
+      defaultValue: 12,
+      min: 0,
+      max: 100,
+      step: 1
+    },
+
+    // Scenario Analysis
+    {
+      id: 'includeMarketCrash',
+      label: 'Include Market Crash Scenario',
+      type: 'boolean',
       required: false,
-      defaultValue: true,
-      description: 'Include tax considerations in calculations'
+      tooltip: 'Analyze impact of market downturns',
+      defaultValue: false
     },
     {
-      id: 'includeHealthcare',
-      label: 'Include Healthcare Costs',
-      type: 'checkbox',
-      required: false,
-      defaultValue: true,
-      description: 'Include healthcare costs in retirement expenses'
-    },
-    {
-      id: 'includeLongTermCare',
-      label: 'Include Long-Term Care',
-      type: 'checkbox',
-      required: false,
-      defaultValue: false,
-      description: 'Include long-term care costs'
-    },
-    {
-      id: 'includeSocialSecurity',
-      label: 'Include Social Security',
-      type: 'checkbox',
-      required: false,
-      defaultValue: true,
-      description: 'Include Social Security benefits in calculations'
-    },
-    {
-      id: 'monteCarloSamples',
-      label: 'Monte Carlo Samples',
+      id: 'bearMarketDuration',
+      label: 'Bear Market Duration (Months)',
       type: 'number',
       required: false,
-      min: 1000,
-      max: 50000,
-      step: 1000,
-      placeholder: '10000',
-      description: 'Number of Monte Carlo simulation samples'
+      placeholder: '24',
+      tooltip: 'Expected duration of market downturn',
+      defaultValue: 24,
+      min: 1,
+      max: 120,
+      step: 1
+    },
+    {
+      id: 'recoveryTime',
+      label: 'Recovery Time (Months)',
+      type: 'number',
+      required: false,
+      placeholder: '36',
+      tooltip: 'Time for market to recover',
+      defaultValue: 36,
+      min: 1,
+      max: 120,
+      step: 1
+    },
+
+    // Advanced Options
+    {
+      id: 'includeInheritance',
+      label: 'Include Inheritance',
+      type: 'boolean',
+      required: false,
+      tooltip: 'Include expected inheritance in calculations',
+      defaultValue: false
+    },
+    {
+      id: 'inheritanceAmount',
+      label: 'Expected Inheritance',
+      type: 'currency',
+      required: false,
+      placeholder: '100000',
+      tooltip: 'Expected inheritance amount',
+      defaultValue: 100000,
+      min: 0,
+      max: 10000000,
+      step: 10000
+    },
+    {
+      id: 'inheritanceAge',
+      label: 'Inheritance Age',
+      type: 'number',
+      required: false,
+      placeholder: '70',
+      tooltip: 'Age when inheritance will be received',
+      defaultValue: 70,
+      min: 18,
+      max: 100,
+      step: 1
+    },
+
+    // Withdrawal Strategy
+    {
+      id: 'withdrawalRate',
+      label: 'Safe Withdrawal Rate (%)',
+      type: 'percentage',
+      required: false,
+      placeholder: '4',
+      tooltip: 'Safe annual withdrawal rate (4% rule)',
+      defaultValue: 4,
+      min: 2,
+      max: 10,
+      step: 0.5
+    },
+    {
+      id: 'withdrawalInflationAdjusted',
+      label: 'Inflation-Adjusted Withdrawals',
+      type: 'boolean',
+      required: false,
+      tooltip: 'Increase withdrawals with inflation',
+      defaultValue: true
+    },
+
+    // Healthcare Planning
+    {
+      id: 'medicareStartAge',
+      label: 'Medicare Start Age',
+      type: 'number',
+      required: false,
+      placeholder: '65',
+      tooltip: 'Age to start Medicare coverage',
+      defaultValue: 65,
+      min: 65,
+      max: 70,
+      step: 1
+    },
+    {
+      id: 'supplementalInsurance',
+      label: 'Supplemental Insurance Cost',
+      type: 'currency',
+      required: false,
+      placeholder: '200',
+      tooltip: 'Monthly supplemental insurance premium',
+      defaultValue: 200,
+      min: 0,
+      max: 10000,
+      step: 50
+    },
+
+    // Lifestyle Adjustments
+    {
+      id: 'retirementLocation',
+      label: 'Retirement Location',
+      type: 'select',
+      required: false,
+      options: [
+        { value: 'current', label: 'Current location' },
+        { value: 'lower_cost', label: 'Lower cost area' },
+        { value: 'higher_cost', label: 'Higher cost area' }
+      ],
+      defaultValue: 'current',
+      tooltip: 'Where you plan to live in retirement'
+    },
+    {
+      id: 'lifestyleChange',
+      label: 'Lifestyle Change',
+      type: 'select',
+      required: false,
+      options: [
+        { value: 'maintain', label: 'Maintain current lifestyle' },
+        { value: 'reduce_20', label: 'Reduce expenses by 20%' },
+        { value: 'reduce_40', label: 'Reduce expenses by 40%' },
+        { value: 'luxury', label: 'Upgrade to luxury lifestyle' }
+      ],
+      defaultValue: 'maintain',
+      tooltip: 'Expected lifestyle changes in retirement'
+    },
+
+    // Legacy Planning
+    {
+      id: 'leaveLegacy',
+      label: 'Leave Legacy',
+      type: 'boolean',
+      required: false,
+      tooltip: 'Plan to leave money to heirs',
+      defaultValue: false
+    },
+    {
+      id: 'legacyAmount',
+      label: 'Legacy Amount',
+      type: 'currency',
+      required: false,
+      placeholder: '500000',
+      tooltip: 'Amount to leave to heirs',
+      defaultValue: 500000,
+      min: 0,
+      max: 10000000,
+      step: 10000
+    }
+  ],
+
+  outputs: [
+    // Basic Projections
+    {
+      id: 'yearsToRetirement',
+      label: 'Years to Retirement',
+      type: 'number',
+      explanation: 'Years until you reach retirement age'
+    },
+    {
+      id: 'totalSavingsAtRetirement',
+      label: 'Total Savings at Retirement',
+      type: 'currency',
+      explanation: 'Projected retirement savings balance'
+    },
+    {
+      id: 'monthlyRetirementIncome',
+      label: 'Monthly Retirement Income',
+      type: 'currency',
+      explanation: 'Expected monthly income in retirement'
+    },
+    {
+      id: 'annualRetirementIncome',
+      label: 'Annual Retirement Income',
+      type: 'currency',
+      explanation: 'Expected annual income in retirement'
+    },
+
+    // Income Sources Breakdown
+    {
+      id: 'savingsIncome',
+      label: 'Income from Savings',
+      type: 'currency',
+      explanation: 'Annual income from retirement savings'
+    },
+    {
+      id: 'socialSecurityIncome',
+      label: 'Social Security Income',
+      type: 'currency',
+      explanation: 'Annual Social Security benefits'
+    },
+    {
+      id: 'pensionIncome',
+      label: 'Pension Income',
+      type: 'currency',
+      explanation: 'Annual pension benefits'
+    },
+    {
+      id: 'totalIncome',
+      label: 'Total Annual Income',
+      type: 'currency',
+      explanation: 'Total annual retirement income from all sources'
+    },
+
+    // Expense Analysis
+    {
+      id: 'annualExpenses',
+      label: 'Annual Expenses',
+      type: 'currency',
+      explanation: 'Expected annual expenses in retirement'
+    },
+    {
+      id: 'monthlyExpenses',
+      label: 'Monthly Expenses',
+      type: 'currency',
+      explanation: 'Expected monthly expenses in retirement'
+    },
+    {
+      id: 'expenseCoverage',
+      label: 'Income to Expense Ratio',
+      type: 'percentage',
+      explanation: 'How well income covers expenses (100% = break even)'
+    },
+
+    // Savings Analysis
+    {
+      id: 'totalContributions',
+      label: 'Total Contributions',
+      type: 'currency',
+      explanation: 'Total amount contributed to retirement accounts'
+    },
+    {
+      id: 'totalGrowth',
+      label: 'Total Investment Growth',
+      type: 'currency',
+      explanation: 'Total growth from investments'
+    },
+    {
+      id: 'requiredMonthlySavings',
+      label: 'Required Monthly Savings',
+      type: 'currency',
+      explanation: 'Monthly savings needed to reach goals'
+    },
+    {
+      id: 'savingsGap',
+      label: 'Savings Gap',
+      type: 'currency',
+      explanation: 'Additional savings needed annually'
+    },
+
+    // Risk Analysis
+    {
+      id: 'successProbability',
+      label: 'Retirement Success Probability',
+      type: 'percentage',
+      explanation: 'Probability of meeting retirement goals'
+    },
+    {
+      id: 'failureProbability',
+      label: 'Failure Probability',
+      type: 'percentage',
+      explanation: 'Probability of not meeting retirement goals'
+    },
+    {
+      id: 'riskAdjustedIncome',
+      label: 'Risk-Adjusted Income',
+      type: 'currency',
+      explanation: 'Income adjusted for investment risk'
+    },
+
+    // Scenario Projections
+    {
+      id: 'conservativeProjection',
+      label: 'Conservative Scenario',
+      type: 'currency',
+      explanation: 'Retirement savings in conservative scenario'
+    },
+    {
+      id: 'moderateProjection',
+      label: 'Moderate Scenario',
+      type: 'currency',
+      explanation: 'Retirement savings in moderate scenario'
+    },
+    {
+      id: 'aggressiveProjection',
+      label: 'Aggressive Scenario',
+      type: 'currency',
+      explanation: 'Retirement savings in aggressive scenario'
+    },
+
+    // Withdrawal Analysis
+    {
+      id: 'safeWithdrawalAmount',
+      label: 'Safe Annual Withdrawal',
+      type: 'currency',
+      explanation: 'Safe annual withdrawal amount'
+    },
+    {
+      id: 'sustainableWithdrawalRate',
+      label: 'Sustainable Withdrawal Rate',
+      type: 'percentage',
+      explanation: 'Maximum safe withdrawal rate'
+    },
+    {
+      id: 'portfolioLongevity',
+      label: 'Portfolio Longevity (Years)',
+      type: 'number',
+      explanation: 'Years savings will last with current withdrawals'
+    },
+
+    // Tax Analysis
+    {
+      id: 'preTaxIncome',
+      label: 'Pre-Tax Income',
+      type: 'currency',
+      explanation: 'Total income before taxes'
+    },
+    {
+      id: 'afterTaxIncome',
+      label: 'After-Tax Income',
+      type: 'currency',
+      explanation: 'Income after taxes'
+    },
+    {
+      id: 'taxSavings',
+      label: 'Tax Savings',
+      type: 'currency',
+      explanation: 'Taxes saved through tax-advantaged accounts'
+    },
+
+    // Healthcare Costs
+    {
+      id: 'totalHealthcareCosts',
+      label: 'Total Healthcare Costs',
+      type: 'currency',
+      explanation: 'Total healthcare expenses in retirement'
+    },
+    {
+      id: 'medicareSavings',
+      label: 'Medicare Savings',
+      type: 'currency',
+      explanation: 'Healthcare costs covered by Medicare'
+    },
+    {
+      id: 'outOfPocketHealthcare',
+      label: 'Out-of-Pocket Healthcare',
+      type: 'currency',
+      explanation: 'Healthcare costs you pay out of pocket'
+    },
+
+    // Lifestyle Analysis
+    {
+      id: 'locationAdjustment',
+      label: 'Location Cost Adjustment',
+      type: 'percentage',
+      explanation: 'Cost adjustment based on retirement location'
+    },
+    {
+      id: 'lifestyleAdjustment',
+      label: 'Lifestyle Cost Adjustment',
+      type: 'percentage',
+      explanation: 'Cost adjustment based on lifestyle changes'
+    },
+    {
+      id: 'adjustedExpenses',
+      label: 'Adjusted Annual Expenses',
+      type: 'currency',
+      explanation: 'Expenses after location and lifestyle adjustments'
+    },
+
+    // Legacy Planning
+    {
+      id: 'legacyValue',
+      label: 'Legacy Value',
+      type: 'currency',
+      explanation: 'Amount available for legacy at end of life'
+    },
+    {
+      id: 'inheritanceTax',
+      label: 'Inheritance Tax',
+      type: 'currency',
+      explanation: 'Taxes on inheritance'
+    },
+    {
+      id: 'netLegacy',
+      label: 'Net Legacy',
+      type: 'currency',
+      explanation: 'Amount heirs will receive after taxes'
+    },
+
+    // Milestone Analysis
+    {
+      id: 'age65Balance',
+      label: 'Balance at Age 65',
+      type: 'currency',
+      explanation: 'Projected savings balance at age 65'
+    },
+    {
+      id: 'age70Balance',
+      label: 'Balance at Age 70',
+      type: 'currency',
+      explanation: 'Projected savings balance at age 70'
+    },
+    {
+      id: 'age75Balance',
+      label: 'Balance at Age 75',
+      type: 'currency',
+      explanation: 'Projected savings balance at age 75'
+    },
+    {
+      id: 'age80Balance',
+      label: 'Balance at Age 80',
+      type: 'currency',
+      explanation: 'Projected savings balance at age 80'
+    },
+
+    // Sensitivity Analysis
+    {
+      id: 'incomeSensitivity',
+      label: 'Income Sensitivity Analysis',
+      type: 'text',
+      explanation: 'How different return rates affect retirement savings'
+    },
+    {
+      id: 'expenseSensitivity',
+      label: 'Expense Sensitivity Analysis',
+      type: 'text',
+      explanation: 'How different expense levels affect retirement'
+    },
+
+    // Recommendations
+    {
+      id: 'recommendedSavingsIncrease',
+      label: 'Recommended Savings Increase',
+      type: 'currency',
+      explanation: 'Additional monthly savings recommended'
+    },
+    {
+      id: 'recommendedRetirementAge',
+      label: 'Recommended Retirement Age',
+      type: 'number',
+      explanation: 'Suggested retirement age based on calculations'
+    },
+    {
+      id: 'riskAdjustment',
+      label: 'Risk Adjustment Recommendation',
+      type: 'text',
+      explanation: 'Recommended changes to risk tolerance'
+    },
+    {
+      id: 'strategyRecommendations',
+      label: 'Strategy Recommendations',
+      type: 'text',
+      explanation: 'Personalized retirement strategy recommendations'
+    },
+
+    // Emergency Planning
+    {
+      id: 'emergencyFundNeeded',
+      label: 'Emergency Fund Needed',
+      type: 'currency',
+      explanation: 'Recommended emergency fund size'
+    },
+    {
+      id: 'emergencyFundProgress',
+      label: 'Emergency Fund Progress',
+      type: 'percentage',
+      explanation: 'Progress toward recommended emergency fund'
+    },
+
+    // Social Security Optimization
+    {
+      id: 'optimalClaimingAge',
+      label: 'Optimal Social Security Age',
+      type: 'number',
+      explanation: 'Best age to start Social Security benefits'
+    },
+    {
+      id: 'claimingStrategy',
+      label: 'Claiming Strategy',
+      type: 'text',
+      explanation: 'Recommended Social Security claiming strategy'
+    },
+    {
+      id: 'benefitComparison',
+      label: 'Benefit Comparison',
+      type: 'text',
+      explanation: 'Comparison of benefits at different claiming ages'
+    },
+
+    // Investment Allocation
+    {
+      id: 'recommendedAllocation',
+      label: 'Recommended Allocation',
+      type: 'text',
+      explanation: 'Suggested asset allocation for your situation'
+    },
+
+    // Longevity Risk
+    {
+      id: 'longevityAdjustment',
+      label: 'Longevity Adjustment',
+      type: 'percentage',
+      explanation: 'Additional savings needed for longer life'
+    },
+    {
+      id: 'additionalSavingsNeeded',
+      label: 'Additional Savings Needed',
+      type: 'currency',
+      explanation: 'Extra savings required for longevity risk'
+    },
+
+    // Inflation Impact
+    {
+      id: 'inflationAdjustedIncome',
+      label: 'Inflation-Adjusted Income',
+      type: 'currency',
+      explanation: 'Retirement income adjusted for inflation'
+    },
+    {
+      id: 'purchasingPower',
+      label: 'Purchasing Power',
+      type: 'percentage',
+      explanation: 'Percentage of purchasing power maintained'
+    },
+
+    // Success Metrics
+    {
+      id: 'retirementReadinessScore',
+      label: 'Retirement Readiness Score',
+      type: 'number',
+      explanation: 'Overall retirement preparedness score (0-100)'
     },
     {
       id: 'confidenceLevel',
-      label: 'Confidence Level (%)',
-      type: 'number',
-      required: false,
-      min: 50,
-      max: 99,
-      step: 1,
-      placeholder: '90',
-      description: 'Confidence level for risk analysis'
+      label: 'Confidence Level',
+      type: 'percentage',
+      explanation: 'Confidence in meeting retirement goals'
+    },
+    {
+      id: 'actionItems',
+      label: 'Action Items',
+      type: 'text',
+      explanation: 'Specific steps to improve retirement readiness'
     }
   ],
 
-  // Output fields
-  outputs: [
-    {
-      id: 'basicCalculation',
-      label: 'Basic Calculation',
-      type: 'object',
-      fields: [
-        { id: 'totalSavingsAtRetirement', label: 'Total Savings at Retirement', type: 'currency' },
-        { id: 'monthlyRetirementIncome', label: 'Monthly Retirement Income', type: 'currency' },
-        { id: 'annualRetirementIncome', label: 'Annual Retirement Income', type: 'currency' },
-        { id: 'retirementIncomeGap', label: 'Income Gap', type: 'currency' },
-        { id: 'yearsOfRetirement', label: 'Years of Retirement', type: 'number' }
-      ]
-    },
-    {
-      id: 'detailedAnalysis',
-      label: 'Detailed Analysis',
-      type: 'object',
-      fields: [
-        { id: 'projectedSavings', label: 'Projected Savings', type: 'object' },
-        { id: 'retirementIncome', label: 'Retirement Income Sources', type: 'object' },
-        { id: 'retirementExpenses', label: 'Retirement Expenses', type: 'object' }
-      ]
-    },
-    {
-      id: 'riskAnalysis',
-      label: 'Risk Analysis',
-      type: 'object',
-      fields: [
-        { id: 'probabilityOfSuccess', label: 'Probability of Success', type: 'percentage' },
-        { id: 'worstCaseScenario', label: 'Worst Case Scenario', type: 'currency' },
-        { id: 'bestCaseScenario', label: 'Best Case Scenario', type: 'currency' },
-        { id: 'medianScenario', label: 'Median Scenario', type: 'currency' },
-        { id: 'yearsOfSavings', label: 'Years of Savings', type: 'number' },
-        { id: 'shortfallAmount', label: 'Shortfall Amount', type: 'currency' }
-      ]
-    },
-    {
-      id: 'recommendations',
-      label: 'Recommendations',
-      type: 'object',
-      fields: [
-        { id: 'requiredMonthlySavings', label: 'Required Monthly Savings', type: 'currency' },
-        { id: 'requiredAnnualSavings', label: 'Required Annual Savings', type: 'currency' },
-        { id: 'savingsRate', label: 'Savings Rate', type: 'percentage' },
-        { id: 'catchUpContributions', label: 'Catch-Up Contributions', type: 'currency' },
-        { id: 'retirementAgeAdjustment', label: 'Retirement Age Adjustment', type: 'number' },
-        { id: 'incomeReplacementNeeded', label: 'Income Replacement Needed', type: 'currency' }
-      ]
-    },
-    {
-      id: 'savingsSchedule',
-      label: 'Savings Schedule',
-      type: 'table',
-      columns: [
-        { id: 'age', label: 'Age', type: 'number' },
-        { id: 'year', label: 'Year', type: 'number' },
-        { id: 'beginningBalance', label: 'Beginning Balance', type: 'currency' },
-        { id: 'contributions', label: 'Contributions', type: 'currency' },
-        { id: 'investmentReturns', label: 'Investment Returns', type: 'currency' },
-        { id: 'endingBalance', label: 'Ending Balance', type: 'currency' },
-        { id: 'projectedRetirementIncome', label: 'Projected Retirement Income', type: 'currency' }
-      ]
-    },
-    {
-      id: 'summary',
-      label: 'Summary',
-      type: 'object',
-      fields: [
-        { id: 'totalContributions', label: 'Total Contributions', type: 'currency' },
-        { id: 'totalInvestmentReturns', label: 'Total Investment Returns', type: 'currency' },
-        { id: 'finalPortfolioValue', label: 'Final Portfolio Value', type: 'currency' },
-        { id: 'monthlyRetirementIncome', label: 'Monthly Retirement Income', type: 'currency' },
-        { id: 'retirementReadinessScore', label: 'Retirement Readiness Score', type: 'percentage' },
-        { id: 'keyRecommendations', label: 'Key Recommendations', type: 'array' }
-      ]
-    }
-  ],
+  formulas: [],
 
-  // Calculator functions
-  calculate: retirementCalculatorFormula.calculate,
+  validationRules: getRetirementValidationRules(),
 
-  // Examples
   examples: [
     {
-      title: 'Early Career Planning',
-      description: 'Young professional starting retirement planning',
+      title: 'Early Retirement Planning',
+      description: 'Planning for retirement at age 55 with aggressive savings',
       inputs: {
-        currentAge: 25,
-        retirementAge: 65,
+        currentAge: 35,
+        retirementAge: 55,
         lifeExpectancy: 85,
-        currentIncome: 60000,
-        expectedIncomeGrowth: 3,
-        currentSavings: 10000,
-        current401k: 5000,
-        currentIRA: 0,
-        otherInvestments: 0,
-        monthly401kContribution: 1000,
-        monthlyIRAContribution: 500,
-        otherMonthlyContributions: 200,
-        employerMatch: 500,
-        expectedReturn: 7,
-        inflationRate: 2.5,
-        taxRate: 22,
-        socialSecurityMonthly: 2500,
-        pensionMonthly: 0,
-        otherIncomeMonthly: 0,
-        desiredRetirementIncome: 60000,
-        retirementIncomeReplacement: 80,
-        healthcareCosts: 8000,
-        longTermCareCosts: 0
+        currentSavings: 150000,
+        monthlySavings: 2500,
+        annualIncome: 90000,
+        annualExpenses: 60000,
+        expectedAnnualReturn: 8,
+        inflationRate: 3,
+        riskTolerance: 'moderate',
+        marketVolatility: 12,
+        currentTaxRate: 28,
+        retirementTaxRate: 22,
+        taxDeferred: true,
+        socialSecurityBenefit: 2500,
+        socialSecurityStartAge: 67,
+        healthcareCosts: 10000
+      },
+      expectedOutputs: {
+        totalSavingsAtRetirement: 2500000,
+        monthlyRetirementIncome: 8500,
+        successProbability: 85,
+        retirementReadinessScore: 78
       }
     },
     {
-      title: 'Mid-Career Assessment',
-      description: 'Mid-career professional evaluating retirement readiness',
+      title: 'Conservative Retirement Planning',
+      description: 'Traditional retirement planning with conservative assumptions',
       inputs: {
         currentAge: 45,
-        retirementAge: 65,
-        lifeExpectancy: 85,
-        currentIncome: 100000,
-        expectedIncomeGrowth: 2,
-        currentSavings: 50000,
-        current401k: 200000,
-        currentIRA: 75000,
-        otherInvestments: 25000,
-        monthly401kContribution: 2000,
-        monthlyIRAContribution: 600,
-        otherMonthlyContributions: 500,
-        employerMatch: 1000,
-        expectedReturn: 6.5,
+        retirementAge: 67,
+        lifeExpectancy: 90,
+        currentSavings: 300000,
+        monthlySavings: 1500,
+        annualIncome: 75000,
+        annualExpenses: 55000,
+        expectedAnnualReturn: 6,
         inflationRate: 2.5,
-        taxRate: 24,
-        socialSecurityMonthly: 3500,
-        pensionMonthly: 0,
-        otherIncomeMonthly: 0,
-        desiredRetirementIncome: 80000,
-        retirementIncomeReplacement: 80,
-        healthcareCosts: 10000,
-        longTermCareCosts: 5000
+        riskTolerance: 'conservative',
+        marketVolatility: 8,
+        currentTaxRate: 24,
+        retirementTaxRate: 18,
+        taxDeferred: true,
+        socialSecurityBenefit: 2000,
+        pensionAmount: 1200,
+        healthcareCosts: 8000
+      },
+      expectedOutputs: {
+        totalSavingsAtRetirement: 1200000,
+        monthlyRetirementIncome: 6200,
+        successProbability: 92,
+        retirementReadinessScore: 85
       }
     },
     {
-      title: 'Pre-Retirement Planning',
-      description: 'Near-retirement individual finalizing plans',
+      title: 'Late Retirement Planning',
+      description: 'Planning for retirement at age 70 with moderate savings',
       inputs: {
-        currentAge: 60,
-        retirementAge: 65,
-        lifeExpectancy: 85,
-        currentIncome: 120000,
-        expectedIncomeGrowth: 1,
-        currentSavings: 100000,
-        current401k: 500000,
-        currentIRA: 150000,
-        otherInvestments: 100000,
-        monthly401kContribution: 2500,
-        monthlyIRAContribution: 700,
-        otherMonthlyContributions: 1000,
-        employerMatch: 1250,
-        expectedReturn: 5.5,
-        inflationRate: 2.5,
-        taxRate: 22,
-        socialSecurityMonthly: 4000,
-        pensionMonthly: 2000,
-        otherIncomeMonthly: 500,
-        desiredRetirementIncome: 100000,
-        retirementIncomeReplacement: 85,
+        currentAge: 50,
+        retirementAge: 70,
+        lifeExpectancy: 95,
+        currentSavings: 500000,
+        monthlySavings: 1000,
+        annualIncome: 80000,
+        annualExpenses: 65000,
+        expectedAnnualReturn: 7,
+        inflationRate: 3,
+        riskTolerance: 'moderate',
+        marketVolatility: 10,
+        currentTaxRate: 26,
+        retirementTaxRate: 20,
+        taxDeferred: true,
+        socialSecurityBenefit: 2800,
         healthcareCosts: 12000,
-        longTermCareCosts: 10000
+        includeMarketCrash: true,
+        bearMarketDuration: 24,
+        recoveryTime: 36
+      },
+      expectedOutputs: {
+        totalSavingsAtRetirement: 1800000,
+        monthlyRetirementIncome: 7800,
+        successProbability: 88,
+        retirementReadinessScore: 82
       }
     }
-  ],
-
-  // Usage instructions
-  usageInstructions: [
-    'Enter your current age and planned retirement age',
-    'Specify your current income and expected growth rate',
-    'Input all current savings and investment balances',
-    'Set your monthly contribution amounts',
-    'Choose realistic investment return and inflation assumptions',
-    'Estimate your Social Security and pension benefits',
-    'Define your desired retirement income and expenses',
-    'Enable advanced options for more detailed analysis',
-    'Review the comprehensive results and recommendations'
-  ],
-
-  // Tips and insights
-  tips: [
-    'Start saving early - compound interest works best over longer time periods',
-    'Maximize employer 401(k) matches - it\'s free money',
-    'Consider catch-up contributions if you\'re 50 or older',
-    'Factor in healthcare costs - they can be significant in retirement',
-    'Social Security benefits may be reduced in the future',
-    'Diversify your retirement income sources',
-    'Review and adjust your plan annually',
-    'Consider working longer if you\'re behind on savings'
-  ],
-
-  // Related calculators
-  relatedCalculators: [
-    'compound-interest-calculator',
-    '401k-calculator',
-    'social-security-calculator',
-    'investment-return-calculator',
-    'savings-goal-calculator'
   ]
 };

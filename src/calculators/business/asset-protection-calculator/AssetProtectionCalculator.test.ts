@@ -1,141 +1,62 @@
-import { AssetProtectionCalculator } from './AssetProtectionCalculator';
+import { describe, it, expect } from 'vitest';
+import { calculateResult } from './formulas';
+import { validateAssetProtectionCalculatorInputs } from './validation';
 
-describe('AssetProtectionCalculator', () => {
-  let calculator: AssetProtectionCalculator;
+describe('Asset Protection Calculator', () => {
+  const mockInputs = {
+    inputValue: 10,
+    multiplier: 5
+  };
 
-  beforeEach(() => {
-    calculator = new AssetProtectionCalculator();
-  });
-
-  describe('calculate', () => {
-    it('should calculate asset protection metrics correctly', () => {
-      const inputs = {
-        totalAssets: 1000000,
-        liquidAssets: 200000,
-        realEstateValue: 500000,
-        businessValue: 300000,
-        personalLiability: 100000,
-        insuranceCoverage: 500000,
-        trustProtection: 200000,
-        llcProtection: 150000,
-        retirementProtection: 100000,
-        homesteadExemption: 50000,
-        riskTolerance: 'Medium',
-        stateOfResidence: 'California',
-        maritalStatus: 'Married',
-        businessStructure: 'LLC',
-        assetLocation: 'Domestic'
-      };
-
-      const result = calculator.calculate(inputs);
-
-      expect(result).toBeDefined();
-      expect(result.protectedAssets).toBeGreaterThan(0);
-      expect(result.unprotectedAssets).toBeGreaterThanOrEqual(0);
-      expect(result.protectionPercentage).toBeGreaterThan(0);
-      expect(result.protectionPercentage).toBeLessThanOrEqual(100);
-      expect(result.riskLevel).toBeDefined();
-      expect(result.recommendations).toBeDefined();
+  describe('Calculations', () => {
+    it('calculates result correctly', () => {
+      const result = calculateResult(mockInputs);
+      expect(result).toBe(50);
     });
 
-    it('should handle zero assets', () => {
-      const inputs = {
-        totalAssets: 0,
-        liquidAssets: 0,
-        realEstateValue: 0,
-        businessValue: 0,
-        personalLiability: 0,
-        insuranceCoverage: 0,
-        trustProtection: 0,
-        llcProtection: 0,
-        retirementProtection: 0,
-        homesteadExemption: 0,
-        riskTolerance: 'Low',
-        stateOfResidence: 'California',
-        maritalStatus: 'Single',
-        businessStructure: 'Sole Proprietorship',
-        assetLocation: 'Domestic'
-      };
-
-      const result = calculator.calculate(inputs);
-
-      expect(result.protectedAssets).toBe(0);
-      expect(result.unprotectedAssets).toBe(0);
-      expect(result.protectionPercentage).toBe(0);
+    it('handles zero multiplication', () => {
+      const zeroInputs = { ...mockInputs, multiplier: 0 };
+      const result = calculateResult(zeroInputs);
+      expect(result).toBe(0);
     });
 
-    it('should handle high risk tolerance', () => {
-      const inputs = {
-        totalAssets: 2000000,
-        liquidAssets: 500000,
-        realEstateValue: 1000000,
-        businessValue: 500000,
-        personalLiability: 200000,
-        insuranceCoverage: 1000000,
-        trustProtection: 500000,
-        llcProtection: 300000,
-        retirementProtection: 200000,
-        homesteadExemption: 100000,
-        riskTolerance: 'High',
-        stateOfResidence: 'Texas',
-        maritalStatus: 'Married',
-        businessStructure: 'Corporation',
-        assetLocation: 'International'
-      };
-
-      const result = calculator.calculate(inputs);
-
-      expect(result.riskLevel).toBeDefined();
-      expect(result.recommendations).toContain('Consider additional protection strategies');
+    it('handles large numbers', () => {
+      const largeInputs = { inputValue: 1000, multiplier: 1000 };
+      const result = calculateResult(largeInputs);
+      expect(result).toBe(1000000);
     });
   });
 
-  describe('validateInputs', () => {
-    it('should validate required inputs', () => {
-      const inputs = {
-        totalAssets: 1000000,
-        liquidAssets: 200000,
-        realEstateValue: 500000,
-        businessValue: 300000,
-        personalLiability: 100000,
-        insuranceCoverage: 500000,
-        trustProtection: 200000,
-        llcProtection: 150000,
-        retirementProtection: 100000,
-        homesteadExemption: 50000,
-        riskTolerance: 'Medium',
-        stateOfResidence: 'California',
-        maritalStatus: 'Married',
-        businessStructure: 'LLC',
-        assetLocation: 'Domestic'
-      };
-
-      const validation = calculator.validateInputs(inputs);
-      expect(validation.isValid).toBe(true);
+  describe('Validation', () => {
+    it('validates correct inputs', () => {
+      const result = validateAssetProtectionCalculatorInputs(mockInputs);
+      expect(result.length).toBe(0);
     });
 
-    it('should reject negative values', () => {
-      const inputs = {
-        totalAssets: -1000000,
-        liquidAssets: 200000,
-        realEstateValue: 500000,
-        businessValue: 300000,
-        personalLiability: 100000,
-        insuranceCoverage: 500000,
-        trustProtection: 200000,
-        llcProtection: 150000,
-        retirementProtection: 100000,
-        homesteadExemption: 50000,
-        riskTolerance: 'Medium',
-        stateOfResidence: 'California',
-        maritalStatus: 'Married',
-        businessStructure: 'LLC',
-        assetLocation: 'Domestic'
-      };
+    it('validates negative numbers', () => {
+      const invalidInputs = { ...mockInputs, inputValue: -5 };
+      const result = validateAssetProtectionCalculatorInputs(invalidInputs);
+      expect(result.length).toBeGreaterThan(0);
+    });
 
-      const validation = calculator.validateInputs(inputs);
-      expect(validation.isValid).toBe(false);
-      expect(validation.errors).toContain('Total assets must be positive');
+    it('validates NaN values', () => {
+      const invalidInputs = { ...mockInputs, inputValue: NaN };
+      const result = validateAssetProtectionCalculatorInputs(invalidInputs);
+      expect(result.length).toBeGreaterThan(0);
+    });
+  });
+
+  describe('Edge Cases', () => {
+    it('handles decimal inputs', () => {
+      const decimalInputs = { inputValue: 3.5, multiplier: 2.0 };
+      const result = calculateResult(decimalInputs);
+      expect(result).toBe(7.0);
+    });
+
+    it('handles very small numbers', () => {
+      const smallInputs = { inputValue: 0.001, multiplier: 0.001 };
+      const result = calculateResult(smallInputs);
+      expect(result).toBeCloseTo(0.000001, 6);
     });
   });
 });

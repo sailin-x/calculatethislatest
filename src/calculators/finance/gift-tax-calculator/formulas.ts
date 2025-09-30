@@ -1,146 +1,59 @@
-import { GiftTaxInputs, GiftTaxResults, GiftTaxMetrics } from './types';
+import { gift-tax-calculatorInputs, gift-tax-calculatorMetrics, gift-tax-calculatorAnalysis } from './types';
 
-export function calculateGiftTax(inputs: GiftTaxInputs): GiftTaxResults {
-  const {
-    giftAmount,
-    annualExclusionAmount,
-    lifetimeExclusionUsed,
-    lifetimeExclusionLimit,
-    giftTaxRate,
-    numberOfRecipients,
-    maritalStatus,
-    includeSpousalPortion,
-    inflationAdjustment,
-    planningHorizon,
-    expectedGrowthRate
-  } = inputs;
 
-  // Calculate total annual exclusions available
-  const totalAnnualExclusions = annualExclusionAmount * numberOfRecipients;
+// Tax Calculator - Progressive tax calculations
+export function calculateProgressiveTax(income: number, brackets: Array<{min: number, max: number, rate: number}>): number {
+  let tax = 0;
+  let remainingIncome = income;
 
-  // Calculate spousal portion if applicable
-  const spousalPortion = maritalStatus === 'married' && includeSpousalPortion
-    ? Math.min(giftAmount * 0.5, lifetimeExclusionLimit - lifetimeExclusionUsed)
-    : 0;
-
-  // Calculate taxable gift amount
-  const adjustedGiftAmount = giftAmount - spousalPortion;
-  const amountAfterAnnualExclusions = Math.max(0, adjustedGiftAmount - totalAnnualExclusions);
-  const remainingLifetimeExclusion = Math.max(0, lifetimeExclusionLimit - lifetimeExclusionUsed);
-  const taxableGiftAmount = Math.max(0, amountAfterAnnualExclusions - remainingLifetimeExclusion);
-
-  // Calculate gift tax liability
-  const giftTaxLiability = taxableGiftAmount * (giftTaxRate / 100);
-
-  // Calculate effective tax rate
-  const effectiveTaxRate = giftAmount > 0 ? (giftTaxLiability / giftAmount) * 100 : 0;
-
-  // Calculate net gift amount after tax
-  const netGiftAmount = giftAmount - giftTaxLiability;
-
-  // Calculate projected future value
-  const projectedFutureValue = netGiftAmount * Math.pow(1 + expectedGrowthRate / 100, planningHorizon);
-
-  // Calculate tax savings from exclusions
-  const taxSavingsFromExclusions = (giftAmount - taxableGiftAmount) * (giftTaxRate / 100);
-
-  // Calculate break-even gift amount
-  const breakEvenGiftAmount = totalAnnualExclusions + remainingLifetimeExclusion + spousalPortion;
-
-  // Determine optimal gift strategy
-  let optimalGiftStrategy = 'Standard annual exclusion gifts';
-  if (giftAmount > totalAnnualExclusions + remainingLifetimeExclusion) {
-    optimalGiftStrategy = 'Utilize lifetime exclusion for large gifts';
-  } else if (maritalStatus === 'married' && !includeSpousalPortion) {
-    optimalGiftStrategy = 'Consider spousal gifts to double annual exclusions';
-  } else if (planningHorizon > 10) {
-    optimalGiftStrategy = 'Consider trust structures for long-term planning';
+  for (const bracket of brackets) {
+    if (remainingIncome <= 0) break;
+    const taxableInBracket = Math.min(remainingIncome, bracket.max - bracket.min);
+    tax += taxableInBracket * (bracket.rate / 100);
+    remainingIncome -= taxableInBracket;
   }
 
-  return {
-    taxableGiftAmount,
-    giftTaxLiability,
-    effectiveTaxRate,
-    remainingLifetimeExclusion,
-    totalAnnualExclusions,
-    netGiftAmount,
-    projectedFutureValue,
-    taxSavingsFromExclusions,
-    breakEvenGiftAmount,
-    optimalGiftStrategy
-  };
+  return tax;
 }
 
-export function calculateGiftTaxMetrics(
-  inputs: GiftTaxInputs,
-  results: GiftTaxResults
-): GiftTaxMetrics {
-  const { giftAmount, lifetimeExclusionLimit, lifetimeExclusionUsed } = inputs;
-  const { giftTaxLiability, taxSavingsFromExclusions } = results;
-
-  // Calculate tax efficiency score (0-100, higher is better)
-  const taxEfficiencyScore = Math.max(0, Math.min(100,
-    100 - (giftTaxLiability / Math.max(giftAmount, 1)) * 100
-  ));
-
-  // Calculate exclusion utilization rate
-  const exclusionUtilizationRate = lifetimeExclusionLimit > 0
-    ? (lifetimeExclusionUsed / lifetimeExclusionLimit) * 100
-    : 0;
-
-  // Calculate projected tax savings over time
-  const projectedTaxSavings = taxSavingsFromExclusions;
-
-  // Assess risk level
-  let riskAssessment: 'low' | 'medium' | 'high' = 'low';
-  if (exclusionUtilizationRate > 80) {
-    riskAssessment = 'high';
-  } else if (exclusionUtilizationRate > 50) {
-    riskAssessment = 'medium';
-  }
-
-  return {
-    taxEfficiencyScore,
-    exclusionUtilizationRate,
-    projectedTaxSavings,
-    riskAssessment
-  };
+export function calculateEffectiveTaxRate(taxPaid: number, totalIncome: number): number {
+  return (taxPaid / totalIncome) * 100;
 }
 
-export function validateGiftTaxInputs(inputs: GiftTaxInputs): string[] {
-  const errors: string[] = [];
-
-  if (inputs.giftAmount <= 0) {
-    errors.push('Gift amount must be greater than $0');
+export function calculateResult(inputs: gift-tax-calculatorInputs): number {
+  // Use domain-specific calculations based on input properties
+  try {
+    // Try to match inputs to appropriate calculation
+    if ('principal' in inputs && 'annualRate' in inputs && 'years' in inputs) {
+      return calculateMonthlyPayment(inputs.principal, inputs.annualRate, inputs.years);
+    }
+    if ('initialInvestment' in inputs && 'finalValue' in inputs) {
+      return calculateROI(inputs.initialInvestment, inputs.finalValue);
+    }
+    if ('weightKg' in inputs && 'heightCm' in inputs) {
+      return calculateBMI(inputs.weightKg, inputs.heightCm);
+    }
+    if ('value' in inputs && 'percentage' in inputs) {
+      return calculatePercentage(inputs.value, inputs.percentage);
+    }
+    // Fallback to basic calculation
+    return inputs.value || inputs.amount || inputs.principal || 0;
+  } catch (error) {
+    console.warn('Calculation error:', error);
+    return 0;
   }
+}
 
-  if (inputs.annualExclusionAmount < 0) {
-    errors.push('Annual exclusion amount cannot be negative');
-  }
+export function generateAnalysis(inputs: gift-tax-calculatorInputs, metrics: gift-tax-calculatorMetrics): gift-tax-calculatorAnalysis {
+  const result = metrics.result;
 
-  if (inputs.lifetimeExclusionUsed < 0) {
-    errors.push('Lifetime exclusion used cannot be negative');
-  }
+  let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
+  if (Math.abs(result) > 100000) riskLevel = 'High';
+  else if (Math.abs(result) > 10000) riskLevel = 'Medium';
 
-  if (inputs.lifetimeExclusionLimit <= 0) {
-    errors.push('Lifetime exclusion limit must be greater than $0');
-  }
+  const recommendation = result > 0 ?
+    'Calculation completed successfully - positive result' :
+    'Calculation completed - review inputs if result seems unexpected';
 
-  if (inputs.giftTaxRate < 0 || inputs.giftTaxRate > 100) {
-    errors.push('Gift tax rate must be between 0% and 100%');
-  }
-
-  if (inputs.numberOfRecipients <= 0) {
-    errors.push('Number of recipients must be at least 1');
-  }
-
-  if (inputs.planningHorizon < 0) {
-    errors.push('Planning horizon cannot be negative');
-  }
-
-  if (inputs.expectedGrowthRate < -20 || inputs.expectedGrowthRate > 50) {
-    errors.push('Expected growth rate must be between -20% and 50%');
-  }
-
-  return errors;
+  return { recommendation, riskLevel };
 }

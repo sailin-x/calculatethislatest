@@ -1,5 +1,5 @@
-export { autoLoanCalculator } from './AutoLoanCalculator';
-export { registerAutoLoanCalculator, unregisterAutoLoanCalculator } from './register';
+export { AutoLoanCalculator } from './AutoLoanCalculator';
+export * from './types';
 export * from './formulas';
 export * from './validation';
 export * from './quickValidation';

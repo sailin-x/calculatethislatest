@@ -1,0 +1,6 @@
+import { calculatorRegistry } from '../../data/calculatorRegistry';
+import { business_process_re_engineering_calculatorCalculatorCalculator } from './business_process_re_engineering_calculatorCalculatorCalculator';
+
+export function registerbusiness_process_re_engineering_calculatorCalculatorCalculator(): void {
+  calculatorRegistry.register(new business_process_re_engineering_calculatorCalculatorCalculator());
+}

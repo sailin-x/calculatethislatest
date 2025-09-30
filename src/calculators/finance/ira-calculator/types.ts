@@ -1,32 +1,75 @@
 export interface IRAInputs {
+  // Account Information
   currentBalance: number;
   annualContribution: number;
-  expectedReturn: number;
-  yearsToRetirement: number;
-  currentAge: number;
   iraType: 'traditional' | 'roth' | 'sep' | 'simple';
-  taxBracket: number;
-  inflationRate: number;
+
+  // Investment Parameters
+  expectedReturnRate: number; // Annual percentage
+  compoundFrequency: 'monthly' | 'quarterly' | 'annually';
+
+  // Time Horizon
+  currentAge: number;
+  retirementAge: number;
+  yearsToContribute: number;
+
+  // Tax Information (for Traditional IRA)
+  currentTaxRate?: number;
+  expectedRetirementTaxRate?: number;
+
+  // Roth IRA specific
+  currentIncome?: number;
+  contributionLimit?: number;
+
+  // Analysis Options
   includeRequiredMinimumDistributions: boolean;
-  spousalIRA: boolean;
-  catchUpContributions: boolean;
+  inflationRate?: number;
 }
 
 export interface RAResults {
-  futureValue: number;
+  // Growth Projections
   totalContributions: number;
-  totalEarnings: number;
-  taxSavings: number;
-  netValue: number;
-  requiredMinimumDistribution: number;
-  effectiveReturn: number;
-  breakEvenAge: number;
-  retirementIncome: number;
-}
+  totalInterest: number;
+  projectedBalance: number;
 
-export interface IRAMetrics {
-  contributionEfficiency: number;
-  taxAdvantageRatio: number;
-  riskAdjustedReturn: number;
-  retirementReadiness: 'low' | 'medium' | 'high';
+  // Retirement Income
+  annualRetirementIncome: number;
+  monthlyRetirementIncome: number;
+
+  // Tax Analysis
+  taxSavings: number;
+  afterTaxValue: number;
+
+  // Distribution Analysis
+  requiredMinimumDistribution: number;
+  yearsOfDistributions: number;
+
+  // Projections
+  yearlyProjections: Array<{
+    age: number;
+    year: number;
+    contributions: number;
+    interest: number;
+    balance: number;
+    withdrawals: number;
+  }>;
+
+  // Financial Metrics
+  effectiveGrowthRate: number;
+  savingsRate: number;
+  retirementReadiness: 'excellent' | 'good' | 'fair' | 'poor';
+
+  // Recommendations
+  recommendedAdjustments: {
+    increaseContribution: number;
+    adjustReturnAssumption: number;
+    delayRetirement: number;
+    strategySuggestions: string[];
+  };
+
+  // Error handling
+  errors: string[];
+
+  // Comprehensive report
+  report: string;
 }
