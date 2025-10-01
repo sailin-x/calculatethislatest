@@ -23,7 +23,7 @@ import { registerDebtPayoffCalculatorCalculator as registerDebtPayoffCalculatorC
 import { svod_streaming_content_licensing_valuationCalculatorCalculator as svod_streaming_content_licensing_valuationCalculatorCalculator } from './svod_streaming_content_licensing_valuationCalculator';
 import { annuityBuyoutCalculatorCalculator as annuityBuyoutCalculatorCalculator } from './annuityBuyoutCalculator';
 import { mortgage_qualificationCalculatorCalculator as mortgage_qualificationCalculatorCalculator } from './mortgage_qualificationCalculator';
-import { mortgage_paymentCalculatorCalculator as mortgage_paymentCalculatorCalculator } from './mortgage_paymentCalculator';
+import { MortgagePaymentCalculator as mortgage_paymentCalculatorCalculator } from './finance/mortgage-payment';
 import { Four01kCalculatorCalculator as Four01kCalculatorCalculator } from './401kCalculator';
 import { clinical_trial_cost_estimatorCalculatorCalculator as clinical_trial_cost_estimatorCalculatorCalculator } from './clinical_trial_cost_estimatorCalculator';
 import { futures_trading_profitability_calculatorCalculatorCalculator as futures_trading_profitability_calculatorCalculatorCalculator } from './futures_trading_profitability_calculatorCalculator';
@@ -265,7 +265,7 @@ import { merger_model_calculatorCalculatorCalculator as merger_model_calculatorC
 import { blockchain_calculatorCalculatorCalculator as blockchain_calculatorCalculatorCalculator } from './blockchain_calculatorCalculator';
 import { total_cost_of_ownership_for_commercial_fleet_calculatorCalculatorCalculator as total_cost_of_ownership_for_commercial_fleet_calculatorCalculatorCalculator } from './total_cost_of_ownership_for_commercial_fleet_calculatorCalculator';
 import { hoa_feeCalculatorCalculator as hoa_feeCalculatorCalculator } from './hoa_feeCalculator';
-import { home_insuranceCalculatorCalculator as home_insuranceCalculatorCalculator } from './home_insuranceCalculator';
+import { HomeInsuranceCalculator as home_insuranceCalculatorCalculator } from './finance/home-insurance';
 import { crm_cost_calculatorCalculatorCalculator as crm_cost_calculatorCalculatorCalculator } from './crm_cost_calculatorCalculator';
 import { motorcycle_accident_compensation_calculatorCalculatorCalculator as motorcycle_accident_compensation_calculatorCalculatorCalculator } from './motorcycle_accident_compensation_calculatorCalculator';
 import { giftTaxCalculatorCalculator as giftTaxCalculatorCalculator } from './giftTaxCalculator';
@@ -294,7 +294,7 @@ import { irrevocableLifeInsuranceTrustILITValueCalculatorCalculator as irrevocab
 import { estate_tax_liability_calculatorCalculatorCalculator as estate_tax_liability_calculatorCalculatorCalculator } from './estate_tax_liability_calculatorCalculator';
 import { flood_risk_zonal_pricing_calculatorCalculatorCalculator as flood_risk_zonal_pricing_calculatorCalculatorCalculator } from './flood_risk_zonal_pricing_calculatorCalculator';
 import { complex_numbersCalculatorCalculator as complex_numbersCalculatorCalculator } from './complex_numbersCalculator';
-import { hotel_feasibility_adrCalculatorCalculator as hotel_feasibility_adrCalculatorCalculator } from './hotel_feasibility_adrCalculator';
+import { HotelFeasibilityADRCalculator as hotel_feasibility_adrCalculatorCalculator } from './finance/hotel-feasibility-adr';
 import { blood_alcohol_calculatorCalculatorCalculator as blood_alcohol_calculatorCalculatorCalculator } from './blood_alcohol_calculatorCalculator';
 import { ski_lesson_cost_calculatorCalculatorCalculator as ski_lesson_cost_calculatorCalculatorCalculator } from './ski_lesson_cost_calculatorCalculator';
 import { time_tracking_cost_calculatorCalculatorCalculator as time_tracking_cost_calculatorCalculatorCalculator } from './time_tracking_cost_calculatorCalculator';
@@ -454,7 +454,7 @@ import { painting_cost_calculatorCalculatorCalculator as painting_cost_calculato
 import { immediateAnnuityPayoutCalculatorCalculator as immediateAnnuityPayoutCalculatorCalculator } from './immediateAnnuityPayoutCalculator';
 import { hsa_triple_tax_advantage_calculatorCalculatorCalculator as hsa_triple_tax_advantage_calculatorCalculatorCalculator } from './hsa_triple_tax_advantage_calculatorCalculator';
 import { payback_period_calculatorCalculatorCalculator as payback_period_calculatorCalculatorCalculator } from './payback_period_calculatorCalculator';
-import { interest_only_mortgageCalculatorCalculator as interest_only_mortgageCalculatorCalculator } from './interest_only_mortgageCalculator';
+import { InterestOnlyMortgageCalculator as interest_only_mortgageCalculatorCalculator } from './finance/interest-only-mortgage';
 import { financial_independence_calculatorCalculatorCalculator as financial_independence_calculatorCalculatorCalculator } from './financial_independence_calculatorCalculator';
 import { real_estate_closing_calculatorCalculatorCalculator as real_estate_closing_calculatorCalculatorCalculator } from './real_estate_closing_calculatorCalculator';
 import { martial_arts_cost_calculatorCalculatorCalculator as martial_arts_cost_calculatorCalculatorCalculator } from './martial_arts_cost_calculatorCalculator';
@@ -940,7 +940,7 @@ import { hit_and_run_settlement_calculatorCalculatorCalculator as hit_and_run_se
 import { rent_vs_buy_calculatorCalculatorCalculator as rent_vs_buy_calculatorCalculatorCalculator } from './rent_vs_buy_calculatorCalculator';
 import { registerSimpleIRACalculatorCalculator as registerSimpleIRACalculatorCalculator } from './registerSimpleIRACalculator';
 import { testosterone_calculatorCalculatorCalculator as testosterone_calculatorCalculatorCalculator } from './testosterone_calculatorCalculator';
-import { loan_to_costCalculatorCalculator as loan_to_costCalculatorCalculator } from './loan_to_costCalculator';
+import { LoanToCostCalculator as loan_to_costCalculatorCalculator } from './finance/loan-to-cost';
 import { seo_cost_calculatorCalculatorCalculator as seo_cost_calculatorCalculatorCalculator } from './seo_cost_calculatorCalculator';
 import { bankruptcy_filing_calculatorCalculatorCalculator as bankruptcy_filing_calculatorCalculatorCalculator } from './bankruptcy_filing_calculatorCalculator';
 import { opportunity_zone_investmentCalculatorCalculator as opportunity_zone_investmentCalculatorCalculator } from './opportunity_zone_investmentCalculator';
