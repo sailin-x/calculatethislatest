@@ -55,7 +55,7 @@ import { inheritance_tax_estimatorCalculatorCalculator as inheritance_tax_estima
 import { marine_cargo_insurance_premium_calculatorCalculatorCalculator as marine_cargo_insurance_premium_calculatorCalculatorCalculator } from './marine_cargo_insurance_premium_calculatorCalculator';
 import { epa_fine_calculatorCalculatorCalculator as epa_fine_calculatorCalculatorCalculator } from './epa_fine_calculatorCalculator';
 import { anti_aging_regenerative_medicine_cost_calculatorCalculatorCalculator as anti_aging_regenerative_medicine_cost_calculatorCalculatorCalculator } from './anti_aging_regenerative_medicine_cost_calculatorCalculator';
-import { balanced_scorecard_calculatorCalculatorCalculator as balanced_scorecard_calculatorCalculatorCalculator } from './balanced_scorecard_calculatorCalculator';
+import { BalancedScorecardCalculator as balanced_scorecard_calculatorCalculatorCalculator } from './business/balanced-scorecard-calculator';
 import { gross_rent_multiplierCalculatorCalculator as gross_rent_multiplierCalculatorCalculator } from './gross_rent_multiplierCalculator';
 import { registerFixedIndexAnnuityCalculatorCalculator as registerFixedIndexAnnuityCalculatorCalculator } from './registerFixedIndexAnnuityCalculator';
 import { registerComprehensiveMortgageCalculatorCalculator as registerComprehensiveMortgageCalculatorCalculator } from './registerComprehensiveMortgageCalculator';
