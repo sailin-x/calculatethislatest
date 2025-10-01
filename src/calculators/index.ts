@@ -393,7 +393,7 @@ import { arm_vs_fixedCalculatorCalculator as arm_vs_fixedCalculator } \1Calculat
 import { mortgageRefinanceCalculatorCalculator as mortgageRefinanceCalculator } \1Calculator\2;
 import { loss_ratio_calculatorCalculatorCalculator as loss_ratio_calculatorCalculator } \1Calculator\2;
 import { private_mortgage_insuranceCalculatorCalculator as private_mortgage_insuranceCalculator } \1Calculator\2;
-import { amazon_fba_profit_calculatorCalculatorCalculator as amazon_fba_profit_calculatorCalculator } \1Calculator\2;
+import { amazon_fba_profit_calculatorCalculatorCalculator as amazon_fba_profit_calculatorCalculator } from './amazon_fba_profit_calculatorCalculator';
 import { registerBetaCalculatorCalculator as registerBetaCalculator } \1Calculator\2;
 import { catastrophic_injury_calculatorCalculatorCalculator as catastrophic_injury_calculatorCalculator } \1Calculator\2;
 import { franchise_roi_calculatorCalculatorCalculator as franchise_roi_calculatorCalculator } \1Calculator\2;
