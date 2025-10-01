@@ -311,7 +311,7 @@ update_main_index() {
         local calc_var="${calc_name//-/_}_calculator"
         local import_path="./${category_path}/${calc_name}"
 
-        echo "import { ${calc_name//-/_}Calculator } from '${import_path}/${calc_name//-/_}';" >> "$temp_file"
+        echo "import { ${calc_name//-/_}Calculator } from '${import_path}';" >> "$temp_file"
         echo "calculatorRegistry.register(${calc_name//-/_}Calculator);" >> "$temp_file"
     done
 
