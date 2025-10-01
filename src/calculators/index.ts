@@ -424,7 +424,7 @@ import { AssetProtectionCalculator as assetProtectionCalculatorCalculator } from
 import { asset_protection_calculatorCalculator as asset_protection_calculatorCalculator } from './business/asset-protection-calculator';
 import { average_order_value_calculatorCalculator as average_order_value_calculatorCalculator } from './average_order_value_calculatorCalculator';
 import { BalancedScorecardCalculator as balanced_scorecard_calculatorCalculator } from './business/balanced-scorecard-calculator';
-import { ad_reach_and_frequency_calculatorCalculator as ad_reach_and_frequency_calculatorCalculator } from './ad_reach_and_frequency_calculator';
+import { ad_reach_and_frequency_calculatorCalculator as ad_reach_and_frequency_calculatorCalculator } from './ad_reach_and_frequency_calculatorCalculator';
 import { amazon_fba_profit_calculatorCalculator as amazon_fba_profit_calculatorCalculator } from './amazon_fba_profit_calculator';
 import { affiliate_marketing_roi_calculatorCalculator as affiliate_marketing_roi_calculatorCalculator } from './affiliate_marketing_roi_calculator';
 import { api_monetization_revenue_calculatorCalculator as api_monetization_revenue_calculatorCalculator } from './api_monetization_revenue_calculator';
