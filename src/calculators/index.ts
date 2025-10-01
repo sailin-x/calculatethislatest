@@ -422,7 +422,7 @@ import { immediate_annuity_payout_calculatorCalculatorCalculator as immediate_an
 import { financial_compliance_calculatorCalculatorCalculator as financial_compliance_calculatorCalculatorCalculator } from './financial_compliance_calculatorCalculator';
 import { AssetProtectionCalculator as assetProtectionCalculatorCalculator } from './business/asset-protection-calculator';
 import { asset_protection_calculatorCalculator as asset_protection_calculatorCalculator } from './business/asset-protection-calculator';
-import { average_order_value_calculatorCalculator as average_order_value_calculatorCalculator } from './average_order_value_calculator';
+import { average_order_value_calculatorCalculator as average_order_value_calculatorCalculator } from './average_order_value_calculatorCalculator';
 import { balanced_scorecard_calculatorCalculator as balanced_scorecard_calculatorCalculator } from './balanced_scorecard_calculator';
 import { ad_reach_and_frequency_calculatorCalculator as ad_reach_and_frequency_calculatorCalculator } from './ad_reach_and_frequency_calculator';
 import { amazon_fba_profit_calculatorCalculator as amazon_fba_profit_calculatorCalculator } from './amazon_fba_profit_calculator';
