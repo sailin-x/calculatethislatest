@@ -3,7 +3,7 @@ import { 401k_planCalculatorInputs, 401k_planCalculatorResults, 401k_planCalcula
 import { calculateResult, generateAnalysis } from './formulas';
 import { validateInputs } from './validation';
 
-export class 401k_planCalculatorCalculator implements Calculator<401k_planCalculatorInputs, 401k_planCalculatorResults> {
+export class K401kPlanCalculatorCalculator implements Calculator<401k_planCalculatorInputs, 401k_planCalculatorResults> {
   readonly id = '401k_planCalculator';
   readonly name = '401k_planCalculator Calculator';
   readonly description = 'Calculate 401k_planCalculator values';
