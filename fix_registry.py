@@ -1,42 +1,59 @@
-#!/usr/bin/env python3
-
 import re
 
-# Fix registry malformations in src/calculators/index.ts
+def main():
+    file_path = 'src/calculators/index.ts'
 
-def fix_registry_malformations():
-    with open('src/calculators/index.ts', 'r') as f:
-        content = f.read()
+    with open(file_path, 'r') as f:
+        lines = f.readlines()
 
-    # Pattern to match: calculatorRegistry.register(_calculator);something
-    # Replace with: calculatorRegistry.register(something_calculator);
+    # Parse imports
+    imported_vars = set()
+    for line in lines:
+        if line.strip().startswith('import {'):
+            match = re.search(r'import \{ ([^}]+) \} from', line)
+            if match:
+                vars_str = match.group(1)
+                vars_list = [v.strip() for v in vars_str.split(',')]
+                imported_vars.update(vars_list)
 
-    # Find all malformed registrations
-    pattern = r'calculatorRegistry\.register\(_calculator\);\s*([a-zA-Z0-9_-]+)'
-    matches = re.findall(pattern, content)
+    print(f"Imported vars: {len(imported_vars)}")
 
-    print(f"Found {len(matches)} malformed registrations to fix")
+    # Find the registerAllCalculators function
+    start_idx = None
+    end_idx = None
+    for i, line in enumerate(lines):
+        if 'export function registerAllCalculators(): void {' in line:
+            start_idx = i
+        if start_idx is not None and line.strip() == '}':
+            end_idx = i
+            break
 
-    # Replace each malformed registration
-    for match in matches:
-        old_pattern = f'calculatorRegistry.register(_calculator);{match}'
-        new_replacement = f'calculatorRegistry.register({match}_calculator);'
-        content = content.replace(old_pattern, new_replacement)
+    if start_idx is None or end_idx is None:
+        print("Function not found")
+        return
 
-    # Write back the fixed content
-    with open('src/calculators/index.ts', 'w') as f:
-        f.write(content)
+    print(f"Function from line {start_idx} to {end_idx}")
 
-    # Verify the fix
-    with open('src/calculators/index.ts', 'r') as f:
-        fixed_content = f.read()
+    # Process the function lines
+    new_lines = lines[:start_idx + 1]  # include the function start
+    for i in range(start_idx + 1, end_idx):
+        line = lines[i]
+        # Check if it's calculatorRegistry.register(variable);
+        match = re.search(r'calculatorRegistry\.register\(([^)]+)\);', line)
+        if match:
+            var = match.group(1).strip()
+            if var not in imported_vars:
+                print(f"Removing: {line.strip()}")
+                continue  # skip this line
+        new_lines.append(line)
 
-    remaining_malformed = len(re.findall(r'calculatorRegistry\.register\(_calculator\);', fixed_content))
-    total_regs = len(re.findall(r'calculatorRegistry\.register\(', fixed_content))
+    new_lines.extend(lines[end_idx:])  # add the rest
 
-    print(f"✅ Fixed {len(matches)} malformed registrations!")
-    print(f"📊 Remaining malformed: {remaining_malformed}")
-    print(f"📊 Total registrations: {total_regs}")
+    # Write back
+    with open(file_path, 'w') as f:
+        f.writelines(new_lines)
 
-if __name__ == "__main__":
-    fix_registry_malformations()
+    print("Fixed the file")
+
+if __name__ == '__main__':
+    main()
