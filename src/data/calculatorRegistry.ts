@@ -35,8 +35,12 @@ export class CalculatorRegistry {
    * Register a new calculator
    */
   register(calculator: Calculator): void {
+    if (!calculator) {
+      console.error('CalculatorRegistry: Attempted to register undefined/null calculator');
+      return;
+    }
     this.calculators.set(calculator.id, calculator);
-    
+
     const categoryCalculators = this.categorizedCalculators.get(calculator.category) || [];
     categoryCalculators.push(calculator);
     this.categorizedCalculators.set(calculator.category, categoryCalculators);
