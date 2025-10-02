@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { DaoGovernanceTokenCalculatorInputs, DaoGovernanceTokenCalculatorOutputs } from './types';
 import {
   calculateTotalAmount,

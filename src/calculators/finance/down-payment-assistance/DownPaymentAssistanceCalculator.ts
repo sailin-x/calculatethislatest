@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { calculateDownPaymentAssistance, generateDownPaymentAssistanceAnalysis } from './formulas';
 import { validateDownPaymentAssistanceInputs } from './validation';
 

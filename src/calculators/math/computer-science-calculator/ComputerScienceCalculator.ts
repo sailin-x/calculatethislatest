@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { ComputerScienceCalculatorInputs, ComputerScienceCalculatorOutputs } from './types';
 import { calculateResult, generateCalculation, generateAnalysis } from './formulas';
 import { validateComputerScienceCalculatorInputs } from './validation';

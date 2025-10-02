@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { BasalMetabolicRateCalculatorInputs, BasalMetabolicRateCalculatorOutputs } from './types';
 import { calculateResult, generateCalculation, generateAnalysis } from './formulas';
 import { validateBasalMetabolicRateCalculatorInputs } from './validation';

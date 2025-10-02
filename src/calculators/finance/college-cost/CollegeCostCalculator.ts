@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { CollegeCostInputs, CollegeCostOutputs } from './types';
 import { calculateCollegeCost } from './formulas';
 import { validateCollegeCostInputs } from './validation';

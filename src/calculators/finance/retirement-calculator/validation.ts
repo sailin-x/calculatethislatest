@@ -1,4 +1,4 @@
-import { ValidationRule } from '../../../types/calculator';
+import { ValidationRule } from '../../types/calculator';
 import { RetirementInputs } from './types';
 
 export function getRetirementValidationRules(): ValidationRule[] {

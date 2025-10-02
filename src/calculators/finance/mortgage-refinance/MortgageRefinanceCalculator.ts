@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { calculateMortgageRefinance, validateMortgageRefinanceInputs } from './formulas';
 
 export const MortgageRefinanceCalculator: Calculator = {

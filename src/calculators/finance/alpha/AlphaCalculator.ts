@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { calculateAlpha, generateAlphaAnalysis } from './formulas';
 import { validateAlphaInputs } from './validation';
 

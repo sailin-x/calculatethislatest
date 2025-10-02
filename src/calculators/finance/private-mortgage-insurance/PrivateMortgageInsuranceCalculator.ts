@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 
 export const PrivateMortgageInsuranceCalculator: Calculator = {
   id: 'private-mortgage-insurance-calculator',

@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { RecaptitalizationImpactCalculatorInputs, RecaptitalizationImpactCalculatorOutputs } from './types';
 import {
   calculateTotalAmount,

@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { ApplianceRepairCostCalculatorInputs, ApplianceRepairCostCalculatorOutputs } from './types';
 import { calculateResult, generateCalculation, generateAnalysis } from './formulas';
 import { validateApplianceRepairCostCalculatorInputs } from './validation';

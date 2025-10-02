@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { CharitableGiftAnnuityInputs, CharitableGiftAnnuityOutputs } from './types';
 import { calculateCharitableGiftAnnuity } from './formulas';
 import { validateCharitableGiftAnnuityInputs } from './validation';

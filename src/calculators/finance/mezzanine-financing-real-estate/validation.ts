@@ -1,5 +1,5 @@
 import { MezzanineFinancingRealEstateInputs } from './types';
-import { ValidationResult } from '../../../types/validation';
+import { ValidationResult } from '../../types/validation';
 
 export function validateMezzanineFinancingRealEstateInputs(inputs: MezzanineFinancingRealEstateInputs): ValidationResult {
   const errors: string[] = [];

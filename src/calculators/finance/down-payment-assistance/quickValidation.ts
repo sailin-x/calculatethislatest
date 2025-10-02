@@ -1,4 +1,4 @@
-import { CalculatorInputs } from '../../../types/calculator';
+import { CalculatorInputs } from '../../types/calculator';
 
 // Real-time validation functions for immediate feedback
 export function validateHomePrice(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {

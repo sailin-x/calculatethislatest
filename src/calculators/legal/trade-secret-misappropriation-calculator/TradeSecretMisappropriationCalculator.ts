@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { TradeSecretMisappropriationCalculatorInputs, TradeSecretMisappropriationCalculatorOutputs } from './types';
 import {
   calculateSettlementAmount,

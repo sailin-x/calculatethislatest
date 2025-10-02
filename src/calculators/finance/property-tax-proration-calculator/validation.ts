@@ -1,5 +1,5 @@
-import { ValidationRule } from '../../../types/calculator';
-import { ValidationRuleFactory } from '../../../utils/validation';
+import { ValidationRule } from '../../types/calculator';
+import { ValidationRuleFactory } from '../../utils/validation';
 
 /**
  * Comprehensive property tax proration calculator validation rules

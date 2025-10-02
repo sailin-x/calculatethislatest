@@ -1,4 +1,4 @@
-import { ValidationResult } from '../../../types/calculator';
+import { ValidationResult } from '../../types/calculator';
 
 /**
  * Quick validation functions for individual mortgage calculator fields

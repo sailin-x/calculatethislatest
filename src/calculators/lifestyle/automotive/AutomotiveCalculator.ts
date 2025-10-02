@@ -1,6 +1,6 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { automotiveCalculatorFormula } from './formulas';
-import { ValidationRuleFactory } from '../../../utils/validation';
+import { ValidationRuleFactory } from '../../utils/validation';
 
 export const automotiveCalculator: Calculator = {
   id: 'automotive-calculator',

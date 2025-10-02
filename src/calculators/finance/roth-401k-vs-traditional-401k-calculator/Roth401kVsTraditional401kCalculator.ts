@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { Roth401kVsTraditional401kCalculatorInputs, Roth401kVsTraditional401kCalculatorOutputs } from './types';
 import {
   calculateTotalAmount,

@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { MortgageQualificationInputs, MortgageQualificationOutputs, MortgageQualificationMetrics } from './types';
 import {
   calculateTotalIncome,

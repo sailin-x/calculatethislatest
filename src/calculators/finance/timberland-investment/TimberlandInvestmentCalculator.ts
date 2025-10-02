@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { calculateTimberlandInvestment } from './formulas';
 import { generateTimberlandInvestmentAnalysis } from './formulas';
 

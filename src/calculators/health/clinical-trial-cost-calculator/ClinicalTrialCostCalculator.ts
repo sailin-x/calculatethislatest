@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { ClinicalTrialCostCalculatorInputs, ClinicalTrialCostCalculatorOutputs } from './types';
 import { calculateResult, generateCalculation, generateAnalysis } from './formulas';
 import { validateClinicalTrialCostCalculatorInputs } from './validation';

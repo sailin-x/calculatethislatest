@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { RetirementInputs, RetirementResults } from './types';
 import { calculateRetirement } from './formulas';
 import { getRetirementValidationRules } from './validation';

@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { ChildCustodyCalculatorInputs, ChildCustodyCalculatorOutputs } from './types';
 import {
   calculateSettlementAmount,

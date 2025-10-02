@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { calculateIndustrialWarehouseProfitability, generateIndustrialWarehouseProfitabilityAnalysis } from './formulas';
 import { validateIndustrialWarehouseProfitabilityInputs } from './validation';
 

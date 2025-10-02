@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { calculateMortgageInsurance } from './formulas';
 import { generateMortgageInsuranceAnalysis } from './formulas';
 

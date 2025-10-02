@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { InvestmentInputs, InvestmentResults } from './types';
 import { calculateInvestment, validateInvestmentInputs } from './formulas';
 import { getInvestmentValidationRules } from './validation';

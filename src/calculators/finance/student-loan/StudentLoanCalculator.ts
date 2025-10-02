@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 
 export const StudentLoanCalculator: Calculator = {
   id: 'student-loan-calculator',

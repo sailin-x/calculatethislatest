@@ -1,6 +1,6 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { complexNumberCalculatorFormula } from './formulas';
-import { ValidationRuleFactory } from '../../../utils/validation';
+import { ValidationRuleFactory } from '../../utils/validation';
 
 export const complexNumberCalculator: Calculator = {
   id: 'complex-number-calculator',

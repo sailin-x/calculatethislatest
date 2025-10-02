@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { MarineCargoInsuranceCalculatorInputs, MarineCargoInsuranceCalculatorOutputs } from './types';
 import {
   calculateSettlementAmount,

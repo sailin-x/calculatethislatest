@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 
 export const RentalYieldCalculator: Calculator = {
   id: 'rental-yield-calculator',

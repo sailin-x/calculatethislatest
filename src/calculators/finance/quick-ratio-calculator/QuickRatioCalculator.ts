@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { QuickRatioCalculatorInputs, QuickRatioCalculatorOutputs } from './types';
 import {
   calculateTotalAmount,

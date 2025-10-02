@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { DefinedContributionPlanInputs, DefinedContributionPlanOutputs } from './types';
 import { calculateDefinedContributionPlan } from './formulas';
 import { validateDefinedContributionPlanInputs } from './validation';

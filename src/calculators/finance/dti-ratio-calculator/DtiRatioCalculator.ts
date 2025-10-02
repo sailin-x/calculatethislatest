@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { DtiRatioCalculatorInputs, DtiRatioCalculatorOutputs } from './types';
 import {
   calculateTotalAmount,

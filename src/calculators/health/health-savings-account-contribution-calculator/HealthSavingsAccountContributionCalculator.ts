@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { HealthSavingsAccountContributionCalculatorInputs, HealthSavingsAccountContributionCalculatorOutputs } from './types';
 import { calculateResult, generateCalculation, generateAnalysis } from './formulas';
 import { validateHealthSavingsAccountContributionCalculatorInputs } from './validation';

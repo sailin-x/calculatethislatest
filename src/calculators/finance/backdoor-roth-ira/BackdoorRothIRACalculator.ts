@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { BackdoorRothIRAInputs, BackdoorRothIRAOutputs } from './types';
 import { calculateBackdoorRothIRA } from './formulas';
 import { validateBackdoorRothIRAInputs } from './validation';

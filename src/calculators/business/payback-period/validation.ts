@@ -1,4 +1,4 @@
-import { ValidationRule, ValidationRuleFactory } from '../../../utils/ValidationRuleFactory';
+import { ValidationRule, ValidationRuleFactory } from '../../utils/ValidationRuleFactory';
 import { PaybackPeriodInputs } from './types';
 
 export const paybackPeriodValidationRules: ValidationRule[] = [

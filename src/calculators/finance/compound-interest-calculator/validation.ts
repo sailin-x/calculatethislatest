@@ -1,4 +1,4 @@
-import { ValidationRule, ValidationResult } from '../../../types/calculator';
+import { ValidationRule, ValidationResult } from '../../types/calculator';
 import { CompoundInterestInputs } from './types';
 
 /**

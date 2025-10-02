@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { AntitrustCalculatorInputs, AntitrustCalculatorOutputs } from './types';
 import {
   calculateSettlementAmount,

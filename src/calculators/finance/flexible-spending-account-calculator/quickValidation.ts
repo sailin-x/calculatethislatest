@@ -1,4 +1,4 @@
-import { ValidationResult } from '../../../types/calculator';
+import { ValidationResult } from '../../types/calculator';
 
 export function validateAccountType(value: any, allInputs?: Record<string, any>): ValidationResult {
   if (!value || !['health', 'dependent', 'parking', 'transit'].includes(value)) {

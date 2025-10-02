@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { DebtConsolidationInputs, DebtConsolidationResults } from './types';
 import { calculateDebtConsolidation, validateDebtConsolidationInputs } from './formulas';
 import { getDebtConsolidationValidationRules } from './validation';

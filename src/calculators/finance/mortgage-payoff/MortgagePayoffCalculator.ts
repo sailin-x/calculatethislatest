@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { calculateMortgagePayoff } from './formulas';
 import { generateMortgagePayoffAnalysis } from './formulas';
 

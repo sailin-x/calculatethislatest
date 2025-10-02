@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { PilatesStudioCostCalculatorInputs, PilatesStudioCostCalculatorOutputs } from './types';
 import { calculateResult, generateCalculation, generateAnalysis } from './formulas';
 import { validatePilatesStudioCostCalculatorInputs } from './validation';

@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { calculateAngelInvestment, generateAngelInvestmentAnalysis } from './formulas';
 import { validateAngelInvestmentInputs } from './validation';
 

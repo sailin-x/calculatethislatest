@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { calculateEscrowAnalysis, generateEscrowAnalysisReport } from './formulas';
 import { validateEscrowAnalysisInputs } from './validation';
 

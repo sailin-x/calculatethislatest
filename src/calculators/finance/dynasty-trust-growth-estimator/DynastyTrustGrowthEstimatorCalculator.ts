@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { DynastyTrustGrowthEstimatorInputs, DynastyTrustGrowthEstimatorOutputs } from './types';
 import { calculateDynastyTrustGrowthEstimator } from './formulas';
 import { validateDynastyTrustGrowthEstimatorInputs } from './validation';

@@ -1,4 +1,4 @@
-import { CalculatorRegistration } from '../../../types/calculator';
+import { CalculatorRegistration } from '../../types/calculator';
 import { calculateRealEstateInvestment } from './formulas';
 import { validateRealEstateInvestmentInputs } from './validation';
 import { RealEstateInvestmentInputs } from './types';

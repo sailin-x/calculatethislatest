@@ -1,6 +1,6 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { calculateHSA } from './formulas';
-import { ValidationRuleFactory } from '../../../utils/validation';
+import { ValidationRuleFactory } from '../../utils/validation';
 
 export const healthSavingsAccountCalculator: Calculator = {
   id: 'health-savings-account-hsa-calculator',

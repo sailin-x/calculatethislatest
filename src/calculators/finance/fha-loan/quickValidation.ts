@@ -1,4 +1,4 @@
-import { CalculatorInputs } from '../../../types/calculator';
+import { CalculatorInputs } from '../../types/calculator';
 
 export function validateHomePrice(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   const numValue = Number(value);

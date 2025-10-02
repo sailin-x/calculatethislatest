@@ -1,4 +1,4 @@
-import { Calculator, CalculatorInput, CalculatorOutput, CalculatorExample } from '../../../types/calculator';
+import { Calculator, CalculatorInput, CalculatorOutput, CalculatorExample } from '../../types/calculator';
 import { calculateBareboatCharter, calculateTimeCharter, compareCharterOptions } from './formulas';
 import { validateBareboatCharterInputs } from './validation';
 

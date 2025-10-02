@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { BlackLittermanCalculatorInputs, BlackLittermanCalculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 import { validateBlackLittermanCalculatorInputs } from './validation';

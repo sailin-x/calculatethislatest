@@ -1,4 +1,4 @@
-import { CalculatorInput } from '../../../types/calculator';
+import { CalculatorInput } from '../../types/calculator';
 
 export function validateLoanAmount(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   if (!value) return { isValid: false, message: 'Loan amount is required' };

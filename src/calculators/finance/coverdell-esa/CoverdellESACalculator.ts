@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { CoverdellESAInputs, CoverdellESAOutputs } from './types';
 import { calculateCoverdellESA } from './formulas';
 import { validateCoverdellESAInputs } from './validation';

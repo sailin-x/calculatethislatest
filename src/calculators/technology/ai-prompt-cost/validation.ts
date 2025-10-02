@@ -1,4 +1,4 @@
-import { ValidationRuleFactory } from '../../../utils/validation';
+import { ValidationRuleFactory } from '../../utils/validation';
 import { AIPromptCostInputs } from './types';
 
 export function validateAIPromptCostInputs(inputs: AIPromptCostInputs): { isValid: boolean; errors: string[] } {

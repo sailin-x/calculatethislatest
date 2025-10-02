@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { IncurredButNotReportedIbnrReserveEstimatorInputs, IncurredButNotReportedIbnrReserveEstimatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 import { validateIncurredButNotReportedIbnrReserveEstimatorInputs } from './validation';

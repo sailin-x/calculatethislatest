@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { CryptoTaxHarvestingCalculatorInputs, CryptoTaxHarvestingCalculatorOutputs } from './types';
 import {
   calculateTotalAmount,

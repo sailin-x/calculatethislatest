@@ -1,4 +1,4 @@
-import { ValidationRule } from '../../../types/calculator';
+import { ValidationRule } from '../../types/calculator';
 import { CreditCardPayoffInputs } from './types';
 
 export function getCreditCardPayoffValidationRules(): ValidationRule[] {

@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { CreditCardPayoffInputs, CreditCardPayoffResults } from './types';
 import { calculateCreditCardPayoff, validateCreditCardPayoffInputs } from './formulas';
 import { getCreditCardPayoffValidationRules } from './validation';

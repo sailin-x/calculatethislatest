@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { calculateFarmlandInvestmentROI, generateFarmlandInvestmentAnalysis } from './formulas';
 import { validateFarmlandInvestmentInputs } from './validation';
 

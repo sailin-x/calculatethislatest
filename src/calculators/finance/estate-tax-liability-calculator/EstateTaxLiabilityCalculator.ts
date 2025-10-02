@@ -1,6 +1,6 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { calculateEstateTaxLiability } from './formulas';
-import { ValidationRuleFactory } from '../../../utils/validation';
+import { ValidationRuleFactory } from '../../utils/validation';
 
 /**
  * Industry-leading Estate Tax Liability Calculator

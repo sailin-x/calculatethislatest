@@ -1,4 +1,4 @@
-import { ValidationRule } from '../../../types/Calculator';
+import { ValidationRule } from '../../types/Calculator';
 
 export const amortizationValidationRules: ValidationRule[] = [
   {

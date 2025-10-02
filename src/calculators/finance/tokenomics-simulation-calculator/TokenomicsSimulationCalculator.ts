@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { TokenomicsSimulationCalculatorInputs, TokenomicsSimulationCalculatorOutputs } from './types';
 import {
   calculateTotalAmount,

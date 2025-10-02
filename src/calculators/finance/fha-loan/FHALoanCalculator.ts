@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { calculateFHALoan, generateFHALoanAnalysis } from './formulas';
 import { validateFHALoanInputs } from './validation';
 

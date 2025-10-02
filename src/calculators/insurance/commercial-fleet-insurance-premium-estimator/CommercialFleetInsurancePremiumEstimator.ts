@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { CommercialFleetInsurancePremiumEstimatorInputs, CommercialFleetInsurancePremiumEstimatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 import { validateCommercialFleetInsurancePremiumEstimatorInputs } from './validation';

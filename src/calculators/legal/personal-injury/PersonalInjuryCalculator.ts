@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { personalInjuryCalculatorFormula } from './formulas';
 import { getPersonalInjuryValidationRules } from './validation';
 

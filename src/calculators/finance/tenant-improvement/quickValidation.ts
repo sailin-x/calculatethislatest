@@ -1,4 +1,4 @@
-import { CalculatorInputs } from '../../../types/calculator';
+import { CalculatorInputs } from '../../types/calculator';
 
 export function validateSpaceSize(value: number, allInputs?: Record<string, any>): string | null {
   if (value === undefined || value === null || value === '') {

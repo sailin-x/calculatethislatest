@@ -1,4 +1,4 @@
-import { Calculator, Formula } from '../../../types/calculator';
+import { Calculator, Formula } from '../../types/calculator';
 import { calculateAPTValue, validateAPTValueInputs } from './formulas';
 import { getAPTValueValidationRules } from './validation';
 

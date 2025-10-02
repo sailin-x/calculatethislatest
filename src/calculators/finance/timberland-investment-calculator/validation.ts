@@ -1,5 +1,5 @@
-import { ValidationRule } from '../../../types/calculator';
-import { ValidationRuleFactory } from '../../../utils/validation';
+import { ValidationRule } from '../../types/calculator';
+import { ValidationRuleFactory } from '../../utils/validation';
 
 /**
  * Timberland investment validation rules

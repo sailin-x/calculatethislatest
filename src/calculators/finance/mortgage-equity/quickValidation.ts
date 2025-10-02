@@ -1,4 +1,4 @@
-import { ValidationResult } from '../../../types/calculator';
+import { ValidationResult } from '../../types/calculator';
 
 export function validateHomeValue(value: any, allInputs?: Record<string, any>): ValidationResult {
   if (value === null || value === undefined) return { isValid: false, message: 'Home value is required' };

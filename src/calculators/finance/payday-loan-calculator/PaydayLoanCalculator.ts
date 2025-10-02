@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { PaydayLoanCalculatorInputs, PaydayLoanCalculatorOutputs } from './types';
 import {
   calculateTotalAmount,

@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { RealEstateCrowdfundingInputs, RealEstateCrowdfundingOutputs } from './types';
 import { calculateRealEstateCrowdfunding } from './formulas';
 import { validateRealEstateCrowdfundingInputs } from './validation';

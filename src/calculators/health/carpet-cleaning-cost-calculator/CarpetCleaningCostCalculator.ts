@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { CarpetCleaningCostCalculatorInputs, CarpetCleaningCostCalculatorOutputs } from './types';
 import { calculateResult, generateCalculation, generateAnalysis } from './formulas';
 import { validateCarpetCleaningCostCalculatorInputs } from './validation';

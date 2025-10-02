@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { AdViewabilityImpactCalculatorInputs, AdViewabilityImpactCalculatorOutputs } from './types';
 import {
   calculateTotalAmount,

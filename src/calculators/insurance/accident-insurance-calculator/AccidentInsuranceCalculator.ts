@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { AccidentInsuranceCalculatorInputs, AccidentInsuranceCalculatorOutputs } from './types';
 import { calculateResult, generateCalculation, generateAnalysis } from './formulas';
 import { validateAccidentInsuranceCalculatorInputs } from './validation';

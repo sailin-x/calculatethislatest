@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { InitialDexOfferingCalculatorInputs, InitialDexOfferingCalculatorOutputs } from './types';
 import {
   calculateTotalAmount,

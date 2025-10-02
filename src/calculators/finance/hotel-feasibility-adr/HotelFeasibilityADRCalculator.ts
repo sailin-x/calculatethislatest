@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { HotelFeasibilityADRCalculatorInputs, HotelFeasibilityADRCalculatorOutputs } from './types';
 import { calculateHotelFeasibilityADR } from './formulas';
 import { validateHotelFeasibilityADRInputs } from './validation';

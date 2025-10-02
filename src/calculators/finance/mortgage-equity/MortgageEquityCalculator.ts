@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { calculateMortgageEquity } from './formulas';
 import { generateMortgageEquityAnalysis } from './formulas';
 

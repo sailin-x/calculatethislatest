@@ -1,4 +1,4 @@
-import { ValidationResult } from '../../../types/calculator';
+import { ValidationResult } from '../../types/calculator';
 
 export function validateProjectValue(value: any, allInputs?: Record<string, any>): ValidationResult {
   if (typeof value !== 'number' || isNaN(value)) {

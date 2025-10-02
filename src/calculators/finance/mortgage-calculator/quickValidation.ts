@@ -1,4 +1,4 @@
-import { ValidationResult } from '../../../types/calculator';
+import { ValidationResult } from '../../types/calculator';
 
 // Personal Information Validators
 export function validateAnnualSalary(value: any, allInputs?: Record<string, any>): ValidationResult {

@@ -1,4 +1,4 @@
-import { ValidationRule } from '../../../types/calculator';
+import { ValidationRule } from '../../types/calculator';
 import { FourZeroOneKInputs } from './types';
 
 export function getFourZeroOneKValidationRules(): ValidationRule[] {

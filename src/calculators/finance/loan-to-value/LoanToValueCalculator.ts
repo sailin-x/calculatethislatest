@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { LoanToValueInputs, LoanToValueOutputs } from './types';
 
 export const LoanToValueCalculator: Calculator = {

@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { inheritancetaxestimatorCalculatorInputs, inheritancetaxestimatorCalculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 import { validateinheritancetaxestimatorCalculatorInputs } from './validation';

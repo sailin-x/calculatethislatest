@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { calculate401kCompanyMatchROI } from './formulas';
 import { generate401kCompanyMatchROIAnalysis } from './formulas';
 

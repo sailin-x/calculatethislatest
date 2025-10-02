@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { compoundInterestCalculatorFormula } from './formulas';
 import { validateCompoundInterestInputs } from './validation';
 import { CompoundInterestInputs, CompoundInterestResults } from './types';

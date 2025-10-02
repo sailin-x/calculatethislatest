@@ -1,4 +1,4 @@
-import { ValidationResult } from '../../../types/calculator';
+import { ValidationResult } from '../../types/calculator';
 
 // Consolidation Amount Validators
 export function validateConsolidationAmount(value: any, allInputs?: Record<string, any>): ValidationResult {

@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { calculateAccretionDilution, generateAccretionDilutionAnalysis } from './formulas';
 import { validateAccretionDilutionInputs } from './validation';
 

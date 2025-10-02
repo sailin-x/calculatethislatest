@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { VentureDebtVsEquityCalculatorInputs, VentureDebtVsEquityCalculatorOutputs } from './types';
 import {
   calculateTotalAmount,

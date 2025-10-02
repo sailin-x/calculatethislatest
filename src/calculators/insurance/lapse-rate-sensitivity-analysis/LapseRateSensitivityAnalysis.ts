@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { LapseRateSensitivityAnalysisInputs, LapseRateSensitivityAnalysisOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 import { validateLapseRateSensitivityAnalysisInputs } from './validation';

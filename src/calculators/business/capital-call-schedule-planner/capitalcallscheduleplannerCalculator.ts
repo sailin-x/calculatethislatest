@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { capitalcallscheduleplannerCalculatorInputs, capitalcallscheduleplannerCalculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 import { validatecapitalcallscheduleplannerCalculatorInputs } from './validation';

@@ -3,7 +3,7 @@ import { RentersInsuranceCalculator } from './RentersInsuranceCalculator';
 import { validateRentersInsuranceInputs } from './validation';
 import { validateAllRentersInsuranceInputs } from './quickValidation';
 import { calculateRentersInsurance, generateRentersInsuranceAnalysis } from './formulas';
-import { CalculatorInputs, CalculatorOutputs } from '../../../types/calculator';
+import { CalculatorInputs, CalculatorOutputs } from '../../types/calculator';
 
 describe('RentersInsuranceCalculator', () => {
   describe('Calculator Structure', () => {

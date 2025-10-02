@@ -1,5 +1,5 @@
 import { PropertyTaxProrationInputs } from './types';
-import { ValidationResult } from '../../../types/calculator';
+import { ValidationResult } from '../../types/calculator';
 
 export function validatePropertyTaxProrationInputs(inputs: PropertyTaxProrationInputs): ValidationResult {
   const errors: string[] = [];

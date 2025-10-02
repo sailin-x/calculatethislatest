@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { CarAccidentPainCalculatorInputs, CarAccidentPainCalculatorOutputs } from './types';
 import {
   calculateSettlementAmount,

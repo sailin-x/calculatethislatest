@@ -1,4 +1,4 @@
-import { ValidationRule } from '../../../types/calculator';
+import { ValidationRule } from '../../types/calculator';
 import { DebtConsolidationInputs } from './types';
 
 export function getDebtConsolidationValidationRules(): ValidationRule[] {

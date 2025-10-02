@@ -1,4 +1,4 @@
-import { CalculatorInputs } from '../../../types/calculator';
+import { CalculatorInputs } from '../../types/calculator';
 
 // Property Information Validators
 export function validatePropertyValue(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {

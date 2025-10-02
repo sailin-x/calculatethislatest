@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { FeraSettlementCalculatorInputs, FeraSettlementCalculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 import { validateFeraSettlementCalculatorInputs } from './validation';

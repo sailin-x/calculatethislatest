@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 
 export const NetOperatingIncomeCalculator: Calculator = {
   id: 'net-operating-income-calculator',

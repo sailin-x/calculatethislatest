@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { saasMetricsCalculatorFormula } from './formulas';
 import { getSaaSMetricsValidationRules } from './validation';
 

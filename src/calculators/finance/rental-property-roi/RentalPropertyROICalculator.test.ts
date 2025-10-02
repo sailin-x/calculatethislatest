@@ -3,7 +3,7 @@ import { RentalPropertyROICalculator } from './RentalPropertyROICalculator';
 import { validateRentalPropertyROIInputs } from './validation';
 import { validateAllRentalPropertyROIInputs } from './quickValidation';
 import { calculateRentalPropertyROI, generateRentalPropertyAnalysis } from './formulas';
-import { CalculatorInputs, CalculatorOutputs } from '../../../types/calculator';
+import { CalculatorInputs, CalculatorOutputs } from '../../types/calculator';
 
 describe('RentalPropertyROICalculator', () => {
   describe('Calculator Structure', () => {

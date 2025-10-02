@@ -1,4 +1,4 @@
-import { Calculator, CalculatorInput, CalculatorOutput, Formula, ValidationRule, CalculatorExample } from '../../../types/calculator';
+import { Calculator, CalculatorInput, CalculatorOutput, Formula, ValidationRule, CalculatorExample } from '../../types/calculator';
 import { AIPromptCostInputs, AIPromptCostOutputs } from './types';
 import { validateAIPromptCostInputs } from './validation';
 import {

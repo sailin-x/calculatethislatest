@@ -1,4 +1,4 @@
-import { Calculator, CalculatorInput, CalculatorOutput } from '../../../types/Calculator';
+import { Calculator, CalculatorInput, CalculatorOutput } from '../../types/Calculator';
 
 export const ARMMortgageCalculator: Calculator = {
   id: 'arm-mortgage',

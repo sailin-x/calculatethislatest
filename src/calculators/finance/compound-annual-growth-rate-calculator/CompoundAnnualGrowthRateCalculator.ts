@@ -1,6 +1,6 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { calculateCAGR } from './formulas';
-import { ValidationRuleFactory } from '../../../utils/validation';
+import { ValidationRuleFactory } from '../../utils/validation';
 
 export const compoundAnnualGrowthRateCalculator: Calculator = {
   id: 'compound-annual-growth-rate-calculator',

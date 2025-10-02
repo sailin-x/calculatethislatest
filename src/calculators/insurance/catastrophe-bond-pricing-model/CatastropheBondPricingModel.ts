@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { CatastropheBondPricingModelInputs, CatastropheBondPricingModelOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 import { validateCatastropheBondPricingModelInputs } from './validation';

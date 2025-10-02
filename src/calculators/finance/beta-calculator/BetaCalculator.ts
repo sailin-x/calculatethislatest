@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { BetaCalculatorInputs, BetaCalculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 import { validateBetaCalculatorInputs } from './validation';

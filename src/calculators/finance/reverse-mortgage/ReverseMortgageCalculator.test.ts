@@ -3,7 +3,7 @@ import { ReverseMortgageCalculator } from './ReverseMortgageCalculator';
 import { validateReverseMortgageInputs } from './validation';
 import { validateAllReverseMortgageInputs } from './quickValidation';
 import { calculateReverseMortgage, generateReverseMortgageAnalysis } from './formulas';
-import { CalculatorInputs, CalculatorOutputs } from '../../../types/calculator';
+import { CalculatorInputs, CalculatorOutputs } from '../../types/calculator';
 
 describe('ReverseMortgageCalculator', () => {
   describe('Calculator Structure', () => {

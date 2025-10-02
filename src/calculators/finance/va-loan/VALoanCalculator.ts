@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { calculateVALoan } from './formulas';
 import { generateVALoanAnalysis } from './formulas';
 

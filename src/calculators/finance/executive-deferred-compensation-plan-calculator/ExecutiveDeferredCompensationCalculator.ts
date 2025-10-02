@@ -1,4 +1,4 @@
-import { Calculator, Formula } from '../../../types/calculator';
+import { Calculator, Formula } from '../../types/calculator';
 import { calculateExecutiveDeferredCompensation, validateExecutiveDeferredCompensationInputs } from './formulas';
 import { getExecutiveDeferredCompensationValidationRules } from './validation';
 

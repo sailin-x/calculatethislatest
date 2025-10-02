@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { MortgageInputs, MortgageResults } from './types';
 import { calculateMortgage, validateMortgageInputs } from './formulas';
 import { getMortgageValidationRules } from './validation';

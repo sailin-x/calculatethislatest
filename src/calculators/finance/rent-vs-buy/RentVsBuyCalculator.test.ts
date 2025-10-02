@@ -3,7 +3,7 @@ import { RentVsBuyCalculator } from './RentVsBuyCalculator';
 import { validateRentVsBuyInputs } from './validation';
 import { validateAllRentVsBuyInputs } from './quickValidation';
 import { calculateRentVsBuy, generateRentVsBuyAnalysis } from './formulas';
-import { CalculatorInputs, CalculatorOutputs } from '../../../types/calculator';
+import { CalculatorInputs, CalculatorOutputs } from '../../types/calculator';
 
 describe('RentVsBuyCalculator', () => {
   describe('Calculator Structure', () => {

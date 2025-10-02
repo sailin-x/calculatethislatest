@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { CustomerLifetimeValueCalculatorInputs, CustomerLifetimeValueCalculatorOutputs } from './types';
 import {
   calculateTotalAmount,

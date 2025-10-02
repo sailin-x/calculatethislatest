@@ -3,7 +3,7 @@ import { StudentLoanCalculator } from './StudentLoanCalculator';
 import { validateStudentLoanInputs } from './validation';
 import { validateAllStudentLoanInputs } from './quickValidation';
 import { calculateStudentLoan, generateStudentLoanAnalysis } from './formulas';
-import { CalculatorInputs, CalculatorOutputs } from '../../../types/calculator';
+import { CalculatorInputs, CalculatorOutputs } from '../../types/calculator';
 
 describe('StudentLoanCalculator', () => {
   describe('Calculator Structure', () => {

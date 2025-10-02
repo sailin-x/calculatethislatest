@@ -1,4 +1,4 @@
-import { ValidationResult } from '../../../types/calculator';
+import { ValidationResult } from '../../types/calculator';
 
 export function validateBeginningValue(value: any, allInputs?: Record<string, any>): ValidationResult {
   if (value === undefined || value < 0.01 || value > 100000000) {

@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { EarthquakeInsuranceCalculatorInputs, EarthquakeInsuranceCalculatorOutputs } from './types';
 import { calculateResult, generateCalculation, generateAnalysis } from './formulas';
 import { validateEarthquakeInsuranceCalculatorInputs } from './validation';

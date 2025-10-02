@@ -1,4 +1,4 @@
-import { Calculator, Formula } from '../../../types/calculator';
+import { Calculator, Formula } from '../../types/calculator';
 import { calculateFAFSA, validateFAFSAInputs } from './formulas';
 import { getFAFSAValidationRules } from './validation';
 

@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { annuityCalculatorFormula } from './formulas';
 import { AnnuityCalculatorInputs, AnnuityCalculatorResults } from './types';
 

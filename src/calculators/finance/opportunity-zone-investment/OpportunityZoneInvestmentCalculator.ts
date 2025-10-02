@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 
 export const OpportunityZoneInvestmentCalculator: Calculator = {
   id: 'opportunity-zone-investment-calculator',

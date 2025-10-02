@@ -1,4 +1,4 @@
-import { Calculator, Formula } from '../../../types/calculator';
+import { Calculator, Formula } from '../../types/calculator';
 import { calculateTenantImprovementAllowance, validateTenantImprovementAllowanceInputs } from './formulas';
 import { getTenantImprovementAllowanceValidationRules } from './validation';
 

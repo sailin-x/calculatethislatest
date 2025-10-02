@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { TreeTrimmingCostCalculatorInputs, TreeTrimmingCostCalculatorOutputs } from './types';
 import { calculateResult, generateCalculation, generateAnalysis } from './formulas';
 import { validateTreeTrimmingCostCalculatorInputs } from './validation';

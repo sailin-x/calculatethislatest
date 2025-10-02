@@ -1,4 +1,4 @@
-import { CalculatorInput } from '../../../types/Calculator';
+import { CalculatorInput } from '../../types/Calculator';
 
 export function validateARMvsFixedInputs(inputs: Record<string, any>): {
   isValid: boolean;

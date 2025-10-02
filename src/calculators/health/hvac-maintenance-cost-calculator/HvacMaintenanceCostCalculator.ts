@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { HvacMaintenanceCostCalculatorInputs, HvacMaintenanceCostCalculatorOutputs } from './types';
 import { calculateResult, generateCalculation, generateAnalysis } from './formulas';
 import { validateHvacMaintenanceCostCalculatorInputs } from './validation';

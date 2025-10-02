@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { DebtAvalancheCalculatorInputs, DebtAvalancheCalculatorOutputs } from './types';
 import {
   calculateTotalAmount,

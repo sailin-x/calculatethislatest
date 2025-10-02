@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { SkewnessCalculatorInputs, SkewnessCalculatorOutputs } from './types';
 import {
   calculateTotalAmount,

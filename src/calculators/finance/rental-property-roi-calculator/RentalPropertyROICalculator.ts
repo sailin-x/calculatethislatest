@@ -1,4 +1,4 @@
-import { Calculator, Formula } from '../../../types/calculator';
+import { Calculator, Formula } from '../../types/calculator';
 import { calculateRentalPropertyROI, validateRentalPropertyROIInputs } from './formulas';
 import { getRentalPropertyROIValidationRules } from './validation';
 

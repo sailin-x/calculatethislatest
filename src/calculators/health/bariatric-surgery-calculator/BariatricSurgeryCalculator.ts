@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { BariatricSurgeryCalculatorInputs, BariatricSurgeryCalculatorOutputs } from './types';
 import { calculateResult, generateCalculation, generateAnalysis } from './formulas';
 import { validateBariatricSurgeryCalculatorInputs } from './validation';

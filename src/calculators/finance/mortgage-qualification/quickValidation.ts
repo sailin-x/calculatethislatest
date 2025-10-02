@@ -1,4 +1,4 @@
-import { ValidationResult } from '../../../types/calculator';
+import { ValidationResult } from '../../types/calculator';
 
 export function validateBorrowerIncome(value: any, allInputs?: Record<string, any>): ValidationResult {
   const errors: Record<string, string> = {};

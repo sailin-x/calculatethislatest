@@ -3,7 +3,7 @@ import { RefinanceCalculator } from './RefinanceCalculator';
 import { validateRefinanceInputs } from './validation';
 import { validateAllRefinanceInputs } from './quickValidation';
 import { calculateRefinance, generateRefinanceAnalysis } from './formulas';
-import { CalculatorInputs, CalculatorOutputs } from '../../../types/calculator';
+import { CalculatorInputs, CalculatorOutputs } from '../../types/calculator';
 
 describe('RefinanceCalculator', () => {
   describe('Calculator Structure', () => {

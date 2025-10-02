@@ -1,4 +1,4 @@
-import { Calculator, Formula } from '../../../types/calculator';
+import { Calculator, Formula } from '../../types/calculator';
 import { calculateEstatePlanning, validateEstatePlanningInputs } from './formulas';
 import { getEstatePlanningValidationRules } from './validation';
 

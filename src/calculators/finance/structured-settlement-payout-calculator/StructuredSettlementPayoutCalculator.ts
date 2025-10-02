@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { StructuredSettlementPayoutCalculatorInputs, StructuredSettlementPayoutCalculatorOutputs } from './types';
 import {
   calculateTotalAmount,

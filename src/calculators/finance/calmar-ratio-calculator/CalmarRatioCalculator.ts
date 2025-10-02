@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { CalmarRatioCalculatorInputs, CalmarRatioCalculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 import { validateCalmarRatioCalculatorInputs } from './validation';

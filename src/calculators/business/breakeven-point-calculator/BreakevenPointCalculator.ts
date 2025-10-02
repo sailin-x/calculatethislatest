@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { BreakevenPointCalculatorInputs, BreakevenPointCalculatorOutputs } from './types';
 import { calculateBreakevenPointResults } from './formulas';
 import { validateBreakevenPointCalculatorInputs } from './validation';

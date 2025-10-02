@@ -1,4 +1,4 @@
-import { ValidationResult } from '../../../types/calculator';
+import { ValidationResult } from '../../types/calculator';
 
 // Initial Investment Validators
 export function validateInitialInvestment(value: any, allInputs?: Record<string, any>): ValidationResult {

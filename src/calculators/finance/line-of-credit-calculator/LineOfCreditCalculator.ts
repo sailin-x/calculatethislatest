@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { LineOfCreditCalculatorInputs, LineOfCreditCalculatorOutputs } from './types';
 import {
   calculateTotalAmount,

@@ -1,4 +1,4 @@
-import { CalculatorInputs } from '../../../types/calculator';
+import { CalculatorInputs } from '../../types/calculator';
 
 // Individual field validation functions
 export function validateFilingStatus(value: string, allInputs?: Record<string, any>): string | null {

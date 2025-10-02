@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { Chapter11BankruptcyCalculatorInputs, Chapter11BankruptcyCalculatorOutputs } from './types';
 import {
   calculateSettlementAmount,

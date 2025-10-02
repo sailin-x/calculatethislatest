@@ -1,4 +1,4 @@
-import { ValidationRule } from '../../../types/Calculator';
+import { ValidationRule } from '../../types/Calculator';
 
 export const exchange1031ValidationRules: ValidationRule[] = [
   {

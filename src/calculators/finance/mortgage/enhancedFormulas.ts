@@ -1,4 +1,4 @@
-import { Formula, CalculationResult } from '../../../types/calculator';
+import { Formula, CalculationResult } from '../../types/calculator';
 import { dataService } from '../../../services/DataService';
 import { dataVersioningService } from '../../../services/DataVersioningService';
 

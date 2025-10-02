@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { calculateHotelFeasibility, generateHotelFeasibilityAnalysis } from './formulas';
 import { validateHotelFeasibilityInputs } from './validation';
 

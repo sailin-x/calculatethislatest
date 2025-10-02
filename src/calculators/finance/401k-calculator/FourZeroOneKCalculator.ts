@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { FourZeroOneKInputs, FourZeroOneKResults } from './types';
 import { calculateFourZeroOneK, validateFourZeroOneKInputs } from './formulas';
 import { getFourZeroOneKValidationRules } from './validation';

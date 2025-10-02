@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { BillOfMaterialsCalculatorInputs, BillOfMaterialsCalculatorResults } from './types';
 import { billOfMaterialsCalculatorFormula } from './formulas';
 import * as quickValidation from './quickValidation';

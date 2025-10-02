@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { PropertyInsuranceCalculatorInputs, PropertyInsuranceCalculatorOutputs } from './types';
 import { calculateResult, generateCalculation, generateAnalysis } from './formulas';
 import { validatePropertyInsuranceCalculatorInputs } from './validation';

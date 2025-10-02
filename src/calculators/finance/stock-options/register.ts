@@ -1,4 +1,4 @@
-import { CalculatorRegistration } from '../../../types/calculator';
+import { CalculatorRegistration } from '../../types/calculator';
 import { calculateStockOptions } from './formulas';
 import { validateStockOptionsInputs } from './validation';
 import { StockOptionsInputs } from './types';

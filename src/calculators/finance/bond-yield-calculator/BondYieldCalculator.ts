@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { BondYieldCalculatorInputs, BondYieldCalculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 import { validateBondYieldCalculatorInputs } from './validation';

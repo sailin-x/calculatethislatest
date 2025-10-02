@@ -1,4 +1,4 @@
-import { CalculatorInputs } from '../../../types/calculator';
+import { CalculatorInputs } from '../../types/calculator';
 
 export interface TimberlandInvestmentValidationResult {
   isValid: boolean;

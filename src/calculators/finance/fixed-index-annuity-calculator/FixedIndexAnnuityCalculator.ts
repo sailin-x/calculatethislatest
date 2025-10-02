@@ -1,4 +1,4 @@
-import { Calculator, Formula } from '../../../types/calculator';
+import { Calculator, Formula } from '../../types/calculator';
 import { calculateFixedIndexAnnuity, validateFixedIndexAnnuityInputs } from './formulas';
 import { getFixedIndexAnnuityValidationRules } from './validation';
 

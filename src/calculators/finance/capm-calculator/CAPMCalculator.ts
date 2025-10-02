@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { CapmCalculatorInputs, CapmCalculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 import { validateCapmCalculatorInputs } from './validation';

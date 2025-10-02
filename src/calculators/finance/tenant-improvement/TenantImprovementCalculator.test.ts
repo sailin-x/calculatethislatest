@@ -3,7 +3,7 @@ import { TenantImprovementCalculator } from './TenantImprovementCalculator';
 import { validateTenantImprovementInputs } from './validation';
 import { validateAllTenantImprovementInputs } from './quickValidation';
 import { calculateTenantImprovement, generateTenantImprovementAnalysis } from './formulas';
-import { CalculatorInputs, CalculatorOutputs } from '../../../types/calculator';
+import { CalculatorInputs, CalculatorOutputs } from '../../types/calculator';
 
 describe('TenantImprovementCalculator', () => {
   it('should have correct calculator structure', () => {

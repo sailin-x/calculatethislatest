@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { FiveTwoNineInputs, FiveTwoNineOutputs } from './types';
 import { calculateFiveTwoNine } from './formulas';
 import { validateFiveTwoNineInputs } from './validation';

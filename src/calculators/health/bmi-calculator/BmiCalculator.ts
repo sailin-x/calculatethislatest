@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { BmiCalculatorInputs, BmiCalculatorOutputs } from './types';
 import { calculateBmiCalculatorResults } from './formulas';
 import { validateBmiCalculatorInputs } from './validation';

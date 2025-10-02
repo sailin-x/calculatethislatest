@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 
 export const TitleInsuranceCalculator: Calculator = {
   id: 'title-insurance-calculator',

@@ -1,4 +1,4 @@
-import { CalculatorRegistration } from '../../../types/calculator';
+import { CalculatorRegistration } from '../../types/calculator';
 import { calculateROI } from './formulas';
 import { validateROIInputs } from './validation';
 import { ROIInputs } from './types';

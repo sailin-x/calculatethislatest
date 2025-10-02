@@ -3,7 +3,7 @@ import { TermLifeInsuranceCalculator } from './TermLifeInsuranceCalculator';
 import { validateTermLifeInsuranceInputs } from './validation';
 import { validateAllTermLifeInsuranceInputs } from './quickValidation';
 import { calculateTermLifeInsurance, generateTermLifeInsuranceAnalysis } from './formulas';
-import { CalculatorInputs, CalculatorOutputs } from '../../../types/calculator';
+import { CalculatorInputs, CalculatorOutputs } from '../../types/calculator';
 
 describe('TermLifeInsuranceCalculator', () => {
   describe('Calculator Structure', () => {

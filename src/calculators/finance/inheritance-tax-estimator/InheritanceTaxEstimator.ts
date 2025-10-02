@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { InheritanceTaxEstimatorInputs, InheritanceTaxEstimatorOutputs } from './types';
 import {
   calculateTotalAmount,

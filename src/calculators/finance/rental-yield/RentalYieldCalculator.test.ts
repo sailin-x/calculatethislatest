@@ -3,7 +3,7 @@ import { RentalYieldCalculator } from './RentalYieldCalculator';
 import { validateRentalYieldInputs } from './validation';
 import { validateAllRentalYieldInputs } from './quickValidation';
 import { calculateRentalYield, generateRentalYieldAnalysis } from './formulas';
-import { CalculatorInputs, CalculatorOutputs } from '../../../types/calculator';
+import { CalculatorInputs, CalculatorOutputs } from '../../types/calculator';
 
 describe('RentalYieldCalculator', () => {
   describe('Calculator Structure', () => {

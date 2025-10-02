@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { StudentLoanForgivenessCalculatorInputs, StudentLoanForgivenessCalculatorOutputs } from './types';
 import {
   calculateTotalAmount,

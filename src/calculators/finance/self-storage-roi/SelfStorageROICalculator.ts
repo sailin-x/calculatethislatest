@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { calculateSelfStorageROI } from './formulas';
 import { generateSelfStorageROIAnalysis } from './formulas';
 

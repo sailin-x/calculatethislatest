@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { GPUMiningProfitabilityInputs, GPUMiningProfitabilityOutputs } from './types';
 import { validateGPUMiningProfitabilityInputs } from './validation';
 import { 

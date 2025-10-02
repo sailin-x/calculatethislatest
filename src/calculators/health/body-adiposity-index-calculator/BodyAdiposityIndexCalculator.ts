@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { BodyAdiposityIndexCalculatorInputs, BodyAdiposityIndexCalculatorOutputs } from './types';
 import { calculateResult, generateCalculation, generateAnalysis } from './formulas';
 import { validateBodyAdiposityIndexCalculatorInputs } from './validation';

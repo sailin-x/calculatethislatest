@@ -1,4 +1,4 @@
-import { Calculator, Formula } from '../../../types/calculator';
+import { Calculator, Formula } from '../../types/calculator';
 import { calculateSelfStorageFacilityROI, validateSelfStorageFacilityROIInputs } from './formulas';
 import { getSelfStorageFacilityROIValidationRules } from './validation';
 

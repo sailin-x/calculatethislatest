@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { HighNetWorthDivorceCalculatorInputs, HighNetWorthDivorceCalculatorOutputs } from './types';
 import {
   calculateSettlementAmount,

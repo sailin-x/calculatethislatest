@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { ImpermanentLossCalculatorInputs, ImpermanentLossCalculatorOutputs } from './types';
 import {
   calculateTotalAmount,

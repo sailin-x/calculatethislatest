@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { CharitableRemainderTrustInputs, CharitableRemainderTrustOutputs } from './types';
 import { calculateCharitableRemainderTrust } from './formulas';
 import { validateCharitableRemainderTrustInputs } from './validation';

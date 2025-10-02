@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { TermVsUniversalLifeCalculatorInputs, TermVsUniversalLifeCalculatorOutputs } from './types';
 import {
   calculateSettlementAmount,

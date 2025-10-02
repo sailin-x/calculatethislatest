@@ -1,4 +1,4 @@
-import { Calculator, Formula } from '../../../types/calculator';
+import { Calculator, Formula } from '../../types/calculator';
 import { calculateRentVsBuy, validateRentVsBuyInputs } from './formulas';
 import { getRentVsBuyValidationRules } from './validation';
 

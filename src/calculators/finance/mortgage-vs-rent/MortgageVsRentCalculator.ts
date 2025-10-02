@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 
 export const MortgageVsRentCalculator: Calculator = {
   id: 'mortgage-vs-rent-calculator',

@@ -1,4 +1,4 @@
-import { Calculator, Formula } from '../../../types/calculator';
+import { Calculator, Formula } from '../../types/calculator';
 import { calculateRealEstateDevelopment } from './formulas';
 import { getRealEstateValidationRules } from './validation';
 

@@ -1,4 +1,4 @@
-import { Calculator, Formula } from '../../../types/calculator';
+import { Calculator, Formula } from '../../types/calculator';
 import { calculateAnnuityBuyout, validateAnnuityBuyoutInputs } from './formulas';
 import { getAnnuityBuyoutValidationRules } from './validation';
 

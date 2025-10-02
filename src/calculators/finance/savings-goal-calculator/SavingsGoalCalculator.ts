@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { SavingsGoalCalculatorInputs, SavingsGoalCalculatorOutputs } from './types';
 import {
   calculateTotalAmount,

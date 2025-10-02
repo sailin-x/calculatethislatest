@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 
 export const PricePerSquareFootCalculator: Calculator = {
   id: 'price-per-square-foot-calculator',

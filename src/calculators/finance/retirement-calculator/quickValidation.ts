@@ -1,4 +1,4 @@
-import { ValidationResult } from '../../../types/calculator';
+import { ValidationResult } from '../../types/calculator';
 
 // Age Validators
 export function validateCurrentAge(value: any, allInputs?: Record<string, any>): ValidationResult {

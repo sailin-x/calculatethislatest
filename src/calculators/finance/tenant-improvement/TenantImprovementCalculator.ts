@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { calculateTenantImprovement } from './formulas';
 import { generateTenantImprovementAnalysis } from './formulas';
 

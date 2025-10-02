@@ -1,4 +1,4 @@
-import { Calculator, Formula } from '../../../types/calculator';
+import { Calculator, Formula } from '../../types/calculator';
 import { calculateTitleInsurance, validateTitleInsuranceInputs } from './formulas';
 import { getTitleInsuranceValidationRules } from './validation';
 

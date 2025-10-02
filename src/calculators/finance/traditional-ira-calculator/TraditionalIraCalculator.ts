@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { TraditionalIraCalculatorInputs, TraditionalIraCalculatorOutputs } from './types';
 import {
   calculateTotalAmount,

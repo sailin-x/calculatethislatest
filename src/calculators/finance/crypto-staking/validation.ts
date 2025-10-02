@@ -1,5 +1,5 @@
-import { ValidationRule } from '../../../types/validation';
-import { ValidationRuleFactory } from '../../../utils/validation';
+import { ValidationRule } from '../../types/validation';
+import { ValidationRuleFactory } from '../../utils/validation';
 import { CryptoStakingProfitabilityInputs } from './types';
 
 export const cryptoStakingValidationRules: ValidationRule[] = [

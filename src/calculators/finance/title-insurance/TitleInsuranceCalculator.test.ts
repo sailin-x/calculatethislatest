@@ -3,7 +3,7 @@ import { TitleInsuranceCalculator } from './TitleInsuranceCalculator';
 import { validateTitleInsuranceInputs } from './validation';
 import { validateAllTitleInsuranceInputs } from './quickValidation';
 import { calculateTitleInsurance, generateTitleInsuranceAnalysis } from './formulas';
-import { CalculatorInputs, CalculatorOutputs } from '../../../types/calculator';
+import { CalculatorInputs, CalculatorOutputs } from '../../types/calculator';
 
 describe('TitleInsuranceCalculator', () => {
   describe('Calculator Structure', () => {

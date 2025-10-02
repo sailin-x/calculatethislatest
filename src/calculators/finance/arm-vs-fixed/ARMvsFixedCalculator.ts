@@ -1,4 +1,4 @@
-import { Calculator, CalculatorInput, CalculatorOutput } from '../../../types/Calculator';
+import { Calculator, CalculatorInput, CalculatorOutput } from '../../types/Calculator';
 
 export const ARMvsFixedCalculator: Calculator = {
   id: 'arm-vs-fixed',

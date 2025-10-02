@@ -1,4 +1,4 @@
-import { Calculator, Formula } from '../../../types/calculator';
+import { Calculator, Formula } from '../../types/calculator';
 import { calculateRentalYield, validateRentalYieldInputs } from './formulas';
 import { getRentalYieldValidationRules } from './validation';
 

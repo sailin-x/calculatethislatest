@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { calculateFixAndFlip, generateFixAndFlipAnalysis } from './formulas';
 import { validateFixAndFlipInputs } from './validation';
 import { FixAndFlipInputs, FixAndFlipOutputs } from './types';

@@ -1,4 +1,4 @@
-import { ValidationRuleFactory } from '../../../utils/validation';
+import { ValidationRuleFactory } from '../../utils/validation';
 
 /**
  * Individual field validation functions for Mortgage Life Calculator

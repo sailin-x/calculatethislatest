@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { LitigationFinanceRoiCalculatorInputs, LitigationFinanceRoiCalculatorOutputs } from './types';
 import {
   calculateTotalAmount,

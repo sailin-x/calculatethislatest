@@ -3,7 +3,7 @@ import { TaxCalculator } from './TaxCalculator';
 import { validateTaxInputs } from './validation';
 import { validateAllTaxInputs } from './quickValidation';
 import { calculateTax, generateTaxAnalysis } from './formulas';
-import { CalculatorInputs, CalculatorOutputs } from '../../../types/calculator';
+import { CalculatorInputs, CalculatorOutputs } from '../../types/calculator';
 
 describe('TaxCalculator', () => {
   describe('Calculator Structure', () => {

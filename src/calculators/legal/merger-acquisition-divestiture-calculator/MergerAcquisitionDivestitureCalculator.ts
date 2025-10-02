@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { MergerAcquisitionDivestitureCalculatorInputs, MergerAcquisitionDivestitureCalculatorOutputs } from './types';
 import {
   calculateSettlementAmount,

@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { PriceFixingOverchargeCalculatorInputs, PriceFixingOverchargeCalculatorOutputs } from './types';
 import {
   calculateSettlementAmount,

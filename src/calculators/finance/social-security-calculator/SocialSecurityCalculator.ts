@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { socialSecurityCalculatorFormula } from './formulas';
 import { SocialSecurityCalculatorInputs, SocialSecurityCalculatorResults } from './types';
 

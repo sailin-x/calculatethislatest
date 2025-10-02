@@ -1,4 +1,4 @@
-import { Calculator, Formula } from '../../../types/calculator';
+import { Calculator, Formula } from '../../types/calculator';
 import { calculateFlexibleSpendingAccount, validateFlexibleSpendingAccountInputs } from './formulas';
 import { getFlexibleSpendingAccountValidationRules } from './validation';
 

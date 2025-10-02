@@ -1,4 +1,4 @@
-import { ValidationResult } from '../../../types/validation';
+import { ValidationResult } from '../../types/validation';
 
 // Individual field validation functions with allInputs parameter (required by completion standards)
 export function validatePropertyValue(value: any, allInputs?: Record<string, any>): ValidationResult {

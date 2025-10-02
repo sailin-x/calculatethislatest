@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { HotAirBalloonCostCalculatorInputs, HotAirBalloonCostCalculatorOutputs } from './types';
 import { calculateResult, generateCalculation, generateAnalysis } from './formulas';
 import { validateHotAirBalloonCostCalculatorInputs } from './validation';

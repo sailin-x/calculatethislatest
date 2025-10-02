@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { calculate401k } from './formulas';
 import { generate401kAnalysis } from './formulas';
 

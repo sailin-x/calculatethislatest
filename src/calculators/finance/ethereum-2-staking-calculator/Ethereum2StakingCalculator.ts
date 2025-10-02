@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { Ethereum2StakingCalculatorInputs, Ethereum2StakingCalculatorOutputs } from './types';
 import {
   calculateTotalAmount,

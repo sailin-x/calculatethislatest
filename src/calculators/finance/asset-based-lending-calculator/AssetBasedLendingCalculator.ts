@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { AssetBasedLendingCalculatorInputs, AssetBasedLendingCalculatorOutputs } from './types';
 import { calculateAssetBasedLendingResults } from './formulas';
 import { validateAssetBasedLendingInputs } from './validation';

@@ -1,4 +1,4 @@
-import { ValidationResult } from '../../../types/calculator';
+import { ValidationResult } from '../../types/calculator';
 
 export function validateStudentAge(value: any, allInputs?: Record<string, any>): ValidationResult {
   if (value === undefined || value < 16 || value > 30) {

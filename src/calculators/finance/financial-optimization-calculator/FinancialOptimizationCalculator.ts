@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { FinancialOptimizationCalculatorInputs, FinancialOptimizationCalculatorOutputs } from './types';
 import {
   calculateTotalAmount,

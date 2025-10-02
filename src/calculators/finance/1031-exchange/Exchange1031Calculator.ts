@@ -1,4 +1,4 @@
-import { Calculator, CalculatorInput, CalculatorOutput } from '../../../types/calculator';
+import { Calculator, CalculatorInput, CalculatorOutput } from '../../types/calculator';
 
 export const Exchange1031Calculator: Calculator = {
   id: '1031-exchange',

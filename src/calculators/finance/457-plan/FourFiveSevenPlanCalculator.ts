@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { FourFiveSevenInputs, FourFiveSevenOutputs } from './types';
 import { calculateFourFiveSeven } from './formulas';
 import { validateFourFiveSevenInputs } from './validation';

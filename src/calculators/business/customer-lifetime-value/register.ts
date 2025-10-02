@@ -1,4 +1,4 @@
-import { CalculatorRegistration } from '../../../types/calculator';
+import { CalculatorRegistration } from '../../types/calculator';
 import { calculateCustomerLifetimeValue } from './formulas';
 import { validateCustomerLifetimeValueInputs } from './validation';
 import { CustomerLifetimeValueInputs } from './types';

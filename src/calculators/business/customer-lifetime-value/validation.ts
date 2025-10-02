@@ -1,5 +1,5 @@
-import { ValidationRule } from '../../../types/validation';
-import { ValidationRuleFactory } from '../../../utils/validation';
+import { ValidationRule } from '../../types/validation';
+import { ValidationRuleFactory } from '../../utils/validation';
 import { CustomerLifetimeValueInputs } from './types';
 
 export const customerLifetimeValueValidationRules: ValidationRule[] = [

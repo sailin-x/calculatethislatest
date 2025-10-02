@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { WindowCleaningCostCalculatorInputs, WindowCleaningCostCalculatorOutputs } from './types';
 import { calculateResult, generateCalculation, generateAnalysis } from './formulas';
 import { validateWindowCleaningCostCalculatorInputs } from './validation';

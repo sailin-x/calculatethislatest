@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { calculateLoanToCostRatio, generateLoanToCostRatioAnalysis } from './formulas';
 import { validateLoanToCostRatioInputs } from './validation';
 

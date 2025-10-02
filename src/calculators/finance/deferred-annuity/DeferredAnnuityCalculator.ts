@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { DeferredAnnuityInputs, DeferredAnnuityOutputs } from './types';
 import { calculateDeferredAnnuity } from './formulas';
 import { validateDeferredAnnuityInputs } from './validation';

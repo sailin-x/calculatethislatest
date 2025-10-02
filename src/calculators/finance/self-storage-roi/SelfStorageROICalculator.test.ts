@@ -3,7 +3,7 @@ import { SelfStorageROICalculator } from './SelfStorageROICalculator';
 import { validateSelfStorageROIInputs } from './validation';
 import { validateAllSelfStorageROIInputs } from './quickValidation';
 import { calculateSelfStorageROI, generateSelfStorageROIAnalysis } from './formulas';
-import { CalculatorInputs, CalculatorOutputs } from '../../../types/calculator';
+import { CalculatorInputs, CalculatorOutputs } from '../../types/calculator';
 
 describe('SelfStorageROICalculator', () => {
   it('should have correct calculator structure', () => {

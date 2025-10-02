@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { InterestRateSwapCalculatorInputs, InterestRateSwapCalculatorOutputs } from './types';
 import {
   calculateTotalAmount,

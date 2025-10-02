@@ -1,4 +1,4 @@
-import { ValidationResult } from '../../../types/calculator';
+import { ValidationResult } from '../../types/calculator';
 
 export function validateAssessedValue(value: any, allInputs?: Record<string, any>): ValidationResult {
   if (!value || value <= 0) {

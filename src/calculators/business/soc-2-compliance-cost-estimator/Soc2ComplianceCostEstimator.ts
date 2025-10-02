@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { Soc2ComplianceCostEstimatorInputs, Soc2ComplianceCostEstimatorOutputs } from './types';
 import {
   calculateTotalAmount,

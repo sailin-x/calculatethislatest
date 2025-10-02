@@ -1,4 +1,4 @@
-import { Calculator } from '../../../types/calculator';
+import { Calculator } from '../../types/calculator';
 import { calculateAngelInvestmentDilution, generateAngelInvestmentDilutionAnalysis } from './formulas';
 import { validateAngelInvestmentDilutionInputs } from './validation';
 
