@@ -1,5 +1,8 @@
 // Calculator registry - imports and registers all calculators
-import { calculatorRegistry } from '../data/calculatorRegistry';
+
+// Import specific calculators
+import { mortgageCalculator } from './finance/mortgage';
+import { customer_segmentation_rfm_model_calculatorCalculator as customer_segmentation_rfm_model_calculator } from 'businessmarketingoperations/marketingcreatorhub/customer-segmentation-rfm-model-calculator/register';
 
 // MINIMAL WORKING SET - Only properly implemented calculators
 // Finance calculators
