@@ -1,4 +1,4 @@
-import { ValidationResult } from '../../types/calculator';
+import { ValidationResult } from '../../../types/calculator';
 
 /**
  * Validate cash-out refinance calculator inputs

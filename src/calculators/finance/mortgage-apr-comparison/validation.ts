@@ -1,4 +1,4 @@
-import { ValidationResult } from '../../types/calculator';
+import { ValidationResult } from '../../../types/calculator';
 
 export function validateLoanAmount(value: number): ValidationResult {
   if (value < 10000) {

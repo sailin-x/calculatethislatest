@@ -1,4 +1,4 @@
-import { ValidationRule } from '../../types/calculator';
+import { ValidationRule } from '../../../types/calculator';
 import { InvestmentInputs } from './types';
 
 export function getInvestmentValidationRules(): ValidationRule[] {

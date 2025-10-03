@@ -1,5 +1,5 @@
 import { GPUMiningProfitabilityInputs } from './types';
-import { ValidationResult } from '../../types/validation';
+import { ValidationResult } from '../../../types/validation';
 
 export function validateGPUMiningProfitabilityInputs(inputs: GPUMiningProfitabilityInputs): ValidationResult {
   const errors: string[] = [];

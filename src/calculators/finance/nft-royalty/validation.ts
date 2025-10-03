@@ -1,5 +1,5 @@
-import { ValidationRule } from '../../types/validation';
-import { ValidationRuleFactory } from '../../utils/validation';
+import { ValidationRule } from '../../../types/validation';
+import { ValidationRuleFactory } from '../../../utils/validation';
 import { NFTRoyaltyInputs } from './types';
 
 export const nftRoyaltyValidationRules: ValidationRule[] = [

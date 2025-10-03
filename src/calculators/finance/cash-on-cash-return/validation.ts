@@ -1,4 +1,4 @@
-import { ValidationResult } from '../../types/calculator';
+import { ValidationResult } from '../../../types/calculator';
 
 /**
  * Validate cash-on-cash return calculator inputs

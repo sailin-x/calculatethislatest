@@ -1,4 +1,4 @@
-import { ValidationResult } from '../../types/calculator';
+import { ValidationResult } from '../../../types/calculator';
 import { MortgageQualificationInputs } from './types';
 
 export function validateMortgageQualificationInputs(inputs: MortgageQualificationInputs): ValidationResult {

@@ -1,5 +1,5 @@
-import { CalculatorInputs } from '../../types/calculator';
-import { ValidationRule } from '../../types/calculator';
+import { CalculatorInputs } from '../../../types/calculator';
+import { ValidationRule } from '../../../types/calculator';
 
 export function validateFourZeroOneKPlanInputs(inputs: CalculatorInputs): ValidationRule[] {
   return [
