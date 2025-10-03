@@ -2,7 +2,7 @@
 
 // Import specific calculators
 import { mortgageCalculator } from './finance/mortgage';
-import { customer_segmentation_rfm_model_calculatorCalculator as customer_segmentation_rfm_model_calculator } from 'businessmarketingoperations/marketingcreatorhub/customer-segmentation-rfm-model-calculator/register';
+
 
 // MINIMAL WORKING SET - Only properly implemented calculators
 // Finance calculators
@@ -207,7 +207,7 @@ export function registerAllCalculators(): void {
 Promise.resolve().then(() => {
   registerAllCalculators();
 });// Mass-generated calculator registrations
-  calculatorRegistry.register(customer_segmentation_rfm_model_calculator);
+  
   calculatorRegistry.register(property_tax_appeal_savings_calculator);
   calculatorRegistry.register(corporate_bond_calculator);
   calculatorRegistry.register(industrial_robotics_roi_calculator);
@@ -648,7 +648,7 @@ Promise.resolve().then(() => {
   calculatorRegistry.register(supply_chain_bullwhip_effect_calculator);
   calculatorRegistry.register(merger_arbitrage_spread_calculator);
 // Mass-generated calculator registrations
-  calculatorRegistry.register(customer_segmentation_rfm_model_calculator);
+  
   calculatorRegistry.register(property_tax_appeal_savings_calculator);
   calculatorRegistry.register(corporate_bond_calculator);
   calculatorRegistry.register(industrial_robotics_roi_calculator);
