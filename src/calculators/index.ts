@@ -1,4 +1,5 @@
 // Calculator registry - imports and registers all calculators
+import { calculatorRegistry } from '../data/calculatorRegistry';
 
 // Import specific calculators
 import { mortgageCalculator } from './finance/mortgage';
