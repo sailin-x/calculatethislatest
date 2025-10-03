@@ -1,4 +1,5 @@
 // Calculator registry - imports and registers all calculators
+import { calculatorRegistry } from '../data/calculatorRegistry';
 
 // MINIMAL WORKING SET - Only properly implemented calculators
 // Finance calculators
