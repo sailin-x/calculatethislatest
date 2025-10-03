@@ -1,6 +1,6 @@
 import { ValidationRule } from '../../types/calculator';
-import { ValidationRuleFactory } from '../../utils/validation';
-import { BusinessValidation } from '../../utils/businessValidation';
+import { ValidationRuleFactory } from '../../../utils/validation';
+import { BusinessValidation } from '../../../utils/businessValidation';
 
 /**
  * Comprehensive mortgage calculator validation rules
