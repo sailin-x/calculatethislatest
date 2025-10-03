@@ -3,6 +3,7 @@ import { calculatorRegistry } from '../data/calculatorRegistry';
 
 // Import specific calculators
 import { mortgageCalculator } from './finance/mortgage';
+import { LoanCalculator } from './finance/loan-calculator';
 
 /**
  * Register all calculators with the system
@@ -10,6 +11,7 @@ import { mortgageCalculator } from './finance/mortgage';
 export function registerAllCalculators(): void {
   // Finance calculators
   calculatorRegistry.register(mortgageCalculator);
+  calculatorRegistry.register(LoanCalculator);
 }
 
 // Auto-register calculators when module is imported
