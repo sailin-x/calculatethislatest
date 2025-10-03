@@ -1,4 +1,4 @@
-export interface 401k_planCalculatorInputs {
+export interface K401PlanCalculatorInputs {
   // Calculator-specific input fields
   value?: number;
   rate?: number;
@@ -7,17 +7,17 @@ export interface 401k_planCalculatorInputs {
   // Add more fields as needed for this calculator
 }
 
-export interface 401k_planCalculatorResults {
+export interface K401PlanCalculatorResults {
   result: number;
   analysis?: string;
 }
 
-export interface 401k_planCalculatorMetrics {
+export interface K401PlanCalculatorMetrics {
   result: number;
   // Add more metrics as needed
 }
 
-export interface 401k_planCalculatorAnalysis {
+export interface K401PlanCalculatorAnalysis {
   recommendation: string;
   riskLevel: 'Low' | 'Medium' | 'High';
 }

@@ -1,6 +1,6 @@
-import { 401k_planCalculatorInputs } from './types';
+import { K401PlanCalculatorInputs } from './types';
 
-export function validateInputs(inputs: 401k_planCalculatorInputs): { isValid: boolean; errors: string[] } {
+export function validateInputs(inputs: K401PlanCalculatorInputs): { isValid: boolean; errors: string[] } {
   const errors: string[] = [];
 
   // Add validation logic specific to this calculator
