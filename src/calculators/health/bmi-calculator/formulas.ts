@@ -1,59 +1,82 @@
-import { bmi-calculatorInputs, bmi-calculatorMetrics, bmi-calculatorAnalysis } from './types';
+```typescript
+import { BMICalculatorInputs, BMICalculatorMetrics, BMICalculatorAnalysis } from './types';
 
-
-// Health Calculator - BMI and body metrics
-export function calculateBMI(weightKg: number, heightCm: number): number {
-  const heightM = heightCm / 100;
-  return weightKg / (heightM * heightM);
-}
-
-export function getBMICategory(bmi: number): string {
-  if (bmi < 18.5) return 'Underweight';
-  if (bmi < 25) return 'Normal weight';
-  if (bmi < 30) return 'Overweight';
-  return 'Obese';
-}
-
-export function calculateBMR(weightKg: number, heightCm: number, age: number, isMale: boolean): number {
-  // Mifflin-St Jeor Equation
-  const base = 10 * weightKg + 6.25 * heightCm - 5 * age;
-  return isMale ? base + 5 : base - 161;
-}
-
-export function calculateResult(inputs: bmi-calculatorInputs): number {
-  // Use domain-specific calculations based on input properties
-  try {
-    // Try to match inputs to appropriate calculation
-    if ('principal' in inputs && 'annualRate' in inputs && 'years' in inputs) {
-      return calculateMonthlyPayment(inputs.principal, inputs.annualRate, inputs.years);
-    }
-    if ('initialInvestment' in inputs && 'finalValue' in inputs) {
-      return calculateROI(inputs.initialInvestment, inputs.finalValue);
-    }
-    if ('weightKg' in inputs && 'heightCm' in inputs) {
-      return calculateBMI(inputs.weightKg, inputs.heightCm);
-    }
-    if ('value' in inputs && 'percentage' in inputs) {
-      return calculatePercentage(inputs.value, inputs.percentage);
-    }
-    // Fallback to basic calculation
-    return inputs.value || inputs.amount || inputs.principal || 0;
-  } catch (error) {
-    console.warn('Calculation error:', error);
-    return 0;
+/**
+ * Calculates the Body Mass Index (BMI) using the standard formula:
+ * BMI = weight (kg) / (height (m) ^ 2)
+ * 
+ * This is the World Health Organization (WHO) standard formula for adults.
+ * Assumes inputs are provided in kg and meters.
+ * 
+ * @param inputs - The BMI calculator inputs containing weight and height.
+ * @returns The calculated BMI as a number (typically rounded to 2 decimal places in display, but raw here).
+ */
+export function calculateResult(inputs: BMICalculatorInputs): number {
+  const { weight, height } = inputs;
+  
+  // Validate inputs (basic production-ready checks)
+  if (weight <= 0 || height <= 0) {
+    throw new Error('Weight and height must be positive values.');
   }
+  
+  // Core BMI formula
+  return weight / (height * height);
 }
 
-export function generateAnalysis(inputs: bmi-calculatorInputs, metrics: bmi-calculatorMetrics): bmi-calculatorAnalysis {
-  const result = metrics.result;
-
+/**
+ * Generates a health analysis based on the BMI result, including risk level and recommendation.
+ * Uses WHO BMI categories for adults (18+ years):
+ * - Underweight: < 18.5
+ * - Normal: 18.5 - 24.9
+ * - Overweight: 25 - 29.9
+ * - Obese: >= 30
+ * 
+ * Risk levels are assigned as follows:
+ * - Low: Normal weight
+ * - Medium: Underweight or Overweight
+ * - High: Obese
+ * 
+ * Recommendations are tailored to the category and include general advice.
+ * Note: This is not medical advice; users should consult professionals.
+ * 
+ * @param inputs - The original inputs for context (e.g., weight, height).
+ * @param metrics - The metrics containing the calculated BMI result.
+ * @returns An analysis object with recommendation and riskLevel.
+ */
+export function generateAnalysis(
+  inputs: BMICalculatorInputs, 
+  metrics: BMICalculatorMetrics
+): BMICalculatorAnalysis {
+  const bmi = metrics.result;
+  const { weight, height } = inputs;
+  
+  let category: string;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
-  if (Math.abs(result) > 100000) riskLevel = 'High';
-  else if (Math.abs(result) > 10000) riskLevel = 'Medium';
+  let recommendation: string;
 
-  const recommendation = result > 0 ?
-    'Calculation completed successfully - positive result' :
-    'Calculation completed - review inputs if result seems unexpected';
+  if (bmi < 18.5) {
+    category = 'Underweight';
+    riskLevel = 'Medium';
+    recommendation = `Your BMI of ${bmi.toFixed(1)} indicates you are underweight. This may increase risks for nutritional deficiencies, osteoporosis, or weakened immunity. Consider consulting a healthcare professional or nutritionist to develop a plan for healthy weight gain through balanced diet and exercise.`;
+  } else if (bmi >= 18.5 && bmi < 25) {
+    category = 'Normal weight';
+    riskLevel = 'Low';
+    recommendation = `Your BMI of ${bmi.toFixed(1)} falls within the normal weight range. This is associated with the lowest risk of health issues. Maintain this by continuing a balanced diet, regular physical activity, and routine health check-ups.`;
+  } else if (bmi >= 25 && bmi < 30) {
+    category = 'Overweight';
+    riskLevel = 'Medium';
+    recommendation = `Your BMI of ${bmi.toFixed(1)} indicates you are overweight. This may elevate risks for conditions like type 2 diabetes, heart disease, or hypertension. Aim for gradual weight loss through a calorie-controlled diet, increased physical activity (e.g., 150 minutes/week), and professional guidance if needed.`;
+  } else {
+    category = 'Obese';
+    riskLevel = 'High';
+    recommendation = `Your BMI of ${bmi.toFixed(1)} classifies you as obese. This is linked to higher risks of serious conditions such as cardiovascular disease, stroke, or certain cancers. Seek immediate advice from a doctor or specialist for a personalized management plan, including diet, exercise, and possibly medical interventions.`;
+  }
 
-  return { recommendation, riskLevel };
+  return {
+    recommendation,
+    riskLevel,
+    // Optional: Include category for UI display if needed in types
+    category,
+  };
 }
+```

@@ -43,7 +43,7 @@ export function validateBooleanFlag(value: any, allInputs?: Record<string, any>)
 }
 
 // Additional validation functions as needed
-export function validateNumericRange(value: any, min: number, max: number, fieldName: string): { isValid: boolean; message?: string } {
+export function validateNumericRange(value: any, min: number, max: number, fieldName: string, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   if (value < min) {
     return { isValid: false, message: `${fieldName} must be at least ${min}` };
   }
@@ -53,7 +53,7 @@ export function validateNumericRange(value: any, min: number, max: number, field
   return { isValid: true };
 }
 
-export function validateRequired(value: any, fieldName: string): { isValid: boolean; message?: string } {
+export function validateRequired(value: any, fieldName: string, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   if (value === null || value === undefined || value === '') {
     return { isValid: false, message: `${fieldName} is required` };
   }

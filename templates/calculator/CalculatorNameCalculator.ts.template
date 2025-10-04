@@ -21,83 +21,13 @@ export const CalculatorNameCalculator: Calculator = {
     'Step 4: Adjust inputs as needed for different scenarios'
   ],
 
-  inputs: [
-    {
-      id: 'primaryInput',
-      label: 'Primary Input Label',
-      type: 'number', // 'number' | 'currency' | 'percentage' | 'select' | 'date' | 'boolean' | 'text'
-      required: true,
-      min: 0,
-      tooltip: 'Description of what this input represents'
-    },
-    // Add more input definitions as needed
-    {
-      id: 'secondaryInput',
-      label: 'Secondary Input Label',
-      type: 'currency',
-      required: false,
-      min: 0,
-      tooltip: 'Description of the secondary input'
-    },
-    {
-      id: 'selectInput',
-      label: 'Select Input Label',
-      type: 'select',
-      required: true,
-      options: [
-        { value: 'option1', label: 'Option 1' },
-        { value: 'option2', label: 'Option 2' }
-      ],
-      tooltip: 'Choose from available options'
-    }
-  ],
+  inputs: inputsArray,
 
-  outputs: [
-    {
-      id: 'primaryResult',
-      label: 'Primary Result',
-      type: 'currency',
-      explanation: 'Explanation of what this result represents and how it is calculated'
-    },
-    {
-      id: 'secondaryResult',
-      label: 'Secondary Result',
-      type: 'percentage',
-      explanation: 'Explanation of the secondary result'
-    }
-    // Add more output definitions as needed
-  ],
+  outputs: outputsArray,
 
   formulas: [], // Formulas are implemented in formulas.ts
 
   validationRules: [], // Validation rules are implemented in validation.ts
 
-  examples: [
-    {
-      title: 'Basic Example',
-      description: 'A simple example showing typical usage',
-      inputs: {
-        primaryInput: 100,
-        secondaryInput: 50,
-        selectInput: 'option1'
-      },
-      expectedOutputs: {
-        primaryResult: 150,
-        secondaryResult: 75
-      }
-    },
-    {
-      title: 'Advanced Example',
-      description: 'A more complex example with additional parameters',
-      inputs: {
-        primaryInput: 200,
-        secondaryInput: 100,
-        selectInput: 'option2'
-      },
-      expectedOutputs: {
-        primaryResult: 300,
-        secondaryResult: 150
-      }
-    }
-  ]
+  examples: examplesArray
 };

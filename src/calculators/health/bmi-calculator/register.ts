@@ -1,8 +1,3 @@
-import { calculatorRegistry } from '../../../data/calculatorRegistry';
-import { BmiCalculator } from './BmiCalculator';
+import { BmiCalculatorCalculator } from './BmiCalculatorCalculator';
 
-export function registerBmiCalculator(): void {
-  calculatorRegistry.register(BmiCalculator);
-}
-
-export { BmiCalculator };
+export { BmiCalculatorCalculator };

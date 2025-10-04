@@ -3,28 +3,33 @@ import { BmiCalculatorInputs } from './types';
 export function validateBmiCalculatorInputs(inputs: BmiCalculatorInputs): Array<{ field: string; message: string }> {
   const errors: Array<{ field: string; message: string }> = [];
 
-  // Validate weight
-  if (inputs.weight === undefined || inputs.weight === null) {
-    errors.push({ field: 'weight', message: 'Weight is required' });
-  } else if (typeof inputs.weight !== 'number' || isNaN(inputs.weight) || !isFinite(inputs.weight)) {
-    errors.push({ field: 'weight', message: 'Weight must be a valid number' });
-  } else if (inputs.weight <= 0) {
-    errors.push({ field: 'weight', message: 'Weight must be greater than 0' });
-  } else if (inputs.weight > 500) {
-    errors.push({ field: 'weight', message: 'Weight seems unusually high (max 500kg)' });
+  // Primary Input Validation
+  if (!inputs.primaryInput || inputs.primaryInput <= 0) {
+    errors.push({ field: 'primaryInput', message: 'Primary input must be greater than 0' });
+  }
+  if (inputs.primaryInput && inputs.primaryInput > 1000000) {
+    errors.push({ field: 'primaryInput', message: 'Primary input cannot exceed 1,000,000' });
   }
 
-  // Validate height
-  if (inputs.height === undefined || inputs.height === null) {
-    errors.push({ field: 'height', message: 'Height is required' });
-  } else if (typeof inputs.height !== 'number' || isNaN(inputs.height) || !isFinite(inputs.height)) {
-    errors.push({ field: 'height', message: 'Height must be a valid number' });
-  } else if (inputs.height <= 0) {
-    errors.push({ field: 'height', message: 'Height must be greater than 0' });
-  } else if (inputs.height < 50) {
-    errors.push({ field: 'height', message: 'Height seems too low (minimum 50cm)' });
-  } else if (inputs.height > 250) {
-    errors.push({ field: 'height', message: 'Height seems too high (maximum 250cm)' });
+  // Secondary Input Validation (if provided)
+  if (inputs.secondaryInput !== undefined && inputs.secondaryInput < 0) {
+    errors.push({ field: 'secondaryInput', message: 'Secondary input cannot be negative' });
+  }
+
+  // Select Input Validation
+  const validOptions = ['option1', 'option2'];
+  if (!inputs.selectInput || !validOptions.includes(inputs.selectInput)) {
+    errors.push({ field: 'selectInput', message: 'Please select a valid option' });
+  }
+
+  // Cross-field Validation
+  if (inputs.secondaryInput && inputs.primaryInput && inputs.secondaryInput > inputs.primaryInput) {
+    errors.push({ field: 'secondaryInput', message: 'Secondary input cannot exceed primary input' });
+  }
+
+  // Optional Parameter Validation
+  if (inputs.optionalParameter && inputs.optionalParameter.length > 100) {
+    errors.push({ field: 'optionalParameter', message: 'Optional parameter cannot exceed 100 characters' });
   }
 
   return errors;
@@ -33,16 +38,27 @@ export function validateBmiCalculatorInputs(inputs: BmiCalculatorInputs): Array<
 export function validateBmiCalculatorBusinessRules(inputs: BmiCalculatorInputs): Array<{ field: string; message: string }> {
   const warnings: Array<{ field: string; message: string }> = [];
 
-  // Medical validation warnings
-  if (inputs.weight && inputs.height) {
-    const heightM = inputs.height / 100;
-    const bmi = inputs.weight / (heightM * heightM);
+  // Business Rule Warnings
+  if (inputs.primaryInput && inputs.primaryInput > 500000) {
+    warnings.push({ field: 'primaryInput', message: 'High primary input values may require additional review' });
+  }
 
-    if (bmi < 16) {
-      warnings.push({ field: 'weight', message: 'BMI indicates severe underweight - consult healthcare professional' });
-    } else if (bmi > 40) {
-      warnings.push({ field: 'weight', message: 'BMI indicates severe obesity - consult healthcare professional' });
+  // Ratio-based Warnings
+  if (inputs.secondaryInput && inputs.primaryInput) {
+    const ratio = inputs.secondaryInput / inputs.primaryInput;
+    if (ratio > 0.8) {
+      warnings.push({ field: 'secondaryInput', message: 'Secondary input is very high relative to primary input' });
     }
+  }
+
+  // Option-specific Warnings
+  if (inputs.selectInput === 'option2' && inputs.primaryInput && inputs.primaryInput < 100) {
+    warnings.push({ field: 'selectInput', message: 'Option 2 may not be suitable for low primary input values' });
+  }
+
+  // Threshold Warnings
+  if (inputs.primaryInput && inputs.primaryInput > 10000) {
+    warnings.push({ field: 'primaryInput', message: 'Consider consulting with financial experts for high-value calculations' });
   }
 
   return warnings;
