@@ -1,6 +1,3 @@
-import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { felasettlementcalculatorrailroadCalculator } from './felasettlementcalculatorrailroadCalculator';
+import { FelaSettlementCalculatorRailroadCalculator } from './FelaSettlementCalculatorRailroadCalculator';
 
-export function registerfelasettlementcalculatorrailroadCalculator(): void {
-  calculatorRegistry.register(new felasettlementcalculatorrailroadCalculator());
-}
+export { FelaSettlementCalculatorRailroadCalculator };

@@ -1,7 +1,3 @@
-import { HealthSavingsAccountHsaCalculator } from './HealthSavingsAccountHsaCalculator';
+import { HealthSavingsAccountHsaCalculatorCalculator } from './HealthSavingsAccountHsaCalculatorCalculator';
 
-export { HealthSavingsAccountHsaCalculator };
-
-export function registerHealthSavingsAccountHsaCalculator(): void {
-  // Registration logic if needed
-}
+export { HealthSavingsAccountHsaCalculatorCalculator };

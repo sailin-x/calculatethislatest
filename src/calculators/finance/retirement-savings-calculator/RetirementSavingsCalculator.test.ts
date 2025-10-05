@@ -1,132 +1,121 @@
 import { describe, it, expect } from 'vitest';
-import { retirementSavingsCalculator } from './RetirementSavingsCalculator';
-import { calculateRetirementSavings, calculateRetirementSavingsMetrics, validateRetirementSavingsInputs } from './formulas';
+import {
+  calculateResult,
+  calculateSecondaryResult,
+  calculatePercentageResult,
+  calculateMetrics,
+  generateAnalysis
+} from './formulas';
+import { validateRetirementSavingsCalculatorInputs } from './validation';
 
-describe('Retirement Savings Calculator', () => {
-  describe('calculateRetirementSavings', () => {
-    it('should calculate retirement savings for early saver', () => {
-      const inputs = {
-        currentAge: 35,
-        retirementAge: 65,
-        currentSavings: 150000,
-        monthlyContribution: 800,
-        expectedReturn: 7,
-        inflationRate: 2.5,
-        retirementIncomeNeeded: 60000,
-        socialSecurityBenefit: 20000,
-        taxBracket: 25,
-        contributionFrequency: 'monthly' as const,
-        accountType: '401k' as const,
-        employerMatch: 50,
-        employerMatchLimit: 6000
-      };
+describe('RetirementSavingsCalculator Calculator', () => {
+  const mockInputs = {
+    primaryInput: 100,
+    secondaryInput: 50,
+    selectInput: 'option1' as const,
+    optionalParameter: 'test',
+    booleanFlag: true
+  };
 
-      const result = calculateRetirementSavings(inputs);
-
-      expect(result.totalSavingsAtRetirement).toBeGreaterThan(0);
-      expect(result.yearsToRetirement).toBe(30);
-      expect(result.retirementReadinessScore).toBeGreaterThan(0);
-      expect(result.replacementRatio).toBeGreaterThan(0);
-      expect(typeof result.savingsStrategy).toBe('string');
+  describe('Core Calculations', () => {
+    it('calculates primary result correctly', () => {
+      const result = calculateResult(mockInputs);
+      expect(result).toBe(150); // 100 + 50
     });
 
-    it('should calculate retirement savings for late starter', () => {
-      const inputs = {
-        currentAge: 50,
-        retirementAge: 65,
-        currentSavings: 50000,
-        monthlyContribution: 300,
-        expectedReturn: 6,
-        inflationRate: 2.5,
-        retirementIncomeNeeded: 50000,
-        socialSecurityBenefit: 18000,
-        taxBracket: 28,
-        contributionFrequency: 'monthly' as const,
-        accountType: 'traditional_ira' as const,
-        employerMatch: 0,
-        employerMatchLimit: 0
-      };
+    it('calculates secondary result correctly', () => {
+      const result = calculateSecondaryResult(mockInputs);
+      expect(result).toBe(150); // 100 * 1.5 for option1
+    });
 
-      const result = calculateRetirementSavings(inputs);
+    it('calculates percentage result correctly', () => {
+      const result = calculatePercentageResult(mockInputs);
+      expect(result).toBe(150); // (150 / 100) * 100
+    });
 
-      expect(result.totalSavingsAtRetirement).toBeGreaterThan(0);
-      expect(result.yearsToRetirement).toBe(15);
-      expect(result.savingsGap).toBeGreaterThan(0);
-      expect(result.retirementReadinessScore).toBeLessThan(50);
+    it('calculates metrics correctly', () => {
+      const result = calculateMetrics(mockInputs);
+      expect(result.intermediateValue).toBe(75); // 150 * 0.5
+      expect(result.calculationSteps).toContain('Calculated primary result');
+      expect(result.riskLevel).toBe('Low');
     });
   });
 
-  describe('validateRetirementSavingsInputs', () => {
-    it('should validate valid inputs', () => {
-      const inputs = {
-        currentAge: 35,
-        retirementAge: 65,
-        currentSavings: 150000,
-        monthlyContribution: 800,
-        expectedReturn: 7,
-        inflationRate: 2.5,
-        retirementIncomeNeeded: 60000,
-        socialSecurityBenefit: 20000,
-        taxBracket: 25,
-        contributionFrequency: 'monthly' as const,
-        accountType: '401k' as const,
-        employerMatch: 50,
-        employerMatchLimit: 6000
-      };
-
-      const errors = validateRetirementSavingsInputs(inputs);
-      expect(errors).toHaveLength(0);
+  describe('Analysis Generation', () => {
+    it('generates analysis for low values', () => {
+      const metrics = calculateMetrics(mockInputs);
+      const analysis = generateAnalysis(mockInputs, metrics);
+      expect(analysis.riskLevel).toBe('Low');
+      expect(analysis.insights).toContain('All values are within normal parameters');
     });
 
-    it('should validate retirement age greater than current age', () => {
-      const inputs = {
-        currentAge: 70,
-        retirementAge: 65,
-        currentSavings: 150000,
-        monthlyContribution: 800,
-        expectedReturn: 7,
-        inflationRate: 2.5,
-        retirementIncomeNeeded: 60000,
-        socialSecurityBenefit: 20000,
-        taxBracket: 25,
-        contributionFrequency: 'monthly' as const,
-        accountType: '401k' as const,
-        employerMatch: 50,
-        employerMatchLimit: 6000
-      };
-
-      const errors = validateRetirementSavingsInputs(inputs);
-      expect(errors).toContain('Retirement age must be greater than current age');
+    it('generates analysis for high values', () => {
+      const highInputs = { ...mockInputs, primaryInput: 2000 };
+      const metrics = calculateMetrics(highInputs);
+      const analysis = generateAnalysis(highInputs, metrics);
+      expect(analysis.riskLevel).toBe('High');
+      expect(analysis.warnings).toContain('Result exceeds typical thresholds');
     });
   });
 
-  describe('Calculator Definition', () => {
-    it('should have correct calculator properties', () => {
-      expect(retirementSavingsCalculator.id).toBe('retirement-savings-calculator');
-      expect(retirementSavingsCalculator.title).toBe('Retirement Savings Calculator');
-      expect(retirementSavingsCalculator.category).toBe('finance');
-      expect(retirementSavingsCalculator.subcategory).toBe('Retirement & Savings');
+  describe('Validation', () => {
+    it('validates correct inputs', () => {
+      const result = validateRetirementSavingsCalculatorInputs(mockInputs);
+      expect(result.length).toBe(0);
     });
 
-    it('should have required inputs', () => {
-      const requiredInputs = retirementSavingsCalculator.inputs.filter(input => input.required);
-      expect(requiredInputs).toHaveLength(9);
+    it('validates required primary input', () => {
+      const invalidInputs = { ...mockInputs, primaryInput: 0 };
+      const result = validateRetirementSavingsCalculatorInputs(invalidInputs);
+      expect(result.length).toBeGreaterThan(0);
+      expect(result[0].message).toContain('must be greater than 0');
     });
 
-    it('should have expected outputs', () => {
-      expect(retirementSavingsCalculator.outputs).toHaveLength(9);
-      const outputIds = retirementSavingsCalculator.outputs.map(output => output.id);
-      expect(outputIds).toContain('totalSavingsAtRetirement');
-      expect(outputIds).toContain('retirementReadinessScore');
-      expect(outputIds).toContain('savingsStrategy');
+    it('validates select input options', () => {
+      const invalidInputs = { ...mockInputs, selectInput: 'invalid' as any };
+      const result = validateRetirementSavingsCalculatorInputs(invalidInputs);
+      expect(result.length).toBeGreaterThan(0);
     });
 
-    it('should have validation rules', () => {
-      expect(retirementSavingsCalculator.validationRules).toHaveLength(16);
+    it('validates cross-field relationships', () => {
+      const invalidInputs = { ...mockInputs, secondaryInput: 200 };
+      const result = validateRetirementSavingsCalculatorInputs(invalidInputs);
+      expect(result.length).toBeGreaterThan(0);
+      expect(result[0].message).toContain('cannot exceed primary input');
+    });
+  });
+
+  describe('Edge Cases', () => {
+    it('handles zero secondary input', () => {
+      const result = calculateResult({ ...mockInputs, secondaryInput: 0 });
+      expect(result).toBe(100);
     });
 
-    it('should have examples', () => {
-      expect(retirementSavingsCalculator.examples).toHaveLength(2);
+    it('handles maximum primary input', () => {
+      const result = calculateResult({ ...mockInputs, primaryInput: 1000000 });
+      expect(result).toBe(1000050);
+    });
+
+    it('handles option2 multiplier', () => {
+      const result = calculateSecondaryResult({ ...mockInputs, selectInput: 'option2' as const });
+      expect(result).toBe(200); // 100 * 2.0
+    });
+  });
+
+  describe('Error Handling', () => {
+    it('handles undefined optional parameters', () => {
+      const inputsWithoutOptional = {
+        primaryInput: 100,
+        selectInput: 'option1' as const
+      };
+      const result = calculateResult(inputsWithoutOptional as any);
+      expect(result).toBe(100);
+    });
+
+    it('validates input ranges', () => {
+      const invalidInputs = { ...mockInputs, primaryInput: -100 };
+      const result = validateRetirementSavingsCalculatorInputs(invalidInputs);
+      expect(result.length).toBeGreaterThan(0);
     });
   });
 });

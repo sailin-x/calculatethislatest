@@ -1,32 +1,33 @@
 export interface GrantorRetainedAnnuityTrustGratCalculatorInputs {
-  initialValue: number;
-  annuityRate: number;
-  termYears: number;
-  growthRate: number;
-  discountRate: number;
-  isZeroedOut: boolean;
-}
-
-export interface GrantorRetainedAnnuityTrustGratCalculatorMetrics {
-  annualAnnuityPayment: number;
-  totalAnnuityPayments: number;
-  remainingValue: number;
-  taxSavings: number;
-  effectiveTransfer: number;
-}
-
-export interface GrantorRetainedAnnuityTrustGratCalculatorAnalysis {
-  gratEfficiency: string;
-  riskAssessment: string;
-  planningConsiderations: string[];
-  alternativeStrategies: string[];
+  // Define input properties based on the calculator's requirements
+  primaryInput: number;
+  secondaryInput?: number;
+  selectInput: string;
+  // Add more input properties as needed
+  optionalParameter?: string;
+  booleanFlag?: boolean;
 }
 
 export interface GrantorRetainedAnnuityTrustGratCalculatorOutputs {
-  annualAnnuityPayment: number;
-  totalAnnuityPayments: number;
-  remainingValue: number;
-  taxSavings: number;
-  effectiveTransfer: number;
-  analysis: GrantorRetainedAnnuityTrustGratCalculatorAnalysis;
+  // Define output properties that the calculator will produce
+  primaryResult: number;
+  secondaryResult: number;
+  // Add more output properties as needed
+  percentageResult?: number;
+  textResult?: string;
+}
+
+export interface GrantorRetainedAnnuityTrustGratCalculatorMetrics {
+  // Define intermediate calculation results or metrics
+  intermediateValue: number;
+  calculationSteps: string[];
+  riskLevel: 'Low' | 'Medium' | 'High';
+}
+
+export interface GrantorRetainedAnnuityTrustGratCalculatorAnalysis {
+  // Define analysis results
+  recommendation: string;
+  riskLevel: 'Low' | 'Medium' | 'High';
+  insights: string[];
+  warnings: string[];
 }

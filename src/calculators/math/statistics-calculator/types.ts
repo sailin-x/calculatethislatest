@@ -1,23 +1,33 @@
 export interface StatisticsCalculatorInputs {
-  inputValue: number;
-  operationType: string;
-  precision: number;
-}
-
-export interface StatisticsCalculatorMetrics {
-  result: number;
-  calculationSteps: string[];
-  accuracy: number;
-}
-
-export interface StatisticsCalculatorAnalysis {
-  complexity: string;
-  efficiency: string;
-  recommendations: string[];
+  // Define input properties based on the calculator's requirements
+  primaryInput: number;
+  secondaryInput?: number;
+  selectInput: string;
+  // Add more input properties as needed
+  optionalParameter?: string;
+  booleanFlag?: boolean;
 }
 
 export interface StatisticsCalculatorOutputs {
-  result: number;
+  // Define output properties that the calculator will produce
+  primaryResult: number;
+  secondaryResult: number;
+  // Add more output properties as needed
+  percentageResult?: number;
+  textResult?: string;
+}
+
+export interface StatisticsCalculatorMetrics {
+  // Define intermediate calculation results or metrics
+  intermediateValue: number;
   calculationSteps: string[];
-  analysis: StatisticsCalculatorAnalysis;
+  riskLevel: 'Low' | 'Medium' | 'High';
+}
+
+export interface StatisticsCalculatorAnalysis {
+  // Define analysis results
+  recommendation: string;
+  riskLevel: 'Low' | 'Medium' | 'High';
+  insights: string[];
+  warnings: string[];
 }

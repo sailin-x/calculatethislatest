@@ -1,34 +1,33 @@
 export interface GiftTaxCalculatorInputs {
-  giftAmount: number;
-  annualExclusionUsed: number;
-  lifetimeExclusionUsed: number;
-  relationship: 'spouse' | 'child' | 'grandchild' | 'other';
-  isAnnualExclusion: boolean;
-  isLifetimeExclusion: boolean;
-  giftTaxRate: number;
-}
-
-export interface GiftTaxCalculatorMetrics {
-  taxableAmount: number;
-  giftTaxDue: number;
-  remainingAnnualExclusion: number;
-  remainingLifetimeExclusion: number;
-  afterTaxGiftAmount: number;
-  effectiveTaxRate: number;
-}
-
-export interface GiftTaxCalculatorAnalysis {
-  taxEfficiency: string;
-  exemptionUtilization: string;
-  planningRecommendations: string[];
-  riskConsiderations: string[];
+  // Define input properties based on the calculator's requirements
+  primaryInput: number;
+  secondaryInput?: number;
+  selectInput: string;
+  // Add more input properties as needed
+  optionalParameter?: string;
+  booleanFlag?: boolean;
 }
 
 export interface GiftTaxCalculatorOutputs {
-  giftTaxDue: number;
-  remainingAnnualExclusion: number;
-  remainingLifetimeExclusion: number;
-  afterTaxGiftAmount: number;
-  effectiveTaxRate: number;
-  analysis: GiftTaxCalculatorAnalysis;
+  // Define output properties that the calculator will produce
+  primaryResult: number;
+  secondaryResult: number;
+  // Add more output properties as needed
+  percentageResult?: number;
+  textResult?: string;
+}
+
+export interface GiftTaxCalculatorMetrics {
+  // Define intermediate calculation results or metrics
+  intermediateValue: number;
+  calculationSteps: string[];
+  riskLevel: 'Low' | 'Medium' | 'High';
+}
+
+export interface GiftTaxCalculatorAnalysis {
+  // Define analysis results
+  recommendation: string;
+  riskLevel: 'Low' | 'Medium' | 'High';
+  insights: string[];
+  warnings: string[];
 }

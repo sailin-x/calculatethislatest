@@ -1,7 +1,3 @@
-import { GiftTaxCalculator } from './GiftTaxCalculator';
+import { GiftTaxCalculatorCalculator } from './GiftTaxCalculatorCalculator';
 
-export { GiftTaxCalculator };
-
-export function registerGiftTaxCalculator(): void {
-  // Registration logic if needed
-}
+export { GiftTaxCalculatorCalculator };

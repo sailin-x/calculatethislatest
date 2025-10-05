@@ -1,8 +1,3 @@
-import { calculatorRegistry } from '../../../data/calculatorRegistry';
-import { LifeSettlementValueCalculator } from './LifeSettlementValueCalculator';
+import { LifeSettlementValueCalculatorCalculator } from './LifeSettlementValueCalculatorCalculator';
 
-export function registerLifeSettlementValueCalculator(): void {
-  calculatorRegistry.register(LifeSettlementValueCalculator);
-}
-
-export { LifeSettlementValueCalculator };
+export { LifeSettlementValueCalculatorCalculator };

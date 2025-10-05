@@ -1,86 +1,65 @@
-import { ValidationRule } from '../../../types/calculator';
-import { ValidationRuleFactory } from '../../../utils/validation';
+import { RealEstateDevelopmentProformaCalculatorInputs } from './types';
 
-/**
- * Real estate development validation rules
- */
-export const realEstateValidationRules: ValidationRule[] = [
-  // Required fields
-  ValidationRuleFactory.required('landCost', 'Land cost is required'),
-  ValidationRuleFactory.required('constructionCostPerSqFt', 'Construction cost per square foot is required'),
-  ValidationRuleFactory.required('totalSqFt', 'Total square footage is required'),
-  ValidationRuleFactory.required('rentalRatePerSqFt', 'Rental rate per square foot is required'),
+export function validateRealEstateDevelopmentProformaCalculatorInputs(inputs: RealEstateDevelopmentProformaCalculatorInputs): Array<{ field: string; message: string }> {
+  const errors: Array<{ field: string; message: string }> = [];
 
-  // Positive value validations
-  ValidationRuleFactory.range('landCost', 0, 100000000, 'Land cost must be between $0 and $100,000,000'),
-  ValidationRuleFactory.range('constructionCostPerSqFt', 0, 10000, 'Construction cost per square foot must be between $0 and $10,000'),
-  ValidationRuleFactory.range('totalSqFt', 100, 1000000, 'Total square footage must be between 100 and 1,000,000 sq ft'),
-  ValidationRuleFactory.range('rentalRatePerSqFt', 0, 1000, 'Rental rate per square foot must be between $0 and $1,000'),
+  // Primary Input Validation
+  if (!inputs.primaryInput || inputs.primaryInput <= 0) {
+    errors.push({ field: 'primaryInput', message: 'Primary input must be greater than 0' });
+  }
+  if (inputs.primaryInput && inputs.primaryInput > 1000000) {
+    errors.push({ field: 'primaryInput', message: 'Primary input cannot exceed 1,000,000' });
+  }
 
-  // Percentage validations
-  ValidationRuleFactory.range('softCostsPercentage', 0, 100, 'Soft costs percentage must be between 0% and 100%'),
-  ValidationRuleFactory.range('contingencyPercentage', 0, 50, 'Contingency percentage must be between 0% and 50%'),
-  ValidationRuleFactory.range('occupancyRate', 0, 100, 'Occupancy rate must be between 0% and 100%'),
-  ValidationRuleFactory.range('equityPercentage', 0, 100, 'Equity percentage must be between 0% and 100%'),
-  ValidationRuleFactory.range('interestRate', 0, 20, 'Interest rate must be between 0% and 20%'),
-  ValidationRuleFactory.range('exitCapRate', 1, 20, 'Exit cap rate must be between 1% and 20%'),
+  // Secondary Input Validation (if provided)
+  if (inputs.secondaryInput !== undefined && inputs.secondaryInput < 0) {
+    errors.push({ field: 'secondaryInput', message: 'Secondary input cannot be negative' });
+  }
 
-  // Business rule validations
-  ValidationRuleFactory.businessRule(
-    'annualRentIncrease',
-    (annualRentIncrease) => annualRentIncrease >= -50 && annualRentIncrease <= 50,
-    'Annual rent increase must be between -50% and 50%'
-  ),
+  // Select Input Validation
+  const validOptions = ['option1', 'option2'];
+  if (!inputs.selectInput || !validOptions.includes(inputs.selectInput)) {
+    errors.push({ field: 'selectInput', message: 'Please select a valid option' });
+  }
 
-  ValidationRuleFactory.businessRule(
-    'holdingPeriodYears',
-    (holdingPeriodYears) => holdingPeriodYears >= 1 && holdingPeriodYears <= 30,
-    'Holding period must be between 1 and 30 years'
-  ),
+  // Cross-field Validation
+  if (inputs.secondaryInput && inputs.primaryInput && inputs.secondaryInput > inputs.primaryInput) {
+    errors.push({ field: 'secondaryInput', message: 'Secondary input cannot exceed primary input' });
+  }
 
-  ValidationRuleFactory.businessRule(
-    'loanTermYears',
-    (loanTermYears) => loanTermYears >= 1 && loanTermYears <= 50,
-    'Loan term must be between 1 and 50 years'
-  ),
+  // Optional Parameter Validation
+  if (inputs.optionalParameter && inputs.optionalParameter.length > 100) {
+    errors.push({ field: 'optionalParameter', message: 'Optional parameter cannot exceed 100 characters' });
+  }
 
-  ValidationRuleFactory.businessRule(
-    'constructionPeriodMonths',
-    (constructionPeriodMonths) => constructionPeriodMonths >= 1 && constructionPeriodMonths <= 36,
-    'Construction period must be between 1 and 36 months'
-  ),
+  return errors;
+}
 
-  ValidationRuleFactory.businessRule(
-    'interestOnlyPeriodMonths',
-    (interestOnlyPeriodMonths) => interestOnlyPeriodMonths >= 0 && interestOnlyPeriodMonths <= 60,
-    'Interest-only period must be between 0 and 60 months'
-  ),
+export function validateRealEstateDevelopmentProformaCalculatorBusinessRules(inputs: RealEstateDevelopmentProformaCalculatorInputs): Array<{ field: string; message: string }> {
+  const warnings: Array<{ field: string; message: string }> = [];
 
-  // Cross-field validations
-  ValidationRuleFactory.businessRule(
-    'interestOnlyPeriodMonths',
-    (interestOnlyPeriodMonths, allInputs) => {
-      if (!allInputs?.constructionPeriodMonths) return true;
-      return interestOnlyPeriodMonths >= allInputs.constructionPeriodMonths;
-    },
-    'Interest-only period cannot be shorter than construction period'
-  ),
+  // Business Rule Warnings
+  if (inputs.primaryInput && inputs.primaryInput > 500000) {
+    warnings.push({ field: 'primaryInput', message: 'High primary input values may require additional review' });
+  }
 
-  ValidationRuleFactory.businessRule(
-    'equityPercentage',
-    (equityPercentage) => {
-      if (equityPercentage < 10) {
-        return false; // Warning for low equity
-      }
-      return true;
-    },
-    'Low equity percentage may increase financing risk'
-  )
-];
+  // Ratio-based Warnings
+  if (inputs.secondaryInput && inputs.primaryInput) {
+    const ratio = inputs.secondaryInput / inputs.primaryInput;
+    if (ratio > 0.8) {
+      warnings.push({ field: 'secondaryInput', message: 'Secondary input is very high relative to primary input' });
+    }
+  }
 
-/**
- * Get validation rules for real estate development calculator
- */
-export function getRealEstateValidationRules(): ValidationRule[] {
-  return realEstateValidationRules;
+  // Option-specific Warnings
+  if (inputs.selectInput === 'option2' && inputs.primaryInput && inputs.primaryInput < 100) {
+    warnings.push({ field: 'selectInput', message: 'Option 2 may not be suitable for low primary input values' });
+  }
+
+  // Threshold Warnings
+  if (inputs.primaryInput && inputs.primaryInput > 10000) {
+    warnings.push({ field: 'primaryInput', message: 'Consider consulting with financial experts for high-value calculations' });
+  }
+
+  return warnings;
 }

@@ -1,6 +1,5 @@
-export { fafsaCalculator } from './FAFSACalculator';
-export { registerFAFSACalculator } from './register';
+export { FafsaCalculatorCalculator } from './FafsaCalculatorCalculator';
+export * from './types';
 export * from './formulas';
 export * from './validation';
 export * from './quickValidation';
-export * from './types';

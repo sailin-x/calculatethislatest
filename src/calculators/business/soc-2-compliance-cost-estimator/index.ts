@@ -1,5 +1,4 @@
-export { soc2compliancecostestimatorCalculator } from './soc2compliancecostestimatorCalculator';
-export { registersoc2compliancecostestimatorCalculator } from './register';
+export { Soc2ComplianceCostEstimatorCalculator } from './Soc2ComplianceCostEstimatorCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

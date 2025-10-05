@@ -1,6 +1,3 @@
-import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { itoutsourcingvsinhousecostbenefitanalysisCalculator } from './itoutsourcingvsinhousecostbenefitanalysisCalculator';
+import { ItOutsourcingVsInhouseCostbenefitAnalysisCalculator } from './ItOutsourcingVsInhouseCostbenefitAnalysisCalculator';
 
-export function registeritoutsourcingvsinhousecostbenefitanalysisCalculator(): void {
-  calculatorRegistry.register(new itoutsourcingvsinhousecostbenefitanalysisCalculator());
-}
+export { ItOutsourcingVsInhouseCostbenefitAnalysisCalculator };

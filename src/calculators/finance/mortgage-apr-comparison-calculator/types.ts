@@ -1,27 +1,33 @@
-export interface MortgageAPRInputs {
-  loanAmount: number;
-  loanTerm: number;
-  interestRate: number;
-  points: number;
-  closingCosts: number;
-  propertyTaxRate: number;
-  homeInsurance: number;
-  hoaFees: number;
-  pmiRate?: number;
+export interface MortgageAprComparisonCalculatorInputs {
+  // Define input properties based on the calculator's requirements
+  primaryInput: number;
+  secondaryInput?: number;
+  selectInput: string;
+  // Add more input properties as needed
+  optionalParameter?: string;
+  booleanFlag?: boolean;
 }
 
-export interface MortgageAPRComparison {
-  nominalRate: number;
-  effectiveAPR: number;
-  totalPayments: number;
-  totalInterest: number;
-  totalCost: number;
-  monthlyPayment: number;
+export interface MortgageAprComparisonCalculatorOutputs {
+  // Define output properties that the calculator will produce
+  primaryResult: number;
+  secondaryResult: number;
+  // Add more output properties as needed
+  percentageResult?: number;
+  textResult?: string;
 }
 
-export interface MortgageAPRRecommendation {
-  bestOption: string;
-  savings: number;
-  breakEvenPeriod: number;
-  riskFactors: string[];
+export interface MortgageAprComparisonCalculatorMetrics {
+  // Define intermediate calculation results or metrics
+  intermediateValue: number;
+  calculationSteps: string[];
+  riskLevel: 'Low' | 'Medium' | 'High';
+}
+
+export interface MortgageAprComparisonCalculatorAnalysis {
+  // Define analysis results
+  recommendation: string;
+  riskLevel: 'Low' | 'Medium' | 'High';
+  insights: string[];
+  warnings: string[];
 }

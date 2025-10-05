@@ -1,9 +1,3 @@
-import { calculatorRegistry } from '../../../data/calculatorRegistry';
-import { realEstateTaxDeductionsCalculator } from './RealEstateTaxDeductionsCalculator';
+import { RealEstateTaxDeductionsCalculatorCalculator } from './RealEstateTaxDeductionsCalculatorCalculator';
 
-/**
- * Register the Real Estate Tax Deductions Calculator
- */
-export function registerRealEstateTaxDeductionsCalculator(): void {
-  calculatorRegistry.register(realEstateTaxDeductionsCalculator);
-}
+export { RealEstateTaxDeductionsCalculatorCalculator };

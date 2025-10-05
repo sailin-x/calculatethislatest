@@ -1,6 +1,5 @@
-export { flexibleSpendingAccountCalculator } from './FlexibleSpendingAccountCalculator';
-export { registerFlexibleSpendingAccountCalculator } from './register';
+export { FlexibleSpendingAccountCalculatorCalculator } from './FlexibleSpendingAccountCalculatorCalculator';
+export * from './types';
 export * from './formulas';
 export * from './validation';
 export * from './quickValidation';
-export * from './types';

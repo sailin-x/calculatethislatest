@@ -1,12 +1,33 @@
-export interface environmentalremediationcostestimatorCalculatorInputs {
-  // Domain-specific input fields for environmental remediation cost estimator Calculator
-  // TODO: Add specific input fields based on calculator requirements
-  value: number;
+export interface EnvironmentalRemediationCostEstimatorInputs {
+  // Define input properties based on the calculator's requirements
+  primaryInput: number;
+  secondaryInput?: number;
+  selectInput: string;
+  // Add more input properties as needed
+  optionalParameter?: string;
+  booleanFlag?: boolean;
 }
 
-export interface environmentalremediationcostestimatorCalculatorOutputs {
-  // Domain-specific output fields for environmental remediation cost estimator Calculator
-  // TODO: Add specific output fields based on calculator requirements
-  result: number;
-  details: string;
+export interface EnvironmentalRemediationCostEstimatorOutputs {
+  // Define output properties that the calculator will produce
+  primaryResult: number;
+  secondaryResult: number;
+  // Add more output properties as needed
+  percentageResult?: number;
+  textResult?: string;
+}
+
+export interface EnvironmentalRemediationCostEstimatorMetrics {
+  // Define intermediate calculation results or metrics
+  intermediateValue: number;
+  calculationSteps: string[];
+  riskLevel: 'Low' | 'Medium' | 'High';
+}
+
+export interface EnvironmentalRemediationCostEstimatorAnalysis {
+  // Define analysis results
+  recommendation: string;
+  riskLevel: 'Low' | 'Medium' | 'High';
+  insights: string[];
+  warnings: string[];
 }

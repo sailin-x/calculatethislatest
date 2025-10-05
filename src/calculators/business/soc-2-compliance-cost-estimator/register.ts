@@ -1,6 +1,3 @@
-import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { soc2compliancecostestimatorCalculator } from './soc2compliancecostestimatorCalculator';
+import { Soc2ComplianceCostEstimatorCalculator } from './Soc2ComplianceCostEstimatorCalculator';
 
-export function registersoc2compliancecostestimatorCalculator(): void {
-  calculatorRegistry.register(new soc2compliancecostestimatorCalculator());
-}
+export { Soc2ComplianceCostEstimatorCalculator };

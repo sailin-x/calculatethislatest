@@ -1,103 +1,65 @@
-import { ValidationRule } from '../../../types/calculator';
-import { ValidationRuleFactory } from '../../../utils/validation';
+import { RealEstateTaxDeductionsCalculatorInputs } from './types';
 
-/**
- * Real estate tax deductions validation rules
- */
-export const realEstateTaxDeductionsValidationRules: ValidationRule[] = [
-  // Required fields
-  ValidationRuleFactory.required('annualIncome', 'Annual income is required'),
-  ValidationRuleFactory.required('taxRate', 'Tax rate is required'),
+export function validateRealEstateTaxDeductionsCalculatorInputs(inputs: RealEstateTaxDeductionsCalculatorInputs): Array<{ field: string; message: string }> {
+  const errors: Array<{ field: string; message: string }> = [];
 
-  // Positive value validations
-  ValidationRuleFactory.range('annualIncome', 0, 10000000, 'Annual income must be between $0 and $10,000,000'),
-  ValidationRuleFactory.range('mortgageInterest', 0, 1000000, 'Mortgage interest must be between $0 and $1,000,000'),
-  ValidationRuleFactory.range('propertyTaxes', 0, 100000, 'Property taxes must be between $0 and $100,000'),
-  ValidationRuleFactory.range('insurance', 0, 50000, 'Insurance must be between $0 and $50,000'),
-  ValidationRuleFactory.range('maintenance', 0, 100000, 'Maintenance must be between $0 and $100,000'),
-  ValidationRuleFactory.range('repairs', 0, 100000, 'Repairs must be between $0 and $100,000'),
-  ValidationRuleFactory.range('utilities', 0, 50000, 'Utilities must be between $0 and $50,000'),
-  ValidationRuleFactory.range('hoaFees', 0, 20000, 'HOA fees must be between $0 and $20,000'),
-  ValidationRuleFactory.range('depreciation', 0, 500000, 'Depreciation must be between $0 and $500,000'),
-  ValidationRuleFactory.range('managementFees', 0, 50000, 'Management fees must be between $0 and $50,000'),
-  ValidationRuleFactory.range('vacancyAllowance', 0, 100000, 'Vacancy allowance must be between $0 and $100,000'),
-  ValidationRuleFactory.range('rentalIncome', 0, 1000000, 'Rental income must be between $0 and $1,000,000'),
+  // Primary Input Validation
+  if (!inputs.primaryInput || inputs.primaryInput <= 0) {
+    errors.push({ field: 'primaryInput', message: 'Primary input must be greater than 0' });
+  }
+  if (inputs.primaryInput && inputs.primaryInput > 1000000) {
+    errors.push({ field: 'primaryInput', message: 'Primary input cannot exceed 1,000,000' });
+  }
 
-  // Percentage validations
-  ValidationRuleFactory.range('taxRate', 0, 50, 'Tax rate must be between 0% and 50%'),
-  ValidationRuleFactory.range('personalUsePercentage', 0, 100, 'Personal use percentage must be between 0% and 100%'),
+  // Secondary Input Validation (if provided)
+  if (inputs.secondaryInput !== undefined && inputs.secondaryInput < 0) {
+    errors.push({ field: 'secondaryInput', message: 'Secondary input cannot be negative' });
+  }
 
-  // Business rule validations
-  ValidationRuleFactory.businessRule(
-    'personalUsePercentage',
-    (personalUsePercentage, allInputs) => {
-      if (!allInputs?.propertyType) return true;
-      // Personal residence should have higher personal use percentage
-      if (allInputs.propertyType === 'residential' && personalUsePercentage < 50) {
-        return false;
-      }
-      // Rental property should have lower personal use percentage
-      if (allInputs.propertyType === 'rental' && personalUsePercentage > 14) {
-        return false;
-      }
-      return true;
-    },
-    'Personal use percentage seems inconsistent with property type'
-  ),
+  // Select Input Validation
+  const validOptions = ['option1', 'option2'];
+  if (!inputs.selectInput || !validOptions.includes(inputs.selectInput)) {
+    errors.push({ field: 'selectInput', message: 'Please select a valid option' });
+  }
 
-  ValidationRuleFactory.businessRule(
-    'rentalIncome',
-    (rentalIncome, allInputs) => {
-      if (!allInputs?.propertyType || allInputs.propertyType !== 'rental') return true;
-      return rentalIncome > 0;
-    },
-    'Rental income is required for rental properties'
-  ),
+  // Cross-field Validation
+  if (inputs.secondaryInput && inputs.primaryInput && inputs.secondaryInput > inputs.primaryInput) {
+    errors.push({ field: 'secondaryInput', message: 'Secondary input cannot exceed primary input' });
+  }
 
-  ValidationRuleFactory.businessRule(
-    'taxRate',
-    (taxRate, allInputs) => {
-      if (!allInputs?.filingStatus) return true;
-      // Reasonable tax rate ranges by filing status
-      const taxRateRanges = {
-        'single': { min: 10, max: 37 },
-        'married-joint': { min: 10, max: 36 },
-        'married-separate': { min: 10, max: 37 },
-        'head-household': { min: 10, max: 37 }
-      };
-      const range = taxRateRanges[allInputs.filingStatus as keyof typeof taxRateRanges];
-      if (!range) return true;
-      return taxRate >= range.min && taxRate <= range.max;
-    },
-    'Tax rate seems outside typical range for filing status'
-  ),
+  // Optional Parameter Validation
+  if (inputs.optionalParameter && inputs.optionalParameter.length > 100) {
+    errors.push({ field: 'optionalParameter', message: 'Optional parameter cannot exceed 100 characters' });
+  }
 
-  ValidationRuleFactory.businessRule(
-    'propertyTaxes',
-    (propertyTaxes, allInputs) => {
-      if (!allInputs?.annualIncome) return true;
-      // Property taxes should be reasonable relative to income
-      const taxToIncomeRatio = propertyTaxes / allInputs.annualIncome;
-      return taxToIncomeRatio <= 0.1; // Property taxes shouldn't exceed 10% of income
-    },
-    'Property taxes seem unusually high relative to income'
-  ),
+  return errors;
+}
 
-  ValidationRuleFactory.businessRule(
-    'depreciation',
-    (depreciation, allInputs) => {
-      if (!allInputs?.annualIncome) return true;
-      // Depreciation should be reasonable relative to income
-      const depreciationToIncomeRatio = depreciation / allInputs.annualIncome;
-      return depreciationToIncomeRatio <= 0.5; // Depreciation shouldn't exceed 50% of income
-    },
-    'Depreciation amount seems unusually high relative to income'
-  )
-];
+export function validateRealEstateTaxDeductionsCalculatorBusinessRules(inputs: RealEstateTaxDeductionsCalculatorInputs): Array<{ field: string; message: string }> {
+  const warnings: Array<{ field: string; message: string }> = [];
 
-/**
- * Get validation rules for real estate tax deductions calculator
- */
-export function getRealEstateTaxDeductionsValidationRules(): ValidationRule[] {
-  return realEstateTaxDeductionsValidationRules;
+  // Business Rule Warnings
+  if (inputs.primaryInput && inputs.primaryInput > 500000) {
+    warnings.push({ field: 'primaryInput', message: 'High primary input values may require additional review' });
+  }
+
+  // Ratio-based Warnings
+  if (inputs.secondaryInput && inputs.primaryInput) {
+    const ratio = inputs.secondaryInput / inputs.primaryInput;
+    if (ratio > 0.8) {
+      warnings.push({ field: 'secondaryInput', message: 'Secondary input is very high relative to primary input' });
+    }
+  }
+
+  // Option-specific Warnings
+  if (inputs.selectInput === 'option2' && inputs.primaryInput && inputs.primaryInput < 100) {
+    warnings.push({ field: 'selectInput', message: 'Option 2 may not be suitable for low primary input values' });
+  }
+
+  // Threshold Warnings
+  if (inputs.primaryInput && inputs.primaryInput > 10000) {
+    warnings.push({ field: 'primaryInput', message: 'Consider consulting with financial experts for high-value calculations' });
+  }
+
+  return warnings;
 }

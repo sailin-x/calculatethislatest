@@ -1,68 +1,33 @@
-export interface USDALoanInputs {
-  // Property Information
-  propertyValue: number;
-  purchasePrice: number;
-  location: 'rural' | 'suburban' | 'small-town';
-
-  // Borrower Information
-  householdIncome: number;
-  householdSize: number;
-  creditScore: number;
-  debtToIncomeRatio: number;
-
-  // Loan Details
-  downPayment: number;
-  loanTerm: 30;
-  interestRate: number;
-
-  // Property Eligibility
-  isPrimaryResidence: boolean;
-  isModestHousing: boolean;
-  meetsIncomeLimits: boolean;
-  meetsLocationRequirements: boolean;
-
-  // Additional Costs
-  closingCosts: number;
-  propertyTaxes: number;
-  homeownersInsurance: number;
-  hoaFees: number;
-
-  // Analysis Options
-  includeTaxesInsurance: boolean;
-  analysisPeriod: number;
+export interface UsdaLoanCalculatorInputs {
+  // Define input properties based on the calculator's requirements
+  primaryInput: number;
+  secondaryInput?: number;
+  selectInput: string;
+  // Add more input properties as needed
+  optionalParameter?: string;
+  booleanFlag?: boolean;
 }
 
-export interface USDALoanResults {
-  // Loan Qualification
-  isEligible: boolean;
-  eligibilityReasons: string[];
-  maximumLoanAmount: number;
-  requiredDownPayment: number;
+export interface UsdaLoanCalculatorOutputs {
+  // Define output properties that the calculator will produce
+  primaryResult: number;
+  secondaryResult: number;
+  // Add more output properties as needed
+  percentageResult?: number;
+  textResult?: string;
+}
 
-  // Loan Details
-  loanAmount: number;
-  monthlyPrincipalInterest: number;
-  monthlyTaxesInsurance: number;
-  totalMonthlyPayment: number;
+export interface UsdaLoanCalculatorMetrics {
+  // Define intermediate calculation results or metrics
+  intermediateValue: number;
+  calculationSteps: string[];
+  riskLevel: 'Low' | 'Medium' | 'High';
+}
 
-  // Financial Analysis
-  loanToValueRatio: number;
-  debtToIncomeRatio: number;
-  frontEndRatio: number;
-  backEndRatio: number;
-
-  // Cost Analysis
-  totalClosingCosts: number;
-  totalMonthlyCosts: number;
-  breakEvenPeriod: number;
-
-  // Benefits Analysis
-  guaranteedLoanFee: number;
-  annualSubsidy: number;
-  totalSubsidyOverTerm: number;
-
-  // Recommendations
+export interface UsdaLoanCalculatorAnalysis {
+  // Define analysis results
   recommendation: string;
-  nextSteps: string[];
-  alternativeOptions: string[];
+  riskLevel: 'Low' | 'Medium' | 'High';
+  insights: string[];
+  warnings: string[];
 }

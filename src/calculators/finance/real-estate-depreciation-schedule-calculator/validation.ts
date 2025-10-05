@@ -1,75 +1,65 @@
-import { ValidationRule } from '../../../types/calculator';
-import { ValidationRuleFactory } from '../../../utils/validation';
+import { RealEstateDepreciationScheduleCalculatorInputs } from './types';
 
-/**
- * Real estate depreciation validation rules
- */
-export const realEstateDepreciationValidationRules: ValidationRule[] = [
-  // Required fields
-  ValidationRuleFactory.required('propertyCost', 'Property cost is required'),
-  ValidationRuleFactory.required('depreciationStartDate', 'Depreciation start date is required'),
+export function validateRealEstateDepreciationScheduleCalculatorInputs(inputs: RealEstateDepreciationScheduleCalculatorInputs): Array<{ field: string; message: string }> {
+  const errors: Array<{ field: string; message: string }> = [];
 
-  // Positive value validations
-  ValidationRuleFactory.range('propertyCost', 0, 100000000, 'Property cost must be between $0 and $100,000,000'),
-  ValidationRuleFactory.range('landValue', 0, 100000000, 'Land value must be between $0 and $100,000,000'),
-  ValidationRuleFactory.range('usefulLife', 1, 50, 'Useful life must be between 1 and 50 years'),
-  ValidationRuleFactory.range('calculationYears', 1, 50, 'Calculation years must be between 1 and 50'),
-  ValidationRuleFactory.range('salvageValue', 0, 100000000, 'Salvage value must be between $0 and $100,000,000'),
-  ValidationRuleFactory.range('bonusDepreciationPercentage', 0, 100, 'Bonus depreciation percentage must be between 0% and 100%'),
-  ValidationRuleFactory.range('section179Deduction', 0, 100000000, 'Section 179 deduction must be between $0 and $100,000,000'),
+  // Primary Input Validation
+  if (!inputs.primaryInput || inputs.primaryInput <= 0) {
+    errors.push({ field: 'primaryInput', message: 'Primary input must be greater than 0' });
+  }
+  if (inputs.primaryInput && inputs.primaryInput > 1000000) {
+    errors.push({ field: 'primaryInput', message: 'Primary input cannot exceed 1,000,000' });
+  }
 
-  // Business rule validations
-  ValidationRuleFactory.businessRule(
-    'landValue',
-    (landValue, allInputs) => {
-      if (!allInputs?.propertyCost) return true;
-      return landValue <= allInputs.propertyCost;
-    },
-    'Land value cannot exceed property cost'
-  ),
+  // Secondary Input Validation (if provided)
+  if (inputs.secondaryInput !== undefined && inputs.secondaryInput < 0) {
+    errors.push({ field: 'secondaryInput', message: 'Secondary input cannot be negative' });
+  }
 
-  ValidationRuleFactory.businessRule(
-    'salvageValue',
-    (salvageValue, allInputs) => {
-      if (!allInputs?.propertyCost) return true;
-      return salvageValue <= allInputs.propertyCost;
-    },
-    'Salvage value cannot exceed property cost'
-  ),
+  // Select Input Validation
+  const validOptions = ['option1', 'option2'];
+  if (!inputs.selectInput || !validOptions.includes(inputs.selectInput)) {
+    errors.push({ field: 'selectInput', message: 'Please select a valid option' });
+  }
 
-  ValidationRuleFactory.businessRule(
-    'section179Deduction',
-    (section179Deduction, allInputs) => {
-      if (!allInputs?.propertyCost) return true;
-      return section179Deduction <= allInputs.propertyCost;
-    },
-    'Section 179 deduction cannot exceed property cost'
-  ),
+  // Cross-field Validation
+  if (inputs.secondaryInput && inputs.primaryInput && inputs.secondaryInput > inputs.primaryInput) {
+    errors.push({ field: 'secondaryInput', message: 'Secondary input cannot exceed primary input' });
+  }
 
-  ValidationRuleFactory.businessRule(
-    'depreciationStartDate',
-    (depreciationStartDate) => {
-      const date = new Date(depreciationStartDate);
-      const now = new Date();
-      const minDate = new Date('1900-01-01');
-      return date >= minDate && date <= now;
-    },
-    'Depreciation start date must be between 1900 and today'
-  ),
+  // Optional Parameter Validation
+  if (inputs.optionalParameter && inputs.optionalParameter.length > 100) {
+    errors.push({ field: 'optionalParameter', message: 'Optional parameter cannot exceed 100 characters' });
+  }
 
-  ValidationRuleFactory.businessRule(
-    'depreciationMethod',
-    (depreciationMethod) => {
-      const validMethods = ['straight-line', 'declining-balance', 'section-179', 'bonus-depreciation'];
-      return validMethods.includes(depreciationMethod);
-    },
-    'Invalid depreciation method selected'
-  )
-];
+  return errors;
+}
 
-/**
- * Get validation rules for real estate depreciation calculator
- */
-export function getRealEstateDepreciationValidationRules(): ValidationRule[] {
-  return realEstateDepreciationValidationRules;
+export function validateRealEstateDepreciationScheduleCalculatorBusinessRules(inputs: RealEstateDepreciationScheduleCalculatorInputs): Array<{ field: string; message: string }> {
+  const warnings: Array<{ field: string; message: string }> = [];
+
+  // Business Rule Warnings
+  if (inputs.primaryInput && inputs.primaryInput > 500000) {
+    warnings.push({ field: 'primaryInput', message: 'High primary input values may require additional review' });
+  }
+
+  // Ratio-based Warnings
+  if (inputs.secondaryInput && inputs.primaryInput) {
+    const ratio = inputs.secondaryInput / inputs.primaryInput;
+    if (ratio > 0.8) {
+      warnings.push({ field: 'secondaryInput', message: 'Secondary input is very high relative to primary input' });
+    }
+  }
+
+  // Option-specific Warnings
+  if (inputs.selectInput === 'option2' && inputs.primaryInput && inputs.primaryInput < 100) {
+    warnings.push({ field: 'selectInput', message: 'Option 2 may not be suitable for low primary input values' });
+  }
+
+  // Threshold Warnings
+  if (inputs.primaryInput && inputs.primaryInput > 10000) {
+    warnings.push({ field: 'primaryInput', message: 'Consider consulting with financial experts for high-value calculations' });
+  }
+
+  return warnings;
 }

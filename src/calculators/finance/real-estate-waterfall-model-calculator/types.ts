@@ -1,40 +1,33 @@
-export interface RealEstateWaterfallModelInputs {
-  totalProjectCost: number;
-  sponsorEquity: number;
-  investorEquity: number;
-  loanAmount: number;
-  preferredReturn: number;
-  sponsorProfitSplit: number;
-  investorProfitSplit: number;
-  totalCashFlow: number;
-  totalAppreciation: number;
-  totalPrincipalPaydown: number;
-  holdingPeriodYears: number;
-  waterfallType: 'american' | 'european' | 'tiered';
-  promoteStructure: 'straight' | 'catch_up';
-  irrTarget: number;
+export interface RealEstateWaterfallModelCalculatorInputs {
+  // Define input properties based on the calculator's requirements
+  primaryInput: number;
+  secondaryInput?: number;
+  selectInput: string;
+  // Add more input properties as needed
+  optionalParameter?: string;
+  booleanFlag?: boolean;
 }
 
-export interface RealEstateWaterfallModelResults {
-  totalEquity: number;
-  sponsorOwnershipPercentage: number;
-  investorOwnershipPercentage: number;
-  totalDistributions: number;
-  sponsorDistributions: number;
-  investorDistributions: number;
-  sponsorPromote: number;
-  investorPreferredReturn: number;
-  sponsorPreferredReturn: number;
-  totalSponsorProfit: number;
-  totalInvestorProfit: number;
-  sponsorIRR: number;
-  investorIRR: number;
-  equityMultiple: number;
-  waterfallTiers: Array<{
-    tier: number;
-    description: string;
-    threshold: number;
-    distribution: number;
-    recipient: string;
-  }>;
+export interface RealEstateWaterfallModelCalculatorOutputs {
+  // Define output properties that the calculator will produce
+  primaryResult: number;
+  secondaryResult: number;
+  // Add more output properties as needed
+  percentageResult?: number;
+  textResult?: string;
+}
+
+export interface RealEstateWaterfallModelCalculatorMetrics {
+  // Define intermediate calculation results or metrics
+  intermediateValue: number;
+  calculationSteps: string[];
+  riskLevel: 'Low' | 'Medium' | 'High';
+}
+
+export interface RealEstateWaterfallModelCalculatorAnalysis {
+  // Define analysis results
+  recommendation: string;
+  riskLevel: 'Low' | 'Medium' | 'High';
+  insights: string[];
+  warnings: string[];
 }

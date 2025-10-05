@@ -1,9 +1,3 @@
-import { calculatorRegistry } from '../../../data/calculatorRegistry';
-import { annuityBuyoutCalculator } from './AnnuityBuyoutCalculator';
+import { AnnuityBuyoutCalculatorCalculator } from './AnnuityBuyoutCalculatorCalculator';
 
-/**
- * Register the Annuity Buyout Calculator
- */
-export function registerAnnuityBuyoutCalculator(): void {
-  calculatorRegistry.register(annuityBuyoutCalculator);
-}
+export { AnnuityBuyoutCalculatorCalculator };

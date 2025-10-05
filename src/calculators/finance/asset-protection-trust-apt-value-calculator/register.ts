@@ -1,9 +1,3 @@
-import { calculatorRegistry } from '../../../data/calculatorRegistry';
-import { aptValueCalculator } from './APTValueCalculator';
+import { AssetProtectionTrustAptValueCalculatorCalculator } from './AssetProtectionTrustAptValueCalculatorCalculator';
 
-/**
- * Register the Asset Protection Trust (APT) Value Calculator
- */
-export function registerAPTValueCalculator(): void {
-  calculatorRegistry.register(aptValueCalculator);
-}
+export { AssetProtectionTrustAptValueCalculatorCalculator };

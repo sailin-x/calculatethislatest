@@ -1,53 +1,35 @@
 import { statistics-calculatorInputs, statistics-calculatorMetrics, statistics-calculatorAnalysis } from './types';
 
-
-// Generic Calculator - Basic mathematical operations
-export function calculatePercentage(value: number, percentage: number): number {
-  return value * (percentage / 100);
-}
-
-export function calculatePercentageChange(oldValue: number, newValue: number): number {
-  return ((newValue - oldValue) / oldValue) * 100;
-}
-
-export function calculateAverage(values: number[]): number {
+// Statistics Calculator
+export function calculateMean(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
+export function calculateMedian(values: number[]): number {
+  const sorted = [...values].sort((a, b) => a - b);
+  const mid = Math.floor(sorted.length / 2);
+  return sorted.length % 2 === 0 ? (sorted[mid - 1] + sorted[mid]) / 2 : sorted[mid];
+}
+
+export function calculateStandardDeviation(values: number[], isPopulation: boolean = false): number {
+  const mean = calculateMean(values);
+  const squaredDiffs = values.map(val => Math.pow(val - mean, 2));
+  const variance = squaredDiffs.reduce((sum, val) => sum + val, 0) / (values.length - (isPopulation ? 0 : 1));
+  return Math.sqrt(variance);
+}
+
 export function calculateResult(inputs: statistics-calculatorInputs): number {
-  // Use domain-specific calculations based on input properties
-  try {
-    // Try to match inputs to appropriate calculation
-    if ('principal' in inputs && 'annualRate' in inputs && 'years' in inputs) {
-      return calculateMonthlyPayment(inputs.principal, inputs.annualRate, inputs.years);
-    }
-    if ('initialInvestment' in inputs && 'finalValue' in inputs) {
-      return calculateROI(inputs.initialInvestment, inputs.finalValue);
-    }
-    if ('weightKg' in inputs && 'heightCm' in inputs) {
-      return calculateBMI(inputs.weightKg, inputs.heightCm);
-    }
-    if ('value' in inputs && 'percentage' in inputs) {
-      return calculatePercentage(inputs.value, inputs.percentage);
-    }
-    // Fallback to basic calculation
-    return inputs.value || inputs.amount || inputs.principal || 0;
-  } catch (error) {
-    console.warn('Calculation error:', error);
-    return 0;
+  if ('values' in inputs && Array.isArray(inputs.values)) {
+    return calculateMean(inputs.values);
   }
+  return 0;
 }
 
 export function generateAnalysis(inputs: statistics-calculatorInputs, metrics: statistics-calculatorMetrics): statistics-calculatorAnalysis {
   const result = metrics.result;
-
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
-  if (Math.abs(result) > 100000) riskLevel = 'High';
-  else if (Math.abs(result) > 10000) riskLevel = 'Medium';
 
-  const recommendation = result > 0 ?
-    'Calculation completed successfully - positive result' :
-    'Calculation completed - review inputs if result seems unexpected';
+  const recommendation = 'Statistical calculation completed. Verify data distribution and outliers.';
 
   return { recommendation, riskLevel };
 }

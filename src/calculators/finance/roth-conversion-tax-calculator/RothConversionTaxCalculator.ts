@@ -1,31 +1,69 @@
 import { Calculator } from '../../types/calculator';
 import { RothConversionTaxCalculatorInputs, RothConversionTaxCalculatorOutputs } from './types';
-import { calculateResult, generateAnalysis } from './formulas';
-import { validateRothConversionTaxCalculatorInputs } from './validation';
+import {
+  // Import calculation functions from formulas.ts
+  calculateResult,
+  calculateSecondaryResult,
+  // Add other formula imports as needed
+} from './formulas';
+import { validateRothConversionTaxCalculatorInputs, validateRothConversionTaxCalculatorBusinessRules } from './validation';
 
-export const RothConversionTaxCalculator: Calculator = {
-  id: 'roth-conversion-tax-calculator',
-  title: 'Roth Conversion Tax Calculator',
-  category: 'finance',
-  subcategory: 'General',
-  description: 'Calculate tax implications of converting traditional IRA to Roth IRA',
+export const RothConversionTaxCalculatorCalculator: Calculator: Calculator = {
+  id: 'roth-conversion-tax-calculator-calculator',
+  title: 'Roth Conversion Tax Calculator Calculator',
+  finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
+  subfinance: 'Subfinance Name',
+  description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [
-    'Add usage instructions here'
+    'Step 1: Enter the primary input values',
+    'Step 2: Configure any optional parameters',
+    'Step 3: Review the calculated results',
+    'Step 4: Adjust inputs as needed for different scenarios'
   ],
 
   inputs: [
-    // Add input definitions here
-  ],
+    {
+        "id": "input1",
+        "label": "Input 1",
+        "type": "number",
+        "required": true,
+        "min": 0,
+        "tooltip": "Primary input value"
+    },
+    {
+        "id": "input2",
+        "label": "Input 2",
+        "type": "currency",
+        "required": true,
+        "min": 0,
+        "tooltip": "Secondary input value"
+    }
+],
 
   outputs: [
-    // Add output definitions here
-  ],
+    {
+        "id": "result",
+        "label": "Result",
+        "type": "currency",
+        "explanation": "Calculated result"
+    }
+],
 
-  formulas: [], // Will be implemented with the calculation engine
+  formulas: [], // Formulas are implemented in formulas.ts
 
-  validationRules: [], // Will be implemented with validation rules
+  validationRules: [], // Validation rules are implemented in validation.ts
 
   examples: [
-    // Add examples here
-  ]
+    {
+        "title": "Basic Example",
+        "description": "Standard calculation example",
+        "inputs": {
+            "input1": 100,
+            "input2": 50
+        },
+        "expectedOutputs": {
+            "result": 150
+        }
+    }
+]
 };

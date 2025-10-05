@@ -1,6 +1,3 @@
-import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { chapter11bankruptcyplanvaluationCalculator } from './chapter11bankruptcyplanvaluationCalculator';
+import { Chapter11BankruptcyPlanValuationCalculator } from './Chapter11BankruptcyPlanValuationCalculator';
 
-export function registerchapter11bankruptcyplanvaluationCalculator(): void {
-  calculatorRegistry.register(new chapter11bankruptcyplanvaluationCalculator());
-}
+export { Chapter11BankruptcyPlanValuationCalculator };

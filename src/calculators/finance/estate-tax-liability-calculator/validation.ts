@@ -1,103 +1,65 @@
-import { ValidationRule } from '../../../types/calculator';
-import { ValidationRuleFactory } from '../../../utils/validation';
+import { EstateTaxLiabilityCalculatorInputs } from './types';
 
-/**
- * Estate tax liability validation rules
- */
-export const estateTaxLiabilityValidationRules: ValidationRule[] = [
-  // Required fields
-  ValidationRuleFactory.required('grossEstateValue', 'Gross estate value is required'),
-  ValidationRuleFactory.required('federalExemption', 'Federal exemption is required'),
-  ValidationRuleFactory.required('federalTaxRate', 'Federal tax rate is required'),
+export function validateEstateTaxLiabilityCalculatorInputs(inputs: EstateTaxLiabilityCalculatorInputs): Array<{ field: string; message: string }> {
+  const errors: Array<{ field: string; message: string }> = [];
 
-  // Financial validations
-  ValidationRuleFactory.range('grossEstateValue', 0, 1000000000, 'Gross estate value must be between $0 and $1,000,000,000'),
-  ValidationRuleFactory.range('funeralExpenses', 0, 50000, 'Funeral expenses must be between $0 and $50,000'),
-  ValidationRuleFactory.range('administrationExpenses', 0, 100000, 'Administration expenses must be between $0 and $100,000'),
-  ValidationRuleFactory.range('debtsAndLiabilities', 0, 100000000, 'Debts and liabilities must be between $0 and $100,000,000'),
+  // Primary Input Validation
+  if (!inputs.primaryInput || inputs.primaryInput <= 0) {
+    errors.push({ field: 'primaryInput', message: 'Primary input must be greater than 0' });
+  }
+  if (inputs.primaryInput && inputs.primaryInput > 1000000) {
+    errors.push({ field: 'primaryInput', message: 'Primary input cannot exceed 1,000,000' });
+  }
 
-  // Exemption validations
-  ValidationRuleFactory.range('federalExemption', 0, 50000000, 'Federal exemption must be between $0 and $50,000,000'),
-  ValidationRuleFactory.range('stateExemption', 0, 5000000, 'State exemption must be between $0 and $5,000,000'),
-  ValidationRuleFactory.range('predeceasedSpouseExemption', 0, 50000000, 'Predeceased spouse exemption must be between $0 and $50,000,000'),
+  // Secondary Input Validation (if provided)
+  if (inputs.secondaryInput !== undefined && inputs.secondaryInput < 0) {
+    errors.push({ field: 'secondaryInput', message: 'Secondary input cannot be negative' });
+  }
 
-  // Tax rate validations
-  ValidationRuleFactory.range('federalTaxRate', 0, 50, 'Federal tax rate must be between 0% and 50%'),
-  ValidationRuleFactory.range('stateTaxRate', 0, 20, 'State tax rate must be between 0% and 20%'),
+  // Select Input Validation
+  const validOptions = ['option1', 'option2'];
+  if (!inputs.selectInput || !validOptions.includes(inputs.selectInput)) {
+    errors.push({ field: 'selectInput', message: 'Please select a valid option' });
+  }
 
-  // Deduction validations
-  ValidationRuleFactory.range('maritalDeduction', 0, 1000000000, 'Marital deduction must be between $0 and $1,000,000,000'),
-  ValidationRuleFactory.range('charitableDeduction', 0, 1000000000, 'Charitable deduction must be between $0 and $1,000,000,000'),
-  ValidationRuleFactory.range('otherDeductions', 0, 100000000, 'Other deductions must be between $0 and $100,000,000'),
+  // Cross-field Validation
+  if (inputs.secondaryInput && inputs.primaryInput && inputs.secondaryInput > inputs.primaryInput) {
+    errors.push({ field: 'secondaryInput', message: 'Secondary input cannot exceed primary input' });
+  }
 
-  // Asset validations
-  ValidationRuleFactory.range('probateAssets', 0, 1000000000, 'Probate assets must be between $0 and $1,000,000,000'),
-  ValidationRuleFactory.range('nonProbateAssets', 0, 1000000000, 'Non-probate assets must be between $0 and $1,000,000,000'),
-  ValidationRuleFactory.range('lifeInsuranceProceeds', 0, 100000000, 'Life insurance proceeds must be between $0 and $100,000,000'),
-  ValidationRuleFactory.range('retirementAccounts', 0, 1000000000, 'Retirement accounts must be between $0 and $1,000,000,000'),
+  // Optional Parameter Validation
+  if (inputs.optionalParameter && inputs.optionalParameter.length > 100) {
+    errors.push({ field: 'optionalParameter', message: 'Optional parameter cannot exceed 100 characters' });
+  }
 
-  // Beneficiary validations
-  ValidationRuleFactory.range('numberOfChildren', 0, 20, 'Number of children must be between 0 and 20'),
-  ValidationRuleFactory.range('numberOfGrandchildren', 0, 50, 'Number of grandchildren must be between 0 and 50'),
+  return errors;
+}
 
-  // Planning validations
-  ValidationRuleFactory.range('annualExclusionGifts', 0, 1000000, 'Annual exclusion gifts must be between $0 and $1,000,000'),
-  ValidationRuleFactory.range('lifetimeExclusionUsed', 0, 50000000, 'Lifetime exclusion used must be between $0 and $50,000,000'),
-  ValidationRuleFactory.range('outOfStateValue', 0, 1000000000, 'Out of state value must be between $0 and $1,000,000,000'),
+export function validateEstateTaxLiabilityCalculatorBusinessRules(inputs: EstateTaxLiabilityCalculatorInputs): Array<{ field: string; message: string }> {
+  const warnings: Array<{ field: string; message: string }> = [];
 
-  // Business logic validations
-  ValidationRuleFactory.businessRule(
-    'maritalDeduction',
-    (maritalDeduction, allInputs) => {
-      if (!allInputs?.survivingSpouse) return true;
-      return maritalDeduction <= allInputs.grossEstateValue;
-    },
-    'Marital deduction cannot exceed gross estate value'
-  ),
+  // Business Rule Warnings
+  if (inputs.primaryInput && inputs.primaryInput > 500000) {
+    warnings.push({ field: 'primaryInput', message: 'High primary input values may require additional review' });
+  }
 
-  ValidationRuleFactory.businessRule(
-    'charitableDeduction',
-    (charitableDeduction, allInputs) => {
-      if (!allInputs?.grossEstateValue) return true;
-      return charitableDeduction <= allInputs.grossEstateValue;
-    },
-    'Charitable deduction cannot exceed gross estate value'
-  ),
+  // Ratio-based Warnings
+  if (inputs.secondaryInput && inputs.primaryInput) {
+    const ratio = inputs.secondaryInput / inputs.primaryInput;
+    if (ratio > 0.8) {
+      warnings.push({ field: 'secondaryInput', message: 'Secondary input is very high relative to primary input' });
+    }
+  }
 
-  ValidationRuleFactory.businessRule(
-    'probateAssets',
-    (probateAssets, allInputs) => {
-      if (!allInputs?.nonProbateAssets || !allInputs?.grossEstateValue) return true;
-      const totalAssets = probateAssets + allInputs.nonProbateAssets;
-      return Math.abs(totalAssets - allInputs.grossEstateValue) / allInputs.grossEstateValue <= 0.1;
-    },
-    'Sum of probate and non-probate assets should approximately equal gross estate value'
-  ),
+  // Option-specific Warnings
+  if (inputs.selectInput === 'option2' && inputs.primaryInput && inputs.primaryInput < 100) {
+    warnings.push({ field: 'selectInput', message: 'Option 2 may not be suitable for low primary input values' });
+  }
 
-  ValidationRuleFactory.businessRule(
-    'federalExemption',
-    (federalExemption, allInputs) => {
-      if (!allInputs?.grossEstateValue) return true;
-      // Federal exemption should be reasonable relative to estate size
-      return federalExemption <= allInputs.grossEstateValue * 2;
-    },
-    'Federal exemption seems unusually high relative to estate value'
-  ),
+  // Threshold Warnings
+  if (inputs.primaryInput && inputs.primaryInput > 10000) {
+    warnings.push({ field: 'primaryInput', message: 'Consider consulting with financial experts for high-value calculations' });
+  }
 
-  ValidationRuleFactory.businessRule(
-    'annualExclusionGifts',
-    (annualExclusionGifts, allInputs) => {
-      if (!allInputs?.grossEstateValue) return true;
-      // Annual gifts shouldn't exceed a reasonable portion of estate
-      return annualExclusionGifts <= allInputs.grossEstateValue * 0.1;
-    },
-    'Annual exclusion gifts seem unusually high relative to estate value'
-  )
-];
-
-/**
- * Get validation rules for estate tax liability calculator
- */
-export function getEstateTaxLiabilityValidationRules(): ValidationRule[] {
-  return estateTaxLiabilityValidationRules;
+  return warnings;
 }

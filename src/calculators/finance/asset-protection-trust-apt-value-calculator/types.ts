@@ -1,69 +1,33 @@
-export interface APTValueInputs {
-  // Trust Assets
-  trustAssets: number;
-  annualContributions: number;
-  contributionYears: number;
-
-  // Trust Terms
-  trustDuration: number;
-  distributionFrequency: 'annual' | 'semi-annual' | 'quarterly' | 'monthly';
-  trusteeFees: number;
-
-  // Investment Parameters
-  expectedReturn: number;
-  inflationRate: number;
-  taxRate: number;
-
-  // Beneficiary Information
-  numberOfBeneficiaries: number;
-  beneficiaryAges: number[];
-  lifeExpectancy: number;
-
-  // Legal and Setup Costs
-  setupCosts: number;
-  annualLegalFees: number;
-  stateOfFormation: string;
-
-  // Analysis Options
-  includeInflation: boolean;
-  discountRate: number;
-  analysisPeriod: number;
+export interface AssetProtectionTrustAptValueCalculatorInputs {
+  // Define input properties based on the calculator's requirements
+  primaryInput: number;
+  secondaryInput?: number;
+  selectInput: string;
+  // Add more input properties as needed
+  optionalParameter?: string;
+  booleanFlag?: boolean;
 }
 
-export interface APTValueResults {
-  // Trust Value Analysis
-  currentTrustValue: number;
-  projectedTrustValue: number;
-  totalContributions: number;
-  totalFees: number;
+export interface AssetProtectionTrustAptValueCalculatorOutputs {
+  // Define output properties that the calculator will produce
+  primaryResult: number;
+  secondaryResult: number;
+  // Add more output properties as needed
+  percentageResult?: number;
+  textResult?: string;
+}
 
-  // Beneficiary Analysis
-  perBeneficiaryValue: number;
-  annualDistribution: number;
-  totalDistributions: number;
+export interface AssetProtectionTrustAptValueCalculatorMetrics {
+  // Define intermediate calculation results or metrics
+  intermediateValue: number;
+  calculationSteps: string[];
+  riskLevel: 'Low' | 'Medium' | 'High';
+}
 
-  // Tax Analysis
-  taxSavings: number;
-  afterTaxValue: number;
-  effectiveTaxRate: number;
-
-  // Risk Analysis
-  assetProtectionLevel: string;
-  creditorProtectionScore: number;
-  spendthriftProtection: boolean;
-
-  // Cost Analysis
-  totalSetupCosts: number;
-  annualOperatingCosts: number;
-  breakEvenPeriod: number;
-
-  // Performance Metrics
-  internalRateOfReturn: number;
-  netPresentValue: number;
-  benefitCostRatio: number;
-
-  // Recommendations
+export interface AssetProtectionTrustAptValueCalculatorAnalysis {
+  // Define analysis results
   recommendation: string;
-  riskAssessment: string;
-  nextSteps: string[];
+  riskLevel: 'Low' | 'Medium' | 'High';
+  insights: string[];
+  warnings: string[];
 }

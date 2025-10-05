@@ -1,12 +1,33 @@
-export interface chapter11bankruptcyplanvaluationCalculatorInputs {
-  // Domain-specific input fields for chapter 11 bankruptcy plan valuation Calculator
-  // TODO: Add specific input fields based on calculator requirements
-  value: number;
+export interface Chapter11BankruptcyPlanValuationInputs {
+  // Define input properties based on the calculator's requirements
+  primaryInput: number;
+  secondaryInput?: number;
+  selectInput: string;
+  // Add more input properties as needed
+  optionalParameter?: string;
+  booleanFlag?: boolean;
 }
 
-export interface chapter11bankruptcyplanvaluationCalculatorOutputs {
-  // Domain-specific output fields for chapter 11 bankruptcy plan valuation Calculator
-  // TODO: Add specific output fields based on calculator requirements
-  result: number;
-  details: string;
+export interface Chapter11BankruptcyPlanValuationOutputs {
+  // Define output properties that the calculator will produce
+  primaryResult: number;
+  secondaryResult: number;
+  // Add more output properties as needed
+  percentageResult?: number;
+  textResult?: string;
+}
+
+export interface Chapter11BankruptcyPlanValuationMetrics {
+  // Define intermediate calculation results or metrics
+  intermediateValue: number;
+  calculationSteps: string[];
+  riskLevel: 'Low' | 'Medium' | 'High';
+}
+
+export interface Chapter11BankruptcyPlanValuationAnalysis {
+  // Define analysis results
+  recommendation: string;
+  riskLevel: 'Low' | 'Medium' | 'High';
+  insights: string[];
+  warnings: string[];
 }

@@ -1,48 +1,33 @@
-export interface RealEstateDevelopmentInputs {
-  calculationType: 'development_costs' | 'revenue_projections' | 'financing' | 'investment_returns' | 'sensitivity_analysis' | 'comprehensive';
-  landCost: number;
-  constructionCostPerSqFt: number;
-  totalSqFt: number;
-  softCostsPercentage: number;
-  contingencyPercentage: number;
-  marketingCost: number;
-  financingCost: number;
-  rentalRatePerSqFt: number;
-  occupancyRate: number;
-  annualRentIncrease: number;
-  holdingPeriodYears: number;
-  exitCapRate: number;
-  equityPercentage: number;
-  interestRate: number;
-  loanTermYears: number;
-  constructionPeriodMonths: number;
-  interestOnlyPeriodMonths: number;
-  costVariance: string;
-  revenueVariance: string;
-  capRateVariance: string;
+export interface RealEstateDevelopmentProformaCalculatorInputs {
+  // Define input properties based on the calculator's requirements
+  primaryInput: number;
+  secondaryInput?: number;
+  selectInput: string;
+  // Add more input properties as needed
+  optionalParameter?: string;
+  booleanFlag?: boolean;
 }
 
-export interface RealEstateDevelopmentResults {
-  calculationType: string;
-  landCost: number;
-  constructionCost: number;
-  totalDevelopmentCost: number;
-  costPerSqFt: number;
-  grossAnnualRent: number;
-  effectiveGrossIncome: number;
-  netOperatingIncome: number;
-  exitValue: number;
-  loanAmount: number;
-  equityAmount: number;
-  monthlyDebtService: number;
-  annualDebtService: number;
-  debtServiceCoverageRatio: number;
-  loanToValueRatio: number;
-  totalCashFlow: number;
-  equityMultiple: number;
-  internalRateOfReturn: number;
-  cashOnCashReturn: number;
-  profit: number;
-  worstCaseScenario: number;
-  bestCaseScenario: number;
+export interface RealEstateDevelopmentProformaCalculatorOutputs {
+  // Define output properties that the calculator will produce
+  primaryResult: number;
+  secondaryResult: number;
+  // Add more output properties as needed
+  percentageResult?: number;
+  textResult?: string;
+}
+
+export interface RealEstateDevelopmentProformaCalculatorMetrics {
+  // Define intermediate calculation results or metrics
+  intermediateValue: number;
+  calculationSteps: string[];
+  riskLevel: 'Low' | 'Medium' | 'High';
+}
+
+export interface RealEstateDevelopmentProformaCalculatorAnalysis {
+  // Define analysis results
+  recommendation: string;
+  riskLevel: 'Low' | 'Medium' | 'High';
+  insights: string[];
+  warnings: string[];
 }

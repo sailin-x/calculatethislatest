@@ -1,88 +1,65 @@
-import { ValidationRule } from '../../../types/calculator';
-import { ValidationRuleFactory } from '../../../utils/validation';
+import { RealEstateSyndicationCalculatorInputs } from './types';
 
-/**
- * Real estate syndication validation rules
- */
-export const realEstateSyndicationValidationRules: ValidationRule[] = [
-  // Required fields
-  ValidationRuleFactory.required('totalProjectCost', 'Total project cost is required'),
-  ValidationRuleFactory.required('sponsorEquity', 'Sponsor equity is required'),
-  ValidationRuleFactory.required('investorEquity', 'Investor equity is required'),
+export function validateRealEstateSyndicationCalculatorInputs(inputs: RealEstateSyndicationCalculatorInputs): Array<{ field: string; message: string }> {
+  const errors: Array<{ field: string; message: string }> = [];
 
-  // Positive value validations
-  ValidationRuleFactory.range('totalProjectCost', 0, 1000000000, 'Total project cost must be between $0 and $1,000,000,000'),
-  ValidationRuleFactory.range('sponsorEquity', 0, 100000000, 'Sponsor equity must be between $0 and $100,000,000'),
-  ValidationRuleFactory.range('investorEquity', 0, 100000000, 'Investor equity must be between $0 and $100,000,000'),
-  ValidationRuleFactory.range('loanAmount', 0, 1000000000, 'Loan amount must be between $0 and $1,000,000,000'),
-  ValidationRuleFactory.range('totalUnits', 1, 10000, 'Total units must be between 1 and 10,000'),
-  ValidationRuleFactory.range('averageRentPerUnit', 0, 100000, 'Average rent per unit must be between $0 and $100,000'),
-  ValidationRuleFactory.range('holdingPeriodYears', 1, 30, 'Holding period must be between 1 and 30 years'),
+  // Primary Input Validation
+  if (!inputs.primaryInput || inputs.primaryInput <= 0) {
+    errors.push({ field: 'primaryInput', message: 'Primary input must be greater than 0' });
+  }
+  if (inputs.primaryInput && inputs.primaryInput > 1000000) {
+    errors.push({ field: 'primaryInput', message: 'Primary input cannot exceed 1,000,000' });
+  }
 
-  // Percentage validations
-  ValidationRuleFactory.range('vacancyRate', 0, 100, 'Vacancy rate must be between 0% and 100%'),
-  ValidationRuleFactory.range('operatingExpensesRate', 0, 100, 'Operating expenses rate must be between 0% and 100%'),
-  ValidationRuleFactory.range('capRate', 0, 50, 'Cap rate must be between 0% and 50%'),
-  ValidationRuleFactory.range('sponsorProfitSplit', 0, 100, 'Sponsor profit split must be between 0% and 100%'),
-  ValidationRuleFactory.range('investorProfitSplit', 0, 100, 'Investor profit split must be between 0% and 100%'),
-  ValidationRuleFactory.range('preferredReturn', 0, 20, 'Preferred return must be between 0% and 20%'),
-  ValidationRuleFactory.range('promotePercentage', 0, 50, 'Promote percentage must be between 0% and 50%'),
+  // Secondary Input Validation (if provided)
+  if (inputs.secondaryInput !== undefined && inputs.secondaryInput < 0) {
+    errors.push({ field: 'secondaryInput', message: 'Secondary input cannot be negative' });
+  }
 
-  // Business rule validations
-  ValidationRuleFactory.businessRule(
-    'investorProfitSplit',
-    (investorProfitSplit, allInputs) => {
-      if (!allInputs?.sponsorProfitSplit) return true;
-      return (investorProfitSplit + allInputs.sponsorProfitSplit) === 100;
-    },
-    'Sponsor and investor profit splits must total 100%'
-  ),
+  // Select Input Validation
+  const validOptions = ['option1', 'option2'];
+  if (!inputs.selectInput || !validOptions.includes(inputs.selectInput)) {
+    errors.push({ field: 'selectInput', message: 'Please select a valid option' });
+  }
 
-  ValidationRuleFactory.businessRule(
-    'loanAmount',
-    (loanAmount, allInputs) => {
-      if (!allInputs?.totalProjectCost) return true;
-      const totalEquity = (allInputs.sponsorEquity || 0) + (allInputs.investorEquity || 0);
-      return (loanAmount + totalEquity) <= allInputs.totalProjectCost * 1.1; // Allow 10% over for fees
-    },
-    'Total financing cannot exceed 110% of project cost'
-  ),
+  // Cross-field Validation
+  if (inputs.secondaryInput && inputs.primaryInput && inputs.secondaryInput > inputs.primaryInput) {
+    errors.push({ field: 'secondaryInput', message: 'Secondary input cannot exceed primary input' });
+  }
 
-  ValidationRuleFactory.businessRule(
-    'sponsorEquity',
-    (sponsorEquity, allInputs) => {
-      if (!allInputs?.investorEquity) return true;
-      const totalEquity = sponsorEquity + allInputs.investorEquity;
-      return totalEquity > 0;
-    },
-    'Total equity must be greater than 0'
-  ),
+  // Optional Parameter Validation
+  if (inputs.optionalParameter && inputs.optionalParameter.length > 100) {
+    errors.push({ field: 'optionalParameter', message: 'Optional parameter cannot exceed 100 characters' });
+  }
 
-  ValidationRuleFactory.businessRule(
-    'capRate',
-    (capRate, allInputs) => {
-      if (!allInputs?.averageRentPerUnit || !allInputs?.totalUnits || !allInputs?.operatingExpensesRate) return true;
-      const grossIncome = allInputs.averageRentPerUnit * allInputs.totalUnits * 12;
-      const noi = grossIncome * (1 - allInputs.operatingExpensesRate / 100);
-      const impliedValue = noi / (capRate / 100);
-      return impliedValue > 0;
-    },
-    'Cap rate would result in invalid property value'
-  ),
+  return errors;
+}
 
-  ValidationRuleFactory.businessRule(
-    'preferredReturn',
-    (preferredReturn, allInputs) => {
-      if (!allInputs?.capRate) return true;
-      return preferredReturn <= allInputs.capRate * 0.8; // Preferred return should be reasonable vs cap rate
-    },
-    'Preferred return seems high relative to cap rate'
-  )
-];
+export function validateRealEstateSyndicationCalculatorBusinessRules(inputs: RealEstateSyndicationCalculatorInputs): Array<{ field: string; message: string }> {
+  const warnings: Array<{ field: string; message: string }> = [];
 
-/**
- * Get validation rules for real estate syndication calculator
- */
-export function getRealEstateSyndicationValidationRules(): ValidationRule[] {
-  return realEstateSyndicationValidationRules;
+  // Business Rule Warnings
+  if (inputs.primaryInput && inputs.primaryInput > 500000) {
+    warnings.push({ field: 'primaryInput', message: 'High primary input values may require additional review' });
+  }
+
+  // Ratio-based Warnings
+  if (inputs.secondaryInput && inputs.primaryInput) {
+    const ratio = inputs.secondaryInput / inputs.primaryInput;
+    if (ratio > 0.8) {
+      warnings.push({ field: 'secondaryInput', message: 'Secondary input is very high relative to primary input' });
+    }
+  }
+
+  // Option-specific Warnings
+  if (inputs.selectInput === 'option2' && inputs.primaryInput && inputs.primaryInput < 100) {
+    warnings.push({ field: 'selectInput', message: 'Option 2 may not be suitable for low primary input values' });
+  }
+
+  // Threshold Warnings
+  if (inputs.primaryInput && inputs.primaryInput > 10000) {
+    warnings.push({ field: 'primaryInput', message: 'Consider consulting with financial experts for high-value calculations' });
+  }
+
+  return warnings;
 }

@@ -1,5 +1,4 @@
-export { corporatecompliancecostbenefitanalysisCalculator } from './corporatecompliancecostbenefitanalysisCalculator';
-export { registercorporatecompliancecostbenefitanalysisCalculator } from './register';
+export { CorporateComplianceCostbenefitAnalysisCalculator } from './CorporateComplianceCostbenefitAnalysisCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

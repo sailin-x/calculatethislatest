@@ -1,4 +1,4 @@
-export { PercentageCalculator } from './PercentageCalculator';
+export { PercentageCalculatorCalculator } from './PercentageCalculatorCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

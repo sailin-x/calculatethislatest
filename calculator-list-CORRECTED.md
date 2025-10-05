@@ -40,1201 +40,1201 @@ Each calculator must include:
 ## 🏛️ Unknown (623 calculators)
 
 ### Unknown Hub (623 calculators)
-- [x] **1031 Exchange Calculator**
-- [x] **457 Plan Calculator**
-- [x] **529 College Savings Plan Calculator**
-- [x] **Alimonyspousalsupport Calculator**
-- [x] **Carpayment Calculator**
-- [x] **Childsupport Calculator**
-- [x] **Correlation Calculator**
-- [x] **Costofequity Calculator**
-- [x] **Currentratio Calculator**
-- [x] **Customeracquisitioncost Calculator**
-- [x] **Dividend Calculator**
-- [x] **Ebitda Calculator**
-- [x] **Enterprisevalue Calculator**
-- [x] **Expectedshortfall Calculator**
-- [x] **Paycheck Calculator**
-- [x] **Requiredbeginningdatermd Calculator**
-- [x] **Requiredminimumdistributionrmd Calculator**
-- [x] **Socialsecurityoptimization Calculator**
-- [x] **A1c Calculator Calculator**
-- [x] **Accretion Dilution Calculator**
-- [x] **Activity Cost Calculator Calculator**
-- [x] **Actuarial Mortality Table Calculator Calculator**
-- [x] **Acupuncture Cost Calculator Calculator**
-- [x] **Aipromptcost Calculator**
-- [x] **Ai Prompt Cost Calculator**
-- [x] **Ai Prompt Cost Calculator Calculator**
-- [x] **Aiops Implementation Savings Calculator Calculator**
-- [x] **Airdrop Value Calculator Calculator**
-- [x] **Airline Ticket Cost Calculator Calculator**
-- [x] **Alimony Calculator Calculator**
-- [x] **Alimony Spousal Support Calculator Calculator**
-- [x] **Alkalinity Calculator Calculator**
-- [x] **Alpha Calculator**
-- [x] **Alpha Beta Calculator**
-- [x] **Amazon Fba Profit Calculator Calculator**
-- [x] **Amino Acid Calculator Calculator**
-- [x] **Ammonia Calculator Calculator**
-- [x] **Amortization Calculator**
-- [x] **Amusement Park Cost Calculator Calculator**
-- [x] **Analytics Cost Calculator Calculator**
-- [x] **Annuitybuyout Calculator**
-- [x] **Annuity Buyout Calculator Calculator**
-- [x] **Annuity Calculator Calculator**
-- [x] **Anti Aging Cost Calculator Calculator**
-- [x] **Anti Aging Regenerative Medicine Cost Calculator Calculator**
-- [x] **Antitrust Calculator Calculator**
-- [x] **Antitrust Hhi Index Calculator Calculator**
-- [x] **Api Monetization Calculator Calculator**
-- [x] **Api Monetization Revenue Calculator Calculator**
-- [x] **Appliance Repair Cost Calculator Calculator**
-- [x] **Aptvalue Calculator**
-- [x] **Aquarium Cost Calculator Calculator**
-- [x] **Arm Vs Fixed Calculator**
-- [x] **Asset Based Lending Calculator Calculator**
-- [x] **Asset Protection Calculator Calculator**
-- [x] **Asset Protection Trust Apt Value Calculator Calculator**
-- [x] **Attribution Models Calculator Calculator**
-- [x] **Average Order Value Calculator Calculator**
-- [x] **Aviation Accident Calculator Calculator**
-- [x] **Aviation Accident Compensation Calculator Calculator**
-- [x] **Baking Calculator Calculator**
-- [x] **Balance Transfer Calculator Calculator**
-- [x] **Balanced Scorecard Calculator Calculator**
-- [x] **Bankruptcy Filing Calculator Calculator**
-- [x] **Bareboat Charter Calculator**
-- [x] **Bariatric Surgery Calculator Calculator**
-- [x] **Bariatric Surgery Cost Savings Calculator Calculator**
-- [x] **Barre Class Cost Calculator Calculator**
-- [x] **Basal Metabolic Rate Calculator Calculator**
-- [x] **Beta Calculator**
-- [x] **Beta Calculator Calculator**
-- [x] **Bill Of Materials Calculator Calculator**
-- [x] **Bill Of Materials Cost Calculator Calculator**
-- [x] **Biological Age Calculator Calculator**
-- [x] **Biology Calculator Calculator**
-- [x] **Black Litterman Calculator Calculator**
-- [x] **Blockchain Calculator Calculator**
-- [x] **Blockchain Gas Fee Calculator Calculator**
-- [x] **Blog Cost Calculator Calculator**
-- [x] **Blood Alcohol Calculator Calculator**
-- [x] **Blood Pressure Calculator Calculator**
-- [x] **Blood Sugar Calculator Calculator**
-- [x] **Body Fat Calculator Calculator**
-- [x] **Body Frame Size Calculator Calculator**
-- [x] **Body Recomposition Calculator Calculator**
-- [x] **Body Surface Area Calculator Calculator**
-- [x] **Break Even Analysis Calculator Calculator**
-- [x] **Breakeven Point Calculator Calculator**
-- [x] **Brrrr Strategy Calculator**
-- [x] **Budget Optimization Calculator Calculator**
-- [x] **Budget Planner Calculator Calculator**
-- [x] **Building Replacement Cost Calculator**
-- [x] **Burn Mechanism Calculator Calculator**
-- [x] **Buy Sell Calculator Calculator**
-- [x] **Calmar Ratio Calculator Calculator**
-- [x] **Cam Girl Revenue Calculator Calculator**
-- [x] **Camping Cost Calculator Calculator**
-- [x] **Cap Rate Calculator**
-- [x] **Capital Call Schedule Planner Calculator**
-- [x] **Capital Gains Calculator Calculator**
-- [x] **Capital Structure Optimization Calculator Calculator**
-- [x] **Capm Calculator Calculator**
-- [x] **Car Accident Pain Calculator Calculator**
-- [x] **Car Accident Pain Suffering Calculator Calculator**
-- [x] **Car Payment Calculator Calculator**
-- [x] **Car Rental Cost Calculator Calculator**
-- [x] **Carb Cycling Calculator Calculator**
-- [x] **Carried Interest Waterfall Model Calculator Calculator**
-- [x] **Cash Flow Calculator**
-- [x] **Cash On Cash Return Calculator**
-- [x] **Cash Value Accumulation Test Calculator Calculator**
-- [x] **Cash Value Accumulation Test Cvat Calculator Calculator**
-- [x] **Cd Interest Calculator Calculator**
-- [x] **Ceding Commission Calculator Calculator**
-- [x] **Celebrity Endorsement Calculator Calculator**
-- [x] **Chapter 11 Bankruptcy Calculator Calculator**
-- [x] **Charitable Gift Annuity Calculator**
-- [x] **Charitable Remainder Trust Calculator**
-- [x] **Chaturbate Token Calculator Calculator**
-- [x] **Cheat Meal Calculator Calculator**
-- [x] **Chemistry Calculator Calculator**
-- [x] **Child Custody Calculator Calculator**
-- [x] **Child Support Calculator Calculator**
-- [x] **Chiropractic Care Cost Calculator Calculator**
-- [x] **Chlorine Calculator Calculator**
-- [x] **Cholesterol Calculator Calculator**
-- [x] **Churn Rate Calculator Calculator**
-- [x] **Clinical Trial Cost Calculator Calculator**
-- [x] **Clinical Trial Cost Estimator Calculator**
-- [x] **Cloud Migration Tco Calculator Calculator**
-- [x] **Cloud Repatriation Savings Calculator Calculator**
-- [x] **Cohort Analysis Calculator Calculator**
-- [x] **Collateralization Ratio Calculator Calculator**
-- [x] **College Cost Calculator**
-- [x] **College Financial Aid Calculator**
-- [x] **College Savings Calculator**
-- [x] **Combined Ratio Calculator Calculator**
-- [x] **Commercial Lease Buyout Calculator**
-- [x] **Commercial Real Estate Calculator**
-- [x] **Commercial Real Estate Cash Flow Calculator**
-- [x] **Commodities Futures Profitability Calculator Calculator**
-- [x] **Commodity Calculator Calculator**
-- [x] **Comparable Company Analysis Calculator Calculator**
-- [x] **Composting Savings Calculator Calculator**
-- [x] **Compound Annual Growth Rate Cagr Calculator Calculator**
-- [x] **Compound Annual Growth Rate Calculator Calculator**
-- [x] **Computer Science Calculator Calculator**
-- [x] **Concert Ticket Cost Calculator Calculator**
-- [x] **Concert Tour Budgeting Calculator Calculator**
-- [x] **Consultant Utilization Rate Calculator Calculator**
-- [x] **Consultant Utilization Rate Profitability Calculator Calculator**
-- [x] **Contract Breach Calculator Calculator**
-- [x] **Contract Breach Damages Calculator Calculator**
-- [x] **Contract Review Calculator Calculator**
-- [x] **Copyright Infringement Calculator Calculator**
-- [x] **Copyright Infringement Damages Calculator Calculator**
-- [x] **Copyright Registration Calculator Calculator**
-- [x] **Corporate Compliance Cost Benefit Analysis Calculator**
-- [x] **Corporate Compliance Cost Benefit Calculator Calculator**
-- [x] **Correlation Calculator Calculator**
-- [x] **Cortisol Calculator Calculator**
-- [x] **Cosmetic Surgery Cost Calculator Calculator**
-- [x] **Cost Of Equity Calculator Calculator**
-- [x] **Cost Of Poor Quality Calculator Calculator**
-- [x] **Cost Of Poor Quality Copq Calculator Calculator**
-- [x] **Cost Per Hire Calculator Calculator**
-- [x] **Cost Segregation Depreciation Calculator**
-- [x] **Coverdell Esa Calculator**
-- [x] **Creatine Calculator Calculator**
-- [x] **Critical Illness Calculator Calculator**
-- [x] **Crm Cost Calculator Calculator**
-- [x] **Crossfit Gym Cost Calculator Calculator**
-- [x] **Crowdfunding Calculator Calculator**
-- [x] **Crowdfunding Equity Offering Calculator Calculator**
-- [x] **Currency Exchange Cost Calculator Calculator**
-- [x] **Current Ratio Calculator Calculator**
-- [x] **Customer Acquisition Cost Calculator**
-- [x] **Customer Acquisition Cost Calculator Calculator**
-- [x] **Customer Lifetime Value Calculator**
-- [x] **Customer Lifetime Value Calculator Calculator**
-- [x] **Customer Segmentation Calculator Calculator**
-- [x] **Customer Segmentation Rfm Model Calculator Calculator**
-- [x] **Cyber Liability Calculator Calculator**
-- [x] **Cybersecurity Calculator Calculator**
-- [x] **Dance Class Cost Calculator Calculator**
-- [x] **Dao Governance Token Calculator Calculator**
-- [x] **Data Breach Cost Calculator Calculator**
-- [x] **Data Center Tco Calculator Calculator**
-- [x] **Data Center Total Cost Of Ownership Tco Calculator Calculator**
-- [x] **Data Science Calculator Calculator**
-- [x] **Database Calculator Calculator**
-- [x] **Deferred Annuity Calculator**
-- [x] **Defi Liquidity Pool Calculator Calculator**
-- [x] **Defi Yield Optimization Calculator Calculator**
-- [x] **Defined Benefit Plan Calculator**
-- [x] **Defined Contribution Plan Calculator**
-- [x] **Developer Salary Calculator**
-- [x] **Developer Salary Calculator Calculator**
-- [x] **Dialysis Center Profitability Calculator Calculator**
-- [x] **Directors Officers Calculator Calculator**
-- [x] **Discord Server Monetization Calculator Calculator**
-- [x] **Dissolved Oxygen Calculator Calculator**
-- [x] **Distribution Waterfall Model Calculator Calculator**
-- [x] **Dividend Calculator Calculator**
-- [x] **Dividend Discount Model Ddm Calculator Calculator**
-- [x] **Dogecoin Mining Calculator Calculator**
-- [x] **Domain Cost Calculator Calculator**
-- [x] **Down Payment Assistance Calculator**
-- [x] **Drug Royalty Rate Calculator Calculator**
-- [x] **Dti Ratio Calculator Calculator**
-- [x] **Dynasty Trust Growth Estimator Calculator**
-- [x] **E Discovery Cost Calculator Calculator**
-- [x] **Ebitda Calculator Calculator**
-- [x] **Economic Order Quantity Calculator Calculator**
-- [x] **Economic Order Quantity Eoq Calculator Calculator**
-- [x] **Electrical Repair Cost Calculator Calculator**
-- [x] **Emergency Fund Calculator Calculator**
-- [x] **Employee Turnover Cost Calculator Calculator**
-- [x] **Employment Law Calculator Calculator**
-- [x] **Employment Practices Calculator Calculator**
-- [x] **Employment Practices Liability Calculator Calculator**
-- [x] **Engineering Calculator Calculator**
-- [x] **Enterprise Value Calculator Calculator**
-- [x] **Environmental Remediation Calculator Calculator**
-- [x] **Environmental Remediation Cost Estimator Calculator**
-- [x] **Epa Fine Calculator Calculator**
-- [x] **Epa Fine Penalty Calculator Calculator**
-- [x] **Equipment Financing Calculator Calculator**
-- [x] **Escrow Analysis Calculator**
-- [x] **Estateplanning Calculator**
-- [x] **Estate Planning Calculator Calculator**
-- [x] **Estrogen Calculator Calculator**
-- [x] **Executivedeferredcompensation Calculator**
-- [x] **Executive Deferred Compensation Plan Calculator Calculator**
-- [x] **Expected Shortfall Calculator Calculator**
-- [x] **Expense Ratio Calculator Calculator**
-- [x] **Expense Tracker Calculator Calculator**
-- [x] **Fafsa Calculator**
-- [x] **Fafsa Calculator Calculator**
-- [x] **Fertilizer Calculator Calculator**
-- [x] **Film Distribution Waterfall Calculator Calculator**
-- [x] **Financial Achievement Calculator Calculator**
-- [x] **Financial Agility Calculator Calculator**
-- [x] **Financial Alignment Calculator Calculator**
-- [x] **Financial Analysis Calculator Calculator**
-- [x] **Financial Balance Calculator Calculator**
-- [x] **Financial Coaching Calculator Calculator**
-- [x] **Financial Compliance Calculator Calculator**
-- [x] **Financial Consulting Calculator Calculator**
-- [x] **Financial Education Calculator Calculator**
-- [x] **Financial Efficiency Calculator Calculator**
-- [x] **Financial Excellence Calculator Calculator**
-- [x] **Financial Flow Calculator Calculator**
-- [x] **Financial Freedom Calculator Calculator**
-- [x] **Financial Fulfillment Calculator Calculator**
-- [x] **Financial Goal Calculator Calculator**
-- [x] **Financial Governance Calculator Calculator**
-- [x] **Financial Gratitude Calculator Calculator**
-- [x] **Financial Growth Calculator Calculator**
-- [x] **Financial Happiness Calculator Calculator**
-- [x] **Financial Harmony Calculator Calculator**
-- [x] **Financial Impact Calculator Calculator**
-- [x] **Financial Independence Calculator Calculator**
-- [x] **Financial Innovation Calculator Calculator**
-- [x] **Financial Integration Calculator Calculator**
-- [x] **Financial Intelligence Calculator Calculator**
-- [x] **Financial Joy Calculator Calculator**
-- [x] **Financial Legacy Calculator Calculator**
-- [x] **Financial Literacy Calculator Calculator**
-- [x] **Financial Management Calculator Calculator**
-- [x] **Financial Mastery Calculator Calculator**
-- [x] **Financial Mentoring Calculator Calculator**
-- [x] **Financial Momentum Calculator Calculator**
-- [x] **Financial Optimization Calculator Calculator**
-- [x] **Financial Peace Calculator Calculator**
-- [x] **Financial Performance Calculator Calculator**
-- [x] **Financial Planning Calculator Calculator**
-- [x] **Financial Reporting Calculator Calculator**
-- [x] **Financial Resilience Calculator Calculator**
-- [x] **Financial Risk Calculator Calculator**
-- [x] **Financial Security Calculator Calculator**
-- [x] **Financial Stability Calculator Calculator**
-- [x] **Financial Strategy Calculator Calculator**
-- [x] **Financial Success Calculator Calculator**
-- [x] **Financial Sustainability Calculator Calculator**
-- [x] **Financial Synergy Calculator Calculator**
-- [x] **Financial Transformation Calculator Calculator**
-- [x] **Financial Velocity Calculator Calculator**
-- [x] **Financial Wellness Calculator Calculator**
-- [x] **Financial Wisdom Calculator Calculator**
-- [x] **Fire Damage Repair Cost Calculator Calculator**
-- [x] **Fix And Flip Calculator**
-- [x] **Fix And Flip Calculator Calculator**
-- [x] **Fixedindexannuity Calculator**
-- [x] **Fixed Index Annuity Calculator Calculator**
-- [x] **Flexiblespendingaccount Calculator**
-- [x] **Flexible Spending Account Calculator Calculator**
-- [x] **Flood Risk Zonal Pricing Calculator Calculator**
-- [x] **Food Combining Calculator Calculator**
-- [x] **Food Cost Calculator Calculator**
-- [x] **Food Waste Calculator Calculator**
-- [x] **Forex Calculator Calculator**
-- [x] **Foundation Repair Cost Calculator Calculator**
-- [x] **Fourzeroonek Calculator**
-- [x] **Fraction Calculator Calculator**
-- [x] **Franchise Calculator Calculator**
-- [x] **Free Cash Flow To Equity Calculator Calculator**
-- [x] **Free Cash Flow To Firm Calculator Calculator**
-- [x] **Fund Level Irr Calculator Calculator**
-- [x] **Fund Level Irr Tvpi And Dpi Calculator Calculator**
-- [x] **Futures Calculator Calculator**
-- [x] **Gas Cost Calculator Calculator**
-- [x] **Gas Fee Optimizer Calculator Calculator**
-- [x] **Glycemic Index Calculator Calculator**
-- [x] **Golf Lesson Cost Calculator Calculator**
-- [x] **Government Contract Bid Calculator Calculator**
-- [x] **Government Contract Bid No Bid Decision Calculator Calculator**
-- [x] **Gpu Mining Profitability Calculator**
-- [x] **Gpu Mining Profitability Calculator Calculator**
-- [x] **Grantorretainedannuitytrustgrat Calculator**
-- [x] **Grantor Retained Annuity Trust Grat Calculator Calculator**
-- [x] **Grocery Budget Calculator Calculator**
-- [x] **Gross Margin Calculator Calculator**
-- [x] **Gross Rent Multiplier Calculator**
-- [x] **Growth Hormone Calculator Calculator**
-- [x] **Guidebook Cost Calculator Calculator**
-- [x] **Guideline Premium Test Calculator Calculator**
-- [x] **Guideline Premium Test Gpt Calculator Calculator**
-- [x] **Gym Membership Cost Calculator Calculator**
-- [x] **Hardiness Calculator Calculator**
-- [x] **Hardness Calculator Calculator**
-- [x] **Heart Rate Variability Calculator Calculator**
-- [x] **Heart Rate Zone Calculator Calculator**
-- [x] **Heavy Equipment Depreciation Calculator Calculator**
-- [x] **Hedge Fund Fee Calculator Calculator**
-- [x] **Heloc Calculator**
-- [x] **Herbal Medicine Cost Calculator Calculator**
-- [x] **High Net Worth Divorce Asset Division Calculator**
-- [x] **High Net Worth Divorce Asset Division Calculator Calculator**
-- [x] **High Net Worth Divorce Calculator Calculator**
-- [x] **Hoa Fee Calculator**
-- [x] **Hospital Negligence Calculator Calculator**
-- [x] **Hosting Cost Calculator Calculator**
-- [x] **Hot Air Balloon Cost Calculator Calculator**
-- [x] **Hotel Cost Calculator Calculator**
-- [x] **Hotel Feasibility Calculator**
-- [x] **Human Capital Due Diligence Calculator Calculator**
-- [x] **Human Capital Due Diligence M A Calculator Calculator**
-- [x] **Hvac Maintenance Cost Calculator Calculator**
-- [x] **Immediateannuitypayout Calculator**
-- [x] **Immediate Annuity Payout Calculator Calculator**
-- [x] **Immigration Filing Calculator Calculator**
-- [x] **Impermanent Loss Calculator Calculator**
-- [x] **Income Based Repayment Calculator Calculator**
-- [x] **Income Calculator Calculator**
-- [x] **Incurred But Not Reported Calculator Calculator**
-- [x] **Incurred But Not Reported Ibnr Reserve Estimator Calculator**
-- [x] **Industry Benchmarking Calculator Calculator**
-- [x] **Information Ratio Calculator Calculator**
-- [x] **Initial Coin Offering Calculator Calculator**
-- [x] **Initial Dex Offering Calculator Calculator**
-- [x] **Instagram Engagement Rate Calculator Calculator**
-- [x] **Interest Calculator Calculator**
-- [x] **Interest Rate Swap Calculator Calculator**
-- [x] **Intermittent Fasting Calculator Calculator**
-- [x] **Internal Rate Of Return Calculator Calculator**
-- [x] **International Cell Plan Cost Calculator Calculator**
-- [x] **Inventory Shrinkage Cost Calculator Calculator**
-- [x] **Inventory Turnover Calculator Calculator**
-- [x] **Invoice Financing Calculator Calculator**
-- [x] **Irrigation Calculator Calculator**
-- [x] **Irs Offer In Compromise Calculator Calculator**
-- [x] **Irs Offer In Compromise Oic Calculator Calculator**
-- [x] **It Outsourcing Vs In House Calculator Calculator**
-- [x] **It Outsourcing Vs In House Cost Benefit Analysis Calculator**
-- [x] **Keto Calculator Calculator**
-- [x] **Key Person Calculator Calculator**
-- [x] **Kidnap Ransom Calculator Calculator**
-- [x] **Kurtosis Calculator Calculator**
-- [x] **Landed Cost Calculator Calculator**
-- [x] **Landscaping Cost Calculator Calculator**
-- [x] **Lapse Rate Sensitivity Analysis Calculator**
-- [x] **Lawn Care Cost Calculator Calculator**
-- [x] **Lean Manufacturing Takt Time Calculator Calculator**
-- [x] **Leverage Ratio Calculator Calculator**
-- [x] **Libel Slander Per Se Damages Estimator Calculator**
-- [x] **Liquidation Price Calculator Calculator**
-- [x] **Liquidity Mining Calculator Calculator**
-- [x] **Long Term Care Calculator Calculator**
-- [x] **Long Term Disability Calculator Calculator**
-- [x] **Long Term Disability Ltd Elimination Period Calculator Calculator**
-- [x] **Loss Of Consortium Damages Calculator Calculator**
-- [x] **Loss Ratio Calculator Calculator**
-- [x] **Luggage Cost Calculator Calculator**
-- [x] **Machine Learning Calculator Calculator**
-- [x] **Macro Calculator Calculator**
-- [x] **Managed Security Service Provider Calculator Calculator**
-- [x] **Managed Security Service Provider Mssp Vs In House Soc Calculator Calculator**
-- [x] **Management Consulting Fee Model Calculator Calculator**
-- [x] **Management Fee Hurdle Rate Calculator Calculator**
-- [x] **Manyvids Revenue Calculator Calculator**
-- [x] **Marine Cargo Calculator Calculator**
-- [x] **Market Cap Calculator Calculator**
-- [x] **Martial Arts Cost Calculator Calculator**
-- [x] **Massage Therapy Cost Calculator Calculator**
-- [x] **Maximum Drawdown Calculator Calculator**
-- [x] **Meal Kit Cost Calculator Calculator**
-- [x] **Meal Prep Calculator Calculator**
-- [x] **Media Mix Modeling Calculator Calculator**
-- [x] **Medical Bill Negotiation Calculator Calculator**
-- [x] **Medical Device Liability Calculator Calculator**
-- [x] **Medical Device Royalty Rate Calculator Calculator**
-- [x] **Megabackdoorroth Calculator**
-- [x] **Mega Backdoor Roth Calculator Calculator**
-- [x] **Merger Acquisition Divestiture Calculator Calculator**
-- [x] **Merger Model Calculator Calculator**
-- [x] **Mezzanine Financing Calculator**
-- [x] **Mezzanine Financing Calculator Calculator**
-- [x] **Mezzanine Financing Real Estate Calculator**
-- [x] **Mold Remediation Cost Calculator Calculator**
-- [x] **Motorcycle Accident Compensation Calculator Calculator**
-- [x] **Movie Ticket Cost Calculator Calculator**
-- [x] **Music Festival Profit Calculator Calculator**
-- [x] **Music Festival Profit Loss Calculator Calculator**
-- [x] **Music Festival Profit Loss P L Calculator Calculator**
-- [x] **National Park Cost Calculator Calculator**
-- [x] **Naturopathic Medicine Cost Calculator Calculator**
-- [x] **Net Margin Calculator Calculator**
-- [x] **Net Operating Income Calculator**
-- [x] **Net Present Value Calculator Calculator**
-- [x] **Net Promoter Score Calculator Calculator**
-- [x] **Net Promoter Score Nps Calculator Calculator**
-- [x] **Net Worth Calculator Calculator**
-- [x] **Networking Calculator Calculator**
-- [x] **Nft Minting Cost Calculator Calculator**
-- [x] **Nft Royalty Calculator**
-- [x] **Nft Royalty Calculator Calculator**
-- [x] **Nft Royalty Revenue Calculator Calculator**
-- [x] **Nft Royalty Revenue Calculator Exists But Needs Registration Calculator**
-- [x] **Nutrition Label Calculator Calculator**
-- [x] **Offshore Accident Lawyer Fee Calculator Calculator**
-- [x] **Omega 3 Calculator Calculator**
-- [x] **Onlyfans Earnings Calculator Calculator**
-- [x] **Operating Margin Calculator Calculator**
-- [x] **Overall Equipment Effectiveness Calculator Calculator**
-- [x] **Overall Equipment Effectiveness Oee Calculator Calculator**
-- [x] **Parking Cost Calculator Calculator**
-- [x] **Passport Cost Calculator Calculator**
-- [x] **Patent Filing Calculator Calculator**
-- [x] **Patreon Subscription Calculator Calculator**
-- [x] **Payback Period Calculator Calculator**
-- [x] **Paycheck Calculator Calculator**
-- [x] **Payroll Calculator Calculator**
-- [x] **Peer To Peer Lending Calculator Calculator**
-- [x] **Percentage Calculator Calculator**
-- [x] **Personal Trainer Cost Calculator Calculator**
-- [x] **Pest Control Cost Calculator Calculator**
-- [x] **Pharmaceutical Liability Calculator Calculator**
-- [x] **Physical Therapy Cost Calculator Calculator**
-- [x] **Physics Calculator Calculator**
-- [x] **Pilates Studio Cost Calculator Calculator**
-- [x] **Plannedgiving Calculator**
-- [x] **Planned Giving Calculator Calculator**
-- [x] **Plant Spacing Calculator Calculator**
-- [x] **Plugin Cost Calculator Calculator**
-- [x] **Plumbing Repair Cost Calculator Calculator**
-- [x] **Pmi Cancellation Calculator**
-- [x] **Podcast Cost Calculator Calculator**
-- [x] **Podcast Sponsorship Calculator Calculator**
-- [x] **Policy Lapse Rate Calculator Calculator**
-- [x] **Political Risk Calculator Calculator**
-- [x] **Pool Maintenance Cost Calculator Calculator**
-- [x] **Preference Payment Clawback Calculator Calculator**
-- [x] **Premium Deficiency Reserve Calculator Calculator**
-- [x] **Premium Deficiency Reserve Pdr Calculator Calculator**
-- [x] **Prenuptial Agreement Value Calculator Calculator**
-- [x] **Prescription Cost Calculator Calculator**
-- [x] **Pressure Washing Cost Calculator Calculator**
-- [x] **Preventative Maintenance Savings Calculator Calculator**
-- [x] **Price Fixing Overcharge Calculator Calculator**
-- [x] **Price Fixing Overcharge Estimator Calculator**
-- [x] **Price Per Square Foot Calculator**
-- [x] **Price To Book Calculator Calculator**
-- [x] **Price To Earnings Calculator Calculator**
-- [x] **Private Equity Irr Calculator Calculator**
-- [x] **Private Equity Returns Calculator Calculator**
-- [x] **Probate Calculator Calculator**
-- [x] **Professional Liability Calculator Calculator**
-- [x] **Profit Margin Calculator Calculator**
-- [x] **Project Management Cost Calculator Calculator**
-- [x] **Protein Calculator Calculator**
-- [x] **Public Transportation Cost Calculator Calculator**
-- [x] **Qui Tam Reward Calculator Calculator**
-- [x] **Qui Tam Whistleblower Reward Calculator Calculator**
-- [x] **Quick Ratio Calculator Calculator**
-- [x] **R Squared Calculator Calculator**
-- [x] **Ransomware Downtime Cost Calculator Calculator**
-- [x] **Realestatedepreciationschedule Calculator**
-- [x] **Realestatedevelopmentproforma Calculator**
-- [x] **Realestatesyndication Calculator**
-- [x] **Realestatewaterfallmodel Calculator**
-- [x] **Real Estate Closing Calculator Calculator**
-- [x] **Real Estate Crowdfunding Calculator**
-- [x] **Real Estate Depreciation Schedule Calculator Calculator**
-- [x] **Real Estate Development Pro Forma Calculator Calculator**
-- [x] **Real Estate Syndication Calculator Calculator**
-- [x] **Real Estate Waterfall Model Calculator Calculator**
-- [x] **Recapitalization Impact Calculator Calculator**
-- [x] **Recaptitalization Impact Calculator Calculator**
-- [x] **Recipe Scaling Calculator Calculator**
-- [x] **Record Label Deal Calculator Calculator**
-- [x] **Registeraptvalue Calculator**
-- [x] **Registeralimonyspousalsupport Calculator**
-- [x] **Registerannuitybuyout Calculator**
-- [x] **Registerbeta Calculator**
-- [x] **Registercarpayment Calculator**
-- [x] **Registercorrelation Calculator**
-- [x] **Registercostofequity Calculator**
-- [x] **Registercurrentratio Calculator**
-- [x] **Registerdividend Calculator**
-- [x] **Registerebitda Calculator**
-- [x] **Registerenterprisevalue Calculator**
-- [x] **Registerestateplanning Calculator**
-- [x] **Registerexecutivedeferredcompensation Calculator**
-- [x] **Registerexpectedshortfall Calculator**
-- [x] **Registerfafsa Calculator**
-- [x] **Registerfixedindexannuity Calculator**
-- [x] **Registerflexiblespendingaccount Calculator**
-- [x] **Registerfourzeroonek Calculator**
-- [x] **Registergpuminingprofitability Calculator**
-- [x] **Registergrantorretainedannuitytrustgrat Calculator**
-- [x] **Registerimmediateannuitypayout Calculator**
-- [x] **Registermegabackdoorroth Calculator**
-- [x] **Registerplannedgiving Calculator**
-- [x] **Registerrealestatedepreciationschedule Calculator**
-- [x] **Registerrealestatedevelopmentproforma Calculator**
-- [x] **Registerrealestatesyndication Calculator**
-- [x] **Registerrealestatewaterfallmodel Calculator**
-- [x] **Registerrentvsbuy Calculator**
-- [x] **Registerrentalyield Calculator**
-- [x] **Registerrequiredbeginningdatermd Calculator**
-- [x] **Registerrequiredminimumdistributionrmd Calculator**
-- [x] **Registersavingsgoal Calculator**
-- [x] **Registersocialsecurityoptimization Calculator**
-- [x] **Registertenantimprovementallowance Calculator**
-- [x] **Reit Calculator Calculator**
-- [x] **Reit Dividend Calculator Calculator**
-- [x] **Rentvsbuy Calculator**
-- [x] **Rent Vs Buy Calculator**
-- [x] **Rent Vs Buy Calculator Calculator**
-- [x] **Rentalyield Calculator**
-- [x] **Rental Yield Calculator**
-- [x] **Rental Yield Calculator Calculator**
-- [x] **Request For Proposal Rfp Scoring Calculator Calculator**
-- [x] **Request For Proposal Scoring Calculator Calculator**
-- [x] **Required Beginning Date Rbd For Rmds Calculator Calculator**
-- [x] **Required Beginning Date Rmd Calculator Calculator**
-- [x] **Required Minimum Distribution Rmd Calculator Calculator**
-- [x] **Restaurant Tip Calculator Calculator**
-- [x] **Return On Assets Calculator Calculator**
-- [x] **Return On Equity Calculator Calculator**
-- [x] **Revenue Calculator Calculator**
-- [x] **Rideshare Cost Calculator Calculator**
-- [x] **Rights Offering Calculator Calculator**
-- [x] **Roaming Cost Calculator Calculator**
-- [x] **Royalty Financing Calculator Calculator**
-- [x] **Rv Rental Cost Calculator Calculator**
-- [x] **Saasmetrics Calculator**
-- [x] **Saas Metrics Calculator**
-- [x] **Salary Benchmarking Calculator Calculator**
-- [x] **Salary Benchmarking Pay Equity Gap Calculator Calculator**
-- [x] **Sales Commission Structure Calculator Calculator**
-- [x] **Savingsgoal Calculator**
-- [x] **Savings Goal Calculator Calculator**
-- [x] **Scientific Calculator**
-- [x] **Scientific Calculator Calculator**
-- [x] **Scuba Diving Cost Calculator Calculator**
-- [x] **Seed Starting Calculator Calculator**
-- [x] **Seo Cost Calculator Calculator**
-- [x] **Sharpe Ratio Calculator Calculator**
-- [x] **Shopping Cart Abandonment Calculator Calculator**
-- [x] **Six Sigma Cost Savings Calculator Calculator**
-- [x] **Skewness Calculator Calculator**
-- [x] **Ski Lesson Cost Calculator Calculator**
-- [x] **Skydiving Cost Calculator Calculator**
-- [x] **Sleep Calculator Calculator**
-- [x] **Slip And Fall Damages Calculator Calculator**
-- [x] **Snowboard Lesson Cost Calculator Calculator**
-- [x] **Soc 2 Compliance Cost Calculator Calculator**
-- [x] **Soc 2 Compliance Cost Estimator Calculator**
-- [x] **Social Media Cost Calculator Calculator**
-- [x] **Social Security Optimization Calculator Calculator**
-- [x] **Soil Amendment Calculator Calculator**
-- [x] **Sortino Ratio Calculator Calculator**
-- [x] **Souvenir Cost Calculator Calculator**
-- [x] **Spin Class Cost Calculator Calculator**
-- [x] **Spin Off Calculator Calculator**
-- [x] **Spotify Royalty Calculator Calculator**
-- [x] **Staking Rewards Calculator Calculator**
-- [x] **Storm Damage Repair Cost Calculator Calculator**
-- [x] **Streaming Service Subscriber Churn Cost Calculator Calculator**
-- [x] **Sum Of Parts Calculator Calculator**
-- [x] **Supply Chain Bullwhip Effect Calculator Calculator**
-- [x] **Surfing Lesson Cost Calculator Calculator**
-- [x] **Swimming Lesson Cost Calculator Calculator**
-- [x] **Tenantimprovementallowance Calculator**
-- [x] **Tenant Improvement Calculator**
-- [x] **Tenant Improvement Ti Allowance Calculator Calculator**
-- [x] **Tennis Lesson Cost Calculator Calculator**
-- [x] **Term Vs Universal Life Calculator Calculator**
-- [x] **Term Vs Whole Life Calculator Calculator**
-- [x] **Terminal Value Calculator Calculator**
-- [x] **Testosterone Calculator Calculator**
-- [x] **Theater Ticket Cost Calculator Calculator**
-- [x] **Theme Cost Calculator Calculator**
-- [x] **Time Tracking Cost Calculator Calculator**
-- [x] **Token Vesting Schedule Calculator Calculator**
-- [x] **Tokenomics Simulation Calculator Calculator**
-- [x] **Toll Cost Calculator Calculator**
-- [x] **Total Cost Of Ownership Calculator Calculator**
-- [x] **Total Cost Of Ownership For Commercial Fleet Calculator Calculator**
-- [x] **Total Cost Of Ownership Tco For Commercial Fleet Calculator Calculator**
-- [x] **Total Return Swap Calculator Calculator**
+- [ ] **1031 Exchange Calculator**
+- [ ] **457 Plan Calculator**
+- [ ] **529 College Savings Plan Calculator**
+- [ ] **Alimonyspousalsupport Calculator**
+- [ ] **Carpayment Calculator**
+- [ ] **Childsupport Calculator**
+- [ ] **Correlation Calculator**
+- [ ] **Costofequity Calculator**
+- [ ] **Currentratio Calculator**
+- [ ] **Customeracquisitioncost Calculator**
+- [ ] **Dividend Calculator**
+- [ ] **Ebitda Calculator**
+- [ ] **Enterprisevalue Calculator**
+- [ ] **Expectedshortfall Calculator**
+- [ ] **Paycheck Calculator**
+- [ ] **Requiredbeginningdatermd Calculator**
+- [ ] **Requiredminimumdistributionrmd Calculator**
+- [ ] **Socialsecurityoptimization Calculator**
+- [ ] **A1c Calculator Calculator**
+- [ ] **Accretion Dilution Calculator**
+- [ ] **Activity Cost Calculator Calculator**
+- [ ] **Actuarial Mortality Table Calculator Calculator**
+- [ ] **Acupuncture Cost Calculator Calculator**
+- [ ] **Aipromptcost Calculator**
+- [ ] **Ai Prompt Cost Calculator**
+- [ ] **Ai Prompt Cost Calculator Calculator**
+- [ ] **Aiops Implementation Savings Calculator Calculator**
+- [ ] **Airdrop Value Calculator Calculator**
+- [ ] **Airline Ticket Cost Calculator Calculator**
+- [ ] **Alimony Calculator Calculator**
+- [ ] **Alimony Spousal Support Calculator Calculator**
+- [ ] **Alkalinity Calculator Calculator**
+- [ ] **Alpha Calculator**
+- [ ] **Alpha Beta Calculator**
+- [ ] **Amazon Fba Profit Calculator Calculator**
+- [ ] **Amino Acid Calculator Calculator**
+- [ ] **Ammonia Calculator Calculator**
+- [ ] **Amortization Calculator**
+- [ ] **Amusement Park Cost Calculator Calculator**
+- [ ] **Analytics Cost Calculator Calculator**
+- [ ] **Annuitybuyout Calculator**
+- [ ] **Annuity Buyout Calculator Calculator**
+- [ ] **Annuity Calculator Calculator**
+- [ ] **Anti Aging Cost Calculator Calculator**
+- [ ] **Anti Aging Regenerative Medicine Cost Calculator Calculator**
+- [ ] **Antitrust Calculator Calculator**
+- [ ] **Antitrust Hhi Index Calculator Calculator**
+- [ ] **Api Monetization Calculator Calculator**
+- [ ] **Api Monetization Revenue Calculator Calculator**
+- [ ] **Appliance Repair Cost Calculator Calculator**
+- [ ] **Aptvalue Calculator**
+- [ ] **Aquarium Cost Calculator Calculator**
+- [ ] **Arm Vs Fixed Calculator**
+- [ ] **Asset Based Lending Calculator Calculator**
+- [ ] **Asset Protection Calculator Calculator**
+- [ ] **Asset Protection Trust Apt Value Calculator Calculator**
+- [ ] **Attribution Models Calculator Calculator**
+- [ ] **Average Order Value Calculator Calculator**
+- [ ] **Aviation Accident Calculator Calculator**
+- [ ] **Aviation Accident Compensation Calculator Calculator**
+- [ ] **Baking Calculator Calculator**
+- [ ] **Balance Transfer Calculator Calculator**
+- [ ] **Balanced Scorecard Calculator Calculator**
+- [ ] **Bankruptcy Filing Calculator Calculator**
+- [ ] **Bareboat Charter Calculator**
+- [ ] **Bariatric Surgery Calculator Calculator**
+- [ ] **Bariatric Surgery Cost Savings Calculator Calculator**
+- [ ] **Barre Class Cost Calculator Calculator**
+- [ ] **Basal Metabolic Rate Calculator Calculator**
+- [ ] **Beta Calculator**
+- [ ] **Beta Calculator Calculator**
+- [ ] **Bill Of Materials Calculator Calculator**
+- [ ] **Bill Of Materials Cost Calculator Calculator**
+- [ ] **Biological Age Calculator Calculator**
+- [ ] **Biology Calculator Calculator**
+- [ ] **Black Litterman Calculator Calculator**
+- [ ] **Blockchain Calculator Calculator**
+- [ ] **Blockchain Gas Fee Calculator Calculator**
+- [ ] **Blog Cost Calculator Calculator**
+- [ ] **Blood Alcohol Calculator Calculator**
+- [ ] **Blood Pressure Calculator Calculator**
+- [ ] **Blood Sugar Calculator Calculator**
+- [ ] **Body Fat Calculator Calculator**
+- [ ] **Body Frame Size Calculator Calculator**
+- [ ] **Body Recomposition Calculator Calculator**
+- [ ] **Body Surface Area Calculator Calculator**
+- [ ] **Break Even Analysis Calculator Calculator**
+- [ ] **Breakeven Point Calculator Calculator**
+- [ ] **Brrrr Strategy Calculator**
+- [ ] **Budget Optimization Calculator Calculator**
+- [ ] **Budget Planner Calculator Calculator**
+- [ ] **Building Replacement Cost Calculator**
+- [ ] **Burn Mechanism Calculator Calculator**
+- [ ] **Buy Sell Calculator Calculator**
+- [ ] **Calmar Ratio Calculator Calculator**
+- [ ] **Cam Girl Revenue Calculator Calculator**
+- [ ] **Camping Cost Calculator Calculator**
+- [ ] **Cap Rate Calculator**
+- [ ] **Capital Call Schedule Planner Calculator**
+- [ ] **Capital Gains Calculator Calculator**
+- [ ] **Capital Structure Optimization Calculator Calculator**
+- [ ] **Capm Calculator Calculator**
+- [ ] **Car Accident Pain Calculator Calculator**
+- [ ] **Car Accident Pain Suffering Calculator Calculator**
+- [ ] **Car Payment Calculator Calculator**
+- [ ] **Car Rental Cost Calculator Calculator**
+- [ ] **Carb Cycling Calculator Calculator**
+- [ ] **Carried Interest Waterfall Model Calculator Calculator**
+- [ ] **Cash Flow Calculator**
+- [ ] **Cash On Cash Return Calculator**
+- [ ] **Cash Value Accumulation Test Calculator Calculator**
+- [ ] **Cash Value Accumulation Test Cvat Calculator Calculator**
+- [ ] **Cd Interest Calculator Calculator**
+- [ ] **Ceding Commission Calculator Calculator**
+- [ ] **Celebrity Endorsement Calculator Calculator**
+- [ ] **Chapter 11 Bankruptcy Calculator Calculator**
+- [ ] **Charitable Gift Annuity Calculator**
+- [ ] **Charitable Remainder Trust Calculator**
+- [ ] **Chaturbate Token Calculator Calculator**
+- [ ] **Cheat Meal Calculator Calculator**
+- [ ] **Chemistry Calculator Calculator**
+- [ ] **Child Custody Calculator Calculator**
+- [ ] **Child Support Calculator Calculator**
+- [ ] **Chiropractic Care Cost Calculator Calculator**
+- [ ] **Chlorine Calculator Calculator**
+- [ ] **Cholesterol Calculator Calculator**
+- [ ] **Churn Rate Calculator Calculator**
+- [ ] **Clinical Trial Cost Calculator Calculator**
+- [ ] **Clinical Trial Cost Estimator Calculator**
+- [ ] **Cloud Migration Tco Calculator Calculator**
+- [ ] **Cloud Repatriation Savings Calculator Calculator**
+- [ ] **Cohort Analysis Calculator Calculator**
+- [ ] **Collateralization Ratio Calculator Calculator**
+- [ ] **College Cost Calculator**
+- [ ] **College Financial Aid Calculator**
+- [ ] **College Savings Calculator**
+- [ ] **Combined Ratio Calculator Calculator**
+- [ ] **Commercial Lease Buyout Calculator**
+- [ ] **Commercial Real Estate Calculator**
+- [ ] **Commercial Real Estate Cash Flow Calculator**
+- [ ] **Commodities Futures Profitability Calculator Calculator**
+- [ ] **Commodity Calculator Calculator**
+- [ ] **Comparable Company Analysis Calculator Calculator**
+- [ ] **Composting Savings Calculator Calculator**
+- [ ] **Compound Annual Growth Rate Cagr Calculator Calculator**
+- [ ] **Compound Annual Growth Rate Calculator Calculator**
+- [ ] **Computer Science Calculator Calculator**
+- [ ] **Concert Ticket Cost Calculator Calculator**
+- [ ] **Concert Tour Budgeting Calculator Calculator**
+- [ ] **Consultant Utilization Rate Calculator Calculator**
+- [ ] **Consultant Utilization Rate Profitability Calculator Calculator**
+- [ ] **Contract Breach Calculator Calculator**
+- [ ] **Contract Breach Damages Calculator Calculator**
+- [ ] **Contract Review Calculator Calculator**
+- [ ] **Copyright Infringement Calculator Calculator**
+- [ ] **Copyright Infringement Damages Calculator Calculator**
+- [ ] **Copyright Registration Calculator Calculator**
+- [ ] **Corporate Compliance Cost Benefit Analysis Calculator**
+- [ ] **Corporate Compliance Cost Benefit Calculator Calculator**
+- [ ] **Correlation Calculator Calculator**
+- [ ] **Cortisol Calculator Calculator**
+- [ ] **Cosmetic Surgery Cost Calculator Calculator**
+- [ ] **Cost Of Equity Calculator Calculator**
+- [ ] **Cost Of Poor Quality Calculator Calculator**
+- [ ] **Cost Of Poor Quality Copq Calculator Calculator**
+- [ ] **Cost Per Hire Calculator Calculator**
+- [ ] **Cost Segregation Depreciation Calculator**
+- [ ] **Coverdell Esa Calculator**
+- [ ] **Creatine Calculator Calculator**
+- [ ] **Critical Illness Calculator Calculator**
+- [ ] **Crm Cost Calculator Calculator**
+- [ ] **Crossfit Gym Cost Calculator Calculator**
+- [ ] **Crowdfunding Calculator Calculator**
+- [ ] **Crowdfunding Equity Offering Calculator Calculator**
+- [ ] **Currency Exchange Cost Calculator Calculator**
+- [ ] **Current Ratio Calculator Calculator**
+- [ ] **Customer Acquisition Cost Calculator**
+- [ ] **Customer Acquisition Cost Calculator Calculator**
+- [ ] **Customer Lifetime Value Calculator**
+- [ ] **Customer Lifetime Value Calculator Calculator**
+- [ ] **Customer Segmentation Calculator Calculator**
+- [ ] **Customer Segmentation Rfm Model Calculator Calculator**
+- [ ] **Cyber Liability Calculator Calculator**
+- [ ] **Cybersecurity Calculator Calculator**
+- [ ] **Dance Class Cost Calculator Calculator**
+- [ ] **Dao Governance Token Calculator Calculator**
+- [ ] **Data Breach Cost Calculator Calculator**
+- [ ] **Data Center Tco Calculator Calculator**
+- [ ] **Data Center Total Cost Of Ownership Tco Calculator Calculator**
+- [ ] **Data Science Calculator Calculator**
+- [ ] **Database Calculator Calculator**
+- [ ] **Deferred Annuity Calculator**
+- [ ] **Defi Liquidity Pool Calculator Calculator**
+- [ ] **Defi Yield Optimization Calculator Calculator**
+- [ ] **Defined Benefit Plan Calculator**
+- [ ] **Defined Contribution Plan Calculator**
+- [ ] **Developer Salary Calculator**
+- [ ] **Developer Salary Calculator Calculator**
+- [ ] **Dialysis Center Profitability Calculator Calculator**
+- [ ] **Directors Officers Calculator Calculator**
+- [ ] **Discord Server Monetization Calculator Calculator**
+- [ ] **Dissolved Oxygen Calculator Calculator**
+- [ ] **Distribution Waterfall Model Calculator Calculator**
+- [ ] **Dividend Calculator Calculator**
+- [ ] **Dividend Discount Model Ddm Calculator Calculator**
+- [ ] **Dogecoin Mining Calculator Calculator**
+- [ ] **Domain Cost Calculator Calculator**
+- [ ] **Down Payment Assistance Calculator**
+- [ ] **Drug Royalty Rate Calculator Calculator**
+- [ ] **Dti Ratio Calculator Calculator**
+- [ ] **Dynasty Trust Growth Estimator Calculator**
+- [ ] **E Discovery Cost Calculator Calculator**
+- [ ] **Ebitda Calculator Calculator**
+- [ ] **Economic Order Quantity Calculator Calculator**
+- [ ] **Economic Order Quantity Eoq Calculator Calculator**
+- [ ] **Electrical Repair Cost Calculator Calculator**
+- [ ] **Emergency Fund Calculator Calculator**
+- [ ] **Employee Turnover Cost Calculator Calculator**
+- [ ] **Employment Law Calculator Calculator**
+- [ ] **Employment Practices Calculator Calculator**
+- [ ] **Employment Practices Liability Calculator Calculator**
+- [ ] **Engineering Calculator Calculator**
+- [ ] **Enterprise Value Calculator Calculator**
+- [ ] **Environmental Remediation Calculator Calculator**
+- [ ] **Environmental Remediation Cost Estimator Calculator**
+- [ ] **Epa Fine Calculator Calculator**
+- [ ] **Epa Fine Penalty Calculator Calculator**
+- [ ] **Equipment Financing Calculator Calculator**
+- [ ] **Escrow Analysis Calculator**
+- [ ] **Estateplanning Calculator**
+- [ ] **Estate Planning Calculator Calculator**
+- [ ] **Estrogen Calculator Calculator**
+- [ ] **Executivedeferredcompensation Calculator**
+- [ ] **Executive Deferred Compensation Plan Calculator Calculator**
+- [ ] **Expected Shortfall Calculator Calculator**
+- [ ] **Expense Ratio Calculator Calculator**
+- [ ] **Expense Tracker Calculator Calculator**
+- [ ] **Fafsa Calculator**
+- [ ] **Fafsa Calculator Calculator**
+- [ ] **Fertilizer Calculator Calculator**
+- [ ] **Film Distribution Waterfall Calculator Calculator**
+- [ ] **Financial Achievement Calculator Calculator**
+- [ ] **Financial Agility Calculator Calculator**
+- [ ] **Financial Alignment Calculator Calculator**
+- [ ] **Financial Analysis Calculator Calculator**
+- [ ] **Financial Balance Calculator Calculator**
+- [ ] **Financial Coaching Calculator Calculator**
+- [ ] **Financial Compliance Calculator Calculator**
+- [ ] **Financial Consulting Calculator Calculator**
+- [ ] **Financial Education Calculator Calculator**
+- [ ] **Financial Efficiency Calculator Calculator**
+- [ ] **Financial Excellence Calculator Calculator**
+- [ ] **Financial Flow Calculator Calculator**
+- [ ] **Financial Freedom Calculator Calculator**
+- [ ] **Financial Fulfillment Calculator Calculator**
+- [ ] **Financial Goal Calculator Calculator**
+- [ ] **Financial Governance Calculator Calculator**
+- [ ] **Financial Gratitude Calculator Calculator**
+- [ ] **Financial Growth Calculator Calculator**
+- [ ] **Financial Happiness Calculator Calculator**
+- [ ] **Financial Harmony Calculator Calculator**
+- [ ] **Financial Impact Calculator Calculator**
+- [ ] **Financial Independence Calculator Calculator**
+- [ ] **Financial Innovation Calculator Calculator**
+- [ ] **Financial Integration Calculator Calculator**
+- [ ] **Financial Intelligence Calculator Calculator**
+- [ ] **Financial Joy Calculator Calculator**
+- [ ] **Financial Legacy Calculator Calculator**
+- [ ] **Financial Literacy Calculator Calculator**
+- [ ] **Financial Management Calculator Calculator**
+- [ ] **Financial Mastery Calculator Calculator**
+- [ ] **Financial Mentoring Calculator Calculator**
+- [ ] **Financial Momentum Calculator Calculator**
+- [ ] **Financial Optimization Calculator Calculator**
+- [ ] **Financial Peace Calculator Calculator**
+- [ ] **Financial Performance Calculator Calculator**
+- [ ] **Financial Planning Calculator Calculator**
+- [ ] **Financial Reporting Calculator Calculator**
+- [ ] **Financial Resilience Calculator Calculator**
+- [ ] **Financial Risk Calculator Calculator**
+- [ ] **Financial Security Calculator Calculator**
+- [ ] **Financial Stability Calculator Calculator**
+- [ ] **Financial Strategy Calculator Calculator**
+- [ ] **Financial Success Calculator Calculator**
+- [ ] **Financial Sustainability Calculator Calculator**
+- [ ] **Financial Synergy Calculator Calculator**
+- [ ] **Financial Transformation Calculator Calculator**
+- [ ] **Financial Velocity Calculator Calculator**
+- [ ] **Financial Wellness Calculator Calculator**
+- [ ] **Financial Wisdom Calculator Calculator**
+- [ ] **Fire Damage Repair Cost Calculator Calculator**
+- [ ] **Fix And Flip Calculator**
+- [ ] **Fix And Flip Calculator Calculator**
+- [ ] **Fixedindexannuity Calculator**
+- [ ] **Fixed Index Annuity Calculator Calculator**
+- [ ] **Flexiblespendingaccount Calculator**
+- [ ] **Flexible Spending Account Calculator Calculator**
+- [ ] **Flood Risk Zonal Pricing Calculator Calculator**
+- [ ] **Food Combining Calculator Calculator**
+- [ ] **Food Cost Calculator Calculator**
+- [ ] **Food Waste Calculator Calculator**
+- [ ] **Forex Calculator Calculator**
+- [ ] **Foundation Repair Cost Calculator Calculator**
+- [ ] **Fourzeroonek Calculator**
+- [ ] **Fraction Calculator Calculator**
+- [ ] **Franchise Calculator Calculator**
+- [ ] **Free Cash Flow To Equity Calculator Calculator**
+- [ ] **Free Cash Flow To Firm Calculator Calculator**
+- [ ] **Fund Level Irr Calculator Calculator**
+- [ ] **Fund Level Irr Tvpi And Dpi Calculator Calculator**
+- [ ] **Futures Calculator Calculator**
+- [ ] **Gas Cost Calculator Calculator**
+- [ ] **Gas Fee Optimizer Calculator Calculator**
+- [ ] **Glycemic Index Calculator Calculator**
+- [ ] **Golf Lesson Cost Calculator Calculator**
+- [ ] **Government Contract Bid Calculator Calculator**
+- [ ] **Government Contract Bid No Bid Decision Calculator Calculator**
+- [ ] **Gpu Mining Profitability Calculator**
+- [ ] **Gpu Mining Profitability Calculator Calculator**
+- [ ] **Grantorretainedannuitytrustgrat Calculator**
+- [ ] **Grantor Retained Annuity Trust Grat Calculator Calculator**
+- [ ] **Grocery Budget Calculator Calculator**
+- [ ] **Gross Margin Calculator Calculator**
+- [ ] **Gross Rent Multiplier Calculator**
+- [ ] **Growth Hormone Calculator Calculator**
+- [ ] **Guidebook Cost Calculator Calculator**
+- [ ] **Guideline Premium Test Calculator Calculator**
+- [ ] **Guideline Premium Test Gpt Calculator Calculator**
+- [ ] **Gym Membership Cost Calculator Calculator**
+- [ ] **Hardiness Calculator Calculator**
+- [ ] **Hardness Calculator Calculator**
+- [ ] **Heart Rate Variability Calculator Calculator**
+- [ ] **Heart Rate Zone Calculator Calculator**
+- [ ] **Heavy Equipment Depreciation Calculator Calculator**
+- [ ] **Hedge Fund Fee Calculator Calculator**
+- [ ] **Heloc Calculator**
+- [ ] **Herbal Medicine Cost Calculator Calculator**
+- [ ] **High Net Worth Divorce Asset Division Calculator**
+- [ ] **High Net Worth Divorce Asset Division Calculator Calculator**
+- [ ] **High Net Worth Divorce Calculator Calculator**
+- [ ] **Hoa Fee Calculator**
+- [ ] **Hospital Negligence Calculator Calculator**
+- [ ] **Hosting Cost Calculator Calculator**
+- [ ] **Hot Air Balloon Cost Calculator Calculator**
+- [ ] **Hotel Cost Calculator Calculator**
+- [ ] **Hotel Feasibility Calculator**
+- [ ] **Human Capital Due Diligence Calculator Calculator**
+- [ ] **Human Capital Due Diligence M A Calculator Calculator**
+- [ ] **Hvac Maintenance Cost Calculator Calculator**
+- [ ] **Immediateannuitypayout Calculator**
+- [ ] **Immediate Annuity Payout Calculator Calculator**
+- [ ] **Immigration Filing Calculator Calculator**
+- [ ] **Impermanent Loss Calculator Calculator**
+- [ ] **Income Based Repayment Calculator Calculator**
+- [ ] **Income Calculator Calculator**
+- [ ] **Incurred But Not Reported Calculator Calculator**
+- [ ] **Incurred But Not Reported Ibnr Reserve Estimator Calculator**
+- [ ] **Industry Benchmarking Calculator Calculator**
+- [ ] **Information Ratio Calculator Calculator**
+- [ ] **Initial Coin Offering Calculator Calculator**
+- [ ] **Initial Dex Offering Calculator Calculator**
+- [ ] **Instagram Engagement Rate Calculator Calculator**
+- [ ] **Interest Calculator Calculator**
+- [ ] **Interest Rate Swap Calculator Calculator**
+- [ ] **Intermittent Fasting Calculator Calculator**
+- [ ] **Internal Rate Of Return Calculator Calculator**
+- [ ] **International Cell Plan Cost Calculator Calculator**
+- [ ] **Inventory Shrinkage Cost Calculator Calculator**
+- [ ] **Inventory Turnover Calculator Calculator**
+- [ ] **Invoice Financing Calculator Calculator**
+- [ ] **Irrigation Calculator Calculator**
+- [ ] **Irs Offer In Compromise Calculator Calculator**
+- [ ] **Irs Offer In Compromise Oic Calculator Calculator**
+- [ ] **It Outsourcing Vs In House Calculator Calculator**
+- [ ] **It Outsourcing Vs In House Cost Benefit Analysis Calculator**
+- [ ] **Keto Calculator Calculator**
+- [ ] **Key Person Calculator Calculator**
+- [ ] **Kidnap Ransom Calculator Calculator**
+- [ ] **Kurtosis Calculator Calculator**
+- [ ] **Landed Cost Calculator Calculator**
+- [ ] **Landscaping Cost Calculator Calculator**
+- [ ] **Lapse Rate Sensitivity Analysis Calculator**
+- [ ] **Lawn Care Cost Calculator Calculator**
+- [ ] **Lean Manufacturing Takt Time Calculator Calculator**
+- [ ] **Leverage Ratio Calculator Calculator**
+- [ ] **Libel Slander Per Se Damages Estimator Calculator**
+- [ ] **Liquidation Price Calculator Calculator**
+- [ ] **Liquidity Mining Calculator Calculator**
+- [ ] **Long Term Care Calculator Calculator**
+- [ ] **Long Term Disability Calculator Calculator**
+- [ ] **Long Term Disability Ltd Elimination Period Calculator Calculator**
+- [ ] **Loss Of Consortium Damages Calculator Calculator**
+- [ ] **Loss Ratio Calculator Calculator**
+- [ ] **Luggage Cost Calculator Calculator**
+- [ ] **Machine Learning Calculator Calculator**
+- [ ] **Macro Calculator Calculator**
+- [ ] **Managed Security Service Provider Calculator Calculator**
+- [ ] **Managed Security Service Provider Mssp Vs In House Soc Calculator Calculator**
+- [ ] **Management Consulting Fee Model Calculator Calculator**
+- [ ] **Management Fee Hurdle Rate Calculator Calculator**
+- [ ] **Manyvids Revenue Calculator Calculator**
+- [ ] **Marine Cargo Calculator Calculator**
+- [ ] **Market Cap Calculator Calculator**
+- [ ] **Martial Arts Cost Calculator Calculator**
+- [ ] **Massage Therapy Cost Calculator Calculator**
+- [ ] **Maximum Drawdown Calculator Calculator**
+- [ ] **Meal Kit Cost Calculator Calculator**
+- [ ] **Meal Prep Calculator Calculator**
+- [ ] **Media Mix Modeling Calculator Calculator**
+- [ ] **Medical Bill Negotiation Calculator Calculator**
+- [ ] **Medical Device Liability Calculator Calculator**
+- [ ] **Medical Device Royalty Rate Calculator Calculator**
+- [ ] **Megabackdoorroth Calculator**
+- [ ] **Mega Backdoor Roth Calculator Calculator**
+- [ ] **Merger Acquisition Divestiture Calculator Calculator**
+- [ ] **Merger Model Calculator Calculator**
+- [ ] **Mezzanine Financing Calculator**
+- [ ] **Mezzanine Financing Calculator Calculator**
+- [ ] **Mezzanine Financing Real Estate Calculator**
+- [ ] **Mold Remediation Cost Calculator Calculator**
+- [ ] **Motorcycle Accident Compensation Calculator Calculator**
+- [ ] **Movie Ticket Cost Calculator Calculator**
+- [ ] **Music Festival Profit Calculator Calculator**
+- [ ] **Music Festival Profit Loss Calculator Calculator**
+- [ ] **Music Festival Profit Loss P L Calculator Calculator**
+- [ ] **National Park Cost Calculator Calculator**
+- [ ] **Naturopathic Medicine Cost Calculator Calculator**
+- [ ] **Net Margin Calculator Calculator**
+- [ ] **Net Operating Income Calculator**
+- [ ] **Net Present Value Calculator Calculator**
+- [ ] **Net Promoter Score Calculator Calculator**
+- [ ] **Net Promoter Score Nps Calculator Calculator**
+- [ ] **Net Worth Calculator Calculator**
+- [ ] **Networking Calculator Calculator**
+- [ ] **Nft Minting Cost Calculator Calculator**
+- [ ] **Nft Royalty Calculator**
+- [ ] **Nft Royalty Calculator Calculator**
+- [ ] **Nft Royalty Revenue Calculator Calculator**
+- [ ] **Nft Royalty Revenue Calculator Exists But Needs Registration Calculator**
+- [ ] **Nutrition Label Calculator Calculator**
+- [ ] **Offshore Accident Lawyer Fee Calculator Calculator**
+- [ ] **Omega 3 Calculator Calculator**
+- [ ] **Onlyfans Earnings Calculator Calculator**
+- [ ] **Operating Margin Calculator Calculator**
+- [ ] **Overall Equipment Effectiveness Calculator Calculator**
+- [ ] **Overall Equipment Effectiveness Oee Calculator Calculator**
+- [ ] **Parking Cost Calculator Calculator**
+- [ ] **Passport Cost Calculator Calculator**
+- [ ] **Patent Filing Calculator Calculator**
+- [ ] **Patreon Subscription Calculator Calculator**
+- [ ] **Payback Period Calculator Calculator**
+- [ ] **Paycheck Calculator Calculator**
+- [ ] **Payroll Calculator Calculator**
+- [ ] **Peer To Peer Lending Calculator Calculator**
+- [ ] **Percentage Calculator Calculator**
+- [ ] **Personal Trainer Cost Calculator Calculator**
+- [ ] **Pest Control Cost Calculator Calculator**
+- [ ] **Pharmaceutical Liability Calculator Calculator**
+- [ ] **Physical Therapy Cost Calculator Calculator**
+- [ ] **Physics Calculator Calculator**
+- [ ] **Pilates Studio Cost Calculator Calculator**
+- [ ] **Plannedgiving Calculator**
+- [ ] **Planned Giving Calculator Calculator**
+- [ ] **Plant Spacing Calculator Calculator**
+- [ ] **Plugin Cost Calculator Calculator**
+- [ ] **Plumbing Repair Cost Calculator Calculator**
+- [ ] **Pmi Cancellation Calculator**
+- [ ] **Podcast Cost Calculator Calculator**
+- [ ] **Podcast Sponsorship Calculator Calculator**
+- [ ] **Policy Lapse Rate Calculator Calculator**
+- [ ] **Political Risk Calculator Calculator**
+- [ ] **Pool Maintenance Cost Calculator Calculator**
+- [ ] **Preference Payment Clawback Calculator Calculator**
+- [ ] **Premium Deficiency Reserve Calculator Calculator**
+- [ ] **Premium Deficiency Reserve Pdr Calculator Calculator**
+- [ ] **Prenuptial Agreement Value Calculator Calculator**
+- [ ] **Prescription Cost Calculator Calculator**
+- [ ] **Pressure Washing Cost Calculator Calculator**
+- [ ] **Preventative Maintenance Savings Calculator Calculator**
+- [ ] **Price Fixing Overcharge Calculator Calculator**
+- [ ] **Price Fixing Overcharge Estimator Calculator**
+- [ ] **Price Per Square Foot Calculator**
+- [ ] **Price To Book Calculator Calculator**
+- [ ] **Price To Earnings Calculator Calculator**
+- [ ] **Private Equity Irr Calculator Calculator**
+- [ ] **Private Equity Returns Calculator Calculator**
+- [ ] **Probate Calculator Calculator**
+- [ ] **Professional Liability Calculator Calculator**
+- [ ] **Profit Margin Calculator Calculator**
+- [ ] **Project Management Cost Calculator Calculator**
+- [ ] **Protein Calculator Calculator**
+- [ ] **Public Transportation Cost Calculator Calculator**
+- [ ] **Qui Tam Reward Calculator Calculator**
+- [ ] **Qui Tam Whistleblower Reward Calculator Calculator**
+- [ ] **Quick Ratio Calculator Calculator**
+- [ ] **R Squared Calculator Calculator**
+- [ ] **Ransomware Downtime Cost Calculator Calculator**
+- [ ] **Realestatedepreciationschedule Calculator**
+- [ ] **Realestatedevelopmentproforma Calculator**
+- [ ] **Realestatesyndication Calculator**
+- [ ] **Realestatewaterfallmodel Calculator**
+- [ ] **Real Estate Closing Calculator Calculator**
+- [ ] **Real Estate Crowdfunding Calculator**
+- [ ] **Real Estate Depreciation Schedule Calculator Calculator**
+- [ ] **Real Estate Development Pro Forma Calculator Calculator**
+- [ ] **Real Estate Syndication Calculator Calculator**
+- [ ] **Real Estate Waterfall Model Calculator Calculator**
+- [ ] **Recapitalization Impact Calculator Calculator**
+- [ ] **Recaptitalization Impact Calculator Calculator**
+- [ ] **Recipe Scaling Calculator Calculator**
+- [ ] **Record Label Deal Calculator Calculator**
+- [ ] **Registeraptvalue Calculator**
+- [ ] **Registeralimonyspousalsupport Calculator**
+- [ ] **Registerannuitybuyout Calculator**
+- [ ] **Registerbeta Calculator**
+- [ ] **Registercarpayment Calculator**
+- [ ] **Registercorrelation Calculator**
+- [ ] **Registercostofequity Calculator**
+- [ ] **Registercurrentratio Calculator**
+- [ ] **Registerdividend Calculator**
+- [ ] **Registerebitda Calculator**
+- [ ] **Registerenterprisevalue Calculator**
+- [ ] **Registerestateplanning Calculator**
+- [ ] **Registerexecutivedeferredcompensation Calculator**
+- [ ] **Registerexpectedshortfall Calculator**
+- [ ] **Registerfafsa Calculator**
+- [ ] **Registerfixedindexannuity Calculator**
+- [ ] **Registerflexiblespendingaccount Calculator**
+- [ ] **Registerfourzeroonek Calculator**
+- [ ] **Registergpuminingprofitability Calculator**
+- [ ] **Registergrantorretainedannuitytrustgrat Calculator**
+- [ ] **Registerimmediateannuitypayout Calculator**
+- [ ] **Registermegabackdoorroth Calculator**
+- [ ] **Registerplannedgiving Calculator**
+- [ ] **Registerrealestatedepreciationschedule Calculator**
+- [ ] **Registerrealestatedevelopmentproforma Calculator**
+- [ ] **Registerrealestatesyndication Calculator**
+- [ ] **Registerrealestatewaterfallmodel Calculator**
+- [ ] **Registerrentvsbuy Calculator**
+- [ ] **Registerrentalyield Calculator**
+- [ ] **Registerrequiredbeginningdatermd Calculator**
+- [ ] **Registerrequiredminimumdistributionrmd Calculator**
+- [ ] **Registersavingsgoal Calculator**
+- [ ] **Registersocialsecurityoptimization Calculator**
+- [ ] **Registertenantimprovementallowance Calculator**
+- [ ] **Reit Calculator Calculator**
+- [ ] **Reit Dividend Calculator Calculator**
+- [ ] **Rentvsbuy Calculator**
+- [ ] **Rent Vs Buy Calculator**
+- [ ] **Rent Vs Buy Calculator Calculator**
+- [ ] **Rentalyield Calculator**
+- [ ] **Rental Yield Calculator**
+- [ ] **Rental Yield Calculator Calculator**
+- [ ] **Request For Proposal Rfp Scoring Calculator Calculator**
+- [ ] **Request For Proposal Scoring Calculator Calculator**
+- [ ] **Required Beginning Date Rbd For Rmds Calculator Calculator**
+- [ ] **Required Beginning Date Rmd Calculator Calculator**
+- [ ] **Required Minimum Distribution Rmd Calculator Calculator**
+- [ ] **Restaurant Tip Calculator Calculator**
+- [ ] **Return On Assets Calculator Calculator**
+- [ ] **Return On Equity Calculator Calculator**
+- [ ] **Revenue Calculator Calculator**
+- [ ] **Rideshare Cost Calculator Calculator**
+- [ ] **Rights Offering Calculator Calculator**
+- [ ] **Roaming Cost Calculator Calculator**
+- [ ] **Royalty Financing Calculator Calculator**
+- [ ] **Rv Rental Cost Calculator Calculator**
+- [ ] **Saasmetrics Calculator**
+- [ ] **Saas Metrics Calculator**
+- [ ] **Salary Benchmarking Calculator Calculator**
+- [ ] **Salary Benchmarking Pay Equity Gap Calculator Calculator**
+- [ ] **Sales Commission Structure Calculator Calculator**
+- [ ] **Savingsgoal Calculator**
+- [ ] **Savings Goal Calculator Calculator**
+- [ ] **Scientific Calculator**
+- [ ] **Scientific Calculator Calculator**
+- [ ] **Scuba Diving Cost Calculator Calculator**
+- [ ] **Seed Starting Calculator Calculator**
+- [ ] **Seo Cost Calculator Calculator**
+- [ ] **Sharpe Ratio Calculator Calculator**
+- [ ] **Shopping Cart Abandonment Calculator Calculator**
+- [ ] **Six Sigma Cost Savings Calculator Calculator**
+- [ ] **Skewness Calculator Calculator**
+- [ ] **Ski Lesson Cost Calculator Calculator**
+- [ ] **Skydiving Cost Calculator Calculator**
+- [ ] **Sleep Calculator Calculator**
+- [ ] **Slip And Fall Damages Calculator Calculator**
+- [ ] **Snowboard Lesson Cost Calculator Calculator**
+- [ ] **Soc 2 Compliance Cost Calculator Calculator**
+- [ ] **Soc 2 Compliance Cost Estimator Calculator**
+- [ ] **Social Media Cost Calculator Calculator**
+- [ ] **Social Security Optimization Calculator Calculator**
+- [ ] **Soil Amendment Calculator Calculator**
+- [ ] **Sortino Ratio Calculator Calculator**
+- [ ] **Souvenir Cost Calculator Calculator**
+- [ ] **Spin Class Cost Calculator Calculator**
+- [ ] **Spin Off Calculator Calculator**
+- [ ] **Spotify Royalty Calculator Calculator**
+- [ ] **Staking Rewards Calculator Calculator**
+- [ ] **Storm Damage Repair Cost Calculator Calculator**
+- [ ] **Streaming Service Subscriber Churn Cost Calculator Calculator**
+- [ ] **Sum Of Parts Calculator Calculator**
+- [ ] **Supply Chain Bullwhip Effect Calculator Calculator**
+- [ ] **Surfing Lesson Cost Calculator Calculator**
+- [ ] **Swimming Lesson Cost Calculator Calculator**
+- [ ] **Tenantimprovementallowance Calculator**
+- [ ] **Tenant Improvement Calculator**
+- [ ] **Tenant Improvement Ti Allowance Calculator Calculator**
+- [ ] **Tennis Lesson Cost Calculator Calculator**
+- [ ] **Term Vs Universal Life Calculator Calculator**
+- [ ] **Term Vs Whole Life Calculator Calculator**
+- [ ] **Terminal Value Calculator Calculator**
+- [ ] **Testosterone Calculator Calculator**
+- [ ] **Theater Ticket Cost Calculator Calculator**
+- [ ] **Theme Cost Calculator Calculator**
+- [ ] **Time Tracking Cost Calculator Calculator**
+- [ ] **Token Vesting Schedule Calculator Calculator**
+- [ ] **Tokenomics Simulation Calculator Calculator**
+- [ ] **Toll Cost Calculator Calculator**
+- [ ] **Total Cost Of Ownership Calculator Calculator**
+- [ ] **Total Cost Of Ownership For Commercial Fleet Calculator Calculator**
+- [ ] **Total Cost Of Ownership Tco For Commercial Fleet Calculator Calculator**
+- [ ] **Total Return Swap Calculator Calculator**
 
 ---
 
 ## 🏛️ Finance & Investment (309 calculators)
 
 ### Retirement & Savings Hub (74 calculators)
-- [x] **401k Calculator**
-- [x] **401k Calculator Calculator**
-- [x] **401k Company Match Roi Calculator**
-- [x] **401k Plan Calculator**
-- [x] **401k Rollover Calculator**
-- [x] **Dtiratio Calculator**
-- [x] **Retirementabroad Calculator**
-- [x] **Roth401kvstraditional401k Calculator**
-- [x] **Rothira Calculator**
-- [x] **Sepira Calculator**
-- [x] **Simpleira Calculator**
-- [x] **Stretchira Calculator**
-- [x] **Taxlossharvesting Calculator**
-- [x] **Backdoor Roth Ira Calculator**
-- [x] **Corporate Tax Shield Calculator Calculator**
-- [x] **Crypto Tax Harvesting Calculator Calculator**
-- [x] **Estatetaxliability Calculator**
-- [x] **Estate Tax Liability Calculator Calculator**
-- [x] **Estate Tax Life Insurance Calculator Calculator**
-- [x] **Generationskippingtransfergsttax Calculator**
-- [x] **Generation Skipping Transfer Gst Tax Calculator Calculator**
-- [x] **Generation Skipping Transfer Tax Calculator Calculator**
-- [x] **Gifttax Calculator**
-- [x] **Gift Tax Calculator Calculator**
-- [x] **Health Insurance Calculator Calculator**
-- [x] **Inheritance Tax Estimator Calculator**
-- [x] **Ira Calculator Calculator**
-- [x] **Key Person Life Insurance Calculator Calculator**
-- [x] **Life Insurance Calculator Calculator**
-- [x] **Life Insurance Needs Calculator Calculator**
-- [x] **Long Term Care Insurance Calculator Calculator**
-- [x] **Medical Expense Tax Deduction Calculator Calculator**
-- [x] **Pensionlumpsumvsannuity Calculator**
-- [x] **Pensionplanfunding Calculator**
-- [x] **Pension Lump Sum Vs Annuity Calculator Calculator**
-- [x] **Pension Plan Funding Calculator Calculator**
-- [x] **Realestatetaxdeductions Calculator**
-- [x] **Real Estate Investment Calculator**
-- [x] **Real Estate Investment Calculator Calculator**
-- [x] **Real Estate Investment Calculator Exists But Needs Registration Calculator**
-- [x] **Real Estate Tax Deductions Calculator Calculator**
-- [x] **Registerdtiratio Calculator**
-- [x] **Registerestatetaxliability Calculator**
-- [x] **Registergenerationskippingtransfergsttax Calculator**
-- [x] **Registergifttax Calculator**
-- [x] **Registerira Calculator**
-- [x] **Registerpensionlumpsumvsannuity Calculator**
-- [x] **Registerpensionplanfunding Calculator**
-- [x] **Registerrealestatetaxdeductions Calculator**
-- [x] **Registerretirementabroad Calculator**
-- [x] **Registerretirement Calculator**
-- [x] **Registerrothconversiontax Calculator**
-- [x] **Registerrothira Calculator**
-- [x] **Registersepira Calculator**
-- [x] **Registersimpleira Calculator**
-- [x] **Registerstretchira Calculator**
-- [x] **Retirement Calculator**
-- [x] **Retirement Abroad Calculator Calculator**
-- [x] **Retirement Calculator Calculator**
-- [x] **Retirement Savings Calculator Calculator**
-- [x] **Rothconversiontax Calculator**
-- [x] **Roth 401k Vs Traditional 401k Calculator Calculator**
-- [x] **Roth Conversion Tax Calculator Calculator**
-- [x] **Roth Ira Calculator Calculator**
-- [x] **Sep Ira Calculator Calculator**
-- [x] **Simple Ira Calculator Calculator**
-- [x] **Split Dollar Life Insurance Calculator Calculator**
-- [x] **Stretch Ira Calculator Calculator**
-- [x] **Tax Calculator**
-- [x] **Tax Calculator Calculator**
-- [x] **Tax Loss Harvesting Calculator Calculator**
-- [x] **Taxi Cost Calculator Calculator**
-- [x] **Term Life Insurance Calculator**
-- [x] **Term Vs Universal Life Insurance Calculator Calculator**
+- [ ] **401k Calculator**
+- [ ] **401k Calculator Calculator**
+- [ ] **401k Company Match Roi Calculator**
+- [ ] **401k Plan Calculator**
+- [ ] **401k Rollover Calculator**
+- [ ] **Dtiratio Calculator**
+- [ ] **Retirementabroad Calculator**
+- [ ] **Roth401kvstraditional401k Calculator**
+- [ ] **Rothira Calculator**
+- [ ] **Sepira Calculator**
+- [ ] **Simpleira Calculator**
+- [ ] **Stretchira Calculator**
+- [ ] **Taxlossharvesting Calculator**
+- [ ] **Backdoor Roth Ira Calculator**
+- [ ] **Corporate Tax Shield Calculator Calculator**
+- [ ] **Crypto Tax Harvesting Calculator Calculator**
+- [ ] **Estatetaxliability Calculator**
+- [ ] **Estate Tax Liability Calculator Calculator**
+- [ ] **Estate Tax Life Insurance Calculator Calculator**
+- [ ] **Generationskippingtransfergsttax Calculator**
+- [ ] **Generation Skipping Transfer Gst Tax Calculator Calculator**
+- [ ] **Generation Skipping Transfer Tax Calculator Calculator**
+- [ ] **Gifttax Calculator**
+- [ ] **Gift Tax Calculator Calculator**
+- [ ] **Health Insurance Calculator Calculator**
+- [ ] **Inheritance Tax Estimator Calculator**
+- [ ] **Ira Calculator Calculator**
+- [ ] **Key Person Life Insurance Calculator Calculator**
+- [ ] **Life Insurance Calculator Calculator**
+- [ ] **Life Insurance Needs Calculator Calculator**
+- [ ] **Long Term Care Insurance Calculator Calculator**
+- [ ] **Medical Expense Tax Deduction Calculator Calculator**
+- [ ] **Pensionlumpsumvsannuity Calculator**
+- [ ] **Pensionplanfunding Calculator**
+- [ ] **Pension Lump Sum Vs Annuity Calculator Calculator**
+- [ ] **Pension Plan Funding Calculator Calculator**
+- [ ] **Realestatetaxdeductions Calculator**
+- [ ] **Real Estate Investment Calculator**
+- [ ] **Real Estate Investment Calculator Calculator**
+- [ ] **Real Estate Investment Calculator Exists But Needs Registration Calculator**
+- [ ] **Real Estate Tax Deductions Calculator Calculator**
+- [ ] **Registerdtiratio Calculator**
+- [ ] **Registerestatetaxliability Calculator**
+- [ ] **Registergenerationskippingtransfergsttax Calculator**
+- [ ] **Registergifttax Calculator**
+- [ ] **Registerira Calculator**
+- [ ] **Registerpensionlumpsumvsannuity Calculator**
+- [ ] **Registerpensionplanfunding Calculator**
+- [ ] **Registerrealestatetaxdeductions Calculator**
+- [ ] **Registerretirementabroad Calculator**
+- [ ] **Registerretirement Calculator**
+- [ ] **Registerrothconversiontax Calculator**
+- [ ] **Registerrothira Calculator**
+- [ ] **Registersepira Calculator**
+- [ ] **Registersimpleira Calculator**
+- [ ] **Registerstretchira Calculator**
+- [ ] **Retirement Calculator**
+- [ ] **Retirement Abroad Calculator Calculator**
+- [ ] **Retirement Calculator Calculator**
+- [ ] **Retirement Savings Calculator Calculator**
+- [ ] **Rothconversiontax Calculator**
+- [ ] **Roth 401k Vs Traditional 401k Calculator Calculator**
+- [ ] **Roth Conversion Tax Calculator Calculator**
+- [ ] **Roth Ira Calculator Calculator**
+- [ ] **Sep Ira Calculator Calculator**
+- [ ] **Simple Ira Calculator Calculator**
+- [ ] **Split Dollar Life Insurance Calculator Calculator**
+- [ ] **Stretch Ira Calculator Calculator**
+- [ ] **Tax Calculator**
+- [ ] **Tax Calculator Calculator**
+- [ ] **Tax Loss Harvesting Calculator Calculator**
+- [ ] **Taxi Cost Calculator Calculator**
+- [ ] **Term Life Insurance Calculator**
+- [ ] **Term Vs Universal Life Insurance Calculator Calculator**
 
 ### Mortgage & Real Estate Hub (128 calculators)
-- [x] **Carloan Calculator**
-- [x] **Debtavalanche Calculator**
-- [x] **Debtconsolidationloan Calculator**
-- [x] **Studentloanforgiveness Calculator**
-- [x] **Studentloanrefinancing Calculator**
-- [x] **Studentloanrepayment Calculator**
-- [x] **Arm Mortgage Calculator**
-- [x] **Autoloan Calculator**
-- [x] **Auto Loan Calculator Calculator**
-- [x] **Balloon Mortgage Calculator**
-- [x] **Biweekly Mortgage Calculator**
-- [x] **Bridge Loan Calculator**
-- [x] **Business Loan Calculator Calculator**
-- [x] **Business Loan Qualification Calculator Calculator**
-- [x] **Car Loan Calculator Calculator**
-- [x] **Cash Out Refinance Calculator**
-- [x] **Commercial Auto Insurance Calculator Calculator**
-- [x] **Commercial Fleet Insurance Calculator Calculator**
-- [x] **Commercial Fleet Insurance Premium Estimator Calculator**
-- [x] **Commercial Property Insurance Calculator**
-- [x] **Commercial Property Valuation Calculator**
-- [x] **Commercial Real Estate Loan Amortization Calculator**
-- [x] **Comprehensivemortgage Calculator**
-- [x] **Condo Insurance Calculator**
-- [x] **Conservation Easement Tax Benefit Calculator**
-- [x] **Construction Loan Calculator**
-- [x] **Debt Avalanche Calculator Calculator**
-- [x] **Debt Consolidation Loan Calculator Calculator**
-- [x] **Earthquake Insurance Calculator**
-- [x] **Earthquake Insurance Calculator Calculator**
-- [x] **Employee Stock Option Plan Esop Valuation Calculator Calculator**
-- [x] **Fha Loan Calculator**
-- [x] **Flood Insurance Calculator**
-- [x] **Flood Insurance Calculator Calculator**
-- [x] **Hard Money Loan Calculator**
-- [x] **Home Affordability Calculator**
-- [x] **Home Cleaning Cost Calculator Calculator**
-- [x] **Home Equity Calculator Calculator**
-- [x] **Home Equity Loan Calculator**
-- [x] **Home Improvement Calculator Calculator**
-- [x] **Home Insurance Calculator**
-- [x] **Home Insurance Calculator Calculator**
-- [x] **Homeopathy Cost Calculator Calculator**
-- [x] **Homeowners Insurance Calculator**
-- [x] **Hsatripletaxadvantage Calculator**
-- [x] **Hsa Triple Tax Advantage Calculator Calculator**
-- [x] **Intellectual Property Calculator Calculator**
-- [x] **Intellectual Property Licensing Calculator Calculator**
-- [x] **Intellectual Property Licensing Royalty Calculator Calculator**
-- [x] **Interest Only Mortgage Calculator**
-- [x] **Irrevocablelifeinsurancetrustilitvalue Calculator**
-- [x] **Irrevocable Life Insurance Trust Ilit Value Calculator Calculator**
-- [x] **Jumbo Loan Calculator**
-- [x] **Landlord Insurance Calculator**
-- [x] **Loan Calculator Calculator**
-- [x] **Loan Comparison Calculator Calculator**
-- [x] **Loan To Cost Calculator**
-- [x] **Loan To Cost Ratio Calculator**
-- [x] **Loan To Value Ratio Calculator**
-- [x] **Mortgage Calculator**
-- [x] **Mortgagerefinance Calculator**
-- [x] **Mortgage Apr Comparison Calculator**
-- [x] **Mortgage Calculator Calculator**
-- [x] **Mortgage Closing Cost Calculator**
-- [x] **Mortgage Equity Calculator**
-- [x] **Mortgage Insurance Calculator**
-- [x] **Mortgage Life Calculator**
-- [x] **Mortgage Payment Calculator**
-- [x] **Mortgage Payoff Calculator**
-- [x] **Mortgage Points Calculator**
-- [x] **Mortgage Qualification Calculator**
-- [x] **Mortgage Rate Lock Calculator**
-- [x] **Mortgage Refinance Calculator**
-- [x] **Mortgage Refinance Calculator Calculator**
-- [x] **Mortgage Vs Rent Calculator**
-- [x] **Netunrealizedappreciationnuatax Calculator**
-- [x] **Net Unrealized Appreciation Nua Tax Calculator Calculator**
-- [x] **Nursing Home Abuse Settlement Calculator Calculator**
-- [x] **Nursing Home Negligence Calculator Calculator**
-- [x] **Opportunity Zone Investment Calculator**
-- [x] **Out Of Home Oh Advertising Roi Calculator Calculator**
-- [x] **Out Of Home Ooh Advertising Roi Calculator Calculator**
-- [x] **Payday Loan Calculator Calculator**
-- [x] **Personalloan Calculator**
-- [x] **Personal Loan Calculator Calculator**
-- [x] **Private Mortgage Insurance Calculator**
-- [x] **Propertytaxproration Calculator**
-- [x] **Property Insurance Calculator Calculator**
-- [x] **Property Tax Calculator**
-- [x] **Property Tax Appeal Savings Calculator Calculator**
-- [x] **Property Tax Proration Calculator**
-- [x] **Refinance Calculator**
-- [x] **Registerautoloan Calculator**
-- [x] **Registercarloan Calculator**
-- [x] **Registercomprehensivemortgage Calculator**
-- [x] **Registerdebtavalanche Calculator**
-- [x] **Registerdebtconsolidationloan Calculator**
-- [x] **Registerhsatripletaxadvantage Calculator**
-- [x] **Registerirrevocablelifeinsurancetrustilitvalue Calculator**
-- [x] **Registernetunrealizedappreciationnuatax Calculator**
-- [x] **Registerpersonalloan Calculator**
-- [x] **Registerrentalpropertyroi Calculator**
-- [x] **Registerreversemortgage Calculator**
-- [x] **Registerstudentloanforgiveness Calculator**
-- [x] **Registerstudentloanrefinancing Calculator**
-- [x] **Registerstudentloanrepayment Calculator**
-- [x] **Registertimberlandinvestment Calculator**
-- [x] **Registertitleinsurance Calculator**
-- [x] **Registerusdaloan Calculator**
-- [x] **Rentalpropertyroi Calculator**
-- [x] **Rental Property Roi Calculator**
-- [x] **Rental Property Roi Calculator Calculator**
-- [x] **Reversemortgage Calculator**
-- [x] **Reverse Mortgage Calculator**
-- [x] **Reverse Mortgage Calculator Calculator**
-- [x] **Stock Options Valuation Calculator Calculator**
-- [x] **Student Loan Calculator**
-- [x] **Student Loan Calculator Calculator**
-- [x] **Student Loan Forgiveness Calculator Calculator**
-- [x] **Student Loan Refinancing Calculator Calculator**
-- [x] **Student Loan Repayment Calculator Calculator**
-- [x] **Timberlandinvestment Calculator**
-- [x] **Timberland Investment Calculator**
-- [x] **Timberland Investment Calculator Calculator**
-- [x] **Titleinsurance Calculator**
-- [x] **Title Insurance Calculator**
-- [x] **Title Insurance Calculator Calculator**
-- [x] **Title Loan Calculator Calculator**
+- [ ] **Carloan Calculator**
+- [ ] **Debtavalanche Calculator**
+- [ ] **Debtconsolidationloan Calculator**
+- [ ] **Studentloanforgiveness Calculator**
+- [ ] **Studentloanrefinancing Calculator**
+- [ ] **Studentloanrepayment Calculator**
+- [ ] **Arm Mortgage Calculator**
+- [ ] **Autoloan Calculator**
+- [ ] **Auto Loan Calculator Calculator**
+- [ ] **Balloon Mortgage Calculator**
+- [ ] **Biweekly Mortgage Calculator**
+- [ ] **Bridge Loan Calculator**
+- [ ] **Business Loan Calculator Calculator**
+- [ ] **Business Loan Qualification Calculator Calculator**
+- [ ] **Car Loan Calculator Calculator**
+- [ ] **Cash Out Refinance Calculator**
+- [ ] **Commercial Auto Insurance Calculator Calculator**
+- [ ] **Commercial Fleet Insurance Calculator Calculator**
+- [ ] **Commercial Fleet Insurance Premium Estimator Calculator**
+- [ ] **Commercial Property Insurance Calculator**
+- [ ] **Commercial Property Valuation Calculator**
+- [ ] **Commercial Real Estate Loan Amortization Calculator**
+- [ ] **Comprehensivemortgage Calculator**
+- [ ] **Condo Insurance Calculator**
+- [ ] **Conservation Easement Tax Benefit Calculator**
+- [ ] **Construction Loan Calculator**
+- [ ] **Debt Avalanche Calculator Calculator**
+- [ ] **Debt Consolidation Loan Calculator Calculator**
+- [ ] **Earthquake Insurance Calculator**
+- [ ] **Earthquake Insurance Calculator Calculator**
+- [ ] **Employee Stock Option Plan Esop Valuation Calculator Calculator**
+- [ ] **Fha Loan Calculator**
+- [ ] **Flood Insurance Calculator**
+- [ ] **Flood Insurance Calculator Calculator**
+- [ ] **Hard Money Loan Calculator**
+- [ ] **Home Affordability Calculator**
+- [ ] **Home Cleaning Cost Calculator Calculator**
+- [ ] **Home Equity Calculator Calculator**
+- [ ] **Home Equity Loan Calculator**
+- [ ] **Home Improvement Calculator Calculator**
+- [ ] **Home Insurance Calculator**
+- [ ] **Home Insurance Calculator Calculator**
+- [ ] **Homeopathy Cost Calculator Calculator**
+- [ ] **Homeowners Insurance Calculator**
+- [ ] **Hsatripletaxadvantage Calculator**
+- [ ] **Hsa Triple Tax Advantage Calculator Calculator**
+- [ ] **Intellectual Property Calculator Calculator**
+- [ ] **Intellectual Property Licensing Calculator Calculator**
+- [ ] **Intellectual Property Licensing Royalty Calculator Calculator**
+- [ ] **Interest Only Mortgage Calculator**
+- [ ] **Irrevocablelifeinsurancetrustilitvalue Calculator**
+- [ ] **Irrevocable Life Insurance Trust Ilit Value Calculator Calculator**
+- [ ] **Jumbo Loan Calculator**
+- [ ] **Landlord Insurance Calculator**
+- [ ] **Loan Calculator Calculator**
+- [ ] **Loan Comparison Calculator Calculator**
+- [ ] **Loan To Cost Calculator**
+- [ ] **Loan To Cost Ratio Calculator**
+- [ ] **Loan To Value Ratio Calculator**
+- [ ] **Mortgage Calculator**
+- [ ] **Mortgagerefinance Calculator**
+- [ ] **Mortgage Apr Comparison Calculator**
+- [ ] **Mortgage Calculator Calculator**
+- [ ] **Mortgage Closing Cost Calculator**
+- [ ] **Mortgage Equity Calculator**
+- [ ] **Mortgage Insurance Calculator**
+- [ ] **Mortgage Life Calculator**
+- [ ] **Mortgage Payment Calculator**
+- [ ] **Mortgage Payoff Calculator**
+- [ ] **Mortgage Points Calculator**
+- [ ] **Mortgage Qualification Calculator**
+- [ ] **Mortgage Rate Lock Calculator**
+- [ ] **Mortgage Refinance Calculator**
+- [ ] **Mortgage Refinance Calculator Calculator**
+- [ ] **Mortgage Vs Rent Calculator**
+- [ ] **Netunrealizedappreciationnuatax Calculator**
+- [ ] **Net Unrealized Appreciation Nua Tax Calculator Calculator**
+- [ ] **Nursing Home Abuse Settlement Calculator Calculator**
+- [ ] **Nursing Home Negligence Calculator Calculator**
+- [ ] **Opportunity Zone Investment Calculator**
+- [ ] **Out Of Home Oh Advertising Roi Calculator Calculator**
+- [ ] **Out Of Home Ooh Advertising Roi Calculator Calculator**
+- [ ] **Payday Loan Calculator Calculator**
+- [ ] **Personalloan Calculator**
+- [ ] **Personal Loan Calculator Calculator**
+- [ ] **Private Mortgage Insurance Calculator**
+- [ ] **Propertytaxproration Calculator**
+- [ ] **Property Insurance Calculator Calculator**
+- [ ] **Property Tax Calculator**
+- [ ] **Property Tax Appeal Savings Calculator Calculator**
+- [ ] **Property Tax Proration Calculator**
+- [ ] **Refinance Calculator**
+- [ ] **Registerautoloan Calculator**
+- [ ] **Registercarloan Calculator**
+- [ ] **Registercomprehensivemortgage Calculator**
+- [ ] **Registerdebtavalanche Calculator**
+- [ ] **Registerdebtconsolidationloan Calculator**
+- [ ] **Registerhsatripletaxadvantage Calculator**
+- [ ] **Registerirrevocablelifeinsurancetrustilitvalue Calculator**
+- [ ] **Registernetunrealizedappreciationnuatax Calculator**
+- [ ] **Registerpersonalloan Calculator**
+- [ ] **Registerrentalpropertyroi Calculator**
+- [ ] **Registerreversemortgage Calculator**
+- [ ] **Registerstudentloanforgiveness Calculator**
+- [ ] **Registerstudentloanrefinancing Calculator**
+- [ ] **Registerstudentloanrepayment Calculator**
+- [ ] **Registertimberlandinvestment Calculator**
+- [ ] **Registertitleinsurance Calculator**
+- [ ] **Registerusdaloan Calculator**
+- [ ] **Rentalpropertyroi Calculator**
+- [ ] **Rental Property Roi Calculator**
+- [ ] **Rental Property Roi Calculator Calculator**
+- [ ] **Reversemortgage Calculator**
+- [ ] **Reverse Mortgage Calculator**
+- [ ] **Reverse Mortgage Calculator Calculator**
+- [ ] **Stock Options Valuation Calculator Calculator**
+- [ ] **Student Loan Calculator**
+- [ ] **Student Loan Calculator Calculator**
+- [ ] **Student Loan Forgiveness Calculator Calculator**
+- [ ] **Student Loan Refinancing Calculator Calculator**
+- [ ] **Student Loan Repayment Calculator Calculator**
+- [ ] **Timberlandinvestment Calculator**
+- [ ] **Timberland Investment Calculator**
+- [ ] **Timberland Investment Calculator Calculator**
+- [ ] **Titleinsurance Calculator**
+- [ ] **Title Insurance Calculator**
+- [ ] **Title Insurance Calculator Calculator**
+- [ ] **Title Loan Calculator Calculator**
 
 ### Investment & Portfolio Hub (107 calculators)
-- [x] **Corporatebond Calculator**
-- [x] **Costofdebt Calculator**
-- [x] **Creditdefaultswap Calculator**
-- [x] **Creditutilization Calculator**
-- [x] **Debtpayoff Calculator**
-- [x] **Debtsnowball Calculator**
-- [x] **Accident Insurance Calculator Calculator**
-- [x] **Angel Investment Calculator**
-- [x] **Angel Investment Dilution Calculator**
-- [x] **Auto Insurance Calculator Calculator**
-- [x] **Aviation Insurance Calculator Calculator**
-- [x] **Bad Faith Insurance Calculator Calculator**
-- [x] **Bad Faith Insurance Claim Calculator Calculator**
-- [x] **Bitcoin Halving Calculator Calculator**
-- [x] **Bitcoin Pizza Day Calculator Calculator**
-- [x] **Bond Convexity Calculator Calculator**
-- [x] **Bond Yield Calculator Calculator**
-- [x] **Business Insurance Calculator Calculator**
-- [x] **Buy Sell Agreement Insurance Calculator Calculator**
-- [x] **Catastrophe Bond Pricing Calculator Calculator**
-- [x] **Catastrophe Bond Pricing Model Calculator**
-- [x] **Convertible Bond Calculator Calculator**
-- [x] **Convertible Bond Pricing Calculator Calculator**
-- [x] **Corporate Bond Calculator Calculator**
-- [x] **Cost Of Debt Calculator Calculator**
-- [x] **Credit Card Calculator Calculator**
-- [x] **Credit Card Payoff Calculator Calculator**
-- [x] **Credit Default Swap Calculator Calculator**
-- [x] **Credit Utilization Calculator Calculator**
-- [x] **Crypto Arbitrage Calculator Calculator**
-- [x] **Crypto Mining Profitability Calculator Calculator**
-- [x] **Crypto Portfolio Rebalancing Calculator Calculator**
-- [x] **Crypto Staking Calculator**
-- [x] **Crypto Staking Profitability Calculator Calculator**
-- [x] **Crypto Staking Profitability Calculator Exists But Needs Registration Calculator**
-- [x] **Cryptocurrency Investment Calculator Calculator**
-- [x] **Cryptography Calculator Calculator**
-- [x] **Cyber Liability Insurance Calculator Calculator**
-- [x] **Debt Consolidation Calculator Calculator**
-- [x] **Debt Management Calculator Calculator**
-- [x] **Debt Payoff Calculator Calculator**
-- [x] **Debt Service Coverage Ratio Calculator**
-- [x] **Debt Snowball Calculator Calculator**
-- [x] **Debt To Equity Calculator Calculator**
-- [x] **Debt To Income Calculator Calculator**
-- [x] **Debt Yield Ratio Calculator**
-- [x] **Dental Insurance Cost Calculator Calculator**
-- [x] **Directors Officers Insurance Calculator Calculator**
-- [x] **Disability Insurance Calculator Calculator**
-- [x] **Disability Insurance Needs Calculator Calculator**
-- [x] **Distressed Debt Calculator Calculator**
-- [x] **Distressed Debt Investing Roi Calculator Calculator**
-- [x] **Employee Stock Option Plan Calculator Calculator**
-- [x] **Errors Omissions Insurance Calculator Calculator**
-- [x] **Ethereum 2 0 Staking Calculator Calculator**
-- [x] **Ethereum 2 Staking Calculator Calculator**
-- [x] **Farmland Investment Roi Calculator**
-- [x] **Gap Insurance Calculator Calculator**
-- [x] **General Liability Insurance Calculator Calculator**
-- [x] **Insurance Claim Calculator Calculator**
-- [x] **Investment Calculator**
-- [x] **Investment Calculator Calculator**
-- [x] **Investment Growth Calculator Calculator**
-- [x] **Key Person Insurance Calculator Calculator**
-- [x] **Kidnap Ransom Insurance Calculator Calculator**
-- [x] **Legal Malpractice Insurance Calculator Calculator**
-- [x] **Liability Insurance Calculator Calculator**
-- [x] **Line Of Credit Calculator Calculator**
-- [x] **Marine Cargo Insurance Calculator Calculator**
-- [x] **Marine Cargo Insurance Premium Calculator Calculator**
-- [x] **Marine Insurance Calculator Calculator**
-- [x] **Medical Malpractice Insurance Calculator Calculator**
-- [x] **Municipal Bond Calculator Calculator**
-- [x] **Music Royalty Investment Calculator Calculator**
-- [x] **Pet Insurance Calculator Calculator**
-- [x] **Political Risk Insurance Calculator Calculator**
-- [x] **Portfolio Company Ebitda Growth Calculator Calculator**
-- [x] **Portfolio Optimization Calculator Calculator**
-- [x] **Product Liability Insurance Calculator Calculator**
-- [x] **Professional Liability Insurance Calculator Calculator**
-- [x] **Registercorporatebond Calculator**
-- [x] **Registercostofdebt Calculator**
-- [x] **Registercreditcardpayoff Calculator**
-- [x] **Registercreditdefaultswap Calculator**
-- [x] **Registercreditutilization Calculator**
-- [x] **Registerdebtconsolidation Calculator**
-- [x] **Registerdebtpayoff Calculator**
-- [x] **Registerdebtsnowball Calculator**
-- [x] **Registerinvestment Calculator**
-- [x] **Registerrentersinsurance Calculator**
-- [x] **Rentersinsurance Calculator**
-- [x] **Renters Insurance Calculator**
-- [x] **Renters Insurance Calculator Calculator**
-- [x] **Restricted Stock Unit Rsu Vs Stock Option Calculator Calculator**
-- [x] **Restricted Stock Unit Vs Stock Option Calculator Calculator**
-- [x] **Shitcoin Investment Calculator Calculator**
-- [x] **Stock Buyback Roi Calculator Calculator**
-- [x] **Stock Calculator Calculator**
-- [x] **Stock Options Calculator**
-- [x] **Stock Options Calculator Calculator**
-- [x] **Stock Options Calculator Exists But Needs Registration Calculator**
-- [x] **Stop Loss Insurance Calculator Calculator**
-- [x] **Stop Loss Insurance Premium Calculator Calculator**
-- [x] **Surety Bond Calculator Calculator**
-- [x] **Surety Bond Premium Calculator Calculator**
-- [x] **Technical Debt Calculator Calculator**
-- [x] **Terrorism Insurance Calculator Calculator**
+- [ ] **Corporatebond Calculator**
+- [ ] **Costofdebt Calculator**
+- [ ] **Creditdefaultswap Calculator**
+- [ ] **Creditutilization Calculator**
+- [ ] **Debtpayoff Calculator**
+- [ ] **Debtsnowball Calculator**
+- [ ] **Accident Insurance Calculator Calculator**
+- [ ] **Angel Investment Calculator**
+- [ ] **Angel Investment Dilution Calculator**
+- [ ] **Auto Insurance Calculator Calculator**
+- [ ] **Aviation Insurance Calculator Calculator**
+- [ ] **Bad Faith Insurance Calculator Calculator**
+- [ ] **Bad Faith Insurance Claim Calculator Calculator**
+- [ ] **Bitcoin Halving Calculator Calculator**
+- [ ] **Bitcoin Pizza Day Calculator Calculator**
+- [ ] **Bond Convexity Calculator Calculator**
+- [ ] **Bond Yield Calculator Calculator**
+- [ ] **Business Insurance Calculator Calculator**
+- [ ] **Buy Sell Agreement Insurance Calculator Calculator**
+- [ ] **Catastrophe Bond Pricing Calculator Calculator**
+- [ ] **Catastrophe Bond Pricing Model Calculator**
+- [ ] **Convertible Bond Calculator Calculator**
+- [ ] **Convertible Bond Pricing Calculator Calculator**
+- [ ] **Corporate Bond Calculator Calculator**
+- [ ] **Cost Of Debt Calculator Calculator**
+- [ ] **Credit Card Calculator Calculator**
+- [ ] **Credit Card Payoff Calculator Calculator**
+- [ ] **Credit Default Swap Calculator Calculator**
+- [ ] **Credit Utilization Calculator Calculator**
+- [ ] **Crypto Arbitrage Calculator Calculator**
+- [ ] **Crypto Mining Profitability Calculator Calculator**
+- [ ] **Crypto Portfolio Rebalancing Calculator Calculator**
+- [ ] **Crypto Staking Calculator**
+- [ ] **Crypto Staking Profitability Calculator Calculator**
+- [ ] **Crypto Staking Profitability Calculator Exists But Needs Registration Calculator**
+- [ ] **Cryptocurrency Investment Calculator Calculator**
+- [ ] **Cryptography Calculator Calculator**
+- [ ] **Cyber Liability Insurance Calculator Calculator**
+- [ ] **Debt Consolidation Calculator Calculator**
+- [ ] **Debt Management Calculator Calculator**
+- [ ] **Debt Payoff Calculator Calculator**
+- [ ] **Debt Service Coverage Ratio Calculator**
+- [ ] **Debt Snowball Calculator Calculator**
+- [ ] **Debt To Equity Calculator Calculator**
+- [ ] **Debt To Income Calculator Calculator**
+- [ ] **Debt Yield Ratio Calculator**
+- [ ] **Dental Insurance Cost Calculator Calculator**
+- [ ] **Directors Officers Insurance Calculator Calculator**
+- [ ] **Disability Insurance Calculator Calculator**
+- [ ] **Disability Insurance Needs Calculator Calculator**
+- [ ] **Distressed Debt Calculator Calculator**
+- [ ] **Distressed Debt Investing Roi Calculator Calculator**
+- [ ] **Employee Stock Option Plan Calculator Calculator**
+- [ ] **Errors Omissions Insurance Calculator Calculator**
+- [ ] **Ethereum 2 0 Staking Calculator Calculator**
+- [ ] **Ethereum 2 Staking Calculator Calculator**
+- [ ] **Farmland Investment Roi Calculator**
+- [ ] **Gap Insurance Calculator Calculator**
+- [ ] **General Liability Insurance Calculator Calculator**
+- [ ] **Insurance Claim Calculator Calculator**
+- [ ] **Investment Calculator**
+- [ ] **Investment Calculator Calculator**
+- [ ] **Investment Growth Calculator Calculator**
+- [ ] **Key Person Insurance Calculator Calculator**
+- [ ] **Kidnap Ransom Insurance Calculator Calculator**
+- [ ] **Legal Malpractice Insurance Calculator Calculator**
+- [ ] **Liability Insurance Calculator Calculator**
+- [ ] **Line Of Credit Calculator Calculator**
+- [ ] **Marine Cargo Insurance Calculator Calculator**
+- [ ] **Marine Cargo Insurance Premium Calculator Calculator**
+- [ ] **Marine Insurance Calculator Calculator**
+- [ ] **Medical Malpractice Insurance Calculator Calculator**
+- [ ] **Municipal Bond Calculator Calculator**
+- [ ] **Music Royalty Investment Calculator Calculator**
+- [ ] **Pet Insurance Calculator Calculator**
+- [ ] **Political Risk Insurance Calculator Calculator**
+- [ ] **Portfolio Company Ebitda Growth Calculator Calculator**
+- [ ] **Portfolio Optimization Calculator Calculator**
+- [ ] **Product Liability Insurance Calculator Calculator**
+- [ ] **Professional Liability Insurance Calculator Calculator**
+- [ ] **Registercorporatebond Calculator**
+- [ ] **Registercostofdebt Calculator**
+- [ ] **Registercreditcardpayoff Calculator**
+- [ ] **Registercreditdefaultswap Calculator**
+- [ ] **Registercreditutilization Calculator**
+- [ ] **Registerdebtconsolidation Calculator**
+- [ ] **Registerdebtpayoff Calculator**
+- [ ] **Registerdebtsnowball Calculator**
+- [ ] **Registerinvestment Calculator**
+- [ ] **Registerrentersinsurance Calculator**
+- [ ] **Rentersinsurance Calculator**
+- [ ] **Renters Insurance Calculator**
+- [ ] **Renters Insurance Calculator Calculator**
+- [ ] **Restricted Stock Unit Rsu Vs Stock Option Calculator Calculator**
+- [ ] **Restricted Stock Unit Vs Stock Option Calculator Calculator**
+- [ ] **Shitcoin Investment Calculator Calculator**
+- [ ] **Stock Buyback Roi Calculator Calculator**
+- [ ] **Stock Calculator Calculator**
+- [ ] **Stock Options Calculator**
+- [ ] **Stock Options Calculator Calculator**
+- [ ] **Stock Options Calculator Exists But Needs Registration Calculator**
+- [ ] **Stop Loss Insurance Calculator Calculator**
+- [ ] **Stop Loss Insurance Premium Calculator Calculator**
+- [ ] **Surety Bond Calculator Calculator**
+- [ ] **Surety Bond Premium Calculator Calculator**
+- [ ] **Technical Debt Calculator Calculator**
+- [ ] **Terrorism Insurance Calculator Calculator**
 
 ---
 
 ## 🏛️ Business & Operations (85 calculators)
 
 ### Business Operations & Finance Hub (68 calculators)
-- [x] **Equityvaluation Calculator**
-- [x] **Ad Viewability Impact Calculator Calculator**
-- [x] **Ad Viewability Impact On Roi Calculator Calculator**
-- [x] **Addiction Rehab Cost Financing Calculator Calculator**
-- [x] **Advertising Cost Calculator Calculator**
-- [x] **Affiliate Marketing Roi Calculator Calculator**
-- [x] **Body Adiposity Index Bai Calculator Calculator**
-- [x] **Body Adiposity Index Calculator Calculator**
-- [x] **Brand Equity Valuation Calculator Calculator**
-- [x] **Business Formation Calculator Calculator**
-- [x] **Business Interruption Calculator Calculator**
-- [x] **Business Process Re Engineering Bpr Savings Calculator Calculator**
-- [x] **Business Process Re Engineering Calculator Calculator**
-- [x] **Business Risk Assessment Calculator Calculator**
-- [x] **Business Valuation Calculator Calculator**
-- [x] **Celebrity Endorsement Deal Valuation Calculator**
-- [x] **Change Management Roi Calculator Calculator**
-- [x] **Chapter 11 Bankruptcy Plan Valuation Calculator**
-- [x] **Data Governance Roi Calculator Calculator**
-- [x] **Dental Implant Roi Calculator Calculator**
-- [x] **Digital Transformation Business Case Calculator Calculator**
-- [x] **Economic Value Added Eva Calculator Calculator**
-- [x] **Email Marketing Cost Calculator Calculator**
-- [x] **Equity Valuation Calculator Calculator**
-- [x] **Erp Implementation Roi Calculator Calculator**
-- [x] **Event Sponsorship Tier Valuation Calculator Calculator**
-- [x] **Film Slate Financing Roi Calculator Calculator**
-- [x] **Financial Advisory Calculator Calculator**
-- [x] **Franchise Roi Calculator Calculator**
-- [x] **Free Cash Flow To Equity Fcfe Valuation Calculator**
-- [x] **Free Cash Flow To Firm Fcff Valuation Calculator**
-- [x] **Futures Trading Profitability Calculator Calculator**
-- [x] **Ground Lease Valuation Calculator**
-- [x] **Hotel Feasibility Adr Calculator**
-- [x] **Hr Tech Stack Roi Calculator Calculator**
-- [x] **Industrial Robotics Roi Calculator Calculator**
-- [x] **Iso 9001 Certification Roi Calculator Calculator**
-- [x] **Litigation Finance Roi Calculator Calculator**
-- [x] **Marketingroi Calculator**
-- [x] **Marketing Attribution Model Comparison Calculator Calculator**
-- [x] **Marketing Cost Calculator Calculator**
-- [x] **Marketing Roi Calculator Calculator**
-- [x] **Masternode Roi Calculator Calculator**
-- [x] **Media Mix Modeling Mmm Roi Calculator Calculator**
-- [x] **Merger Acquisition Divestiture Valuation Calculator**
-- [x] **Merger Acquisition M A Divestiture Valuation Calculator**
-- [x] **Merger Arbitrage Spread Calculator Calculator**
-- [x] **Museum Admission Cost Calculator Calculator**
-- [x] **Music Catalogue Valuation Calculator Calculator**
-- [x] **Options Valuation Calculator Calculator**
-- [x] **Patent Valuation Calculator Calculator**
-- [x] **Post Money Valuation Calculator Calculator**
-- [x] **Public Private Partnership P3 Roi Calculator Calculator**
-- [x] **Public Private Partnership Roi Calculator Calculator**
-- [x] **Registerequityvaluation Calculator**
-- [x] **Registermarketingroi Calculator**
-- [x] **Registerselfstoragefacilityroi Calculator**
-- [x] **Roi Calculator**
-- [x] **Roi Calculator Calculator**
-- [x] **Selfstoragefacilityroi Calculator**
-- [x] **Self Storage Facility Roi Calculator Calculator**
-- [x] **Self Storage Roi Calculator**
-- [x] **Sponsorship Roi Calculator Calculator**
-- [x] **Startup Valuation Calculator Calculator**
-- [x] **Svod Streaming Content Licensing Valuation Calculator**
-- [x] **Tender Offer Valuation Calculator Calculator**
-- [x] **Threat Intelligence Platform Roi Calculator Calculator**
-- [x] **Thyroid Calculator Calculator**
+- [ ] **Equityvaluation Calculator**
+- [ ] **Ad Viewability Impact Calculator Calculator**
+- [ ] **Ad Viewability Impact On Roi Calculator Calculator**
+- [ ] **Addiction Rehab Cost Financing Calculator Calculator**
+- [ ] **Advertising Cost Calculator Calculator**
+- [ ] **Affiliate Marketing Roi Calculator Calculator**
+- [ ] **Body Adiposity Index Bai Calculator Calculator**
+- [ ] **Body Adiposity Index Calculator Calculator**
+- [ ] **Brand Equity Valuation Calculator Calculator**
+- [ ] **Business Formation Calculator Calculator**
+- [ ] **Business Interruption Calculator Calculator**
+- [ ] **Business Process Re Engineering Bpr Savings Calculator Calculator**
+- [ ] **Business Process Re Engineering Calculator Calculator**
+- [ ] **Business Risk Assessment Calculator Calculator**
+- [ ] **Business Valuation Calculator Calculator**
+- [ ] **Celebrity Endorsement Deal Valuation Calculator**
+- [ ] **Change Management Roi Calculator Calculator**
+- [ ] **Chapter 11 Bankruptcy Plan Valuation Calculator**
+- [ ] **Data Governance Roi Calculator Calculator**
+- [ ] **Dental Implant Roi Calculator Calculator**
+- [ ] **Digital Transformation Business Case Calculator Calculator**
+- [ ] **Economic Value Added Eva Calculator Calculator**
+- [ ] **Email Marketing Cost Calculator Calculator**
+- [ ] **Equity Valuation Calculator Calculator**
+- [ ] **Erp Implementation Roi Calculator Calculator**
+- [ ] **Event Sponsorship Tier Valuation Calculator Calculator**
+- [ ] **Film Slate Financing Roi Calculator Calculator**
+- [ ] **Financial Advisory Calculator Calculator**
+- [ ] **Franchise Roi Calculator Calculator**
+- [ ] **Free Cash Flow To Equity Fcfe Valuation Calculator**
+- [ ] **Free Cash Flow To Firm Fcff Valuation Calculator**
+- [ ] **Futures Trading Profitability Calculator Calculator**
+- [ ] **Ground Lease Valuation Calculator**
+- [ ] **Hotel Feasibility Adr Calculator**
+- [ ] **Hr Tech Stack Roi Calculator Calculator**
+- [ ] **Industrial Robotics Roi Calculator Calculator**
+- [ ] **Iso 9001 Certification Roi Calculator Calculator**
+- [ ] **Litigation Finance Roi Calculator Calculator**
+- [ ] **Marketingroi Calculator**
+- [ ] **Marketing Attribution Model Comparison Calculator Calculator**
+- [ ] **Marketing Cost Calculator Calculator**
+- [ ] **Marketing Roi Calculator Calculator**
+- [ ] **Masternode Roi Calculator Calculator**
+- [ ] **Media Mix Modeling Mmm Roi Calculator Calculator**
+- [ ] **Merger Acquisition Divestiture Valuation Calculator**
+- [ ] **Merger Acquisition M A Divestiture Valuation Calculator**
+- [ ] **Merger Arbitrage Spread Calculator Calculator**
+- [ ] **Museum Admission Cost Calculator Calculator**
+- [ ] **Music Catalogue Valuation Calculator Calculator**
+- [ ] **Options Valuation Calculator Calculator**
+- [ ] **Patent Valuation Calculator Calculator**
+- [ ] **Post Money Valuation Calculator Calculator**
+- [ ] **Public Private Partnership P3 Roi Calculator Calculator**
+- [ ] **Public Private Partnership Roi Calculator Calculator**
+- [ ] **Registerequityvaluation Calculator**
+- [ ] **Registermarketingroi Calculator**
+- [ ] **Registerselfstoragefacilityroi Calculator**
+- [ ] **Roi Calculator**
+- [ ] **Roi Calculator Calculator**
+- [ ] **Selfstoragefacilityroi Calculator**
+- [ ] **Self Storage Facility Roi Calculator Calculator**
+- [ ] **Self Storage Roi Calculator**
+- [ ] **Sponsorship Roi Calculator Calculator**
+- [ ] **Startup Valuation Calculator Calculator**
+- [ ] **Svod Streaming Content Licensing Valuation Calculator**
+- [ ] **Tender Offer Valuation Calculator Calculator**
+- [ ] **Threat Intelligence Platform Roi Calculator Calculator**
+- [ ] **Thyroid Calculator Calculator**
 
 ### Marketing & Creator Hub (17 calculators)
-- [x] **Ad Agency Commission Calculator Calculator**
-- [x] **Ad Agency Commission Vs Fee Model Calculator Calculator**
-- [x] **Ad Reach And Frequency Calculator Calculator**
-- [x] **Ad Reach Frequency Calculator Calculator**
-- [x] **Addiction Rehab Calculator Calculator**
-- [x] **Adult Affiliate Commission Calculator Calculator**
-- [x] **Book Publishing Advance Calculator Calculator**
-- [x] **Book Publishing Advance Vs Royalty Calculator Calculator**
-- [x] **Day Trading Calculator Calculator**
-- [x] **Glycemic Load Calculator Calculator**
-- [x] **Influencer Marketing Earned Media Value Emv Calculator Calculator**
-- [x] **Instagram Influencer Rate Calculator Calculator**
-- [x] **Merchant Cash Advance Calculator Calculator**
-- [x] **Options Trading Calculator Calculator**
-- [x] **Return On Ad Spend Roas Calculator Calculator**
-- [x] **Swing Trading Calculator Calculator**
-- [x] **Tiktok Creator Fund Calculator Calculator**
+- [ ] **Ad Agency Commission Calculator Calculator**
+- [ ] **Ad Agency Commission Vs Fee Model Calculator Calculator**
+- [ ] **Ad Reach And Frequency Calculator Calculator**
+- [ ] **Ad Reach Frequency Calculator Calculator**
+- [ ] **Addiction Rehab Calculator Calculator**
+- [ ] **Adult Affiliate Commission Calculator Calculator**
+- [ ] **Book Publishing Advance Calculator Calculator**
+- [ ] **Book Publishing Advance Vs Royalty Calculator Calculator**
+- [ ] **Day Trading Calculator Calculator**
+- [ ] **Glycemic Load Calculator Calculator**
+- [ ] **Influencer Marketing Earned Media Value Emv Calculator Calculator**
+- [ ] **Instagram Influencer Rate Calculator Calculator**
+- [ ] **Merchant Cash Advance Calculator Calculator**
+- [ ] **Options Trading Calculator Calculator**
+- [ ] **Return On Ad Spend Roas Calculator Calculator**
+- [ ] **Swing Trading Calculator Calculator**
+- [ ] **Tiktok Creator Fund Calculator Calculator**
 
 ---
 
 ## 🏛️ Legal & Insurance (44 calculators)
 
 ### Legal Settlement Hub (44 calculators)
-- [x] **Structuredsettlementpayout Calculator**
-- [x] **Asbestos Settlement Calculator Calculator**
-- [x] **Birth Injury Malpractice Calculator Calculator**
-- [x] **Birth Injury Settlement Calculator Calculator**
-- [x] **Burn Injury Settlement Calculator Calculator**
-- [x] **Car Accident Settlement Calculator Calculator**
-- [x] **Catastrophic Injury Calculator Calculator**
-- [x] **Class Action Settlement Calculator Calculator**
-- [x] **Defective Drug Settlement Calculator Calculator**
-- [x] **Dental Malpractice Settlement Calculator Calculator**
-- [x] **Divorce Settlement Calculator Calculator**
-- [x] **Dog Bite Settlement Calculator Calculator**
-- [x] **Dui Accident Settlement Calculator Calculator**
-- [x] **Fela Settlement Calculator Calculator**
-- [x] **Fela Settlement Calculator Railroad Calculator**
-- [x] **Fera Settlement Calculator Calculator**
-- [x] **Hit And Run Settlement Calculator Calculator**
-- [x] **Hospital Negligence Settlement Calculator Calculator**
-- [x] **Jones Act Settlement Calculator Calculator**
-- [x] **Jones Act Settlement Calculator Maritime Calculator**
-- [x] **Legal Malpractice Damages Calculator Calculator**
-- [x] **Legal Practice Valuation Calculator Calculator**
-- [x] **Lifesettlementvalue Calculator**
-- [x] **Life Settlement Value Calculator Calculator**
-- [x] **Maritime Injury Compensation Calculator Calculator**
-- [x] **Mass Tort Settlement Calculator Calculator**
-- [x] **Medical Malpractice Damages Calculator Calculator**
-- [x] **Medical Malpractice Settlement Calculator Calculator**
-- [x] **Mesothelioma Settlement Calculator Calculator**
-- [x] **Opioid Settlement Calculator Calculator**
-- [x] **Pedestrian Accident Settlement Calculator Calculator**
-- [x] **Personalinjury Calculator**
-- [x] **Personal Injury Multiplier Calculator Calculator**
-- [x] **Premises Liability Settlement Calculator Calculator**
-- [x] **Product Liability Settlement Calculator Calculator**
-- [x] **Railroad Accident Settlement Calculator Calculator**
-- [x] **Registerlifesettlementvalue Calculator**
-- [x] **Registerstructuredsettlementpayout Calculator**
-- [x] **Roundup Settlement Calculator Calculator**
-- [x] **Slip And Fall Settlement Calculator Calculator**
-- [x] **Spinal Cord Injury Compensation Calculator Calculator**
-- [x] **Structured Settlement Payout Calculator Calculator**
-- [x] **Surgical Error Settlement Calculator Calculator**
-- [x] **Talcum Powder Settlement Calculator Calculator**
+- [ ] **Structuredsettlementpayout Calculator**
+- [ ] **Asbestos Settlement Calculator Calculator**
+- [ ] **Birth Injury Malpractice Calculator Calculator**
+- [ ] **Birth Injury Settlement Calculator Calculator**
+- [ ] **Burn Injury Settlement Calculator Calculator**
+- [ ] **Car Accident Settlement Calculator Calculator**
+- [ ] **Catastrophic Injury Calculator Calculator**
+- [ ] **Class Action Settlement Calculator Calculator**
+- [ ] **Defective Drug Settlement Calculator Calculator**
+- [ ] **Dental Malpractice Settlement Calculator Calculator**
+- [ ] **Divorce Settlement Calculator Calculator**
+- [ ] **Dog Bite Settlement Calculator Calculator**
+- [ ] **Dui Accident Settlement Calculator Calculator**
+- [ ] **Fela Settlement Calculator Calculator**
+- [ ] **Fela Settlement Calculator Railroad Calculator**
+- [ ] **Fera Settlement Calculator Calculator**
+- [ ] **Hit And Run Settlement Calculator Calculator**
+- [ ] **Hospital Negligence Settlement Calculator Calculator**
+- [ ] **Jones Act Settlement Calculator Calculator**
+- [ ] **Jones Act Settlement Calculator Maritime Calculator**
+- [ ] **Legal Malpractice Damages Calculator Calculator**
+- [ ] **Legal Practice Valuation Calculator Calculator**
+- [ ] **Lifesettlementvalue Calculator**
+- [ ] **Life Settlement Value Calculator Calculator**
+- [ ] **Maritime Injury Compensation Calculator Calculator**
+- [ ] **Mass Tort Settlement Calculator Calculator**
+- [ ] **Medical Malpractice Damages Calculator Calculator**
+- [ ] **Medical Malpractice Settlement Calculator Calculator**
+- [ ] **Mesothelioma Settlement Calculator Calculator**
+- [ ] **Opioid Settlement Calculator Calculator**
+- [ ] **Pedestrian Accident Settlement Calculator Calculator**
+- [ ] **Personalinjury Calculator**
+- [ ] **Personal Injury Multiplier Calculator Calculator**
+- [ ] **Premises Liability Settlement Calculator Calculator**
+- [ ] **Product Liability Settlement Calculator Calculator**
+- [ ] **Railroad Accident Settlement Calculator Calculator**
+- [ ] **Registerlifesettlementvalue Calculator**
+- [ ] **Registerstructuredsettlementpayout Calculator**
+- [ ] **Roundup Settlement Calculator Calculator**
+- [ ] **Slip And Fall Settlement Calculator Calculator**
+- [ ] **Spinal Cord Injury Compensation Calculator Calculator**
+- [ ] **Structured Settlement Payout Calculator Calculator**
+- [ ] **Surgical Error Settlement Calculator Calculator**
+- [ ] **Talcum Powder Settlement Calculator Calculator**
 
 ---
 
 ## 🏛️ Math & Science (19 calculators)
 
 ### Math Hub (19 calculators)
-- [x] **Algebra Calculator**
-- [x] **Algebra Calculator Calculator**
-- [x] **Calculus Calculator**
-- [x] **Calculus Calculator Calculator**
-- [x] **Combinatorics Calculator Calculator**
-- [x] **Complexnumber Calculator**
-- [x] **Complex Number Calculator Calculator**
-- [x] **Complex Numbers Calculator**
-- [x] **Geometry Calculator**
-- [x] **Geometry Calculator Calculator**
-- [x] **Graph Theory Calculator Calculator**
-- [x] **Matrix Calculator**
-- [x] **Matrix Calculator Calculator**
-- [x] **Number Theory Calculator Calculator**
-- [x] **Photography Cost Calculator Calculator**
-- [x] **Probability Calculator**
-- [x] **Probability Calculator Calculator**
-- [x] **Statistics Calculator**
-- [x] **Statistics Calculator Calculator**
+- [ ] **Algebra Calculator**
+- [ ] **Algebra Calculator Calculator**
+- [ ] **Calculus Calculator**
+- [ ] **Calculus Calculator Calculator**
+- [ ] **Combinatorics Calculator Calculator**
+- [ ] **Complexnumber Calculator**
+- [ ] **Complex Number Calculator Calculator**
+- [ ] **Complex Numbers Calculator**
+- [ ] **Geometry Calculator**
+- [ ] **Geometry Calculator Calculator**
+- [ ] **Graph Theory Calculator Calculator**
+- [ ] **Matrix Calculator**
+- [ ] **Matrix Calculator Calculator**
+- [ ] **Number Theory Calculator Calculator**
+- [ ] **Photography Cost Calculator Calculator**
+- [ ] **Probability Calculator**
+- [ ] **Probability Calculator Calculator**
+- [ ] **Statistics Calculator**
+- [ ] **Statistics Calculator Calculator**
 
 ---
 
 ## 🏛️ Construction & Industrial (18 calculators)
 
 ### Construction Hub (18 calculators)
-- [x] **Asphalt Calculator Calculator**
-- [x] **Brick Calculator Calculator**
-- [x] **Concrete Calculator**
-- [x] **Concrete Calculator Calculator**
-- [x] **Construction Accident Calculator Calculator**
-- [x] **Construction Accident Claims Calculator Calculator**
-- [x] **Drywall Calculator Calculator**
-- [x] **Flooring Calculator Calculator**
-- [x] **Flooring Installation Cost Calculator Calculator**
-- [x] **Industrial Warehouse Profitability Calculator**
-- [x] **Insulation Calculator Calculator**
-- [x] **Paint Calculator Calculator**
-- [x] **Painting Cost Calculator Calculator**
-- [x] **Roofing Calculator Calculator**
-- [x] **Roofing Repair Cost Calculator Calculator**
-- [x] **Siding Calculator Calculator**
-- [x] **Siding Repair Cost Calculator Calculator**
-- [x] **Tile Calculator Calculator**
+- [ ] **Asphalt Calculator Calculator**
+- [ ] **Brick Calculator Calculator**
+- [ ] **Concrete Calculator**
+- [ ] **Concrete Calculator Calculator**
+- [ ] **Construction Accident Calculator Calculator**
+- [ ] **Construction Accident Claims Calculator Calculator**
+- [ ] **Drywall Calculator Calculator**
+- [ ] **Flooring Calculator Calculator**
+- [ ] **Flooring Installation Cost Calculator Calculator**
+- [ ] **Industrial Warehouse Profitability Calculator**
+- [ ] **Insulation Calculator Calculator**
+- [ ] **Paint Calculator Calculator**
+- [ ] **Painting Cost Calculator Calculator**
+- [ ] **Roofing Calculator Calculator**
+- [ ] **Roofing Repair Cost Calculator Calculator**
+- [ ] **Siding Calculator Calculator**
+- [ ] **Siding Repair Cost Calculator Calculator**
+- [ ] **Tile Calculator Calculator**
 
 ---
 
 ## 🏛️ Lifestyle & Automotive (14 calculators)
 
 ### Lifestyle Hub (14 calculators)
-- [x] **Automotive Calculator**
-- [x] **Automotive Calculator Calculator**
-- [x] **Carpet Cleaning Cost Calculator Calculator**
-- [x] **Cooking Calculator**
-- [x] **Cooking Calculator Calculator**
-- [x] **Cooking Conversion Calculator Calculator**
-- [x] **Everyday Calculator**
-- [x] **Everyday Calculator Calculator**
-- [x] **Garden Calculator Calculator**
-- [x] **Garden Yield Calculator Calculator**
-- [x] **Hobbies Calculator**
-- [x] **Hobbies Calculator Calculator**
-- [x] **Non Compete Agreement Buyout Calculator Calculator**
-- [x] **Pet Care Calculator Calculator**
+- [ ] **Automotive Calculator**
+- [ ] **Automotive Calculator Calculator**
+- [ ] **Carpet Cleaning Cost Calculator Calculator**
+- [ ] **Cooking Calculator**
+- [ ] **Cooking Calculator Calculator**
+- [ ] **Cooking Conversion Calculator Calculator**
+- [ ] **Everyday Calculator**
+- [ ] **Everyday Calculator Calculator**
+- [ ] **Garden Calculator Calculator**
+- [ ] **Garden Yield Calculator Calculator**
+- [ ] **Hobbies Calculator**
+- [ ] **Hobbies Calculator Calculator**
+- [ ] **Non Compete Agreement Buyout Calculator Calculator**
+- [ ] **Pet Care Calculator Calculator**
 
 ---
 
 ## 🏛️ Health & Fitness (25 calculators)
 
 ### Health & Fitness Hub (25 calculators)
-- [x] **Basal Metabolic Rate Bmr Calculator Calculator**
-- [x] **Bmi Calculator Calculator**
-- [x] **Bmr Calculator**
-- [x] **Bmr Tdee Calculator**
-- [x] **Calorie Calculator**
-- [x] **Calorie Calculator Calculator**
-- [x] **Calorie Cycling Calculator Calculator**
-- [x] **Calorie Deficit Calculator Calculator**
-- [x] **Calories Burned Calculator Calculator**
-- [x] **Daily Calorie Calculator Calculator**
-- [x] **Dash Diet Calculator Calculator**
-- [x] **Financial Fitness Calculator Calculator**
-- [x] **Financial Health Calculator Calculator**
-- [x] **Fitness Age Calculator Calculator**
-- [x] **Fitness Calculator Calculator**
-- [x] **Fitness Class Cost Calculator Calculator**
-- [x] **Healthsavingsaccounthsa Calculator**
-- [x] **Health Savings Account Contribution Calculator Calculator**
-- [x] **Health Savings Account Hsa Calculator Calculator**
-- [x] **Mental Health Treatment Cost Calculator Calculator**
-- [x] **Modified Dietz Return Calculator Calculator**
-- [x] **Registercalorie Calculator**
-- [x] **Registerhealthsavingsaccounthsa Calculator**
-- [x] **Self Funded Health Plan Calculator Calculator**
-- [x] **Self Funded Health Plan Vs Fully Insured Calculator Calculator**
+- [ ] **Basal Metabolic Rate Bmr Calculator Calculator**
+- [ ] **Bmi Calculator Calculator**
+- [ ] **Bmr Calculator**
+- [ ] **Bmr Tdee Calculator**
+- [ ] **Calorie Calculator**
+- [ ] **Calorie Calculator Calculator**
+- [ ] **Calorie Cycling Calculator Calculator**
+- [ ] **Calorie Deficit Calculator Calculator**
+- [ ] **Calories Burned Calculator Calculator**
+- [ ] **Daily Calorie Calculator Calculator**
+- [ ] **Dash Diet Calculator Calculator**
+- [ ] **Financial Fitness Calculator Calculator**
+- [ ] **Financial Health Calculator Calculator**
+- [ ] **Fitness Age Calculator Calculator**
+- [ ] **Fitness Calculator Calculator**
+- [ ] **Fitness Class Cost Calculator Calculator**
+- [ ] **Healthsavingsaccounthsa Calculator**
+- [ ] **Health Savings Account Contribution Calculator Calculator**
+- [ ] **Health Savings Account Hsa Calculator Calculator**
+- [ ] **Mental Health Treatment Cost Calculator Calculator**
+- [ ] **Modified Dietz Return Calculator Calculator**
+- [ ] **Registercalorie Calculator**
+- [ ] **Registerhealthsavingsaccounthsa Calculator**
+- [ ] **Self Funded Health Plan Calculator Calculator**
+- [ ] **Self Funded Health Plan Vs Fully Insured Calculator Calculator**
 
 ---
 
 ## 📊 ACCURATE TOTALS
 
-**VERIFIED WORKING CALCULATORS: 1137**
-**INCOMPLETE CALCULATORS: 0**
-**TOTAL IMPLEMENTED: 1137**
+**VERIFIED WORKING CALCULATORS: 0**
+**INCOMPLETE CALCULATORS: 1272**
+**TOTAL IMPLEMENTED: 0**
 
-**REMAINING TO BUILD: 18**
+**REMAINING TO BUILD: 1272**</search>
 
 ---
 

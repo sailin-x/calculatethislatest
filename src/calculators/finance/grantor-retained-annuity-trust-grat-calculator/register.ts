@@ -1,7 +1,3 @@
-import { GrantorRetainedAnnuityTrustGratCalculator } from './GrantorRetainedAnnuityTrustGratCalculator';
+import { GrantorRetainedAnnuityTrustGratCalculatorCalculator } from './GrantorRetainedAnnuityTrustGratCalculatorCalculator';
 
-export { GrantorRetainedAnnuityTrustGratCalculator };
-
-export function registerGrantorRetainedAnnuityTrustGratCalculator(): void {
-  // Registration logic if needed
-}
+export { GrantorRetainedAnnuityTrustGratCalculatorCalculator };

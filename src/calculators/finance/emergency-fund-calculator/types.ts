@@ -1,27 +1,33 @@
 export interface EmergencyFundCalculatorInputs {
-  principalAmount: number;
-  interestRate: number;
-  timePeriod: number;
-  compoundingFrequency: number;
-}
-
-export interface EmergencyFundCalculatorMetrics {
-  totalAmount: number;
-  totalInterest: number;
-  monthlyPayment: number;
-  effectiveRate: number;
-}
-
-export interface EmergencyFundCalculatorAnalysis {
-  profitability: string;
-  riskLevel: string;
-  recommendations: string[];
+  // Define input properties based on the calculator's requirements
+  primaryInput: number;
+  secondaryInput?: number;
+  selectInput: string;
+  // Add more input properties as needed
+  optionalParameter?: string;
+  booleanFlag?: boolean;
 }
 
 export interface EmergencyFundCalculatorOutputs {
-  totalAmount: number;
-  totalInterest: number;
-  monthlyPayment: number;
-  effectiveRate: number;
-  analysis: EmergencyFundCalculatorAnalysis;
+  // Define output properties that the calculator will produce
+  primaryResult: number;
+  secondaryResult: number;
+  // Add more output properties as needed
+  percentageResult?: number;
+  textResult?: string;
+}
+
+export interface EmergencyFundCalculatorMetrics {
+  // Define intermediate calculation results or metrics
+  intermediateValue: number;
+  calculationSteps: string[];
+  riskLevel: 'Low' | 'Medium' | 'High';
+}
+
+export interface EmergencyFundCalculatorAnalysis {
+  // Define analysis results
+  recommendation: string;
+  riskLevel: 'Low' | 'Medium' | 'High';
+  insights: string[];
+  warnings: string[];
 }

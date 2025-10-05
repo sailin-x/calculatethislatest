@@ -1,51 +1,38 @@
 import { marketing-roi-calculatorInputs, marketing-roi-calculatorMetrics, marketing-roi-calculatorAnalysis } from './types';
 
-
-// Investment Calculator - ROI and growth calculations
-export function calculateROI(initialInvestment: number, finalValue: number): number {
-  return ((finalValue - initialInvestment) / initialInvestment) * 100;
+// ROI Calculator
+export function calculateROI(netProfit: number, investment: number): number {
+  return (netProfit / investment) * 100;
 }
 
-export function calculateCompoundInterest(principal: number, rate: number, years: number, compoundingFrequency: number = 12): number {
-  const ratePerPeriod = rate / 100 / compoundingFrequency;
-  const totalPeriods = years * compoundingFrequency;
-  return principal * Math.pow(1 + ratePerPeriod, totalPeriods);
+export function calculateNetProfit(revenue: number, costs: number): number {
+  return revenue - costs;
+}
+
+export function calculatePaybackPeriod(investment: number, annualCashFlow: number): number {
+  return investment / annualCashFlow;
 }
 
 export function calculateResult(inputs: marketing-roi-calculatorInputs): number {
-  // Use domain-specific calculations based on input properties
-  try {
-    // Try to match inputs to appropriate calculation
-    if ('principal' in inputs && 'annualRate' in inputs && 'years' in inputs) {
-      return calculateMonthlyPayment(inputs.principal, inputs.annualRate, inputs.years);
-    }
-    if ('initialInvestment' in inputs && 'finalValue' in inputs) {
-      return calculateROI(inputs.initialInvestment, inputs.finalValue);
-    }
-    if ('weightKg' in inputs && 'heightCm' in inputs) {
-      return calculateBMI(inputs.weightKg, inputs.heightCm);
-    }
-    if ('value' in inputs && 'percentage' in inputs) {
-      return calculatePercentage(inputs.value, inputs.percentage);
-    }
-    // Fallback to basic calculation
-    return inputs.value || inputs.amount || inputs.principal || 0;
-  } catch (error) {
-    console.warn('Calculation error:', error);
-    return 0;
+  if ('netProfit' in inputs && 'investment' in inputs) {
+    return calculateROI(inputs.netProfit, inputs.investment);
   }
+  if ('revenue' in inputs && 'costs' in inputs && 'investment' in inputs) {
+    const netProfit = calculateNetProfit(inputs.revenue, inputs.costs);
+    return calculateROI(netProfit, inputs.investment);
+  }
+  return 0;
 }
 
 export function generateAnalysis(inputs: marketing-roi-calculatorInputs, metrics: marketing-roi-calculatorMetrics): marketing-roi-calculatorAnalysis {
   const result = metrics.result;
-
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
-  if (Math.abs(result) > 100000) riskLevel = 'High';
-  else if (Math.abs(result) > 10000) riskLevel = 'Medium';
+  if (result < 10) riskLevel = 'High';
+  else if (result < 20) riskLevel = 'Medium';
 
-  const recommendation = result > 0 ?
-    'Calculation completed successfully - positive result' :
-    'Calculation completed - review inputs if result seems unexpected';
+  const recommendation = result >= 15 ?
+    'Strong ROI - investment appears profitable' :
+    'ROI below industry average - review costs and revenue projections';
 
   return { recommendation, riskLevel };
 }

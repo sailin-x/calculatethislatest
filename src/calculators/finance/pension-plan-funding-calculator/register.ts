@@ -1,8 +1,3 @@
-import { calculatorRegistry } from '../../../data/calculatorRegistry';
-import { PensionPlanFundingCalculator } from './PensionPlanFundingCalculator';
+import { PensionPlanFundingCalculatorCalculator } from './PensionPlanFundingCalculatorCalculator';
 
-export function registerPensionPlanFundingCalculator(): void {
-  calculatorRegistry.register(PensionPlanFundingCalculator);
-}
-
-export { PensionPlanFundingCalculator };
+export { PensionPlanFundingCalculatorCalculator };

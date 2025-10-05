@@ -1,6 +1,3 @@
-import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { svodstreamingcontentlicensingvaluationCalculator } from './svodstreamingcontentlicensingvaluationCalculator';
+import { SvodStreamingContentLicensingValuationCalculator } from './SvodStreamingContentLicensingValuationCalculator';
 
-export function registersvodstreamingcontentlicensingvaluationCalculator(): void {
-  calculatorRegistry.register(new svodstreamingcontentlicensingvaluationCalculator());
-}
+export { SvodStreamingContentLicensingValuationCalculator };

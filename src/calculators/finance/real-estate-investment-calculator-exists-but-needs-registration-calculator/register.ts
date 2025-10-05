@@ -1,0 +1,3 @@
+import { RealEstateInvestmentCalculatorExistsButNeedsRegistrationCalculatorCalculator } from './RealEstateInvestmentCalculatorExistsButNeedsRegistrationCalculatorCalculator';
+
+export { RealEstateInvestmentCalculatorExistsButNeedsRegistrationCalculatorCalculator };

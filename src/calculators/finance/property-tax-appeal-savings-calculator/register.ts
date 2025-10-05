@@ -1,6 +1,3 @@
-import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { propertytaxappealsavingscalculatorCalculator } from './propertytaxappealsavingscalculatorCalculator';
+import { PropertyTaxAppealSavingsCalculatorCalculator } from './PropertyTaxAppealSavingsCalculatorCalculator';
 
-export function registerpropertytaxappealsavingscalculatorCalculator(): void {
-  calculatorRegistry.register(new propertytaxappealsavingscalculatorCalculator());
-}
+export { PropertyTaxAppealSavingsCalculatorCalculator };

@@ -1,8 +1,3 @@
-import { calculatorRegistry } from '../../../data/calculatorRegistry';
-import { MarketingRoiCalculator } from './MarketingRoiCalculator';
+import { MarketingRoiCalculatorCalculator } from './MarketingRoiCalculatorCalculator';
 
-export function registerMarketingRoiCalculator(): void {
-  calculatorRegistry.register(MarketingRoiCalculator);
-}
-
-export { MarketingRoiCalculator };
+export { MarketingRoiCalculatorCalculator };

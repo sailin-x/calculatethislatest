@@ -1,53 +1,52 @@
 import { retirement-savings-calculatorInputs, retirement-savings-calculatorMetrics, retirement-savings-calculatorAnalysis } from './types';
 
+// Retirement Calculator
+export function calculateRetirementSavings(currentSavings: number, monthlyContribution: number, annualReturn: number, years: number): number {
+  const monthlyRate = annualReturn / 100 / 12;
+  const months = years * 12;
 
-// Generic Calculator - Basic mathematical operations
-export function calculatePercentage(value: number, percentage: number): number {
-  return value * (percentage / 100);
+  // Future value of current savings
+  const futureValueCurrent = currentSavings * Math.pow(1 + monthlyRate, months);
+
+  // Future value of monthly contributions
+  const futureValueContributions = monthlyContribution * ((Math.pow(1 + monthlyRate, months) - 1) / monthlyRate);
+
+  return futureValueCurrent + futureValueContributions;
 }
 
-export function calculatePercentageChange(oldValue: number, newValue: number): number {
-  return ((newValue - oldValue) / oldValue) * 100;
-}
+export function calculateRequiredMonthlyContribution(targetAmount: number, currentSavings: number, annualReturn: number, years: number): number {
+  const monthlyRate = annualReturn / 100 / 12;
+  const months = years * 12;
 
-export function calculateAverage(values: number[]): number {
-  return values.reduce((sum, val) => sum + val, 0) / values.length;
+  const futureValueCurrent = currentSavings * Math.pow(1 + monthlyRate, months);
+  const remainingAmount = targetAmount - futureValueCurrent;
+
+  if (remainingAmount <= 0) return 0;
+
+  return remainingAmount / ((Math.pow(1 + monthlyRate, months) - 1) / monthlyRate);
 }
 
 export function calculateResult(inputs: retirement-savings-calculatorInputs): number {
-  // Use domain-specific calculations based on input properties
-  try {
-    // Try to match inputs to appropriate calculation
-    if ('principal' in inputs && 'annualRate' in inputs && 'years' in inputs) {
-      return calculateMonthlyPayment(inputs.principal, inputs.annualRate, inputs.years);
-    }
-    if ('initialInvestment' in inputs && 'finalValue' in inputs) {
-      return calculateROI(inputs.initialInvestment, inputs.finalValue);
-    }
-    if ('weightKg' in inputs && 'heightCm' in inputs) {
-      return calculateBMI(inputs.weightKg, inputs.heightCm);
-    }
-    if ('value' in inputs && 'percentage' in inputs) {
-      return calculatePercentage(inputs.value, inputs.percentage);
-    }
-    // Fallback to basic calculation
-    return inputs.value || inputs.amount || inputs.principal || 0;
-  } catch (error) {
-    console.warn('Calculation error:', error);
-    return 0;
+  if ('currentSavings' in inputs && 'monthlyContribution' in inputs && 'expectedReturn' in inputs && 'yearsToRetirement' in inputs) {
+    return calculateRetirementSavings(
+      inputs.currentSavings,
+      inputs.monthlyContribution,
+      inputs.expectedReturn,
+      inputs.yearsToRetirement
+    );
   }
+  return 0;
 }
 
 export function generateAnalysis(inputs: retirement-savings-calculatorInputs, metrics: retirement-savings-calculatorMetrics): retirement-savings-calculatorAnalysis {
   const result = metrics.result;
-
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
-  if (Math.abs(result) > 100000) riskLevel = 'High';
-  else if (Math.abs(result) > 10000) riskLevel = 'Medium';
+  if (result < 500000) riskLevel = 'High';
+  else if (result < 1000000) riskLevel = 'Medium';
 
-  const recommendation = result > 0 ?
-    'Calculation completed successfully - positive result' :
-    'Calculation completed - review inputs if result seems unexpected';
+  const recommendation = result >= 1000000 ?
+    'On track for comfortable retirement' :
+    'Consider increasing contributions or extending retirement age';
 
   return { recommendation, riskLevel };
 }

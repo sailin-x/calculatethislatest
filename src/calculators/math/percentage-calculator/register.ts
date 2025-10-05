@@ -1,8 +1,3 @@
-import { calculatorRegistry } from '../../../data/calculatorRegistry';
-import { PercentageCalculator } from './PercentageCalculator';
+import { PercentageCalculatorCalculator } from './PercentageCalculatorCalculator';
 
-export function registerPercentageCalculator(): void {
-  calculatorRegistry.register(PercentageCalculator);
-}
-
-export { PercentageCalculator };
+export { PercentageCalculatorCalculator };

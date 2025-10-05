@@ -1,35 +1,33 @@
-export interface RetirementSavingsInputs {
-  currentAge: number;
-  retirementAge: number;
-  currentSavings: number;
-  monthlyContribution: number;
-  expectedReturn: number;
-  inflationRate: number;
-  retirementIncomeNeeded: number;
-  socialSecurityBenefit: number;
-  taxBracket: number;
-  contributionFrequency: 'monthly' | 'annual';
-  accountType: 'traditional_ira' | 'roth_ira' | '401k' | 'taxable';
-  employerMatch: number;
-  employerMatchLimit: number;
+export interface RetirementSavingsCalculatorInputs {
+  // Define input properties based on the calculator's requirements
+  primaryInput: number;
+  secondaryInput?: number;
+  selectInput: string;
+  // Add more input properties as needed
+  optionalParameter?: string;
+  booleanFlag?: boolean;
 }
 
-export interface RetirementSavingsResults {
-  totalSavingsAtRetirement: number;
-  monthlySavingsNeeded: number;
-  annualSavingsNeeded: number;
-  savingsGap: number;
-  yearsToRetirement: number;
-  retirementReadinessScore: number;
-  projectedAnnualIncome: number;
-  replacementRatio: number;
-  savingsStrategy: string;
+export interface RetirementSavingsCalculatorOutputs {
+  // Define output properties that the calculator will produce
+  primaryResult: number;
+  secondaryResult: number;
+  // Add more output properties as needed
+  percentageResult?: number;
+  textResult?: string;
 }
 
-export interface RetirementSavingsMetrics {
-  savingsRate: number;
-  investmentEfficiency: number;
-  riskLevel: 'low' | 'medium' | 'high';
-  timeHorizon: number;
-  goalAchievement: 'behind' | 'on_track' | 'ahead';
+export interface RetirementSavingsCalculatorMetrics {
+  // Define intermediate calculation results or metrics
+  intermediateValue: number;
+  calculationSteps: string[];
+  riskLevel: 'Low' | 'Medium' | 'High';
+}
+
+export interface RetirementSavingsCalculatorAnalysis {
+  // Define analysis results
+  recommendation: string;
+  riskLevel: 'Low' | 'Medium' | 'High';
+  insights: string[];
+  warnings: string[];
 }

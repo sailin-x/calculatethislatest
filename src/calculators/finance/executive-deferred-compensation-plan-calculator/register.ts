@@ -1,9 +1,3 @@
-import { calculatorRegistry } from '../../../data/calculatorRegistry';
-import { executiveDeferredCompensationCalculator } from './ExecutiveDeferredCompensationCalculator';
+import { ExecutiveDeferredCompensationPlanCalculatorCalculator } from './ExecutiveDeferredCompensationPlanCalculatorCalculator';
 
-/**
- * Register the Executive Deferred Compensation Calculator
- */
-export function registerExecutiveDeferredCompensationCalculator(): void {
-  calculatorRegistry.register(executiveDeferredCompensationCalculator);
-}
+export { ExecutiveDeferredCompensationPlanCalculatorCalculator };

@@ -1,6 +1,5 @@
-export { fixedIndexAnnuityCalculator } from './FixedIndexAnnuityCalculator';
-export { registerFixedIndexAnnuityCalculator } from './register';
+export { FixedIndexAnnuityCalculatorCalculator } from './FixedIndexAnnuityCalculatorCalculator';
+export * from './types';
 export * from './formulas';
 export * from './validation';
 export * from './quickValidation';
-export * from './types';

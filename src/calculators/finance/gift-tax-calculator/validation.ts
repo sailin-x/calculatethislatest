@@ -3,42 +3,33 @@ import { GiftTaxCalculatorInputs } from './types';
 export function validateGiftTaxCalculatorInputs(inputs: GiftTaxCalculatorInputs): Array<{ field: string; message: string }> {
   const errors: Array<{ field: string; message: string }> = [];
 
-  // Gift Amount Validation
-  if (!inputs.giftAmount || inputs.giftAmount <= 0) {
-    errors.push({ field: 'giftAmount', message: 'Gift amount must be greater than 0' });
+  // Primary Input Validation
+  if (!inputs.primaryInput || inputs.primaryInput <= 0) {
+    errors.push({ field: 'primaryInput', message: 'Primary input must be greater than 0' });
   }
-  if (inputs.giftAmount && inputs.giftAmount > 100000000) {
-    errors.push({ field: 'giftAmount', message: 'Gift amount cannot exceed $100,000,000' });
-  }
-
-  // Annual Exclusion Used Validation
-  if (inputs.annualExclusionUsed < 0) {
-    errors.push({ field: 'annualExclusionUsed', message: 'Annual exclusion used cannot be negative' });
-  }
-  if (inputs.annualExclusionUsed > 18400) {
-    errors.push({ field: 'annualExclusionUsed', message: 'Annual exclusion used cannot exceed the current annual exclusion limit' });
+  if (inputs.primaryInput && inputs.primaryInput > 1000000) {
+    errors.push({ field: 'primaryInput', message: 'Primary input cannot exceed 1,000,000' });
   }
 
-  // Lifetime Exclusion Used Validation
-  if (inputs.lifetimeExclusionUsed < 0) {
-    errors.push({ field: 'lifetimeExclusionUsed', message: 'Lifetime exclusion used cannot be negative' });
-  }
-  if (inputs.lifetimeExclusionUsed > 13470000) {
-    errors.push({ field: 'lifetimeExclusionUsed', message: 'Lifetime exclusion used cannot exceed the current lifetime exclusion limit' });
+  // Secondary Input Validation (if provided)
+  if (inputs.secondaryInput !== undefined && inputs.secondaryInput < 0) {
+    errors.push({ field: 'secondaryInput', message: 'Secondary input cannot be negative' });
   }
 
-  // Gift Tax Rate Validation
-  if (!inputs.giftTaxRate || inputs.giftTaxRate <= 0) {
-    errors.push({ field: 'giftTaxRate', message: 'Gift tax rate must be greater than 0' });
-  }
-  if (inputs.giftTaxRate > 100) {
-    errors.push({ field: 'giftTaxRate', message: 'Gift tax rate cannot exceed 100%' });
+  // Select Input Validation
+  const validOptions = ['option1', 'option2'];
+  if (!inputs.selectInput || !validOptions.includes(inputs.selectInput)) {
+    errors.push({ field: 'selectInput', message: 'Please select a valid option' });
   }
 
-  // Relationship Validation
-  const validRelationships = ['spouse', 'child', 'grandchild', 'other'];
-  if (!inputs.relationship || !validRelationships.includes(inputs.relationship)) {
-    errors.push({ field: 'relationship', message: 'Please select a valid relationship' });
+  // Cross-field Validation
+  if (inputs.secondaryInput && inputs.primaryInput && inputs.secondaryInput > inputs.primaryInput) {
+    errors.push({ field: 'secondaryInput', message: 'Secondary input cannot exceed primary input' });
+  }
+
+  // Optional Parameter Validation
+  if (inputs.optionalParameter && inputs.optionalParameter.length > 100) {
+    errors.push({ field: 'optionalParameter', message: 'Optional parameter cannot exceed 100 characters' });
   }
 
   return errors;
@@ -47,46 +38,27 @@ export function validateGiftTaxCalculatorInputs(inputs: GiftTaxCalculatorInputs)
 export function validateGiftTaxCalculatorBusinessRules(inputs: GiftTaxCalculatorInputs): Array<{ field: string; message: string }> {
   const warnings: Array<{ field: string; message: string }> = [];
 
-  // Warning for large gifts that may trigger tax
-  if (inputs.giftAmount > 18400 && !inputs.isAnnualExclusion && !inputs.isLifetimeExclusion) {
-    warnings.push({
-      field: 'giftAmount',
-      message: 'Large gift without applying exclusions will likely be subject to gift tax'
-    });
+  // Business Rule Warnings
+  if (inputs.primaryInput && inputs.primaryInput > 500000) {
+    warnings.push({ field: 'primaryInput', message: 'High primary input values may require additional review' });
   }
 
-  // Warning for spousal gifts (generally unlimited)
-  if (inputs.relationship === 'spouse' && inputs.giftTaxRate > 0) {
-    warnings.push({
-      field: 'relationship',
-      message: 'Spousal gifts are generally unlimited and tax-free under federal law'
-    });
+  // Ratio-based Warnings
+  if (inputs.secondaryInput && inputs.primaryInput) {
+    const ratio = inputs.secondaryInput / inputs.primaryInput;
+    if (ratio > 0.8) {
+      warnings.push({ field: 'secondaryInput', message: 'Secondary input is very high relative to primary input' });
+    }
   }
 
-  // Warning for exceeding annual exclusion
-  const remainingAnnual = 18400 - inputs.annualExclusionUsed;
-  if (inputs.isAnnualExclusion && inputs.giftAmount > remainingAnnual) {
-    warnings.push({
-      field: 'giftAmount',
-      message: `Gift exceeds remaining annual exclusion ($${remainingAnnual.toLocaleString()})`
-    });
+  // Option-specific Warnings
+  if (inputs.selectInput === 'option2' && inputs.primaryInput && inputs.primaryInput < 100) {
+    warnings.push({ field: 'selectInput', message: 'Option 2 may not be suitable for low primary input values' });
   }
 
-  // Warning for significant lifetime exclusion usage
-  const remainingLifetime = 13470000 - inputs.lifetimeExclusionUsed;
-  if (inputs.isLifetimeExclusion && inputs.giftAmount > remainingLifetime) {
-    warnings.push({
-      field: 'giftAmount',
-      message: `Gift exceeds remaining lifetime exclusion ($${remainingLifetime.toLocaleString()})`
-    });
-  }
-
-  // Warning for gifts that use significant portion of lifetime exemption
-  if (inputs.isLifetimeExclusion && inputs.giftAmount > 13470000 * 0.1) {
-    warnings.push({
-      field: 'giftAmount',
-      message: 'Large gift will significantly reduce remaining lifetime exemption'
-    });
+  // Threshold Warnings
+  if (inputs.primaryInput && inputs.primaryInput > 10000) {
+    warnings.push({ field: 'primaryInput', message: 'Consider consulting with financial experts for high-value calculations' });
   }
 
   return warnings;

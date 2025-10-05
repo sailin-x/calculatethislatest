@@ -1,6 +1,3 @@
-import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { celebrityendorsementdealvaluationCalculator } from './celebrityendorsementdealvaluationCalculator';
+import { CelebrityEndorsementDealValuationCalculator } from './CelebrityEndorsementDealValuationCalculator';
 
-export function registercelebrityendorsementdealvaluationCalculator(): void {
-  calculatorRegistry.register(new celebrityendorsementdealvaluationCalculator());
-}
+export { CelebrityEndorsementDealValuationCalculator };

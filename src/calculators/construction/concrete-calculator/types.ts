@@ -1,23 +1,33 @@
 export interface ConcreteCalculatorInputs {
-  inputValue: number;
-  operationType: string;
-  precision: number;
-}
-
-export interface ConcreteCalculatorMetrics {
-  result: number;
-  calculationSteps: string[];
-  accuracy: number;
-}
-
-export interface ConcreteCalculatorAnalysis {
-  complexity: string;
-  efficiency: string;
-  recommendations: string[];
+  // Define input properties based on the calculator's requirements
+  primaryInput: number;
+  secondaryInput?: number;
+  selectInput: string;
+  // Add more input properties as needed
+  optionalParameter?: string;
+  booleanFlag?: boolean;
 }
 
 export interface ConcreteCalculatorOutputs {
-  result: number;
+  // Define output properties that the calculator will produce
+  primaryResult: number;
+  secondaryResult: number;
+  // Add more output properties as needed
+  percentageResult?: number;
+  textResult?: string;
+}
+
+export interface ConcreteCalculatorMetrics {
+  // Define intermediate calculation results or metrics
+  intermediateValue: number;
   calculationSteps: string[];
-  analysis: ConcreteCalculatorAnalysis;
+  riskLevel: 'Low' | 'Medium' | 'High';
+}
+
+export interface ConcreteCalculatorAnalysis {
+  // Define analysis results
+  recommendation: string;
+  riskLevel: 'Low' | 'Medium' | 'High';
+  insights: string[];
+  warnings: string[];
 }

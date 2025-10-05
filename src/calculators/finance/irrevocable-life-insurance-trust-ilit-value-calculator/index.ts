@@ -1,4 +1,4 @@
-export { IrrevocableLifeInsuranceTrustIlitValueCalculator } from './IrrevocableLifeInsuranceTrustIlitValueCalculator';
+export { IrrevocableLifeInsuranceTrustIlitValueCalculatorCalculator } from './IrrevocableLifeInsuranceTrustIlitValueCalculatorCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

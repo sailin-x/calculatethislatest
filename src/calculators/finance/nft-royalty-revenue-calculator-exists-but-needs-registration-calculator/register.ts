@@ -1,0 +1,3 @@
+import { NftRoyaltyRevenueCalculatorExistsButNeedsRegistrationCalculatorCalculator } from './NftRoyaltyRevenueCalculatorExistsButNeedsRegistrationCalculatorCalculator';
+
+export { NftRoyaltyRevenueCalculatorExistsButNeedsRegistrationCalculatorCalculator };

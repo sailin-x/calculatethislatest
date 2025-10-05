@@ -1,6 +1,5 @@
-export { realEstateTaxDeductionsCalculator } from './RealEstateTaxDeductionsCalculator';
-export { registerRealEstateTaxDeductionsCalculator } from './register';
+export { RealEstateTaxDeductionsCalculatorCalculator } from './RealEstateTaxDeductionsCalculatorCalculator';
+export * from './types';
 export * from './formulas';
 export * from './validation';
 export * from './quickValidation';
-export * from './types';

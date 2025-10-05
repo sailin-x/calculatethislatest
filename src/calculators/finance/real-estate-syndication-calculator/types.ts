@@ -1,39 +1,33 @@
-export interface RealEstateSyndicationInputs {
-  totalProjectCost: number;
-  sponsorEquity: number;
-  investorEquity: number;
-  loanAmount: number;
-  totalUnits: number;
-  averageRentPerUnit: number;
-  vacancyRate: number;
-  operatingExpensesRate: number;
-  capRate: number;
-  holdingPeriodYears: number;
-  sponsorProfitSplit: number;
-  investorProfitSplit: number;
-  preferredReturn: number;
-  promoteStructure: 'straight' | 'waterfall';
-  promotePercentage: number;
+export interface RealEstateSyndicationCalculatorInputs {
+  // Define input properties based on the calculator's requirements
+  primaryInput: number;
+  secondaryInput?: number;
+  selectInput: string;
+  // Add more input properties as needed
+  optionalParameter?: string;
+  booleanFlag?: boolean;
 }
 
-export interface RealEstateSyndicationResults {
-  totalEquity: number;
-  sponsorEquityPercentage: number;
-  investorEquityPercentage: number;
-  loanToValueRatio: number;
-  grossAnnualRent: number;
-  effectiveGrossIncome: number;
-  netOperatingIncome: number;
-  debtServiceCoverageRatio: number;
-  exitValue: number;
-  totalCashFlow: number;
-  sponsorCashFlow: number;
-  investorCashFlow: number;
-  internalRateOfReturn: number;
-  equityMultiple: number;
-  cashOnCashReturn: number;
-  sponsorIRR: number;
-  investorIRR: number;
-  totalSponsorProfit: number;
-  totalInvestorProfit: number;
+export interface RealEstateSyndicationCalculatorOutputs {
+  // Define output properties that the calculator will produce
+  primaryResult: number;
+  secondaryResult: number;
+  // Add more output properties as needed
+  percentageResult?: number;
+  textResult?: string;
+}
+
+export interface RealEstateSyndicationCalculatorMetrics {
+  // Define intermediate calculation results or metrics
+  intermediateValue: number;
+  calculationSteps: string[];
+  riskLevel: 'Low' | 'Medium' | 'High';
+}
+
+export interface RealEstateSyndicationCalculatorAnalysis {
+  // Define analysis results
+  recommendation: string;
+  riskLevel: 'Low' | 'Medium' | 'High';
+  insights: string[];
+  warnings: string[];
 }

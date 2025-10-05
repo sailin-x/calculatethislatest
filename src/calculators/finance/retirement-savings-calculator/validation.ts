@@ -1,102 +1,65 @@
-import { ValidationRule } from '../../../types/calculator';
-import { ValidationRuleFactory } from '../../../utils/validation';
+import { RetirementSavingsCalculatorInputs } from './types';
 
-/**
- * Retirement Savings validation rules
- */
-export const retirementSavingsValidationRules: ValidationRule[] = [
-  // Required fields
-  ValidationRuleFactory.required('currentAge', 'Current age is required'),
-  ValidationRuleFactory.required('retirementAge', 'Retirement age is required'),
-  ValidationRuleFactory.required('currentSavings', 'Current savings is required'),
-  ValidationRuleFactory.required('monthlyContribution', 'Monthly contribution is required'),
-  ValidationRuleFactory.required('expectedReturn', 'Expected return is required'),
-  ValidationRuleFactory.required('retirementIncomeNeeded', 'Retirement income needed is required'),
-  ValidationRuleFactory.required('taxBracket', 'Tax bracket is required'),
-  ValidationRuleFactory.required('contributionFrequency', 'Contribution frequency is required'),
-  ValidationRuleFactory.required('accountType', 'Account type is required'),
+export function validateRetirementSavingsCalculatorInputs(inputs: RetirementSavingsCalculatorInputs): Array<{ field: string; message: string }> {
+  const errors: Array<{ field: string; message: string }> = [];
 
-  // Value validations
-  ValidationRuleFactory.range('currentAge', 18, 120, 'Current age must be between 18 and 120'),
-  ValidationRuleFactory.range('retirementAge', 50, 120, 'Retirement age must be between 50 and 120'),
-  ValidationRuleFactory.range('currentSavings', 0, 10000000, 'Current savings must be between $0 and $10,000,000'),
-  ValidationRuleFactory.range('monthlyContribution', 0, 10000, 'Monthly contribution must be between $0 and $10,000'),
-  ValidationRuleFactory.range('expectedReturn', -20, 50, 'Expected return must be between -20% and 50%'),
-  ValidationRuleFactory.range('inflationRate', -10, 20, 'Inflation rate must be between -10% and 20%'),
-  ValidationRuleFactory.range('retirementIncomeNeeded', 0, 500000, 'Retirement income needed must be between $0 and $500,000'),
-  ValidationRuleFactory.range('socialSecurityBenefit', 0, 50000, 'Social Security benefit must be between $0 and $50,000'),
-  ValidationRuleFactory.range('taxBracket', 0, 50, 'Tax bracket must be between 0% and 50%'),
-  ValidationRuleFactory.range('employerMatch', 0, 100, 'Employer match must be between 0% and 100%'),
-  ValidationRuleFactory.range('employerMatchLimit', 0, 20000, 'Employer match limit must be between $0 and $20,000'),
+  // Primary Input Validation
+  if (!inputs.primaryInput || inputs.primaryInput <= 0) {
+    errors.push({ field: 'primaryInput', message: 'Primary input must be greater than 0' });
+  }
+  if (inputs.primaryInput && inputs.primaryInput > 1000000) {
+    errors.push({ field: 'primaryInput', message: 'Primary input cannot exceed 1,000,000' });
+  }
 
-  // Business logic validations
-  ValidationRuleFactory.businessRule(
-    'retirementAge',
-    (retirementAge, allInputs) => {
-      if (!allInputs?.currentAge) return true;
-      return retirementAge > allInputs.currentAge;
-    },
-    'Retirement age must be greater than current age'
-  ),
+  // Secondary Input Validation (if provided)
+  if (inputs.secondaryInput !== undefined && inputs.secondaryInput < 0) {
+    errors.push({ field: 'secondaryInput', message: 'Secondary input cannot be negative' });
+  }
 
-  ValidationRuleFactory.businessRule(
-    'retirementIncomeNeeded',
-    (retirementIncomeNeeded, allInputs) => {
-      if (!allInputs?.socialSecurityBenefit) return true;
-      return retirementIncomeNeeded > allInputs.socialSecurityBenefit;
-    },
-    'Retirement income needed should typically exceed Social Security benefits'
-  ),
+  // Select Input Validation
+  const validOptions = ['option1', 'option2'];
+  if (!inputs.selectInput || !validOptions.includes(inputs.selectInput)) {
+    errors.push({ field: 'selectInput', message: 'Please select a valid option' });
+  }
 
-  ValidationRuleFactory.businessRule(
-    'monthlyContribution',
-    (monthlyContribution, allInputs) => {
-      if (!allInputs?.accountType) return true;
+  // Cross-field Validation
+  if (inputs.secondaryInput && inputs.primaryInput && inputs.secondaryInput > inputs.primaryInput) {
+    errors.push({ field: 'secondaryInput', message: 'Secondary input cannot exceed primary input' });
+  }
 
-      // Different contribution limits for different account types
-      if (allInputs.accountType === '401k' && monthlyContribution > 2300) {
-        return false; // 2024 401k limit is $23,000 annually
-      }
-      if (allInputs.accountType === 'traditional_ira' && monthlyContribution > 167) {
-        return false; // 2024 IRA limit is $7,000 annually
-      }
-      return monthlyContribution >= 0;
-    },
-    'Monthly contribution exceeds IRS limits for the selected account type'
-  ),
+  // Optional Parameter Validation
+  if (inputs.optionalParameter && inputs.optionalParameter.length > 100) {
+    errors.push({ field: 'optionalParameter', message: 'Optional parameter cannot exceed 100 characters' });
+  }
 
-  ValidationRuleFactory.businessRule(
-    'employerMatch',
-    (employerMatch, allInputs) => {
-      if (!allInputs?.accountType) return true;
+  return errors;
+}
 
-      // Employer match only applies to workplace plans
-      if (allInputs.accountType === '401k' || allInputs.accountType === '403b') {
-        return employerMatch >= 0 && employerMatch <= 100;
-      }
-      return employerMatch === 0; // No employer match for IRAs
-    },
-    'Employer match only applies to workplace retirement plans'
-  ),
+export function validateRetirementSavingsCalculatorBusinessRules(inputs: RetirementSavingsCalculatorInputs): Array<{ field: string; message: string }> {
+  const warnings: Array<{ field: string; message: string }> = [];
 
-  ValidationRuleFactory.businessRule(
-    'taxBracket',
-    (taxBracket, allInputs) => {
-      if (!allInputs?.accountType) return true;
+  // Business Rule Warnings
+  if (inputs.primaryInput && inputs.primaryInput > 500000) {
+    warnings.push({ field: 'primaryInput', message: 'High primary input values may require additional review' });
+  }
 
-      // Different tax implications for different account types
-      if (allInputs.accountType === 'roth_ira') {
-        return true; // Roth accounts have different tax treatment
-      }
-      return taxBracket >= 0 && taxBracket <= 50;
-    },
-    'Tax bracket validation based on account type'
-  )
-];
+  // Ratio-based Warnings
+  if (inputs.secondaryInput && inputs.primaryInput) {
+    const ratio = inputs.secondaryInput / inputs.primaryInput;
+    if (ratio > 0.8) {
+      warnings.push({ field: 'secondaryInput', message: 'Secondary input is very high relative to primary input' });
+    }
+  }
 
-/**
- * Get validation rules for Retirement Savings calculator
- */
-export function getRetirementSavingsValidationRules(): ValidationRule[] {
-  return retirementSavingsValidationRules;
+  // Option-specific Warnings
+  if (inputs.selectInput === 'option2' && inputs.primaryInput && inputs.primaryInput < 100) {
+    warnings.push({ field: 'selectInput', message: 'Option 2 may not be suitable for low primary input values' });
+  }
+
+  // Threshold Warnings
+  if (inputs.primaryInput && inputs.primaryInput > 10000) {
+    warnings.push({ field: 'primaryInput', message: 'Consider consulting with financial experts for high-value calculations' });
+  }
+
+  return warnings;
 }

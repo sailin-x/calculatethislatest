@@ -1,4 +1,4 @@
-export { AlgebraCalculator } from './AlgebraCalculator';
+export { AlgebraCalculatorCalculator } from './AlgebraCalculatorCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

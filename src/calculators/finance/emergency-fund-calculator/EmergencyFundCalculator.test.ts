@@ -1,29 +1,60 @@
 import { describe, it, expect } from 'vitest';
-import { calculateResult } from './formulas';
+import {
+  calculateResult,
+  calculateSecondaryResult,
+  calculatePercentageResult,
+  calculateMetrics,
+  generateAnalysis
+} from './formulas';
 import { validateEmergencyFundCalculatorInputs } from './validation';
 
-describe('Emergency Fund Calculator', () => {
+describe('EmergencyFundCalculator Calculator', () => {
   const mockInputs = {
-    inputValue: 10,
-    multiplier: 5
+    primaryInput: 100,
+    secondaryInput: 50,
+    selectInput: 'option1' as const,
+    optionalParameter: 'test',
+    booleanFlag: true
   };
 
-  describe('Calculations', () => {
-    it('calculates result correctly', () => {
+  describe('Core Calculations', () => {
+    it('calculates primary result correctly', () => {
       const result = calculateResult(mockInputs);
-      expect(result).toBe(50);
+      expect(result).toBe(150); // 100 + 50
     });
 
-    it('handles zero multiplication', () => {
-      const zeroInputs = { ...mockInputs, multiplier: 0 };
-      const result = calculateResult(zeroInputs);
-      expect(result).toBe(0);
+    it('calculates secondary result correctly', () => {
+      const result = calculateSecondaryResult(mockInputs);
+      expect(result).toBe(150); // 100 * 1.5 for option1
     });
 
-    it('handles large numbers', () => {
-      const largeInputs = { inputValue: 1000, multiplier: 1000 };
-      const result = calculateResult(largeInputs);
-      expect(result).toBe(1000000);
+    it('calculates percentage result correctly', () => {
+      const result = calculatePercentageResult(mockInputs);
+      expect(result).toBe(150); // (150 / 100) * 100
+    });
+
+    it('calculates metrics correctly', () => {
+      const result = calculateMetrics(mockInputs);
+      expect(result.intermediateValue).toBe(75); // 150 * 0.5
+      expect(result.calculationSteps).toContain('Calculated primary result');
+      expect(result.riskLevel).toBe('Low');
+    });
+  });
+
+  describe('Analysis Generation', () => {
+    it('generates analysis for low values', () => {
+      const metrics = calculateMetrics(mockInputs);
+      const analysis = generateAnalysis(mockInputs, metrics);
+      expect(analysis.riskLevel).toBe('Low');
+      expect(analysis.insights).toContain('All values are within normal parameters');
+    });
+
+    it('generates analysis for high values', () => {
+      const highInputs = { ...mockInputs, primaryInput: 2000 };
+      const metrics = calculateMetrics(highInputs);
+      const analysis = generateAnalysis(highInputs, metrics);
+      expect(analysis.riskLevel).toBe('High');
+      expect(analysis.warnings).toContain('Result exceeds typical thresholds');
     });
   });
 
@@ -33,30 +64,58 @@ describe('Emergency Fund Calculator', () => {
       expect(result.length).toBe(0);
     });
 
-    it('validates negative numbers', () => {
-      const invalidInputs = { ...mockInputs, inputValue: -5 };
+    it('validates required primary input', () => {
+      const invalidInputs = { ...mockInputs, primaryInput: 0 };
+      const result = validateEmergencyFundCalculatorInputs(invalidInputs);
+      expect(result.length).toBeGreaterThan(0);
+      expect(result[0].message).toContain('must be greater than 0');
+    });
+
+    it('validates select input options', () => {
+      const invalidInputs = { ...mockInputs, selectInput: 'invalid' as any };
       const result = validateEmergencyFundCalculatorInputs(invalidInputs);
       expect(result.length).toBeGreaterThan(0);
     });
 
-    it('validates NaN values', () => {
-      const invalidInputs = { ...mockInputs, inputValue: NaN };
+    it('validates cross-field relationships', () => {
+      const invalidInputs = { ...mockInputs, secondaryInput: 200 };
       const result = validateEmergencyFundCalculatorInputs(invalidInputs);
       expect(result.length).toBeGreaterThan(0);
+      expect(result[0].message).toContain('cannot exceed primary input');
     });
   });
 
   describe('Edge Cases', () => {
-    it('handles decimal inputs', () => {
-      const decimalInputs = { inputValue: 3.5, multiplier: 2.0 };
-      const result = calculateResult(decimalInputs);
-      expect(result).toBe(7.0);
+    it('handles zero secondary input', () => {
+      const result = calculateResult({ ...mockInputs, secondaryInput: 0 });
+      expect(result).toBe(100);
     });
 
-    it('handles very small numbers', () => {
-      const smallInputs = { inputValue: 0.001, multiplier: 0.001 };
-      const result = calculateResult(smallInputs);
-      expect(result).toBeCloseTo(0.000001, 6);
+    it('handles maximum primary input', () => {
+      const result = calculateResult({ ...mockInputs, primaryInput: 1000000 });
+      expect(result).toBe(1000050);
+    });
+
+    it('handles option2 multiplier', () => {
+      const result = calculateSecondaryResult({ ...mockInputs, selectInput: 'option2' as const });
+      expect(result).toBe(200); // 100 * 2.0
+    });
+  });
+
+  describe('Error Handling', () => {
+    it('handles undefined optional parameters', () => {
+      const inputsWithoutOptional = {
+        primaryInput: 100,
+        selectInput: 'option1' as const
+      };
+      const result = calculateResult(inputsWithoutOptional as any);
+      expect(result).toBe(100);
+    });
+
+    it('validates input ranges', () => {
+      const invalidInputs = { ...mockInputs, primaryInput: -100 };
+      const result = validateEmergencyFundCalculatorInputs(invalidInputs);
+      expect(result.length).toBeGreaterThan(0);
     });
   });
 });

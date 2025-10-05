@@ -1,5 +1,4 @@
-export { itoutsourcingvsinhousecostbenefitanalysisCalculator } from './itoutsourcingvsinhousecostbenefitanalysisCalculator';
-export { registeritoutsourcingvsinhousecostbenefitanalysisCalculator } from './register';
+export { ItOutsourcingVsInhouseCostbenefitAnalysisCalculator } from './ItOutsourcingVsInhouseCostbenefitAnalysisCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

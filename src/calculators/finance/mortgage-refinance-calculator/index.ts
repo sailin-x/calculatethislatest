@@ -1,4 +1,4 @@
-export { MortgageRefinanceCalculator } from './MortgageRefinanceCalculator';
+export { MortgageRefinanceCalculatorCalculator } from './MortgageRefinanceCalculatorCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

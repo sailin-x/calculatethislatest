@@ -1,156 +1,65 @@
-import { ValidationRule } from '../../../types/calculator';
-import { ValidationRuleFactory } from '../../../utils/validation';
+import { PropertyTaxProrationCalculatorInputs } from './types';
 
-/**
- * Comprehensive property tax proration calculator validation rules
- */
-export const propertyTaxValidationRules: ValidationRule[] = [
-  // Required fields based on calculation type
-  ValidationRuleFactory.businessRule(
-    'calculationType',
-    (calculationType) => {
-      const validTypes = [
-        'proration', 'from_assessed_value', 'appeal_savings',
-        'escrow', 'assessment_change', 'tax_cap', 'comprehensive'
-      ];
-      return validTypes.includes(calculationType);
-    },
-    'Please select a valid calculation type'
-  ),
+export function validatePropertyTaxProrationCalculatorInputs(inputs: PropertyTaxProrationCalculatorInputs): Array<{ field: string; message: string }> {
+  const errors: Array<{ field: string; message: string }> = [];
 
-  // Annual property tax validation
-  ValidationRuleFactory.businessRule(
-    'annualPropertyTax',
-    (annualPropertyTax, allInputs) => {
-      if (!annualPropertyTax) return true; // Optional for some calculation types
-      const numValue = Number(annualPropertyTax);
-      return !isNaN(numValue) && numValue >= 0 && numValue <= 1000000;
-    },
-    'Annual property tax must be between $0 and $1,000,000'
-  ),
+  // Primary Input Validation
+  if (!inputs.primaryInput || inputs.primaryInput <= 0) {
+    errors.push({ field: 'primaryInput', message: 'Primary input must be greater than 0' });
+  }
+  if (inputs.primaryInput && inputs.primaryInput > 1000000) {
+    errors.push({ field: 'primaryInput', message: 'Primary input cannot exceed 1,000,000' });
+  }
 
-  // Sale price validation
-  ValidationRuleFactory.businessRule(
-    'salePrice',
-    (salePrice) => {
-      if (!salePrice) return true;
-      const numValue = Number(salePrice);
-      return !isNaN(numValue) && numValue > 0 && numValue <= 100000000;
-    },
-    'Sale price must be between $1 and $100,000,000'
-  ),
+  // Secondary Input Validation (if provided)
+  if (inputs.secondaryInput !== undefined && inputs.secondaryInput < 0) {
+    errors.push({ field: 'secondaryInput', message: 'Secondary input cannot be negative' });
+  }
 
-  // Date validations
-  ValidationRuleFactory.businessRule(
-    'closingDate',
-    (closingDate, allInputs) => {
-      if (!closingDate || !allInputs?.taxYearStart || !allInputs?.taxYearEnd) return true;
-      const closing = new Date(closingDate);
-      const start = new Date(allInputs.taxYearStart);
-      const end = new Date(allInputs.taxYearEnd);
-      return closing >= start && closing <= end;
-    },
-    'Closing date must be within the tax year period'
-  ),
+  // Select Input Validation
+  const validOptions = ['option1', 'option2'];
+  if (!inputs.selectInput || !validOptions.includes(inputs.selectInput)) {
+    errors.push({ field: 'selectInput', message: 'Please select a valid option' });
+  }
 
-  // Assessed value validation
-  ValidationRuleFactory.businessRule(
-    'assessedValue',
-    (assessedValue) => {
-      if (!assessedValue) return true;
-      const numValue = Number(assessedValue);
-      return !isNaN(numValue) && numValue >= 0 && numValue <= 100000000;
-    },
-    'Assessed value must be between $0 and $100,000,000'
-  ),
+  // Cross-field Validation
+  if (inputs.secondaryInput && inputs.primaryInput && inputs.secondaryInput > inputs.primaryInput) {
+    errors.push({ field: 'secondaryInput', message: 'Secondary input cannot exceed primary input' });
+  }
 
-  // Millage rate validation
-  ValidationRuleFactory.businessRule(
-    'millageRate',
-    (millageRate) => {
-      if (!millageRate) return true;
-      const numValue = Number(millageRate);
-      return !isNaN(numValue) && numValue >= 0 && numValue <= 500;
-    },
-    'Millage rate must be between 0 and 500 mills'
-  ),
+  // Optional Parameter Validation
+  if (inputs.optionalParameter && inputs.optionalParameter.length > 100) {
+    errors.push({ field: 'optionalParameter', message: 'Optional parameter cannot exceed 100 characters' });
+  }
 
-  // Appeal validation
-  ValidationRuleFactory.businessRule(
-    'currentAssessedValue',
-    (currentAssessedValue, allInputs) => {
-      if (!currentAssessedValue || !allInputs?.appealedAssessedValue) return true;
-      return Number(currentAssessedValue) >= Number(allInputs.appealedAssessedValue);
-    },
-    'Appealed value cannot exceed current assessed value'
-  ),
+  return errors;
+}
 
-  // Success probability validation
-  ValidationRuleFactory.businessRule(
-    'successProbability',
-    (successProbability) => {
-      if (!successProbability) return true;
-      const numValue = Number(successProbability);
-      return !isNaN(numValue) && numValue >= 0 && numValue <= 100;
-    },
-    'Success probability must be between 0% and 100%'
-  ),
+export function validatePropertyTaxProrationCalculatorBusinessRules(inputs: PropertyTaxProrationCalculatorInputs): Array<{ field: string; message: string }> {
+  const warnings: Array<{ field: string; message: string }> = [];
 
-  // Escrow validation
-  ValidationRuleFactory.businessRule(
-    'escrowMonths',
-    (escrowMonths) => {
-      if (!escrowMonths) return true;
-      const numValue = Number(escrowMonths);
-      return !isNaN(numValue) && numValue >= 1 && numValue <= 24;
-    },
-    'Escrow months must be between 1 and 24'
-  ),
+  // Business Rule Warnings
+  if (inputs.primaryInput && inputs.primaryInput > 500000) {
+    warnings.push({ field: 'primaryInput', message: 'High primary input values may require additional review' });
+  }
 
-  // Assessment change validation
-  ValidationRuleFactory.businessRule(
-    'previousAssessedValue',
-    (previousAssessedValue, allInputs) => {
-      if (!previousAssessedValue || !allInputs?.newAssessedValue) return true;
-      return Number(previousAssessedValue) >= 0;
-    },
-    'Previous assessed value cannot be negative'
-  ),
+  // Ratio-based Warnings
+  if (inputs.secondaryInput && inputs.primaryInput) {
+    const ratio = inputs.secondaryInput / inputs.primaryInput;
+    if (ratio > 0.8) {
+      warnings.push({ field: 'secondaryInput', message: 'Secondary input is very high relative to primary input' });
+    }
+  }
 
-  // Tax cap validation
-  ValidationRuleFactory.businessRule(
-    'taxCapPercentage',
-    (taxCapPercentage) => {
-      if (!taxCapPercentage) return true;
-      const numValue = Number(taxCapPercentage);
-      return !isNaN(numValue) && numValue >= 0 && numValue <= 100;
-    },
-    'Tax cap percentage must be between 0% and 100%'
-  ),
+  // Option-specific Warnings
+  if (inputs.selectInput === 'option2' && inputs.primaryInput && inputs.primaryInput < 100) {
+    warnings.push({ field: 'selectInput', message: 'Option 2 may not be suitable for low primary input values' });
+  }
 
-  // Cross-field validations
-  ValidationRuleFactory.businessRule(
-    'exemptions',
-    (exemptions, allInputs) => {
-      if (!exemptions || !allInputs?.assessedValue) return true;
-      return Number(exemptions) <= Number(allInputs.assessedValue);
-    },
-    'Exemptions cannot exceed assessed value'
-  ),
+  // Threshold Warnings
+  if (inputs.primaryInput && inputs.primaryInput > 10000) {
+    warnings.push({ field: 'primaryInput', message: 'Consider consulting with financial experts for high-value calculations' });
+  }
 
-  ValidationRuleFactory.businessRule(
-    'portabilityAmount',
-    (portabilityAmount, allInputs) => {
-      if (!portabilityAmount || !allInputs?.newAssessedValue) return true;
-      return Number(portabilityAmount) <= Number(allInputs.newAssessedValue);
-    },
-    'Portability amount cannot exceed new assessed value'
-  )
-];
-
-/**
- * Get validation rules with contextual help messages
- */
-export function getPropertyTaxValidationRules(): ValidationRule[] {
-  return propertyTaxValidationRules;
+  return warnings;
 }

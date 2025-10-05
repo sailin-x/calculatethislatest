@@ -1,9 +1,3 @@
-import { calculatorRegistry } from '../../../data/calculatorRegistry';
-import { estateTaxLiabilityCalculator } from './EstateTaxLiabilityCalculator';
+import { EstateTaxLiabilityCalculatorCalculator } from './EstateTaxLiabilityCalculatorCalculator';
 
-/**
- * Register the Estate Tax Liability Calculator
- */
-export function registerEstateTaxLiabilityCalculator(): void {
-  calculatorRegistry.register(estateTaxLiabilityCalculator);
-}
+export { EstateTaxLiabilityCalculatorCalculator };

@@ -1,62 +1,64 @@
-import { GenerationSkippingTransferGstTaxCalculatorInputs } from './types';
+import { GenerationskippingTransferGstTaxCalculatorInputs } from './types';
 
-export function validateGenerationSkippingTransferGstTaxCalculatorInputs(inputs: GenerationSkippingTransferGstTaxCalculatorInputs): Array<{ field: string; message: string }> {
+export function validateGenerationskippingTransferGstTaxCalculatorInputs(inputs: GenerationskippingTransferGstTaxCalculatorInputs): Array<{ field: string; message: string }> {
   const errors: Array<{ field: string; message: string }> = [];
 
-  // Transfer Amount Validation
-  if (!inputs.transferAmount || inputs.transferAmount <= 0) {
-    errors.push({ field: 'transferAmount', message: 'Transfer amount must be greater than 0' });
+  // Primary Input Validation
+  if (!inputs.primaryInput || inputs.primaryInput <= 0) {
+    errors.push({ field: 'primaryInput', message: 'Primary input must be greater than 0' });
   }
-  if (inputs.transferAmount && inputs.transferAmount > 100000000) {
-    errors.push({ field: 'transferAmount', message: 'Transfer amount cannot exceed $100,000,000' });
-  }
-
-  // GST Exemption Used Validation
-  if (inputs.gstExemptionUsed < 0) {
-    errors.push({ field: 'gstExemptionUsed', message: 'GST exemption used cannot be negative' });
-  }
-  if (inputs.gstExemptionUsed > 13610000) {
-    errors.push({ field: 'gstExemptionUsed', message: 'GST exemption used cannot exceed the current exemption limit' });
+  if (inputs.primaryInput && inputs.primaryInput > 1000000) {
+    errors.push({ field: 'primaryInput', message: 'Primary input cannot exceed 1,000,000' });
   }
 
-  // GST Tax Rate Validation
-  if (!inputs.gstTaxRate || inputs.gstTaxRate <= 0) {
-    errors.push({ field: 'gstTaxRate', message: 'GST tax rate must be greater than 0' });
+  // Secondary Input Validation (if provided)
+  if (inputs.secondaryInput !== undefined && inputs.secondaryInput < 0) {
+    errors.push({ field: 'secondaryInput', message: 'Secondary input cannot be negative' });
   }
-  if (inputs.gstTaxRate > 100) {
-    errors.push({ field: 'gstTaxRate', message: 'GST tax rate cannot exceed 100%' });
+
+  // Select Input Validation
+  const validOptions = ['option1', 'option2'];
+  if (!inputs.selectInput || !validOptions.includes(inputs.selectInput)) {
+    errors.push({ field: 'selectInput', message: 'Please select a valid option' });
+  }
+
+  // Cross-field Validation
+  if (inputs.secondaryInput && inputs.primaryInput && inputs.secondaryInput > inputs.primaryInput) {
+    errors.push({ field: 'secondaryInput', message: 'Secondary input cannot exceed primary input' });
+  }
+
+  // Optional Parameter Validation
+  if (inputs.optionalParameter && inputs.optionalParameter.length > 100) {
+    errors.push({ field: 'optionalParameter', message: 'Optional parameter cannot exceed 100 characters' });
   }
 
   return errors;
 }
 
-export function validateGenerationSkippingTransferGstTaxCalculatorBusinessRules(inputs: GenerationSkippingTransferGstTaxCalculatorInputs): Array<{ field: string; message: string }> {
+export function validateGenerationskippingTransferGstTaxCalculatorBusinessRules(inputs: GenerationskippingTransferGstTaxCalculatorInputs): Array<{ field: string; message: string }> {
   const warnings: Array<{ field: string; message: string }> = [];
 
-  // Large transfer warnings
-  if (inputs.transferAmount > 13610000) {
-    warnings.push({ field: 'transferAmount', message: 'Transfer exceeds GST exemption - will be subject to GST tax' });
+  // Business Rule Warnings
+  if (inputs.primaryInput && inputs.primaryInput > 500000) {
+    warnings.push({ field: 'primaryInput', message: 'High primary input values may require additional review' });
   }
 
-  // Exemption utilization warnings
-  const remainingExemption = 13610000 - inputs.gstExemptionUsed;
-  if (remainingExemption < inputs.transferAmount && remainingExemption > 0) {
-    warnings.push({ field: 'gstExemptionUsed', message: 'Partial exemption available - portion of transfer will be taxable' });
+  // Ratio-based Warnings
+  if (inputs.secondaryInput && inputs.primaryInput) {
+    const ratio = inputs.secondaryInput / inputs.primaryInput;
+    if (ratio > 0.8) {
+      warnings.push({ field: 'secondaryInput', message: 'Secondary input is very high relative to primary input' });
+    }
   }
 
-  // Direct skip warnings
-  if (inputs.isDirectSkip) {
-    warnings.push({ field: 'isDirectSkip', message: 'Direct skip transfers are immediately taxable - consider trust structures' });
+  // Option-specific Warnings
+  if (inputs.selectInput === 'option2' && inputs.primaryInput && inputs.primaryInput < 100) {
+    warnings.push({ field: 'selectInput', message: 'Option 2 may not be suitable for low primary input values' });
   }
 
-  // Trust distribution warnings
-  if (inputs.isTrustDistribution) {
-    warnings.push({ field: 'isTrustDistribution', message: 'Trust distributions may trigger GST tax depending on trust structure' });
-  }
-
-  // Relationship-based warnings
-  if (inputs.relationship === 'other-descendant') {
-    warnings.push({ field: 'relationship', message: 'Verify that recipient qualifies as a skip person under GST rules' });
+  // Threshold Warnings
+  if (inputs.primaryInput && inputs.primaryInput > 10000) {
+    warnings.push({ field: 'primaryInput', message: 'Consider consulting with financial experts for high-value calculations' });
   }
 
   return warnings;

@@ -1,4 +1,4 @@
-export { CalculusCalculator } from './CalculusCalculator';
+export { CalculusCalculatorCalculator } from './CalculusCalculatorCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

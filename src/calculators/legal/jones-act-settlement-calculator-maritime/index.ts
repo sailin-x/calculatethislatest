@@ -1,5 +1,4 @@
-export { jonesactsettlementcalculatormaritimeCalculator } from './jonesactsettlementcalculatormaritimeCalculator';
-export { registerjonesactsettlementcalculatormaritimeCalculator } from './register';
+export { JonesActSettlementCalculatorMaritimeCalculator } from './JonesActSettlementCalculatorMaritimeCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

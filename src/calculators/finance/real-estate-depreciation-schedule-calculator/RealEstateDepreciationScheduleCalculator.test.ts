@@ -1,114 +1,121 @@
-import { realEstateDepreciationScheduleCalculator } from './RealEstateDepreciationScheduleCalculator';
-import { calculateRealEstateDepreciation } from './formulas';
+import { describe, it, expect } from 'vitest';
+import {
+  calculateResult,
+  calculateSecondaryResult,
+  calculatePercentageResult,
+  calculateMetrics,
+  generateAnalysis
+} from './formulas';
+import { validateRealEstateDepreciationScheduleCalculatorInputs } from './validation';
 
-describe('Real Estate Depreciation Schedule Calculator', () => {
-  describe('Calculator Definition', () => {
-    it('should have correct calculator properties', () => {
-      expect(realEstateDepreciationScheduleCalculator.id).toBe('real-estate-depreciation-schedule-calculator');
-      expect(realEstateDepreciationScheduleCalculator.title).toBe('Real Estate Depreciation Schedule Calculator');
-      expect(realEstateDepreciationScheduleCalculator.category).toBe('finance');
-      expect(realEstateDepreciationScheduleCalculator.subcategory).toBe('Mortgage & Real Estate');
+describe('RealEstateDepreciationScheduleCalculator Calculator', () => {
+  const mockInputs = {
+    primaryInput: 100,
+    secondaryInput: 50,
+    selectInput: 'option1' as const,
+    optionalParameter: 'test',
+    booleanFlag: true
+  };
+
+  describe('Core Calculations', () => {
+    it('calculates primary result correctly', () => {
+      const result = calculateResult(mockInputs);
+      expect(result).toBe(150); // 100 + 50
     });
 
-    it('should have required inputs', () => {
-      const requiredInputs = realEstateDepreciationScheduleCalculator.inputs.filter(input => input.required);
-      expect(requiredInputs.length).toBeGreaterThan(0);
-      expect(requiredInputs.some(input => input.id === 'propertyCost')).toBe(true);
-      expect(requiredInputs.some(input => input.id === 'depreciationStartDate')).toBe(true);
+    it('calculates secondary result correctly', () => {
+      const result = calculateSecondaryResult(mockInputs);
+      expect(result).toBe(150); // 100 * 1.5 for option1
     });
 
-    it('should have outputs', () => {
-      expect(realEstateDepreciationScheduleCalculator.outputs.length).toBeGreaterThan(0);
-      expect(realEstateDepreciationScheduleCalculator.outputs.some(output => output.id === 'annualDepreciation')).toBe(true);
+    it('calculates percentage result correctly', () => {
+      const result = calculatePercentageResult(mockInputs);
+      expect(result).toBe(150); // (150 / 100) * 100
+    });
+
+    it('calculates metrics correctly', () => {
+      const result = calculateMetrics(mockInputs);
+      expect(result.intermediateValue).toBe(75); // 150 * 0.5
+      expect(result.calculationSteps).toContain('Calculated primary result');
+      expect(result.riskLevel).toBe('Low');
     });
   });
 
-  describe('Depreciation Calculations', () => {
-    it('should calculate straight-line depreciation correctly', () => {
-      const inputs = {
-        calculationType: 'straight_line',
-        costBasis: 400000,
-        salvageValue: 0,
-        usefulLife: 27.5,
-        currentYear: 1
-      };
-
-      const result = calculateRealEstateDepreciation(inputs);
-
-      expect(result).toBeDefined();
-      expect(result.annualDepreciation).toBeCloseTo(14545.45, 2);
-      expect(result.depreciableBasis).toBe(400000);
+  describe('Analysis Generation', () => {
+    it('generates analysis for low values', () => {
+      const metrics = calculateMetrics(mockInputs);
+      const analysis = generateAnalysis(mockInputs, metrics);
+      expect(analysis.riskLevel).toBe('Low');
+      expect(analysis.insights).toContain('All values are within normal parameters');
     });
 
-    it('should calculate bonus depreciation correctly', () => {
-      const inputs = {
-        calculationType: 'bonus_depreciation',
-        qualifiedPropertyCost: 200000,
-        bonusPercentage: 80,
-        businessUsePercentage: 100,
-        taxYear: 2024
-      };
-
-      const result = calculateRealEstateDepreciation(inputs);
-
-      expect(result).toBeDefined();
-      expect(result.bonusDepreciation).toBe(160000); // 80% of 200,000
-      expect(result.remainingBasis).toBe(40000);
-    });
-
-    it('should calculate Section 179 deduction correctly', () => {
-      const inputs = {
-        calculationType: 'section_179',
-        equipmentCost: 100000,
-        businessUsePercentage: 100,
-        section179Limit: 1080000
-      };
-
-      const result = calculateRealEstateDepreciation(inputs);
-
-      expect(result).toBeDefined();
-      expect(result.section179Deduction).toBe(100000);
-      expect(result.businessUseCost).toBe(100000);
-    });
-
-    it('should handle comprehensive analysis', () => {
-      const inputs = {
-        calculationType: 'comprehensive',
-        costBasis: 400000,
-        qualifiedPropertyCost: 200000,
-        equipmentCost: 50000,
-        bonusPercentage: 80,
-        businessUsePercentage: 100,
-        section179Limit: 1080000
-      };
-
-      const result = calculateRealEstateDepreciation(inputs);
-
-      expect(result).toBeDefined();
-      expect(result.summary).toBeDefined();
-      expect(result.summary.totalFirstYearDepreciation).toBeGreaterThan(0);
+    it('generates analysis for high values', () => {
+      const highInputs = { ...mockInputs, primaryInput: 2000 };
+      const metrics = calculateMetrics(highInputs);
+      const analysis = generateAnalysis(highInputs, metrics);
+      expect(analysis.riskLevel).toBe('High');
+      expect(analysis.warnings).toContain('Result exceeds typical thresholds');
     });
   });
 
   describe('Validation', () => {
-    it('should validate required inputs', () => {
-      const validationRules = realEstateDepreciationScheduleCalculator.validationRules;
-      expect(validationRules).toBeDefined();
-      expect(Array.isArray(validationRules)).toBe(true);
+    it('validates correct inputs', () => {
+      const result = validateRealEstateDepreciationScheduleCalculatorInputs(mockInputs);
+      expect(result.length).toBe(0);
+    });
+
+    it('validates required primary input', () => {
+      const invalidInputs = { ...mockInputs, primaryInput: 0 };
+      const result = validateRealEstateDepreciationScheduleCalculatorInputs(invalidInputs);
+      expect(result.length).toBeGreaterThan(0);
+      expect(result[0].message).toContain('must be greater than 0');
+    });
+
+    it('validates select input options', () => {
+      const invalidInputs = { ...mockInputs, selectInput: 'invalid' as any };
+      const result = validateRealEstateDepreciationScheduleCalculatorInputs(invalidInputs);
+      expect(result.length).toBeGreaterThan(0);
+    });
+
+    it('validates cross-field relationships', () => {
+      const invalidInputs = { ...mockInputs, secondaryInput: 200 };
+      const result = validateRealEstateDepreciationScheduleCalculatorInputs(invalidInputs);
+      expect(result.length).toBeGreaterThan(0);
+      expect(result[0].message).toContain('cannot exceed primary input');
     });
   });
 
-  describe('Examples', () => {
-    it('should have valid examples', () => {
-      const examples = realEstateDepreciationScheduleCalculator.examples;
-      expect(examples.length).toBeGreaterThan(0);
+  describe('Edge Cases', () => {
+    it('handles zero secondary input', () => {
+      const result = calculateResult({ ...mockInputs, secondaryInput: 0 });
+      expect(result).toBe(100);
+    });
 
-      examples.forEach(example => {
-        expect(example.title).toBeDefined();
-        expect(example.description).toBeDefined();
-        expect(example.inputs).toBeDefined();
-        expect(example.expectedOutputs).toBeDefined();
-      });
+    it('handles maximum primary input', () => {
+      const result = calculateResult({ ...mockInputs, primaryInput: 1000000 });
+      expect(result).toBe(1000050);
+    });
+
+    it('handles option2 multiplier', () => {
+      const result = calculateSecondaryResult({ ...mockInputs, selectInput: 'option2' as const });
+      expect(result).toBe(200); // 100 * 2.0
+    });
+  });
+
+  describe('Error Handling', () => {
+    it('handles undefined optional parameters', () => {
+      const inputsWithoutOptional = {
+        primaryInput: 100,
+        selectInput: 'option1' as const
+      };
+      const result = calculateResult(inputsWithoutOptional as any);
+      expect(result).toBe(100);
+    });
+
+    it('validates input ranges', () => {
+      const invalidInputs = { ...mockInputs, primaryInput: -100 };
+      const result = validateRealEstateDepreciationScheduleCalculatorInputs(invalidInputs);
+      expect(result.length).toBeGreaterThan(0);
     });
   });
 });

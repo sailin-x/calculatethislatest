@@ -1,53 +1,32 @@
 import { concrete-calculatorInputs, concrete-calculatorMetrics, concrete-calculatorAnalysis } from './types';
 
-
-// Generic Calculator - Basic mathematical operations
-export function calculatePercentage(value: number, percentage: number): number {
-  return value * (percentage / 100);
+// Concrete Calculator
+export function calculateVolume(length: number, width: number, depth: number): number {
+  return length * width * depth;
 }
 
-export function calculatePercentageChange(oldValue: number, newValue: number): number {
-  return ((newValue - oldValue) / oldValue) * 100;
+export function calculateConcreteNeeded(volume: number, wasteFactor: number = 1.1): number {
+  return volume * wasteFactor;
 }
 
-export function calculateAverage(values: number[]): number {
-  return values.reduce((sum, val) => sum + val, 0) / values.length;
+export function calculateCost(volume: number, costPerCubicUnit: number): number {
+  return volume * costPerCubicUnit;
 }
 
 export function calculateResult(inputs: concrete-calculatorInputs): number {
-  // Use domain-specific calculations based on input properties
-  try {
-    // Try to match inputs to appropriate calculation
-    if ('principal' in inputs && 'annualRate' in inputs && 'years' in inputs) {
-      return calculateMonthlyPayment(inputs.principal, inputs.annualRate, inputs.years);
-    }
-    if ('initialInvestment' in inputs && 'finalValue' in inputs) {
-      return calculateROI(inputs.initialInvestment, inputs.finalValue);
-    }
-    if ('weightKg' in inputs && 'heightCm' in inputs) {
-      return calculateBMI(inputs.weightKg, inputs.heightCm);
-    }
-    if ('value' in inputs && 'percentage' in inputs) {
-      return calculatePercentage(inputs.value, inputs.percentage);
-    }
-    // Fallback to basic calculation
-    return inputs.value || inputs.amount || inputs.principal || 0;
-  } catch (error) {
-    console.warn('Calculation error:', error);
-    return 0;
+  if ('length' in inputs && 'width' in inputs && 'depth' in inputs) {
+    return calculateVolume(inputs.length, inputs.width, inputs.depth);
   }
+  return 0;
 }
 
 export function generateAnalysis(inputs: concrete-calculatorInputs, metrics: concrete-calculatorMetrics): concrete-calculatorAnalysis {
   const result = metrics.result;
-
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
-  if (Math.abs(result) > 100000) riskLevel = 'High';
-  else if (Math.abs(result) > 10000) riskLevel = 'Medium';
+  if (result > 100) riskLevel = 'High';
+  else if (result > 50) riskLevel = 'Medium';
 
-  const recommendation = result > 0 ?
-    'Calculation completed successfully - positive result' :
-    'Calculation completed - review inputs if result seems unexpected';
+  const recommendation = 'Concrete volume calculated. Include waste factor and verify measurements on site.';
 
   return { recommendation, riskLevel };
 }

@@ -1,4 +1,5 @@
-export { propertyTaxProrationCalculator } from './PropertyTaxProrationCalculator';
-export { calculatePropertyTax } from './formulas';
-export { getPropertyTaxValidationRules } from './validation';
+export { PropertyTaxProrationCalculatorCalculator } from './PropertyTaxProrationCalculatorCalculator';
+export * from './types';
+export * from './formulas';
+export * from './validation';
 export * from './quickValidation';

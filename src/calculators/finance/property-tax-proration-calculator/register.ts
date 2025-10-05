@@ -1,8 +1,3 @@
-import { PropertyTaxProrationCalculator } from './PropertyTaxProrationCalculator.ts';
+import { PropertyTaxProrationCalculatorCalculator } from './PropertyTaxProrationCalculatorCalculator';
 
-export const finance_property_tax_proration_calculatorRegistration = {
-  id: 'finance/property-tax-proration-calculator',
-  category: 'finance',
-  subcategory: 'Property Tax Proration Calculator',
-  calculator: PropertyTaxProrationCalculator,
-};
+export { PropertyTaxProrationCalculatorCalculator };

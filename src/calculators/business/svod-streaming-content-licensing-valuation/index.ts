@@ -1,5 +1,4 @@
-export { svodstreamingcontentlicensingvaluationCalculator } from './svodstreamingcontentlicensingvaluationCalculator';
-export { registersvodstreamingcontentlicensingvaluationCalculator } from './register';
+export { SvodStreamingContentLicensingValuationCalculator } from './SvodStreamingContentLicensingValuationCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

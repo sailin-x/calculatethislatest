@@ -1,126 +1,65 @@
-import { IRAInputs } from './types';
+import { IraCalculatorInputs } from './types';
 
-/**
- * Validate IRA inputs
- */
-export function validateIRAInputs(inputs: IRAInputs): { isValid: boolean; errors: string[] } {
-  const errors: string[] = [];
+export function validateIraCalculatorInputs(inputs: IraCalculatorInputs): Array<{ field: string; message: string }> {
+  const errors: Array<{ field: string; message: string }> = [];
 
-  // Basic validation
-  if (inputs.currentBalance < 0) {
-    errors.push('Current balance cannot be negative');
+  // Primary Input Validation
+  if (!inputs.primaryInput || inputs.primaryInput <= 0) {
+    errors.push({ field: 'primaryInput', message: 'Primary input must be greater than 0' });
+  }
+  if (inputs.primaryInput && inputs.primaryInput > 1000000) {
+    errors.push({ field: 'primaryInput', message: 'Primary input cannot exceed 1,000,000' });
   }
 
-  if (inputs.annualContribution < 0) {
-    errors.push('Annual contribution cannot be negative');
+  // Secondary Input Validation (if provided)
+  if (inputs.secondaryInput !== undefined && inputs.secondaryInput < 0) {
+    errors.push({ field: 'secondaryInput', message: 'Secondary input cannot be negative' });
   }
 
-  if (inputs.expectedReturnRate < -10 || inputs.expectedReturnRate > 25) {
-    errors.push('Expected return rate must be between -10% and 25%');
+  // Select Input Validation
+  const validOptions = ['option1', 'option2'];
+  if (!inputs.selectInput || !validOptions.includes(inputs.selectInput)) {
+    errors.push({ field: 'selectInput', message: 'Please select a valid option' });
   }
 
-  // Age validation
-  if (inputs.currentAge < 18 || inputs.currentAge > 70) {
-    errors.push('Current age must be between 18 and 70');
+  // Cross-field Validation
+  if (inputs.secondaryInput && inputs.primaryInput && inputs.secondaryInput > inputs.primaryInput) {
+    errors.push({ field: 'secondaryInput', message: 'Secondary input cannot exceed primary input' });
   }
 
-  if (inputs.retirementAge <= inputs.currentAge || inputs.retirementAge > 100) {
-    errors.push('Retirement age must be greater than current age and less than 100');
+  // Optional Parameter Validation
+  if (inputs.optionalParameter && inputs.optionalParameter.length > 100) {
+    errors.push({ field: 'optionalParameter', message: 'Optional parameter cannot exceed 100 characters' });
   }
 
-  // Contribution years validation
-  if (inputs.yearsToContribute < 0 || inputs.yearsToContribute > 50) {
-    errors.push('Years to contribute must be between 0 and 50');
-  }
-
-  // Tax rate validation
-  if (inputs.currentTaxRate !== undefined && (inputs.currentTaxRate < 0 || inputs.currentTaxRate > 50)) {
-    errors.push('Current tax rate must be between 0% and 50%');
-  }
-
-  if (inputs.expectedRetirementTaxRate !== undefined && (inputs.expectedRetirementTaxRate < 0 || inputs.expectedRetirementTaxRate > 50)) {
-    errors.push('Expected retirement tax rate must be between 0% and 50%');
-  }
-
-  // Roth IRA specific validation
-  if (inputs.iraType === 'roth') {
-    if (inputs.currentIncome !== undefined && inputs.currentIncome < 0) {
-      errors.push('Current income cannot be negative');
-    }
-
-    if (inputs.contributionLimit !== undefined && inputs.contributionLimit < 0) {
-      errors.push('Contribution limit cannot be negative');
-    }
-  }
-
-  // Inflation rate validation
-  if (inputs.inflationRate !== undefined && (inputs.inflationRate < 0 || inputs.inflationRate > 10)) {
-    errors.push('Inflation rate must be between 0% and 10%');
-  }
-
-  // Business logic validation
-  const yearsToRetirement = inputs.retirementAge - inputs.currentAge;
-  if (inputs.yearsToContribute > yearsToRetirement) {
-    errors.push('Years to contribute cannot exceed years to retirement');
-  }
-
-  // IRA type specific validation
-  if (inputs.iraType === 'traditional' && inputs.includeRequiredMinimumDistributions) {
-    if (inputs.currentAge >= 72) {
-      // RMD rules apply
-    }
-  }
-
-  return {
-    isValid: errors.length === 0,
-    errors
-  };
+  return errors;
 }
 
-/**
- * Get validation rules for the IRA calculator
- */
-export function getIRAValidationRules() {
-  return [
-    {
-      field: 'currentBalance',
-      type: 'range' as const,
-      message: 'Current balance must be non-negative',
-      validator: (value: any) => value >= 0
-    },
-    {
-      field: 'annualContribution',
-      type: 'range' as const,
-      message: 'Annual contribution must be non-negative',
-      validator: (value: any) => value >= 0
-    },
-    {
-      field: 'expectedReturnRate',
-      type: 'range' as const,
-      message: 'Expected return rate must be between -10% and 25%',
-      validator: (value: any) => value >= -10 && value <= 25
-    },
-    {
-      field: 'currentAge',
-      type: 'range' as const,
-      message: 'Current age must be between 18 and 70',
-      validator: (value: any) => value >= 18 && value <= 70
-    },
-    {
-      field: 'retirementAge',
-      type: 'business' as const,
-      message: 'Retirement age must be greater than current age',
-      validator: (retirementAge: any, allInputs: any) =>
-        retirementAge > (allInputs?.currentAge || 0)
-    },
-    {
-      field: 'yearsToContribute',
-      type: 'business' as const,
-      message: 'Years to contribute cannot exceed years to retirement',
-      validator: (yearsToContribute: any, allInputs: any) => {
-        const yearsToRetirement = (allInputs?.retirementAge || 0) - (allInputs?.currentAge || 0);
-        return yearsToContribute <= yearsToRetirement;
-      }
+export function validateIraCalculatorBusinessRules(inputs: IraCalculatorInputs): Array<{ field: string; message: string }> {
+  const warnings: Array<{ field: string; message: string }> = [];
+
+  // Business Rule Warnings
+  if (inputs.primaryInput && inputs.primaryInput > 500000) {
+    warnings.push({ field: 'primaryInput', message: 'High primary input values may require additional review' });
+  }
+
+  // Ratio-based Warnings
+  if (inputs.secondaryInput && inputs.primaryInput) {
+    const ratio = inputs.secondaryInput / inputs.primaryInput;
+    if (ratio > 0.8) {
+      warnings.push({ field: 'secondaryInput', message: 'Secondary input is very high relative to primary input' });
     }
-  ];
+  }
+
+  // Option-specific Warnings
+  if (inputs.selectInput === 'option2' && inputs.primaryInput && inputs.primaryInput < 100) {
+    warnings.push({ field: 'selectInput', message: 'Option 2 may not be suitable for low primary input values' });
+  }
+
+  // Threshold Warnings
+  if (inputs.primaryInput && inputs.primaryInput > 10000) {
+    warnings.push({ field: 'primaryInput', message: 'Consider consulting with financial experts for high-value calculations' });
+  }
+
+  return warnings;
 }

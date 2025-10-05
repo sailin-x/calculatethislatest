@@ -1,134 +1,69 @@
 import { Calculator } from '../../types/calculator';
 import { EmergencyFundCalculatorInputs, EmergencyFundCalculatorOutputs } from './types';
 import {
-  calculateTotalAmount,
-  calculateTotalInterest,
-  calculateMonthlyPayment,
-  calculateEffectiveRate,
-  generateAnalysis
+  // Import calculation functions from formulas.ts
+  calculateResult,
+  calculateSecondaryResult,
+  // Add other formula imports as needed
 } from './formulas';
-import { validateEmergencyFundCalculatorInputs } from './validation';
+import { validateEmergencyFundCalculatorInputs, validateEmergencyFundCalculatorBusinessRules } from './validation';
 
-export const EmergencyFundCalculator: Calculator = {
-  id: 'emergency-fund-calculator',
-  title: 'Emergency Fund Calculator',
-  category: 'finance',
-  subcategory: 'Financial Planning',
-  description: 'Calculate optimal emergency fund size',
+export const EmergencyFundCalculatorCalculator: Calculator: Calculator = {
+  id: 'emergency-fund-calculator-calculator',
+  title: 'Emergency Fund Calculator Calculator',
+  finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
+  subfinance: 'Subfinance Name',
+  description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [
-    'Enter the principal amount to invest',
-    'Specify the expected interest rate',
-    'Set the time period in years',
-    'Choose compounding frequency',
-    'Review the calculated returns and analysis'
+    'Step 1: Enter the primary input values',
+    'Step 2: Configure any optional parameters',
+    'Step 3: Review the calculated results',
+    'Step 4: Adjust inputs as needed for different scenarios'
   ],
 
   inputs: [
     {
-      id: 'principalAmount',
-      label: 'Principal Amount ($)',
-      type: 'currency',
-      required: true,
-      min: 0,
-      tooltip: 'Initial investment amount'
+        "id": "input1",
+        "label": "Input 1",
+        "type": "number",
+        "required": true,
+        "min": 0,
+        "tooltip": "Primary input value"
     },
     {
-      id: 'interestRate',
-      label: 'Interest Rate (%)',
-      type: 'percentage',
-      required: true,
-      min: 0,
-      max: 50,
-      tooltip: 'Annual interest rate'
-    },
-    {
-      id: 'timePeriod',
-      label: 'Time Period (Years)',
-      type: 'number',
-      required: true,
-      min: 1,
-      max: 50,
-      tooltip: 'Investment duration in years'
-    },
-    {
-      id: 'compoundingFrequency',
-      label: 'Compounding Frequency',
-      type: 'select',
-      required: true,
-      options: [
-        { value: 1, label: 'Annually' },
-        { value: 2, label: 'Semi-Annually' },
-        { value: 4, label: 'Quarterly' },
-        { value: 12, label: 'Monthly' },
-        { value: 365, label: 'Daily' }
-      ],
-      tooltip: 'How often interest is compounded'
+        "id": "input2",
+        "label": "Input 2",
+        "type": "currency",
+        "required": true,
+        "min": 0,
+        "tooltip": "Secondary input value"
     }
-  ],
+],
 
   outputs: [
     {
-      id: 'totalAmount',
-      label: 'Total Amount',
-      type: 'currency',
-      explanation: 'Final amount including principal and interest'
-    },
-    {
-      id: 'totalInterest',
-      label: 'Total Interest',
-      type: 'currency',
-      explanation: 'Total interest earned'
-    },
-    {
-      id: 'monthlyPayment',
-      label: 'Monthly Payment',
-      type: 'currency',
-      explanation: 'Monthly equivalent payment'
-    },
-    {
-      id: 'effectiveRate',
-      label: 'Effective Annual Rate',
-      type: 'percentage',
-      explanation: 'Effective annual interest rate'
+        "id": "result",
+        "label": "Result",
+        "type": "currency",
+        "explanation": "Calculated result"
     }
-  ],
+],
 
-  formulas: [], // Will be implemented with the calculation engine
+  formulas: [], // Formulas are implemented in formulas.ts
 
-  validationRules: [], // Will be implemented with validation rules
+  validationRules: [], // Validation rules are implemented in validation.ts
 
   examples: [
     {
-      title: 'Long-term Investment Growth',
-      description: 'Calculate growth of $10,000 investment over 20 years at 7% interest',
-      inputs: {
-        principalAmount: 10000,
-        interestRate: 7,
-        timePeriod: 20,
-        compoundingFrequency: 12
-      },
-      expectedOutputs: {
-        totalAmount: 38715,
-        totalInterest: 28715,
-        monthlyPayment: 161,
-        effectiveRate: 7.23
-      }
-    },
-    {
-      title: 'Short-term Savings',
-      description: 'Calculate growth of $5,000 savings over 3 years at 3% interest',
-      inputs: {
-        principalAmount: 5000,
-        interestRate: 3,
-        timePeriod: 3,
-        compoundingFrequency: 4
-      },
-      expectedOutputs: {
-        totalAmount: 5460,
-        totalInterest: 460,
-        monthlyPayment: 152,
-        effectiveRate: 3.03
-      }
+        "title": "Basic Example",
+        "description": "Standard calculation example",
+        "inputs": {
+            "input1": 100,
+            "input2": 50
+        },
+        "expectedOutputs": {
+            "result": 150
+        }
     }
-  ]
+]
 };

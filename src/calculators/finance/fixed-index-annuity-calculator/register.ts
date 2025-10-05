@@ -1,9 +1,3 @@
-import { calculatorRegistry } from '../../../data/calculatorRegistry';
-import { fixedIndexAnnuityCalculator } from './FixedIndexAnnuityCalculator';
+import { FixedIndexAnnuityCalculatorCalculator } from './FixedIndexAnnuityCalculatorCalculator';
 
-/**
- * Register the Fixed Index Annuity Calculator
- */
-export function registerFixedIndexAnnuityCalculator(): void {
-  calculatorRegistry.register(fixedIndexAnnuityCalculator);
-}
+export { FixedIndexAnnuityCalculatorCalculator };

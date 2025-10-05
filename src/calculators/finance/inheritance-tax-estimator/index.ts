@@ -1,4 +1,4 @@
-export { InheritanceTaxEstimator } from './InheritanceTaxEstimator';
+export { InheritanceTaxEstimatorCalculator } from './InheritanceTaxEstimatorCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

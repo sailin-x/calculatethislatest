@@ -1,5 +1,4 @@
-export { cryptotaxharvestingcalculatorCalculator } from './cryptotaxharvestingcalculatorCalculator';
-export { registercryptotaxharvestingcalculatorCalculator } from './register';
+export { CryptoTaxHarvestingCalculatorCalculator } from './CryptoTaxHarvestingCalculatorCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

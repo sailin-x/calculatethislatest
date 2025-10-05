@@ -1,101 +1,33 @@
-export interface FAFSAInputs {
-  // Student Information
-  studentAge: number;
-  isDependent: boolean;
-  maritalStatus: 'single' | 'married' | 'divorced' | 'widowed';
-  hasChildren: boolean;
-  numberOfChildren: number;
-
-  // Parent Information (for dependent students)
-  parentIncome: number;
-  parentAssets: number;
-  parentFilingStatus: 'single' | 'married-joint' | 'married-separate' | 'head-household';
-  numberOfFamilyMembers: number;
-  numberOfCollegeStudents: number;
-
-  // Student Financial Information
-  studentIncome: number;
-  studentAssets: number;
-  studentSavings: number;
-  studentInvestments: number;
-
-  // Expected Family Contribution (EFC) Components
-  homeEquity: number;
-  businessValue: number;
-  farmValue: number;
-
-  // Academic Information
-  gradeLevel: 'freshman' | 'sophomore' | 'junior' | 'senior' | 'graduate';
-  enrollmentStatus: 'full-time' | 'three-quarter' | 'half-time' | 'less-half';
-
-  // Cost Information
-  costOfAttendance: number;
-  tuition: number;
-  roomAndBoard: number;
-  booksAndSupplies: number;
-  transportation: number;
-  personalExpenses: number;
-
-  // State Information
-  stateOfResidence: string;
-  attendingInState: boolean;
-
-  // Additional Factors
-  hasDisability: boolean;
-  isVeteran: boolean;
-  isFosterYouth: boolean;
-  hasSpecialCircumstances: boolean;
-  specialCircumstancesDescription: string;
+export interface FafsaCalculatorInputs {
+  // Define input properties based on the calculator's requirements
+  primaryInput: number;
+  secondaryInput?: number;
+  selectInput: string;
+  // Add more input properties as needed
+  optionalParameter?: string;
+  booleanFlag?: boolean;
 }
 
-export interface FAFSAOutputs {
-  // Expected Family Contribution
-  expectedFamilyContribution: number;
-  studentContribution: number;
-  parentContribution: number;
+export interface FafsaCalculatorOutputs {
+  // Define output properties that the calculator will produce
+  primaryResult: number;
+  secondaryResult: number;
+  // Add more output properties as needed
+  percentageResult?: number;
+  textResult?: string;
+}
 
-  // Financial Need Analysis
-  costOfAttendance: number;
-  totalAid: number;
-  financialNeed: number;
-  unmetNeed: number;
+export interface FafsaCalculatorMetrics {
+  // Define intermediate calculation results or metrics
+  intermediateValue: number;
+  calculationSteps: string[];
+  riskLevel: 'Low' | 'Medium' | 'High';
+}
 
-  // Aid Eligibility
-  pellGrantEligibility: number;
-  federalWorkStudyEligibility: number;
-  federalLoanEligibility: number;
-
-  // State Aid
-  stateGrantEligibility: number;
-  stateScholarshipEligibility: number;
-
-  // Private Aid
-  institutionalAidEligibility: number;
-  privateScholarshipEligibility: number;
-
-  // Breakdown by Aid Type
-  grants: number;
-  scholarships: number;
-  workStudy: number;
-  federalLoans: number;
-  privateLoans: number;
-
-  // Net Cost
-  netCost: number;
-  outOfPocket: number;
-
-  // Recommendations
-  recommendedActions: string[];
-  priorityApplications: string[];
-  additionalResources: string[];
-
-  // Eligibility Flags
-  pellEligible: boolean;
-  subsidizedLoanEligible: boolean;
-  workStudyEligible: boolean;
-
-  // Special Considerations
-  specialCircumstances: boolean;
-  dependencyOverride: boolean;
-  professionalJudgment: boolean;
+export interface FafsaCalculatorAnalysis {
+  // Define analysis results
+  recommendation: string;
+  riskLevel: 'Low' | 'Medium' | 'High';
+  insights: string[];
+  warnings: string[];
 }

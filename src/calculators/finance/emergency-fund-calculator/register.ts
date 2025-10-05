@@ -1,8 +1,3 @@
-import { calculatorRegistry } from '../../../data/calculatorRegistry';
-import { EmergencyFundCalculator } from './EmergencyFundCalculator';
+import { EmergencyFundCalculatorCalculator } from './EmergencyFundCalculatorCalculator';
 
-export function registerEmergencyFundCalculator(): void {
-  calculatorRegistry.register(EmergencyFundCalculator);
-}
-
-export { EmergencyFundCalculator };
+export { EmergencyFundCalculatorCalculator };

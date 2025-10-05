@@ -1,43 +1,33 @@
-export interface RealEstateTaxDeductionsInputs {
-  propertyType: 'residential' | 'commercial' | 'rental' | 'vacation';
-  annualIncome: number;
-  mortgageInterest: number;
-  propertyTaxes: number;
-  insurance: number;
-  maintenance: number;
-  repairs: number;
-  utilities: number;
-  hoaFees: number;
-  depreciation: number;
-  managementFees: number;
-  vacancyAllowance: number;
-  taxRate: number;
-  filingStatus: 'single' | 'married-joint' | 'married-separate' | 'head-household';
-  state: string;
-  rentalIncome: number;
-  personalUsePercentage: number;
+export interface RealEstateTaxDeductionsCalculatorInputs {
+  // Define input properties based on the calculator's requirements
+  primaryInput: number;
+  secondaryInput?: number;
+  selectInput: string;
+  // Add more input properties as needed
+  optionalParameter?: string;
+  booleanFlag?: boolean;
 }
 
-export interface RealEstateTaxDeductionsResults {
-  totalDeductions: number;
-  taxableIncome: number;
-  taxSavings: number;
-  effectiveTaxRate: number;
-  cashFlow: number;
-  capRate: number;
-  roi: number;
-  deductionBreakdown: {
-    mortgageInterest: number;
-    propertyTaxes: number;
-    insurance: number;
-    maintenance: number;
-    repairs: number;
-    utilities: number;
-    hoaFees: number;
-    depreciation: number;
-    managementFees: number;
-    vacancyAllowance: number;
-  };
-  taxCredits: number;
-  netIncome: number;
+export interface RealEstateTaxDeductionsCalculatorOutputs {
+  // Define output properties that the calculator will produce
+  primaryResult: number;
+  secondaryResult: number;
+  // Add more output properties as needed
+  percentageResult?: number;
+  textResult?: string;
+}
+
+export interface RealEstateTaxDeductionsCalculatorMetrics {
+  // Define intermediate calculation results or metrics
+  intermediateValue: number;
+  calculationSteps: string[];
+  riskLevel: 'Low' | 'Medium' | 'High';
+}
+
+export interface RealEstateTaxDeductionsCalculatorAnalysis {
+  // Define analysis results
+  recommendation: string;
+  riskLevel: 'Low' | 'Medium' | 'High';
+  insights: string[];
+  warnings: string[];
 }

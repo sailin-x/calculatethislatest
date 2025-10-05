@@ -1,232 +1,65 @@
-import { ValidationRule } from '../../../types/calculator';
-import { FourZeroOneKInputs } from './types';
+import { 401kCalculatorInputs } from './types';
 
-export function getFourZeroOneKValidationRules(): ValidationRule[] {
-  return [
-    // Age Validation
-    {
-      field: 'currentAge',
-      type: 'required',
-      message: 'Current age is required',
-      validator: (value: any) => value !== undefined && value !== null && value > 0
-    },
-    {
-      field: 'currentAge',
-      type: 'range',
-      message: 'Current age must be between 18 and 100 years',
-      validator: (value: any) => value >= 18 && value <= 100
-    },
-    {
-      field: 'retirementAge',
-      type: 'required',
-      message: 'Retirement age is required',
-      validator: (value: any) => value !== undefined && value !== null && value > 0
-    },
-    {
-      field: 'retirementAge',
-      type: 'range',
-      message: 'Retirement age must be between 55 and 100 years',
-      validator: (value: any) => value >= 55 && value <= 100
-    },
-    {
-      field: 'retirementAge',
-      type: 'business',
-      message: 'Retirement age must be greater than current age',
-      validator: (value: any, allInputs?: Record<string, any>) => {
-        if (!allInputs?.currentAge) return true;
-        return value > allInputs.currentAge;
-      }
-    },
+export function validate401kCalculatorInputs(inputs: 401kCalculatorInputs): Array<{ field: string; message: string }> {
+  const errors: Array<{ field: string; message: string }> = [];
 
-    // Financial Validation
-    {
-      field: 'currentBalance',
-      type: 'range',
-      message: 'Current balance cannot be negative',
-      validator: (value: any) => !value || value >= 0
-    },
-    {
-      field: 'annualSalary',
-      type: 'required',
-      message: 'Annual salary is required',
-      validator: (value: any) => value !== undefined && value !== null && value > 0
-    },
-    {
-      field: 'annualSalary',
-      type: 'range',
-      message: 'Annual salary must be between $10,000 and $10,000,000',
-      validator: (value: any) => value >= 10000 && value <= 10000000
-    },
+  // Primary Input Validation
+  if (!inputs.primaryInput || inputs.primaryInput <= 0) {
+    errors.push({ field: 'primaryInput', message: 'Primary input must be greater than 0' });
+  }
+  if (inputs.primaryInput && inputs.primaryInput > 1000000) {
+    errors.push({ field: 'primaryInput', message: 'Primary input cannot exceed 1,000,000' });
+  }
 
-    // Contribution Validation
-    {
-      field: 'employeeContributionPercent',
-      type: 'required',
-      message: 'Employee contribution percentage is required',
-      validator: (value: any) => value !== undefined && value !== null
-    },
-    {
-      field: 'employeeContributionPercent',
-      type: 'range',
-      message: 'Employee contribution must be between 0% and 100%',
-      validator: (value: any) => value >= 0 && value <= 100
-    },
-    {
-      field: 'employerMatchPercent',
-      type: 'range',
-      message: 'Employer match percentage must be between 0% and 100%',
-      validator: (value: any) => !value || (value >= 0 && value <= 100)
-    },
-    {
-      field: 'employerMatchLimit',
-      type: 'range',
-      message: 'Employer match limit must be between 0% and 100%',
-      validator: (value: any) => !value || (value >= 0 && value <= 100)
-    },
+  // Secondary Input Validation (if provided)
+  if (inputs.secondaryInput !== undefined && inputs.secondaryInput < 0) {
+    errors.push({ field: 'secondaryInput', message: 'Secondary input cannot be negative' });
+  }
 
-    // Investment Validation
-    {
-      field: 'expectedAnnualReturn',
-      type: 'required',
-      message: 'Expected annual return is required',
-      validator: (value: any) => value !== undefined && value !== null
-    },
-    {
-      field: 'expectedAnnualReturn',
-      type: 'range',
-      message: 'Expected annual return must be between 0% and 20%',
-      validator: (value: any) => value >= 0 && value <= 20
-    },
-    {
-      field: 'inflationRate',
-      type: 'required',
-      message: 'Inflation rate is required',
-      validator: (value: any) => value !== undefined && value !== null
-    },
-    {
-      field: 'inflationRate',
-      type: 'range',
-      message: 'Inflation rate must be between 0% and 10%',
-      validator: (value: any) => value >= 0 && value <= 10
-    },
+  // Select Input Validation
+  const validOptions = ['option1', 'option2'];
+  if (!inputs.selectInput || !validOptions.includes(inputs.selectInput)) {
+    errors.push({ field: 'selectInput', message: 'Please select a valid option' });
+  }
 
-    // Tax Validation
-    {
-      field: 'currentTaxRate',
-      type: 'required',
-      message: 'Current tax rate is required',
-      validator: (value: any) => value !== undefined && value !== null
-    },
-    {
-      field: 'currentTaxRate',
-      type: 'range',
-      message: 'Current tax rate must be between 0% and 50%',
-      validator: (value: any) => value >= 0 && value <= 50
-    },
-    {
-      field: 'retirementTaxRate',
-      type: 'required',
-      message: 'Retirement tax rate is required',
-      validator: (value: any) => value !== undefined && value !== null
-    },
-    {
-      field: 'retirementTaxRate',
-      type: 'range',
-      message: 'Retirement tax rate must be between 0% and 50%',
-      validator: (value: any) => value >= 0 && value <= 50
-    },
+  // Cross-field Validation
+  if (inputs.secondaryInput && inputs.primaryInput && inputs.secondaryInput > inputs.primaryInput) {
+    errors.push({ field: 'secondaryInput', message: 'Secondary input cannot exceed primary input' });
+  }
 
-    // Advanced Options Validation
-    {
-      field: 'contributionIncreaseRate',
-      type: 'range',
-      message: 'Contribution increase rate must be between -5% and 10%',
-      validator: (value: any) => !value || (value >= -5 && value <= 10)
-    },
-    {
-      field: 'salaryIncreaseRate',
-      type: 'range',
-      message: 'Salary increase rate must be between 0% and 10%',
-      validator: (value: any) => !value || (value >= 0 && value <= 10)
-    },
-    {
-      field: 'fees',
-      type: 'range',
-      message: 'Fees must be between 0% and 5%',
-      validator: (value: any) => !value || (value >= 0 && value <= 5)
-    },
+  // Optional Parameter Validation
+  if (inputs.optionalParameter && inputs.optionalParameter.length > 100) {
+    errors.push({ field: 'optionalParameter', message: 'Optional parameter cannot exceed 100 characters' });
+  }
 
-    // Business Logic Validations
-    {
-      field: 'employeeContributionPercent',
-      type: 'business',
-      message: 'Consider increasing contributions to maximize employer match',
-      validator: (value: any, allInputs?: Record<string, any>) => {
-        if (!allInputs?.employerMatchPercent || !allInputs?.employerMatchLimit) return true;
-        const maxMatch = Math.min(value, allInputs.employerMatchLimit);
-        return value >= maxMatch;
-      }
-    },
-    {
-      field: 'catchUpContributions',
-      type: 'business',
-      message: 'Consider catch-up contributions if age 50 or older',
-      validator: (value: any, allInputs?: Record<string, any>) => {
-        if (!allInputs?.currentAge) return true;
-        if (allInputs.currentAge >= 50 && !value) {
-          return false; // Warning for not using catch-up contributions
-        }
-        return true;
-      }
-    },
-    {
-      field: 'expectedAnnualReturn',
-      type: 'business',
-      message: 'Historical stock market returns average 7-10% annually',
-      validator: (value: any) => {
-        return value >= 3 && value <= 12; // Reasonable range for long-term expectations
-      }
-    },
-    {
-      field: 'yearsToRetirement',
-      type: 'business',
-      message: 'Longer time horizons allow for more aggressive investment strategies',
-      validator: (value: any, allInputs?: Record<string, any>) => {
-        if (!allInputs?.currentAge || !allInputs?.retirementAge) return true;
-        const years = allInputs.retirementAge - allInputs.currentAge;
-        return years > 0;
-      }
-    },
-    {
-      field: 'currentTaxRate',
-      type: 'business',
-      message: 'Tax-deferred growth can significantly impact retirement savings',
-      validator: (value: any, allInputs?: Record<string, any>) => {
-        if (!allInputs?.retirementTaxRate) return true;
-        // This is informational - tax rates can change
-        return true;
-      }
-    }
-  ];
+  return errors;
 }
 
-/**
- * Comprehensive validation function for all 401(k) inputs
- */
-export function validateAllFourZeroOneKInputs(inputs: FourZeroOneKInputs): { isValid: boolean; errors: Record<string, string> } {
-  const errors: Record<string, string> = {};
-  const rules = getFourZeroOneKValidationRules();
+export function validate401kCalculatorBusinessRules(inputs: 401kCalculatorInputs): Array<{ field: string; message: string }> {
+  const warnings: Array<{ field: string; message: string }> = [];
 
-  // Apply all validation rules
-  rules.forEach(rule => {
-    const value = inputs[rule.field as keyof FourZeroOneKInputs];
-    if (!rule.validator(value, inputs)) {
-      errors[rule.field] = rule.message;
+  // Business Rule Warnings
+  if (inputs.primaryInput && inputs.primaryInput > 500000) {
+    warnings.push({ field: 'primaryInput', message: 'High primary input values may require additional review' });
+  }
+
+  // Ratio-based Warnings
+  if (inputs.secondaryInput && inputs.primaryInput) {
+    const ratio = inputs.secondaryInput / inputs.primaryInput;
+    if (ratio > 0.8) {
+      warnings.push({ field: 'secondaryInput', message: 'Secondary input is very high relative to primary input' });
     }
-  });
+  }
 
-  return {
-    isValid: Object.keys(errors).length === 0,
-    errors
-  };
+  // Option-specific Warnings
+  if (inputs.selectInput === 'option2' && inputs.primaryInput && inputs.primaryInput < 100) {
+    warnings.push({ field: 'selectInput', message: 'Option 2 may not be suitable for low primary input values' });
+  }
+
+  // Threshold Warnings
+  if (inputs.primaryInput && inputs.primaryInput > 10000) {
+    warnings.push({ field: 'primaryInput', message: 'Consider consulting with financial experts for high-value calculations' });
+  }
+
+  return warnings;
 }

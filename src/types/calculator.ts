@@ -102,4 +102,5 @@ export interface Calculator {
   formulas: Formula[];
   validationRules: ValidationRule[];
   examples: CalculatorExample[];
+  calculate?: (inputs: Record<string, any>) => CalculationResult;
 }

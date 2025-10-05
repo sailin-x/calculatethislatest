@@ -1,61 +1,46 @@
 import { calorie-calculatorInputs, calorie-calculatorMetrics, calorie-calculatorAnalysis } from './types';
 
+// Calorie Calculator - BMR and TDEE
+export function calculateBMR(weightKg: number, heightCm: number, age: number, gender: string): number {
+  // Mifflin-St Jeor Equation
+  const baseBMR = 10 * weightKg + 6.25 * heightCm - 5 * age;
+  return gender === 'male' ? baseBMR + 5 : baseBMR - 161;
+}
 
-// Calorie Calculator - Nutrition calculations
-export function calculateTDEE(bmr: number, activityLevel: number): number {
+export function calculateTDEE(bmr: number, activityLevel: string): number {
   const multipliers = {
-    1: 1.2,   // Sedentary
-    2: 1.375, // Lightly active
-    3: 1.55,  // Moderately active
-    4: 1.725, // Very active
-    5: 1.9    // Extremely active
+    sedentary: 1.2,
+    lightly_active: 1.375,
+    moderately_active: 1.55,
+    very_active: 1.725,
+    extremely_active: 1.9
   };
   return bmr * (multipliers[activityLevel] || 1.2);
 }
 
-export function calculateCalorieDeficit(currentCalories: number, targetCalories: number): number {
-  return currentCalories - targetCalories;
-}
-
-export function calculateWeightLossRate(calorieDeficit: number): number {
-  // 1 pound = 3500 calories
-  return calorieDeficit * 7 / 3500; // pounds per week
+export function calculateDailyCalories(tdee: number, goal: string): number {
+  switch (goal) {
+    case 'lose_weight': return tdee - 500;
+    case 'gain_weight': return tdee + 500;
+    default: return tdee;
+  }
 }
 
 export function calculateResult(inputs: calorie-calculatorInputs): number {
-  // Use domain-specific calculations based on input properties
-  try {
-    // Try to match inputs to appropriate calculation
-    if ('principal' in inputs && 'annualRate' in inputs && 'years' in inputs) {
-      return calculateMonthlyPayment(inputs.principal, inputs.annualRate, inputs.years);
-    }
-    if ('initialInvestment' in inputs && 'finalValue' in inputs) {
-      return calculateROI(inputs.initialInvestment, inputs.finalValue);
-    }
-    if ('weightKg' in inputs && 'heightCm' in inputs) {
-      return calculateBMI(inputs.weightKg, inputs.heightCm);
-    }
-    if ('value' in inputs && 'percentage' in inputs) {
-      return calculatePercentage(inputs.value, inputs.percentage);
-    }
-    // Fallback to basic calculation
-    return inputs.value || inputs.amount || inputs.principal || 0;
-  } catch (error) {
-    console.warn('Calculation error:', error);
-    return 0;
+  if ('weightKg' in inputs && 'heightCm' in inputs && 'age' in inputs && 'gender' in inputs) {
+    const bmr = calculateBMR(inputs.weightKg, inputs.heightCm, inputs.age, inputs.gender);
+    return calculateTDEE(bmr, inputs.activityLevel || 'sedentary');
   }
+  return 0;
 }
 
 export function generateAnalysis(inputs: calorie-calculatorInputs, metrics: calorie-calculatorMetrics): calorie-calculatorAnalysis {
   const result = metrics.result;
-
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
-  if (Math.abs(result) > 100000) riskLevel = 'High';
-  else if (Math.abs(result) > 10000) riskLevel = 'Medium';
+  if (result < 1200 || result > 4000) riskLevel = 'High';
+  else if (result < 1500 || result > 3000) riskLevel = 'Medium';
 
-  const recommendation = result > 0 ?
-    'Calculation completed successfully - positive result' :
-    'Calculation completed - review inputs if result seems unexpected';
+  const recommendation = 'Daily calorie needs calculated. Adjust based on specific health goals and consult nutritionist.';
 
   return { recommendation, riskLevel };
 }

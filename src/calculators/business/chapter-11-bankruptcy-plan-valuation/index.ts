@@ -1,5 +1,4 @@
-export { chapter11bankruptcyplanvaluationCalculator } from './chapter11bankruptcyplanvaluationCalculator';
-export { registerchapter11bankruptcyplanvaluationCalculator } from './register';
+export { Chapter11BankruptcyPlanValuationCalculator } from './Chapter11BankruptcyPlanValuationCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

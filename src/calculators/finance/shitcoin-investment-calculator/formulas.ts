@@ -1,51 +1,39 @@
 import { shitcoin-investment-calculatorInputs, shitcoin-investment-calculatorMetrics, shitcoin-investment-calculatorAnalysis } from './types';
 
-
-// Investment Calculator - ROI and growth calculations
-export function calculateROI(initialInvestment: number, finalValue: number): number {
-  return ((finalValue - initialInvestment) / initialInvestment) * 100;
+// Investment Calculator - Compound Interest
+export function calculateFutureValue(principal: number, annualRate: number, years: number, compoundingFrequency: number = 12): number {
+  const rate = annualRate / 100 / compoundingFrequency;
+  const periods = years * compoundingFrequency;
+  return principal * Math.pow(1 + rate, periods);
 }
 
-export function calculateCompoundInterest(principal: number, rate: number, years: number, compoundingFrequency: number = 12): number {
-  const ratePerPeriod = rate / 100 / compoundingFrequency;
-  const totalPeriods = years * compoundingFrequency;
-  return principal * Math.pow(1 + ratePerPeriod, totalPeriods);
+export function calculateTotalContributions(monthlyContribution: number, years: number): number {
+  return monthlyContribution * years * 12;
+}
+
+export function calculateTotalInterest(futureValue: number, principal: number, totalContributions: number): number {
+  return futureValue - principal - totalContributions;
 }
 
 export function calculateResult(inputs: shitcoin-investment-calculatorInputs): number {
-  // Use domain-specific calculations based on input properties
-  try {
-    // Try to match inputs to appropriate calculation
-    if ('principal' in inputs && 'annualRate' in inputs && 'years' in inputs) {
-      return calculateMonthlyPayment(inputs.principal, inputs.annualRate, inputs.years);
-    }
-    if ('initialInvestment' in inputs && 'finalValue' in inputs) {
-      return calculateROI(inputs.initialInvestment, inputs.finalValue);
-    }
-    if ('weightKg' in inputs && 'heightCm' in inputs) {
-      return calculateBMI(inputs.weightKg, inputs.heightCm);
-    }
-    if ('value' in inputs && 'percentage' in inputs) {
-      return calculatePercentage(inputs.value, inputs.percentage);
-    }
-    // Fallback to basic calculation
-    return inputs.value || inputs.amount || inputs.principal || 0;
-  } catch (error) {
-    console.warn('Calculation error:', error);
-    return 0;
+  if ('initialInvestment' in inputs && 'annualReturn' in inputs && 'investmentPeriod' in inputs) {
+    return calculateFutureValue(
+      inputs.initialInvestment,
+      inputs.annualReturn,
+      inputs.investmentPeriod,
+      inputs.compoundingFrequency || 12
+    );
   }
+  return 0;
 }
 
 export function generateAnalysis(inputs: shitcoin-investment-calculatorInputs, metrics: shitcoin-investment-calculatorMetrics): shitcoin-investment-calculatorAnalysis {
   const result = metrics.result;
-
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
-  if (Math.abs(result) > 100000) riskLevel = 'High';
-  else if (Math.abs(result) > 10000) riskLevel = 'Medium';
+  if (result > 1000000) riskLevel = 'High';
+  else if (result > 100000) riskLevel = 'Medium';
 
-  const recommendation = result > 0 ?
-    'Calculation completed successfully - positive result' :
-    'Calculation completed - review inputs if result seems unexpected';
+  const recommendation = 'Investment growth calculated using compound interest. Past performance does not guarantee future results.';
 
   return { recommendation, riskLevel };
 }

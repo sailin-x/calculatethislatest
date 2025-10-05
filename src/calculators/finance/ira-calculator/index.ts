@@ -1,5 +1,5 @@
-export { iraCalculator } from './IRACalculator';
-export { calculateIRA, validateIRAInputs } from './formulas';
+export { IraCalculatorCalculator } from './IraCalculatorCalculator';
+export * from './types';
+export * from './formulas';
+export * from './validation';
 export * from './quickValidation';
-export { registerIRACalculator } from './register';
-export type { IRAInputs, RAResults } from './types';

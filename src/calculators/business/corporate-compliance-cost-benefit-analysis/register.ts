@@ -1,6 +1,3 @@
-import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { corporatecompliancecostbenefitanalysisCalculator } from './corporatecompliancecostbenefitanalysisCalculator';
+import { CorporateComplianceCostbenefitAnalysisCalculator } from './CorporateComplianceCostbenefitAnalysisCalculator';
 
-export function registercorporatecompliancecostbenefitanalysisCalculator(): void {
-  calculatorRegistry.register(new corporatecompliancecostbenefitanalysisCalculator());
-}
+export { CorporateComplianceCostbenefitAnalysisCalculator };

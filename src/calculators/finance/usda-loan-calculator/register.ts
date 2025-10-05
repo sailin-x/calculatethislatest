@@ -1,9 +1,3 @@
-import { calculatorRegistry } from '../../../data/calculatorRegistry';
-import { usdaLoanCalculator } from './USDALoanCalculator';
+import { UsdaLoanCalculatorCalculator } from './UsdaLoanCalculatorCalculator';
 
-/**
- * Register the USDA Loan Calculator
- */
-export function registerUSDALoanCalculator(): void {
-  calculatorRegistry.register(usdaLoanCalculator);
-}
+export { UsdaLoanCalculatorCalculator };

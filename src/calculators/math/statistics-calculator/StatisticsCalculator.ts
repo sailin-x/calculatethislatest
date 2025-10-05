@@ -1,82 +1,69 @@
 import { Calculator } from '../../types/calculator';
 import { StatisticsCalculatorInputs, StatisticsCalculatorOutputs } from './types';
-import { calculateResult, generateCalculation, generateAnalysis } from './formulas';
-import { validateStatisticsCalculatorInputs } from './validation';
+import {
+  // Import calculation functions from formulas.ts
+  calculateResult,
+  calculateSecondaryResult,
+  // Add other formula imports as needed
+} from './formulas';
+import { validateStatisticsCalculatorInputs, validateStatisticsCalculatorBusinessRules } from './validation';
 
-export const StatisticsCalculator: Calculator = {
-  id: 'statistics-calculator',
-  title: 'Statistics Calculator',
-  category: 'math',
-  subcategory: 'General',
-  description: 'Calculate statistical measures',
+export const StatisticsCalculatorCalculator: Calculator: Calculator = {
+  id: 'statistics-calculator-calculator',
+  title: 'Statistics Calculator Calculator',
+  math: 'math', // e.g., 'finance', 'math', 'health', 'business'
+  submath: 'Submath Name',
+  description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [
-    'Enter input value',
-    'Specify multiplier',
-    'Review calculation result'
+    'Step 1: Enter the primary input values',
+    'Step 2: Configure any optional parameters',
+    'Step 3: Review the calculated results',
+    'Step 4: Adjust inputs as needed for different scenarios'
   ],
 
   inputs: [
     {
-      id: 'inputValue',
-      label: 'Input Value',
-      type: 'number',
-      required: true,
-      min: 0,
-      tooltip: 'Value to be calculated'
+        "id": "input1",
+        "label": "Input 1",
+        "type": "number",
+        "required": true,
+        "min": 0,
+        "tooltip": "Primary input value"
     },
     {
-      id: 'multiplier',
-      label: 'Multiplier',
-      type: 'number',
-      required: true,
-      min: 0,
-      tooltip: 'Multiplication factor'
+        "id": "input2",
+        "label": "Input 2",
+        "type": "currency",
+        "required": true,
+        "min": 0,
+        "tooltip": "Secondary input value"
     }
-  ],
+],
 
   outputs: [
     {
-      id: 'result',
-      label: 'Result',
-      type: 'number',
-      explanation: 'Calculation result'
-    },
-    {
-      id: 'calculation',
-      label: 'Calculation',
-      type: 'text',
-      explanation: 'Calculation breakdown'
+        "id": "result",
+        "label": "Result",
+        "type": "currency",
+        "explanation": "Calculated result"
     }
-  ],
+],
 
-  formulas: [], // Will be implemented with the calculation engine
+  formulas: [], // Formulas are implemented in formulas.ts
 
-  validationRules: [], // Will be implemented with validation rules
+  validationRules: [], // Validation rules are implemented in validation.ts
 
   examples: [
     {
-      title: 'Basic Multiplication',
-      description: 'Multiply 10 by 5',
-      inputs: {
-        inputValue: 10,
-        multiplier: 5
-      },
-      expectedOutputs: {
-        result: 50,
-        calculation: '10 × 5 = 50'
-      }
-    },
-    {
-      title: 'Zero Multiplication',
-      description: 'Multiply any number by zero',
-      inputs: {
-        inputValue: 100,
-        multiplier: 0
-      },
-      expectedOutputs: {
-        result: 0,
-        calculation: '100 × 0 = 0'
-      }
+        "title": "Basic Example",
+        "description": "Standard calculation example",
+        "inputs": {
+            "input1": 100,
+            "input2": 50
+        },
+        "expectedOutputs": {
+            "result": 150
+        }
     }
-  ]
+]
 };

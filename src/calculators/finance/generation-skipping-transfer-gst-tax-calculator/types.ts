@@ -1,33 +1,33 @@
-export interface GenerationSkippingTransferGstTaxCalculatorInputs {
-  transferAmount: number;
-  relationship: 'grandchild' | 'great-grandchild' | 'great-great-grandchild' | 'other-descendant';
-  gstExemptionUsed: number;
-  gstTaxRate: number;
-  isDirectSkip: boolean;
-  isTrustDistribution: boolean;
+export interface GenerationskippingTransferGstTaxCalculatorInputs {
+  // Define input properties based on the calculator's requirements
+  primaryInput: number;
+  secondaryInput?: number;
+  selectInput: string;
+  // Add more input properties as needed
+  optionalParameter?: string;
+  booleanFlag?: boolean;
 }
 
-export interface GenerationSkippingTransferGstTaxCalculatorMetrics {
-  gstExemptionAvailable: number;
-  taxableAmount: number;
-  gstTaxDue: number;
-  afterTaxTransferAmount: number;
-  taxSavingsFromExemption: number;
-  effectiveTaxRate: number;
+export interface GenerationskippingTransferGstTaxCalculatorOutputs {
+  // Define output properties that the calculator will produce
+  primaryResult: number;
+  secondaryResult: number;
+  // Add more output properties as needed
+  percentageResult?: number;
+  textResult?: string;
 }
 
-export interface GenerationSkippingTransferGstTaxCalculatorAnalysis {
-  exemptionUtilization: string;
-  taxEfficiency: string;
-  planningRecommendations: string[];
-  riskConsiderations: string[];
+export interface GenerationskippingTransferGstTaxCalculatorMetrics {
+  // Define intermediate calculation results or metrics
+  intermediateValue: number;
+  calculationSteps: string[];
+  riskLevel: 'Low' | 'Medium' | 'High';
 }
 
-export interface GenerationSkippingTransferGstTaxCalculatorOutputs {
-  gstTaxDue: number;
-  remainingGstExemption: number;
-  afterTaxTransferAmount: number;
-  taxSavingsFromExemption: number;
-  effectiveTaxRate: number;
-  analysis: GenerationSkippingTransferGstTaxCalculatorAnalysis;
+export interface GenerationskippingTransferGstTaxCalculatorAnalysis {
+  // Define analysis results
+  recommendation: string;
+  riskLevel: 'Low' | 'Medium' | 'High';
+  insights: string[];
+  warnings: string[];
 }

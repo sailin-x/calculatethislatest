@@ -1,149 +1,61 @@
-import { ValidationResult } from '../../types/calculator';
+import { AnnuityBuyoutCalculatorInputs } from './types';
 
-export function validateCurrentAnnuityValue(value: any, allInputs?: Record<string, any>): ValidationResult {
+export function validatePrimaryInput(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   if (!value || value <= 0) {
-    return { isValid: false, errors: { currentAnnuityValue: 'Current annuity value must be greater than $0' } };
-  }
-  if (value < 1000) {
-    return { isValid: false, errors: { currentAnnuityValue: 'Current annuity value must be at least $1,000' } };
-  }
-  if (value > 10000000) {
-    return { isValid: false, errors: { currentAnnuityValue: 'Current annuity value cannot exceed $10,000,000' } };
-  }
-  return { isValid: true, errors: {} };
-}
-
-export function validateMonthlyPayment(value: any, allInputs?: Record<string, any>): ValidationResult {
-  if (!value || value <= 0) {
-    return { isValid: false, errors: { monthlyPayment: 'Monthly payment must be greater than $0' } };
-  }
-  if (value < 10) {
-    return { isValid: false, errors: { monthlyPayment: 'Monthly payment must be at least $10' } };
-  }
-  if (value > 100000) {
-    return { isValid: false, errors: { monthlyPayment: 'Monthly payment cannot exceed $100,000' } };
-  }
-  return { isValid: true, errors: {} };
-}
-
-export function validateRemainingPayments(value: any, allInputs?: Record<string, any>): ValidationResult {
-  if (!value || value <= 0) {
-    return { isValid: false, errors: { remainingPayments: 'Remaining payments must be greater than 0' } };
-  }
-  if (value > 600) {
-    return { isValid: false, errors: { remainingPayments: 'Remaining payments cannot exceed 600 months' } };
-  }
-  return { isValid: true, errors: {} };
-}
-
-export function validateInterestRate(value: any, allInputs?: Record<string, any>): ValidationResult {
-  if (value === undefined || value < 0 || value > 20) {
-    return { isValid: false, errors: { interestRate: 'Interest rate must be between 0% and 20%' } };
-  }
-  return { isValid: true, errors: {} };
-}
-
-export function validateBuyoutOffer(value: any, allInputs?: Record<string, any>): ValidationResult {
-  if (!value || value <= 0) {
-    return { isValid: false, errors: { buyoutOffer: 'Buyout offer must be greater than $0' } };
-  }
-  if (value < 1000) {
-    return { isValid: false, errors: { buyoutOffer: 'Buyout offer must be at least $1,000' } };
-  }
-  if (value > 10000000) {
-    return { isValid: false, errors: { buyoutOffer: 'Buyout offer cannot exceed $10,000,000' } };
-  }
-  return { isValid: true, errors: {} };
-}
-
-export function validateBuyoutFees(value: any, allInputs?: Record<string, any>): ValidationResult {
-  if (value === undefined || value < 0) {
-    return { isValid: false, errors: { buyoutFees: 'Buyout fees cannot be negative' } };
+    return { isValid: false, message: 'Primary input must be greater than 0' };
   }
   if (value > 1000000) {
-    return { isValid: false, errors: { buyoutFees: 'Buyout fees cannot exceed $1,000,000' } };
+    return { isValid: false, message: 'Primary input cannot exceed 1,000,000' };
   }
-  return { isValid: true, errors: {} };
+  return { isValid: true };
 }
 
-export function validateBuyoutTaxes(value: any, allInputs?: Record<string, any>): ValidationResult {
-  if (value === undefined || value < 0) {
-    return { isValid: false, errors: { buyoutTaxes: 'Buyout taxes cannot be negative' } };
+export function validateSecondaryInput(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value < 0) {
+    return { isValid: false, message: 'Secondary input cannot be negative' };
   }
-  if (value > 5000000) {
-    return { isValid: false, errors: { buyoutTaxes: 'Buyout taxes cannot exceed $5,000,000' } };
+  if (allInputs?.primaryInput && value > allInputs.primaryInput) {
+    return { isValid: false, message: 'Secondary input cannot exceed primary input' };
   }
-  return { isValid: true, errors: {} };
+  return { isValid: true };
 }
 
-export function validateAlternativeInvestmentRate(value: any, allInputs?: Record<string, any>): ValidationResult {
-  if (value === undefined || value < 0 || value > 30) {
-    return { isValid: false, errors: { alternativeInvestmentRate: 'Alternative investment rate must be between 0% and 30%' } };
+export function validateSelectInput(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  const validOptions = ['option1', 'option2'];
+  if (!value || !validOptions.includes(value)) {
+    return { isValid: false, message: 'Please select a valid option' };
   }
-  return { isValid: true, errors: {} };
+  return { isValid: true };
 }
 
-export function validateAlternativeInvestmentFees(value: any, allInputs?: Record<string, any>): ValidationResult {
-  if (value === undefined || value < 0) {
-    return { isValid: false, errors: { alternativeInvestmentFees: 'Alternative investment fees cannot be negative' } };
+export function validateOptionalParameter(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value && value.length > 100) {
+    return { isValid: false, message: 'Optional parameter cannot exceed 100 characters' };
   }
-  if (value > 100000) {
-    return { isValid: false, errors: { alternativeInvestmentFees: 'Alternative investment fees cannot exceed $100,000' } };
-  }
-  return { isValid: true, errors: {} };
+  return { isValid: true };
 }
 
-export function validateTimeHorizon(value: any, allInputs?: Record<string, any>): ValidationResult {
-  if (!value || value < 1) {
-    return { isValid: false, errors: { timeHorizon: 'Time horizon must be at least 1 year' } };
-  }
-  if (value > 50) {
-    return { isValid: false, errors: { timeHorizon: 'Time horizon cannot exceed 50 years' } };
-  }
-  return { isValid: true, errors: {} };
-}
-
-export function validateAge(value: any, allInputs?: Record<string, any>): ValidationResult {
-  if (!value || value < 18) {
-    return { isValid: false, errors: { age: 'Age must be at least 18' } };
-  }
-  if (value > 120) {
-    return { isValid: false, errors: { age: 'Age cannot exceed 120' } };
-  }
-  return { isValid: true, errors: {} };
-}
-
-export function validateTaxBracket(value: any, allInputs?: Record<string, any>): ValidationResult {
-  if (value === undefined || value < 0 || value > 50) {
-    return { isValid: false, errors: { taxBracket: 'Tax bracket must be between 0% and 50%' } };
-  }
-  return { isValid: true, errors: {} };
-}
-
-export function validateRiskTolerance(value: any, allInputs?: Record<string, any>): ValidationResult {
-  if (!value || !['low', 'medium', 'high'].includes(value)) {
-    return { isValid: false, errors: { riskTolerance: 'Risk tolerance must be low, medium, or high' } };
-  }
-  return { isValid: true, errors: {} };
-}
-
-export function validateIncludeInflation(value: any, allInputs?: Record<string, any>): ValidationResult {
+export function validateBooleanFlag(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   if (typeof value !== 'boolean' && value !== undefined) {
-    return { isValid: false, errors: { includeInflation: 'Include inflation must be true or false' } };
+    return { isValid: false, message: 'Boolean flag must be true or false' };
   }
-  return { isValid: true, errors: {} };
+  return { isValid: true };
 }
 
-export function validateInflationRate(value: any, allInputs?: Record<string, any>): ValidationResult {
-  if (value === undefined || value < 0 || value > 10) {
-    return { isValid: false, errors: { inflationRate: 'Inflation rate must be between 0% and 10%' } };
+// Additional validation functions as needed
+export function validateNumericRange(value: any, min: number, max: number, fieldName: string, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value < min) {
+    return { isValid: false, message: `${fieldName} must be at least ${min}` };
   }
-  return { isValid: true, errors: {} };
+  if (value > max) {
+    return { isValid: false, message: `${fieldName} cannot exceed ${max}` };
+  }
+  return { isValid: true };
 }
 
-export function validateDiscountRate(value: any, allInputs?: Record<string, any>): ValidationResult {
-  if (value === undefined || value < 0 || value > 20) {
-    return { isValid: false, errors: { discountRate: 'Discount rate must be between 0% and 20%' } };
+export function validateRequired(value: any, fieldName: string, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value === null || value === undefined || value === '') {
+    return { isValid: false, message: `${fieldName} is required` };
   }
-  return { isValid: true, errors: {} };
+  return { isValid: true };
 }

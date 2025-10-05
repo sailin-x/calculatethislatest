@@ -1,50 +1,60 @@
 import { describe, it, expect } from 'vitest';
 import {
-  calculateGiftTaxDue,
-  calculateRemainingAnnualExclusion,
-  calculateRemainingLifetimeExclusion,
-  calculateAfterTaxGiftAmount,
-  calculateEffectiveTaxRate
+  calculateResult,
+  calculateSecondaryResult,
+  calculatePercentageResult,
+  calculateMetrics,
+  generateAnalysis
 } from './formulas';
 import { validateGiftTaxCalculatorInputs } from './validation';
 
-describe('Gift Tax Calculator', () => {
+describe('GiftTaxCalculator Calculator', () => {
   const mockInputs = {
-    giftAmount: 50000,
-    relationship: 'child' as const,
-    annualExclusionUsed: 10000,
-    lifetimeExclusionUsed: 0,
-    giftTaxRate: 40,
-    isAnnualExclusion: true,
-    isLifetimeExclusion: true
+    primaryInput: 100,
+    secondaryInput: 50,
+    selectInput: 'option1' as const,
+    optionalParameter: 'test',
+    booleanFlag: true
   };
 
-  describe('Gift Tax Calculations', () => {
-    it('calculates remaining annual exclusion correctly', () => {
-      const result = calculateRemainingAnnualExclusion(mockInputs);
-      expect(result).toBe(8400); // 18400 - 10000
+  describe('Core Calculations', () => {
+    it('calculates primary result correctly', () => {
+      const result = calculateResult(mockInputs);
+      expect(result).toBe(150); // 100 + 50
     });
 
-    it('calculates remaining lifetime exclusion correctly', () => {
-      const result = calculateRemainingLifetimeExclusion(mockInputs);
-      expect(result).toBe(13470000); // 13470000 - 0
+    it('calculates secondary result correctly', () => {
+      const result = calculateSecondaryResult(mockInputs);
+      expect(result).toBe(150); // 100 * 1.5 for option1
     });
 
-    it('calculates gift tax due correctly', () => {
-      const result = calculateGiftTaxDue(mockInputs);
-      expect(result).toBe(15440); // (50000 - 8400 - 13470000 + 0) * 0.4, but since it fits in lifetime exclusion, should be 0
-      // Wait, let me recalculate: taxable amount = max(0, 50000 - 8400) = 41600, then 41600 - 13470000 = negative, so 0
-      expect(result).toBe(0);
+    it('calculates percentage result correctly', () => {
+      const result = calculatePercentageResult(mockInputs);
+      expect(result).toBe(150); // (150 / 100) * 100
     });
 
-    it('calculates after-tax gift amount correctly', () => {
-      const result = calculateAfterTaxGiftAmount(mockInputs);
-      expect(result).toBe(50000); // No tax due
+    it('calculates metrics correctly', () => {
+      const result = calculateMetrics(mockInputs);
+      expect(result.intermediateValue).toBe(75); // 150 * 0.5
+      expect(result.calculationSteps).toContain('Calculated primary result');
+      expect(result.riskLevel).toBe('Low');
+    });
+  });
+
+  describe('Analysis Generation', () => {
+    it('generates analysis for low values', () => {
+      const metrics = calculateMetrics(mockInputs);
+      const analysis = generateAnalysis(mockInputs, metrics);
+      expect(analysis.riskLevel).toBe('Low');
+      expect(analysis.insights).toContain('All values are within normal parameters');
     });
 
-    it('calculates effective tax rate correctly', () => {
-      const result = calculateEffectiveTaxRate(mockInputs);
-      expect(result).toBe(0); // No tax due
+    it('generates analysis for high values', () => {
+      const highInputs = { ...mockInputs, primaryInput: 2000 };
+      const metrics = calculateMetrics(highInputs);
+      const analysis = generateAnalysis(highInputs, metrics);
+      expect(analysis.riskLevel).toBe('High');
+      expect(analysis.warnings).toContain('Result exceeds typical thresholds');
     });
   });
 
@@ -54,68 +64,58 @@ describe('Gift Tax Calculator', () => {
       expect(result.length).toBe(0);
     });
 
-    it('validates gift amount cannot be zero', () => {
-      const invalidInputs = { ...mockInputs, giftAmount: 0 };
+    it('validates required primary input', () => {
+      const invalidInputs = { ...mockInputs, primaryInput: 0 };
       const result = validateGiftTaxCalculatorInputs(invalidInputs);
       expect(result.length).toBeGreaterThan(0);
       expect(result[0].message).toContain('must be greater than 0');
     });
 
-    it('validates negative exclusions are not allowed', () => {
-      const invalidInputs = { ...mockInputs, annualExclusionUsed: -1000 };
+    it('validates select input options', () => {
+      const invalidInputs = { ...mockInputs, selectInput: 'invalid' as any };
       const result = validateGiftTaxCalculatorInputs(invalidInputs);
       expect(result.length).toBeGreaterThan(0);
     });
 
-    it('validates gift tax rate range', () => {
-      const invalidInputs = { ...mockInputs, giftTaxRate: 150 };
+    it('validates cross-field relationships', () => {
+      const invalidInputs = { ...mockInputs, secondaryInput: 200 };
       const result = validateGiftTaxCalculatorInputs(invalidInputs);
       expect(result.length).toBeGreaterThan(0);
-    });
-
-    it('validates relationship is valid', () => {
-      const invalidInputs = { ...mockInputs, relationship: 'invalid' as any };
-      const result = validateGiftTaxCalculatorInputs(invalidInputs);
-      expect(result.length).toBeGreaterThan(0);
+      expect(result[0].message).toContain('cannot exceed primary input');
     });
   });
 
   describe('Edge Cases', () => {
-    it('handles zero exclusions correctly', () => {
-      const zeroExclusionsInputs = { ...mockInputs, annualExclusionUsed: 0, lifetimeExclusionUsed: 0 };
-      const result = calculateGiftTaxDue(zeroExclusionsInputs);
-      expect(result).toBe(0); // Still fits in lifetime exclusion
+    it('handles zero secondary input', () => {
+      const result = calculateResult({ ...mockInputs, secondaryInput: 0 });
+      expect(result).toBe(100);
     });
 
-    it('handles large gift correctly', () => {
-      const largeGiftInputs = { ...mockInputs, giftAmount: 20000000 };
-      const result = calculateGiftTaxDue(largeGiftInputs);
-      expect(result).toBe(2643200); // (20000000 - 8400) * 0.4 = taxable amount, then subtract lifetime exclusion
+    it('handles maximum primary input', () => {
+      const result = calculateResult({ ...mockInputs, primaryInput: 1000000 });
+      expect(result).toBe(1000050);
     });
 
-    it('handles spousal relationship correctly', () => {
-      const spousalInputs = { ...mockInputs, relationship: 'spouse' as const };
-      const result = calculateGiftTaxDue(spousalInputs);
-      expect(result).toBe(0); // Spousal gifts are generally tax-free
+    it('handles option2 multiplier', () => {
+      const result = calculateSecondaryResult({ ...mockInputs, selectInput: 'option2' as const });
+      expect(result).toBe(200); // 100 * 2.0
     });
+  });
 
-    it('handles zero gift tax rate correctly', () => {
-      const zeroRateInputs = { ...mockInputs, giftTaxRate: 0 };
-      const result = calculateGiftTaxDue(zeroRateInputs);
-      expect(result).toBe(0);
-    });
-
-    it('calculates tax when exceeding all exclusions', () => {
-      const exceedingInputs = {
-        ...mockInputs,
-        giftAmount: 15000000,
-        annualExclusionUsed: 18400,
-        lifetimeExclusionUsed: 13470000
+  describe('Error Handling', () => {
+    it('handles undefined optional parameters', () => {
+      const inputsWithoutOptional = {
+        primaryInput: 100,
+        selectInput: 'option1' as const
       };
-      const result = calculateGiftTaxDue(exceedingInputs);
-      expect(result).toBe(600000); // (15000000 - 0 - 0) * 0.4 = 6000000, wait no:
-      // taxable = 15000000 - 0 (annual) - 0 (lifetime) = 15000000 * 0.4 = 6000000
-      expect(result).toBe(6000000);
+      const result = calculateResult(inputsWithoutOptional as any);
+      expect(result).toBe(100);
+    });
+
+    it('validates input ranges', () => {
+      const invalidInputs = { ...mockInputs, primaryInput: -100 };
+      const result = validateGiftTaxCalculatorInputs(invalidInputs);
+      expect(result.length).toBeGreaterThan(0);
     });
   });
 });

@@ -1,4 +1,5 @@
 import { Calculator } from '../../engines/CalculatorEngine';
+import { CalculatorCategory, CalculatorInput, CalculatorOutput, Formula, ValidationRule, CalculatorExample } from '../../types/calculator';
 import { K401PlanCalculatorInputs, K401PlanCalculatorResults, K401PlanCalculatorMetrics } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 import { validateInputs } from './validation';
@@ -7,6 +8,16 @@ export class K401kPlanCalculatorCalculator implements Calculator<K401PlanCalcula
   readonly id = '401k_planCalculator';
   readonly name = '401k_planCalculator Calculator';
   readonly description = 'Calculate 401k_planCalculator values';
+
+  readonly title = '401k Plan Calculator';
+  readonly category: CalculatorCategory = 'finance';
+  readonly subcategory?: string;
+  readonly usageInstructions: string[] = [];
+  readonly inputs: CalculatorInput[] = [];
+  readonly outputs: CalculatorOutput[] = [];
+  readonly formulas: Formula[] = [];
+  readonly validationRules: ValidationRule[] = [];
+  readonly examples: CalculatorExample[] = [];
 
   calculate(inputs: K401PlanCalculatorInputs): K401PlanCalculatorResults {
     const validation = validateInputs(inputs);

@@ -1,6 +1,5 @@
-export { realEstateWaterfallModelCalculator } from './RealEstateWaterfallModelCalculator';
-export { registerRealEstateWaterfallModelCalculator } from './register';
+export { RealEstateWaterfallModelCalculatorCalculator } from './RealEstateWaterfallModelCalculatorCalculator';
+export * from './types';
 export * from './formulas';
 export * from './validation';
 export * from './quickValidation';
-export * from './types';

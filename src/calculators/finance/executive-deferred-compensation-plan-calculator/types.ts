@@ -1,78 +1,33 @@
-export interface ExecutiveDeferredCompensationInputs {
-  // Executive Information
-  currentAge: number;
-  retirementAge: number;
-  currentSalary: number;
-  expectedSalaryGrowth: number;
-
-  // Deferred Compensation Details
-  annualDeferralAmount: number;
-  deferralPercentage: number;
-  vestingPeriod: number;
-  cliffVesting: boolean;
-
-  // Investment and Growth
-  expectedReturn: number;
-  companyMatch: number;
-  companyMatchLimit: number;
-
-  // Tax Information
-  currentTaxRate: number;
-  deferredTaxRate: number;
-  capitalGainsTaxRate: number;
-
-  // Plan Features
-  employerContribution: number;
-  vestingSchedule: 'graded' | 'cliff' | 'immediate';
-  distributionOptions: 'lump-sum' | 'annuity' | 'installments';
-
-  // Risk Factors
-  companyRisk: 'low' | 'medium' | 'high';
-  marketRisk: 'conservative' | 'moderate' | 'aggressive';
-
-  // Time Horizon
-  analysisYears: number;
-  inflationRate: number;
+export interface ExecutiveDeferredCompensationPlanCalculatorInputs {
+  // Define input properties based on the calculator's requirements
+  primaryInput: number;
+  secondaryInput?: number;
+  selectInput: string;
+  // Add more input properties as needed
+  optionalParameter?: string;
+  booleanFlag?: boolean;
 }
 
-export interface ExecutiveDeferredCompensationResults {
-  // Current Value Analysis
-  currentAccountBalance: number;
-  vestedBalance: number;
-  unvestedBalance: number;
+export interface ExecutiveDeferredCompensationPlanCalculatorOutputs {
+  // Define output properties that the calculator will produce
+  primaryResult: number;
+  secondaryResult: number;
+  // Add more output properties as needed
+  percentageResult?: number;
+  textResult?: string;
+}
 
-  // Future Value Projections
-  projectedValueAtRetirement: number;
-  projectedValueAfterTaxes: number;
-  projectedValueAfterInflation: number;
+export interface ExecutiveDeferredCompensationPlanCalculatorMetrics {
+  // Define intermediate calculation results or metrics
+  intermediateValue: number;
+  calculationSteps: string[];
+  riskLevel: 'Low' | 'Medium' | 'High';
+}
 
-  // Cash Flow Analysis
-  annualDeferralSavings: number;
-  taxDeferredGrowth: number;
-  totalTaxSavings: number;
-
-  // Risk Assessment
-  riskAdjustedValue: number;
-  worstCaseScenario: number;
-  bestCaseScenario: number;
-
-  // Comparison Analysis
-  traditionalSavingsComparison: number;
-  netAdvantage: number;
-  breakEvenYears: number;
-
-  // Distribution Analysis
-  lumpSumValue: number;
-  annuityValue: number;
-  installmentValue: number;
-
-  // Tax Analysis
-  deferredTaxLiability: number;
-  capitalGainsTax: number;
-  totalTaxEfficiency: number;
-
-  // Recommendations
-  recommendedDeferralAmount: number;
-  optimalVestingStrategy: string;
-  riskMitigationStrategies: string[];
+export interface ExecutiveDeferredCompensationPlanCalculatorAnalysis {
+  // Define analysis results
+  recommendation: string;
+  riskLevel: 'Low' | 'Medium' | 'High';
+  insights: string[];
+  warnings: string[];
 }

@@ -1,6 +1,3 @@
-import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { cryptotaxharvestingcalculatorCalculator } from './cryptotaxharvestingcalculatorCalculator';
+import { CryptoTaxHarvestingCalculatorCalculator } from './CryptoTaxHarvestingCalculatorCalculator';
 
-export function registercryptotaxharvestingcalculatorCalculator(): void {
-  calculatorRegistry.register(new cryptotaxharvestingcalculatorCalculator());
-}
+export { CryptoTaxHarvestingCalculatorCalculator };

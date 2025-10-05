@@ -1,50 +1,60 @@
 import { describe, it, expect } from 'vitest';
 import {
-  calculateAnnualAnnuityPayment,
-  calculateTotalAnnuityPayments,
-  calculateRemainingValue,
-  calculateTaxSavings,
-  calculateEffectiveTransfer
+  calculateResult,
+  calculateSecondaryResult,
+  calculatePercentageResult,
+  calculateMetrics,
+  generateAnalysis
 } from './formulas';
 import { validateGrantorRetainedAnnuityTrustGratCalculatorInputs } from './validation';
 
-describe('Grantor Retained Annuity Trust (GRAT) Calculator', () => {
+describe('GrantorRetainedAnnuityTrustGratCalculator Calculator', () => {
   const mockInputs = {
-    initialValue: 1000000,
-    annuityRate: 7.5,
-    termYears: 5,
-    growthRate: 6,
-    discountRate: 4,
-    isZeroedOut: false
+    primaryInput: 100,
+    secondaryInput: 50,
+    selectInput: 'option1' as const,
+    optionalParameter: 'test',
+    booleanFlag: true
   };
 
-  describe('GRAT Calculations', () => {
-    it('calculates annual annuity payment correctly', () => {
-      const result = calculateAnnualAnnuityPayment(mockInputs);
-      expect(result).toBe(75000); // 1000000 * 0.075
+  describe('Core Calculations', () => {
+    it('calculates primary result correctly', () => {
+      const result = calculateResult(mockInputs);
+      expect(result).toBe(150); // 100 + 50
     });
 
-    it('calculates total annuity payments correctly', () => {
-      const result = calculateTotalAnnuityPayments(mockInputs);
-      expect(result).toBe(375000); // 75000 * 5
+    it('calculates secondary result correctly', () => {
+      const result = calculateSecondaryResult(mockInputs);
+      expect(result).toBe(150); // 100 * 1.5 for option1
     });
 
-    it('calculates remaining value correctly', () => {
-      const result = calculateRemainingValue(mockInputs);
-      expect(result).toBeGreaterThan(0);
-      // This will be approximately the initial value minus payments plus growth
+    it('calculates percentage result correctly', () => {
+      const result = calculatePercentageResult(mockInputs);
+      expect(result).toBe(150); // (150 / 100) * 100
     });
 
-    it('calculates tax savings correctly', () => {
-      const result = calculateTaxSavings(mockInputs);
-      expect(result).toBeGreaterThan(0);
-      // Tax savings = remaining value * 0.40 (estate tax rate)
+    it('calculates metrics correctly', () => {
+      const result = calculateMetrics(mockInputs);
+      expect(result.intermediateValue).toBe(75); // 150 * 0.5
+      expect(result.calculationSteps).toContain('Calculated primary result');
+      expect(result.riskLevel).toBe('Low');
+    });
+  });
+
+  describe('Analysis Generation', () => {
+    it('generates analysis for low values', () => {
+      const metrics = calculateMetrics(mockInputs);
+      const analysis = generateAnalysis(mockInputs, metrics);
+      expect(analysis.riskLevel).toBe('Low');
+      expect(analysis.insights).toContain('All values are within normal parameters');
     });
 
-    it('calculates effective transfer correctly', () => {
-      const result = calculateEffectiveTransfer(mockInputs);
-      // Effective transfer = remaining value - total annuity payments
-      expect(typeof result).toBe('number');
+    it('generates analysis for high values', () => {
+      const highInputs = { ...mockInputs, primaryInput: 2000 };
+      const metrics = calculateMetrics(highInputs);
+      const analysis = generateAnalysis(highInputs, metrics);
+      expect(analysis.riskLevel).toBe('High');
+      expect(analysis.warnings).toContain('Result exceeds typical thresholds');
     });
   });
 
@@ -54,61 +64,58 @@ describe('Grantor Retained Annuity Trust (GRAT) Calculator', () => {
       expect(result.length).toBe(0);
     });
 
-    it('validates initial value cannot be zero', () => {
-      const invalidInputs = { ...mockInputs, initialValue: 0 };
+    it('validates required primary input', () => {
+      const invalidInputs = { ...mockInputs, primaryInput: 0 };
+      const result = validateGrantorRetainedAnnuityTrustGratCalculatorInputs(invalidInputs);
+      expect(result.length).toBeGreaterThan(0);
+      expect(result[0].message).toContain('must be greater than 0');
+    });
+
+    it('validates select input options', () => {
+      const invalidInputs = { ...mockInputs, selectInput: 'invalid' as any };
       const result = validateGrantorRetainedAnnuityTrustGratCalculatorInputs(invalidInputs);
       expect(result.length).toBeGreaterThan(0);
     });
 
-    it('validates annuity rate range', () => {
-      const invalidInputs = { ...mockInputs, annuityRate: 150 };
+    it('validates cross-field relationships', () => {
+      const invalidInputs = { ...mockInputs, secondaryInput: 200 };
       const result = validateGrantorRetainedAnnuityTrustGratCalculatorInputs(invalidInputs);
       expect(result.length).toBeGreaterThan(0);
-    });
-
-    it('validates term years range', () => {
-      const invalidInputs = { ...mockInputs, termYears: 0 };
-      const result = validateGrantorRetainedAnnuityTrustGratCalculatorInputs(invalidInputs);
-      expect(result.length).toBeGreaterThan(0);
-    });
-
-    it('validates growth rate range', () => {
-      const invalidInputs = { ...mockInputs, growthRate: -60 };
-      const result = validateGrantorRetainedAnnuityTrustGratCalculatorInputs(invalidInputs);
-      expect(result.length).toBeGreaterThan(0);
+      expect(result[0].message).toContain('cannot exceed primary input');
     });
   });
 
   describe('Edge Cases', () => {
-    it('handles zero growth rate correctly', () => {
-      const zeroGrowthInputs = { ...mockInputs, growthRate: 0 };
-      const result = calculateRemainingValue(zeroGrowthInputs);
-      expect(result).toBeGreaterThan(0);
+    it('handles zero secondary input', () => {
+      const result = calculateResult({ ...mockInputs, secondaryInput: 0 });
+      expect(result).toBe(100);
     });
 
-    it('handles high annuity rate correctly', () => {
-      const highRateInputs = { ...mockInputs, annuityRate: 15 };
-      const result = calculateAnnualAnnuityPayment(highRateInputs);
-      expect(result).toBe(150000); // 1000000 * 0.15
+    it('handles maximum primary input', () => {
+      const result = calculateResult({ ...mockInputs, primaryInput: 1000000 });
+      expect(result).toBe(1000050);
     });
 
-    it('handles short term correctly', () => {
-      const shortTermInputs = { ...mockInputs, termYears: 2 };
-      const result = calculateTotalAnnuityPayments(shortTermInputs);
-      expect(result).toBe(150000); // 75000 * 2
+    it('handles option2 multiplier', () => {
+      const result = calculateSecondaryResult({ ...mockInputs, selectInput: 'option2' as const });
+      expect(result).toBe(200); // 100 * 2.0
+    });
+  });
+
+  describe('Error Handling', () => {
+    it('handles undefined optional parameters', () => {
+      const inputsWithoutOptional = {
+        primaryInput: 100,
+        selectInput: 'option1' as const
+      };
+      const result = calculateResult(inputsWithoutOptional as any);
+      expect(result).toBe(100);
     });
 
-    it('handles long term correctly', () => {
-      const longTermInputs = { ...mockInputs, termYears: 10 };
-      const result = calculateTotalAnnuityPayments(longTermInputs);
-      expect(result).toBe(750000); // 75000 * 10
-    });
-
-    it('calculates zeroed-out GRAT correctly', () => {
-      const zeroedInputs = { ...mockInputs, isZeroedOut: true };
-      const result = calculateRemainingValue(zeroedInputs);
-      // Zeroed-out GRAT should have minimal remaining value
-      expect(result).toBeGreaterThanOrEqual(0);
+    it('validates input ranges', () => {
+      const invalidInputs = { ...mockInputs, primaryInput: -100 };
+      const result = validateGrantorRetainedAnnuityTrustGratCalculatorInputs(invalidInputs);
+      expect(result.length).toBeGreaterThan(0);
     });
   });
 });

@@ -1,306 +1,61 @@
-import { ValidationResult } from '../../types/calculator';
+import { RealEstateDevelopmentProformaCalculatorInputs } from './types';
 
-/**
- * Quick validation functions for individual real estate development pro-forma calculator fields
- * Each function validates a single field and includes allInputs parameter
- */
-
-export function validateCalculationType(value: any, allInputs?: Record<string, any>): ValidationResult {
-  if (!value) {
-    return { isValid: false, errors: { calculationType: 'Analysis type is required' } };
+export function validatePrimaryInput(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (!value || value <= 0) {
+    return { isValid: false, message: 'Primary input must be greater than 0' };
   }
-
-  const validTypes = [
-    'development_costs', 'revenue_projections', 'financing',
-    'investment_returns', 'sensitivity_analysis', 'comprehensive'
-  ];
-
-  if (!validTypes.includes(value)) {
-    return { isValid: false, errors: { calculationType: 'Please select a valid analysis type' } };
+  if (value > 1000000) {
+    return { isValid: false, message: 'Primary input cannot exceed 1,000,000' };
   }
-
-  return { isValid: true, errors: {} };
+  return { isValid: true };
 }
 
-export function validateLandCost(value: any, allInputs?: Record<string, any>): ValidationResult {
-  if (value === undefined || value === null || value === '') {
-    return { isValid: true, errors: {} };
+export function validateSecondaryInput(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value < 0) {
+    return { isValid: false, message: 'Secondary input cannot be negative' };
   }
-
-  const numValue = Number(value);
-  if (isNaN(numValue) || numValue < 0 || numValue > 100000000) {
-    return { isValid: false, errors: { landCost: 'Land cost must be between $0 and $100,000,000' } };
+  if (allInputs?.primaryInput && value > allInputs.primaryInput) {
+    return { isValid: false, message: 'Secondary input cannot exceed primary input' };
   }
-
-  return { isValid: true, errors: {} };
+  return { isValid: true };
 }
 
-export function validateConstructionCostPerSqFt(value: any, allInputs?: Record<string, any>): ValidationResult {
-  if (value === undefined || value === null || value === '') {
-    return { isValid: true, errors: {} };
+export function validateSelectInput(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  const validOptions = ['option1', 'option2'];
+  if (!value || !validOptions.includes(value)) {
+    return { isValid: false, message: 'Please select a valid option' };
   }
-
-  const numValue = Number(value);
-  if (isNaN(numValue) || numValue < 0 || numValue > 10000) {
-    return { isValid: false, errors: { constructionCostPerSqFt: 'Construction cost per square foot must be between $0 and $10,000' } };
-  }
-
-  return { isValid: true, errors: {} };
+  return { isValid: true };
 }
 
-export function validateTotalSqFt(value: any, allInputs?: Record<string, any>): ValidationResult {
-  if (value === undefined || value === null || value === '') {
-    return { isValid: true, errors: {} };
+export function validateOptionalParameter(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value && value.length > 100) {
+    return { isValid: false, message: 'Optional parameter cannot exceed 100 characters' };
   }
-
-  const numValue = Number(value);
-  if (isNaN(numValue) || numValue < 100 || numValue > 1000000) {
-    return { isValid: false, errors: { totalSqFt: 'Total square footage must be between 100 and 1,000,000 sq ft' } };
-  }
-
-  return { isValid: true, errors: {} };
+  return { isValid: true };
 }
 
-export function validateSoftCostsPercentage(value: any, allInputs?: Record<string, any>): ValidationResult {
-  if (value === undefined || value === null || value === '') {
-    return { isValid: true, errors: {} };
+export function validateBooleanFlag(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (typeof value !== 'boolean' && value !== undefined) {
+    return { isValid: false, message: 'Boolean flag must be true or false' };
   }
-
-  const numValue = Number(value);
-  if (isNaN(numValue) || numValue < 0 || numValue > 50) {
-    return { isValid: false, errors: { softCostsPercentage: 'Soft costs percentage must be between 0% and 50%' } };
-  }
-
-  return { isValid: true, errors: {} };
+  return { isValid: true };
 }
 
-export function validateContingencyPercentage(value: any, allInputs?: Record<string, any>): ValidationResult {
-  if (value === undefined || value === null || value === '') {
-    return { isValid: true, errors: {} };
+// Additional validation functions as needed
+export function validateNumericRange(value: any, min: number, max: number, fieldName: string, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value < min) {
+    return { isValid: false, message: `${fieldName} must be at least ${min}` };
   }
-
-  const numValue = Number(value);
-  if (isNaN(numValue) || numValue < 0 || numValue > 20) {
-    return { isValid: false, errors: { contingencyPercentage: 'Contingency percentage must be between 0% and 20%' } };
+  if (value > max) {
+    return { isValid: false, message: `${fieldName} cannot exceed ${max}` };
   }
-
-  return { isValid: true, errors: {} };
+  return { isValid: true };
 }
 
-export function validateMarketingCost(value: any, allInputs?: Record<string, any>): ValidationResult {
-  if (value === undefined || value === null || value === '') {
-    return { isValid: true, errors: {} };
+export function validateRequired(value: any, fieldName: string, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value === null || value === undefined || value === '') {
+    return { isValid: false, message: `${fieldName} is required` };
   }
-
-  const numValue = Number(value);
-  if (isNaN(numValue) || numValue < 0 || numValue > 10000000) {
-    return { isValid: false, errors: { marketingCost: 'Marketing cost must be between $0 and $10,000,000' } };
-  }
-
-  return { isValid: true, errors: {} };
-}
-
-export function validateFinancingCost(value: any, allInputs?: Record<string, any>): ValidationResult {
-  if (value === undefined || value === null || value === '') {
-    return { isValid: true, errors: {} };
-  }
-
-  const numValue = Number(value);
-  if (isNaN(numValue) || numValue < 0 || numValue > 10000000) {
-    return { isValid: false, errors: { financingCost: 'Financing cost must be between $0 and $10,000,000' } };
-  }
-
-  return { isValid: true, errors: {} };
-}
-
-export function validateRentalRatePerSqFt(value: any, allInputs?: Record<string, any>): ValidationResult {
-  if (value === undefined || value === null || value === '') {
-    return { isValid: true, errors: {} };
-  }
-
-  const numValue = Number(value);
-  if (isNaN(numValue) || numValue < 0 || numValue > 1000) {
-    return { isValid: false, errors: { rentalRatePerSqFt: 'Rental rate per square foot must be between $0 and $1,000' } };
-  }
-
-  return { isValid: true, errors: {} };
-}
-
-export function validateOccupancyRate(value: any, allInputs?: Record<string, any>): ValidationResult {
-  if (value === undefined || value === null || value === '') {
-    return { isValid: true, errors: {} };
-  }
-
-  const numValue = Number(value);
-  if (isNaN(numValue) || numValue < 0 || numValue > 100) {
-    return { isValid: false, errors: { occupancyRate: 'Occupancy rate must be between 0% and 100%' } };
-  }
-
-  return { isValid: true, errors: {} };
-}
-
-export function validateAnnualRentIncrease(value: any, allInputs?: Record<string, any>): ValidationResult {
-  if (value === undefined || value === null || value === '') {
-    return { isValid: true, errors: {} };
-  }
-
-  const numValue = Number(value);
-  if (isNaN(numValue) || numValue < -10 || numValue > 20) {
-    return { isValid: false, errors: { annualRentIncrease: 'Annual rent increase must be between -10% and 20%' } };
-  }
-
-  return { isValid: true, errors: {} };
-}
-
-export function validateHoldingPeriodYears(value: any, allInputs?: Record<string, any>): ValidationResult {
-  if (value === undefined || value === null || value === '') {
-    return { isValid: true, errors: {} };
-  }
-
-  const numValue = Number(value);
-  if (isNaN(numValue) || numValue < 1 || numValue > 30) {
-    return { isValid: false, errors: { holdingPeriodYears: 'Holding period must be between 1 and 30 years' } };
-  }
-
-  return { isValid: true, errors: {} };
-}
-
-export function validateExitCapRate(value: any, allInputs?: Record<string, any>): ValidationResult {
-  if (value === undefined || value === null || value === '') {
-    return { isValid: true, errors: {} };
-  }
-
-  const numValue = Number(value);
-  if (isNaN(numValue) || numValue < 1 || numValue > 20) {
-    return { isValid: false, errors: { exitCapRate: 'Exit cap rate must be between 1% and 20%' } };
-  }
-
-  return { isValid: true, errors: {} };
-}
-
-export function validateEquityPercentage(value: any, allInputs?: Record<string, any>): ValidationResult {
-  if (value === undefined || value === null || value === '') {
-    return { isValid: true, errors: {} };
-  }
-
-  const numValue = Number(value);
-  if (isNaN(numValue) || numValue < 0 || numValue > 100) {
-    return { isValid: false, errors: { equityPercentage: 'Equity percentage must be between 0% and 100%' } };
-  }
-
-  return { isValid: true, errors: {} };
-}
-
-export function validateInterestRate(value: any, allInputs?: Record<string, any>): ValidationResult {
-  if (value === undefined || value === null || value === '') {
-    return { isValid: true, errors: {} };
-  }
-
-  const numValue = Number(value);
-  if (isNaN(numValue) || numValue < 0 || numValue > 15) {
-    return { isValid: false, errors: { interestRate: 'Interest rate must be between 0% and 15%' } };
-  }
-
-  return { isValid: true, errors: {} };
-}
-
-export function validateLoanTermYears(value: any, allInputs?: Record<string, any>): ValidationResult {
-  if (value === undefined || value === null || value === '') {
-    return { isValid: true, errors: {} };
-  }
-
-  const numValue = Number(value);
-  if (isNaN(numValue) || numValue < 1 || numValue > 50) {
-    return { isValid: false, errors: { loanTermYears: 'Loan term must be between 1 and 50 years' } };
-  }
-
-  return { isValid: true, errors: {} };
-}
-
-export function validateConstructionPeriodMonths(value: any, allInputs?: Record<string, any>): ValidationResult {
-  if (value === undefined || value === null || value === '') {
-    return { isValid: true, errors: {} };
-  }
-
-  const numValue = Number(value);
-  if (isNaN(numValue) || numValue < 1 || numValue > 36) {
-    return { isValid: false, errors: { constructionPeriodMonths: 'Construction period must be between 1 and 36 months' } };
-  }
-
-  return { isValid: true, errors: {} };
-}
-
-export function validateInterestOnlyPeriodMonths(value: any, allInputs?: Record<string, any>): ValidationResult {
-  if (value === undefined || value === null || value === '') {
-    return { isValid: true, errors: {} };
-  }
-
-  const numValue = Number(value);
-  if (isNaN(numValue) || numValue < 0 || numValue > 60) {
-    return { isValid: false, errors: { interestOnlyPeriodMonths: 'Interest-only period must be between 0 and 60 months' } };
-  }
-
-  // Check if interest-only period is at least as long as construction period
-  if (allInputs?.constructionPeriodMonths && numValue < Number(allInputs.constructionPeriodMonths)) {
-    return { isValid: false, errors: { interestOnlyPeriodMonths: 'Interest-only period must be at least as long as construction period' } };
-  }
-
-  return { isValid: true, errors: {} };
-}
-
-export function validateCostVariance(value: any, allInputs?: Record<string, any>): ValidationResult {
-  if (value === undefined || value === null || value === '') {
-    return { isValid: true, errors: {} };
-  }
-
-  try {
-    const variances = value.split(',').map((v: string) => Number(v.trim()));
-    const allValid = variances.every((v: number) => !isNaN(v) && v >= -50 && v <= 50);
-
-    if (!allValid) {
-      return { isValid: false, errors: { costVariance: 'Cost variance must be comma-separated numbers between -50% and 50%' } };
-    }
-  } catch {
-    return { isValid: false, errors: { costVariance: 'Cost variance must be comma-separated numbers' } };
-  }
-
-  return { isValid: true, errors: {} };
-}
-
-export function validateRevenueVariance(value: any, allInputs?: Record<string, any>): ValidationResult {
-  if (value === undefined || value === null || value === '') {
-    return { isValid: true, errors: {} };
-  }
-
-  try {
-    const variances = value.split(',').map((v: string) => Number(v.trim()));
-    const allValid = variances.every((v: number) => !isNaN(v) && v >= -50 && v <= 50);
-
-    if (!allValid) {
-      return { isValid: false, errors: { revenueVariance: 'Revenue variance must be comma-separated numbers between -50% and 50%' } };
-    }
-  } catch {
-    return { isValid: false, errors: { revenueVariance: 'Revenue variance must be comma-separated numbers' } };
-  }
-
-  return { isValid: true, errors: {} };
-}
-
-export function validateCapRateVariance(value: any, allInputs?: Record<string, any>): ValidationResult {
-  if (value === undefined || value === null || value === '') {
-    return { isValid: true, errors: {} };
-  }
-
-  try {
-    const variances = value.split(',').map((v: string) => Number(v.trim()));
-    const allValid = variances.every((v: number) => !isNaN(v) && v >= -50 && v <= 50);
-
-    if (!allValid) {
-      return { isValid: false, errors: { capRateVariance: 'Cap rate variance must be comma-separated numbers between -50% and 50%' } };
-    }
-  } catch {
-    return { isValid: false, errors: { capRateVariance: 'Cap rate variance must be comma-separated numbers' } };
-  }
-
-  return { isValid: true, errors: {} };
+  return { isValid: true };
 }

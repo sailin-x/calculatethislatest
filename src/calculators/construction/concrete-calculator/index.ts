@@ -1,4 +1,4 @@
-export { ConcreteCalculator } from './ConcreteCalculator';
+export { ConcreteCalculatorCalculator } from './ConcreteCalculatorCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

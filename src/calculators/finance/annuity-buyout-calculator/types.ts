@@ -1,55 +1,33 @@
-export interface AnnuityBuyoutInputs {
-  // Current Annuity Information
-  currentAnnuityValue: number;
-  monthlyPayment: number;
-  remainingPayments: number;
-  interestRate: number;
-
-  // Buyout Offer
-  buyoutOffer: number;
-  buyoutFees: number;
-  buyoutTaxes: number;
-
-  // Alternative Investment
-  alternativeInvestmentRate: number;
-  alternativeInvestmentFees: number;
-  timeHorizon: number;
-
-  // Personal Information
-  age: number;
-  taxBracket: number;
-  riskTolerance: 'low' | 'medium' | 'high';
-
-  // Analysis Options
-  includeInflation: boolean;
-  inflationRate: number;
-  discountRate: number;
+export interface AnnuityBuyoutCalculatorInputs {
+  // Define input properties based on the calculator's requirements
+  primaryInput: number;
+  secondaryInput?: number;
+  selectInput: string;
+  // Add more input properties as needed
+  optionalParameter?: string;
+  booleanFlag?: boolean;
 }
 
-export interface AnnuityBuyoutResults {
-  // Current Annuity Value
-  presentValueOfRemainingPayments: number;
-  totalValueReceived: number;
-  netBuyoutValue: number;
+export interface AnnuityBuyoutCalculatorOutputs {
+  // Define output properties that the calculator will produce
+  primaryResult: number;
+  secondaryResult: number;
+  // Add more output properties as needed
+  percentageResult?: number;
+  textResult?: string;
+}
 
-  // Buyout Analysis
-  buyoutVsPresentValue: number;
-  buyoutEfficiency: number;
-  breakEvenPeriod: number;
+export interface AnnuityBuyoutCalculatorMetrics {
+  // Define intermediate calculation results or metrics
+  intermediateValue: number;
+  calculationSteps: string[];
+  riskLevel: 'Low' | 'Medium' | 'High';
+}
 
-  // Alternative Investment Analysis
-  alternativeInvestmentValue: number;
-  alternativeVsBuyout: number;
-  riskAdjustedReturn: number;
-
-  // Tax Analysis
-  taxSavings: number;
-  afterTaxBuyoutValue: number;
-  afterTaxAlternativeValue: number;
-
-  // Recommendations
+export interface AnnuityBuyoutCalculatorAnalysis {
+  // Define analysis results
   recommendation: string;
-  confidenceLevel: string;
-  nextSteps: string[];
+  riskLevel: 'Low' | 'Medium' | 'High';
+  insights: string[];
   warnings: string[];
 }

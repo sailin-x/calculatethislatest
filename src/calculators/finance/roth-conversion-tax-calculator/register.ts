@@ -1,7 +1,3 @@
-import { RothConversionTaxCalculator } from './RothConversionTaxCalculator';
+import { RothConversionTaxCalculatorCalculator } from './RothConversionTaxCalculatorCalculator';
 
-export { RothConversionTaxCalculator };
-
-export function registerRothConversionTaxCalculator(): void {
-  // Registration logic if needed
-}
+export { RothConversionTaxCalculatorCalculator };

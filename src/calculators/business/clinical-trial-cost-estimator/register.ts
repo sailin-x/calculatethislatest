@@ -1,6 +1,3 @@
-import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { clinicaltrialcostestimatorCalculator } from './clinicaltrialcostestimatorCalculator';
+import { ClinicalTrialCostEstimatorCalculator } from './ClinicalTrialCostEstimatorCalculator';
 
-export function registerclinicaltrialcostestimatorCalculator(): void {
-  calculatorRegistry.register(new clinicaltrialcostestimatorCalculator());
-}
+export { ClinicalTrialCostEstimatorCalculator };

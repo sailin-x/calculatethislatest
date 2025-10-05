@@ -1,8 +1,3 @@
-import { calculatorRegistry } from '../../../data/calculatorRegistry';
-import { IrrevocableLifeInsuranceTrustIlitValueCalculator } from './IrrevocableLifeInsuranceTrustIlitValueCalculator';
+import { IrrevocableLifeInsuranceTrustIlitValueCalculatorCalculator } from './IrrevocableLifeInsuranceTrustIlitValueCalculatorCalculator';
 
-export function registerIrrevocableLifeInsuranceTrustIlitValueCalculator(): void {
-  calculatorRegistry.register(IrrevocableLifeInsuranceTrustIlitValueCalculator);
-}
-
-export { IrrevocableLifeInsuranceTrustIlitValueCalculator };
+export { IrrevocableLifeInsuranceTrustIlitValueCalculatorCalculator };

@@ -1,6 +1,3 @@
-import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { shitcoininvestmentcalculatorCalculator } from './shitcoininvestmentcalculatorCalculator';
+import { ShitcoinInvestmentCalculatorCalculator } from './ShitcoinInvestmentCalculatorCalculator';
 
-export function registershitcoininvestmentcalculatorCalculator(): void {
-  calculatorRegistry.register(new shitcoininvestmentcalculatorCalculator());
-}
+export { ShitcoinInvestmentCalculatorCalculator };

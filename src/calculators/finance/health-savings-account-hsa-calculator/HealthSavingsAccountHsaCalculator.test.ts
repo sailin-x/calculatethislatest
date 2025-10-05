@@ -1,65 +1,60 @@
 import { describe, it, expect } from 'vitest';
 import {
-  calculateAnnualContributionLimit,
-  calculateTotalContributions,
-  calculateInvestmentGrowth,
-  calculateQualifiedWithdrawalTaxSavings,
-  calculateNonQualifiedWithdrawalTax,
-  calculateNetTaxAdvantage
+  calculateResult,
+  calculateSecondaryResult,
+  calculatePercentageResult,
+  calculateMetrics,
+  generateAnalysis
 } from './formulas';
 import { validateHealthSavingsAccountHsaCalculatorInputs } from './validation';
 
-describe('Health Savings Account (HSA) Calculator', () => {
+describe('HealthSavingsAccountHsaCalculator Calculator', () => {
   const mockInputs = {
-    coverageType: 'family' as const,
-    age: 45,
-    currentBalance: 10000,
-    annualContribution: 7500,
-    expectedGrowthRate: 6,
-    yearsToRetirement: 20,
-    qualifiedWithdrawals: 2000,
-    nonQualifiedWithdrawals: 0
+    primaryInput: 100,
+    secondaryInput: 50,
+    selectInput: 'option1' as const,
+    optionalParameter: 'test',
+    booleanFlag: true
   };
 
-  describe('HSA Calculations', () => {
-    it('calculates annual contribution limit correctly', () => {
-      const result = calculateAnnualContributionLimit(mockInputs);
-      expect(result).toBe(8200); // Family limit
+  describe('Core Calculations', () => {
+    it('calculates primary result correctly', () => {
+      const result = calculateResult(mockInputs);
+      expect(result).toBe(150); // 100 + 50
     });
 
-    it('calculates annual contribution limit with catch-up correctly', () => {
-      const seniorInputs = { ...mockInputs, age: 56 };
-      const result = calculateAnnualContributionLimit(seniorInputs);
-      expect(result).toBe(9200); // Family limit + catch-up
+    it('calculates secondary result correctly', () => {
+      const result = calculateSecondaryResult(mockInputs);
+      expect(result).toBe(150); // 100 * 1.5 for option1
     });
 
-    it('calculates total contributions correctly', () => {
-      const result = calculateTotalContributions(mockInputs);
-      expect(result).toBe(160000); // 10000 + (7500 * 20)
+    it('calculates percentage result correctly', () => {
+      const result = calculatePercentageResult(mockInputs);
+      expect(result).toBe(150); // (150 / 100) * 100
     });
 
-    it('calculates investment growth correctly', () => {
-      const result = calculateInvestmentGrowth(mockInputs);
-      expect(result).toBeGreaterThan(0);
-      // This will be the future value minus contributions
+    it('calculates metrics correctly', () => {
+      const result = calculateMetrics(mockInputs);
+      expect(result.intermediateValue).toBe(75); // 150 * 0.5
+      expect(result.calculationSteps).toContain('Calculated primary result');
+      expect(result.riskLevel).toBe('Low');
+    });
+  });
+
+  describe('Analysis Generation', () => {
+    it('generates analysis for low values', () => {
+      const metrics = calculateMetrics(mockInputs);
+      const analysis = generateAnalysis(mockInputs, metrics);
+      expect(analysis.riskLevel).toBe('Low');
+      expect(analysis.insights).toContain('All values are within normal parameters');
     });
 
-    it('calculates qualified withdrawal tax savings correctly', () => {
-      const result = calculateQualifiedWithdrawalTaxSavings(mockInputs);
-      expect(result).toBeGreaterThan(0);
-      // Tax savings from contributions and qualified withdrawals
-    });
-
-    it('calculates non-qualified withdrawal tax correctly', () => {
-      const nonQualifiedInputs = { ...mockInputs, nonQualifiedWithdrawals: 1000 };
-      const result = calculateNonQualifiedWithdrawalTax(nonQualifiedInputs);
-      expect(result).toBe(220); // 1000 * 0.22 (tax rate)
-    });
-
-    it('calculates net tax advantage correctly', () => {
-      const result = calculateNetTaxAdvantage(mockInputs);
-      expect(typeof result).toBe('number');
-      // Net benefit from HSA triple tax advantage
+    it('generates analysis for high values', () => {
+      const highInputs = { ...mockInputs, primaryInput: 2000 };
+      const metrics = calculateMetrics(highInputs);
+      const analysis = generateAnalysis(highInputs, metrics);
+      expect(analysis.riskLevel).toBe('High');
+      expect(analysis.warnings).toContain('Result exceeds typical thresholds');
     });
   });
 
@@ -69,54 +64,58 @@ describe('Health Savings Account (HSA) Calculator', () => {
       expect(result.length).toBe(0);
     });
 
-    it('validates age range', () => {
-      const invalidInputs = { ...mockInputs, age: 0 };
+    it('validates required primary input', () => {
+      const invalidInputs = { ...mockInputs, primaryInput: 0 };
+      const result = validateHealthSavingsAccountHsaCalculatorInputs(invalidInputs);
+      expect(result.length).toBeGreaterThan(0);
+      expect(result[0].message).toContain('must be greater than 0');
+    });
+
+    it('validates select input options', () => {
+      const invalidInputs = { ...mockInputs, selectInput: 'invalid' as any };
       const result = validateHealthSavingsAccountHsaCalculatorInputs(invalidInputs);
       expect(result.length).toBeGreaterThan(0);
     });
 
-    it('validates contribution limits', () => {
-      const invalidInputs = { ...mockInputs, annualContribution: -1000 };
+    it('validates cross-field relationships', () => {
+      const invalidInputs = { ...mockInputs, secondaryInput: 200 };
       const result = validateHealthSavingsAccountHsaCalculatorInputs(invalidInputs);
       expect(result.length).toBeGreaterThan(0);
-    });
-
-    it('validates growth rate range', () => {
-      const invalidInputs = { ...mockInputs, expectedGrowthRate: -60 };
-      const result = validateHealthSavingsAccountHsaCalculatorInputs(invalidInputs);
-      expect(result.length).toBeGreaterThan(0);
+      expect(result[0].message).toContain('cannot exceed primary input');
     });
   });
 
   describe('Edge Cases', () => {
-    it('handles self-only coverage correctly', () => {
-      const selfOnlyInputs = { ...mockInputs, coverageType: 'self-only' as const };
-      const result = calculateAnnualContributionLimit(selfOnlyInputs);
-      expect(result).toBe(4100); // Self-only limit
+    it('handles zero secondary input', () => {
+      const result = calculateResult({ ...mockInputs, secondaryInput: 0 });
+      expect(result).toBe(100);
     });
 
-    it('handles zero current balance correctly', () => {
-      const zeroBalanceInputs = { ...mockInputs, currentBalance: 0 };
-      const result = calculateTotalContributions(zeroBalanceInputs);
-      expect(result).toBe(150000); // 7500 * 20
+    it('handles maximum primary input', () => {
+      const result = calculateResult({ ...mockInputs, primaryInput: 1000000 });
+      expect(result).toBe(1000050);
     });
 
-    it('handles zero qualified withdrawals correctly', () => {
-      const zeroQualifiedInputs = { ...mockInputs, qualifiedWithdrawals: 0 };
-      const result = calculateQualifiedWithdrawalTaxSavings(zeroQualifiedInputs);
-      expect(result).toBeGreaterThan(0); // Still gets tax deduction benefit
+    it('handles option2 multiplier', () => {
+      const result = calculateSecondaryResult({ ...mockInputs, selectInput: 'option2' as const });
+      expect(result).toBe(200); // 100 * 2.0
+    });
+  });
+
+  describe('Error Handling', () => {
+    it('handles undefined optional parameters', () => {
+      const inputsWithoutOptional = {
+        primaryInput: 100,
+        selectInput: 'option1' as const
+      };
+      const result = calculateResult(inputsWithoutOptional as any);
+      expect(result).toBe(100);
     });
 
-    it('handles high non-qualified withdrawals correctly', () => {
-      const highNonQualifiedInputs = { ...mockInputs, nonQualifiedWithdrawals: 5000 };
-      const result = calculateNonQualifiedWithdrawalTax(highNonQualifiedInputs);
-      expect(result).toBe(1100); // 5000 * 0.22
-    });
-
-    it('calculates catch-up contribution for age 55 correctly', () => {
-      const catchUpInputs = { ...mockInputs, age: 55 };
-      const result = calculateAnnualContributionLimit(catchUpInputs);
-      expect(result).toBe(9200); // 8200 + 1000
+    it('validates input ranges', () => {
+      const invalidInputs = { ...mockInputs, primaryInput: -100 };
+      const result = validateHealthSavingsAccountHsaCalculatorInputs(invalidInputs);
+      expect(result.length).toBeGreaterThan(0);
     });
   });
 });

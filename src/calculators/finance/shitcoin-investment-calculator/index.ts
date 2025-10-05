@@ -1,5 +1,4 @@
-export { shitcoininvestmentcalculatorCalculator } from './shitcoininvestmentcalculatorCalculator';
-export { registershitcoininvestmentcalculatorCalculator } from './register';
+export { ShitcoinInvestmentCalculatorCalculator } from './ShitcoinInvestmentCalculatorCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

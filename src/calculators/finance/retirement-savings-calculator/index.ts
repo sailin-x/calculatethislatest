@@ -1,6 +1,5 @@
-export { retirementSavingsCalculator } from './RetirementSavingsCalculator';
-export { registerRetirementSavingsCalculator } from './register';
+export { RetirementSavingsCalculatorCalculator } from './RetirementSavingsCalculatorCalculator';
+export * from './types';
 export * from './formulas';
 export * from './validation';
 export * from './quickValidation';
-export * from './types';

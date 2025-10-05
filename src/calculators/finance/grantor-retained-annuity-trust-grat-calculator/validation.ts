@@ -3,33 +3,33 @@ import { GrantorRetainedAnnuityTrustGratCalculatorInputs } from './types';
 export function validateGrantorRetainedAnnuityTrustGratCalculatorInputs(inputs: GrantorRetainedAnnuityTrustGratCalculatorInputs): Array<{ field: string; message: string }> {
   const errors: Array<{ field: string; message: string }> = [];
 
-  if (!inputs.initialValue || inputs.initialValue <= 0) {
-    errors.push({ field: 'initialValue', message: 'Initial value must be greater than 0' });
+  // Primary Input Validation
+  if (!inputs.primaryInput || inputs.primaryInput <= 0) {
+    errors.push({ field: 'primaryInput', message: 'Primary input must be greater than 0' });
   }
-  if (inputs.initialValue && inputs.initialValue > 100000000) {
-    errors.push({ field: 'initialValue', message: 'Initial value cannot exceed $100,000,000' });
-  }
-
-  if (!inputs.annuityRate || inputs.annuityRate <= 0) {
-    errors.push({ field: 'annuityRate', message: 'Annuity rate must be greater than 0' });
-  }
-  if (inputs.annuityRate && inputs.annuityRate > 100) {
-    errors.push({ field: 'annuityRate', message: 'Annuity rate cannot exceed 100%' });
+  if (inputs.primaryInput && inputs.primaryInput > 1000000) {
+    errors.push({ field: 'primaryInput', message: 'Primary input cannot exceed 1,000,000' });
   }
 
-  if (!inputs.termYears || inputs.termYears <= 0) {
-    errors.push({ field: 'termYears', message: 'Term years must be greater than 0' });
-  }
-  if (inputs.termYears && inputs.termYears > 50) {
-    errors.push({ field: 'termYears', message: 'Term years cannot exceed 50' });
+  // Secondary Input Validation (if provided)
+  if (inputs.secondaryInput !== undefined && inputs.secondaryInput < 0) {
+    errors.push({ field: 'secondaryInput', message: 'Secondary input cannot be negative' });
   }
 
-  if (inputs.growthRate < -50 || inputs.growthRate > 50) {
-    errors.push({ field: 'growthRate', message: 'Growth rate must be between -50% and 50%' });
+  // Select Input Validation
+  const validOptions = ['option1', 'option2'];
+  if (!inputs.selectInput || !validOptions.includes(inputs.selectInput)) {
+    errors.push({ field: 'selectInput', message: 'Please select a valid option' });
   }
 
-  if (inputs.discountRate < 0 || inputs.discountRate > 50) {
-    errors.push({ field: 'discountRate', message: 'Discount rate must be between 0% and 50%' });
+  // Cross-field Validation
+  if (inputs.secondaryInput && inputs.primaryInput && inputs.secondaryInput > inputs.primaryInput) {
+    errors.push({ field: 'secondaryInput', message: 'Secondary input cannot exceed primary input' });
+  }
+
+  // Optional Parameter Validation
+  if (inputs.optionalParameter && inputs.optionalParameter.length > 100) {
+    errors.push({ field: 'optionalParameter', message: 'Optional parameter cannot exceed 100 characters' });
   }
 
   return errors;
@@ -38,20 +38,27 @@ export function validateGrantorRetainedAnnuityTrustGratCalculatorInputs(inputs: 
 export function validateGrantorRetainedAnnuityTrustGratCalculatorBusinessRules(inputs: GrantorRetainedAnnuityTrustGratCalculatorInputs): Array<{ field: string; message: string }> {
   const warnings: Array<{ field: string; message: string }> = [];
 
-  if (inputs.termYears < 2) {
-    warnings.push({ field: 'termYears', message: 'Short terms may trigger IRS scrutiny under 7520 regulations' });
+  // Business Rule Warnings
+  if (inputs.primaryInput && inputs.primaryInput > 500000) {
+    warnings.push({ field: 'primaryInput', message: 'High primary input values may require additional review' });
   }
 
-  if (inputs.annuityRate < 10) {
-    warnings.push({ field: 'annuityRate', message: 'Low annuity rate may result in minimal transfer to beneficiaries' });
+  // Ratio-based Warnings
+  if (inputs.secondaryInput && inputs.primaryInput) {
+    const ratio = inputs.secondaryInput / inputs.primaryInput;
+    if (ratio > 0.8) {
+      warnings.push({ field: 'secondaryInput', message: 'Secondary input is very high relative to primary input' });
+    }
   }
 
-  if (inputs.growthRate > inputs.annuityRate) {
-    warnings.push({ field: 'growthRate', message: 'High growth rate relative to annuity rate maximizes transfer efficiency' });
+  // Option-specific Warnings
+  if (inputs.selectInput === 'option2' && inputs.primaryInput && inputs.primaryInput < 100) {
+    warnings.push({ field: 'selectInput', message: 'Option 2 may not be suitable for low primary input values' });
   }
 
-  if (inputs.isZeroedOut && inputs.termYears < 5) {
-    warnings.push({ field: 'isZeroedOut', message: 'Zeroed-out GRATs with short terms carry higher risk of failure' });
+  // Threshold Warnings
+  if (inputs.primaryInput && inputs.primaryInput > 10000) {
+    warnings.push({ field: 'primaryInput', message: 'Consider consulting with financial experts for high-value calculations' });
   }
 
   return warnings;

@@ -1,6 +1,5 @@
-export { realEstateDepreciationScheduleCalculator } from './RealEstateDepreciationScheduleCalculator';
-export { registerRealEstateDepreciationScheduleCalculator } from './register';
+export { RealEstateDepreciationScheduleCalculatorCalculator } from './RealEstateDepreciationScheduleCalculatorCalculator';
+export * from './types';
 export * from './formulas';
 export * from './validation';
 export * from './quickValidation';
-export * from './types';

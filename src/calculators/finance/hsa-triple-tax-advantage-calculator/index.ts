@@ -1,6 +1,5 @@
-export { hsaTripleTaxAdvantageCalculator } from './HSATripleTaxAdvantageCalculator';
-export { registerHSATripleTaxAdvantageCalculator } from './register';
+export { HsaTripleTaxAdvantageCalculatorCalculator } from './HsaTripleTaxAdvantageCalculatorCalculator';
+export * from './types';
 export * from './formulas';
 export * from './validation';
 export * from './quickValidation';
-export * from './types';

@@ -1,8 +1,3 @@
-import { calculatorRegistry } from '../../../data/calculatorRegistry';
-import { NetUnrealizedAppreciationNuaTaxCalculator } from './NetUnrealizedAppreciationNuaTaxCalculator';
+import { NetUnrealizedAppreciationNuaTaxCalculatorCalculator } from './NetUnrealizedAppreciationNuaTaxCalculatorCalculator';
 
-export function registerNetUnrealizedAppreciationNuaTaxCalculator(): void {
-  calculatorRegistry.register(NetUnrealizedAppreciationNuaTaxCalculator);
-}
-
-export { NetUnrealizedAppreciationNuaTaxCalculator };
+export { NetUnrealizedAppreciationNuaTaxCalculatorCalculator };

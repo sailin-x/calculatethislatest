@@ -1,12 +1,33 @@
-export interface felasettlementcalculatorrailroadCalculatorInputs {
-  // Domain-specific input fields for fela settlement calculator railroad Calculator
-  // TODO: Add specific input fields based on calculator requirements
-  value: number;
+export interface FelaSettlementCalculatorRailroadInputs {
+  // Define input properties based on the calculator's requirements
+  primaryInput: number;
+  secondaryInput?: number;
+  selectInput: string;
+  // Add more input properties as needed
+  optionalParameter?: string;
+  booleanFlag?: boolean;
 }
 
-export interface felasettlementcalculatorrailroadCalculatorOutputs {
-  // Domain-specific output fields for fela settlement calculator railroad Calculator
-  // TODO: Add specific output fields based on calculator requirements
-  result: number;
-  details: string;
+export interface FelaSettlementCalculatorRailroadOutputs {
+  // Define output properties that the calculator will produce
+  primaryResult: number;
+  secondaryResult: number;
+  // Add more output properties as needed
+  percentageResult?: number;
+  textResult?: string;
+}
+
+export interface FelaSettlementCalculatorRailroadMetrics {
+  // Define intermediate calculation results or metrics
+  intermediateValue: number;
+  calculationSteps: string[];
+  riskLevel: 'Low' | 'Medium' | 'High';
+}
+
+export interface FelaSettlementCalculatorRailroadAnalysis {
+  // Define analysis results
+  recommendation: string;
+  riskLevel: 'Low' | 'Medium' | 'High';
+  insights: string[];
+  warnings: string[];
 }

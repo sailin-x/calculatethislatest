@@ -1,63 +1,33 @@
 export interface AutoLoanCalculatorInputs {
-  vehiclePrice: number;
-  downPayment: number;
-  tradeInValue: number;
-  loanTermYears: number;
-  interestRate: number;
-  vehicleYear: number;
-  vehicleMake: string;
-  vehicleModel: string;
-  currentMileage: number;
-  fuelEfficiency: number; // MPG
-  annualMileage: number;
-  fuelPricePerGallon: number;
-  extendedWarrantyCost: number;
-  extendedWarrantyYears: number;
-  salesTaxRate: number;
-  otherFees: number;
-  creditScore: number;
-}
-
-export interface VehicleDepreciationData {
-  year: number;
-  value: number;
-  depreciation: number;
-  depreciationRate: number;
-}
-
-export interface FuelCostAnalysis {
-  monthlyFuelCost: number;
-  annualFuelCost: number;
-  totalFuelCostOverLoan: number;
-  fuelCostSavingsVsAverage: number;
-}
-
-export interface TradeInAnalysis {
-  currentTradeInValue: number;
-  projectedTradeInValue: number;
-  tradeInLoss: number;
-  tradeInLossPercentage: number;
-}
-
-export interface WarrantyAnalysis {
-  monthlyWarrantyCost: number;
-  totalWarrantyCost: number;
-  warrantyValue: number;
-  netWarrantyCost: number;
+  // Define input properties based on the calculator's requirements
+  primaryInput: number;
+  secondaryInput?: number;
+  selectInput: string;
+  // Add more input properties as needed
+  optionalParameter?: string;
+  booleanFlag?: boolean;
 }
 
 export interface AutoLoanCalculatorOutputs {
-  loanAmount: number;
-  monthlyPayment: number;
-  totalLoanPayments: number;
-  totalInterestPaid: number;
-  totalCost: number;
-  effectiveInterestRate: number;
-  vehicleDepreciationSchedule: VehicleDepreciationData[];
-  fuelCostAnalysis: FuelCostAnalysis;
-  tradeInAnalysis: TradeInAnalysis;
-  warrantyAnalysis: WarrantyAnalysis;
-  breakEvenPoint: number; // months
-  totalOwnershipCost: number;
-  costPerMile: number;
+  // Define output properties that the calculator will produce
+  primaryResult: number;
+  secondaryResult: number;
+  // Add more output properties as needed
+  percentageResult?: number;
+  textResult?: string;
+}
+
+export interface AutoLoanCalculatorMetrics {
+  // Define intermediate calculation results or metrics
+  intermediateValue: number;
+  calculationSteps: string[];
+  riskLevel: 'Low' | 'Medium' | 'High';
+}
+
+export interface AutoLoanCalculatorAnalysis {
+  // Define analysis results
+  recommendation: string;
+  riskLevel: 'Low' | 'Medium' | 'High';
+  insights: string[];
+  warnings: string[];
 }

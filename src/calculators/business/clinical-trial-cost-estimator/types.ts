@@ -1,12 +1,33 @@
-export interface clinicaltrialcostestimatorCalculatorInputs {
-  // Domain-specific input fields for clinical trial cost estimator Calculator
-  // TODO: Add specific input fields based on calculator requirements
-  value: number;
+export interface ClinicalTrialCostEstimatorInputs {
+  // Define input properties based on the calculator's requirements
+  primaryInput: number;
+  secondaryInput?: number;
+  selectInput: string;
+  // Add more input properties as needed
+  optionalParameter?: string;
+  booleanFlag?: boolean;
 }
 
-export interface clinicaltrialcostestimatorCalculatorOutputs {
-  // Domain-specific output fields for clinical trial cost estimator Calculator
-  // TODO: Add specific output fields based on calculator requirements
-  result: number;
-  details: string;
+export interface ClinicalTrialCostEstimatorOutputs {
+  // Define output properties that the calculator will produce
+  primaryResult: number;
+  secondaryResult: number;
+  // Add more output properties as needed
+  percentageResult?: number;
+  textResult?: string;
+}
+
+export interface ClinicalTrialCostEstimatorMetrics {
+  // Define intermediate calculation results or metrics
+  intermediateValue: number;
+  calculationSteps: string[];
+  riskLevel: 'Low' | 'Medium' | 'High';
+}
+
+export interface ClinicalTrialCostEstimatorAnalysis {
+  // Define analysis results
+  recommendation: string;
+  riskLevel: 'Low' | 'Medium' | 'High';
+  insights: string[];
+  warnings: string[];
 }

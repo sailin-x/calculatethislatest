@@ -1,9 +1,3 @@
-import { calculatorRegistry } from '../../../data/calculatorRegistry';
-import { realEstateWaterfallModelCalculator } from './RealEstateWaterfallModelCalculator';
+import { RealEstateWaterfallModelCalculatorCalculator } from './RealEstateWaterfallModelCalculatorCalculator';
 
-/**
- * Register the Real Estate Waterfall Model Calculator
- */
-export function registerRealEstateWaterfallModelCalculator(): void {
-  calculatorRegistry.register(realEstateWaterfallModelCalculator);
-}
+export { RealEstateWaterfallModelCalculatorCalculator };

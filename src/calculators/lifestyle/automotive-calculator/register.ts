@@ -1,8 +1,3 @@
-import { calculatorRegistry } from '../../../data/calculatorRegistry';
-import { AutomotiveCalculator } from './AutomotiveCalculator';
+import { AutomotiveCalculatorCalculator } from './AutomotiveCalculatorCalculator';
 
-export function registerAutomotiveCalculator(): void {
-  calculatorRegistry.register(AutomotiveCalculator);
-}
-
-export { AutomotiveCalculator };
+export { AutomotiveCalculatorCalculator };

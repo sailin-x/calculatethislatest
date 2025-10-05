@@ -1,75 +1,33 @@
-export interface IRAInputs {
-  // Account Information
-  currentBalance: number;
-  annualContribution: number;
-  iraType: 'traditional' | 'roth' | 'sep' | 'simple';
-
-  // Investment Parameters
-  expectedReturnRate: number; // Annual percentage
-  compoundFrequency: 'monthly' | 'quarterly' | 'annually';
-
-  // Time Horizon
-  currentAge: number;
-  retirementAge: number;
-  yearsToContribute: number;
-
-  // Tax Information (for Traditional IRA)
-  currentTaxRate?: number;
-  expectedRetirementTaxRate?: number;
-
-  // Roth IRA specific
-  currentIncome?: number;
-  contributionLimit?: number;
-
-  // Analysis Options
-  includeRequiredMinimumDistributions: boolean;
-  inflationRate?: number;
+export interface IraCalculatorInputs {
+  // Define input properties based on the calculator's requirements
+  primaryInput: number;
+  secondaryInput?: number;
+  selectInput: string;
+  // Add more input properties as needed
+  optionalParameter?: string;
+  booleanFlag?: boolean;
 }
 
-export interface RAResults {
-  // Growth Projections
-  totalContributions: number;
-  totalInterest: number;
-  projectedBalance: number;
+export interface IraCalculatorOutputs {
+  // Define output properties that the calculator will produce
+  primaryResult: number;
+  secondaryResult: number;
+  // Add more output properties as needed
+  percentageResult?: number;
+  textResult?: string;
+}
 
-  // Retirement Income
-  annualRetirementIncome: number;
-  monthlyRetirementIncome: number;
+export interface IraCalculatorMetrics {
+  // Define intermediate calculation results or metrics
+  intermediateValue: number;
+  calculationSteps: string[];
+  riskLevel: 'Low' | 'Medium' | 'High';
+}
 
-  // Tax Analysis
-  taxSavings: number;
-  afterTaxValue: number;
-
-  // Distribution Analysis
-  requiredMinimumDistribution: number;
-  yearsOfDistributions: number;
-
-  // Projections
-  yearlyProjections: Array<{
-    age: number;
-    year: number;
-    contributions: number;
-    interest: number;
-    balance: number;
-    withdrawals: number;
-  }>;
-
-  // Financial Metrics
-  effectiveGrowthRate: number;
-  savingsRate: number;
-  retirementReadiness: 'excellent' | 'good' | 'fair' | 'poor';
-
-  // Recommendations
-  recommendedAdjustments: {
-    increaseContribution: number;
-    adjustReturnAssumption: number;
-    delayRetirement: number;
-    strategySuggestions: string[];
-  };
-
-  // Error handling
-  errors: string[];
-
-  // Comprehensive report
-  report: string;
+export interface IraCalculatorAnalysis {
+  // Define analysis results
+  recommendation: string;
+  riskLevel: 'Low' | 'Medium' | 'High';
+  insights: string[];
+  warnings: string[];
 }

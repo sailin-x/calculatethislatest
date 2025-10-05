@@ -1,8 +1,3 @@
-import { calculatorRegistry } from '../../../data/calculatorRegistry';
-import { CalorieCalculator } from './CalorieCalculator';
+import { CalorieCalculatorCalculator } from './CalorieCalculatorCalculator';
 
-export function registerCalorieCalculator(): void {
-  calculatorRegistry.register(CalorieCalculator);
-}
-
-export { CalorieCalculator };
+export { CalorieCalculatorCalculator };

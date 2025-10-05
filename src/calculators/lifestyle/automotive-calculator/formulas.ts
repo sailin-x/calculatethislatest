@@ -1,53 +1,31 @@
 import { automotive-calculatorInputs, automotive-calculatorMetrics, automotive-calculatorAnalysis } from './types';
 
-
-// Generic Calculator - Basic mathematical operations
-export function calculatePercentage(value: number, percentage: number): number {
-  return value * (percentage / 100);
+// Automotive Calculator
+export function calculateMonthlyPayment(principal: number, annualRate: number, months: number): number {
+  const monthlyRate = annualRate / 100 / 12;
+  if (monthlyRate === 0) return principal / months;
+  return principal * (monthlyRate * Math.pow(1 + monthlyRate, months)) /
+         (Math.pow(1 + monthlyRate, months) - 1);
 }
 
-export function calculatePercentageChange(oldValue: number, newValue: number): number {
-  return ((newValue - oldValue) / oldValue) * 100;
-}
-
-export function calculateAverage(values: number[]): number {
-  return values.reduce((sum, val) => sum + val, 0) / values.length;
+export function calculateTotalCost(monthlyPayment: number, months: number): number {
+  return monthlyPayment * months;
 }
 
 export function calculateResult(inputs: automotive-calculatorInputs): number {
-  // Use domain-specific calculations based on input properties
-  try {
-    // Try to match inputs to appropriate calculation
-    if ('principal' in inputs && 'annualRate' in inputs && 'years' in inputs) {
-      return calculateMonthlyPayment(inputs.principal, inputs.annualRate, inputs.years);
-    }
-    if ('initialInvestment' in inputs && 'finalValue' in inputs) {
-      return calculateROI(inputs.initialInvestment, inputs.finalValue);
-    }
-    if ('weightKg' in inputs && 'heightCm' in inputs) {
-      return calculateBMI(inputs.weightKg, inputs.heightCm);
-    }
-    if ('value' in inputs && 'percentage' in inputs) {
-      return calculatePercentage(inputs.value, inputs.percentage);
-    }
-    // Fallback to basic calculation
-    return inputs.value || inputs.amount || inputs.principal || 0;
-  } catch (error) {
-    console.warn('Calculation error:', error);
-    return 0;
+  if ('loanAmount' in inputs && 'interestRate' in inputs && 'loanTermMonths' in inputs) {
+    return calculateMonthlyPayment(inputs.loanAmount, inputs.interestRate, inputs.loanTermMonths);
   }
+  return 0;
 }
 
 export function generateAnalysis(inputs: automotive-calculatorInputs, metrics: automotive-calculatorMetrics): automotive-calculatorAnalysis {
   const result = metrics.result;
-
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
-  if (Math.abs(result) > 100000) riskLevel = 'High';
-  else if (Math.abs(result) > 10000) riskLevel = 'Medium';
+  if (result > 1000) riskLevel = 'High';
+  else if (result > 500) riskLevel = 'Medium';
 
-  const recommendation = result > 0 ?
-    'Calculation completed successfully - positive result' :
-    'Calculation completed - review inputs if result seems unexpected';
+  const recommendation = 'Monthly car payment calculated. Consider total cost including insurance and maintenance.';
 
   return { recommendation, riskLevel };
 }

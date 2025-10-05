@@ -1,27 +1,33 @@
 export interface InheritanceTaxEstimatorInputs {
-  principalAmount: number;
-  interestRate: number;
-  timePeriod: number;
-  compoundingFrequency: number;
-}
-
-export interface InheritanceTaxEstimatorMetrics {
-  totalAmount: number;
-  totalInterest: number;
-  monthlyPayment: number;
-  effectiveRate: number;
-}
-
-export interface InheritanceTaxEstimatorAnalysis {
-  profitability: string;
-  riskLevel: string;
-  recommendations: string[];
+  // Define input properties based on the calculator's requirements
+  primaryInput: number;
+  secondaryInput?: number;
+  selectInput: string;
+  // Add more input properties as needed
+  optionalParameter?: string;
+  booleanFlag?: boolean;
 }
 
 export interface InheritanceTaxEstimatorOutputs {
-  totalAmount: number;
-  totalInterest: number;
-  monthlyPayment: number;
-  effectiveRate: number;
-  analysis: InheritanceTaxEstimatorAnalysis;
+  // Define output properties that the calculator will produce
+  primaryResult: number;
+  secondaryResult: number;
+  // Add more output properties as needed
+  percentageResult?: number;
+  textResult?: string;
+}
+
+export interface InheritanceTaxEstimatorMetrics {
+  // Define intermediate calculation results or metrics
+  intermediateValue: number;
+  calculationSteps: string[];
+  riskLevel: 'Low' | 'Medium' | 'High';
+}
+
+export interface InheritanceTaxEstimatorAnalysis {
+  // Define analysis results
+  recommendation: string;
+  riskLevel: 'Low' | 'Medium' | 'High';
+  insights: string[];
+  warnings: string[];
 }

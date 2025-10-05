@@ -1,12 +1,33 @@
-export interface itoutsourcingvsinhousecostbenefitanalysisCalculatorInputs {
-  // Domain-specific input fields for it outsourcing vs in house cost benefit analysis Calculator
-  // TODO: Add specific input fields based on calculator requirements
-  value: number;
+export interface ItOutsourcingVsInhouseCostbenefitAnalysisInputs {
+  // Define input properties based on the calculator's requirements
+  primaryInput: number;
+  secondaryInput?: number;
+  selectInput: string;
+  // Add more input properties as needed
+  optionalParameter?: string;
+  booleanFlag?: boolean;
 }
 
-export interface itoutsourcingvsinhousecostbenefitanalysisCalculatorOutputs {
-  // Domain-specific output fields for it outsourcing vs in house cost benefit analysis Calculator
-  // TODO: Add specific output fields based on calculator requirements
-  result: number;
-  details: string;
+export interface ItOutsourcingVsInhouseCostbenefitAnalysisOutputs {
+  // Define output properties that the calculator will produce
+  primaryResult: number;
+  secondaryResult: number;
+  // Add more output properties as needed
+  percentageResult?: number;
+  textResult?: string;
+}
+
+export interface ItOutsourcingVsInhouseCostbenefitAnalysisMetrics {
+  // Define intermediate calculation results or metrics
+  intermediateValue: number;
+  calculationSteps: string[];
+  riskLevel: 'Low' | 'Medium' | 'High';
+}
+
+export interface ItOutsourcingVsInhouseCostbenefitAnalysisAnalysis {
+  // Define analysis results
+  recommendation: string;
+  riskLevel: 'Low' | 'Medium' | 'High';
+  insights: string[];
+  warnings: string[];
 }

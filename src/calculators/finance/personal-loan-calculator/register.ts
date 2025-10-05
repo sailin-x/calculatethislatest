@@ -1,8 +1,3 @@
-import { calculatorRegistry } from '../../../data/calculatorRegistry';
-import { PersonalLoanCalculator } from './PersonalLoanCalculator';
+import { PersonalLoanCalculatorCalculator } from './PersonalLoanCalculatorCalculator';
 
-export function registerPersonalLoanCalculator(): void {
-  calculatorRegistry.register(PersonalLoanCalculator);
-}
-
-export { PersonalLoanCalculator };
+export { PersonalLoanCalculatorCalculator };

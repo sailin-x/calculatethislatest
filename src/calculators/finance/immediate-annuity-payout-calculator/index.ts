@@ -1,4 +1,4 @@
-export { ImmediateAnnuityPayoutCalculator } from './ImmediateAnnuityPayoutCalculator';
+export { ImmediateAnnuityPayoutCalculatorCalculator } from './ImmediateAnnuityPayoutCalculatorCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

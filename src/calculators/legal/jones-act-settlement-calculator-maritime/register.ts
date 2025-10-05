@@ -1,6 +1,3 @@
-import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { jonesactsettlementcalculatormaritimeCalculator } from './jonesactsettlementcalculatormaritimeCalculator';
+import { JonesActSettlementCalculatorMaritimeCalculator } from './JonesActSettlementCalculatorMaritimeCalculator';
 
-export function registerjonesactsettlementcalculatormaritimeCalculator(): void {
-  calculatorRegistry.register(new jonesactsettlementcalculatormaritimeCalculator());
-}
+export { JonesActSettlementCalculatorMaritimeCalculator };

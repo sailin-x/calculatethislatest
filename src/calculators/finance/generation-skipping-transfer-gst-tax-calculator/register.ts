@@ -1,8 +1,3 @@
-import { calculatorRegistry } from '../../../data/calculatorRegistry';
-import { GenerationSkippingTransferGstTaxCalculator } from './GenerationSkippingTransferGstTaxCalculator';
+import { GenerationskippingTransferGstTaxCalculatorCalculator } from './GenerationskippingTransferGstTaxCalculatorCalculator';
 
-export function registerGenerationSkippingTransferGstTaxCalculator(): void {
-  calculatorRegistry.register(GenerationSkippingTransferGstTaxCalculator);
-}
-
-export { GenerationSkippingTransferGstTaxCalculator };
+export { GenerationskippingTransferGstTaxCalculatorCalculator };

@@ -1,6 +1,3 @@
-import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { environmentalremediationcostestimatorCalculator } from './environmentalremediationcostestimatorCalculator';
+import { EnvironmentalRemediationCostEstimatorCalculator } from './EnvironmentalRemediationCostEstimatorCalculator';
 
-export function registerenvironmentalremediationcostestimatorCalculator(): void {
-  calculatorRegistry.register(new environmentalremediationcostestimatorCalculator());
-}
+export { EnvironmentalRemediationCostEstimatorCalculator };

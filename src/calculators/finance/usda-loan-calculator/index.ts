@@ -1,6 +1,5 @@
-export { usdaLoanCalculator } from './USDALoanCalculator';
-export { registerUSDALoanCalculator } from './register';
+export { UsdaLoanCalculatorCalculator } from './UsdaLoanCalculatorCalculator';
+export * from './types';
 export * from './formulas';
 export * from './validation';
 export * from './quickValidation';
-export * from './types';

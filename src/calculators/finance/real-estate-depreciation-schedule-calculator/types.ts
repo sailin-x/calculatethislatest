@@ -1,28 +1,33 @@
-export interface RealEstateDepreciationInputs {
-  propertyCost: number;
-  landValue: number;
-  depreciationMethod: 'straight-line' | 'declining-balance' | 'section-179' | 'bonus-depreciation';
-  usefulLife: number;
-  depreciationStartDate: string;
-  calculationYears: number;
-  salvageValue: number;
-  bonusDepreciationPercentage: number;
-  section179Deduction: number;
+export interface RealEstateDepreciationScheduleCalculatorInputs {
+  // Define input properties based on the calculator's requirements
+  primaryInput: number;
+  secondaryInput?: number;
+  selectInput: string;
+  // Add more input properties as needed
+  optionalParameter?: string;
+  booleanFlag?: boolean;
 }
 
-export interface RealEstateDepreciationResults {
-  depreciableBasis: number;
-  annualDepreciation: number;
-  totalDepreciation: number;
-  remainingBasis: number;
-  depreciationSchedule: Array<{
-    year: number;
-    beginningBasis: number;
-    depreciationExpense: number;
-    accumulatedDepreciation: number;
-    endingBasis: number;
-    depreciationPercentage: number;
-  }>;
-  taxSavings: number;
-  netPresentValue: number;
+export interface RealEstateDepreciationScheduleCalculatorOutputs {
+  // Define output properties that the calculator will produce
+  primaryResult: number;
+  secondaryResult: number;
+  // Add more output properties as needed
+  percentageResult?: number;
+  textResult?: string;
+}
+
+export interface RealEstateDepreciationScheduleCalculatorMetrics {
+  // Define intermediate calculation results or metrics
+  intermediateValue: number;
+  calculationSteps: string[];
+  riskLevel: 'Low' | 'Medium' | 'High';
+}
+
+export interface RealEstateDepreciationScheduleCalculatorAnalysis {
+  // Define analysis results
+  recommendation: string;
+  riskLevel: 'Low' | 'Medium' | 'High';
+  insights: string[];
+  warnings: string[];
 }

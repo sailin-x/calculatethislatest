@@ -1,176 +1,65 @@
-import { ValidationRule } from '../../../types/calculator';
-import { ValidationRuleFactory } from '../../../utils/validation';
+import { FlexibleSpendingAccountCalculatorInputs } from './types';
 
-/**
- * Flexible spending account validation rules
- */
-export const flexibleSpendingAccountValidationRules: ValidationRule[] = [
-  // Required fields
-  ValidationRuleFactory.required('accountType', 'Account type is required'),
-  ValidationRuleFactory.required('annualContributionLimit', 'Annual contribution limit is required'),
-  ValidationRuleFactory.required('marginalTaxRate', 'Marginal tax rate is required'),
+export function validateFlexibleSpendingAccountCalculatorInputs(inputs: FlexibleSpendingAccountCalculatorInputs): Array<{ field: string; message: string }> {
+  const errors: Array<{ field: string; message: string }> = [];
 
-  // Account type validations
-  ValidationRuleFactory.businessRule(
-    'accountType',
-    (accountType, allInputs) => {
-      const validTypes = ['health', 'dependent', 'parking', 'transit'];
-      return validTypes.includes(accountType);
-    },
-    'Please select a valid account type'
-  ),
+  // Primary Input Validation
+  if (!inputs.primaryInput || inputs.primaryInput <= 0) {
+    errors.push({ field: 'primaryInput', message: 'Primary input must be greater than 0' });
+  }
+  if (inputs.primaryInput && inputs.primaryInput > 1000000) {
+    errors.push({ field: 'primaryInput', message: 'Primary input cannot exceed 1,000,000' });
+  }
 
-  // Contribution validations
-  ValidationRuleFactory.range('annualContributionLimit', 0, 10000, 'Annual contribution limit must be between $0 and $10,000'),
-  ValidationRuleFactory.range('currentBalance', 0, 10000, 'Current balance must be between $0 and $10,000'),
+  // Secondary Input Validation (if provided)
+  if (inputs.secondaryInput !== undefined && inputs.secondaryInput < 0) {
+    errors.push({ field: 'secondaryInput', message: 'Secondary input cannot be negative' });
+  }
 
-  // Personal information validations
-  ValidationRuleFactory.businessRule(
-    'filingStatus',
-    (filingStatus, allInputs) => {
-      const validStatuses = ['single', 'married-joint', 'married-separate', 'head-household'];
-      return validStatuses.includes(filingStatus);
-    },
-    'Please select a valid filing status'
-  ),
+  // Select Input Validation
+  const validOptions = ['option1', 'option2'];
+  if (!inputs.selectInput || !validOptions.includes(inputs.selectInput)) {
+    errors.push({ field: 'selectInput', message: 'Please select a valid option' });
+  }
 
-  ValidationRuleFactory.range('numberOfDependents', 0, 10, 'Number of dependents must be between 0 and 10'),
+  // Cross-field Validation
+  if (inputs.secondaryInput && inputs.primaryInput && inputs.secondaryInput > inputs.primaryInput) {
+    errors.push({ field: 'secondaryInput', message: 'Secondary input cannot exceed primary input' });
+  }
 
-  // Health FSA validations
-  ValidationRuleFactory.businessRule(
-    'expectedMedicalExpenses',
-    (expectedMedicalExpenses, allInputs) => {
-      if (allInputs?.accountType !== 'health') return true;
-      return expectedMedicalExpenses >= 0;
-    },
-    'Expected medical expenses must be provided for health FSA'
-  ),
+  // Optional Parameter Validation
+  if (inputs.optionalParameter && inputs.optionalParameter.length > 100) {
+    errors.push({ field: 'optionalParameter', message: 'Optional parameter cannot exceed 100 characters' });
+  }
 
-  ValidationRuleFactory.businessRule(
-    'preventiveCareExpenses',
-    (preventiveCareExpenses, allInputs) => {
-      if (allInputs?.accountType !== 'health') return true;
-      return preventiveCareExpenses >= 0;
-    },
-    'Preventive care expenses must be provided for health FSA'
-  ),
+  return errors;
+}
 
-  // Dependent care FSA validations
-  ValidationRuleFactory.businessRule(
-    'childcareExpenses',
-    (childcareExpenses, allInputs) => {
-      if (allInputs?.accountType !== 'dependent') return true;
-      return childcareExpenses >= 0;
-    },
-    'Childcare expenses must be provided for dependent care FSA'
-  ),
+export function validateFlexibleSpendingAccountCalculatorBusinessRules(inputs: FlexibleSpendingAccountCalculatorInputs): Array<{ field: string; message: string }> {
+  const warnings: Array<{ field: string; message: string }> = [];
 
-  ValidationRuleFactory.businessRule(
-    'childcareProvider',
-    (childcareProvider, allInputs) => {
-      if (allInputs?.accountType !== 'dependent') return true;
-      const validProviders = ['licensed', 'unlicensed', 'relative'];
-      return validProviders.includes(childcareProvider);
-    },
-    'Please select a valid childcare provider type'
-  ),
+  // Business Rule Warnings
+  if (inputs.primaryInput && inputs.primaryInput > 500000) {
+    warnings.push({ field: 'primaryInput', message: 'High primary input values may require additional review' });
+  }
 
-  // Commuter benefits validations
-  ValidationRuleFactory.businessRule(
-    'monthlyParkingCost',
-    (monthlyParkingCost, allInputs) => {
-      if (allInputs?.accountType !== 'parking') return true;
-      return monthlyParkingCost >= 0 && monthlyParkingCost <= 280;
-    },
-    'Monthly parking cost must be between $0 and $280 for parking FSA'
-  ),
+  // Ratio-based Warnings
+  if (inputs.secondaryInput && inputs.primaryInput) {
+    const ratio = inputs.secondaryInput / inputs.primaryInput;
+    if (ratio > 0.8) {
+      warnings.push({ field: 'secondaryInput', message: 'Secondary input is very high relative to primary input' });
+    }
+  }
 
-  ValidationRuleFactory.businessRule(
-    'monthlyTransitCost',
-    (monthlyTransitCost, allInputs) => {
-      if (allInputs?.accountType !== 'transit') return true;
-      return monthlyTransitCost >= 0 && monthlyTransitCost <= 315;
-    },
-    'Monthly transit cost must be between $0 and $315 for transit FSA'
-  ),
+  // Option-specific Warnings
+  if (inputs.selectInput === 'option2' && inputs.primaryInput && inputs.primaryInput < 100) {
+    warnings.push({ field: 'selectInput', message: 'Option 2 may not be suitable for low primary input values' });
+  }
 
-  ValidationRuleFactory.range('workDaysPerMonth', 1, 31, 'Work days per month must be between 1 and 31'),
-  ValidationRuleFactory.range('distanceToWork', 0, 500, 'Distance to work must be between 0 and 500 miles'),
+  // Threshold Warnings
+  if (inputs.primaryInput && inputs.primaryInput > 10000) {
+    warnings.push({ field: 'primaryInput', message: 'Consider consulting with financial experts for high-value calculations' });
+  }
 
-  // Tax validations
-  ValidationRuleFactory.range('marginalTaxRate', 0, 50, 'Marginal tax rate must be between 0% and 50%'),
-  ValidationRuleFactory.range('stateTaxRate', 0, 20, 'State tax rate must be between 0% and 20%'),
-  ValidationRuleFactory.range('employerMatch', 0, 100, 'Employer match must be between 0% and 100%'),
-
-  // Plan year validations
-  ValidationRuleFactory.range('gracePeriodDays', 0, 365, 'Grace period days must be between 0 and 365'),
-  ValidationRuleFactory.range('maxCarryoverAmount', 0, 500, 'Maximum carryover amount must be between $0 and $500'),
-
-  // Usage validations
-  ValidationRuleFactory.businessRule(
-    'usedToDate',
-    (usedToDate, allInputs) => {
-      if (!allInputs?.currentBalance) return true;
-      return usedToDate <= allInputs.currentBalance;
-    },
-    'Used to date cannot exceed current balance'
-  ),
-
-  ValidationRuleFactory.businessRule(
-    'projectedUsage',
-    (projectedUsage, allInputs) => {
-      if (!allInputs?.annualContributionLimit) return true;
-      return projectedUsage <= allInputs.annualContributionLimit;
-    },
-    'Projected usage cannot exceed annual contribution limit'
-  ),
-
-  // Business logic validations
-  ValidationRuleFactory.businessRule(
-    'annualContributionLimit',
-    (annualContributionLimit, allInputs) => {
-      if (!allInputs?.accountType) return true;
-
-      // Account type specific limits
-      switch (allInputs.accountType) {
-        case 'health':
-          return annualContributionLimit <= 3050; // 2024 limit
-        case 'dependent':
-          return annualContributionLimit <= 5000; // 2024 limit
-        case 'parking':
-          return annualContributionLimit <= 280; // Monthly limit
-        case 'transit':
-          return annualContributionLimit <= 315; // Monthly limit
-        default:
-          return true;
-      }
-    },
-    'Contribution limit exceeds IRS maximum for selected account type'
-  ),
-
-  ValidationRuleFactory.businessRule(
-    'numberOfDependents',
-    (numberOfDependents, allInputs) => {
-      if (allInputs?.accountType !== 'dependent') return true;
-      return numberOfDependents > 0;
-    },
-    'Number of dependents must be greater than 0 for dependent care FSA'
-  ),
-
-  ValidationRuleFactory.businessRule(
-    'hasSpouse',
-    (hasSpouse, allInputs) => {
-      if (allInputs?.accountType !== 'dependent') return true;
-      // Additional validation for dependent care
-      return true;
-    },
-    'Spouse information is required for dependent care FSA'
-  )
-];
-
-/**
- * Get validation rules for flexible spending account calculator
- */
-export function getFlexibleSpendingAccountValidationRules(): ValidationRule[] {
-  return flexibleSpendingAccountValidationRules;
+  return warnings;
 }

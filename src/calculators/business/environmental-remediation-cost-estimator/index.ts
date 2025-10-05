@@ -1,5 +1,4 @@
-export { environmentalremediationcostestimatorCalculator } from './environmentalremediationcostestimatorCalculator';
-export { registerenvironmentalremediationcostestimatorCalculator } from './register';
+export { EnvironmentalRemediationCostEstimatorCalculator } from './EnvironmentalRemediationCostEstimatorCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

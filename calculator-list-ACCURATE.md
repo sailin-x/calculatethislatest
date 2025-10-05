@@ -1,0 +1,978 @@
+# Calculator Master List - CalculateThis.ai (ACCURATE)
+**Total: ~930 Industry-Leading Calculators**
+
+*Each calculator must deliver professional-grade accuracy and comprehensive features that match or exceed industry standards before being marked complete.*
+
+## 🚨 CRITICAL DEVELOPMENT NOTES 🚨
+
+### **VALIDATION FUNCTION SIGNATURE REQUIREMENT**
+**ALL validation functions in quickValidation.ts files MUST include the `allInputs` parameter:**
+
+```typescript
+// ✅ CORRECT - Include allInputs parameter
+export function validateFieldName(value: any, allInputs?: Record<string, any>): ValidationResult {
+  // validation logic
+}
+
+// ❌ WRONG - Missing allInputs parameter (causes runtime error)
+export function validateFieldName(value: any): ValidationResult {
+  // validation logic
+}
+```
+
+**This is CRITICAL because:**
+- The `ValidationEngine` expects all validator functions to accept `allInputs`
+- Missing this parameter causes `Uncaught ReferenceError: allInputs is not defined`
+- This error breaks the entire application and shows blank screen
+- **ALWAYS include `allInputs?: Record<string, any>` in validation function signatures**
+
+### **CALCULATOR ARCHITECTURE REQUIREMENTS**
+Each calculator must include:
+- `[CalculatorName]Calculator.ts` - Main calculator definition
+- `formulas.ts` - Core calculation logic
+- `validation.ts` - Comprehensive validation rules
+- `quickValidation.ts` - Individual field validation (with allInputs parameter!)
+- `[CalculatorName]Calculator.test.ts` - Unit tests
+- `register.ts` - Calculator registration
+- `index.ts` - Module exports
+
+---
+
+## 📊 Progress Summary
+
+**Total Calculators: 930**
+- **Completed: 594** ✅
+- **Remaining: 347** ⏳
+
+---
+
+- [x] Mortgage Calculator
+- [x] 1031 Exchange Calculator
+- [x] Adjustable-Rate Mortgage (ARM) Calculator ✅ **(COMPLETED)**
+- [ ] Amortization Schedule Calculator
+- [x] ARM vs. Fixed Mortgage Calculator ✅ **(COMPLETED)**
+- [x] Balloon Mortgage Calculator
+- [ ] Bareboat Charter vs. Time Charter Calculator
+- [x] Biweekly Mortgage Calculator
+- [x] Bridge Loan Calculator
+- [x] BRRRR Strategy Calculator
+- [x] Building Replacement Cost Calculator
+- [x] Cap Rate Calculator
+- [x] Cash Flow Calculator
+- [x] Cash-on-Cash Return Calculator
+- [x] Commercial Real Estate Calculator
+- [x] Cash-Out Refinance Calculator
+- [x] Commercial Lease Buyout Calculator
+- [x] Commercial Property Insurance Calculator
+- [x] Commercial Property Valuation Calculator
+- [x] Commercial Real Estate Cash Flow Calculator
+- [x] Commercial Real Estate Loan Amortization
+- [x] Condo Insurance Calculator
+- [x] Conservation Easement Tax Benefit Calculator
+- [x] Construction Loan Calculator
+- [x] Cost Segregation Depreciation Calculator
+- [x] Debt Service Coverage Ratio Calculator
+- [x] Debt Yield Ratio Calculator
+- [x] Down Payment Assistance Calculator
+- [x] Earthquake Insurance Calculator
+- [x] Escrow Analysis Calculator
+- [x] Farmland Investment ROI Calculator
+- [x] FHA Loan Calculator
+- [x] Fix and Flip Calculator
+- [x] Flood Insurance Calculator
+- [x] Ground Lease Valuation Calculator
+- [x] Gross Rent Multiplier Calculator
+- [x] Hard Money Loan Calculator
+- [ ] HELOC (Home Equity Line of Credit) Calculator
+- [x] Home Affordability Calculator
+- [x] Home Equity Loan Calculator
+- [x] Home Insurance Calculator
+- [x] Homeowners Insurance Calculator
+- [x] Hotel Feasibility & ADR Calculator
+- [x] HOA Fee Calculator
+- [x] Industrial Warehouse Profitability Calculator
+- [x] Interest-Only Mortgage Calculator
+- [x] Jumbo Loan Calculator
+- [x] Landlord Insurance Calculator
+- [x] Loan to Cost (LTC) Ratio Calculator ✅ **(COMPLETED)**
+- [x] Loan-to-Value (LTV) Ratio Calculator ✅ **(COMPLETED)**
+- [x] Mortgage APR Comparison Calculator
+- [x] Mortgage Closing Cost Calculator
+- [x] Mortgage Equity Calculator
+- [x] Mortgage Insurance Calculator
+- [x] Mortgage Life Calculator
+- [x] Mortgage Payoff Calculator
+- [x] Mortgage Payment Calculator
+- [x] Mortgage Points Calculator
+- [x] Mortgage Qualification Calculator
+- [x] Mortgage Rate Lock Calculator
+- [x] Mortgage Refinance Calculator
+- [x] Mortgage vs. Rent Calculator
+- [ ] Net Operating Income (NOI) Calculator
+- [ ] Opportunity Zone Investment ROI Calculator
+- [x] PMI Cancellation Calculator
+- [x] Price Per Square Foot Calculator
+- [x] Private Mortgage Insurance Calculator
+- [x] Property Tax Calculator
+- [x] Property Tax Proration Calculator
+- [x] Real Estate Crowdfunding Calculator
+- [x] Real Estate Development Pro-Forma Calculator
+- [x] Real Estate Depreciation Schedule Calculator
+- [x] Real Estate Syndication Calculator
+- [x] Real Estate Tax Deductions Calculator
+- [x] Real Estate Waterfall Model Calculator
+- [x] Refinance Calculator
+- [x] Rental Property ROI Calculator
+- [x] Rental Yield Calculator
+- [x] Renters Insurance Calculator
+- [x] Rent vs. Buy Calculator
+- [x] Student Loan Calculator
+- [x] Tax Calculator
+- [x] Term Life Insurance Calculator
+- [x] Title Insurance Calculator
+- [x] Reverse Mortgage Calculator
+- [x] Self-Storage Facility ROI Calculator
+- [x] Tenant Improvement (TI) Allowance Calculator
+- [x] Timberland Investment Calculator
+- [x] Triple Net (NNN) Lease ROI Calculator ✅ **(COMPLETED)**
+- [x] USDA Loan Calculator ✅ **(COMPLETED)**
+- [x] VA Loan Calculator ✅ **(COMPLETED)**
+- [x] Vineyard Profitability Calculator ✅ **(COMPLETED)**
+- [x] Windstorm Insurance Calculator ✅ **(COMPLETED)**
+- [x] 401(k) Calculator
+- [x] 401(k) Company Match ROI Calculator
+- [x] 401(k) Plan Calculator
+- [x] 401(k) Rollover Calculator
+- [ ] 403(b) Plan Calculator
+- [x] 457 Plan Calculator
+- [x] 529 College Savings Plan Calculator
+- [x] Annuity Buyout Calculator
+- [x] Annuity Calculator
+- [x] Asset Protection Trust (APT) Value Calculator
+- [x] Backdoor Roth IRA Calculator
+- [x] Charitable Gift Annuity Calculator
+- [ ] Charitable Remainder Trust (CRT) Payout Calculator
+- [x] College Cost Calculator
+- [x] College Financial Aid Calculator
+- [x] College Savings Calculator
+- [x] Coverdell ESA Calculator
+- [x] Deferred Annuity Calculator
+- [x] Defined Benefit Plan Calculator
+- [x] Defined Contribution Plan Calculator
+- [x] Dynasty Trust Growth Estimator
+- [x] Emergency Fund Calculator
+- [x] Estate Planning Calculator
+- [x] Estate Tax Liability Calculator
+- [x] Executive Deferred Compensation Plan Calculator
+- [x] FAFSA Calculator
+- [x] Fixed Index Annuity Calculator
+- [x] Flexible Spending Account Calculator
+- [x] Generation-Skipping Transfer (GST) Tax Calculator
+- [x] Gift Tax Calculator
+- [x] Grantor Retained Annuity Trust (GRAT) Calculator
+- [x] Health Savings Account (HSA) Calculator
+- [x] HSA Triple Tax Advantage Calculator
+- [x] Immediate Annuity Payout Calculator
+- [x] Inheritance Tax Estimator
+- [x] IRA Calculator
+- [x] Irrevocable Life Insurance Trust (ILIT) Value Calculator
+- [x] Life Settlement Value Calculator
+- [x] Mega Backdoor Roth Calculator
+- [x] Net Unrealized Appreciation (NUA) Tax Calculator
+- [x] Pension Lump Sum vs. Annuity Calculator
+- [x] Pension Plan Funding Calculator
+- [x] Planned Giving Calculator
+- [x] Required Beginning Date (RBD) for RMDs Calculator
+- [x] Required Minimum Distribution (RMD) Calculator
+- [x] Retirement Abroad Calculator
+- [x] Retirement Calculator
+- [x] Retirement Savings Calculator
+- [x] Roth 401(k) vs. Traditional 401(k) Calculator
+- [x] Roth Conversion Tax Calculator
+- [x] Roth IRA Calculator
+- [x] Savings Goal Calculator
+- [x] SEP IRA Calculator
+- [x] SIMPLE IRA Calculator
+- [ ] Social Security Calculator
+- [x] Social Security Optimization Calculator
+- [x] Stretch IRA Calculator
+- [x] Structured Settlement Payout Calculator
+- [x] Student Loan Forgiveness Calculator
+- [x] Student Loan Refinancing Calculator
+- [x] Student Loan Repayment Calculator
+- [x] Tax-Loss Harvesting Calculator
+- [ ] Traditional IRA Calculator
+- [ ] Trust Fund Distribution Calculator
+- [ ] UGMA/UTMA Custodial Account Calculator
+- [ ] Variable Annuity Calculator
+- [ ] Viatical Settlement Value Calculator
+- [x] Portfolio Optimization Calculator
+- [ ] Compound Interest Calculator
+- [x] Retirement Planning Calculator ✅ **(COMPLETED)**
+- [ ] Accretion/Dilution (M&A) Model
+- [x] Alpha & Beta Calculator
+- [x] Alpha Calculator
+- [x] Angel Investment Dilution Calculator
+- [x] Angel Investment Calculator
+- [x] Asset-Based Lending Calculator
+- [x] Beta Calculator
+- [x] Black Litterman Calculator
+- [x] Bond Convexity Calculator
+- [x] Bond Yield Calculator
+- [x] Calmar Ratio Calculator
+- [x] Capital Gains Calculator
+- [x] Capital Structure Optimization Calculator
+- [x] CAPM Calculator
+- [x] Carried Interest Waterfall Model Calculator
+- [x] CD Interest Calculator
+- [x] Commodities Futures Profitability Calculator
+- [x] Commodity Calculator
+- [x] Compound Annual Growth Rate (CAGR) Calculator
+- [x] Convertible Bond Pricing Calculator
+- [x] Convertible Bond Calculator
+- [x] Corporate Tax Shield Calculator
+- [x] Corporate Bond Calculator
+- [x] Correlation Calculator
+- [x] Cost of Debt Calculator
+- [x] Cost of Equity Calculator
+- [x] Credit Default Swap Calculator
+- [x] Crowdfunding Equity Offering Calculator
+- [x] Crowdfunding Calculator
+- [x] Day Trading Calculator
+- [x] Distressed Debt Investing ROI Calculator
+- [x] Distressed Debt Calculator
+- [x] Dividend Discount Model (DDM) Calculator
+- [x] Dividend Calculator
+- [x] EBITDA Calculator
+- [x] Economic Value Added (EVA) Calculator
+- [x] Enterprise Value Calculator
+- [x] Equity Valuation Calculator
+- [x] Expected Shortfall Calculator
+- [x] Forex Calculator
+- [x] Free Cash Flow to Equity (FCFE) Valuation
+- [x] Free Cash Flow to Firm (FCFF) Valuation
+- [x] Fund-Level IRR, TVPI, and DPI Calculator
+- [x] Futures Calculator
+- [x] Futures Trading Profitability Calculator
+- [x] Gross Margin Calculator
+- [x] Hedge Fund Fee Calculator
+- [x] Information Ratio Calculator
+- [x] Interest Calculator
+- [x] Interest Rate Swap Calculator
+- [x] Internal Rate of Return Calculator
+- [x] Kurtosis Calculator
+- [x] Leverage Ratio Calculator
+- [x] Litigation Finance ROI Calculator
+- [x] Market Cap Calculator
+- [x] Maximum Drawdown Calculator
+- [x] Merger Arbitrage Spread Calculator
+- [x] Mezzanine Financing Calculator
+- [x] Modified Dietz Return Calculator
+- [x] Municipal Bond Calculator
+- [x] Music Royalty Investment Calculator
+- [x] Net Margin Calculator
+- [x] Net Present Value Calculator
+- [x] Operating Margin Calculator
+- [x] Options Trading Calculator
+- [x] Options Valuation Calculator
+- [x] Peer-to-Peer Lending Calculator
+- [x] Portfolio Company EBITDA Growth Calculator
+- [x] Post-Money Valuation Calculator
+- [x] Price to Book Calculator
+- [x] Price to Earnings Calculator
+- [x] Private Equity IRR Calculator
+- [x] Private Equity Returns Calculator
+- [x] Quick Ratio Calculator
+- [x] R Squared Calculator
+- [x] Recapitalization Impact Calculator
+- [x] REIT Calculator
+- [x] REIT Dividend Calculator
+- [x] Return on Assets Calculator
+- [x] Return on Equity Calculator
+- [x] Revenue Calculator
+- [x] Rights Offering Calculator
+- [x] Royalty Financing Calculator
+- [x] Sharpe Ratio Calculator
+- [x] Skewness Calculator
+- [x] Sortino Ratio Calculator
+- [x] Spin Off Calculator
+- [x] Stock Buyback ROI Calculator
+- [x] Stock Calculator
+- [x] Stock Options Valuation Calculator
+- [x] Swing Trading Calculator
+- [x] Tender Offer Valuation Calculator
+- [x] Terminal Value Calculator
+- [x] Total Return Swap Calculator
+- [ ] Treasury Calculator
+- [ ] Treynor Ratio Calculator
+- [ ] Value at Risk (VaR) Calculator
+- [ ] Variance Calculator
+- [ ] Venture Debt vs. Equity Financing Calculator
+- [ ] WACC Calculator
+- [ ] Warrant Calculator
+- [x] Auto Loan Calculator
+- [x] Car Loan Calculator
+- [x] Car Payment Calculator
+- [x] Credit Card Payoff Calculator
+- [x] Credit Utilization Calculator
+- [x] Current Ratio Calculator
+- [x] Debt Avalanche Calculator
+- [x] Debt Consolidation Calculator
+- [x] Debt Consolidation Loan Calculator
+- [x] Debt Payoff Calculator
+- [x] Debt Snowball Calculator
+- [x] Debt to Equity Calculator
+- [x] DTI Ratio Calculator
+- [x] Income Based Repayment Calculator
+- [x] Loan Calculator
+- [x] Loan Comparison Calculator
+- [x] Payday Loan Calculator
+- [x] Personal Loan Calculator
+- [x] Title Loan Calculator
+- [x] Airdrop Value Calculator
+- [x] Bitcoin Halving Calculator
+- [x] Bitcoin Pizza Day Calculator
+- [x] Blockchain Gas Fee Calculator
+- [x] Burn Mechanism Calculator
+- [x] Collateralization Ratio Calculator
+- [x] Crypto Arbitrage Calculator
+- [x] Crypto Mining Profitability Calculator
+- [x] Crypto Portfolio Rebalancing Calculator
+- [ ] Crypto Staking Rewards Calculator
+- [x] Crypto Tax Harvesting Calculator
+- [x] DAO Governance Token Calculator
+- [x] DeFi Liquidity Pool Calculator
+- [x] DeFi Yield Optimization Calculator
+- [x] Dogecoin Mining Calculator
+- [x] Ethereum 2.0 Staking Calculator
+- [x] Gas Fee Optimizer Calculator
+- [x] GPU Mining Profitability Calculator
+- [x] AI Prompt Cost & Token Estimator ✅ **(COMPLETED)**
+- [x] Crypto Staking Profitability Calculator
+- [x] NFT Royalty & Revenue Calculator
+- [x] Impermanent Loss Calculator
+- [x] Initial Coin Offering Calculator
+- [x] Initial DEX Offering Calculator
+- [x] Liquidation Price Calculator
+- [x] Liquidity Mining Calculator
+- [x] Masternode ROI Calculator
+- [x] NFT Minting Cost Calculator
+- [x] NFT Royalty Calculator
+- [x] Shitcoin Investment Calculator
+- [x] Staking Rewards Calculator
+- [x] Token Vesting Schedule Calculator
+- [x] Tokenomics Simulation Calculator
+- [ ] Yield Farming Calculator
+- [ ] Personal Injury Settlement Calculator
+- [x] Alimony & Spousal Support Calculator
+- [x] Antitrust (HHI Index) Calculator
+- [x] Asbestos Settlement Calculator
+- [x] Aviation Accident Compensation Calculator
+- [x] Bad Faith Insurance Claim Calculator
+- [x] Birth Injury Malpractice Calculator
+- [x] Birth Injury Settlement Calculator
+- [x] Burn Injury Settlement Calculator
+- [x] Car Accident Pain & Suffering Calculator
+- [x] Car Accident Settlement Calculator
+- [x] Catastrophic Injury Calculator
+- [x] Chapter 11 Bankruptcy Plan Valuation
+- [x] Child Support Calculator
+- [x] Class Action Settlement Calculator
+- [x] Construction Accident Claims Calculator
+- [x] Contract Breach Damages Calculator
+- [x] Copyright Infringement Damages Calculator
+- [x] Defective Drug Settlement Calculator
+- [x] Dental Malpractice Settlement Calculator
+- [x] Dog Bite Settlement Calculator
+- [x] DUI Accident Settlement Calculator
+- [x] E-Discovery Cost Calculator
+- [x] Environmental Remediation Cost Estimator
+- [x] EPA Fine & Penalty Calculator
+- [x] FELA Settlement Calculator (Railroad)
+- [x] High-Net-Worth Divorce Asset Division Calculator
+- [x] Hit and Run Settlement Calculator
+- [x] Hospital Negligence Settlement Calculator
+- [x] Intellectual Property Licensing Royalty Calculator
+- [x] IRS Offer in Compromise (OIC) Calculator
+- [x] Jones Act Settlement Calculator (Maritime)
+- [x] Legal Malpractice Damages Calculator
+- [x] Legal Malpractice Insurance Calculator
+- [x] Legal Practice Valuation Calculator
+- [x] Libel/Slander Per Se Damages Estimator
+- [x] Loss of Consortium Damages Calculator
+- [x] Maritime Injury Compensation Calculator
+- [x] Mass Tort Settlement Calculator
+- [x] Medical Device Liability Calculator
+- [x] Medical Malpractice Damages Calculator
+- [x] Medical Malpractice Insurance Calculator
+- [x] Medical Malpractice Settlement Calculator
+- [x] Merger & Acquisition (M&A) Divestiture Valuation
+- [x] Mesothelioma Settlement Calculator
+- [x] Motorcycle Accident Compensation Calculator
+- [x] Non-Compete Agreement Buyout Calculator
+- [x] Nursing Home Abuse Settlement Calculator
+- [x] Nursing Home Negligence Calculator
+- [x] Offshore Accident Lawyer Fee Calculator
+- [x] Opioid Settlement Calculator
+- [x] Patent Valuation Calculator
+- [x] Pedestrian Accident Settlement Calculator
+- [x] Personal Injury Multiplier Calculator
+- [x] Pharmaceutical Liability Calculator
+- [x] Preference Payment Clawback Calculator
+- [x] Premises Liability Settlement Calculator
+- [x] Prenuptial Agreement Value Calculator
+- [x] Price-Fixing Overcharge Estimator
+- [x] Product Liability Insurance Calculator
+- [x] Product Liability Settlement Calculator
+- [x] Professional Liability Insurance Calculator
+- [x] Property Tax Appeal Savings Calculator
+- [x] Qui Tam (Whistleblower) Reward Calculator
+- [x] Railroad Accident Settlement Calculator
+- [x] Roundup Settlement Calculator
+- [x] Slip and Fall Damages Calculator
+- [x] Slip and Fall Settlement Calculator
+- [x] Spinal Cord Injury Compensation Calculator
+- [x] Surgical Error Settlement Calculator
+- [x] Talcum Powder Settlement Calculator
+- [x] Trademark Valuation Calculator ✅ **(COMPLETED)**
+- [ ] Trade Secret Misappropriation Damages Calculator
+- [ ] Traumatic Brain Injury Settlement Calculator
+- [ ] Truck Accident Settlement Calculator
+- [ ] Veterinary Malpractice Calculator
+- [ ] Workers' Compensation Settlement Calculator
+- [ ] Workers' Comp Settlement Calculator
+- [ ] Wrongful Death Settlement Calculator
+- [ ] Zoning Variance Economic Impact Calculator
+- [x] Actuarial Mortality Table Calculator
+- [x] Auto Insurance Calculator
+- [x] Aviation Insurance Calculator
+- [x] Business Insurance Calculator
+- [x] Buy-Sell Agreement Insurance Calculator
+- [x] Cash Value Accumulation Test (CVAT) Calculator
+- [x] Catastrophe Bond Pricing Model
+- [x] Ceding Commission Calculator
+- [x] Combined Ratio Calculator
+- [x] Commercial Auto Insurance Calculator
+- [x] Commercial Fleet Insurance Premium Estimator
+- [x] Cyber Liability Insurance Calculator
+- [x] Directors & Officers Insurance Calculator
+- [x] Disability Insurance Calculator
+- [x] Disability Insurance Needs Calculator
+- [x] Employment Practices Liability Calculator
+- [x] Errors & Omissions Insurance Calculator
+- [x] Estate Tax Life Insurance Calculator
+- [x] Expense Ratio Calculator
+- [x] Flood Risk Zonal Pricing Calculator
+- [x] General Liability Insurance Calculator
+- [x] Guideline Premium Test (GPT) Calculator
+- [x] Health Insurance Calculator
+- [x] Incurred But Not Reported (IBNR) Reserve Estimator
+- [x] Key Person Insurance Calculator
+- [x] Key Person Life Insurance Calculator
+- [x] Kidnap & Ransom Insurance Calculator
+- [x] Lapse Rate Sensitivity Analysis
+- [x] Liability Insurance Calculator
+- [x] Life Insurance Calculator
+- [x] Life Insurance Needs Calculator
+- [x] Long-Term Care Insurance Calculator
+- [x] Long-Term Disability (LTD) Elimination Period Calculator
+- [x] Loss Ratio Calculator
+- [x] Marine Cargo Insurance Premium Calculator
+- [x] Marine Insurance Calculator
+- [x] Pet Insurance Calculator
+- [x] Political Risk Insurance Calculator
+- [x] Policy Lapse Rate Calculator
+- [x] Premium Deficiency Reserve (PDR) Calculator
+- [x] Self-Funded Health Plan vs. Fully-Insured Calculator
+- [x] Split Dollar Life Insurance Calculator
+- [x] Stop-Loss Insurance Premium Calculator
+- [x] Surety Bond Premium Calculator
+- [x] Term vs. Universal Life Insurance Calculator
+- [x] Term vs. Whole Life Calculator
+- [x] Terrorism Insurance Calculator
+- [x] Trade Credit Insurance ROI Calculator ✅ **(COMPLETED)**
+- [x] Travel Insurance Calculator ✅ **(COMPLETED)**
+- [x] Umbrella Insurance Calculator ✅ **(COMPLETED)**
+- [x] Umbrella Insurance Coverage Calculator ✅ **(COMPLETED)**
+- [ ] Wildfire Risk Scoring Calculator
+- [x] Workers' Compensation Insurance Calculator ✅ **(COMPLETED)**
+- [x] SaaS Metrics Calculator
+- [x] Customer Lifetime Value Calculator
+- [x] ROI Calculator
+- [x] Customer Acquisition Cost Calculator
+- [x] Churn Rate Calculator
+- [x] Payback Period Calculator
+- [x] Business Valuation Calculator
+- [x] Break Even Analysis Calculator
+- [x] Budget Optimization Calculator
+- [x] Cohort Analysis Calculator
+- [x] Attribution Models Calculator
+- [x] Industry Benchmarking Calculator
+- [x] Developer Salary Calculator
+- [x] Real Estate Investment Calculator
+- [x] Stock Options Calculator
+- [x] AIOps Implementation Savings Calculator
+- [x] Asset Protection Calculator
+- [ ] Balanced Scorecard (BSC) Performance Calculator
+- [x] Bill of Materials (BOM) Cost Calculator ✅ **(COMPLETED)**
+- [x] Breakeven Point Calculator
+- [x] Business Interruption Calculator
+- [x] Business Loan Qualification Calculator
+- [x] Business Process Re-engineering (BPR) Savings Calculator
+- [x] Business Risk Assessment Calculator
+- [x] Capital Call Schedule Planner
+- [x] Change Management ROI Calculator
+- [x] Cloud Migration (TCO) Calculator
+- [x] Cloud Repatriation Savings Calculator
+- [x] Comparable Company Analysis Calculator
+- [x] Consultant Utilization Rate & Profitability Calculator
+- [x] Corporate Compliance Cost-Benefit Analysis
+- [x] Cost of Poor Quality (COPQ) Calculator
+- [x] Cost Per Hire Calculator
+- [x] Data Breach Cost Calculator
+- [x] Data Center Total Cost of Ownership (TCO) Calculator
+- [x] Data Governance ROI Calculator
+- [x] Digital Transformation Business Case Calculator
+- [x] Distribution Waterfall Model Calculator
+- [x] Economic Order Quantity (EOQ) Calculator
+- [x] Employee Stock Option Plan (ESOP) Valuation Calculator
+- [x] Employee Turnover Cost Calculator
+- [x] ERP Implementation ROI Calculator
+- [x] Franchise Calculator
+- [x] Franchise ROI Calculator
+- [x] Government Contract Bid/No-Bid Decision Calculator
+- [x] Heavy Equipment Depreciation Calculator
+- [x] HR Tech Stack ROI Calculator
+- [x] Human Capital Due Diligence (M&A) Calculator
+- [x] Industrial Robotics ROI Calculator
+- [x] Inventory Shrinkage Cost Calculator
+- [x] Inventory Turnover Calculator
+- [x] ISO 9001 Certification ROI Calculator
+- [x] IT Outsourcing vs. In-House Cost-Benefit Analysis
+- [x] Landed Cost Calculator
+- [x] Lean Manufacturing Takt Time Calculator
+- [x] Management Consulting Fee Model Calculator
+- [x] Management Fee & Hurdle Rate Calculator
+- [x] Managed Security Service Provider (MSSP) vs. In-House SOC Calculator
+- [x] Merger Model Calculator
+- [x] Overall Equipment Effectiveness (OEE) Calculator
+- [x] Paycheck Calculator
+- [x] Payroll Calculator
+- [x] Preventative Maintenance Savings Calculator
+- [x] Profit Margin Calculator
+- [x] Public-Private Partnership (P3) ROI Calculator
+- [x] Ransomware Downtime Cost Calculator
+- [x] Request for Proposal (RFP) Scoring Calculator
+- [x] Restricted Stock Unit (RSU) vs. Stock Option Calculator
+- [x] Salary Benchmarking & Pay Equity Gap Calculator
+- [x] Sales Commission Structure Calculator
+- [ ] SaaS Metrics (LTV, CAC, Churn, MRR) Calculator
+- [x] Six Sigma Cost Savings Calculator
+- [x] SOC 2 Compliance Cost Estimator
+- [x] Startup Valuation Calculator
+- [x] Sum of Parts Calculator
+- [x] Supply Chain Bullwhip Effect Calculator
+- [x] Technical Debt Calculator
+- [x] Threat Intelligence Platform ROI Calculator
+- [x] Total Cost of Ownership (TCO) for Commercial Fleet Calculator
+- [x] Union vs. Non-Union Labor Cost Calculator ✅ **(COMPLETED)**
+- [ ] Vendor Risk Management Calculator
+- [ ] Warehouse Slotting & Efficiency Calculator
+- [ ] Workforce Planning & Headcount Budget Calculator
+- [ ] Working Capital Calculator
+- [ ] Zero-Trust Security Implementation ROI Calculator
+- [x] Ad Agency Commission vs. Fee Model Calculator
+- [x] Ad Reach and Frequency Calculator
+- [x] Ad Viewability Impact on ROI Calculator
+- [x] Adult Affiliate Commission Calculator
+- [x] Affiliate Marketing ROI Calculator
+- [x] Amazon FBA Profit Calculator
+- [x] API Monetization & Revenue Calculator
+- [x] Average Order Value Calculator
+- [x] Book Publishing Advance vs. Royalty Calculator
+- [x] Brand Equity Valuation Calculator
+- [x] Cam Girl Revenue Calculator
+- [x] Celebrity Endorsement Deal Valuation
+- [x] Chaturbate Token Calculator
+- [x] Concert Tour Budgeting Calculator
+- [ ] Customer Acquisition Cost (CAC) Calculator
+- [ ] Customer Lifetime Value (CLV) Calculator
+- [x] Customer Segmentation (RFM) Model Calculator
+- [x] Discord Server Monetization Calculator
+- [x] Event Sponsorship Tier Valuation Calculator
+- [x] Film Distribution Waterfall Calculator
+- [x] Film Slate Financing ROI Calculator
+- [x] Influencer Marketing Earned Media Value (EMV) Calculator
+- [x] Instagram Engagement Rate Calculator
+- [x] Instagram Influencer Rate Calculator
+- [x] ManyVids Revenue Calculator
+- [x] Marketing Attribution Model Comparison Calculator
+- [x] Marketing ROI Calculator
+- [x] Media Mix Modeling (MMM) ROI Calculator
+- [x] Music Catalogue Valuation Calculator
+- [x] Music Festival Profit & Loss (P&L) Calculator
+- [x] Net Promoter Score (NPS) Calculator
+- [x] OnlyFans Earnings Calculator
+- [x] Out-of-Home (OOH) Advertising ROI Calculator
+- [x] Patreon Subscription Calculator
+- [x] Podcast Sponsorship Calculator
+- [x] Record Label Deal Calculator
+- [x] Return on Ad Spend (ROAS) Calculator
+- [x] Shopping Cart Abandonment Calculator
+- [x] Sponsorship ROI Calculator
+- [x] Spotify Royalty Calculator
+- [x] Streaming Service Subscriber Churn Cost Calculator
+- [x] SVOD (Streaming) Content Licensing Valuation
+- [x] TikTok Creator Fund Calculator
+- [ ] TV Ad Gross Rating Point (GRP) Calculator
+- [ ] Twitch Subscriber Revenue Calculator
+- [ ] YouTube Ad Revenue Calculator
+- [x] BMR & TDEE Calculator
+- [x] A1C Calculator
+- [x] Addiction Rehab Cost & Financing Calculator
+- [x] Alkalinity Calculator
+- [x] Amino Acid Calculator
+- [x] Ammonia Calculator
+- [x] Anti-Aging & Regenerative Medicine Cost Calculator
+- [x] Baking Calculator
+- [x] Bariatric Surgery Cost & Savings Calculator
+- [x] Basal Metabolic Rate (BMR) Calculator
+- [x] Biological Age Calculator
+- [x] Blood Alcohol Calculator
+- [x] Blood Pressure Calculator
+- [x] Blood Sugar Calculator
+- [x] Body Adiposity Index (BAI) Calculator
+- [x] Body Fat Calculator
+- [x] Body Frame Size Calculator
+- [x] Body Recomposition Calculator
+- [x] Body Surface Area Calculator
+- [x] Calorie Calculator
+- [x] Calorie Cycling Calculator
+- [x] Calorie Deficit Calculator
+- [x] Calories Burned Calculator
+- [x] Carb Cycling Calculator
+- [x] Cheat Meal Calculator
+- [x] Chlorine Calculator
+- [x] Cholesterol Calculator
+- [x] Clinical Trial Cost Estimator
+- [x] Cortisol Calculator
+- [x] Cosmetic Surgery Cost Calculator
+- [x] Creatine Calculator
+- [x] Daily Calorie Calculator
+- [x] DASH Diet Calculator
+- [x] Dental Implant ROI Calculator
+- [x] Dialysis Center Profitability Calculator
+- [x] Dissolved Oxygen Calculator
+- [x] Drug Royalty Rate Calculator
+- [x] Estrogen Calculator
+- [x] Fitness Age Calculator
+- [x] Food Combining Calculator
+- [x] Glycemic Index Calculator
+- [x] Glycemic Load Calculator
+- [x] Growth Hormone Calculator
+- [x] Hardness Calculator
+- [x] Heart Rate Variability Calculator
+- [x] Heart Rate Zone Calculator
+- [ ] Home Health Agency Profitability Calculator
+- [ ] Hydration Calculator
+- [ ] Ideal Weight Calculator
+- [ ] Insulin Calculator
+- [ ] Insulin Sensitivity Calculator
+- [ ] IVF (In Vitro Fertilization) Cost Calculator
+- [x] Keto Calculator
+- [ ] LASIK Eye Surgery ROI Calculator
+- [ ] Lean Body Mass Calculator
+- [ ] Macronutrient Calculator
+- [ ] Maximum Heart Rate Calculator
+- [ ] Meal Timing Calculator
+- [ ] Medical Courier Service Route Profitability Calculator
+- [ ] Medical Device Development Cost Calculator
+- [ ] Medical Equipment Lease vs. Buy Calculator
+- [ ] Medical Practice Valuation Calculator
+- [ ] Mediterranean Diet Calculator
+- [ ] Metabolic Age Calculator
+- [ ] Metabolic Syndrome Calculator
+- [ ] Mineral Calculator
+- [ ] Muscle Gain Calculator
+- [ ] Nitrate Calculator
+- [ ] One-Rep Max (1RM) Calculator
+- [ ] ORP Calculator
+- [ ] Ovulation Calculator
+- [ ] Paleo Calculator
+- [ ] Patient Lifetime Value (PLV) Calculator
+- [ ] pH Calculator
+- [ ] Pharmaceutical Drug Pricing Calculator
+- [ ] Phosphate Calculator
+- [ ] Physician Compensation (wRVU) Calculator
+- [ ] Post Workout Calculator
+- [ ] Pre Workout Calculator
+- [ ] Pregnancy Calculator
+- [ ] Protein Intake Calculator
+- [ ] Recovery Calculator
+- [ ] Refeed Calculator
+- [ ] Resting Heart Rate Calculator
+- [ ] Revenue Cycle Management (RCM) ROI Calculator
+- [ ] Salinity Calculator
+- [ ] Senior Living Facility Acquisition Calculator
+- [ ] Stress Calculator
+- [ ] Supplement Calculator
+- [ ] Surgical Center Case Costing Calculator
+- [ ] Target Heart Rate Calculator
+- [ ] Telehealth Program ROI Calculator
+- [x] Testosterone Calculator
+- [x] Thyroid Calculator
+- [ ] Training Load Calculator
+- [ ] Turbidity Calculator
+- [ ] Vitamin Calculator
+- [ ] VO2 Max Calculator
+- [ ] Waist to Height Ratio Calculator
+- [ ] Waist to Hip Ratio Calculator
+- [ ] Water Intake Calculator
+- [ ] Water Quality Calculator
+- [ ] Weight Loss Calculator
+- [ ] Weight Watchers Calculator
+- [x] Concrete Calculator
+- [ ] Aerospace & Defense Contract Profitability Calculator
+- [ ] Agricultural Land Lease Rate Calculator
+- [x] Asphalt Calculator
+- [ ] Baseboard Calculator
+- [ ] Block Calculator
+- [x] Brick Calculator
+- [ ] Carpet Calculator
+- [ ] Ceramic Tile Calculator
+- [ ] Chemical Plant Production Yield Calculator
+- [ ] CNC Machining Time & Cost Calculator
+- [ ] Cold Storage Facility for Produce ROI Calculator
+- [ ] Commercial Printing Cost Estimator
+- [ ] Commodity Hedging & Futures Margin Calculator
+- [x] Crop Insurance Premium Calculator ✅ **(COMPLETED)**
+- [ ] Crop Yield Profitability Calculator
+- [ ] Deck Calculator
+- [ ] Dredging Project Cost Calculator
+- [x] Drywall Calculator
+- [ ] Farm Equipment Lease vs. Buy Calculator
+- [ ] Farm Succession Planning Valuation
+- [ ] Fence Calculator
+- [x] Flooring Calculator
+- [ ] Gravel Calculator
+- [ ] Hardwood Calculator
+- [ ] Injection Molding Cost Estimator
+- [x] Insulation Calculator
+- [ ] Laminate Calculator
+- [ ] Livestock Auction Profit/Loss Calculator
+- [ ] Livestock Feed Conversion Ratio Calculator
+- [ ] Marine Salvage Award Estimator
+- [ ] Mining Feasibility Study Calculator
+- [ ] Molding Calculator
+- [ ] Mortar Calculator
+- [ ] Mulch Calculator
+- [ ] Natural Stone Calculator
+- [ ] Offshore Decommissioning Cost Estimator
+- [ ] Offshore Wind Farm Installation Cost Calculator
+- [ ] Oil Well Profitability Calculator
+- [x] Paint Calculator
+- [ ] Plaster Calculator
+- [ ] Precision Agriculture ROI Calculator
+- [ ] Rebar Calculator
+- [ ] Renewable Energy Credit (REC) Value Calculator
+- [ ] Roof Calculator
+- [ ] Sand Calculator
+- [ ] Semiconductor Fab Yield Calculator
+- [x] Siding Calculator
+- [ ] Sod Calculator
+- [ ] Soil Calculator
+- [ ] Solar Farm ROI & PPA Calculator
+- [ ] Stucco Calculator
+- [ ] Textile Manufacturing Cost-Per-Yard Calculator
+- [x] Tile Calculator
+- [ ] Trim Calculator
+- [ ] Vinyl Calculator
+- [ ] Wallpaper Calculator
+- [ ] Water Futures & Trading Calculator
+- [ ] Water Rights Valuation Calculator
+- [ ] Wind Turbine Profitability Calculator
+- [ ] Admittance Converter
+- [ ] Amplitude Converter
+- [ ] Angle Converter
+- [ ] Capacitance Converter
+- [ ] Charge Converter
+- [ ] Conductance Converter
+- [ ] Conductivity Converter
+- [ ] Current Converter
+- [ ] Data Storage Converter
+- [ ] Decibel Converter
+- [ ] Electric Field Converter
+- [ ] Electric Flux Converter
+- [ ] Force Converter
+- [ ] Frequency Converter
+- [ ] Illuminance Converter
+- [ ] Impedance Converter
+- [ ] Inductance Converter
+- [ ] Length Converter
+- [ ] Luminosity Converter
+- [ ] Magnetic Field Converter
+- [ ] Magnetic Flux Converter
+- [ ] Oven Temperature Converter
+- [ ] Permeability Converter
+- [ ] Permittivity Converter
+- [ ] Potential Converter
+- [ ] Power Converter
+- [ ] Pressure Converter
+- [ ] Rainfall Converter
+- [ ] Reactance Converter
+- [ ] Resistance Converter
+- [ ] Resistivity Converter
+- [ ] Speed Converter
+- [ ] Susceptance Converter
+- [ ] Temperature Converter
+- [ ] Time Converter
+- [ ] Torque Converter
+- [ ] Voltage Converter
+- [ ] Volume Converter
+- [ ] Wavelength Converter
+- [ ] Weight Converter
+- [ ] Work Converter
+- [x] Algebra Calculator
+- [ ] Angle Between Vectors Calculator
+- [ ] Asymptote Calculator
+- [ ] Average Score Calculator
+- [x] Calculus Calculator
+- [ ] Class Rank Calculator
+- [ ] Coefficient of Variation Calculator
+- [ ] Combination Calculator
+- [x] Complex Number Calculator
+- [ ] Composite Function Calculator
+- [ ] Composite Score Calculator
+- [ ] Confidence Interval Calculator
+- [ ] Conic Section Calculator
+- [ ] Coordinate Geometry Calculator
+- [ ] Cross Product Calculator
+- [ ] Cumulative GPA Calculator
+- [ ] Cylindrical Coordinate Calculator
+- [ ] Derivative Calculator
+- [ ] Distance Formula Calculator
+- [ ] Domain Range Calculator
+- [ ] Dot Product Calculator
+- [ ] Equation of Circle Calculator
+- [ ] Equation of Ellipse Calculator
+- [ ] Equation of Hyperbola Calculator
+- [ ] Equation of Line Calculator
+- [ ] Equation of Parabola Calculator
+- [ ] Exponential Calculator
+- [x] Fraction Calculator
+- [x] Geometry Calculator
+- [ ] Grade Calculator
+- [ ] Integral Calculator
+- [ ] Intercept Calculator
+- [ ] Inverse Function Calculator
+- [ ] Limit Calculator
+- [ ] Logarithm Calculator
+- [ ] Magnitude Calculator
+- [ ] Margin of Error Calculator
+- [x] Matrix Calculator
+- [ ] Median Score Calculator
+- [ ] Midpoint Calculator
+- [ ] Mode Score Calculator
+- [ ] P Value Calculator
+- [ ] Parametric Equation Calculator
+- [x] Percentage Calculator
+- [ ] Percentile Calculator
+- [ ] Permutation Calculator
+- [ ] Polar Coordinate Calculator
+- [ ] Polynomial Calculator
+- [ ] Projection Calculator
+- [ ] Pythagorean Theorem Calculator
+- [ ] Quadratic Formula Calculator
+- [ ] Random Number Generator
+- [ ] Range Calculator
+- [ ] Rational Function Calculator
+- [ ] Raw Score Calculator
+- [ ] Reflection Calculator
+- [ ] Regression Calculator
+- [ ] Rotation Calculator
+- [ ] Sample Size Calculator
+- [ ] Scaled Score Calculator
+- [ ] Scaling Calculator
+- [x] Scientific Calculator
+- [ ] Section Formula Calculator
+- [ ] Section Score Calculator
+- [ ] Semester GPA Calculator
+- [ ] Sequence Calculator
+- [ ] Series Calculator
+- [ ] Shearing Calculator
+- [ ] Slope Calculator
+- [ ] Spherical Coordinate Calculator
+- [ ] Standard Score Calculator
+- [x] Statistics Calculator
+- [ ] Subscore Calculator
+- [ ] T Score Calculator
+- [ ] Test Score Calculator
+- [ ] Total Score Calculator
+- [ ] Transformation Calculator
+- [ ] Translation Calculator
+- [ ] Trigonometry Calculator
+- [ ] Unit Vector Calculator
+- [ ] Vector Calculator
+- [ ] Weighted Grade Calculator
+- [ ] Z Score Calculator
+- [ ] 3D Print Cost & Time Estimator
+- [ ] Age Calculator
+- [ ] Airline Route Profitability Calculator
+- [ ] Airline Miles Calculator
+- [ ] Aircraft Maintenance Reserve Calculator
+- [ ] Aircraft Lease Rate Factor Calculator
+- [ ] Air Cargo Yield Management Calculator
+- [x] Automotive Calculator
+- [ ] Beer Calculator
+- [x] Board Game Investment Calculator ✅ **(COMPLETED)**
+- [ ] Box Office Breakeven Calculator
+- [ ] Bread Calculator
+- [ ] Car Lease vs. Buy Calculator
+- [ ] Car Value Depreciation Calculator
+- [ ] Classic Car Valuation Calculator
+- [ ] Cocktail Calculator
+- [ ] Coffee Calculator
+- [ ] Comic Book Valuation Calculator
+- [ ] Cooking Recipe Conversion Calculator
+- [ ] Cooking Time Calculator
+- [ ] D&D Challenge Rating Calculator
+- [ ] D&D Encounter Balance Calculator
+- [ ] Date Difference Calculator
+- [ ] Dice Probability Calculator
+- [ ] Endowment Spending Policy Calculator
+- [ ] Faculty Cost-Benefit Analysis
+- [ ] Fantasy Football Draft Calculator
+- [x] Film Production Investment ROI Calculator ✅ **(COMPLETED)**
+- [x] Fine Art Investment ROI Calculator ✅ **(COMPLETED)**
+- [ ] Flight Crew Scheduling Cost Calculator
+- [ ] Frequent Flyer Program Liability Calculator
+- [ ] Fuel Cost & Trip Calculator
+- [ ] Gaming PC Build Cost Estimator
+- [ ] Ground Handling Service Cost Calculator
+- [ ] Jewelry Valuation Calculator
+- [ ] Law School Debt-to-Income Ratio Calculator
+- [ ] Luxury Watch Calculator
+- [ ] Magic: The Gathering Deck Value Calculator
+- [ ] MBA ROI Calculator
+- [ ] Music Festival P&L Calculator
+- [ ] Passenger Load Factor Breakeven Calculator
+- [ ] Pizza Dough Calculator
+- [ ] Pokemon Card Collection Calculator
+- [ ] Private Jet Operating Cost Calculator
+- [ ] Private School Financial Aid (EFC) Model
+- [ ] Rare Coin Calculator
+- [ ] Research Grant Overhead Calculator
+- [ ] Split the Bill Calculator
+- [ ] Sports Memorabilia Calculator
+- [x] Student Loan Portfolio Risk Calculator ✅ **(COMPLETED)**
+- [ ] Tea Calculator
+- [ ] Tip Calculator
+- [ ] Tire Size Calculator
+- [ ] Time Charter Equivalent (TCE) Rate Calculator
+- [ ] Trading Card Calculator
+- [ ] University Construction Bond Financing Calculator
+- [ ] Video Game Development Budget Calculator
+- [ ] Wedding Budget Calculator
+- [ ] Wine Calculator
+- [ ] Yacht Operating Cost & Depreciation Calculator
+- [ ] Yu-Gi-Oh! Deck Pricing Calculator

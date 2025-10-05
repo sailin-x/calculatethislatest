@@ -1,6 +1,3 @@
-import { calculatorRegistry } from '../../../data/calculatorRegistry';
-import { fourZeroOneKCalculator } from './FourZeroOneKCalculator';
+import { 401kCalculatorCalculator } from './401kCalculatorCalculator';
 
-export function registerFourZeroOneKCalculator(): void {
-  calculatorRegistry.register(fourZeroOneKCalculator);
-}
+export { 401kCalculatorCalculator };

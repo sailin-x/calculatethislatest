@@ -1,5 +1,4 @@
-export { celebrityendorsementdealvaluationCalculator } from './celebrityendorsementdealvaluationCalculator';
-export { registercelebrityendorsementdealvaluationCalculator } from './register';
+export { CelebrityEndorsementDealValuationCalculator } from './CelebrityEndorsementDealValuationCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

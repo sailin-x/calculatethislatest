@@ -1,177 +1,61 @@
-import { ValidationResult } from '../../types/calculator';
+import { UsdaLoanCalculatorInputs } from './types';
 
-export function validatePropertyValue(value: any, allInputs?: Record<string, any>): ValidationResult {
+export function validatePrimaryInput(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   if (!value || value <= 0) {
-    return { isValid: false, errors: { propertyValue: 'Property value must be greater than $0' } };
+    return { isValid: false, message: 'Primary input must be greater than 0' };
   }
-  if (value < 10000) {
-    return { isValid: false, errors: { propertyValue: 'Property value must be at least $10,000' } };
+  if (value > 1000000) {
+    return { isValid: false, message: 'Primary input cannot exceed 1,000,000' };
   }
-  if (value > 100000000) {
-    return { isValid: false, errors: { propertyValue: 'Property value cannot exceed $100,000,000' } };
-  }
-  return { isValid: true, errors: {} };
+  return { isValid: true };
 }
 
-export function validatePurchasePrice(value: any, allInputs?: Record<string, any>): ValidationResult {
-  if (!value || value <= 0) {
-    return { isValid: false, errors: { purchasePrice: 'Purchase price must be greater than $0' } };
+export function validateSecondaryInput(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value < 0) {
+    return { isValid: false, message: 'Secondary input cannot be negative' };
   }
-  if (value < 10000) {
-    return { isValid: false, errors: { purchasePrice: 'Purchase price must be at least $10,000' } };
+  if (allInputs?.primaryInput && value > allInputs.primaryInput) {
+    return { isValid: false, message: 'Secondary input cannot exceed primary input' };
   }
-  if (value > 100000000) {
-    return { isValid: false, errors: { purchasePrice: 'Purchase price cannot exceed $100,000,000' } };
-  }
-  return { isValid: true, errors: {} };
+  return { isValid: true };
 }
 
-export function validateHouseholdIncome(value: any, allInputs?: Record<string, any>): ValidationResult {
-  if (!value || value <= 0) {
-    return { isValid: false, errors: { householdIncome: 'Household income must be greater than $0' } };
+export function validateSelectInput(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  const validOptions = ['option1', 'option2'];
+  if (!value || !validOptions.includes(value)) {
+    return { isValid: false, message: 'Please select a valid option' };
   }
-  if (value < 1000) {
-    return { isValid: false, errors: { householdIncome: 'Household income must be at least $1,000' } };
-  }
-  if (value > 10000000) {
-    return { isValid: false, errors: { householdIncome: 'Household income cannot exceed $10,000,000' } };
-  }
-  return { isValid: true, errors: {} };
+  return { isValid: true };
 }
 
-export function validateHouseholdSize(value: any, allInputs?: Record<string, any>): ValidationResult {
-  if (!value || value < 1) {
-    return { isValid: false, errors: { householdSize: 'Household size must be at least 1' } };
+export function validateOptionalParameter(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value && value.length > 100) {
+    return { isValid: false, message: 'Optional parameter cannot exceed 100 characters' };
   }
-  if (value > 10) {
-    return { isValid: false, errors: { householdSize: 'Household size cannot exceed 10' } };
-  }
-  return { isValid: true, errors: {} };
+  return { isValid: true };
 }
 
-export function validateCreditScore(value: any, allInputs?: Record<string, any>): ValidationResult {
-  if (value === undefined || value < 300 || value > 850) {
-    return { isValid: false, errors: { creditScore: 'Credit score must be between 300 and 850' } };
-  }
-  return { isValid: true, errors: {} };
-}
-
-export function validateDebtToIncomeRatio(value: any, allInputs?: Record<string, any>): ValidationResult {
-  if (value === undefined || value < 0 || value > 100) {
-    return { isValid: false, errors: { debtToIncomeRatio: 'Debt-to-income ratio must be between 0% and 100%' } };
-  }
-  return { isValid: true, errors: {} };
-}
-
-export function validateDownPayment(value: any, allInputs?: Record<string, any>): ValidationResult {
-  if (value === undefined || value < 0) {
-    return { isValid: false, errors: { downPayment: 'Down payment cannot be negative' } };
-  }
-  if (value > 10000000) {
-    return { isValid: false, errors: { downPayment: 'Down payment cannot exceed $10,000,000' } };
-  }
-  return { isValid: true, errors: {} };
-}
-
-export function validateInterestRate(value: any, allInputs?: Record<string, any>): ValidationResult {
-  if (value === undefined || value < 0 || value > 20) {
-    return { isValid: false, errors: { interestRate: 'Interest rate must be between 0% and 20%' } };
-  }
-  return { isValid: true, errors: {} };
-}
-
-export function validateClosingCosts(value: any, allInputs?: Record<string, any>): ValidationResult {
-  if (value === undefined || value < 0) {
-    return { isValid: false, errors: { closingCosts: 'Closing costs cannot be negative' } };
-  }
-  if (value > 100000) {
-    return { isValid: false, errors: { closingCosts: 'Closing costs cannot exceed $100,000' } };
-  }
-  return { isValid: true, errors: {} };
-}
-
-export function validatePropertyTaxes(value: any, allInputs?: Record<string, any>): ValidationResult {
-  if (value === undefined || value < 0) {
-    return { isValid: false, errors: { propertyTaxes: 'Property taxes cannot be negative' } };
-  }
-  if (value > 50000) {
-    return { isValid: false, errors: { propertyTaxes: 'Property taxes cannot exceed $50,000' } };
-  }
-  return { isValid: true, errors: {} };
-}
-
-export function validateHomeownersInsurance(value: any, allInputs?: Record<string, any>): ValidationResult {
-  if (value === undefined || value < 0) {
-    return { isValid: false, errors: { homeownersInsurance: 'Homeowners insurance cannot be negative' } };
-  }
-  if (value > 10000) {
-    return { isValid: false, errors: { homeownersInsurance: 'Homeowners insurance cannot exceed $10,000' } };
-  }
-  return { isValid: true, errors: {} };
-}
-
-export function validateHoaFees(value: any, allInputs?: Record<string, any>): ValidationResult {
-  if (value === undefined || value < 0) {
-    return { isValid: false, errors: { hoaFees: 'HOA fees cannot be negative' } };
-  }
-  if (value > 10000) {
-    return { isValid: false, errors: { hoaFees: 'HOA fees cannot exceed $10,000' } };
-  }
-  return { isValid: true, errors: {} };
-}
-
-export function validateAnalysisPeriod(value: any, allInputs?: Record<string, any>): ValidationResult {
-  if (!value || value < 1) {
-    return { isValid: false, errors: { analysisPeriod: 'Analysis period must be at least 1 year' } };
-  }
-  if (value > 50) {
-    return { isValid: false, errors: { analysisPeriod: 'Analysis period cannot exceed 50 years' } };
-  }
-  return { isValid: true, errors: {} };
-}
-
-export function validateLocation(value: any, allInputs?: Record<string, any>): ValidationResult {
-  if (!value || value === '') {
-    return { isValid: false, errors: { location: 'Location is required' } };
-  }
-  const validLocations = ['rural', 'suburban', 'small-town'];
-  if (!validLocations.includes(value)) {
-    return { isValid: false, errors: { location: 'Invalid location type selected' } };
-  }
-  return { isValid: true, errors: {} };
-}
-
-export function validateIsPrimaryResidence(value: any, allInputs?: Record<string, any>): ValidationResult {
+export function validateBooleanFlag(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   if (typeof value !== 'boolean' && value !== undefined) {
-    return { isValid: false, errors: { isPrimaryResidence: 'Primary residence must be true or false' } };
+    return { isValid: false, message: 'Boolean flag must be true or false' };
   }
-  return { isValid: true, errors: {} };
+  return { isValid: true };
 }
 
-export function validateIsModestHousing(value: any, allInputs?: Record<string, any>): ValidationResult {
-  if (typeof value !== 'boolean' && value !== undefined) {
-    return { isValid: false, errors: { isModestHousing: 'Modest housing must be true or false' } };
+// Additional validation functions as needed
+export function validateNumericRange(value: any, min: number, max: number, fieldName: string, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value < min) {
+    return { isValid: false, message: `${fieldName} must be at least ${min}` };
   }
-  return { isValid: true, errors: {} };
+  if (value > max) {
+    return { isValid: false, message: `${fieldName} cannot exceed ${max}` };
+  }
+  return { isValid: true };
 }
 
-export function validateMeetsIncomeLimits(value: any, allInputs?: Record<string, any>): ValidationResult {
-  if (typeof value !== 'boolean' && value !== undefined) {
-    return { isValid: false, errors: { meetsIncomeLimits: 'Meets income limits must be true or false' } };
+export function validateRequired(value: any, fieldName: string, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value === null || value === undefined || value === '') {
+    return { isValid: false, message: `${fieldName} is required` };
   }
-  return { isValid: true, errors: {} };
-}
-
-export function validateMeetsLocationRequirements(value: any, allInputs?: Record<string, any>): ValidationResult {
-  if (typeof value !== 'boolean' && value !== undefined) {
-    return { isValid: false, errors: { meetsLocationRequirements: 'Meets location requirements must be true or false' } };
-  }
-  return { isValid: true, errors: {} };
-}
-
-export function validateIncludeTaxesInsurance(value: any, allInputs?: Record<string, any>): ValidationResult {
-  if (typeof value !== 'boolean' && value !== undefined) {
-    return { isValid: false, errors: { includeTaxesInsurance: 'Include taxes insurance must be true or false' } };
-  }
-  return { isValid: true, errors: {} };
+  return { isValid: true };
 }

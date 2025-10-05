@@ -1,36 +1,33 @@
 export interface HealthSavingsAccountHsaCalculatorInputs {
-  coverageType: 'self-only' | 'family';
-  age: number;
-  currentBalance: number;
-  annualContribution: number;
-  expectedGrowthRate: number;
-  yearsToRetirement: number;
-  qualifiedWithdrawals: number;
-  nonQualifiedWithdrawals: number;
-}
-
-export interface HealthSavingsAccountHsaCalculatorMetrics {
-  annualContributionLimit: number;
-  totalContributions: number;
-  investmentGrowth: number;
-  qualifiedWithdrawalTaxSavings: number;
-  nonQualifiedWithdrawalTax: number;
-  netTaxAdvantage: number;
-}
-
-export interface HealthSavingsAccountHsaCalculatorAnalysis {
-  contributionEfficiency: string;
-  taxAdvantageSummary: string;
-  retirementReadiness: string[];
-  strategyRecommendations: string[];
+  // Define input properties based on the calculator's requirements
+  primaryInput: number;
+  secondaryInput?: number;
+  selectInput: string;
+  // Add more input properties as needed
+  optionalParameter?: string;
+  booleanFlag?: boolean;
 }
 
 export interface HealthSavingsAccountHsaCalculatorOutputs {
-  annualContributionLimit: number;
-  totalContributions: number;
-  investmentGrowth: number;
-  qualifiedWithdrawalTaxSavings: number;
-  nonQualifiedWithdrawalTax: number;
-  netTaxAdvantage: number;
-  analysis: HealthSavingsAccountHsaCalculatorAnalysis;
+  // Define output properties that the calculator will produce
+  primaryResult: number;
+  secondaryResult: number;
+  // Add more output properties as needed
+  percentageResult?: number;
+  textResult?: string;
+}
+
+export interface HealthSavingsAccountHsaCalculatorMetrics {
+  // Define intermediate calculation results or metrics
+  intermediateValue: number;
+  calculationSteps: string[];
+  riskLevel: 'Low' | 'Medium' | 'High';
+}
+
+export interface HealthSavingsAccountHsaCalculatorAnalysis {
+  // Define analysis results
+  recommendation: string;
+  riskLevel: 'Low' | 'Medium' | 'High';
+  insights: string[];
+  warnings: string[];
 }

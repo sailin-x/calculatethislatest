@@ -1,4 +1,4 @@
-export { GrantorRetainedAnnuityTrustGratCalculator } from './GrantorRetainedAnnuityTrustGratCalculator';
+export { GrantorRetainedAnnuityTrustGratCalculatorCalculator } from './GrantorRetainedAnnuityTrustGratCalculatorCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

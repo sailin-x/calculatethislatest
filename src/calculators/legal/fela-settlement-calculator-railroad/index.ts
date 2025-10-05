@@ -1,5 +1,4 @@
-export { felasettlementcalculatorrailroadCalculator } from './felasettlementcalculatorrailroadCalculator';
-export { registerfelasettlementcalculatorrailroadCalculator } from './register';
+export { FelaSettlementCalculatorRailroadCalculator } from './FelaSettlementCalculatorRailroadCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

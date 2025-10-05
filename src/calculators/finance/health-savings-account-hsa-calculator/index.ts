@@ -1,4 +1,4 @@
-export { HealthSavingsAccountHsaCalculator } from './HealthSavingsAccountHsaCalculator';
+export { HealthSavingsAccountHsaCalculatorCalculator } from './HealthSavingsAccountHsaCalculatorCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

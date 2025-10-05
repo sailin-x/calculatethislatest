@@ -3,37 +3,33 @@ import { HsaTripleTaxAdvantageCalculatorInputs } from './types';
 export function validateHsaTripleTaxAdvantageCalculatorInputs(inputs: HsaTripleTaxAdvantageCalculatorInputs): Array<{ field: string; message: string }> {
   const errors: Array<{ field: string; message: string }> = [];
 
-  if (!inputs.annualContribution || inputs.annualContribution <= 0) {
-    errors.push({ field: 'annualContribution', message: 'Annual contribution must be greater than 0' });
+  // Primary Input Validation
+  if (!inputs.primaryInput || inputs.primaryInput <= 0) {
+    errors.push({ field: 'primaryInput', message: 'Primary input must be greater than 0' });
   }
-  if (inputs.annualContribution && inputs.annualContribution > 100000) {
-    errors.push({ field: 'annualContribution', message: 'Annual contribution cannot exceed $100,000' });
-  }
-
-  if (!inputs.taxRate || inputs.taxRate <= 0) {
-    errors.push({ field: 'taxRate', message: 'Tax rate must be greater than 0' });
-  }
-  if (inputs.taxRate && inputs.taxRate > 50) {
-    errors.push({ field: 'taxRate', message: 'Tax rate cannot exceed 50%' });
+  if (inputs.primaryInput && inputs.primaryInput > 1000000) {
+    errors.push({ field: 'primaryInput', message: 'Primary input cannot exceed 1,000,000' });
   }
 
-  if (!inputs.yearsOfContributions || inputs.yearsOfContributions <= 0) {
-    errors.push({ field: 'yearsOfContributions', message: 'Years of contributions must be greater than 0' });
-  }
-  if (inputs.yearsOfContributions && inputs.yearsOfContributions > 50) {
-    errors.push({ field: 'yearsOfContributions', message: 'Years of contributions cannot exceed 50' });
+  // Secondary Input Validation (if provided)
+  if (inputs.secondaryInput !== undefined && inputs.secondaryInput < 0) {
+    errors.push({ field: 'secondaryInput', message: 'Secondary input cannot be negative' });
   }
 
-  if (inputs.expectedGrowthRate < -50 || inputs.expectedGrowthRate > 50) {
-    errors.push({ field: 'expectedGrowthRate', message: 'Expected growth rate must be between -50% and 50%' });
+  // Select Input Validation
+  const validOptions = ['option1', 'option2'];
+  if (!inputs.selectInput || !validOptions.includes(inputs.selectInput)) {
+    errors.push({ field: 'selectInput', message: 'Please select a valid option' });
   }
 
-  if (inputs.qualifiedWithdrawals < 0) {
-    errors.push({ field: 'qualifiedWithdrawals', message: 'Qualified withdrawals cannot be negative' });
+  // Cross-field Validation
+  if (inputs.secondaryInput && inputs.primaryInput && inputs.secondaryInput > inputs.primaryInput) {
+    errors.push({ field: 'secondaryInput', message: 'Secondary input cannot exceed primary input' });
   }
 
-  if (inputs.nonQualifiedWithdrawals < 0) {
-    errors.push({ field: 'nonQualifiedWithdrawals', message: 'Non-qualified withdrawals cannot be negative' });
+  // Optional Parameter Validation
+  if (inputs.optionalParameter && inputs.optionalParameter.length > 100) {
+    errors.push({ field: 'optionalParameter', message: 'Optional parameter cannot exceed 100 characters' });
   }
 
   return errors;
@@ -42,32 +38,27 @@ export function validateHsaTripleTaxAdvantageCalculatorInputs(inputs: HsaTripleT
 export function validateHsaTripleTaxAdvantageCalculatorBusinessRules(inputs: HsaTripleTaxAdvantageCalculatorInputs): Array<{ field: string; message: string }> {
   const warnings: Array<{ field: string; message: string }> = [];
 
-  if (inputs.annualContribution > 8000) {
-    warnings.push({
-      field: 'annualContribution',
-      message: 'Contribution exceeds typical HSA limit - verify eligibility and limits'
-    });
+  // Business Rule Warnings
+  if (inputs.primaryInput && inputs.primaryInput > 500000) {
+    warnings.push({ field: 'primaryInput', message: 'High primary input values may require additional review' });
   }
 
-  if (inputs.expectedGrowthRate > 15) {
-    warnings.push({
-      field: 'expectedGrowthRate',
-      message: 'High growth rate assumption may be unrealistic for HSA investments'
-    });
+  // Ratio-based Warnings
+  if (inputs.secondaryInput && inputs.primaryInput) {
+    const ratio = inputs.secondaryInput / inputs.primaryInput;
+    if (ratio > 0.8) {
+      warnings.push({ field: 'secondaryInput', message: 'Secondary input is very high relative to primary input' });
+    }
   }
 
-  if (inputs.nonQualifiedWithdrawals > 0 && inputs.yearsOfContributions < 10) {
-    warnings.push({
-      field: 'nonQualifiedWithdrawals',
-      message: 'Early non-qualified withdrawals incur 20% penalty plus income tax'
-    });
+  // Option-specific Warnings
+  if (inputs.selectInput === 'option2' && inputs.primaryInput && inputs.primaryInput < 100) {
+    warnings.push({ field: 'selectInput', message: 'Option 2 may not be suitable for low primary input values' });
   }
 
-  if (inputs.qualifiedWithdrawals === 0 && inputs.yearsOfContributions > 5) {
-    warnings.push({
-      field: 'qualifiedWithdrawals',
-      message: 'Consider using HSA funds for qualified medical expenses to maximize tax benefits'
-    });
+  // Threshold Warnings
+  if (inputs.primaryInput && inputs.primaryInput > 10000) {
+    warnings.push({ field: 'primaryInput', message: 'Consider consulting with financial experts for high-value calculations' });
   }
 
   return warnings;
