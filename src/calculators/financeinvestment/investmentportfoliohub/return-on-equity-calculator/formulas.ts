@@ -1,4 +1,4 @@
-import { return-on-equity-calculatorInputs, return-on-equity-calculatorMetrics, return-on-equity-calculatorAnalysis } from './types';
+import { ReturnOnEquity-calculatorInputs, ReturnOnEquity-calculatorMetrics, ReturnOnEquity-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: return-on-equity-calculatorInputs): number {
+export function calculateResult(inputs: ReturnOnEquity-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: return-on-equity-calculatorInputs): numb
   }
 }
 
-export function generateAnalysis(inputs: return-on-equity-calculatorInputs, metrics: return-on-equity-calculatorMetrics): return-on-equity-calculatorAnalysis {
+export function generateAnalysis(inputs: ReturnOnEquity-calculatorInputs, metrics: ReturnOnEquity-calculatorMetrics): ReturnOnEquity-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

@@ -1,4 +1,4 @@
-import { consultant-utilization-rate-calculatorInputs, consultant-utilization-rate-calculatorMetrics, consultant-utilization-rate-calculatorAnalysis } from './types';
+import { ConsultantUtilizationRate-calculatorInputs, ConsultantUtilizationRate-calculatorMetrics, ConsultantUtilizationRate-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: consultant-utilization-rate-calculatorInputs): number {
+export function calculateResult(inputs: ConsultantUtilizationRate-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: consultant-utilization-rate-calculatorIn
   }
 }
 
-export function generateAnalysis(inputs: consultant-utilization-rate-calculatorInputs, metrics: consultant-utilization-rate-calculatorMetrics): consultant-utilization-rate-calculatorAnalysis {
+export function generateAnalysis(inputs: ConsultantUtilizationRate-calculatorInputs, metrics: ConsultantUtilizationRate-calculatorMetrics): ConsultantUtilizationRate-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

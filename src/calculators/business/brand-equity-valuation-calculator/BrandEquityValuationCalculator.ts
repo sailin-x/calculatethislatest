@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateBrandEquityValuationCalculatorInputs, validateBrandEquityValuationCalculatorBusinessRules } from './validation';
 
-export const BrandEquityValuationCalculatorCalculator: Calculator: Calculator = {
-  id: 'brand-equity-valuation-calculator-calculator',
+export const BrandEquityValuationCalculator: Calculator = {
+  id: 'BrandEquityValuation-calculator-calculator',
   title: 'Brand Equity Valuation Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

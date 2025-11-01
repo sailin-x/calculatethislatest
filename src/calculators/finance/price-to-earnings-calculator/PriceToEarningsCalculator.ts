@@ -10,7 +10,7 @@ import {
 import { validatePriceToEarningsCalculatorInputs } from './validation';
 
 export const PriceToEarningsCalculator: Calculator = {
-  id: 'price-to-earnings-calculator',
+  id: 'PriceToEarnings-calculator',
   title: 'Price to Earnings Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

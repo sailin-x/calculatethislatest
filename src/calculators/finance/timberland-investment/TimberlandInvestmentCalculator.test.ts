@@ -121,7 +121,7 @@ describe('TimberlandInvestmentCalculator', () => {
       expect(result.errors).toContain('Property size must be a valid number');
     });
 
-    it('should detect out-of-range values', () => {
+    it('should detect OutOfRange values', () => {
       const invalidInputs = { ...validInputs, propertySize: -100 };
       
       const result = validateTimberlandInvestmentInputs(invalidInputs);

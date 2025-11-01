@@ -1,3 +1,3 @@
-export * from './concreteCalculatorCalculator';
+export * from './concreteCalculator';
 export * from './register';
 export * from './types';

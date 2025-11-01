@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { surety_bond_premium_calculatorInputs, surety_bond_premium_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const surety_bond_premium_calculatorCalculator: Calculator = {
-  id: 'surety-bond-premium-calculator',
+export const SuretyBondPremium-calculator: Calculator = {
+  id: 'SuretyBondPremium-calculator',
   title: 'Surety Bond Premium Calculator Calculator',
   category: 'legalinsurancesettlements',
   subcategory: 'insurancehub',

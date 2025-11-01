@@ -1,3 +1,3 @@
-export * from './bmr_tdeeCalculatorCalculator';
+export * from './bmr_tdeeCalculator';
 export * from './register';
 export * from './types';

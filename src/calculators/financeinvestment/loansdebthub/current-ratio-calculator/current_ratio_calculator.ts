@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { current_ratio_calculatorInputs, current_ratio_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const current_ratio_calculatorCalculator: Calculator = {
-  id: 'current-ratio-calculator',
+export const CurrentRatioCalculator: Calculator = {
+  id: 'CurrentRatioCalculator',
   title: 'Current Ratio Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'loansdebthub',

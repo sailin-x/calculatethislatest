@@ -1,3 +1,3 @@
-import { ZerotrustSecurityImplementationRoiCalculatorCalculator } from './ZerotrustSecurityImplementationRoiCalculatorCalculator';
+import { ZerotrustSecurityImplementationRoiCalculator } from './ZerotrustSecurityImplementationRoiCalculator';
 
-export { ZerotrustSecurityImplementationRoiCalculatorCalculator };
+export { ZerotrustSecurityImplementationRoiCalculator };

@@ -1,3 +1,3 @@
-import { NftMintingCostCalculatorCalculator } from './NftMintingCostCalculatorCalculator';
+import { NftMintingCostCalculator } from './NftMintingCostCalculator';
 
-export { NftMintingCostCalculatorCalculator };
+export { NftMintingCostCalculator };

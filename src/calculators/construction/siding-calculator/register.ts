@@ -1,3 +1,3 @@
-import { SidingCalculatorCalculator } from './SidingCalculatorCalculator';
+import { SidingCalculator } from './SidingCalculator';
 
-export { SidingCalculatorCalculator };
+export { SidingCalculator };

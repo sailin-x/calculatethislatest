@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateScubaDivingCostCalculatorInputs } from './validation';
 
 export const ScubaDivingCostCalculator: Calculator = {
-  id: 'scuba-diving-cost-calculator',
+  id: 'ScubaDivingCost-calculator',
   title: 'Scuba Diving Cost Calculator',
   category: 'health',
   subcategory: 'General',

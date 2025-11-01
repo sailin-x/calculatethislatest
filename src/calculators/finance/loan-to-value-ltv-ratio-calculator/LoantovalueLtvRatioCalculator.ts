@@ -8,9 +8,9 @@ import {
 } from './formulas';
 import { validateLoantovalueLtvRatioCalculatorInputs, validateLoantovalueLtvRatioCalculatorBusinessRules } from './validation';
 
-export const LoantovalueLtvRatioCalculatorCalculator: Calculator: Calculator = {
-  id: 'loan-to-value-ltv-ratio-calculator-calculator',
-  title: 'Loan-to-Value (LTV) Ratio Calculator Calculator',
+export const LoantovalueLtvRatioCalculator: Calculator = {
+  id: 'LoanToValue-LtvRatioCalculator-calculator',
+  title: 'LoanToValue (LTV) Ratio Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',
   description: 'Brief description of what this calculator does and its purpose.',

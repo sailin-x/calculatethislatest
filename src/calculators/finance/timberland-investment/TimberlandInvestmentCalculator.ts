@@ -3,7 +3,7 @@ import { calculateTimberlandInvestment } from './formulas';
 import { generateTimberlandInvestmentAnalysis } from './formulas';
 
 export const TimberlandInvestmentCalculator: Calculator = {
-  id: 'timberland-investment-calculator',
+  id: 'TimberlandInvestmentCalculator',
   name: 'Timberland Investment Calculator',
   category: 'finance',
   subcategory: 'real-estate',
@@ -344,10 +344,10 @@ export const TimberlandInvestmentCalculator: Calculator = {
     },
     {
       id: 'cashOnCashReturn',
-      name: 'Cash-on-Cash Return',
+      name: 'CashOnCash Return',
       type: 'number',
       unit: '%',
-      description: 'Annual cash-on-cash return on investment'
+      description: 'Annual CashOnCash return on investment'
     },
     {
       id: 'totalROI',

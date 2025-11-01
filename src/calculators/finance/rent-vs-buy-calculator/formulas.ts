@@ -1,4 +1,4 @@
-import { rent-vs-buy-calculatorInputs, rent-vs-buy-calculatorMetrics, rent-vs-buy-calculatorAnalysis } from './types';
+import { RentVsBuy-calculatorInputs, RentVsBuy-calculatorMetrics, RentVsBuy-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: rent-vs-buy-calculatorInputs): number {
+export function calculateResult(inputs: RentVsBuy-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: rent-vs-buy-calculatorInputs): number {
   }
 }
 
-export function generateAnalysis(inputs: rent-vs-buy-calculatorInputs, metrics: rent-vs-buy-calculatorMetrics): rent-vs-buy-calculatorAnalysis {
+export function generateAnalysis(inputs: RentVsBuy-calculatorInputs, metrics: RentVsBuy-calculatorMetrics): RentVsBuy-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

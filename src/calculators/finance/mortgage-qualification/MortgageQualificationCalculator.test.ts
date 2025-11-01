@@ -5,7 +5,7 @@ import { calculateTotalIncome, calculateQualifyingIncome, calculateDebtToIncomeR
 describe('MortgageQualificationCalculator', () => {
   describe('Basic functionality', () => {
     it('should have correct calculator properties', () => {
-      expect(MortgageQualificationCalculator.id).toBe('mortgage-qualification-calculator');
+      expect(MortgageQualificationCalculator.id).toBe('MortgageQualificationCalculator');
       expect(MortgageQualificationCalculator.title).toBe('Mortgage Qualification Calculator');
       expect(MortgageQualificationCalculator.category).toBe('finance');
     });
@@ -67,7 +67,7 @@ describe('MortgageQualificationCalculator', () => {
       expect(result).toBe(118750); // Total income with 5% reduction for variable income
     });
 
-    it('should calculate debt-to-income ratio correctly', () => {
+    it('should calculate DebtToIncome ratio correctly', () => {
       const result = calculateDebtToIncomeRatio(testInputs);
       expect(result).toBeCloseTo(38.5, 1);
     });

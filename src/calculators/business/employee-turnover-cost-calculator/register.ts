@@ -1,3 +1,3 @@
-import { EmployeeTurnoverCostCalculatorCalculator } from './EmployeeTurnoverCostCalculatorCalculator';
+import { EmployeeTurnoverCostCalculator } from './EmployeeTurnoverCostCalculator';
 
-export { EmployeeTurnoverCostCalculatorCalculator };
+export { EmployeeTurnoverCostCalculator };

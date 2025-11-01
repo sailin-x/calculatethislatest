@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { private_equity_returns_calculatorInputs, private_equity_returns_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const private_equity_returns_calculatorCalculator: Calculator = {
-  id: 'private-equity-returns-calculator',
+export const PrivateEquityReturns-calculator: Calculator = {
+  id: 'PrivateEquityReturns-calculator',
   title: 'Private Equity Returns Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'investmentportfoliohub',

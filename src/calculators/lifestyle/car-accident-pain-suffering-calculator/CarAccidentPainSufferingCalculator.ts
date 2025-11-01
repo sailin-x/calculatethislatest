@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateCarAccidentPainSufferingCalculatorInputs, validateCarAccidentPainSufferingCalculatorBusinessRules } from './validation';
 
-export const CarAccidentPainSufferingCalculatorCalculator: Calculator: Calculator = {
-  id: 'car-accident-pain-suffering-calculator-calculator',
+export const CarAccidentPainSufferingCalculator: Calculator = {
+  id: 'CarAccidentPain-SufferingCalculatorCalculator',
   title: 'Car Accident Pain & Suffering Calculator Calculator',
   lifestyle: 'lifestyle', // e.g., 'finance', 'math', 'health', 'business'
   sublifestyle: 'Sublifestyle Name',

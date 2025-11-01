@@ -1,3 +1,3 @@
-import { StretchIraCalculatorCalculator } from './StretchIraCalculatorCalculator';
+import { StretchIraCalculator } from './StretchIraCalculator';
 
-export { StretchIraCalculatorCalculator };
+export { StretchIraCalculator };

@@ -1,61 +1,121 @@
-import { MortgageRateLockCalculatorInputs } from './types';
+import { MortgageRateLockInputs } from './types';
 
-export function validatePrimaryInput(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+export function validateLoanAmount(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   if (!value || value <= 0) {
-    return { isValid: false, message: 'Primary input must be greater than 0' };
+    return { isValid: false, message: 'Loan amount must be greater than 0' };
   }
-  if (value > 1000000) {
-    return { isValid: false, message: 'Primary input cannot exceed 1,000,000' };
+  if (value > 10000000) {
+    return { isValid: false, message: 'Loan amount cannot exceed $10,000,000' };
   }
   return { isValid: true };
 }
 
-export function validateSecondaryInput(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+export function validateLockedInterestRate(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   if (value < 0) {
-    return { isValid: false, message: 'Secondary input cannot be negative' };
+    return { isValid: false, message: 'Locked interest rate cannot be negative' };
   }
-  if (allInputs?.primaryInput && value > allInputs.primaryInput) {
-    return { isValid: false, message: 'Secondary input cannot exceed primary input' };
-  }
-  return { isValid: true };
-}
-
-export function validateSelectInput(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  const validOptions = ['option1', 'option2'];
-  if (!value || !validOptions.includes(value)) {
-    return { isValid: false, message: 'Please select a valid option' };
+  if (value > 30) {
+    return { isValid: false, message: 'Locked interest rate cannot exceed 30%' };
   }
   return { isValid: true };
 }
 
-export function validateOptionalParameter(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && value.length > 100) {
-    return { isValid: false, message: 'Optional parameter cannot exceed 100 characters' };
+export function validateCurrentMarketRate(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value < 0) {
+    return { isValid: false, message: 'Current market rate cannot be negative' };
+  }
+  if (value > 30) {
+    return { isValid: false, message: 'Current market rate cannot exceed 30%' };
   }
   return { isValid: true };
 }
 
-export function validateBooleanFlag(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (typeof value !== 'boolean' && value !== undefined) {
-    return { isValid: false, message: 'Boolean flag must be true or false' };
+export function validateLockPeriod(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (!value || value <= 0) {
+    return { isValid: false, message: 'Lock period must be greater than 0 days' };
+  }
+  if (value > 180) {
+    return { isValid: false, message: 'Lock period cannot exceed 180 days' };
   }
   return { isValid: true };
 }
 
-// Additional validation functions as needed
-export function validateNumericRange(value: any, min: number, max: number, fieldName: string, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value < min) {
-    return { isValid: false, message: `${fieldName} must be at least ${min}` };
+export function validateLockExpirationDate(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (!value) {
+    return { isValid: false, message: 'Lock expiration date is required' };
   }
-  if (value > max) {
-    return { isValid: false, message: `${fieldName} cannot exceed ${max}` };
+  const expirationDate = new Date(value);
+  const today = new Date();
+  if (expirationDate <= today) {
+    return { isValid: false, message: 'Lock expiration date must be in the future' };
   }
   return { isValid: true };
 }
 
-export function validateRequired(value: any, fieldName: string, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value === null || value === undefined || value === '') {
-    return { isValid: false, message: `${fieldName} is required` };
+export function validateEstimatedClosingDate(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (!value) {
+    return { isValid: false, message: 'Estimated closing date is required' };
+  }
+  const closingDate = new Date(value);
+  const today = new Date();
+  if (closingDate <= today) {
+    return { isValid: false, message: 'Estimated closing date must be in the future' };
+  }
+  return { isValid: true };
+}
+
+export function validateRateLockCost(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value < 0) {
+    return { isValid: false, message: 'Rate lock cost cannot be negative' };
+  }
+  return { isValid: true };
+}
+
+export function validateLenderCredit(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value < 0) {
+    return { isValid: false, message: 'Lender credit cannot be negative' };
+  }
+  return { isValid: true };
+}
+
+export function validateFloatDownRate(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (allInputs?.floatDownOption && value < 0) {
+    return { isValid: false, message: 'Float down rate cannot be negative' };
+  }
+  return { isValid: true };
+}
+
+export function validateExpectedRateMovement(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (Math.abs(value) > 500) {
+    return { isValid: false, message: 'Expected rate movement cannot exceed 500 basis points' };
+  }
+  return { isValid: true };
+}
+
+export function validateConfidenceLevel(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value < 0 || value > 100) {
+    return { isValid: false, message: 'Confidence level must be between 0 and 100' };
+  }
+  return { isValid: true };
+}
+
+export function validateAverageMovement(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value < -200 || value > 200) {
+    return { isValid: false, message: 'Average movement must be between -200 and 200 basis points per day' };
+  }
+  return { isValid: true };
+}
+
+export function validateVolatilityIndex(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value < 0 || value > 100) {
+    return { isValid: false, message: 'Volatility index must be between 0 and 100' };
+  }
+  return { isValid: true };
+}
+
+export function validateRateAdjustmentCap(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value < 0) {
+    return { isValid: false, message: 'Rate adjustment cap cannot be negative' };
   }
   return { isValid: true };
 }

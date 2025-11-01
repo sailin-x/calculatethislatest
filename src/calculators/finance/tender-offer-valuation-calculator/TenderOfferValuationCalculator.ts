@@ -10,7 +10,7 @@ import {
 import { validateTenderOfferValuationCalculatorInputs } from './validation';
 
 export const TenderOfferValuationCalculator: Calculator = {
-  id: 'tender-offer-valuation-calculator',
+  id: 'TenderOfferValuation-calculator',
   title: 'Tender Offer Valuation Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

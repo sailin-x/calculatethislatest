@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateLeverageRatioCalculatorInputs, validateLeverageRatioCalculatorBusinessRules } from './validation';
 
-export const LeverageRatioCalculatorCalculator: Calculator: Calculator = {
-  id: 'leverage-ratio-calculator-calculator',
+export const LeverageRatioCalculator: Calculator = {
+  id: 'LeverageRatioCalculator-calculator',
   title: 'Leverage Ratio Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

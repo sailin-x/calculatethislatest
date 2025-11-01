@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { compound_annual_growth_rate_cagr_calculatorInputs, compound_annual_growth_rate_cagr_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const compound_annual_growth_rate_cagr_calculatorCalculator: Calculator = {
-  id: 'compound-annual-growth-rate-cagr-calculator',
+export const CompoundAnnualGrowth-RateCagrCalculator: Calculator = {
+  id: 'CompoundAnnualGrowth-RateCagrCalculator',
   title: 'Compound Annual Growth Rate (CAGR) Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'investmentportfoliohub',

@@ -1,4 +1,4 @@
-import { bmr-tdee-calculatorInputs, bmr-tdee-calculatorMetrics, bmr-tdee-calculatorAnalysis } from './types';
+import { BmrTdeeCalculatorinputs, BmrTdeeCalculatormetrics, BmrTdeeCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: bmr-tdee-calculatorInputs): number {
+export function calculateResult(inputs: BmrTdeeCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: bmr-tdee-calculatorInputs): number {
   }
 }
 
-export function generateAnalysis(inputs: bmr-tdee-calculatorInputs, metrics: bmr-tdee-calculatorMetrics): bmr-tdee-calculatorAnalysis {
+export function generateAnalysis(inputs: BmrTdeeCalculatorinputs, metrics: BmrTdeeCalculatormetrics): BmrTdeeCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

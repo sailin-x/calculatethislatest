@@ -118,7 +118,7 @@ describe('HotelFeasibilityADRCalculator', () => {
       expect(Math.abs(result.cashFlow - expectedCashFlow)).toBeLessThan(1);
     });
 
-    it('should calculate cash-on-cash return correctly', () => {
+    it('should calculate CashOnCash return correctly', () => {
       const result = HotelFeasibilityADRCalculator.calculate(validInputs);
       const expectedNOI = validInputs.totalRevenue - validInputs.totalOperatingExpenses;
       const annualDebtService = (validInputs.loanAmount * (validInputs.interestRate / 100 / 12) *
@@ -192,7 +192,7 @@ describe('HotelFeasibilityADRCalculator', () => {
       expect(HotelFeasibilityADRCalculator.formulas).toBeDefined();
       expect(HotelFeasibilityADRCalculator.formulas['Net Operating Income']).toBeDefined();
       expect(HotelFeasibilityADRCalculator.formulas['Cash Flow']).toBeDefined();
-      expect(HotelFeasibilityADRCalculator.formulas['Cash-on-Cash Return']).toBeDefined();
+      expect(HotelFeasibilityADRCalculator.formulas['CashOnCash Return']).toBeDefined();
       expect(HotelFeasibilityADRCalculator.formulas['Internal Rate of Return']).toBeDefined();
       expect(HotelFeasibilityADRCalculator.formulas['Average Daily Rate']).toBeDefined();
       expect(HotelFeasibilityADRCalculator.formulas['Occupancy Rate']).toBeDefined();

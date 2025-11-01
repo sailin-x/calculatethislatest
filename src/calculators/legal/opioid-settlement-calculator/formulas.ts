@@ -1,13 +1,13 @@
-import { opioid-settlement-calculatorInputs, opioid-settlement-calculatorMetrics, opioid-settlement-calculatorAnalysis } from './types';
+import { OpioidSettlementCalculatorinputs, OpioidSettlementCalculatormetrics, OpioidSettlementCalculatoranalysis } from './types';
 
 // Opioid Settlement Calculator - Legal calculations
-export function calculateResult(inputs: opioid-settlement-calculatorInputs): number {
+export function calculateResult(inputs: OpioidSettlementCalculatorinputs): number {
   // Legal calculation logic
   const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
   return numericValues.reduce((sum, val) => sum + val, 0) || 0;
 }
 
-export function generateAnalysis(inputs: opioid-settlement-calculatorInputs, metrics: opioid-settlement-calculatorMetrics): opioid-settlement-calculatorAnalysis {
+export function generateAnalysis(inputs: OpioidSettlementCalculatorinputs, metrics: OpioidSettlementCalculatormetrics): OpioidSettlementCalculatoranalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (Math.abs(result) > 100000) riskLevel = 'High';

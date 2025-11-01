@@ -1,3 +1,3 @@
-export * from './hoa_feeCalculatorCalculator';
+export * from './hoa_feeCalculator';
 export * from './register';
 export * from './types';

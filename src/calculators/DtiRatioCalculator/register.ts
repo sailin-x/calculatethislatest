@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { DtiRatioCalculatorCalculator } from './DtiRatioCalculatorCalculator';
+import { DtiRatioCalculator } from './DtiRatioCalculator';
 
-export function registerDtiRatioCalculatorCalculator(): void {
-  calculatorRegistry.register(new DtiRatioCalculatorCalculator());
+export function registerDtiRatioCalculator(): void {
+  calculatorRegistry.register(new DtiRatioCalculator());
 }

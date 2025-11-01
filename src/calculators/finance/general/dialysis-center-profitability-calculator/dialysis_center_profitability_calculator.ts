@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { dialysis_center_profitability_calculatorInputs, dialysis_center_profitability_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const dialysis_center_profitability_calculatorCalculator: Calculator = {
-  id: 'dialysis-center-profitability-calculator',
+export const DialysisCenterProfitability-calculator: Calculator = {
+  id: 'DialysisCenterProfitability-calculator',
   title: 'Dialysis Center Profitability Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

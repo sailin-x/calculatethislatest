@@ -1,3 +1,3 @@
-import { HedgeFundFeeCalculatorCalculator } from './HedgeFundFeeCalculatorCalculator';
+import { HedgeFundFeeCalculator } from './HedgeFundFeeCalculator';
 
-export { HedgeFundFeeCalculatorCalculator };
+export { HedgeFundFeeCalculator };

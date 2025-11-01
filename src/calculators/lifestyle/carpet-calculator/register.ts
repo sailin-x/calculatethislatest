@@ -1,3 +1,3 @@
-import { CarpetCalculatorCalculator } from './CarpetCalculatorCalculator';
+import { CarpetCalculator } from './CarpetCalculator';
 
-export { CarpetCalculatorCalculator };
+export { CarpetCalculator };

@@ -1,3 +1,3 @@
-import { WeightWatchersCalculatorCalculator } from './WeightWatchersCalculatorCalculator';
+import { WeightWatchersCalculator } from './WeightWatchersCalculator';
 
-export { WeightWatchersCalculatorCalculator };
+export { WeightWatchersCalculator };

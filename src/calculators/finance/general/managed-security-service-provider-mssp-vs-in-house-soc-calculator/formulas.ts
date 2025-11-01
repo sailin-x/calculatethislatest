@@ -1,4 +1,4 @@
-import { managed-security-service-provider-mssp-vs-in-house-soc-calculatorInputs, managed-security-service-provider-mssp-vs-in-house-soc-calculatorMetrics, managed-security-service-provider-mssp-vs-in-house-soc-calculatorAnalysis } from './types';
+import { ManagedSecurityService-ProviderMsspVs-InHouseSoc-calculatorInputs, ManagedSecurityService-ProviderMsspVs-InHouseSoc-calculatorMetrics, ManagedSecurityService-ProviderMsspVs-InHouseSoc-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: managed-security-service-provider-mssp-vs-in-house-soc-calculatorInputs): number {
+export function calculateResult(inputs: ManagedSecurityService-ProviderMsspVs-InHouseSoc-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: managed-security-service-provider-mssp-v
   }
 }
 
-export function generateAnalysis(inputs: managed-security-service-provider-mssp-vs-in-house-soc-calculatorInputs, metrics: managed-security-service-provider-mssp-vs-in-house-soc-calculatorMetrics): managed-security-service-provider-mssp-vs-in-house-soc-calculatorAnalysis {
+export function generateAnalysis(inputs: ManagedSecurityService-ProviderMsspVs-InHouseSoc-calculatorInputs, metrics: ManagedSecurityService-ProviderMsspVs-InHouseSoc-calculatorMetrics): ManagedSecurityService-ProviderMsspVs-InHouseSoc-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

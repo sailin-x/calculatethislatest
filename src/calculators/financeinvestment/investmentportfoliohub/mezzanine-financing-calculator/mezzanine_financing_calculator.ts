@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { mezzanine_financing_calculatorInputs, mezzanine_financing_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const mezzanine_financing_calculatorCalculator: Calculator = {
-  id: 'mezzanine-financing-calculator',
+export const MezzanineFinancingCalculator: Calculator = {
+  id: 'MezzanineFinancingCalculator',
   title: 'Mezzanine Financing Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'investmentportfoliohub',

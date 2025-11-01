@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { sponsorship_roi_calculatorInputs, sponsorship_roi_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const sponsorship_roi_calculatorCalculator: Calculator = {
-  id: 'sponsorship-roi-calculator',
+export const SponsorshipRoiCalculator: Calculator = {
+  id: 'SponsorshipRoiCalculator',
   title: 'Sponsorship ROI Calculator Calculator',
   category: 'businessmarketingoperations',
   subcategory: 'marketingcreatorhub',

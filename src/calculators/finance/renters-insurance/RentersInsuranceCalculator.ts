@@ -1,7 +1,7 @@
 import { Calculator } from '../../types/calculator';
 
 export const RentersInsuranceCalculator: Calculator = {
-  id: 'renters-insurance-calculator',
+  id: 'RentersInsuranceCalculator',
   name: 'Renters Insurance Calculator',
   category: 'finance',
   subcategory: 'insurance',
@@ -95,7 +95,7 @@ export const RentersInsuranceCalculator: Calculator = {
       { value: 'none', label: 'None' },
       { value: 'smoke-detectors', label: 'Smoke Detectors' },
       { value: 'sprinklers', label: 'Sprinkler System' },
-      { value: 'fire-station-nearby', label: 'Fire Station Nearby' }
+      { value: 'FireStationNearby', label: 'Fire Station Nearby' }
     ] },
     { id: 'floodZone', name: 'Flood Zone', type: 'select', required: false, description: 'Flood zone classification', options: [
       { value: 'none', label: 'Not in Flood Zone' },
@@ -137,7 +137,7 @@ export const RentersInsuranceCalculator: Calculator = {
       { value: 'comprehensive', label: 'Comprehensive Coverage' }
     ] },
     { id: 'replacementCost', name: 'Replacement Cost Coverage', type: 'select', required: false, description: 'Replacement cost vs actual cash value', options: [
-      { value: 'actual-cash-value', label: 'Actual Cash Value' },
+      { value: 'ActualCashValue', label: 'Actual Cash Value' },
       { value: 'replacement-cost', label: 'Replacement Cost' }
     ] },
     { id: 'identityTheft', name: 'Identity Theft Coverage', type: 'select', required: false, description: 'Identity theft protection', options: [
@@ -163,7 +163,7 @@ export const RentersInsuranceCalculator: Calculator = {
     { id: 'coverageRatio', name: 'Coverage Ratio', type: 'number', unit: '%', description: 'Coverage as percentage of property value' },
     { id: 'premiumPerThousand', name: 'Premium per $1,000 Coverage', type: 'number', unit: 'USD', description: 'Cost per $1,000 of coverage' },
     { id: 'deductibleAmount', name: 'Deductible Amount', type: 'number', unit: 'USD', description: 'Policy deductible' },
-    { id: 'outOfPocketMax', name: 'Out-of-Pocket Maximum', type: 'number', unit: 'USD', description: 'Maximum out-of-pocket expense' },
+    { id: 'outOfPocketMax', name: 'OutOfPocket Maximum', type: 'number', unit: 'USD', description: 'Maximum OutOfPocket expense' },
     { id: 'riskScore', name: 'Risk Score', type: 'number', description: 'Insurance risk assessment (0-100)' },
     { id: 'coverageScore', name: 'Coverage Score', type: 'number', description: 'Coverage adequacy score (0-100)' },
     { id: 'valueScore', name: 'Value Score', type: 'number', description: 'Value for money score (0-100)' },

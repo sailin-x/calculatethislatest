@@ -1,4 +1,4 @@
-import { stop-loss-insurance-calculatorInputs, stop-loss-insurance-calculatorMetrics, stop-loss-insurance-calculatorAnalysis } from './types';
+import { StopLossInsurance-calculatorInputs, StopLossInsurance-calculatorMetrics, StopLossInsurance-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: stop-loss-insurance-calculatorInputs): number {
+export function calculateResult(inputs: StopLossInsurance-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: stop-loss-insurance-calculatorInputs): n
   }
 }
 
-export function generateAnalysis(inputs: stop-loss-insurance-calculatorInputs, metrics: stop-loss-insurance-calculatorMetrics): stop-loss-insurance-calculatorAnalysis {
+export function generateAnalysis(inputs: StopLossInsurance-calculatorInputs, metrics: StopLossInsurance-calculatorMetrics): StopLossInsurance-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

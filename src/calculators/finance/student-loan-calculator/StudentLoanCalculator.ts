@@ -10,7 +10,7 @@ import {
 import { validateStudentLoanCalculatorInputs } from './validation';
 
 export const StudentLoanCalculator: Calculator = {
-  id: 'student-loan-calculator',
+  id: 'StudentLoanCalculator',
   title: 'Student Loan Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

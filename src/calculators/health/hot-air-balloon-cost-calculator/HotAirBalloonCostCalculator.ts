@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateHotAirBalloonCostCalculatorInputs } from './validation';
 
 export const HotAirBalloonCostCalculator: Calculator = {
-  id: 'hot-air-balloon-cost-calculator',
+  id: 'HotAirBalloon-cost-calculator',
   title: 'Hot Air Balloon Cost Calculator',
   category: 'health',
   subcategory: 'General',

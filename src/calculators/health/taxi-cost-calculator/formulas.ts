@@ -1,4 +1,4 @@
-import { taxi-cost-calculatorInputs, taxi-cost-calculatorMetrics, taxi-cost-calculatorAnalysis } from './types';
+import { TaxiCostCalculatorinputs, TaxiCostCalculatormetrics, TaxiCostCalculatoranalysis } from './types';
 
 
 // Tax Calculator - Progressive tax calculations
@@ -20,7 +20,7 @@ export function calculateEffectiveTaxRate(taxPaid: number, totalIncome: number):
   return (taxPaid / totalIncome) * 100;
 }
 
-export function calculateResult(inputs: taxi-cost-calculatorInputs): number {
+export function calculateResult(inputs: TaxiCostCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -44,7 +44,7 @@ export function calculateResult(inputs: taxi-cost-calculatorInputs): number {
   }
 }
 
-export function generateAnalysis(inputs: taxi-cost-calculatorInputs, metrics: taxi-cost-calculatorMetrics): taxi-cost-calculatorAnalysis {
+export function generateAnalysis(inputs: TaxiCostCalculatorinputs, metrics: TaxiCostCalculatormetrics): TaxiCostCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

@@ -9,7 +9,7 @@ import {
 import { validateQuiTamRewardCalculatorInputs } from './validation';
 
 export const QuiTamRewardCalculator: Calculator = {
-  id: 'qui-tam-reward-calculator',
+  id: 'QuiTamReward-calculator',
   title: 'Qui Tam Reward Calculator',
   category: 'legal',
   subcategory: 'Settlement Analysis',

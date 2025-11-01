@@ -1,3 +1,3 @@
-import { PortfolioCompanyEbitdaGrowthCalculatorCalculator } from './PortfolioCompanyEbitdaGrowthCalculatorCalculator';
+import { PortfolioCompanyEbitdaGrowthCalculator } from './PortfolioCompanyEbitdaGrowthCalculator';
 
-export { PortfolioCompanyEbitdaGrowthCalculatorCalculator };
+export { PortfolioCompanyEbitdaGrowthCalculator };

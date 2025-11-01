@@ -1,3 +1,3 @@
-import { ReitDividendCalculatorCalculator } from './ReitDividendCalculatorCalculator';
+import { ReitDividendCalculator } from './ReitDividendCalculator';
 
-export { ReitDividendCalculatorCalculator };
+export { ReitDividendCalculator };

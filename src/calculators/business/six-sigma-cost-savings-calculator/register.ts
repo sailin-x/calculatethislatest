@@ -1,3 +1,3 @@
-import { SixSigmaCostSavingsCalculatorCalculator } from './SixSigmaCostSavingsCalculatorCalculator';
+import { SixSigmaCostSavingsCalculator } from './SixSigmaCostSavingsCalculator';
 
-export { SixSigmaCostSavingsCalculatorCalculator };
+export { SixSigmaCostSavingsCalculator };

@@ -1,3 +1,3 @@
-import { CreditDefaultSwapCalculatorCalculator } from './CreditDefaultSwapCalculatorCalculator';
+import { CreditDefaultSwapCalculator } from './CreditDefaultSwapCalculator';
 
-export { CreditDefaultSwapCalculatorCalculator };
+export { CreditDefaultSwapCalculator };

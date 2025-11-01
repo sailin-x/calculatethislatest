@@ -1,3 +1,3 @@
-export * from './registerRothIRACalculatorCalculator';
+export * from './registerRothIRACalculator';
 export * from './register';
 export * from './types';

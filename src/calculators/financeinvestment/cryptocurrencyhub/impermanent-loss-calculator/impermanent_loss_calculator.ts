@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { impermanent_loss_calculatorInputs, impermanent_loss_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const impermanent_loss_calculatorCalculator: Calculator = {
-  id: 'impermanent-loss-calculator',
+export const ImpermanentLossCalculator: Calculator = {
+  id: 'ImpermanentLossCalculator',
   title: 'Impermanent Loss Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'cryptocurrencyhub',

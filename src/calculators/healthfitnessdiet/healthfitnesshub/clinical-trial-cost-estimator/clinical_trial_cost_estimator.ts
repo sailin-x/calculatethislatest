@@ -3,7 +3,7 @@ import { clinical_trial_cost_estimatorInputs, clinical_trial_cost_estimatorOutpu
 import { calculateResult, generateAnalysis } from './formulas';
 
 export const clinical_trial_cost_estimatorCalculator: Calculator = {
-  id: 'clinical-trial-cost-estimator',
+  id: 'ClinicalTrialCost-estimator',
   title: 'Clinical Trial Cost Estimator Calculator',
   category: 'healthfitnessdiet',
   subcategory: 'healthfitnesshub',

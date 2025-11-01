@@ -11,7 +11,7 @@ describe('Biweekly Mortgage Calculator', () => {
       loanAmount: 300000,
       interestRate: 4.5,
       loanTerm: 30,
-      startDate: '2024-01-01',
+      startDate: '20240101',
       propertyTax: 3600,
       homeInsurance: 1200,
       pmi: 0,
@@ -21,7 +21,7 @@ describe('Biweekly Mortgage Calculator', () => {
 
   describe('Calculator Definition', () => {
     it('should have correct basic properties', () => {
-      expect(BiweeklyMortgageCalculator.id).toBe('biweekly-mortgage-calculator');
+      expect(BiweeklyMortgageCalculator.id).toBe('BiweeklyMortgageCalculator');
       expect(BiweeklyMortgageCalculator.name).toBe('Biweekly Mortgage Calculator');
       expect(BiweeklyMortgageCalculator.category).toBe('finance');
       expect(BiweeklyMortgageCalculator.subcategory).toBe('mortgage');

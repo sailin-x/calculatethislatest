@@ -1,4 +1,4 @@
-export { PortfolioCompanyEbitdaGrowthCalculatorCalculator } from './PortfolioCompanyEbitdaGrowthCalculatorCalculator';
+export { PortfolioCompanyEbitdaGrowthCalculator } from './PortfolioCompanyEbitdaGrowthCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

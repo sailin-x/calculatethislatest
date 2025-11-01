@@ -1,3 +1,3 @@
-import { MasternodeRoiCalculatorCalculator } from './MasternodeRoiCalculatorCalculator';
+import { MasternodeRoiCalculator } from './MasternodeRoiCalculator';
 
-export { MasternodeRoiCalculatorCalculator };
+export { MasternodeRoiCalculator };

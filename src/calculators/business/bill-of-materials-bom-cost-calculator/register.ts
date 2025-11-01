@@ -1,3 +1,3 @@
-import { BillOfMaterialsBomCostCalculatorCalculator } from './BillOfMaterialsBomCostCalculatorCalculator';
+import { BillOfMaterialsBomCostCalculator } from './BillOfMaterialsBomCostCalculator';
 
-export { BillOfMaterialsBomCostCalculatorCalculator };
+export { BillOfMaterialsBomCostCalculator };

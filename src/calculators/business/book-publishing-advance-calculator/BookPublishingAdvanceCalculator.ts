@@ -10,7 +10,7 @@ import {
 import { validateBookPublishingAdvanceCalculatorInputs } from './validation';
 
 export const BookPublishingAdvanceCalculator: Calculator = {
-  id: 'book-publishing-advance-calculator',
+  id: 'BookPublishingAdvance-calculator',
   title: 'Book Publishing Advance Calculator',
   category: 'business',
   subcategory: 'Financial Planning',

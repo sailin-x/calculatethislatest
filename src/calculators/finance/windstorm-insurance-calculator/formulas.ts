@@ -1,13 +1,13 @@
-import { windstorm-insurance-calculatorInputs, windstorm-insurance-calculatorMetrics, windstorm-insurance-calculatorAnalysis } from './types';
+import { WindstormInsuranceCalculatorinputs, WindstormInsuranceCalculatormetrics, WindstormInsuranceCalculatoranalysis } from './types';
 
 // Windstorm Insurance Calculator - Finance calculations
-export function calculateResult(inputs: windstorm-insurance-calculatorInputs): number {
+export function calculateResult(inputs: WindstormInsuranceCalculatorinputs): number {
   // Financial calculation logic
   const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
   return numericValues.reduce((sum, val) => sum + val, 0) || 0;
 }
 
-export function generateAnalysis(inputs: windstorm-insurance-calculatorInputs, metrics: windstorm-insurance-calculatorMetrics): windstorm-insurance-calculatorAnalysis {
+export function generateAnalysis(inputs: WindstormInsuranceCalculatorinputs, metrics: WindstormInsuranceCalculatormetrics): WindstormInsuranceCalculatoranalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (Math.abs(result) > 100000) riskLevel = 'High';

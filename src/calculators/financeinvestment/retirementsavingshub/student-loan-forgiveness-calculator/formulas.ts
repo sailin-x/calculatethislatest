@@ -1,4 +1,4 @@
-import { student-loan-forgiveness-calculatorInputs, student-loan-forgiveness-calculatorMetrics, student-loan-forgiveness-calculatorAnalysis } from './types';
+import { StudentLoanForgiveness-calculatorInputs, StudentLoanForgiveness-calculatorMetrics, StudentLoanForgiveness-calculatorAnalysis } from './types';
 
 
 // Loan Calculator - Standard loan formulas
@@ -14,7 +14,7 @@ export function calculateTotalCost(monthlyPayment: number, numPayments: number):
   return monthlyPayment * numPayments;
 }
 
-export function calculateResult(inputs: student-loan-forgiveness-calculatorInputs): number {
+export function calculateResult(inputs: StudentLoanForgiveness-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: student-loan-forgiveness-calculatorInput
   }
 }
 
-export function generateAnalysis(inputs: student-loan-forgiveness-calculatorInputs, metrics: student-loan-forgiveness-calculatorMetrics): student-loan-forgiveness-calculatorAnalysis {
+export function generateAnalysis(inputs: StudentLoanForgiveness-calculatorInputs, metrics: StudentLoanForgiveness-calculatorMetrics): StudentLoanForgiveness-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

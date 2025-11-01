@@ -1,3 +1,3 @@
-import { ThyroidCalculatorCalculator } from './ThyroidCalculatorCalculator';
+import { ThyroidCalculator } from './ThyroidCalculator';
 
-export { ThyroidCalculatorCalculator };
+export { ThyroidCalculator };

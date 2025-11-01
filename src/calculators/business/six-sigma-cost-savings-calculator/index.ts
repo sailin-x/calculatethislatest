@@ -1,4 +1,4 @@
-export { SixSigmaCostSavingsCalculatorCalculator } from './SixSigmaCostSavingsCalculatorCalculator';
+export { SixSigmaCostSavingsCalculator } from './SixSigmaCostSavingsCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

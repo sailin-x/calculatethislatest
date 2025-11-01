@@ -1,3 +1,3 @@
-import { TerminalValueCalculatorCalculator } from './TerminalValueCalculatorCalculator';
+import { TerminalValueCalculator } from './TerminalValueCalculator';
 
-export { TerminalValueCalculatorCalculator };
+export { TerminalValueCalculator };

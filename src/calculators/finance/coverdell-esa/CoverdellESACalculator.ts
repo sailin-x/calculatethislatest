@@ -4,7 +4,7 @@ import { calculateCoverdellESA } from './formulas';
 import { validateCoverdellESAInputs } from './validation';
 
 export const CoverdellESACalculator: Calculator = {
-  id: 'coverdell-esa-calculator',
+  id: 'CoverdellEsaCalculator',
   title: 'Coverdell ESA Calculator',
   category: 'finance',
   subcategory: 'Education',
@@ -256,7 +256,7 @@ export const CoverdellESACalculator: Calculator = {
   examples: [
     {
       title: 'Family Planning for College',
-      description: 'A family planning education savings for their 8-year-old child',
+      description: 'A family planning education savings for their 8YearOld child',
       inputs: {
         currentBalance: 5000,
         annualContribution: 2000,

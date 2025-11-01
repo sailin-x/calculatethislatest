@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { registerMarketingROICalculatorCalculator } from './registerMarketingROICalculatorCalculator';
+import { registerMarketingROICalculator } from './registerMarketingROICalculator';
 
-export function registerregisterMarketingROICalculatorCalculator(): void {
-  calculatorRegistry.register(new registerMarketingROICalculatorCalculator());
+export function registerregisterMarketingROICalculator(): void {
+  calculatorRegistry.register(new registerMarketingROICalculator());
 }

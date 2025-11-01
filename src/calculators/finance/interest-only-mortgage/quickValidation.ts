@@ -270,7 +270,7 @@ export function validateARMAdjustmentPeriod(value: any, allInputs?: Record<strin
 
 export function validateARMCaps(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   if (value) {
-    const validCaps = ['1-1-5', '2-2-5', '5-2-5', 'no-caps'];
+    const validCaps = ['115', '225', '525', 'no-caps'];
     if (!validCaps.includes(value)) return { isValid: false, message: 'Invalid ARM caps' };
   }
   return { isValid: true };

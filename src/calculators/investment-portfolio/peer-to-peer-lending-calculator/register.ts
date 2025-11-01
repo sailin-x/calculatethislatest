@@ -1,3 +1,3 @@
-import { PeertopeerLendingCalculatorCalculator } from './PeertopeerLendingCalculatorCalculator';
+import { PeertopeerLendingCalculator } from './PeertopeerLendingCalculator';
 
-export { PeertopeerLendingCalculatorCalculator };
+export { PeertopeerLendingCalculator };

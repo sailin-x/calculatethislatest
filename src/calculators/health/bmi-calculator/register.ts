@@ -1,3 +1,3 @@
-import { BmiCalculatorCalculator } from './BmiCalculatorCalculator';
+import { BmiCalculator } from './BmiCalculator';
 
-export { BmiCalculatorCalculator };
+export { BmiCalculator };

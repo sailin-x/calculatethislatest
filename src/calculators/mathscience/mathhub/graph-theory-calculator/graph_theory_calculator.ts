@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { graph_theory_calculatorInputs, graph_theory_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const graph_theory_calculatorCalculator: Calculator = {
-  id: 'graph-theory-calculator',
+export const GraphTheoryCalculator: Calculator = {
+  id: 'GraphTheoryCalculator',
   title: 'Graph Theory Calculator Calculator',
   category: 'mathscience',
   subcategory: 'mathhub',

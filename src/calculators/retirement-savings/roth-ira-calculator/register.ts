@@ -1,3 +1,3 @@
-import { RothIraCalculatorCalculator } from './RothIraCalculatorCalculator';
+import { RothIraCalculator } from './RothIraCalculator';
 
-export { RothIraCalculatorCalculator };
+export { RothIraCalculator };

@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateSoilAmendmentCalculatorInputs } from './validation';
 
 export const SoilAmendmentCalculator: Calculator = {
-  id: 'soil-amendment-calculator',
+  id: 'SoilAmendmentCalculator',
   title: 'Soil Amendment Calculator',
   category: 'health',
   subcategory: 'General',

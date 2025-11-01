@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { yield_farming_calculatorInputs, yield_farming_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const yield_farming_calculatorCalculator: Calculator = {
-  id: 'yield-farming-calculator',
+export const YieldFarmingCalculator: Calculator = {
+  id: 'YieldFarmingCalculator',
   title: 'Yield Farming Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'cryptocurrencyhub',

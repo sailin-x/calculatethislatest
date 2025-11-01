@@ -1,3 +1,3 @@
-export * from './registerTimberlandInvestmentCalculatorCalculator';
+export * from './registerTimberlandInvestmentCalculator';
 export * from './register';
 export * from './types';

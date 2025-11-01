@@ -1,4 +1,4 @@
-export { IvfInVitroFertilizationCostCalculatorCalculator } from './IvfInVitroFertilizationCostCalculatorCalculator';
+export { IvfInVitroFertilizationCostCalculator } from './IvfInVitroFertilizationCostCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateFixedIndexAnnuityCalculatorInputs, validateFixedIndexAnnuityCalculatorBusinessRules } from './validation';
 
-export const FixedIndexAnnuityCalculatorCalculator: Calculator: Calculator = {
-  id: 'fixed-index-annuity-calculator-calculator',
+export const FixedIndexAnnuityCalculator: Calculator = {
+  id: 'FixedIndexAnnuity-calculator-calculator',
   title: 'Fixed Index Annuity Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

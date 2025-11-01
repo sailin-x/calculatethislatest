@@ -1,4 +1,4 @@
-export { industrial_robotics_roi_calculatorCalculator } from './industrial_robotics_roi_calculator';
+export { industrial_robotics_roi_calculator } from './industrial_robotics_roi_calculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

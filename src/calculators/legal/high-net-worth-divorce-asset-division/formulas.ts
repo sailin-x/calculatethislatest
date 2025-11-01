@@ -1,4 +1,4 @@
-import { high-net-worth-divorce-asset-divisionInputs, high-net-worth-divorce-asset-divisionMetrics, high-net-worth-divorce-asset-divisionAnalysis } from './types';
+import { HighNetWorth-DivorceAssetDivisioninputs, HighNetWorth-DivorceAssetDivisionmetrics, HighNetWorth-DivorceAssetDivisionanalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: high-net-worth-divorce-asset-divisionInputs): number {
+export function calculateResult(inputs: HighNetWorth-DivorceAssetDivisioninputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: high-net-worth-divorce-asset-divisionInp
   }
 }
 
-export function generateAnalysis(inputs: high-net-worth-divorce-asset-divisionInputs, metrics: high-net-worth-divorce-asset-divisionMetrics): high-net-worth-divorce-asset-divisionAnalysis {
+export function generateAnalysis(inputs: HighNetWorth-DivorceAssetDivisioninputs, metrics: HighNetWorth-DivorceAssetDivisionmetrics): HighNetWorth-DivorceAssetDivisionanalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

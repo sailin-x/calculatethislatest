@@ -1,3 +1,3 @@
-import { MaritimeInjuryCompensationCalculatorCalculator } from './MaritimeInjuryCompensationCalculatorCalculator';
+import { MaritimeInjuryCompensationCalculator } from './MaritimeInjuryCompensationCalculator';
 
-export { MaritimeInjuryCompensationCalculatorCalculator };
+export { MaritimeInjuryCompensationCalculator };

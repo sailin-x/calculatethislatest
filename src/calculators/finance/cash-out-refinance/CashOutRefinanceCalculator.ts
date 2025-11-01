@@ -3,7 +3,7 @@ import { calculateCashOutRefinance, generateRefinanceAnalysis } from './formulas
 import { validateCashOutRefinanceInputs } from './validation';
 
 export const CashOutRefinanceCalculator: Calculator = {
-  id: 'cash-out-refinance-calculator',
+  id: 'CashOutRefinance-calculator',
   name: 'Cash-Out Refinance Calculator',
   category: 'finance',
   subcategory: 'mortgage',
@@ -227,10 +227,10 @@ export const CashOutRefinanceCalculator: Calculator = {
     },
     {
       id: 'newLoanToValue',
-      name: 'New Loan-to-Value',
+      name: 'New LoanToValue',
       type: 'number',
       unit: '%',
-      description: 'New loan-to-value ratio'
+      description: 'New LoanToValue ratio'
     },
     {
       id: 'totalInterestPaid',
@@ -332,9 +332,9 @@ export const CashOutRefinanceCalculator: Calculator = {
       description: 'Calculates your current home equity'
     },
     {
-      name: 'New Loan-to-Value',
+      name: 'New LoanToValue',
       formula: 'LTV = (New Loan Amount / Home Value) × 100',
-      description: 'Calculates the new loan-to-value ratio'
+      description: 'Calculates the new LoanToValue ratio'
     },
     {
       name: 'Net Cash Received',

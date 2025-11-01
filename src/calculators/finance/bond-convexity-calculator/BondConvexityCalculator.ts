@@ -1,31 +1,27 @@
-import { Calculator } from '../../types/calculator';
-import { BondConvexityCalculatorInputs, BondConvexityCalculatorOutputs } from './types';
-import { calculateResult, generateAnalysis } from './formulas';
-import { validateBondConvexityCalculatorInputs } from './validation';
+import { Calculator } from '../../engines/CalculatorEngine';
+import { bondconvexitycalculatorInputs, bondconvexitycalculatorOutputs } from './types';
+import { calculatebondconvexitycalculatorResults } from './formulas';
+import { validatebondconvexitycalculatorInputs } from './validation';
 
-export const BondConvexityCalculator: Calculator = {
-  id: 'bond-convexity-calculator',
-  title: 'Bond Convexity Calculator',
-  category: 'finance',
-  subcategory: 'General',
-  description: 'Calculate bond convexity and duration',
-  usageInstructions: [
-    'Add usage instructions here'
-  ],
+export class bondconvexitycalculator implements Calculator<
+  bondconvexitycalculatorInputs,
+  bondconvexitycalculatorOutputs
+> {
+  readonly id = 'bond_convexity_calculator_calculator';
+  readonly name = 'bond convexity calculator Calculator';
+  readonly description = 'Professional bond convexity calculator calculator with domain-specific functionality';
 
-  inputs: [
-    // Add input definitions here
-  ],
+  calculate(inputs: bondconvexitycalculatorInputs): bondconvexitycalculatorOutputs {
+    const validation = validatebondconvexitycalculatorInputs(inputs);
+    if (!validation.isValid) {
+      throw new Error(`Validation failed: ${validation.errors.join(', ')}`);
+    }
 
-  outputs: [
-    // Add output definitions here
-  ],
+    return calculatebondconvexitycalculatorResults(inputs);
+  }
 
-  formulas: [], // Will be implemented with the calculation engine
-
-  validationRules: [], // Will be implemented with validation rules
-
-  examples: [
-    // Add examples here
-  ]
-};
+  validateInputs(inputs: bondconvexitycalculatorInputs): boolean {
+    const validation = validatebondconvexitycalculatorInputs(inputs);
+    return validation.isValid;
+  }
+}

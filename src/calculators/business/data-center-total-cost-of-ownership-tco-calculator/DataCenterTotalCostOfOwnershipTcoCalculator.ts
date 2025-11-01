@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateDataCenterTotalCostOfOwnershipTcoCalculatorInputs, validateDataCenterTotalCostOfOwnershipTcoCalculatorBusinessRules } from './validation';
 
-export const DataCenterTotalCostOfOwnershipTcoCalculatorCalculator: Calculator: Calculator = {
-  id: 'data-center-total-cost-of-ownership-tco-calculator-calculator',
+export const DataCenterTotalCostOfOwnershipTcoCalculator: Calculator = {
+  id: 'DataCenterTotal-CostOfOwnership-TcoCalculatorCalculator',
   title: 'Data Center Total Cost of Ownership (TCO) Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

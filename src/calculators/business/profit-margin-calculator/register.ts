@@ -1,3 +1,3 @@
-import { ProfitMarginCalculatorCalculator } from './ProfitMarginCalculatorCalculator';
+import { ProfitMarginCalculator } from './ProfitMarginCalculator';
 
-export { ProfitMarginCalculatorCalculator };
+export { ProfitMarginCalculator };

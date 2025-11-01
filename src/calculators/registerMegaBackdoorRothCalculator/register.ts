@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { registerMegaBackdoorRothCalculatorCalculator } from './registerMegaBackdoorRothCalculatorCalculator';
+import { registerMegaBackdoorRothCalculator } from './registerMegaBackdoorRothCalculator';
 
-export function registerregisterMegaBackdoorRothCalculatorCalculator(): void {
-  calculatorRegistry.register(new registerMegaBackdoorRothCalculatorCalculator());
+export function registerregisterMegaBackdoorRothCalculator(): void {
+  calculatorRegistry.register(new registerMegaBackdoorRothCalculator());
 }

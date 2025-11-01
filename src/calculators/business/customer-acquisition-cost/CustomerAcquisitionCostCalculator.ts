@@ -10,7 +10,7 @@ import {
 import { validateCustomerAcquisitionCostInputs, validateCustomerAcquisitionCostBusinessRules } from './validation';
 
 export const CustomerAcquisitionCostCalculator: Calculator = {
-  id: 'customer-acquisition-cost-calculator',
+  id: 'CustomerAcquisitionCost-calculator',
   title: 'Customer Acquisition Cost Calculator',
   category: 'business',
   subcategory: 'Marketing & Sales',

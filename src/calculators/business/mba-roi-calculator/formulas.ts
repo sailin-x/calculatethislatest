@@ -1,4 +1,4 @@
-import { mba-roi-calculatorInputs, mba-roi-calculatorMetrics, mba-roi-calculatorAnalysis } from './types';
+import { MbaRoiCalculatorinputs, MbaRoiCalculatormetrics, MbaRoiCalculatoranalysis } from './types';
 
 // ROI Calculator
 export function calculateROI(netProfit: number, investment: number): number {
@@ -13,7 +13,7 @@ export function calculatePaybackPeriod(investment: number, annualCashFlow: numbe
   return investment / annualCashFlow;
 }
 
-export function calculateResult(inputs: mba-roi-calculatorInputs): number {
+export function calculateResult(inputs: MbaRoiCalculatorinputs): number {
   if ('netProfit' in inputs && 'investment' in inputs) {
     return calculateROI(inputs.netProfit, inputs.investment);
   }
@@ -24,7 +24,7 @@ export function calculateResult(inputs: mba-roi-calculatorInputs): number {
   return 0;
 }
 
-export function generateAnalysis(inputs: mba-roi-calculatorInputs, metrics: mba-roi-calculatorMetrics): mba-roi-calculatorAnalysis {
+export function generateAnalysis(inputs: MbaRoiCalculatorinputs, metrics: MbaRoiCalculatormetrics): MbaRoiCalculatoranalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (result < 10) riskLevel = 'High';

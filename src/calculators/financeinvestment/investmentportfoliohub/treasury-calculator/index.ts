@@ -1,4 +1,4 @@
-export { treasury_calculatorCalculator } from './treasury_calculator';
+export { treasury_calculator } from './treasury_calculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

@@ -1,3 +1,3 @@
-import { MortgageLifeCalculatorCalculator } from './MortgageLifeCalculatorCalculator';
+import { MortgageLifeCalculator } from './MortgageLifeCalculator';
 
-export { MortgageLifeCalculatorCalculator };
+export { MortgageLifeCalculator };

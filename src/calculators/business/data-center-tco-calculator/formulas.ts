@@ -1,4 +1,4 @@
-import { data-center-tco-calculatorInputs, data-center-tco-calculatorMetrics, data-center-tco-calculatorAnalysis } from './types';
+import { DataCenterTco-calculatorInputs, DataCenterTco-calculatorMetrics, DataCenterTco-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: data-center-tco-calculatorInputs): number {
+export function calculateResult(inputs: DataCenterTco-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: data-center-tco-calculatorInputs): numbe
   }
 }
 
-export function generateAnalysis(inputs: data-center-tco-calculatorInputs, metrics: data-center-tco-calculatorMetrics): data-center-tco-calculatorAnalysis {
+export function generateAnalysis(inputs: DataCenterTco-calculatorInputs, metrics: DataCenterTco-calculatorMetrics): DataCenterTco-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

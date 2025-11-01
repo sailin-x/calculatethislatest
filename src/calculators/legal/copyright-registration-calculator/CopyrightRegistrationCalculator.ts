@@ -9,7 +9,7 @@ import {
 import { validateCopyrightRegistrationCalculatorInputs } from './validation';
 
 export const CopyrightRegistrationCalculator: Calculator = {
-  id: 'copyright-registration-calculator',
+  id: 'CopyrightRegistrationCalculator',
   title: 'Copyright Registration Calculator',
   category: 'legal',
   subcategory: 'Settlement Analysis',

@@ -1,4 +1,4 @@
-import { ai-prompt-costInputs, ai-prompt-costMetrics, ai-prompt-costAnalysis } from './types';
+import { AiPromptCostinputs, AiPromptCostmetrics, AiPromptCostanalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: ai-prompt-costInputs): number {
+export function calculateResult(inputs: AiPromptCostinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: ai-prompt-costInputs): number {
   }
 }
 
-export function generateAnalysis(inputs: ai-prompt-costInputs, metrics: ai-prompt-costMetrics): ai-prompt-costAnalysis {
+export function generateAnalysis(inputs: AiPromptCostinputs, metrics: AiPromptCostmetrics): AiPromptCostanalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

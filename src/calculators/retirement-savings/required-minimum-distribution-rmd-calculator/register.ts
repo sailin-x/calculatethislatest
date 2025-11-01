@@ -1,3 +1,3 @@
-import { RequiredMinimumDistribution(rmd)CalculatorCalculator } from './RequiredMinimumDistribution(rmd)CalculatorCalculator';
+import { RequiredMinimumDistribution(rmd)Calculator } from './RequiredMinimumDistribution(rmd)Calculator';
 
-export { RequiredMinimumDistribution(rmd)CalculatorCalculator };
+export { RequiredMinimumDistribution(rmd)Calculator };

@@ -1,4 +1,4 @@
-import { information-ratio-calculatorInputs, information-ratio-calculatorMetrics, information-ratio-calculatorAnalysis } from './types';
+import { InformationRatioCalculatorinputs, InformationRatioCalculatormetrics, InformationRatioCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: information-ratio-calculatorInputs): number {
+export function calculateResult(inputs: InformationRatioCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: information-ratio-calculatorInputs): num
   }
 }
 
-export function generateAnalysis(inputs: information-ratio-calculatorInputs, metrics: information-ratio-calculatorMetrics): information-ratio-calculatorAnalysis {
+export function generateAnalysis(inputs: InformationRatioCalculatorinputs, metrics: InformationRatioCalculatormetrics): InformationRatioCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

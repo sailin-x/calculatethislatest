@@ -3,7 +3,7 @@ import { calculateAlphaBeta, generateAlphaBetaAnalysis } from './formulas';
 import { validateAlphaBetaInputs } from './validation';
 
 export const AlphaBetaCalculator: Calculator = {
-  id: 'alpha-beta-calculator',
+  id: 'AlphaBetaCalculator',
   name: 'Alpha & Beta Calculator',
   category: 'finance',
   subcategory: 'investment',
@@ -81,8 +81,8 @@ export const AlphaBetaCalculator: Calculator = {
     { id: 'includeCharts', name: 'Include Charts', type: 'boolean', required: false, description: 'Include visual charts in analysis', placeholder: 'true' },
     
     // Data Quality
-    { id: 'dataStartDate', name: 'Data Start Date', type: 'date', required: false, description: 'Start date for analysis', placeholder: '2020-01-01' },
-    { id: 'dataEndDate', name: 'Data End Date', type: 'date', required: false, description: 'End date for analysis', placeholder: '2024-01-01' },
+    { id: 'dataStartDate', name: 'Data Start Date', type: 'date', required: false, description: 'Start date for analysis', placeholder: '20200101' },
+    { id: 'dataEndDate', name: 'Data End Date', type: 'date', required: false, description: 'End date for analysis', placeholder: '20240101' },
     { id: 'dataFrequency', name: 'Data Frequency', type: 'select', required: false, description: 'Frequency of input data', placeholder: 'Select frequency', options: ['daily', 'weekly', 'monthly', 'quarterly'] },
     { id: 'missingDataTreatment', name: 'Missing Data Treatment', type: 'select', required: false, description: 'Treatment of missing data points', placeholder: 'Select treatment', options: ['interpolate', 'exclude', 'forward-fill'] }
   ],

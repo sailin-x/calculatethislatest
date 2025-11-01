@@ -44,7 +44,7 @@ export function generateAnalysis(
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Medium';
   let recommendation = 'Monitor operating efficiency for portfolio stability.';
 
-  // Investment-portfolio-specific risk assessment:
+  // InvestmentPortfolioSpecific risk assessment:
   // - High margins (>15%) indicate strong operational leverage, low risk for long-term holdings.
   // - Moderate margins (5-15%) suggest balanced efficiency, medium risk with growth potential.
   // - Low margins (<5%) signal cost pressures or competitive threats, high risk for portfolio exposure.

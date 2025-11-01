@@ -1,4 +1,4 @@
-import { consultant-utilization-rate-profitability-calculatorInputs, consultant-utilization-rate-profitability-calculatorMetrics, consultant-utilization-rate-profitability-calculatorAnalysis } from './types';
+import { ConsultantUtilizationRate-profitability-calculatorInputs, ConsultantUtilizationRate-profitability-calculatorMetrics, ConsultantUtilizationRate-profitability-calculatorAnalysis } from './types';
 
 
 // Business Calculator - Financial metrics
@@ -14,7 +14,7 @@ export function calculatePaybackPeriod(initialInvestment: number, annualCashFlow
   return initialInvestment / annualCashFlow;
 }
 
-export function calculateResult(inputs: consultant-utilization-rate-profitability-calculatorInputs): number {
+export function calculateResult(inputs: ConsultantUtilizationRate-profitability-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: consultant-utilization-rate-profitabilit
   }
 }
 
-export function generateAnalysis(inputs: consultant-utilization-rate-profitability-calculatorInputs, metrics: consultant-utilization-rate-profitability-calculatorMetrics): consultant-utilization-rate-profitability-calculatorAnalysis {
+export function generateAnalysis(inputs: ConsultantUtilizationRate-profitability-calculatorInputs, metrics: ConsultantUtilizationRate-profitability-calculatorMetrics): ConsultantUtilizationRate-profitability-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

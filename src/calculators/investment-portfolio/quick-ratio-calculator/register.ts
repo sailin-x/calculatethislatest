@@ -1,3 +1,3 @@
-import { QuickRatioCalculatorCalculator } from './QuickRatioCalculatorCalculator';
+import { QuickRatioCalculator } from './QuickRatioCalculator';
 
-export { QuickRatioCalculatorCalculator };
+export { QuickRatioCalculator };

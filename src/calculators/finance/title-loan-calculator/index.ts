@@ -1,5 +1,5 @@
-export { titleloancalculatorCalculator } from './titleloancalculatorCalculator';
-export { registertitleloancalculatorCalculator } from './register';
+export { titleloancalculator } from './titleloancalculator';
+export { registertitleloancalculator } from './register';
 export * from './types';
 export * from './formulas';
 export * from './validation';

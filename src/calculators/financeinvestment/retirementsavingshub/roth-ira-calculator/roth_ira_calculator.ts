@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { roth_ira_calculatorInputs, roth_ira_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const roth_ira_calculatorCalculator: Calculator = {
-  id: 'roth-ira-calculator',
+export const RothIraCalculator: Calculator = {
+  id: 'RothIraCalculator',
   title: 'Roth IRA Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'retirementsavingshub',

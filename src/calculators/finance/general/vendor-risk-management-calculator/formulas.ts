@@ -1,4 +1,4 @@
-import { vendor-risk-management-calculatorInputs, vendor-risk-management-calculatorMetrics, vendor-risk-management-calculatorAnalysis } from './types';
+import { VendorRiskManagement-calculatorInputs, VendorRiskManagement-calculatorMetrics, VendorRiskManagement-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: vendor-risk-management-calculatorInputs): number {
+export function calculateResult(inputs: VendorRiskManagement-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: vendor-risk-management-calculatorInputs)
   }
 }
 
-export function generateAnalysis(inputs: vendor-risk-management-calculatorInputs, metrics: vendor-risk-management-calculatorMetrics): vendor-risk-management-calculatorAnalysis {
+export function generateAnalysis(inputs: VendorRiskManagement-calculatorInputs, metrics: VendorRiskManagement-calculatorMetrics): VendorRiskManagement-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

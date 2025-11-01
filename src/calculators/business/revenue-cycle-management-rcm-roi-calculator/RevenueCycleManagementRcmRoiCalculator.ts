@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateRevenueCycleManagementRcmRoiCalculatorInputs, validateRevenueCycleManagementRcmRoiCalculatorBusinessRules } from './validation';
 
-export const RevenueCycleManagementRcmRoiCalculatorCalculator: Calculator: Calculator = {
-  id: 'revenue-cycle-management-rcm-roi-calculator-calculator',
+export const RevenueCycleManagementRcmRoiCalculator: Calculator = {
+  id: 'RevenueCycleManagement-RcmRoiCalculator-calculator',
   title: 'Revenue Cycle Management (RCM) ROI Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

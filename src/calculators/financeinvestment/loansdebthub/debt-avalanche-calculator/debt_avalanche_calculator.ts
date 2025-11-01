@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { debt_avalanche_calculatorInputs, debt_avalanche_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const debt_avalanche_calculatorCalculator: Calculator = {
-  id: 'debt-avalanche-calculator',
+export const DebtAvalancheCalculator: Calculator = {
+  id: 'DebtAvalancheCalculator',
   title: 'Debt Avalanche Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'loansdebthub',

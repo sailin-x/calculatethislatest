@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { attribution-models-calculatorCalculator } from './attribution-models-calculatorCalculator';
+import { AttributionModelsCalculator } from './AttributionModelsCalculator';
 
-export function registerattribution-models-calculatorCalculator(): void {
-  calculatorRegistry.register(new attribution-models-calculatorCalculator());
+export function registerAttributionModelsCalculator(): void {
+  calculatorRegistry.register(new AttributionModelsCalculator());
 }

@@ -1,3 +1,3 @@
-import { LawSchoolDebttoincomeRatioCalculatorCalculator } from './LawSchoolDebttoincomeRatioCalculatorCalculator';
+import { LawSchoolDebttoincomeRatioCalculator } from './LawSchoolDebttoincomeRatioCalculator';
 
-export { LawSchoolDebttoincomeRatioCalculatorCalculator };
+export { LawSchoolDebttoincomeRatioCalculator };

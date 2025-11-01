@@ -1,3 +1,0 @@
-export * from './'./finance/dividend-calculator/dividend_calculator';Calculator';
-export * from './register';
-export * from './types';

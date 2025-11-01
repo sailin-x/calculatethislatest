@@ -1,4 +1,4 @@
-import { required-beginning-date-rbd-for-rmds-calculatorInputs, required-beginning-date-rbd-for-rmds-calculatorMetrics, required-beginning-date-rbd-for-rmds-calculatorAnalysis } from './types';
+import { RequiredBeginningDate-RbdForRmds-calculatorInputs, RequiredBeginningDate-RbdForRmds-calculatorMetrics, RequiredBeginningDate-RbdForRmds-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: required-beginning-date-rbd-for-rmds-calculatorInputs): number {
+export function calculateResult(inputs: RequiredBeginningDate-RbdForRmds-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: required-beginning-date-rbd-for-rmds-cal
   }
 }
 
-export function generateAnalysis(inputs: required-beginning-date-rbd-for-rmds-calculatorInputs, metrics: required-beginning-date-rbd-for-rmds-calculatorMetrics): required-beginning-date-rbd-for-rmds-calculatorAnalysis {
+export function generateAnalysis(inputs: RequiredBeginningDate-RbdForRmds-calculatorInputs, metrics: RequiredBeginningDate-RbdForRmds-calculatorMetrics): RequiredBeginningDate-RbdForRmds-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

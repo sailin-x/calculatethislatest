@@ -32,7 +32,7 @@ describe('Building Replacement Cost Calculator', () => {
 
   describe('Calculator Definition', () => {
     it('should have correct basic properties', () => {
-      expect(BuildingReplacementCostCalculator.id).toBe('building-replacement-cost-calculator');
+      expect(BuildingReplacementCostCalculator.id).toBe('BuildingReplacementCost-calculator');
       expect(BuildingReplacementCostCalculator.name).toBe('Building Replacement Cost Calculator');
       expect(BuildingReplacementCostCalculator.category).toBe('finance');
       expect(BuildingReplacementCostCalculator.subcategory).toBe('construction');

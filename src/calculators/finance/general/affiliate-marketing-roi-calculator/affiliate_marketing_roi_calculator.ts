@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { affiliate_marketing_roi_calculatorInputs, affiliate_marketing_roi_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const affiliate_marketing_roi_calculatorCalculator: Calculator = {
-  id: 'affiliate-marketing-roi-calculator',
+export const AffiliateMarketingRoi-calculator: Calculator = {
+  id: 'AffiliateMarketingRoi-calculator',
   title: 'Affiliate Marketing ROI Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

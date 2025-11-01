@@ -10,7 +10,7 @@ import {
 import { validateLitigationFinanceRoiCalculatorInputs } from './validation';
 
 export const LitigationFinanceRoiCalculator: Calculator = {
-  id: 'litigation-finance-roi-calculator',
+  id: 'LitigationFinanceRoi-calculator',
   title: 'Litigation Finance ROI Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

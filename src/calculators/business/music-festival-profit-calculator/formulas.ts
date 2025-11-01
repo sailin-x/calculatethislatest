@@ -1,4 +1,4 @@
-import { music-festival-profit-calculatorInputs, music-festival-profit-calculatorMetrics, music-festival-profit-calculatorAnalysis } from './types';
+import { MusicFestivalProfit-calculatorInputs, MusicFestivalProfit-calculatorMetrics, MusicFestivalProfit-calculatorAnalysis } from './types';
 
 
 // Business Calculator - Financial metrics
@@ -14,7 +14,7 @@ export function calculatePaybackPeriod(initialInvestment: number, annualCashFlow
   return initialInvestment / annualCashFlow;
 }
 
-export function calculateResult(inputs: music-festival-profit-calculatorInputs): number {
+export function calculateResult(inputs: MusicFestivalProfit-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: music-festival-profit-calculatorInputs):
   }
 }
 
-export function generateAnalysis(inputs: music-festival-profit-calculatorInputs, metrics: music-festival-profit-calculatorMetrics): music-festival-profit-calculatorAnalysis {
+export function generateAnalysis(inputs: MusicFestivalProfit-calculatorInputs, metrics: MusicFestivalProfit-calculatorMetrics): MusicFestivalProfit-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

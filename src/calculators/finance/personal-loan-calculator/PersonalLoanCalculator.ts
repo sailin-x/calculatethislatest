@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validatePersonalLoanCalculatorInputs, validatePersonalLoanCalculatorBusinessRules } from './validation';
 
-export const PersonalLoanCalculatorCalculator: Calculator: Calculator = {
-  id: 'personal-loan-calculator-calculator',
+export const PersonalLoanCalculator: Calculator = {
+  id: 'PersonalLoanCalculator-calculator',
   title: 'Personal Loan Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

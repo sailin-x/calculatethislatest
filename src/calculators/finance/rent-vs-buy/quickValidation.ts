@@ -401,9 +401,9 @@ export function validateAllRentVsBuyInputs(inputs: CalculatorInputs): { isValid:
   if (inputs.monthlyRent && inputs.homePrice) {
     const rentToPriceRatio = (inputs.monthlyRent * 12) / inputs.homePrice;
     if (rentToPriceRatio < 0.04) {
-      warnings.push('Low rent-to-price ratio may indicate buying is favorable');
+      warnings.push('Low RentToPrice ratio may indicate buying is favorable');
     } else if (rentToPriceRatio > 0.08) {
-      warnings.push('High rent-to-price ratio may indicate renting is expensive');
+      warnings.push('High RentToPrice ratio may indicate renting is expensive');
     }
   }
 

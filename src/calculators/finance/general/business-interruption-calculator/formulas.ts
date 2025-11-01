@@ -1,4 +1,4 @@
-import { business-interruption-calculatorInputs, business-interruption-calculatorMetrics, business-interruption-calculatorAnalysis } from './types';
+import { BusinessInterruptionCalculatorinputs, BusinessInterruptionCalculatormetrics, BusinessInterruptionCalculatoranalysis } from './types';
 
 
 // Business Calculator - Financial metrics
@@ -14,7 +14,7 @@ export function calculatePaybackPeriod(initialInvestment: number, annualCashFlow
   return initialInvestment / annualCashFlow;
 }
 
-export function calculateResult(inputs: business-interruption-calculatorInputs): number {
+export function calculateResult(inputs: BusinessInterruptionCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: business-interruption-calculatorInputs):
   }
 }
 
-export function generateAnalysis(inputs: business-interruption-calculatorInputs, metrics: business-interruption-calculatorMetrics): business-interruption-calculatorAnalysis {
+export function generateAnalysis(inputs: BusinessInterruptionCalculatorinputs, metrics: BusinessInterruptionCalculatormetrics): BusinessInterruptionCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateNetMarginCalculatorInputs, validateNetMarginCalculatorBusinessRules } from './validation';
 
-export const NetMarginCalculatorCalculator: Calculator: Calculator = {
-  id: 'net-margin-calculator-calculator',
+export const NetMarginCalculator: Calculator = {
+  id: 'NetMarginCalculator-calculator',
   title: 'Net Margin Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

@@ -1,4 +1,4 @@
-export { RealEstateSyndicationCalculatorCalculator } from './RealEstateSyndicationCalculatorCalculator';
+export { RealEstateSyndicationCalculator } from './RealEstateSyndicationCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

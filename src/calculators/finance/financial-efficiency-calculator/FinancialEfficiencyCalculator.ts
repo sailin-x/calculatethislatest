@@ -10,7 +10,7 @@ import {
 import { validateFinancialEfficiencyCalculatorInputs } from './validation';
 
 export const FinancialEfficiencyCalculator: Calculator = {
-  id: 'financial-efficiency-calculator',
+  id: 'FinancialEfficiencyCalculator',
   title: 'Financial Efficiency Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

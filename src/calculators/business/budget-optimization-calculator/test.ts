@@ -38,7 +38,7 @@ describe('calculateBudgetOptimization', () => {
         { category: 'Marketing', limit: 200000, flexibility: 10 }
       ],
       timingConstraints: [
-        { category: 'Technology', timing: 'immediate', deadline: new Date('2024-06-30') }
+        { category: 'Technology', timing: 'immediate', deadline: new Date('20240630') }
       ]
     },
     objectives: {

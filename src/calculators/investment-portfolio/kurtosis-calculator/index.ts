@@ -1,4 +1,4 @@
-export { KurtosisCalculatorCalculator } from './KurtosisCalculatorCalculator';
+export { KurtosisCalculator } from './KurtosisCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

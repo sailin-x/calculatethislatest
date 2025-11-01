@@ -1,4 +1,4 @@
-export { ebitda_calculatorCalculator } from './ebitda_calculator';
+export { ebitda_calculator } from './ebitda_calculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

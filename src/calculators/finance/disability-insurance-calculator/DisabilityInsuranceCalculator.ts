@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateDisabilityInsuranceCalculatorInputs, validateDisabilityInsuranceCalculatorBusinessRules } from './validation';
 
-export const DisabilityInsuranceCalculatorCalculator: Calculator: Calculator = {
-  id: 'disability-insurance-calculator-calculator',
+export const DisabilityInsuranceCalculator: Calculator = {
+  id: 'DisabilityInsuranceCalculator-calculator',
   title: 'Disability Insurance Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

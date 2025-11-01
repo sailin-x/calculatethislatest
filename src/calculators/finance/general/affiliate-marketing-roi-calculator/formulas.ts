@@ -1,4 +1,4 @@
-import { affiliate-marketing-roi-calculatorInputs, affiliate-marketing-roi-calculatorMetrics, affiliate-marketing-roi-calculatorAnalysis } from './types';
+import { AffiliateMarketingRoi-calculatorInputs, AffiliateMarketingRoi-calculatorMetrics, AffiliateMarketingRoi-calculatorAnalysis } from './types';
 
 
 // Investment Calculator - ROI and growth calculations
@@ -12,7 +12,7 @@ export function calculateCompoundInterest(principal: number, rate: number, years
   return principal * Math.pow(1 + ratePerPeriod, totalPeriods);
 }
 
-export function calculateResult(inputs: affiliate-marketing-roi-calculatorInputs): number {
+export function calculateResult(inputs: AffiliateMarketingRoi-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -36,7 +36,7 @@ export function calculateResult(inputs: affiliate-marketing-roi-calculatorInputs
   }
 }
 
-export function generateAnalysis(inputs: affiliate-marketing-roi-calculatorInputs, metrics: affiliate-marketing-roi-calculatorMetrics): affiliate-marketing-roi-calculatorAnalysis {
+export function generateAnalysis(inputs: AffiliateMarketingRoi-calculatorInputs, metrics: AffiliateMarketingRoi-calculatorMetrics): AffiliateMarketingRoi-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

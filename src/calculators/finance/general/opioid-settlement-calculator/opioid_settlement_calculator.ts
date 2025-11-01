@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { opioid_settlement_calculatorInputs, opioid_settlement_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const opioid_settlement_calculatorCalculator: Calculator = {
-  id: 'opioid-settlement-calculator',
+export const OpioidSettlementCalculator: Calculator = {
+  id: 'OpioidSettlementCalculator',
   title: 'Opioid Settlement Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

@@ -1,4 +1,4 @@
-export { DebtSnowballCalculatorCalculator } from './DebtSnowballCalculatorCalculator';
+export { DebtSnowballCalculator } from './DebtSnowballCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

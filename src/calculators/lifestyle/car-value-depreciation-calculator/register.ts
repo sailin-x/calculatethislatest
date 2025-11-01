@@ -1,3 +1,3 @@
-import { CarValueDepreciationCalculatorCalculator } from './CarValueDepreciationCalculatorCalculator';
+import { CarValueDepreciationCalculator } from './CarValueDepreciationCalculator';
 
-export { CarValueDepreciationCalculatorCalculator };
+export { CarValueDepreciationCalculator };

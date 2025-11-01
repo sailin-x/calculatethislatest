@@ -1,3 +1,3 @@
-import { TreynorRatioCalculatorCalculator } from './TreynorRatioCalculatorCalculator';
+import { TreynorRatioCalculator } from './TreynorRatioCalculator';
 
-export { TreynorRatioCalculatorCalculator };
+export { TreynorRatioCalculator };

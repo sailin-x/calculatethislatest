@@ -1,3 +1,3 @@
-import { MunicipalBondCalculatorCalculator } from './MunicipalBondCalculatorCalculator';
+import { MunicipalBondCalculator } from './MunicipalBondCalculator';
 
-export { MunicipalBondCalculatorCalculator };
+export { MunicipalBondCalculator };

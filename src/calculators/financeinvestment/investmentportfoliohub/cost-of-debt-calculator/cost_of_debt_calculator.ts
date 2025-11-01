@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { cost_of_debt_calculatorInputs, cost_of_debt_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const cost_of_debt_calculatorCalculator: Calculator = {
-  id: 'cost-of-debt-calculator',
+export const CostOfDebt-calculator: Calculator = {
+  id: 'CostOfDebt-calculator',
   title: 'Cost of Debt Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'investmentportfoliohub',

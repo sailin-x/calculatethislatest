@@ -1,4 +1,4 @@
-export { MarketCapCalculatorCalculator } from './MarketCapCalculatorCalculator';
+export { MarketCapCalculator } from './MarketCapCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

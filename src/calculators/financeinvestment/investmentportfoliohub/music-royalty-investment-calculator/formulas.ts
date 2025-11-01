@@ -1,4 +1,4 @@
-import { music-royalty-investment-calculatorInputs, music-royalty-investment-calculatorMetrics, music-royalty-investment-calculatorAnalysis } from './types';
+import { MusicRoyaltyInvestment-calculatorInputs, MusicRoyaltyInvestment-calculatorMetrics, MusicRoyaltyInvestment-calculatorAnalysis } from './types';
 
 
 // Investment Calculator - ROI and growth calculations
@@ -12,7 +12,7 @@ export function calculateCompoundInterest(principal: number, rate: number, years
   return principal * Math.pow(1 + ratePerPeriod, totalPeriods);
 }
 
-export function calculateResult(inputs: music-royalty-investment-calculatorInputs): number {
+export function calculateResult(inputs: MusicRoyaltyInvestment-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -36,7 +36,7 @@ export function calculateResult(inputs: music-royalty-investment-calculatorInput
   }
 }
 
-export function generateAnalysis(inputs: music-royalty-investment-calculatorInputs, metrics: music-royalty-investment-calculatorMetrics): music-royalty-investment-calculatorAnalysis {
+export function generateAnalysis(inputs: MusicRoyaltyInvestment-calculatorInputs, metrics: MusicRoyaltyInvestment-calculatorMetrics): MusicRoyaltyInvestment-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

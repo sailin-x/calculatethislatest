@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { student_loan_repayment_calculatorInputs, student_loan_repayment_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const student_loan_repayment_calculatorCalculator: Calculator = {
-  id: 'student-loan-repayment-calculator',
+export const StudentLoanRepayment-calculator: Calculator = {
+  id: 'StudentLoanRepayment-calculator',
   title: 'Student Loan Repayment Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'retirementsavingshub',

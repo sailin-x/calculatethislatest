@@ -15,8 +15,8 @@ describe('GroundLeaseValuationCalculator', () => {
     
     // Lease Information
     leaseType: 'ground_lease' as const,
-    leaseStartDate: '2020-01-01',
-    leaseEndDate: '2070-01-01',
+    leaseStartDate: '20200101',
+    leaseEndDate: '20700101',
     leaseTerm: 50,
     remainingTerm: 45,
     renewalOptions: 2,
@@ -47,7 +47,7 @@ describe('GroundLeaseValuationCalculator', () => {
       {
         address: '456 Business Ave, Downtown, NY 10001',
         salePrice: 8000000,
-        saleDate: '2023-01-01',
+        saleDate: '20230101',
         capRate: 6.0,
         size: 45000
       }
@@ -88,7 +88,7 @@ describe('GroundLeaseValuationCalculator', () => {
 
   describe('Calculator Definition', () => {
     it('should have correct basic properties', () => {
-      expect(GroundLeaseValuationCalculator.id).toBe('ground-lease-valuation');
+      expect(GroundLeaseValuationCalculator.id).toBe('GroundLeaseValuation');
       expect(GroundLeaseValuationCalculator.name).toBe('Ground Lease Valuation Calculator');
       expect(GroundLeaseValuationCalculator.category).toBe('finance');
       expect(GroundLeaseValuationCalculator.subcategory).toBe('real-estate');
@@ -202,7 +202,7 @@ describe('GroundLeaseValuationCalculator', () => {
     });
 
     it('should reject invalid dates', () => {
-      const invalidInputs = { ...validInputs, leaseEndDate: '2020-01-01' };
+      const invalidInputs = { ...validInputs, leaseEndDate: '20200101' };
       
       const result = validateGroundLeaseValuationInputs(invalidInputs);
       expect(result.isValid).toBe(false);

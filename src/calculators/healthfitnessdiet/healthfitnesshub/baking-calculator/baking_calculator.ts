@@ -2,7 +2,7 @@ import { Calculator } from '../../../../types/calculator';
 import { baking_calculatorInputs, baking_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const baking_calculatorCalculator: Calculator = {
+export const baking-calculator: Calculator = {
   id: 'baking-calculator',
   title: 'Baking Calculator Calculator',
   category: 'healthfitnessdiet',

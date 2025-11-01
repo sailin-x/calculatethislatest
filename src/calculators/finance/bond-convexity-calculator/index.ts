@@ -1,5 +1,5 @@
-export { bondconvexitycalculatorCalculator } from './bondconvexitycalculatorCalculator';
-export { registerbondconvexitycalculatorCalculator } from './register';
+export { bondconvexitycalculator } from './bondconvexitycalculator';
+export { registerbondconvexitycalculator } from './register';
 export * from './types';
 export * from './formulas';
 export * from './validation';

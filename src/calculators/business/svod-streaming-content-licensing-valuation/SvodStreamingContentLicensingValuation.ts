@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateSvodStreamingContentLicensingValuationInputs, validateSvodStreamingContentLicensingValuationBusinessRules } from './validation';
 
-export const SvodStreamingContentLicensingValuationCalculator: Calculator: Calculator = {
-  id: 'svod-streaming-content-licensing-valuation-calculator',
+export const SvodStreamingContentLicensingValuationCalculator: Calculator = {
+  id: 'SvodStreamingContent-LicensingValuationCalculator',
   title: 'SVOD (Streaming) Content Licensing Valuation Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

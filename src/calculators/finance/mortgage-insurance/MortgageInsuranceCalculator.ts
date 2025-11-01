@@ -3,11 +3,11 @@ import { calculateMortgageInsurance } from './formulas';
 import { generateMortgageInsuranceAnalysis } from './formulas';
 
 export const MortgageInsuranceCalculator: Calculator = {
-  id: 'mortgage-insurance-calculator',
+  id: 'MortgageInsuranceCalculator',
   name: 'Mortgage Insurance Calculator',
   category: 'finance',
   subcategory: 'mortgage',
-  description: 'Calculate mortgage insurance costs, PMI rates, and determine when you can cancel insurance based on your loan-to-value ratio and payment history.',
+  description: 'Calculate mortgage insurance costs, PMI rates, and determine when you can cancel insurance based on your LoanToValue ratio and payment history.',
   inputs: {
     homeValue: {
       type: 'currency',
@@ -123,7 +123,7 @@ export const MortgageInsuranceCalculator: Calculator = {
     },
     purchaseDate: {
       type: 'date',
-      value: '2023-01-15',
+      value: '20230115',
       unit: '',
       description: 'Purchase date',
       placeholder: 'Select purchase date',
@@ -300,8 +300,8 @@ export const MortgageInsuranceCalculator: Calculator = {
       type: 'percentage',
       value: 35,
       unit: '%',
-      description: 'Debt-to-income ratio',
-      placeholder: 'Enter debt-to-income ratio',
+      description: 'DebtToIncome ratio',
+      placeholder: 'Enter DebtToIncome ratio',
       validation: {
         required: true,
         min: 0,
@@ -380,7 +380,7 @@ export const MortgageInsuranceCalculator: Calculator = {
   outputs: [
     {
       name: 'loanToValueRatio',
-      label: 'Loan-to-Value Ratio',
+      label: 'LoanToValue Ratio',
       type: 'percentage',
       unit: '%',
       description: 'Current LTV ratio'

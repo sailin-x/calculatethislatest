@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { black_litterman_calculatorInputs, black_litterman_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const black_litterman_calculatorCalculator: Calculator = {
-  id: 'black-litterman-calculator',
+export const BlackLittermanCalculator: Calculator = {
+  id: 'BlackLittermanCalculator',
   title: 'Black Litterman Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'investmentportfoliohub',

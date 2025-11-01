@@ -1,4 +1,4 @@
-export interface asset-protection-calculatorInputs {
+export interface assetprotectioncalculatorInputs {
   // Calculator-specific input fields
   value?: number;
   rate?: number;
@@ -7,17 +7,17 @@ export interface asset-protection-calculatorInputs {
   // Add more fields as needed for this calculator
 }
 
-export interface asset-protection-calculatorResults {
+export interface assetprotectioncalculatorResults {
   result: number;
   analysis?: string;
 }
 
-export interface asset-protection-calculatorMetrics {
+export interface assetprotectioncalculatorMetrics {
   result: number;
   // Add more metrics as needed
 }
 
-export interface asset-protection-calculatorAnalysis {
+export interface assetprotectioncalculatorAnalysis {
   recommendation: string;
   riskLevel: 'Low' | 'Medium' | 'High';
 }

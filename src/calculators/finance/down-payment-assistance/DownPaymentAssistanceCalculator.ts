@@ -3,7 +3,7 @@ import { calculateDownPaymentAssistance, generateDownPaymentAssistanceAnalysis }
 import { validateDownPaymentAssistanceInputs } from './validation';
 
 export const DownPaymentAssistanceCalculator: Calculator = {
-  id: 'down-payment-assistance-calculator',
+  id: 'DownPaymentAssistance-calculator',
   name: 'Down Payment Assistance Calculator',
   category: 'finance',
   subcategory: 'mortgage',
@@ -316,17 +316,17 @@ export const DownPaymentAssistanceCalculator: Calculator = {
     },
     {
       id: 'debtToIncomeRatio',
-      name: 'Debt-to-Income Ratio',
+      name: 'DebtToIncome Ratio',
       type: 'number',
       unit: '%',
-      description: 'Calculated debt-to-income ratio'
+      description: 'Calculated DebtToIncome ratio'
     },
     {
       id: 'loanToValueRatio',
-      name: 'Loan-to-Value Ratio',
+      name: 'LoanToValue Ratio',
       type: 'number',
       unit: '%',
-      description: 'Calculated loan-to-value ratio'
+      description: 'Calculated LoanToValue ratio'
     },
     {
       id: 'eligibilityScore',
@@ -388,14 +388,14 @@ export const DownPaymentAssistanceCalculator: Calculator = {
       description: 'Calculate monthly mortgage payment using amortization formula'
     },
     {
-      name: 'Debt-to-Income Ratio',
+      name: 'DebtToIncome Ratio',
       formula: 'DTI = (Monthly Debt + Monthly Payment) ÷ Monthly Income × 100',
-      description: 'Calculate debt-to-income ratio for loan qualification'
+      description: 'Calculate DebtToIncome ratio for loan qualification'
     },
     {
-      name: 'Loan-to-Value Ratio',
+      name: 'LoanToValue Ratio',
       formula: 'LTV = Loan Amount ÷ Home Price × 100',
-      description: 'Calculate loan-to-value ratio'
+      description: 'Calculate LoanToValue ratio'
     },
     {
       name: 'Eligibility Score',

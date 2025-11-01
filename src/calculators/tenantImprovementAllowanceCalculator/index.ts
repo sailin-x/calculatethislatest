@@ -1,3 +1,3 @@
-export * from './tenantImprovementAllowanceCalculatorCalculator';
+export * from './tenantImprovementAllowanceCalculator';
 export * from './register';
 export * from './types';

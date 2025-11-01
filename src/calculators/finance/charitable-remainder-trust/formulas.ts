@@ -1,4 +1,4 @@
-import { charitable-remainder-trustInputs, charitable-remainder-trustMetrics, charitable-remainder-trustAnalysis } from './types';
+import { CharitableRemainderTrustinputs, CharitableRemainderTrustmetrics, CharitableRemainderTrustanalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: charitable-remainder-trustInputs): number {
+export function calculateResult(inputs: CharitableRemainderTrustinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: charitable-remainder-trustInputs): numbe
   }
 }
 
-export function generateAnalysis(inputs: charitable-remainder-trustInputs, metrics: charitable-remainder-trustMetrics): charitable-remainder-trustAnalysis {
+export function generateAnalysis(inputs: CharitableRemainderTrustinputs, metrics: CharitableRemainderTrustmetrics): CharitableRemainderTrustanalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

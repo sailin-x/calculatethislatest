@@ -1,4 +1,4 @@
-export { HedgeFundFeeCalculatorCalculator } from './HedgeFundFeeCalculatorCalculator';
+export { HedgeFundFeeCalculator } from './HedgeFundFeeCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

@@ -1,4 +1,4 @@
-import { cryptocurrency-investment-calculatorInputs, cryptocurrency-investment-calculatorMetrics, cryptocurrency-investment-calculatorAnalysis } from './types';
+import { CryptocurrencyInvestmentCalculatorinputs, CryptocurrencyInvestmentCalculatormetrics, CryptocurrencyInvestmentCalculatoranalysis } from './types';
 
 
 // Investment Calculator - ROI and growth calculations
@@ -12,7 +12,7 @@ export function calculateCompoundInterest(principal: number, rate: number, years
   return principal * Math.pow(1 + ratePerPeriod, totalPeriods);
 }
 
-export function calculateResult(inputs: cryptocurrency-investment-calculatorInputs): number {
+export function calculateResult(inputs: CryptocurrencyInvestmentCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -36,7 +36,7 @@ export function calculateResult(inputs: cryptocurrency-investment-calculatorInpu
   }
 }
 
-export function generateAnalysis(inputs: cryptocurrency-investment-calculatorInputs, metrics: cryptocurrency-investment-calculatorMetrics): cryptocurrency-investment-calculatorAnalysis {
+export function generateAnalysis(inputs: CryptocurrencyInvestmentCalculatorinputs, metrics: CryptocurrencyInvestmentCalculatormetrics): CryptocurrencyInvestmentCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

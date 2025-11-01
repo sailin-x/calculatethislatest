@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { book_publishing_advance_vs_royalty_calculatorInputs, book_publishing_advance_vs_royalty_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const book_publishing_advance_vs_royalty_calculatorCalculator: Calculator = {
-  id: 'book-publishing-advance-vs-royalty-calculator',
+export const BookPublishingAdvance-VsRoyaltyCalculator: Calculator = {
+  id: 'BookPublishingAdvance-VsRoyaltyCalculator',
   title: 'Book Publishing Advance vs. Royalty Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

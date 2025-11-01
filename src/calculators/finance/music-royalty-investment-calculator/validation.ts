@@ -1,11 +1,11 @@
 import { ValidationResult } from '../../lib/errors';
-import { musicroyaltyinvestmentcalculatorCalculatorInputs } from './types';
+import { musicroyaltyinvestmentcalculatorInputs } from './types';
 
 /**
  * Validate music royalty investment calculator calculator inputs
  */
-export function validatemusicroyaltyinvestmentcalculatorCalculatorInputs(
-  inputs: musicroyaltyinvestmentcalculatorCalculatorInputs
+export function validatemusicroyaltyinvestmentcalculatorInputs(
+  inputs: musicroyaltyinvestmentcalculatorInputs
 ): ValidationResult {
   const errors: string[] = [];
 

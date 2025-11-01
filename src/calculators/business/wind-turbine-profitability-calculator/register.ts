@@ -1,3 +1,3 @@
-import { WindTurbineProfitabilityCalculatorCalculator } from './WindTurbineProfitabilityCalculatorCalculator';
+import { WindTurbineProfitabilityCalculator } from './WindTurbineProfitabilityCalculator';
 
-export { WindTurbineProfitabilityCalculatorCalculator };
+export { WindTurbineProfitabilityCalculator };

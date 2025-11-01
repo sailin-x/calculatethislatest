@@ -7,7 +7,7 @@ import { validateAllEscrowAnalysisInputs } from './quickValidation';
 describe('Escrow Analysis Calculator', () => {
   describe('Calculator Structure', () => {
     it('should have correct basic properties', () => {
-      expect(EscrowAnalysisCalculator.id).toBe('escrow-analysis-calculator');
+      expect(EscrowAnalysisCalculator.id).toBe('EscrowAnalysisCalculator');
       expect(EscrowAnalysisCalculator.name).toBe('Escrow Analysis Calculator');
       expect(EscrowAnalysisCalculator.category).toBe('finance');
       expect(EscrowAnalysisCalculator.subcategory).toBe('mortgage');

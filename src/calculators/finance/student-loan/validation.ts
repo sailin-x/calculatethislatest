@@ -46,9 +46,9 @@ export function validateStudentLoanInputs(inputs: CalculatorInputs): ValidationR
   }
 
   if (inputs.repaymentPlan !== undefined) {
-    const validPlans = ['standard', 'extended', 'graduated', 'income-based', 'pay-as-you-earn', 'revised-pay-as-you-earn', 'income-contingent', 'income-sensitive'];
+    const validPlans = ['standard', 'extended', 'graduated', 'income-based', 'PayAsYou-earn', 'RevisedPayAs-you-earn', 'income-contingent', 'income-sensitive'];
     if (!validPlans.includes(inputs.repaymentPlan)) {
-      errors.push('Repayment plan must be one of: standard, extended, graduated, income-based, pay-as-you-earn, revised-pay-as-you-earn, income-contingent, income-sensitive');
+      errors.push('Repayment plan must be one of: standard, extended, graduated, income-based, PayAsYou-earn, RevisedPayAs-you-earn, income-contingent, income-sensitive');
     }
   }
 
@@ -77,9 +77,9 @@ export function validateStudentLoanInputs(inputs: CalculatorInputs): ValidationR
   }
 
   if (inputs.filingStatus !== undefined) {
-    const validStatuses = ['single', 'married-filing-jointly', 'married-filing-separately', 'head-of-household'];
+    const validStatuses = ['single', 'MarriedFilingJointly', 'MarriedFilingSeparately', 'HeadOfHousehold'];
     if (!validStatuses.includes(inputs.filingStatus)) {
-      errors.push('Filing status must be one of: single, married-filing-jointly, married-filing-separately, head-of-household');
+      errors.push('Filing status must be one of: single, MarriedFilingJointly, MarriedFilingSeparately, HeadOfHousehold');
     }
   }
 
@@ -208,7 +208,7 @@ export function validateStudentLoanInputs(inputs: CalculatorInputs): ValidationR
   if (inputs.monthlyPayment && inputs.annualIncome) {
     const debtToIncomeRatio = (inputs.monthlyPayment + (inputs.otherDebts || 0)) / (inputs.annualIncome / 12);
     if (debtToIncomeRatio > 0.43) {
-      warnings.push('High debt-to-income ratio - consider income-based repayment');
+      warnings.push('High DebtToIncome ratio - consider income-based repayment');
     }
   }
 

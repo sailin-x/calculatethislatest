@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateMediaMixModelingMmmRoiCalculatorInputs, validateMediaMixModelingMmmRoiCalculatorBusinessRules } from './validation';
 
-export const MediaMixModelingMmmRoiCalculatorCalculator: Calculator: Calculator = {
-  id: 'media-mix-modeling-mmm-roi-calculator-calculator',
+export const MediaMixModelingMmmRoiCalculator: Calculator = {
+  id: 'MediaMixModeling-MmmRoiCalculator-calculator',
   title: 'Media Mix Modeling (MMM) ROI Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

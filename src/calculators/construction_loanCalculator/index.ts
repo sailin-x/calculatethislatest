@@ -1,3 +1,3 @@
-export * from './construction_loanCalculatorCalculator';
+export * from './construction_loanCalculator';
 export * from './register';
 export * from './types';

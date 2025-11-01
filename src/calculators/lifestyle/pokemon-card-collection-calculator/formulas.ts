@@ -1,13 +1,13 @@
-import { pokemon-card-collection-calculatorInputs, pokemon-card-collection-calculatorMetrics, pokemon-card-collection-calculatorAnalysis } from './types';
+import { PokemonCardCollection-calculatorInputs, PokemonCardCollection-calculatorMetrics, PokemonCardCollection-calculatorAnalysis } from './types';
 
 // Pokemon Card Collection Calculator - Lifestyle calculations
-export function calculateResult(inputs: pokemon-card-collection-calculatorInputs): number {
+export function calculateResult(inputs: PokemonCardCollection-calculatorInputs): number {
   // Lifestyle calculation logic
   const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
   return numericValues.reduce((sum, val) => sum + val, 0) || 0;
 }
 
-export function generateAnalysis(inputs: pokemon-card-collection-calculatorInputs, metrics: pokemon-card-collection-calculatorMetrics): pokemon-card-collection-calculatorAnalysis {
+export function generateAnalysis(inputs: PokemonCardCollection-calculatorInputs, metrics: PokemonCardCollection-calculatorMetrics): PokemonCardCollection-calculatorAnalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (Math.abs(result) > 1000) riskLevel = 'High';

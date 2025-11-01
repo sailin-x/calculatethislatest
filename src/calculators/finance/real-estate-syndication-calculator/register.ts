@@ -1,3 +1,3 @@
-import { RealEstateSyndicationCalculatorCalculator } from './RealEstateSyndicationCalculatorCalculator';
+import { RealEstateSyndicationCalculator } from './RealEstateSyndicationCalculator';
 
-export { RealEstateSyndicationCalculatorCalculator };
+export { RealEstateSyndicationCalculator };

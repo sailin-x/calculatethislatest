@@ -1,4 +1,4 @@
-export { CropYieldProfitabilityCalculatorCalculator } from './CropYieldProfitabilityCalculatorCalculator';
+export { CropYieldProfitabilityCalculator } from './CropYieldProfitabilityCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

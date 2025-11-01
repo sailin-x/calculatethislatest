@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { blood_pressure_calculatorInputs, blood_pressure_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const blood_pressure_calculatorCalculator: Calculator = {
-  id: 'blood-pressure-calculator',
+export const BloodPressureCalculator: Calculator = {
+  id: 'BloodPressureCalculator',
   title: 'Blood Pressure Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

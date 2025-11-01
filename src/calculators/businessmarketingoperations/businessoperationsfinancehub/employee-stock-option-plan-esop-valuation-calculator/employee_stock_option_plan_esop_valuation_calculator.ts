@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { employee_stock_option_plan_esop_valuation_calculatorInputs, employee_stock_option_plan_esop_valuation_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const employee_stock_option_plan_esop_valuation_calculatorCalculator: Calculator = {
-  id: 'employee-stock-option-plan-esop-valuation-calculator',
+export const EmployeeStockOption-PlanEsopValuation-calculator: Calculator = {
+  id: 'EmployeeStockOption-PlanEsopValuation-calculator',
   title: 'Employee Stock Option Plan (ESOP) Valuation Calculator Calculator',
   category: 'businessmarketingoperations',
   subcategory: 'businessoperationsfinancehub',

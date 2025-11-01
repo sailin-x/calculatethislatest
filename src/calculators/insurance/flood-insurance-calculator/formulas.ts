@@ -1,4 +1,4 @@
-import { flood-insurance-calculatorInputs, flood-insurance-calculatorMetrics, flood-insurance-calculatorAnalysis } from './types';
+import { FloodInsuranceCalculatorinputs, FloodInsuranceCalculatormetrics, FloodInsuranceCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: flood-insurance-calculatorInputs): number {
+export function calculateResult(inputs: FloodInsuranceCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: flood-insurance-calculatorInputs): numbe
   }
 }
 
-export function generateAnalysis(inputs: flood-insurance-calculatorInputs, metrics: flood-insurance-calculatorMetrics): flood-insurance-calculatorAnalysis {
+export function generateAnalysis(inputs: FloodInsuranceCalculatorinputs, metrics: FloodInsuranceCalculatormetrics): FloodInsuranceCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

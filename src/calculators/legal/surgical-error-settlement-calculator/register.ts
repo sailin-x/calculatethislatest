@@ -1,3 +1,3 @@
-import { SurgicalErrorSettlementCalculatorCalculator } from './SurgicalErrorSettlementCalculatorCalculator';
+import { SurgicalErrorSettlementCalculator } from './SurgicalErrorSettlementCalculator';
 
-export { SurgicalErrorSettlementCalculatorCalculator };
+export { SurgicalErrorSettlementCalculator };

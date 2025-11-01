@@ -1,3 +1,3 @@
-import { RoofingCalculatorCalculator } from './RoofingCalculatorCalculator';
+import { RoofingCalculator } from './RoofingCalculator';
 
-export { RoofingCalculatorCalculator };
+export { RoofingCalculator };

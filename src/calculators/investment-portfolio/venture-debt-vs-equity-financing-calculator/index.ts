@@ -1,4 +1,4 @@
-export { VentureDebtVsEquityFinancingCalculatorCalculator } from './VentureDebtVsEquityFinancingCalculatorCalculator';
+export { VentureDebtVsEquityFinancingCalculator } from './VentureDebtVsEquityFinancingCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

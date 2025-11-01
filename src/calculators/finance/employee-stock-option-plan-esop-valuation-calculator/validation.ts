@@ -1,11 +1,11 @@
 import { ValidationResult } from '../../lib/errors';
-import { employeestockoptionplanesopvaluationcalculatorCalculatorInputs } from './types';
+import { employeestockoptionplanesopvaluationcalculatorInputs } from './types';
 
 /**
  * Validate employee stock option plan esop valuation calculator calculator inputs
  */
-export function validateemployeestockoptionplanesopvaluationcalculatorCalculatorInputs(
-  inputs: employeestockoptionplanesopvaluationcalculatorCalculatorInputs
+export function validateemployeestockoptionplanesopvaluationcalculatorInputs(
+  inputs: employeestockoptionplanesopvaluationcalculatorInputs
 ): ValidationResult {
   const errors: string[] = [];
 

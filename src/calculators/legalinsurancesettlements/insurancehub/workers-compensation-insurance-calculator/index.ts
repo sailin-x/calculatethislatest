@@ -1,4 +1,4 @@
-export { workers_compensation_insurance_calculatorCalculator } from './workers_compensation_insurance_calculator';
+export { workers_compensation_insurance_calculator } from './workers_compensation_insurance_calculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

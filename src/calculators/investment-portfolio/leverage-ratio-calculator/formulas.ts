@@ -2,7 +2,7 @@
 import { LeverageRatioCalculatorInputs, LeverageRatioCalculatorMetrics, LeverageRatioCalculatorAnalysis } from './types';
 
 /**
- * Calculates the Leverage Ratio, specifically the Debt-to-Equity (D/E) Ratio.
+ * Calculates the Leverage Ratio, specifically the DebtToEquity (D/E) Ratio.
  * Formula: D/E Ratio = Total Debt / Total Equity
  * This measures the proportion of debt financing relative to equity financing.
  * A higher ratio indicates higher financial leverage and risk.

@@ -110,7 +110,7 @@ describe('USDALoanCalculator', () => {
       expect(result.errors).toContain('Purchase price must be a valid number');
     });
 
-    it('should detect out-of-range values', () => {
+    it('should detect OutOfRange values', () => {
       const invalidInputs = { ...validInputs, purchasePrice: -100 };
       
       const result = validateUSDALoanInputs(invalidInputs);
@@ -263,7 +263,7 @@ describe('USDALoanCalculator', () => {
       expect(outputs.eligibilityScore).toBeLessThan(80);
     });
 
-    it('should handle high debt-to-income ratios', () => {
+    it('should handle high DebtToIncome ratios', () => {
       const highDebtInputs = { ...validInputs, monthlyDebts: 2000 };
       const outputs = calculateUSDALoan(highDebtInputs);
       

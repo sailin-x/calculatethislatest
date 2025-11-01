@@ -1,3 +1,3 @@
-export * from './irrevocableLifeInsuranceTrustILITValueCalculatorCalculator';
+export * from './irrevocableLifeInsuranceTrustILITValueCalculator';
 export * from './register';
 export * from './types';

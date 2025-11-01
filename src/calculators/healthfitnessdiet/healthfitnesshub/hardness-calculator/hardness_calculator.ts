@@ -2,7 +2,7 @@ import { Calculator } from '../../../../types/calculator';
 import { hardness_calculatorInputs, hardness_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const hardness_calculatorCalculator: Calculator = {
+export const hardness-calculator: Calculator = {
   id: 'hardness-calculator',
   title: 'Hardness Calculator Calculator',
   category: 'healthfitnessdiet',

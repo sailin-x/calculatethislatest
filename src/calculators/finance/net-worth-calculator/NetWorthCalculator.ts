@@ -10,7 +10,7 @@ import {
 import { validateNetWorthCalculatorInputs } from './validation';
 
 export const NetWorthCalculator: Calculator = {
-  id: 'net-worth-calculator',
+  id: 'NetWorthCalculator',
   title: 'Net Worth Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

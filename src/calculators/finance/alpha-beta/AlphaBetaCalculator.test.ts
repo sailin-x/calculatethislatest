@@ -17,7 +17,7 @@ describe('AlphaBetaCalculator', () => {
   };
 
   test('should have correct calculator properties', () => {
-    expect(AlphaBetaCalculator.id).toBe('alpha-beta-calculator');
+    expect(AlphaBetaCalculator.id).toBe('AlphaBetaCalculator');
     expect(AlphaBetaCalculator.name).toBe('Alpha & Beta Calculator');
     expect(AlphaBetaCalculator.category).toBe('finance');
     expect(AlphaBetaCalculator.subcategory).toBe('investment');

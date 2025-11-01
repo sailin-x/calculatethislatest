@@ -1,3 +1,3 @@
-export * from './registerSelfStorageFacilityROICalculatorCalculator';
+export * from './registerSelfStorageFacilityROICalculator';
 export * from './register';
 export * from './types';

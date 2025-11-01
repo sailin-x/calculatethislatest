@@ -1,4 +1,4 @@
-import { body-fat-calculatorInputs, body-fat-calculatorMetrics, body-fat-calculatorAnalysis } from './types';
+import { BodyFatCalculatorinputs, BodyFatCalculatormetrics, BodyFatCalculatoranalysis } from './types';
 
 
 // Health Calculator - BMI and body metrics
@@ -20,7 +20,7 @@ export function calculateBMR(weightKg: number, heightCm: number, age: number, is
   return isMale ? base + 5 : base - 161;
 }
 
-export function calculateResult(inputs: body-fat-calculatorInputs): number {
+export function calculateResult(inputs: BodyFatCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -44,7 +44,7 @@ export function calculateResult(inputs: body-fat-calculatorInputs): number {
   }
 }
 
-export function generateAnalysis(inputs: body-fat-calculatorInputs, metrics: body-fat-calculatorMetrics): body-fat-calculatorAnalysis {
+export function generateAnalysis(inputs: BodyFatCalculatorinputs, metrics: BodyFatCalculatormetrics): BodyFatCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

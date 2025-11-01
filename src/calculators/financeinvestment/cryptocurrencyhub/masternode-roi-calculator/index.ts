@@ -1,4 +1,4 @@
-export { masternode_roi_calculatorCalculator } from './masternode_roi_calculator';
+export { masternode_roi_calculator } from './masternode_roi_calculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

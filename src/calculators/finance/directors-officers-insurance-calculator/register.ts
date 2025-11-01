@@ -1,3 +1,3 @@
-import { DirectorsOfficersInsuranceCalculatorCalculator } from './DirectorsOfficersInsuranceCalculatorCalculator';
+import { DirectorsOfficersInsuranceCalculator } from './DirectorsOfficersInsuranceCalculator';
 
-export { DirectorsOfficersInsuranceCalculatorCalculator };
+export { DirectorsOfficersInsuranceCalculator };

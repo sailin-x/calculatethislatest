@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateHitAndRunSettlementCalculatorInputs, validateHitAndRunSettlementCalculatorBusinessRules } from './validation';
 
-export const HitAndRunSettlementCalculatorCalculator: Calculator: Calculator = {
-  id: 'hit-and-run-settlement-calculator-calculator',
+export const HitAndRunSettlementCalculator: Calculator = {
+  id: 'HitAndRun-SettlementCalculatorCalculator',
   title: 'Hit and Run Settlement Calculator Calculator',
   legal: 'legal', // e.g., 'finance', 'math', 'health', 'business'
   sublegal: 'Sublegal Name',

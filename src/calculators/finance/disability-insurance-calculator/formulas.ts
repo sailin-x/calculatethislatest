@@ -1,13 +1,13 @@
-import { disability-insurance-calculatorInputs, disability-insurance-calculatorMetrics, disability-insurance-calculatorAnalysis } from './types';
+import { DisabilityInsuranceCalculatorinputs, DisabilityInsuranceCalculatormetrics, DisabilityInsuranceCalculatoranalysis } from './types';
 
 // Disability Insurance Calculator - Finance calculations
-export function calculateResult(inputs: disability-insurance-calculatorInputs): number {
+export function calculateResult(inputs: DisabilityInsuranceCalculatorinputs): number {
   // Financial calculation logic
   const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
   return numericValues.reduce((sum, val) => sum + val, 0) || 0;
 }
 
-export function generateAnalysis(inputs: disability-insurance-calculatorInputs, metrics: disability-insurance-calculatorMetrics): disability-insurance-calculatorAnalysis {
+export function generateAnalysis(inputs: DisabilityInsuranceCalculatorinputs, metrics: DisabilityInsuranceCalculatormetrics): DisabilityInsuranceCalculatoranalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (Math.abs(result) > 100000) riskLevel = 'High';

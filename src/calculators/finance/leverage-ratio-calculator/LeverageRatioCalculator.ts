@@ -10,7 +10,7 @@ import {
 import { validateLeverageRatioCalculatorInputs } from './validation';
 
 export const LeverageRatioCalculator: Calculator = {
-  id: 'leverage-ratio-calculator',
+  id: 'LeverageRatioCalculator',
   title: 'Leverage Ratio Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

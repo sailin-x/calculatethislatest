@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { rental_property_roiCalculatorCalculator } from './rental_property_roiCalculatorCalculator';
+import { rental_property_roiCalculator } from './rental_property_roiCalculator';
 
-export function registerrental_property_roiCalculatorCalculator(): void {
-  calculatorRegistry.register(new rental_property_roiCalculatorCalculator());
+export function registerrental_property_roiCalculator(): void {
+  calculatorRegistry.register(new rental_property_roiCalculator());
 }

@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { inventory_shrinkage_cost_calculatorInputs, inventory_shrinkage_cost_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const inventory_shrinkage_cost_calculatorCalculator: Calculator = {
-  id: 'inventory-shrinkage-cost-calculator',
+export const InventoryShrinkageCost-calculator: Calculator = {
+  id: 'InventoryShrinkageCost-calculator',
   title: 'Inventory Shrinkage Cost Calculator Calculator',
   category: 'businessmarketingoperations',
   subcategory: 'businessoperationsfinancehub',

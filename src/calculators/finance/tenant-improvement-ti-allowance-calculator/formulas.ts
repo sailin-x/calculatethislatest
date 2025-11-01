@@ -1,4 +1,4 @@
-import { tenant-improvement-ti-allowance-calculatorInputs, tenant-improvement-ti-allowance-calculatorMetrics, tenant-improvement-ti-allowance-calculatorAnalysis } from './types';
+import { TenantImprovementTi-allowance-calculatorInputs, TenantImprovementTi-allowance-calculatorMetrics, TenantImprovementTi-allowance-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: tenant-improvement-ti-allowance-calculatorInputs): number {
+export function calculateResult(inputs: TenantImprovementTi-allowance-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: tenant-improvement-ti-allowance-calculat
   }
 }
 
-export function generateAnalysis(inputs: tenant-improvement-ti-allowance-calculatorInputs, metrics: tenant-improvement-ti-allowance-calculatorMetrics): tenant-improvement-ti-allowance-calculatorAnalysis {
+export function generateAnalysis(inputs: TenantImprovementTi-allowance-calculatorInputs, metrics: TenantImprovementTi-allowance-calculatorMetrics): TenantImprovementTi-allowance-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

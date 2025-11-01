@@ -1,4 +1,4 @@
-export { StartupValuationCalculatorCalculator } from './StartupValuationCalculatorCalculator';
+export { StartupValuationCalculator } from './StartupValuationCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

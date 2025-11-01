@@ -3,7 +3,7 @@ import { calculateEarthquakeInsurance, generateEarthquakeInsuranceAnalysis } fro
 import { validateEarthquakeInsuranceInputs } from './validation';
 
 export const EarthquakeInsuranceCalculator: Calculator = {
-  id: 'earthquake-insurance-calculator',
+  id: 'EarthquakeInsuranceCalculator',
   name: 'Earthquake Insurance Calculator',
   category: 'finance',
   subcategory: 'insurance',
@@ -183,7 +183,7 @@ export const EarthquakeInsuranceCalculator: Calculator = {
         { value: 'building-only', label: 'Building Only' },
         { value: 'contents-only', label: 'Contents Only' },
         { value: 'building-contents', label: 'Building & Contents' },
-        { value: 'loss-of-use', label: 'Loss of Use' },
+        { value: 'LossOfUse', label: 'Loss of Use' },
         { value: 'comprehensive', label: 'Comprehensive' }
       ]
     },

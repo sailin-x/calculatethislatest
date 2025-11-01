@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateComicBookValuationCalculatorInputs, validateComicBookValuationCalculatorBusinessRules } from './validation';
 
-export const ComicBookValuationCalculatorCalculator: Calculator: Calculator = {
-  id: 'comic-book-valuation-calculator-calculator',
+export const ComicBookValuationCalculator: Calculator = {
+  id: 'ComicBookValuation-calculator-calculator',
   title: 'Comic Book Valuation Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

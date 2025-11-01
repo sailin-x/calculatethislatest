@@ -1,3 +1,3 @@
-import { ReitCalculatorCalculator } from './ReitCalculatorCalculator';
+import { ReitCalculator } from './ReitCalculator';
 
-export { ReitCalculatorCalculator };
+export { ReitCalculator };

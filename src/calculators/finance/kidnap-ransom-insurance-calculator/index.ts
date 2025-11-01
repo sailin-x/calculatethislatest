@@ -1,4 +1,4 @@
-export { KidnapRansomInsuranceCalculatorCalculator } from './KidnapRansomInsuranceCalculatorCalculator';
+export { KidnapRansomInsuranceCalculator } from './KidnapRansomInsuranceCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

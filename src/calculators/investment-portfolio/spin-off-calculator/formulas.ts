@@ -23,20 +23,20 @@ function calculateSpinOffValue(spinOffShares: number, spinOffPrice: number): num
 }
 
 /**
- * Calculates the pre-spin-off portfolio value for the parent position.
+ * Calculates the PreSpinOff portfolio value for the parent position.
  * @param sharesOwned - Number of parent company shares owned.
  * @param parentPrice - Current market price per parent share.
- * @returns Pre-spin-off value of the parent position.
+ * @returns PreSpinOff value of the parent position.
  */
 function calculatePreSpinOffValue(sharesOwned: number, parentPrice: number): number {
   return sharesOwned * parentPrice;
 }
 
 /**
- * Calculates the percentage of the pre-spin-off portfolio value that the spin-off represents.
- * This helps assess concentration risk in the portfolio post-spin-off.
+ * Calculates the percentage of the PreSpinOff portfolio value that the spin-off represents.
+ * This helps assess concentration risk in the portfolio PostSpinOff.
  * @param spinOffValue - Value of the spin-off position.
- * @param preSpinOffValue - Pre-spin-off value of the parent position.
+ * @param preSpinOffValue - PreSpinOff value of the parent position.
  * @returns Percentage as a number (e.g., 12.5 for 12.5%).
  */
 function calculateSpinOffPercentage(spinOffValue: number, preSpinOffValue: number): number {
@@ -61,7 +61,7 @@ export function generateAnalysis(
   const preSpinOffValue = calculatePreSpinOffValue(inputs.sharesOwned, inputs.parentPrice);
   const percentage = calculateSpinOffPercentage(result, preSpinOffValue);
 
-  // Investment-portfolio-specific risk assessment: Spin-offs introduce concentration risk
+  // InvestmentPortfolioSpecific risk assessment: Spin-offs introduce concentration risk
   // based on their size relative to the existing parent position. Spin-offs historically outperform
   // (e.g., +20-30% alpha per studies like Greenblatt's), but volatility is higher if >15% allocation.
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
@@ -74,7 +74,7 @@ export function generateAnalysis(
   }
 
   // Domain-specific recommendation: Consider historical outperformance of spin-offs but advise on diversification
-  // if the new position creates imbalance. Assume a buy-and-hold strategy unless concentrated.
+  // if the new position creates imbalance. Assume a BuyAndHold strategy unless concentrated.
   let recommendation: string;
   if (percentage > 15) {
     recommendation = 'The spin-off creates a significant new position (>15% of parent value); consider trimming to maintain portfolio balance and reduce sector-specific risk, despite spin-offs\' historical outperformance.';

@@ -8,7 +8,7 @@ import { TraditionalIRACalculatorInputs, TraditionalIRACalculatorMetrics, Tradit
  * Formula:
  * - Years to retirement: n = retirementAge - currentAge
  * - Future value of initial balance: currentBalance * (1 + r)^n
- * - Future value of annual contributions (end-of-year): annualContribution * [(1 + r)^n - 1] / r
+ * - Future value of annual contributions (EndOfYear): annualContribution * [(1 + r)^n - 1] / r
  * - Total future value: sum of the above
  * 
  * Handles edge cases: n <= 0 returns currentBalance; r = 0 uses linear growth for contributions.

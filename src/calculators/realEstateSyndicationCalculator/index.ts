@@ -1,3 +1,3 @@
-export * from './realEstateSyndicationCalculatorCalculator';
+export * from './realEstateSyndicationCalculator';
 export * from './register';
 export * from './types';

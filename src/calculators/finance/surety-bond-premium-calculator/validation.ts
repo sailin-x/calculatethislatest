@@ -1,11 +1,11 @@
 import { ValidationResult } from '../../lib/errors';
-import { suretybondpremiumcalculatorCalculatorInputs } from './types';
+import { suretybondpremiumcalculatorInputs } from './types';
 
 /**
  * Validate surety bond premium calculator calculator inputs
  */
-export function validatesuretybondpremiumcalculatorCalculatorInputs(
-  inputs: suretybondpremiumcalculatorCalculatorInputs
+export function validatesuretybondpremiumcalculatorInputs(
+  inputs: suretybondpremiumcalculatorInputs
 ): ValidationResult {
   const errors: string[] = [];
 

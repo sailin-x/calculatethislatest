@@ -1,3 +1,3 @@
-export * from './ExpectedShortfallCalculatorCalculator';
+export * from './ExpectedShortfallCalculator';
 export * from './register';
 export * from './types';

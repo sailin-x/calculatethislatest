@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validatePlumbingRepairCostCalculatorInputs } from './validation';
 
 export const PlumbingRepairCostCalculator: Calculator = {
-  id: 'plumbing-repair-cost-calculator',
+  id: 'PlumbingRepairCost-calculator',
   title: 'Plumbing Repair Cost Calculator',
   category: 'health',
   subcategory: 'General',

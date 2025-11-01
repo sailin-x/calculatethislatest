@@ -1,3 +1,3 @@
-import { NetOperatingIncomeNoiCalculatorCalculator } from './NetOperatingIncomeNoiCalculatorCalculator';
+import { NetOperatingIncomeNoiCalculator } from './NetOperatingIncomeNoiCalculator';
 
-export { NetOperatingIncomeNoiCalculatorCalculator };
+export { NetOperatingIncomeNoiCalculator };

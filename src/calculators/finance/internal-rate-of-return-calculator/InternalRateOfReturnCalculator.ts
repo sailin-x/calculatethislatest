@@ -10,7 +10,7 @@ import {
 import { validateInternalRateOfReturnCalculatorInputs } from './validation';
 
 export const InternalRateOfReturnCalculator: Calculator = {
-  id: 'internal-rate-of-return-calculator',
+  id: 'InternalRateOf-return-calculator',
   title: 'Internal Rate of Return Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

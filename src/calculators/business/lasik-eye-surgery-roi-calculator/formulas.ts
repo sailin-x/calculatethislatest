@@ -1,4 +1,4 @@
-import { lasik-eye-surgery-roi-calculatorInputs, lasik-eye-surgery-roi-calculatorMetrics, lasik-eye-surgery-roi-calculatorAnalysis } from './types';
+import { LasikEyeSurgery-roi-calculatorInputs, LasikEyeSurgery-roi-calculatorMetrics, LasikEyeSurgery-roi-calculatorAnalysis } from './types';
 
 // ROI Calculator
 export function calculateROI(netProfit: number, investment: number): number {
@@ -13,7 +13,7 @@ export function calculatePaybackPeriod(investment: number, annualCashFlow: numbe
   return investment / annualCashFlow;
 }
 
-export function calculateResult(inputs: lasik-eye-surgery-roi-calculatorInputs): number {
+export function calculateResult(inputs: LasikEyeSurgery-roi-calculatorInputs): number {
   if ('netProfit' in inputs && 'investment' in inputs) {
     return calculateROI(inputs.netProfit, inputs.investment);
   }
@@ -24,7 +24,7 @@ export function calculateResult(inputs: lasik-eye-surgery-roi-calculatorInputs):
   return 0;
 }
 
-export function generateAnalysis(inputs: lasik-eye-surgery-roi-calculatorInputs, metrics: lasik-eye-surgery-roi-calculatorMetrics): lasik-eye-surgery-roi-calculatorAnalysis {
+export function generateAnalysis(inputs: LasikEyeSurgery-roi-calculatorInputs, metrics: LasikEyeSurgery-roi-calculatorMetrics): LasikEyeSurgery-roi-calculatorAnalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (result < 10) riskLevel = 'High';

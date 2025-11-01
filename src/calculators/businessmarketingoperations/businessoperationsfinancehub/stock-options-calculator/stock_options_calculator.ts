@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { stock_options_calculatorInputs, stock_options_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const stock_options_calculatorCalculator: Calculator = {
-  id: 'stock-options-calculator',
+export const StockOptionsCalculator: Calculator = {
+  id: 'StockOptionsCalculator',
   title: '**Stock Options Calculator** Calculator',
   category: 'businessmarketingoperations',
   subcategory: 'businessoperationsfinancehub',

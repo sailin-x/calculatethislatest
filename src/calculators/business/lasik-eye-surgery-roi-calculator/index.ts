@@ -1,4 +1,4 @@
-export { LasikEyeSurgeryRoiCalculatorCalculator } from './LasikEyeSurgeryRoiCalculatorCalculator';
+export { LasikEyeSurgeryRoiCalculator } from './LasikEyeSurgeryRoiCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

@@ -1,13 +1,13 @@
-import { grantor-retained-annuity-trust-grat-calculatorInputs, grantor-retained-annuity-trust-grat-calculatorMetrics, grantor-retained-annuity-trust-grat-calculatorAnalysis } from './types';
+import { GrantorRetainedAnnuity-TrustGratCalculatorinputs, GrantorRetainedAnnuity-TrustGratCalculatormetrics, GrantorRetainedAnnuity-TrustGratCalculatoranalysis } from './types';
 
 // Grantor Retained Annuity Trust (GRAT) Calculator - Finance calculations
-export function calculateResult(inputs: grantor-retained-annuity-trust-grat-calculatorInputs): number {
+export function calculateResult(inputs: GrantorRetainedAnnuity-TrustGratCalculatorinputs): number {
   // Financial calculation logic
   const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
   return numericValues.reduce((sum, val) => sum + val, 0) || 0;
 }
 
-export function generateAnalysis(inputs: grantor-retained-annuity-trust-grat-calculatorInputs, metrics: grantor-retained-annuity-trust-grat-calculatorMetrics): grantor-retained-annuity-trust-grat-calculatorAnalysis {
+export function generateAnalysis(inputs: GrantorRetainedAnnuity-TrustGratCalculatorinputs, metrics: GrantorRetainedAnnuity-TrustGratCalculatormetrics): GrantorRetainedAnnuity-TrustGratCalculatoranalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (Math.abs(result) > 100000) riskLevel = 'High';

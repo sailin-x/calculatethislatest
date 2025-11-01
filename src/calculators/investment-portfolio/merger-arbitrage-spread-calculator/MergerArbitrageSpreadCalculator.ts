@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateMergerArbitrageSpreadCalculatorInputs, validateMergerArbitrageSpreadCalculatorBusinessRules } from './validation';
 
-export const MergerArbitrageSpreadCalculatorCalculator: Calculator: Calculator = {
-  id: 'merger-arbitrage-spread-calculator-calculator',
+export const MergerArbitrageSpreadCalculator: Calculator = {
+  id: 'MergerArbitrageSpread-calculator-calculator',
   title: 'Merger Arbitrage Spread Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

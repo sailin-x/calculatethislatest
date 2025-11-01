@@ -1,3 +1,3 @@
-export * from './angel_investmentCalculatorCalculator';
+export * from './angel_investmentCalculator';
 export * from './register';
 export * from './types';

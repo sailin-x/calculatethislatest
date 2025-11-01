@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { complexNumberCalculatorCalculator } from './complexNumberCalculatorCalculator';
+import { complexNumberCalculator } from './complexNumberCalculator';
 
-export function registercomplexNumberCalculatorCalculator(): void {
-  calculatorRegistry.register(new complexNumberCalculatorCalculator());
+export function registercomplexNumberCalculator(): void {
+  calculatorRegistry.register(new complexNumberCalculator());
 }

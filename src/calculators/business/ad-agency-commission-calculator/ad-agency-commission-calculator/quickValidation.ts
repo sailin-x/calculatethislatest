@@ -1,4 +1,4 @@
-import { ad-agency-commission-calculatorInputs } from './types';
+import { AdAgencyCommission-calculatorInputs } from './types';
 
 export function validateValue(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   if (value === null || value === undefined) {

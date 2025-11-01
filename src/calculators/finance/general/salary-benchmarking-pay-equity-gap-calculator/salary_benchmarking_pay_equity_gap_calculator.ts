@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { salary_benchmarking_pay_equity_gap_calculatorInputs, salary_benchmarking_pay_equity_gap_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const salary_benchmarking_pay_equity_gap_calculatorCalculator: Calculator = {
-  id: 'salary-benchmarking-pay-equity-gap-calculator',
+export const SalaryBenchmarkingPay-EquityGapCalculator: Calculator = {
+  id: 'SalaryBenchmarkingPay-EquityGapCalculator',
   title: 'Salary Benchmarking & Pay Equity Gap Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

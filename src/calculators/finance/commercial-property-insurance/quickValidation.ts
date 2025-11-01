@@ -176,7 +176,7 @@ export function validatePropertyType(value: any, allInputs?: Record<string, any>
 }
 
 export function validateConstructionType(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  const validTypes = ['frame', 'joisted-masonry', 'non-combustible', 'masonry-non-combustible', 'modified-fire-resistive', 'fire-resistive'];
+  const validTypes = ['frame', 'joisted-masonry', 'non-combustible', 'MasonryNonCombustible', 'ModifiedFireResistive', 'fire-resistive'];
   
   if (!value) {
     return { isValid: false, message: 'Construction type is required' };

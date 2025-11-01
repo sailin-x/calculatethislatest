@@ -1,3 +1,3 @@
-export * from './property_taxCalculatorCalculator';
+export * from './property_taxCalculator';
 export * from './register';
 export * from './types';

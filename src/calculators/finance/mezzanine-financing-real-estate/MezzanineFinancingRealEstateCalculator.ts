@@ -7,7 +7,7 @@ import {
 } from './formulas';
 
 export class MezzanineFinancingRealEstateCalculator implements Calculator<MezzanineFinancingRealEstateInputs, MezzanineFinancingRealEstateOutputs> {
-  readonly id = 'mezzanine-financing-real-estate';
+  readonly id = 'MezzanineFinancingReal-estate';
   readonly name = 'Mezzanine Financing for Real Estate Calculator';
   readonly description = 'Calculate returns, risks, and structuring for mezzanine financing in real estate investments';
   readonly category = 'finance';

@@ -1,4 +1,4 @@
-import { swimming-lesson-cost-calculatorInputs, swimming-lesson-cost-calculatorMetrics, swimming-lesson-cost-calculatorAnalysis } from './types';
+import { SwimmingLessonCost-calculatorInputs, SwimmingLessonCost-calculatorMetrics, SwimmingLessonCost-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: swimming-lesson-cost-calculatorInputs): number {
+export function calculateResult(inputs: SwimmingLessonCost-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: swimming-lesson-cost-calculatorInputs): 
   }
 }
 
-export function generateAnalysis(inputs: swimming-lesson-cost-calculatorInputs, metrics: swimming-lesson-cost-calculatorMetrics): swimming-lesson-cost-calculatorAnalysis {
+export function generateAnalysis(inputs: SwimmingLessonCost-calculatorInputs, metrics: SwimmingLessonCost-calculatorMetrics): SwimmingLessonCost-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

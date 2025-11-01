@@ -7,7 +7,7 @@ import { validateAllDSCRInputs } from './quickValidation';
 describe('Debt Service Coverage Ratio Calculator', () => {
   describe('Calculator Structure', () => {
     it('should have correct basic properties', () => {
-      expect(DebtServiceCoverageRatioCalculator.id).toBe('debt-service-coverage-ratio-calculator');
+      expect(DebtServiceCoverageRatioCalculator.id).toBe('DebtServiceCoverage-ratio-calculator');
       expect(DebtServiceCoverageRatioCalculator.name).toBe('Debt Service Coverage Ratio Calculator');
       expect(DebtServiceCoverageRatioCalculator.category).toBe('finance');
       expect(DebtServiceCoverageRatioCalculator.subcategory).toBe('real-estate');
@@ -254,7 +254,7 @@ describe('Debt Service Coverage Ratio Calculator', () => {
       expect(outputs.debtYieldRatio).toBeCloseTo(expectedDebtYield, 1);
     });
 
-    it('should calculate loan-to-value ratio correctly', () => {
+    it('should calculate LoanToValue ratio correctly', () => {
       const outputs = calculateDSCR(testInputs);
       
       // LTV = (Loan Amount / Property Value) * 100

@@ -1,4 +1,4 @@
-import { net-worth-calculatorInputs, net-worth-calculatorMetrics, net-worth-calculatorAnalysis } from './types';
+import { NetWorthCalculatorinputs, NetWorthCalculatormetrics, NetWorthCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: net-worth-calculatorInputs): number {
+export function calculateResult(inputs: NetWorthCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: net-worth-calculatorInputs): number {
   }
 }
 
-export function generateAnalysis(inputs: net-worth-calculatorInputs, metrics: net-worth-calculatorMetrics): net-worth-calculatorAnalysis {
+export function generateAnalysis(inputs: NetWorthCalculatorinputs, metrics: NetWorthCalculatormetrics): NetWorthCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

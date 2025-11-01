@@ -8,7 +8,7 @@ import { CalculatorInputs, CalculatorOutputs } from '../../types/calculator';
 describe('RentalYieldCalculator', () => {
   describe('Calculator Structure', () => {
     it('should have correct basic properties', () => {
-      expect(RentalYieldCalculator.id).toBe('rental-yield-calculator');
+      expect(RentalYieldCalculator.id).toBe('RentalYieldCalculator');
       expect(RentalYieldCalculator.name).toBe('Rental Yield Calculator');
       expect(RentalYieldCalculator.category).toBe('finance');
       expect(RentalYieldCalculator.subcategory).toBe('real-estate');
@@ -103,7 +103,7 @@ describe('RentalYieldCalculator', () => {
       };
       
       const result = validateRentalYieldInputs(inputs);
-      expect(result.warnings).toContain('Rent-to-price ratio is low - may indicate poor yield');
+      expect(result.warnings).toContain('RentToPrice ratio is low - may indicate poor yield');
       expect(result.warnings).toContain('High vacancy rate may indicate market issues');
       expect(result.warnings).toContain('Negative appreciation rate indicates declining market');
     });

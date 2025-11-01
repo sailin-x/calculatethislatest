@@ -1,3 +1,3 @@
-import { MusicRoyaltyInvestmentCalculatorCalculator } from './MusicRoyaltyInvestmentCalculatorCalculator';
+import { MusicRoyaltyInvestmentCalculator } from './MusicRoyaltyInvestmentCalculator';
 
-export { MusicRoyaltyInvestmentCalculatorCalculator };
+export { MusicRoyaltyInvestmentCalculator };

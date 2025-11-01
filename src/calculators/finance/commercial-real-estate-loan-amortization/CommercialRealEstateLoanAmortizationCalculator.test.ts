@@ -7,7 +7,7 @@ import { validateAllAmortizationInputs } from './quickValidation';
 describe('Commercial Real Estate Loan Amortization Calculator', () => {
   describe('Calculator Structure', () => {
     it('should have correct basic properties', () => {
-      expect(CommercialRealEstateLoanAmortizationCalculator.id).toBe('commercial-real-estate-loan-amortization-calculator');
+      expect(CommercialRealEstateLoanAmortizationCalculator.id).toBe('CommercialRealEstate-LoanAmortizationCalculator');
       expect(CommercialRealEstateLoanAmortizationCalculator.name).toBe('Commercial Real Estate Loan Amortization Calculator');
       expect(CommercialRealEstateLoanAmortizationCalculator.category).toBe('finance');
       expect(CommercialRealEstateLoanAmortizationCalculator.subcategory).toBe('business');
@@ -51,7 +51,7 @@ describe('Commercial Real Estate Loan Amortization Calculator', () => {
         interestRate: 6.5,
         loanTerm: 25,
         paymentFrequency: 'monthly',
-        startDate: '2024-01-01',
+        startDate: '20240101',
         balloonPayment: 0,
         prepaymentPenalty: 0,
         originationFee: 15000,
@@ -77,7 +77,7 @@ describe('Commercial Real Estate Loan Amortization Calculator', () => {
         interestRate: 6.5,
         loanTerm: 25,
         paymentFrequency: 'monthly',
-        startDate: '2024-01-01',
+        startDate: '20240101',
         balloonPayment: 2500000, // Exceeds loan amount
         prepaymentPenalty: 0,
         originationFee: 15000,
@@ -103,7 +103,7 @@ describe('Commercial Real Estate Loan Amortization Calculator', () => {
         interestRate: 6.5,
         loanTerm: 25,
         paymentFrequency: 'monthly',
-        startDate: '2024-01-01',
+        startDate: '20240101',
         balloonPayment: 0,
         prepaymentPenalty: 0,
         originationFee: 15000,
@@ -129,7 +129,7 @@ describe('Commercial Real Estate Loan Amortization Calculator', () => {
         interestRate: 6.5,
         loanTerm: 25,
         paymentFrequency: 'monthly',
-        startDate: '2024-01-01',
+        startDate: '20240101',
         balloonPayment: 0,
         prepaymentPenalty: 0,
         originationFee: 15000,
@@ -155,7 +155,7 @@ describe('Commercial Real Estate Loan Amortization Calculator', () => {
         interestRate: 6.5,
         loanTerm: 25,
         paymentFrequency: 'invalid-frequency',
-        startDate: '2024-01-01',
+        startDate: '20240101',
         balloonPayment: 0,
         prepaymentPenalty: 0,
         originationFee: 15000,
@@ -197,7 +197,7 @@ describe('Commercial Real Estate Loan Amortization Calculator', () => {
 
       const validation = validateAmortizationInputs(invalidInputs);
       expect(validation.isValid).toBe(false);
-      expect(validation.errors).toContain('Start date must be in YYYY-MM-DD format');
+      expect(validation.errors).toContain('Start date must be in YyyyMmDd format');
     });
   });
 
@@ -209,7 +209,7 @@ describe('Commercial Real Estate Loan Amortization Calculator', () => {
         interestRate: 6.5,
         loanTerm: 25,
         paymentFrequency: 'monthly',
-        startDate: '2024-01-01',
+        startDate: '20240101',
         balloonPayment: 0,
         prepaymentPenalty: 0,
         originationFee: 15000,
@@ -250,7 +250,7 @@ describe('Commercial Real Estate Loan Amortization Calculator', () => {
         interestRate: 5.75,
         loanTerm: 20,
         paymentFrequency: 'monthly',
-        startDate: '2024-01-01',
+        startDate: '20240101',
         balloonPayment: 1000000,
         prepaymentPenalty: 2.0,
         originationFee: 20000,
@@ -286,7 +286,7 @@ describe('Commercial Real Estate Loan Amortization Calculator', () => {
         interestRate: 6.5,
         loanTerm: 25,
         paymentFrequency: 'monthly',
-        startDate: '2024-01-01',
+        startDate: '20240101',
         balloonPayment: 0,
         prepaymentPenalty: 0,
         originationFee: 15000,
@@ -318,7 +318,7 @@ describe('Commercial Real Estate Loan Amortization Calculator', () => {
         interestRate: 6.5,
         loanTerm: 25,
         paymentFrequency: 'monthly',
-        startDate: '2024-01-01',
+        startDate: '20240101',
         balloonPayment: 0,
         prepaymentPenalty: 0,
         originationFee: 15000,
@@ -347,7 +347,7 @@ describe('Commercial Real Estate Loan Amortization Calculator', () => {
         interestRate: 6.5,
         loanTerm: 25,
         paymentFrequency: 'monthly',
-        startDate: '2024-01-01',
+        startDate: '20240101',
         balloonPayment: 0,
         prepaymentPenalty: 0,
         originationFee: 15000,
@@ -376,7 +376,7 @@ describe('Commercial Real Estate Loan Amortization Calculator', () => {
         interestRate: 6.5,
         loanTerm: 25,
         paymentFrequency: 'monthly',
-        startDate: '2024-01-01',
+        startDate: '20240101',
         balloonPayment: 0,
         prepaymentPenalty: 0,
         originationFee: 15000,
@@ -405,7 +405,7 @@ describe('Commercial Real Estate Loan Amortization Calculator', () => {
         interestRate: 6.5,
         loanTerm: 25,
         paymentFrequency: 'monthly',
-        startDate: '2024-01-01',
+        startDate: '20240101',
         balloonPayment: 0,
         prepaymentPenalty: 0,
         originationFee: 15000,
@@ -434,7 +434,7 @@ describe('Commercial Real Estate Loan Amortization Calculator', () => {
         interestRate: 6.5,
         loanTerm: 25,
         paymentFrequency: 'monthly',
-        startDate: '2024-01-01',
+        startDate: '20240101',
         balloonPayment: 0,
         prepaymentPenalty: 0,
         originationFee: 15000,
@@ -457,14 +457,14 @@ describe('Commercial Real Estate Loan Amortization Calculator', () => {
       expect(outputs.debtServiceCoverageRatio).toBeCloseTo(expectedDSCR, 2);
     });
 
-    it('should calculate loan-to-value ratio correctly', () => {
+    it('should calculate LoanToValue ratio correctly', () => {
       const inputs = {
         propertyType: 'office',
         loanAmount: 2000000,
         interestRate: 6.5,
         loanTerm: 25,
         paymentFrequency: 'monthly',
-        startDate: '2024-01-01',
+        startDate: '20240101',
         balloonPayment: 0,
         prepaymentPenalty: 0,
         originationFee: 15000,
@@ -495,7 +495,7 @@ describe('Commercial Real Estate Loan Amortization Calculator', () => {
         interestRate: 6.5,
         loanTerm: 25,
         paymentFrequency: 'monthly',
-        startDate: '2024-01-01',
+        startDate: '20240101',
         balloonPayment: 0,
         prepaymentPenalty: 0,
         originationFee: 15000,
@@ -521,7 +521,7 @@ describe('Commercial Real Estate Loan Amortization Calculator', () => {
         interestRate: 6.5,
         loanTerm: 25,
         paymentFrequency: 'monthly',
-        startDate: '2024-01-01',
+        startDate: '20240101',
         balloonPayment: 0,
         prepaymentPenalty: 0,
         originationFee: 15000,
@@ -548,7 +548,7 @@ describe('Commercial Real Estate Loan Amortization Calculator', () => {
         interestRate: 6.5,
         loanTerm: 25,
         paymentFrequency: 'monthly',
-        startDate: '2024-01-01',
+        startDate: '20240101',
         balloonPayment: 0,
         prepaymentPenalty: 0,
         originationFee: 15000,
@@ -578,7 +578,7 @@ describe('Commercial Real Estate Loan Amortization Calculator', () => {
         interestRate: 6.5,
         loanTerm: 25,
         paymentFrequency: 'monthly',
-        startDate: '2024-01-01',
+        startDate: '20240101',
         balloonPayment: 0,
         prepaymentPenalty: 0,
         originationFee: 15000,
@@ -609,7 +609,7 @@ describe('Commercial Real Estate Loan Amortization Calculator', () => {
         interestRate: 6.5,
         loanTerm: 25,
         paymentFrequency: 'monthly',
-        startDate: '2024-01-01',
+        startDate: '20240101',
         balloonPayment: 0,
         prepaymentPenalty: 0,
         originationFee: 15000,
@@ -634,7 +634,7 @@ describe('Commercial Real Estate Loan Amortization Calculator', () => {
         interestRate: 6.5,
         loanTerm: 25,
         paymentFrequency: 'monthly',
-        startDate: '2024-01-01',
+        startDate: '20240101',
         balloonPayment: 0,
         prepaymentPenalty: 0,
         originationFee: 15000,
@@ -659,7 +659,7 @@ describe('Commercial Real Estate Loan Amortization Calculator', () => {
         interestRate: 6.5,
         loanTerm: 25,
         paymentFrequency: 'monthly',
-        startDate: '2024-01-01',
+        startDate: '20240101',
         balloonPayment: 0,
         prepaymentPenalty: 0,
         originationFee: 0,
@@ -684,7 +684,7 @@ describe('Commercial Real Estate Loan Amortization Calculator', () => {
         interestRate: 6.5,
         loanTerm: 25,
         paymentFrequency: 'monthly',
-        startDate: '2024-01-01',
+        startDate: '20240101',
         balloonPayment: 0,
         prepaymentPenalty: 0,
         originationFee: 15000,
@@ -720,7 +720,7 @@ describe('Commercial Real Estate Loan Amortization Calculator', () => {
         interestRate: 6.5,
         loanTerm: 25,
         paymentFrequency: 'monthly',
-        startDate: '2024-01-01',
+        startDate: '20240101',
         balloonPayment: 0,
         prepaymentPenalty: 0,
         originationFee: 15000,

@@ -1,4 +1,4 @@
-import { nft-minting-cost-calculatorInputs, nft-minting-cost-calculatorMetrics, nft-minting-cost-calculatorAnalysis } from './types';
+import { NftMintingCost-calculatorInputs, NftMintingCost-calculatorMetrics, NftMintingCost-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: nft-minting-cost-calculatorInputs): number {
+export function calculateResult(inputs: NftMintingCost-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: nft-minting-cost-calculatorInputs): numb
   }
 }
 
-export function generateAnalysis(inputs: nft-minting-cost-calculatorInputs, metrics: nft-minting-cost-calculatorMetrics): nft-minting-cost-calculatorAnalysis {
+export function generateAnalysis(inputs: NftMintingCost-calculatorInputs, metrics: NftMintingCost-calculatorMetrics): NftMintingCost-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

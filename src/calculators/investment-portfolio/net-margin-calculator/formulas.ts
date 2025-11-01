@@ -40,7 +40,7 @@ export function calculateResult(inputs: NetMarginCalculatorInputs): number {
 }
 
 /**
- * Generates investment-portfolio-specific analysis for Net Margin.
+ * Generates InvestmentPortfolioSpecific analysis for Net Margin.
  * Assesses profitability risk in portfolio context: higher margins indicate stable cash flows,
  * reducing portfolio volatility risk. Uses thresholds based on typical equity benchmarks
  * (e.g., >15% strong for growth stocks, <5% high risk for value traps).

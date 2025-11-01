@@ -1,13 +1,13 @@
-import { real-estate-waterfall-model-calculatorInputs, real-estate-waterfall-model-calculatorMetrics, real-estate-waterfall-model-calculatorAnalysis } from './types';
+import { RealEstateWaterfall-model-calculatorInputs, RealEstateWaterfall-model-calculatorMetrics, RealEstateWaterfall-model-calculatorAnalysis } from './types';
 
 // Real Estate Waterfall Model Calculator - Finance calculations
-export function calculateResult(inputs: real-estate-waterfall-model-calculatorInputs): number {
+export function calculateResult(inputs: RealEstateWaterfall-model-calculatorInputs): number {
   // Financial calculation logic
   const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
   return numericValues.reduce((sum, val) => sum + val, 0) || 0;
 }
 
-export function generateAnalysis(inputs: real-estate-waterfall-model-calculatorInputs, metrics: real-estate-waterfall-model-calculatorMetrics): real-estate-waterfall-model-calculatorAnalysis {
+export function generateAnalysis(inputs: RealEstateWaterfall-model-calculatorInputs, metrics: RealEstateWaterfall-model-calculatorMetrics): RealEstateWaterfall-model-calculatorAnalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (Math.abs(result) > 100000) riskLevel = 'High';

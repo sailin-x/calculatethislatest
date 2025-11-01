@@ -1,4 +1,4 @@
-import { price-per-square-footInputs, price-per-square-footMetrics, price-per-square-footAnalysis } from './types';
+import { PricePerSquare-footInputs, PricePerSquare-footMetrics, PricePerSquare-footAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: price-per-square-footInputs): number {
+export function calculateResult(inputs: PricePerSquare-footInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: price-per-square-footInputs): number {
   }
 }
 
-export function generateAnalysis(inputs: price-per-square-footInputs, metrics: price-per-square-footMetrics): price-per-square-footAnalysis {
+export function generateAnalysis(inputs: PricePerSquare-footInputs, metrics: PricePerSquare-footMetrics): PricePerSquare-footAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

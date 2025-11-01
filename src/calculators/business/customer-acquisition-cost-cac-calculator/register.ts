@@ -1,3 +1,3 @@
-import { CustomerAcquisitionCostCacCalculatorCalculator } from './CustomerAcquisitionCostCacCalculatorCalculator';
+import { CustomerAcquisitionCostCacCalculator } from './CustomerAcquisitionCostCacCalculator';
 
-export { CustomerAcquisitionCostCacCalculatorCalculator };
+export { CustomerAcquisitionCostCacCalculator };

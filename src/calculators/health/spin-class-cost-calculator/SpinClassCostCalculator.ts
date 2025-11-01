@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateSpinClassCostCalculatorInputs } from './validation';
 
 export const SpinClassCostCalculator: Calculator = {
-  id: 'spin-class-cost-calculator',
+  id: 'SpinClassCost-calculator',
   title: 'Spin Class Cost Calculator',
   category: 'health',
   subcategory: 'General',

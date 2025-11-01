@@ -2,7 +2,7 @@ import { Calculator } from '../../../../types/calculator';
 import { kurtosis_calculatorInputs, kurtosis_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const kurtosis_calculatorCalculator: Calculator = {
+export const kurtosis-calculator: Calculator = {
   id: 'kurtosis-calculator',
   title: 'Kurtosis Calculator Calculator',
   category: 'financeinvestment',

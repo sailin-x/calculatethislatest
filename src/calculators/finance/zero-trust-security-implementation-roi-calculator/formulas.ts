@@ -1,4 +1,4 @@
-import { zero-trust-security-implementation-roi-calculatorInputs, zero-trust-security-implementation-roi-calculatorMetrics, zero-trust-security-implementation-roi-calculatorAnalysis } from './types';
+import { ZeroTrustSecurity-ImplementationRoiCalculatorinputs, ZeroTrustSecurity-ImplementationRoiCalculatormetrics, ZeroTrustSecurity-ImplementationRoiCalculatoranalysis } from './types';
 
 
 // Investment Calculator - ROI and growth calculations
@@ -12,7 +12,7 @@ export function calculateCompoundInterest(principal: number, rate: number, years
   return principal * Math.pow(1 + ratePerPeriod, totalPeriods);
 }
 
-export function calculateResult(inputs: zero-trust-security-implementation-roi-calculatorInputs): number {
+export function calculateResult(inputs: ZeroTrustSecurity-ImplementationRoiCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -36,7 +36,7 @@ export function calculateResult(inputs: zero-trust-security-implementation-roi-c
   }
 }
 
-export function generateAnalysis(inputs: zero-trust-security-implementation-roi-calculatorInputs, metrics: zero-trust-security-implementation-roi-calculatorMetrics): zero-trust-security-implementation-roi-calculatorAnalysis {
+export function generateAnalysis(inputs: ZeroTrustSecurity-ImplementationRoiCalculatorinputs, metrics: ZeroTrustSecurity-ImplementationRoiCalculatormetrics): ZeroTrustSecurity-ImplementationRoiCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

@@ -9,7 +9,7 @@ import {
 import { validateEmploymentLawCalculatorInputs } from './validation';
 
 export const EmploymentLawCalculator: Calculator = {
-  id: 'employment-law-calculator',
+  id: 'EmploymentLawCalculator',
   title: 'Employment Law Calculator',
   category: 'legal',
   subcategory: 'Settlement Analysis',

@@ -1,4 +1,4 @@
-export { RealEstateInvestmentCalculatorExistsButNeedsRegistrationCalculatorCalculator } from './RealEstateInvestmentCalculatorExistsButNeedsRegistrationCalculatorCalculator';
+export { RealEstateInvestmentCalculatorExistsButNeedsRegistrationCalculator } from './RealEstateInvestmentCalculatorExistsButNeedsRegistrationCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

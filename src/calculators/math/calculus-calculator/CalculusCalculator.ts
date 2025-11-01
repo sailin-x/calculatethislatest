@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateCalculusCalculatorInputs, validateCalculusCalculatorBusinessRules } from './validation';
 
-export const CalculusCalculatorCalculator: Calculator: Calculator = {
-  id: 'calculus-calculator-calculator',
+export const CalculusCalculator: Calculator = {
+  id: 'CalculusCalculatorCalculator',
   title: 'Calculus Calculator Calculator',
   math: 'math', // e.g., 'finance', 'math', 'health', 'business'
   submath: 'Submath Name',

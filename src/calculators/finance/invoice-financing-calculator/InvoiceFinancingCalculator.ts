@@ -10,7 +10,7 @@ import {
 import { validateInvoiceFinancingCalculatorInputs } from './validation';
 
 export const InvoiceFinancingCalculator: Calculator = {
-  id: 'invoice-financing-calculator',
+  id: 'InvoiceFinancingCalculator',
   title: 'Invoice Financing Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

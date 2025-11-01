@@ -1,4 +1,4 @@
-import { libel-slander-per-se-damages-estimatorInputs, libel-slander-per-se-damages-estimatorMetrics, libel-slander-per-se-damages-estimatorAnalysis } from './types';
+import { LibelSlanderPer-SeDamagesEstimatorinputs, LibelSlanderPer-SeDamagesEstimatormetrics, LibelSlanderPer-SeDamagesEstimatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: libel-slander-per-se-damages-estimatorInputs): number {
+export function calculateResult(inputs: LibelSlanderPer-SeDamagesEstimatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: libel-slander-per-se-damages-estimatorIn
   }
 }
 
-export function generateAnalysis(inputs: libel-slander-per-se-damages-estimatorInputs, metrics: libel-slander-per-se-damages-estimatorMetrics): libel-slander-per-se-damages-estimatorAnalysis {
+export function generateAnalysis(inputs: LibelSlanderPer-SeDamagesEstimatorinputs, metrics: LibelSlanderPer-SeDamagesEstimatormetrics): LibelSlanderPer-SeDamagesEstimatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

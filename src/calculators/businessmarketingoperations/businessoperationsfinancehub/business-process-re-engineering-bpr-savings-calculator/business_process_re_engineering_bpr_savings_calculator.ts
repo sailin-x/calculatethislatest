@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { business_process_re_engineering_bpr_savings_calculatorInputs, business_process_re_engineering_bpr_savings_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const business_process_re_engineering_bpr_savings_calculatorCalculator: Calculator = {
-  id: 'business-process-re-engineering-bpr-savings-calculator',
+export const BusinessProcessRe-EngineeringBprSavings-calculator: Calculator = {
+  id: 'BusinessProcessRe-EngineeringBprSavings-calculator',
   title: 'Business Process Re engineering (BPR) Savings Calculator Calculator',
   category: 'businessmarketingoperations',
   subcategory: 'businessoperationsfinancehub',

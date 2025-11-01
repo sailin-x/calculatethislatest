@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { crypto_stakingCalculatorCalculator } from './crypto_stakingCalculatorCalculator';
+import { crypto_stakingCalculator } from './crypto_stakingCalculator';
 
-export function registercrypto_stakingCalculatorCalculator(): void {
-  calculatorRegistry.register(new crypto_stakingCalculatorCalculator());
+export function registercrypto_stakingCalculator(): void {
+  calculatorRegistry.register(new crypto_stakingCalculator());
 }

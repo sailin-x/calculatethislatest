@@ -1,3 +1,3 @@
-import { CarAccidentSettlementCalculatorCalculator } from './CarAccidentSettlementCalculatorCalculator';
+import { CarAccidentSettlementCalculator } from './CarAccidentSettlementCalculator';
 
-export { CarAccidentSettlementCalculatorCalculator };
+export { CarAccidentSettlementCalculator };

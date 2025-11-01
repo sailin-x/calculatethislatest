@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { wildfire_risk_scoring_calculatorInputs, wildfire_risk_scoring_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const wildfire_risk_scoring_calculatorCalculator: Calculator = {
-  id: 'wildfire-risk-scoring-calculator',
+export const WildfireRiskScoring-calculator: Calculator = {
+  id: 'WildfireRiskScoring-calculator',
   title: 'Wildfire Risk Scoring Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

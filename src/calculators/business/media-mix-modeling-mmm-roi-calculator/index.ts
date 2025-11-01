@@ -1,4 +1,4 @@
-export { MediaMixModelingMmmRoiCalculatorCalculator } from './MediaMixModelingMmmRoiCalculatorCalculator';
+export { MediaMixModelingMmmRoiCalculator } from './MediaMixModelingMmmRoiCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

@@ -65,7 +65,7 @@ export function validateInsuranceInputs(inputs: CalculatorInputs): ValidationRes
   }
 
   // Construction type validation
-  const validConstructionTypes = ['frame', 'joisted-masonry', 'non-combustible', 'masonry-non-combustible', 'modified-fire-resistive', 'fire-resistive'];
+  const validConstructionTypes = ['frame', 'joisted-masonry', 'non-combustible', 'MasonryNonCombustible', 'ModifiedFireResistive', 'fire-resistive'];
   const constructionType = inputs.constructionType as string;
   if (!validConstructionTypes.includes(constructionType)) {
     errors.push('Invalid construction type selected');

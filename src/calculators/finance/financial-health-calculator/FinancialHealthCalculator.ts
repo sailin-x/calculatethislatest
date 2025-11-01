@@ -10,7 +10,7 @@ import {
 import { validateFinancialHealthCalculatorInputs } from './validation';
 
 export const FinancialHealthCalculator: Calculator = {
-  id: 'financial-health-calculator',
+  id: 'FinancialHealthCalculator',
   title: 'Financial Health Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

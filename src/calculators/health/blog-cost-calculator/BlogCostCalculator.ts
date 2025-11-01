@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateBlogCostCalculatorInputs } from './validation';
 
 export const BlogCostCalculator: Calculator = {
-  id: 'blog-cost-calculator',
+  id: 'BlogCostCalculator',
   title: 'Blog Cost Calculator',
   category: 'health',
   subcategory: 'General',

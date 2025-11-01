@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { brand_equity_valuation_calculatorInputs, brand_equity_valuation_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const brand_equity_valuation_calculatorCalculator: Calculator = {
-  id: 'brand-equity-valuation-calculator',
+export const BrandEquityValuation-calculator: Calculator = {
+  id: 'BrandEquityValuation-calculator',
   title: 'Brand Equity Valuation Calculator Calculator',
   category: 'businessmarketingoperations',
   subcategory: 'marketingcreatorhub',

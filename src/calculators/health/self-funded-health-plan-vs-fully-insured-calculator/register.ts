@@ -1,3 +1,3 @@
-import { SelffundedHealthPlanVsFullyinsuredCalculatorCalculator } from './SelffundedHealthPlanVsFullyinsuredCalculatorCalculator';
+import { SelffundedHealthPlanVsFullyinsuredCalculator } from './SelffundedHealthPlanVsFullyinsuredCalculator';
 
-export { SelffundedHealthPlanVsFullyinsuredCalculatorCalculator };
+export { SelffundedHealthPlanVsFullyinsuredCalculator };

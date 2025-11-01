@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validatePrescriptionCostCalculatorInputs } from './validation';
 
 export const PrescriptionCostCalculator: Calculator = {
-  id: 'prescription-cost-calculator',
+  id: 'PrescriptionCostCalculator',
   title: 'Prescription Cost Calculator',
   category: 'health',
   subcategory: 'General',

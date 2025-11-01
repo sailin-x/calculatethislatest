@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validatePhysicalTherapyCostCalculatorInputs } from './validation';
 
 export const PhysicalTherapyCostCalculator: Calculator = {
-  id: 'physical-therapy-cost-calculator',
+  id: 'PhysicalTherapyCost-calculator',
   title: 'Physical Therapy Cost Calculator',
   category: 'health',
   subcategory: 'General',

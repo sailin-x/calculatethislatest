@@ -1,3 +1,3 @@
-import { TileCalculatorCalculator } from './TileCalculatorCalculator';
+import { TileCalculator } from './TileCalculator';
 
-export { TileCalculatorCalculator };
+export { TileCalculator };

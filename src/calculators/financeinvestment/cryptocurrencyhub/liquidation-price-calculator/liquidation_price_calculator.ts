@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { liquidation_price_calculatorInputs, liquidation_price_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const liquidation_price_calculatorCalculator: Calculator = {
-  id: 'liquidation-price-calculator',
+export const LiquidationPriceCalculator: Calculator = {
+  id: 'LiquidationPriceCalculator',
   title: 'Liquidation Price Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'cryptocurrencyhub',

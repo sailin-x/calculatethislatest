@@ -1,4 +1,4 @@
-import { nursing-home-negligence-calculatorInputs, nursing-home-negligence-calculatorMetrics, nursing-home-negligence-calculatorAnalysis } from './types';
+import { NursingHomeNegligence-calculatorInputs, NursingHomeNegligence-calculatorMetrics, NursingHomeNegligence-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: nursing-home-negligence-calculatorInputs): number {
+export function calculateResult(inputs: NursingHomeNegligence-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: nursing-home-negligence-calculatorInputs
   }
 }
 
-export function generateAnalysis(inputs: nursing-home-negligence-calculatorInputs, metrics: nursing-home-negligence-calculatorMetrics): nursing-home-negligence-calculatorAnalysis {
+export function generateAnalysis(inputs: NursingHomeNegligence-calculatorInputs, metrics: NursingHomeNegligence-calculatorMetrics): NursingHomeNegligence-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

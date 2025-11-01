@@ -10,7 +10,7 @@ import {
 import { validateRestrictedStockUnitVsStockOptionCalculatorInputs } from './validation';
 
 export const RestrictedStockUnitVsStockOptionCalculator: Calculator = {
-  id: 'restricted-stock-unit-vs-stock-option-calculator',
+  id: 'RestrictedStockUnit-VsStockOption-calculator',
   title: 'Restricted Stock Unit vs Stock Option Calculator',
   category: 'business',
   subcategory: 'Financial Planning',

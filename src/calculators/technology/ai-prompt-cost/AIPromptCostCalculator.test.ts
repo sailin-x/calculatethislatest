@@ -121,7 +121,7 @@ describe('AIPromptCostCalculator', () => {
         tokensPerRequest: 1000,
         pricePerToken: 0.000001,
         numberOfRequests: 100,
-        modelType: 'claude-3-haiku',
+        modelType: 'Claude3Haiku',
         usagePattern: 'daily'
       };
 

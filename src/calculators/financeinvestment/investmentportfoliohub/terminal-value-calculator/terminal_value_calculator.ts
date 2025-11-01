@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { terminal_value_calculatorInputs, terminal_value_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const terminal_value_calculatorCalculator: Calculator = {
-  id: 'terminal-value-calculator',
+export const TerminalValueCalculator: Calculator = {
+  id: 'TerminalValueCalculator',
   title: 'Terminal Value Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'investmentportfoliohub',

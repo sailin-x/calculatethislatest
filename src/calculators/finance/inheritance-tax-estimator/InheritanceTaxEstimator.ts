@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateInheritanceTaxEstimatorInputs, validateInheritanceTaxEstimatorBusinessRules } from './validation';
 
-export const InheritanceTaxEstimatorCalculator: Calculator: Calculator = {
-  id: 'inheritance-tax-estimator-calculator',
+export const InheritanceTaxEstimatorCalculator: Calculator = {
+  id: 'InheritanceTaxEstimator-calculator',
   title: 'Inheritance Tax Estimator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

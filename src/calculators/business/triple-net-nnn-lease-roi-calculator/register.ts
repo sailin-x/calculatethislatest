@@ -1,3 +1,3 @@
-import { TripleNetNnnLeaseRoiCalculatorCalculator } from './TripleNetNnnLeaseRoiCalculatorCalculator';
+import { TripleNetNnnLeaseRoiCalculator } from './TripleNetNnnLeaseRoiCalculator';
 
-export { TripleNetNnnLeaseRoiCalculatorCalculator };
+export { TripleNetNnnLeaseRoiCalculator };

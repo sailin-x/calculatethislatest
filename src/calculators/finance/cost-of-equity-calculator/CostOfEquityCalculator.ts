@@ -10,7 +10,7 @@ import {
 import { validateCostOfEquityCalculatorInputs } from './validation';
 
 export const CostOfEquityCalculator: Calculator = {
-  id: 'cost-of-equity-calculator',
+  id: 'CostOfEquity-calculator',
   title: 'Cost of Equity Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

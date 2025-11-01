@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { umbrella_insurance_coverage_calculatorInputs, umbrella_insurance_coverage_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const umbrella_insurance_coverage_calculatorCalculator: Calculator = {
-  id: 'umbrella-insurance-coverage-calculator',
+export const UmbrellaInsuranceCoverage-calculator: Calculator = {
+  id: 'UmbrellaInsuranceCoverage-calculator',
   title: 'Umbrella Insurance Coverage Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

@@ -1,4 +1,4 @@
-import { workforce-planning-calculatorInputs, workforce-planning-calculatorMetrics, workforce-planning-calculatorAnalysis } from './types';
+import { WorkforcePlanningCalculatorinputs, WorkforcePlanningCalculatormetrics, WorkforcePlanningCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: workforce-planning-calculatorInputs): number {
+export function calculateResult(inputs: WorkforcePlanningCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: workforce-planning-calculatorInputs): nu
   }
 }
 
-export function generateAnalysis(inputs: workforce-planning-calculatorInputs, metrics: workforce-planning-calculatorMetrics): workforce-planning-calculatorAnalysis {
+export function generateAnalysis(inputs: WorkforcePlanningCalculatorinputs, metrics: WorkforcePlanningCalculatormetrics): WorkforcePlanningCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

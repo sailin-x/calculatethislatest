@@ -1,3 +1,3 @@
-import { MortgageQualificationCalculatorCalculator } from './MortgageQualificationCalculatorCalculator';
+import { MortgageQualificationCalculator } from './MortgageQualificationCalculator';
 
-export { MortgageQualificationCalculatorCalculator };
+export { MortgageQualificationCalculator };

@@ -1,3 +1,3 @@
-import { DentalImplantRoiCalculatorCalculator } from './DentalImplantRoiCalculatorCalculator';
+import { DentalImplantRoiCalculator } from './DentalImplantRoiCalculator';
 
-export { DentalImplantRoiCalculatorCalculator };
+export { DentalImplantRoiCalculator };

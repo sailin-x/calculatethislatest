@@ -1,3 +1,3 @@
-import { WeightedGradeCalculatorCalculator } from './WeightedGradeCalculatorCalculator';
+import { WeightedGradeCalculator } from './WeightedGradeCalculator';
 
-export { WeightedGradeCalculatorCalculator };
+export { WeightedGradeCalculator };

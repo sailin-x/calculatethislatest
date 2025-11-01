@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { registerUSDALoanCalculatorCalculator } from './registerUSDALoanCalculatorCalculator';
+import { registerUSDALoanCalculator } from './registerUSDALoanCalculator';
 
-export function registerregisterUSDALoanCalculatorCalculator(): void {
-  calculatorRegistry.register(new registerUSDALoanCalculatorCalculator());
+export function registerregisterUSDALoanCalculator(): void {
+  calculatorRegistry.register(new registerUSDALoanCalculator());
 }

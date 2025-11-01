@@ -1,3 +1,2 @@
-export * from './api-monetization-calculatorCalculator';
-export * from './register';
+export * from './ApiMonetizationCalculator';
 export * from './types';

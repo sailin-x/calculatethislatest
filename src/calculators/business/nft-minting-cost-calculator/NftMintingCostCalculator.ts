@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateNftMintingCostCalculatorInputs, validateNftMintingCostCalculatorBusinessRules } from './validation';
 
-export const NftMintingCostCalculatorCalculator: Calculator: Calculator = {
-  id: 'nft-minting-cost-calculator-calculator',
+export const NftMintingCostCalculator: Calculator = {
+  id: 'NftMintingCost-calculator-calculator',
   title: 'NFT Minting Cost Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

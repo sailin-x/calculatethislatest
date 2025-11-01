@@ -1,4 +1,4 @@
-import { number-theory-calculatorInputs, number-theory-calculatorMetrics, number-theory-calculatorAnalysis } from './types';
+import { NumberTheoryCalculatorinputs, NumberTheoryCalculatormetrics, NumberTheoryCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: number-theory-calculatorInputs): number {
+export function calculateResult(inputs: NumberTheoryCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: number-theory-calculatorInputs): number 
   }
 }
 
-export function generateAnalysis(inputs: number-theory-calculatorInputs, metrics: number-theory-calculatorMetrics): number-theory-calculatorAnalysis {
+export function generateAnalysis(inputs: NumberTheoryCalculatorinputs, metrics: NumberTheoryCalculatormetrics): NumberTheoryCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

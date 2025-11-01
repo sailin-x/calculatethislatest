@@ -1,3 +1,3 @@
-import { FafsaCalculatorCalculator } from './FafsaCalculatorCalculator';
+import { FafsaCalculator } from './FafsaCalculator';
 
-export { FafsaCalculatorCalculator };
+export { FafsaCalculator };

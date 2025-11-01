@@ -75,7 +75,7 @@ export function generateAnalysis(
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   let recommendation = '';
 
-  // Investment-portfolio-specific risk assessment: Modified Dietz return approximates time-weighted performance.
+  // InvestmentPortfolioSpecific risk assessment: Modified Dietz return approximates time-weighted performance.
   // Risk level based on return magnitude and cash flow volatility (simple heuristic: high volatility if large net flows relative to initial value).
   const { netCashFlows } = calculateCashFlowComponents(inputs);
   const flowVolatility = Math.abs(netCashFlows) / inputs.initialValue;

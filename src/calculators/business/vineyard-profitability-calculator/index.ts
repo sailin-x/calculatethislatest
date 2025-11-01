@@ -1,4 +1,4 @@
-export { VineyardProfitabilityCalculatorCalculator } from './VineyardProfitabilityCalculatorCalculator';
+export { VineyardProfitabilityCalculator } from './VineyardProfitabilityCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

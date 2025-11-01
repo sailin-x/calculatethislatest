@@ -14,9 +14,9 @@ export function validateTaxInputs(inputs: CalculatorInputs): ValidationResult {
   if (!inputs.filingStatus) {
     errors.push('Filing status is required');
   } else {
-    const validStatuses = ['single', 'married-filing-jointly', 'married-filing-separately', 'head-of-household', 'qualifying-widow'];
+    const validStatuses = ['single', 'MarriedFilingJointly', 'MarriedFilingSeparately', 'HeadOfHousehold', 'qualifying-widow'];
     if (!validStatuses.includes(inputs.filingStatus)) {
-      errors.push('Filing status must be one of: single, married-filing-jointly, married-filing-separately, head-of-household, qualifying-widow');
+      errors.push('Filing status must be one of: single, MarriedFilingJointly, MarriedFilingSeparately, HeadOfHousehold, qualifying-widow');
     }
   }
 
@@ -159,7 +159,7 @@ export function validateTaxInputs(inputs: CalculatorInputs): ValidationResult {
     }
   }
 
-  // Above-the-line deduction validations
+  // AboveTheLine deduction validations
   if (inputs.studentLoanInterest !== undefined) {
     if (inputs.studentLoanInterest < 0) {
       errors.push('Student loan interest cannot be negative');

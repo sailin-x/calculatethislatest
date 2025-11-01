@@ -3,7 +3,7 @@ import { calculateConstructionLoan, generateConstructionLoanAnalysis } from './f
 import { validateConstructionLoanInputs } from './validation';
 
 export const ConstructionLoanCalculator: Calculator = {
-  id: 'construction-loan-calculator',
+  id: 'ConstructionLoanCalculator',
   name: 'Construction Loan Calculator',
   category: 'finance',
   subcategory: 'real-estate',
@@ -219,23 +219,23 @@ export const ConstructionLoanCalculator: Calculator = {
     },
     {
       id: 'loanToCost',
-      name: 'Loan-to-Cost Ratio',
+      name: 'LoanToCost Ratio',
       type: 'number',
       unit: '%',
       required: true,
-      description: 'Maximum loan-to-cost ratio allowed',
-      placeholder: 'Enter loan-to-cost ratio',
+      description: 'Maximum LoanToCost ratio allowed',
+      placeholder: 'Enter LoanToCost ratio',
       min: 50,
       max: 90
     },
     {
       id: 'loanToValue',
-      name: 'Loan-to-Value Ratio',
+      name: 'LoanToValue Ratio',
       type: 'number',
       unit: '%',
       required: true,
-      description: 'Maximum loan-to-value ratio allowed',
-      placeholder: 'Enter loan-to-value ratio',
+      description: 'Maximum LoanToValue ratio allowed',
+      placeholder: 'Enter LoanToValue ratio',
       min: 50,
       max: 85
     },
@@ -336,17 +336,17 @@ export const ConstructionLoanCalculator: Calculator = {
     },
     {
       id: 'loanToCostRatio',
-      name: 'Actual Loan-to-Cost Ratio',
+      name: 'Actual LoanToCost Ratio',
       type: 'number',
       unit: '%',
-      description: 'Actual loan-to-cost ratio based on project costs'
+      description: 'Actual LoanToCost ratio based on project costs'
     },
     {
       id: 'loanToValueRatio',
-      name: 'Actual Loan-to-Value Ratio',
+      name: 'Actual LoanToValue Ratio',
       type: 'number',
       unit: '%',
-      description: 'Actual loan-to-value ratio based on completion value'
+      description: 'Actual LoanToValue ratio based on completion value'
     },
     {
       id: 'profitMargin',
@@ -428,14 +428,14 @@ export const ConstructionLoanCalculator: Calculator = {
       description: 'Calculate additional interest reserve needed beyond what is provided'
     },
     {
-      name: 'Loan-to-Cost Ratio',
+      name: 'LoanToCost Ratio',
       formula: 'LTC Ratio = (Loan Amount ÷ Total Project Cost) × 100',
-      description: 'Calculate actual loan-to-cost ratio'
+      description: 'Calculate actual LoanToCost ratio'
     },
     {
-      name: 'Loan-to-Value Ratio',
+      name: 'LoanToValue Ratio',
       formula: 'LTV Ratio = (Loan Amount ÷ Completion Value) × 100',
-      description: 'Calculate actual loan-to-value ratio'
+      description: 'Calculate actual LoanToValue ratio'
     },
     {
       name: 'Profit Margin',
@@ -479,8 +479,8 @@ export const ConstructionLoanCalculator: Calculator = {
         loanToValue: 75,
         completionValue: 3200000,
         exitStrategy: 'sale',
-        constructionStartDate: '2024-01-01',
-        completionDate: '2024-12-31'
+        constructionStartDate: '20240101',
+        completionDate: '20241231'
       },
       description: 'Residential development project with $2M loan, 12-month construction period'
     },
@@ -509,8 +509,8 @@ export const ConstructionLoanCalculator: Calculator = {
         loanToValue: 70,
         completionValue: 14000000,
         exitStrategy: 'refinance',
-        constructionStartDate: '2024-03-01',
-        completionDate: '2025-08-31'
+        constructionStartDate: '20240301',
+        completionDate: '20250831'
       },
       description: 'Commercial office building with $8M loan, 18-month construction period'
     },
@@ -539,8 +539,8 @@ export const ConstructionLoanCalculator: Calculator = {
         loanToValue: 65,
         completionValue: 28000000,
         exitStrategy: 'hold',
-        constructionStartDate: '2024-06-01',
-        completionDate: '2026-05-31'
+        constructionStartDate: '20240601',
+        completionDate: '20260531'
       },
       description: 'Large mixed-use development with $15M loan, 24-month construction period'
     }

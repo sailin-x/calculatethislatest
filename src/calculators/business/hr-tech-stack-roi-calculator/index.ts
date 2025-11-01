@@ -1,4 +1,4 @@
-export { HrTechStackRoiCalculatorCalculator } from './HrTechStackRoiCalculatorCalculator';
+export { HrTechStackRoiCalculator } from './HrTechStackRoiCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

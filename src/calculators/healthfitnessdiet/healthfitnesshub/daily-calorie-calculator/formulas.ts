@@ -1,4 +1,4 @@
-import { daily-calorie-calculatorInputs, daily-calorie-calculatorMetrics, daily-calorie-calculatorAnalysis } from './types';
+import { DailyCalorieCalculatorinputs, DailyCalorieCalculatormetrics, DailyCalorieCalculatoranalysis } from './types';
 
 
 // Calorie Calculator - Nutrition calculations
@@ -22,7 +22,7 @@ export function calculateWeightLossRate(calorieDeficit: number): number {
   return calorieDeficit * 7 / 3500; // pounds per week
 }
 
-export function calculateResult(inputs: daily-calorie-calculatorInputs): number {
+export function calculateResult(inputs: DailyCalorieCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -46,7 +46,7 @@ export function calculateResult(inputs: daily-calorie-calculatorInputs): number 
   }
 }
 
-export function generateAnalysis(inputs: daily-calorie-calculatorInputs, metrics: daily-calorie-calculatorMetrics): daily-calorie-calculatorAnalysis {
+export function generateAnalysis(inputs: DailyCalorieCalculatorinputs, metrics: DailyCalorieCalculatormetrics): DailyCalorieCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

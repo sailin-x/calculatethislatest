@@ -3,7 +3,7 @@ import { libel_slander_per_se_damages_estimatorInputs, libel_slander_per_se_dama
 import { calculateResult, generateAnalysis } from './formulas';
 
 export const libel_slander_per_se_damages_estimatorCalculator: Calculator = {
-  id: 'libel-slander-per-se-damages-estimator',
+  id: 'LibelSlanderPer-SeDamagesEstimator',
   title: 'Libel/Slander Per Se Damages Estimator Calculator',
   category: 'legalinsurancesettlements',
   subcategory: 'legalsettlementhub',

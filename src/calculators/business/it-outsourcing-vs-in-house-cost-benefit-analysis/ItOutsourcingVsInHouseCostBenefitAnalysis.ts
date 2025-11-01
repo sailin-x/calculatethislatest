@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateItOutsourcingVsInhouseCostbenefitAnalysisInputs, validateItOutsourcingVsInhouseCostbenefitAnalysisBusinessRules } from './validation';
 
-export const ItOutsourcingVsInhouseCostbenefitAnalysisCalculator: Calculator: Calculator = {
-  id: 'it-outsourcing-vs-in-house-cost-benefit-analysis-calculator',
+export const ItOutsourcingVsInhouseCostbenefitAnalysisCalculator: Calculator = {
+  id: 'ItOutsourcingVs-InHouseCost-BenefitAnalysisCalculator',
   title: 'IT Outsourcing vs. In-House Cost-Benefit Analysis Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

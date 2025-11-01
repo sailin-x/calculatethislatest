@@ -1,3 +1,3 @@
-import { VarianceCalculatorCalculator } from './VarianceCalculatorCalculator';
+import { VarianceCalculator } from './VarianceCalculator';
 
-export { VarianceCalculatorCalculator };
+export { VarianceCalculator };

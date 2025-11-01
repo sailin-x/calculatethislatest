@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateVacationRentalCostCalculatorInputs } from './validation';
 
 export const VacationRentalCostCalculator: Calculator = {
-  id: 'vacation-rental-cost-calculator',
+  id: 'VacationRentalCost-calculator',
   title: 'Vacation Rental Cost Calculator',
   category: 'health',
   subcategory: 'General',

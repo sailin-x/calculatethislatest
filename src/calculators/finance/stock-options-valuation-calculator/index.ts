@@ -1,5 +1,5 @@
-export { stockoptionsvaluationcalculatorCalculator } from './stockoptionsvaluationcalculatorCalculator';
-export { registerstockoptionsvaluationcalculatorCalculator } from './register';
+export { stockoptionsvaluationcalculator } from './stockoptionsvaluationcalculator';
+export { registerstockoptionsvaluationcalculator } from './register';
 export * from './types';
 export * from './formulas';
 export * from './validation';

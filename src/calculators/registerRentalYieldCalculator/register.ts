@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { registerRentalYieldCalculatorCalculator } from './registerRentalYieldCalculatorCalculator';
+import { registerRentalYieldCalculator } from './registerRentalYieldCalculator';
 
-export function registerregisterRentalYieldCalculatorCalculator(): void {
-  calculatorRegistry.register(new registerRentalYieldCalculatorCalculator());
+export function registerregisterRentalYieldCalculator(): void {
+  calculatorRegistry.register(new registerRentalYieldCalculator());
 }

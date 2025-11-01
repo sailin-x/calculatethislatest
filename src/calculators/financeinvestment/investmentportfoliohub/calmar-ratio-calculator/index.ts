@@ -1,4 +1,4 @@
-export { calmar_ratio_calculatorCalculator } from './calmar_ratio_calculator';
+export { calmar_ratio_calculator } from './calmar_ratio_calculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

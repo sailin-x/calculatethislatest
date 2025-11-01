@@ -1,8 +1,5 @@
-import { FourZeroThreeBPlanCalculator } from './FourZeroThreeBPlanCalculator';
-
-export { FourZeroThreeBPlanCalculator } from './FourZeroThreeBPlanCalculator';
-export { calculateFourZeroThreeB } from './formulas';
-export { validateFourZeroThreeBInputs } from './validation';
+export { FourOhThreeBCalculator } from './FourOhThreeBCalculator';
 export * from './types';
-
-export default FourZeroThreeBPlanCalculator;
+export * from './formulas';
+export * from './validation';
+export * from './quickValidation';

@@ -1,4 +1,4 @@
-export { DefectiveDrugSettlementCalculatorCalculator } from './DefectiveDrugSettlementCalculatorCalculator';
+export { DefectiveDrugSettlementCalculator } from './DefectiveDrugSettlementCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

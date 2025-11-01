@@ -1,3 +1,3 @@
-import { CarAccidentPainSufferingCalculatorCalculator } from './CarAccidentPainSufferingCalculatorCalculator';
+import { CarAccidentPainSufferingCalculator } from './CarAccidentPainSufferingCalculator';
 
-export { CarAccidentPainSufferingCalculatorCalculator };
+export { CarAccidentPainSufferingCalculator };

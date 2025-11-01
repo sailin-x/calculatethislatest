@@ -1,3 +1,3 @@
-import { FuelCostTripCalculatorCalculator } from './FuelCostTripCalculatorCalculator';
+import { FuelCostTripCalculator } from './FuelCostTripCalculator';
 
-export { FuelCostTripCalculatorCalculator };
+export { FuelCostTripCalculator };

@@ -1,3 +1,2 @@
-export * from './balanced_scorecard_calculatorCalculator';
-export * from './register';
+export * from './balanced_scorecard_calculator';
 export * from './types';

@@ -1,3 +1,3 @@
-import { EstateTaxLifeInsuranceCalculatorCalculator } from './EstateTaxLifeInsuranceCalculatorCalculator';
+import { EstateTaxLifeInsuranceCalculator } from './EstateTaxLifeInsuranceCalculator';
 
-export { EstateTaxLifeInsuranceCalculatorCalculator };
+export { EstateTaxLifeInsuranceCalculator };

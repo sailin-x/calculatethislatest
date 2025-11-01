@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateStockCalculatorInputs, validateStockCalculatorBusinessRules } from './validation';
 
-export const StockCalculatorCalculator: Calculator: Calculator = {
-  id: 'stock-calculator-calculator',
+export const StockCalculator: Calculator = {
+  id: 'StockCalculatorCalculator',
   title: 'Stock Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

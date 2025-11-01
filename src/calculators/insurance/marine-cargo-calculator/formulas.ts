@@ -1,4 +1,4 @@
-import { marine-cargo-calculatorInputs, marine-cargo-calculatorMetrics, marine-cargo-calculatorAnalysis } from './types';
+import { MarineCargoCalculatorinputs, MarineCargoCalculatormetrics, MarineCargoCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: marine-cargo-calculatorInputs): number {
+export function calculateResult(inputs: MarineCargoCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: marine-cargo-calculatorInputs): number {
   }
 }
 
-export function generateAnalysis(inputs: marine-cargo-calculatorInputs, metrics: marine-cargo-calculatorMetrics): marine-cargo-calculatorAnalysis {
+export function generateAnalysis(inputs: MarineCargoCalculatorinputs, metrics: MarineCargoCalculatormetrics): MarineCargoCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

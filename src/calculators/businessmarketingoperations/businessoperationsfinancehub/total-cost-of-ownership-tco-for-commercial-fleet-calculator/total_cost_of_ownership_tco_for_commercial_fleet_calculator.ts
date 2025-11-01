@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { total_cost_of_ownership_tco_for_commercial_fleet_calculatorInputs, total_cost_of_ownership_tco_for_commercial_fleet_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const total_cost_of_ownership_tco_for_commercial_fleet_calculatorCalculator: Calculator = {
-  id: 'total-cost-of-ownership-tco-for-commercial-fleet-calculator',
+export const TotalCostOf-OwnershipTcoFor-CommercialFleetCalculator: Calculator = {
+  id: 'TotalCostOf-OwnershipTcoFor-CommercialFleetCalculator',
   title: 'Total Cost of Ownership (TCO) for Commercial Fleet Calculator Calculator',
   category: 'businessmarketingoperations',
   subcategory: 'businessoperationsfinancehub',

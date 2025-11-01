@@ -1,13 +1,13 @@
-import { car-accident-pain-suffering-calculatorInputs, car-accident-pain-suffering-calculatorMetrics, car-accident-pain-suffering-calculatorAnalysis } from './types';
+import { CarAccidentPain-suffering-calculatorInputs, CarAccidentPain-suffering-calculatorMetrics, CarAccidentPain-suffering-calculatorAnalysis } from './types';
 
 // Car Accident Pain & Suffering Calculator - Lifestyle calculations
-export function calculateResult(inputs: car-accident-pain-suffering-calculatorInputs): number {
+export function calculateResult(inputs: CarAccidentPain-suffering-calculatorInputs): number {
   // Lifestyle calculation logic
   const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
   return numericValues.reduce((sum, val) => sum + val, 0) || 0;
 }
 
-export function generateAnalysis(inputs: car-accident-pain-suffering-calculatorInputs, metrics: car-accident-pain-suffering-calculatorMetrics): car-accident-pain-suffering-calculatorAnalysis {
+export function generateAnalysis(inputs: CarAccidentPain-suffering-calculatorInputs, metrics: CarAccidentPain-suffering-calculatorMetrics): CarAccidentPain-suffering-calculatorAnalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (Math.abs(result) > 1000) riskLevel = 'High';

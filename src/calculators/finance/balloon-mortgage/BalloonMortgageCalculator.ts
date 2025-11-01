@@ -271,7 +271,7 @@ export const BalloonMortgageCalculator: Calculator = {
     const breakEvenAnalysis = [
       `Property needs ${(breakEvenAppreciation * 100).toFixed(2)}% annual appreciation to break even`,
       `Expected equity at balloon: $${equityAtBalloon.toLocaleString()}`,
-      `Loan-to-value at balloon: ${((balloonPayment / futurePropertyValue) * 100).toFixed(1)}%`
+      `LoanToValue at balloon: ${((balloonPayment / futurePropertyValue) * 100).toFixed(1)}%`
     ];
 
     // Traditional comparison
@@ -448,7 +448,7 @@ function generateRiskAssessment(
     details.push('Interest rate environment appears stable for refinancing');
   }
 
-  // Loan-to-value risk
+  // LoanToValue risk
   const ltvAtBalloon = (balloonPayment / futurePropertyValue) * 100;
   if (ltvAtBalloon > 80) {
     details.push(`High LTV at balloon (${ltvAtBalloon.toFixed(1)}%) may limit refinancing options`);

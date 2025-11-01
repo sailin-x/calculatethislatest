@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { sharpe_ratio_calculatorInputs, sharpe_ratio_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const sharpe_ratio_calculatorCalculator: Calculator = {
-  id: 'sharpe-ratio-calculator',
+export const SharpeRatioCalculator: Calculator = {
+  id: 'SharpeRatioCalculator',
   title: 'Sharpe Ratio Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'investmentportfoliohub',

@@ -75,16 +75,16 @@ export function validateTermLifeInsuranceInputs(inputs: CalculatorInputs): Valid
   }
 
   if (inputs.policyType !== undefined) {
-    const validTypes = ['level-term', 'decreasing-term', 'increasing-term', 'return-of-premium'];
+    const validTypes = ['level-term', 'decreasing-term', 'increasing-term', 'ReturnOfPremium'];
     if (!validTypes.includes(inputs.policyType)) {
-      errors.push('Policy type must be one of: level-term, decreasing-term, increasing-term, return-of-premium');
+      errors.push('Policy type must be one of: level-term, decreasing-term, increasing-term, ReturnOfPremium');
     }
   }
 
   if (inputs.riders !== undefined) {
-    const validRiders = ['none', 'waiver-of-premium', 'accelerated-death-benefit', 'child-rider', 'spouse-rider', 'multiple'];
+    const validRiders = ['none', 'WaiverOfPremium', 'AcceleratedDeathBenefit', 'child-rider', 'spouse-rider', 'multiple'];
     if (!validRiders.includes(inputs.riders)) {
-      errors.push('Riders must be one of: none, waiver-of-premium, accelerated-death-benefit, child-rider, spouse-rider, multiple');
+      errors.push('Riders must be one of: none, WaiverOfPremium, AcceleratedDeathBenefit, child-rider, spouse-rider, multiple');
     }
   }
 
@@ -171,9 +171,9 @@ export function validateTermLifeInsuranceInputs(inputs: CalculatorInputs): Valid
   }
 
   if (inputs.medicalConditions !== undefined) {
-    const validConditions = ['none', 'diabetes', 'heart-disease', 'cancer', 'high-blood-pressure', 'multiple'];
+    const validConditions = ['none', 'diabetes', 'heart-disease', 'cancer', 'HighBloodPressure', 'multiple'];
     if (!validConditions.includes(inputs.medicalConditions)) {
-      errors.push('Medical conditions must be one of: none, diabetes, heart-disease, cancer, high-blood-pressure, multiple');
+      errors.push('Medical conditions must be one of: none, diabetes, heart-disease, cancer, HighBloodPressure, multiple');
     }
   }
 
@@ -232,9 +232,9 @@ export function validateTermLifeInsuranceInputs(inputs: CalculatorInputs): Valid
   }
 
   if (inputs.comparisonTerms !== undefined) {
-    const validTerms = ['10-20-30', '15-25', '20-30', 'custom'];
+    const validTerms = ['102030', '15-25', '20-30', 'custom'];
     if (!validTerms.includes(inputs.comparisonTerms)) {
-      errors.push('Comparison terms must be one of: 10-20-30, 15-25, 20-30, custom');
+      errors.push('Comparison terms must be one of: 102030, 15-25, 20-30, custom');
     }
   }
 
@@ -274,7 +274,7 @@ export function validateTermLifeInsuranceInputs(inputs: CalculatorInputs): Valid
     warnings.push('Multiple riders will increase premium costs');
   }
 
-  if (inputs.policyType === 'return-of-premium') {
+  if (inputs.policyType === 'ReturnOfPremium') {
     warnings.push('Return of premium policies have significantly higher premiums');
   }
 

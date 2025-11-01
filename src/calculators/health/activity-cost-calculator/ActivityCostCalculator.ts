@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateActivityCostCalculatorInputs } from './validation';
 
 export const ActivityCostCalculator: Calculator = {
-  id: 'activity-cost-calculator',
+  id: 'ActivityCostCalculator',
   title: 'Activity Cost Calculator',
   category: 'health',
   subcategory: 'General',

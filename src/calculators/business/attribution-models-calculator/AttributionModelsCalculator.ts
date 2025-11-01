@@ -10,7 +10,7 @@ import {
 import { validateAttributionModelsCalculatorInputs } from './validation';
 
 export const AttributionModelsCalculator: Calculator = {
-  id: 'attribution-models-calculator',
+  id: 'AttributionModelsCalculator',
   title: 'Attribution Models Calculator',
   category: 'business',
   subcategory: 'Financial Planning',

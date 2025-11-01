@@ -1,3 +1,3 @@
-import { OilWellProfitabilityCalculatorCalculator } from './OilWellProfitabilityCalculatorCalculator';
+import { OilWellProfitabilityCalculator } from './OilWellProfitabilityCalculator';
 
-export { OilWellProfitabilityCalculatorCalculator };
+export { OilWellProfitabilityCalculator };

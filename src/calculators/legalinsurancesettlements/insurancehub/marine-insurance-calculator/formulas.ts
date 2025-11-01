@@ -1,4 +1,4 @@
-import { marine-insurance-calculatorInputs, marine-insurance-calculatorMetrics, marine-insurance-calculatorAnalysis } from './types';
+import { MarineInsuranceCalculatorinputs, MarineInsuranceCalculatormetrics, MarineInsuranceCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: marine-insurance-calculatorInputs): number {
+export function calculateResult(inputs: MarineInsuranceCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: marine-insurance-calculatorInputs): numb
   }
 }
 
-export function generateAnalysis(inputs: marine-insurance-calculatorInputs, metrics: marine-insurance-calculatorMetrics): marine-insurance-calculatorAnalysis {
+export function generateAnalysis(inputs: MarineInsuranceCalculatorinputs, metrics: MarineInsuranceCalculatormetrics): MarineInsuranceCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

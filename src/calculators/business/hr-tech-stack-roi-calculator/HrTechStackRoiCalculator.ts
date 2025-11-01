@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateHrTechStackRoiCalculatorInputs, validateHrTechStackRoiCalculatorBusinessRules } from './validation';
 
-export const HrTechStackRoiCalculatorCalculator: Calculator: Calculator = {
-  id: 'hr-tech-stack-roi-calculator-calculator',
+export const HrTechStackRoiCalculator: Calculator = {
+  id: 'HrTechStack-RoiCalculatorCalculator',
   title: 'HR Tech Stack ROI Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

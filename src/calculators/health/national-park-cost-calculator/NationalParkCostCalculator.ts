@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateNationalParkCostCalculatorInputs } from './validation';
 
 export const NationalParkCostCalculator: Calculator = {
-  id: 'national-park-cost-calculator',
+  id: 'NationalParkCost-calculator',
   title: 'National Park Cost Calculator',
   category: 'health',
   subcategory: 'General',

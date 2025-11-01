@@ -1,3 +1,3 @@
-import { MarineCargoInsurancePremiumCalculatorCalculator } from './MarineCargoInsurancePremiumCalculatorCalculator';
+import { MarineCargoInsurancePremiumCalculator } from './MarineCargoInsurancePremiumCalculator';
 
-export { MarineCargoInsurancePremiumCalculatorCalculator };
+export { MarineCargoInsurancePremiumCalculator };

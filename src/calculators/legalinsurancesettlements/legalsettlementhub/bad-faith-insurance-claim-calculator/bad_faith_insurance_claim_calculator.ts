@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { bad_faith_insurance_claim_calculatorInputs, bad_faith_insurance_claim_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const bad_faith_insurance_claim_calculatorCalculator: Calculator = {
-  id: 'bad-faith-insurance-claim-calculator',
+export const BadFaithInsurance-claim-calculator: Calculator = {
+  id: 'BadFaithInsurance-claim-calculator',
   title: 'Bad Faith Insurance Claim Calculator Calculator',
   category: 'legalinsurancesettlements',
   subcategory: 'legalsettlementhub',

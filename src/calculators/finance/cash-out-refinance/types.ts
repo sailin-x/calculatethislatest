@@ -18,7 +18,7 @@ export interface CashOutRefinanceInputs {
   privateMortgageInsurance: number;
   escrowAccount: boolean;
   escrowAmount: number;
-  refinanceType: 'rate-and-term' | 'cash-out' | 'streamline';
+  refinanceType: 'RateAndTerm' | 'cash-out' | 'streamline';
   creditScore: number;
   debtToIncomeRatio: number;
   loanToValueRatio: number;

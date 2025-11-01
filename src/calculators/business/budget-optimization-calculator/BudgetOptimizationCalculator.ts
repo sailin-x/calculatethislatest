@@ -10,7 +10,7 @@ import {
 import { validateBudgetOptimizationCalculatorInputs } from './validation';
 
 export const BudgetOptimizationCalculator: Calculator = {
-  id: 'budget-optimization-calculator',
+  id: 'BudgetOptimizationCalculator',
   title: 'Budget Optimization Calculator',
   category: 'business',
   subcategory: 'Financial Planning',

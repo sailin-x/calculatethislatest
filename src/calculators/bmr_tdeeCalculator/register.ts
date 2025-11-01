@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { bmr_tdeeCalculatorCalculator } from './bmr_tdeeCalculatorCalculator';
+import { bmr_tdeeCalculator } from './bmr_tdeeCalculator';
 
-export function registerbmr_tdeeCalculatorCalculator(): void {
-  calculatorRegistry.register(new bmr_tdeeCalculatorCalculator());
+export function registerbmr_tdeeCalculator(): void {
+  calculatorRegistry.register(new bmr_tdeeCalculator());
 }

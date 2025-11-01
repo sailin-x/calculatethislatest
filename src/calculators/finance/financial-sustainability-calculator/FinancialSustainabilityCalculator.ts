@@ -10,7 +10,7 @@ import {
 import { validateFinancialSustainabilityCalculatorInputs } from './validation';
 
 export const FinancialSustainabilityCalculator: Calculator = {
-  id: 'financial-sustainability-calculator',
+  id: 'FinancialSustainabilityCalculator',
   title: 'Financial Sustainability Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

@@ -3,7 +3,7 @@ import { it_outsourcing_vs_in_house_cost_benefit_analysisInputs, it_outsourcing_
 import { calculateResult, generateAnalysis } from './formulas';
 
 export const it_outsourcing_vs_in_house_cost_benefit_analysisCalculator: Calculator = {
-  id: 'it-outsourcing-vs-in-house-cost-benefit-analysis',
+  id: 'ItOutsourcingVs-InHouseCost-benefit-analysis',
   title: 'IT Outsourcing vs. In House Cost Benefit Analysis Calculator',
   category: 'finance',
   subcategory: 'general',

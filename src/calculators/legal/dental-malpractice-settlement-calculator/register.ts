@@ -1,3 +1,3 @@
-import { DentalMalpracticeSettlementCalculatorCalculator } from './DentalMalpracticeSettlementCalculatorCalculator';
+import { DentalMalpracticeSettlementCalculator } from './DentalMalpracticeSettlementCalculator';
 
-export { DentalMalpracticeSettlementCalculatorCalculator };
+export { DentalMalpracticeSettlementCalculator };

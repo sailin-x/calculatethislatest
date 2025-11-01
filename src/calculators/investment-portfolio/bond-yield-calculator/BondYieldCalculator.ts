@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateBondYieldCalculatorInputs, validateBondYieldCalculatorBusinessRules } from './validation';
 
-export const BondYieldCalculatorCalculator: Calculator: Calculator = {
-  id: 'bond-yield-calculator-calculator',
+export const BondYieldCalculator: Calculator = {
+  id: 'BondYieldCalculator-calculator',
   title: 'Bond Yield Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

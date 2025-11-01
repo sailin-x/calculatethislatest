@@ -1,4 +1,4 @@
-import { commercial-real-estate-cash-flowInputs, commercial-real-estate-cash-flowMetrics, commercial-real-estate-cash-flowAnalysis } from './types';
+import { CommercialRealEstate-cash-flowInputs, CommercialRealEstate-cash-flowMetrics, CommercialRealEstate-cash-flowAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: commercial-real-estate-cash-flowInputs): number {
+export function calculateResult(inputs: CommercialRealEstate-cash-flowInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: commercial-real-estate-cash-flowInputs):
   }
 }
 
-export function generateAnalysis(inputs: commercial-real-estate-cash-flowInputs, metrics: commercial-real-estate-cash-flowMetrics): commercial-real-estate-cash-flowAnalysis {
+export function generateAnalysis(inputs: CommercialRealEstate-cash-flowInputs, metrics: CommercialRealEstate-cash-flowMetrics): CommercialRealEstate-cash-flowAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

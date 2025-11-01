@@ -1,13 +1,13 @@
-import { generation-skipping-transfer-gst-tax-calculatorInputs, generation-skipping-transfer-gst-tax-calculatorMetrics, generation-skipping-transfer-gst-tax-calculatorAnalysis } from './types';
+import { GenerationSkippingTransfer-GstTaxCalculatorinputs, GenerationSkippingTransfer-GstTaxCalculatormetrics, GenerationSkippingTransfer-GstTaxCalculatoranalysis } from './types';
 
 // Generation-Skipping Transfer (GST) Tax Calculator - Finance calculations
-export function calculateResult(inputs: generation-skipping-transfer-gst-tax-calculatorInputs): number {
+export function calculateResult(inputs: GenerationSkippingTransfer-GstTaxCalculatorinputs): number {
   // Financial calculation logic
   const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
   return numericValues.reduce((sum, val) => sum + val, 0) || 0;
 }
 
-export function generateAnalysis(inputs: generation-skipping-transfer-gst-tax-calculatorInputs, metrics: generation-skipping-transfer-gst-tax-calculatorMetrics): generation-skipping-transfer-gst-tax-calculatorAnalysis {
+export function generateAnalysis(inputs: GenerationSkippingTransfer-GstTaxCalculatorinputs, metrics: GenerationSkippingTransfer-GstTaxCalculatormetrics): GenerationSkippingTransfer-GstTaxCalculatoranalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (Math.abs(result) > 100000) riskLevel = 'High';

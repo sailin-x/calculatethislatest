@@ -1,4 +1,4 @@
-export { guideline_premium_test_gpt_calculatorCalculator } from './guideline_premium_test_gpt_calculator';
+export { guideline_premium_test_gpt_calculator } from './guideline_premium_test_gpt_calculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

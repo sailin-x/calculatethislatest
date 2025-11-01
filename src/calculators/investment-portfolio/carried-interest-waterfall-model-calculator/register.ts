@@ -1,3 +1,3 @@
-import { CarriedInterestWaterfallModelCalculatorCalculator } from './CarriedInterestWaterfallModelCalculatorCalculator';
+import { CarriedInterestWaterfallModelCalculator } from './CarriedInterestWaterfallModelCalculator';
 
-export { CarriedInterestWaterfallModelCalculatorCalculator };
+export { CarriedInterestWaterfallModelCalculator };

@@ -42,7 +42,7 @@ describe('DefinedContributionPlanCalculator', () => {
 
   describe('Calculator Structure', () => {
     it('should have correct calculator properties', () => {
-      expect(DefinedContributionPlanCalculator.id).toBe('defined-contribution-plan-calculator');
+      expect(DefinedContributionPlanCalculator.id).toBe('DefinedContributionPlan-calculator');
       expect(DefinedContributionPlanCalculator.title).toBe('Defined Contribution Plan Calculator');
       expect(DefinedContributionPlanCalculator.category).toBe('finance');
       expect(DefinedContributionPlanCalculator.subcategory).toBe('Retirement');

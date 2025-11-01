@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateApplianceRepairCostCalculatorInputs } from './validation';
 
 export const ApplianceRepairCostCalculator: Calculator = {
-  id: 'appliance-repair-cost-calculator',
+  id: 'ApplianceRepairCost-calculator',
   title: 'Appliance Repair Cost Calculator',
   category: 'health',
   subcategory: 'General',

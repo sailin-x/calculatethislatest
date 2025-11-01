@@ -1,4 +1,4 @@
-import { hit-and-run-settlement-calculatorInputs, hit-and-run-settlement-calculatorMetrics, hit-and-run-settlement-calculatorAnalysis } from './types';
+import { HitAndRun-settlement-calculatorInputs, HitAndRun-settlement-calculatorMetrics, HitAndRun-settlement-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: hit-and-run-settlement-calculatorInputs): number {
+export function calculateResult(inputs: HitAndRun-settlement-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: hit-and-run-settlement-calculatorInputs)
   }
 }
 
-export function generateAnalysis(inputs: hit-and-run-settlement-calculatorInputs, metrics: hit-and-run-settlement-calculatorMetrics): hit-and-run-settlement-calculatorAnalysis {
+export function generateAnalysis(inputs: HitAndRun-settlement-calculatorInputs, metrics: HitAndRun-settlement-calculatorMetrics): HitAndRun-settlement-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

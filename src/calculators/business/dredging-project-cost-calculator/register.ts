@@ -1,3 +1,3 @@
-import { DredgingProjectCostCalculatorCalculator } from './DredgingProjectCostCalculatorCalculator';
+import { DredgingProjectCostCalculator } from './DredgingProjectCostCalculator';
 
-export { DredgingProjectCostCalculatorCalculator };
+export { DredgingProjectCostCalculator };

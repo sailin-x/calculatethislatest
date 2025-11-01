@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateCropYieldProfitabilityCalculatorInputs, validateCropYieldProfitabilityCalculatorBusinessRules } from './validation';
 
-export const CropYieldProfitabilityCalculatorCalculator: Calculator: Calculator = {
-  id: 'crop-yield-profitability-calculator-calculator',
+export const CropYieldProfitabilityCalculator: Calculator = {
+  id: 'CropYieldProfitability-calculator-calculator',
   title: 'Crop Yield Profitability Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

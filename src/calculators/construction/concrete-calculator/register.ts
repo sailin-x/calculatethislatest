@@ -1,3 +1,3 @@
-import { ConcreteCalculatorCalculator } from './ConcreteCalculatorCalculator';
+import { ConcreteCalculator } from './ConcreteCalculator';
 
-export { ConcreteCalculatorCalculator };
+export { ConcreteCalculator };

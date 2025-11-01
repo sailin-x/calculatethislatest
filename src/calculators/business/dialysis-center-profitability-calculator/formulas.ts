@@ -1,4 +1,4 @@
-import { dialysis-center-profitability-calculatorInputs, dialysis-center-profitability-calculatorMetrics, dialysis-center-profitability-calculatorAnalysis } from './types';
+import { DialysisCenterProfitability-calculatorInputs, DialysisCenterProfitability-calculatorMetrics, DialysisCenterProfitability-calculatorAnalysis } from './types';
 
 // Dialysis Center Profitability Calculator - Business calculations
 export function calculateNetPresentValue(cashFlows: number[], discountRate: number): number {
@@ -11,7 +11,7 @@ export function calculateROI(initialInvestment: number, finalValue: number): num
  return ((finalValue - initialInvestment) / initialInvestment) * 100;
 }
 
-export function calculateResult(inputs: dialysis-center-profitability-calculatorInputs): number {
+export function calculateResult(inputs: DialysisCenterProfitability-calculatorInputs): number {
  // Business calculation logic with real math
  const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
  if (numericValues.length >= 2) {
@@ -24,7 +24,7 @@ export function calculateResult(inputs: dialysis-center-profitability-calculator
  return calculateNetPresentValue(numericValues, 10); // 10% discount rate
 }
 
-export function generateAnalysis(inputs: dialysis-center-profitability-calculatorInputs, metrics: dialysis-center-profitability-calculatorMetrics): dialysis-center-profitability-calculatorAnalysis {
+export function generateAnalysis(inputs: DialysisCenterProfitability-calculatorInputs, metrics: DialysisCenterProfitability-calculatorMetrics): DialysisCenterProfitability-calculatorAnalysis {
  const result = metrics.result;
  let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
  if (Math.abs(result) > 100000) riskLevel = 'High';

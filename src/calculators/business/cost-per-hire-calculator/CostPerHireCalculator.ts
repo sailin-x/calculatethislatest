@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateCostPerHireCalculatorInputs, validateCostPerHireCalculatorBusinessRules } from './validation';
 
-export const CostPerHireCalculatorCalculator: Calculator: Calculator = {
-  id: 'cost-per-hire-calculator-calculator',
+export const CostPerHireCalculator: Calculator = {
+  id: 'CostPerHire-calculator-calculator',
   title: 'Cost Per Hire Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

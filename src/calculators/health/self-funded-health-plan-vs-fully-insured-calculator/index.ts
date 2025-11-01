@@ -1,4 +1,4 @@
-export { SelffundedHealthPlanVsFullyinsuredCalculatorCalculator } from './SelffundedHealthPlanVsFullyinsuredCalculatorCalculator';
+export { SelffundedHealthPlanVsFullyinsuredCalculator } from './SelffundedHealthPlanVsFullyinsuredCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

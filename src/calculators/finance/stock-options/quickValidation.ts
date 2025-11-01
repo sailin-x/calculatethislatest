@@ -110,15 +110,15 @@ export function quickValidateVolatility(value: any, allInputs?: Record<string, a
     
     // ATM options should have moderate volatility
     if (Math.abs(moneyness) < 0.1 && (numValue < 10 || numValue > 100)) {
-      return { isValid: false, message: 'At-the-money options should have moderate volatility (10-100%)' };
+      return { isValid: false, message: 'AtTheMoney options should have moderate volatility (10-100%)' };
     }
     
     // OTM options can have higher volatility
     if (optionType === 'call' && moneyness < -0.2 && numValue < 20) {
-      return { isValid: false, message: 'Out-of-the-money calls typically have higher volatility' };
+      return { isValid: false, message: 'OutOfThe-money calls typically have higher volatility' };
     }
     if (optionType === 'put' && moneyness > 0.2 && numValue < 20) {
-      return { isValid: false, message: 'Out-of-the-money puts typically have higher volatility' };
+      return { isValid: false, message: 'OutOfThe-money puts typically have higher volatility' };
     }
   }
   

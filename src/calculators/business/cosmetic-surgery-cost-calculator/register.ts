@@ -1,3 +1,3 @@
-import { CosmeticSurgeryCostCalculatorCalculator } from './CosmeticSurgeryCostCalculatorCalculator';
+import { CosmeticSurgeryCostCalculator } from './CosmeticSurgeryCostCalculator';
 
-export { CosmeticSurgeryCostCalculatorCalculator };
+export { CosmeticSurgeryCostCalculator };

@@ -1,4 +1,4 @@
-import { mortgage-apr-calculatorInputs, mortgage-apr-calculatorMetrics, mortgage-apr-calculatorAnalysis } from './types';
+import { MortgageAprCalculatorinputs, MortgageAprCalculatormetrics, MortgageAprCalculatoranalysis } from './types';
 
 
 // Mortgage Payment Calculator - Standard loan amortization formula
@@ -14,7 +14,7 @@ export function calculateTotalInterest(principal: number, monthlyPayment: number
   return (monthlyPayment * numPayments) - principal;
 }
 
-export function calculateResult(inputs: mortgage-apr-calculatorInputs): number {
+export function calculateResult(inputs: MortgageAprCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: mortgage-apr-calculatorInputs): number {
   }
 }
 
-export function generateAnalysis(inputs: mortgage-apr-calculatorInputs, metrics: mortgage-apr-calculatorMetrics): mortgage-apr-calculatorAnalysis {
+export function generateAnalysis(inputs: MortgageAprCalculatorinputs, metrics: MortgageAprCalculatormetrics): MortgageAprCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

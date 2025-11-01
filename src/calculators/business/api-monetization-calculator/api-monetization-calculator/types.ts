@@ -1,4 +1,4 @@
-export interface api-monetization-calculatorInputs {
+export interface ApiMonetizationCalculatorinputs {
   // Calculator-specific input fields
   value?: number;
   rate?: number;
@@ -7,17 +7,17 @@ export interface api-monetization-calculatorInputs {
   // Add more fields as needed for this calculator
 }
 
-export interface api-monetization-calculatorResults {
+export interface ApiMonetizationCalculatorresults {
   result: number;
   analysis?: string;
 }
 
-export interface api-monetization-calculatorMetrics {
+export interface ApiMonetizationCalculatormetrics {
   result: number;
   // Add more metrics as needed
 }
 
-export interface api-monetization-calculatorAnalysis {
+export interface ApiMonetizationCalculatoranalysis {
   recommendation: string;
   riskLevel: 'Low' | 'Medium' | 'High';
 }

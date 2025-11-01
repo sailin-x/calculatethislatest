@@ -10,7 +10,7 @@ import {
 import { validateViaticalSettlementValueCalculatorInputs } from './validation';
 
 export const ViaticalSettlementValueCalculator: Calculator = {
-  id: 'viatical-settlement-value-calculator',
+  id: 'ViaticalSettlementValue-calculator',
   title: 'Viatical Settlement Value Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

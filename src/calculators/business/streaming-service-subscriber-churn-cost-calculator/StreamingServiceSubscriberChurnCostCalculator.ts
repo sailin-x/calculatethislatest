@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateStreamingServiceSubscriberChurnCostCalculatorInputs, validateStreamingServiceSubscriberChurnCostCalculatorBusinessRules } from './validation';
 
-export const StreamingServiceSubscriberChurnCostCalculatorCalculator: Calculator: Calculator = {
-  id: 'streaming-service-subscriber-churn-cost-calculator-calculator',
+export const StreamingServiceSubscriberChurnCostCalculator: Calculator = {
+  id: 'StreamingServiceSubscriber-ChurnCostCalculator-calculator',
   title: 'Streaming Service Subscriber Churn Cost Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

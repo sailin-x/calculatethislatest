@@ -1,4 +1,4 @@
-import { term-vs-whole-life-calculatorInputs, term-vs-whole-life-calculatorMetrics, term-vs-whole-life-calculatorAnalysis } from './types';
+import { TermVsWhole-life-calculatorInputs, TermVsWhole-life-calculatorMetrics, TermVsWhole-life-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: term-vs-whole-life-calculatorInputs): number {
+export function calculateResult(inputs: TermVsWhole-life-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: term-vs-whole-life-calculatorInputs): nu
   }
 }
 
-export function generateAnalysis(inputs: term-vs-whole-life-calculatorInputs, metrics: term-vs-whole-life-calculatorMetrics): term-vs-whole-life-calculatorAnalysis {
+export function generateAnalysis(inputs: TermVsWhole-life-calculatorInputs, metrics: TermVsWhole-life-calculatorMetrics): TermVsWhole-life-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

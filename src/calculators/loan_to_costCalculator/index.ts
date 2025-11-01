@@ -1,3 +1,3 @@
-export * from './loan_to_costCalculatorCalculator';
+export * from './loan_to_costCalculator';
 export * from './register';
 export * from './types';

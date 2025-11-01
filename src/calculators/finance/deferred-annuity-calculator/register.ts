@@ -1,3 +1,3 @@
-import { DeferredAnnuityCalculatorCalculator } from './DeferredAnnuityCalculatorCalculator';
+import { DeferredAnnuityCalculator } from './DeferredAnnuityCalculator';
 
-export { DeferredAnnuityCalculatorCalculator };
+export { DeferredAnnuityCalculator };

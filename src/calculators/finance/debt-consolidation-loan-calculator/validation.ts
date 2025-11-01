@@ -1,11 +1,11 @@
 import { ValidationResult } from '../../lib/errors';
-import { debtconsolidationloancalculatorCalculatorInputs } from './types';
+import { debtconsolidationloancalculatorInputs } from './types';
 
 /**
  * Validate debt consolidation loan calculator calculator inputs
  */
-export function validatedebtconsolidationloancalculatorCalculatorInputs(
-  inputs: debtconsolidationloancalculatorCalculatorInputs
+export function validatedebtconsolidationloancalculatorInputs(
+  inputs: debtconsolidationloancalculatorInputs
 ): ValidationResult {
   const errors: string[] = [];
 

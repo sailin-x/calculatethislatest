@@ -1,4 +1,4 @@
-import { marine-cargo-insurance-calculatorInputs, marine-cargo-insurance-calculatorMetrics, marine-cargo-insurance-calculatorAnalysis } from './types';
+import { MarineCargoInsurance-calculatorInputs, MarineCargoInsurance-calculatorMetrics, MarineCargoInsurance-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: marine-cargo-insurance-calculatorInputs): number {
+export function calculateResult(inputs: MarineCargoInsurance-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: marine-cargo-insurance-calculatorInputs)
   }
 }
 
-export function generateAnalysis(inputs: marine-cargo-insurance-calculatorInputs, metrics: marine-cargo-insurance-calculatorMetrics): marine-cargo-insurance-calculatorAnalysis {
+export function generateAnalysis(inputs: MarineCargoInsurance-calculatorInputs, metrics: MarineCargoInsurance-calculatorMetrics): MarineCargoInsurance-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

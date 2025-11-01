@@ -1,4 +1,4 @@
-import { qui-tam-whistleblower-reward-calculatorInputs, qui-tam-whistleblower-reward-calculatorMetrics, qui-tam-whistleblower-reward-calculatorAnalysis } from './types';
+import { QuiTamWhistleblower-reward-calculatorInputs, QuiTamWhistleblower-reward-calculatorMetrics, QuiTamWhistleblower-reward-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: qui-tam-whistleblower-reward-calculatorInputs): number {
+export function calculateResult(inputs: QuiTamWhistleblower-reward-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: qui-tam-whistleblower-reward-calculatorI
   }
 }
 
-export function generateAnalysis(inputs: qui-tam-whistleblower-reward-calculatorInputs, metrics: qui-tam-whistleblower-reward-calculatorMetrics): qui-tam-whistleblower-reward-calculatorAnalysis {
+export function generateAnalysis(inputs: QuiTamWhistleblower-reward-calculatorInputs, metrics: QuiTamWhistleblower-reward-calculatorMetrics): QuiTamWhistleblower-reward-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

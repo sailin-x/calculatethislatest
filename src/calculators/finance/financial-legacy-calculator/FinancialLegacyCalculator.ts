@@ -10,7 +10,7 @@ import {
 import { validateFinancialLegacyCalculatorInputs } from './validation';
 
 export const FinancialLegacyCalculator: Calculator = {
-  id: 'financial-legacy-calculator',
+  id: 'FinancialLegacyCalculator',
   title: 'Financial Legacy Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

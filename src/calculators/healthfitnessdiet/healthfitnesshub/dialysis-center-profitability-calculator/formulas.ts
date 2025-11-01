@@ -1,4 +1,4 @@
-import { dialysis-center-profitability-calculatorInputs, dialysis-center-profitability-calculatorMetrics, dialysis-center-profitability-calculatorAnalysis } from './types';
+import { DialysisCenterProfitability-calculatorInputs, DialysisCenterProfitability-calculatorMetrics, DialysisCenterProfitability-calculatorAnalysis } from './types';
 
 
 // Business Calculator - Financial metrics
@@ -14,7 +14,7 @@ export function calculatePaybackPeriod(initialInvestment: number, annualCashFlow
   return initialInvestment / annualCashFlow;
 }
 
-export function calculateResult(inputs: dialysis-center-profitability-calculatorInputs): number {
+export function calculateResult(inputs: DialysisCenterProfitability-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: dialysis-center-profitability-calculator
   }
 }
 
-export function generateAnalysis(inputs: dialysis-center-profitability-calculatorInputs, metrics: dialysis-center-profitability-calculatorMetrics): dialysis-center-profitability-calculatorAnalysis {
+export function generateAnalysis(inputs: DialysisCenterProfitability-calculatorInputs, metrics: DialysisCenterProfitability-calculatorMetrics): DialysisCenterProfitability-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

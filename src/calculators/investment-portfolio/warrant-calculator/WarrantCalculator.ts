@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateWarrantCalculatorInputs, validateWarrantCalculatorBusinessRules } from './validation';
 
-export const WarrantCalculatorCalculator: Calculator: Calculator = {
-  id: 'warrant-calculator-calculator',
+export const WarrantCalculator: Calculator = {
+  id: 'WarrantCalculatorCalculator',
   title: 'Warrant Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

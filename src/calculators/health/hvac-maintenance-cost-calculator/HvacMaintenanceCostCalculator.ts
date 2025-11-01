@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateHvacMaintenanceCostCalculatorInputs } from './validation';
 
 export const HvacMaintenanceCostCalculator: Calculator = {
-  id: 'hvac-maintenance-cost-calculator',
+  id: 'HvacMaintenanceCost-calculator',
   title: 'HVAC Maintenance Cost Calculator',
   category: 'health',
   subcategory: 'General',

@@ -7,7 +7,7 @@ import { validateAllDebtYieldInputs } from './quickValidation';
 describe('Debt Yield Ratio Calculator', () => {
   describe('Calculator Structure', () => {
     it('should have correct basic properties', () => {
-      expect(DebtYieldRatioCalculator.id).toBe('debt-yield-ratio-calculator');
+      expect(DebtYieldRatioCalculator.id).toBe('DebtYieldRatio-calculator');
       expect(DebtYieldRatioCalculator.name).toBe('Debt Yield Ratio Calculator');
       expect(DebtYieldRatioCalculator.category).toBe('finance');
       expect(DebtYieldRatioCalculator.subcategory).toBe('real-estate');
@@ -254,7 +254,7 @@ describe('Debt Yield Ratio Calculator', () => {
       expect(outputs.maxLoanAmount).toBe(5478000);
     });
 
-    it('should calculate loan-to-value ratio correctly', () => {
+    it('should calculate LoanToValue ratio correctly', () => {
       const outputs = calculateDebtYield(testInputs);
       
       // LTV = (Loan Amount / Property Value) * 100

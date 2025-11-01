@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { variable_annuity_calculatorInputs, variable_annuity_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const variable_annuity_calculatorCalculator: Calculator = {
-  id: 'variable-annuity-calculator',
+export const VariableAnnuityCalculator: Calculator = {
+  id: 'VariableAnnuityCalculator',
   title: 'Variable Annuity Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'retirementsavingshub',

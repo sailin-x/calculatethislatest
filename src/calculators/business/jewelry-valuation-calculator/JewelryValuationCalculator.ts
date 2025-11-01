@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateJewelryValuationCalculatorInputs, validateJewelryValuationCalculatorBusinessRules } from './validation';
 
-export const JewelryValuationCalculatorCalculator: Calculator: Calculator = {
-  id: 'jewelry-valuation-calculator-calculator',
+export const JewelryValuationCalculator: Calculator = {
+  id: 'JewelryValuationCalculator-calculator',
   title: 'Jewelry Valuation Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateNursingHomeAbuseSettlementCalculatorInputs, validateNursingHomeAbuseSettlementCalculatorBusinessRules } from './validation';
 
-export const NursingHomeAbuseSettlementCalculatorCalculator: Calculator: Calculator = {
-  id: 'nursing-home-abuse-settlement-calculator-calculator',
+export const NursingHomeAbuseSettlementCalculator: Calculator = {
+  id: 'NursingHomeAbuse-SettlementCalculatorCalculator',
   title: 'Nursing Home Abuse Settlement Calculator Calculator',
   legal: 'legal', // e.g., 'finance', 'math', 'health', 'business'
   sublegal: 'Sublegal Name',

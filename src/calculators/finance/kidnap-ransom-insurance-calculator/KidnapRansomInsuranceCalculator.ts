@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateKidnapRansomInsuranceCalculatorInputs, validateKidnapRansomInsuranceCalculatorBusinessRules } from './validation';
 
-export const KidnapRansomInsuranceCalculatorCalculator: Calculator: Calculator = {
-  id: 'kidnap-ransom-insurance-calculator-calculator',
+export const KidnapRansomInsuranceCalculator: Calculator = {
+  id: 'KidnapRansomInsurance-calculator-calculator',
   title: 'Kidnap & Ransom Insurance Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

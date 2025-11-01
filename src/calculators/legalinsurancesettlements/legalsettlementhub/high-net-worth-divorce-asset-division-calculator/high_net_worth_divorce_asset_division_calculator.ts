@@ -2,14 +2,14 @@ import { Calculator } from '../../../../types/calculator';
 import { high_net_worth_divorce_asset_division_calculatorInputs, high_net_worth_divorce_asset_division_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const high_net_worth_divorce_asset_division_calculatorCalculator: Calculator = {
-  id: 'high-net-worth-divorce-asset-division-calculator',
+export const HighNetWorth-DivorceAssetDivision-calculator: Calculator = {
+  id: 'HighNetWorth-DivorceAssetDivision-calculator',
   title: 'High Net Worth Divorce Asset Division Calculator Calculator',
   category: 'legalinsurancesettlements',
   subcategory: 'legalsettlementhub',
-  description: 'Calculate High-Net-Worth Divorce Asset Division Calculator metrics with professional accuracy.',
+  description: 'Calculate HighNetWorth Divorce Asset Division Calculator metrics with professional accuracy.',
   usageInstructions: [
-    'Enter your High-Net-Worth Divorce Asset Division Calculator parameters',
+    'Enter your HighNetWorth Divorce Asset Division Calculator parameters',
     'Review calculation results',
     'Consider professional consultation for large amounts'
   ],
@@ -61,7 +61,7 @@ export const high_net_worth_divorce_asset_division_calculatorCalculator: Calcula
   examples: [
     {
       title: 'Standard Calculation',
-      description: 'Basic High-Net-Worth Divorce Asset Division Calculator calculation',
+      description: 'Basic HighNetWorth Divorce Asset Division Calculator calculation',
       inputs: { amount: 10000, rate: 5, time: 1 },
       expectedOutputs: { result: 500 }
     }

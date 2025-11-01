@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateConvertibleBondPricingCalculatorInputs, validateConvertibleBondPricingCalculatorBusinessRules } from './validation';
 
-export const ConvertibleBondPricingCalculatorCalculator: Calculator: Calculator = {
-  id: 'convertible-bond-pricing-calculator-calculator',
+export const ConvertibleBondPricingCalculator: Calculator = {
+  id: 'ConvertibleBondPricing-calculator-calculator',
   title: 'Convertible Bond Pricing Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateQuickRatioCalculatorInputs, validateQuickRatioCalculatorBusinessRules } from './validation';
 
-export const QuickRatioCalculatorCalculator: Calculator: Calculator = {
-  id: 'quick-ratio-calculator-calculator',
+export const QuickRatioCalculator: Calculator = {
+  id: 'QuickRatioCalculator-calculator',
   title: 'Quick Ratio Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

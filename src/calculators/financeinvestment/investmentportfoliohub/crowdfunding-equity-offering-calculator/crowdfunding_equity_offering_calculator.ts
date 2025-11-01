@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { crowdfunding_equity_offering_calculatorInputs, crowdfunding_equity_offering_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const crowdfunding_equity_offering_calculatorCalculator: Calculator = {
-  id: 'crowdfunding-equity-offering-calculator',
+export const CrowdfundingEquityOffering-calculator: Calculator = {
+  id: 'CrowdfundingEquityOffering-calculator',
   title: 'Crowdfunding Equity Offering Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'investmentportfoliohub',

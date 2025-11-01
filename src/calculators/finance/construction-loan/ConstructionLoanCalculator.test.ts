@@ -7,7 +7,7 @@ import { validateAllConstructionLoanInputs } from './quickValidation';
 describe('Construction Loan Calculator', () => {
   describe('Calculator Structure', () => {
     it('should have correct basic properties', () => {
-      expect(ConstructionLoanCalculator.id).toBe('construction-loan-calculator');
+      expect(ConstructionLoanCalculator.id).toBe('ConstructionLoanCalculator');
       expect(ConstructionLoanCalculator.name).toBe('Construction Loan Calculator');
       expect(ConstructionLoanCalculator.category).toBe('finance');
       expect(ConstructionLoanCalculator.subcategory).toBe('real-estate');
@@ -95,8 +95,8 @@ describe('Construction Loan Calculator', () => {
       loanToValue: 75,
       completionValue: 3200000,
       exitStrategy: 'sale',
-      constructionStartDate: '2024-01-01',
-      completionDate: '2024-12-31'
+      constructionStartDate: '20240101',
+      completionDate: '20241231'
     };
 
     it('should validate correct inputs', () => {
@@ -164,7 +164,7 @@ describe('Construction Loan Calculator', () => {
     });
 
     it('should reject invalid dates', () => {
-      const invalidInputs = { ...validInputs, completionDate: '2023-12-31' };
+      const invalidInputs = { ...validInputs, completionDate: '20231231' };
       const result = validateConstructionLoanInputs(invalidInputs);
       expect(result.isValid).toBe(false);
       expect(result.errors).toContain('Completion date must be after construction start date');
@@ -209,8 +209,8 @@ describe('Construction Loan Calculator', () => {
       loanToValue: 75,
       completionValue: 3200000,
       exitStrategy: 'sale',
-      constructionStartDate: '2024-01-01',
-      completionDate: '2024-12-31'
+      constructionStartDate: '20240101',
+      completionDate: '20241231'
     };
 
     it('should calculate monthly interest correctly', () => {
@@ -256,13 +256,13 @@ describe('Construction Loan Calculator', () => {
       expect(outputs.equityRequired).toBe(500000);
     });
 
-    it('should calculate loan-to-cost ratio correctly', () => {
+    it('should calculate LoanToCost ratio correctly', () => {
       const outputs = calculateConstructionLoan(testInputs);
       // (2,000,000 / 2,500,000) * 100 = 80%
       expect(outputs.loanToCostRatio).toBe(80);
     });
 
-    it('should calculate loan-to-value ratio correctly', () => {
+    it('should calculate LoanToValue ratio correctly', () => {
       const outputs = calculateConstructionLoan(testInputs);
       // (2,000,000 / 3,200,000) * 100 = 62.5%
       expect(outputs.loanToValueRatio).toBe(62.5);
@@ -317,8 +317,8 @@ describe('Construction Loan Calculator', () => {
       loanToValue: 70,
       completionValue: 14000000,
       exitStrategy: 'refinance',
-      constructionStartDate: '2024-03-01',
-      completionDate: '2025-08-31'
+      constructionStartDate: '20240301',
+      completionDate: '20250831'
     };
 
     it('should generate draw schedule correctly', () => {
@@ -373,8 +373,8 @@ describe('Construction Loan Calculator', () => {
       loanToValue: 65,
       completionValue: 28000000,
       exitStrategy: 'hold',
-      constructionStartDate: '2024-06-01',
-      completionDate: '2026-05-31'
+      constructionStartDate: '20240601',
+      completionDate: '20260531'
     };
 
     it('should generate risk analysis correctly', () => {
@@ -447,8 +447,8 @@ describe('Construction Loan Calculator', () => {
         loanToValue: 80,
         completionValue: 1500000,
         exitStrategy: 'sale',
-        constructionStartDate: '2024-01-01',
-        completionDate: '2024-08-31'
+        constructionStartDate: '20240101',
+        completionDate: '20240831'
       };
 
       const outputs = calculateConstructionLoan(inputs);
@@ -479,8 +479,8 @@ describe('Construction Loan Calculator', () => {
         loanToValue: 70,
         completionValue: 180000000,
         exitStrategy: 'refinance',
-        constructionStartDate: '2024-01-01',
-        completionDate: '2025-12-31'
+        constructionStartDate: '20240101',
+        completionDate: '20251231'
       };
 
       const outputs = calculateConstructionLoan(inputs);
@@ -512,8 +512,8 @@ describe('Construction Loan Calculator', () => {
         loanToValue: 75,
         completionValue: 120000,
         exitStrategy: 'sale',
-        constructionStartDate: '2024-01-01',
-        completionDate: '2024-04-30'
+        constructionStartDate: '20240101',
+        completionDate: '20240430'
       };
 
       const outputs = calculateConstructionLoan(inputs);
@@ -556,8 +556,8 @@ describe('Construction Loan Calculator', () => {
         loanToValue: 75,
         completionValue: 3200000,
         exitStrategy: 'sale',
-        constructionStartDate: '2024-01-01',
-        completionDate: '2024-12-31'
+        constructionStartDate: '20240101',
+        completionDate: '20241231'
       };
 
       const result = validateAllConstructionLoanInputs(validInputs);
@@ -589,8 +589,8 @@ describe('Construction Loan Calculator', () => {
         loanToValue: 75,
         completionValue: 3200000,
         exitStrategy: 'invalid',
-        constructionStartDate: '2024-01-01',
-        completionDate: '2024-12-31'
+        constructionStartDate: '20240101',
+        completionDate: '20241231'
       };
 
       const result = validateAllConstructionLoanInputs(invalidInputs);

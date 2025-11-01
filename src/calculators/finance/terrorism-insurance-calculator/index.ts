@@ -1,4 +1,4 @@
-export { TerrorismInsuranceCalculatorCalculator } from './TerrorismInsuranceCalculatorCalculator';
+export { TerrorismInsuranceCalculator } from './TerrorismInsuranceCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

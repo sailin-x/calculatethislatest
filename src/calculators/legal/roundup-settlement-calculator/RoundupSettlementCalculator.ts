@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateRoundupSettlementCalculatorInputs, validateRoundupSettlementCalculatorBusinessRules } from './validation';
 
-export const RoundupSettlementCalculatorCalculator: Calculator: Calculator = {
-  id: 'roundup-settlement-calculator-calculator',
+export const RoundupSettlementCalculator: Calculator = {
+  id: 'RoundupSettlementCalculator-calculator',
   title: 'Roundup Settlement Calculator Calculator',
   legal: 'legal', // e.g., 'finance', 'math', 'health', 'business'
   sublegal: 'Sublegal Name',

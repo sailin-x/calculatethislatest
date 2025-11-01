@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateViaticalSettlementValueCalculatorInputs, validateViaticalSettlementValueCalculatorBusinessRules } from './validation';
 
-export const ViaticalSettlementValueCalculatorCalculator: Calculator: Calculator = {
-  id: 'viatical-settlement-value-calculator-calculator',
+export const ViaticalSettlementValueCalculator: Calculator = {
+  id: 'ViaticalSettlementValue-calculator-calculator',
   title: 'Viatical Settlement Value Calculator Calculator',
   retirement-savings: 'retirement-savings', // e.g., 'finance', 'math', 'health', 'business'
   subretirement-savings: 'Subretirement-savings Name',

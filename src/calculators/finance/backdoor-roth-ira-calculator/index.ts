@@ -1,4 +1,4 @@
-export { BackdoorRothIraCalculatorCalculator } from './BackdoorRothIraCalculatorCalculator';
+export { BackdoorRothIraCalculator } from './BackdoorRothIraCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

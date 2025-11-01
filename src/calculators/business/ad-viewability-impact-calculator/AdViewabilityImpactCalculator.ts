@@ -10,7 +10,7 @@ import {
 import { validateAdViewabilityImpactCalculatorInputs } from './validation';
 
 export const AdViewabilityImpactCalculator: Calculator = {
-  id: 'ad-viewability-impact-calculator',
+  id: 'AdViewabilityImpact-calculator',
   title: 'Ad Viewability Impact Calculator',
   category: 'business',
   subcategory: 'Financial Planning',

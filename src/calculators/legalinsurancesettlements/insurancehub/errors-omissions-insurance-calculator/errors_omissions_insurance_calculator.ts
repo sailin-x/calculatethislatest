@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { errors_omissions_insurance_calculatorInputs, errors_omissions_insurance_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const errors_omissions_insurance_calculatorCalculator: Calculator = {
-  id: 'errors-omissions-insurance-calculator',
+export const ErrorsOmissionsInsurance-calculator: Calculator = {
+  id: 'ErrorsOmissionsInsurance-calculator',
   title: 'Errors & Omissions Insurance Calculator Calculator',
   category: 'legalinsurancesettlements',
   subcategory: 'insurancehub',

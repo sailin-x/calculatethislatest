@@ -10,7 +10,7 @@ import {
 import { validateFinancialPeaceCalculatorInputs } from './validation';
 
 export const FinancialPeaceCalculator: Calculator = {
-  id: 'financial-peace-calculator',
+  id: 'FinancialPeaceCalculator',
   title: 'Financial Peace Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

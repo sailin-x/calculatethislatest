@@ -1,3 +1,3 @@
-import { CryptoMiningProfitabilityCalculatorCalculator } from './CryptoMiningProfitabilityCalculatorCalculator';
+import { CryptoMiningProfitabilityCalculator } from './CryptoMiningProfitabilityCalculator';
 
-export { CryptoMiningProfitabilityCalculatorCalculator };
+export { CryptoMiningProfitabilityCalculator };

@@ -320,7 +320,7 @@ describe('MortgageCalculator', () => {
       expect(homePriceRules.length).toBeGreaterThan(0);
     });
 
-    it('should validate loan-to-value ratios by loan type', () => {
+    it('should validate LoanToValue ratios by loan type', () => {
       const ltvRules = validationRules.filter(rule => 
         rule.field === 'downPayment' && rule.type === 'business'
       );

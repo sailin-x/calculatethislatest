@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { amino_acid_calculatorInputs, amino_acid_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const amino_acid_calculatorCalculator: Calculator = {
-  id: 'amino-acid-calculator',
+export const AminoAcidCalculator: Calculator = {
+  id: 'AminoAcidCalculator',
   title: 'Amino Acid Calculator Calculator',
   category: 'healthfitnessdiet',
   subcategory: 'healthfitnesshub',

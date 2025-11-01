@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { token_vesting_schedule_calculatorInputs, token_vesting_schedule_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const token_vesting_schedule_calculatorCalculator: Calculator = {
-  id: 'token-vesting-schedule-calculator',
+export const TokenVestingSchedule-calculator: Calculator = {
+  id: 'TokenVestingSchedule-calculator',
   title: 'Token Vesting Schedule Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'cryptocurrencyhub',

@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { registerDebtPayoffCalculatorCalculator } from './registerDebtPayoffCalculatorCalculator';
+import { registerDebtPayoffCalculator } from './registerDebtPayoffCalculator';
 
-export function registerregisterDebtPayoffCalculatorCalculator(): void {
-  calculatorRegistry.register(new registerDebtPayoffCalculatorCalculator());
+export function registerregisterDebtPayoffCalculator(): void {
+  calculatorRegistry.register(new registerDebtPayoffCalculator());
 }

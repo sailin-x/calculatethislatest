@@ -10,7 +10,7 @@ import {
 import { validateDeveloperSalaryCalculatorInputs } from './validation';
 
 export const DeveloperSalaryCalculator: Calculator = {
-  id: 'developer-salary-calculator',
+  id: 'DeveloperSalaryCalculator',
   title: 'Developer Salary Calculator',
   category: 'business',
   subcategory: 'Financial Planning',

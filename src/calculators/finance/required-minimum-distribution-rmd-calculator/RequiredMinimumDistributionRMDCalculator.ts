@@ -10,7 +10,7 @@ import {
 import { validateRequiredMinimumDistributionRmdCalculatorInputs } from './validation';
 
 export const RequiredMinimumDistributionRmdCalculator: Calculator = {
-  id: 'required-minimum-distribution-rmd-calculator',
+  id: 'RequiredMinimumDistribution-rmd-calculator',
   title: 'Required Minimum Distribution (RMD) Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

@@ -1,4 +1,4 @@
-import { lapse-rate-sensitivity-analysisInputs, lapse-rate-sensitivity-analysisMetrics, lapse-rate-sensitivity-analysisAnalysis } from './types';
+import { LapseRateSensitivity-analysisInputs, LapseRateSensitivity-analysisMetrics, LapseRateSensitivity-analysisAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: lapse-rate-sensitivity-analysisInputs): number {
+export function calculateResult(inputs: LapseRateSensitivity-analysisInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: lapse-rate-sensitivity-analysisInputs): 
   }
 }
 
-export function generateAnalysis(inputs: lapse-rate-sensitivity-analysisInputs, metrics: lapse-rate-sensitivity-analysisMetrics): lapse-rate-sensitivity-analysisAnalysis {
+export function generateAnalysis(inputs: LapseRateSensitivity-analysisInputs, metrics: LapseRateSensitivity-analysisMetrics): LapseRateSensitivity-analysisAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

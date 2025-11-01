@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateTollCostCalculatorInputs } from './validation';
 
 export const TollCostCalculator: Calculator = {
-  id: 'toll-cost-calculator',
+  id: 'TollCostCalculator',
   title: 'Toll Cost Calculator',
   category: 'health',
   subcategory: 'General',

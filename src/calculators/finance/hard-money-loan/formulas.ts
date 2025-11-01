@@ -1,4 +1,4 @@
-import { hard-money-loanInputs, hard-money-loanMetrics, hard-money-loanAnalysis } from './types';
+import { HardMoneyLoaninputs, HardMoneyLoanmetrics, HardMoneyLoananalysis } from './types';
 
 
 // Loan Calculator - Standard loan formulas
@@ -14,7 +14,7 @@ export function calculateTotalCost(monthlyPayment: number, numPayments: number):
   return monthlyPayment * numPayments;
 }
 
-export function calculateResult(inputs: hard-money-loanInputs): number {
+export function calculateResult(inputs: HardMoneyLoaninputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: hard-money-loanInputs): number {
   }
 }
 
-export function generateAnalysis(inputs: hard-money-loanInputs, metrics: hard-money-loanMetrics): hard-money-loanAnalysis {
+export function generateAnalysis(inputs: HardMoneyLoaninputs, metrics: HardMoneyLoanmetrics): HardMoneyLoananalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

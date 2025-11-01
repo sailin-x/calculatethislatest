@@ -10,7 +10,7 @@ import {
 import { validateOperatingMarginCalculatorInputs } from './validation';
 
 export const OperatingMarginCalculator: Calculator = {
-  id: 'operating-margin-calculator',
+  id: 'OperatingMarginCalculator',
   title: 'Operating Margin Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

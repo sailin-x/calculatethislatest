@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { digital_transformation_business_case_calculatorInputs, digital_transformation_business_case_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const digital_transformation_business_case_calculatorCalculator: Calculator = {
-  id: 'digital-transformation-business-case-calculator',
+export const DigitalTransformationBusiness-case-calculator: Calculator = {
+  id: 'DigitalTransformationBusiness-case-calculator',
   title: 'Digital Transformation Business Case Calculator Calculator',
   category: 'businessmarketingoperations',
   subcategory: 'businessoperationsfinancehub',

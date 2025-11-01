@@ -10,7 +10,7 @@ import {
 import { validateTrustFundDistributionCalculatorInputs } from './validation';
 
 export const TrustFundDistributionCalculator: Calculator = {
-  id: 'trust-fund-distribution-calculator',
+  id: 'TrustFundDistribution-calculator',
   title: 'Trust Fund Distribution Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

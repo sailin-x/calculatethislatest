@@ -1,3 +1,3 @@
-import { SavingsGoalCalculatorCalculator } from './SavingsGoalCalculatorCalculator';
+import { SavingsGoalCalculator } from './SavingsGoalCalculator';
 
-export { SavingsGoalCalculatorCalculator };
+export { SavingsGoalCalculator };

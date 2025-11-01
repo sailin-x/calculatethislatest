@@ -9,7 +9,7 @@ import {
 import { validateBadFaithInsuranceCalculatorInputs } from './validation';
 
 export const BadFaithInsuranceCalculator: Calculator = {
-  id: 'bad-faith-insurance-calculator',
+  id: 'BadFaithInsurance-calculator',
   title: 'Bad Faith Insurance Calculator',
   category: 'legal',
   subcategory: 'Settlement Analysis',

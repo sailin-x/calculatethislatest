@@ -1,3 +1,3 @@
-import { SlipAndFallSettlementCalculatorCalculator } from './SlipAndFallSettlementCalculatorCalculator';
+import { SlipAndFallSettlementCalculator } from './SlipAndFallSettlementCalculator';
 
-export { SlipAndFallSettlementCalculatorCalculator };
+export { SlipAndFallSettlementCalculator };

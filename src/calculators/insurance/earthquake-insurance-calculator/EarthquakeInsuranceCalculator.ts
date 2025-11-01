@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateEarthquakeInsuranceCalculatorInputs } from './validation';
 
 export const EarthquakeInsuranceCalculator: Calculator = {
-  id: 'earthquake-insurance-calculator',
+  id: 'EarthquakeInsuranceCalculator',
   title: 'Earthquake Insurance Calculator',
   category: 'insurance',
   subcategory: 'General',

@@ -1,27 +1,30 @@
 export interface DividendCalculatorInputs {
-  principalAmount: number;
-  interestRate: number;
-  timePeriod: number;
-  compoundingFrequency: number;
+  stockPrice: number;
+  annualDividend: number;
+  dividendFrequency: 'annual' | 'semi-annual' | 'quarterly' | 'monthly';
+  holdingPeriod?: number; // in years
 }
 
 export interface DividendCalculatorMetrics {
-  totalAmount: number;
-  totalInterest: number;
-  monthlyPayment: number;
-  effectiveRate: number;
+  dividendYield: number;
+  annualDividendIncome: number;
+  totalDividendIncome: number;
+  dividendPayoutRatio: number;
+  dividendCoverageRatio: number;
 }
 
 export interface DividendCalculatorAnalysis {
-  profitability: string;
-  riskLevel: string;
+  yieldQuality: 'low' | 'moderate' | 'high' | 'excellent';
+  sustainability: 'poor' | 'fair' | 'good' | 'excellent';
   recommendations: string[];
+  riskFactors: string[];
 }
 
 export interface DividendCalculatorOutputs {
-  totalAmount: number;
-  totalInterest: number;
-  monthlyPayment: number;
-  effectiveRate: number;
+  dividendYield: number;
+  annualDividendIncome: number;
+  totalDividendIncome: number;
+  dividendPayoutRatio: number;
+  dividendCoverageRatio: number;
   analysis: DividendCalculatorAnalysis;
 }

@@ -1,4 +1,4 @@
-import { preventative-maintenance-savings-calculatorInputs, preventative-maintenance-savings-calculatorMetrics, preventative-maintenance-savings-calculatorAnalysis } from './types';
+import { PreventativeMaintenanceSavings-calculatorInputs, PreventativeMaintenanceSavings-calculatorMetrics, PreventativeMaintenanceSavings-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: preventative-maintenance-savings-calculatorInputs): number {
+export function calculateResult(inputs: PreventativeMaintenanceSavings-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: preventative-maintenance-savings-calcula
   }
 }
 
-export function generateAnalysis(inputs: preventative-maintenance-savings-calculatorInputs, metrics: preventative-maintenance-savings-calculatorMetrics): preventative-maintenance-savings-calculatorAnalysis {
+export function generateAnalysis(inputs: PreventativeMaintenanceSavings-calculatorInputs, metrics: PreventativeMaintenanceSavings-calculatorMetrics): PreventativeMaintenanceSavings-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

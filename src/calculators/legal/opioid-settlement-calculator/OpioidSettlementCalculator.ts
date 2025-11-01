@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateOpioidSettlementCalculatorInputs, validateOpioidSettlementCalculatorBusinessRules } from './validation';
 
-export const OpioidSettlementCalculatorCalculator: Calculator: Calculator = {
-  id: 'opioid-settlement-calculator-calculator',
+export const OpioidSettlementCalculator: Calculator = {
+  id: 'OpioidSettlementCalculator-calculator',
   title: 'Opioid Settlement Calculator Calculator',
   legal: 'legal', // e.g., 'finance', 'math', 'health', 'business'
   sublegal: 'Sublegal Name',

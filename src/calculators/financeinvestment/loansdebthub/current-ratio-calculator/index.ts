@@ -1,4 +1,4 @@
-export { current_ratio_calculatorCalculator } from './current_ratio_calculator';
+export { current_ratio_calculator } from './current_ratio_calculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

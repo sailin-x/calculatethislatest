@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { StretchIRACalculatorCalculator } from './StretchIRACalculatorCalculator';
+import { StretchIRACalculator } from './StretchIRACalculator';
 
-export function registerStretchIRACalculatorCalculator(): void {
-  calculatorRegistry.register(new StretchIRACalculatorCalculator());
+export function registerStretchIRACalculator(): void {
+  calculatorRegistry.register(new StretchIRACalculator());
 }

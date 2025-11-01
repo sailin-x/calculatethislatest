@@ -1,4 +1,4 @@
-import { business-process-re-engineering-bpr-savings-calculatorInputs, business-process-re-engineering-bpr-savings-calculatorMetrics, business-process-re-engineering-bpr-savings-calculatorAnalysis } from './types';
+import { BusinessProcessRe-EngineeringBprSavings-calculatorInputs, BusinessProcessRe-EngineeringBprSavings-calculatorMetrics, BusinessProcessRe-EngineeringBprSavings-calculatorAnalysis } from './types';
 
 // Business Process Re-engineering (BPR) Savings Calculator - Business calculations
 export function calculateNetPresentValue(cashFlows: number[], discountRate: number): number {
@@ -11,7 +11,7 @@ export function calculateROI(initialInvestment: number, finalValue: number): num
  return ((finalValue - initialInvestment) / initialInvestment) * 100;
 }
 
-export function calculateResult(inputs: business-process-re-engineering-bpr-savings-calculatorInputs): number {
+export function calculateResult(inputs: BusinessProcessRe-EngineeringBprSavings-calculatorInputs): number {
  // Business calculation logic with real math
  const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
  if (numericValues.length >= 2) {
@@ -24,7 +24,7 @@ export function calculateResult(inputs: business-process-re-engineering-bpr-savi
  return calculateNetPresentValue(numericValues, 10); // 10% discount rate
 }
 
-export function generateAnalysis(inputs: business-process-re-engineering-bpr-savings-calculatorInputs, metrics: business-process-re-engineering-bpr-savings-calculatorMetrics): business-process-re-engineering-bpr-savings-calculatorAnalysis {
+export function generateAnalysis(inputs: BusinessProcessRe-EngineeringBprSavings-calculatorInputs, metrics: BusinessProcessRe-EngineeringBprSavings-calculatorMetrics): BusinessProcessRe-EngineeringBprSavings-calculatorAnalysis {
  const result = metrics.result;
  let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
  if (Math.abs(result) > 100000) riskLevel = 'High';

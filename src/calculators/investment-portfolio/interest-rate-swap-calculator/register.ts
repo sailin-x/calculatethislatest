@@ -1,3 +1,3 @@
-import { InterestRateSwapCalculatorCalculator } from './InterestRateSwapCalculatorCalculator';
+import { InterestRateSwapCalculator } from './InterestRateSwapCalculator';
 
-export { InterestRateSwapCalculatorCalculator };
+export { InterestRateSwapCalculator };

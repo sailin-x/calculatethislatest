@@ -14,7 +14,7 @@ import { SocialSecurityCalculatorInputs, SocialSecurityCalculatorResults } from 
  * - Professional-grade calculations
  */
 export const socialSecurityCalculator: Calculator = {
-  id: 'social-security-calculator',
+  id: 'SocialSecurityCalculator',
   title: 'Social Security Benefits Calculator',
   description: 'Comprehensive Social Security benefit calculations with retirement age optimization and solvency analysis',
   category: 'finance',
@@ -485,7 +485,7 @@ export const socialSecurityCalculator: Calculator = {
     'retirement-calculator',
     'annuity-calculator',
     'pension-calculator',
-    'life-insurance-calculator',
+    'LifeInsuranceCalculator',
     '401k-calculator'
   ]
 };

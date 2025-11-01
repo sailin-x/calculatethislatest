@@ -45,7 +45,7 @@ export function validateMezzanineLoanAmount(value: any, allInputs?: Record<strin
   if (allInputs?.propertyValue && allInputs?.seniorLoanAmount) {
     const totalLTV = ((allInputs.seniorLoanAmount + value) / allInputs.propertyValue) * 100;
     if (totalLTV > 95) {
-      return { isValid: false, errors: ['Total loan-to-value ratio cannot exceed 95%'] };
+      return { isValid: false, errors: ['Total LoanToValue ratio cannot exceed 95%'] };
     }
   }
 

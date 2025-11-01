@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateGenerationskippingTransferGstTaxCalculatorInputs, validateGenerationskippingTransferGstTaxCalculatorBusinessRules } from './validation';
 
-export const GenerationskippingTransferGstTaxCalculatorCalculator: Calculator: Calculator = {
-  id: 'generation-skipping-transfer-gst-tax-calculator-calculator',
+export const GenerationskippingTransferGstTaxCalculator: Calculator = {
+  id: 'GenerationSkippingTransfer-GstTaxCalculator-calculator',
   title: 'Generation-Skipping Transfer (GST) Tax Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

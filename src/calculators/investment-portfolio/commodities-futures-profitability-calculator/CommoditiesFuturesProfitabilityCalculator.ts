@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateCommoditiesFuturesProfitabilityCalculatorInputs, validateCommoditiesFuturesProfitabilityCalculatorBusinessRules } from './validation';
 
-export const CommoditiesFuturesProfitabilityCalculatorCalculator: Calculator: Calculator = {
-  id: 'commodities-futures-profitability-calculator-calculator',
+export const CommoditiesFuturesProfitabilityCalculator: Calculator = {
+  id: 'CommoditiesFuturesProfitability-calculator-calculator',
   title: 'Commodities Futures Profitability Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

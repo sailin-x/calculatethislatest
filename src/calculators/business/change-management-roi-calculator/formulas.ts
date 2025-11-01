@@ -1,4 +1,4 @@
-import { change-management-roi-calculatorInputs, change-management-roi-calculatorMetrics, change-management-roi-calculatorAnalysis } from './types';
+import { ChangeManagementRoi-calculatorInputs, ChangeManagementRoi-calculatorMetrics, ChangeManagementRoi-calculatorAnalysis } from './types';
 
 // ROI Calculator
 export function calculateROI(netProfit: number, investment: number): number {
@@ -13,7 +13,7 @@ export function calculatePaybackPeriod(investment: number, annualCashFlow: numbe
   return investment / annualCashFlow;
 }
 
-export function calculateResult(inputs: change-management-roi-calculatorInputs): number {
+export function calculateResult(inputs: ChangeManagementRoi-calculatorInputs): number {
   if ('netProfit' in inputs && 'investment' in inputs) {
     return calculateROI(inputs.netProfit, inputs.investment);
   }
@@ -24,7 +24,7 @@ export function calculateResult(inputs: change-management-roi-calculatorInputs):
   return 0;
 }
 
-export function generateAnalysis(inputs: change-management-roi-calculatorInputs, metrics: change-management-roi-calculatorMetrics): change-management-roi-calculatorAnalysis {
+export function generateAnalysis(inputs: ChangeManagementRoi-calculatorInputs, metrics: ChangeManagementRoi-calculatorMetrics): ChangeManagementRoi-calculatorAnalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (result < 10) riskLevel = 'High';

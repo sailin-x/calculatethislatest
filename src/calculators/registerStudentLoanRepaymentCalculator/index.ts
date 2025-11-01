@@ -1,3 +1,3 @@
-export * from './registerStudentLoanRepaymentCalculatorCalculator';
+export * from './registerStudentLoanRepaymentCalculator';
 export * from './register';
 export * from './types';

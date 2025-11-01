@@ -1,11 +1,11 @@
 import { ValidationResult } from '../../lib/errors';
-import { cloudrepatriationsavingscalculatorCalculatorInputs } from './types';
+import { cloudrepatriationsavingscalculatorInputs } from './types';
 
 /**
  * Validate cloud repatriation savings calculator calculator inputs
  */
-export function validatecloudrepatriationsavingscalculatorCalculatorInputs(
-  inputs: cloudrepatriationsavingscalculatorCalculatorInputs
+export function validatecloudrepatriationsavingscalculatorInputs(
+  inputs: cloudrepatriationsavingscalculatorInputs
 ): ValidationResult {
   const errors: string[] = [];
 

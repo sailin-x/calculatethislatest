@@ -1,3 +1,3 @@
-import { BusinessInterruptionCalculatorCalculator } from './BusinessInterruptionCalculatorCalculator';
+import { BusinessInterruptionCalculator } from './BusinessInterruptionCalculator';
 
-export { BusinessInterruptionCalculatorCalculator };
+export { BusinessInterruptionCalculator };

@@ -1,4 +1,4 @@
-import { loan-to-value-ratioInputs, loan-to-value-ratioMetrics, loan-to-value-ratioAnalysis } from './types';
+import { LoanToValue-ratioInputs, LoanToValue-ratioMetrics, LoanToValue-ratioAnalysis } from './types';
 
 
 // Loan Calculator - Standard loan formulas
@@ -14,7 +14,7 @@ export function calculateTotalCost(monthlyPayment: number, numPayments: number):
   return monthlyPayment * numPayments;
 }
 
-export function calculateResult(inputs: loan-to-value-ratioInputs): number {
+export function calculateResult(inputs: LoanToValue-ratioInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: loan-to-value-ratioInputs): number {
   }
 }
 
-export function generateAnalysis(inputs: loan-to-value-ratioInputs, metrics: loan-to-value-ratioMetrics): loan-to-value-ratioAnalysis {
+export function generateAnalysis(inputs: LoanToValue-ratioInputs, metrics: LoanToValue-ratioMetrics): LoanToValue-ratioAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

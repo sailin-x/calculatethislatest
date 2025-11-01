@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { cyber_liability_insurance_calculatorInputs, cyber_liability_insurance_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const cyber_liability_insurance_calculatorCalculator: Calculator = {
-  id: 'cyber-liability-insurance-calculator',
+export const CyberLiabilityInsurance-calculator: Calculator = {
+  id: 'CyberLiabilityInsurance-calculator',
   title: 'Cyber Liability Insurance Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

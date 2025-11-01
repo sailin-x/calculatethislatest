@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validatePrivateEquityReturnsCalculatorInputs, validatePrivateEquityReturnsCalculatorBusinessRules } from './validation';
 
-export const PrivateEquityReturnsCalculatorCalculator: Calculator: Calculator = {
-  id: 'private-equity-returns-calculator-calculator',
+export const PrivateEquityReturnsCalculator: Calculator = {
+  id: 'PrivateEquityReturns-calculator-calculator',
   title: 'Private Equity Returns Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

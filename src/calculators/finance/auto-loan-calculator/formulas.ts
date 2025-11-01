@@ -1,13 +1,13 @@
-import { auto-loan-calculatorInputs, auto-loan-calculatorMetrics, auto-loan-calculatorAnalysis } from './types';
+import { AutoLoanCalculatorinputs, AutoLoanCalculatormetrics, AutoLoanCalculatoranalysis } from './types';
 
 // Auto Loan Calculator - Finance calculations
-export function calculateResult(inputs: auto-loan-calculatorInputs): number {
+export function calculateResult(inputs: AutoLoanCalculatorinputs): number {
   // Financial calculation logic
   const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
   return numericValues.reduce((sum, val) => sum + val, 0) || 0;
 }
 
-export function generateAnalysis(inputs: auto-loan-calculatorInputs, metrics: auto-loan-calculatorMetrics): auto-loan-calculatorAnalysis {
+export function generateAnalysis(inputs: AutoLoanCalculatorinputs, metrics: AutoLoanCalculatormetrics): AutoLoanCalculatoranalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (Math.abs(result) > 100000) riskLevel = 'High';

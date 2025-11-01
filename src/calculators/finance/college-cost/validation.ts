@@ -241,7 +241,7 @@ export function validateCollegeCostBusinessRules(inputs: CollegeCostInputs): { i
   }
 
   if (inputs.collegeType === 'public_out_state' && inputs.annualTuition && inputs.annualTuition > 30000) {
-    warnings.push('Out-of-state public tuition is high - consider in-state options');
+    warnings.push('OutOfState public tuition is high - consider in-state options');
   }
 
   if (inputs.degreeType === 'phd' || inputs.degreeType === 'professional') {

@@ -1,4 +1,4 @@
-import { employee-turnover-cost-calculatorInputs, employee-turnover-cost-calculatorMetrics, employee-turnover-cost-calculatorAnalysis } from './types';
+import { EmployeeTurnoverCost-calculatorInputs, EmployeeTurnoverCost-calculatorMetrics, EmployeeTurnoverCost-calculatorAnalysis } from './types';
 
 // Employee Turnover Cost Calculator - Business calculations
 export function calculateNetPresentValue(cashFlows: number[], discountRate: number): number {
@@ -11,7 +11,7 @@ export function calculateROI(initialInvestment: number, finalValue: number): num
  return ((finalValue - initialInvestment) / initialInvestment) * 100;
 }
 
-export function calculateResult(inputs: employee-turnover-cost-calculatorInputs): number {
+export function calculateResult(inputs: EmployeeTurnoverCost-calculatorInputs): number {
  // Business calculation logic with real math
  const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
  if (numericValues.length >= 2) {
@@ -24,7 +24,7 @@ export function calculateResult(inputs: employee-turnover-cost-calculatorInputs)
  return calculateNetPresentValue(numericValues, 10); // 10% discount rate
 }
 
-export function generateAnalysis(inputs: employee-turnover-cost-calculatorInputs, metrics: employee-turnover-cost-calculatorMetrics): employee-turnover-cost-calculatorAnalysis {
+export function generateAnalysis(inputs: EmployeeTurnoverCost-calculatorInputs, metrics: EmployeeTurnoverCost-calculatorMetrics): EmployeeTurnoverCost-calculatorAnalysis {
  const result = metrics.result;
  let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
  if (Math.abs(result) > 100000) riskLevel = 'High';

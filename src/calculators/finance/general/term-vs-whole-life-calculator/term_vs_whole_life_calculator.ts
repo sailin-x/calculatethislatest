@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { term_vs_whole_life_calculatorInputs, term_vs_whole_life_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const term_vs_whole_life_calculatorCalculator: Calculator = {
-  id: 'term-vs-whole-life-calculator',
+export const TermVsWhole-life-calculator: Calculator = {
+  id: 'TermVsWhole-life-calculator',
   title: 'Term vs. Whole Life Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

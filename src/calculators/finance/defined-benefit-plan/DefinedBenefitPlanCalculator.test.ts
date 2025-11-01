@@ -38,7 +38,7 @@ describe('DefinedBenefitPlanCalculator', () => {
 
   describe('Calculator Structure', () => {
     it('should have correct calculator properties', () => {
-      expect(DefinedBenefitPlanCalculator.id).toBe('defined-benefit-plan-calculator');
+      expect(DefinedBenefitPlanCalculator.id).toBe('DefinedBenefitPlan-calculator');
       expect(DefinedBenefitPlanCalculator.title).toBe('Defined Benefit Plan Calculator');
       expect(DefinedBenefitPlanCalculator.category).toBe('finance');
       expect(DefinedBenefitPlanCalculator.subcategory).toBe('Retirement');

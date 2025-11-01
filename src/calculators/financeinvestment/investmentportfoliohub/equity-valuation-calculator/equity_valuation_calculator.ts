@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { equity_valuation_calculatorInputs, equity_valuation_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const equity_valuation_calculatorCalculator: Calculator = {
-  id: 'equity-valuation-calculator',
+export const EquityValuationCalculator: Calculator = {
+  id: 'EquityValuationCalculator',
   title: 'Equity Valuation Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'investmentportfoliohub',

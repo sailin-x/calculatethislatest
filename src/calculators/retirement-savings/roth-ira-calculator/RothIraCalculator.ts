@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateRothIraCalculatorInputs, validateRothIraCalculatorBusinessRules } from './validation';
 
-export const RothIraCalculatorCalculator: Calculator: Calculator = {
-  id: 'roth-ira-calculator-calculator',
+export const RothIraCalculator: Calculator = {
+  id: 'RothIraCalculator-calculator',
   title: 'Roth IRA Calculator Calculator',
   retirement-savings: 'retirement-savings', // e.g., 'finance', 'math', 'health', 'business'
   subretirement-savings: 'Subretirement-savings Name',

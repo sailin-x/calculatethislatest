@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateLitigationFinanceRoiCalculatorInputs, validateLitigationFinanceRoiCalculatorBusinessRules } from './validation';
 
-export const LitigationFinanceRoiCalculatorCalculator: Calculator: Calculator = {
-  id: 'litigation-finance-roi-calculator-calculator',
+export const LitigationFinanceRoiCalculator: Calculator = {
+  id: 'LitigationFinanceRoi-calculator-calculator',
   title: 'Litigation Finance ROI Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

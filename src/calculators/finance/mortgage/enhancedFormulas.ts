@@ -277,7 +277,7 @@ export class EnhancedMortgageFormulas {
 }
 
 export const enhancedMortgageCalculatorFormula: Formula = {
-  id: 'enhanced-mortgage-calculator',
+  id: 'EnhancedMortgageCalculator',
   name: 'Enhanced Mortgage Calculator with Live Data',
   description: 'Advanced mortgage calculations with real-time market data and regional information',
   calculate: async (inputs: Record<string, any>): Promise<CalculationResult> => {
@@ -356,12 +356,12 @@ export const enhancedMortgageCalculatorFormula: Formula = {
       // Store calculation for historical tracking
       const dataVersions = {
         'mortgage-rates': 'current', // Would be actual version ID in real implementation
-        'regional-property-data': 'current'
+        'RegionalPropertyData': 'current'
       };
 
       try {
         dataVersioningService.storeCalculation(
-          'enhanced-mortgage-calculator',
+          'EnhancedMortgageCalculator',
           mortgageInputs,
           {
             monthlyPayment,

@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateParkingCostCalculatorInputs } from './validation';
 
 export const ParkingCostCalculator: Calculator = {
-  id: 'parking-cost-calculator',
+  id: 'ParkingCostCalculator',
   title: 'Parking Cost Calculator',
   category: 'health',
   subcategory: 'General',

@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateMegaBackdoorRothCalculatorInputs, validateMegaBackdoorRothCalculatorBusinessRules } from './validation';
 
-export const MegaBackdoorRothCalculatorCalculator: Calculator: Calculator = {
-  id: 'mega-backdoor-roth-calculator-calculator',
+export const MegaBackdoorRothCalculator: Calculator = {
+  id: 'MegaBackdoorRoth-calculator-calculator',
   title: 'Mega Backdoor Roth Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

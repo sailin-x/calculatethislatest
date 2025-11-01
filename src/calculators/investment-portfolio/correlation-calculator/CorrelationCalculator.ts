@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateCorrelationCalculatorInputs, validateCorrelationCalculatorBusinessRules } from './validation';
 
-export const CorrelationCalculatorCalculator: Calculator: Calculator = {
-  id: 'correlation-calculator-calculator',
+export const CorrelationCalculator: Calculator = {
+  id: 'CorrelationCalculatorCalculator',
   title: 'Correlation Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

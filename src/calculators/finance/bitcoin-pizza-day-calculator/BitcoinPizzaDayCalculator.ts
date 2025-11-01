@@ -10,7 +10,7 @@ import {
 import { validateBitcoinPizzaDayCalculatorInputs } from './validation';
 
 export const BitcoinPizzaDayCalculator: Calculator = {
-  id: 'bitcoin-pizza-day-calculator',
+  id: 'BitcoinPizzaDay-calculator',
   title: 'Bitcoin Pizza Day Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

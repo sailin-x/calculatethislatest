@@ -1,3 +1,3 @@
-import { TreasuryCalculatorCalculator } from './TreasuryCalculatorCalculator';
+import { TreasuryCalculator } from './TreasuryCalculator';
 
-export { TreasuryCalculatorCalculator };
+export { TreasuryCalculator };

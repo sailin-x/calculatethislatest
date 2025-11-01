@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateMedicalExpenseTaxDeductionCalculatorInputs } from './validation';
 
 export const MedicalExpenseTaxDeductionCalculator: Calculator = {
-  id: 'medical-expense-tax-deduction-calculator',
+  id: 'MedicalExpenseTax-deduction-calculator',
   title: 'Medical Expense Tax Deduction Calculator',
   category: 'health',
   subcategory: 'General',

@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateFireDamageRepairCostCalculatorInputs } from './validation';
 
 export const FireDamageRepairCostCalculator: Calculator = {
-  id: 'fire-damage-repair-cost-calculator',
+  id: 'FireDamageRepair-cost-calculator',
   title: 'Fire Damage Repair Cost Calculator',
   category: 'health',
   subcategory: 'General',

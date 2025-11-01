@@ -1,3 +1,3 @@
-import { MediaMixModelingMmmRoiCalculatorCalculator } from './MediaMixModelingMmmRoiCalculatorCalculator';
+import { MediaMixModelingMmmRoiCalculator } from './MediaMixModelingMmmRoiCalculator';
 
-export { MediaMixModelingMmmRoiCalculatorCalculator };
+export { MediaMixModelingMmmRoiCalculator };

@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { directors_officers_insurance_calculatorInputs, directors_officers_insurance_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const directors_officers_insurance_calculatorCalculator: Calculator = {
-  id: 'directors-officers-insurance-calculator',
+export const DirectorsOfficersInsurance-calculator: Calculator = {
+  id: 'DirectorsOfficersInsurance-calculator',
   title: 'Directors & Officers Insurance Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

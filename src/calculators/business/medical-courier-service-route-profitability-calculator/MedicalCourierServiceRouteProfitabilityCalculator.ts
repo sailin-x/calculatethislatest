@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateMedicalCourierServiceRouteProfitabilityCalculatorInputs, validateMedicalCourierServiceRouteProfitabilityCalculatorBusinessRules } from './validation';
 
-export const MedicalCourierServiceRouteProfitabilityCalculatorCalculator: Calculator: Calculator = {
-  id: 'medical-courier-service-route-profitability-calculator-calculator',
+export const MedicalCourierServiceRouteProfitabilityCalculator: Calculator = {
+  id: 'MedicalCourierService-RouteProfitabilityCalculator-calculator',
   title: 'Medical Courier Service Route Profitability Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

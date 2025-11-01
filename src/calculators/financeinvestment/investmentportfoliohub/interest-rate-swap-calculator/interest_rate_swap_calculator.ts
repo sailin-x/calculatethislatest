@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { interest_rate_swap_calculatorInputs, interest_rate_swap_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const interest_rate_swap_calculatorCalculator: Calculator = {
-  id: 'interest-rate-swap-calculator',
+export const InterestRateSwap-calculator: Calculator = {
+  id: 'InterestRateSwap-calculator',
   title: 'Interest Rate Swap Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'investmentportfoliohub',

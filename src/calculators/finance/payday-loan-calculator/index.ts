@@ -1,5 +1,5 @@
-export { paydayloancalculatorCalculator } from './paydayloancalculatorCalculator';
-export { registerpaydayloancalculatorCalculator } from './register';
+export { paydayloancalculator } from './paydayloancalculator';
+export { registerpaydayloancalculator } from './register';
 export * from './types';
 export * from './formulas';
 export * from './validation';

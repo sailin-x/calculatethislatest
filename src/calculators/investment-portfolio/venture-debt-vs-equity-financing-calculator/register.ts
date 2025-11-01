@@ -1,3 +1,3 @@
-import { VentureDebtVsEquityFinancingCalculatorCalculator } from './VentureDebtVsEquityFinancingCalculatorCalculator';
+import { VentureDebtVsEquityFinancingCalculator } from './VentureDebtVsEquityFinancingCalculator';
 
-export { VentureDebtVsEquityFinancingCalculatorCalculator };
+export { VentureDebtVsEquityFinancingCalculator };

@@ -4,7 +4,7 @@ import { calculateCollegeCost } from './formulas';
 import { validateCollegeCostInputs } from './validation';
 
 export const CollegeCostCalculator: Calculator = {
-  id: 'college-cost-calculator',
+  id: 'CollegeCostCalculator',
   title: 'College Cost Calculator',
   category: 'finance',
   subcategory: 'Education',
@@ -68,7 +68,7 @@ export const CollegeCostCalculator: Calculator = {
       options: [
         { value: 'community_college', label: 'Community College' },
         { value: 'public_in_state', label: 'Public In-State' },
-        { value: 'public_out_state', label: 'Public Out-of-State' },
+        { value: 'public_out_state', label: 'Public OutOfState' },
         { value: 'private_nonprofit', label: 'Private Nonprofit' },
         { value: 'private_for_profit', label: 'Private For-Profit' }
       ],

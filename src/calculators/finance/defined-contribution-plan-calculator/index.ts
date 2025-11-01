@@ -1,4 +1,4 @@
-export { DefinedContributionPlanCalculatorCalculator } from './DefinedContributionPlanCalculatorCalculator';
+export { DefinedContributionPlanCalculator } from './DefinedContributionPlanCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

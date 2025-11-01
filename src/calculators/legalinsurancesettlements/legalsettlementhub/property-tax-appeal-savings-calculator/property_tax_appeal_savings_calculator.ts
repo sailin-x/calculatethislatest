@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { property_tax_appeal_savings_calculatorInputs, property_tax_appeal_savings_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const property_tax_appeal_savings_calculatorCalculator: Calculator = {
-  id: 'property-tax-appeal-savings-calculator',
+export const PropertyTaxAppeal-savings-calculator: Calculator = {
+  id: 'PropertyTaxAppeal-savings-calculator',
   title: 'Property Tax Appeal Savings Calculator Calculator',
   category: 'legalinsurancesettlements',
   subcategory: 'legalsettlementhub',

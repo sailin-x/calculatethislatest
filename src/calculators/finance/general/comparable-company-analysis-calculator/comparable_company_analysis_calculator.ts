@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { comparable_company_analysis_calculatorInputs, comparable_company_analysis_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const comparable_company_analysis_calculatorCalculator: Calculator = {
-  id: 'comparable-company-analysis-calculator',
+export const ComparableCompanyAnalysis-calculator: Calculator = {
+  id: 'ComparableCompanyAnalysis-calculator',
   title: 'Comparable Company Analysis Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

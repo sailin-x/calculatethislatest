@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateEstateTaxLifeInsuranceCalculatorInputs, validateEstateTaxLifeInsuranceCalculatorBusinessRules } from './validation';
 
-export const EstateTaxLifeInsuranceCalculatorCalculator: Calculator: Calculator = {
-  id: 'estate-tax-life-insurance-calculator-calculator',
+export const EstateTaxLifeInsuranceCalculator: Calculator = {
+  id: 'EstateTaxLife-InsuranceCalculatorCalculator',
   title: 'Estate Tax Life Insurance Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

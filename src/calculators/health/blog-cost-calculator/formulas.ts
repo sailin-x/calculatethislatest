@@ -1,4 +1,4 @@
-import { blog-cost-calculatorInputs, blog-cost-calculatorMetrics, blog-cost-calculatorAnalysis } from './types';
+import { BlogCostCalculatorinputs, BlogCostCalculatormetrics, BlogCostCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: blog-cost-calculatorInputs): number {
+export function calculateResult(inputs: BlogCostCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: blog-cost-calculatorInputs): number {
   }
 }
 
-export function generateAnalysis(inputs: blog-cost-calculatorInputs, metrics: blog-cost-calculatorMetrics): blog-cost-calculatorAnalysis {
+export function generateAnalysis(inputs: BlogCostCalculatorinputs, metrics: BlogCostCalculatormetrics): BlogCostCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

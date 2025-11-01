@@ -1,3 +1,3 @@
-import { ConstructionAccidentClaimsCalculatorCalculator } from './ConstructionAccidentClaimsCalculatorCalculator';
+import { ConstructionAccidentClaimsCalculator } from './ConstructionAccidentClaimsCalculator';
 
-export { ConstructionAccidentClaimsCalculatorCalculator };
+export { ConstructionAccidentClaimsCalculator };

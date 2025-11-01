@@ -1,13 +1,13 @@
-import { fitness-age-calculatorInputs, fitness-age-calculatorMetrics, fitness-age-calculatorAnalysis } from './types';
+import { FitnessAgeCalculatorinputs, FitnessAgeCalculatormetrics, FitnessAgeCalculatoranalysis } from './types';
 
 // Fitness Age Calculator - Health calculations
-export function calculateResult(inputs: fitness-age-calculatorInputs): number {
+export function calculateResult(inputs: FitnessAgeCalculatorinputs): number {
   // Health calculation logic
   const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
   return numericValues.reduce((sum, val) => sum + val, 0) || 0;
 }
 
-export function generateAnalysis(inputs: fitness-age-calculatorInputs, metrics: fitness-age-calculatorMetrics): fitness-age-calculatorAnalysis {
+export function generateAnalysis(inputs: FitnessAgeCalculatorinputs, metrics: FitnessAgeCalculatormetrics): FitnessAgeCalculatoranalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (Math.abs(result) > 1000) riskLevel = 'High';

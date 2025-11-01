@@ -1,3 +1,3 @@
-import { MusicCatalogueValuationCalculatorCalculator } from './MusicCatalogueValuationCalculatorCalculator';
+import { MusicCatalogueValuationCalculator } from './MusicCatalogueValuationCalculator';
 
-export { MusicCatalogueValuationCalculatorCalculator };
+export { MusicCatalogueValuationCalculator };

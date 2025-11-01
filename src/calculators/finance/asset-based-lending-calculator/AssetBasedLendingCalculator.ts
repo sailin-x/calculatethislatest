@@ -4,7 +4,7 @@ import { calculateAssetBasedLendingResults } from './formulas';
 import { validateAssetBasedLendingInputs } from './validation';
 
 export const AssetBasedLendingCalculator: Calculator = {
-  id: 'asset-based-lending-calculator',
+  id: 'AssetBasedLending-calculator',
   title: 'Asset-Based Lending Calculator',
   category: 'finance',
   subcategory: 'Investment & Portfolio',
@@ -120,7 +120,7 @@ export const AssetBasedLendingCalculator: Calculator = {
 
   formulas: [
     {
-      id: 'asset-based-lending-calculation',
+      id: 'AssetBasedLending-calculation',
       name: 'Asset-Based Lending Calculation',
       description: 'Calculate asset-based lending terms and costs',
       calculate: (inputs: Record<string, any>) => {

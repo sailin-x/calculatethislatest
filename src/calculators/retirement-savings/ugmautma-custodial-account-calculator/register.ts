@@ -1,3 +1,3 @@
-import { UgmautmaCustodialAccountCalculatorCalculator } from './UgmautmaCustodialAccountCalculatorCalculator';
+import { UgmautmaCustodialAccountCalculator } from './UgmautmaCustodialAccountCalculator';
 
-export { UgmautmaCustodialAccountCalculatorCalculator };
+export { UgmautmaCustodialAccountCalculator };

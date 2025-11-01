@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { restricted_stock_unit_rsu_vs_stock_option_calculatorInputs, restricted_stock_unit_rsu_vs_stock_option_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const restricted_stock_unit_rsu_vs_stock_option_calculatorCalculator: Calculator = {
-  id: 'restricted-stock-unit-rsu-vs-stock-option-calculator',
+export const RestrictedStockUnit-RsuVsStock-option-calculator: Calculator = {
+  id: 'RestrictedStockUnit-RsuVsStock-option-calculator',
   title: 'Restricted Stock Unit (RSU) vs. Stock Option Calculator Calculator',
   category: 'businessmarketingoperations',
   subcategory: 'businessoperationsfinancehub',

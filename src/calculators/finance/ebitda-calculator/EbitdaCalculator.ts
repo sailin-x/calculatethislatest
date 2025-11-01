@@ -1,11 +1,11 @@
 import { Calculator } from '../../types/calculator';
 import { EbitdaCalculatorInputs, EbitdaCalculatorOutputs } from './types';
 import {
-  calculateTotalAmount,
-  calculateTotalInterest,
-  calculateMonthlyPayment,
-  calculateEffectiveRate,
-  generateAnalysis
+  calculateEBITDA,
+  calculateEBITDAMargin,
+  calculateAdjustedEBITDA,
+  calculateEBITDAToRevenue,
+  generateEBITDAAnalysis
 } from './formulas';
 import { validateEbitdaCalculatorInputs } from './validation';
 
@@ -13,83 +13,93 @@ export const EbitdaCalculator: Calculator = {
   id: 'ebitda-calculator',
   title: 'EBITDA Calculator',
   category: 'finance',
-  subcategory: 'Financial Planning',
-  description: 'Calculate EBITDA and EBITDA margins.',
+  subcategory: 'Financial Analysis',
+  description: 'Calculate EBITDA (Earnings Before Interest, Taxes, Depreciation, and Amortization) and related profitability metrics.',
   usageInstructions: [
-    'Enter the principal amount to invest',
-    'Specify the expected interest rate',
-    'Set the time period in years',
-    'Choose compounding frequency',
-    'Review the calculated returns and analysis'
+    'Enter total revenue',
+    'Specify operating expenses (excluding depreciation and amortization)',
+    'Enter depreciation expense',
+    'Enter amortization expense',
+    'Optionally include interest expense and tax rate',
+    'Review EBITDA, margins, and profitability analysis'
   ],
 
   inputs: [
     {
-      id: 'principalAmount',
-      label: 'Principal Amount ($)',
+      id: 'revenue',
+      label: 'Revenue ($)',
       type: 'currency',
       required: true,
       min: 0,
-      tooltip: 'Initial investment amount'
+      tooltip: 'Total company revenue'
     },
     {
-      id: 'interestRate',
-      label: 'Interest Rate (%)',
-      type: 'percentage',
+      id: 'operatingExpenses',
+      label: 'Operating Expenses ($)',
+      type: 'currency',
       required: true,
       min: 0,
-      max: 50,
-      tooltip: 'Annual interest rate'
+      tooltip: 'Operating expenses excluding depreciation and amortization'
     },
     {
-      id: 'timePeriod',
-      label: 'Time Period (Years)',
-      type: 'number',
+      id: 'depreciation',
+      label: 'Depreciation ($)',
+      type: 'currency',
       required: true,
-      min: 1,
-      max: 50,
-      tooltip: 'Investment duration in years'
+      min: 0,
+      tooltip: 'Depreciation expense'
     },
     {
-      id: 'compoundingFrequency',
-      label: 'Compounding Frequency',
-      type: 'select',
+      id: 'amortization',
+      label: 'Amortization ($)',
+      type: 'currency',
       required: true,
-      options: [
-        { value: 1, label: 'Annually' },
-        { value: 2, label: 'Semi-Annually' },
-        { value: 4, label: 'Quarterly' },
-        { value: 12, label: 'Monthly' },
-        { value: 365, label: 'Daily' }
-      ],
-      tooltip: 'How often interest is compounded'
+      min: 0,
+      tooltip: 'Amortization expense'
+    },
+    {
+      id: 'interestExpense',
+      label: 'Interest Expense ($)',
+      type: 'currency',
+      required: false,
+      min: 0,
+      tooltip: 'Interest expense (optional for EBITDA calculation)'
+    },
+    {
+      id: 'taxRate',
+      label: 'Tax Rate (%)',
+      type: 'percentage',
+      required: false,
+      min: 0,
+      max: 100,
+      tooltip: 'Corporate tax rate (optional)'
     }
   ],
 
   outputs: [
     {
-      id: 'totalAmount',
-      label: 'Total Amount',
+      id: 'ebitda',
+      label: 'EBITDA',
       type: 'currency',
-      explanation: 'Final amount including principal and interest'
+      explanation: 'Earnings Before Interest, Taxes, Depreciation, and Amortization'
     },
     {
-      id: 'totalInterest',
-      label: 'Total Interest',
-      type: 'currency',
-      explanation: 'Total interest earned'
-    },
-    {
-      id: 'monthlyPayment',
-      label: 'Monthly Payment',
-      type: 'currency',
-      explanation: 'Monthly equivalent payment'
-    },
-    {
-      id: 'effectiveRate',
-      label: 'Effective Annual Rate',
+      id: 'ebitdaMargin',
+      label: 'EBITDA Margin',
       type: 'percentage',
-      explanation: 'Effective annual interest rate'
+      explanation: 'EBITDA as a percentage of revenue'
+    },
+    {
+      id: 'adjustedEbitda',
+      label: 'Adjusted EBITDA',
+      type: 'currency',
+      explanation: 'EBITDA adjusted for one-time items'
+    },
+    {
+      id: 'ebitdaToRevenue',
+      label: 'EBITDA to Revenue Ratio',
+      type: 'number',
+      explanation: 'EBITDA divided by revenue'
     }
   ],
 
@@ -99,35 +109,37 @@ export const EbitdaCalculator: Calculator = {
 
   examples: [
     {
-      title: 'Long-term Investment Growth',
-      description: 'Calculate growth of $10,000 investment over 20 years at 7% interest',
+      title: 'Technology Company',
+      description: 'Calculate EBITDA for a tech company with $10M revenue, $6M operating expenses, $1M depreciation, $500K amortization',
       inputs: {
-        principalAmount: 10000,
-        interestRate: 7,
-        timePeriod: 20,
-        compoundingFrequency: 12
+        revenue: 10000000,
+        operatingExpenses: 6000000,
+        depreciation: 1000000,
+        amortization: 500000,
+        interestExpense: 200000,
+        taxRate: 25
       },
       expectedOutputs: {
-        totalAmount: 38715,
-        totalInterest: 28715,
-        monthlyPayment: 161,
-        effectiveRate: 7.23
+        ebitda: 4500000,
+        ebitdaMargin: 45.00,
+        adjustedEbitda: 4500000,
+        ebitdaToRevenue: 0.45
       }
     },
     {
-      title: 'Short-term Savings',
-      description: 'Calculate growth of $5,000 savings over 3 years at 3% interest',
+      title: 'Manufacturing Company',
+      description: 'Calculate EBITDA for a manufacturing company with $5M revenue, $4M operating expenses, $800K depreciation, $200K amortization',
       inputs: {
-        principalAmount: 5000,
-        interestRate: 3,
-        timePeriod: 3,
-        compoundingFrequency: 4
+        revenue: 5000000,
+        operatingExpenses: 4000000,
+        depreciation: 800000,
+        amortization: 200000
       },
       expectedOutputs: {
-        totalAmount: 5460,
-        totalInterest: 460,
-        monthlyPayment: 152,
-        effectiveRate: 3.03
+        ebitda: 1000000,
+        ebitdaMargin: 20.00,
+        adjustedEbitda: 1000000,
+        ebitdaToRevenue: 0.20
       }
     }
   ]

@@ -1,4 +1,4 @@
-import { prescription-cost-calculatorInputs, prescription-cost-calculatorMetrics, prescription-cost-calculatorAnalysis } from './types';
+import { PrescriptionCostCalculatorinputs, PrescriptionCostCalculatormetrics, PrescriptionCostCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: prescription-cost-calculatorInputs): number {
+export function calculateResult(inputs: PrescriptionCostCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: prescription-cost-calculatorInputs): num
   }
 }
 
-export function generateAnalysis(inputs: prescription-cost-calculatorInputs, metrics: prescription-cost-calculatorMetrics): prescription-cost-calculatorAnalysis {
+export function generateAnalysis(inputs: PrescriptionCostCalculatorinputs, metrics: PrescriptionCostCalculatormetrics): PrescriptionCostCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

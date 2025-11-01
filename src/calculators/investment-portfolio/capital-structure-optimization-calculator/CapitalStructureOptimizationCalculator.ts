@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateCapitalStructureOptimizationCalculatorInputs, validateCapitalStructureOptimizationCalculatorBusinessRules } from './validation';
 
-export const CapitalStructureOptimizationCalculatorCalculator: Calculator: Calculator = {
-  id: 'capital-structure-optimization-calculator-calculator',
+export const CapitalStructureOptimizationCalculator: Calculator = {
+  id: 'CapitalStructureOptimization-calculator-calculator',
   title: 'Capital Structure Optimization Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

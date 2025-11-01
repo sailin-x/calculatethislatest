@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateFafsaCalculatorInputs, validateFafsaCalculatorBusinessRules } from './validation';
 
-export const FafsaCalculatorCalculator: Calculator: Calculator = {
-  id: 'fafsa-calculator-calculator',
+export const FafsaCalculator: Calculator = {
+  id: 'FafsaCalculatorCalculator',
   title: 'FAFSA Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

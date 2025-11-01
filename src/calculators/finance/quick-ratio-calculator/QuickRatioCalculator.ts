@@ -10,7 +10,7 @@ import {
 import { validateQuickRatioCalculatorInputs } from './validation';
 
 export const QuickRatioCalculator: Calculator = {
-  id: 'quick-ratio-calculator',
+  id: 'QuickRatioCalculator',
   title: 'Quick Ratio Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

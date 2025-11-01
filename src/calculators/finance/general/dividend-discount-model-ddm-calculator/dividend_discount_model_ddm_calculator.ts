@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { dividend_discount_model_ddm_calculatorInputs, dividend_discount_model_ddm_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const dividend_discount_model_ddm_calculatorCalculator: Calculator = {
-  id: 'dividend-discount-model-ddm-calculator',
+export const DividendDiscountModel-ddm-calculator: Calculator = {
+  id: 'DividendDiscountModel-ddm-calculator',
   title: 'Dividend Discount Model (DDM) Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

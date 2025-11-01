@@ -3,7 +3,7 @@ import { calculateMezzanineFinancing } from './formulas';
 import { generateMezzanineFinancingAnalysis } from './formulas';
 
 export const MezzanineFinancingCalculator: Calculator = {
-  id: 'mezzanine-financing-calculator',
+  id: 'MezzanineFinancingCalculator',
   name: 'Mezzanine Financing for Real Estate Calculator',
   category: 'finance',
   subcategory: 'real-estate',
@@ -229,7 +229,7 @@ export const MezzanineFinancingCalculator: Calculator = {
       type: 'percentage',
       value: 75,
       unit: '%',
-      description: 'Mezzanine loan-to-value ratio',
+      description: 'Mezzanine LoanToValue ratio',
       placeholder: 'Enter mezzanine LTV',
       validation: {
         required: true,
@@ -241,7 +241,7 @@ export const MezzanineFinancingCalculator: Calculator = {
       type: 'percentage',
       value: 60,
       unit: '%',
-      description: 'Senior loan-to-value ratio',
+      description: 'Senior LoanToValue ratio',
       placeholder: 'Enter senior LTV',
       validation: {
         required: true,
@@ -323,21 +323,21 @@ export const MezzanineFinancingCalculator: Calculator = {
       label: 'Senior LTV Ratio',
       type: 'percentage',
       unit: '%',
-      description: 'Senior loan-to-value ratio'
+      description: 'Senior LoanToValue ratio'
     },
     {
       name: 'mezzanineLTVRatio',
       label: 'Mezzanine LTV Ratio',
       type: 'percentage',
       unit: '%',
-      description: 'Mezzanine loan-to-value ratio'
+      description: 'Mezzanine LoanToValue ratio'
     },
     {
       name: 'totalLTVRatio',
       label: 'Total LTV Ratio',
       type: 'percentage',
       unit: '%',
-      description: 'Combined loan-to-value ratio'
+      description: 'Combined LoanToValue ratio'
     },
     {
       name: 'equityPercentage',
@@ -390,10 +390,10 @@ export const MezzanineFinancingCalculator: Calculator = {
     },
     {
       name: 'cashOnCashReturn',
-      label: 'Cash-on-Cash Return',
+      label: 'CashOnCash Return',
       type: 'percentage',
       unit: '%',
-      description: 'Annual cash-on-cash return'
+      description: 'Annual CashOnCash return'
     },
     {
       name: 'internalRateOfReturn',

@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { body_surface_area_calculatorInputs, body_surface_area_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const body_surface_area_calculatorCalculator: Calculator = {
-  id: 'body-surface-area-calculator',
+export const BodySurfaceArea-calculator: Calculator = {
+  id: 'BodySurfaceArea-calculator',
   title: 'Body Surface Area Calculator Calculator',
   category: 'healthfitnessdiet',
   subcategory: 'healthfitnesshub',

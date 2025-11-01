@@ -1,13 +1,13 @@
-import { dental-malpractice-settlement-calculatorInputs, dental-malpractice-settlement-calculatorMetrics, dental-malpractice-settlement-calculatorAnalysis } from './types';
+import { DentalMalpracticeSettlement-calculatorInputs, DentalMalpracticeSettlement-calculatorMetrics, DentalMalpracticeSettlement-calculatorAnalysis } from './types';
 
 // Dental Malpractice Settlement Calculator - Legal calculations
-export function calculateResult(inputs: dental-malpractice-settlement-calculatorInputs): number {
+export function calculateResult(inputs: DentalMalpracticeSettlement-calculatorInputs): number {
   // Legal calculation logic
   const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
   return numericValues.reduce((sum, val) => sum + val, 0) || 0;
 }
 
-export function generateAnalysis(inputs: dental-malpractice-settlement-calculatorInputs, metrics: dental-malpractice-settlement-calculatorMetrics): dental-malpractice-settlement-calculatorAnalysis {
+export function generateAnalysis(inputs: DentalMalpracticeSettlement-calculatorInputs, metrics: DentalMalpracticeSettlement-calculatorMetrics): DentalMalpracticeSettlement-calculatorAnalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (Math.abs(result) > 100000) riskLevel = 'High';

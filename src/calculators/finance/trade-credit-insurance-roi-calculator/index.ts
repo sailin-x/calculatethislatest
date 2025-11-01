@@ -1,4 +1,4 @@
-export { TradeCreditInsuranceRoiCalculatorCalculator } from './TradeCreditInsuranceRoiCalculatorCalculator';
+export { TradeCreditInsuranceRoiCalculator } from './TradeCreditInsuranceRoiCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

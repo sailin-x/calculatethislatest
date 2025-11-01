@@ -1,4 +1,4 @@
-import { gas-fee-optimizer-calculatorInputs, gas-fee-optimizer-calculatorMetrics, gas-fee-optimizer-calculatorAnalysis } from './types';
+import { GasFeeOptimizer-calculatorInputs, GasFeeOptimizer-calculatorMetrics, GasFeeOptimizer-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: gas-fee-optimizer-calculatorInputs): number {
+export function calculateResult(inputs: GasFeeOptimizer-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: gas-fee-optimizer-calculatorInputs): num
   }
 }
 
-export function generateAnalysis(inputs: gas-fee-optimizer-calculatorInputs, metrics: gas-fee-optimizer-calculatorMetrics): gas-fee-optimizer-calculatorAnalysis {
+export function generateAnalysis(inputs: GasFeeOptimizer-calculatorInputs, metrics: GasFeeOptimizer-calculatorMetrics): GasFeeOptimizer-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

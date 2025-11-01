@@ -1,7 +1,7 @@
 import { Calculator } from '../../types/calculator';
 
 export const MortgageAPRComparisonCalculator: Calculator = {
-  id: 'mortgage-apr-comparison-calculator',
+  id: 'MortgageAprComparison-calculator',
   title: 'Mortgage APR Comparison Calculator',
   category: 'finance',
   description: 'Compare mortgage offers by calculating their true Annual Percentage Rate (APR) including all closing costs and fees.',

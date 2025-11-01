@@ -1,5 +1,5 @@
-export { corporatebondcalculatorCalculator } from './corporatebondcalculatorCalculator';
-export { registercorporatebondcalculatorCalculator } from './register';
+export { corporatebondcalculator } from './corporatebondcalculator';
+export { registercorporatebondcalculator } from './register';
 export * from './types';
 export * from './formulas';
 export * from './validation';

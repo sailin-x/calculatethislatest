@@ -1,3 +1,3 @@
-import { ProfessionalLiabilityInsuranceCalculatorCalculator } from './ProfessionalLiabilityInsuranceCalculatorCalculator';
+import { ProfessionalLiabilityInsuranceCalculator } from './ProfessionalLiabilityInsuranceCalculator';
 
-export { ProfessionalLiabilityInsuranceCalculatorCalculator };
+export { ProfessionalLiabilityInsuranceCalculator };

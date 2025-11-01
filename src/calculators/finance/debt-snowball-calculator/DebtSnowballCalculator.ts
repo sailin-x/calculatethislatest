@@ -10,7 +10,7 @@ import {
 import { validateDebtSnowballCalculatorInputs } from './validation';
 
 export const DebtSnowballCalculator: Calculator = {
-  id: 'debt-snowball-calculator',
+  id: 'DebtSnowballCalculator',
   title: 'Debt Snowball Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

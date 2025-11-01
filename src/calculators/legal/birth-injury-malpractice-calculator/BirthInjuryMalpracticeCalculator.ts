@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateBirthInjuryMalpracticeCalculatorInputs, validateBirthInjuryMalpracticeCalculatorBusinessRules } from './validation';
 
-export const BirthInjuryMalpracticeCalculatorCalculator: Calculator: Calculator = {
-  id: 'birth-injury-malpractice-calculator-calculator',
+export const BirthInjuryMalpracticeCalculator: Calculator = {
+  id: 'BirthInjuryMalpractice-calculator-calculator',
   title: 'Birth Injury Malpractice Calculator Calculator',
   legal: 'legal', // e.g., 'finance', 'math', 'health', 'business'
   sublegal: 'Sublegal Name',

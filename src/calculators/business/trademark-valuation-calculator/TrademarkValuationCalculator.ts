@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateTrademarkValuationCalculatorInputs, validateTrademarkValuationCalculatorBusinessRules } from './validation';
 
-export const TrademarkValuationCalculatorCalculator: Calculator: Calculator = {
-  id: 'trademark-valuation-calculator-calculator',
+export const TrademarkValuationCalculator: Calculator = {
+  id: 'TrademarkValuationCalculator-calculator',
   title: 'Trademark Valuation Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

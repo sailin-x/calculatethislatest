@@ -1,3 +1,3 @@
-import { BuysellAgreementInsuranceCalculatorCalculator } from './BuysellAgreementInsuranceCalculatorCalculator';
+import { BuysellAgreementInsuranceCalculator } from './BuysellAgreementInsuranceCalculator';
 
-export { BuysellAgreementInsuranceCalculatorCalculator };
+export { BuysellAgreementInsuranceCalculator };

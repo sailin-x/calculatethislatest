@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { burn_injury_settlement_calculatorInputs, burn_injury_settlement_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const burn_injury_settlement_calculatorCalculator: Calculator = {
-  id: 'burn-injury-settlement-calculator',
+export const BurnInjurySettlement-calculator: Calculator = {
+  id: 'BurnInjurySettlement-calculator',
   title: 'Burn Injury Settlement Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

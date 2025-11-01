@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateGroundHandlingServiceCostCalculatorInputs, validateGroundHandlingServiceCostCalculatorBusinessRules } from './validation';
 
-export const GroundHandlingServiceCostCalculatorCalculator: Calculator: Calculator = {
-  id: 'ground-handling-service-cost-calculator-calculator',
+export const GroundHandlingServiceCostCalculator: Calculator = {
+  id: 'GroundHandlingService-CostCalculatorCalculator',
   title: 'Ground Handling Service Cost Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

@@ -1,3 +1,3 @@
-import { FlightCrewSchedulingCostCalculatorCalculator } from './FlightCrewSchedulingCostCalculatorCalculator';
+import { FlightCrewSchedulingCostCalculator } from './FlightCrewSchedulingCostCalculator';
 
-export { FlightCrewSchedulingCostCalculatorCalculator };
+export { FlightCrewSchedulingCostCalculator };

@@ -10,7 +10,7 @@ import {
 import { validateBlockchainGasFeeCalculatorInputs } from './validation';
 
 export const BlockchainGasFeeCalculator: Calculator = {
-  id: 'blockchain-gas-fee-calculator',
+  id: 'BlockchainGasFee-calculator',
   title: 'Blockchain Gas Fee Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

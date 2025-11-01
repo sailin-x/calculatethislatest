@@ -1,4 +1,4 @@
-import { soil-amendment-calculatorInputs, soil-amendment-calculatorMetrics, soil-amendment-calculatorAnalysis } from './types';
+import { SoilAmendmentCalculatorinputs, SoilAmendmentCalculatormetrics, SoilAmendmentCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: soil-amendment-calculatorInputs): number {
+export function calculateResult(inputs: SoilAmendmentCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: soil-amendment-calculatorInputs): number
   }
 }
 
-export function generateAnalysis(inputs: soil-amendment-calculatorInputs, metrics: soil-amendment-calculatorMetrics): soil-amendment-calculatorAnalysis {
+export function generateAnalysis(inputs: SoilAmendmentCalculatorinputs, metrics: SoilAmendmentCalculatormetrics): SoilAmendmentCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

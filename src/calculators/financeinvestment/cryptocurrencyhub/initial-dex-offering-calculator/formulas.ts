@@ -1,4 +1,4 @@
-import { initial-dex-offering-calculatorInputs, initial-dex-offering-calculatorMetrics, initial-dex-offering-calculatorAnalysis } from './types';
+import { InitialDexOffering-calculatorInputs, InitialDexOffering-calculatorMetrics, InitialDexOffering-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: initial-dex-offering-calculatorInputs): number {
+export function calculateResult(inputs: InitialDexOffering-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: initial-dex-offering-calculatorInputs): 
   }
 }
 
-export function generateAnalysis(inputs: initial-dex-offering-calculatorInputs, metrics: initial-dex-offering-calculatorMetrics): initial-dex-offering-calculatorAnalysis {
+export function generateAnalysis(inputs: InitialDexOffering-calculatorInputs, metrics: InitialDexOffering-calculatorMetrics): InitialDexOffering-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

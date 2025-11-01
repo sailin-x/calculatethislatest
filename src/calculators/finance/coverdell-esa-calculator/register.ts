@@ -1,3 +1,3 @@
-import { CoverdellEsaCalculatorCalculator } from './CoverdellEsaCalculatorCalculator';
+import { CoverdellEsaCalculator } from './CoverdellEsaCalculator';
 
-export { CoverdellEsaCalculatorCalculator };
+export { CoverdellEsaCalculator };

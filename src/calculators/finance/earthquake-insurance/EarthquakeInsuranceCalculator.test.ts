@@ -7,7 +7,7 @@ import { validateAllEarthquakeInsuranceInputs } from './quickValidation';
 describe('Earthquake Insurance Calculator', () => {
   describe('Calculator Structure', () => {
     it('should have correct basic properties', () => {
-      expect(EarthquakeInsuranceCalculator.id).toBe('earthquake-insurance-calculator');
+      expect(EarthquakeInsuranceCalculator.id).toBe('EarthquakeInsuranceCalculator');
       expect(EarthquakeInsuranceCalculator.name).toBe('Earthquake Insurance Calculator');
       expect(EarthquakeInsuranceCalculator.category).toBe('finance');
       expect(EarthquakeInsuranceCalculator.subcategory).toBe('insurance');

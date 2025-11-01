@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateInformationRatioCalculatorInputs, validateInformationRatioCalculatorBusinessRules } from './validation';
 
-export const InformationRatioCalculatorCalculator: Calculator: Calculator = {
-  id: 'information-ratio-calculator-calculator',
+export const InformationRatioCalculator: Calculator = {
+  id: 'InformationRatioCalculator-calculator',
   title: 'Information Ratio Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

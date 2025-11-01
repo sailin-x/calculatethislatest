@@ -65,7 +65,7 @@ export function generateAnalysis(
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   let recommendation = '';
 
-  // Investment-portfolio-specific logic: Assess based on premium (common tender offer metric, typically 20-40% in takeovers)
+  // InvestmentPortfolioSpecific logic: Assess based on premium (common tender offer metric, typically 20-40% in takeovers)
   // and portfolio impact. High premium may signal acquisition risk (e.g., deal failure), low premium may not justify transaction costs.
   // Consider unrealized gains if cost basis provided, to evaluate overall position profitability.
   const hasCostBasis = inputs.costBasisPerShare !== undefined && inputs.costBasisPerShare > 0;

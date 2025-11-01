@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateMusicCatalogueValuationCalculatorInputs, validateMusicCatalogueValuationCalculatorBusinessRules } from './validation';
 
-export const MusicCatalogueValuationCalculatorCalculator: Calculator: Calculator = {
-  id: 'music-catalogue-valuation-calculator-calculator',
+export const MusicCatalogueValuationCalculator: Calculator = {
+  id: 'MusicCatalogueValuation-calculator-calculator',
   title: 'Music Catalogue Valuation Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

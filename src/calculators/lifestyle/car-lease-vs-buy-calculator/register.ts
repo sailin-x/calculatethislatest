@@ -1,3 +1,3 @@
-import { CarLeaseVsBuyCalculatorCalculator } from './CarLeaseVsBuyCalculatorCalculator';
+import { CarLeaseVsBuyCalculator } from './CarLeaseVsBuyCalculator';
 
-export { CarLeaseVsBuyCalculatorCalculator };
+export { CarLeaseVsBuyCalculator };

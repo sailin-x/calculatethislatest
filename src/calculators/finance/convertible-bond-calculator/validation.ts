@@ -1,11 +1,11 @@
 import { ValidationResult } from '../../lib/errors';
-import { convertiblebondcalculatorCalculatorInputs } from './types';
+import { convertiblebondcalculatorInputs } from './types';
 
 /**
  * Validate convertible bond calculator calculator inputs
  */
-export function validateconvertiblebondcalculatorCalculatorInputs(
-  inputs: convertiblebondcalculatorCalculatorInputs
+export function validateconvertiblebondcalculatorInputs(
+  inputs: convertiblebondcalculatorInputs
 ): ValidationResult {
   const errors: string[] = [];
 

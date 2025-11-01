@@ -27,7 +27,7 @@ describe('Mortgage Payoff Calculator', () => {
         refinanceRate: 3.5,
         refinanceCosts: 5000,
         payoffGoal: 'minimum-time' as const,
-        targetPayoffDate: '2030-12-31',
+        targetPayoffDate: '20301231',
         prepaymentPenalty: false,
         penaltyAmount: 0,
         state: 'CA'
@@ -79,7 +79,7 @@ describe('Mortgage Payoff Calculator', () => {
         refinanceRate: 3.5,
         refinanceCosts: 5000,
         payoffGoal: 'minimum-time' as const,
-        targetPayoffDate: '2030-12-31',
+        targetPayoffDate: '20301231',
         prepaymentPenalty: false,
         penaltyAmount: 0,
         state: 'CA'
@@ -114,7 +114,7 @@ describe('Mortgage Payoff Calculator', () => {
         refinanceRate: 3.5,
         refinanceCosts: 5000,
         payoffGoal: 'minimum-time' as const,
-        targetPayoffDate: '2030-12-31',
+        targetPayoffDate: '20301231',
         prepaymentPenalty: false,
         penaltyAmount: 0,
         state: 'CA'
@@ -149,7 +149,7 @@ describe('Mortgage Payoff Calculator', () => {
         refinanceRate: 2.5,
         refinanceCosts: 3000,
         payoffGoal: 'balanced' as const,
-        targetPayoffDate: '2028-12-31',
+        targetPayoffDate: '20281231',
         prepaymentPenalty: false,
         penaltyAmount: 0,
         state: 'NY'
@@ -214,7 +214,7 @@ describe('Mortgage Payoff Calculator', () => {
         refinanceRate: 3.5,
         refinanceCosts: 5000,
         payoffGoal: 'minimum-time',
-        targetPayoffDate: '2030-12-31',
+        targetPayoffDate: '20301231',
         prepaymentPenalty: false,
         penaltyAmount: 0,
         state: 'CA'
@@ -246,7 +246,7 @@ describe('Mortgage Payoff Calculator', () => {
         refinanceRate: 6.0, // Higher than current rate
         refinanceCosts: 200000, // Too high
         payoffGoal: 'invalid',
-        targetPayoffDate: '2020-01-01', // Past date
+        targetPayoffDate: '20200101', // Past date
         prepaymentPenalty: false,
         penaltyAmount: 200000, // Too high
         state: 'XX' // Invalid state

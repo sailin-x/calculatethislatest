@@ -1,4 +1,4 @@
-import { mesothelioma-settlement-calculatorInputs, mesothelioma-settlement-calculatorMetrics, mesothelioma-settlement-calculatorAnalysis } from './types';
+import { MesotheliomaSettlementCalculatorinputs, MesotheliomaSettlementCalculatormetrics, MesotheliomaSettlementCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: mesothelioma-settlement-calculatorInputs): number {
+export function calculateResult(inputs: MesotheliomaSettlementCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: mesothelioma-settlement-calculatorInputs
   }
 }
 
-export function generateAnalysis(inputs: mesothelioma-settlement-calculatorInputs, metrics: mesothelioma-settlement-calculatorMetrics): mesothelioma-settlement-calculatorAnalysis {
+export function generateAnalysis(inputs: MesotheliomaSettlementCalculatorinputs, metrics: MesotheliomaSettlementCalculatormetrics): MesotheliomaSettlementCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

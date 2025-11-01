@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateAirlineRouteProfitabilityCalculatorInputs, validateAirlineRouteProfitabilityCalculatorBusinessRules } from './validation';
 
-export const AirlineRouteProfitabilityCalculatorCalculator: Calculator: Calculator = {
-  id: 'airline-route-profitability-calculator-calculator',
+export const AirlineRouteProfitabilityCalculator: Calculator = {
+  id: 'AirlineRouteProfitability-calculator-calculator',
   title: 'Airline Route Profitability Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

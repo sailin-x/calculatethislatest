@@ -10,7 +10,7 @@ import {
 import { validateModifiedDietzReturnCalculatorInputs } from './validation';
 
 export const ModifiedDietzReturnCalculator: Calculator = {
-  id: 'modified-dietz-return-calculator',
+  id: 'ModifiedDietzReturn-calculator',
   title: 'Modified Dietz Return Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

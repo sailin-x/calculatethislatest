@@ -1,3 +1,3 @@
-import { DataGovernanceRoiCalculatorCalculator } from './DataGovernanceRoiCalculatorCalculator';
+import { DataGovernanceRoiCalculator } from './DataGovernanceRoiCalculator';
 
-export { DataGovernanceRoiCalculatorCalculator };
+export { DataGovernanceRoiCalculator };

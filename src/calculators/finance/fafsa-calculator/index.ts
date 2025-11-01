@@ -1,4 +1,4 @@
-export { FafsaCalculatorCalculator } from './FafsaCalculatorCalculator';
+export { FafsaCalculator } from './FafsaCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

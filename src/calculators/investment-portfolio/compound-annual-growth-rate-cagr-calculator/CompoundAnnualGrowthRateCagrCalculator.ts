@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateCompoundAnnualGrowthRateCagrCalculatorInputs, validateCompoundAnnualGrowthRateCagrCalculatorBusinessRules } from './validation';
 
-export const CompoundAnnualGrowthRateCagrCalculatorCalculator: Calculator: Calculator = {
-  id: 'compound-annual-growth-rate-cagr-calculator-calculator',
+export const CompoundAnnualGrowthRateCagrCalculator: Calculator = {
+  id: 'CompoundAnnualGrowth-RateCagrCalculator-calculator',
   title: 'Compound Annual Growth Rate (CAGR) Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

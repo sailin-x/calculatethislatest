@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateStatisticsCalculatorInputs, validateStatisticsCalculatorBusinessRules } from './validation';
 
-export const StatisticsCalculatorCalculator: Calculator: Calculator = {
-  id: 'statistics-calculator-calculator',
+export const StatisticsCalculator: Calculator = {
+  id: 'StatisticsCalculatorCalculator',
   title: 'Statistics Calculator Calculator',
   math: 'math', // e.g., 'finance', 'math', 'health', 'business'
   submath: 'Submath Name',

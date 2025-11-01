@@ -1,0 +1,49 @@
+import { Calculator } from '../../types/calculator';
+
+export const financial_consulting_calculator: Calculator = {
+  id: 'FinancialConsultingCalculator-calculator',
+  title: 'Financial Consulting Calculator Calculator',
+  category: 'finance', // Adjust category as needed
+  subcategory: 'Financial Consulting Calculator',
+  description: 'Calculate financial consulting calculator values.',
+  usageInstructions: [
+    'Enter the required input values',
+    'Review the calculated results'
+  ],
+
+  inputs: [
+    {
+      id: 'value',
+      label: 'Value',
+      type: 'number',
+      required: true,
+      min: 0
+    }
+  ],
+
+  outputs: [
+    {
+      id: 'result',
+      label: 'Result',
+      type: 'number',
+      explanation: 'Calculated result'
+    }
+  ],
+
+  formulas: [],
+
+  validationRules: [],
+
+  examples: [
+    {
+      title: 'Example Calculation',
+      description: 'Basic calculation example',
+      inputs: {
+        value: 100
+      },
+      expectedOutputs: {
+        result: 100
+      }
+    }
+  ]
+};

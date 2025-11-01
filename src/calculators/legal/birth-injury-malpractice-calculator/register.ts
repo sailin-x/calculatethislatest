@@ -1,3 +1,3 @@
-import { BirthInjuryMalpracticeCalculatorCalculator } from './BirthInjuryMalpracticeCalculatorCalculator';
+import { BirthInjuryMalpracticeCalculator } from './BirthInjuryMalpracticeCalculator';
 
-export { BirthInjuryMalpracticeCalculatorCalculator };
+export { BirthInjuryMalpracticeCalculator };

@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateLoanToCostLtcRatioCalculatorInputs, validateLoanToCostLtcRatioCalculatorBusinessRules } from './validation';
 
-export const LoanToCostLtcRatioCalculatorCalculator: Calculator: Calculator = {
-  id: 'loan-to-cost-ltc-ratio-calculator-calculator',
+export const LoanToCostLtcRatioCalculator: Calculator = {
+  id: 'LoanToCost-LtcRatioCalculator-calculator',
   title: 'Loan to Cost (LTC) Ratio Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

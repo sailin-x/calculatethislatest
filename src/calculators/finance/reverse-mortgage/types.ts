@@ -13,7 +13,7 @@ export interface ReverseMortgageInputs {
   monthlyUtilities: number;
   otherMonthlyExpenses: number;
   loanType: 'hecm' | 'proprietary' | 'single-purpose';
-  paymentOption: 'tenure' | 'term' | 'line-of-credit' | 'modified-tenure' | 'modified-term';
+  paymentOption: 'tenure' | 'term' | 'LineOfCredit' | 'modified-tenure' | 'modified-term';
   termYears: number;
   interestRate: number;
   margin: number;

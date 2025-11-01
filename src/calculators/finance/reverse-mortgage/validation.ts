@@ -81,9 +81,9 @@ export function validateReverseMortgageInputs(inputs: CalculatorInputs): Validat
   if (!inputs.paymentOption) {
     errors.push('Payment option is required');
   } else {
-    const validOptions = ['tenure', 'term', 'line-of-credit', 'modified-tenure', 'modified-term'];
+    const validOptions = ['tenure', 'term', 'LineOfCredit', 'modified-tenure', 'modified-term'];
     if (!validOptions.includes(inputs.paymentOption)) {
-      errors.push('Payment option must be one of: tenure, term, line-of-credit, modified-tenure, modified-term');
+      errors.push('Payment option must be one of: tenure, term, LineOfCredit, modified-tenure, modified-term');
     }
   }
 

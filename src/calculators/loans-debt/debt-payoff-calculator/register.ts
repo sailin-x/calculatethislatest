@@ -1,3 +1,3 @@
-import { DebtPayoffCalculatorCalculator } from './DebtPayoffCalculatorCalculator';
+import { DebtPayoffCalculator } from './DebtPayoffCalculator';
 
-export { DebtPayoffCalculatorCalculator };
+export { DebtPayoffCalculator };

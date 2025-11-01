@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { debt_to_equity_calculatorInputs, debt_to_equity_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const debt_to_equity_calculatorCalculator: Calculator = {
-  id: 'debt-to-equity-calculator',
+export const DebtToEquity-calculator: Calculator = {
+  id: 'DebtToEquity-calculator',
   title: 'Debt to Equity Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'loansdebthub',

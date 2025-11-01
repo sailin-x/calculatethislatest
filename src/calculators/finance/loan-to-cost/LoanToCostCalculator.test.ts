@@ -36,14 +36,14 @@ describe('Loan to Cost Calculator', () => {
     surveyFees: 8000,
     environmentalFees: 12000,
     otherSoftCosts: 5000,
-    constructionStartDate: '2024-01-01',
-    constructionEndDate: '2024-07-01',
+    constructionStartDate: '20240101',
+    constructionEndDate: '20240701',
     constructionDuration: 18,
     drawSchedule: [
-      { draw: 1, percentage: 20, amount: 400000, date: '2024-01-15' },
-      { draw: 2, percentage: 30, amount: 600000, date: '2024-03-15' },
-      { draw: 3, percentage: 30, amount: 600000, date: '2024-05-15' },
-      { draw: 4, percentage: 20, amount: 400000, date: '2024-07-01' }
+      { draw: 1, percentage: 20, amount: 400000, date: '20240115' },
+      { draw: 2, percentage: 30, amount: 600000, date: '20240315' },
+      { draw: 3, percentage: 30, amount: 600000, date: '20240515' },
+      { draw: 4, percentage: 20, amount: 400000, date: '20240701' }
     ],
     borrowerEquity: 500000,
     borrowerExperience: 'moderate' as const,
@@ -54,12 +54,12 @@ describe('Loan to Cost Calculator', () => {
     marketCondition: 'growing' as const,
     marketGrowthRate: 4,
     comparableProjects: [
-      { project: 'Project A', cost: 1800000, completionDate: '2023-01-01', performance: 'Good' },
-      { project: 'Project B', cost: 2200000, completionDate: '2023-06-01', performance: 'Excellent' }
+      { project: 'Project A', cost: 1800000, completionDate: '20230101', performance: 'Good' },
+      { project: 'Project B', cost: 2200000, completionDate: '20230601', performance: 'Excellent' }
     ],
     exitStrategy: 'sell' as const,
     expectedExitValue: 2800000,
-    expectedExitDate: '2024-12-01',
+    expectedExitDate: '20241201',
     exitTimeline: 24,
     constructionRisk: 'medium' as const,
     marketRisk: 'low' as const,
@@ -79,7 +79,7 @@ describe('Loan to Cost Calculator', () => {
   };
 
   describe('Core Calculations', () => {
-    it('calculates loan-to-cost ratio correctly', () => {
+    it('calculates LoanToCost ratio correctly', () => {
       const result = calculateLoanToCostRatio(mockInputs);
       expect(result).toBe(75); // 1,500,000 / 2,000,000 * 100
     });

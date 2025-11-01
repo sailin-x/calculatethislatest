@@ -95,7 +95,7 @@ describe('Required Beginning Date (RBD) for RMDs Calculator', () => {
 
   describe('Calculator Definition', () => {
     it('should have correct calculator properties', () => {
-      expect(requiredBeginningDateRMDCalculator.id).toBe('required-beginning-date-rmd-calculator');
+      expect(requiredBeginningDateRMDCalculator.id).toBe('RequiredBeginningDate-rmd-calculator');
       expect(requiredBeginningDateRMDCalculator.title).toBe('Required Beginning Date (RBD) for RMDs Calculator');
       expect(requiredBeginningDateRMDCalculator.category).toBe('finance');
       expect(requiredBeginningDateRMDCalculator.subcategory).toBe('Retirement & Savings');

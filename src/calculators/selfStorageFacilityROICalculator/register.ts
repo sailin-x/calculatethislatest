@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { selfStorageFacilityROICalculatorCalculator } from './selfStorageFacilityROICalculatorCalculator';
+import { selfStorageFacilityROICalculator } from './selfStorageFacilityROICalculator';
 
-export function registerselfStorageFacilityROICalculatorCalculator(): void {
-  calculatorRegistry.register(new selfStorageFacilityROICalculatorCalculator());
+export function registerselfStorageFacilityROICalculator(): void {
+  calculatorRegistry.register(new selfStorageFacilityROICalculator());
 }

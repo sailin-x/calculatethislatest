@@ -1,11 +1,11 @@
 import { ValidationResult } from '../../lib/errors';
-import { portfoliocompanyebitdagrowthcalculatorCalculatorInputs } from './types';
+import { portfoliocompanyebitdagrowthcalculatorInputs } from './types';
 
 /**
  * Validate portfolio company ebitda growth calculator calculator inputs
  */
-export function validateportfoliocompanyebitdagrowthcalculatorCalculatorInputs(
-  inputs: portfoliocompanyebitdagrowthcalculatorCalculatorInputs
+export function validateportfoliocompanyebitdagrowthcalculatorInputs(
+  inputs: portfoliocompanyebitdagrowthcalculatorInputs
 ): ValidationResult {
   const errors: string[] = [];
 

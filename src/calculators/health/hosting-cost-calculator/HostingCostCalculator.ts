@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateHostingCostCalculatorInputs } from './validation';
 
 export const HostingCostCalculator: Calculator = {
-  id: 'hosting-cost-calculator',
+  id: 'HostingCostCalculator',
   title: 'Hosting Cost Calculator',
   category: 'health',
   subcategory: 'General',

@@ -3,7 +3,7 @@ import { calculateCommercialRealEstate, generateCommercialAnalysis } from './for
 import { validateCommercialRealEstateInputs } from './validation';
 
 export const CommercialRealEstateCalculator: Calculator = {
-  id: 'commercial-real-estate-calculator',
+  id: 'CommercialRealEstate-calculator',
   name: 'Commercial Real Estate Calculator',
   category: 'finance',
   subcategory: 'investment',
@@ -293,7 +293,7 @@ export const CommercialRealEstateCalculator: Calculator = {
     },
     {
       id: 'cashOnCashReturn',
-      name: 'Cash-on-Cash Return',
+      name: 'CashOnCash Return',
       type: 'number',
       unit: '%',
       description: 'Annual return on cash investment'
@@ -390,8 +390,8 @@ export const CommercialRealEstateCalculator: Calculator = {
       description: 'Measures unleveraged return on property value'
     },
     {
-      name: 'Cash-on-Cash Return',
-      formula: 'Cash-on-Cash = (Annual Cash Flow / Down Payment) × 100',
+      name: 'CashOnCash Return',
+      formula: 'CashOnCash = (Annual Cash Flow / Down Payment) × 100',
       description: 'Measures annual return on cash investment'
     },
     {

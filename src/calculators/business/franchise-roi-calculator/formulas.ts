@@ -1,4 +1,4 @@
-import { franchise-roi-calculatorInputs, franchise-roi-calculatorMetrics, franchise-roi-calculatorAnalysis } from './types';
+import { FranchiseRoiCalculatorinputs, FranchiseRoiCalculatormetrics, FranchiseRoiCalculatoranalysis } from './types';
 
 // ROI Calculator
 export function calculateROI(netProfit: number, investment: number): number {
@@ -13,7 +13,7 @@ export function calculatePaybackPeriod(investment: number, annualCashFlow: numbe
   return investment / annualCashFlow;
 }
 
-export function calculateResult(inputs: franchise-roi-calculatorInputs): number {
+export function calculateResult(inputs: FranchiseRoiCalculatorinputs): number {
   if ('netProfit' in inputs && 'investment' in inputs) {
     return calculateROI(inputs.netProfit, inputs.investment);
   }
@@ -24,7 +24,7 @@ export function calculateResult(inputs: franchise-roi-calculatorInputs): number 
   return 0;
 }
 
-export function generateAnalysis(inputs: franchise-roi-calculatorInputs, metrics: franchise-roi-calculatorMetrics): franchise-roi-calculatorAnalysis {
+export function generateAnalysis(inputs: FranchiseRoiCalculatorinputs, metrics: FranchiseRoiCalculatormetrics): FranchiseRoiCalculatoranalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (result < 10) riskLevel = 'High';

@@ -1,6 +1,6 @@
-import { ad-agency-commission-calculatorInputs } from './types';
+import { AdAgencyCommission-calculatorInputs } from './types';
 
-export function validateInputs(inputs: ad-agency-commission-calculatorInputs): { isValid: boolean; errors: string[] } {
+export function validateInputs(inputs: AdAgencyCommission-calculatorInputs): { isValid: boolean; errors: string[] } {
   const errors: string[] = [];
 
   // Add validation logic specific to this calculator

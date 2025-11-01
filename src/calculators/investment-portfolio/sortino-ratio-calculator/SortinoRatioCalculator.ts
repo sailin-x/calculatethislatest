@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateSortinoRatioCalculatorInputs, validateSortinoRatioCalculatorBusinessRules } from './validation';
 
-export const SortinoRatioCalculatorCalculator: Calculator: Calculator = {
-  id: 'sortino-ratio-calculator-calculator',
+export const SortinoRatioCalculator: Calculator = {
+  id: 'SortinoRatioCalculator-calculator',
   title: 'Sortino Ratio Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

@@ -10,7 +10,7 @@ import {
 import { validateMezzanineFinancingCalculatorInputs } from './validation';
 
 export const MezzanineFinancingCalculator: Calculator = {
-  id: 'mezzanine-financing-calculator',
+  id: 'MezzanineFinancingCalculator',
   title: 'Mezzanine Financing Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

@@ -1,13 +1,13 @@
-import { savings-goal-calculatorInputs, savings-goal-calculatorMetrics, savings-goal-calculatorAnalysis } from './types';
+import { SavingsGoalCalculatorinputs, SavingsGoalCalculatormetrics, SavingsGoalCalculatoranalysis } from './types';
 
 // Savings Goal Calculator - Finance calculations
-export function calculateResult(inputs: savings-goal-calculatorInputs): number {
+export function calculateResult(inputs: SavingsGoalCalculatorinputs): number {
   // Financial calculation logic
   const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
   return numericValues.reduce((sum, val) => sum + val, 0) || 0;
 }
 
-export function generateAnalysis(inputs: savings-goal-calculatorInputs, metrics: savings-goal-calculatorMetrics): savings-goal-calculatorAnalysis {
+export function generateAnalysis(inputs: SavingsGoalCalculatorinputs, metrics: SavingsGoalCalculatormetrics): SavingsGoalCalculatoranalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (Math.abs(result) > 100000) riskLevel = 'High';

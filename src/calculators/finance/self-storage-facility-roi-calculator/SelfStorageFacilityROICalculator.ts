@@ -6,7 +6,7 @@ import { getSelfStorageFacilityROIValidationRules } from './validation';
  * Self-storage facility ROI formula implementation
  */
 const selfStorageFacilityROIFormula: Formula = {
-  id: 'self-storage-facility-roi',
+  id: 'SelfStorageFacility-roi',
   name: 'Self-Storage Facility ROI',
   description: 'Calculate ROI and financial metrics for self-storage facility investment',
   calculate: (inputs: Record<string, any>) => {
@@ -23,7 +23,7 @@ const selfStorageFacilityROIFormula: Formula = {
  * Industry-leading self-storage facility ROI calculator with comprehensive features
  */
 export const selfStorageFacilityROICalculator: Calculator = {
-  id: 'self-storage-facility-roi-calculator',
+  id: 'SelfStorageFacility-roi-calculator',
   title: 'Self-Storage Facility ROI Calculator',
   category: 'finance',
   subcategory: 'Mortgage & Real Estate',
@@ -327,7 +327,7 @@ export const selfStorageFacilityROICalculator: Calculator = {
     },
     {
       id: 'cashOnCashReturn',
-      label: 'Cash-on-Cash Return (%)',
+      label: 'CashOnCash Return (%)',
       type: 'percentage',
       explanation: 'Annual cash flow divided by equity invested'
     },

@@ -153,12 +153,12 @@ export function validateCashOutRefinanceInputs(inputs: Record<string, any>): Val
     errors.push('Cash-out amount cannot exceed 80% of current equity');
   }
 
-  // Loan-to-value ratio validation
+  // LoanToValue ratio validation
   const newLoanToValue = (inputs.newLoanAmount / inputs.currentHomeValue) * 100;
   if (newLoanToValue > 95) {
-    errors.push('New loan-to-value ratio cannot exceed 95%');
+    errors.push('New LoanToValue ratio cannot exceed 95%');
   } else if (newLoanToValue > 80) {
-    warnings.push('High loan-to-value ratio may require PMI');
+    warnings.push('High LoanToValue ratio may require PMI');
   }
 
   // Business rule validation
@@ -205,9 +205,9 @@ export function validateCashOutRefinanceReasonableness(
     warnings.push('Very long break-even period increases risk');
   }
 
-  // Loan-to-value validation
+  // LoanToValue validation
   if (newLoanToValue > 90) {
-    warnings.push('Very high loan-to-value ratio increases default risk');
+    warnings.push('Very high LoanToValue ratio increases default risk');
   }
 
   // Cash-out validation

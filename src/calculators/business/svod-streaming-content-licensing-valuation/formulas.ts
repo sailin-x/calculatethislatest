@@ -1,4 +1,4 @@
-import { svod-streaming-content-licensing-valuationInputs, svod-streaming-content-licensing-valuationMetrics, svod-streaming-content-licensing-valuationAnalysis } from './types';
+import { SvodStreamingContent-licensing-valuationInputs, SvodStreamingContent-licensing-valuationMetrics, SvodStreamingContent-licensing-valuationAnalysis } from './types';
 
 // SVOD (Streaming) Content Licensing Valuation - Business calculations
 export function calculateNetPresentValue(cashFlows: number[], discountRate: number): number {
@@ -11,7 +11,7 @@ export function calculateROI(initialInvestment: number, finalValue: number): num
  return ((finalValue - initialInvestment) / initialInvestment) * 100;
 }
 
-export function calculateResult(inputs: svod-streaming-content-licensing-valuationInputs): number {
+export function calculateResult(inputs: SvodStreamingContent-licensing-valuationInputs): number {
  // Business calculation logic with real math
  const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
  if (numericValues.length >= 2) {
@@ -24,7 +24,7 @@ export function calculateResult(inputs: svod-streaming-content-licensing-valuati
  return calculateNetPresentValue(numericValues, 10); // 10% discount rate
 }
 
-export function generateAnalysis(inputs: svod-streaming-content-licensing-valuationInputs, metrics: svod-streaming-content-licensing-valuationMetrics): svod-streaming-content-licensing-valuationAnalysis {
+export function generateAnalysis(inputs: SvodStreamingContent-licensing-valuationInputs, metrics: SvodStreamingContent-licensing-valuationMetrics): SvodStreamingContent-licensing-valuationAnalysis {
  const result = metrics.result;
  let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
  if (Math.abs(result) > 100000) riskLevel = 'High';

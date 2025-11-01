@@ -3,7 +3,7 @@ import { calculateAngelInvestment, generateAngelInvestmentAnalysis } from './for
 import { validateAngelInvestmentInputs } from './validation';
 
 export const AngelInvestmentCalculator: Calculator = {
-  id: 'angel-investment-calculator',
+  id: 'AngelInvestmentCalculator',
   name: 'Angel Investment Calculator',
   category: 'finance',
   subcategory: 'investment',

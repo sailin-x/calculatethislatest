@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { addiction_rehab_cost_financing_calculatorInputs, addiction_rehab_cost_financing_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const addiction_rehab_cost_financing_calculatorCalculator: Calculator = {
-  id: 'addiction-rehab-cost-financing-calculator',
+export const AddictionRehabCost-financing-calculator: Calculator = {
+  id: 'AddictionRehabCost-financing-calculator',
   title: 'Addiction Rehab Cost & Financing Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

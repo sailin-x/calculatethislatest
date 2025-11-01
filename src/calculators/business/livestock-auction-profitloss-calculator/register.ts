@@ -1,3 +1,3 @@
-import { LivestockAuctionProfitlossCalculatorCalculator } from './LivestockAuctionProfitlossCalculatorCalculator';
+import { LivestockAuctionProfitlossCalculator } from './LivestockAuctionProfitlossCalculator';
 
-export { LivestockAuctionProfitlossCalculatorCalculator };
+export { LivestockAuctionProfitlossCalculator };

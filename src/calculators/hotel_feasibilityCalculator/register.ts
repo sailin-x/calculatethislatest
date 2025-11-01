@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { hotel_feasibilityCalculatorCalculator } from './hotel_feasibilityCalculatorCalculator';
+import { hotel_feasibilityCalculator } from './hotel_feasibilityCalculator';
 
-export function registerhotel_feasibilityCalculatorCalculator(): void {
-  calculatorRegistry.register(new hotel_feasibilityCalculatorCalculator());
+export function registerhotel_feasibilityCalculator(): void {
+  calculatorRegistry.register(new hotel_feasibilityCalculator());
 }

@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateTextileManufacturingCostperyardCalculatorInputs, validateTextileManufacturingCostperyardCalculatorBusinessRules } from './validation';
 
-export const TextileManufacturingCostperyardCalculatorCalculator: Calculator: Calculator = {
-  id: 'textile-manufacturing-cost-per-yard-calculator-calculator',
-  title: 'Textile Manufacturing Cost-Per-Yard Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+export const TextileManufacturingCostperyardCalculator: Calculator = {
+  id: 'TextileManufacturingCost-PerYardCalculator-calculator',
+  title: 'Textile Manufacturing CostPerYard Calculator Calculator',
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

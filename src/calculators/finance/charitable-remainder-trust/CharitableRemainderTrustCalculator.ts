@@ -4,7 +4,7 @@ import { calculateCharitableRemainderTrust } from './formulas';
 import { validateCharitableRemainderTrustInputs } from './validation';
 
 export const CharitableRemainderTrustCalculator: Calculator = {
-  id: 'charitable-remainder-trust-calculator',
+  id: 'CharitableRemainderTrust-calculator',
   title: 'Charitable Remainder Trust Calculator',
   category: 'finance',
   subcategory: 'Retirement',
@@ -324,7 +324,7 @@ export const CharitableRemainderTrustCalculator: Calculator = {
   examples: [
     {
       title: 'Retirement CRT Strategy',
-      description: '65-year-old donor establishing CRAT with appreciated securities',
+      description: '65YearOld donor establishing CRAT with appreciated securities',
       inputs: {
         donorAge: 65,
         lifeExpectancy: 85,

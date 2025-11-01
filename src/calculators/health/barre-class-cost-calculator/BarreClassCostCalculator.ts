@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateBarreClassCostCalculatorInputs } from './validation';
 
 export const BarreClassCostCalculator: Calculator = {
-  id: 'barre-class-cost-calculator',
+  id: 'BarreClassCost-calculator',
   title: 'Barre Class Cost Calculator',
   category: 'health',
   subcategory: 'General',

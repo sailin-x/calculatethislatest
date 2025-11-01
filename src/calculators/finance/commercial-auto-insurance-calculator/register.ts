@@ -1,3 +1,3 @@
-import { CommercialAutoInsuranceCalculatorCalculator } from './CommercialAutoInsuranceCalculatorCalculator';
+import { CommercialAutoInsuranceCalculator } from './CommercialAutoInsuranceCalculator';
 
-export { CommercialAutoInsuranceCalculatorCalculator };
+export { CommercialAutoInsuranceCalculator };

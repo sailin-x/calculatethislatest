@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { aptValueCalculatorCalculator } from './aptValueCalculatorCalculator';
+import { aptValueCalculator } from './aptValueCalculator';
 
-export function registeraptValueCalculatorCalculator(): void {
-  calculatorRegistry.register(new aptValueCalculatorCalculator());
+export function registeraptValueCalculator(): void {
+  calculatorRegistry.register(new aptValueCalculator());
 }

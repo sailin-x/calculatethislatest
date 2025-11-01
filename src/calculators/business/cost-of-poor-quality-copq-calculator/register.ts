@@ -1,3 +1,3 @@
-import { CostOfPoorQualityCopqCalculatorCalculator } from './CostOfPoorQualityCopqCalculatorCalculator';
+import { CostOfPoorQualityCopqCalculator } from './CostOfPoorQualityCopqCalculator';
 
-export { CostOfPoorQualityCopqCalculatorCalculator };
+export { CostOfPoorQualityCopqCalculator };

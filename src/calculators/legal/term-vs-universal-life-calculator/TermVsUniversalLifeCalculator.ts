@@ -9,7 +9,7 @@ import {
 import { validateTermVsUniversalLifeCalculatorInputs } from './validation';
 
 export const TermVsUniversalLifeCalculator: Calculator = {
-  id: 'term-vs-universal-life-calculator',
+  id: 'TermVsUniversal-life-calculator',
   title: 'Term vs Universal Life Calculator',
   category: 'legal',
   subcategory: 'Settlement Analysis',

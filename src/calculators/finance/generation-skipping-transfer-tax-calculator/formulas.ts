@@ -1,4 +1,4 @@
-import { generation-skipping-transfer-tax-calculatorInputs, generation-skipping-transfer-tax-calculatorMetrics, generation-skipping-transfer-tax-calculatorAnalysis } from './types';
+import { GenerationSkippingTransfer-tax-calculatorInputs, GenerationSkippingTransfer-tax-calculatorMetrics, GenerationSkippingTransfer-tax-calculatorAnalysis } from './types';
 
 
 // Tax Calculator - Progressive tax calculations
@@ -20,7 +20,7 @@ export function calculateEffectiveTaxRate(taxPaid: number, totalIncome: number):
   return (taxPaid / totalIncome) * 100;
 }
 
-export function calculateResult(inputs: generation-skipping-transfer-tax-calculatorInputs): number {
+export function calculateResult(inputs: GenerationSkippingTransfer-tax-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -44,7 +44,7 @@ export function calculateResult(inputs: generation-skipping-transfer-tax-calcula
   }
 }
 
-export function generateAnalysis(inputs: generation-skipping-transfer-tax-calculatorInputs, metrics: generation-skipping-transfer-tax-calculatorMetrics): generation-skipping-transfer-tax-calculatorAnalysis {
+export function generateAnalysis(inputs: GenerationSkippingTransfer-tax-calculatorInputs, metrics: GenerationSkippingTransfer-tax-calculatorMetrics): GenerationSkippingTransfer-tax-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

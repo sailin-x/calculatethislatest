@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { everydayCalculatorCalculator } from './everydayCalculatorCalculator';
+import { everydayCalculator } from './everydayCalculator';
 
-export function registereverydayCalculatorCalculator(): void {
-  calculatorRegistry.register(new everydayCalculatorCalculator());
+export function registereverydayCalculator(): void {
+  calculatorRegistry.register(new everydayCalculator());
 }

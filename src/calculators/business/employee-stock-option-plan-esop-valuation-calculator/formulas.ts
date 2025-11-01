@@ -1,4 +1,4 @@
-import { employee-stock-option-plan-esop-valuation-calculatorInputs, employee-stock-option-plan-esop-valuation-calculatorMetrics, employee-stock-option-plan-esop-valuation-calculatorAnalysis } from './types';
+import { EmployeeStockOption-PlanEsopValuation-calculatorInputs, EmployeeStockOption-PlanEsopValuation-calculatorMetrics, EmployeeStockOption-PlanEsopValuation-calculatorAnalysis } from './types';
 
 // Employee Stock Option Plan (ESOP) Valuation Calculator - Business calculations
 export function calculateNetPresentValue(cashFlows: number[], discountRate: number): number {
@@ -11,7 +11,7 @@ export function calculateROI(initialInvestment: number, finalValue: number): num
  return ((finalValue - initialInvestment) / initialInvestment) * 100;
 }
 
-export function calculateResult(inputs: employee-stock-option-plan-esop-valuation-calculatorInputs): number {
+export function calculateResult(inputs: EmployeeStockOption-PlanEsopValuation-calculatorInputs): number {
  // Business calculation logic with real math
  const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
  if (numericValues.length >= 2) {
@@ -24,7 +24,7 @@ export function calculateResult(inputs: employee-stock-option-plan-esop-valuatio
  return calculateNetPresentValue(numericValues, 10); // 10% discount rate
 }
 
-export function generateAnalysis(inputs: employee-stock-option-plan-esop-valuation-calculatorInputs, metrics: employee-stock-option-plan-esop-valuation-calculatorMetrics): employee-stock-option-plan-esop-valuation-calculatorAnalysis {
+export function generateAnalysis(inputs: EmployeeStockOption-PlanEsopValuation-calculatorInputs, metrics: EmployeeStockOption-PlanEsopValuation-calculatorMetrics): EmployeeStockOption-PlanEsopValuation-calculatorAnalysis {
  const result = metrics.result;
  let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
  if (Math.abs(result) > 100000) riskLevel = 'High';

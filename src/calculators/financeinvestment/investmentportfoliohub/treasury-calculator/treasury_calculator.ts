@@ -2,7 +2,7 @@ import { Calculator } from '../../../../types/calculator';
 import { treasury_calculatorInputs, treasury_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const treasury_calculatorCalculator: Calculator = {
+export const treasury-calculator: Calculator = {
   id: 'treasury-calculator',
   title: 'Treasury Calculator Calculator',
   category: 'financeinvestment',

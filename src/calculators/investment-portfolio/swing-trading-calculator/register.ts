@@ -1,3 +1,3 @@
-import { SwingTradingCalculatorCalculator } from './SwingTradingCalculatorCalculator';
+import { SwingTradingCalculator } from './SwingTradingCalculator';
 
-export { SwingTradingCalculatorCalculator };
+export { SwingTradingCalculator };

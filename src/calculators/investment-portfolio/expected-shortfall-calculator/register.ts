@@ -1,3 +1,3 @@
-import { ExpectedShortfallCalculatorCalculator } from './ExpectedShortfallCalculatorCalculator';
+import { ExpectedShortfallCalculator } from './ExpectedShortfallCalculator';
 
-export { ExpectedShortfallCalculatorCalculator };
+export { ExpectedShortfallCalculator };

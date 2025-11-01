@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateAnnuityBuyoutCalculatorInputs, validateAnnuityBuyoutCalculatorBusinessRules } from './validation';
 
-export const AnnuityBuyoutCalculatorCalculator: Calculator: Calculator = {
-  id: 'annuity-buyout-calculator-calculator',
+export const AnnuityBuyoutCalculator: Calculator = {
+  id: 'AnnuityBuyoutCalculator-calculator',
   title: 'Annuity Buyout Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

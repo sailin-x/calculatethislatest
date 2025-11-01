@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateSharpeRatioCalculatorInputs, validateSharpeRatioCalculatorBusinessRules } from './validation';
 
-export const SharpeRatioCalculatorCalculator: Calculator: Calculator = {
-  id: 'sharpe-ratio-calculator-calculator',
+export const SharpeRatioCalculator: Calculator = {
+  id: 'SharpeRatioCalculator-calculator',
   title: 'Sharpe Ratio Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

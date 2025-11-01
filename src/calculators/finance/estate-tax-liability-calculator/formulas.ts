@@ -1,13 +1,13 @@
-import { estate-tax-liability-calculatorInputs, estate-tax-liability-calculatorMetrics, estate-tax-liability-calculatorAnalysis } from './types';
+import { EstateTaxLiability-calculatorInputs, EstateTaxLiability-calculatorMetrics, EstateTaxLiability-calculatorAnalysis } from './types';
 
 // Estate Tax Liability Calculator - Finance calculations
-export function calculateResult(inputs: estate-tax-liability-calculatorInputs): number {
+export function calculateResult(inputs: EstateTaxLiability-calculatorInputs): number {
   // Financial calculation logic
   const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
   return numericValues.reduce((sum, val) => sum + val, 0) || 0;
 }
 
-export function generateAnalysis(inputs: estate-tax-liability-calculatorInputs, metrics: estate-tax-liability-calculatorMetrics): estate-tax-liability-calculatorAnalysis {
+export function generateAnalysis(inputs: EstateTaxLiability-calculatorInputs, metrics: EstateTaxLiability-calculatorMetrics): EstateTaxLiability-calculatorAnalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (Math.abs(result) > 100000) riskLevel = 'High';

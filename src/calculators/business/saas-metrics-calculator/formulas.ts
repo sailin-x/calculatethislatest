@@ -1,4 +1,4 @@
-import { saas-metrics-calculatorInputs, saas-metrics-calculatorMetrics, saas-metrics-calculatorAnalysis } from './types';
+import { SaasMetricsCalculatorinputs, SaasMetricsCalculatormetrics, SaasMetricsCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: saas-metrics-calculatorInputs): number {
+export function calculateResult(inputs: SaasMetricsCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: saas-metrics-calculatorInputs): number {
   }
 }
 
-export function generateAnalysis(inputs: saas-metrics-calculatorInputs, metrics: saas-metrics-calculatorMetrics): saas-metrics-calculatorAnalysis {
+export function generateAnalysis(inputs: SaasMetricsCalculatorinputs, metrics: SaasMetricsCalculatormetrics): SaasMetricsCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

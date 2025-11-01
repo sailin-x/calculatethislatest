@@ -1,4 +1,4 @@
-export { ForexCalculatorCalculator } from './ForexCalculatorCalculator';
+export { ForexCalculator } from './ForexCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

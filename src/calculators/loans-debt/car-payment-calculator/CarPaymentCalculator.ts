@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateCarPaymentCalculatorInputs, validateCarPaymentCalculatorBusinessRules } from './validation';
 
-export const CarPaymentCalculatorCalculator: Calculator: Calculator = {
-  id: 'car-payment-calculator-calculator',
+export const CarPaymentCalculator: Calculator = {
+  id: 'CarPaymentCalculator-calculator',
   title: 'Car Payment Calculator Calculator',
   loans-debt: 'loans-debt', // e.g., 'finance', 'math', 'health', 'business'
   subloans-debt: 'Subloans-debt Name',

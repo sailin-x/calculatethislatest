@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateVariableAnnuityCalculatorInputs, validateVariableAnnuityCalculatorBusinessRules } from './validation';
 
-export const VariableAnnuityCalculatorCalculator: Calculator: Calculator = {
-  id: 'variable-annuity-calculator-calculator',
+export const VariableAnnuityCalculator: Calculator = {
+  id: 'VariableAnnuityCalculator-calculator',
   title: 'Variable Annuity Calculator Calculator',
   retirement-savings: 'retirement-savings', // e.g., 'finance', 'math', 'health', 'business'
   subretirement-savings: 'Subretirement-savings Name',

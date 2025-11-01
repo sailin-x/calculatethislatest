@@ -4,7 +4,7 @@ import { calculateInterestOnlyMortgage } from './formulas';
 import { validateInterestOnlyMortgageInputs } from './validation';
 
 export const InterestOnlyMortgageCalculator: Calculator<InterestOnlyMortgageInputs, InterestOnlyMortgageOutputs> = {
-  id: 'interest-only-mortgage',
+  id: 'InterestOnlyMortgage',
   name: 'Interest-Only Mortgage Calculator',
   category: 'finance',
   subcategory: 'real-estate',
@@ -125,8 +125,8 @@ export const InterestOnlyMortgageCalculator: Calculator<InterestOnlyMortgageInpu
     },
     borrowerDebtToIncomeRatio: {
       type: 'number',
-      label: 'Debt-to-Income Ratio (%)',
-      description: 'Current debt-to-income ratio',
+      label: 'DebtToIncome Ratio (%)',
+      description: 'Current DebtToIncome ratio',
       required: true,
       min: 0,
       max: 100,
@@ -354,8 +354,8 @@ export const InterestOnlyMortgageCalculator: Calculator<InterestOnlyMortgageInpu
     },
     loanToValueRatio: {
       type: 'number',
-      label: 'Loan-to-Value Ratio',
-      description: 'Current loan-to-value ratio'
+      label: 'LoanToValue Ratio',
+      description: 'Current LoanToValue ratio'
     },
     riskScore: {
       type: 'number',
@@ -395,7 +395,7 @@ export const InterestOnlyMortgageCalculator: Calculator<InterestOnlyMortgageInpu
 - **Payment Increase**: $${outputs.paymentIncrease.toLocaleString()}
 - **Total Interest Paid**: $${outputs.totalInterestPaid.toLocaleString()}
 - **Principal Balance**: $${outputs.principalBalance.toLocaleString()}
-- **Loan-to-Value Ratio**: ${outputs.loanToValueRatio.toFixed(2)}%
+- **LoanToValue Ratio**: ${outputs.loanToValueRatio.toFixed(2)}%
 - **Risk Score**: ${outputs.riskScore}/10
 
 ## Analysis
@@ -418,7 +418,7 @@ ${analysis.nextSteps.join('\n')}
     'Payment Increase': 'Fully Amortized Payment - Interest-Only Payment',
     'Total Interest Paid': 'Sum of all interest payments over loan term',
     'Principal Balance': 'Original loan amount (no principal reduction during interest-only period)',
-    'Loan-to-Value Ratio': 'Loan Amount / Property Value × 100',
+    'LoanToValue Ratio': 'Loan Amount / Property Value × 100',
     'Risk Score': 'Weighted assessment of payment shock, market, and financial risks'
   },
   

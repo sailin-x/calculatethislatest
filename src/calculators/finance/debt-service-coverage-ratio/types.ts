@@ -41,7 +41,7 @@ export interface DebtServiceCoverageRatioInputs {
     term: number;
     payment: number;
     balance: number;
-    type: 'mortgage' | 'line-of-credit' | 'bridge' | 'mezzanine';
+    type: 'mortgage' | 'LineOfCredit' | 'bridge' | 'mezzanine';
   }>;
   propertyValue: number;
   loanToValueRatio: number;

@@ -1,3 +1,3 @@
-import { PricePerSquareFootCalculatorCalculator } from './PricePerSquareFootCalculatorCalculator';
+import { PricePerSquareFootCalculator } from './PricePerSquareFootCalculator';
 
-export { PricePerSquareFootCalculatorCalculator };
+export { PricePerSquareFootCalculator };

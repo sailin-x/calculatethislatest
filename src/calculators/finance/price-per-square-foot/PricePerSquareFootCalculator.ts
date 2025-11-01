@@ -1,7 +1,7 @@
 import { Calculator } from '../../types/calculator';
 
 export const PricePerSquareFootCalculator: Calculator = {
-  id: 'price-per-square-foot-calculator',
+  id: 'PricePerSquare-foot-calculator',
   title: 'Price Per Square Foot Calculator',
   category: 'finance',
   subcategory: 'Mortgage & Real Estate',

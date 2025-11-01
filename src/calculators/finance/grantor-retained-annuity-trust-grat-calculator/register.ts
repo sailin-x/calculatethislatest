@@ -1,3 +1,3 @@
-import { GrantorRetainedAnnuityTrustGratCalculatorCalculator } from './GrantorRetainedAnnuityTrustGratCalculatorCalculator';
+import { GrantorRetainedAnnuityTrustGratCalculator } from './GrantorRetainedAnnuityTrustGratCalculator';
 
-export { GrantorRetainedAnnuityTrustGratCalculatorCalculator };
+export { GrantorRetainedAnnuityTrustGratCalculator };

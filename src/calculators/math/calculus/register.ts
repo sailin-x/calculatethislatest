@@ -1,5 +1,5 @@
 import { calculatorRegistry } from '../../../data/calculatorRegistry';
-import { CalculusCalculator } from './CalculusCalculator';
+import { calculusCalculator } from './CalculusCalculator';
 
 export function registerCalculusCalculator() {
   calculatorRegistry.register(CalculusCalculator);

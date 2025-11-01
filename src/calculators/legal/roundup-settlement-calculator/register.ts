@@ -1,3 +1,3 @@
-import { RoundupSettlementCalculatorCalculator } from './RoundupSettlementCalculatorCalculator';
+import { RoundupSettlementCalculator } from './RoundupSettlementCalculator';
 
-export { RoundupSettlementCalculatorCalculator };
+export { RoundupSettlementCalculator };

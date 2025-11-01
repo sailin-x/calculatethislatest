@@ -10,7 +10,7 @@ import {
 import { validateBalancedScorecardCalculatorInputs } from './validation';
 
 export const BalancedScorecardCalculator: Calculator = {
-  id: 'balanced-scorecard-calculator',
+  id: 'BalancedScorecardCalculator',
   title: 'Balanced Scorecard Calculator',
   category: 'business',
   subcategory: 'Financial Planning',

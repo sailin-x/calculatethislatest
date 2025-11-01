@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { cap_rateCalculatorCalculator } from './cap_rateCalculatorCalculator';
+import { cap_rateCalculator } from './cap_rateCalculator';
 
-export function registercap_rateCalculatorCalculator(): void {
-  calculatorRegistry.register(new cap_rateCalculatorCalculator());
+export function registercap_rateCalculator(): void {
+  calculatorRegistry.register(new cap_rateCalculator());
 }

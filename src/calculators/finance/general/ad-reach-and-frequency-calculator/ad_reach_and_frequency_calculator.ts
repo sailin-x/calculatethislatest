@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { ad_reach_and_frequency_calculatorInputs, ad_reach_and_frequency_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const ad_reach_and_frequency_calculatorCalculator: Calculator = {
-  id: 'ad-reach-and-frequency-calculator',
+export const AdReachAnd-frequency-calculator: Calculator = {
+  id: 'AdReachAnd-frequency-calculator',
   title: 'Ad Reach and Frequency Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

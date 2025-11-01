@@ -1,4 +1,4 @@
-import { tv-ad-gross-rating-point-grp-calculatorInputs, tv-ad-gross-rating-point-grp-calculatorMetrics, tv-ad-gross-rating-point-grp-calculatorAnalysis } from './types';
+import { TvAdGross-RatingPointGrp-calculatorInputs, TvAdGross-RatingPointGrp-calculatorMetrics, TvAdGross-RatingPointGrp-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: tv-ad-gross-rating-point-grp-calculatorInputs): number {
+export function calculateResult(inputs: TvAdGross-RatingPointGrp-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: tv-ad-gross-rating-point-grp-calculatorI
   }
 }
 
-export function generateAnalysis(inputs: tv-ad-gross-rating-point-grp-calculatorInputs, metrics: tv-ad-gross-rating-point-grp-calculatorMetrics): tv-ad-gross-rating-point-grp-calculatorAnalysis {
+export function generateAnalysis(inputs: TvAdGross-RatingPointGrp-calculatorInputs, metrics: TvAdGross-RatingPointGrp-calculatorMetrics): TvAdGross-RatingPointGrp-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

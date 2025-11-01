@@ -1,6 +1,6 @@
-import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { asset-protection-calculatorCalculator } from './asset-protection-calculatorCalculator';
+import { calculatorRegistry } from '../../../../data/calculatorRegistry';
+import { assetprotectioncalculator } from './AssetProtectionCalculator';
 
-export function registerasset-protection-calculatorCalculator(): void {
-  calculatorRegistry.register(new asset-protection-calculatorCalculator());
+export function registerassetprotectioncalculator(): void {
+  calculatorRegistry.register(new assetprotectioncalculator());
 }

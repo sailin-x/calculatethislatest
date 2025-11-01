@@ -1,4 +1,4 @@
-import { angel-investment-dilutionInputs, angel-investment-dilutionMetrics, angel-investment-dilutionAnalysis } from './types';
+import { AngelInvestmentDilutioninputs, AngelInvestmentDilutionmetrics, AngelInvestmentDilutionanalysis } from './types';
 
 
 // Investment Calculator - ROI and growth calculations
@@ -12,7 +12,7 @@ export function calculateCompoundInterest(principal: number, rate: number, years
   return principal * Math.pow(1 + ratePerPeriod, totalPeriods);
 }
 
-export function calculateResult(inputs: angel-investment-dilutionInputs): number {
+export function calculateResult(inputs: AngelInvestmentDilutioninputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -36,7 +36,7 @@ export function calculateResult(inputs: angel-investment-dilutionInputs): number
   }
 }
 
-export function generateAnalysis(inputs: angel-investment-dilutionInputs, metrics: angel-investment-dilutionMetrics): angel-investment-dilutionAnalysis {
+export function generateAnalysis(inputs: AngelInvestmentDilutioninputs, metrics: AngelInvestmentDilutionmetrics): AngelInvestmentDilutionanalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

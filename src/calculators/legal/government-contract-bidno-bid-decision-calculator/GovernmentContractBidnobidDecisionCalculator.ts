@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateGovernmentContractBidnobidDecisionCalculatorInputs, validateGovernmentContractBidnobidDecisionCalculatorBusinessRules } from './validation';
 
-export const GovernmentContractBidnobidDecisionCalculatorCalculator: Calculator: Calculator = {
-  id: 'government-contract-bidno-bid-decision-calculator-calculator',
+export const GovernmentContractBidnobidDecisionCalculator: Calculator = {
+  id: 'GovernmentContractBidno-BidDecisionCalculator-calculator',
   title: 'Government Contract Bid/No-Bid Decision Calculator Calculator',
   legal: 'legal', // e.g., 'finance', 'math', 'health', 'business'
   sublegal: 'Sublegal Name',

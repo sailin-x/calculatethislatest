@@ -1,13 +1,13 @@
-import { kidnap-ransom-insurance-calculatorInputs, kidnap-ransom-insurance-calculatorMetrics, kidnap-ransom-insurance-calculatorAnalysis } from './types';
+import { KidnapRansomInsurance-calculatorInputs, KidnapRansomInsurance-calculatorMetrics, KidnapRansomInsurance-calculatorAnalysis } from './types';
 
 // Kidnap & Ransom Insurance Calculator - Finance calculations
-export function calculateResult(inputs: kidnap-ransom-insurance-calculatorInputs): number {
+export function calculateResult(inputs: KidnapRansomInsurance-calculatorInputs): number {
   // Financial calculation logic
   const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
   return numericValues.reduce((sum, val) => sum + val, 0) || 0;
 }
 
-export function generateAnalysis(inputs: kidnap-ransom-insurance-calculatorInputs, metrics: kidnap-ransom-insurance-calculatorMetrics): kidnap-ransom-insurance-calculatorAnalysis {
+export function generateAnalysis(inputs: KidnapRansomInsurance-calculatorInputs, metrics: KidnapRansomInsurance-calculatorMetrics): KidnapRansomInsurance-calculatorAnalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (Math.abs(result) > 100000) riskLevel = 'High';

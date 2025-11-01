@@ -1,13 +1,13 @@
-import { life-settlement-value-calculatorInputs, life-settlement-value-calculatorMetrics, life-settlement-value-calculatorAnalysis } from './types';
+import { LifeSettlementValue-calculatorInputs, LifeSettlementValue-calculatorMetrics, LifeSettlementValue-calculatorAnalysis } from './types';
 
 // Life Settlement Value Calculator - Finance calculations
-export function calculateResult(inputs: life-settlement-value-calculatorInputs): number {
+export function calculateResult(inputs: LifeSettlementValue-calculatorInputs): number {
   // Financial calculation logic
   const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
   return numericValues.reduce((sum, val) => sum + val, 0) || 0;
 }
 
-export function generateAnalysis(inputs: life-settlement-value-calculatorInputs, metrics: life-settlement-value-calculatorMetrics): life-settlement-value-calculatorAnalysis {
+export function generateAnalysis(inputs: LifeSettlementValue-calculatorInputs, metrics: LifeSettlementValue-calculatorMetrics): LifeSettlementValue-calculatorAnalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (Math.abs(result) > 100000) riskLevel = 'High';

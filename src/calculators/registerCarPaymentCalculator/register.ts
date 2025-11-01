@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { registerCarPaymentCalculatorCalculator } from './registerCarPaymentCalculatorCalculator';
+import { registerCarPaymentCalculator } from './registerCarPaymentCalculator';
 
-export function registerregisterCarPaymentCalculatorCalculator(): void {
-  calculatorRegistry.register(new registerCarPaymentCalculatorCalculator());
+export function registerregisterCarPaymentCalculator(): void {
+  calculatorRegistry.register(new registerCarPaymentCalculator());
 }

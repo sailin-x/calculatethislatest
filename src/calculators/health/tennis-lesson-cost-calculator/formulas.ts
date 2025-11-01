@@ -1,4 +1,4 @@
-import { tennis-lesson-cost-calculatorInputs, tennis-lesson-cost-calculatorMetrics, tennis-lesson-cost-calculatorAnalysis } from './types';
+import { TennisLessonCost-calculatorInputs, TennisLessonCost-calculatorMetrics, TennisLessonCost-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: tennis-lesson-cost-calculatorInputs): number {
+export function calculateResult(inputs: TennisLessonCost-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: tennis-lesson-cost-calculatorInputs): nu
   }
 }
 
-export function generateAnalysis(inputs: tennis-lesson-cost-calculatorInputs, metrics: tennis-lesson-cost-calculatorMetrics): tennis-lesson-cost-calculatorAnalysis {
+export function generateAnalysis(inputs: TennisLessonCost-calculatorInputs, metrics: TennisLessonCost-calculatorMetrics): TennisLessonCost-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

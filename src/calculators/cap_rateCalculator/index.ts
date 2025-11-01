@@ -1,3 +1,3 @@
-export * from './cap_rateCalculatorCalculator';
+export * from './cap_rateCalculator';
 export * from './register';
 export * from './types';

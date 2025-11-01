@@ -1,4 +1,4 @@
-export { RequiredMinimumDistribution(rmd)CalculatorCalculator } from './RequiredMinimumDistribution(rmd)CalculatorCalculator';
+export { RequiredMinimumDistribution(rmd)Calculator } from './RequiredMinimumDistribution(rmd)Calculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

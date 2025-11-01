@@ -1,4 +1,4 @@
-export { BusinessProcessReengineeringBprSavingsCalculatorCalculator } from './BusinessProcessReengineeringBprSavingsCalculatorCalculator';
+export { BusinessProcessReengineeringBprSavingsCalculator } from './BusinessProcessReengineeringBprSavingsCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

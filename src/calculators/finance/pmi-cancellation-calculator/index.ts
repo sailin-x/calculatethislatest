@@ -1,4 +1,4 @@
-export { PmiCancellationCalculatorCalculator } from './PmiCancellationCalculatorCalculator';
+export { PmiCancellationCalculator } from './PmiCancellationCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

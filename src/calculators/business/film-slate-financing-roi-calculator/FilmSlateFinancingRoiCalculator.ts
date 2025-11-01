@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateFilmSlateFinancingRoiCalculatorInputs, validateFilmSlateFinancingRoiCalculatorBusinessRules } from './validation';
 
-export const FilmSlateFinancingRoiCalculatorCalculator: Calculator: Calculator = {
-  id: 'film-slate-financing-roi-calculator-calculator',
+export const FilmSlateFinancingRoiCalculator: Calculator = {
+  id: 'FilmSlateFinancing-RoiCalculatorCalculator',
   title: 'Film Slate Financing ROI Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

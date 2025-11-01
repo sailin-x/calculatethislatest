@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { hit_and_run_settlement_calculatorInputs, hit_and_run_settlement_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const hit_and_run_settlement_calculatorCalculator: Calculator = {
-  id: 'hit-and-run-settlement-calculator',
+export const HitAndRun-settlement-calculator: Calculator = {
+  id: 'HitAndRun-settlement-calculator',
   title: 'Hit and Run Settlement Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

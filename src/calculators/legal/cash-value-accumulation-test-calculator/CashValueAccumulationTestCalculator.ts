@@ -9,7 +9,7 @@ import {
 import { validateCashValueAccumulationTestCalculatorInputs } from './validation';
 
 export const CashValueAccumulationTestCalculator: Calculator = {
-  id: 'cash-value-accumulation-test-calculator',
+  id: 'CashValueAccumulation-test-calculator',
   title: 'Cash Value Accumulation Test Calculator',
   category: 'legal',
   subcategory: 'Settlement Analysis',

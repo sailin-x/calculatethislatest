@@ -1,3 +1,3 @@
-import { StoplossInsurancePremiumCalculatorCalculator } from './StoplossInsurancePremiumCalculatorCalculator';
+import { StoplossInsurancePremiumCalculator } from './StoplossInsurancePremiumCalculator';
 
-export { StoplossInsurancePremiumCalculatorCalculator };
+export { StoplossInsurancePremiumCalculator };

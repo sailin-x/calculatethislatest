@@ -10,7 +10,7 @@ import {
 import { validateItOutsourcingVsInHouseCalculatorInputs } from './validation';
 
 export const ItOutsourcingVsInHouseCalculator: Calculator = {
-  id: 'it-outsourcing-vs-in-house-calculator',
+  id: 'ItOutsourcingVs-InHouseCalculator',
   title: 'IT Outsourcing vs In House Calculator',
   category: 'business',
   subcategory: 'Financial Planning',

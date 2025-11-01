@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateVideoCostCalculatorInputs } from './validation';
 
 export const VideoCostCalculator: Calculator = {
-  id: 'video-cost-calculator',
+  id: 'VideoCostCalculator',
   title: 'Video Cost Calculator',
   category: 'health',
   subcategory: 'General',

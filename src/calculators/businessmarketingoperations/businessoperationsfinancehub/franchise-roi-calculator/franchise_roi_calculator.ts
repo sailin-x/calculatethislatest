@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { franchise_roi_calculatorInputs, franchise_roi_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const franchise_roi_calculatorCalculator: Calculator = {
-  id: 'franchise-roi-calculator',
+export const FranchiseRoiCalculator: Calculator = {
+  id: 'FranchiseRoiCalculator',
   title: 'Franchise ROI Calculator Calculator',
   category: 'businessmarketingoperations',
   subcategory: 'businessoperationsfinancehub',

@@ -1,3 +1,3 @@
-import { CharitableRemainderTrustCrtPayoutCalculatorCalculator } from './CharitableRemainderTrustCrtPayoutCalculatorCalculator';
+import { CharitableRemainderTrustCrtPayoutCalculator } from './CharitableRemainderTrustCrtPayoutCalculator';
 
-export { CharitableRemainderTrustCrtPayoutCalculatorCalculator };
+export { CharitableRemainderTrustCrtPayoutCalculator };

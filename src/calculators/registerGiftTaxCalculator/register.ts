@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { registerGiftTaxCalculatorCalculator } from './registerGiftTaxCalculatorCalculator';
+import { registerGiftTaxCalculator } from './registerGiftTaxCalculator';
 
-export function registerregisterGiftTaxCalculatorCalculator(): void {
-  calculatorRegistry.register(new registerGiftTaxCalculatorCalculator());
+export function registerregisterGiftTaxCalculator(): void {
+  calculatorRegistry.register(new registerGiftTaxCalculator());
 }

@@ -1,4 +1,4 @@
-import { restricted-stock-unit-vs-stock-option-calculatorInputs, restricted-stock-unit-vs-stock-option-calculatorMetrics, restricted-stock-unit-vs-stock-option-calculatorAnalysis } from './types';
+import { RestrictedStockUnit-VsStockOption-calculatorInputs, RestrictedStockUnit-VsStockOption-calculatorMetrics, RestrictedStockUnit-VsStockOption-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: restricted-stock-unit-vs-stock-option-calculatorInputs): number {
+export function calculateResult(inputs: RestrictedStockUnit-VsStockOption-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: restricted-stock-unit-vs-stock-option-ca
   }
 }
 
-export function generateAnalysis(inputs: restricted-stock-unit-vs-stock-option-calculatorInputs, metrics: restricted-stock-unit-vs-stock-option-calculatorMetrics): restricted-stock-unit-vs-stock-option-calculatorAnalysis {
+export function generateAnalysis(inputs: RestrictedStockUnit-VsStockOption-calculatorInputs, metrics: RestrictedStockUnit-VsStockOption-calculatorMetrics): RestrictedStockUnit-VsStockOption-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

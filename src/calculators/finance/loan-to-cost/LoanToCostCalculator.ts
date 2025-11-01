@@ -30,11 +30,11 @@ import {
 import { validateLoanToCostInputs, validateLoanToCostBusinessRules } from './validation';
 
 export const LoanToCostCalculator: Calculator = {
-  id: 'loan-to-cost-calculator',
-  title: 'Loan-to-Cost (LTC) Ratio Calculator',
+  id: 'LoanToCost-calculator',
+  title: 'LoanToCost (LTC) Ratio Calculator',
   category: 'finance',
   subcategory: 'Real Estate',
-  description: 'Calculate loan-to-cost ratios and analyze real estate project financing with comprehensive risk assessment and profitability analysis.',
+  description: 'Calculate LoanToCost ratios and analyze real estate project financing with comprehensive risk assessment and profitability analysis.',
   usageInstructions: [
     'Enter project details including costs and loan information',
     'Specify borrower qualifications and market conditions',
@@ -174,7 +174,7 @@ export const LoanToCostCalculator: Calculator = {
   outputs: [
     {
       id: 'loanToCostRatio',
-      label: 'Loan-to-Cost Ratio (%)',
+      label: 'LoanToCost Ratio (%)',
       type: 'percentage',
       explanation: 'Percentage of total project cost financed by the loan'
     },

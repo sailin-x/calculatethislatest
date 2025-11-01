@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateDirectorsOfficersCalculatorInputs } from './validation';
 
 export const DirectorsOfficersCalculator: Calculator = {
-  id: 'directors-officers-calculator',
+  id: 'DirectorsOfficersCalculator',
   title: 'Directors Officers Calculator',
   category: 'insurance',
   subcategory: 'General',

@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { registerGenerationSkippingTransferGstTaxCalculatorCalculator } from './registerGenerationSkippingTransferGstTaxCalculatorCalculator';
+import { registerGenerationSkippingTransferGstTaxCalculator } from './registerGenerationSkippingTransferGstTaxCalculator';
 
-export function registerregisterGenerationSkippingTransferGstTaxCalculatorCalculator(): void {
-  calculatorRegistry.register(new registerGenerationSkippingTransferGstTaxCalculatorCalculator());
+export function registerregisterGenerationSkippingTransferGstTaxCalculator(): void {
+  calculatorRegistry.register(new registerGenerationSkippingTransferGstTaxCalculator());
 }

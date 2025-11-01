@@ -4,7 +4,7 @@ import { calculateResult, generateAnalysis } from './formulas';
 import { validateCalmarRatioCalculatorInputs } from './validation';
 
 export const CalmarRatioCalculator: Calculator = {
-  id: 'calmar-ratio-calculator',
+  id: 'CalmarRatioCalculator',
   title: 'Calmar Ratio Calculator',
   category: 'finance',
   subcategory: 'General',

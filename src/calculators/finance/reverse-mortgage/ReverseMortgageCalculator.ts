@@ -3,7 +3,7 @@ import { calculateReverseMortgage } from './formulas';
 import { generateReverseMortgageAnalysis } from './formulas';
 
 export const ReverseMortgageCalculator: Calculator = {
-  id: 'reverse-mortgage-calculator',
+  id: 'ReverseMortgageCalculator',
   name: 'Reverse Mortgage Calculator',
   category: 'finance',
   subcategory: 'mortgage',
@@ -172,7 +172,7 @@ export const ReverseMortgageCalculator: Calculator = {
       options: [
         { value: 'tenure', label: 'Tenure (Lifetime)' },
         { value: 'term', label: 'Term (Fixed Period)' },
-        { value: 'line-of-credit', label: 'Line of Credit' },
+        { value: 'LineOfCredit', label: 'Line of Credit' },
         { value: 'modified-tenure', label: 'Modified Tenure' },
         { value: 'modified-term', label: 'Modified Term' }
       ],
@@ -393,7 +393,7 @@ export const ReverseMortgageCalculator: Calculator = {
     },
     {
       id: 'debtToEquity',
-      label: 'Debt-to-Equity Ratio',
+      label: 'DebtToEquity Ratio',
       type: 'number',
       unit: '%',
       description: 'Ratio of loan balance to property value'

@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateTaxiCostCalculatorInputs } from './validation';
 
 export const TaxiCostCalculator: Calculator = {
-  id: 'taxi-cost-calculator',
+  id: 'TaxiCostCalculator',
   title: 'Taxi Cost Calculator',
   category: 'health',
   subcategory: 'General',

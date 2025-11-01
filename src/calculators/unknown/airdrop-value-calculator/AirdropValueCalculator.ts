@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateAirdropValueCalculatorInputs, validateAirdropValueCalculatorBusinessRules } from './validation';
 
-export const AirdropValueCalculatorCalculator: Calculator: Calculator = {
-  id: 'airdrop-value-calculator-calculator',
+export const AirdropValueCalculator: Calculator = {
+  id: 'AirdropValueCalculator-calculator',
   title: 'Airdrop Value Calculator Calculator',
   unknown: 'unknown', // e.g., 'finance', 'math', 'health', 'business'
   subunknown: 'Subunknown Name',

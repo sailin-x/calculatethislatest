@@ -1,3 +1,3 @@
-import { RealEstateDepreciationScheduleCalculatorCalculator } from './RealEstateDepreciationScheduleCalculatorCalculator';
+import { RealEstateDepreciationScheduleCalculator } from './RealEstateDepreciationScheduleCalculator';
 
-export { RealEstateDepreciationScheduleCalculatorCalculator };
+export { RealEstateDepreciationScheduleCalculator };

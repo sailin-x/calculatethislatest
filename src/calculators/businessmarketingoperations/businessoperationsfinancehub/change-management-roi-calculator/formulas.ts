@@ -1,4 +1,4 @@
-import { change-management-roi-calculatorInputs, change-management-roi-calculatorMetrics, change-management-roi-calculatorAnalysis } from './types';
+import { ChangeManagementRoi-calculatorInputs, ChangeManagementRoi-calculatorMetrics, ChangeManagementRoi-calculatorAnalysis } from './types';
 
 
 // Investment Calculator - ROI and growth calculations
@@ -12,7 +12,7 @@ export function calculateCompoundInterest(principal: number, rate: number, years
   return principal * Math.pow(1 + ratePerPeriod, totalPeriods);
 }
 
-export function calculateResult(inputs: change-management-roi-calculatorInputs): number {
+export function calculateResult(inputs: ChangeManagementRoi-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -36,7 +36,7 @@ export function calculateResult(inputs: change-management-roi-calculatorInputs):
   }
 }
 
-export function generateAnalysis(inputs: change-management-roi-calculatorInputs, metrics: change-management-roi-calculatorMetrics): change-management-roi-calculatorAnalysis {
+export function generateAnalysis(inputs: ChangeManagementRoi-calculatorInputs, metrics: ChangeManagementRoi-calculatorMetrics): ChangeManagementRoi-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

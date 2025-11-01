@@ -1,4 +1,4 @@
-import { box-office-breakeven-calculatorInputs, box-office-breakeven-calculatorMetrics, box-office-breakeven-calculatorAnalysis } from './types';
+import { BoxOfficeBreakeven-calculatorInputs, BoxOfficeBreakeven-calculatorMetrics, BoxOfficeBreakeven-calculatorAnalysis } from './types';
 
 // Box Office Breakeven Calculator - Business calculations
 export function calculateNetPresentValue(cashFlows: number[], discountRate: number): number {
@@ -11,7 +11,7 @@ export function calculateROI(initialInvestment: number, finalValue: number): num
  return ((finalValue - initialInvestment) / initialInvestment) * 100;
 }
 
-export function calculateResult(inputs: box-office-breakeven-calculatorInputs): number {
+export function calculateResult(inputs: BoxOfficeBreakeven-calculatorInputs): number {
  // Business calculation logic with real math
  const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
  if (numericValues.length >= 2) {
@@ -24,7 +24,7 @@ export function calculateResult(inputs: box-office-breakeven-calculatorInputs): 
  return calculateNetPresentValue(numericValues, 10); // 10% discount rate
 }
 
-export function generateAnalysis(inputs: box-office-breakeven-calculatorInputs, metrics: box-office-breakeven-calculatorMetrics): box-office-breakeven-calculatorAnalysis {
+export function generateAnalysis(inputs: BoxOfficeBreakeven-calculatorInputs, metrics: BoxOfficeBreakeven-calculatorMetrics): BoxOfficeBreakeven-calculatorAnalysis {
  const result = metrics.result;
  let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
  if (Math.abs(result) > 100000) riskLevel = 'High';

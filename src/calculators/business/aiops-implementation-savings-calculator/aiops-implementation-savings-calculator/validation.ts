@@ -1,6 +1,6 @@
-import { aiops-implementation-savings-calculatorInputs } from './types';
+import { AiopsImplementationSavings-calculatorInputs } from './types';
 
-export function validateInputs(inputs: aiops-implementation-savings-calculatorInputs): { isValid: boolean; errors: string[] } {
+export function validateInputs(inputs: AiopsImplementationSavings-calculatorInputs): { isValid: boolean; errors: string[] } {
   const errors: string[] = [];
 
   // Add validation logic specific to this calculator

@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { RequiredMinimumDistributionRmdCalculatorCalculator } from './RequiredMinimumDistributionRmdCalculatorCalculator';
+import { RequiredMinimumDistributionRmdCalculator } from './RequiredMinimumDistributionRmdCalculator';
 
-export function registerRequiredMinimumDistributionRmdCalculatorCalculator(): void {
-  calculatorRegistry.register(new RequiredMinimumDistributionRmdCalculatorCalculator());
+export function registerRequiredMinimumDistributionRmdCalculator(): void {
+  calculatorRegistry.register(new RequiredMinimumDistributionRmdCalculator());
 }

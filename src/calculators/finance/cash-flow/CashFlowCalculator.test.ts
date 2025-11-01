@@ -30,7 +30,7 @@ describe('Cash Flow Calculator', () => {
 
   describe('Calculator Definition', () => {
     it('should have correct basic properties', () => {
-      expect(CashFlowCalculator.id).toBe('cash-flow-calculator');
+      expect(CashFlowCalculator.id).toBe('CashFlowCalculator');
       expect(CashFlowCalculator.name).toBe('Cash Flow Calculator');
       expect(CashFlowCalculator.category).toBe('finance');
       expect(CashFlowCalculator.subcategory).toBe('investment');
@@ -103,11 +103,11 @@ describe('Cash Flow Calculator', () => {
       expect(result.errors.some(error => error.includes('interest rate'))).toBe(true);
     });
 
-    it('should validate loan-to-value ratio', () => {
+    it('should validate LoanToValue ratio', () => {
       const highLTVInputs = { ...validInputs, loanAmount: 340000 };
       const result = validateCashFlowInputs(highLTVInputs);
       expect(result.isValid).toBe(false);
-      expect(result.errors.some(error => error.includes('Loan-to-value'))).toBe(true);
+      expect(result.errors.some(error => error.includes('LoanToValue'))).toBe(true);
     });
 
     it('should provide warnings for business rule violations', () => {
@@ -159,7 +159,7 @@ describe('Cash Flow Calculator', () => {
       expect(Math.abs(metrics.monthlyCashFlow - expectedCashFlow)).toBeLessThan(0.01);
     });
 
-    it('should calculate cash-on-cash return correctly', () => {
+    it('should calculate CashOnCash return correctly', () => {
       const metrics = calculateCashFlow(validInputs);
       
       const expectedCashOnCash = (metrics.annualCashFlow / validInputs.downPayment) * 100;

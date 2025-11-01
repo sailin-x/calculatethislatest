@@ -1,3 +1,3 @@
-import { MarketingRoiCalculatorCalculator } from './MarketingRoiCalculatorCalculator';
+import { MarketingRoiCalculator } from './MarketingRoiCalculator';
 
-export { MarketingRoiCalculatorCalculator };
+export { MarketingRoiCalculator };

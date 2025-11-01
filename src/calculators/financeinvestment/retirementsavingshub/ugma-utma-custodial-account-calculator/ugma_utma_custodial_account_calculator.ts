@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { ugma_utma_custodial_account_calculatorInputs, ugma_utma_custodial_account_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const ugma_utma_custodial_account_calculatorCalculator: Calculator = {
-  id: 'ugma-utma-custodial-account-calculator',
+export const UgmaUtmaCustodial-account-calculator: Calculator = {
+  id: 'UgmaUtmaCustodial-account-calculator',
   title: 'UGMA/UTMA Custodial Account Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'retirementsavingshub',

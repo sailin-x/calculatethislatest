@@ -1,4 +1,4 @@
-export interface fourZeroOneKCalculatorInputs {
+export interface Four01kCalculatorInputs {
   // Calculator-specific input fields
   value?: number;
   rate?: number;
@@ -7,17 +7,17 @@ export interface fourZeroOneKCalculatorInputs {
   // Add more fields as needed for this calculator
 }
 
-export interface fourZeroOneKCalculatorResults {
+export interface Four01kCalculatorResults {
   result: number;
   analysis?: string;
 }
 
-export interface fourZeroOneKCalculatorMetrics {
+export interface Four01kCalculatorMetrics {
   result: number;
   // Add more metrics as needed
 }
 
-export interface fourZeroOneKCalculatorAnalysis {
+export interface Four01kCalculatorAnalysis {
   recommendation: string;
   riskLevel: 'Low' | 'Medium' | 'High';
 }

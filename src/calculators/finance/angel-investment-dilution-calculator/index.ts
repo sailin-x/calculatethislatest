@@ -1,4 +1,4 @@
-export { AngelInvestmentDilutionCalculatorCalculator } from './AngelInvestmentDilutionCalculatorCalculator';
+export { AngelInvestmentDilutionCalculator } from './AngelInvestmentDilutionCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

@@ -7,7 +7,7 @@ import { validateAllHOAFeeInputs } from './quickValidation';
 describe('HOA Fee Calculator', () => {
   describe('Calculator Structure', () => {
     it('should have correct basic properties', () => {
-      expect(HOAFeeCalculator.id).toBe('hoa-fee-calculator');
+      expect(HOAFeeCalculator.id).toBe('HoaFeeCalculator');
       expect(HOAFeeCalculator.name).toBe('HOA Fee Calculator');
       expect(HOAFeeCalculator.category).toBe('finance');
       expect(HOAFeeCalculator.subcategory).toBe('investment');

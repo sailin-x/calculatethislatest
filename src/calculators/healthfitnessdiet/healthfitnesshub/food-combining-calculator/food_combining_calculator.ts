@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { food_combining_calculatorInputs, food_combining_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const food_combining_calculatorCalculator: Calculator = {
-  id: 'food-combining-calculator',
+export const FoodCombiningCalculator: Calculator = {
+  id: 'FoodCombiningCalculator',
   title: 'Food Combining Calculator Calculator',
   category: 'healthfitnessdiet',
   subcategory: 'healthfitnesshub',

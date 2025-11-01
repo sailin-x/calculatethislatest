@@ -1,3 +1,3 @@
-import { FranchiseRoiCalculatorCalculator } from './FranchiseRoiCalculatorCalculator';
+import { FranchiseRoiCalculator } from './FranchiseRoiCalculator';
 
-export { FranchiseRoiCalculatorCalculator };
+export { FranchiseRoiCalculator };

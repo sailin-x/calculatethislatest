@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { veterinary_malpractice_calculatorInputs, veterinary_malpractice_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const veterinary_malpractice_calculatorCalculator: Calculator = {
-  id: 'veterinary-malpractice-calculator',
+export const VeterinaryMalpracticeCalculator: Calculator = {
+  id: 'VeterinaryMalpracticeCalculator',
   title: 'Veterinary Malpractice Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

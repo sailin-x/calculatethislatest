@@ -1,4 +1,4 @@
-import { landed-cost-calculatorInputs, landed-cost-calculatorMetrics, landed-cost-calculatorAnalysis } from './types';
+import { LandedCostCalculatorinputs, LandedCostCalculatormetrics, LandedCostCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: landed-cost-calculatorInputs): number {
+export function calculateResult(inputs: LandedCostCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: landed-cost-calculatorInputs): number {
   }
 }
 
-export function generateAnalysis(inputs: landed-cost-calculatorInputs, metrics: landed-cost-calculatorMetrics): landed-cost-calculatorAnalysis {
+export function generateAnalysis(inputs: LandedCostCalculatorinputs, metrics: LandedCostCalculatormetrics): LandedCostCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

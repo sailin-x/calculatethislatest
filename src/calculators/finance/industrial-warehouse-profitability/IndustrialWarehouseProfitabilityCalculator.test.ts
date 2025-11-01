@@ -7,7 +7,7 @@ import { validateAllIndustrialWarehouseProfitabilityInputs } from './quickValida
 describe('Industrial Warehouse Profitability Calculator', () => {
   describe('Calculator Structure', () => {
     it('should have correct basic properties', () => {
-      expect(IndustrialWarehouseProfitabilityCalculator.id).toBe('industrial-warehouse-profitability-calculator');
+      expect(IndustrialWarehouseProfitabilityCalculator.id).toBe('IndustrialWarehouseProfitability-calculator');
       expect(IndustrialWarehouseProfitabilityCalculator.name).toBe('Industrial Warehouse Profitability Calculator');
       expect(IndustrialWarehouseProfitabilityCalculator.category).toBe('finance');
       expect(IndustrialWarehouseProfitabilityCalculator.subcategory).toBe('investment');

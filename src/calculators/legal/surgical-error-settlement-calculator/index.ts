@@ -1,4 +1,4 @@
-export { SurgicalErrorSettlementCalculatorCalculator } from './SurgicalErrorSettlementCalculatorCalculator';
+export { SurgicalErrorSettlementCalculator } from './SurgicalErrorSettlementCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

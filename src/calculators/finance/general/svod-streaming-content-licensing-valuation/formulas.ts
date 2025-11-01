@@ -1,4 +1,4 @@
-import { svod-streaming-content-licensing-valuationInputs, svod-streaming-content-licensing-valuationMetrics, svod-streaming-content-licensing-valuationAnalysis } from './types';
+import { SvodStreamingContent-licensing-valuationInputs, SvodStreamingContent-licensing-valuationMetrics, SvodStreamingContent-licensing-valuationAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: svod-streaming-content-licensing-valuationInputs): number {
+export function calculateResult(inputs: SvodStreamingContent-licensing-valuationInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: svod-streaming-content-licensing-valuati
   }
 }
 
-export function generateAnalysis(inputs: svod-streaming-content-licensing-valuationInputs, metrics: svod-streaming-content-licensing-valuationMetrics): svod-streaming-content-licensing-valuationAnalysis {
+export function generateAnalysis(inputs: SvodStreamingContent-licensing-valuationInputs, metrics: SvodStreamingContent-licensing-valuationMetrics): SvodStreamingContent-licensing-valuationAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

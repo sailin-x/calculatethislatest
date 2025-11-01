@@ -10,7 +10,7 @@ import {
 import { validateCreditDefaultSwapCalculatorInputs } from './validation';
 
 export const CreditDefaultSwapCalculator: Calculator = {
-  id: 'credit-default-swap-calculator',
+  id: 'CreditDefaultSwap-calculator',
   title: 'Credit Default Swap Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { crypto_staking_profitability_calculatorInputs, crypto_staking_profitability_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const crypto_staking_profitability_calculatorCalculator: Calculator = {
-  id: 'crypto-staking-profitability-calculator',
+export const CryptoStakingProfitability-calculator: Calculator = {
+  id: 'CryptoStakingProfitability-calculator',
   title: '**Crypto Staking Profitability Calculator** Calculator',
   category: 'finance',
   subcategory: 'general',

@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { customer_segmentation_rfm_model_calculatorInputs, customer_segmentation_rfm_model_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const customer_segmentation_rfm_model_calculatorCalculator: Calculator = {
-  id: 'customer-segmentation-rfm-model-calculator',
+export const CustomerSegmentationRfm-model-calculator: Calculator = {
+  id: 'CustomerSegmentationRfm-model-calculator',
   title: 'Customer Segmentation (RFM) Model Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

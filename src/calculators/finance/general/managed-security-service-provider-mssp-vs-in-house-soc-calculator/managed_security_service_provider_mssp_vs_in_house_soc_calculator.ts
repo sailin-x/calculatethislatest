@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { managed_security_service_provider_mssp_vs_in_house_soc_calculatorInputs, managed_security_service_provider_mssp_vs_in_house_soc_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const managed_security_service_provider_mssp_vs_in_house_soc_calculatorCalculator: Calculator = {
-  id: 'managed-security-service-provider-mssp-vs-in-house-soc-calculator',
+export const ManagedSecurityService-ProviderMsspVs-InHouseSoc-calculator: Calculator = {
+  id: 'ManagedSecurityService-ProviderMsspVs-InHouseSoc-calculator',
   title: 'Managed Security Service Provider (MSSP) vs. In House SOC Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

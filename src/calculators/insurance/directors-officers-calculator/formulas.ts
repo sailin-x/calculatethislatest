@@ -1,4 +1,4 @@
-import { directors-officers-calculatorInputs, directors-officers-calculatorMetrics, directors-officers-calculatorAnalysis } from './types';
+import { DirectorsOfficersCalculatorinputs, DirectorsOfficersCalculatormetrics, DirectorsOfficersCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: directors-officers-calculatorInputs): number {
+export function calculateResult(inputs: DirectorsOfficersCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: directors-officers-calculatorInputs): nu
   }
 }
 
-export function generateAnalysis(inputs: directors-officers-calculatorInputs, metrics: directors-officers-calculatorMetrics): directors-officers-calculatorAnalysis {
+export function generateAnalysis(inputs: DirectorsOfficersCalculatorinputs, metrics: DirectorsOfficersCalculatormetrics): DirectorsOfficersCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

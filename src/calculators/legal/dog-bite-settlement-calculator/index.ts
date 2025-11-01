@@ -1,4 +1,4 @@
-export { DogBiteSettlementCalculatorCalculator } from './DogBiteSettlementCalculatorCalculator';
+export { DogBiteSettlementCalculator } from './DogBiteSettlementCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

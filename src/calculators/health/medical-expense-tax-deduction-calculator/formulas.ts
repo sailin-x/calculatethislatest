@@ -1,4 +1,4 @@
-import { medical-expense-tax-deduction-calculatorInputs, medical-expense-tax-deduction-calculatorMetrics, medical-expense-tax-deduction-calculatorAnalysis } from './types';
+import { MedicalExpenseTax-deduction-calculatorInputs, MedicalExpenseTax-deduction-calculatorMetrics, MedicalExpenseTax-deduction-calculatorAnalysis } from './types';
 
 
 // Tax Calculator - Progressive tax calculations
@@ -20,7 +20,7 @@ export function calculateEffectiveTaxRate(taxPaid: number, totalIncome: number):
   return (taxPaid / totalIncome) * 100;
 }
 
-export function calculateResult(inputs: medical-expense-tax-deduction-calculatorInputs): number {
+export function calculateResult(inputs: MedicalExpenseTax-deduction-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -44,7 +44,7 @@ export function calculateResult(inputs: medical-expense-tax-deduction-calculator
   }
 }
 
-export function generateAnalysis(inputs: medical-expense-tax-deduction-calculatorInputs, metrics: medical-expense-tax-deduction-calculatorMetrics): medical-expense-tax-deduction-calculatorAnalysis {
+export function generateAnalysis(inputs: MedicalExpenseTax-deduction-calculatorInputs, metrics: MedicalExpenseTax-deduction-calculatorMetrics): MedicalExpenseTax-deduction-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

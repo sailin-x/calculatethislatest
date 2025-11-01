@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateGardenYieldCalculatorInputs } from './validation';
 
 export const GardenYieldCalculator: Calculator = {
-  id: 'garden-yield-calculator',
+  id: 'GardenYieldCalculator',
   title: 'Garden Yield Calculator',
   category: 'health',
   subcategory: 'General',

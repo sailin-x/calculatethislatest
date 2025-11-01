@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateConsultantUtilizationRateProfitabilityCalculatorInputs, validateConsultantUtilizationRateProfitabilityCalculatorBusinessRules } from './validation';
 
-export const ConsultantUtilizationRateProfitabilityCalculatorCalculator: Calculator: Calculator = {
-  id: 'consultant-utilization-rate-profitability-calculator-calculator',
+export const ConsultantUtilizationRateProfitabilityCalculator: Calculator = {
+  id: 'ConsultantUtilizationRate-ProfitabilityCalculatorCalculator',
   title: 'Consultant Utilization Rate & Profitability Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

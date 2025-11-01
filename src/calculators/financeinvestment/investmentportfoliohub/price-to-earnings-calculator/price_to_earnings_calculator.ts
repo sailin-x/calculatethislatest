@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { price_to_earnings_calculatorInputs, price_to_earnings_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const price_to_earnings_calculatorCalculator: Calculator = {
-  id: 'price-to-earnings-calculator',
+export const PriceToEarnings-calculator: Calculator = {
+  id: 'PriceToEarnings-calculator',
   title: 'Price to Earnings Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'investmentportfoliohub',

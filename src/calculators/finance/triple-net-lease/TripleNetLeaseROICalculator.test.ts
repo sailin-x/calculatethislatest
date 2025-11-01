@@ -105,7 +105,7 @@ describe('TripleNetLeaseROICalculator', () => {
       expect(result.errors).toContain('Property value must be a valid number');
     });
 
-    it('should detect out-of-range values', () => {
+    it('should detect OutOfRange values', () => {
       const invalidInputs = { ...validInputs, propertyValue: -100 };
       
       const result = validateTripleNetLeaseROIInputs(invalidInputs);

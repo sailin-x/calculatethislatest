@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { distressed_debt_calculatorInputs, distressed_debt_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const distressed_debt_calculatorCalculator: Calculator = {
-  id: 'distressed-debt-calculator',
+export const DistressedDebtCalculator: Calculator = {
+  id: 'DistressedDebtCalculator',
   title: 'Distressed Debt Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

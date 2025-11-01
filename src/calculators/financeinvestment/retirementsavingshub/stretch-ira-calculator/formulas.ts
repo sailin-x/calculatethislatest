@@ -1,4 +1,4 @@
-import { stretch-ira-calculatorInputs, stretch-ira-calculatorMetrics, stretch-ira-calculatorAnalysis } from './types';
+import { StretchIraCalculatorinputs, StretchIraCalculatormetrics, StretchIraCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: stretch-ira-calculatorInputs): number {
+export function calculateResult(inputs: StretchIraCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: stretch-ira-calculatorInputs): number {
   }
 }
 
-export function generateAnalysis(inputs: stretch-ira-calculatorInputs, metrics: stretch-ira-calculatorMetrics): stretch-ira-calculatorAnalysis {
+export function generateAnalysis(inputs: StretchIraCalculatorinputs, metrics: StretchIraCalculatormetrics): StretchIraCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

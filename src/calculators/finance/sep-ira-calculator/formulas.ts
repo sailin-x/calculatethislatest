@@ -1,4 +1,4 @@
-import { sep-ira-calculatorInputs, sep-ira-calculatorMetrics, sep-ira-calculatorAnalysis } from './types';
+import { SepIraCalculatorinputs, SepIraCalculatormetrics, SepIraCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: sep-ira-calculatorInputs): number {
+export function calculateResult(inputs: SepIraCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: sep-ira-calculatorInputs): number {
   }
 }
 
-export function generateAnalysis(inputs: sep-ira-calculatorInputs, metrics: sep-ira-calculatorMetrics): sep-ira-calculatorAnalysis {
+export function generateAnalysis(inputs: SepIraCalculatorinputs, metrics: SepIraCalculatormetrics): SepIraCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

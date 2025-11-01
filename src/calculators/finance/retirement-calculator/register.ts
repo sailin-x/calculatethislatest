@@ -1,3 +1,3 @@
-import { RetirementCalculatorCalculator } from './RetirementCalculatorCalculator';
+import { RetirementCalculator } from './RetirementCalculator';
 
-export { RetirementCalculatorCalculator };
+export { RetirementCalculator };

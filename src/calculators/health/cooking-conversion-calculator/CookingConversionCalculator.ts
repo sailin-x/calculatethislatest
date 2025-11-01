@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateCookingConversionCalculatorInputs } from './validation';
 
 export const CookingConversionCalculator: Calculator = {
-  id: 'cooking-conversion-calculator',
+  id: 'CookingConversionCalculator',
   title: 'Cooking Conversion Calculator',
   category: 'health',
   subcategory: 'General',

@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { matrixCalculatorCalculator } from './matrixCalculatorCalculator';
+import { matrixCalculator } from './matrixCalculator';
 
-export function registermatrixCalculatorCalculator(): void {
-  calculatorRegistry.register(new matrixCalculatorCalculator());
+export function registermatrixCalculator(): void {
+  calculatorRegistry.register(new matrixCalculator());
 }

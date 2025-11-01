@@ -1,4 +1,4 @@
-import { cyber-liability-insurance-calculatorInputs, cyber-liability-insurance-calculatorMetrics, cyber-liability-insurance-calculatorAnalysis } from './types';
+import { CyberLiabilityInsurance-calculatorInputs, CyberLiabilityInsurance-calculatorMetrics, CyberLiabilityInsurance-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: cyber-liability-insurance-calculatorInputs): number {
+export function calculateResult(inputs: CyberLiabilityInsurance-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: cyber-liability-insurance-calculatorInpu
   }
 }
 
-export function generateAnalysis(inputs: cyber-liability-insurance-calculatorInputs, metrics: cyber-liability-insurance-calculatorMetrics): cyber-liability-insurance-calculatorAnalysis {
+export function generateAnalysis(inputs: CyberLiabilityInsurance-calculatorInputs, metrics: CyberLiabilityInsurance-calculatorMetrics): CyberLiabilityInsurance-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

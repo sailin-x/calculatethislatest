@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { autoLoanCalculatorCalculator } from './autoLoanCalculatorCalculator';
+import { autoLoanCalculator } from './autoLoanCalculator';
 
-export function registerautoLoanCalculatorCalculator(): void {
-  calculatorRegistry.register(new autoLoanCalculatorCalculator());
+export function registerautoLoanCalculator(): void {
+  calculatorRegistry.register(new autoLoanCalculator());
 }

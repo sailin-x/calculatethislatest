@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateTradeCreditCalculatorInputs } from './validation';
 
 export const TradeCreditCalculator: Calculator = {
-  id: 'trade-credit-calculator',
+  id: 'TradeCreditCalculator',
   title: 'Trade Credit Calculator',
   category: 'insurance',
   subcategory: 'General',

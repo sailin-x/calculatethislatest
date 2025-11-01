@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateKidnapRansomCalculatorInputs } from './validation';
 
 export const KidnapRansomCalculator: Calculator = {
-  id: 'kidnap-ransom-calculator',
+  id: 'KidnapRansomCalculator',
   title: 'Kidnap Ransom Calculator',
   category: 'insurance',
   subcategory: 'General',

@@ -1,4 +1,4 @@
-import { epa-fine-calculatorInputs, epa-fine-calculatorMetrics, epa-fine-calculatorAnalysis } from './types';
+import { EpaFineCalculatorinputs, EpaFineCalculatormetrics, EpaFineCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: epa-fine-calculatorInputs): number {
+export function calculateResult(inputs: EpaFineCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: epa-fine-calculatorInputs): number {
   }
 }
 
-export function generateAnalysis(inputs: epa-fine-calculatorInputs, metrics: epa-fine-calculatorMetrics): epa-fine-calculatorAnalysis {
+export function generateAnalysis(inputs: EpaFineCalculatorinputs, metrics: EpaFineCalculatormetrics): EpaFineCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { car_loan_calculatorInputs, car_loan_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const car_loan_calculatorCalculator: Calculator = {
-  id: 'car-loan-calculator',
+export const CarLoanCalculator: Calculator = {
+  id: 'CarLoanCalculator',
   title: 'Car Loan Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'loansdebthub',

@@ -10,7 +10,7 @@ import {
 import { validateCryptocurrencyInvestmentCalculatorInputs } from './validation';
 
 export const CryptocurrencyInvestmentCalculator: Calculator = {
-  id: 'cryptocurrency-investment-calculator',
+  id: 'CryptocurrencyInvestmentCalculator',
   title: 'Cryptocurrency Investment Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { merger_model_calculatorInputs, merger_model_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const merger_model_calculatorCalculator: Calculator = {
-  id: 'merger-model-calculator',
+export const MergerModelCalculator: Calculator = {
+  id: 'MergerModelCalculator',
   title: 'Merger Model Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

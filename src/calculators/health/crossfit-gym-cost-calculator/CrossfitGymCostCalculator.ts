@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateCrossfitGymCostCalculatorInputs } from './validation';
 
 export const CrossfitGymCostCalculator: Calculator = {
-  id: 'crossfit-gym-cost-calculator',
+  id: 'CrossfitGymCost-calculator',
   title: 'Crossfit Gym Cost Calculator',
   category: 'health',
   subcategory: 'General',

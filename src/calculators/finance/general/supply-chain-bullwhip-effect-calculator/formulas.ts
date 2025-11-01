@@ -1,4 +1,4 @@
-import { supply-chain-bullwhip-effect-calculatorInputs, supply-chain-bullwhip-effect-calculatorMetrics, supply-chain-bullwhip-effect-calculatorAnalysis } from './types';
+import { SupplyChainBullwhip-effect-calculatorInputs, SupplyChainBullwhip-effect-calculatorMetrics, SupplyChainBullwhip-effect-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: supply-chain-bullwhip-effect-calculatorInputs): number {
+export function calculateResult(inputs: SupplyChainBullwhip-effect-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: supply-chain-bullwhip-effect-calculatorI
   }
 }
 
-export function generateAnalysis(inputs: supply-chain-bullwhip-effect-calculatorInputs, metrics: supply-chain-bullwhip-effect-calculatorMetrics): supply-chain-bullwhip-effect-calculatorAnalysis {
+export function generateAnalysis(inputs: SupplyChainBullwhip-effect-calculatorInputs, metrics: SupplyChainBullwhip-effect-calculatorMetrics): SupplyChainBullwhip-effect-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

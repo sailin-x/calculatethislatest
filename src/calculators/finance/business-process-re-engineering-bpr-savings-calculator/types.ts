@@ -1,10 +1,10 @@
-export interface businessprocessreengineeringbprsavingscalculatorCalculatorInputs {
+export interface businessprocessreengineeringbprsavingscalculatorInputs {
   // Domain-specific input fields for business process re engineering bpr savings calculator Calculator
   // TODO: Add specific input fields based on calculator requirements
   value: number;
 }
 
-export interface businessprocessreengineeringbprsavingscalculatorCalculatorOutputs {
+export interface businessprocessreengineeringbprsavingscalculatorOutputs {
   // Domain-specific output fields for business process re engineering bpr savings calculator Calculator
   // TODO: Add specific output fields based on calculator requirements
   result: number;

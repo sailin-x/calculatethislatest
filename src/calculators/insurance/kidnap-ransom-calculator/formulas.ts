@@ -1,4 +1,4 @@
-import { kidnap-ransom-calculatorInputs, kidnap-ransom-calculatorMetrics, kidnap-ransom-calculatorAnalysis } from './types';
+import { KidnapRansomCalculatorinputs, KidnapRansomCalculatormetrics, KidnapRansomCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: kidnap-ransom-calculatorInputs): number {
+export function calculateResult(inputs: KidnapRansomCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: kidnap-ransom-calculatorInputs): number 
   }
 }
 
-export function generateAnalysis(inputs: kidnap-ransom-calculatorInputs, metrics: kidnap-ransom-calculatorMetrics): kidnap-ransom-calculatorAnalysis {
+export function generateAnalysis(inputs: KidnapRansomCalculatorinputs, metrics: KidnapRansomCalculatormetrics): KidnapRansomCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

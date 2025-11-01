@@ -1,4 +1,4 @@
-import { dividend-discount-model-ddm-calculatorInputs, dividend-discount-model-ddm-calculatorMetrics, dividend-discount-model-ddm-calculatorAnalysis } from './types';
+import { DividendDiscountModel-ddm-calculatorInputs, DividendDiscountModel-ddm-calculatorMetrics, DividendDiscountModel-ddm-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: dividend-discount-model-ddm-calculatorInputs): number {
+export function calculateResult(inputs: DividendDiscountModel-ddm-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: dividend-discount-model-ddm-calculatorIn
   }
 }
 
-export function generateAnalysis(inputs: dividend-discount-model-ddm-calculatorInputs, metrics: dividend-discount-model-ddm-calculatorMetrics): dividend-discount-model-ddm-calculatorAnalysis {
+export function generateAnalysis(inputs: DividendDiscountModel-ddm-calculatorInputs, metrics: DividendDiscountModel-ddm-calculatorMetrics): DividendDiscountModel-ddm-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

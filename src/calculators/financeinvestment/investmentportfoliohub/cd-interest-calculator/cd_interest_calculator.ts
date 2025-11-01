@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { cd_interest_calculatorInputs, cd_interest_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const cd_interest_calculatorCalculator: Calculator = {
-  id: 'cd-interest-calculator',
+export const CdInterestCalculator: Calculator = {
+  id: 'CdInterestCalculator',
   title: 'CD Interest Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'investmentportfoliohub',

@@ -3,7 +3,7 @@ import { calculateAngelInvestmentDilution, generateAngelInvestmentDilutionAnalys
 import { validateAngelInvestmentDilutionInputs } from './validation';
 
 export const AngelInvestmentDilutionCalculator: Calculator = {
-  id: 'angel-investment-dilution-calculator',
+  id: 'AngelInvestmentDilution-calculator',
   name: 'Angel Investment Dilution Calculator',
   category: 'finance',
   subcategory: 'investment',

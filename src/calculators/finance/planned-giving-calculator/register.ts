@@ -1,3 +1,3 @@
-import { PlannedGivingCalculatorCalculator } from './PlannedGivingCalculatorCalculator';
+import { PlannedGivingCalculator } from './PlannedGivingCalculator';
 
-export { PlannedGivingCalculatorCalculator };
+export { PlannedGivingCalculator };

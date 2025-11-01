@@ -1,4 +1,4 @@
-export { PrivateMortgageInsuranceCalculatorCalculator } from './PrivateMortgageInsuranceCalculatorCalculator';
+export { PrivateMortgageInsuranceCalculator } from './PrivateMortgageInsuranceCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

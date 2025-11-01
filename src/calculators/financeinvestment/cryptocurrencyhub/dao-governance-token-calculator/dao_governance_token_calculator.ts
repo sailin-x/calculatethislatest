@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { dao_governance_token_calculatorInputs, dao_governance_token_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const dao_governance_token_calculatorCalculator: Calculator = {
-  id: 'dao-governance-token-calculator',
+export const DaoGovernanceToken-calculator: Calculator = {
+  id: 'DaoGovernanceToken-calculator',
   title: 'DAO Governance Token Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'cryptocurrencyhub',

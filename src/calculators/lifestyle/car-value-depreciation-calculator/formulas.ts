@@ -1,13 +1,13 @@
-import { car-value-depreciation-calculatorInputs, car-value-depreciation-calculatorMetrics, car-value-depreciation-calculatorAnalysis } from './types';
+import { CarValueDepreciation-calculatorInputs, CarValueDepreciation-calculatorMetrics, CarValueDepreciation-calculatorAnalysis } from './types';
 
 // Car Value Depreciation Calculator - Lifestyle calculations
-export function calculateResult(inputs: car-value-depreciation-calculatorInputs): number {
+export function calculateResult(inputs: CarValueDepreciation-calculatorInputs): number {
   // Lifestyle calculation logic
   const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
   return numericValues.reduce((sum, val) => sum + val, 0) || 0;
 }
 
-export function generateAnalysis(inputs: car-value-depreciation-calculatorInputs, metrics: car-value-depreciation-calculatorMetrics): car-value-depreciation-calculatorAnalysis {
+export function generateAnalysis(inputs: CarValueDepreciation-calculatorInputs, metrics: CarValueDepreciation-calculatorMetrics): CarValueDepreciation-calculatorAnalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (Math.abs(result) > 1000) riskLevel = 'High';

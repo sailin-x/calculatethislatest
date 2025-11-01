@@ -3,7 +3,7 @@ import { svod_streaming_content_licensing_valuationInputs, svod_streaming_conten
 import { calculateResult, generateAnalysis } from './formulas';
 
 export const svod_streaming_content_licensing_valuationCalculator: Calculator = {
-  id: 'svod-streaming-content-licensing-valuation',
+  id: 'SvodStreamingContent-licensing-valuation',
   title: 'SVOD (Streaming) Content Licensing Valuation Calculator',
   category: 'businessmarketingoperations',
   subcategory: 'marketingcreatorhub',

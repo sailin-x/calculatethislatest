@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateTaxLossHarvestingCalculatorInputs, validateTaxLossHarvestingCalculatorBusinessRules } from './validation';
 
-export const TaxLossHarvestingCalculatorCalculator: Calculator: Calculator = {
-  id: 'tax-loss-harvesting-calculator-calculator',
+export const TaxLossHarvestingCalculator: Calculator = {
+  id: 'TaxLossHarvesting-calculator-calculator',
   title: 'Tax-Loss Harvesting Calculator Calculator',
   retirement-savings: 'retirement-savings', // e.g., 'finance', 'math', 'health', 'business'
   subretirement-savings: 'Subretirement-savings Name',

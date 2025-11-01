@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateTerrorismInsuranceCalculatorInputs, validateTerrorismInsuranceCalculatorBusinessRules } from './validation';
 
-export const TerrorismInsuranceCalculatorCalculator: Calculator: Calculator = {
-  id: 'terrorism-insurance-calculator-calculator',
+export const TerrorismInsuranceCalculator: Calculator = {
+  id: 'TerrorismInsuranceCalculator-calculator',
   title: 'Terrorism Insurance Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

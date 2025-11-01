@@ -1,3 +1,3 @@
-import { RecapitalizationImpactCalculatorCalculator } from './RecapitalizationImpactCalculatorCalculator';
+import { RecapitalizationImpactCalculator } from './RecapitalizationImpactCalculator';
 
-export { RecapitalizationImpactCalculatorCalculator };
+export { RecapitalizationImpactCalculator };

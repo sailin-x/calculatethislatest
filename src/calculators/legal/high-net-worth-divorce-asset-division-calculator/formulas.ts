@@ -1,13 +1,13 @@
-import { high-net-worth-divorce-asset-division-calculatorInputs, high-net-worth-divorce-asset-division-calculatorMetrics, high-net-worth-divorce-asset-division-calculatorAnalysis } from './types';
+import { HighNetWorth-DivorceAssetDivision-calculatorInputs, HighNetWorth-DivorceAssetDivision-calculatorMetrics, HighNetWorth-DivorceAssetDivision-calculatorAnalysis } from './types';
 
-// High-Net-Worth Divorce Asset Division Calculator - Legal calculations
-export function calculateResult(inputs: high-net-worth-divorce-asset-division-calculatorInputs): number {
+// HighNetWorth Divorce Asset Division Calculator - Legal calculations
+export function calculateResult(inputs: HighNetWorth-DivorceAssetDivision-calculatorInputs): number {
   // Legal calculation logic
   const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
   return numericValues.reduce((sum, val) => sum + val, 0) || 0;
 }
 
-export function generateAnalysis(inputs: high-net-worth-divorce-asset-division-calculatorInputs, metrics: high-net-worth-divorce-asset-division-calculatorMetrics): high-net-worth-divorce-asset-division-calculatorAnalysis {
+export function generateAnalysis(inputs: HighNetWorth-DivorceAssetDivision-calculatorInputs, metrics: HighNetWorth-DivorceAssetDivision-calculatorMetrics): HighNetWorth-DivorceAssetDivision-calculatorAnalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (Math.abs(result) > 100000) riskLevel = 'High';

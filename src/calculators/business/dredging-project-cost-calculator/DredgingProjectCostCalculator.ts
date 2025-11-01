@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateDredgingProjectCostCalculatorInputs, validateDredgingProjectCostCalculatorBusinessRules } from './validation';
 
-export const DredgingProjectCostCalculatorCalculator: Calculator: Calculator = {
-  id: 'dredging-project-cost-calculator-calculator',
+export const DredgingProjectCostCalculator: Calculator = {
+  id: 'DredgingProjectCost-calculator-calculator',
   title: 'Dredging Project Cost Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

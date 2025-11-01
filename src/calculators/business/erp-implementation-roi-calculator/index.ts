@@ -1,4 +1,4 @@
-export { ErpImplementationRoiCalculatorCalculator } from './ErpImplementationRoiCalculatorCalculator';
+export { ErpImplementationRoiCalculator } from './ErpImplementationRoiCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

@@ -1,4 +1,4 @@
-import { merger-acquisition-ma-divestiture-valuationInputs, merger-acquisition-ma-divestiture-valuationMetrics, merger-acquisition-ma-divestiture-valuationAnalysis } from './types';
+import { MergerAcquisitionMa-divestiture-valuationInputs, MergerAcquisitionMa-divestiture-valuationMetrics, MergerAcquisitionMa-divestiture-valuationAnalysis } from './types';
 
 // Merger & Acquisition (M&A) Divestiture Valuation - Business calculations
 export function calculateNetPresentValue(cashFlows: number[], discountRate: number): number {
@@ -11,7 +11,7 @@ export function calculateROI(initialInvestment: number, finalValue: number): num
  return ((finalValue - initialInvestment) / initialInvestment) * 100;
 }
 
-export function calculateResult(inputs: merger-acquisition-ma-divestiture-valuationInputs): number {
+export function calculateResult(inputs: MergerAcquisitionMa-divestiture-valuationInputs): number {
  // Business calculation logic with real math
  const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
  if (numericValues.length >= 2) {
@@ -24,7 +24,7 @@ export function calculateResult(inputs: merger-acquisition-ma-divestiture-valuat
  return calculateNetPresentValue(numericValues, 10); // 10% discount rate
 }
 
-export function generateAnalysis(inputs: merger-acquisition-ma-divestiture-valuationInputs, metrics: merger-acquisition-ma-divestiture-valuationMetrics): merger-acquisition-ma-divestiture-valuationAnalysis {
+export function generateAnalysis(inputs: MergerAcquisitionMa-divestiture-valuationInputs, metrics: MergerAcquisitionMa-divestiture-valuationMetrics): MergerAcquisitionMa-divestiture-valuationAnalysis {
  const result = metrics.result;
  let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
  if (Math.abs(result) > 100000) riskLevel = 'High';

@@ -1,4 +1,4 @@
-import { marketing-attribution-model-comparison-calculatorInputs, marketing-attribution-model-comparison-calculatorMetrics, marketing-attribution-model-comparison-calculatorAnalysis } from './types';
+import { MarketingAttributionModel-comparison-calculatorInputs, MarketingAttributionModel-comparison-calculatorMetrics, MarketingAttributionModel-comparison-calculatorAnalysis } from './types';
 
 // Marketing Attribution Model Comparison Calculator - Business calculations
 export function calculateNetPresentValue(cashFlows: number[], discountRate: number): number {
@@ -11,7 +11,7 @@ export function calculateROI(initialInvestment: number, finalValue: number): num
  return ((finalValue - initialInvestment) / initialInvestment) * 100;
 }
 
-export function calculateResult(inputs: marketing-attribution-model-comparison-calculatorInputs): number {
+export function calculateResult(inputs: MarketingAttributionModel-comparison-calculatorInputs): number {
  // Business calculation logic with real math
  const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
  if (numericValues.length >= 2) {
@@ -24,7 +24,7 @@ export function calculateResult(inputs: marketing-attribution-model-comparison-c
  return calculateNetPresentValue(numericValues, 10); // 10% discount rate
 }
 
-export function generateAnalysis(inputs: marketing-attribution-model-comparison-calculatorInputs, metrics: marketing-attribution-model-comparison-calculatorMetrics): marketing-attribution-model-comparison-calculatorAnalysis {
+export function generateAnalysis(inputs: MarketingAttributionModel-comparison-calculatorInputs, metrics: MarketingAttributionModel-comparison-calculatorMetrics): MarketingAttributionModel-comparison-calculatorAnalysis {
  const result = metrics.result;
  let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
  if (Math.abs(result) > 100000) riskLevel = 'High';

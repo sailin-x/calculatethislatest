@@ -10,7 +10,7 @@ import {
 import { validateBudgetPlannerCalculatorInputs } from './validation';
 
 export const BudgetPlannerCalculator: Calculator = {
-  id: 'budget-planner-calculator',
+  id: 'BudgetPlannerCalculator',
   title: 'Budget Planner Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

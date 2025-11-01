@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { number_theory_calculatorInputs, number_theory_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const number_theory_calculatorCalculator: Calculator = {
-  id: 'number-theory-calculator',
+export const NumberTheoryCalculator: Calculator = {
+  id: 'NumberTheoryCalculator',
   title: 'Number Theory Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

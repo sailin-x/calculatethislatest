@@ -1,4 +1,4 @@
-import { threat-intelligence-platform-roi-calculatorInputs, threat-intelligence-platform-roi-calculatorMetrics, threat-intelligence-platform-roi-calculatorAnalysis } from './types';
+import { ThreatIntelligencePlatform-roi-calculatorInputs, ThreatIntelligencePlatform-roi-calculatorMetrics, ThreatIntelligencePlatform-roi-calculatorAnalysis } from './types';
 
 // ROI Calculator
 export function calculateROI(netProfit: number, investment: number): number {
@@ -13,7 +13,7 @@ export function calculatePaybackPeriod(investment: number, annualCashFlow: numbe
   return investment / annualCashFlow;
 }
 
-export function calculateResult(inputs: threat-intelligence-platform-roi-calculatorInputs): number {
+export function calculateResult(inputs: ThreatIntelligencePlatform-roi-calculatorInputs): number {
   if ('netProfit' in inputs && 'investment' in inputs) {
     return calculateROI(inputs.netProfit, inputs.investment);
   }
@@ -24,7 +24,7 @@ export function calculateResult(inputs: threat-intelligence-platform-roi-calcula
   return 0;
 }
 
-export function generateAnalysis(inputs: threat-intelligence-platform-roi-calculatorInputs, metrics: threat-intelligence-platform-roi-calculatorMetrics): threat-intelligence-platform-roi-calculatorAnalysis {
+export function generateAnalysis(inputs: ThreatIntelligencePlatform-roi-calculatorInputs, metrics: ThreatIntelligencePlatform-roi-calculatorMetrics): ThreatIntelligencePlatform-roi-calculatorAnalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (result < 10) riskLevel = 'High';

@@ -163,13 +163,13 @@ export function validateBRRRRStrategyInputs(inputs: Record<string, any>): Valida
     warnings.push('High total investment may limit scalability');
   }
 
-  // Rent-to-value ratio validation
+  // RentToValue ratio validation
   const annualRent = inputs.monthlyRent * 12;
   const rentToValueRatio = (annualRent / inputs.afterRepairValue) * 100;
   if (rentToValueRatio < 6) {
-    warnings.push('Low rent-to-value ratio may indicate poor cash flow');
+    warnings.push('Low RentToValue ratio may indicate poor cash flow');
   } else if (rentToValueRatio > 15) {
-    warnings.push('Very high rent-to-value ratio may be unrealistic');
+    warnings.push('Very high RentToValue ratio may be unrealistic');
   }
 
   // Cash flow validation
@@ -269,12 +269,12 @@ export function validateBRRRRFeasibility(
     warnings.push('Very low cash flow may not justify investment');
   }
 
-  // Cash-on-cash return check
+  // CashOnCash return check
   const annualCashFlow = monthlyCashFlow * 12;
   const cashOnCashReturn = (annualCashFlow / totalInvestment) * 100;
   
   if (cashOnCashReturn < 6) {
-    warnings.push('Low cash-on-cash return may not justify investment');
+    warnings.push('Low CashOnCash return may not justify investment');
   }
 
   // Equity extraction check
@@ -332,9 +332,9 @@ export function validateMarketAssumptions(
   const rentToValueRatio = (annualRent / afterRepairValue) * 100;
   
   if (rentToValueRatio < 6) {
-    warnings.push('Low rent-to-value ratio may indicate overvaluation');
+    warnings.push('Low RentToValue ratio may indicate overvaluation');
   } else if (rentToValueRatio > 12) {
-    warnings.push('High rent-to-value ratio may be unsustainable');
+    warnings.push('High RentToValue ratio may be unsustainable');
   }
 
   // Appreciation assumptions

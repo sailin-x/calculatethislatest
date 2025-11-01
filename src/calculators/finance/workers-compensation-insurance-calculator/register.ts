@@ -1,3 +1,3 @@
-import { WorkersCompensationInsuranceCalculatorCalculator } from './WorkersCompensationInsuranceCalculatorCalculator';
+import { WorkersCompensationInsuranceCalculator } from './WorkersCompensationInsuranceCalculator';
 
-export { WorkersCompensationInsuranceCalculatorCalculator };
+export { WorkersCompensationInsuranceCalculator };

@@ -1,4 +1,4 @@
-export { OpportunityZoneInvestmentRoiCalculatorCalculator } from './OpportunityZoneInvestmentRoiCalculatorCalculator';
+export { OpportunityZoneInvestmentRoiCalculator } from './OpportunityZoneInvestmentRoiCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

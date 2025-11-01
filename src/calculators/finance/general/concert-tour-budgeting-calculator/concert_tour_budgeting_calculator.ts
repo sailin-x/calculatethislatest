@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { concert_tour_budgeting_calculatorInputs, concert_tour_budgeting_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const concert_tour_budgeting_calculatorCalculator: Calculator = {
-  id: 'concert-tour-budgeting-calculator',
+export const ConcertTourBudgeting-calculator: Calculator = {
+  id: 'ConcertTourBudgeting-calculator',
   title: 'Concert Tour Budgeting Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

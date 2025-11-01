@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validatePassengerLoadFactorBreakevenCalculatorInputs, validatePassengerLoadFactorBreakevenCalculatorBusinessRules } from './validation';
 
-export const PassengerLoadFactorBreakevenCalculatorCalculator: Calculator: Calculator = {
-  id: 'passenger-load-factor-breakeven-calculator-calculator',
+export const PassengerLoadFactorBreakevenCalculator: Calculator = {
+  id: 'PassengerLoadFactor-BreakevenCalculatorCalculator',
   title: 'Passenger Load Factor Breakeven Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

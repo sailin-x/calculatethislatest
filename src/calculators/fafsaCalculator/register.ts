@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { fafsaCalculatorCalculator } from './fafsaCalculatorCalculator';
+import { fafsaCalculator } from './fafsaCalculator';
 
-export function registerfafsaCalculatorCalculator(): void {
-  calculatorRegistry.register(new fafsaCalculatorCalculator());
+export function registerfafsaCalculator(): void {
+  calculatorRegistry.register(new fafsaCalculator());
 }

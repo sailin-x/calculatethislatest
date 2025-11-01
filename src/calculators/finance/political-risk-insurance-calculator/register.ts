@@ -1,3 +1,3 @@
-import { PoliticalRiskInsuranceCalculatorCalculator } from './PoliticalRiskInsuranceCalculatorCalculator';
+import { PoliticalRiskInsuranceCalculator } from './PoliticalRiskInsuranceCalculator';
 
-export { PoliticalRiskInsuranceCalculatorCalculator };
+export { PoliticalRiskInsuranceCalculator };

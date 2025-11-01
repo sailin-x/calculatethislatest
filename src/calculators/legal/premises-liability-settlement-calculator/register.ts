@@ -1,3 +1,3 @@
-import { PremisesLiabilitySettlementCalculatorCalculator } from './PremisesLiabilitySettlementCalculatorCalculator';
+import { PremisesLiabilitySettlementCalculator } from './PremisesLiabilitySettlementCalculator';
 
-export { PremisesLiabilitySettlementCalculatorCalculator };
+export { PremisesLiabilitySettlementCalculator };

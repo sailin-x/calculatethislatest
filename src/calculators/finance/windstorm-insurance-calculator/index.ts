@@ -1,4 +1,4 @@
-export { WindstormInsuranceCalculatorCalculator } from './WindstormInsuranceCalculatorCalculator';
+export { WindstormInsuranceCalculator } from './WindstormInsuranceCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

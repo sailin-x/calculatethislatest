@@ -2,7 +2,7 @@ import { Calculator } from '../../../../types/calculator';
 import { travel_calculatorInputs, travel_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const travel_calculatorCalculator: Calculator = {
+export const travel-calculator: Calculator = {
   id: 'travel-calculator',
   title: 'Travel Calculator Calculator',
   category: 'lifestyleautomotive',

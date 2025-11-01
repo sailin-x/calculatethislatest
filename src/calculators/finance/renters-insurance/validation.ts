@@ -114,7 +114,7 @@ export function validateRentersInsuranceInputs(inputs: CalculatorInputs): Valida
   }
 
   if (inputs.deductible && inputs.deductible > 1000) {
-    warnings.push('High deductible may result in significant out-of-pocket costs');
+    warnings.push('High deductible may result in significant OutOfPocket costs');
   }
 
   if (inputs.liabilityCoverage && inputs.liabilityCoverage < 100000) {
@@ -157,9 +157,9 @@ export function validateRentersInsuranceInputs(inputs: CalculatorInputs): Valida
     errors.push('Security features must be one of: none, basic, advanced, gated');
   }
 
-  const validFireProtection = ['none', 'smoke-detectors', 'sprinklers', 'fire-station-nearby'];
+  const validFireProtection = ['none', 'smoke-detectors', 'sprinklers', 'FireStationNearby'];
   if (inputs.fireProtection && !validFireProtection.includes(inputs.fireProtection)) {
-    errors.push('Fire protection must be one of: none, smoke-detectors, sprinklers, fire-station-nearby');
+    errors.push('Fire protection must be one of: none, smoke-detectors, sprinklers, FireStationNearby');
   }
 
   const validFloodZones = ['none', 'low-risk', 'moderate-risk', 'high-risk'];
@@ -187,9 +187,9 @@ export function validateRentersInsuranceInputs(inputs: CalculatorInputs): Valida
     errors.push('Policy type must be one of: basic, standard, premium, comprehensive');
   }
 
-  const validReplacementCost = ['actual-cash-value', 'replacement-cost'];
+  const validReplacementCost = ['ActualCashValue', 'replacement-cost'];
   if (inputs.replacementCost && !validReplacementCost.includes(inputs.replacementCost)) {
-    errors.push('Replacement cost must be one of: actual-cash-value, replacement-cost');
+    errors.push('Replacement cost must be one of: ActualCashValue, replacement-cost');
   }
 
   const validIdentityTheft = ['none', 'basic', 'comprehensive'];

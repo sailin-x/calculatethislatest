@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { cost_of_poor_quality_copq_calculatorInputs, cost_of_poor_quality_copq_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const cost_of_poor_quality_copq_calculatorCalculator: Calculator = {
-  id: 'cost-of-poor-quality-copq-calculator',
+export const CostOfPoor-QualityCopqCalculator: Calculator = {
+  id: 'CostOfPoor-QualityCopqCalculator',
   title: 'Cost of Poor Quality (COPQ) Calculator Calculator',
   category: 'businessmarketingoperations',
   subcategory: 'businessoperationsfinancehub',

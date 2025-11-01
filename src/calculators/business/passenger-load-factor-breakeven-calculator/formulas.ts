@@ -1,4 +1,4 @@
-import { passenger-load-factor-breakeven-calculatorInputs, passenger-load-factor-breakeven-calculatorMetrics, passenger-load-factor-breakeven-calculatorAnalysis } from './types';
+import { PassengerLoadFactor-breakeven-calculatorInputs, PassengerLoadFactor-breakeven-calculatorMetrics, PassengerLoadFactor-breakeven-calculatorAnalysis } from './types';
 
 // Passenger Load Factor Breakeven Calculator - Business calculations
 export function calculateNetPresentValue(cashFlows: number[], discountRate: number): number {
@@ -11,7 +11,7 @@ export function calculateROI(initialInvestment: number, finalValue: number): num
  return ((finalValue - initialInvestment) / initialInvestment) * 100;
 }
 
-export function calculateResult(inputs: passenger-load-factor-breakeven-calculatorInputs): number {
+export function calculateResult(inputs: PassengerLoadFactor-breakeven-calculatorInputs): number {
  // Business calculation logic with real math
  const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
  if (numericValues.length >= 2) {
@@ -24,7 +24,7 @@ export function calculateResult(inputs: passenger-load-factor-breakeven-calculat
  return calculateNetPresentValue(numericValues, 10); // 10% discount rate
 }
 
-export function generateAnalysis(inputs: passenger-load-factor-breakeven-calculatorInputs, metrics: passenger-load-factor-breakeven-calculatorMetrics): passenger-load-factor-breakeven-calculatorAnalysis {
+export function generateAnalysis(inputs: PassengerLoadFactor-breakeven-calculatorInputs, metrics: PassengerLoadFactor-breakeven-calculatorMetrics): PassengerLoadFactor-breakeven-calculatorAnalysis {
  const result = metrics.result;
  let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
  if (Math.abs(result) > 100000) riskLevel = 'High';

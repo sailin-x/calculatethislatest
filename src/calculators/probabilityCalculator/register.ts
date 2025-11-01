@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { probabilityCalculatorCalculator } from './probabilityCalculatorCalculator';
+import { probabilityCalculator } from './probabilityCalculator';
 
-export function registerprobabilityCalculatorCalculator(): void {
-  calculatorRegistry.register(new probabilityCalculatorCalculator());
+export function registerprobabilityCalculator(): void {
+  calculatorRegistry.register(new probabilityCalculator());
 }

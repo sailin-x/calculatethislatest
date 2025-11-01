@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateReturnOnAssetsCalculatorInputs, validateReturnOnAssetsCalculatorBusinessRules } from './validation';
 
-export const ReturnOnAssetsCalculatorCalculator: Calculator: Calculator = {
-  id: 'return-on-assets-calculator-calculator',
+export const ReturnOnAssetsCalculator: Calculator = {
+  id: 'ReturnOnAssets-calculator-calculator',
   title: 'Return on Assets Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

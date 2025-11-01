@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { human_capital_due_diligence_m_a_calculatorInputs, human_capital_due_diligence_m_a_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const human_capital_due_diligence_m_a_calculatorCalculator: Calculator = {
-  id: 'human-capital-due-diligence-m-a-calculator',
+export const HumanCapitalDue-DiligenceMA-calculator: Calculator = {
+  id: 'HumanCapitalDue-DiligenceMA-calculator',
   title: 'Human Capital Due Diligence (M&A) Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

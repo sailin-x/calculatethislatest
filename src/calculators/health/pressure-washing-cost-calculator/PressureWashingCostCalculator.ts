@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validatePressureWashingCostCalculatorInputs } from './validation';
 
 export const PressureWashingCostCalculator: Calculator = {
-  id: 'pressure-washing-cost-calculator',
+  id: 'PressureWashingCost-calculator',
   title: 'Pressure Washing Cost Calculator',
   category: 'health',
   subcategory: 'General',

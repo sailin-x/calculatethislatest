@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validatePensionLumpSumVsAnnuityCalculatorInputs, validatePensionLumpSumVsAnnuityCalculatorBusinessRules } from './validation';
 
-export const PensionLumpSumVsAnnuityCalculatorCalculator: Calculator: Calculator = {
-  id: 'pension-lump-sum-vs-annuity-calculator-calculator',
+export const PensionLumpSumVsAnnuityCalculator: Calculator = {
+  id: 'PensionLumpSum-VsAnnuityCalculator-calculator',
   title: 'Pension Lump Sum vs. Annuity Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

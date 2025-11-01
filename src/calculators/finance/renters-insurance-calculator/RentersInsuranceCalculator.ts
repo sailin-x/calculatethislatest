@@ -23,7 +23,7 @@ const rentersInsuranceFormula: Formula = {
  * Industry-leading renters insurance calculator with comprehensive features
  */
 export const rentersInsuranceCalculator: Calculator = {
-  id: 'renters-insurance-calculator',
+  id: 'RentersInsuranceCalculator',
   title: 'Renters Insurance Calculator',
   category: 'finance',
   subcategory: 'Mortgage & Real Estate',

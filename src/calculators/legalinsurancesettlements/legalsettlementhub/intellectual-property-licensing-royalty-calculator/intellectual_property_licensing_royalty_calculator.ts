@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { intellectual_property_licensing_royalty_calculatorInputs, intellectual_property_licensing_royalty_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const intellectual_property_licensing_royalty_calculatorCalculator: Calculator = {
-  id: 'intellectual-property-licensing-royalty-calculator',
+export const IntellectualPropertyLicensing-royalty-calculator: Calculator = {
+  id: 'IntellectualPropertyLicensing-royalty-calculator',
   title: 'Intellectual Property Licensing Royalty Calculator Calculator',
   category: 'legalinsurancesettlements',
   subcategory: 'legalsettlementhub',

@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateCorporateBondCalculatorInputs, validateCorporateBondCalculatorBusinessRules } from './validation';
 
-export const CorporateBondCalculatorCalculator: Calculator: Calculator = {
-  id: 'corporate-bond-calculator-calculator',
+export const CorporateBondCalculator: Calculator = {
+  id: 'CorporateBondCalculator-calculator',
   title: 'Corporate Bond Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

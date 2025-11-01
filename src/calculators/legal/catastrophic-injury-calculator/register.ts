@@ -1,3 +1,3 @@
-import { CatastrophicInjuryCalculatorCalculator } from './CatastrophicInjuryCalculatorCalculator';
+import { CatastrophicInjuryCalculator } from './CatastrophicInjuryCalculator';
 
-export { CatastrophicInjuryCalculatorCalculator };
+export { CatastrophicInjuryCalculator };

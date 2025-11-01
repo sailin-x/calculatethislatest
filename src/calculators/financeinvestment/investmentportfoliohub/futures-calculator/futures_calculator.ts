@@ -2,7 +2,7 @@ import { Calculator } from '../../../../types/calculator';
 import { futures_calculatorInputs, futures_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const futures_calculatorCalculator: Calculator = {
+export const futures-calculator: Calculator = {
   id: 'futures-calculator',
   title: 'Futures Calculator Calculator',
   category: 'financeinvestment',

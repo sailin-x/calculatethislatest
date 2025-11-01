@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { birth_injury_settlement_calculatorInputs, birth_injury_settlement_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const birth_injury_settlement_calculatorCalculator: Calculator = {
-  id: 'birth-injury-settlement-calculator',
+export const BirthInjurySettlement-calculator: Calculator = {
+  id: 'BirthInjurySettlement-calculator',
   title: 'Birth Injury Settlement Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

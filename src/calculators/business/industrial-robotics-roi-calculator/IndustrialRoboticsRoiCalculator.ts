@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateIndustrialRoboticsRoiCalculatorInputs, validateIndustrialRoboticsRoiCalculatorBusinessRules } from './validation';
 
-export const IndustrialRoboticsRoiCalculatorCalculator: Calculator: Calculator = {
-  id: 'industrial-robotics-roi-calculator-calculator',
+export const IndustrialRoboticsRoiCalculator: Calculator = {
+  id: 'IndustrialRoboticsRoi-calculator-calculator',
   title: 'Industrial Robotics ROI Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

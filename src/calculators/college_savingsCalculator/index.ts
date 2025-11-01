@@ -1,3 +1,3 @@
-export * from './college_savingsCalculatorCalculator';
+export * from './college_savingsCalculator';
 export * from './register';
 export * from './types';

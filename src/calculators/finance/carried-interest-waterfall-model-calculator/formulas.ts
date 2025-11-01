@@ -1,4 +1,4 @@
-import { carried-interest-waterfall-model-calculatorInputs, carried-interest-waterfall-model-calculatorMetrics, carried-interest-waterfall-model-calculatorAnalysis } from './types';
+import { CarriedInterestWaterfall-model-calculatorInputs, CarriedInterestWaterfall-model-calculatorMetrics, CarriedInterestWaterfall-model-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: carried-interest-waterfall-model-calculatorInputs): number {
+export function calculateResult(inputs: CarriedInterestWaterfall-model-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: carried-interest-waterfall-model-calcula
   }
 }
 
-export function generateAnalysis(inputs: carried-interest-waterfall-model-calculatorInputs, metrics: carried-interest-waterfall-model-calculatorMetrics): carried-interest-waterfall-model-calculatorAnalysis {
+export function generateAnalysis(inputs: CarriedInterestWaterfall-model-calculatorInputs, metrics: CarriedInterestWaterfall-model-calculatorMetrics): CarriedInterestWaterfall-model-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateTileCalculatorInputs, validateTileCalculatorBusinessRules } from './validation';
 
-export const TileCalculatorCalculator: Calculator: Calculator = {
-  id: 'tile-calculator-calculator',
+export const TileCalculator: Calculator = {
+  id: 'TileCalculatorCalculator',
   title: 'Tile Calculator Calculator',
   construction: 'construction', // e.g., 'finance', 'math', 'health', 'business'
   subconstruction: 'Subconstruction Name',

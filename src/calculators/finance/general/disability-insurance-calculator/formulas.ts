@@ -1,4 +1,4 @@
-import { disability-insurance-calculatorInputs, disability-insurance-calculatorMetrics, disability-insurance-calculatorAnalysis } from './types';
+import { DisabilityInsuranceCalculatorinputs, DisabilityInsuranceCalculatormetrics, DisabilityInsuranceCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: disability-insurance-calculatorInputs): number {
+export function calculateResult(inputs: DisabilityInsuranceCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: disability-insurance-calculatorInputs): 
   }
 }
 
-export function generateAnalysis(inputs: disability-insurance-calculatorInputs, metrics: disability-insurance-calculatorMetrics): disability-insurance-calculatorAnalysis {
+export function generateAnalysis(inputs: DisabilityInsuranceCalculatorinputs, metrics: DisabilityInsuranceCalculatormetrics): DisabilityInsuranceCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

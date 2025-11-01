@@ -1,3 +1,3 @@
-import { WaterRightsValuationCalculatorCalculator } from './WaterRightsValuationCalculatorCalculator';
+import { WaterRightsValuationCalculator } from './WaterRightsValuationCalculator';
 
-export { WaterRightsValuationCalculatorCalculator };
+export { WaterRightsValuationCalculator };

@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateAntiagingRegenerativeMedicineCostCalculatorInputs, validateAntiagingRegenerativeMedicineCostCalculatorBusinessRules } from './validation';
 
-export const AntiagingRegenerativeMedicineCostCalculatorCalculator: Calculator: Calculator = {
-  id: 'anti-aging-regenerative-medicine-cost-calculator-calculator',
+export const AntiagingRegenerativeMedicineCostCalculator: Calculator = {
+  id: 'AntiAgingRegenerative-MedicineCostCalculator-calculator',
   title: 'Anti-Aging & Regenerative Medicine Cost Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

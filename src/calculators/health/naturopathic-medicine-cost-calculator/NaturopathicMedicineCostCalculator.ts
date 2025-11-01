@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateNaturopathicMedicineCostCalculatorInputs } from './validation';
 
 export const NaturopathicMedicineCostCalculator: Calculator = {
-  id: 'naturopathic-medicine-cost-calculator',
+  id: 'NaturopathicMedicineCost-calculator',
   title: 'Naturopathic Medicine Cost Calculator',
   category: 'health',
   subcategory: 'General',

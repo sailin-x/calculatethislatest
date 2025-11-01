@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { film_slate_financing_roi_calculatorInputs, film_slate_financing_roi_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const film_slate_financing_roi_calculatorCalculator: Calculator = {
-  id: 'film-slate-financing-roi-calculator',
+export const FilmSlateFinancing-roi-calculator: Calculator = {
+  id: 'FilmSlateFinancing-roi-calculator',
   title: 'Film Slate Financing ROI Calculator Calculator',
   category: 'businessmarketingoperations',
   subcategory: 'marketingcreatorhub',

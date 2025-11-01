@@ -1,4 +1,4 @@
-export { ThreatIntelligencePlatformRoiCalculatorCalculator } from './ThreatIntelligencePlatformRoiCalculatorCalculator';
+export { ThreatIntelligencePlatformRoiCalculator } from './ThreatIntelligencePlatformRoiCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

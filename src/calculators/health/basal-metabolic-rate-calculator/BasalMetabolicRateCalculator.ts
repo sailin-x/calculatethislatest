@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateBasalMetabolicRateCalculatorInputs } from './validation';
 
 export const BasalMetabolicRateCalculator: Calculator = {
-  id: 'basal-metabolic-rate-calculator',
+  id: 'BasalMetabolicRate-calculator',
   title: 'Basal Metabolic Rate Calculator',
   category: 'health',
   subcategory: 'General',

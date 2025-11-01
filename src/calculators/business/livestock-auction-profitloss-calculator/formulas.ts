@@ -1,4 +1,4 @@
-import { livestock-auction-profitloss-calculatorInputs, livestock-auction-profitloss-calculatorMetrics, livestock-auction-profitloss-calculatorAnalysis } from './types';
+import { LivestockAuctionProfitloss-calculatorInputs, LivestockAuctionProfitloss-calculatorMetrics, LivestockAuctionProfitloss-calculatorAnalysis } from './types';
 
 // Livestock Auction Profit/Loss Calculator - Business calculations
 export function calculateNetPresentValue(cashFlows: number[], discountRate: number): number {
@@ -11,7 +11,7 @@ export function calculateROI(initialInvestment: number, finalValue: number): num
  return ((finalValue - initialInvestment) / initialInvestment) * 100;
 }
 
-export function calculateResult(inputs: livestock-auction-profitloss-calculatorInputs): number {
+export function calculateResult(inputs: LivestockAuctionProfitloss-calculatorInputs): number {
  // Business calculation logic with real math
  const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
  if (numericValues.length >= 2) {
@@ -24,7 +24,7 @@ export function calculateResult(inputs: livestock-auction-profitloss-calculatorI
  return calculateNetPresentValue(numericValues, 10); // 10% discount rate
 }
 
-export function generateAnalysis(inputs: livestock-auction-profitloss-calculatorInputs, metrics: livestock-auction-profitloss-calculatorMetrics): livestock-auction-profitloss-calculatorAnalysis {
+export function generateAnalysis(inputs: LivestockAuctionProfitloss-calculatorInputs, metrics: LivestockAuctionProfitloss-calculatorMetrics): LivestockAuctionProfitloss-calculatorAnalysis {
  const result = metrics.result;
  let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
  if (Math.abs(result) > 100000) riskLevel = 'High';

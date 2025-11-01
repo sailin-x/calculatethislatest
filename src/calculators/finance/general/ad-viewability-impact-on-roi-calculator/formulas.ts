@@ -1,4 +1,4 @@
-import { ad-viewability-impact-on-roi-calculatorInputs, ad-viewability-impact-on-roi-calculatorMetrics, ad-viewability-impact-on-roi-calculatorAnalysis } from './types';
+import { AdViewabilityImpact-OnRoiCalculatorinputs, AdViewabilityImpact-OnRoiCalculatormetrics, AdViewabilityImpact-OnRoiCalculatoranalysis } from './types';
 
 
 // Investment Calculator - ROI and growth calculations
@@ -12,7 +12,7 @@ export function calculateCompoundInterest(principal: number, rate: number, years
   return principal * Math.pow(1 + ratePerPeriod, totalPeriods);
 }
 
-export function calculateResult(inputs: ad-viewability-impact-on-roi-calculatorInputs): number {
+export function calculateResult(inputs: AdViewabilityImpact-OnRoiCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -36,7 +36,7 @@ export function calculateResult(inputs: ad-viewability-impact-on-roi-calculatorI
   }
 }
 
-export function generateAnalysis(inputs: ad-viewability-impact-on-roi-calculatorInputs, metrics: ad-viewability-impact-on-roi-calculatorMetrics): ad-viewability-impact-on-roi-calculatorAnalysis {
+export function generateAnalysis(inputs: AdViewabilityImpact-OnRoiCalculatorinputs, metrics: AdViewabilityImpact-OnRoiCalculatormetrics): AdViewabilityImpact-OnRoiCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

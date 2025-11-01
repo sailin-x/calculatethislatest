@@ -6,7 +6,7 @@ import { PrivateEquityIRRCalculatorInputs, PrivateEquityIRRCalculatorMetrics, Pr
  * Used as a helper in IRR computation for private equity cash flow analysis.
  * @param rate - The discount rate (e.g., IRR candidate).
  * @param cashFlows - Array of cash flows where index 0 is time 0 (initial investment, typically negative),
- *                    subsequent indices are end-of-period cash flows (distributions or residual value, positive).
+ *                    subsequent indices are EndOfPeriod cash flows (distributions or residual value, positive).
  * @returns The NPV value.
  */
 function calculateNPV(rate: number, cashFlows: number[]): number {

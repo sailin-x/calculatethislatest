@@ -3,7 +3,7 @@ import { calculateAmortization, generateAmortizationAnalysis } from './formulas'
 import { validateAmortizationInputs } from './validation';
 
 export const CommercialRealEstateLoanAmortizationCalculator: Calculator = {
-  id: 'commercial-real-estate-loan-amortization-calculator',
+  id: 'CommercialRealEstate-LoanAmortizationCalculator',
   name: 'Commercial Real Estate Loan Amortization Calculator',
   category: 'finance',
   subcategory: 'business',
@@ -82,7 +82,7 @@ export const CommercialRealEstateLoanAmortizationCalculator: Calculator = {
       type: 'string',
       required: true,
       description: 'Date when loan payments begin',
-      placeholder: '2024-01-01'
+      placeholder: '20240101'
     },
     {
       id: 'balloonPayment',
@@ -141,7 +141,7 @@ export const CommercialRealEstateLoanAmortizationCalculator: Calculator = {
     },
     {
       id: 'loanToValue',
-      name: 'Loan-to-Value Ratio',
+      name: 'LoanToValue Ratio',
       type: 'number',
       unit: '%',
       required: true,
@@ -262,10 +262,10 @@ export const CommercialRealEstateLoanAmortizationCalculator: Calculator = {
     },
     {
       id: 'loanToValueRatio',
-      name: 'Actual Loan-to-Value',
+      name: 'Actual LoanToValue',
       type: 'number',
       unit: '%',
-      description: 'Actual loan-to-value ratio'
+      description: 'Actual LoanToValue ratio'
     },
     {
       id: 'breakEvenPoint',
@@ -365,7 +365,7 @@ export const CommercialRealEstateLoanAmortizationCalculator: Calculator = {
         interestRate: 6.5,
         loanTerm: 25,
         paymentFrequency: 'monthly',
-        startDate: '2024-01-01',
+        startDate: '20240101',
         balloonPayment: 0,
         prepaymentPenalty: 0,
         originationFee: 15000,
@@ -406,7 +406,7 @@ export const CommercialRealEstateLoanAmortizationCalculator: Calculator = {
         interestRate: 5.75,
         loanTerm: 20,
         paymentFrequency: 'monthly',
-        startDate: '2024-01-01',
+        startDate: '20240101',
         balloonPayment: 1000000,
         prepaymentPenalty: 2.0,
         originationFee: 20000,

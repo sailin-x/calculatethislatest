@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validatePortfolioCompanyEbitdaGrowthCalculatorInputs, validatePortfolioCompanyEbitdaGrowthCalculatorBusinessRules } from './validation';
 
-export const PortfolioCompanyEbitdaGrowthCalculatorCalculator: Calculator: Calculator = {
-  id: 'portfolio-company-ebitda-growth-calculator-calculator',
+export const PortfolioCompanyEbitdaGrowthCalculator: Calculator = {
+  id: 'PortfolioCompanyEbitda-GrowthCalculatorCalculator',
   title: 'Portfolio Company EBITDA Growth Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

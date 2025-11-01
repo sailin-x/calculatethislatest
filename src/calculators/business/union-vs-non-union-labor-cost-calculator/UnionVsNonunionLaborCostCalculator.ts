@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateUnionVsNonunionLaborCostCalculatorInputs, validateUnionVsNonunionLaborCostCalculatorBusinessRules } from './validation';
 
-export const UnionVsNonunionLaborCostCalculatorCalculator: Calculator: Calculator = {
-  id: 'union-vs-non-union-labor-cost-calculator-calculator',
+export const UnionVsNonunionLaborCostCalculator: Calculator = {
+  id: 'UnionVsNon-UnionLaborCost-calculator-calculator',
   title: 'Union vs. Non-Union Labor Cost Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

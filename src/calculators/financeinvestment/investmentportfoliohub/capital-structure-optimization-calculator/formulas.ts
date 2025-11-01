@@ -1,4 +1,4 @@
-import { capital-structure-optimization-calculatorInputs, capital-structure-optimization-calculatorMetrics, capital-structure-optimization-calculatorAnalysis } from './types';
+import { CapitalStructureOptimization-calculatorInputs, CapitalStructureOptimization-calculatorMetrics, CapitalStructureOptimization-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: capital-structure-optimization-calculatorInputs): number {
+export function calculateResult(inputs: CapitalStructureOptimization-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: capital-structure-optimization-calculato
   }
 }
 
-export function generateAnalysis(inputs: capital-structure-optimization-calculatorInputs, metrics: capital-structure-optimization-calculatorMetrics): capital-structure-optimization-calculatorAnalysis {
+export function generateAnalysis(inputs: CapitalStructureOptimization-calculatorInputs, metrics: CapitalStructureOptimization-calculatorMetrics): CapitalStructureOptimization-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

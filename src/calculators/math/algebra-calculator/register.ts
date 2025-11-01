@@ -1,3 +1,3 @@
-import { AlgebraCalculatorCalculator } from './AlgebraCalculatorCalculator';
+import { AlgebraCalculator } from './AlgebraCalculator';
 
-export { AlgebraCalculatorCalculator };
+export { AlgebraCalculator };

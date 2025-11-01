@@ -10,7 +10,7 @@ import {
 import { validateCohortAnalysisCalculatorInputs } from './validation';
 
 export const CohortAnalysisCalculator: Calculator = {
-  id: 'cohort-analysis-calculator',
+  id: 'CohortAnalysisCalculator',
   title: 'Cohort Analysis Calculator',
   category: 'business',
   subcategory: 'Financial Planning',

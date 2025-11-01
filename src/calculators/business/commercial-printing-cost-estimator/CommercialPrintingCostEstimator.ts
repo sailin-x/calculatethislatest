@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateCommercialPrintingCostEstimatorInputs, validateCommercialPrintingCostEstimatorBusinessRules } from './validation';
 
-export const CommercialPrintingCostEstimatorCalculator: Calculator: Calculator = {
-  id: 'commercial-printing-cost-estimator-calculator',
+export const CommercialPrintingCostEstimatorCalculator: Calculator = {
+  id: 'CommercialPrintingCost-estimator-calculator',
   title: 'Commercial Printing Cost Estimator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

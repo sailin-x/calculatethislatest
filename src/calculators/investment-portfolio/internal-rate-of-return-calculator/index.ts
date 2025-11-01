@@ -1,4 +1,4 @@
-export { InternalRateOfReturnCalculatorCalculator } from './InternalRateOfReturnCalculatorCalculator';
+export { InternalRateOfReturnCalculator } from './InternalRateOfReturnCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

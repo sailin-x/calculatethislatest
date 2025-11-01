@@ -1,4 +1,4 @@
-import { options-valuation-calculatorInputs, options-valuation-calculatorMetrics, options-valuation-calculatorAnalysis } from './types';
+import { OptionsValuationCalculatorinputs, OptionsValuationCalculatormetrics, OptionsValuationCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: options-valuation-calculatorInputs): number {
+export function calculateResult(inputs: OptionsValuationCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: options-valuation-calculatorInputs): num
   }
 }
 
-export function generateAnalysis(inputs: options-valuation-calculatorInputs, metrics: options-valuation-calculatorMetrics): options-valuation-calculatorAnalysis {
+export function generateAnalysis(inputs: OptionsValuationCalculatorinputs, metrics: OptionsValuationCalculatormetrics): OptionsValuationCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateHomeopathyCostCalculatorInputs } from './validation';
 
 export const HomeopathyCostCalculator: Calculator = {
-  id: 'homeopathy-cost-calculator',
+  id: 'HomeopathyCostCalculator',
   title: 'Homeopathy Cost Calculator',
   category: 'health',
   subcategory: 'General',

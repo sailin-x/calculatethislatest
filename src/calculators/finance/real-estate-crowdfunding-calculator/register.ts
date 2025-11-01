@@ -1,3 +1,3 @@
-import { RealEstateCrowdfundingCalculatorCalculator } from './RealEstateCrowdfundingCalculatorCalculator';
+import { RealEstateCrowdfundingCalculator } from './RealEstateCrowdfundingCalculator';
 
-export { RealEstateCrowdfundingCalculatorCalculator };
+export { RealEstateCrowdfundingCalculator };

@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { non_compete_agreement_buyout_calculatorInputs, non_compete_agreement_buyout_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const non_compete_agreement_buyout_calculatorCalculator: Calculator = {
-  id: 'non-compete-agreement-buyout-calculator',
+export const NonCompeteAgreement-buyout-calculator: Calculator = {
+  id: 'NonCompeteAgreement-buyout-calculator',
   title: 'Non Compete Agreement Buyout Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

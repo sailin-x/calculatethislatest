@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateNursingHomeNegligenceCalculatorInputs, validateNursingHomeNegligenceCalculatorBusinessRules } from './validation';
 
-export const NursingHomeNegligenceCalculatorCalculator: Calculator: Calculator = {
-  id: 'nursing-home-negligence-calculator-calculator',
+export const NursingHomeNegligenceCalculator: Calculator = {
+  id: 'NursingHomeNegligence-calculator-calculator',
   title: 'Nursing Home Negligence Calculator Calculator',
   lifestyle: 'lifestyle', // e.g., 'finance', 'math', 'health', 'business'
   sublifestyle: 'Sublifestyle Name',

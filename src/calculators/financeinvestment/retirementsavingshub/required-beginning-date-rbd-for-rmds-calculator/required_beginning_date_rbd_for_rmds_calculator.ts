@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { required_beginning_date_rbd_for_rmds_calculatorInputs, required_beginning_date_rbd_for_rmds_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const required_beginning_date_rbd_for_rmds_calculatorCalculator: Calculator = {
-  id: 'required-beginning-date-rbd-for-rmds-calculator',
+export const RequiredBeginningDate-RbdForRmds-calculator: Calculator = {
+  id: 'RequiredBeginningDate-RbdForRmds-calculator',
   title: 'Required Beginning Date (RBD) for RMDs Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'retirementsavingshub',

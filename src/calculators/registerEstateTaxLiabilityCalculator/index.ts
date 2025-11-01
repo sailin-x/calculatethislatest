@@ -1,3 +1,3 @@
-export * from './registerEstateTaxLiabilityCalculatorCalculator';
+export * from './registerEstateTaxLiabilityCalculator';
 export * from './register';
 export * from './types';

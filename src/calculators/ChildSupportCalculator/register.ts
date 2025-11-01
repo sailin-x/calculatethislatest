@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { ChildSupportCalculatorCalculator } from './ChildSupportCalculatorCalculator';
+import { ChildSupportCalculator } from './ChildSupportCalculator';
 
-export function registerChildSupportCalculatorCalculator(): void {
-  calculatorRegistry.register(new ChildSupportCalculatorCalculator());
+export function registerChildSupportCalculator(): void {
+  calculatorRegistry.register(new ChildSupportCalculator());
 }

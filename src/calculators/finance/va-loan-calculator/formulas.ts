@@ -1,13 +1,13 @@
-import { va-loan-calculatorInputs, va-loan-calculatorMetrics, va-loan-calculatorAnalysis } from './types';
+import { VaLoanCalculatorinputs, VaLoanCalculatormetrics, VaLoanCalculatoranalysis } from './types';
 
 // VA Loan Calculator - Finance calculations
-export function calculateResult(inputs: va-loan-calculatorInputs): number {
+export function calculateResult(inputs: VaLoanCalculatorinputs): number {
   // Financial calculation logic
   const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
   return numericValues.reduce((sum, val) => sum + val, 0) || 0;
 }
 
-export function generateAnalysis(inputs: va-loan-calculatorInputs, metrics: va-loan-calculatorMetrics): va-loan-calculatorAnalysis {
+export function generateAnalysis(inputs: VaLoanCalculatorinputs, metrics: VaLoanCalculatormetrics): VaLoanCalculatoranalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (Math.abs(result) > 100000) riskLevel = 'High';

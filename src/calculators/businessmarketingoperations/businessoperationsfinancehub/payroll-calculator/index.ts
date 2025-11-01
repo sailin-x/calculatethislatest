@@ -1,4 +1,4 @@
-export { payroll_calculatorCalculator } from './payroll_calculator';
+export { payroll_calculator } from './payroll_calculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

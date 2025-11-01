@@ -1,4 +1,4 @@
-export { NetOperatingIncomeNoiCalculatorCalculator } from './NetOperatingIncomeNoiCalculatorCalculator';
+export { NetOperatingIncomeNoiCalculator } from './NetOperatingIncomeNoiCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

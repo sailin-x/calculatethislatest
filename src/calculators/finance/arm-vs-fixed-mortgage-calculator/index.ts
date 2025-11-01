@@ -1,4 +1,4 @@
-export { ArmVsFixedMortgageCalculatorCalculator } from './ArmVsFixedMortgageCalculatorCalculator';
+export { ArmVsFixedMortgageCalculator } from './ArmVsFixedMortgageCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

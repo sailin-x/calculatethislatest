@@ -1,4 +1,4 @@
-import { merger-acquisition-divestiture-calculatorInputs, merger-acquisition-divestiture-calculatorMetrics, merger-acquisition-divestiture-calculatorAnalysis } from './types';
+import { MergerAcquisitionDivestiture-calculatorInputs, MergerAcquisitionDivestiture-calculatorMetrics, MergerAcquisitionDivestiture-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: merger-acquisition-divestiture-calculatorInputs): number {
+export function calculateResult(inputs: MergerAcquisitionDivestiture-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: merger-acquisition-divestiture-calculato
   }
 }
 
-export function generateAnalysis(inputs: merger-acquisition-divestiture-calculatorInputs, metrics: merger-acquisition-divestiture-calculatorMetrics): merger-acquisition-divestiture-calculatorAnalysis {
+export function generateAnalysis(inputs: MergerAcquisitionDivestiture-calculatorInputs, metrics: MergerAcquisitionDivestiture-calculatorMetrics): MergerAcquisitionDivestiture-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

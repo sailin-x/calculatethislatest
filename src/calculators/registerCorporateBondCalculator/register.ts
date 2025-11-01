@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { registerCorporateBondCalculatorCalculator } from './registerCorporateBondCalculatorCalculator';
+import { registerCorporateBondCalculator } from './registerCorporateBondCalculator';
 
-export function registerregisterCorporateBondCalculatorCalculator(): void {
-  calculatorRegistry.register(new registerCorporateBondCalculatorCalculator());
+export function registerregisterCorporateBondCalculator(): void {
+  calculatorRegistry.register(new registerCorporateBondCalculator());
 }

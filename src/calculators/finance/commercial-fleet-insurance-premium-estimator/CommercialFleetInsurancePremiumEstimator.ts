@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateCommercialFleetInsurancePremiumEstimatorInputs, validateCommercialFleetInsurancePremiumEstimatorBusinessRules } from './validation';
 
-export const CommercialFleetInsurancePremiumEstimatorCalculator: Calculator: Calculator = {
-  id: 'commercial-fleet-insurance-premium-estimator-calculator',
+export const CommercialFleetInsurancePremiumEstimatorCalculator: Calculator = {
+  id: 'CommercialFleetInsurance-PremiumEstimatorCalculator',
   title: 'Commercial Fleet Insurance Premium Estimator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

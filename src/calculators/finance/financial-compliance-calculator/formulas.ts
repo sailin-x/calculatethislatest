@@ -1,4 +1,4 @@
-import { financial-compliance-calculatorInputs, financial-compliance-calculatorMetrics, financial-compliance-calculatorAnalysis } from './types';
+import { FinancialComplianceCalculatorinputs, FinancialComplianceCalculatormetrics, FinancialComplianceCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: financial-compliance-calculatorInputs): number {
+export function calculateResult(inputs: FinancialComplianceCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: financial-compliance-calculatorInputs): 
   }
 }
 
-export function generateAnalysis(inputs: financial-compliance-calculatorInputs, metrics: financial-compliance-calculatorMetrics): financial-compliance-calculatorAnalysis {
+export function generateAnalysis(inputs: FinancialComplianceCalculatorinputs, metrics: FinancialComplianceCalculatormetrics): FinancialComplianceCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

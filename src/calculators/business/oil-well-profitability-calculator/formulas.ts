@@ -1,4 +1,4 @@
-import { oil-well-profitability-calculatorInputs, oil-well-profitability-calculatorMetrics, oil-well-profitability-calculatorAnalysis } from './types';
+import { OilWellProfitability-calculatorInputs, OilWellProfitability-calculatorMetrics, OilWellProfitability-calculatorAnalysis } from './types';
 
 // Oil Well Profitability Calculator - Business calculations
 export function calculateNetPresentValue(cashFlows: number[], discountRate: number): number {
@@ -11,7 +11,7 @@ export function calculateROI(initialInvestment: number, finalValue: number): num
  return ((finalValue - initialInvestment) / initialInvestment) * 100;
 }
 
-export function calculateResult(inputs: oil-well-profitability-calculatorInputs): number {
+export function calculateResult(inputs: OilWellProfitability-calculatorInputs): number {
  // Business calculation logic with real math
  const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
  if (numericValues.length >= 2) {
@@ -24,7 +24,7 @@ export function calculateResult(inputs: oil-well-profitability-calculatorInputs)
  return calculateNetPresentValue(numericValues, 10); // 10% discount rate
 }
 
-export function generateAnalysis(inputs: oil-well-profitability-calculatorInputs, metrics: oil-well-profitability-calculatorMetrics): oil-well-profitability-calculatorAnalysis {
+export function generateAnalysis(inputs: OilWellProfitability-calculatorInputs, metrics: OilWellProfitability-calculatorMetrics): OilWellProfitability-calculatorAnalysis {
  const result = metrics.result;
  let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
  if (Math.abs(result) > 100000) riskLevel = 'High';

@@ -1,4 +1,4 @@
-import { zip-line-cost-calculatorInputs, zip-line-cost-calculatorMetrics, zip-line-cost-calculatorAnalysis } from './types';
+import { ZipLineCost-calculatorInputs, ZipLineCost-calculatorMetrics, ZipLineCost-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: zip-line-cost-calculatorInputs): number {
+export function calculateResult(inputs: ZipLineCost-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: zip-line-cost-calculatorInputs): number 
   }
 }
 
-export function generateAnalysis(inputs: zip-line-cost-calculatorInputs, metrics: zip-line-cost-calculatorMetrics): zip-line-cost-calculatorAnalysis {
+export function generateAnalysis(inputs: ZipLineCost-calculatorInputs, metrics: ZipLineCost-calculatorMetrics): ZipLineCost-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

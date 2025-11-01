@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateAutoInsuranceCalculatorInputs, validateAutoInsuranceCalculatorBusinessRules } from './validation';
 
-export const AutoInsuranceCalculatorCalculator: Calculator: Calculator = {
-  id: 'auto-insurance-calculator-calculator',
+export const AutoInsuranceCalculator: Calculator = {
+  id: 'AutoInsuranceCalculator-calculator',
   title: 'Auto Insurance Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

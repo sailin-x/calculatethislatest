@@ -1,3 +1,3 @@
-import { TenderOfferValuationCalculatorCalculator } from './TenderOfferValuationCalculatorCalculator';
+import { TenderOfferValuationCalculator } from './TenderOfferValuationCalculator';
 
-export { TenderOfferValuationCalculatorCalculator };
+export { TenderOfferValuationCalculator };

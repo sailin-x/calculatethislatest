@@ -1,4 +1,4 @@
-import { blood-pressure-calculatorInputs, blood-pressure-calculatorMetrics, blood-pressure-calculatorAnalysis } from './types';
+import { BloodPressureCalculatorinputs, BloodPressureCalculatormetrics, BloodPressureCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: blood-pressure-calculatorInputs): number {
+export function calculateResult(inputs: BloodPressureCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: blood-pressure-calculatorInputs): number
   }
 }
 
-export function generateAnalysis(inputs: blood-pressure-calculatorInputs, metrics: blood-pressure-calculatorMetrics): blood-pressure-calculatorAnalysis {
+export function generateAnalysis(inputs: BloodPressureCalculatorinputs, metrics: BloodPressureCalculatormetrics): BloodPressureCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

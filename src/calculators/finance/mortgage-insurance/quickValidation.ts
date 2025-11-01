@@ -185,11 +185,11 @@ export function validateForeclosureHistory(value: any, allInputs?: Record<string
 }
 
 export function validateDebtToIncomeRatio(value: any, allInputs?: Record<string, any>): ValidationResult {
-  if (value === null || value === undefined) return { isValid: false, message: 'Debt-to-income ratio is required' };
+  if (value === null || value === undefined) return { isValid: false, message: 'DebtToIncome ratio is required' };
   const numValue = Number(value);
-  if (isNaN(numValue)) return { isValid: false, message: 'Debt-to-income ratio must be a number' };
-  if (numValue < 0) return { isValid: false, message: 'Debt-to-income ratio cannot be negative' };
-  if (numValue > 100) return { isValid: false, message: 'Debt-to-income ratio cannot exceed 100%' };
+  if (isNaN(numValue)) return { isValid: false, message: 'DebtToIncome ratio must be a number' };
+  if (numValue < 0) return { isValid: false, message: 'DebtToIncome ratio cannot be negative' };
+  if (numValue > 100) return { isValid: false, message: 'DebtToIncome ratio cannot exceed 100%' };
   return { isValid: true };
 }
 

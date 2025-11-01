@@ -1,3 +1,3 @@
-import { PetCareCalculatorCalculator } from './PetCareCalculatorCalculator';
+import { PetCareCalculator } from './PetCareCalculator';
 
-export { PetCareCalculatorCalculator };
+export { PetCareCalculator };

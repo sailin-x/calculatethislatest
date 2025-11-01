@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateIncomeBasedRepaymentCalculatorInputs, validateIncomeBasedRepaymentCalculatorBusinessRules } from './validation';
 
-export const IncomeBasedRepaymentCalculatorCalculator: Calculator: Calculator = {
-  id: 'income-based-repayment-calculator-calculator',
+export const IncomeBasedRepaymentCalculator: Calculator = {
+  id: 'IncomeBasedRepayment-calculator-calculator',
   title: 'Income Based Repayment Calculator Calculator',
   loans-debt: 'loans-debt', // e.g., 'finance', 'math', 'health', 'business'
   subloans-debt: 'Subloans-debt Name',

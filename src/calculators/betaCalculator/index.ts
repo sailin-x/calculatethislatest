@@ -1,3 +1,3 @@
-export * from './betaCalculatorCalculator';
+export * from './betaCalculator';
 export * from './register';
 export * from './types';

@@ -1,13 +1,13 @@
-import { nursing-home-abuse-settlement-calculatorInputs, nursing-home-abuse-settlement-calculatorMetrics, nursing-home-abuse-settlement-calculatorAnalysis } from './types';
+import { NursingHomeAbuse-settlement-calculatorInputs, NursingHomeAbuse-settlement-calculatorMetrics, NursingHomeAbuse-settlement-calculatorAnalysis } from './types';
 
 // Nursing Home Abuse Settlement Calculator - Legal calculations
-export function calculateResult(inputs: nursing-home-abuse-settlement-calculatorInputs): number {
+export function calculateResult(inputs: NursingHomeAbuse-settlement-calculatorInputs): number {
   // Legal calculation logic
   const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
   return numericValues.reduce((sum, val) => sum + val, 0) || 0;
 }
 
-export function generateAnalysis(inputs: nursing-home-abuse-settlement-calculatorInputs, metrics: nursing-home-abuse-settlement-calculatorMetrics): nursing-home-abuse-settlement-calculatorAnalysis {
+export function generateAnalysis(inputs: NursingHomeAbuse-settlement-calculatorInputs, metrics: NursingHomeAbuse-settlement-calculatorMetrics): NursingHomeAbuse-settlement-calculatorAnalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (Math.abs(result) > 100000) riskLevel = 'High';

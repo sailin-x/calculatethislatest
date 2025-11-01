@@ -1,4 +1,4 @@
-import { carb-cycling-calculatorInputs, carb-cycling-calculatorMetrics, carb-cycling-calculatorAnalysis } from './types';
+import { CarbCyclingCalculatorinputs, CarbCyclingCalculatormetrics, CarbCyclingCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: carb-cycling-calculatorInputs): number {
+export function calculateResult(inputs: CarbCyclingCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: carb-cycling-calculatorInputs): number {
   }
 }
 
-export function generateAnalysis(inputs: carb-cycling-calculatorInputs, metrics: carb-cycling-calculatorMetrics): carb-cycling-calculatorAnalysis {
+export function generateAnalysis(inputs: CarbCyclingCalculatorinputs, metrics: CarbCyclingCalculatormetrics): CarbCyclingCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

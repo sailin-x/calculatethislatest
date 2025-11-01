@@ -2,7 +2,7 @@ import { Calculator } from '../../../../types/calculator';
 import { wacc_calculatorInputs, wacc_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const wacc_calculatorCalculator: Calculator = {
+export const wacc-calculator: Calculator = {
   id: 'wacc-calculator',
   title: 'WACC Calculator Calculator',
   category: 'financeinvestment',

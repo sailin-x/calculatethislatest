@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateFlooringInstallationCostCalculatorInputs } from './validation';
 
 export const FlooringInstallationCostCalculator: Calculator = {
-  id: 'flooring-installation-cost-calculator',
+  id: 'FlooringInstallationCost-calculator',
   title: 'Flooring Installation Cost Calculator',
   category: 'health',
   subcategory: 'General',

@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { defi_yield_optimization_calculatorInputs, defi_yield_optimization_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const defi_yield_optimization_calculatorCalculator: Calculator = {
-  id: 'defi-yield-optimization-calculator',
+export const DefiYieldOptimization-calculator: Calculator = {
+  id: 'DefiYieldOptimization-calculator',
   title: 'DeFi Yield Optimization Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'cryptocurrencyhub',

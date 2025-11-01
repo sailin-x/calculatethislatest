@@ -10,7 +10,7 @@ import {
 import { validateEconomicOrderQuantityCalculatorInputs } from './validation';
 
 export const EconomicOrderQuantityCalculator: Calculator = {
-  id: 'economic-order-quantity-calculator',
+  id: 'EconomicOrderQuantity-calculator',
   title: 'Economic Order Quantity Calculator',
   category: 'business',
   subcategory: 'Financial Planning',

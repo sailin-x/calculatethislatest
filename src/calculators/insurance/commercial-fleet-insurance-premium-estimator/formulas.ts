@@ -1,4 +1,4 @@
-import { commercial-fleet-insurance-premium-estimatorInputs, commercial-fleet-insurance-premium-estimatorMetrics, commercial-fleet-insurance-premium-estimatorAnalysis } from './types';
+import { CommercialFleetInsurance-premium-estimatorInputs, CommercialFleetInsurance-premium-estimatorMetrics, CommercialFleetInsurance-premium-estimatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: commercial-fleet-insurance-premium-estimatorInputs): number {
+export function calculateResult(inputs: CommercialFleetInsurance-premium-estimatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: commercial-fleet-insurance-premium-estim
   }
 }
 
-export function generateAnalysis(inputs: commercial-fleet-insurance-premium-estimatorInputs, metrics: commercial-fleet-insurance-premium-estimatorMetrics): commercial-fleet-insurance-premium-estimatorAnalysis {
+export function generateAnalysis(inputs: CommercialFleetInsurance-premium-estimatorInputs, metrics: CommercialFleetInsurance-premium-estimatorMetrics): CommercialFleetInsurance-premium-estimatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

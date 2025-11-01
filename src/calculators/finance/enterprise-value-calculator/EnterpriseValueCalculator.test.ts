@@ -1,62 +1,149 @@
-import { describe, it, expect } from 'vitest';
-import { calculateResult } from './formulas';
+import { EnterpriseValueCalculator } from './EnterpriseValueCalculator';
+import {
+  calculateEnterpriseValue,
+  calculateNetDebt,
+  calculateDebtToEquity,
+  calculateCashToDebt
+} from './formulas';
 import { validateEnterpriseValueCalculatorInputs } from './validation';
 
-describe('Enterprise Value Calculator', () => {
-  const mockInputs = {
-    inputValue: 10,
-    multiplier: 5
-  };
-
-  describe('Calculations', () => {
-    it('calculates result correctly', () => {
-      const result = calculateResult(mockInputs);
-      expect(result).toBe(50);
+describe('EnterpriseValueCalculator', () => {
+  describe('Calculator Definition', () => {
+    it('should have correct calculator properties', () => {
+      expect(EnterpriseValueCalculator.id).toBe('enterprise-value-calculator');
+      expect(EnterpriseValueCalculator.title).toBe('Enterprise Value Calculator');
+      expect(EnterpriseValueCalculator.category).toBe('finance');
+      expect(EnterpriseValueCalculator.subcategory).toBe('Valuation');
     });
 
-    it('handles zero multiplication', () => {
-      const zeroInputs = { ...mockInputs, multiplier: 0 };
-      const result = calculateResult(zeroInputs);
-      expect(result).toBe(0);
+    it('should have required inputs', () => {
+      const requiredInputs = EnterpriseValueCalculator.inputs.filter(input => input.required);
+      expect(requiredInputs).toHaveLength(3);
+      expect(requiredInputs.map(i => i.id)).toEqual(['marketCap', 'totalDebt', 'cashAndEquivalents']);
     });
 
-    it('handles large numbers', () => {
-      const largeInputs = { inputValue: 1000, multiplier: 1000 };
-      const result = calculateResult(largeInputs);
-      expect(result).toBe(1000000);
+    it('should have correct outputs', () => {
+      expect(EnterpriseValueCalculator.outputs).toHaveLength(4);
+      expect(EnterpriseValueCalculator.outputs.map(o => o.id)).toEqual([
+        'enterpriseValue',
+        'netDebt',
+        'debtToEquity',
+        'cashToDebt'
+      ]);
+    });
+  });
+
+  describe('Formulas', () => {
+    describe('calculateEnterpriseValue', () => {
+      it('should calculate enterprise value correctly', () => {
+        const inputs = {
+          marketCap: 50000000000,
+          totalDebt: 10000000000,
+          cashAndEquivalents: 15000000000,
+          preferredStock: 0,
+          minorityInterest: 0
+        };
+        const result = calculateEnterpriseValue(inputs);
+        expect(result).toBe(45000000000);
+      });
+
+      it('should include preferred stock and minority interest', () => {
+        const inputs = {
+          marketCap: 20000000000,
+          totalDebt: 15000000000,
+          cashAndEquivalents: 3000000000,
+          preferredStock: 1000000000,
+          minorityInterest: 500000000
+        };
+        const result = calculateEnterpriseValue(inputs);
+        expect(result).toBe(33500000000);
+      });
+    });
+
+    describe('calculateNetDebt', () => {
+      it('should calculate net debt correctly', () => {
+        const result = calculateNetDebt(10000000000, 3000000000);
+        expect(result).toBe(7000000000);
+      });
+
+      it('should handle negative net debt (net cash)', () => {
+        const result = calculateNetDebt(10000000000, 15000000000);
+        expect(result).toBe(-5000000000);
+      });
+    });
+
+    describe('calculateDebtToEquity', () => {
+      it('should calculate debt-to-equity ratio correctly', () => {
+        const result = calculateDebtToEquity(10000000000, 50000000000);
+        expect(result).toBe(0.2);
+      });
+
+      it('should return 0 for zero market cap', () => {
+        const result = calculateDebtToEquity(10000000000, 0);
+        expect(result).toBe(0);
+      });
+    });
+
+    describe('calculateCashToDebt', () => {
+      it('should calculate cash-to-debt ratio correctly', () => {
+        const result = calculateCashToDebt(3000000000, 10000000000);
+        expect(result).toBe(0.3);
+      });
+
+      it('should return 0 for zero debt', () => {
+        const result = calculateCashToDebt(3000000000, 0);
+        expect(result).toBe(0);
+      });
     });
   });
 
   describe('Validation', () => {
-    it('validates correct inputs', () => {
-      const result = validateEnterpriseValueCalculatorInputs(mockInputs);
-      expect(result.length).toBe(0);
+    it('should validate correct inputs', () => {
+      const inputs = {
+        marketCap: 50000000000,
+        totalDebt: 10000000000,
+        cashAndEquivalents: 15000000000
+      };
+      const errors = validateEnterpriseValueCalculatorInputs(inputs);
+      expect(errors).toHaveLength(0);
     });
 
-    it('validates negative numbers', () => {
-      const invalidInputs = { ...mockInputs, inputValue: -5 };
-      const result = validateEnterpriseValueCalculatorInputs(invalidInputs);
-      expect(result.length).toBeGreaterThan(0);
+    it('should reject zero market cap', () => {
+      const inputs = {
+        marketCap: 0,
+        totalDebt: 10000000000,
+        cashAndEquivalents: 15000000000
+      };
+      const errors = validateEnterpriseValueCalculatorInputs(inputs);
+      expect(errors).toContainEqual({
+        field: 'marketCap',
+        message: 'Market capitalization must be greater than 0'
+      });
     });
 
-    it('validates NaN values', () => {
-      const invalidInputs = { ...mockInputs, inputValue: NaN };
-      const result = validateEnterpriseValueCalculatorInputs(invalidInputs);
-      expect(result.length).toBeGreaterThan(0);
+    it('should reject negative total debt', () => {
+      const inputs = {
+        marketCap: 50000000000,
+        totalDebt: -1000000000,
+        cashAndEquivalents: 15000000000
+      };
+      const errors = validateEnterpriseValueCalculatorInputs(inputs);
+      expect(errors).toContainEqual({
+        field: 'totalDebt',
+        message: 'Total debt cannot be negative'
+      });
     });
   });
 
-  describe('Edge Cases', () => {
-    it('handles decimal inputs', () => {
-      const decimalInputs = { inputValue: 3.5, multiplier: 2.0 };
-      const result = calculateResult(decimalInputs);
-      expect(result).toBe(7.0);
-    });
+  describe('Examples', () => {
+    it('should have valid examples', () => {
+      expect(EnterpriseValueCalculator.examples).toHaveLength(2);
 
-    it('handles very small numbers', () => {
-      const smallInputs = { inputValue: 0.001, multiplier: 0.001 };
-      const result = calculateResult(smallInputs);
-      expect(result).toBeCloseTo(0.000001, 6);
+      const techCompany = EnterpriseValueCalculator.examples[0];
+      expect(techCompany.title).toBe('Technology Company');
+      expect(techCompany.inputs.marketCap).toBe(50000000000);
+      expect(techCompany.inputs.totalDebt).toBe(10000000000);
+      expect(techCompany.inputs.cashAndEquivalents).toBe(15000000000);
     });
   });
 });

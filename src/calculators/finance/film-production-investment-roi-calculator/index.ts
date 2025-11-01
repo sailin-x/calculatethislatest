@@ -1,4 +1,4 @@
-export { FilmProductionInvestmentRoiCalculatorCalculator } from './FilmProductionInvestmentRoiCalculatorCalculator';
+export { FilmProductionInvestmentRoiCalculator } from './FilmProductionInvestmentRoiCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

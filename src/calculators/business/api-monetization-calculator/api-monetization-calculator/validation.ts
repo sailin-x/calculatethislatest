@@ -1,6 +1,6 @@
-import { api-monetization-calculatorInputs } from './types';
+import { ApiMonetizationCalculatorinputs } from './types';
 
-export function validateInputs(inputs: api-monetization-calculatorInputs): { isValid: boolean; errors: string[] } {
+export function validateInputs(inputs: ApiMonetizationCalculatorinputs): { isValid: boolean; errors: string[] } {
   const errors: string[] = [];
 
   // Add validation logic specific to this calculator

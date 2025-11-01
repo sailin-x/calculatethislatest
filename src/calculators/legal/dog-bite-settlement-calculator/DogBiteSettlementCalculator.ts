@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateDogBiteSettlementCalculatorInputs, validateDogBiteSettlementCalculatorBusinessRules } from './validation';
 
-export const DogBiteSettlementCalculatorCalculator: Calculator: Calculator = {
-  id: 'dog-bite-settlement-calculator-calculator',
+export const DogBiteSettlementCalculator: Calculator = {
+  id: 'DogBiteSettlement-calculator-calculator',
   title: 'Dog Bite Settlement Calculator Calculator',
   legal: 'legal', // e.g., 'finance', 'math', 'health', 'business'
   sublegal: 'Sublegal Name',

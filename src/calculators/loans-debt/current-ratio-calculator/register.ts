@@ -1,3 +1,3 @@
-import { CurrentRatioCalculatorCalculator } from './CurrentRatioCalculatorCalculator';
+import { CurrentRatioCalculator } from './CurrentRatioCalculator';
 
-export { CurrentRatioCalculatorCalculator };
+export { CurrentRatioCalculator };

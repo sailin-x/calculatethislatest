@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { startup_valuation_calculatorInputs, startup_valuation_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const startup_valuation_calculatorCalculator: Calculator = {
-  id: 'startup-valuation-calculator',
+export const StartupValuationCalculator: Calculator = {
+  id: 'StartupValuationCalculator',
   title: 'Startup Valuation Calculator Calculator',
   category: 'businessmarketingoperations',
   subcategory: 'businessoperationsfinancehub',

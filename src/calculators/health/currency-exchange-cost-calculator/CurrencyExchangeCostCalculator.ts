@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateCurrencyExchangeCostCalculatorInputs } from './validation';
 
 export const CurrencyExchangeCostCalculator: Calculator = {
-  id: 'currency-exchange-cost-calculator',
+  id: 'CurrencyExchangeCost-calculator',
   title: 'Currency Exchange Cost Calculator',
   category: 'health',
   subcategory: 'General',

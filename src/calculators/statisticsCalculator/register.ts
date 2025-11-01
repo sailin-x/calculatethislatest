@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { statisticsCalculatorCalculator } from './statisticsCalculatorCalculator';
+import { statisticsCalculator } from './statisticsCalculator';
 
-export function registerstatisticsCalculatorCalculator(): void {
-  calculatorRegistry.register(new statisticsCalculatorCalculator());
+export function registerstatisticsCalculator(): void {
+  calculatorRegistry.register(new statisticsCalculator());
 }

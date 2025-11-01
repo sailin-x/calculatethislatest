@@ -1,4 +1,4 @@
-import { industry-benchmarking-calculatorInputs, industry-benchmarking-calculatorMetrics, industry-benchmarking-calculatorAnalysis } from './types';
+import { IndustryBenchmarkingCalculatorinputs, IndustryBenchmarkingCalculatormetrics, IndustryBenchmarkingCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: industry-benchmarking-calculatorInputs): number {
+export function calculateResult(inputs: IndustryBenchmarkingCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: industry-benchmarking-calculatorInputs):
   }
 }
 
-export function generateAnalysis(inputs: industry-benchmarking-calculatorInputs, metrics: industry-benchmarking-calculatorMetrics): industry-benchmarking-calculatorAnalysis {
+export function generateAnalysis(inputs: IndustryBenchmarkingCalculatorinputs, metrics: IndustryBenchmarkingCalculatormetrics): IndustryBenchmarkingCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

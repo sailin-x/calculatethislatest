@@ -10,7 +10,7 @@ import {
 import { validatePriceToBookCalculatorInputs } from './validation';
 
 export const PriceToBookCalculator: Calculator = {
-  id: 'price-to-book-calculator',
+  id: 'PriceToBook-calculator',
   title: 'Price to Book Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

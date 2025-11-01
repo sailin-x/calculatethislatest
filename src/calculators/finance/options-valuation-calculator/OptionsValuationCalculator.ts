@@ -10,7 +10,7 @@ import {
 import { validateOptionsValuationCalculatorInputs } from './validation';
 
 export const OptionsValuationCalculator: Calculator = {
-  id: 'options-valuation-calculator',
+  id: 'OptionsValuationCalculator',
   title: 'Options Valuation Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

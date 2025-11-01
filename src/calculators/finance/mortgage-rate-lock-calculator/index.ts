@@ -1,4 +1,4 @@
-export { MortgageRateLockCalculatorCalculator } from './MortgageRateLockCalculatorCalculator';
+export { MortgageRateLockCalculator } from './MortgageRateLockCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateHealthSavingsAccountContributionCalculatorInputs } from './validation';
 
 export const HealthSavingsAccountContributionCalculator: Calculator = {
-  id: 'health-savings-account-contribution-calculator',
+  id: 'HealthSavingsAccount-contribution-calculator',
   title: 'Health Savings Account Contribution Calculator',
   category: 'health',
   subcategory: 'General',

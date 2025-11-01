@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { personalInjuryCalculatorCalculator } from './personalInjuryCalculatorCalculator';
+import { personalInjuryCalculator } from './personalInjuryCalculator';
 
-export function registerpersonalInjuryCalculatorCalculator(): void {
-  calculatorRegistry.register(new personalInjuryCalculatorCalculator());
+export function registerpersonalInjuryCalculator(): void {
+  calculatorRegistry.register(new personalInjuryCalculator());
 }

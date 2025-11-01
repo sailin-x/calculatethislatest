@@ -1,4 +1,4 @@
-import { chiropractic-care-cost-calculatorInputs, chiropractic-care-cost-calculatorMetrics, chiropractic-care-cost-calculatorAnalysis } from './types';
+import { ChiropracticCareCost-calculatorInputs, ChiropracticCareCost-calculatorMetrics, ChiropracticCareCost-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: chiropractic-care-cost-calculatorInputs): number {
+export function calculateResult(inputs: ChiropracticCareCost-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: chiropractic-care-cost-calculatorInputs)
   }
 }
 
-export function generateAnalysis(inputs: chiropractic-care-cost-calculatorInputs, metrics: chiropractic-care-cost-calculatorMetrics): chiropractic-care-cost-calculatorAnalysis {
+export function generateAnalysis(inputs: ChiropracticCareCost-calculatorInputs, metrics: ChiropracticCareCost-calculatorMetrics): ChiropracticCareCost-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

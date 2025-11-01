@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateHealthInsuranceCalculatorInputs, validateHealthInsuranceCalculatorBusinessRules } from './validation';
 
-export const HealthInsuranceCalculatorCalculator: Calculator: Calculator = {
-  id: 'health-insurance-calculator-calculator',
+export const HealthInsuranceCalculator: Calculator = {
+  id: 'HealthInsuranceCalculator-calculator',
   title: 'Health Insurance Calculator Calculator',
   health: 'health', // e.g., 'finance', 'math', 'health', 'business'
   subhealth: 'Subhealth Name',

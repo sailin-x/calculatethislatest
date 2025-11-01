@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateLasikEyeSurgeryRoiCalculatorInputs, validateLasikEyeSurgeryRoiCalculatorBusinessRules } from './validation';
 
-export const LasikEyeSurgeryRoiCalculatorCalculator: Calculator: Calculator = {
-  id: 'lasik-eye-surgery-roi-calculator-calculator',
+export const LasikEyeSurgeryRoiCalculator: Calculator = {
+  id: 'LasikEyeSurgery-RoiCalculatorCalculator',
   title: 'LASIK Eye Surgery ROI Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { mortgage_lifeCalculatorCalculator } from './mortgage_lifeCalculatorCalculator';
+import { mortgage_lifeCalculator } from './mortgage_lifeCalculator';
 
-export function registermortgage_lifeCalculatorCalculator(): void {
-  calculatorRegistry.register(new mortgage_lifeCalculatorCalculator());
+export function registermortgage_lifeCalculator(): void {
+  calculatorRegistry.register(new mortgage_lifeCalculator());
 }

@@ -1,4 +1,4 @@
-export { MusicCatalogueValuationCalculatorCalculator } from './MusicCatalogueValuationCalculatorCalculator';
+export { MusicCatalogueValuationCalculator } from './MusicCatalogueValuationCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

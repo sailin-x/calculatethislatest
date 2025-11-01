@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { modified_dietz_return_calculatorInputs, modified_dietz_return_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const modified_dietz_return_calculatorCalculator: Calculator = {
-  id: 'modified-dietz-return-calculator',
+export const ModifiedDietzReturn-calculator: Calculator = {
+  id: 'ModifiedDietzReturn-calculator',
   title: 'Modified Dietz Return Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'investmentportfoliohub',

@@ -1,3 +1,3 @@
-import { SpinalCordInjuryCompensationCalculatorCalculator } from './SpinalCordInjuryCompensationCalculatorCalculator';
+import { SpinalCordInjuryCompensationCalculator } from './SpinalCordInjuryCompensationCalculator';
 
-export { SpinalCordInjuryCompensationCalculatorCalculator };
+export { SpinalCordInjuryCompensationCalculator };

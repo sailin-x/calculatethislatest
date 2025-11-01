@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateCelebrityEndorsementDealValuationInputs, validateCelebrityEndorsementDealValuationBusinessRules } from './validation';
 
-export const CelebrityEndorsementDealValuationCalculator: Calculator: Calculator = {
-  id: 'celebrity-endorsement-deal-valuation-calculator',
+export const CelebrityEndorsementDealValuationCalculator: Calculator = {
+  id: 'CelebrityEndorsementDeal-valuation-calculator',
   title: 'Celebrity Endorsement Deal Valuation Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

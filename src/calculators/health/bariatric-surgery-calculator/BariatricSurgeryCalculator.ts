@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateBariatricSurgeryCalculatorInputs } from './validation';
 
 export const BariatricSurgeryCalculator: Calculator = {
-  id: 'bariatric-surgery-calculator',
+  id: 'BariatricSurgeryCalculator',
   title: 'Bariatric Surgery Calculator',
   category: 'health',
   subcategory: 'General',

@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { bond_convexity_calculatorInputs, bond_convexity_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const bond_convexity_calculatorCalculator: Calculator = {
-  id: 'bond-convexity-calculator',
+export const BondConvexityCalculator: Calculator = {
+  id: 'BondConvexityCalculator',
   title: 'Bond Convexity Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'investmentportfoliohub',

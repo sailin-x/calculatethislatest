@@ -1,3 +1,3 @@
-import { WaccCalculatorCalculator } from './WaccCalculatorCalculator';
+import { WaccCalculator } from './WaccCalculator';
 
-export { WaccCalculatorCalculator };
+export { WaccCalculator };

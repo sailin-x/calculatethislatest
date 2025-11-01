@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateMoldRemediationCostCalculatorInputs } from './validation';
 
 export const MoldRemediationCostCalculator: Calculator = {
-  id: 'mold-remediation-cost-calculator',
+  id: 'MoldRemediationCost-calculator',
   title: 'Mold Remediation Cost Calculator',
   category: 'health',
   subcategory: 'General',

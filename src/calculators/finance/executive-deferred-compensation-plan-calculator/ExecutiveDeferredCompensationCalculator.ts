@@ -6,7 +6,7 @@ import { getExecutiveDeferredCompensationValidationRules } from './validation';
  * Executive deferred compensation formula implementation
  */
 const executiveDeferredCompensationFormula: Formula = {
-  id: 'executive-deferred-compensation',
+  id: 'ExecutiveDeferredCompensation',
   name: 'Executive Deferred Compensation Analysis',
   description: 'Comprehensive analysis of executive deferred compensation plans including tax implications, vesting, and risk assessment',
   calculate: (inputs: Record<string, any>) => {
@@ -23,7 +23,7 @@ const executiveDeferredCompensationFormula: Formula = {
  * Industry-leading Executive Deferred Compensation Calculator
  */
 export const executiveDeferredCompensationCalculator: Calculator = {
-  id: 'executive-deferred-compensation-calculator',
+  id: 'ExecutiveDeferredCompensation-calculator',
   title: 'Executive Deferred Compensation Plan Calculator',
   category: 'finance',
   subcategory: 'Retirement & Savings',

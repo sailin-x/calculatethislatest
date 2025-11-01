@@ -1,4 +1,4 @@
-export { ShoppingCartAbandonmentCalculatorCalculator } from './ShoppingCartAbandonmentCalculatorCalculator';
+export { ShoppingCartAbandonmentCalculator } from './ShoppingCartAbandonmentCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

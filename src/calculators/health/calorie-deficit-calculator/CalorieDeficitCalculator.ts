@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateCalorieDeficitCalculatorInputs, validateCalorieDeficitCalculatorBusinessRules } from './validation';
 
-export const CalorieDeficitCalculatorCalculator: Calculator: Calculator = {
-  id: 'calorie-deficit-calculator-calculator',
+export const CalorieDeficitCalculator: Calculator = {
+  id: 'CalorieDeficitCalculator-calculator',
   title: 'Calorie Deficit Calculator Calculator',
   health: 'health', // e.g., 'finance', 'math', 'health', 'business'
   subhealth: 'Subhealth Name',

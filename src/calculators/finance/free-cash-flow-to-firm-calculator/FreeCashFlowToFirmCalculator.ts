@@ -10,7 +10,7 @@ import {
 import { validateFreeCashFlowToFirmCalculatorInputs } from './validation';
 
 export const FreeCashFlowToFirmCalculator: Calculator = {
-  id: 'free-cash-flow-to-firm-calculator',
+  id: 'FreeCashFlow-ToFirmCalculator',
   title: 'Free Cash Flow to Firm Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

@@ -32,7 +32,7 @@ describe('Commercial Real Estate Calculator', () => {
 
   describe('Calculator Definition', () => {
     it('should have correct basic properties', () => {
-      expect(CommercialRealEstateCalculator.id).toBe('commercial-real-estate-calculator');
+      expect(CommercialRealEstateCalculator.id).toBe('CommercialRealEstate-calculator');
       expect(CommercialRealEstateCalculator.name).toBe('Commercial Real Estate Calculator');
       expect(CommercialRealEstateCalculator.category).toBe('finance');
       expect(CommercialRealEstateCalculator.subcategory).toBe('investment');
@@ -106,11 +106,11 @@ describe('Commercial Real Estate Calculator', () => {
       expect(result.errors.some(error => error.includes('interest rate'))).toBe(true);
     });
 
-    it('should validate loan-to-value ratio', () => {
+    it('should validate LoanToValue ratio', () => {
       const highLTVInputs = { ...validInputs, loanAmount: 2000000 };
       const result = validateCommercialRealEstateInputs(highLTVInputs);
       expect(result.isValid).toBe(false);
-      expect(result.errors.some(error => error.includes('Loan-to-value'))).toBe(true);
+      expect(result.errors.some(error => error.includes('LoanToValue'))).toBe(true);
     });
 
     it('should validate down payment percentage', () => {
@@ -164,7 +164,7 @@ describe('Commercial Real Estate Calculator', () => {
       expect(Math.abs(metrics.capRate - expectedCapRate)).toBeLessThan(0.01);
     });
 
-    it('should calculate cash-on-cash return correctly', () => {
+    it('should calculate CashOnCash return correctly', () => {
       const metrics = calculateCommercialRealEstate(validInputs);
       
       const expectedCashOnCash = (metrics.annualCashFlow / validInputs.downPayment) * 100;

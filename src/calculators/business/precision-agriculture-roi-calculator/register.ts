@@ -1,3 +1,3 @@
-import { PrecisionAgricultureRoiCalculatorCalculator } from './PrecisionAgricultureRoiCalculatorCalculator';
+import { PrecisionAgricultureRoiCalculator } from './PrecisionAgricultureRoiCalculator';
 
-export { PrecisionAgricultureRoiCalculatorCalculator };
+export { PrecisionAgricultureRoiCalculator };

@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateVitaminSupplementCostCalculatorInputs } from './validation';
 
 export const VitaminSupplementCostCalculator: Calculator = {
-  id: 'vitamin-supplement-cost-calculator',
+  id: 'VitaminSupplementCost-calculator',
   title: 'Vitamin Supplement Cost Calculator',
   category: 'health',
   subcategory: 'General',

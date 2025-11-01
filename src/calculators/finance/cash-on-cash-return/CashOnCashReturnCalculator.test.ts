@@ -3,7 +3,7 @@ import { CashOnCashReturnCalculator } from './CashOnCashReturnCalculator';
 import { calculateCashOnCashReturn, generateInvestmentAnalysis } from './formulas';
 import { validateCashOnCashReturnInputs } from './validation';
 
-describe('Cash-on-Cash Return Calculator', () => {
+describe('CashOnCash Return Calculator', () => {
   let validInputs: Record<string, any>;
 
   beforeEach(() => {
@@ -31,8 +31,8 @@ describe('Cash-on-Cash Return Calculator', () => {
 
   describe('Calculator Definition', () => {
     it('should have correct basic properties', () => {
-      expect(CashOnCashReturnCalculator.id).toBe('cash-on-cash-return-calculator');
-      expect(CashOnCashReturnCalculator.name).toBe('Cash-on-Cash Return Calculator');
+      expect(CashOnCashReturnCalculator.id).toBe('CashOnCash-return-calculator');
+      expect(CashOnCashReturnCalculator.name).toBe('CashOnCash Return Calculator');
       expect(CashOnCashReturnCalculator.category).toBe('finance');
       expect(CashOnCashReturnCalculator.subcategory).toBe('investment');
     });
@@ -104,11 +104,11 @@ describe('Cash-on-Cash Return Calculator', () => {
       expect(result.errors.some(error => error.includes('interest rate'))).toBe(true);
     });
 
-    it('should validate loan-to-value ratio', () => {
+    it('should validate LoanToValue ratio', () => {
       const highLTVInputs = { ...validInputs, loanAmount: 290000 };
       const result = validateCashOnCashReturnInputs(highLTVInputs);
       expect(result.isValid).toBe(false);
-      expect(result.errors.some(error => error.includes('Loan-to-value'))).toBe(true);
+      expect(result.errors.some(error => error.includes('LoanToValue'))).toBe(true);
     });
 
     it('should provide warnings for business rule violations', () => {
@@ -124,7 +124,7 @@ describe('Cash-on-Cash Return Calculator', () => {
   });
 
   describe('Formula Calculations', () => {
-    it('should calculate cash-on-cash return metrics correctly', () => {
+    it('should calculate CashOnCash return metrics correctly', () => {
       const metrics = calculateCashOnCashReturn(validInputs);
       
       expect(metrics.totalCashInvested).toBeGreaterThan(0);
@@ -147,7 +147,7 @@ describe('Cash-on-Cash Return Calculator', () => {
       expect(metrics.totalCashInvested).toBe(expectedTotalCash);
     });
 
-    it('should calculate cash-on-cash return correctly', () => {
+    it('should calculate CashOnCash return correctly', () => {
       const metrics = calculateCashOnCashReturn(validInputs);
       
       const expectedCashOnCash = (metrics.annualCashFlow / metrics.totalCashInvested) * 100;
@@ -180,7 +180,7 @@ describe('Cash-on-Cash Return Calculator', () => {
       const lowRentResult = calculateCashOnCashReturn(lowRentInputs);
       const highRentResult = calculateCashOnCashReturn(highRentInputs);
       
-      // Higher rent should result in higher cash flow and cash-on-cash return
+      // Higher rent should result in higher cash flow and CashOnCash return
       expect(highRentResult.monthlyCashFlow).toBeGreaterThan(lowRentResult.monthlyCashFlow);
       expect(highRentResult.cashOnCashReturn).toBeGreaterThan(lowRentResult.cashOnCashReturn);
     });
@@ -296,10 +296,10 @@ describe('Cash-on-Cash Return Calculator', () => {
   });
 
   describe('Business Logic', () => {
-    it('should show realistic cash-on-cash return values', () => {
+    it('should show realistic CashOnCash return values', () => {
       const result = CashOnCashReturnCalculator.calculate(validInputs);
       
-      // Cash-on-cash return should be reasonable
+      // CashOnCash return should be reasonable
       expect(result.cashOnCashReturn).toBeGreaterThan(-20);
       expect(result.cashOnCashReturn).toBeLessThan(30);
     });

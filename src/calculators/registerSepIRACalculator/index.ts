@@ -1,3 +1,3 @@
-export * from './registerSepIRACalculatorCalculator';
+export * from './registerSepIRACalculator';
 export * from './register';
 export * from './types';

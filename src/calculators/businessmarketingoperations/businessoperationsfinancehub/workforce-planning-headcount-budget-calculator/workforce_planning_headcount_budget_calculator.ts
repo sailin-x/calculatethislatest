@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { workforce_planning_headcount_budget_calculatorInputs, workforce_planning_headcount_budget_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const workforce_planning_headcount_budget_calculatorCalculator: Calculator = {
-  id: 'workforce-planning-headcount-budget-calculator',
+export const WorkforcePlanningHeadcount-budget-calculator: Calculator = {
+  id: 'WorkforcePlanningHeadcount-budget-calculator',
   title: 'Workforce Planning & Headcount Budget Calculator Calculator',
   category: 'businessmarketingoperations',
   subcategory: 'businessoperationsfinancehub',

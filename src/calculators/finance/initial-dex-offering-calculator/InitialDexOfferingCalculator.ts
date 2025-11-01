@@ -10,7 +10,7 @@ import {
 import { validateInitialDexOfferingCalculatorInputs } from './validation';
 
 export const InitialDexOfferingCalculator: Calculator = {
-  id: 'initial-dex-offering-calculator',
+  id: 'InitialDexOffering-calculator',
   title: 'Initial DEX Offering Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

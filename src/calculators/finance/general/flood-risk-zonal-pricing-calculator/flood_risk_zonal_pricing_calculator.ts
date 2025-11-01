@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { flood_risk_zonal_pricing_calculatorInputs, flood_risk_zonal_pricing_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const flood_risk_zonal_pricing_calculatorCalculator: Calculator = {
-  id: 'flood-risk-zonal-pricing-calculator',
+export const FloodRiskZonal-pricing-calculator: Calculator = {
+  id: 'FloodRiskZonal-pricing-calculator',
   title: 'Flood Risk Zonal Pricing Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

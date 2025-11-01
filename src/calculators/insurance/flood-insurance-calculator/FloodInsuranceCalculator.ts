@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateFloodInsuranceCalculatorInputs } from './validation';
 
 export const FloodInsuranceCalculator: Calculator = {
-  id: 'flood-insurance-calculator',
+  id: 'FloodInsuranceCalculator',
   title: 'Flood Insurance Calculator',
   category: 'insurance',
   subcategory: 'General',

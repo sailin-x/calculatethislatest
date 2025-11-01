@@ -1,3 +1,3 @@
-export * from './registerRetirementCalculatorCalculator';
+export * from './registerRetirementCalculator';
 export * from './register';
 export * from './types';

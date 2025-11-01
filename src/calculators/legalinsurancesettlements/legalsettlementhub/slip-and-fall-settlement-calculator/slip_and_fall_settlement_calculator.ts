@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { slip_and_fall_settlement_calculatorInputs, slip_and_fall_settlement_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const slip_and_fall_settlement_calculatorCalculator: Calculator = {
-  id: 'slip-and-fall-settlement-calculator',
+export const SlipAndFall-settlement-calculator: Calculator = {
+  id: 'SlipAndFall-settlement-calculator',
   title: 'Slip and Fall Settlement Calculator Calculator',
   category: 'legalinsurancesettlements',
   subcategory: 'legalsettlementhub',

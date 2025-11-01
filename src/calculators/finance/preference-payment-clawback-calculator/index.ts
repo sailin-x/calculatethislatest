@@ -1,4 +1,4 @@
-export { PreferencePaymentClawbackCalculatorCalculator } from './PreferencePaymentClawbackCalculatorCalculator';
+export { PreferencePaymentClawbackCalculator } from './PreferencePaymentClawbackCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

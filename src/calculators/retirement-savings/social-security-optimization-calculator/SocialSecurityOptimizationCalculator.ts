@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateSocialSecurityOptimizationCalculatorInputs, validateSocialSecurityOptimizationCalculatorBusinessRules } from './validation';
 
-export const SocialSecurityOptimizationCalculatorCalculator: Calculator: Calculator = {
-  id: 'social-security-optimization-calculator-calculator',
+export const SocialSecurityOptimizationCalculator: Calculator = {
+  id: 'SocialSecurityOptimization-calculator-calculator',
   title: 'Social Security Optimization Calculator Calculator',
   retirement-savings: 'retirement-savings', // e.g., 'finance', 'math', 'health', 'business'
   subretirement-savings: 'Subretirement-savings Name',

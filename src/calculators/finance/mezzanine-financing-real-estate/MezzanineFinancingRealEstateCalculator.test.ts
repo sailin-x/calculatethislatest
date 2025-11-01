@@ -26,7 +26,7 @@ describe('Mezzanine Financing Real Estate Calculator', () => {
 
   describe('Calculator Definition', () => {
     it('should have correct calculator properties', () => {
-      expect(mezzanineFinancingRealEstateCalculator.id).toBe('mezzanine-financing-real-estate');
+      expect(mezzanineFinancingRealEstateCalculator.id).toBe('MezzanineFinancingReal-estate');
       expect(mezzanineFinancingRealEstateCalculator.name).toBe('Mezzanine Financing Real Estate Calculator');
       expect(mezzanineFinancingRealEstateCalculator.category).toBe('finance');
       expect(mezzanineFinancingRealEstateCalculator.tags).toContain('mezzanine');
@@ -162,7 +162,7 @@ describe('Mezzanine Financing Real Estate Calculator', () => {
       const invalidInputs = { ...validInputs, seniorLoanAmount: 4000000, mezzanineLoanAmount: 1000000 };
       const validation = validateMezzanineFinancingRealEstateInputs(invalidInputs);
       expect(validation.isValid).toBe(false);
-      expect(validation.errors).toContain('Total loan-to-value ratio cannot exceed 95%');
+      expect(validation.errors).toContain('Total LoanToValue ratio cannot exceed 95%');
     });
 
     it('should reject financing not equaling purchase price', () => {
@@ -217,7 +217,7 @@ describe('Mezzanine Financing Real Estate Calculator', () => {
       expect(results.debtServiceCoverageRatio).toBeCloseTo(expectedDSCR, 2);
     });
 
-    it('should calculate cash-on-cash return correctly', () => {
+    it('should calculate CashOnCash return correctly', () => {
       const results = mezzanineFinancingRealEstateCalculator.calculate(validInputs);
       
       const expectedCOC = (results.cashFlow * 12) / validInputs.equityContribution * 100;

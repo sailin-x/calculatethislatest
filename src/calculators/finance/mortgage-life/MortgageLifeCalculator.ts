@@ -3,7 +3,7 @@ import { calculateMortgageLife } from './formulas';
 import { generateMortgageLifeAnalysis } from './formulas';
 
 export const MortgageLifeCalculator: Calculator = {
-  id: 'mortgage-life-calculator',
+  id: 'MortgageLifeCalculator',
   name: 'Mortgage Life Calculator',
   category: 'finance',
   subcategory: 'mortgage',

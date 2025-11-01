@@ -160,7 +160,7 @@ export const mortgageCalculator: Calculator = {
     },
     {
       id: 'loanToValue',
-      label: 'Loan-to-Value Ratio',
+      label: 'LoanToValue Ratio',
       type: 'percentage',
       explanation: 'Percentage of home value being financed'
     },

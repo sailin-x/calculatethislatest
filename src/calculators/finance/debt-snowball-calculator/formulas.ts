@@ -1,4 +1,4 @@
-import { debt-snowball-calculatorInputs, debt-snowball-calculatorMetrics, debt-snowball-calculatorAnalysis } from './types';
+import { DebtSnowballCalculatorinputs, DebtSnowballCalculatormetrics, DebtSnowballCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: debt-snowball-calculatorInputs): number {
+export function calculateResult(inputs: DebtSnowballCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: debt-snowball-calculatorInputs): number 
   }
 }
 
-export function generateAnalysis(inputs: debt-snowball-calculatorInputs, metrics: debt-snowball-calculatorMetrics): debt-snowball-calculatorAnalysis {
+export function generateAnalysis(inputs: DebtSnowballCalculatorinputs, metrics: DebtSnowballCalculatormetrics): DebtSnowballCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

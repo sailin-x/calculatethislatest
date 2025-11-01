@@ -7,7 +7,7 @@ import { validateAllInterestOnlyMortgageInputs } from './quickValidation';
 describe('Interest-Only Mortgage Calculator', () => {
   describe('Calculator Structure', () => {
     it('should have correct basic properties', () => {
-      expect(InterestOnlyMortgageCalculator.id).toBe('interest-only-mortgage-calculator');
+      expect(InterestOnlyMortgageCalculator.id).toBe('InterestOnlyMortgage-calculator');
       expect(InterestOnlyMortgageCalculator.name).toBe('Interest-Only Mortgage Calculator');
       expect(InterestOnlyMortgageCalculator.category).toBe('finance');
       expect(InterestOnlyMortgageCalculator.subcategory).toBe('investment');
@@ -151,7 +151,7 @@ describe('Interest-Only Mortgage Calculator', () => {
       expect(outputs.balloonPayment).toBe(400000); // Should equal original loan amount
     });
 
-    it('should calculate debt-to-income ratio correctly', () => {
+    it('should calculate DebtToIncome ratio correctly', () => {
       const inputs = {
         loanAmount: 500000,
         interestRate: 5.5,
@@ -165,7 +165,7 @@ describe('Interest-Only Mortgage Calculator', () => {
       expect(outputs.debtToIncomeRatio).toBeLessThan(100);
     });
 
-    it('should calculate loan-to-value ratio correctly', () => {
+    it('should calculate LoanToValue ratio correctly', () => {
       const inputs = {
         loanAmount: 400000,
         interestRate: 5.5,

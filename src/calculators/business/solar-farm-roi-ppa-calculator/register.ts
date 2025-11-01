@@ -1,3 +1,3 @@
-import { SolarFarmRoiPpaCalculatorCalculator } from './SolarFarmRoiPpaCalculatorCalculator';
+import { SolarFarmRoiPpaCalculator } from './SolarFarmRoiPpaCalculator';
 
-export { SolarFarmRoiPpaCalculatorCalculator };
+export { SolarFarmRoiPpaCalculator };

@@ -1,4 +1,4 @@
-export { ExpectedShortfallCalculatorCalculator } from './ExpectedShortfallCalculatorCalculator';
+export { ExpectedShortfallCalculator } from './ExpectedShortfallCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

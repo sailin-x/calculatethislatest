@@ -3,7 +3,7 @@ import { calculatePropertyValue, generateValuationAnalysis } from './formulas';
 import { validateValuationInputs } from './validation';
 
 export const CommercialPropertyValuationCalculator: Calculator = {
-  id: 'commercial-property-valuation-calculator',
+  id: 'CommercialPropertyValuation-calculator',
   name: 'Commercial Property Valuation Calculator',
   category: 'finance',
   subcategory: 'business',
@@ -250,7 +250,7 @@ export const CommercialPropertyValuationCalculator: Calculator = {
       required: true,
       description: 'Length and quality of lease agreements',
       options: [
-        { value: 'month-to-month', label: 'Month-to-Month' },
+        { value: 'MonthToMonth', label: 'MonthToMonth' },
         { value: 'short-term', label: 'Short-Term (1-3 years)' },
         { value: 'medium-term', label: 'Medium-Term (3-7 years)' },
         { value: 'long-term', label: 'Long-Term (7+ years)' }

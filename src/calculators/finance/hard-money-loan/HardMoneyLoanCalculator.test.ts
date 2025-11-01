@@ -70,7 +70,7 @@ describe('HardMoneyLoanCalculator', () => {
 
   describe('Calculator Definition', () => {
     it('should have correct basic properties', () => {
-      expect(HardMoneyLoanCalculator.id).toBe('hard-money-loan');
+      expect(HardMoneyLoanCalculator.id).toBe('HardMoneyLoan');
       expect(HardMoneyLoanCalculator.name).toBe('Hard Money Loan Calculator');
       expect(HardMoneyLoanCalculator.category).toBe('finance');
       expect(HardMoneyLoanCalculator.subcategory).toBe('real-estate');
@@ -196,7 +196,7 @@ describe('HardMoneyLoanCalculator', () => {
       const result = validateHardMoneyLoanInputs(warningInputs);
       expect(result.isValid).toBe(true);
       expect(result.warnings).toContain('Borrower has poor credit score, indicating higher default risk');
-      expect(result.warnings).toContain('High debt-to-income ratio may indicate borrower financial stress');
+      expect(result.warnings).toContain('High DebtToIncome ratio may indicate borrower financial stress');
     });
   });
 
@@ -233,7 +233,7 @@ describe('HardMoneyLoanCalculator', () => {
       expect(typeof metrics.effectiveInterestRate).toBe('number');
     });
 
-    it('should calculate loan-to-value ratio correctly', () => {
+    it('should calculate LoanToValue ratio correctly', () => {
       const metrics = calculateHardMoneyLoan(validInputs);
       
       expect(metrics.loanToValueRatio).toBeCloseTo((validInputs.loanAmount / validInputs.propertyValue) * 100, 2);
@@ -241,7 +241,7 @@ describe('HardMoneyLoanCalculator', () => {
       expect(metrics.loanToValueRatio).toBeLessThan(100);
     });
 
-    it('should calculate cash-on-cash return correctly', () => {
+    it('should calculate CashOnCash return correctly', () => {
       const metrics = calculateHardMoneyLoan(validInputs);
       
       expect(metrics.cashOnCashReturn).toBeDefined();

@@ -1,3 +1,3 @@
-import { IvfInVitroFertilizationCostCalculatorCalculator } from './IvfInVitroFertilizationCostCalculatorCalculator';
+import { IvfInVitroFertilizationCostCalculator } from './IvfInVitroFertilizationCostCalculator';
 
-export { IvfInVitroFertilizationCostCalculatorCalculator };
+export { IvfInVitroFertilizationCostCalculator };

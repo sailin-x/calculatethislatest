@@ -1,3 +1,3 @@
-import { CdInterestCalculatorCalculator } from './CdInterestCalculatorCalculator';
+import { CdInterestCalculator } from './CdInterestCalculator';
 
-export { CdInterestCalculatorCalculator };
+export { CdInterestCalculator };

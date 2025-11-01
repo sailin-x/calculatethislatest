@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateTravelCalculatorInputs, validateTravelCalculatorBusinessRules } from './validation';
 
-export const TravelCalculatorCalculator: Calculator: Calculator = {
-  id: 'travel-calculator-calculator',
+export const TravelCalculator: Calculator = {
+  id: 'TravelCalculatorCalculator',
   title: 'Travel Calculator Calculator',
   lifestyle: 'lifestyle', // e.g., 'finance', 'math', 'health', 'business'
   sublifestyle: 'Sublifestyle Name',

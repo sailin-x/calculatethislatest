@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { umbrella_insurance_calculatorInputs, umbrella_insurance_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const umbrella_insurance_calculatorCalculator: Calculator = {
-  id: 'umbrella-insurance-calculator',
+export const UmbrellaInsuranceCalculator: Calculator = {
+  id: 'UmbrellaInsuranceCalculator',
   title: 'Umbrella Insurance Calculator Calculator',
   category: 'legalinsurancesettlements',
   subcategory: 'insurancehub',

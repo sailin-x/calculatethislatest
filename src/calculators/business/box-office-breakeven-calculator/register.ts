@@ -1,3 +1,3 @@
-import { BoxOfficeBreakevenCalculatorCalculator } from './BoxOfficeBreakevenCalculatorCalculator';
+import { BoxOfficeBreakevenCalculator } from './BoxOfficeBreakevenCalculator';
 
-export { BoxOfficeBreakevenCalculatorCalculator };
+export { BoxOfficeBreakevenCalculator };

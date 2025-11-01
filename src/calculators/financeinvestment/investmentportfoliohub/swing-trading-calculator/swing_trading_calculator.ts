@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { swing_trading_calculatorInputs, swing_trading_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const swing_trading_calculatorCalculator: Calculator = {
-  id: 'swing-trading-calculator',
+export const SwingTradingCalculator: Calculator = {
+  id: 'SwingTradingCalculator',
   title: 'Swing Trading Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'investmentportfoliohub',

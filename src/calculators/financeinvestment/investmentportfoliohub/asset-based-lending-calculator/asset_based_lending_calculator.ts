@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { asset_based_lending_calculatorInputs, asset_based_lending_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const asset_based_lending_calculatorCalculator: Calculator = {
-  id: 'asset-based-lending-calculator',
+export const AssetBasedLending-calculator: Calculator = {
+  id: 'AssetBasedLending-calculator',
   title: 'Asset Based Lending Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'investmentportfoliohub',

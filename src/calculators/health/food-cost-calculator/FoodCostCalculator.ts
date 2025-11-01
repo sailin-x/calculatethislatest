@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateFoodCostCalculatorInputs } from './validation';
 
 export const FoodCostCalculator: Calculator = {
-  id: 'food-cost-calculator',
+  id: 'FoodCostCalculator',
   title: 'Food Cost Calculator',
   category: 'health',
   subcategory: 'General',

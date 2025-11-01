@@ -1,3 +1,3 @@
-import { DividendCalculatorCalculator } from './DividendCalculatorCalculator';
+import { DividendCalculator } from './DividendCalculator';
 
-export { DividendCalculatorCalculator };
+export { DividendCalculator };

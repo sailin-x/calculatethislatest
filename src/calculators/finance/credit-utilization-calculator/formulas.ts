@@ -1,4 +1,4 @@
-import { credit-utilization-calculatorInputs, credit-utilization-calculatorMetrics, credit-utilization-calculatorAnalysis } from './types';
+import { CreditUtilizationCalculatorinputs, CreditUtilizationCalculatormetrics, CreditUtilizationCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: credit-utilization-calculatorInputs): number {
+export function calculateResult(inputs: CreditUtilizationCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: credit-utilization-calculatorInputs): nu
   }
 }
 
-export function generateAnalysis(inputs: credit-utilization-calculatorInputs, metrics: credit-utilization-calculatorMetrics): credit-utilization-calculatorAnalysis {
+export function generateAnalysis(inputs: CreditUtilizationCalculatorinputs, metrics: CreditUtilizationCalculatormetrics): CreditUtilizationCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

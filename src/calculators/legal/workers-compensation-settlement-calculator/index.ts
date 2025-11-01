@@ -1,4 +1,4 @@
-export { WorkersCompensationSettlementCalculatorCalculator } from './WorkersCompensationSettlementCalculatorCalculator';
+export { WorkersCompensationSettlementCalculator } from './WorkersCompensationSettlementCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

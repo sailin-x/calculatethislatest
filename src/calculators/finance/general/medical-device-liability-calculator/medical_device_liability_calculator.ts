@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { medical_device_liability_calculatorInputs, medical_device_liability_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const medical_device_liability_calculatorCalculator: Calculator = {
-  id: 'medical-device-liability-calculator',
+export const MedicalDeviceLiability-calculator: Calculator = {
+  id: 'MedicalDeviceLiability-calculator',
   title: 'Medical Device Liability Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

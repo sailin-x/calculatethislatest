@@ -10,7 +10,7 @@ import {
 import { validateCurrentRatioCalculatorInputs } from './validation';
 
 export const CurrentRatioCalculator: Calculator = {
-  id: 'current-ratio-calculator',
+  id: 'CurrentRatioCalculator',
   title: 'Current Ratio Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

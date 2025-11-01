@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { helocCalculatorCalculator } from './helocCalculatorCalculator';
+import { helocCalculator } from './helocCalculator';
 
-export function registerhelocCalculatorCalculator(): void {
-  calculatorRegistry.register(new helocCalculatorCalculator());
+export function registerhelocCalculator(): void {
+  calculatorRegistry.register(new helocCalculator());
 }

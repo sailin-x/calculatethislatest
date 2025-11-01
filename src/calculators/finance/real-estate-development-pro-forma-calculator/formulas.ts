@@ -1,13 +1,13 @@
-import { real-estate-development-pro-forma-calculatorInputs, real-estate-development-pro-forma-calculatorMetrics, real-estate-development-pro-forma-calculatorAnalysis } from './types';
+import { RealEstateDevelopment-ProFormaCalculatorinputs, RealEstateDevelopment-ProFormaCalculatormetrics, RealEstateDevelopment-ProFormaCalculatoranalysis } from './types';
 
 // Real Estate Development Pro-Forma Calculator - Finance calculations
-export function calculateResult(inputs: real-estate-development-pro-forma-calculatorInputs): number {
+export function calculateResult(inputs: RealEstateDevelopment-ProFormaCalculatorinputs): number {
   // Financial calculation logic
   const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
   return numericValues.reduce((sum, val) => sum + val, 0) || 0;
 }
 
-export function generateAnalysis(inputs: real-estate-development-pro-forma-calculatorInputs, metrics: real-estate-development-pro-forma-calculatorMetrics): real-estate-development-pro-forma-calculatorAnalysis {
+export function generateAnalysis(inputs: RealEstateDevelopment-ProFormaCalculatorinputs, metrics: RealEstateDevelopment-ProFormaCalculatormetrics): RealEstateDevelopment-ProFormaCalculatoranalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (Math.abs(result) > 100000) riskLevel = 'High';

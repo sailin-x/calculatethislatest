@@ -1,3 +1,3 @@
-import { GrossMarginCalculatorCalculator } from './GrossMarginCalculatorCalculator';
+import { GrossMarginCalculator } from './GrossMarginCalculator';
 
-export { GrossMarginCalculatorCalculator };
+export { GrossMarginCalculator };

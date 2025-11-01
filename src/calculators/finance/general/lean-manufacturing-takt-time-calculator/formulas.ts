@@ -1,4 +1,4 @@
-import { lean-manufacturing-takt-time-calculatorInputs, lean-manufacturing-takt-time-calculatorMetrics, lean-manufacturing-takt-time-calculatorAnalysis } from './types';
+import { LeanManufacturingTakt-time-calculatorInputs, LeanManufacturingTakt-time-calculatorMetrics, LeanManufacturingTakt-time-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: lean-manufacturing-takt-time-calculatorInputs): number {
+export function calculateResult(inputs: LeanManufacturingTakt-time-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: lean-manufacturing-takt-time-calculatorI
   }
 }
 
-export function generateAnalysis(inputs: lean-manufacturing-takt-time-calculatorInputs, metrics: lean-manufacturing-takt-time-calculatorMetrics): lean-manufacturing-takt-time-calculatorAnalysis {
+export function generateAnalysis(inputs: LeanManufacturingTakt-time-calculatorInputs, metrics: LeanManufacturingTakt-time-calculatorMetrics): LeanManufacturingTakt-time-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

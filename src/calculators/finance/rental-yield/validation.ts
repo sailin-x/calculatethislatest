@@ -181,9 +181,9 @@ export function validateRentalYieldInputs(inputs: CalculatorInputs): ValidationR
   if (inputs.propertyValue && inputs.monthlyRent) {
     const rentToPriceRatio = (inputs.monthlyRent * 12) / inputs.propertyValue;
     if (rentToPriceRatio < 0.06) {
-      warnings.push('Rent-to-price ratio is low - may indicate poor yield');
+      warnings.push('RentToPrice ratio is low - may indicate poor yield');
     } else if (rentToPriceRatio > 0.15) {
-      warnings.push('Rent-to-price ratio is high - verify rent is realistic');
+      warnings.push('RentToPrice ratio is high - verify rent is realistic');
     }
   }
 

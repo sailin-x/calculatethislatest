@@ -1,4 +1,4 @@
-import { business-valuation-calculatorInputs, business-valuation-calculatorMetrics, business-valuation-calculatorAnalysis } from './types';
+import { BusinessValuationCalculatorinputs, BusinessValuationCalculatormetrics, BusinessValuationCalculatoranalysis } from './types';
 
 // Business Valuation Calculator
 export function calculateAssetBasedValue(totalAssets: number, totalLiabilities: number): number {
@@ -13,7 +13,7 @@ export function calculateMarketBasedValue(revenue: number, industryMultiplier: n
   return revenue * industryMultiplier;
 }
 
-export function calculateResult(inputs: business-valuation-calculatorInputs): number {
+export function calculateResult(inputs: BusinessValuationCalculatorinputs): number {
   if ('valuationMethod' in inputs) {
     switch (inputs.valuationMethod) {
       case 'asset':
@@ -29,7 +29,7 @@ export function calculateResult(inputs: business-valuation-calculatorInputs): nu
   return 0;
 }
 
-export function generateAnalysis(inputs: business-valuation-calculatorInputs, metrics: business-valuation-calculatorMetrics): business-valuation-calculatorAnalysis {
+export function generateAnalysis(inputs: BusinessValuationCalculatorinputs, metrics: BusinessValuationCalculatormetrics): BusinessValuationCalculatoranalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (result > 10000000) riskLevel = 'High';

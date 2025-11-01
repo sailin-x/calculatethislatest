@@ -24,7 +24,7 @@ import {
 describe('WindstormInsuranceCalculator', () => {
   describe('Calculator Structure', () => {
     it('should have correct basic properties', () => {
-      expect(WindstormInsuranceCalculator.id).toBe('windstorm-insurance-calculator');
+      expect(WindstormInsuranceCalculator.id).toBe('WindstormInsuranceCalculator');
       expect(WindstormInsuranceCalculator.name).toBe('Windstorm Insurance Calculator');
       expect(WindstormInsuranceCalculator.category).toBe('finance');
       expect(WindstormInsuranceCalculator.subcategory).toBe('insurance');

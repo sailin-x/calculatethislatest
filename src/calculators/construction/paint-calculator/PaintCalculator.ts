@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validatePaintCalculatorInputs, validatePaintCalculatorBusinessRules } from './validation';
 
-export const PaintCalculatorCalculator: Calculator: Calculator = {
-  id: 'paint-calculator-calculator',
+export const PaintCalculator: Calculator = {
+  id: 'PaintCalculatorCalculator',
   title: 'Paint Calculator Calculator',
   construction: 'construction', // e.g., 'finance', 'math', 'health', 'business'
   subconstruction: 'Subconstruction Name',

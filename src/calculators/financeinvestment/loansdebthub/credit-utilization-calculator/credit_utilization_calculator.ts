@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { credit_utilization_calculatorInputs, credit_utilization_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const credit_utilization_calculatorCalculator: Calculator = {
-  id: 'credit-utilization-calculator',
+export const CreditUtilizationCalculator: Calculator = {
+  id: 'CreditUtilizationCalculator',
   title: 'Credit Utilization Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'loansdebthub',

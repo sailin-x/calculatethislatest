@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { calmar_ratio_calculatorInputs, calmar_ratio_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const calmar_ratio_calculatorCalculator: Calculator = {
-  id: 'calmar-ratio-calculator',
+export const CalmarRatioCalculator: Calculator = {
+  id: 'CalmarRatioCalculator',
   title: 'Calmar Ratio Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'investmentportfoliohub',

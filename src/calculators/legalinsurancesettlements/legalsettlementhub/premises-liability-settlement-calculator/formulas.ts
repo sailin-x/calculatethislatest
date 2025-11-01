@@ -1,4 +1,4 @@
-import { premises-liability-settlement-calculatorInputs, premises-liability-settlement-calculatorMetrics, premises-liability-settlement-calculatorAnalysis } from './types';
+import { PremisesLiabilitySettlement-calculatorInputs, PremisesLiabilitySettlement-calculatorMetrics, PremisesLiabilitySettlement-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: premises-liability-settlement-calculatorInputs): number {
+export function calculateResult(inputs: PremisesLiabilitySettlement-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: premises-liability-settlement-calculator
   }
 }
 
-export function generateAnalysis(inputs: premises-liability-settlement-calculatorInputs, metrics: premises-liability-settlement-calculatorMetrics): premises-liability-settlement-calculatorAnalysis {
+export function generateAnalysis(inputs: PremisesLiabilitySettlement-calculatorInputs, metrics: PremisesLiabilitySettlement-calculatorMetrics): PremisesLiabilitySettlement-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

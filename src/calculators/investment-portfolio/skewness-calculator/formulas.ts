@@ -90,7 +90,7 @@ export function generateAnalysis(
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Medium';
 
-  // Investment-portfolio-specific risk assessment:
+  // InvestmentPortfolioSpecific risk assessment:
   // Negative skewness increases downside risk (higher probability of extreme losses),
   // positive skewness suggests upside potential (asymmetric gains).
   // Thresholds based on financial literature (e.g., |skewness| > 0.5 indicates significant asymmetry).

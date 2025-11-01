@@ -10,7 +10,7 @@ import {
 import { validateFinancialIndependenceCalculatorInputs } from './validation';
 
 export const FinancialIndependenceCalculator: Calculator = {
-  id: 'financial-independence-calculator',
+  id: 'FinancialIndependenceCalculator',
   title: 'Financial Independence Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

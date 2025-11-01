@@ -9,7 +9,7 @@ import {
 import { validateTradeSecretMisappropriationCalculatorInputs } from './validation';
 
 export const TradeSecretMisappropriationCalculator: Calculator = {
-  id: 'trade-secret-misappropriation-calculator',
+  id: 'TradeSecretMisappropriation-calculator',
   title: 'Trade Secret Misappropriation Calculator',
   category: 'legal',
   subcategory: 'Settlement Analysis',

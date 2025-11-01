@@ -1,3 +1,3 @@
-import { DigitalTransformationBusinessCaseCalculatorCalculator } from './DigitalTransformationBusinessCaseCalculatorCalculator';
+import { DigitalTransformationBusinessCaseCalculator } from './DigitalTransformationBusinessCaseCalculator';
 
-export { DigitalTransformationBusinessCaseCalculatorCalculator };
+export { DigitalTransformationBusinessCaseCalculator };

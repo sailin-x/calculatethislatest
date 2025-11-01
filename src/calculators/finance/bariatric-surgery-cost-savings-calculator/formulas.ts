@@ -1,4 +1,4 @@
-import { bariatric-surgery-cost-savings-calculatorInputs, bariatric-surgery-cost-savings-calculatorMetrics, bariatric-surgery-cost-savings-calculatorAnalysis } from './types';
+import { BariatricSurgeryCost-savings-calculatorInputs, BariatricSurgeryCost-savings-calculatorMetrics, BariatricSurgeryCost-savings-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: bariatric-surgery-cost-savings-calculatorInputs): number {
+export function calculateResult(inputs: BariatricSurgeryCost-savings-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: bariatric-surgery-cost-savings-calculato
   }
 }
 
-export function generateAnalysis(inputs: bariatric-surgery-cost-savings-calculatorInputs, metrics: bariatric-surgery-cost-savings-calculatorMetrics): bariatric-surgery-cost-savings-calculatorAnalysis {
+export function generateAnalysis(inputs: BariatricSurgeryCost-savings-calculatorInputs, metrics: BariatricSurgeryCost-savings-calculatorMetrics): BariatricSurgeryCost-savings-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

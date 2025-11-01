@@ -3,7 +3,7 @@ import { free_cash_flow_to_firm_fcff_valuationInputs, free_cash_flow_to_firm_fcf
 import { calculateResult, generateAnalysis } from './formulas';
 
 export const free_cash_flow_to_firm_fcff_valuationCalculator: Calculator = {
-  id: 'free-cash-flow-to-firm-fcff-valuation',
+  id: 'FreeCashFlow-ToFirmFcff-valuation',
   title: 'Free Cash Flow to Firm (FCFF) Valuation Calculator',
   category: 'finance',
   subcategory: 'general',

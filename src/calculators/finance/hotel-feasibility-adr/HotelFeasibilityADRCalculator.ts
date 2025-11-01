@@ -7,7 +7,7 @@ export const HotelFeasibilityADRCalculator: Calculator & {
   calculate: (inputs: HotelFeasibilityADRCalculatorInputs) => HotelFeasibilityADRCalculatorOutputs;
   generateReport: (inputs: HotelFeasibilityADRCalculatorInputs, outputs: HotelFeasibilityADRCalculatorOutputs) => string;
 } = {
-  id: 'hotel-feasibility-adr',
+  id: 'HotelFeasibilityAdr',
   title: 'Hotel Feasibility ADR Calculator',
   category: 'finance',
   subcategory: 'hospitality',
@@ -107,7 +107,7 @@ export const HotelFeasibilityADRCalculator: Calculator & {
     },
     {
       id: 'loanToValueRatio',
-      label: 'Loan-to-Value Ratio (%)',
+      label: 'LoanToValue Ratio (%)',
       type: 'percentage',
       required: true,
       min: 50,

@@ -1,3 +1,3 @@
-import { AmazonFbaProfitCalculatorCalculator } from './AmazonFbaProfitCalculatorCalculator';
+import { AmazonFbaProfitCalculator } from './AmazonFbaProfitCalculator';
 
-export { AmazonFbaProfitCalculatorCalculator };
+export { AmazonFbaProfitCalculator };

@@ -1,3 +1,3 @@
-import { DuiAccidentSettlementCalculatorCalculator } from './DuiAccidentSettlementCalculatorCalculator';
+import { DuiAccidentSettlementCalculator } from './DuiAccidentSettlementCalculator';
 
-export { DuiAccidentSettlementCalculatorCalculator };
+export { DuiAccidentSettlementCalculator };

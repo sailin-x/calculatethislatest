@@ -1,3 +1,3 @@
-import { EventSponsorshipTierValuationCalculatorCalculator } from './EventSponsorshipTierValuationCalculatorCalculator';
+import { EventSponsorshipTierValuationCalculator } from './EventSponsorshipTierValuationCalculator';
 
-export { EventSponsorshipTierValuationCalculatorCalculator };
+export { EventSponsorshipTierValuationCalculator };

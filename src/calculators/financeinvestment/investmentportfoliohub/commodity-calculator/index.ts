@@ -1,4 +1,4 @@
-export { commodity_calculatorCalculator } from './commodity_calculator';
+export { commodity_calculator } from './commodity_calculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

@@ -1,4 +1,4 @@
-import { hr-tech-stack-roi-calculatorInputs, hr-tech-stack-roi-calculatorMetrics, hr-tech-stack-roi-calculatorAnalysis } from './types';
+import { HrTechStack-roi-calculatorInputs, HrTechStack-roi-calculatorMetrics, HrTechStack-roi-calculatorAnalysis } from './types';
 
 // ROI Calculator
 export function calculateROI(netProfit: number, investment: number): number {
@@ -13,7 +13,7 @@ export function calculatePaybackPeriod(investment: number, annualCashFlow: numbe
   return investment / annualCashFlow;
 }
 
-export function calculateResult(inputs: hr-tech-stack-roi-calculatorInputs): number {
+export function calculateResult(inputs: HrTechStack-roi-calculatorInputs): number {
   if ('netProfit' in inputs && 'investment' in inputs) {
     return calculateROI(inputs.netProfit, inputs.investment);
   }
@@ -24,7 +24,7 @@ export function calculateResult(inputs: hr-tech-stack-roi-calculatorInputs): num
   return 0;
 }
 
-export function generateAnalysis(inputs: hr-tech-stack-roi-calculatorInputs, metrics: hr-tech-stack-roi-calculatorMetrics): hr-tech-stack-roi-calculatorAnalysis {
+export function generateAnalysis(inputs: HrTechStack-roi-calculatorInputs, metrics: HrTechStack-roi-calculatorMetrics): HrTechStack-roi-calculatorAnalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (result < 10) riskLevel = 'High';

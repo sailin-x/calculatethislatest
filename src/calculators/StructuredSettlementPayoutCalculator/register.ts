@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { StructuredSettlementPayoutCalculatorCalculator } from './StructuredSettlementPayoutCalculatorCalculator';
+import { StructuredSettlementPayoutCalculator } from './StructuredSettlementPayoutCalculator';
 
-export function registerStructuredSettlementPayoutCalculatorCalculator(): void {
-  calculatorRegistry.register(new StructuredSettlementPayoutCalculatorCalculator());
+export function registerStructuredSettlementPayoutCalculator(): void {
+  calculatorRegistry.register(new StructuredSettlementPayoutCalculator());
 }

@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateEconomicValueAddedEvaCalculatorInputs, validateEconomicValueAddedEvaCalculatorBusinessRules } from './validation';
 
-export const EconomicValueAddedEvaCalculatorCalculator: Calculator: Calculator = {
-  id: 'economic-value-added-eva-calculator-calculator',
+export const EconomicValueAddedEvaCalculator: Calculator = {
+  id: 'EconomicValueAdded-EvaCalculatorCalculator',
   title: 'Economic Value Added (EVA) Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

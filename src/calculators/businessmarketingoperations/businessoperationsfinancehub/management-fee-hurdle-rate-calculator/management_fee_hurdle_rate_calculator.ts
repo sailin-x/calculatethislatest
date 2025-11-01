@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { management_fee_hurdle_rate_calculatorInputs, management_fee_hurdle_rate_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const management_fee_hurdle_rate_calculatorCalculator: Calculator = {
-  id: 'management-fee-hurdle-rate-calculator',
+export const ManagementFeeHurdle-rate-calculator: Calculator = {
+  id: 'ManagementFeeHurdle-rate-calculator',
   title: 'Management Fee & Hurdle Rate Calculator Calculator',
   category: 'businessmarketingoperations',
   subcategory: 'businessoperationsfinancehub',

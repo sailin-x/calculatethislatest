@@ -1,3 +1,3 @@
-import { RothConversionTaxCalculatorCalculator } from './RothConversionTaxCalculatorCalculator';
+import { RothConversionTaxCalculator } from './RothConversionTaxCalculator';
 
-export { RothConversionTaxCalculatorCalculator };
+export { RothConversionTaxCalculator };

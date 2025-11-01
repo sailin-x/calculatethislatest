@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateSpinalCordInjuryCompensationCalculatorInputs, validateSpinalCordInjuryCompensationCalculatorBusinessRules } from './validation';
 
-export const SpinalCordInjuryCompensationCalculatorCalculator: Calculator: Calculator = {
-  id: 'spinal-cord-injury-compensation-calculator-calculator',
+export const SpinalCordInjuryCompensationCalculator: Calculator = {
+  id: 'SpinalCordInjury-CompensationCalculatorCalculator',
   title: 'Spinal Cord Injury Compensation Calculator Calculator',
   legal: 'legal', // e.g., 'finance', 'math', 'health', 'business'
   sublegal: 'Sublegal Name',

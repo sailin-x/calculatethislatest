@@ -77,7 +77,7 @@ export function generateAnalysis(
   } else if (bondEquivalentYield >= 2) {
     recommendation = `The bond equivalent yield of ${bondEquivalentYield.toFixed(2)}% is suitable for conservative portfolio diversification. It ensures principal protection with modest income, ideal for cash equivalents.`;
   } else {
-    recommendation = `With a bond equivalent yield of ${bondEquivalentYield.toFixed(2)}%, this T-bill is best for ultra-short-term parking of funds in a low-interest environment. Evaluate against inflation to avoid erosion of purchasing power.`;
+    recommendation = `With a bond equivalent yield of ${bondEquivalentYield.toFixed(2)}%, this T-bill is best for UltraShortTerm parking of funds in a low-interest environment. Evaluate against inflation to avoid erosion of purchasing power.`;
   }
 
   // Include additional insights for portfolio context

@@ -3,7 +3,7 @@ import { calculateCapRate, calculateNOI, generateInvestmentAnalysis } from './fo
 import { validateCapRateInputs } from './validation';
 
 export const CapRateCalculator: Calculator = {
-  id: 'cap-rate-calculator',
+  id: 'CapRateCalculator',
   name: 'Cap Rate Calculator',
   description: 'Calculate the capitalization rate (cap rate) for real estate investments to evaluate potential returns and compare investment opportunities.',
   category: 'finance',
@@ -234,7 +234,7 @@ export const CapRateCalculator: Calculator = {
     },
     {
       id: 'cashOnCashReturn',
-      label: 'Cash-on-Cash Return',
+      label: 'CashOnCash Return',
       type: 'percentage',
       explanation: 'Annual cash flow relative to cash invested (if financed)'
     },
@@ -324,7 +324,7 @@ export const CapRateCalculator: Calculator = {
       description: 'Operating expenses as percentage of effective gross income'
     },
     {
-      name: 'Cash-on-Cash Return',
+      name: 'CashOnCash Return',
       formula: 'CoC = (Annual Cash Flow ÷ Cash Invested) × 100',
       description: 'Return on actual cash invested (for financed properties)'
     }

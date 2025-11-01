@@ -4,12 +4,12 @@ import { calculateHomeEquityLoan } from './formulas';
 import { validateHomeEquityLoanInputs } from './validation';
 
 export const HomeEquityLoanCalculator: Calculator<HomeEquityLoanInputs, HomeEquityLoanOutputs> = {
-  id: 'home-equity-loan',
+  id: 'HomeEquityLoan',
   name: 'Home Equity Loan Calculator',
   category: 'finance',
   subcategory: 'real-estate',
   description: 'Calculate home equity loan terms, payments, and costs for property-based financing',
-  longDescription: `A comprehensive home equity loan calculator that analyzes second mortgage financing options. This calculator evaluates equity availability, payment structures, costs, and risks for homeowners seeking additional financing secured by their property. It provides detailed analysis of combined loan-to-value ratios, payment schedules, cost comparisons, and risk assessment to help borrowers make informed decisions about home equity loan financing.`,
+  longDescription: `A comprehensive home equity loan calculator that analyzes second mortgage financing options. This calculator evaluates equity availability, payment structures, costs, and risks for homeowners seeking additional financing secured by their property. It provides detailed analysis of combined LoanToValue ratios, payment schedules, cost comparisons, and risk assessment to help borrowers make informed decisions about home equity loan financing.`,
   
   inputs: {
     // Property Information
@@ -194,8 +194,8 @@ export const HomeEquityLoanCalculator: Calculator<HomeEquityLoanInputs, HomeEqui
     },
     borrowerDebtToIncomeRatio: {
       type: 'number',
-      label: 'Debt-to-Income Ratio (%)',
-      description: 'Borrower\'s debt-to-income ratio',
+      label: 'DebtToIncome Ratio (%)',
+      description: 'Borrower\'s DebtToIncome ratio',
       required: true,
       min: 0,
       max: 100,
@@ -487,7 +487,7 @@ export const HomeEquityLoanCalculator: Calculator<HomeEquityLoanInputs, HomeEqui
     combinedLTV: {
       type: 'number',
       label: 'Combined LTV',
-      description: 'Combined loan-to-value ratio'
+      description: 'Combined LoanToValue ratio'
     },
     monthlyPayment: {
       type: 'number',

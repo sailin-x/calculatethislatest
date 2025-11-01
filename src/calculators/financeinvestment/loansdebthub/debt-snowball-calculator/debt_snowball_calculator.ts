@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { debt_snowball_calculatorInputs, debt_snowball_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const debt_snowball_calculatorCalculator: Calculator = {
-  id: 'debt-snowball-calculator',
+export const DebtSnowballCalculator: Calculator = {
+  id: 'DebtSnowballCalculator',
   title: 'Debt Snowball Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'loansdebthub',

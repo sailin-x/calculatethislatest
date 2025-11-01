@@ -10,7 +10,7 @@ import {
 import { validateCarriedInterestWaterfallModelCalculatorInputs } from './validation';
 
 export const CarriedInterestWaterfallModelCalculator: Calculator = {
-  id: 'carried-interest-waterfall-model-calculator',
+  id: 'CarriedInterestWaterfall-model-calculator',
   title: 'Carried Interest Waterfall Model Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

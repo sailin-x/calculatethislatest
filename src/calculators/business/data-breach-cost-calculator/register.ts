@@ -1,3 +1,3 @@
-import { DataBreachCostCalculatorCalculator } from './DataBreachCostCalculatorCalculator';
+import { DataBreachCostCalculator } from './DataBreachCostCalculator';
 
-export { DataBreachCostCalculatorCalculator };
+export { DataBreachCostCalculator };

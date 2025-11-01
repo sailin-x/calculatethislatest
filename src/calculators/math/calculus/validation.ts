@@ -23,7 +23,7 @@ export function validateCalculusInputs(inputs: CalculusInputs): { isValid: boole
     errors.push('Variable is required');
   } else if (inputs.variable.length > 10) {
     errors.push('Variable name is too long');
-  } else if (!/^[a-zA-Z]$/.test(inputs.variable)) {
+  } else if (!/^[AZaZ]$/.test(inputs.variable)) {
     errors.push('Variable must be a single letter');
   }
 

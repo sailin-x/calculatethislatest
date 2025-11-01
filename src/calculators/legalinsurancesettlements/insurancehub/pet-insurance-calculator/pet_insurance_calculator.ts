@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { pet_insurance_calculatorInputs, pet_insurance_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const pet_insurance_calculatorCalculator: Calculator = {
-  id: 'pet-insurance-calculator',
+export const PetInsuranceCalculator: Calculator = {
+  id: 'PetInsuranceCalculator',
   title: 'Pet Insurance Calculator Calculator',
   category: 'legalinsurancesettlements',
   subcategory: 'insurancehub',

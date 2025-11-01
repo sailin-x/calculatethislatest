@@ -1,3 +1,3 @@
-export * from './earthquake_insuranceCalculatorCalculator';
+export * from './earthquake_insuranceCalculator';
 export * from './register';
 export * from './types';

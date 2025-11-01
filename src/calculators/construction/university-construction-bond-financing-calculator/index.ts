@@ -1,4 +1,4 @@
-export { UniversityConstructionBondFinancingCalculatorCalculator } from './UniversityConstructionBondFinancingCalculatorCalculator';
+export { UniversityConstructionBondFinancingCalculator } from './UniversityConstructionBondFinancingCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

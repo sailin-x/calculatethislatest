@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { long_term_disability_ltd_elimination_period_calculatorInputs, long_term_disability_ltd_elimination_period_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const long_term_disability_ltd_elimination_period_calculatorCalculator: Calculator = {
-  id: 'long-term-disability-ltd-elimination-period-calculator',
+export const LongTermDisability-LtdEliminationPeriod-calculator: Calculator = {
+  id: 'LongTermDisability-LtdEliminationPeriod-calculator',
   title: 'Long Term Disability (LTD) Elimination Period Calculator Calculator',
   category: 'legalinsurancesettlements',
   subcategory: 'insurancehub',

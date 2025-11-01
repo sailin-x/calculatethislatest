@@ -1,3 +1,3 @@
-import { WarrantCalculatorCalculator } from './WarrantCalculatorCalculator';
+import { WarrantCalculator } from './WarrantCalculator';
 
-export { WarrantCalculatorCalculator };
+export { WarrantCalculator };

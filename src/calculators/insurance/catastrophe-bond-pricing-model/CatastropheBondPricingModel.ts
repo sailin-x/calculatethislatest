@@ -4,7 +4,7 @@ import { calculateResult, generateAnalysis } from './formulas';
 import { validateCatastropheBondPricingModelInputs } from './validation';
 
 export const CatastropheBondPricingModel: Calculator = {
-  id: 'catastrophe-bond-pricing-model',
+  id: 'CatastropheBondPricing-model',
   title: 'Catastrophe Bond Pricing Model',
   category: 'insurance',
   subcategory: 'General',

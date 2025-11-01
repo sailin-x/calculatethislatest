@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { carb_cycling_calculatorInputs, carb_cycling_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const carb_cycling_calculatorCalculator: Calculator = {
-  id: 'carb-cycling-calculator',
+export const CarbCyclingCalculator: Calculator = {
+  id: 'CarbCyclingCalculator',
   title: 'Carb Cycling Calculator Calculator',
   category: 'healthfitnessdiet',
   subcategory: 'healthfitnesshub',

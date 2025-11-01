@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { six_sigma_cost_savings_calculatorInputs, six_sigma_cost_savings_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const six_sigma_cost_savings_calculatorCalculator: Calculator = {
-  id: 'six-sigma-cost-savings-calculator',
+export const SixSigmaCost-savings-calculator: Calculator = {
+  id: 'SixSigmaCost-savings-calculator',
   title: 'Six Sigma Cost Savings Calculator Calculator',
   category: 'businessmarketingoperations',
   subcategory: 'businessoperationsfinancehub',

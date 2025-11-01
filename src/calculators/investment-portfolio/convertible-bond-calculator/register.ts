@@ -1,3 +1,3 @@
-import { ConvertibleBondCalculatorCalculator } from './ConvertibleBondCalculatorCalculator';
+import { ConvertibleBondCalculator } from './ConvertibleBondCalculator';
 
-export { ConvertibleBondCalculatorCalculator };
+export { ConvertibleBondCalculator };

@@ -3,7 +3,7 @@ import { calculateCashFlow, generateCashFlowAnalysis } from './formulas';
 import { validateCashFlowInputs } from './validation';
 
 export const CashFlowCalculator: Calculator = {
-  id: 'cash-flow-calculator',
+  id: 'CashFlowCalculator',
   name: 'Cash Flow Calculator',
   category: 'finance',
   subcategory: 'investment',
@@ -247,7 +247,7 @@ export const CashFlowCalculator: Calculator = {
     },
     {
       id: 'cashOnCashReturn',
-      name: 'Cash-on-Cash Return',
+      name: 'CashOnCash Return',
       type: 'number',
       unit: '%',
       description: 'Annual return on cash investment'
@@ -345,8 +345,8 @@ export const CashFlowCalculator: Calculator = {
       description: 'Where P = payment, L = loan amount, c = monthly interest rate, n = total payments'
     },
     {
-      name: 'Cash-on-Cash Return',
-      formula: 'Cash-on-Cash = (Annual Cash Flow / Total Cash Invested) × 100',
+      name: 'CashOnCash Return',
+      formula: 'CashOnCash = (Annual Cash Flow / Total Cash Invested) × 100',
       description: 'Measures annual return on cash investment'
     },
     {

@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { estatePlanningCalculatorCalculator } from './estatePlanningCalculatorCalculator';
+import { estatePlanningCalculator } from './estatePlanningCalculator';
 
-export function registerestatePlanningCalculatorCalculator(): void {
-  calculatorRegistry.register(new estatePlanningCalculatorCalculator());
+export function registerestatePlanningCalculator(): void {
+  calculatorRegistry.register(new estatePlanningCalculator());
 }

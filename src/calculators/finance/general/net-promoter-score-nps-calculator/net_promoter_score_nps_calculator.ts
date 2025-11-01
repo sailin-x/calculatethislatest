@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { net_promoter_score_nps_calculatorInputs, net_promoter_score_nps_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const net_promoter_score_nps_calculatorCalculator: Calculator = {
-  id: 'net-promoter-score-nps-calculator',
+export const NetPromoterScore-nps-calculator: Calculator = {
+  id: 'NetPromoterScore-nps-calculator',
   title: 'Net Promoter Score (NPS) Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

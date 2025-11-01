@@ -9,8 +9,8 @@ export interface TermLifeInsuranceInputs {
   // Policy Details
   coverageAmount: number;
   termLength: number;
-  policyType?: 'level-term' | 'decreasing-term' | 'increasing-term' | 'return-of-premium';
-  riders?: 'none' | 'waiver-of-premium' | 'accelerated-death-benefit' | 'child-rider' | 'spouse-rider' | 'multiple';
+  policyType?: 'level-term' | 'decreasing-term' | 'increasing-term' | 'ReturnOfPremium';
+  riders?: 'none' | 'WaiverOfPremium' | 'AcceleratedDeathBenefit' | 'child-rider' | 'spouse-rider' | 'multiple';
 
   // Financial Information
   annualIncome?: number;
@@ -27,7 +27,7 @@ export interface TermLifeInsuranceInputs {
 
   // Health Information
   healthRating?: 'preferred-plus' | 'preferred' | 'standard-plus' | 'standard' | 'substandard';
-  medicalConditions?: 'none' | 'diabetes' | 'heart-disease' | 'cancer' | 'high-blood-pressure' | 'multiple';
+  medicalConditions?: 'none' | 'diabetes' | 'heart-disease' | 'cancer' | 'HighBloodPressure' | 'multiple';
   familyHistory?: 'none' | 'heart-disease' | 'cancer' | 'diabetes' | 'multiple';
   occupation?: 'office' | 'manual-labor' | 'hazardous' | 'military' | 'aviation';
   hobbies?: 'none' | 'scuba-diving' | 'skydiving' | 'rock-climbing' | 'racing' | 'multiple';
@@ -39,7 +39,7 @@ export interface TermLifeInsuranceInputs {
 
   // Analysis Options
   analysisType?: 'basic' | 'detailed' | 'comparison' | 'needs-analysis';
-  comparisonTerms?: '10-20-30' | '15-25' | '20-30' | 'custom';
+  comparisonTerms?: '102030' | '15-25' | '20-30' | 'custom';
 }
 
 export interface TermLifeInsuranceMetrics {

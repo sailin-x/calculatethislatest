@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateAsbestosSettlementCalculatorInputs, validateAsbestosSettlementCalculatorBusinessRules } from './validation';
 
-export const AsbestosSettlementCalculatorCalculator: Calculator: Calculator = {
-  id: 'asbestos-settlement-calculator-calculator',
+export const AsbestosSettlementCalculator: Calculator = {
+  id: 'AsbestosSettlementCalculator-calculator',
   title: 'Asbestos Settlement Calculator Calculator',
   legal: 'legal', // e.g., 'finance', 'math', 'health', 'business'
   sublegal: 'Sublegal Name',

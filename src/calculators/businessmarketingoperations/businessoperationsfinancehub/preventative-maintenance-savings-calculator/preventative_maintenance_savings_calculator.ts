@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { preventative_maintenance_savings_calculatorInputs, preventative_maintenance_savings_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const preventative_maintenance_savings_calculatorCalculator: Calculator = {
-  id: 'preventative-maintenance-savings-calculator',
+export const PreventativeMaintenanceSavings-calculator: Calculator = {
+  id: 'PreventativeMaintenanceSavings-calculator',
   title: 'Preventative Maintenance Savings Calculator Calculator',
   category: 'businessmarketingoperations',
   subcategory: 'businessoperationsfinancehub',

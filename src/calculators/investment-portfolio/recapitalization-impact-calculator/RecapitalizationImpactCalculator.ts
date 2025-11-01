@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateRecapitalizationImpactCalculatorInputs, validateRecapitalizationImpactCalculatorBusinessRules } from './validation';
 
-export const RecapitalizationImpactCalculatorCalculator: Calculator: Calculator = {
-  id: 'recapitalization-impact-calculator-calculator',
+export const RecapitalizationImpactCalculator: Calculator = {
+  id: 'RecapitalizationImpactCalculator-calculator',
   title: 'Recapitalization Impact Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateShoppingCartAbandonmentCalculatorInputs, validateShoppingCartAbandonmentCalculatorBusinessRules } from './validation';
 
-export const ShoppingCartAbandonmentCalculatorCalculator: Calculator: Calculator = {
-  id: 'shopping-cart-abandonment-calculator-calculator',
+export const ShoppingCartAbandonmentCalculator: Calculator = {
+  id: 'ShoppingCartAbandonment-calculator-calculator',
   title: 'Shopping Cart Abandonment Calculator Calculator',
   lifestyle: 'lifestyle', // e.g., 'finance', 'math', 'health', 'business'
   sublifestyle: 'Sublifestyle Name',

@@ -129,14 +129,14 @@ export function generateAnalysis(
   let recommendation: string;
   if (timeValue > 0.05 * result) { // Significant time premium (>5% of total value)
     if (isInTheMoney) {
-      recommendation = 'The option has meaningful time value and is in-the-money. Suitable for holding in a bullish (call) or bearish (put) portfolio if volatility materializes.';
+      recommendation = 'The option has meaningful time value and is InTheMoney. Suitable for holding in a bullish (call) or bearish (put) portfolio if volatility materializes.';
     } else {
-      recommendation = 'Out-of-the-money option with time premium. Consider for speculative strategies if expecting a directional move, but monitor high risk from volatility.';
+      recommendation = 'OutOfThe-money option with time premium. Consider for speculative strategies if expecting a directional move, but monitor high risk from volatility.';
     }
   } else if (isInTheMoney) {
-    recommendation = 'Deep in-the-money option with minimal time value. Evaluate early exercise or selling to capture intrinsic value, especially if dividends are involved.';
+    recommendation = 'Deep InTheMoney option with minimal time value. Evaluate early exercise or selling to capture intrinsic value, especially if dividends are involved.';
   } else {
-    recommendation = 'Out-of-the-money option with low time value. Likely to expire worthless unless significant price movement; avoid unless part of a hedging strategy.';
+    recommendation = 'OutOfThe-money option with low time value. Likely to expire worthless unless significant price movement; avoid unless part of a hedging strategy.';
   }
 
   return { recommendation, riskLevel };

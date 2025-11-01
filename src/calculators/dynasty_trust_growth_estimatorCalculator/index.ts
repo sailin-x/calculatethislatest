@@ -1,3 +1,3 @@
-export * from './dynasty_trust_growth_estimatorCalculatorCalculator';
+export * from './dynasty_trust_growth_estimatorCalculator';
 export * from './register';
 export * from './types';

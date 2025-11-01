@@ -1,4 +1,4 @@
-import { opportunity-zone-investmentInputs, opportunity-zone-investmentMetrics, opportunity-zone-investmentAnalysis } from './types';
+import { OpportunityZoneInvestmentinputs, OpportunityZoneInvestmentmetrics, OpportunityZoneInvestmentanalysis } from './types';
 
 
 // Investment Calculator - ROI and growth calculations
@@ -12,7 +12,7 @@ export function calculateCompoundInterest(principal: number, rate: number, years
   return principal * Math.pow(1 + ratePerPeriod, totalPeriods);
 }
 
-export function calculateResult(inputs: opportunity-zone-investmentInputs): number {
+export function calculateResult(inputs: OpportunityZoneInvestmentinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -36,7 +36,7 @@ export function calculateResult(inputs: opportunity-zone-investmentInputs): numb
   }
 }
 
-export function generateAnalysis(inputs: opportunity-zone-investmentInputs, metrics: opportunity-zone-investmentMetrics): opportunity-zone-investmentAnalysis {
+export function generateAnalysis(inputs: OpportunityZoneInvestmentinputs, metrics: OpportunityZoneInvestmentmetrics): OpportunityZoneInvestmentanalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

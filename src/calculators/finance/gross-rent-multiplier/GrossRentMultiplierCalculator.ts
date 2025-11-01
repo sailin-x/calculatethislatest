@@ -5,7 +5,7 @@ import { validateGrossRentMultiplierInputs } from './validation';
 import { generateGrossRentMultiplierReport } from './formulas';
 
 export const GrossRentMultiplierCalculator: Calculator<GrossRentMultiplierInputs, GrossRentMultiplierOutputs> = {
-  id: 'gross-rent-multiplier',
+  id: 'GrossRentMultiplier',
   name: 'Gross Rent Multiplier Calculator',
   category: 'finance',
   subcategory: 'real-estate',

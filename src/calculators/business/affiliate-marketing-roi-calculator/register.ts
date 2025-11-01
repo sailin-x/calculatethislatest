@@ -1,3 +1,3 @@
-import { AffiliateMarketingRoiCalculatorCalculator } from './AffiliateMarketingRoiCalculatorCalculator';
+import { AffiliateMarketingRoiCalculator } from './AffiliateMarketingRoiCalculator';
 
-export { AffiliateMarketingRoiCalculatorCalculator };
+export { AffiliateMarketingRoiCalculator };

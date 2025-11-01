@@ -1,4 +1,4 @@
-import { financial-wisdom-calculatorInputs, financial-wisdom-calculatorMetrics, financial-wisdom-calculatorAnalysis } from './types';
+import { FinancialWisdomCalculatorinputs, FinancialWisdomCalculatormetrics, FinancialWisdomCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: financial-wisdom-calculatorInputs): number {
+export function calculateResult(inputs: FinancialWisdomCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: financial-wisdom-calculatorInputs): numb
   }
 }
 
-export function generateAnalysis(inputs: financial-wisdom-calculatorInputs, metrics: financial-wisdom-calculatorMetrics): financial-wisdom-calculatorAnalysis {
+export function generateAnalysis(inputs: FinancialWisdomCalculatorinputs, metrics: FinancialWisdomCalculatormetrics): FinancialWisdomCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

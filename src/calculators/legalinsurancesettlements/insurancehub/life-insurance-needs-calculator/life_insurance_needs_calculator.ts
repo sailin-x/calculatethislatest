@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { life_insurance_needs_calculatorInputs, life_insurance_needs_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const life_insurance_needs_calculatorCalculator: Calculator = {
-  id: 'life-insurance-needs-calculator',
+export const LifeInsuranceNeeds-calculator: Calculator = {
+  id: 'LifeInsuranceNeeds-calculator',
   title: 'Life Insurance Needs Calculator Calculator',
   category: 'legalinsurancesettlements',
   subcategory: 'insurancehub',

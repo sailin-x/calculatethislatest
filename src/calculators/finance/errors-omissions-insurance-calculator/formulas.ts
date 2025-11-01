@@ -1,13 +1,13 @@
-import { errors-omissions-insurance-calculatorInputs, errors-omissions-insurance-calculatorMetrics, errors-omissions-insurance-calculatorAnalysis } from './types';
+import { ErrorsOmissionsInsurance-calculatorInputs, ErrorsOmissionsInsurance-calculatorMetrics, ErrorsOmissionsInsurance-calculatorAnalysis } from './types';
 
 // Errors & Omissions Insurance Calculator - Finance calculations
-export function calculateResult(inputs: errors-omissions-insurance-calculatorInputs): number {
+export function calculateResult(inputs: ErrorsOmissionsInsurance-calculatorInputs): number {
   // Financial calculation logic
   const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
   return numericValues.reduce((sum, val) => sum + val, 0) || 0;
 }
 
-export function generateAnalysis(inputs: errors-omissions-insurance-calculatorInputs, metrics: errors-omissions-insurance-calculatorMetrics): errors-omissions-insurance-calculatorAnalysis {
+export function generateAnalysis(inputs: ErrorsOmissionsInsurance-calculatorInputs, metrics: ErrorsOmissionsInsurance-calculatorMetrics): ErrorsOmissionsInsurance-calculatorAnalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (Math.abs(result) > 100000) riskLevel = 'High';

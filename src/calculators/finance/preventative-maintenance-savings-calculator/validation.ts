@@ -1,11 +1,11 @@
 import { ValidationResult } from '../../lib/errors';
-import { preventativemaintenancesavingscalculatorCalculatorInputs } from './types';
+import { preventativemaintenancesavingscalculatorInputs } from './types';
 
 /**
  * Validate preventative maintenance savings calculator calculator inputs
  */
-export function validatepreventativemaintenancesavingscalculatorCalculatorInputs(
-  inputs: preventativemaintenancesavingscalculatorCalculatorInputs
+export function validatepreventativemaintenancesavingscalculatorInputs(
+  inputs: preventativemaintenancesavingscalculatorInputs
 ): ValidationResult {
   const errors: string[] = [];
 

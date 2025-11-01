@@ -1,4 +1,4 @@
-export { NetPresentValueCalculatorCalculator } from './NetPresentValueCalculatorCalculator';
+export { NetPresentValueCalculator } from './NetPresentValueCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

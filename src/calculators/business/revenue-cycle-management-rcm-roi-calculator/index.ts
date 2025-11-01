@@ -1,4 +1,4 @@
-export { RevenueCycleManagementRcmRoiCalculatorCalculator } from './RevenueCycleManagementRcmRoiCalculatorCalculator';
+export { RevenueCycleManagementRcmRoiCalculator } from './RevenueCycleManagementRcmRoiCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

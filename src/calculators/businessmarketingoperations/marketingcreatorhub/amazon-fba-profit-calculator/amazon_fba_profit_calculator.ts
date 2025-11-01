@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { amazon_fba_profit_calculatorInputs, amazon_fba_profit_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const amazon_fba_profit_calculatorCalculator: Calculator = {
-  id: 'amazon-fba-profit-calculator',
+export const AmazonFbaProfit-calculator: Calculator = {
+  id: 'AmazonFbaProfit-calculator',
   title: 'Amazon FBA Profit Calculator Calculator',
   category: 'businessmarketingoperations',
   subcategory: 'marketingcreatorhub',

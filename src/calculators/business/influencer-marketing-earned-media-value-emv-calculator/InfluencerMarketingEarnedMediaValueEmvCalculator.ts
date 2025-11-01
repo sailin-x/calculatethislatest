@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateInfluencerMarketingEarnedMediaValueEmvCalculatorInputs, validateInfluencerMarketingEarnedMediaValueEmvCalculatorBusinessRules } from './validation';
 
-export const InfluencerMarketingEarnedMediaValueEmvCalculatorCalculator: Calculator: Calculator = {
-  id: 'influencer-marketing-earned-media-value-emv-calculator-calculator',
+export const InfluencerMarketingEarnedMediaValueEmvCalculator: Calculator = {
+  id: 'InfluencerMarketingEarned-MediaValueEmv-calculator-calculator',
   title: 'Influencer Marketing Earned Media Value (EMV) Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

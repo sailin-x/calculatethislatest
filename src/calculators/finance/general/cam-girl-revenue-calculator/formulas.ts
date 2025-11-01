@@ -1,4 +1,4 @@
-import { cam-girl-revenue-calculatorInputs, cam-girl-revenue-calculatorMetrics, cam-girl-revenue-calculatorAnalysis } from './types';
+import { CamGirlRevenue-calculatorInputs, CamGirlRevenue-calculatorMetrics, CamGirlRevenue-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: cam-girl-revenue-calculatorInputs): number {
+export function calculateResult(inputs: CamGirlRevenue-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: cam-girl-revenue-calculatorInputs): numb
   }
 }
 
-export function generateAnalysis(inputs: cam-girl-revenue-calculatorInputs, metrics: cam-girl-revenue-calculatorMetrics): cam-girl-revenue-calculatorAnalysis {
+export function generateAnalysis(inputs: CamGirlRevenue-calculatorInputs, metrics: CamGirlRevenue-calculatorMetrics): CamGirlRevenue-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

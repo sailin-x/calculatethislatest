@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { sum_of_parts_calculatorInputs, sum_of_parts_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const sum_of_parts_calculatorCalculator: Calculator = {
-  id: 'sum-of-parts-calculator',
+export const SumOfParts-calculator: Calculator = {
+  id: 'SumOfParts-calculator',
   title: 'Sum of Parts Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

@@ -1,7 +1,7 @@
 import { Calculator } from '../../types/calculator';
 
 export const OpportunityZoneInvestmentCalculator: Calculator = {
-  id: 'opportunity-zone-investment-calculator',
+  id: 'OpportunityZoneInvestment-calculator',
   title: 'Opportunity Zone Investment ROI Calculator',
   category: 'finance',
   subcategory: 'Mortgage & Real Estate',

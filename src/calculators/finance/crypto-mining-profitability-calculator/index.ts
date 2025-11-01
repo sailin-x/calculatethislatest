@@ -1,5 +1,5 @@
-export { cryptominingprofitabilitycalculatorCalculator } from './cryptominingprofitabilitycalculatorCalculator';
-export { registercryptominingprofitabilitycalculatorCalculator } from './register';
+export { cryptominingprofitabilitycalculator } from './cryptominingprofitabilitycalculator';
+export { registercryptominingprofitabilitycalculator } from './register';
 export * from './types';
 export * from './formulas';
 export * from './validation';

@@ -1,7 +1,7 @@
 import { Calculator } from '../../types/calculator';
 
 export const TitleInsuranceCalculator: Calculator = {
-  id: 'title-insurance-calculator',
+  id: 'TitleInsuranceCalculator',
   name: 'Title Insurance Calculator',
   category: 'finance',
   subcategory: 'insurance',

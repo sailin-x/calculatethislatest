@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { bond_yield_calculatorInputs, bond_yield_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const bond_yield_calculatorCalculator: Calculator = {
-  id: 'bond-yield-calculator',
+export const BondYieldCalculator: Calculator = {
+  id: 'BondYieldCalculator',
   title: 'Bond Yield Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'investmentportfoliohub',

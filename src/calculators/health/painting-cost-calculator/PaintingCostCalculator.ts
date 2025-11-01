@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validatePaintingCostCalculatorInputs } from './validation';
 
 export const PaintingCostCalculator: Calculator = {
-  id: 'painting-cost-calculator',
+  id: 'PaintingCostCalculator',
   title: 'Painting Cost Calculator',
   category: 'health',
   subcategory: 'General',

@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { balloon_mortgageCalculatorCalculator } from './balloon_mortgageCalculatorCalculator';
+import { balloon_mortgageCalculator } from './balloon_mortgageCalculator';
 
-export function registerballoon_mortgageCalculatorCalculator(): void {
-  calculatorRegistry.register(new balloon_mortgageCalculatorCalculator());
+export function registerballoon_mortgageCalculator(): void {
+  calculatorRegistry.register(new balloon_mortgageCalculator());
 }

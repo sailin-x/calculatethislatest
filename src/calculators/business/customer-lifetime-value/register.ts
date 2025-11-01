@@ -4,7 +4,7 @@ import { validateCustomerLifetimeValueInputs } from './validation';
 import { CustomerLifetimeValueInputs } from './types';
 
 const customerLifetimeValueCalculator: CalculatorRegistration = {
-  id: 'customer-lifetime-value',
+  id: 'CustomerLifetimeValue',
   name: 'Customer Lifetime Value Calculator',
   description: 'Comprehensive customer lifetime value analysis with cohort modeling, risk assessment, and optimization insights',
   category: 'business',
@@ -316,8 +316,8 @@ const customerLifetimeValueCalculator: CalculatorRegistration = {
   
   relatedCalculators: [
     'saas-metrics',
-    'customer-acquisition-cost',
-    'churn-rate-calculator',
+    'CustomerAcquisitionCost',
+    'ChurnRateCalculator',
     'roi-calculator',
     'business-valuation'
   ]

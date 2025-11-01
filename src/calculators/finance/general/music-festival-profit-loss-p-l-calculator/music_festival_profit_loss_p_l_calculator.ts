@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { music_festival_profit_loss_p_l_calculatorInputs, music_festival_profit_loss_p_l_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const music_festival_profit_loss_p_l_calculatorCalculator: Calculator = {
-  id: 'music-festival-profit-loss-p-l-calculator',
+export const MusicFestivalProfit-LossPL-calculator: Calculator = {
+  id: 'MusicFestivalProfit-LossPL-calculator',
   title: 'Music Festival Profit & Loss (P&L) Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

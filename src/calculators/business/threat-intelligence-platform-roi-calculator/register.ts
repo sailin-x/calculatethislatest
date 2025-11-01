@@ -1,3 +1,3 @@
-import { ThreatIntelligencePlatformRoiCalculatorCalculator } from './ThreatIntelligencePlatformRoiCalculatorCalculator';
+import { ThreatIntelligencePlatformRoiCalculator } from './ThreatIntelligencePlatformRoiCalculator';
 
-export { ThreatIntelligencePlatformRoiCalculatorCalculator };
+export { ThreatIntelligencePlatformRoiCalculator };

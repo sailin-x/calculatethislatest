@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateRideshareCostCalculatorInputs } from './validation';
 
 export const RideshareCostCalculator: Calculator = {
-  id: 'rideshare-cost-calculator',
+  id: 'RideshareCostCalculator',
   title: 'Rideshare Cost Calculator',
   category: 'health',
   subcategory: 'General',

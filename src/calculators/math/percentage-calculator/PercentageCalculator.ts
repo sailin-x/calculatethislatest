@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validatePercentageCalculatorInputs, validatePercentageCalculatorBusinessRules } from './validation';
 
-export const PercentageCalculatorCalculator: Calculator: Calculator = {
-  id: 'percentage-calculator-calculator',
+export const PercentageCalculator: Calculator = {
+  id: 'PercentageCalculatorCalculator',
   title: 'Percentage Calculator Calculator',
   math: 'math', // e.g., 'finance', 'math', 'health', 'business'
   submath: 'Submath Name',

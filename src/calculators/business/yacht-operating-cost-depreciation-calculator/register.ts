@@ -1,3 +1,3 @@
-import { YachtOperatingCostDepreciationCalculatorCalculator } from './YachtOperatingCostDepreciationCalculatorCalculator';
+import { YachtOperatingCostDepreciationCalculator } from './YachtOperatingCostDepreciationCalculator';
 
-export { YachtOperatingCostDepreciationCalculatorCalculator };
+export { YachtOperatingCostDepreciationCalculator };

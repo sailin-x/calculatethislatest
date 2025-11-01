@@ -10,7 +10,7 @@ import {
 import { validateCorporateComplianceCostBenefitCalculatorInputs } from './validation';
 
 export const CorporateComplianceCostBenefitCalculator: Calculator = {
-  id: 'corporate-compliance-cost-benefit-calculator',
+  id: 'CorporateComplianceCost-benefit-calculator',
   title: 'Corporate Compliance Cost Benefit Calculator',
   category: 'business',
   subcategory: 'Financial Planning',

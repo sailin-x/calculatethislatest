@@ -1,4 +1,4 @@
-export { ThyroidCalculatorCalculator } from './ThyroidCalculatorCalculator';
+export { ThyroidCalculator } from './ThyroidCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

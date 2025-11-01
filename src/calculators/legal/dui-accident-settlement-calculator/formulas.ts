@@ -1,13 +1,13 @@
-import { dui-accident-settlement-calculatorInputs, dui-accident-settlement-calculatorMetrics, dui-accident-settlement-calculatorAnalysis } from './types';
+import { DuiAccidentSettlement-calculatorInputs, DuiAccidentSettlement-calculatorMetrics, DuiAccidentSettlement-calculatorAnalysis } from './types';
 
 // DUI Accident Settlement Calculator - Legal calculations
-export function calculateResult(inputs: dui-accident-settlement-calculatorInputs): number {
+export function calculateResult(inputs: DuiAccidentSettlement-calculatorInputs): number {
   // Legal calculation logic
   const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
   return numericValues.reduce((sum, val) => sum + val, 0) || 0;
 }
 
-export function generateAnalysis(inputs: dui-accident-settlement-calculatorInputs, metrics: dui-accident-settlement-calculatorMetrics): dui-accident-settlement-calculatorAnalysis {
+export function generateAnalysis(inputs: DuiAccidentSettlement-calculatorInputs, metrics: DuiAccidentSettlement-calculatorMetrics): DuiAccidentSettlement-calculatorAnalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (Math.abs(result) > 100000) riskLevel = 'High';

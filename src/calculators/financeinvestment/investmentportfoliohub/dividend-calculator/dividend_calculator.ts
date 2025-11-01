@@ -2,7 +2,7 @@ import { Calculator } from '../../../../types/calculator';
 import { dividend_calculatorInputs, dividend_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const dividend_calculatorCalculator: Calculator = {
+export const dividend-calculator: Calculator = {
   id: 'dividend-calculator',
   title: 'Dividend Calculator Calculator',
   category: 'financeinvestment',

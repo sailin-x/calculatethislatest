@@ -1,3 +1,3 @@
-import { EmergencyFundCalculatorCalculator } from './EmergencyFundCalculatorCalculator';
+import { EmergencyFundCalculator } from './EmergencyFundCalculator';
 
-export { EmergencyFundCalculatorCalculator };
+export { EmergencyFundCalculator };

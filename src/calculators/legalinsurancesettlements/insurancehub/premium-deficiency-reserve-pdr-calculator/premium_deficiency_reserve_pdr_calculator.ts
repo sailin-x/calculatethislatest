@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { premium_deficiency_reserve_pdr_calculatorInputs, premium_deficiency_reserve_pdr_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const premium_deficiency_reserve_pdr_calculatorCalculator: Calculator = {
-  id: 'premium-deficiency-reserve-pdr-calculator',
+export const PremiumDeficiencyReserve-pdr-calculator: Calculator = {
+  id: 'PremiumDeficiencyReserve-pdr-calculator',
   title: 'Premium Deficiency Reserve (PDR) Calculator Calculator',
   category: 'legalinsurancesettlements',
   subcategory: 'insurancehub',

@@ -1,4 +1,4 @@
-import { retirement-abroad-calculatorInputs, retirement-abroad-calculatorMetrics, retirement-abroad-calculatorAnalysis } from './types';
+import { RetirementAbroadCalculatorinputs, RetirementAbroadCalculatormetrics, RetirementAbroadCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: retirement-abroad-calculatorInputs): number {
+export function calculateResult(inputs: RetirementAbroadCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: retirement-abroad-calculatorInputs): num
   }
 }
 
-export function generateAnalysis(inputs: retirement-abroad-calculatorInputs, metrics: retirement-abroad-calculatorMetrics): retirement-abroad-calculatorAnalysis {
+export function generateAnalysis(inputs: RetirementAbroadCalculatorinputs, metrics: RetirementAbroadCalculatormetrics): RetirementAbroadCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

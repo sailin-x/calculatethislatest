@@ -1,3 +1,3 @@
-import { ConvertibleBondPricingCalculatorCalculator } from './ConvertibleBondPricingCalculatorCalculator';
+import { ConvertibleBondPricingCalculator } from './ConvertibleBondPricingCalculator';
 
-export { ConvertibleBondPricingCalculatorCalculator };
+export { ConvertibleBondPricingCalculator };

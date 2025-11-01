@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { registerCreditCardPayoffCalculatorCalculator } from './registerCreditCardPayoffCalculatorCalculator';
+import { registerCreditCardPayoffCalculator } from './registerCreditCardPayoffCalculator';
 
-export function registerregisterCreditCardPayoffCalculatorCalculator(): void {
-  calculatorRegistry.register(new registerCreditCardPayoffCalculatorCalculator());
+export function registerregisterCreditCardPayoffCalculator(): void {
+  calculatorRegistry.register(new registerCreditCardPayoffCalculator());
 }

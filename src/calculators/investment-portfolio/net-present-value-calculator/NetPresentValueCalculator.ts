@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateNetPresentValueCalculatorInputs, validateNetPresentValueCalculatorBusinessRules } from './validation';
 
-export const NetPresentValueCalculatorCalculator: Calculator: Calculator = {
-  id: 'net-present-value-calculator-calculator',
+export const NetPresentValueCalculator: Calculator = {
+  id: 'NetPresentValue-calculator-calculator',
   title: 'Net Present Value Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

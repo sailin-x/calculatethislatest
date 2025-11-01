@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateCyberLiabilityCalculatorInputs } from './validation';
 
 export const CyberLiabilityCalculator: Calculator = {
-  id: 'cyber-liability-calculator',
+  id: 'CyberLiabilityCalculator',
   title: 'Cyber Liability Calculator',
   category: 'insurance',
   subcategory: 'General',

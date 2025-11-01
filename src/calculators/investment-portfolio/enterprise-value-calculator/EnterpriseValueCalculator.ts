@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateEnterpriseValueCalculatorInputs, validateEnterpriseValueCalculatorBusinessRules } from './validation';
 
-export const EnterpriseValueCalculatorCalculator: Calculator: Calculator = {
-  id: 'enterprise-value-calculator-calculator',
+export const EnterpriseValueCalculator: Calculator = {
+  id: 'EnterpriseValueCalculator-calculator',
   title: 'Enterprise Value Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

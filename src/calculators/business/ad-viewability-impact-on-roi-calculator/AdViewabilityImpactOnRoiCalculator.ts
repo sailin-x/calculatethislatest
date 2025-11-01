@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateAdViewabilityImpactOnRoiCalculatorInputs, validateAdViewabilityImpactOnRoiCalculatorBusinessRules } from './validation';
 
-export const AdViewabilityImpactOnRoiCalculatorCalculator: Calculator: Calculator = {
-  id: 'ad-viewability-impact-on-roi-calculator-calculator',
+export const AdViewabilityImpactOnRoiCalculator: Calculator = {
+  id: 'AdViewabilityImpact-OnRoiCalculator-calculator',
   title: 'Ad Viewability Impact on ROI Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

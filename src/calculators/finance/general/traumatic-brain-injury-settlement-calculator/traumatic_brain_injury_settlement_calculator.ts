@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { traumatic_brain_injury_settlement_calculatorInputs, traumatic_brain_injury_settlement_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const traumatic_brain_injury_settlement_calculatorCalculator: Calculator = {
-  id: 'traumatic-brain-injury-settlement-calculator',
+export const TraumaticBrainInjury-settlement-calculator: Calculator = {
+  id: 'TraumaticBrainInjury-settlement-calculator',
   title: 'Traumatic Brain Injury Settlement Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

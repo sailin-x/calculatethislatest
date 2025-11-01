@@ -1,5 +1,5 @@
-export { portfoliocompanyebitdagrowthcalculatorCalculator } from './portfoliocompanyebitdagrowthcalculatorCalculator';
-export { registerportfoliocompanyebitdagrowthcalculatorCalculator } from './register';
+export { portfoliocompanyebitdagrowthcalculator } from './portfoliocompanyebitdagrowthcalculator';
+export { registerportfoliocompanyebitdagrowthcalculator } from './register';
 export * from './types';
 export * from './formulas';
 export * from './validation';

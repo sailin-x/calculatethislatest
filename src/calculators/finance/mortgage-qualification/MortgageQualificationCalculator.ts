@@ -40,17 +40,17 @@ import {
 } from './formulas';
 
 export const MortgageQualificationCalculator: Calculator = {
-  id: 'mortgage-qualification-calculator',
+  id: 'MortgageQualificationCalculator',
   title: 'Mortgage Qualification Calculator',
   category: 'finance',
   subcategory: 'Mortgage & Real Estate',
-  description: 'Comprehensive mortgage qualification analysis including debt-to-income ratios, credit scoring, and affordability assessment.',
+  description: 'Comprehensive mortgage qualification analysis including DebtToIncome ratios, credit scoring, and affordability assessment.',
   usageInstructions: [
     'Enter borrower and co-borrower income information',
     'Input credit scores and employment details',
     'Provide property and loan information',
     'Review qualification score and approval probability',
-    'Analyze debt-to-income ratios and affordability',
+    'Analyze DebtToIncome ratios and affordability',
     'Compare different loan scenarios and options'
   ],
 
@@ -416,7 +416,7 @@ export const MortgageQualificationCalculator: Calculator = {
     },
     {
       id: 'debtToIncomeRatio',
-      label: 'Debt-to-Income Ratio (%)',
+      label: 'DebtToIncome Ratio (%)',
       type: 'percentage',
       explanation: 'Total debt payments as percentage of gross income'
     },
@@ -512,13 +512,13 @@ export const MortgageQualificationCalculator: Calculator = {
     },
     {
       id: 'paymentToIncomeRatio',
-      label: 'Payment-to-Income Ratio (%)',
+      label: 'PaymentToIncome Ratio (%)',
       type: 'percentage',
       explanation: 'Monthly payment as percentage of income'
     },
     {
       id: 'loanToValueRatio',
-      label: 'Loan-to-Value Ratio (%)',
+      label: 'LoanToValue Ratio (%)',
       type: 'percentage',
       explanation: 'Loan amount as percentage of property value'
     },

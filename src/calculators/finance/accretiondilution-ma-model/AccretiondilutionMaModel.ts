@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateAccretiondilutionMaModelInputs, validateAccretiondilutionMaModelBusinessRules } from './validation';
 
-export const AccretiondilutionMaModelCalculator: Calculator: Calculator = {
-  id: 'accretiondilution-ma-model-calculator',
+export const AccretiondilutionMaModelCalculator: Calculator = {
+  id: 'AccretiondilutionMaModel-calculator',
   title: 'Accretion/Dilution (M&A) Model Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

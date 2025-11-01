@@ -1,11 +1,11 @@
 import { ValidationResult } from '../../lib/errors';
-import { bariatricsurgerycostsavingscalculatorCalculatorInputs } from './types';
+import { bariatricsurgerycostsavingscalculatorInputs } from './types';
 
 /**
  * Validate bariatric surgery cost savings calculator calculator inputs
  */
-export function validatebariatricsurgerycostsavingscalculatorCalculatorInputs(
-  inputs: bariatricsurgerycostsavingscalculatorCalculatorInputs
+export function validatebariatricsurgerycostsavingscalculatorInputs(
+  inputs: bariatricsurgerycostsavingscalculatorInputs
 ): ValidationResult {
   const errors: string[] = [];
 

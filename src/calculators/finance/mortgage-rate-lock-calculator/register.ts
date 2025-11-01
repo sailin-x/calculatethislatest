@@ -1,3 +1,3 @@
-import { MortgageRateLockCalculatorCalculator } from './MortgageRateLockCalculatorCalculator';
+import { MortgageRateLockCalculator } from './MortgageRateLockCalculator';
 
-export { MortgageRateLockCalculatorCalculator };
+export { MortgageRateLockCalculator };

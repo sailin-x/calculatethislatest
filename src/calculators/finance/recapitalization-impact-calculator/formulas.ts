@@ -1,4 +1,4 @@
-import { recapitalization-impact-calculatorInputs, recapitalization-impact-calculatorMetrics, recapitalization-impact-calculatorAnalysis } from './types';
+import { RecapitalizationImpactCalculatorinputs, RecapitalizationImpactCalculatormetrics, RecapitalizationImpactCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: recapitalization-impact-calculatorInputs): number {
+export function calculateResult(inputs: RecapitalizationImpactCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: recapitalization-impact-calculatorInputs
   }
 }
 
-export function generateAnalysis(inputs: recapitalization-impact-calculatorInputs, metrics: recapitalization-impact-calculatorMetrics): recapitalization-impact-calculatorAnalysis {
+export function generateAnalysis(inputs: RecapitalizationImpactCalculatorinputs, metrics: RecapitalizationImpactCalculatormetrics): RecapitalizationImpactCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

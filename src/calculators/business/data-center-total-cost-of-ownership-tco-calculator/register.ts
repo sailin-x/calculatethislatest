@@ -1,3 +1,3 @@
-import { DataCenterTotalCostOfOwnershipTcoCalculatorCalculator } from './DataCenterTotalCostOfOwnershipTcoCalculatorCalculator';
+import { DataCenterTotalCostOfOwnershipTcoCalculator } from './DataCenterTotalCostOfOwnershipTcoCalculator';
 
-export { DataCenterTotalCostOfOwnershipTcoCalculatorCalculator };
+export { DataCenterTotalCostOfOwnershipTcoCalculator };

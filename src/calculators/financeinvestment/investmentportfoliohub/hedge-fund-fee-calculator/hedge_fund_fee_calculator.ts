@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { hedge_fund_fee_calculatorInputs, hedge_fund_fee_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const hedge_fund_fee_calculatorCalculator: Calculator = {
-  id: 'hedge-fund-fee-calculator',
+export const HedgeFundFee-calculator: Calculator = {
+  id: 'HedgeFundFee-calculator',
   title: 'Hedge Fund Fee Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'investmentportfoliohub',

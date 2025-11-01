@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateCdInterestCalculatorInputs, validateCdInterestCalculatorBusinessRules } from './validation';
 
-export const CdInterestCalculatorCalculator: Calculator: Calculator = {
-  id: 'cd-interest-calculator-calculator',
+export const CdInterestCalculator: Calculator = {
+  id: 'CdInterestCalculator-calculator',
   title: 'CD Interest Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

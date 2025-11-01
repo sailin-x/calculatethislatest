@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { birth_injury_malpractice_calculatorInputs, birth_injury_malpractice_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const birth_injury_malpractice_calculatorCalculator: Calculator = {
-  id: 'birth-injury-malpractice-calculator',
+export const BirthInjuryMalpractice-calculator: Calculator = {
+  id: 'BirthInjuryMalpractice-calculator',
   title: 'Birth Injury Malpractice Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

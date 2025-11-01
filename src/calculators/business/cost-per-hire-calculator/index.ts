@@ -1,4 +1,4 @@
-export { CostPerHireCalculatorCalculator } from './CostPerHireCalculatorCalculator';
+export { CostPerHireCalculator } from './CostPerHireCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

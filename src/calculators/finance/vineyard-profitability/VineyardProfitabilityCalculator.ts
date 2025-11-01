@@ -414,7 +414,7 @@ export const VineyardProfitabilityCalculator: Calculator = {
     cashOnCashReturn: {
       type: 'number',
       unit: '%',
-      label: 'Cash-on-Cash Return',
+      label: 'CashOnCash Return',
       description: 'Annual return on invested capital'
     },
     

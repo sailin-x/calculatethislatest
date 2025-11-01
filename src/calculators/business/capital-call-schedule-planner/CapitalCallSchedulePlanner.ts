@@ -10,7 +10,7 @@ import {
 import { validateCapitalCallSchedulePlannerInputs } from './validation';
 
 export const CapitalCallSchedulePlanner: Calculator = {
-  id: 'capital-call-schedule-planner',
+  id: 'CapitalCallSchedule-planner',
   title: 'Capital Call Schedule Planner',
   category: 'business',
   subcategory: 'Financial Planning',

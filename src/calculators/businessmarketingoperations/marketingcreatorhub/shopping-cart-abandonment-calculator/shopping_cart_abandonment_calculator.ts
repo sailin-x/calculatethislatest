@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { shopping_cart_abandonment_calculatorInputs, shopping_cart_abandonment_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const shopping_cart_abandonment_calculatorCalculator: Calculator = {
-  id: 'shopping-cart-abandonment-calculator',
+export const ShoppingCartAbandonment-calculator: Calculator = {
+  id: 'ShoppingCartAbandonment-calculator',
   title: 'Shopping Cart Abandonment Calculator Calculator',
   category: 'businessmarketingoperations',
   subcategory: 'marketingcreatorhub',

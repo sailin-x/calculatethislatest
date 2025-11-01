@@ -1,4 +1,4 @@
-export { DebtPayoffCalculatorCalculator } from './DebtPayoffCalculatorCalculator';
+export { DebtPayoffCalculator } from './DebtPayoffCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

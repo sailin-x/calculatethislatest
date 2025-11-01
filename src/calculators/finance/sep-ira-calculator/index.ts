@@ -1,5 +1,5 @@
-export { sepiracalculatorCalculator } from './sepiracalculatorCalculator';
-export { registersepiracalculatorCalculator } from './register';
+export { sepiracalculator } from './sepiracalculator';
+export { registersepiracalculator } from './register';
 export * from './types';
 export * from './formulas';
 export * from './validation';

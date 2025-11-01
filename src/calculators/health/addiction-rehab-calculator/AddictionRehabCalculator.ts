@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateAddictionRehabCalculatorInputs } from './validation';
 
 export const AddictionRehabCalculator: Calculator = {
-  id: 'addiction-rehab-calculator',
+  id: 'AddictionRehabCalculator',
   title: 'Addiction Rehab Calculator',
   category: 'health',
   subcategory: 'General',

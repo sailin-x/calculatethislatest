@@ -70,7 +70,7 @@ export function generateAnalysis(
   // Generate recommendation based on size and risk
   let recommendation: string;
   if (riskLevel === 'Low') {
-    recommendation = 'This is a great starter garden! Consider easy-to-grow plants like tomatoes or herbs to maximize enjoyment with minimal effort.';
+    recommendation = 'This is a great starter garden! Consider EasyToGrow plants like tomatoes or herbs to maximize enjoyment with minimal effort.';
   } else if (riskLevel === 'Medium') {
     recommendation = 'A solid mid-sized garden. Plan for crop rotation and basic irrigation to manage maintenance. Budget looks reasonable—proceed with confidence.';
   } else {

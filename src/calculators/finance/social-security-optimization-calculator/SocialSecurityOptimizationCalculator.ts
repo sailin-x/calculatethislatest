@@ -10,7 +10,7 @@ import {
 import { validateSocialSecurityOptimizationCalculatorInputs } from './validation';
 
 export const SocialSecurityOptimizationCalculator: Calculator = {
-  id: 'social-security-optimization-calculator',
+  id: 'SocialSecurityOptimization-calculator',
   title: 'Social Security Optimization Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

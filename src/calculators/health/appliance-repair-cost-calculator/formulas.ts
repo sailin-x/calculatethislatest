@@ -1,4 +1,4 @@
-import { appliance-repair-cost-calculatorInputs, appliance-repair-cost-calculatorMetrics, appliance-repair-cost-calculatorAnalysis } from './types';
+import { ApplianceRepairCost-calculatorInputs, ApplianceRepairCost-calculatorMetrics, ApplianceRepairCost-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: appliance-repair-cost-calculatorInputs): number {
+export function calculateResult(inputs: ApplianceRepairCost-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: appliance-repair-cost-calculatorInputs):
   }
 }
 
-export function generateAnalysis(inputs: appliance-repair-cost-calculatorInputs, metrics: appliance-repair-cost-calculatorMetrics): appliance-repair-cost-calculatorAnalysis {
+export function generateAnalysis(inputs: ApplianceRepairCost-calculatorInputs, metrics: ApplianceRepairCost-calculatorMetrics): ApplianceRepairCost-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

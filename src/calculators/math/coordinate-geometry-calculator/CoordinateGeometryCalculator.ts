@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateCoordinateGeometryCalculatorInputs, validateCoordinateGeometryCalculatorBusinessRules } from './validation';
 
-export const CoordinateGeometryCalculatorCalculator: Calculator: Calculator = {
-  id: 'coordinate-geometry-calculator-calculator',
+export const CoordinateGeometryCalculator: Calculator = {
+  id: 'CoordinateGeometryCalculator-calculator',
   title: 'Coordinate Geometry Calculator Calculator',
   math: 'math', // e.g., 'finance', 'math', 'health', 'business'
   submath: 'Submath Name',

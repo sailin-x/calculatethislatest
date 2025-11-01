@@ -10,7 +10,7 @@ import {
 import { validateHumanCapitalDueDiligenceCalculatorInputs } from './validation';
 
 export const HumanCapitalDueDiligenceCalculator: Calculator = {
-  id: 'human-capital-due-diligence-calculator',
+  id: 'HumanCapitalDue-diligence-calculator',
   title: 'Human Capital Due Diligence Calculator',
   category: 'business',
   subcategory: 'Financial Planning',

@@ -1,4 +1,4 @@
-import { fela-settlement-calculator-railroadInputs, fela-settlement-calculator-railroadMetrics, fela-settlement-calculator-railroadAnalysis } from './types';
+import { FelaSettlementCalculator-railroadInputs, FelaSettlementCalculator-railroadMetrics, FelaSettlementCalculator-railroadAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: fela-settlement-calculator-railroadInputs): number {
+export function calculateResult(inputs: FelaSettlementCalculator-railroadInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: fela-settlement-calculator-railroadInput
   }
 }
 
-export function generateAnalysis(inputs: fela-settlement-calculator-railroadInputs, metrics: fela-settlement-calculator-railroadMetrics): fela-settlement-calculator-railroadAnalysis {
+export function generateAnalysis(inputs: FelaSettlementCalculator-railroadInputs, metrics: FelaSettlementCalculator-railroadMetrics): FelaSettlementCalculator-railroadAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

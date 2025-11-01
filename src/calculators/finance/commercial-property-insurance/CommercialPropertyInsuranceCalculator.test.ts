@@ -7,7 +7,7 @@ import { validateAllInsuranceInputs } from './quickValidation';
 describe('Commercial Property Insurance Calculator', () => {
   describe('Calculator Structure', () => {
     it('should have correct basic properties', () => {
-      expect(CommercialPropertyInsuranceCalculator.id).toBe('commercial-property-insurance-calculator');
+      expect(CommercialPropertyInsuranceCalculator.id).toBe('CommercialPropertyInsurance-calculator');
       expect(CommercialPropertyInsuranceCalculator.name).toBe('Commercial Property Insurance Calculator');
       expect(CommercialPropertyInsuranceCalculator.category).toBe('finance');
       expect(CommercialPropertyInsuranceCalculator.subcategory).toBe('business');

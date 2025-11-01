@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { distressed_debt_investing_roi_calculatorInputs, distressed_debt_investing_roi_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const distressed_debt_investing_roi_calculatorCalculator: Calculator = {
-  id: 'distressed-debt-investing-roi-calculator',
+export const DistressedDebtInvesting-roi-calculator: Calculator = {
+  id: 'DistressedDebtInvesting-roi-calculator',
   title: 'Distressed Debt Investing ROI Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'investmentportfoliohub',

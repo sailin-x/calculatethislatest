@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { traditional_ira_calculatorInputs, traditional_ira_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const traditional_ira_calculatorCalculator: Calculator = {
-  id: 'traditional-ira-calculator',
+export const TraditionalIraCalculator: Calculator = {
+  id: 'TraditionalIraCalculator',
   title: 'Traditional IRA Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'retirementsavingshub',

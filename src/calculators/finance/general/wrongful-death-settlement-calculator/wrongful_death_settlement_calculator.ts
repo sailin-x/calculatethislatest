@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { wrongful_death_settlement_calculatorInputs, wrongful_death_settlement_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const wrongful_death_settlement_calculatorCalculator: Calculator = {
-  id: 'wrongful-death-settlement-calculator',
+export const WrongfulDeathSettlement-calculator: Calculator = {
+  id: 'WrongfulDeathSettlement-calculator',
   title: 'Wrongful Death Settlement Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

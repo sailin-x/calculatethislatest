@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { return_on_equity_calculatorInputs, return_on_equity_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const return_on_equity_calculatorCalculator: Calculator = {
-  id: 'return-on-equity-calculator',
+export const ReturnOnEquity-calculator: Calculator = {
+  id: 'ReturnOnEquity-calculator',
   title: 'Return on Equity Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'investmentportfoliohub',

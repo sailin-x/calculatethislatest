@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { personal_injury_multiplier_calculatorInputs, personal_injury_multiplier_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const personal_injury_multiplier_calculatorCalculator: Calculator = {
-  id: 'personal-injury-multiplier-calculator',
+export const PersonalInjuryMultiplier-calculator: Calculator = {
+  id: 'PersonalInjuryMultiplier-calculator',
   title: 'Personal Injury Multiplier Calculator Calculator',
   category: 'legalinsurancesettlements',
   subcategory: 'legalsettlementhub',

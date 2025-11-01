@@ -10,11 +10,11 @@ import {
 import { validateDebtToIncomeCalculatorInputs } from './validation';
 
 export const DebtToIncomeCalculator: Calculator = {
-  id: 'debt-to-income-calculator',
+  id: 'DebtToIncome-calculator',
   title: 'Debt to Income Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',
-  description: 'Calculate debt-to-income ratio.',
+  description: 'Calculate DebtToIncome ratio.',
   usageInstructions: [
     'Enter the principal amount to invest',
     'Specify the expected interest rate',

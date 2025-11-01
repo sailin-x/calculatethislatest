@@ -10,7 +10,7 @@ import {
 import { validateCostOfDebtCalculatorInputs } from './validation';
 
 export const CostOfDebtCalculator: Calculator = {
-  id: 'cost-of-debt-calculator',
+  id: 'CostOfDebt-calculator',
   title: 'Cost of Debt Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

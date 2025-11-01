@@ -2,7 +2,7 @@ import { Calculator } from '../../../../types/calculator';
 import { commodity_calculatorInputs, commodity_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const commodity_calculatorCalculator: Calculator = {
+export const commodity-calculator: Calculator = {
   id: 'commodity-calculator',
   title: 'Commodity Calculator Calculator',
   category: 'financeinvestment',

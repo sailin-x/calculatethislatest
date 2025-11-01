@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { pmi_cancellationCalculatorCalculator } from './pmi_cancellationCalculatorCalculator';
+import { pmi_cancellationCalculator } from './pmi_cancellationCalculator';
 
-export function registerpmi_cancellationCalculatorCalculator(): void {
-  calculatorRegistry.register(new pmi_cancellationCalculatorCalculator());
+export function registerpmi_cancellationCalculator(): void {
+  calculatorRegistry.register(new pmi_cancellationCalculator());
 }

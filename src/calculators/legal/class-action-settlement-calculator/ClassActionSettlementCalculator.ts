@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateClassActionSettlementCalculatorInputs, validateClassActionSettlementCalculatorBusinessRules } from './validation';
 
-export const ClassActionSettlementCalculatorCalculator: Calculator: Calculator = {
-  id: 'class-action-settlement-calculator-calculator',
+export const ClassActionSettlementCalculator: Calculator = {
+  id: 'ClassActionSettlement-calculator-calculator',
   title: 'Class Action Settlement Calculator Calculator',
   legal: 'legal', // e.g., 'finance', 'math', 'health', 'business'
   sublegal: 'Sublegal Name',

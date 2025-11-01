@@ -1,4 +1,4 @@
-import { six-sigma-cost-savings-calculatorInputs, six-sigma-cost-savings-calculatorMetrics, six-sigma-cost-savings-calculatorAnalysis } from './types';
+import { SixSigmaCost-savings-calculatorInputs, SixSigmaCost-savings-calculatorMetrics, SixSigmaCost-savings-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: six-sigma-cost-savings-calculatorInputs): number {
+export function calculateResult(inputs: SixSigmaCost-savings-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: six-sigma-cost-savings-calculatorInputs)
   }
 }
 
-export function generateAnalysis(inputs: six-sigma-cost-savings-calculatorInputs, metrics: six-sigma-cost-savings-calculatorMetrics): six-sigma-cost-savings-calculatorAnalysis {
+export function generateAnalysis(inputs: SixSigmaCost-savings-calculatorInputs, metrics: SixSigmaCost-savings-calculatorMetrics): SixSigmaCost-savings-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

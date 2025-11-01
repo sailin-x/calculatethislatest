@@ -1,3 +1,3 @@
-import { GardenCalculatorCalculator } from './GardenCalculatorCalculator';
+import { GardenCalculator } from './GardenCalculator';
 
-export { GardenCalculatorCalculator };
+export { GardenCalculator };

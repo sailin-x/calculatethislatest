@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { biological_age_calculatorInputs, biological_age_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const biological_age_calculatorCalculator: Calculator = {
-  id: 'biological-age-calculator',
+export const BiologicalAgeCalculator: Calculator = {
+  id: 'BiologicalAgeCalculator',
   title: 'Biological Age Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

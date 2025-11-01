@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { preference_payment_clawback_calculatorInputs, preference_payment_clawback_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const preference_payment_clawback_calculatorCalculator: Calculator = {
-  id: 'preference-payment-clawback-calculator',
+export const PreferencePaymentClawback-calculator: Calculator = {
+  id: 'PreferencePaymentClawback-calculator',
   title: 'Preference Payment Clawback Calculator Calculator',
   category: 'legalinsurancesettlements',
   subcategory: 'legalsettlementhub',

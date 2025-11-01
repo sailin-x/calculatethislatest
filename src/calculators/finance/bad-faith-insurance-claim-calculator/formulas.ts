@@ -1,13 +1,13 @@
-import { bad-faith-insurance-claim-calculatorInputs, bad-faith-insurance-claim-calculatorMetrics, bad-faith-insurance-claim-calculatorAnalysis } from './types';
+import { BadFaithInsurance-claim-calculatorInputs, BadFaithInsurance-claim-calculatorMetrics, BadFaithInsurance-claim-calculatorAnalysis } from './types';
 
 // Bad Faith Insurance Claim Calculator - Finance calculations
-export function calculateResult(inputs: bad-faith-insurance-claim-calculatorInputs): number {
+export function calculateResult(inputs: BadFaithInsurance-claim-calculatorInputs): number {
   // Financial calculation logic
   const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
   return numericValues.reduce((sum, val) => sum + val, 0) || 0;
 }
 
-export function generateAnalysis(inputs: bad-faith-insurance-claim-calculatorInputs, metrics: bad-faith-insurance-claim-calculatorMetrics): bad-faith-insurance-claim-calculatorAnalysis {
+export function generateAnalysis(inputs: BadFaithInsurance-claim-calculatorInputs, metrics: BadFaithInsurance-claim-calculatorMetrics): BadFaithInsurance-claim-calculatorAnalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (Math.abs(result) > 100000) riskLevel = 'High';

@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { r_squared_calculatorInputs, r_squared_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const r_squared_calculatorCalculator: Calculator = {
-  id: 'r-squared-calculator',
+export const RSquaredCalculator: Calculator = {
+  id: 'RSquaredCalculator',
   title: 'R Squared Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'investmentportfoliohub',

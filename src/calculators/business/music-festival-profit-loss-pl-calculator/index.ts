@@ -1,4 +1,4 @@
-export { MusicFestivalProfitLossPlCalculatorCalculator } from './MusicFestivalProfitLossPlCalculatorCalculator';
+export { MusicFestivalProfitLossPlCalculator } from './MusicFestivalProfitLossPlCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

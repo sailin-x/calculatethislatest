@@ -1,4 +1,4 @@
-export { BoxOfficeBreakevenCalculatorCalculator } from './BoxOfficeBreakevenCalculatorCalculator';
+export { BoxOfficeBreakevenCalculator } from './BoxOfficeBreakevenCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

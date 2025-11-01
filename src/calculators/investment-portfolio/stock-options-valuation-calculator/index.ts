@@ -1,4 +1,4 @@
-export { StockOptionsValuationCalculatorCalculator } from './StockOptionsValuationCalculatorCalculator';
+export { StockOptionsValuationCalculator } from './StockOptionsValuationCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

@@ -1,4 +1,4 @@
-import { stock-options-calculator-exists-but-needs-registrationInputs, stock-options-calculator-exists-but-needs-registrationMetrics, stock-options-calculator-exists-but-needs-registrationAnalysis } from './types';
+import { StockOptionsCalculator-ExistsButNeeds-registrationInputs, StockOptionsCalculator-ExistsButNeeds-registrationMetrics, StockOptionsCalculator-ExistsButNeeds-registrationAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: stock-options-calculator-exists-but-needs-registrationInputs): number {
+export function calculateResult(inputs: StockOptionsCalculator-ExistsButNeeds-registrationInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: stock-options-calculator-exists-but-need
   }
 }
 
-export function generateAnalysis(inputs: stock-options-calculator-exists-but-needs-registrationInputs, metrics: stock-options-calculator-exists-but-needs-registrationMetrics): stock-options-calculator-exists-but-needs-registrationAnalysis {
+export function generateAnalysis(inputs: StockOptionsCalculator-ExistsButNeeds-registrationInputs, metrics: StockOptionsCalculator-ExistsButNeeds-registrationMetrics): StockOptionsCalculator-ExistsButNeeds-registrationAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

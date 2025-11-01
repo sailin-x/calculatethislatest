@@ -1,4 +1,4 @@
-import { brand-equity-valuation-calculatorInputs, brand-equity-valuation-calculatorMetrics, brand-equity-valuation-calculatorAnalysis } from './types';
+import { BrandEquityValuation-calculatorInputs, BrandEquityValuation-calculatorMetrics, BrandEquityValuation-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: brand-equity-valuation-calculatorInputs): number {
+export function calculateResult(inputs: BrandEquityValuation-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: brand-equity-valuation-calculatorInputs)
   }
 }
 
-export function generateAnalysis(inputs: brand-equity-valuation-calculatorInputs, metrics: brand-equity-valuation-calculatorMetrics): brand-equity-valuation-calculatorAnalysis {
+export function generateAnalysis(inputs: BrandEquityValuation-calculatorInputs, metrics: BrandEquityValuation-calculatorMetrics): BrandEquityValuation-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

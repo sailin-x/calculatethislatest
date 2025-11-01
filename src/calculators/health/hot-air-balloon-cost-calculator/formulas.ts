@@ -1,4 +1,4 @@
-import { hot-air-balloon-cost-calculatorInputs, hot-air-balloon-cost-calculatorMetrics, hot-air-balloon-cost-calculatorAnalysis } from './types';
+import { HotAirBalloon-cost-calculatorInputs, HotAirBalloon-cost-calculatorMetrics, HotAirBalloon-cost-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: hot-air-balloon-cost-calculatorInputs): number {
+export function calculateResult(inputs: HotAirBalloon-cost-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: hot-air-balloon-cost-calculatorInputs): 
   }
 }
 
-export function generateAnalysis(inputs: hot-air-balloon-cost-calculatorInputs, metrics: hot-air-balloon-cost-calculatorMetrics): hot-air-balloon-cost-calculatorAnalysis {
+export function generateAnalysis(inputs: HotAirBalloon-cost-calculatorInputs, metrics: HotAirBalloon-cost-calculatorMetrics): HotAirBalloon-cost-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

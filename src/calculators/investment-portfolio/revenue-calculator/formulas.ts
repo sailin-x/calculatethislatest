@@ -13,7 +13,7 @@ function calculateEquityRevenue(inputs: RevenueCalculatorInputs): number {
 /**
  * Helper function to calculate the income revenue from fixed-income portion of the portfolio.
  * Formula: fixedIncomeRevenue = totalPortfolioValue * fixedIncomeAllocation * interestRate
- * This applies the standard yield-to-maturity approximation for bond interest revenue.
+ * This applies the standard YieldToMaturity approximation for bond interest revenue.
  */
 function calculateFixedIncomeRevenue(inputs: RevenueCalculatorInputs): number {
   return inputs.totalPortfolioValue * inputs.fixedIncomeAllocation * inputs.interestRate;

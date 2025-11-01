@@ -1,3 +1,3 @@
-import { RansomwareDowntimeCostCalculatorCalculator } from './RansomwareDowntimeCostCalculatorCalculator';
+import { RansomwareDowntimeCostCalculator } from './RansomwareDowntimeCostCalculator';
 
-export { RansomwareDowntimeCostCalculatorCalculator };
+export { RansomwareDowntimeCostCalculator };

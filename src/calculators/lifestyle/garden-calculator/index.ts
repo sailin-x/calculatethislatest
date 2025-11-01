@@ -1,4 +1,4 @@
-export { GardenCalculatorCalculator } from './GardenCalculatorCalculator';
+export { GardenCalculator } from './GardenCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

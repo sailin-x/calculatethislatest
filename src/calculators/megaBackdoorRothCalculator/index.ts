@@ -1,3 +1,3 @@
-export * from './megaBackdoorRothCalculatorCalculator';
+export * from './megaBackdoorRothCalculator';
 export * from './register';
 export * from './types';

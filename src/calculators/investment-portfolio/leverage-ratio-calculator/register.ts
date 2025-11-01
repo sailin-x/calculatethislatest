@@ -1,3 +1,3 @@
-import { LeverageRatioCalculatorCalculator } from './LeverageRatioCalculatorCalculator';
+import { LeverageRatioCalculator } from './LeverageRatioCalculator';
 
-export { LeverageRatioCalculatorCalculator };
+export { LeverageRatioCalculator };

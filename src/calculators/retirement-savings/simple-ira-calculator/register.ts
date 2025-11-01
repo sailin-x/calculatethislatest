@@ -1,3 +1,3 @@
-import { SimpleIraCalculatorCalculator } from './SimpleIraCalculatorCalculator';
+import { SimpleIraCalculator } from './SimpleIraCalculator';
 
-export { SimpleIraCalculatorCalculator };
+export { SimpleIraCalculator };

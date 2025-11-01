@@ -1,4 +1,4 @@
-export { CoverdellEsaCalculatorCalculator } from './CoverdellEsaCalculatorCalculator';
+export { CoverdellEsaCalculator } from './CoverdellEsaCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

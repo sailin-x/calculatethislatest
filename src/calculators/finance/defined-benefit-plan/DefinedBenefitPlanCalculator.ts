@@ -4,7 +4,7 @@ import { calculateDefinedBenefitPlan } from './formulas';
 import { validateDefinedBenefitPlanInputs } from './validation';
 
 export const DefinedBenefitPlanCalculator: Calculator = {
-  id: 'defined-benefit-plan-calculator',
+  id: 'DefinedBenefitPlan-calculator',
   title: 'Defined Benefit Plan Calculator',
   category: 'finance',
   subcategory: 'Retirement',

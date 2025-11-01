@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateMealKitCostCalculatorInputs } from './validation';
 
 export const MealKitCostCalculator: Calculator = {
-  id: 'meal-kit-cost-calculator',
+  id: 'MealKitCost-calculator',
   title: 'Meal Kit Cost Calculator',
   category: 'health',
   subcategory: 'General',

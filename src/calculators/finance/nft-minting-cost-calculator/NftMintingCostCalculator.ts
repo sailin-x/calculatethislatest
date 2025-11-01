@@ -10,7 +10,7 @@ import {
 import { validateNftMintingCostCalculatorInputs } from './validation';
 
 export const NftMintingCostCalculator: Calculator = {
-  id: 'nft-minting-cost-calculator',
+  id: 'NftMintingCost-calculator',
   title: 'NFT Minting Cost Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

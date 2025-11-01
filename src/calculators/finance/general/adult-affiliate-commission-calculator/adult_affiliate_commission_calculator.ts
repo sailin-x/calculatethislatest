@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { adult_affiliate_commission_calculatorInputs, adult_affiliate_commission_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const adult_affiliate_commission_calculatorCalculator: Calculator = {
-  id: 'adult-affiliate-commission-calculator',
+export const AdultAffiliateCommission-calculator: Calculator = {
+  id: 'AdultAffiliateCommission-calculator',
   title: 'Adult Affiliate Commission Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

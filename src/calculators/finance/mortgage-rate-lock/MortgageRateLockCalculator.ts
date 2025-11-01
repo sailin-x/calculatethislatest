@@ -1,7 +1,7 @@
 import { Calculator } from '../../types/calculator';
 
 export const MortgageRateLockCalculator: Calculator = {
-  id: 'mortgage-rate-lock-calculator',
+  id: 'MortgageRateLock-calculator',
   title: 'Mortgage Rate Lock Calculator',
   category: 'finance',
   subcategory: 'Mortgage & Real Estate',

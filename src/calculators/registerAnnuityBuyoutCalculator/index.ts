@@ -1,3 +1,3 @@
-export * from './registerAnnuityBuyoutCalculatorCalculator';
+export * from './registerAnnuityBuyoutCalculator';
 export * from './register';
 export * from './types';

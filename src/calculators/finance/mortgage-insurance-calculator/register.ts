@@ -1,3 +1,3 @@
-import { MortgageInsuranceCalculatorCalculator } from './MortgageInsuranceCalculatorCalculator';
+import { MortgageInsuranceCalculator } from './MortgageInsuranceCalculator';
 
-export { MortgageInsuranceCalculatorCalculator };
+export { MortgageInsuranceCalculator };

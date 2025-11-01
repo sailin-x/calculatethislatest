@@ -43,7 +43,7 @@ describe('Mortgage Payment Calculator', () => {
     borrowerCreditScore: 750,
     borrowerDebtToIncomeRatio: 35,
     borrowerEmploymentType: 'employed' as const,
-    firstPaymentDate: '2024-02-01',
+    firstPaymentDate: '20240201',
     paymentDay: 1,
     discountPoints: 0,
     originationPoints: 0,
@@ -126,7 +126,7 @@ describe('Mortgage Payment Calculator', () => {
       expect(result).toBe(expected);
     });
 
-    it('calculates loan-to-value ratio correctly', () => {
+    it('calculates LoanToValue ratio correctly', () => {
       const result = calculateLoanToValueRatio(mockInputs);
       const expected = (mockInputs.loanAmount / mockInputs.propertyValue) * 100;
       expect(result).toBe(expected);

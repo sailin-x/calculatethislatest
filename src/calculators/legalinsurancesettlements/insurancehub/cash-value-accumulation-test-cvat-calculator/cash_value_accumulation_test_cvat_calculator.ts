@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { cash_value_accumulation_test_cvat_calculatorInputs, cash_value_accumulation_test_cvat_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const cash_value_accumulation_test_cvat_calculatorCalculator: Calculator = {
-  id: 'cash-value-accumulation-test-cvat-calculator',
+export const CashValueAccumulation-TestCvatCalculator: Calculator = {
+  id: 'CashValueAccumulation-TestCvatCalculator',
   title: 'Cash Value Accumulation Test (CVAT) Calculator Calculator',
   category: 'legalinsurancesettlements',
   subcategory: 'insurancehub',

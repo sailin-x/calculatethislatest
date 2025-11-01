@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { pensionPlanFundingCalculatorCalculator } from './pensionPlanFundingCalculatorCalculator';
+import { pensionPlanFundingCalculator } from './pensionPlanFundingCalculator';
 
-export function registerpensionPlanFundingCalculatorCalculator(): void {
-  calculatorRegistry.register(new pensionPlanFundingCalculatorCalculator());
+export function registerpensionPlanFundingCalculator(): void {
+  calculatorRegistry.register(new pensionPlanFundingCalculator());
 }

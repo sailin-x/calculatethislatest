@@ -158,7 +158,7 @@ describe('CustomerAcquisitionCostCalculator', () => {
 
   describe('Calculator Properties', () => {
     it('should have correct calculator properties', () => {
-      expect(customerAcquisitionCostCalculator.id).toBe('customer-acquisition-cost');
+      expect(customerAcquisitionCostCalculator.id).toBe('CustomerAcquisitionCost');
       expect(customerAcquisitionCostCalculator.title).toBe('Customer Acquisition Cost Calculator');
       expect(customerAcquisitionCostCalculator.category).toBe('business');
       expect(customerAcquisitionCostCalculator.inputs).toBeDefined();

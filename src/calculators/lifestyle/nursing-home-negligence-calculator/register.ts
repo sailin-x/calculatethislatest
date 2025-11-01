@@ -1,3 +1,3 @@
-import { NursingHomeNegligenceCalculatorCalculator } from './NursingHomeNegligenceCalculatorCalculator';
+import { NursingHomeNegligenceCalculator } from './NursingHomeNegligenceCalculator';
 
-export { NursingHomeNegligenceCalculatorCalculator };
+export { NursingHomeNegligenceCalculator };

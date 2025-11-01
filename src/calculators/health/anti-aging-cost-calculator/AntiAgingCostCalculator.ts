@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateAntiAgingCostCalculatorInputs } from './validation';
 
 export const AntiAgingCostCalculator: Calculator = {
-  id: 'anti-aging-cost-calculator',
+  id: 'AntiAgingCost-calculator',
   title: 'Anti Aging Cost Calculator',
   category: 'health',
   subcategory: 'General',

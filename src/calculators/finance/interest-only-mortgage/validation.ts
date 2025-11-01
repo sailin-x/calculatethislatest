@@ -310,7 +310,7 @@ export function validateInterestOnlyMortgageInputs(inputs: CalculatorInputs): Va
 
   // ARM caps validation
   if (inputs.armCaps) {
-    const validARMCaps = ['1-1-5', '2-2-5', '5-2-5', 'no-caps'];
+    const validARMCaps = ['115', '225', '525', 'no-caps'];
     if (!validARMCaps.includes(inputs.armCaps)) {
       errors.push('Invalid ARM caps');
     }
@@ -593,7 +593,7 @@ export function quickValidateInterestOnlyMortgageInput(field: string, value: any
       break;
     case 'armCaps':
       if (value) {
-        const validCaps = ['1-1-5', '2-2-5', '5-2-5', 'no-caps'];
+        const validCaps = ['115', '225', '525', 'no-caps'];
         if (!validCaps.includes(value)) return 'Invalid ARM caps';
       }
       break;

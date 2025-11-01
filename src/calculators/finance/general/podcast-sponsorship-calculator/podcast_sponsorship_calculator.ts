@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { podcast_sponsorship_calculatorInputs, podcast_sponsorship_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const podcast_sponsorship_calculatorCalculator: Calculator = {
-  id: 'podcast-sponsorship-calculator',
+export const PodcastSponsorshipCalculator: Calculator = {
+  id: 'PodcastSponsorshipCalculator',
   title: 'Podcast Sponsorship Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

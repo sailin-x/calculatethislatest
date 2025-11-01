@@ -1,4 +1,4 @@
-import { digital-transformation-business-case-calculatorInputs, digital-transformation-business-case-calculatorMetrics, digital-transformation-business-case-calculatorAnalysis } from './types';
+import { DigitalTransformationBusiness-case-calculatorInputs, DigitalTransformationBusiness-case-calculatorMetrics, DigitalTransformationBusiness-case-calculatorAnalysis } from './types';
 
 // Digital Transformation Business Case Calculator - Business calculations
 export function calculateNetPresentValue(cashFlows: number[], discountRate: number): number {
@@ -11,7 +11,7 @@ export function calculateROI(initialInvestment: number, finalValue: number): num
  return ((finalValue - initialInvestment) / initialInvestment) * 100;
 }
 
-export function calculateResult(inputs: digital-transformation-business-case-calculatorInputs): number {
+export function calculateResult(inputs: DigitalTransformationBusiness-case-calculatorInputs): number {
  // Business calculation logic with real math
  const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
  if (numericValues.length >= 2) {
@@ -24,7 +24,7 @@ export function calculateResult(inputs: digital-transformation-business-case-cal
  return calculateNetPresentValue(numericValues, 10); // 10% discount rate
 }
 
-export function generateAnalysis(inputs: digital-transformation-business-case-calculatorInputs, metrics: digital-transformation-business-case-calculatorMetrics): digital-transformation-business-case-calculatorAnalysis {
+export function generateAnalysis(inputs: DigitalTransformationBusiness-case-calculatorInputs, metrics: DigitalTransformationBusiness-case-calculatorMetrics): DigitalTransformationBusiness-case-calculatorAnalysis {
  const result = metrics.result;
  let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
  if (Math.abs(result) > 100000) riskLevel = 'High';

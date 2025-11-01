@@ -2,7 +2,7 @@ import { Calculator } from '../../../../types/calculator';
 import { paint_calculatorInputs, paint_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const paint_calculatorCalculator: Calculator = {
+export const paint-calculator: Calculator = {
   id: 'paint-calculator',
   title: 'Paint Calculator Calculator',
   category: 'constructionindustrial',

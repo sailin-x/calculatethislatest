@@ -1,4 +1,4 @@
-export { MedicalCourierServiceRouteProfitabilityCalculatorCalculator } from './MedicalCourierServiceRouteProfitabilityCalculatorCalculator';
+export { MedicalCourierServiceRouteProfitabilityCalculator } from './MedicalCourierServiceRouteProfitabilityCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

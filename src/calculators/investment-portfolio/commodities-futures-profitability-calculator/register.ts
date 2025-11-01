@@ -1,3 +1,3 @@
-import { CommoditiesFuturesProfitabilityCalculatorCalculator } from './CommoditiesFuturesProfitabilityCalculatorCalculator';
+import { CommoditiesFuturesProfitabilityCalculator } from './CommoditiesFuturesProfitabilityCalculator';
 
-export { CommoditiesFuturesProfitabilityCalculatorCalculator };
+export { CommoditiesFuturesProfitabilityCalculator };

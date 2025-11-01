@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateNftRoyaltyRevenueCalculatorExistsButNeedsRegistrationCalculatorInputs, validateNftRoyaltyRevenueCalculatorExistsButNeedsRegistrationCalculatorBusinessRules } from './validation';
 
-export const NftRoyaltyRevenueCalculatorExistsButNeedsRegistrationCalculatorCalculator: Calculator: Calculator = {
-  id: 'nft-royalty-revenue-calculator-exists-but-needs-registration-calculator-calculator',
+export const NftRoyaltyRevenueCalculatorExistsButNeedsRegistrationCalculator: Calculator = {
+  id: 'NftRoyaltyRevenue-CalculatorExistsBut-NeedsRegistrationCalculator-calculator',
   title: '**Nft Royalty Revenue Calculator Exists But Needs Registration Calculator** Calculator',
   unknown: 'unknown', // e.g., 'finance', 'math', 'health', 'business'
   subunknown: 'Subunknown Name',

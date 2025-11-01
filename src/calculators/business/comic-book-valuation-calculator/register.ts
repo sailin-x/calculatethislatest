@@ -1,3 +1,3 @@
-import { ComicBookValuationCalculatorCalculator } from './ComicBookValuationCalculatorCalculator';
+import { ComicBookValuationCalculator } from './ComicBookValuationCalculator';
 
-export { ComicBookValuationCalculatorCalculator };
+export { ComicBookValuationCalculator };

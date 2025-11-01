@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validatePhotographyCostCalculatorInputs } from './validation';
 
 export const PhotographyCostCalculator: Calculator = {
-  id: 'photography-cost-calculator',
+  id: 'PhotographyCostCalculator',
   title: 'Photography Cost Calculator',
   category: 'health',
   subcategory: 'General',

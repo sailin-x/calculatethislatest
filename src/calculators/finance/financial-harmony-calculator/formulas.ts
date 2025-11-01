@@ -1,4 +1,4 @@
-import { financial-harmony-calculatorInputs, financial-harmony-calculatorMetrics, financial-harmony-calculatorAnalysis } from './types';
+import { FinancialHarmonyCalculatorinputs, FinancialHarmonyCalculatormetrics, FinancialHarmonyCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: financial-harmony-calculatorInputs): number {
+export function calculateResult(inputs: FinancialHarmonyCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: financial-harmony-calculatorInputs): num
   }
 }
 
-export function generateAnalysis(inputs: financial-harmony-calculatorInputs, metrics: financial-harmony-calculatorMetrics): financial-harmony-calculatorAnalysis {
+export function generateAnalysis(inputs: FinancialHarmonyCalculatorinputs, metrics: FinancialHarmonyCalculatormetrics): FinancialHarmonyCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

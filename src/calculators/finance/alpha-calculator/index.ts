@@ -1,4 +1,4 @@
-export { AlphaCalculatorCalculator } from './AlphaCalculatorCalculator';
+export { AlphaCalculator } from './AlphaCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

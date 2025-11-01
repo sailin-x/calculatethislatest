@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { municipal_bond_calculatorInputs, municipal_bond_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const municipal_bond_calculatorCalculator: Calculator = {
-  id: 'municipal-bond-calculator',
+export const MunicipalBondCalculator: Calculator = {
+  id: 'MunicipalBondCalculator',
   title: 'Municipal Bond Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'investmentportfoliohub',

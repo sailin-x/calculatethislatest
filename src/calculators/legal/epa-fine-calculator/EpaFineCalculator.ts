@@ -9,7 +9,7 @@ import {
 import { validateEpaFineCalculatorInputs } from './validation';
 
 export const EpaFineCalculator: Calculator = {
-  id: 'epa-fine-calculator',
+  id: 'EpaFineCalculator',
   title: 'EPA Fine Calculator',
   category: 'legal',
   subcategory: 'Settlement Analysis',

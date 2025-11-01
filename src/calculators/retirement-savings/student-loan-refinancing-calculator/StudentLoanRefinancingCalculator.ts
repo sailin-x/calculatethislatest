@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateStudentLoanRefinancingCalculatorInputs, validateStudentLoanRefinancingCalculatorBusinessRules } from './validation';
 
-export const StudentLoanRefinancingCalculatorCalculator: Calculator: Calculator = {
-  id: 'student-loan-refinancing-calculator-calculator',
+export const StudentLoanRefinancingCalculator: Calculator = {
+  id: 'StudentLoanRefinancing-calculator-calculator',
   title: 'Student Loan Refinancing Calculator Calculator',
   retirement-savings: 'retirement-savings', // e.g., 'finance', 'math', 'health', 'business'
   subretirement-savings: 'Subretirement-savings Name',

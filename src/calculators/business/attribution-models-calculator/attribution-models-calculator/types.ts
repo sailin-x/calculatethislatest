@@ -1,4 +1,4 @@
-export interface attribution-models-calculatorInputs {
+export interface AttributionModelsCalculatorinputs {
   // Calculator-specific input fields
   value?: number;
   rate?: number;
@@ -7,17 +7,17 @@ export interface attribution-models-calculatorInputs {
   // Add more fields as needed for this calculator
 }
 
-export interface attribution-models-calculatorResults {
+export interface AttributionModelsCalculatorresults {
   result: number;
   analysis?: string;
 }
 
-export interface attribution-models-calculatorMetrics {
+export interface AttributionModelsCalculatormetrics {
   result: number;
   // Add more metrics as needed
 }
 
-export interface attribution-models-calculatorAnalysis {
+export interface AttributionModelsCalculatoranalysis {
   recommendation: string;
   riskLevel: 'Low' | 'Medium' | 'High';
 }

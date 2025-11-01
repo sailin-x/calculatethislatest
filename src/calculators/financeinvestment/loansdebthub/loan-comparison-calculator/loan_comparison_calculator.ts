@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { loan_comparison_calculatorInputs, loan_comparison_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const loan_comparison_calculatorCalculator: Calculator = {
-  id: 'loan-comparison-calculator',
+export const LoanComparisonCalculator: Calculator = {
+  id: 'LoanComparisonCalculator',
   title: 'Loan Comparison Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'loansdebthub',

@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { tokenomics_simulation_calculatorInputs, tokenomics_simulation_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const tokenomics_simulation_calculatorCalculator: Calculator = {
-  id: 'tokenomics-simulation-calculator',
+export const TokenomicsSimulationCalculator: Calculator = {
+  id: 'TokenomicsSimulationCalculator',
   title: 'Tokenomics Simulation Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'cryptocurrencyhub',

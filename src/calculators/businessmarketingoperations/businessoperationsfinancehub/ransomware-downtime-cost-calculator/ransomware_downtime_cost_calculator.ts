@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { ransomware_downtime_cost_calculatorInputs, ransomware_downtime_cost_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const ransomware_downtime_cost_calculatorCalculator: Calculator = {
-  id: 'ransomware-downtime-cost-calculator',
+export const RansomwareDowntimeCost-calculator: Calculator = {
+  id: 'RansomwareDowntimeCost-calculator',
   title: 'Ransomware Downtime Cost Calculator Calculator',
   category: 'businessmarketingoperations',
   subcategory: 'businessoperationsfinancehub',

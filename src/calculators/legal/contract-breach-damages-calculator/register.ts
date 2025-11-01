@@ -1,3 +1,3 @@
-import { ContractBreachDamagesCalculatorCalculator } from './ContractBreachDamagesCalculatorCalculator';
+import { ContractBreachDamagesCalculator } from './ContractBreachDamagesCalculator';
 
-export { ContractBreachDamagesCalculatorCalculator };
+export { ContractBreachDamagesCalculator };

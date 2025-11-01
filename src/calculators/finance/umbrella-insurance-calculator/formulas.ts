@@ -1,13 +1,13 @@
-import { umbrella-insurance-calculatorInputs, umbrella-insurance-calculatorMetrics, umbrella-insurance-calculatorAnalysis } from './types';
+import { UmbrellaInsuranceCalculatorinputs, UmbrellaInsuranceCalculatormetrics, UmbrellaInsuranceCalculatoranalysis } from './types';
 
 // Umbrella Insurance Calculator - Finance calculations
-export function calculateResult(inputs: umbrella-insurance-calculatorInputs): number {
+export function calculateResult(inputs: UmbrellaInsuranceCalculatorinputs): number {
   // Financial calculation logic
   const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
   return numericValues.reduce((sum, val) => sum + val, 0) || 0;
 }
 
-export function generateAnalysis(inputs: umbrella-insurance-calculatorInputs, metrics: umbrella-insurance-calculatorMetrics): umbrella-insurance-calculatorAnalysis {
+export function generateAnalysis(inputs: UmbrellaInsuranceCalculatorinputs, metrics: UmbrellaInsuranceCalculatormetrics): UmbrellaInsuranceCalculatoranalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (Math.abs(result) > 100000) riskLevel = 'High';

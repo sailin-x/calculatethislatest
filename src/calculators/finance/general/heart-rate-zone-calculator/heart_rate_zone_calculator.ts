@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { heart_rate_zone_calculatorInputs, heart_rate_zone_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const heart_rate_zone_calculatorCalculator: Calculator = {
-  id: 'heart-rate-zone-calculator',
+export const HeartRateZone-calculator: Calculator = {
+  id: 'HeartRateZone-calculator',
   title: 'Heart Rate Zone Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

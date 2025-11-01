@@ -1,4 +1,4 @@
-import { reverse-mortgage-calculatorInputs, reverse-mortgage-calculatorMetrics, reverse-mortgage-calculatorAnalysis } from './types';
+import { ReverseMortgageCalculatorinputs, ReverseMortgageCalculatormetrics, ReverseMortgageCalculatoranalysis } from './types';
 
 
 // Mortgage Payment Calculator - Standard loan amortization formula
@@ -14,7 +14,7 @@ export function calculateTotalInterest(principal: number, monthlyPayment: number
   return (monthlyPayment * numPayments) - principal;
 }
 
-export function calculateResult(inputs: reverse-mortgage-calculatorInputs): number {
+export function calculateResult(inputs: ReverseMortgageCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: reverse-mortgage-calculatorInputs): numb
   }
 }
 
-export function generateAnalysis(inputs: reverse-mortgage-calculatorInputs, metrics: reverse-mortgage-calculatorMetrics): reverse-mortgage-calculatorAnalysis {
+export function generateAnalysis(inputs: ReverseMortgageCalculatorinputs, metrics: ReverseMortgageCalculatormetrics): ReverseMortgageCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

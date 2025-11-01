@@ -1,3 +1,3 @@
-import { PmiCancellationCalculatorCalculator } from './PmiCancellationCalculatorCalculator';
+import { PmiCancellationCalculator } from './PmiCancellationCalculator';
 
-export { PmiCancellationCalculatorCalculator };
+export { PmiCancellationCalculator };

@@ -1,4 +1,4 @@
-import { ground-lease-valuationInputs, ground-lease-valuationMetrics, ground-lease-valuationAnalysis } from './types';
+import { GroundLeaseValuationinputs, GroundLeaseValuationmetrics, GroundLeaseValuationanalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: ground-lease-valuationInputs): number {
+export function calculateResult(inputs: GroundLeaseValuationinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: ground-lease-valuationInputs): number {
   }
 }
 
-export function generateAnalysis(inputs: ground-lease-valuationInputs, metrics: ground-lease-valuationMetrics): ground-lease-valuationAnalysis {
+export function generateAnalysis(inputs: GroundLeaseValuationinputs, metrics: GroundLeaseValuationmetrics): GroundLeaseValuationanalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

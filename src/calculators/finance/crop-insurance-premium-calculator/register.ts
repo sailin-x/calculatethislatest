@@ -1,3 +1,3 @@
-import { CropInsurancePremiumCalculatorCalculator } from './CropInsurancePremiumCalculatorCalculator';
+import { CropInsurancePremiumCalculator } from './CropInsurancePremiumCalculator';
 
-export { CropInsurancePremiumCalculatorCalculator };
+export { CropInsurancePremiumCalculator };

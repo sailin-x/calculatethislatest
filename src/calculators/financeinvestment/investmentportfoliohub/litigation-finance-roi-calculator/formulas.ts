@@ -1,4 +1,4 @@
-import { litigation-finance-roi-calculatorInputs, litigation-finance-roi-calculatorMetrics, litigation-finance-roi-calculatorAnalysis } from './types';
+import { LitigationFinanceRoi-calculatorInputs, LitigationFinanceRoi-calculatorMetrics, LitigationFinanceRoi-calculatorAnalysis } from './types';
 
 
 // Investment Calculator - ROI and growth calculations
@@ -12,7 +12,7 @@ export function calculateCompoundInterest(principal: number, rate: number, years
   return principal * Math.pow(1 + ratePerPeriod, totalPeriods);
 }
 
-export function calculateResult(inputs: litigation-finance-roi-calculatorInputs): number {
+export function calculateResult(inputs: LitigationFinanceRoi-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -36,7 +36,7 @@ export function calculateResult(inputs: litigation-finance-roi-calculatorInputs)
   }
 }
 
-export function generateAnalysis(inputs: litigation-finance-roi-calculatorInputs, metrics: litigation-finance-roi-calculatorMetrics): litigation-finance-roi-calculatorAnalysis {
+export function generateAnalysis(inputs: LitigationFinanceRoi-calculatorInputs, metrics: LitigationFinanceRoi-calculatorMetrics): LitigationFinanceRoi-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

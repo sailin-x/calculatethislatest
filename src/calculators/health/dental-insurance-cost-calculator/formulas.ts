@@ -1,4 +1,4 @@
-import { dental-insurance-cost-calculatorInputs, dental-insurance-cost-calculatorMetrics, dental-insurance-cost-calculatorAnalysis } from './types';
+import { DentalInsuranceCost-calculatorInputs, DentalInsuranceCost-calculatorMetrics, DentalInsuranceCost-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: dental-insurance-cost-calculatorInputs): number {
+export function calculateResult(inputs: DentalInsuranceCost-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: dental-insurance-cost-calculatorInputs):
   }
 }
 
-export function generateAnalysis(inputs: dental-insurance-cost-calculatorInputs, metrics: dental-insurance-cost-calculatorMetrics): dental-insurance-cost-calculatorAnalysis {
+export function generateAnalysis(inputs: DentalInsuranceCost-calculatorInputs, metrics: DentalInsuranceCost-calculatorMetrics): DentalInsuranceCost-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

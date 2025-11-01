@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateRightsOfferingCalculatorInputs, validateRightsOfferingCalculatorBusinessRules } from './validation';
 
-export const RightsOfferingCalculatorCalculator: Calculator: Calculator = {
-  id: 'rights-offering-calculator-calculator',
+export const RightsOfferingCalculator: Calculator = {
+  id: 'RightsOfferingCalculator-calculator',
   title: 'Rights Offering Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

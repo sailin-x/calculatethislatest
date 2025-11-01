@@ -1,4 +1,4 @@
-import { addiction-rehab-cost-financing-calculatorInputs, addiction-rehab-cost-financing-calculatorMetrics, addiction-rehab-cost-financing-calculatorAnalysis } from './types';
+import { AddictionRehabCost-financing-calculatorInputs, AddictionRehabCost-financing-calculatorMetrics, AddictionRehabCost-financing-calculatorAnalysis } from './types';
 
 // Addiction Rehab Cost & Financing Calculator - Business calculations
 export function calculateNetPresentValue(cashFlows: number[], discountRate: number): number {
@@ -11,7 +11,7 @@ export function calculateROI(initialInvestment: number, finalValue: number): num
  return ((finalValue - initialInvestment) / initialInvestment) * 100;
 }
 
-export function calculateResult(inputs: addiction-rehab-cost-financing-calculatorInputs): number {
+export function calculateResult(inputs: AddictionRehabCost-financing-calculatorInputs): number {
  // Business calculation logic with real math
  const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
  if (numericValues.length >= 2) {
@@ -24,7 +24,7 @@ export function calculateResult(inputs: addiction-rehab-cost-financing-calculato
  return calculateNetPresentValue(numericValues, 10); // 10% discount rate
 }
 
-export function generateAnalysis(inputs: addiction-rehab-cost-financing-calculatorInputs, metrics: addiction-rehab-cost-financing-calculatorMetrics): addiction-rehab-cost-financing-calculatorAnalysis {
+export function generateAnalysis(inputs: AddictionRehabCost-financing-calculatorInputs, metrics: AddictionRehabCost-financing-calculatorMetrics): AddictionRehabCost-financing-calculatorAnalysis {
  const result = metrics.result;
  let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
  if (Math.abs(result) > 100000) riskLevel = 'High';

@@ -1,5 +1,5 @@
-export { municipalbondcalculatorCalculator } from './municipalbondcalculatorCalculator';
-export { registermunicipalbondcalculatorCalculator } from './register';
+export { municipalbondcalculator } from './municipalbondcalculator';
+export { registermunicipalbondcalculator } from './register';
 export * from './types';
 export * from './formulas';
 export * from './validation';

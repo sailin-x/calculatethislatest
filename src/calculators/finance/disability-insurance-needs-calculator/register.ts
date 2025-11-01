@@ -1,3 +1,3 @@
-import { DisabilityInsuranceNeedsCalculatorCalculator } from './DisabilityInsuranceNeedsCalculatorCalculator';
+import { DisabilityInsuranceNeedsCalculator } from './DisabilityInsuranceNeedsCalculator';
 
-export { DisabilityInsuranceNeedsCalculatorCalculator };
+export { DisabilityInsuranceNeedsCalculator };

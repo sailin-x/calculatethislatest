@@ -41,7 +41,7 @@ export function calculateResult(inputs: PricetoEarningsCalculatorInputs): number
 export function generateAnalysis(inputs: PricetoEarningsCalculatorInputs, metrics: PricetoEarningsCalculatorMetrics): PricetoEarningsCalculatorAnalysis {
   const peRatio = metrics.result;
 
-  // Investment-portfolio-specific risk assessment: Higher P/E indicates higher valuation risk (potential overpayment)
+  // InvestmentPortfolioSpecific risk assessment: Higher P/E indicates higher valuation risk (potential overpayment)
   // Lower P/E may signal undervaluation but could reflect underlying risks (e.g., declining earnings)
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Medium';
   if (peRatio < 10) {

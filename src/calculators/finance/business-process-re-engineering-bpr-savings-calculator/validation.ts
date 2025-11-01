@@ -1,11 +1,11 @@
 import { ValidationResult } from '../../lib/errors';
-import { businessprocessreengineeringbprsavingscalculatorCalculatorInputs } from './types';
+import { businessprocessreengineeringbprsavingscalculatorInputs } from './types';
 
 /**
  * Validate business process re engineering bpr savings calculator calculator inputs
  */
-export function validatebusinessprocessreengineeringbprsavingscalculatorCalculatorInputs(
-  inputs: businessprocessreengineeringbprsavingscalculatorCalculatorInputs
+export function validatebusinessprocessreengineeringbprsavingscalculatorInputs(
+  inputs: businessprocessreengineeringbprsavingscalculatorInputs
 ): ValidationResult {
   const errors: string[] = [];
 

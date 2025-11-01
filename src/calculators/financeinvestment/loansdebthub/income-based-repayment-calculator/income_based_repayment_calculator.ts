@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { income_based_repayment_calculatorInputs, income_based_repayment_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const income_based_repayment_calculatorCalculator: Calculator = {
-  id: 'income-based-repayment-calculator',
+export const IncomeBasedRepayment-calculator: Calculator = {
+  id: 'IncomeBasedRepayment-calculator',
   title: 'Income Based Repayment Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'loansdebthub',

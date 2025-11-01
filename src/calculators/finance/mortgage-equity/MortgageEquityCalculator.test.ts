@@ -6,7 +6,7 @@ describe('Mortgage Equity Calculator', () => {
   const mockInputs = {
     homeValue: 500000,
     originalPurchasePrice: 400000,
-    purchaseDate: '2020-01-15',
+    purchaseDate: '20200115',
     originalLoanAmount: 320000,
     currentLoanBalance: 280000,
     interestRate: 4.5,
@@ -108,7 +108,7 @@ describe('Mortgage Equity Calculator', () => {
     });
 
     it('should reject invalid purchase date', () => {
-      const invalidInputs = { ...mockInputs, purchaseDate: '2025-01-15' };
+      const invalidInputs = { ...mockInputs, purchaseDate: '20250115' };
       const validationResults = validateAllMortgageEquityInputs(invalidInputs);
       
       const purchaseDateValidation = validationResults.find(result => 

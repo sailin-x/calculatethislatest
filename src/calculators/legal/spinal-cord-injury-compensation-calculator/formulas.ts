@@ -1,13 +1,13 @@
-import { spinal-cord-injury-compensation-calculatorInputs, spinal-cord-injury-compensation-calculatorMetrics, spinal-cord-injury-compensation-calculatorAnalysis } from './types';
+import { SpinalCordInjury-compensation-calculatorInputs, SpinalCordInjury-compensation-calculatorMetrics, SpinalCordInjury-compensation-calculatorAnalysis } from './types';
 
 // Spinal Cord Injury Compensation Calculator - Legal calculations
-export function calculateResult(inputs: spinal-cord-injury-compensation-calculatorInputs): number {
+export function calculateResult(inputs: SpinalCordInjury-compensation-calculatorInputs): number {
   // Legal calculation logic
   const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
   return numericValues.reduce((sum, val) => sum + val, 0) || 0;
 }
 
-export function generateAnalysis(inputs: spinal-cord-injury-compensation-calculatorInputs, metrics: spinal-cord-injury-compensation-calculatorMetrics): spinal-cord-injury-compensation-calculatorAnalysis {
+export function generateAnalysis(inputs: SpinalCordInjury-compensation-calculatorInputs, metrics: SpinalCordInjury-compensation-calculatorMetrics): SpinalCordInjury-compensation-calculatorAnalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (Math.abs(result) > 100000) riskLevel = 'High';

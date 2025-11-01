@@ -1,4 +1,4 @@
-import { mass-tort-settlement-calculatorInputs, mass-tort-settlement-calculatorMetrics, mass-tort-settlement-calculatorAnalysis } from './types';
+import { MassTortSettlement-calculatorInputs, MassTortSettlement-calculatorMetrics, MassTortSettlement-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: mass-tort-settlement-calculatorInputs): number {
+export function calculateResult(inputs: MassTortSettlement-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: mass-tort-settlement-calculatorInputs): 
   }
 }
 
-export function generateAnalysis(inputs: mass-tort-settlement-calculatorInputs, metrics: mass-tort-settlement-calculatorMetrics): mass-tort-settlement-calculatorAnalysis {
+export function generateAnalysis(inputs: MassTortSettlement-calculatorInputs, metrics: MassTortSettlement-calculatorMetrics): MassTortSettlement-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

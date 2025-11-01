@@ -1,4 +1,4 @@
-import { churn-rate-calculatorInputs, churn-rate-calculatorMetrics, churn-rate-calculatorAnalysis } from './types';
+import { ChurnRateCalculatorinputs, ChurnRateCalculatormetrics, ChurnRateCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: churn-rate-calculatorInputs): number {
+export function calculateResult(inputs: ChurnRateCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: churn-rate-calculatorInputs): number {
   }
 }
 
-export function generateAnalysis(inputs: churn-rate-calculatorInputs, metrics: churn-rate-calculatorMetrics): churn-rate-calculatorAnalysis {
+export function generateAnalysis(inputs: ChurnRateCalculatorinputs, metrics: ChurnRateCalculatormetrics): ChurnRateCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

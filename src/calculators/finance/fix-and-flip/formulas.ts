@@ -1,4 +1,4 @@
-import { fix-and-flipInputs, fix-and-flipMetrics, fix-and-flipAnalysis } from './types';
+import { FixAndFlipinputs, FixAndFlipmetrics, FixAndFlipanalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: fix-and-flipInputs): number {
+export function calculateResult(inputs: FixAndFlipinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: fix-and-flipInputs): number {
   }
 }
 
-export function generateAnalysis(inputs: fix-and-flipInputs, metrics: fix-and-flipMetrics): fix-and-flipAnalysis {
+export function generateAnalysis(inputs: FixAndFlipinputs, metrics: FixAndFlipmetrics): FixAndFlipanalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

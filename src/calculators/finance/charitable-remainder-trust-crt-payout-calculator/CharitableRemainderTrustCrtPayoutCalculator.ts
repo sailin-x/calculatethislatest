@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateCharitableRemainderTrustCrtPayoutCalculatorInputs, validateCharitableRemainderTrustCrtPayoutCalculatorBusinessRules } from './validation';
 
-export const CharitableRemainderTrustCrtPayoutCalculatorCalculator: Calculator: Calculator = {
-  id: 'charitable-remainder-trust-crt-payout-calculator-calculator',
+export const CharitableRemainderTrustCrtPayoutCalculator: Calculator = {
+  id: 'CharitableRemainderTrust-CrtPayoutCalculator-calculator',
   title: 'Charitable Remainder Trust (CRT) Payout Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

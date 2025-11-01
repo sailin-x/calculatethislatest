@@ -1,4 +1,4 @@
-import { contract-breach-calculatorInputs, contract-breach-calculatorMetrics, contract-breach-calculatorAnalysis } from './types';
+import { ContractBreachCalculatorinputs, ContractBreachCalculatormetrics, ContractBreachCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: contract-breach-calculatorInputs): number {
+export function calculateResult(inputs: ContractBreachCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: contract-breach-calculatorInputs): numbe
   }
 }
 
-export function generateAnalysis(inputs: contract-breach-calculatorInputs, metrics: contract-breach-calculatorMetrics): contract-breach-calculatorAnalysis {
+export function generateAnalysis(inputs: ContractBreachCalculatorinputs, metrics: ContractBreachCalculatormetrics): ContractBreachCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

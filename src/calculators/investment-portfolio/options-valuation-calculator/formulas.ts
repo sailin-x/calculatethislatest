@@ -119,9 +119,9 @@ export function generateAnalysis(
     // Theoretical mispricing (shouldn't happen with Black-Scholes, but flag)
     recommendation = 'Option appears underpriced relative to intrinsic value; consider arbitrage opportunities.';
   } else if (moneyness > 1.05 && inputs.optionType === 'call') {
-    recommendation = `Call option is out-of-the-money with ${timeValue.toFixed(2)} time value. Suitable for bullish strategies if volatility increases.`;
+    recommendation = `Call option is OutOfThe-money with ${timeValue.toFixed(2)} time value. Suitable for bullish strategies if volatility increases.`;
   } else if (moneyness < 0.95 && inputs.optionType === 'put') {
-    recommendation = `Put option is out-of-the-money with ${timeValue.toFixed(2)} time value. Suitable for bearish strategies if volatility increases.`;
+    recommendation = `Put option is OutOfThe-money with ${timeValue.toFixed(2)} time value. Suitable for bearish strategies if volatility increases.`;
   } else {
     recommendation = `Option priced at ${result.toFixed(2)}, with ${timeValue.toFixed(2)} time value. Evaluate Greeks for delta-neutral hedging.`;
   }

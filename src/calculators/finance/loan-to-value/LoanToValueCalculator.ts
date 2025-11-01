@@ -2,11 +2,11 @@ import { Calculator } from '../../types/calculator';
 import { LoanToValueInputs, LoanToValueOutputs } from './types';
 
 export const LoanToValueCalculator: Calculator = {
-  id: 'loan-to-value-calculator',
-  title: 'Loan-to-Value (LTV) Ratio Calculator',
+  id: 'LoanToValue-calculator',
+  title: 'LoanToValue (LTV) Ratio Calculator',
   category: 'finance',
   subcategory: 'Mortgage & Real Estate',
-  description: 'Calculate loan-to-value ratios, assess lending risk, and analyze equity positions for mortgage and real estate loans',
+  description: 'Calculate LoanToValue ratios, assess lending risk, and analyze equity positions for mortgage and real estate loans',
   usageInstructions: [
     'Enter the loan amount and property value',
     'Select the loan type and input additional property details',
@@ -66,9 +66,9 @@ export const LoanToValueCalculator: Calculator = {
     { id: 'discountRate', label: 'Discount Rate (%)', type: 'percentage', required: false, placeholder: '8', tooltip: 'Discount rate for analysis' }
   ],
   outputs: [
-    { id: 'loanToValueRatio', label: 'LTV Ratio', type: 'percentage', explanation: 'Loan-to-value ratio percentage' },
-    { id: 'combinedLtvRatio', label: 'Combined LTV', type: 'percentage', explanation: 'Combined loan-to-value ratio' },
-    { id: 'effectiveLtvRatio', label: 'Effective LTV', type: 'percentage', explanation: 'Effective loan-to-value ratio' },
+    { id: 'loanToValueRatio', label: 'LTV Ratio', type: 'percentage', explanation: 'LoanToValue ratio percentage' },
+    { id: 'combinedLtvRatio', label: 'Combined LTV', type: 'percentage', explanation: 'Combined LoanToValue ratio' },
+    { id: 'effectiveLtvRatio', label: 'Effective LTV', type: 'percentage', explanation: 'Effective LoanToValue ratio' },
     { id: 'equityPosition', label: 'Equity Position', type: 'currency', explanation: 'Current equity in property' },
     { id: 'equityPercentage', label: 'Equity Percentage', type: 'percentage', explanation: 'Equity as percentage of property value' },
     { id: 'riskScore', label: 'Risk Score', type: 'number', explanation: 'Overall risk assessment (0-100)' },

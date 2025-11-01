@@ -1,4 +1,4 @@
-import { airline-route-profitability-calculatorInputs, airline-route-profitability-calculatorMetrics, airline-route-profitability-calculatorAnalysis } from './types';
+import { AirlineRouteProfitability-calculatorInputs, AirlineRouteProfitability-calculatorMetrics, AirlineRouteProfitability-calculatorAnalysis } from './types';
 
 // Airline Route Profitability Calculator - Business calculations
 export function calculateNetPresentValue(cashFlows: number[], discountRate: number): number {
@@ -11,7 +11,7 @@ export function calculateROI(initialInvestment: number, finalValue: number): num
  return ((finalValue - initialInvestment) / initialInvestment) * 100;
 }
 
-export function calculateResult(inputs: airline-route-profitability-calculatorInputs): number {
+export function calculateResult(inputs: AirlineRouteProfitability-calculatorInputs): number {
  // Business calculation logic with real math
  const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
  if (numericValues.length >= 2) {
@@ -24,7 +24,7 @@ export function calculateResult(inputs: airline-route-profitability-calculatorIn
  return calculateNetPresentValue(numericValues, 10); // 10% discount rate
 }
 
-export function generateAnalysis(inputs: airline-route-profitability-calculatorInputs, metrics: airline-route-profitability-calculatorMetrics): airline-route-profitability-calculatorAnalysis {
+export function generateAnalysis(inputs: AirlineRouteProfitability-calculatorInputs, metrics: AirlineRouteProfitability-calculatorMetrics): AirlineRouteProfitability-calculatorAnalysis {
  const result = metrics.result;
  let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
  if (Math.abs(result) > 100000) riskLevel = 'High';

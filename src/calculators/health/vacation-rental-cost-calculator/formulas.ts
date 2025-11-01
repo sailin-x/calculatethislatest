@@ -1,4 +1,4 @@
-import { vacation-rental-cost-calculatorInputs, vacation-rental-cost-calculatorMetrics, vacation-rental-cost-calculatorAnalysis } from './types';
+import { VacationRentalCost-calculatorInputs, VacationRentalCost-calculatorMetrics, VacationRentalCost-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: vacation-rental-cost-calculatorInputs): number {
+export function calculateResult(inputs: VacationRentalCost-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: vacation-rental-cost-calculatorInputs): 
   }
 }
 
-export function generateAnalysis(inputs: vacation-rental-cost-calculatorInputs, metrics: vacation-rental-cost-calculatorMetrics): vacation-rental-cost-calculatorAnalysis {
+export function generateAnalysis(inputs: VacationRentalCost-calculatorInputs, metrics: VacationRentalCost-calculatorMetrics): VacationRentalCost-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

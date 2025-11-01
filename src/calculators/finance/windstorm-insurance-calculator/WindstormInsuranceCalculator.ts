@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateWindstormInsuranceCalculatorInputs, validateWindstormInsuranceCalculatorBusinessRules } from './validation';
 
-export const WindstormInsuranceCalculatorCalculator: Calculator: Calculator = {
-  id: 'windstorm-insurance-calculator-calculator',
+export const WindstormInsuranceCalculator: Calculator = {
+  id: 'WindstormInsuranceCalculator-calculator',
   title: 'Windstorm Insurance Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

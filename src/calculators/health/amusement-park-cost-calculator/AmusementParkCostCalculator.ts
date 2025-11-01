@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateAmusementParkCostCalculatorInputs } from './validation';
 
 export const AmusementParkCostCalculator: Calculator = {
-  id: 'amusement-park-cost-calculator',
+  id: 'AmusementParkCost-calculator',
   title: 'Amusement Park Cost Calculator',
   category: 'health',
   subcategory: 'General',

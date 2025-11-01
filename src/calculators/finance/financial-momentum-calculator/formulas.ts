@@ -1,4 +1,4 @@
-import { financial-momentum-calculatorInputs, financial-momentum-calculatorMetrics, financial-momentum-calculatorAnalysis } from './types';
+import { FinancialMomentumCalculatorinputs, FinancialMomentumCalculatormetrics, FinancialMomentumCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: financial-momentum-calculatorInputs): number {
+export function calculateResult(inputs: FinancialMomentumCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: financial-momentum-calculatorInputs): nu
   }
 }
 
-export function generateAnalysis(inputs: financial-momentum-calculatorInputs, metrics: financial-momentum-calculatorMetrics): financial-momentum-calculatorAnalysis {
+export function generateAnalysis(inputs: FinancialMomentumCalculatorinputs, metrics: FinancialMomentumCalculatormetrics): FinancialMomentumCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

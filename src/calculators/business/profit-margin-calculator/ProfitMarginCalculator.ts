@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateProfitMarginCalculatorInputs, validateProfitMarginCalculatorBusinessRules } from './validation';
 
-export const ProfitMarginCalculatorCalculator: Calculator: Calculator = {
-  id: 'profit-margin-calculator-calculator',
+export const ProfitMarginCalculator: Calculator = {
+  id: 'ProfitMarginCalculator-calculator',
   title: 'Profit Margin Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

@@ -1,3 +1,3 @@
-import { MaximumDrawdownCalculatorCalculator } from './MaximumDrawdownCalculatorCalculator';
+import { MaximumDrawdownCalculator } from './MaximumDrawdownCalculator';
 
-export { MaximumDrawdownCalculatorCalculator };
+export { MaximumDrawdownCalculator };

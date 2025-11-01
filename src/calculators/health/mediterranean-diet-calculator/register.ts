@@ -1,3 +1,3 @@
-import { MediterraneanDietCalculatorCalculator } from './MediterraneanDietCalculatorCalculator';
+import { MediterraneanDietCalculator } from './MediterraneanDietCalculator';
 
-export { MediterraneanDietCalculatorCalculator };
+export { MediterraneanDietCalculator };

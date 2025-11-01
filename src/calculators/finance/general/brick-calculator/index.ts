@@ -1,4 +1,4 @@
-export { brick_calculatorCalculator } from './brick_calculator';
+export { brick_calculator } from './brick_calculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

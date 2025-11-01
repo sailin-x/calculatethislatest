@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateCustomerAcquisitionCostCacCalculatorInputs, validateCustomerAcquisitionCostCacCalculatorBusinessRules } from './validation';
 
-export const CustomerAcquisitionCostCacCalculatorCalculator: Calculator: Calculator = {
-  id: 'customer-acquisition-cost-cac-calculator-calculator',
+export const CustomerAcquisitionCostCacCalculator: Calculator = {
+  id: 'CustomerAcquisitionCost-CacCalculatorCalculator',
   title: 'Customer Acquisition Cost (CAC) Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

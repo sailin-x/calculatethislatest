@@ -1,3 +1,3 @@
-import { MarketCapCalculatorCalculator } from './MarketCapCalculatorCalculator';
+import { MarketCapCalculator } from './MarketCapCalculator';
 
-export { MarketCapCalculatorCalculator };
+export { MarketCapCalculator };

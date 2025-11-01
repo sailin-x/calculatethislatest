@@ -1,3 +1,3 @@
-import { MortgageEquityCalculatorCalculator } from './MortgageEquityCalculatorCalculator';
+import { MortgageEquityCalculator } from './MortgageEquityCalculator';
 
-export { MortgageEquityCalculatorCalculator };
+export { MortgageEquityCalculator };

@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateAffiliateMarketingRoiCalculatorInputs, validateAffiliateMarketingRoiCalculatorBusinessRules } from './validation';
 
-export const AffiliateMarketingRoiCalculatorCalculator: Calculator: Calculator = {
-  id: 'affiliate-marketing-roi-calculator-calculator',
+export const AffiliateMarketingRoiCalculator: Calculator = {
+  id: 'AffiliateMarketingRoi-calculator-calculator',
   title: 'Affiliate Marketing ROI Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

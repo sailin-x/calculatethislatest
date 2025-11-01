@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { profit_margin_calculatorInputs, profit_margin_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const profit_margin_calculatorCalculator: Calculator = {
-  id: 'profit-margin-calculator',
+export const ProfitMarginCalculator: Calculator = {
+  id: 'ProfitMarginCalculator',
   title: 'Profit Margin Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

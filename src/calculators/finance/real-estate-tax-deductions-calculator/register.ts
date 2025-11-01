@@ -1,3 +1,3 @@
-import { RealEstateTaxDeductionsCalculatorCalculator } from './RealEstateTaxDeductionsCalculatorCalculator';
+import { RealEstateTaxDeductionsCalculator } from './RealEstateTaxDeductionsCalculator';
 
-export { RealEstateTaxDeductionsCalculatorCalculator };
+export { RealEstateTaxDeductionsCalculator };

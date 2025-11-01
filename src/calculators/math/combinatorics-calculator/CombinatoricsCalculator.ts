@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateCombinatoricsCalculatorInputs, validateCombinatoricsCalculatorBusinessRules } from './validation';
 
-export const CombinatoricsCalculatorCalculator: Calculator: Calculator = {
-  id: 'combinatorics-calculator-calculator',
+export const CombinatoricsCalculator: Calculator = {
+  id: 'CombinatoricsCalculatorCalculator',
   title: 'Combinatorics Calculator Calculator',
   math: 'math', // e.g., 'finance', 'math', 'health', 'business'
   submath: 'Submath Name',

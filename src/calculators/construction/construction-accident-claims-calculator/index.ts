@@ -1,4 +1,4 @@
-export { ConstructionAccidentClaimsCalculatorCalculator } from './ConstructionAccidentClaimsCalculatorCalculator';
+export { ConstructionAccidentClaimsCalculator } from './ConstructionAccidentClaimsCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

@@ -10,7 +10,7 @@ import {
 import { validateBurnMechanismCalculatorInputs } from './validation';
 
 export const BurnMechanismCalculator: Calculator = {
-  id: 'burn-mechanism-calculator',
+  id: 'BurnMechanismCalculator',
   title: 'Burn Mechanism Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

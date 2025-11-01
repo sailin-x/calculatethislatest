@@ -1,3 +1,3 @@
-import { AssetbasedLendingCalculatorCalculator } from './AssetbasedLendingCalculatorCalculator';
+import { AssetbasedLendingCalculator } from './AssetbasedLendingCalculator';
 
-export { AssetbasedLendingCalculatorCalculator };
+export { AssetbasedLendingCalculator };

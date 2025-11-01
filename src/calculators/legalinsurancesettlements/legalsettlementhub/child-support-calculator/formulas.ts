@@ -1,4 +1,4 @@
-import { child-support-calculatorInputs, child-support-calculatorMetrics, child-support-calculatorAnalysis } from './types';
+import { ChildSupportCalculatorinputs, ChildSupportCalculatormetrics, ChildSupportCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: child-support-calculatorInputs): number {
+export function calculateResult(inputs: ChildSupportCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: child-support-calculatorInputs): number 
   }
 }
 
-export function generateAnalysis(inputs: child-support-calculatorInputs, metrics: child-support-calculatorMetrics): child-support-calculatorAnalysis {
+export function generateAnalysis(inputs: ChildSupportCalculatorinputs, metrics: ChildSupportCalculatormetrics): ChildSupportCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

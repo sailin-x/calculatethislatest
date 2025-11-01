@@ -9,7 +9,7 @@ import {
 import { validateSuretyBondCalculatorInputs } from './validation';
 
 export const SuretyBondCalculator: Calculator = {
-  id: 'surety-bond-calculator',
+  id: 'SuretyBondCalculator',
   title: 'Surety Bond Calculator',
   category: 'legal',
   subcategory: 'Settlement Analysis',

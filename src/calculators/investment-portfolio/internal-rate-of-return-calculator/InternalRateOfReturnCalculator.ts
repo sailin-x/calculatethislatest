@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateInternalRateOfReturnCalculatorInputs, validateInternalRateOfReturnCalculatorBusinessRules } from './validation';
 
-export const InternalRateOfReturnCalculatorCalculator: Calculator: Calculator = {
-  id: 'internal-rate-of-return-calculator-calculator',
+export const InternalRateOfReturnCalculator: Calculator = {
+  id: 'InternalRateOf-ReturnCalculatorCalculator',
   title: 'Internal Rate of Return Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

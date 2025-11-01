@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateCorporateComplianceCostbenefitAnalysisInputs, validateCorporateComplianceCostbenefitAnalysisBusinessRules } from './validation';
 
-export const CorporateComplianceCostbenefitAnalysisCalculator: Calculator: Calculator = {
-  id: 'corporate-compliance-cost-benefit-analysis-calculator',
+export const CorporateComplianceCostbenefitAnalysisCalculator: Calculator = {
+  id: 'CorporateComplianceCost-BenefitAnalysisCalculator',
   title: 'Corporate Compliance Cost-Benefit Analysis Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

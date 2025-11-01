@@ -1,4 +1,4 @@
-export { FlightCrewSchedulingCostCalculatorCalculator } from './FlightCrewSchedulingCostCalculatorCalculator';
+export { FlightCrewSchedulingCostCalculator } from './FlightCrewSchedulingCostCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

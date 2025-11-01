@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateTimeTrackingCostCalculatorInputs } from './validation';
 
 export const TimeTrackingCostCalculator: Calculator = {
-  id: 'time-tracking-cost-calculator',
+  id: 'TimeTrackingCost-calculator',
   title: 'Time Tracking Cost Calculator',
   category: 'health',
   subcategory: 'General',

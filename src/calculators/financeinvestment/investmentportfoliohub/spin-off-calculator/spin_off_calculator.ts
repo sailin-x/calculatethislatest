@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { spin_off_calculatorInputs, spin_off_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const spin_off_calculatorCalculator: Calculator = {
-  id: 'spin-off-calculator',
+export const SpinOffCalculator: Calculator = {
+  id: 'SpinOffCalculator',
   title: 'Spin Off Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'investmentportfoliohub',

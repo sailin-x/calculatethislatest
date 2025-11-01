@@ -10,7 +10,7 @@ import {
 import { validateLiquidationPriceCalculatorInputs } from './validation';
 
 export const LiquidationPriceCalculator: Calculator = {
-  id: 'liquidation-price-calculator',
+  id: 'LiquidationPriceCalculator',
   title: 'Liquidation Price Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

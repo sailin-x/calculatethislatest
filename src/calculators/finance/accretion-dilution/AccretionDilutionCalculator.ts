@@ -3,7 +3,7 @@ import { calculateAccretionDilution, generateAccretionDilutionAnalysis } from '.
 import { validateAccretionDilutionInputs } from './validation';
 
 export const AccretionDilutionCalculator: Calculator = {
-  id: 'accretion-dilution-calculator',
+  id: 'AccretionDilutionCalculator',
   name: 'Accretion/Dilution (M&A) Model Calculator',
   category: 'finance',
   subcategory: 'investment',
@@ -192,7 +192,7 @@ export const AccretionDilutionCalculator: Calculator = {
     {
       name: 'Pro Forma Leverage',
       formula: 'Leverage = Total Debt / Pro Forma EBITDA',
-      description: 'Combined entity debt-to-EBITDA ratio'
+      description: 'Combined entity DebtToEbitda ratio'
     },
     {
       name: 'Transaction IRR',

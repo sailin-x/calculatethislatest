@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateCalorieCyclingCalculatorInputs, validateCalorieCyclingCalculatorBusinessRules } from './validation';
 
-export const CalorieCyclingCalculatorCalculator: Calculator: Calculator = {
-  id: 'calorie-cycling-calculator-calculator',
+export const CalorieCyclingCalculator: Calculator = {
+  id: 'CalorieCyclingCalculator-calculator',
   title: 'Calorie Cycling Calculator Calculator',
   health: 'health', // e.g., 'finance', 'math', 'health', 'business'
   subhealth: 'Subhealth Name',

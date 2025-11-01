@@ -1,4 +1,4 @@
-import { farmland-investment-roiInputs, farmland-investment-roiMetrics, farmland-investment-roiAnalysis } from './types';
+import { FarmlandInvestmentRoiinputs, FarmlandInvestmentRoimetrics, FarmlandInvestmentRoianalysis } from './types';
 
 
 // Investment Calculator - ROI and growth calculations
@@ -12,7 +12,7 @@ export function calculateCompoundInterest(principal: number, rate: number, years
   return principal * Math.pow(1 + ratePerPeriod, totalPeriods);
 }
 
-export function calculateResult(inputs: farmland-investment-roiInputs): number {
+export function calculateResult(inputs: FarmlandInvestmentRoiinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -36,7 +36,7 @@ export function calculateResult(inputs: farmland-investment-roiInputs): number {
   }
 }
 
-export function generateAnalysis(inputs: farmland-investment-roiInputs, metrics: farmland-investment-roiMetrics): farmland-investment-roiAnalysis {
+export function generateAnalysis(inputs: FarmlandInvestmentRoiinputs, metrics: FarmlandInvestmentRoimetrics): FarmlandInvestmentRoianalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

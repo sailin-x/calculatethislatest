@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { cloud_repatriation_savings_calculatorInputs, cloud_repatriation_savings_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const cloud_repatriation_savings_calculatorCalculator: Calculator = {
-  id: 'cloud-repatriation-savings-calculator',
+export const CloudRepatriationSavings-calculator: Calculator = {
+  id: 'CloudRepatriationSavings-calculator',
   title: 'Cloud Repatriation Savings Calculator Calculator',
   category: 'businessmarketingoperations',
   subcategory: 'businessoperationsfinancehub',

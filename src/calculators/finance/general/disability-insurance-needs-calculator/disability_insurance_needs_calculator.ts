@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { disability_insurance_needs_calculatorInputs, disability_insurance_needs_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const disability_insurance_needs_calculatorCalculator: Calculator = {
-  id: 'disability-insurance-needs-calculator',
+export const DisabilityInsuranceNeeds-calculator: Calculator = {
+  id: 'DisabilityInsuranceNeeds-calculator',
   title: 'Disability Insurance Needs Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

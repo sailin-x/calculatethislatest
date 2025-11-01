@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { inventory_turnover_calculatorInputs, inventory_turnover_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const inventory_turnover_calculatorCalculator: Calculator = {
-  id: 'inventory-turnover-calculator',
+export const InventoryTurnoverCalculator: Calculator = {
+  id: 'InventoryTurnoverCalculator',
   title: 'Inventory Turnover Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

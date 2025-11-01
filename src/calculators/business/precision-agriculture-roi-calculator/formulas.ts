@@ -1,4 +1,4 @@
-import { precision-agriculture-roi-calculatorInputs, precision-agriculture-roi-calculatorMetrics, precision-agriculture-roi-calculatorAnalysis } from './types';
+import { PrecisionAgricultureRoi-calculatorInputs, PrecisionAgricultureRoi-calculatorMetrics, PrecisionAgricultureRoi-calculatorAnalysis } from './types';
 
 // ROI Calculator
 export function calculateROI(netProfit: number, investment: number): number {
@@ -13,7 +13,7 @@ export function calculatePaybackPeriod(investment: number, annualCashFlow: numbe
   return investment / annualCashFlow;
 }
 
-export function calculateResult(inputs: precision-agriculture-roi-calculatorInputs): number {
+export function calculateResult(inputs: PrecisionAgricultureRoi-calculatorInputs): number {
   if ('netProfit' in inputs && 'investment' in inputs) {
     return calculateROI(inputs.netProfit, inputs.investment);
   }
@@ -24,7 +24,7 @@ export function calculateResult(inputs: precision-agriculture-roi-calculatorInpu
   return 0;
 }
 
-export function generateAnalysis(inputs: precision-agriculture-roi-calculatorInputs, metrics: precision-agriculture-roi-calculatorMetrics): precision-agriculture-roi-calculatorAnalysis {
+export function generateAnalysis(inputs: PrecisionAgricultureRoi-calculatorInputs, metrics: PrecisionAgricultureRoi-calculatorMetrics): PrecisionAgricultureRoi-calculatorAnalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (result < 10) riskLevel = 'High';

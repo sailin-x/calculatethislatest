@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { reit_dividend_calculatorInputs, reit_dividend_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const reit_dividend_calculatorCalculator: Calculator = {
-  id: 'reit-dividend-calculator',
+export const ReitDividendCalculator: Calculator = {
+  id: 'ReitDividendCalculator',
   title: 'REIT Dividend Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'investmentportfoliohub',

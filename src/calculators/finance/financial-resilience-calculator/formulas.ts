@@ -1,4 +1,4 @@
-import { financial-resilience-calculatorInputs, financial-resilience-calculatorMetrics, financial-resilience-calculatorAnalysis } from './types';
+import { FinancialResilienceCalculatorinputs, FinancialResilienceCalculatormetrics, FinancialResilienceCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: financial-resilience-calculatorInputs): number {
+export function calculateResult(inputs: FinancialResilienceCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: financial-resilience-calculatorInputs): 
   }
 }
 
-export function generateAnalysis(inputs: financial-resilience-calculatorInputs, metrics: financial-resilience-calculatorMetrics): financial-resilience-calculatorAnalysis {
+export function generateAnalysis(inputs: FinancialResilienceCalculatorinputs, metrics: FinancialResilienceCalculatormetrics): FinancialResilienceCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

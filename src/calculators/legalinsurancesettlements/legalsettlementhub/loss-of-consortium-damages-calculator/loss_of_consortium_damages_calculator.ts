@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { loss_of_consortium_damages_calculatorInputs, loss_of_consortium_damages_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const loss_of_consortium_damages_calculatorCalculator: Calculator = {
-  id: 'loss-of-consortium-damages-calculator',
+export const LossOfConsortium-damages-calculator: Calculator = {
+  id: 'LossOfConsortium-damages-calculator',
   title: 'Loss of Consortium Damages Calculator Calculator',
   category: 'legalinsurancesettlements',
   subcategory: 'legalsettlementhub',

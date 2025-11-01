@@ -1,4 +1,4 @@
-import { patent-filing-calculatorInputs, patent-filing-calculatorMetrics, patent-filing-calculatorAnalysis } from './types';
+import { PatentFilingCalculatorinputs, PatentFilingCalculatormetrics, PatentFilingCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: patent-filing-calculatorInputs): number {
+export function calculateResult(inputs: PatentFilingCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: patent-filing-calculatorInputs): number 
   }
 }
 
-export function generateAnalysis(inputs: patent-filing-calculatorInputs, metrics: patent-filing-calculatorMetrics): patent-filing-calculatorAnalysis {
+export function generateAnalysis(inputs: PatentFilingCalculatorinputs, metrics: PatentFilingCalculatormetrics): PatentFilingCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

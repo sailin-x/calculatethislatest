@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateDefinedBenefitPlanCalculatorInputs, validateDefinedBenefitPlanCalculatorBusinessRules } from './validation';
 
-export const DefinedBenefitPlanCalculatorCalculator: Calculator: Calculator = {
-  id: 'defined-benefit-plan-calculator-calculator',
+export const DefinedBenefitPlanCalculator: Calculator = {
+  id: 'DefinedBenefitPlan-calculator-calculator',
   title: 'Defined Benefit Plan Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

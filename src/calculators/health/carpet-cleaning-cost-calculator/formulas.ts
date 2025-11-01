@@ -1,4 +1,4 @@
-import { carpet-cleaning-cost-calculatorInputs, carpet-cleaning-cost-calculatorMetrics, carpet-cleaning-cost-calculatorAnalysis } from './types';
+import { CarpetCleaningCost-calculatorInputs, CarpetCleaningCost-calculatorMetrics, CarpetCleaningCost-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: carpet-cleaning-cost-calculatorInputs): number {
+export function calculateResult(inputs: CarpetCleaningCost-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: carpet-cleaning-cost-calculatorInputs): 
   }
 }
 
-export function generateAnalysis(inputs: carpet-cleaning-cost-calculatorInputs, metrics: carpet-cleaning-cost-calculatorMetrics): carpet-cleaning-cost-calculatorAnalysis {
+export function generateAnalysis(inputs: CarpetCleaningCost-calculatorInputs, metrics: CarpetCleaningCost-calculatorMetrics): CarpetCleaningCost-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

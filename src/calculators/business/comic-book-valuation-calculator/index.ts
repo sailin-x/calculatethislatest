@@ -1,4 +1,4 @@
-export { ComicBookValuationCalculatorCalculator } from './ComicBookValuationCalculatorCalculator';
+export { ComicBookValuationCalculator } from './ComicBookValuationCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

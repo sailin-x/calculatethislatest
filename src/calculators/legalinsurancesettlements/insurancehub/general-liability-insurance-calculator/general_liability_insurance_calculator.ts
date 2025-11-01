@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { general_liability_insurance_calculatorInputs, general_liability_insurance_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const general_liability_insurance_calculatorCalculator: Calculator = {
-  id: 'general-liability-insurance-calculator',
+export const GeneralLiabilityInsurance-calculator: Calculator = {
+  id: 'GeneralLiabilityInsurance-calculator',
   title: 'General Liability Insurance Calculator Calculator',
   category: 'legalinsurancesettlements',
   subcategory: 'insurancehub',

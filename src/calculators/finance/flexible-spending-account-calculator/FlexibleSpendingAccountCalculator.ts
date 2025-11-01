@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateFlexibleSpendingAccountCalculatorInputs, validateFlexibleSpendingAccountCalculatorBusinessRules } from './validation';
 
-export const FlexibleSpendingAccountCalculatorCalculator: Calculator: Calculator = {
-  id: 'flexible-spending-account-calculator-calculator',
+export const FlexibleSpendingAccountCalculator: Calculator = {
+  id: 'FlexibleSpendingAccount-calculator-calculator',
   title: 'Flexible Spending Account Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { film_distribution_waterfall_calculatorInputs, film_distribution_waterfall_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const film_distribution_waterfall_calculatorCalculator: Calculator = {
-  id: 'film-distribution-waterfall-calculator',
+export const FilmDistributionWaterfall-calculator: Calculator = {
+  id: 'FilmDistributionWaterfall-calculator',
   title: 'Film Distribution Waterfall Calculator Calculator',
   category: 'businessmarketingoperations',
   subcategory: 'marketingcreatorhub',

@@ -37,7 +37,7 @@ describe('GPU Mining Profitability Calculator', () => {
 
   describe('Calculator Definition', () => {
     it('should have correct calculator properties', () => {
-      expect(gpuMiningProfitabilityCalculator.id).toBe('gpu-mining-profitability');
+      expect(gpuMiningProfitabilityCalculator.id).toBe('GpuMiningProfitability');
       expect(gpuMiningProfitabilityCalculator.name).toBe('GPU Mining Profitability Calculator');
       expect(gpuMiningProfitabilityCalculator.category).toBe('technology');
       expect(gpuMiningProfitabilityCalculator.tags).toContain('mining');

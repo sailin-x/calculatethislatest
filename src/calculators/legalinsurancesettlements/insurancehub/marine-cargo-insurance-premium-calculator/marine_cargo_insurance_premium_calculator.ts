@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { marine_cargo_insurance_premium_calculatorInputs, marine_cargo_insurance_premium_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const marine_cargo_insurance_premium_calculatorCalculator: Calculator = {
-  id: 'marine-cargo-insurance-premium-calculator',
+export const MarineCargoInsurance-premium-calculator: Calculator = {
+  id: 'MarineCargoInsurance-premium-calculator',
   title: 'Marine Cargo Insurance Premium Calculator Calculator',
   category: 'legalinsurancesettlements',
   subcategory: 'insurancehub',

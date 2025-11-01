@@ -7,7 +7,7 @@ import { validateAllFarmlandInvestmentInputs } from './quickValidation';
 describe('Farmland Investment ROI Calculator', () => {
   describe('Calculator Structure', () => {
     it('should have correct basic properties', () => {
-      expect(FarmlandInvestmentROICalculator.id).toBe('farmland-investment-roi-calculator');
+      expect(FarmlandInvestmentROICalculator.id).toBe('FarmlandInvestmentRoi-calculator');
       expect(FarmlandInvestmentROICalculator.name).toBe('Farmland Investment ROI Calculator');
       expect(FarmlandInvestmentROICalculator.category).toBe('finance');
       expect(FarmlandInvestmentROICalculator.subcategory).toBe('investment');

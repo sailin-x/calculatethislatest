@@ -1,3 +1,3 @@
-import { DashDietCalculatorCalculator } from './DashDietCalculatorCalculator';
+import { DashDietCalculator } from './DashDietCalculator';
 
-export { DashDietCalculatorCalculator };
+export { DashDietCalculator };

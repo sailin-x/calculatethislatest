@@ -1,4 +1,4 @@
-import { garden-yield-calculatorInputs, garden-yield-calculatorMetrics, garden-yield-calculatorAnalysis } from './types';
+import { GardenYieldCalculatorinputs, GardenYieldCalculatormetrics, GardenYieldCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: garden-yield-calculatorInputs): number {
+export function calculateResult(inputs: GardenYieldCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: garden-yield-calculatorInputs): number {
   }
 }
 
-export function generateAnalysis(inputs: garden-yield-calculatorInputs, metrics: garden-yield-calculatorMetrics): garden-yield-calculatorAnalysis {
+export function generateAnalysis(inputs: GardenYieldCalculatorinputs, metrics: GardenYieldCalculatormetrics): GardenYieldCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

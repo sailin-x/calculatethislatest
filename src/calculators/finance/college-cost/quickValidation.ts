@@ -65,7 +65,7 @@ export function validateCollegeType(value: any, allInputs?: Record<string, any>)
   }
 
   if (value === 'public_out_state') {
-    return { isValid: true, error: 'Out-of-state tuition is typically higher' };
+    return { isValid: true, error: 'OutOfState tuition is typically higher' };
   }
 
   return { isValid: true };

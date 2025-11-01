@@ -1,4 +1,4 @@
-import { merger-arbitrage-spread-calculatorInputs, merger-arbitrage-spread-calculatorMetrics, merger-arbitrage-spread-calculatorAnalysis } from './types';
+import { MergerArbitrageSpread-calculatorInputs, MergerArbitrageSpread-calculatorMetrics, MergerArbitrageSpread-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: merger-arbitrage-spread-calculatorInputs): number {
+export function calculateResult(inputs: MergerArbitrageSpread-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: merger-arbitrage-spread-calculatorInputs
   }
 }
 
-export function generateAnalysis(inputs: merger-arbitrage-spread-calculatorInputs, metrics: merger-arbitrage-spread-calculatorMetrics): merger-arbitrage-spread-calculatorAnalysis {
+export function generateAnalysis(inputs: MergerArbitrageSpread-calculatorInputs, metrics: MergerArbitrageSpread-calculatorMetrics): MergerArbitrageSpread-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

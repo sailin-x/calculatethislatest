@@ -10,7 +10,7 @@ import {
 import { validateYieldFarmingCalculatorInputs } from './validation';
 
 export const YieldFarmingCalculator: Calculator = {
-  id: 'yield-farming-calculator',
+  id: 'YieldFarmingCalculator',
   title: 'Yield Farming Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

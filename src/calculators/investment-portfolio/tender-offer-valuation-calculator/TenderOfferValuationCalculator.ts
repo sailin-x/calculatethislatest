@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateTenderOfferValuationCalculatorInputs, validateTenderOfferValuationCalculatorBusinessRules } from './validation';
 
-export const TenderOfferValuationCalculatorCalculator: Calculator: Calculator = {
-  id: 'tender-offer-valuation-calculator-calculator',
+export const TenderOfferValuationCalculator: Calculator = {
+  id: 'TenderOfferValuation-calculator-calculator',
   title: 'Tender Offer Valuation Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

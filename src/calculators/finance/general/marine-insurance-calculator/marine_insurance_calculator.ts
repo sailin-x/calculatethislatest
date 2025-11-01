@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { marine_insurance_calculatorInputs, marine_insurance_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const marine_insurance_calculatorCalculator: Calculator = {
-  id: 'marine-insurance-calculator',
+export const MarineInsuranceCalculator: Calculator = {
+  id: 'MarineInsuranceCalculator',
   title: 'Marine Insurance Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

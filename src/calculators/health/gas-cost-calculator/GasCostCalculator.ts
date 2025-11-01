@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateGasCostCalculatorInputs } from './validation';
 
 export const GasCostCalculator: Calculator = {
-  id: 'gas-cost-calculator',
+  id: 'GasCostCalculator',
   title: 'Gas Cost Calculator',
   category: 'health',
   subcategory: 'General',

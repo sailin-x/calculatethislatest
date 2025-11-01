@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { trade_secret_misappropriation_damages_calculatorInputs, trade_secret_misappropriation_damages_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const trade_secret_misappropriation_damages_calculatorCalculator: Calculator = {
-  id: 'trade-secret-misappropriation-damages-calculator',
+export const TradeSecretMisappropriation-damages-calculator: Calculator = {
+  id: 'TradeSecretMisappropriation-damages-calculator',
   title: 'Trade Secret Misappropriation Damages Calculator Calculator',
   category: 'legalinsurancesettlements',
   subcategory: 'legalsettlementhub',

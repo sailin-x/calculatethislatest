@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { instagram_engagement_rate_calculatorInputs, instagram_engagement_rate_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const instagram_engagement_rate_calculatorCalculator: Calculator = {
-  id: 'instagram-engagement-rate-calculator',
+export const InstagramEngagementRate-calculator: Calculator = {
+  id: 'InstagramEngagementRate-calculator',
   title: 'Instagram Engagement Rate Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

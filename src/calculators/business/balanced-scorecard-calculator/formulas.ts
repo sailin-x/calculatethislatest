@@ -1,4 +1,4 @@
-import { balanced-scorecard-calculatorInputs, balanced-scorecard-calculatorMetrics, balanced-scorecard-calculatorAnalysis } from './types';
+import { BalancedScorecardCalculatorinputs, BalancedScorecardCalculatormetrics, BalancedScorecardCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: balanced-scorecard-calculatorInputs): number {
+export function calculateResult(inputs: BalancedScorecardCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: balanced-scorecard-calculatorInputs): nu
   }
 }
 
-export function generateAnalysis(inputs: balanced-scorecard-calculatorInputs, metrics: balanced-scorecard-calculatorMetrics): balanced-scorecard-calculatorAnalysis {
+export function generateAnalysis(inputs: BalancedScorecardCalculatorinputs, metrics: BalancedScorecardCalculatormetrics): BalancedScorecardCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

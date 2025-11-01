@@ -4,7 +4,7 @@ import { calculateResult, generateAnalysis } from './formulas';
 import { validateCommercialFleetInsurancePremiumEstimatorInputs } from './validation';
 
 export const CommercialFleetInsurancePremiumEstimator: Calculator = {
-  id: 'commercial-fleet-insurance-premium-estimator',
+  id: 'CommercialFleetInsurance-premium-estimator',
   title: 'Commercial Fleet Insurance Premium Estimator',
   category: 'insurance',
   subcategory: 'General',

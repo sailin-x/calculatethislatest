@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateUmbrellaInsuranceCalculatorInputs, validateUmbrellaInsuranceCalculatorBusinessRules } from './validation';
 
-export const UmbrellaInsuranceCalculatorCalculator: Calculator: Calculator = {
-  id: 'umbrella-insurance-calculator-calculator',
+export const UmbrellaInsuranceCalculator: Calculator = {
+  id: 'UmbrellaInsuranceCalculator-calculator',
   title: 'Umbrella Insurance Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

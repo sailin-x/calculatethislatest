@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateDistressedDebtCalculatorInputs, validateDistressedDebtCalculatorBusinessRules } from './validation';
 
-export const DistressedDebtCalculatorCalculator: Calculator: Calculator = {
-  id: 'distressed-debt-calculator-calculator',
+export const DistressedDebtCalculator: Calculator = {
+  id: 'DistressedDebtCalculator-calculator',
   title: 'Distressed Debt Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

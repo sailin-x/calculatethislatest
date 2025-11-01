@@ -1,4 +1,4 @@
-import { crypto-tax-harvesting-calculatorInputs, crypto-tax-harvesting-calculatorMetrics, crypto-tax-harvesting-calculatorAnalysis } from './types';
+import { CryptoTaxHarvesting-calculatorInputs, CryptoTaxHarvesting-calculatorMetrics, CryptoTaxHarvesting-calculatorAnalysis } from './types';
 
 
 // Tax Calculator - Progressive tax calculations
@@ -20,7 +20,7 @@ export function calculateEffectiveTaxRate(taxPaid: number, totalIncome: number):
   return (taxPaid / totalIncome) * 100;
 }
 
-export function calculateResult(inputs: crypto-tax-harvesting-calculatorInputs): number {
+export function calculateResult(inputs: CryptoTaxHarvesting-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -44,7 +44,7 @@ export function calculateResult(inputs: crypto-tax-harvesting-calculatorInputs):
   }
 }
 
-export function generateAnalysis(inputs: crypto-tax-harvesting-calculatorInputs, metrics: crypto-tax-harvesting-calculatorMetrics): crypto-tax-harvesting-calculatorAnalysis {
+export function generateAnalysis(inputs: CryptoTaxHarvesting-calculatorInputs, metrics: CryptoTaxHarvesting-calculatorMetrics): CryptoTaxHarvesting-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

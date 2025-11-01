@@ -1,4 +1,4 @@
-export { EmergencyFundCalculatorCalculator } from './EmergencyFundCalculatorCalculator';
+export { EmergencyFundCalculator } from './EmergencyFundCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

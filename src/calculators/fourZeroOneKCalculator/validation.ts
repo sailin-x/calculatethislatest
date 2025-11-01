@@ -1,6 +1,6 @@
-import { fourZeroOneKCalculatorInputs } from './types';
+import { Four01kCalculatorInputs } from './types';
 
-export function validateInputs(inputs: fourZeroOneKCalculatorInputs): { isValid: boolean; errors: string[] } {
+export function validateInputs(inputs: Four01kCalculatorInputs): { isValid: boolean; errors: string[] } {
   const errors: string[] = [];
 
   // Add validation logic specific to this calculator

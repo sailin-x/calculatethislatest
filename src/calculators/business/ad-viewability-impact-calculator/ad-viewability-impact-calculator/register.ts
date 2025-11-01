@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { ad-viewability-impact-calculatorCalculator } from './ad-viewability-impact-calculatorCalculator';
+import { AdViewabilityImpact-calculator } from './AdViewabilityImpact-calculator';
 
-export function registerad-viewability-impact-calculatorCalculator(): void {
-  calculatorRegistry.register(new ad-viewability-impact-calculatorCalculator());
+export function registerAdViewabilityImpact-calculator(): void {
+  calculatorRegistry.register(new AdViewabilityImpact-calculator());
 }

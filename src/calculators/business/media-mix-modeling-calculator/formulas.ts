@@ -1,4 +1,4 @@
-import { media-mix-modeling-calculatorInputs, media-mix-modeling-calculatorMetrics, media-mix-modeling-calculatorAnalysis } from './types';
+import { MediaMixModeling-calculatorInputs, MediaMixModeling-calculatorMetrics, MediaMixModeling-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: media-mix-modeling-calculatorInputs): number {
+export function calculateResult(inputs: MediaMixModeling-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: media-mix-modeling-calculatorInputs): nu
   }
 }
 
-export function generateAnalysis(inputs: media-mix-modeling-calculatorInputs, metrics: media-mix-modeling-calculatorMetrics): media-mix-modeling-calculatorAnalysis {
+export function generateAnalysis(inputs: MediaMixModeling-calculatorInputs, metrics: MediaMixModeling-calculatorMetrics): MediaMixModeling-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

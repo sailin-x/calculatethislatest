@@ -50,15 +50,15 @@ export function validateWeight(value: number, allInputs?: Record<string, any>): 
 }
 
 export function validatePolicyType(value: string, allInputs?: Record<string, any>): string | null {
-  if (value && !['level-term', 'decreasing-term', 'increasing-term', 'return-of-premium'].includes(value)) {
-    return 'Policy type must be one of: level-term, decreasing-term, increasing-term, return-of-premium';
+  if (value && !['level-term', 'decreasing-term', 'increasing-term', 'ReturnOfPremium'].includes(value)) {
+    return 'Policy type must be one of: level-term, decreasing-term, increasing-term, ReturnOfPremium';
   }
   return null;
 }
 
 export function validateRiders(value: string, allInputs?: Record<string, any>): string | null {
-  if (value && !['none', 'waiver-of-premium', 'accelerated-death-benefit', 'child-rider', 'spouse-rider', 'multiple'].includes(value)) {
-    return 'Riders must be one of: none, waiver-of-premium, accelerated-death-benefit, child-rider, spouse-rider, multiple';
+  if (value && !['none', 'WaiverOfPremium', 'AcceleratedDeathBenefit', 'child-rider', 'spouse-rider', 'multiple'].includes(value)) {
+    return 'Riders must be one of: none, WaiverOfPremium, AcceleratedDeathBenefit, child-rider, spouse-rider, multiple';
   }
   return null;
 }
@@ -125,8 +125,8 @@ export function validateHealthRating(value: string, allInputs?: Record<string, a
 }
 
 export function validateMedicalConditions(value: string, allInputs?: Record<string, any>): string | null {
-  if (value && !['none', 'diabetes', 'heart-disease', 'cancer', 'high-blood-pressure', 'multiple'].includes(value)) {
-    return 'Medical conditions must be one of: none, diabetes, heart-disease, cancer, high-blood-pressure, multiple';
+  if (value && !['none', 'diabetes', 'heart-disease', 'cancer', 'HighBloodPressure', 'multiple'].includes(value)) {
+    return 'Medical conditions must be one of: none, diabetes, heart-disease, cancer, HighBloodPressure, multiple';
   }
   return null;
 }
@@ -178,8 +178,8 @@ export function validateAnalysisType(value: string, allInputs?: Record<string, a
 }
 
 export function validateComparisonTerms(value: string, allInputs?: Record<string, any>): string | null {
-  if (value && !['10-20-30', '15-25', '20-30', 'custom'].includes(value)) {
-    return 'Comparison terms must be one of: 10-20-30, 15-25, 20-30, custom';
+  if (value && !['102030', '15-25', '20-30', 'custom'].includes(value)) {
+    return 'Comparison terms must be one of: 102030, 15-25, 20-30, custom';
   }
   return null;
 }
@@ -359,7 +359,7 @@ export function validateAllTermLifeInsuranceInputs(inputs: CalculatorInputs): { 
     warnings.push('Multiple riders will increase premium costs');
   }
 
-  if (inputs.policyType === 'return-of-premium') {
+  if (inputs.policyType === 'ReturnOfPremium') {
     warnings.push('Return of premium policies have significantly higher premiums');
   }
 

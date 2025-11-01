@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateSurgicalCenterCaseCostingCalculatorInputs, validateSurgicalCenterCaseCostingCalculatorBusinessRules } from './validation';
 
-export const SurgicalCenterCaseCostingCalculatorCalculator: Calculator: Calculator = {
-  id: 'surgical-center-case-costing-calculator-calculator',
+export const SurgicalCenterCaseCostingCalculator: Calculator = {
+  id: 'SurgicalCenterCase-CostingCalculatorCalculator',
   title: 'Surgical Center Case Costing Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

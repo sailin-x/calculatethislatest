@@ -1,4 +1,4 @@
-export { SidingCalculatorCalculator } from './SidingCalculatorCalculator';
+export { SidingCalculator } from './SidingCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

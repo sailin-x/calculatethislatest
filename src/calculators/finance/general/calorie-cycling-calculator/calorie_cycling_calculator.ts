@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { calorie_cycling_calculatorInputs, calorie_cycling_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const calorie_cycling_calculatorCalculator: Calculator = {
-  id: 'calorie-cycling-calculator',
+export const CalorieCyclingCalculator: Calculator = {
+  id: 'CalorieCyclingCalculator',
   title: 'Calorie Cycling Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

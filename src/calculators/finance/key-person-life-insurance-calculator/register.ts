@@ -1,3 +1,3 @@
-import { KeyPersonLifeInsuranceCalculatorCalculator } from './KeyPersonLifeInsuranceCalculatorCalculator';
+import { KeyPersonLifeInsuranceCalculator } from './KeyPersonLifeInsuranceCalculator';
 
-export { KeyPersonLifeInsuranceCalculatorCalculator };
+export { KeyPersonLifeInsuranceCalculator };

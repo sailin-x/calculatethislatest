@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateRoofingRepairCostCalculatorInputs } from './validation';
 
 export const RoofingRepairCostCalculator: Calculator = {
-  id: 'roofing-repair-cost-calculator',
+  id: 'RoofingRepairCost-calculator',
   title: 'Roofing Repair Cost Calculator',
   category: 'health',
   subcategory: 'General',

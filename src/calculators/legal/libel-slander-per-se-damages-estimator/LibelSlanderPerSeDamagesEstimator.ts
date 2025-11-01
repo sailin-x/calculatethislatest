@@ -9,7 +9,7 @@ import {
 import { validateLibelSlanderPerSeDamagesEstimatorInputs } from './validation';
 
 export const LibelSlanderPerSeDamagesEstimator: Calculator = {
-  id: 'libel-slander-per-se-damages-estimator',
+  id: 'LibelSlanderPer-SeDamagesEstimator',
   title: 'Libel/Slander Per Se Damages Estimator',
   category: 'legal',
   subcategory: 'Settlement Analysis',

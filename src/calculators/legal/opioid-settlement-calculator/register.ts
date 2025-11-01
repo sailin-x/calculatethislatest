@@ -1,3 +1,3 @@
-import { OpioidSettlementCalculatorCalculator } from './OpioidSettlementCalculatorCalculator';
+import { OpioidSettlementCalculator } from './OpioidSettlementCalculator';
 
-export { OpioidSettlementCalculatorCalculator };
+export { OpioidSettlementCalculator };

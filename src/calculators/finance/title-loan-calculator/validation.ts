@@ -1,11 +1,11 @@
 import { ValidationResult } from '../../lib/errors';
-import { titleloancalculatorCalculatorInputs } from './types';
+import { titleloancalculatorInputs } from './types';
 
 /**
  * Validate title loan calculator calculator inputs
  */
-export function validatetitleloancalculatorCalculatorInputs(
-  inputs: titleloancalculatorCalculatorInputs
+export function validatetitleloancalculatorInputs(
+  inputs: titleloancalculatorInputs
 ): ValidationResult {
   const errors: string[] = [];
 

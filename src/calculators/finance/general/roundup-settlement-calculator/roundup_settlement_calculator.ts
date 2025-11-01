@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { roundup_settlement_calculatorInputs, roundup_settlement_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const roundup_settlement_calculatorCalculator: Calculator = {
-  id: 'roundup-settlement-calculator',
+export const RoundupSettlementCalculator: Calculator = {
+  id: 'RoundupSettlementCalculator',
   title: 'Roundup Settlement Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

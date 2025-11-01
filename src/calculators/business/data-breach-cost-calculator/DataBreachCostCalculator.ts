@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateDataBreachCostCalculatorInputs, validateDataBreachCostCalculatorBusinessRules } from './validation';
 
-export const DataBreachCostCalculatorCalculator: Calculator: Calculator = {
-  id: 'data-breach-cost-calculator-calculator',
+export const DataBreachCostCalculator: Calculator = {
+  id: 'DataBreachCost-calculator-calculator',
   title: 'Data Breach Cost Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { dental_implant_roi_calculatorInputs, dental_implant_roi_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const dental_implant_roi_calculatorCalculator: Calculator = {
-  id: 'dental-implant-roi-calculator',
+export const DentalImplantRoi-calculator: Calculator = {
+  id: 'DentalImplantRoi-calculator',
   title: 'Dental Implant ROI Calculator Calculator',
   category: 'healthfitnessdiet',
   subcategory: 'healthfitnesshub',

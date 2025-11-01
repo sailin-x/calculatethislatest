@@ -1,4 +1,4 @@
-import { sponsorship-roi-calculatorInputs, sponsorship-roi-calculatorMetrics, sponsorship-roi-calculatorAnalysis } from './types';
+import { SponsorshipRoiCalculatorinputs, SponsorshipRoiCalculatormetrics, SponsorshipRoiCalculatoranalysis } from './types';
 
 // ROI Calculator
 export function calculateROI(netProfit: number, investment: number): number {
@@ -13,7 +13,7 @@ export function calculatePaybackPeriod(investment: number, annualCashFlow: numbe
   return investment / annualCashFlow;
 }
 
-export function calculateResult(inputs: sponsorship-roi-calculatorInputs): number {
+export function calculateResult(inputs: SponsorshipRoiCalculatorinputs): number {
   if ('netProfit' in inputs && 'investment' in inputs) {
     return calculateROI(inputs.netProfit, inputs.investment);
   }
@@ -24,7 +24,7 @@ export function calculateResult(inputs: sponsorship-roi-calculatorInputs): numbe
   return 0;
 }
 
-export function generateAnalysis(inputs: sponsorship-roi-calculatorInputs, metrics: sponsorship-roi-calculatorMetrics): sponsorship-roi-calculatorAnalysis {
+export function generateAnalysis(inputs: SponsorshipRoiCalculatorinputs, metrics: SponsorshipRoiCalculatormetrics): SponsorshipRoiCalculatoranalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (result < 10) riskLevel = 'High';

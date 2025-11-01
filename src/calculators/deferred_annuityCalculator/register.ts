@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { deferred_annuityCalculatorCalculator } from './deferred_annuityCalculatorCalculator';
+import { deferred_annuityCalculator } from './deferred_annuityCalculator';
 
-export function registerdeferred_annuityCalculatorCalculator(): void {
-  calculatorRegistry.register(new deferred_annuityCalculatorCalculator());
+export function registerdeferred_annuityCalculator(): void {
+  calculatorRegistry.register(new deferred_annuityCalculator());
 }

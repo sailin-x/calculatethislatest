@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { asbestos_settlement_calculatorInputs, asbestos_settlement_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const asbestos_settlement_calculatorCalculator: Calculator = {
-  id: 'asbestos-settlement-calculator',
+export const AsbestosSettlementCalculator: Calculator = {
+  id: 'AsbestosSettlementCalculator',
   title: 'Asbestos Settlement Calculator Calculator',
   category: 'legalinsurancesettlements',
   subcategory: 'legalsettlementhub',

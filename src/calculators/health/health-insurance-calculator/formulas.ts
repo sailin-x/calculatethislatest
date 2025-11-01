@@ -1,13 +1,13 @@
-import { health-insurance-calculatorInputs, health-insurance-calculatorMetrics, health-insurance-calculatorAnalysis } from './types';
+import { HealthInsuranceCalculatorinputs, HealthInsuranceCalculatormetrics, HealthInsuranceCalculatoranalysis } from './types';
 
 // Health Insurance Calculator - Health calculations
-export function calculateResult(inputs: health-insurance-calculatorInputs): number {
+export function calculateResult(inputs: HealthInsuranceCalculatorinputs): number {
   // Health calculation logic
   const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
   return numericValues.reduce((sum, val) => sum + val, 0) || 0;
 }
 
-export function generateAnalysis(inputs: health-insurance-calculatorInputs, metrics: health-insurance-calculatorMetrics): health-insurance-calculatorAnalysis {
+export function generateAnalysis(inputs: HealthInsuranceCalculatorinputs, metrics: HealthInsuranceCalculatormetrics): HealthInsuranceCalculatoranalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (Math.abs(result) > 1000) riskLevel = 'High';

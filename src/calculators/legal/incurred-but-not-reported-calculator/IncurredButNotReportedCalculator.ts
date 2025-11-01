@@ -9,7 +9,7 @@ import {
 import { validateIncurredButNotReportedCalculatorInputs } from './validation';
 
 export const IncurredButNotReportedCalculator: Calculator = {
-  id: 'incurred-but-not-reported-calculator',
+  id: 'IncurredButNot-reported-calculator',
   title: 'Incurred But Not Reported Calculator',
   category: 'legal',
   subcategory: 'Settlement Analysis',

@@ -22,7 +22,7 @@ export function generateAnalysis(
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Medium';
 
-  // Investment-portfolio-specific risk assessment for P/B ratio:
+  // InvestmentPortfolioSpecific risk assessment for P/B ratio:
   // - P/B < 1: Potentially undervalued, lower risk for value investors in a diversified portfolio
   // - 1 <= P/B < 3: Fairly valued, moderate risk depending on sector and growth prospects
   // - P/B >= 3: Potentially overvalued, higher risk of correction in portfolio holdings

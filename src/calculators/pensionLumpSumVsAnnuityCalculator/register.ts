@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { pensionLumpSumVsAnnuityCalculatorCalculator } from './pensionLumpSumVsAnnuityCalculatorCalculator';
+import { pensionLumpSumVsAnnuityCalculator } from './pensionLumpSumVsAnnuityCalculator';
 
-export function registerpensionLumpSumVsAnnuityCalculatorCalculator(): void {
-  calculatorRegistry.register(new pensionLumpSumVsAnnuityCalculatorCalculator());
+export function registerpensionLumpSumVsAnnuityCalculator(): void {
+  calculatorRegistry.register(new pensionLumpSumVsAnnuityCalculator());
 }

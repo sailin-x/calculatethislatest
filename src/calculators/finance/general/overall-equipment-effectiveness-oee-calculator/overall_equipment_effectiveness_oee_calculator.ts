@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { overall_equipment_effectiveness_oee_calculatorInputs, overall_equipment_effectiveness_oee_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const overall_equipment_effectiveness_oee_calculatorCalculator: Calculator = {
-  id: 'overall-equipment-effectiveness-oee-calculator',
+export const OverallEquipmentEffectiveness-oee-calculator: Calculator = {
+  id: 'OverallEquipmentEffectiveness-oee-calculator',
   title: 'Overall Equipment Effectiveness (OEE) Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

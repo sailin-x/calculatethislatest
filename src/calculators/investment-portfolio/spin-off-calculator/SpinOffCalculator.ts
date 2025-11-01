@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateSpinOffCalculatorInputs, validateSpinOffCalculatorBusinessRules } from './validation';
 
-export const SpinOffCalculatorCalculator: Calculator: Calculator = {
-  id: 'spin-off-calculator-calculator',
+export const SpinOffCalculator: Calculator = {
+  id: 'SpinOffCalculator-calculator',
   title: 'Spin Off Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

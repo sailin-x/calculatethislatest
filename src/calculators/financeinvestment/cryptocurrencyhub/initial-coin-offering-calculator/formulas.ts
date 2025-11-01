@@ -1,4 +1,4 @@
-import { initial-coin-offering-calculatorInputs, initial-coin-offering-calculatorMetrics, initial-coin-offering-calculatorAnalysis } from './types';
+import { InitialCoinOffering-calculatorInputs, InitialCoinOffering-calculatorMetrics, InitialCoinOffering-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: initial-coin-offering-calculatorInputs): number {
+export function calculateResult(inputs: InitialCoinOffering-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: initial-coin-offering-calculatorInputs):
   }
 }
 
-export function generateAnalysis(inputs: initial-coin-offering-calculatorInputs, metrics: initial-coin-offering-calculatorMetrics): initial-coin-offering-calculatorAnalysis {
+export function generateAnalysis(inputs: InitialCoinOffering-calculatorInputs, metrics: InitialCoinOffering-calculatorMetrics): InitialCoinOffering-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

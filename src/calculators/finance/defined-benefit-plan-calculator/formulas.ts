@@ -1,13 +1,13 @@
-import { defined-benefit-plan-calculatorInputs, defined-benefit-plan-calculatorMetrics, defined-benefit-plan-calculatorAnalysis } from './types';
+import { DefinedBenefitPlan-calculatorInputs, DefinedBenefitPlan-calculatorMetrics, DefinedBenefitPlan-calculatorAnalysis } from './types';
 
 // Defined Benefit Plan Calculator - Finance calculations
-export function calculateResult(inputs: defined-benefit-plan-calculatorInputs): number {
+export function calculateResult(inputs: DefinedBenefitPlan-calculatorInputs): number {
   // Financial calculation logic
   const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
   return numericValues.reduce((sum, val) => sum + val, 0) || 0;
 }
 
-export function generateAnalysis(inputs: defined-benefit-plan-calculatorInputs, metrics: defined-benefit-plan-calculatorMetrics): defined-benefit-plan-calculatorAnalysis {
+export function generateAnalysis(inputs: DefinedBenefitPlan-calculatorInputs, metrics: DefinedBenefitPlan-calculatorMetrics): DefinedBenefitPlan-calculatorAnalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (Math.abs(result) > 100000) riskLevel = 'High';

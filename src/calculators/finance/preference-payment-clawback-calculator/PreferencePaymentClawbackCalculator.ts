@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validatePreferencePaymentClawbackCalculatorInputs, validatePreferencePaymentClawbackCalculatorBusinessRules } from './validation';
 
-export const PreferencePaymentClawbackCalculatorCalculator: Calculator: Calculator = {
-  id: 'preference-payment-clawback-calculator-calculator',
+export const PreferencePaymentClawbackCalculator: Calculator = {
+  id: 'PreferencePaymentClawback-calculator-calculator',
   title: 'Preference Payment Clawback Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

@@ -1,3 +1,3 @@
-export * from './statisticsCalculatorCalculator';
+export * from './statisticsCalculator';
 export * from './register';
 export * from './types';

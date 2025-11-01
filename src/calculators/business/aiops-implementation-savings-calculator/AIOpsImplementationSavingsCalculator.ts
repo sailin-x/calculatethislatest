@@ -10,7 +10,7 @@ import {
 import { validateAiopsImplementationSavingsCalculatorInputs } from './validation';
 
 export const AiopsImplementationSavingsCalculator: Calculator = {
-  id: 'aiops-implementation-savings-calculator',
+  id: 'AiopsImplementationSavings-calculator',
   title: 'AIOps Implementation Savings Calculator',
   category: 'business',
   subcategory: 'Financial Planning',

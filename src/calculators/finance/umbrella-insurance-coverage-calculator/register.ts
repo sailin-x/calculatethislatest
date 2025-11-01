@@ -1,3 +1,3 @@
-import { UmbrellaInsuranceCoverageCalculatorCalculator } from './UmbrellaInsuranceCoverageCalculatorCalculator';
+import { UmbrellaInsuranceCoverageCalculator } from './UmbrellaInsuranceCoverageCalculator';
 
-export { UmbrellaInsuranceCoverageCalculatorCalculator };
+export { UmbrellaInsuranceCoverageCalculator };

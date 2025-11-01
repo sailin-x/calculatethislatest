@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateCarpetCalculatorInputs, validateCarpetCalculatorBusinessRules } from './validation';
 
-export const CarpetCalculatorCalculator: Calculator: Calculator = {
-  id: 'carpet-calculator-calculator',
+export const CarpetCalculator: Calculator = {
+  id: 'CarpetCalculatorCalculator',
   title: 'Carpet Calculator Calculator',
   lifestyle: 'lifestyle', // e.g., 'finance', 'math', 'health', 'business'
   sublifestyle: 'Sublifestyle Name',

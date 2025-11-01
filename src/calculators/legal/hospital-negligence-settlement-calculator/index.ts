@@ -1,4 +1,4 @@
-export { HospitalNegligenceSettlementCalculatorCalculator } from './HospitalNegligenceSettlementCalculatorCalculator';
+export { HospitalNegligenceSettlementCalculator } from './HospitalNegligenceSettlementCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

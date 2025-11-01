@@ -1,3 +1,3 @@
-import { MezzanineFinancingCalculatorCalculator } from './MezzanineFinancingCalculatorCalculator';
+import { MezzanineFinancingCalculator } from './MezzanineFinancingCalculator';
 
-export { MezzanineFinancingCalculatorCalculator };
+export { MezzanineFinancingCalculator };

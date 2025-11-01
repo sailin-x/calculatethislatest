@@ -1,5 +1,5 @@
-export { convertiblebondpricingcalculatorCalculator } from './convertiblebondpricingcalculatorCalculator';
-export { registerconvertiblebondpricingcalculatorCalculator } from './register';
+export { convertiblebondpricingcalculator } from './convertiblebondpricingcalculator';
+export { registerconvertiblebondpricingcalculator } from './register';
 export * from './types';
 export * from './formulas';
 export * from './validation';

@@ -3,7 +3,7 @@ import { calculateEscrowAnalysis, generateEscrowAnalysisReport } from './formula
 import { validateEscrowAnalysisInputs } from './validation';
 
 export const EscrowAnalysisCalculator: Calculator = {
-  id: 'escrow-analysis-calculator',
+  id: 'EscrowAnalysisCalculator',
   name: 'Escrow Analysis Calculator',
   category: 'finance',
   subcategory: 'mortgage',

@@ -1,4 +1,4 @@
-import { free-cash-flow-to-equity-fcfe-valuationInputs, free-cash-flow-to-equity-fcfe-valuationMetrics, free-cash-flow-to-equity-fcfe-valuationAnalysis } from './types';
+import { FreeCashFlow-ToEquityFcfe-valuationInputs, FreeCashFlow-ToEquityFcfe-valuationMetrics, FreeCashFlow-ToEquityFcfe-valuationAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: free-cash-flow-to-equity-fcfe-valuationInputs): number {
+export function calculateResult(inputs: FreeCashFlow-ToEquityFcfe-valuationInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: free-cash-flow-to-equity-fcfe-valuationI
   }
 }
 
-export function generateAnalysis(inputs: free-cash-flow-to-equity-fcfe-valuationInputs, metrics: free-cash-flow-to-equity-fcfe-valuationMetrics): free-cash-flow-to-equity-fcfe-valuationAnalysis {
+export function generateAnalysis(inputs: FreeCashFlow-ToEquityFcfe-valuationInputs, metrics: FreeCashFlow-ToEquityFcfe-valuationMetrics): FreeCashFlow-ToEquityFcfe-valuationAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

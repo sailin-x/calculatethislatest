@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { mezzanine_financingCalculatorCalculator } from './mezzanine_financingCalculatorCalculator';
+import { mezzanine_financingCalculator } from './mezzanine_financingCalculator';
 
-export function registermezzanine_financingCalculatorCalculator(): void {
-  calculatorRegistry.register(new mezzanine_financingCalculatorCalculator());
+export function registermezzanine_financingCalculator(): void {
+  calculatorRegistry.register(new mezzanine_financingCalculator());
 }

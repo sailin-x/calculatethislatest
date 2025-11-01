@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateFuturesCalculatorInputs, validateFuturesCalculatorBusinessRules } from './validation';
 
-export const FuturesCalculatorCalculator: Calculator: Calculator = {
-  id: 'futures-calculator-calculator',
+export const FuturesCalculator: Calculator = {
+  id: 'FuturesCalculatorCalculator',
   title: 'Futures Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

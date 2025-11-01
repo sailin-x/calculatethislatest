@@ -1,3 +1,3 @@
-import { ImmediateAnnuityPayoutCalculatorCalculator } from './ImmediateAnnuityPayoutCalculatorCalculator';
+import { ImmediateAnnuityPayoutCalculator } from './ImmediateAnnuityPayoutCalculator';
 
-export { ImmediateAnnuityPayoutCalculatorCalculator };
+export { ImmediateAnnuityPayoutCalculator };

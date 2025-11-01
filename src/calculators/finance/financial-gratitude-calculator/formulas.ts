@@ -1,4 +1,4 @@
-import { financial-gratitude-calculatorInputs, financial-gratitude-calculatorMetrics, financial-gratitude-calculatorAnalysis } from './types';
+import { FinancialGratitudeCalculatorinputs, FinancialGratitudeCalculatormetrics, FinancialGratitudeCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: financial-gratitude-calculatorInputs): number {
+export function calculateResult(inputs: FinancialGratitudeCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: financial-gratitude-calculatorInputs): n
   }
 }
 
-export function generateAnalysis(inputs: financial-gratitude-calculatorInputs, metrics: financial-gratitude-calculatorMetrics): financial-gratitude-calculatorAnalysis {
+export function generateAnalysis(inputs: FinancialGratitudeCalculatorinputs, metrics: FinancialGratitudeCalculatormetrics): FinancialGratitudeCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

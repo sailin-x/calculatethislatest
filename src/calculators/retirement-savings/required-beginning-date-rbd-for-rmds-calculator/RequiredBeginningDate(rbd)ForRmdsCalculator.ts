@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateRequiredBeginningDate(rbd)ForRmdsCalculatorInputs, validateRequiredBeginningDate(rbd)ForRmdsCalculatorBusinessRules } from './validation';
 
-export const RequiredBeginningDate(rbd)ForRmdsCalculatorCalculator: Calculator = {
-  id: 'required-beginning-date-rbd-for-rmds-calculator-calculator',
+export const RequiredBeginningDate(rbd)ForRmdsCalculator: Calculator = {
+  id: 'RequiredBeginningDate-RbdForRmds-calculator-calculator',
   title: 'Required Beginning Date (RBD) for RMDs Calculator Calculator',
   retirement-savings: 'retirement-savings', // e.g., 'finance', 'math', 'health', 'business'
   subretirement-savings: 'Subretirement-savings Name',

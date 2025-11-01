@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { arm_mortgageCalculatorCalculator } from './arm_mortgageCalculatorCalculator';
+import { arm_mortgageCalculator } from './arm_mortgageCalculator';
 
-export function registerarm_mortgageCalculatorCalculator(): void {
-  calculatorRegistry.register(new arm_mortgageCalculatorCalculator());
+export function registerarm_mortgageCalculator(): void {
+  calculatorRegistry.register(new arm_mortgageCalculator());
 }

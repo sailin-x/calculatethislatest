@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateMunicipalBondCalculatorInputs, validateMunicipalBondCalculatorBusinessRules } from './validation';
 
-export const MunicipalBondCalculatorCalculator: Calculator: Calculator = {
-  id: 'municipal-bond-calculator-calculator',
+export const MunicipalBondCalculator: Calculator = {
+  id: 'MunicipalBondCalculator-calculator',
   title: 'Municipal Bond Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

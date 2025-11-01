@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateRoofingCalculatorInputs, validateRoofingCalculatorBusinessRules } from './validation';
 
-export const RoofingCalculatorCalculator: Calculator: Calculator = {
-  id: 'roofing-calculator-calculator',
+export const RoofingCalculator: Calculator = {
+  id: 'RoofingCalculatorCalculator',
   title: 'Roofing Calculator Calculator',
   construction: 'construction', // e.g., 'finance', 'math', 'health', 'business'
   subconstruction: 'Subconstruction Name',

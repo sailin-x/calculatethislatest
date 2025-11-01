@@ -1,4 +1,4 @@
-import { distressed-debt-investing-roi-calculatorInputs, distressed-debt-investing-roi-calculatorMetrics, distressed-debt-investing-roi-calculatorAnalysis } from './types';
+import { DistressedDebtInvesting-roi-calculatorInputs, DistressedDebtInvesting-roi-calculatorMetrics, DistressedDebtInvesting-roi-calculatorAnalysis } from './types';
 
 
 // Investment Calculator - ROI and growth calculations
@@ -12,7 +12,7 @@ export function calculateCompoundInterest(principal: number, rate: number, years
   return principal * Math.pow(1 + ratePerPeriod, totalPeriods);
 }
 
-export function calculateResult(inputs: distressed-debt-investing-roi-calculatorInputs): number {
+export function calculateResult(inputs: DistressedDebtInvesting-roi-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -36,7 +36,7 @@ export function calculateResult(inputs: distressed-debt-investing-roi-calculator
   }
 }
 
-export function generateAnalysis(inputs: distressed-debt-investing-roi-calculatorInputs, metrics: distressed-debt-investing-roi-calculatorMetrics): distressed-debt-investing-roi-calculatorAnalysis {
+export function generateAnalysis(inputs: DistressedDebtInvesting-roi-calculatorInputs, metrics: DistressedDebtInvesting-roi-calculatorMetrics): DistressedDebtInvesting-roi-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

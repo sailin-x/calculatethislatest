@@ -1,4 +1,4 @@
-export { CharitableRemainderTrustCrtPayoutCalculatorCalculator } from './CharitableRemainderTrustCrtPayoutCalculatorCalculator';
+export { CharitableRemainderTrustCrtPayoutCalculator } from './CharitableRemainderTrustCrtPayoutCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

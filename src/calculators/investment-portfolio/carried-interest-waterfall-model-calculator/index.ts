@@ -1,4 +1,4 @@
-export { CarriedInterestWaterfallModelCalculatorCalculator } from './CarriedInterestWaterfallModelCalculatorCalculator';
+export { CarriedInterestWaterfallModelCalculator } from './CarriedInterestWaterfallModelCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

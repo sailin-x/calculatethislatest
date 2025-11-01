@@ -132,7 +132,7 @@ export const portfolioCalculator: Calculator = {
       id: 'maxDrawdown',
       label: 'Estimated Max Drawdown',
       type: 'percentage',
-      explanation: 'Estimated maximum peak-to-trough decline'
+      explanation: 'Estimated maximum PeakToTrough decline'
     },
     {
       id: 'portfolioBeta',

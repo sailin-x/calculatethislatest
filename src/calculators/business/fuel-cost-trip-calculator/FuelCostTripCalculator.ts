@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateFuelCostTripCalculatorInputs, validateFuelCostTripCalculatorBusinessRules } from './validation';
 
-export const FuelCostTripCalculatorCalculator: Calculator: Calculator = {
-  id: 'fuel-cost-trip-calculator-calculator',
+export const FuelCostTripCalculator: Calculator = {
+  id: 'FuelCostTrip-calculator-calculator',
   title: 'Fuel Cost & Trip Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

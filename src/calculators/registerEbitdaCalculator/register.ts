@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { registerEbitdaCalculatorCalculator } from './registerEbitdaCalculatorCalculator';
+import { registerEbitdaCalculator } from './registerEbitdaCalculator';
 
-export function registerregisterEbitdaCalculatorCalculator(): void {
-  calculatorRegistry.register(new registerEbitdaCalculatorCalculator());
+export function registerregisterEbitdaCalculator(): void {
+  calculatorRegistry.register(new registerEbitdaCalculator());
 }

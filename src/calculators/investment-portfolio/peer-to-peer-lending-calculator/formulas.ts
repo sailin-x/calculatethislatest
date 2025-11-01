@@ -3,7 +3,7 @@ import { PeerToPeerLendingCalculatorInputs, PeerToPeerLendingCalculatorMetrics, 
 
 /**
  * Calculates the effective annual yield for P2P lending by subtracting the expected default rate
- * from the gross annual interest rate. This accounts for anticipated losses in peer-to-peer investments.
+ * from the gross annual interest rate. This accounts for anticipated losses in PeerToPeer investments.
  * @param grossRate - The gross annual interest rate (as a decimal, e.g., 0.07 for 7%).
  * @param defaultRate - The expected annual default rate (as a decimal, e.g., 0.02 for 2%).
  * @returns The effective annual yield (as a decimal).

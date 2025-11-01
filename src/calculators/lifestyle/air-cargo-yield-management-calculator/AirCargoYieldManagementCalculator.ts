@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateAirCargoYieldManagementCalculatorInputs, validateAirCargoYieldManagementCalculatorBusinessRules } from './validation';
 
-export const AirCargoYieldManagementCalculatorCalculator: Calculator: Calculator = {
-  id: 'air-cargo-yield-management-calculator-calculator',
+export const AirCargoYieldManagementCalculator: Calculator = {
+  id: 'AirCargoYield-ManagementCalculatorCalculator',
   title: 'Air Cargo Yield Management Calculator Calculator',
   lifestyle: 'lifestyle', // e.g., 'finance', 'math', 'health', 'business'
   sublifestyle: 'Sublifestyle Name',

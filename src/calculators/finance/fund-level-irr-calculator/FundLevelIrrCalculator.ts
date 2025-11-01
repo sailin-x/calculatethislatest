@@ -10,7 +10,7 @@ import {
 import { validateFundLevelIrrCalculatorInputs } from './validation';
 
 export const FundLevelIrrCalculator: Calculator = {
-  id: 'fund-level-irr-calculator',
+  id: 'FundLevelIrr-calculator',
   title: 'Fund-Level IRR Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

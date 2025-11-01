@@ -1,3 +1,3 @@
-import { MarketingAttributionModelComparisonCalculatorCalculator } from './MarketingAttributionModelComparisonCalculatorCalculator';
+import { MarketingAttributionModelComparisonCalculator } from './MarketingAttributionModelComparisonCalculator';
 
-export { MarketingAttributionModelComparisonCalculatorCalculator };
+export { MarketingAttributionModelComparisonCalculator };

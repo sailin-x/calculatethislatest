@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { sales_commission_structure_calculatorInputs, sales_commission_structure_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const sales_commission_structure_calculatorCalculator: Calculator = {
-  id: 'sales-commission-structure-calculator',
+export const SalesCommissionStructure-calculator: Calculator = {
+  id: 'SalesCommissionStructure-calculator',
   title: 'Sales Commission Structure Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

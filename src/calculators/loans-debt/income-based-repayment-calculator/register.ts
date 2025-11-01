@@ -1,3 +1,3 @@
-import { IncomeBasedRepaymentCalculatorCalculator } from './IncomeBasedRepaymentCalculatorCalculator';
+import { IncomeBasedRepaymentCalculator } from './IncomeBasedRepaymentCalculator';
 
-export { IncomeBasedRepaymentCalculatorCalculator };
+export { IncomeBasedRepaymentCalculator };

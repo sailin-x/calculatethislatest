@@ -1,3 +1,3 @@
-import { LasikEyeSurgeryRoiCalculatorCalculator } from './LasikEyeSurgeryRoiCalculatorCalculator';
+import { LasikEyeSurgeryRoiCalculator } from './LasikEyeSurgeryRoiCalculator';
 
-export { LasikEyeSurgeryRoiCalculatorCalculator };
+export { LasikEyeSurgeryRoiCalculator };

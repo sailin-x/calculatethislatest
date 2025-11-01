@@ -10,7 +10,7 @@ import {
 import { validateFinancialGovernanceCalculatorInputs } from './validation';
 
 export const FinancialGovernanceCalculator: Calculator = {
-  id: 'financial-governance-calculator',
+  id: 'FinancialGovernanceCalculator',
   title: 'Financial Governance Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

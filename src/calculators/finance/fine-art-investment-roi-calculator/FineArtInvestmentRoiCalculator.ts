@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateFineArtInvestmentRoiCalculatorInputs, validateFineArtInvestmentRoiCalculatorBusinessRules } from './validation';
 
-export const FineArtInvestmentRoiCalculatorCalculator: Calculator: Calculator = {
-  id: 'fine-art-investment-roi-calculator-calculator',
+export const FineArtInvestmentRoiCalculator: Calculator = {
+  id: 'FineArtInvestment-RoiCalculatorCalculator',
   title: 'Fine Art Investment ROI Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

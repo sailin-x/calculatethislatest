@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateAngelInvestmentCalculatorInputs, validateAngelInvestmentCalculatorBusinessRules } from './validation';
 
-export const AngelInvestmentCalculatorCalculator: Calculator: Calculator = {
-  id: 'angel-investment-calculator-calculator',
+export const AngelInvestmentCalculator: Calculator = {
+  id: 'AngelInvestmentCalculator-calculator',
   title: 'Angel Investment Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

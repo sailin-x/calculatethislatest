@@ -10,7 +10,7 @@ import {
 import { validateTokenVestingScheduleCalculatorInputs } from './validation';
 
 export const TokenVestingScheduleCalculator: Calculator = {
-  id: 'token-vesting-schedule-calculator',
+  id: 'TokenVestingSchedule-calculator',
   title: 'Token Vesting Schedule Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

@@ -1,4 +1,4 @@
-import { revenue-cycle-management-rcm-roi-calculatorInputs, revenue-cycle-management-rcm-roi-calculatorMetrics, revenue-cycle-management-rcm-roi-calculatorAnalysis } from './types';
+import { RevenueCycleManagement-RcmRoiCalculatorinputs, RevenueCycleManagement-RcmRoiCalculatormetrics, RevenueCycleManagement-RcmRoiCalculatoranalysis } from './types';
 
 // ROI Calculator
 export function calculateROI(netProfit: number, investment: number): number {
@@ -13,7 +13,7 @@ export function calculatePaybackPeriod(investment: number, annualCashFlow: numbe
   return investment / annualCashFlow;
 }
 
-export function calculateResult(inputs: revenue-cycle-management-rcm-roi-calculatorInputs): number {
+export function calculateResult(inputs: RevenueCycleManagement-RcmRoiCalculatorinputs): number {
   if ('netProfit' in inputs && 'investment' in inputs) {
     return calculateROI(inputs.netProfit, inputs.investment);
   }
@@ -24,7 +24,7 @@ export function calculateResult(inputs: revenue-cycle-management-rcm-roi-calcula
   return 0;
 }
 
-export function generateAnalysis(inputs: revenue-cycle-management-rcm-roi-calculatorInputs, metrics: revenue-cycle-management-rcm-roi-calculatorMetrics): revenue-cycle-management-rcm-roi-calculatorAnalysis {
+export function generateAnalysis(inputs: RevenueCycleManagement-RcmRoiCalculatorinputs, metrics: RevenueCycleManagement-RcmRoiCalculatormetrics): RevenueCycleManagement-RcmRoiCalculatoranalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (result < 10) riskLevel = 'High';

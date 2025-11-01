@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { net_present_value_calculatorInputs, net_present_value_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const net_present_value_calculatorCalculator: Calculator = {
-  id: 'net-present-value-calculator',
+export const NetPresentValue-calculator: Calculator = {
+  id: 'NetPresentValue-calculator',
   title: 'Net Present Value Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'investmentportfoliohub',

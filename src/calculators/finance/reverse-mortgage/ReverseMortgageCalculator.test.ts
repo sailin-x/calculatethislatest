@@ -8,7 +8,7 @@ import { CalculatorInputs, CalculatorOutputs } from '../../types/calculator';
 describe('ReverseMortgageCalculator', () => {
   describe('Calculator Structure', () => {
     it('should have correct basic properties', () => {
-      expect(ReverseMortgageCalculator.id).toBe('reverse-mortgage-calculator');
+      expect(ReverseMortgageCalculator.id).toBe('ReverseMortgageCalculator');
       expect(ReverseMortgageCalculator.name).toBe('Reverse Mortgage Calculator');
       expect(ReverseMortgageCalculator.category).toBe('finance');
       expect(ReverseMortgageCalculator.subcategory).toBe('mortgage');
@@ -197,7 +197,7 @@ describe('ReverseMortgageCalculator', () => {
         propertyType: 'single-family',
         location: 'urban',
         loanType: 'hecm',
-        paymentOption: 'line-of-credit',
+        paymentOption: 'LineOfCredit',
         interestRate: 6.5,
         rateType: 'fixed'
       };
@@ -700,7 +700,7 @@ describe('ReverseMortgageCalculator', () => {
     });
 
     it('should handle different payment options', () => {
-      const paymentOptions = ['tenure', 'term', 'line-of-credit', 'modified-tenure', 'modified-term'];
+      const paymentOptions = ['tenure', 'term', 'LineOfCredit', 'modified-tenure', 'modified-term'];
       
       paymentOptions.forEach(option => {
         const inputs: CalculatorInputs = {

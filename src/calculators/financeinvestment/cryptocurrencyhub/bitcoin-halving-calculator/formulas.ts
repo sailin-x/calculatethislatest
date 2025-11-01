@@ -1,4 +1,4 @@
-import { bitcoin-halving-calculatorInputs, bitcoin-halving-calculatorMetrics, bitcoin-halving-calculatorAnalysis } from './types';
+import { BitcoinHalvingCalculatorinputs, BitcoinHalvingCalculatormetrics, BitcoinHalvingCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: bitcoin-halving-calculatorInputs): number {
+export function calculateResult(inputs: BitcoinHalvingCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: bitcoin-halving-calculatorInputs): numbe
   }
 }
 
-export function generateAnalysis(inputs: bitcoin-halving-calculatorInputs, metrics: bitcoin-halving-calculatorMetrics): bitcoin-halving-calculatorAnalysis {
+export function generateAnalysis(inputs: BitcoinHalvingCalculatorinputs, metrics: BitcoinHalvingCalculatormetrics): BitcoinHalvingCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

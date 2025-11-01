@@ -1,4 +1,4 @@
-import { price-to-earnings-calculatorInputs, price-to-earnings-calculatorMetrics, price-to-earnings-calculatorAnalysis } from './types';
+import { PriceToEarnings-calculatorInputs, PriceToEarnings-calculatorMetrics, PriceToEarnings-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: price-to-earnings-calculatorInputs): number {
+export function calculateResult(inputs: PriceToEarnings-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: price-to-earnings-calculatorInputs): num
   }
 }
 
-export function generateAnalysis(inputs: price-to-earnings-calculatorInputs, metrics: price-to-earnings-calculatorMetrics): price-to-earnings-calculatorAnalysis {
+export function generateAnalysis(inputs: PriceToEarnings-calculatorInputs, metrics: PriceToEarnings-calculatorMetrics): PriceToEarnings-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

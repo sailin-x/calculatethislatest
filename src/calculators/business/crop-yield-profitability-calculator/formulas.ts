@@ -1,4 +1,4 @@
-import { crop-yield-profitability-calculatorInputs, crop-yield-profitability-calculatorMetrics, crop-yield-profitability-calculatorAnalysis } from './types';
+import { CropYieldProfitability-calculatorInputs, CropYieldProfitability-calculatorMetrics, CropYieldProfitability-calculatorAnalysis } from './types';
 
 // Crop Yield Profitability Calculator - Business calculations
 export function calculateNetPresentValue(cashFlows: number[], discountRate: number): number {
@@ -11,7 +11,7 @@ export function calculateROI(initialInvestment: number, finalValue: number): num
  return ((finalValue - initialInvestment) / initialInvestment) * 100;
 }
 
-export function calculateResult(inputs: crop-yield-profitability-calculatorInputs): number {
+export function calculateResult(inputs: CropYieldProfitability-calculatorInputs): number {
  // Business calculation logic with real math
  const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
  if (numericValues.length >= 2) {
@@ -24,7 +24,7 @@ export function calculateResult(inputs: crop-yield-profitability-calculatorInput
  return calculateNetPresentValue(numericValues, 10); // 10% discount rate
 }
 
-export function generateAnalysis(inputs: crop-yield-profitability-calculatorInputs, metrics: crop-yield-profitability-calculatorMetrics): crop-yield-profitability-calculatorAnalysis {
+export function generateAnalysis(inputs: CropYieldProfitability-calculatorInputs, metrics: CropYieldProfitability-calculatorMetrics): CropYieldProfitability-calculatorAnalysis {
  const result = metrics.result;
  let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
  if (Math.abs(result) > 100000) riskLevel = 'High';

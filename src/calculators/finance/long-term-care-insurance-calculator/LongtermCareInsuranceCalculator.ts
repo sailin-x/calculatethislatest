@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateLongtermCareInsuranceCalculatorInputs, validateLongtermCareInsuranceCalculatorBusinessRules } from './validation';
 
-export const LongtermCareInsuranceCalculatorCalculator: Calculator: Calculator = {
-  id: 'long-term-care-insurance-calculator-calculator',
+export const LongtermCareInsuranceCalculator: Calculator = {
+  id: 'LongTermCare-InsuranceCalculatorCalculator',
   title: 'Long-Term Care Insurance Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

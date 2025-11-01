@@ -1,3 +1,3 @@
-import { DogBiteSettlementCalculatorCalculator } from './DogBiteSettlementCalculatorCalculator';
+import { DogBiteSettlementCalculator } from './DogBiteSettlementCalculator';
 
-export { DogBiteSettlementCalculatorCalculator };
+export { DogBiteSettlementCalculator };

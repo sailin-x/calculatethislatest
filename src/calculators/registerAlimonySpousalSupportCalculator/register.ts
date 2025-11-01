@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { registerAlimonySpousalSupportCalculatorCalculator } from './registerAlimonySpousalSupportCalculatorCalculator';
+import { registerAlimonySpousalSupportCalculator } from './registerAlimonySpousalSupportCalculator';
 
-export function registerregisterAlimonySpousalSupportCalculatorCalculator(): void {
-  calculatorRegistry.register(new registerAlimonySpousalSupportCalculatorCalculator());
+export function registerregisterAlimonySpousalSupportCalculator(): void {
+  calculatorRegistry.register(new registerAlimonySpousalSupportCalculator());
 }

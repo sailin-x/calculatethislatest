@@ -1,3 +1,3 @@
-import { SpinOffCalculatorCalculator } from './SpinOffCalculatorCalculator';
+import { SpinOffCalculator } from './SpinOffCalculator';
 
-export { SpinOffCalculatorCalculator };
+export { SpinOffCalculator };

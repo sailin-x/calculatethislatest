@@ -1,4 +1,4 @@
-import { masternode-roi-calculatorInputs, masternode-roi-calculatorMetrics, masternode-roi-calculatorAnalysis } from './types';
+import { MasternodeRoiCalculatorinputs, MasternodeRoiCalculatormetrics, MasternodeRoiCalculatoranalysis } from './types';
 
 
 // Investment Calculator - ROI and growth calculations
@@ -12,7 +12,7 @@ export function calculateCompoundInterest(principal: number, rate: number, years
   return principal * Math.pow(1 + ratePerPeriod, totalPeriods);
 }
 
-export function calculateResult(inputs: masternode-roi-calculatorInputs): number {
+export function calculateResult(inputs: MasternodeRoiCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -36,7 +36,7 @@ export function calculateResult(inputs: masternode-roi-calculatorInputs): number
   }
 }
 
-export function generateAnalysis(inputs: masternode-roi-calculatorInputs, metrics: masternode-roi-calculatorMetrics): masternode-roi-calculatorAnalysis {
+export function generateAnalysis(inputs: MasternodeRoiCalculatorinputs, metrics: MasternodeRoiCalculatormetrics): MasternodeRoiCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

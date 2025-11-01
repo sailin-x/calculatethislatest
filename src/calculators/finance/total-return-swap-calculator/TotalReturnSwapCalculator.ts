@@ -10,7 +10,7 @@ import {
 import { validateTotalReturnSwapCalculatorInputs } from './validation';
 
 export const TotalReturnSwapCalculator: Calculator = {
-  id: 'total-return-swap-calculator',
+  id: 'TotalReturnSwap-calculator',
   title: 'Total Return Swap Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

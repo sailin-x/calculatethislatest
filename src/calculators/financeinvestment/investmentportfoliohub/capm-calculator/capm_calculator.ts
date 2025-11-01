@@ -2,7 +2,7 @@ import { Calculator } from '../../../../types/calculator';
 import { capm_calculatorInputs, capm_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const capm_calculatorCalculator: Calculator = {
+export const capm-calculator: Calculator = {
   id: 'capm-calculator',
   title: 'CAPM Calculator Calculator',
   category: 'financeinvestment',

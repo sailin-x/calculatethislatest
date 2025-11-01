@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { SepIRACalculatorCalculator } from './SepIRACalculatorCalculator';
+import { SepIRACalculator } from './SepIRACalculator';
 
-export function registerSepIRACalculatorCalculator(): void {
-  calculatorRegistry.register(new SepIRACalculatorCalculator());
+export function registerSepIRACalculator(): void {
+  calculatorRegistry.register(new SepIRACalculator());
 }

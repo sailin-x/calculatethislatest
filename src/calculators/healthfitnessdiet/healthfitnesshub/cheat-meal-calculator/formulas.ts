@@ -1,4 +1,4 @@
-import { cheat-meal-calculatorInputs, cheat-meal-calculatorMetrics, cheat-meal-calculatorAnalysis } from './types';
+import { CheatMealCalculatorinputs, CheatMealCalculatormetrics, CheatMealCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: cheat-meal-calculatorInputs): number {
+export function calculateResult(inputs: CheatMealCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: cheat-meal-calculatorInputs): number {
   }
 }
 
-export function generateAnalysis(inputs: cheat-meal-calculatorInputs, metrics: cheat-meal-calculatorMetrics): cheat-meal-calculatorAnalysis {
+export function generateAnalysis(inputs: CheatMealCalculatorinputs, metrics: CheatMealCalculatormetrics): CheatMealCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

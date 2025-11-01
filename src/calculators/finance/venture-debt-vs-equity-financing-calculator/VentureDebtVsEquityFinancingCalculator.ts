@@ -10,7 +10,7 @@ import {
 import { validateVentureDebtVsEquityFinancingCalculatorInputs } from './validation';
 
 export const VentureDebtVsEquityFinancingCalculator: Calculator = {
-  id: 'venture-debt-vs-equity-financing-calculator',
+  id: 'VentureDebtVs-EquityFinancingCalculator',
   title: 'Venture Debt vs. Equity Financing Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

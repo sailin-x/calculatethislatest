@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateVarianceCalculatorInputs, validateVarianceCalculatorBusinessRules } from './validation';
 
-export const VarianceCalculatorCalculator: Calculator: Calculator = {
-  id: 'variance-calculator-calculator',
+export const VarianceCalculator: Calculator = {
+  id: 'VarianceCalculatorCalculator',
   title: 'Variance Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

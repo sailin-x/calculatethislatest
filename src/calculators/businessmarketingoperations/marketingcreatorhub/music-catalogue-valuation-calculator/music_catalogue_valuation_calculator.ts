@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { music_catalogue_valuation_calculatorInputs, music_catalogue_valuation_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const music_catalogue_valuation_calculatorCalculator: Calculator = {
-  id: 'music-catalogue-valuation-calculator',
+export const MusicCatalogueValuation-calculator: Calculator = {
+  id: 'MusicCatalogueValuation-calculator',
   title: 'Music Catalogue Valuation Calculator Calculator',
   category: 'businessmarketingoperations',
   subcategory: 'marketingcreatorhub',

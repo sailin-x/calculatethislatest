@@ -1,4 +1,4 @@
-export { options_valuation_calculatorCalculator } from './options_valuation_calculator';
+export { options_valuation_calculator } from './options_valuation_calculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

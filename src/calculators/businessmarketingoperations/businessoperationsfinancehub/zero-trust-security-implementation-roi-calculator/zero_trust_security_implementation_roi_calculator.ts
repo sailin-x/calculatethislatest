@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { zero_trust_security_implementation_roi_calculatorInputs, zero_trust_security_implementation_roi_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const zero_trust_security_implementation_roi_calculatorCalculator: Calculator = {
-  id: 'zero-trust-security-implementation-roi-calculator',
+export const ZeroTrustSecurity-ImplementationRoiCalculator: Calculator = {
+  id: 'ZeroTrustSecurity-ImplementationRoiCalculator',
   title: 'Zero Trust Security Implementation ROI Calculator Calculator',
   category: 'businessmarketingoperations',
   subcategory: 'businessoperationsfinancehub',

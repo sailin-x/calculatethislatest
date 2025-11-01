@@ -36,7 +36,7 @@ describe('DynastyTrustGrowthEstimatorCalculator', () => {
 
   describe('Calculator Structure', () => {
     it('should have correct calculator properties', () => {
-      expect(DynastyTrustGrowthEstimatorCalculator.id).toBe('dynasty-trust-growth-estimator');
+      expect(DynastyTrustGrowthEstimatorCalculator.id).toBe('DynastyTrustGrowth-estimator');
       expect(DynastyTrustGrowthEstimatorCalculator.title).toBe('Dynasty Trust Growth Estimator');
       expect(DynastyTrustGrowthEstimatorCalculator.category).toBe('finance');
       expect(DynastyTrustGrowthEstimatorCalculator.subcategory).toBe('Retirement');

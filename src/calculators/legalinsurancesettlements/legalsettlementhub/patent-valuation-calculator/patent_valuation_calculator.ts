@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { patent_valuation_calculatorInputs, patent_valuation_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const patent_valuation_calculatorCalculator: Calculator = {
-  id: 'patent-valuation-calculator',
+export const PatentValuationCalculator: Calculator = {
+  id: 'PatentValuationCalculator',
   title: 'Patent Valuation Calculator Calculator',
   category: 'legalinsurancesettlements',
   subcategory: 'legalsettlementhub',

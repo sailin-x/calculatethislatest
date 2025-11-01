@@ -1,4 +1,4 @@
-import { slip-and-fall-damages-calculatorInputs, slip-and-fall-damages-calculatorMetrics, slip-and-fall-damages-calculatorAnalysis } from './types';
+import { SlipAndFall-damages-calculatorInputs, SlipAndFall-damages-calculatorMetrics, SlipAndFall-damages-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: slip-and-fall-damages-calculatorInputs): number {
+export function calculateResult(inputs: SlipAndFall-damages-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: slip-and-fall-damages-calculatorInputs):
   }
 }
 
-export function generateAnalysis(inputs: slip-and-fall-damages-calculatorInputs, metrics: slip-and-fall-damages-calculatorMetrics): slip-and-fall-damages-calculatorAnalysis {
+export function generateAnalysis(inputs: SlipAndFall-damages-calculatorInputs, metrics: SlipAndFall-damages-calculatorMetrics): SlipAndFall-damages-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

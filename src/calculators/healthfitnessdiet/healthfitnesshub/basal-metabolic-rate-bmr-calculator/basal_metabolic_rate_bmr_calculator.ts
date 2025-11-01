@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { basal_metabolic_rate_bmr_calculatorInputs, basal_metabolic_rate_bmr_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const basal_metabolic_rate_bmr_calculatorCalculator: Calculator = {
-  id: 'basal-metabolic-rate-bmr-calculator',
+export const BasalMetabolicRate-bmr-calculator: Calculator = {
+  id: 'BasalMetabolicRate-bmr-calculator',
   title: 'Basal Metabolic Rate (BMR) Calculator Calculator',
   category: 'healthfitnessdiet',
   subcategory: 'healthfitnesshub',

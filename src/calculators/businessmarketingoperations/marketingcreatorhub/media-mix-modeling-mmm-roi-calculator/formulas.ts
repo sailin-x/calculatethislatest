@@ -1,4 +1,4 @@
-import { media-mix-modeling-mmm-roi-calculatorInputs, media-mix-modeling-mmm-roi-calculatorMetrics, media-mix-modeling-mmm-roi-calculatorAnalysis } from './types';
+import { MediaMixModeling-MmmRoiCalculatorinputs, MediaMixModeling-MmmRoiCalculatormetrics, MediaMixModeling-MmmRoiCalculatoranalysis } from './types';
 
 
 // Investment Calculator - ROI and growth calculations
@@ -12,7 +12,7 @@ export function calculateCompoundInterest(principal: number, rate: number, years
   return principal * Math.pow(1 + ratePerPeriod, totalPeriods);
 }
 
-export function calculateResult(inputs: media-mix-modeling-mmm-roi-calculatorInputs): number {
+export function calculateResult(inputs: MediaMixModeling-MmmRoiCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -36,7 +36,7 @@ export function calculateResult(inputs: media-mix-modeling-mmm-roi-calculatorInp
   }
 }
 
-export function generateAnalysis(inputs: media-mix-modeling-mmm-roi-calculatorInputs, metrics: media-mix-modeling-mmm-roi-calculatorMetrics): media-mix-modeling-mmm-roi-calculatorAnalysis {
+export function generateAnalysis(inputs: MediaMixModeling-MmmRoiCalculatorinputs, metrics: MediaMixModeling-MmmRoiCalculatormetrics): MediaMixModeling-MmmRoiCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { airdrop_value_calculatorInputs, airdrop_value_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const airdrop_value_calculatorCalculator: Calculator = {
-  id: 'airdrop-value-calculator',
+export const AirdropValueCalculator: Calculator = {
+  id: 'AirdropValueCalculator',
   title: 'Airdrop Value Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'cryptocurrencyhub',

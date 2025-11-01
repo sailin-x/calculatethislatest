@@ -1,4 +1,4 @@
-export { RightsOfferingCalculatorCalculator } from './RightsOfferingCalculatorCalculator';
+export { RightsOfferingCalculator } from './RightsOfferingCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

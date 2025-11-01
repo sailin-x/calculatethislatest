@@ -9,7 +9,7 @@ import {
 import { validateCatastropheBondPricingCalculatorInputs } from './validation';
 
 export const CatastropheBondPricingCalculator: Calculator = {
-  id: 'catastrophe-bond-pricing-calculator',
+  id: 'CatastropheBondPricing-calculator',
   title: 'Catastrophe Bond Pricing Calculator',
   category: 'legal',
   subcategory: 'Settlement Analysis',

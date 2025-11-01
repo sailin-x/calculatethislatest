@@ -379,7 +379,7 @@ export function validateAllRefinanceInputs(inputs: CalculatorInputs): { isValid:
   }
 
   if (inputs.propertyValue && inputs.newLoanAmount && (inputs.newLoanAmount / inputs.propertyValue) > 0.97) {
-    warnings.push('Loan-to-value ratio is very high');
+    warnings.push('LoanToValue ratio is very high');
   }
 
   if (inputs.closingCosts && inputs.monthlyIncome && inputs.closingCosts > inputs.monthlyIncome * 2) {

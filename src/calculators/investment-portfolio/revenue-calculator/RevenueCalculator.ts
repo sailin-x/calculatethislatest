@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateRevenueCalculatorInputs, validateRevenueCalculatorBusinessRules } from './validation';
 
-export const RevenueCalculatorCalculator: Calculator: Calculator = {
-  id: 'revenue-calculator-calculator',
+export const RevenueCalculator: Calculator = {
+  id: 'RevenueCalculatorCalculator',
   title: 'Revenue Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

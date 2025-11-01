@@ -1,4 +1,4 @@
-import { startup-valuation-calculatorInputs, startup-valuation-calculatorMetrics, startup-valuation-calculatorAnalysis } from './types';
+import { StartupValuationCalculatorinputs, StartupValuationCalculatormetrics, StartupValuationCalculatoranalysis } from './types';
 
 // Startup Valuation Calculator - Business calculations
 export function calculateNetPresentValue(cashFlows: number[], discountRate: number): number {
@@ -11,7 +11,7 @@ export function calculateROI(initialInvestment: number, finalValue: number): num
  return ((finalValue - initialInvestment) / initialInvestment) * 100;
 }
 
-export function calculateResult(inputs: startup-valuation-calculatorInputs): number {
+export function calculateResult(inputs: StartupValuationCalculatorinputs): number {
  // Business calculation logic with real math
  const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
  if (numericValues.length >= 2) {
@@ -24,7 +24,7 @@ export function calculateResult(inputs: startup-valuation-calculatorInputs): num
  return calculateNetPresentValue(numericValues, 10); // 10% discount rate
 }
 
-export function generateAnalysis(inputs: startup-valuation-calculatorInputs, metrics: startup-valuation-calculatorMetrics): startup-valuation-calculatorAnalysis {
+export function generateAnalysis(inputs: StartupValuationCalculatorinputs, metrics: StartupValuationCalculatormetrics): StartupValuationCalculatoranalysis {
  const result = metrics.result;
  let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
  if (Math.abs(result) > 100000) riskLevel = 'High';

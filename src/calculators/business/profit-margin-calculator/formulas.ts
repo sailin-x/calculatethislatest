@@ -1,4 +1,4 @@
-import { profit-margin-calculatorInputs, profit-margin-calculatorMetrics, profit-margin-calculatorAnalysis } from './types';
+import { ProfitMarginCalculatorinputs, ProfitMarginCalculatormetrics, ProfitMarginCalculatoranalysis } from './types';
 
 // Profit Margin Calculator - Business calculations
 export function calculateNetPresentValue(cashFlows: number[], discountRate: number): number {
@@ -11,7 +11,7 @@ export function calculateROI(initialInvestment: number, finalValue: number): num
  return ((finalValue - initialInvestment) / initialInvestment) * 100;
 }
 
-export function calculateResult(inputs: profit-margin-calculatorInputs): number {
+export function calculateResult(inputs: ProfitMarginCalculatorinputs): number {
  // Business calculation logic with real math
  const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
  if (numericValues.length >= 2) {
@@ -24,7 +24,7 @@ export function calculateResult(inputs: profit-margin-calculatorInputs): number 
  return calculateNetPresentValue(numericValues, 10); // 10% discount rate
 }
 
-export function generateAnalysis(inputs: profit-margin-calculatorInputs, metrics: profit-margin-calculatorMetrics): profit-margin-calculatorAnalysis {
+export function generateAnalysis(inputs: ProfitMarginCalculatorinputs, metrics: ProfitMarginCalculatormetrics): ProfitMarginCalculatoranalysis {
  const result = metrics.result;
  let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
  if (Math.abs(result) > 100000) riskLevel = 'High';

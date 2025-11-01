@@ -1,4 +1,4 @@
-export { StreamingServiceSubscriberChurnCostCalculatorCalculator } from './StreamingServiceSubscriberChurnCostCalculatorCalculator';
+export { StreamingServiceSubscriberChurnCostCalculator } from './StreamingServiceSubscriberChurnCostCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

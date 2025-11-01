@@ -1,4 +1,4 @@
-import { property-tax-prorationInputs, property-tax-prorationMetrics, property-tax-prorationAnalysis } from './types';
+import { PropertyTaxProrationinputs, PropertyTaxProrationmetrics, PropertyTaxProrationanalysis } from './types';
 
 
 // Tax Calculator - Progressive tax calculations
@@ -20,7 +20,7 @@ export function calculateEffectiveTaxRate(taxPaid: number, totalIncome: number):
   return (taxPaid / totalIncome) * 100;
 }
 
-export function calculateResult(inputs: property-tax-prorationInputs): number {
+export function calculateResult(inputs: PropertyTaxProrationinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -44,7 +44,7 @@ export function calculateResult(inputs: property-tax-prorationInputs): number {
   }
 }
 
-export function generateAnalysis(inputs: property-tax-prorationInputs, metrics: property-tax-prorationMetrics): property-tax-prorationAnalysis {
+export function generateAnalysis(inputs: PropertyTaxProrationinputs, metrics: PropertyTaxProrationmetrics): PropertyTaxProrationanalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

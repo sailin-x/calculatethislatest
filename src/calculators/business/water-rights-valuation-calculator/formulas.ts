@@ -1,4 +1,4 @@
-import { water-rights-valuation-calculatorInputs, water-rights-valuation-calculatorMetrics, water-rights-valuation-calculatorAnalysis } from './types';
+import { WaterRightsValuation-calculatorInputs, WaterRightsValuation-calculatorMetrics, WaterRightsValuation-calculatorAnalysis } from './types';
 
 // Water Rights Valuation Calculator - Business calculations
 export function calculateNetPresentValue(cashFlows: number[], discountRate: number): number {
@@ -11,7 +11,7 @@ export function calculateROI(initialInvestment: number, finalValue: number): num
  return ((finalValue - initialInvestment) / initialInvestment) * 100;
 }
 
-export function calculateResult(inputs: water-rights-valuation-calculatorInputs): number {
+export function calculateResult(inputs: WaterRightsValuation-calculatorInputs): number {
  // Business calculation logic with real math
  const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
  if (numericValues.length >= 2) {
@@ -24,7 +24,7 @@ export function calculateResult(inputs: water-rights-valuation-calculatorInputs)
  return calculateNetPresentValue(numericValues, 10); // 10% discount rate
 }
 
-export function generateAnalysis(inputs: water-rights-valuation-calculatorInputs, metrics: water-rights-valuation-calculatorMetrics): water-rights-valuation-calculatorAnalysis {
+export function generateAnalysis(inputs: WaterRightsValuation-calculatorInputs, metrics: WaterRightsValuation-calculatorMetrics): WaterRightsValuation-calculatorAnalysis {
  const result = metrics.result;
  let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
  if (Math.abs(result) > 100000) riskLevel = 'High';

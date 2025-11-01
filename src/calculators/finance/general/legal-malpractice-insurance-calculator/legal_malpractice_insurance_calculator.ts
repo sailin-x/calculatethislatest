@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { legal_malpractice_insurance_calculatorInputs, legal_malpractice_insurance_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const legal_malpractice_insurance_calculatorCalculator: Calculator = {
-  id: 'legal-malpractice-insurance-calculator',
+export const LegalMalpracticeInsurance-calculator: Calculator = {
+  id: 'LegalMalpracticeInsurance-calculator',
   title: 'Legal Malpractice Insurance Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

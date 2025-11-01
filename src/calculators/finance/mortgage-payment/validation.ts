@@ -40,7 +40,7 @@ export function validateMortgagePaymentInputs(inputs: MortgagePaymentInputs): Ar
     errors.push({ field: 'downPayment', message: 'Down payment cannot be greater than or equal to property value' });
   }
 
-  // Loan-to-Value Ratio Validation
+  // LoanToValue Ratio Validation
   if (inputs.loanAmount && inputs.propertyValue) {
     const ltv = (inputs.loanAmount / inputs.propertyValue) * 100;
     if (ltv > 100) {
@@ -65,7 +65,7 @@ export function validateMortgagePaymentInputs(inputs: MortgagePaymentInputs): Ar
     errors.push({ field: 'borrowerCreditScore', message: 'Credit score cannot exceed 850' });
   }
 
-  // Debt-to-Income Ratio Validation
+  // DebtToIncome Ratio Validation
   if (inputs.borrowerDebtToIncomeRatio && inputs.borrowerDebtToIncomeRatio < 0) {
     errors.push({ field: 'borrowerDebtToIncomeRatio', message: 'DTI ratio cannot be negative' });
   }

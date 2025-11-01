@@ -1,4 +1,4 @@
-import { cost-per-hire-calculatorInputs, cost-per-hire-calculatorMetrics, cost-per-hire-calculatorAnalysis } from './types';
+import { CostPerHire-calculatorInputs, CostPerHire-calculatorMetrics, CostPerHire-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: cost-per-hire-calculatorInputs): number {
+export function calculateResult(inputs: CostPerHire-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: cost-per-hire-calculatorInputs): number 
   }
 }
 
-export function generateAnalysis(inputs: cost-per-hire-calculatorInputs, metrics: cost-per-hire-calculatorMetrics): cost-per-hire-calculatorAnalysis {
+export function generateAnalysis(inputs: CostPerHire-calculatorInputs, metrics: CostPerHire-calculatorMetrics): CostPerHire-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

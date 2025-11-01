@@ -13,7 +13,7 @@ describe('CharitableGiftAnnuityCalculator', () => {
     giftType: 'cash' as const,
     fairMarketValue: 100000,
     costBasis: 100000,
-    giftDate: '2024-01-15',
+    giftDate: '20240115',
     annuityRate: 5.5,
     paymentFrequency: 'annual' as const,
     annuityType: 'immediate' as const,
@@ -36,7 +36,7 @@ describe('CharitableGiftAnnuityCalculator', () => {
 
   describe('Calculator Structure', () => {
     it('should have correct calculator properties', () => {
-      expect(CharitableGiftAnnuityCalculator.id).toBe('charitable-gift-annuity-calculator');
+      expect(CharitableGiftAnnuityCalculator.id).toBe('CharitableGiftAnnuity-calculator');
       expect(CharitableGiftAnnuityCalculator.title).toBe('Charitable Gift Annuity Calculator');
       expect(CharitableGiftAnnuityCalculator.category).toBe('finance');
       expect(CharitableGiftAnnuityCalculator.subcategory).toBe('Retirement');

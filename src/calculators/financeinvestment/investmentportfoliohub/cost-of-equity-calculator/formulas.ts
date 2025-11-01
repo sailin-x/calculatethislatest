@@ -1,4 +1,4 @@
-import { cost-of-equity-calculatorInputs, cost-of-equity-calculatorMetrics, cost-of-equity-calculatorAnalysis } from './types';
+import { CostOfEquity-calculatorInputs, CostOfEquity-calculatorMetrics, CostOfEquity-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: cost-of-equity-calculatorInputs): number {
+export function calculateResult(inputs: CostOfEquity-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: cost-of-equity-calculatorInputs): number
   }
 }
 
-export function generateAnalysis(inputs: cost-of-equity-calculatorInputs, metrics: cost-of-equity-calculatorMetrics): cost-of-equity-calculatorAnalysis {
+export function generateAnalysis(inputs: CostOfEquity-calculatorInputs, metrics: CostOfEquity-calculatorMetrics): CostOfEquity-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

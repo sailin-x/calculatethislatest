@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateTerminalValueCalculatorInputs, validateTerminalValueCalculatorBusinessRules } from './validation';
 
-export const TerminalValueCalculatorCalculator: Calculator: Calculator = {
-  id: 'terminal-value-calculator-calculator',
+export const TerminalValueCalculator: Calculator = {
+  id: 'TerminalValueCalculator-calculator',
   title: 'Terminal Value Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

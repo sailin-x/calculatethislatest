@@ -161,7 +161,7 @@ describe('Generation-Skipping Transfer (GST) Tax Calculator', () => {
 
   describe('Calculator Definition', () => {
     it('should have correct calculator properties', () => {
-      expect(generationSkippingTransferTaxCalculator.id).toBe('generation-skipping-transfer-tax-calculator');
+      expect(generationSkippingTransferTaxCalculator.id).toBe('GenerationSkippingTransfer-tax-calculator');
       expect(generationSkippingTransferTaxCalculator.title).toBe('Generation-Skipping Transfer (GST) Tax Calculator');
       expect(generationSkippingTransferTaxCalculator.category).toBe('finance');
       expect(generationSkippingTransferTaxCalculator.subcategory).toBe('Retirement & Savings');

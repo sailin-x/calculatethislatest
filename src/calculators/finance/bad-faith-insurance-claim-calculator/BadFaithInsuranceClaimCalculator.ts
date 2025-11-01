@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateBadFaithInsuranceClaimCalculatorInputs, validateBadFaithInsuranceClaimCalculatorBusinessRules } from './validation';
 
-export const BadFaithInsuranceClaimCalculatorCalculator: Calculator: Calculator = {
-  id: 'bad-faith-insurance-claim-calculator-calculator',
+export const BadFaithInsuranceClaimCalculator: Calculator = {
+  id: 'BadFaithInsurance-ClaimCalculatorCalculator',
   title: 'Bad Faith Insurance Claim Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

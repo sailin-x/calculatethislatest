@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { stock_optionsCalculatorCalculator } from './stock_optionsCalculatorCalculator';
+import { stock_optionsCalculator } from './stock_optionsCalculator';
 
-export function registerstock_optionsCalculatorCalculator(): void {
-  calculatorRegistry.register(new stock_optionsCalculatorCalculator());
+export function registerstock_optionsCalculator(): void {
+  calculatorRegistry.register(new stock_optionsCalculator());
 }

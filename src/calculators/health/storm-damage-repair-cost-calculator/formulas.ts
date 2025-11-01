@@ -1,4 +1,4 @@
-import { storm-damage-repair-cost-calculatorInputs, storm-damage-repair-cost-calculatorMetrics, storm-damage-repair-cost-calculatorAnalysis } from './types';
+import { StormDamageRepair-cost-calculatorInputs, StormDamageRepair-cost-calculatorMetrics, StormDamageRepair-cost-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: storm-damage-repair-cost-calculatorInputs): number {
+export function calculateResult(inputs: StormDamageRepair-cost-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: storm-damage-repair-cost-calculatorInput
   }
 }
 
-export function generateAnalysis(inputs: storm-damage-repair-cost-calculatorInputs, metrics: storm-damage-repair-cost-calculatorMetrics): storm-damage-repair-cost-calculatorAnalysis {
+export function generateAnalysis(inputs: StormDamageRepair-cost-calculatorInputs, metrics: StormDamageRepair-cost-calculatorMetrics): StormDamageRepair-cost-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

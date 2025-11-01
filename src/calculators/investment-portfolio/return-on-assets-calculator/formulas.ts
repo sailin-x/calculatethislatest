@@ -37,7 +37,7 @@ export function generateAnalysis(
   const result = metrics.result; // ROA percentage
   const { efficiency, benchmark } = assessROAEfficiency(result);
 
-  // Investment-portfolio-specific risk assessment
+  // InvestmentPortfolioSpecific risk assessment
   // Low ROA may indicate inefficient asset use, increasing portfolio risk (e.g., potential for underperformance)
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (result < 5) {

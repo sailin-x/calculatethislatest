@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateCrowdfundingEquityOfferingCalculatorInputs, validateCrowdfundingEquityOfferingCalculatorBusinessRules } from './validation';
 
-export const CrowdfundingEquityOfferingCalculatorCalculator: Calculator: Calculator = {
-  id: 'crowdfunding-equity-offering-calculator-calculator',
+export const CrowdfundingEquityOfferingCalculator: Calculator = {
+  id: 'CrowdfundingEquityOffering-calculator-calculator',
   title: 'Crowdfunding Equity Offering Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

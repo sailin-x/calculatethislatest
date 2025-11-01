@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateMediterraneanDietCalculatorInputs, validateMediterraneanDietCalculatorBusinessRules } from './validation';
 
-export const MediterraneanDietCalculatorCalculator: Calculator: Calculator = {
-  id: 'mediterranean-diet-calculator-calculator',
+export const MediterraneanDietCalculator: Calculator = {
+  id: 'MediterraneanDietCalculator-calculator',
   title: 'Mediterranean Diet Calculator Calculator',
   health: 'health', // e.g., 'finance', 'math', 'health', 'business'
   subhealth: 'Subhealth Name',

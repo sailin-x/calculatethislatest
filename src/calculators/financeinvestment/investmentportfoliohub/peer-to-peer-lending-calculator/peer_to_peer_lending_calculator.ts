@@ -2,14 +2,14 @@ import { Calculator } from '../../../../types/calculator';
 import { peer_to_peer_lending_calculatorInputs, peer_to_peer_lending_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const peer_to_peer_lending_calculatorCalculator: Calculator = {
-  id: 'peer-to-peer-lending-calculator',
+export const PeerToPeer-lending-calculator: Calculator = {
+  id: 'PeerToPeer-lending-calculator',
   title: 'Peer to Peer Lending Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'investmentportfoliohub',
-  description: 'Calculate Peer-to-Peer Lending Calculator metrics with professional accuracy.',
+  description: 'Calculate PeerToPeer Lending Calculator metrics with professional accuracy.',
   usageInstructions: [
-    'Enter your Peer-to-Peer Lending Calculator parameters',
+    'Enter your PeerToPeer Lending Calculator parameters',
     'Review calculation results',
     'Consider professional consultation for large amounts'
   ],
@@ -61,7 +61,7 @@ export const peer_to_peer_lending_calculatorCalculator: Calculator = {
   examples: [
     {
       title: 'Standard Calculation',
-      description: 'Basic Peer-to-Peer Lending Calculator calculation',
+      description: 'Basic PeerToPeer Lending Calculator calculation',
       inputs: { amount: 10000, rate: 5, time: 1 },
       expectedOutputs: { result: 500 }
     }

@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateAssetbasedLendingCalculatorInputs, validateAssetbasedLendingCalculatorBusinessRules } from './validation';
 
-export const AssetbasedLendingCalculatorCalculator: Calculator: Calculator = {
-  id: 'asset-based-lending-calculator-calculator',
+export const AssetbasedLendingCalculator: Calculator = {
+  id: 'AssetBasedLending-calculator-calculator',
   title: 'Asset-Based Lending Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

@@ -4,7 +4,7 @@ import { calculateCharitableGiftAnnuity } from './formulas';
 import { validateCharitableGiftAnnuityInputs } from './validation';
 
 export const CharitableGiftAnnuityCalculator: Calculator = {
-  id: 'charitable-gift-annuity-calculator',
+  id: 'CharitableGiftAnnuity-calculator',
   title: 'Charitable Gift Annuity Calculator',
   category: 'finance',
   subcategory: 'Retirement',
@@ -328,7 +328,7 @@ export const CharitableGiftAnnuityCalculator: Calculator = {
   examples: [
     {
       title: 'Retirement Charitable Gift',
-      description: '65-year-old donor contributing $100K for immediate annuity',
+      description: '65YearOld donor contributing $100K for immediate annuity',
       inputs: {
         donorAge: 65,
         annuityAge: 65,

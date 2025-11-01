@@ -1,13 +1,13 @@
-import { preference-payment-clawback-calculatorInputs, preference-payment-clawback-calculatorMetrics, preference-payment-clawback-calculatorAnalysis } from './types';
+import { PreferencePaymentClawback-calculatorInputs, PreferencePaymentClawback-calculatorMetrics, PreferencePaymentClawback-calculatorAnalysis } from './types';
 
 // Preference Payment Clawback Calculator - Finance calculations
-export function calculateResult(inputs: preference-payment-clawback-calculatorInputs): number {
+export function calculateResult(inputs: PreferencePaymentClawback-calculatorInputs): number {
   // Financial calculation logic
   const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
   return numericValues.reduce((sum, val) => sum + val, 0) || 0;
 }
 
-export function generateAnalysis(inputs: preference-payment-clawback-calculatorInputs, metrics: preference-payment-clawback-calculatorMetrics): preference-payment-clawback-calculatorAnalysis {
+export function generateAnalysis(inputs: PreferencePaymentClawback-calculatorInputs, metrics: PreferencePaymentClawback-calculatorMetrics): PreferencePaymentClawback-calculatorAnalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (Math.abs(result) > 100000) riskLevel = 'High';

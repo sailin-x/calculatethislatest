@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { hard_money_loanCalculatorCalculator } from './hard_money_loanCalculatorCalculator';
+import { hard_money_loanCalculator } from './hard_money_loanCalculator';
 
-export function registerhard_money_loanCalculatorCalculator(): void {
-  calculatorRegistry.register(new hard_money_loanCalculatorCalculator());
+export function registerhard_money_loanCalculator(): void {
+  calculatorRegistry.register(new hard_money_loanCalculator());
 }

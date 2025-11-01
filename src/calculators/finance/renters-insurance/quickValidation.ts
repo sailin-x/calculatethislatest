@@ -147,7 +147,7 @@ export function validateSecurityFeatures(value: string, allInputs?: Record<strin
 }
 
 export function validateFireProtection(value: string, allInputs?: Record<string, any>): string | null {
-  const validProtection = ['none', 'smoke-detectors', 'sprinklers', 'fire-station-nearby'];
+  const validProtection = ['none', 'smoke-detectors', 'sprinklers', 'FireStationNearby'];
   if (!value) return 'Fire protection is required';
   if (!validProtection.includes(value)) return 'Invalid fire protection';
   return null;
@@ -201,7 +201,7 @@ export function validatePolicyType(value: string, allInputs?: Record<string, any
 }
 
 export function validateReplacementCost(value: string, allInputs?: Record<string, any>): string | null {
-  const validCosts = ['actual-cash-value', 'replacement-cost'];
+  const validCosts = ['ActualCashValue', 'replacement-cost'];
   if (!value) return 'Replacement cost is required';
   if (!validCosts.includes(value)) return 'Invalid replacement cost';
   return null;
@@ -417,7 +417,7 @@ export function validateAllRentersInsuranceInputs(inputs: CalculatorInputs): { i
   }
 
   if (inputs.deductible && inputs.deductible > 1000) {
-    warnings.push('High deductible may result in significant out-of-pocket costs');
+    warnings.push('High deductible may result in significant OutOfPocket costs');
   }
 
   if (inputs.liabilityCoverage && inputs.liabilityCoverage < 100000) {

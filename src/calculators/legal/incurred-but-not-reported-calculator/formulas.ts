@@ -1,4 +1,4 @@
-import { incurred-but-not-reported-calculatorInputs, incurred-but-not-reported-calculatorMetrics, incurred-but-not-reported-calculatorAnalysis } from './types';
+import { IncurredButNot-reported-calculatorInputs, IncurredButNot-reported-calculatorMetrics, IncurredButNot-reported-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: incurred-but-not-reported-calculatorInputs): number {
+export function calculateResult(inputs: IncurredButNot-reported-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: incurred-but-not-reported-calculatorInpu
   }
 }
 
-export function generateAnalysis(inputs: incurred-but-not-reported-calculatorInputs, metrics: incurred-but-not-reported-calculatorMetrics): incurred-but-not-reported-calculatorAnalysis {
+export function generateAnalysis(inputs: IncurredButNot-reported-calculatorInputs, metrics: IncurredButNot-reported-calculatorMetrics): IncurredButNot-reported-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

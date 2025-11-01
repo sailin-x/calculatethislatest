@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { student_loan_forgiveness_calculatorInputs, student_loan_forgiveness_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const student_loan_forgiveness_calculatorCalculator: Calculator = {
-  id: 'student-loan-forgiveness-calculator',
+export const StudentLoanForgiveness-calculator: Calculator = {
+  id: 'StudentLoanForgiveness-calculator',
   title: 'Student Loan Forgiveness Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'retirementsavingshub',

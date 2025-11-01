@@ -162,9 +162,9 @@ export function validateLeaseBuyoutInputs(inputs: Record<string, any>): Validati
 
   const loanToValue = (inputs.loanAmount / inputs.propertyValue) * 100;
   if (loanToValue > 85) {
-    errors.push('Loan-to-value ratio cannot exceed 85% for commercial properties');
+    errors.push('LoanToValue ratio cannot exceed 85% for commercial properties');
   } else if (loanToValue > 75) {
-    warnings.push('High loan-to-value ratio increases risk');
+    warnings.push('High LoanToValue ratio increases risk');
   }
 
   const downPaymentPercentage = (inputs.downPayment / inputs.buyoutPrice) * 100;
@@ -249,11 +249,11 @@ export function validateLeaseBuyoutReasonableness(
     warnings.push('Low debt service coverage ratio increases default risk');
   }
 
-  // Cash-on-cash return validation
+  // CashOnCash return validation
   if (cashOnCashReturn < -15) {
-    warnings.push('Very negative cash-on-cash return indicates high-risk investment');
+    warnings.push('Very negative CashOnCash return indicates high-risk investment');
   } else if (cashOnCashReturn > 20) {
-    warnings.push('Very high cash-on-cash return may indicate unrealistic assumptions');
+    warnings.push('Very high CashOnCash return may indicate unrealistic assumptions');
   }
 
   return {

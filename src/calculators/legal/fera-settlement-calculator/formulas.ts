@@ -1,4 +1,4 @@
-import { fera-settlement-calculatorInputs, fera-settlement-calculatorMetrics, fera-settlement-calculatorAnalysis } from './types';
+import { FeraSettlementCalculatorinputs, FeraSettlementCalculatormetrics, FeraSettlementCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: fera-settlement-calculatorInputs): number {
+export function calculateResult(inputs: FeraSettlementCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: fera-settlement-calculatorInputs): numbe
   }
 }
 
-export function generateAnalysis(inputs: fera-settlement-calculatorInputs, metrics: fera-settlement-calculatorMetrics): fera-settlement-calculatorAnalysis {
+export function generateAnalysis(inputs: FeraSettlementCalculatorinputs, metrics: FeraSettlementCalculatormetrics): FeraSettlementCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

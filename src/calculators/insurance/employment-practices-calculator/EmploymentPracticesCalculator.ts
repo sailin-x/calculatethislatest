@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateEmploymentPracticesCalculatorInputs } from './validation';
 
 export const EmploymentPracticesCalculator: Calculator = {
-  id: 'employment-practices-calculator',
+  id: 'EmploymentPracticesCalculator',
   title: 'Employment Practices Calculator',
   category: 'insurance',
   subcategory: 'General',

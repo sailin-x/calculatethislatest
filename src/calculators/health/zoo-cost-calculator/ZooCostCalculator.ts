@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateZooCostCalculatorInputs } from './validation';
 
 export const ZooCostCalculator: Calculator = {
-  id: 'zoo-cost-calculator',
+  id: 'ZooCostCalculator',
   title: 'Zoo Cost Calculator',
   category: 'health',
   subcategory: 'General',

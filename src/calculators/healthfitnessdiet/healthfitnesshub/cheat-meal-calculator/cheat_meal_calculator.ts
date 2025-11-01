@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { cheat_meal_calculatorInputs, cheat_meal_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const cheat_meal_calculatorCalculator: Calculator = {
-  id: 'cheat-meal-calculator',
+export const CheatMealCalculator: Calculator = {
+  id: 'CheatMealCalculator',
   title: 'Cheat Meal Calculator Calculator',
   category: 'healthfitnessdiet',
   subcategory: 'healthfitnesshub',

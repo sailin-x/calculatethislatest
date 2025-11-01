@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { saas_metricsCalculatorCalculator } from './saas_metricsCalculatorCalculator';
+import { saas_metricsCalculator } from './saas_metricsCalculator';
 
-export function registersaas_metricsCalculatorCalculator(): void {
-  calculatorRegistry.register(new saas_metricsCalculatorCalculator());
+export function registersaas_metricsCalculator(): void {
+  calculatorRegistry.register(new saas_metricsCalculator());
 }

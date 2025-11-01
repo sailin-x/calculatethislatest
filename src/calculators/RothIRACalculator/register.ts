@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { RothIRACalculatorCalculator } from './RothIRACalculatorCalculator';
+import { RothIRACalculator } from './RothIRACalculator';
 
-export function registerRothIRACalculatorCalculator(): void {
-  calculatorRegistry.register(new RothIRACalculatorCalculator());
+export function registerRothIRACalculator(): void {
+  calculatorRegistry.register(new RothIRACalculator());
 }

@@ -1,4 +1,4 @@
-import { fine-art-investment-roi-calculatorInputs, fine-art-investment-roi-calculatorMetrics, fine-art-investment-roi-calculatorAnalysis } from './types';
+import { FineArtInvestment-roi-calculatorInputs, FineArtInvestment-roi-calculatorMetrics, FineArtInvestment-roi-calculatorAnalysis } from './types';
 
 // Investment Calculator - Compound Interest
 export function calculateFutureValue(principal: number, annualRate: number, years: number, compoundingFrequency: number = 12): number {
@@ -15,7 +15,7 @@ export function calculateTotalInterest(futureValue: number, principal: number, t
   return futureValue - principal - totalContributions;
 }
 
-export function calculateResult(inputs: fine-art-investment-roi-calculatorInputs): number {
+export function calculateResult(inputs: FineArtInvestment-roi-calculatorInputs): number {
   if ('initialInvestment' in inputs && 'annualReturn' in inputs && 'investmentPeriod' in inputs) {
     return calculateFutureValue(
       inputs.initialInvestment,
@@ -27,7 +27,7 @@ export function calculateResult(inputs: fine-art-investment-roi-calculatorInputs
   return 0;
 }
 
-export function generateAnalysis(inputs: fine-art-investment-roi-calculatorInputs, metrics: fine-art-investment-roi-calculatorMetrics): fine-art-investment-roi-calculatorAnalysis {
+export function generateAnalysis(inputs: FineArtInvestment-roi-calculatorInputs, metrics: FineArtInvestment-roi-calculatorMetrics): FineArtInvestment-roi-calculatorAnalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (result > 1000000) riskLevel = 'High';

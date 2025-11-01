@@ -9,7 +9,7 @@ import {
 import { validateFelaSettlementCalculatorInputs } from './validation';
 
 export const FelaSettlementCalculator: Calculator = {
-  id: 'fela-settlement-calculator',
+  id: 'FelaSettlementCalculator',
   title: 'FELA Settlement Calculator (Railroad)',
   category: 'legal',
   subcategory: 'Settlement Analysis',

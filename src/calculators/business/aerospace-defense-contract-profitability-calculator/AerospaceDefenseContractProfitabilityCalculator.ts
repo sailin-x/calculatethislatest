@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateAerospaceDefenseContractProfitabilityCalculatorInputs, validateAerospaceDefenseContractProfitabilityCalculatorBusinessRules } from './validation';
 
-export const AerospaceDefenseContractProfitabilityCalculatorCalculator: Calculator: Calculator = {
-  id: 'aerospace-defense-contract-profitability-calculator-calculator',
+export const AerospaceDefenseContractProfitabilityCalculator: Calculator = {
+  id: 'AerospaceDefenseContract-ProfitabilityCalculatorCalculator',
   title: 'Aerospace & Defense Contract Profitability Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

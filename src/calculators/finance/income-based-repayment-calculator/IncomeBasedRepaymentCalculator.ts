@@ -10,7 +10,7 @@ import {
 import { validateIncomeBasedRepaymentCalculatorInputs } from './validation';
 
 export const IncomeBasedRepaymentCalculator: Calculator = {
-  id: 'income-based-repayment-calculator',
+  id: 'IncomeBasedRepayment-calculator',
   title: 'Income Based Repayment Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

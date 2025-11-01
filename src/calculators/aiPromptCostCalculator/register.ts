@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { aiPromptCostCalculatorCalculator } from './aiPromptCostCalculatorCalculator';
+import { aiPromptCostCalculator } from './aiPromptCostCalculator';
 
-export function registeraiPromptCostCalculatorCalculator(): void {
-  calculatorRegistry.register(new aiPromptCostCalculatorCalculator());
+export function registeraiPromptCostCalculator(): void {
+  calculatorRegistry.register(new aiPromptCostCalculator());
 }

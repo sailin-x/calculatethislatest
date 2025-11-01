@@ -1,4 +1,4 @@
-import { crypto-mining-profitability-calculatorInputs, crypto-mining-profitability-calculatorMetrics, crypto-mining-profitability-calculatorAnalysis } from './types';
+import { CryptoMiningProfitability-calculatorInputs, CryptoMiningProfitability-calculatorMetrics, CryptoMiningProfitability-calculatorAnalysis } from './types';
 
 
 // Business Calculator - Financial metrics
@@ -14,7 +14,7 @@ export function calculatePaybackPeriod(initialInvestment: number, annualCashFlow
   return initialInvestment / annualCashFlow;
 }
 
-export function calculateResult(inputs: crypto-mining-profitability-calculatorInputs): number {
+export function calculateResult(inputs: CryptoMiningProfitability-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: crypto-mining-profitability-calculatorIn
   }
 }
 
-export function generateAnalysis(inputs: crypto-mining-profitability-calculatorInputs, metrics: crypto-mining-profitability-calculatorMetrics): crypto-mining-profitability-calculatorAnalysis {
+export function generateAnalysis(inputs: CryptoMiningProfitability-calculatorInputs, metrics: CryptoMiningProfitability-calculatorMetrics): CryptoMiningProfitability-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

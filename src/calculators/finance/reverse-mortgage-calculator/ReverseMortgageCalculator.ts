@@ -23,7 +23,7 @@ const reverseMortgageFormula: Formula = {
  * Industry-leading reverse mortgage calculator with comprehensive features
  */
 export const reverseMortgageCalculator: Calculator = {
-  id: 'reverse-mortgage-calculator',
+  id: 'ReverseMortgageCalculator',
   title: 'Reverse Mortgage Calculator',
   category: 'finance',
   subcategory: 'Mortgage & Real Estate',
@@ -191,7 +191,7 @@ export const reverseMortgageCalculator: Calculator = {
       options: [
         { value: 'tenure', label: 'Tenure - Monthly payments for life' },
         { value: 'term', label: 'Term - Monthly payments for fixed period' },
-        { value: 'line-of-credit', label: 'Line of Credit - Access as needed' }
+        { value: 'LineOfCredit', label: 'Line of Credit - Access as needed' }
       ],
       tooltip: 'Type of payment plan for the reverse mortgage',
       defaultValue: 'tenure'
@@ -293,7 +293,7 @@ export const reverseMortgageCalculator: Calculator = {
     },
     {
       id: 'loanToValueRatio',
-      label: 'Loan-to-Value Ratio (%)',
+      label: 'LoanToValue Ratio (%)',
       type: 'percentage',
       explanation: 'Percentage of home value represented by loan balance'
     },
@@ -348,7 +348,7 @@ export const reverseMortgageCalculator: Calculator = {
   examples: [
     {
       title: 'Standard Reverse Mortgage',
-      description: 'Analysis for a 70-year-old homeowner with a $300,000 home',
+      description: 'Analysis for a 70YearOld homeowner with a $300,000 home',
       inputs: {
         homeValue: 300000,
         borrowerAge: 70,
@@ -387,7 +387,7 @@ export const reverseMortgageCalculator: Calculator = {
         totalCashReceived: 253920,
         netWorthImpact: -45960,
         sustainabilityYears: 50,
-        riskAssessment: 'Medium Risk: Moderate loan-to-value ratio',
+        riskAssessment: 'Medium Risk: Moderate LoanToValue ratio',
         recommendation: 'Moderate option - consult with financial advisor for personalized advice'
       }
     }

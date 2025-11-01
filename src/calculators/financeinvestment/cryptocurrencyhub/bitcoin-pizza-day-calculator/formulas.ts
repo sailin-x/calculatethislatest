@@ -1,4 +1,4 @@
-import { bitcoin-pizza-day-calculatorInputs, bitcoin-pizza-day-calculatorMetrics, bitcoin-pizza-day-calculatorAnalysis } from './types';
+import { BitcoinPizzaDay-calculatorInputs, BitcoinPizzaDay-calculatorMetrics, BitcoinPizzaDay-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: bitcoin-pizza-day-calculatorInputs): number {
+export function calculateResult(inputs: BitcoinPizzaDay-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: bitcoin-pizza-day-calculatorInputs): num
   }
 }
 
-export function generateAnalysis(inputs: bitcoin-pizza-day-calculatorInputs, metrics: bitcoin-pizza-day-calculatorMetrics): bitcoin-pizza-day-calculatorAnalysis {
+export function generateAnalysis(inputs: BitcoinPizzaDay-calculatorInputs, metrics: BitcoinPizzaDay-calculatorMetrics): BitcoinPizzaDay-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

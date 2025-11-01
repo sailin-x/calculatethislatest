@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateReturnOnEquityCalculatorInputs, validateReturnOnEquityCalculatorBusinessRules } from './validation';
 
-export const ReturnOnEquityCalculatorCalculator: Calculator: Calculator = {
-  id: 'return-on-equity-calculator-calculator',
+export const ReturnOnEquityCalculator: Calculator = {
+  id: 'ReturnOnEquity-calculator-calculator',
   title: 'Return on Equity Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

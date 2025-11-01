@@ -35,7 +35,7 @@ export function runBRRRRStrategyValidation(): void {
     console.log('✅ Basic calculation successful');
     console.log(`   Total Investment: $${result.totalInvestment.toLocaleString()}`);
     console.log(`   Monthly Cash Flow: $${result.monthlyCashFlow.toFixed(2)}`);
-    console.log(`   Cash-on-Cash Return: ${result.cashOnCashReturn.toFixed(1)}%`);
+    console.log(`   CashOnCash Return: ${result.cashOnCashReturn.toFixed(1)}%`);
     console.log(`   Refinance Proceeds: $${result.refinanceProceeds.toLocaleString()}`);
   } catch (error) {
     console.log(`❌ Basic calculation failed: ${error}`);
@@ -60,17 +60,17 @@ export function runBRRRRStrategyValidation(): void {
   
   console.log(`✅ Total Investment: $${brrrrMetrics.totalInvestment.toLocaleString()}`);
   console.log(`✅ Monthly Cash Flow: $${brrrrMetrics.monthlyCashFlow.toFixed(2)}`);
-  console.log(`✅ Cash-on-Cash Return: ${brrrrMetrics.cashOnCashReturn.toFixed(1)}%`);
+  console.log(`✅ CashOnCash Return: ${brrrrMetrics.cashOnCashReturn.toFixed(1)}%`);
   console.log(`✅ Refinance Proceeds: $${refinanceAnalysis.refinanceProceeds.toLocaleString()}`);
   
-  // Verify cash-on-cash calculation
+  // Verify CashOnCash calculation
   const expectedCocReturn = (brrrrMetrics.annualCashFlow / brrrrMetrics.totalInvestment) * 100;
   const cocAccuracy = Math.abs(brrrrMetrics.cashOnCashReturn - expectedCocReturn);
   
   if (cocAccuracy < 0.1) {
-    console.log('✅ Cash-on-cash return calculation accuracy: Excellent');
+    console.log('✅ CashOnCash return calculation accuracy: Excellent');
   } else {
-    console.log(`⚠️ Cash-on-cash return calculation accuracy: ${cocAccuracy.toFixed(2)}% error`);
+    console.log(`⚠️ CashOnCash return calculation accuracy: ${cocAccuracy.toFixed(2)}% error`);
   }
 
   // Test 4: Edge cases
@@ -163,7 +163,7 @@ export function runBRRRRStrategyValidation(): void {
   
   // Test that BRRRR strategy shows positive returns
   if (brrrrMetrics.cashOnCashReturn > 0) {
-    console.log('✅ BRRRR strategy shows positive cash-on-cash return');
+    console.log('✅ BRRRR strategy shows positive CashOnCash return');
   } else {
     console.log('⚠️ BRRRR strategy shows negative returns');
   }

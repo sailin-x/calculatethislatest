@@ -1,4 +1,4 @@
-import { buy-sell-calculatorInputs, buy-sell-calculatorMetrics, buy-sell-calculatorAnalysis } from './types';
+import { BuySellCalculatorinputs, BuySellCalculatormetrics, BuySellCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: buy-sell-calculatorInputs): number {
+export function calculateResult(inputs: BuySellCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: buy-sell-calculatorInputs): number {
   }
 }
 
-export function generateAnalysis(inputs: buy-sell-calculatorInputs, metrics: buy-sell-calculatorMetrics): buy-sell-calculatorAnalysis {
+export function generateAnalysis(inputs: BuySellCalculatorinputs, metrics: BuySellCalculatormetrics): BuySellCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

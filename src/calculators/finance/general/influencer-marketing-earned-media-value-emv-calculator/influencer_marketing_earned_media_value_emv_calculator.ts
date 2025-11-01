@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { influencer_marketing_earned_media_value_emv_calculatorInputs, influencer_marketing_earned_media_value_emv_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const influencer_marketing_earned_media_value_emv_calculatorCalculator: Calculator = {
-  id: 'influencer-marketing-earned-media-value-emv-calculator',
+export const InfluencerMarketingEarned-MediaValueEmv-calculator: Calculator = {
+  id: 'InfluencerMarketingEarned-MediaValueEmv-calculator',
   title: 'Influencer Marketing Earned Media Value (EMV) Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

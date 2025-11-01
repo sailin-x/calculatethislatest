@@ -58,7 +58,7 @@ export function generateAnalysis(
     }
   } else {
     const lossAmount = Math.abs(gain);
-    recommendation = `You have a capital loss of $${lossAmount.toFixed(2)} (${(gainPercentage).toFixed(2)}% return). Capital losses can offset capital gains dollar-for-dollar. Any excess can offset up to $3,000 of ordinary income per year (US rules), with carryover to future years. Consult a tax advisor for optimization.`;
+    recommendation = `You have a capital loss of $${lossAmount.toFixed(2)} (${(gainPercentage).toFixed(2)}% return). Capital losses can offset capital gains DollarForDollar. Any excess can offset up to $3,000 of ordinary income per year (US rules), with carryover to future years. Consult a tax advisor for optimization.`;
   }
 
   return {

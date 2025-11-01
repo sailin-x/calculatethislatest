@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { tv_ad_gross_rating_point_grp_calculatorInputs, tv_ad_gross_rating_point_grp_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const tv_ad_gross_rating_point_grp_calculatorCalculator: Calculator = {
-  id: 'tv-ad-gross-rating-point-grp-calculator',
+export const TvAdGross-RatingPointGrp-calculator: Calculator = {
+  id: 'TvAdGross-RatingPointGrp-calculator',
   title: 'TV Ad Gross Rating Point (GRP) Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

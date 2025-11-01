@@ -1,4 +1,4 @@
-export { PatentValuationCalculatorCalculator } from './PatentValuationCalculatorCalculator';
+export { PatentValuationCalculator } from './PatentValuationCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

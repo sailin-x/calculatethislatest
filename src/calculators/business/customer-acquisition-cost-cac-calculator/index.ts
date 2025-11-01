@@ -1,4 +1,4 @@
-export { CustomerAcquisitionCostCacCalculatorCalculator } from './CustomerAcquisitionCostCacCalculatorCalculator';
+export { CustomerAcquisitionCostCacCalculator } from './CustomerAcquisitionCostCacCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

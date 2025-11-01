@@ -1,4 +1,4 @@
-import { business-risk-assessment-calculatorInputs, business-risk-assessment-calculatorMetrics, business-risk-assessment-calculatorAnalysis } from './types';
+import { BusinessRiskAssessment-calculatorInputs, BusinessRiskAssessment-calculatorMetrics, BusinessRiskAssessment-calculatorAnalysis } from './types';
 
 // Business Risk Assessment Calculator - Business calculations
 export function calculateNetPresentValue(cashFlows: number[], discountRate: number): number {
@@ -11,7 +11,7 @@ export function calculateROI(initialInvestment: number, finalValue: number): num
  return ((finalValue - initialInvestment) / initialInvestment) * 100;
 }
 
-export function calculateResult(inputs: business-risk-assessment-calculatorInputs): number {
+export function calculateResult(inputs: BusinessRiskAssessment-calculatorInputs): number {
  // Business calculation logic with real math
  const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
  if (numericValues.length >= 2) {
@@ -24,7 +24,7 @@ export function calculateResult(inputs: business-risk-assessment-calculatorInput
  return calculateNetPresentValue(numericValues, 10); // 10% discount rate
 }
 
-export function generateAnalysis(inputs: business-risk-assessment-calculatorInputs, metrics: business-risk-assessment-calculatorMetrics): business-risk-assessment-calculatorAnalysis {
+export function generateAnalysis(inputs: BusinessRiskAssessment-calculatorInputs, metrics: BusinessRiskAssessment-calculatorMetrics): BusinessRiskAssessment-calculatorAnalysis {
  const result = metrics.result;
  let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
  if (Math.abs(result) > 100000) riskLevel = 'High';

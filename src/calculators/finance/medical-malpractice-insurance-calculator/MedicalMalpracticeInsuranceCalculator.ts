@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateMedicalMalpracticeInsuranceCalculatorInputs, validateMedicalMalpracticeInsuranceCalculatorBusinessRules } from './validation';
 
-export const MedicalMalpracticeInsuranceCalculatorCalculator: Calculator: Calculator = {
-  id: 'medical-malpractice-insurance-calculator-calculator',
+export const MedicalMalpracticeInsuranceCalculator: Calculator = {
+  id: 'MedicalMalpracticeInsurance-calculator-calculator',
   title: 'Medical Malpractice Insurance Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

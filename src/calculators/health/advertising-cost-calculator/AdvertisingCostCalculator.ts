@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateAdvertisingCostCalculatorInputs } from './validation';
 
 export const AdvertisingCostCalculator: Calculator = {
-  id: 'advertising-cost-calculator',
+  id: 'AdvertisingCostCalculator',
   title: 'Advertising Cost Calculator',
   category: 'health',
   subcategory: 'General',

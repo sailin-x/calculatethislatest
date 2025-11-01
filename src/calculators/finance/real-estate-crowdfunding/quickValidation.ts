@@ -50,7 +50,7 @@ export function validateOperatingExpenses(value: any, allInputs?: Record<string,
 
 export function validateLoanToValue(value: any, allInputs?: Record<string, any>): { isValid: boolean; error?: string } {
   if (value !== undefined && (typeof value !== 'number' || value < 0 || value > 100)) {
-    return { isValid: false, error: 'Loan-to-value ratio must be between 0 and 100' };
+    return { isValid: false, error: 'LoanToValue ratio must be between 0 and 100' };
   }
 
   if (value > 80) {

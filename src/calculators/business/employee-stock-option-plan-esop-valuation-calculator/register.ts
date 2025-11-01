@@ -1,3 +1,3 @@
-import { EmployeeStockOptionPlanEsopValuationCalculatorCalculator } from './EmployeeStockOptionPlanEsopValuationCalculatorCalculator';
+import { EmployeeStockOptionPlanEsopValuationCalculator } from './EmployeeStockOptionPlanEsopValuationCalculator';
 
-export { EmployeeStockOptionPlanEsopValuationCalculatorCalculator };
+export { EmployeeStockOptionPlanEsopValuationCalculator };

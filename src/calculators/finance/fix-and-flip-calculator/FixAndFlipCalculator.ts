@@ -10,7 +10,7 @@ import {
 import { validateFixAndFlipCalculatorInputs } from './validation';
 
 export const FixAndFlipCalculator: Calculator = {
-  id: 'fix-and-flip-calculator',
+  id: 'FixAndFlip-calculator',
   title: 'Fix and Flip Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

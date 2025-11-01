@@ -10,8 +10,8 @@ import {
 import { validateOutOfHomeOhAdvertisingRoiCalculatorInputs } from './validation';
 
 export const OutOfHomeOhAdvertisingRoiCalculator: Calculator = {
-  id: 'out-of-home-oh-advertising-roi-calculator',
-  title: 'Out-of-Home (OOH) Advertising ROI Calculator',
+  id: 'OutOfHome-OhAdvertisingRoi-calculator',
+  title: 'OutOfHome (OOH) Advertising ROI Calculator',
   category: 'business',
   subcategory: 'Financial Planning',
   description: 'Calculate OOH ROI',

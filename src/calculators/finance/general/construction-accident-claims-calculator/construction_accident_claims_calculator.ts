@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { construction_accident_claims_calculatorInputs, construction_accident_claims_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const construction_accident_claims_calculatorCalculator: Calculator = {
-  id: 'construction-accident-claims-calculator',
+export const ConstructionAccidentClaims-calculator: Calculator = {
+  id: 'ConstructionAccidentClaims-calculator',
   title: 'Construction Accident Claims Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

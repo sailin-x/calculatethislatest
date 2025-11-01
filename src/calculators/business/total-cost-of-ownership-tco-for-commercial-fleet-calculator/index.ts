@@ -1,4 +1,4 @@
-export { TotalCostOfOwnershipTcoForCommercialFleetCalculatorCalculator } from './TotalCostOfOwnershipTcoForCommercialFleetCalculatorCalculator';
+export { TotalCostOfOwnershipTcoForCommercialFleetCalculator } from './TotalCostOfOwnershipTcoForCommercialFleetCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

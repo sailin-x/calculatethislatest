@@ -1,4 +1,4 @@
-export { film_slate_financing_roi_calculatorCalculator } from './film_slate_financing_roi_calculator';
+export { film_slate_financing_roi_calculator } from './film_slate_financing_roi_calculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

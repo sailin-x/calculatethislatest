@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { masternode_roi_calculatorInputs, masternode_roi_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const masternode_roi_calculatorCalculator: Calculator = {
-  id: 'masternode-roi-calculator',
+export const MasternodeRoiCalculator: Calculator = {
+  id: 'MasternodeRoiCalculator',
   title: 'Masternode ROI Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'cryptocurrencyhub',

@@ -1,4 +1,4 @@
-import { financial-integration-calculatorInputs, financial-integration-calculatorMetrics, financial-integration-calculatorAnalysis } from './types';
+import { FinancialIntegrationCalculatorinputs, FinancialIntegrationCalculatormetrics, FinancialIntegrationCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: financial-integration-calculatorInputs): number {
+export function calculateResult(inputs: FinancialIntegrationCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: financial-integration-calculatorInputs):
   }
 }
 
-export function generateAnalysis(inputs: financial-integration-calculatorInputs, metrics: financial-integration-calculatorMetrics): financial-integration-calculatorAnalysis {
+export function generateAnalysis(inputs: FinancialIntegrationCalculatorinputs, metrics: FinancialIntegrationCalculatormetrics): FinancialIntegrationCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

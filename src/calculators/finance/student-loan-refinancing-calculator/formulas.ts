@@ -1,4 +1,4 @@
-import { student-loan-refinancing-calculatorInputs, student-loan-refinancing-calculatorMetrics, student-loan-refinancing-calculatorAnalysis } from './types';
+import { StudentLoanRefinancing-calculatorInputs, StudentLoanRefinancing-calculatorMetrics, StudentLoanRefinancing-calculatorAnalysis } from './types';
 
 
 // Loan Calculator - Standard loan formulas
@@ -14,7 +14,7 @@ export function calculateTotalCost(monthlyPayment: number, numPayments: number):
   return monthlyPayment * numPayments;
 }
 
-export function calculateResult(inputs: student-loan-refinancing-calculatorInputs): number {
+export function calculateResult(inputs: StudentLoanRefinancing-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: student-loan-refinancing-calculatorInput
   }
 }
 
-export function generateAnalysis(inputs: student-loan-refinancing-calculatorInputs, metrics: student-loan-refinancing-calculatorMetrics): student-loan-refinancing-calculatorAnalysis {
+export function generateAnalysis(inputs: StudentLoanRefinancing-calculatorInputs, metrics: StudentLoanRefinancing-calculatorMetrics): StudentLoanRefinancing-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

@@ -1,11 +1,11 @@
 import { ValidationResult } from '../../lib/errors';
-import { restrictedstockunitrsuvsstockoptioncalculatorCalculatorInputs } from './types';
+import { restrictedstockunitrsuvsstockoptioncalculatorInputs } from './types';
 
 /**
  * Validate restricted stock unit rsu vs stock option calculator calculator inputs
  */
-export function validaterestrictedstockunitrsuvsstockoptioncalculatorCalculatorInputs(
-  inputs: restrictedstockunitrsuvsstockoptioncalculatorCalculatorInputs
+export function validaterestrictedstockunitrsuvsstockoptioncalculatorInputs(
+  inputs: restrictedstockunitrsuvsstockoptioncalculatorInputs
 ): ValidationResult {
   const errors: string[] = [];
 

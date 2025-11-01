@@ -1,5 +1,5 @@
-export { cryptoportfoliorebalancingcalculatorCalculator } from './cryptoportfoliorebalancingcalculatorCalculator';
-export { registercryptoportfoliorebalancingcalculatorCalculator } from './register';
+export { cryptoportfoliorebalancingcalculator } from './cryptoportfoliorebalancingcalculator';
+export { registercryptoportfoliorebalancingcalculator } from './register';
 export * from './types';
 export * from './formulas';
 export * from './validation';

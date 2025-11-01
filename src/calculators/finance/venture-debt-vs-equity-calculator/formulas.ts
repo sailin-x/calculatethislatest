@@ -1,4 +1,4 @@
-import { venture-debt-vs-equity-calculatorInputs, venture-debt-vs-equity-calculatorMetrics, venture-debt-vs-equity-calculatorAnalysis } from './types';
+import { VentureDebtVs-equity-calculatorInputs, VentureDebtVs-equity-calculatorMetrics, VentureDebtVs-equity-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: venture-debt-vs-equity-calculatorInputs): number {
+export function calculateResult(inputs: VentureDebtVs-equity-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: venture-debt-vs-equity-calculatorInputs)
   }
 }
 
-export function generateAnalysis(inputs: venture-debt-vs-equity-calculatorInputs, metrics: venture-debt-vs-equity-calculatorMetrics): venture-debt-vs-equity-calculatorAnalysis {
+export function generateAnalysis(inputs: VentureDebtVs-equity-calculatorInputs, metrics: VentureDebtVs-equity-calculatorMetrics): VentureDebtVs-equity-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

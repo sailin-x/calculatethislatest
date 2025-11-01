@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { erp_implementation_roi_calculatorInputs, erp_implementation_roi_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const erp_implementation_roi_calculatorCalculator: Calculator = {
-  id: 'erp-implementation-roi-calculator',
+export const ErpImplementationRoi-calculator: Calculator = {
+  id: 'ErpImplementationRoi-calculator',
   title: 'ERP Implementation ROI Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

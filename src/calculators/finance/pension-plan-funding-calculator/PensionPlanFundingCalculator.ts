@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validatePensionPlanFundingCalculatorInputs, validatePensionPlanFundingCalculatorBusinessRules } from './validation';
 
-export const PensionPlanFundingCalculatorCalculator: Calculator: Calculator = {
-  id: 'pension-plan-funding-calculator-calculator',
+export const PensionPlanFundingCalculator: Calculator = {
+  id: 'PensionPlanFunding-calculator-calculator',
   title: 'Pension Plan Funding Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

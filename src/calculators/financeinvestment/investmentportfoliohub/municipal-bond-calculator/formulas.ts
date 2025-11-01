@@ -1,4 +1,4 @@
-import { municipal-bond-calculatorInputs, municipal-bond-calculatorMetrics, municipal-bond-calculatorAnalysis } from './types';
+import { MunicipalBondCalculatorinputs, MunicipalBondCalculatormetrics, MunicipalBondCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: municipal-bond-calculatorInputs): number {
+export function calculateResult(inputs: MunicipalBondCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: municipal-bond-calculatorInputs): number
   }
 }
 
-export function generateAnalysis(inputs: municipal-bond-calculatorInputs, metrics: municipal-bond-calculatorMetrics): municipal-bond-calculatorAnalysis {
+export function generateAnalysis(inputs: MunicipalBondCalculatorinputs, metrics: MunicipalBondCalculatormetrics): MunicipalBondCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

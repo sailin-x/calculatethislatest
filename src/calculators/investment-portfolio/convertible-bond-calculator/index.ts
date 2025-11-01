@@ -1,4 +1,4 @@
-export { ConvertibleBondCalculatorCalculator } from './ConvertibleBondCalculatorCalculator';
+export { ConvertibleBondCalculator } from './ConvertibleBondCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

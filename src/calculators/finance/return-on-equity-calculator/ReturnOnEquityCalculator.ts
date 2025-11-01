@@ -10,7 +10,7 @@ import {
 import { validateReturnOnEquityCalculatorInputs } from './validation';
 
 export const ReturnOnEquityCalculator: Calculator = {
-  id: 'return-on-equity-calculator',
+  id: 'ReturnOnEquity-calculator',
   title: 'Return on Equity Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

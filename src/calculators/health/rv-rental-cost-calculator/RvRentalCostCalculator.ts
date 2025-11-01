@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateRvRentalCostCalculatorInputs } from './validation';
 
 export const RvRentalCostCalculator: Calculator = {
-  id: 'rv-rental-cost-calculator',
+  id: 'RvRentalCost-calculator',
   title: 'RV Rental Cost Calculator',
   category: 'health',
   subcategory: 'General',

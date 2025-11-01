@@ -1,3 +1,3 @@
-import { MassTortSettlementCalculatorCalculator } from './MassTortSettlementCalculatorCalculator';
+import { MassTortSettlementCalculator } from './MassTortSettlementCalculator';
 
-export { MassTortSettlementCalculatorCalculator };
+export { MassTortSettlementCalculator };

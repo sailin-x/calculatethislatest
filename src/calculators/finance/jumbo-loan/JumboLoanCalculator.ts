@@ -145,8 +145,8 @@ export const JumboLoanCalculator: Calculator<JumboLoanInputs, JumboLoanOutputs> 
     },
     borrowerDebtToIncomeRatio: {
       type: 'number',
-      label: 'Debt-to-Income Ratio (%)',
-      description: 'Current debt-to-income ratio',
+      label: 'DebtToIncome Ratio (%)',
+      description: 'Current DebtToIncome ratio',
       required: true,
       min: 0,
       max: 100,
@@ -540,8 +540,8 @@ export const JumboLoanCalculator: Calculator<JumboLoanInputs, JumboLoanOutputs> 
     },
     loanToValueRatio: {
       type: 'number',
-      label: 'Loan-to-Value Ratio',
-      description: 'Loan-to-value ratio percentage'
+      label: 'LoanToValue Ratio',
+      description: 'LoanToValue ratio percentage'
     },
     riskScore: {
       type: 'number',
@@ -585,7 +585,7 @@ export const JumboLoanCalculator: Calculator<JumboLoanInputs, JumboLoanOutputs> 
 - **Total Interest Paid**: $${outputs.totalInterestPaid.toLocaleString()}
 - **Effective Interest Rate**: ${outputs.effectiveInterestRate.toFixed(2)}%
 - **Total Fees**: $${outputs.totalFees.toLocaleString()}
-- **Loan-to-Value Ratio**: ${outputs.loanToValueRatio.toFixed(2)}%
+- **LoanToValue Ratio**: ${outputs.loanToValueRatio.toFixed(2)}%
 - **Risk Score**: ${outputs.riskScore}/10
 - **Jumbo Premium**: $${outputs.jumboPremium.toLocaleString()}
 
@@ -608,7 +608,7 @@ ${analysis.nextSteps.join('\n')}
     'Total Interest Paid': 'Sum of all interest payments over loan term',
     'Effective Interest Rate': 'APR including jumbo premium and fees',
     'Total Fees': 'Sum of all origination, closing, and other fees',
-    'Loan-to-Value Ratio': 'Loan Amount / Property Value × 100',
+    'LoanToValue Ratio': 'Loan Amount / Property Value × 100',
     'Risk Score': 'Weighted assessment of borrower, property, and market risks',
     'Jumbo Premium': 'Additional cost due to loan amount exceeding conventional limits'
   },

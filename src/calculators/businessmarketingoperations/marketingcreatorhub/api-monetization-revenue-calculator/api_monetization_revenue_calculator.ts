@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { api_monetization_revenue_calculatorInputs, api_monetization_revenue_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const api_monetization_revenue_calculatorCalculator: Calculator = {
-  id: 'api-monetization-revenue-calculator',
+export const ApiMonetizationRevenue-calculator: Calculator = {
+  id: 'ApiMonetizationRevenue-calculator',
   title: 'API Monetization & Revenue Calculator Calculator',
   category: 'businessmarketingoperations',
   subcategory: 'marketingcreatorhub',

@@ -1,4 +1,4 @@
-export { StudentLoanPortfolioRiskCalculatorCalculator } from './StudentLoanPortfolioRiskCalculatorCalculator';
+export { StudentLoanPortfolioRiskCalculator } from './StudentLoanPortfolioRiskCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

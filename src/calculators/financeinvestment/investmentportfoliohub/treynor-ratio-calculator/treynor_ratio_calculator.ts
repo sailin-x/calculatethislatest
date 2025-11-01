@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { treynor_ratio_calculatorInputs, treynor_ratio_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const treynor_ratio_calculatorCalculator: Calculator = {
-  id: 'treynor-ratio-calculator',
+export const TreynorRatioCalculator: Calculator = {
+  id: 'TreynorRatioCalculator',
   title: 'Treynor Ratio Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'investmentportfoliohub',

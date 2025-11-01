@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateSnowboardLessonCostCalculatorInputs } from './validation';
 
 export const SnowboardLessonCostCalculator: Calculator = {
-  id: 'snowboard-lesson-cost-calculator',
+  id: 'SnowboardLessonCost-calculator',
   title: 'Snowboard Lesson Cost Calculator',
   category: 'health',
   subcategory: 'General',

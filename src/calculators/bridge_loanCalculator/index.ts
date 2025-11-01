@@ -1,3 +1,3 @@
-export * from './bridge_loanCalculatorCalculator';
+export * from './bridge_loanCalculator';
 export * from './register';
 export * from './types';

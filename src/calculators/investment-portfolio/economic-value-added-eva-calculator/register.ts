@@ -1,3 +1,3 @@
-import { EconomicValueAddedEvaCalculatorCalculator } from './EconomicValueAddedEvaCalculatorCalculator';
+import { EconomicValueAddedEvaCalculator } from './EconomicValueAddedEvaCalculator';
 
-export { EconomicValueAddedEvaCalculatorCalculator };
+export { EconomicValueAddedEvaCalculator };

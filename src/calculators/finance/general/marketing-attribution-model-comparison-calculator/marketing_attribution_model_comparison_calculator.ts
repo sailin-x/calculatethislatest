@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { marketing_attribution_model_comparison_calculatorInputs, marketing_attribution_model_comparison_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const marketing_attribution_model_comparison_calculatorCalculator: Calculator = {
-  id: 'marketing-attribution-model-comparison-calculator',
+export const MarketingAttributionModel-comparison-calculator: Calculator = {
+  id: 'MarketingAttributionModel-comparison-calculator',
   title: 'Marketing Attribution Model Comparison Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

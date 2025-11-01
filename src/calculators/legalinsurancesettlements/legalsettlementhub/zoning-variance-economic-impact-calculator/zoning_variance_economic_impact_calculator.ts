@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { zoning_variance_economic_impact_calculatorInputs, zoning_variance_economic_impact_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const zoning_variance_economic_impact_calculatorCalculator: Calculator = {
-  id: 'zoning-variance-economic-impact-calculator',
+export const ZoningVarianceEconomic-impact-calculator: Calculator = {
+  id: 'ZoningVarianceEconomic-impact-calculator',
   title: 'Zoning Variance Economic Impact Calculator Calculator',
   category: 'legalinsurancesettlements',
   subcategory: 'legalsettlementhub',

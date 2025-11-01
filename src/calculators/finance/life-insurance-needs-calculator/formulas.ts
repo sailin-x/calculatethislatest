@@ -1,13 +1,13 @@
-import { life-insurance-needs-calculatorInputs, life-insurance-needs-calculatorMetrics, life-insurance-needs-calculatorAnalysis } from './types';
+import { LifeInsuranceNeeds-calculatorInputs, LifeInsuranceNeeds-calculatorMetrics, LifeInsuranceNeeds-calculatorAnalysis } from './types';
 
 // Life Insurance Needs Calculator - Finance calculations
-export function calculateResult(inputs: life-insurance-needs-calculatorInputs): number {
+export function calculateResult(inputs: LifeInsuranceNeeds-calculatorInputs): number {
   // Financial calculation logic
   const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
   return numericValues.reduce((sum, val) => sum + val, 0) || 0;
 }
 
-export function generateAnalysis(inputs: life-insurance-needs-calculatorInputs, metrics: life-insurance-needs-calculatorMetrics): life-insurance-needs-calculatorAnalysis {
+export function generateAnalysis(inputs: LifeInsuranceNeeds-calculatorInputs, metrics: LifeInsuranceNeeds-calculatorMetrics): LifeInsuranceNeeds-calculatorAnalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (Math.abs(result) > 100000) riskLevel = 'High';

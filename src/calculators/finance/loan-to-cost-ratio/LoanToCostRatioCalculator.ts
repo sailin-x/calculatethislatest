@@ -3,7 +3,7 @@ import { calculateLoanToCostRatio, generateLoanToCostRatioAnalysis } from './for
 import { validateLoanToCostRatioInputs } from './validation';
 
 export const LoanToCostRatioCalculator: Calculator = {
-  id: 'loan-to-cost-ratio-calculator',
+  id: 'LoanToCost-ratio-calculator',
   name: 'Loan to Cost (LTC) Ratio Calculator',
   category: 'finance',
   subcategory: 'investment',
@@ -14,7 +14,7 @@ export const LoanToCostRatioCalculator: Calculator = {
     { id: 'softCosts', name: 'Soft Costs', type: 'number', unit: 'USD', required: false, description: 'Architectural, engineering, permits, etc.', placeholder: '300000', min: 0, max: 10000000 },
     { id: 'furnitureFixturesEquipment', name: 'Furniture, Fixtures & Equipment', type: 'number', unit: 'USD', required: false, description: 'FF&E costs', placeholder: '100000', min: 0, max: 5000000 },
     { id: 'contingency', name: 'Contingency', type: 'number', unit: 'USD', required: false, description: 'Contingency reserve', placeholder: '150000', min: 0, max: 5000000 },
-    { id: 'ltcRatio', name: 'LTC Ratio', type: 'number', unit: '%', required: true, description: 'Maximum loan-to-cost ratio allowed by lender', placeholder: '75', min: 50, max: 95 },
+    { id: 'ltcRatio', name: 'LTC Ratio', type: 'number', unit: '%', required: true, description: 'Maximum LoanToCost ratio allowed by lender', placeholder: '75', min: 50, max: 95 },
     { id: 'projectType', name: 'Project Type', type: 'select', required: false, description: 'Type of real estate project', placeholder: 'Select project type', options: ['Residential', 'Commercial', 'Industrial', 'Mixed-Use', 'Hospitality', 'Healthcare', 'Educational', 'Retail', 'Office', 'Warehouse'] },
     { id: 'propertyType', name: 'Property Type', type: 'select', required: false, description: 'Specific property type', placeholder: 'Select property type', options: ['Single Family', 'Multi-Family', 'Apartment', 'Condominium', 'Townhouse', 'Office Building', 'Shopping Center', 'Hotel', 'Hospital', 'School', 'Factory', 'Warehouse', 'Mixed-Use Building'] },
     { id: 'location', name: 'Location', type: 'select', required: false, description: 'Project location type', placeholder: 'Select location', options: ['Urban', 'Suburban', 'Rural', 'Downtown', 'Airport Area', 'University Area', 'Medical District', 'Business District', 'Residential Area', 'Industrial Zone'] },
@@ -34,7 +34,7 @@ export const LoanToCostRatioCalculator: Calculator = {
     { id: 'totalProjectCost', name: 'Total Project Cost', type: 'number', unit: 'USD', description: 'Total project cost including all components' },
     { id: 'maximumLoanAmount', name: 'Maximum Loan Amount', type: 'number', unit: 'USD', description: 'Maximum loan amount based on LTC ratio' },
     { id: 'requiredEquity', name: 'Required Equity', type: 'number', unit: 'USD', description: 'Required equity investment' },
-    { id: 'ltcRatioActual', name: 'Actual LTC Ratio', type: 'number', unit: '%', description: 'Actual loan-to-cost ratio' },
+    { id: 'ltcRatioActual', name: 'Actual LTC Ratio', type: 'number', unit: '%', description: 'Actual LoanToCost ratio' },
     { id: 'costBreakdown', name: 'Cost Breakdown', type: 'object', description: 'Detailed breakdown of project costs' },
     { id: 'riskScore', name: 'Risk Score', type: 'number', description: 'Project risk assessment score (0-100)' },
     { id: 'feasibilityScore', name: 'Feasibility Score', type: 'number', description: 'Project feasibility score (0-100)' },
@@ -68,7 +68,7 @@ export const LoanToCostRatioCalculator: Calculator = {
     {
       name: 'Actual LTC Ratio',
       formula: 'Actual LTC Ratio = (Loan Amount / Total Project Cost) × 100',
-      description: 'Calculates the actual loan-to-cost ratio'
+      description: 'Calculates the actual LoanToCost ratio'
     },
     {
       name: 'Risk Score Calculation',

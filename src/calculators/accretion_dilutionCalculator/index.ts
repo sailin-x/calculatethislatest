@@ -1,3 +1,3 @@
-export * from './accretion_dilutionCalculatorCalculator';
+export * from './accretion_dilutionCalculator';
 export * from './register';
 export * from './types';

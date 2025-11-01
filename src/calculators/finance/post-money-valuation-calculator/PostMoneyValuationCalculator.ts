@@ -10,7 +10,7 @@ import {
 import { validatePostMoneyValuationCalculatorInputs } from './validation';
 
 export const PostMoneyValuationCalculator: Calculator = {
-  id: 'post-money-valuation-calculator',
+  id: 'PostMoneyValuation-calculator',
   title: 'Post-Money Valuation Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

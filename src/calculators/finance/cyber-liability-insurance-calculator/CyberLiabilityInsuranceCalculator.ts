@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateCyberLiabilityInsuranceCalculatorInputs, validateCyberLiabilityInsuranceCalculatorBusinessRules } from './validation';
 
-export const CyberLiabilityInsuranceCalculatorCalculator: Calculator: Calculator = {
-  id: 'cyber-liability-insurance-calculator-calculator',
+export const CyberLiabilityInsuranceCalculator: Calculator = {
+  id: 'CyberLiabilityInsurance-calculator-calculator',
   title: 'Cyber Liability Insurance Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

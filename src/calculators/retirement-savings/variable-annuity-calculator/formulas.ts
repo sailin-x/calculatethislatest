@@ -4,7 +4,7 @@ import { VariableAnnuityCalculatorInputs, VariableAnnuityCalculatorMetrics, Vari
 /**
  * Calculates the future value of an investment with regular annual contributions,
  * accounting for net return after fees. Uses the compound interest formula for
- * initial principal and the annuity formula for contributions (assuming end-of-year deposits).
+ * initial principal and the annuity formula for contributions (assuming EndOfYear deposits).
  * 
  * @param initial - Initial investment amount
  * @param annual - Annual contribution amount

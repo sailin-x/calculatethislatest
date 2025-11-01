@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateProfessionalLiabilityInsuranceCalculatorInputs, validateProfessionalLiabilityInsuranceCalculatorBusinessRules } from './validation';
 
-export const ProfessionalLiabilityInsuranceCalculatorCalculator: Calculator: Calculator = {
-  id: 'professional-liability-insurance-calculator-calculator',
+export const ProfessionalLiabilityInsuranceCalculator: Calculator = {
+  id: 'ProfessionalLiabilityInsurance-calculator-calculator',
   title: 'Professional Liability Insurance Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

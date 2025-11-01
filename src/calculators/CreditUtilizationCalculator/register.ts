@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { CreditUtilizationCalculatorCalculator } from './CreditUtilizationCalculatorCalculator';
+import { CreditUtilizationCalculator } from './CreditUtilizationCalculator';
 
-export function registerCreditUtilizationCalculatorCalculator(): void {
-  calculatorRegistry.register(new CreditUtilizationCalculatorCalculator());
+export function registerCreditUtilizationCalculator(): void {
+  calculatorRegistry.register(new CreditUtilizationCalculator());
 }

@@ -1,4 +1,4 @@
-export { crowdfunding_equity_offering_calculatorCalculator } from './crowdfunding_equity_offering_calculator';
+export { crowdfunding_equity_offering_calculator } from './crowdfunding_equity_offering_calculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

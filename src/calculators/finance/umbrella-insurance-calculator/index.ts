@@ -1,4 +1,4 @@
-export { UmbrellaInsuranceCalculatorCalculator } from './UmbrellaInsuranceCalculatorCalculator';
+export { UmbrellaInsuranceCalculator } from './UmbrellaInsuranceCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

@@ -1,4 +1,4 @@
-import { glycemic-load-calculatorInputs, glycemic-load-calculatorMetrics, glycemic-load-calculatorAnalysis } from './types';
+import { GlycemicLoadCalculatorinputs, GlycemicLoadCalculatormetrics, GlycemicLoadCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: glycemic-load-calculatorInputs): number {
+export function calculateResult(inputs: GlycemicLoadCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: glycemic-load-calculatorInputs): number 
   }
 }
 
-export function generateAnalysis(inputs: glycemic-load-calculatorInputs, metrics: glycemic-load-calculatorMetrics): glycemic-load-calculatorAnalysis {
+export function generateAnalysis(inputs: GlycemicLoadCalculatorinputs, metrics: GlycemicLoadCalculatormetrics): GlycemicLoadCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

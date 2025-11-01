@@ -1,3 +1,3 @@
-import { InternalRateOfReturnCalculatorCalculator } from './InternalRateOfReturnCalculatorCalculator';
+import { InternalRateOfReturnCalculator } from './InternalRateOfReturnCalculator';
 
-export { InternalRateOfReturnCalculatorCalculator };
+export { InternalRateOfReturnCalculator };

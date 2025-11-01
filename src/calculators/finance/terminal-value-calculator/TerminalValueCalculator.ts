@@ -10,7 +10,7 @@ import {
 import { validateTerminalValueCalculatorInputs } from './validation';
 
 export const TerminalValueCalculator: Calculator = {
-  id: 'terminal-value-calculator',
+  id: 'TerminalValueCalculator',
   title: 'Terminal Value Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

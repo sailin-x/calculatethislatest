@@ -1,4 +1,4 @@
-export { IraCalculatorCalculator } from './IraCalculatorCalculator';
+export { IraCalculator } from './IraCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

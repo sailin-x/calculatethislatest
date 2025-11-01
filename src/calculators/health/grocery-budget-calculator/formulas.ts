@@ -1,4 +1,4 @@
-import { grocery-budget-calculatorInputs, grocery-budget-calculatorMetrics, grocery-budget-calculatorAnalysis } from './types';
+import { GroceryBudgetCalculatorinputs, GroceryBudgetCalculatormetrics, GroceryBudgetCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: grocery-budget-calculatorInputs): number {
+export function calculateResult(inputs: GroceryBudgetCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: grocery-budget-calculatorInputs): number
   }
 }
 
-export function generateAnalysis(inputs: grocery-budget-calculatorInputs, metrics: grocery-budget-calculatorMetrics): grocery-budget-calculatorAnalysis {
+export function generateAnalysis(inputs: GroceryBudgetCalculatorinputs, metrics: GroceryBudgetCalculatormetrics): GroceryBudgetCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

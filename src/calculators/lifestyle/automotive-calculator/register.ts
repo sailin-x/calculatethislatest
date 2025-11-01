@@ -1,3 +1,3 @@
-import { AutomotiveCalculatorCalculator } from './AutomotiveCalculatorCalculator';
+import { AutomotiveCalculator } from './AutomotiveCalculator';
 
-export { AutomotiveCalculatorCalculator };
+export { AutomotiveCalculator };

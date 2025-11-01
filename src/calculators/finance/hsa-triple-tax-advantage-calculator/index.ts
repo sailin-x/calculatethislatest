@@ -1,4 +1,4 @@
-export { HsaTripleTaxAdvantageCalculatorCalculator } from './HsaTripleTaxAdvantageCalculatorCalculator';
+export { HsaTripleTaxAdvantageCalculator } from './HsaTripleTaxAdvantageCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

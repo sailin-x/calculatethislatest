@@ -1,3 +1,3 @@
-import { HrTechStackRoiCalculatorCalculator } from './HrTechStackRoiCalculatorCalculator';
+import { HrTechStackRoiCalculator } from './HrTechStackRoiCalculator';
 
-export { HrTechStackRoiCalculatorCalculator };
+export { HrTechStackRoiCalculator };

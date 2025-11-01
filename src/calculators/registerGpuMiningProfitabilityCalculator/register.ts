@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { registerGPUMiningProfitabilityCalculatorCalculator } from './registerGPUMiningProfitabilityCalculatorCalculator';
+import { registerGpuMiningProfitabilityCalculator } from './registerGpuMiningProfitabilityCalculator';
 
-export function registerregisterGPUMiningProfitabilityCalculatorCalculator(): void {
-  calculatorRegistry.register(new registerGPUMiningProfitabilityCalculatorCalculator());
+export function registerregisterGPUMiningProfitabilityCalculator(): void {
+  calculatorRegistry.register(registerGpuMiningProfitabilityCalculator);
 }

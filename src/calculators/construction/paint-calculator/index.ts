@@ -1,4 +1,4 @@
-export { PaintCalculatorCalculator } from './PaintCalculatorCalculator';
+export { PaintCalculator } from './PaintCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

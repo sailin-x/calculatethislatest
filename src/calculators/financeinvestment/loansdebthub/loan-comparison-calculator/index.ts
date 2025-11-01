@@ -1,4 +1,4 @@
-export { loan_comparison_calculatorCalculator } from './loan_comparison_calculator';
+export { loan_comparison_calculator } from './loan_comparison_calculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

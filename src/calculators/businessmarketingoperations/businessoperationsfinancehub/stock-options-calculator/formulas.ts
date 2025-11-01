@@ -1,4 +1,4 @@
-import { stock-options-calculatorInputs, stock-options-calculatorMetrics, stock-options-calculatorAnalysis } from './types';
+import { StockOptionsCalculatorinputs, StockOptionsCalculatormetrics, StockOptionsCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: stock-options-calculatorInputs): number {
+export function calculateResult(inputs: StockOptionsCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: stock-options-calculatorInputs): number 
   }
 }
 
-export function generateAnalysis(inputs: stock-options-calculatorInputs, metrics: stock-options-calculatorMetrics): stock-options-calculatorAnalysis {
+export function generateAnalysis(inputs: StockOptionsCalculatorinputs, metrics: StockOptionsCalculatormetrics): StockOptionsCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

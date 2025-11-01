@@ -1,4 +1,4 @@
-import { spotify-royalty-calculatorInputs, spotify-royalty-calculatorMetrics, spotify-royalty-calculatorAnalysis } from './types';
+import { SpotifyRoyaltyCalculatorinputs, SpotifyRoyaltyCalculatormetrics, SpotifyRoyaltyCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: spotify-royalty-calculatorInputs): number {
+export function calculateResult(inputs: SpotifyRoyaltyCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: spotify-royalty-calculatorInputs): numbe
   }
 }
 
-export function generateAnalysis(inputs: spotify-royalty-calculatorInputs, metrics: spotify-royalty-calculatorMetrics): spotify-royalty-calculatorAnalysis {
+export function generateAnalysis(inputs: SpotifyRoyaltyCalculatorinputs, metrics: SpotifyRoyaltyCalculatormetrics): SpotifyRoyaltyCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

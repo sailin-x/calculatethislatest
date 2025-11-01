@@ -1,6 +1,6 @@
-import { ad-reach-frequency-calculatorInputs } from './types';
+import { AdReachFrequency-calculatorInputs } from './types';
 
-export function validateInputs(inputs: ad-reach-frequency-calculatorInputs): { isValid: boolean; errors: string[] } {
+export function validateInputs(inputs: AdReachFrequency-calculatorInputs): { isValid: boolean; errors: string[] } {
   const errors: string[] = [];
 
   // Add validation logic specific to this calculator

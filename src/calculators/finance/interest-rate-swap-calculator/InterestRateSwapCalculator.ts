@@ -10,7 +10,7 @@ import {
 import { validateInterestRateSwapCalculatorInputs } from './validation';
 
 export const InterestRateSwapCalculator: Calculator = {
-  id: 'interest-rate-swap-calculator',
+  id: 'InterestRateSwap-calculator',
   title: 'Interest Rate Swap Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

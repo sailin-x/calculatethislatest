@@ -1,13 +1,13 @@
-import { carb-cycling-calculatorInputs, carb-cycling-calculatorMetrics, carb-cycling-calculatorAnalysis } from './types';
+import { CarbCyclingCalculatorinputs, CarbCyclingCalculatormetrics, CarbCyclingCalculatoranalysis } from './types';
 
 // Carb Cycling Calculator - Lifestyle calculations
-export function calculateResult(inputs: carb-cycling-calculatorInputs): number {
+export function calculateResult(inputs: CarbCyclingCalculatorinputs): number {
   // Lifestyle calculation logic
   const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
   return numericValues.reduce((sum, val) => sum + val, 0) || 0;
 }
 
-export function generateAnalysis(inputs: carb-cycling-calculatorInputs, metrics: carb-cycling-calculatorMetrics): carb-cycling-calculatorAnalysis {
+export function generateAnalysis(inputs: CarbCyclingCalculatorinputs, metrics: CarbCyclingCalculatormetrics): CarbCyclingCalculatoranalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (Math.abs(result) > 1000) riskLevel = 'High';

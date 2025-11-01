@@ -1,31 +1,27 @@
-import { Calculator } from '../../types/calculator';
-import { BondYieldCalculatorInputs, BondYieldCalculatorOutputs } from './types';
-import { calculateResult, generateAnalysis } from './formulas';
-import { validateBondYieldCalculatorInputs } from './validation';
+import { Calculator } from '../../engines/CalculatorEngine';
+import { bondyieldcalculatorInputs, bondyieldcalculatorOutputs } from './types';
+import { calculatebondyieldcalculatorResults } from './formulas';
+import { validatebondyieldcalculatorInputs } from './validation';
 
-export const BondYieldCalculator: Calculator = {
-  id: 'bond-yield-calculator',
-  title: 'Bond Yield Calculator',
-  category: 'finance',
-  subcategory: 'General',
-  description: 'Calculate bond yields and returns',
-  usageInstructions: [
-    'Add usage instructions here'
-  ],
+export class bondyieldcalculator implements Calculator<
+  bondyieldcalculatorInputs,
+  bondyieldcalculatorOutputs
+> {
+  readonly id = 'bond_yield_calculator_calculator';
+  readonly name = 'bond yield calculator Calculator';
+  readonly description = 'Professional bond yield calculator calculator with domain-specific functionality';
 
-  inputs: [
-    // Add input definitions here
-  ],
+  calculate(inputs: bondyieldcalculatorInputs): bondyieldcalculatorOutputs {
+    const validation = validatebondyieldcalculatorInputs(inputs);
+    if (!validation.isValid) {
+      throw new Error(`Validation failed: ${validation.errors.join(', ')}`);
+    }
 
-  outputs: [
-    // Add output definitions here
-  ],
+    return calculatebondyieldcalculatorResults(inputs);
+  }
 
-  formulas: [], // Will be implemented with the calculation engine
-
-  validationRules: [], // Will be implemented with validation rules
-
-  examples: [
-    // Add examples here
-  ]
-};
+  validateInputs(inputs: bondyieldcalculatorInputs): boolean {
+    const validation = validatebondyieldcalculatorInputs(inputs);
+    return validation.isValid;
+  }
+}

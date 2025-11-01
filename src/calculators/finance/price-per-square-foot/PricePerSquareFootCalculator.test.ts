@@ -5,7 +5,7 @@ import * as quickValidation from './quickValidation';
 describe('PricePerSquareFootCalculator', () => {
   describe('Calculator Definition', () => {
     it('should have correct id and title', () => {
-      expect(PricePerSquareFootCalculator.id).toBe('price-per-square-foot-calculator');
+      expect(PricePerSquareFootCalculator.id).toBe('PricePerSquare-foot-calculator');
       expect(PricePerSquareFootCalculator.title).toBe('Price Per Square Foot Calculator');
     });
 

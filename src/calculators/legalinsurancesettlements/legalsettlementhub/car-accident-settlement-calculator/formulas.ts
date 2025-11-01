@@ -1,4 +1,4 @@
-import { car-accident-settlement-calculatorInputs, car-accident-settlement-calculatorMetrics, car-accident-settlement-calculatorAnalysis } from './types';
+import { CarAccidentSettlement-calculatorInputs, CarAccidentSettlement-calculatorMetrics, CarAccidentSettlement-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: car-accident-settlement-calculatorInputs): number {
+export function calculateResult(inputs: CarAccidentSettlement-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: car-accident-settlement-calculatorInputs
   }
 }
 
-export function generateAnalysis(inputs: car-accident-settlement-calculatorInputs, metrics: car-accident-settlement-calculatorMetrics): car-accident-settlement-calculatorAnalysis {
+export function generateAnalysis(inputs: CarAccidentSettlement-calculatorInputs, metrics: CarAccidentSettlement-calculatorMetrics): CarAccidentSettlement-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

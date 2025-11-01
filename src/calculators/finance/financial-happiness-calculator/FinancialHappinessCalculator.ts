@@ -10,7 +10,7 @@ import {
 import { validateFinancialHappinessCalculatorInputs } from './validation';
 
 export const FinancialHappinessCalculator: Calculator = {
-  id: 'financial-happiness-calculator',
+  id: 'FinancialHappinessCalculator',
   title: 'Financial Happiness Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

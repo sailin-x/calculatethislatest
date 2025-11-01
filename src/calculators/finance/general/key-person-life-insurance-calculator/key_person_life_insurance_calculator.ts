@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { key_person_life_insurance_calculatorInputs, key_person_life_insurance_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const key_person_life_insurance_calculatorCalculator: Calculator = {
-  id: 'key-person-life-insurance-calculator',
+export const KeyPersonLife-insurance-calculator: Calculator = {
+  id: 'KeyPersonLife-insurance-calculator',
   title: 'Key Person Life Insurance Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

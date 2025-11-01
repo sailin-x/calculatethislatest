@@ -16,7 +16,7 @@ export interface InvestmentInputs {
   withdrawalRate: number;
   targetAmount: number;
   targetDate: string;
-  investmentStrategy: 'dollar-cost-averaging' | 'lump-sum' | 'value-averaging' | 'momentum';
+  investmentStrategy: 'DollarCostAveraging' | 'lump-sum' | 'value-averaging' | 'momentum';
   assetAllocation: {
     stocks: number;
     bonds: number;

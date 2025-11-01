@@ -1,4 +1,4 @@
-export { AssetProtectionTrustAptValueCalculatorCalculator } from './AssetProtectionTrustAptValueCalculatorCalculator';
+export { AssetProtectionTrustAptValueCalculator } from './AssetProtectionTrustAptValueCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

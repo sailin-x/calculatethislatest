@@ -1,13 +1,13 @@
-import { nft-royalty-revenue-calculator-exists-but-needs-registration-calculatorInputs, nft-royalty-revenue-calculator-exists-but-needs-registration-calculatorMetrics, nft-royalty-revenue-calculator-exists-but-needs-registration-calculatorAnalysis } from './types';
+import { NftRoyaltyRevenue-CalculatorExistsBut-NeedsRegistrationCalculatorinputs, NftRoyaltyRevenue-CalculatorExistsBut-NeedsRegistrationCalculatormetrics, NftRoyaltyRevenue-CalculatorExistsBut-NeedsRegistrationCalculatoranalysis } from './types';
 
 // **Nft Royalty Revenue Calculator Exists But Needs Registration Calculator** - Finance calculations
-export function calculateResult(inputs: nft-royalty-revenue-calculator-exists-but-needs-registration-calculatorInputs): number {
+export function calculateResult(inputs: NftRoyaltyRevenue-CalculatorExistsBut-NeedsRegistrationCalculatorinputs): number {
   // Financial calculation logic
   const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
   return numericValues.reduce((sum, val) => sum + val, 0) || 0;
 }
 
-export function generateAnalysis(inputs: nft-royalty-revenue-calculator-exists-but-needs-registration-calculatorInputs, metrics: nft-royalty-revenue-calculator-exists-but-needs-registration-calculatorMetrics): nft-royalty-revenue-calculator-exists-but-needs-registration-calculatorAnalysis {
+export function generateAnalysis(inputs: NftRoyaltyRevenue-CalculatorExistsBut-NeedsRegistrationCalculatorinputs, metrics: NftRoyaltyRevenue-CalculatorExistsBut-NeedsRegistrationCalculatormetrics): NftRoyaltyRevenue-CalculatorExistsBut-NeedsRegistrationCalculatoranalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (Math.abs(result) > 100000) riskLevel = 'High';

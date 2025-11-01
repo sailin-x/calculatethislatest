@@ -1,4 +1,4 @@
-import { social-media-cost-calculatorInputs, social-media-cost-calculatorMetrics, social-media-cost-calculatorAnalysis } from './types';
+import { SocialMediaCost-calculatorInputs, SocialMediaCost-calculatorMetrics, SocialMediaCost-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: social-media-cost-calculatorInputs): number {
+export function calculateResult(inputs: SocialMediaCost-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: social-media-cost-calculatorInputs): num
   }
 }
 
-export function generateAnalysis(inputs: social-media-cost-calculatorInputs, metrics: social-media-cost-calculatorMetrics): social-media-cost-calculatorAnalysis {
+export function generateAnalysis(inputs: SocialMediaCost-calculatorInputs, metrics: SocialMediaCost-calculatorMetrics): SocialMediaCost-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

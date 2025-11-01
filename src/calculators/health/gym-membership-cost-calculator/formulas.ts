@@ -1,4 +1,4 @@
-import { gym-membership-cost-calculatorInputs, gym-membership-cost-calculatorMetrics, gym-membership-cost-calculatorAnalysis } from './types';
+import { GymMembershipCost-calculatorInputs, GymMembershipCost-calculatorMetrics, GymMembershipCost-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: gym-membership-cost-calculatorInputs): number {
+export function calculateResult(inputs: GymMembershipCost-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: gym-membership-cost-calculatorInputs): n
   }
 }
 
-export function generateAnalysis(inputs: gym-membership-cost-calculatorInputs, metrics: gym-membership-cost-calculatorMetrics): gym-membership-cost-calculatorAnalysis {
+export function generateAnalysis(inputs: GymMembershipCost-calculatorInputs, metrics: GymMembershipCost-calculatorMetrics): GymMembershipCost-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

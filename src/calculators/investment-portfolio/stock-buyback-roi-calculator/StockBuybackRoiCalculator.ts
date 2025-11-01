@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateStockBuybackRoiCalculatorInputs, validateStockBuybackRoiCalculatorBusinessRules } from './validation';
 
-export const StockBuybackRoiCalculatorCalculator: Calculator: Calculator = {
-  id: 'stock-buyback-roi-calculator-calculator',
+export const StockBuybackRoiCalculator: Calculator = {
+  id: 'StockBuybackRoi-calculator-calculator',
   title: 'Stock Buyback ROI Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

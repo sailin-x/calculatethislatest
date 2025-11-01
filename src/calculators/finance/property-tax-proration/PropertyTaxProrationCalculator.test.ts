@@ -5,7 +5,7 @@ import * as quickValidation from './quickValidation';
 describe('PropertyTaxProrationCalculator', () => {
   describe('Calculator Definition', () => {
     it('should have correct id and title', () => {
-      expect(PropertyTaxProrationCalculator.id).toBe('property-tax-proration-calculator');
+      expect(PropertyTaxProrationCalculator.id).toBe('PropertyTaxProration-calculator');
       expect(PropertyTaxProrationCalculator.title).toBe('Property Tax Proration Calculator');
     });
 
@@ -52,7 +52,7 @@ describe('PropertyTaxProrationCalculator', () => {
 
     describe('Date Validation', () => {
       it('should validate tax year start date correctly', () => {
-        const result = quickValidation.validateTaxYearStart('2024-01-01', { taxYearEnd: '2024-12-31' });
+        const result = quickValidation.validateTaxYearStart('20240101', { taxYearEnd: '20241231' });
         expect(result.isValid).toBe(true);
       });
 
@@ -63,7 +63,7 @@ describe('PropertyTaxProrationCalculator', () => {
       });
 
       it('should reject start date after end date', () => {
-        const result = quickValidation.validateTaxYearStart('2024-12-31', { taxYearEnd: '2024-01-01' });
+        const result = quickValidation.validateTaxYearStart('20241231', { taxYearEnd: '20240101' });
         expect(result.isValid).toBe(false);
         expect(result.errors.taxYearStart).toContain('before end date');
       });
@@ -71,17 +71,17 @@ describe('PropertyTaxProrationCalculator', () => {
 
     describe('Closing Date Validation', () => {
       it('should validate closing date within tax year', () => {
-        const result = quickValidation.validateClosingDate('2024-06-15', {
-          taxYearStart: '2024-01-01',
-          taxYearEnd: '2024-12-31'
+        const result = quickValidation.validateClosingDate('20240615', {
+          taxYearStart: '20240101',
+          taxYearEnd: '20241231'
         });
         expect(result.isValid).toBe(true);
       });
 
       it('should reject closing date outside tax year', () => {
-        const result = quickValidation.validateClosingDate('2025-01-01', {
-          taxYearStart: '2024-01-01',
-          taxYearEnd: '2024-12-31'
+        const result = quickValidation.validateClosingDate('20250101', {
+          taxYearStart: '20240101',
+          taxYearEnd: '20241231'
         });
         expect(result.isValid).toBe(false);
         expect(result.errors.closingDate).toContain('within the tax year period');

@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateMarineInsuranceCalculatorInputs, validateMarineInsuranceCalculatorBusinessRules } from './validation';
 
-export const MarineInsuranceCalculatorCalculator: Calculator: Calculator = {
-  id: 'marine-insurance-calculator-calculator',
+export const MarineInsuranceCalculator: Calculator = {
+  id: 'MarineInsuranceCalculator-calculator',
   title: 'Marine Insurance Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

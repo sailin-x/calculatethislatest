@@ -1,4 +1,4 @@
-import { total-cost-of-ownership-tco-for-commercial-fleet-calculatorInputs, total-cost-of-ownership-tco-for-commercial-fleet-calculatorMetrics, total-cost-of-ownership-tco-for-commercial-fleet-calculatorAnalysis } from './types';
+import { TotalCostOf-OwnershipTcoFor-CommercialFleetCalculatorinputs, TotalCostOf-OwnershipTcoFor-CommercialFleetCalculatormetrics, TotalCostOf-OwnershipTcoFor-CommercialFleetCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: total-cost-of-ownership-tco-for-commercial-fleet-calculatorInputs): number {
+export function calculateResult(inputs: TotalCostOf-OwnershipTcoFor-CommercialFleetCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: total-cost-of-ownership-tco-for-commerci
   }
 }
 
-export function generateAnalysis(inputs: total-cost-of-ownership-tco-for-commercial-fleet-calculatorInputs, metrics: total-cost-of-ownership-tco-for-commercial-fleet-calculatorMetrics): total-cost-of-ownership-tco-for-commercial-fleet-calculatorAnalysis {
+export function generateAnalysis(inputs: TotalCostOf-OwnershipTcoFor-CommercialFleetCalculatorinputs, metrics: TotalCostOf-OwnershipTcoFor-CommercialFleetCalculatormetrics): TotalCostOf-OwnershipTcoFor-CommercialFleetCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

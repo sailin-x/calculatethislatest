@@ -10,7 +10,7 @@ import {
 import { validateDogecoinMiningCalculatorInputs } from './validation';
 
 export const DogecoinMiningCalculator: Calculator = {
-  id: 'dogecoin-mining-calculator',
+  id: 'DogecoinMiningCalculator',
   title: 'Dogecoin Mining Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

@@ -6,7 +6,7 @@ export function validateGpuModel(value: any, allInputs?: Record<string, any>): V
     return { isValid: false, errors: ['GPU model is required'] };
   }
 
-  const validModels = ['rtx-4090', 'rtx-4080', 'rtx-4070-ti', 'rtx-3090', 'rtx-3080', 'rtx-3070', 'rx-7900-xtx', 'rx-6900-xt', 'custom'];
+  const validModels = ['rtx-4090', 'rtx-4080', 'Rtx4070Ti', 'rtx-3090', 'rtx-3080', 'rtx-3070', 'Rx7900Xtx', 'Rx6900Xt', 'custom'];
   if (!validModels.includes(value)) {
     return { isValid: false, errors: ['Invalid GPU model selected'] };
   }

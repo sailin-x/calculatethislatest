@@ -2,7 +2,7 @@ import { Calculator } from '../../../../types/calculator';
 import { combinatorics_calculatorInputs, combinatorics_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const combinatorics_calculatorCalculator: Calculator = {
+export const combinatorics-calculator: Calculator = {
   id: 'combinatorics-calculator',
   title: 'Combinatorics Calculator Calculator',
   category: 'finance',

@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { class_action_settlement_calculatorInputs, class_action_settlement_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const class_action_settlement_calculatorCalculator: Calculator = {
-  id: 'class-action-settlement-calculator',
+export const ClassActionSettlement-calculator: Calculator = {
+  id: 'ClassActionSettlement-calculator',
   title: 'Class Action Settlement Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

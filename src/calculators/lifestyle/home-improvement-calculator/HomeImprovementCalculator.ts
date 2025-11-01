@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateHomeImprovementCalculatorInputs, validateHomeImprovementCalculatorBusinessRules } from './validation';
 
-export const HomeImprovementCalculatorCalculator: Calculator: Calculator = {
-  id: 'home-improvement-calculator-calculator',
+export const HomeImprovementCalculator: Calculator = {
+  id: 'HomeImprovementCalculator-calculator',
   title: 'Home Improvement Calculator Calculator',
   lifestyle: 'lifestyle', // e.g., 'finance', 'math', 'health', 'business'
   sublifestyle: 'Sublifestyle Name',

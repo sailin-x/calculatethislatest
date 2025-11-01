@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateBusinessLoanQualificationCalculatorInputs, validateBusinessLoanQualificationCalculatorBusinessRules } from './validation';
 
-export const BusinessLoanQualificationCalculatorCalculator: Calculator: Calculator = {
-  id: 'business-loan-qualification-calculator-calculator',
+export const BusinessLoanQualificationCalculator: Calculator = {
+  id: 'BusinessLoanQualification-calculator-calculator',
   title: 'Business Loan Qualification Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

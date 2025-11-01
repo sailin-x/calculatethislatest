@@ -1,4 +1,4 @@
-export { asbestos_settlement_calculatorCalculator } from './asbestos_settlement_calculator';
+export { asbestos_settlement_calculator } from './asbestos_settlement_calculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

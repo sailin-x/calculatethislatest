@@ -2,7 +2,7 @@ import { Calculator } from '../../../../types/calculator';
 import { asphalt_calculatorInputs, asphalt_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const asphalt_calculatorCalculator: Calculator = {
+export const asphalt-calculator: Calculator = {
   id: 'asphalt-calculator',
   title: 'Asphalt Calculator Calculator',
   category: 'constructionindustrial',

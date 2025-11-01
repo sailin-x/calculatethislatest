@@ -1,4 +1,4 @@
-export { chaturbate_token_calculatorCalculator } from './chaturbate_token_calculator';
+export { chaturbate_token_calculator } from './chaturbate_token_calculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

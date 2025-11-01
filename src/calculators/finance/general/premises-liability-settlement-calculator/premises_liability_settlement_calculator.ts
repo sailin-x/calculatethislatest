@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { premises_liability_settlement_calculatorInputs, premises_liability_settlement_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const premises_liability_settlement_calculatorCalculator: Calculator = {
-  id: 'premises-liability-settlement-calculator',
+export const PremisesLiabilitySettlement-calculator: Calculator = {
+  id: 'PremisesLiabilitySettlement-calculator',
   title: 'Premises Liability Settlement Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

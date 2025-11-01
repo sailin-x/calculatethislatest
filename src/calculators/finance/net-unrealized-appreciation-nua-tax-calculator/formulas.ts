@@ -1,13 +1,13 @@
-import { net-unrealized-appreciation-nua-tax-calculatorInputs, net-unrealized-appreciation-nua-tax-calculatorMetrics, net-unrealized-appreciation-nua-tax-calculatorAnalysis } from './types';
+import { NetUnrealizedAppreciation-NuaTaxCalculatorinputs, NetUnrealizedAppreciation-NuaTaxCalculatormetrics, NetUnrealizedAppreciation-NuaTaxCalculatoranalysis } from './types';
 
 // Net Unrealized Appreciation (NUA) Tax Calculator - Finance calculations
-export function calculateResult(inputs: net-unrealized-appreciation-nua-tax-calculatorInputs): number {
+export function calculateResult(inputs: NetUnrealizedAppreciation-NuaTaxCalculatorinputs): number {
   // Financial calculation logic
   const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
   return numericValues.reduce((sum, val) => sum + val, 0) || 0;
 }
 
-export function generateAnalysis(inputs: net-unrealized-appreciation-nua-tax-calculatorInputs, metrics: net-unrealized-appreciation-nua-tax-calculatorMetrics): net-unrealized-appreciation-nua-tax-calculatorAnalysis {
+export function generateAnalysis(inputs: NetUnrealizedAppreciation-NuaTaxCalculatorinputs, metrics: NetUnrealizedAppreciation-NuaTaxCalculatormetrics): NetUnrealizedAppreciation-NuaTaxCalculatoranalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (Math.abs(result) > 100000) riskLevel = 'High';

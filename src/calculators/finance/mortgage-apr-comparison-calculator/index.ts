@@ -1,4 +1,4 @@
-export { MortgageAprComparisonCalculatorCalculator } from './MortgageAprComparisonCalculatorCalculator';
+export { MortgageAprComparisonCalculator } from './MortgageAprComparisonCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

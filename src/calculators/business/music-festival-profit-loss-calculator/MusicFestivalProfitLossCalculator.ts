@@ -10,7 +10,7 @@ import {
 import { validateMusicFestivalProfitLossCalculatorInputs } from './validation';
 
 export const MusicFestivalProfitLossCalculator: Calculator = {
-  id: 'music-festival-profit-loss-calculator',
+  id: 'MusicFestivalProfit-loss-calculator',
   title: 'Music Festival Profit & Loss (P&L) Calculator',
   category: 'business',
   subcategory: 'Financial Planning',

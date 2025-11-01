@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validatePriceToBookCalculatorInputs, validatePriceToBookCalculatorBusinessRules } from './validation';
 
-export const PriceToBookCalculatorCalculator: Calculator: Calculator = {
-  id: 'price-to-book-calculator-calculator',
+export const PriceToBookCalculator: Calculator = {
+  id: 'PriceToBook-calculator-calculator',
   title: 'Price to Book Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

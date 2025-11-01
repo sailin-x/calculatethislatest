@@ -1,3 +1,3 @@
-import { UniversityConstructionBondFinancingCalculatorCalculator } from './UniversityConstructionBondFinancingCalculatorCalculator';
+import { UniversityConstructionBondFinancingCalculator } from './UniversityConstructionBondFinancingCalculator';
 
-export { UniversityConstructionBondFinancingCalculatorCalculator };
+export { UniversityConstructionBondFinancingCalculator };

@@ -5,7 +5,7 @@ import * as quickValidation from './quickValidation';
 describe('MortgageRefinanceCalculator', () => {
   describe('Calculator Definition', () => {
     it('should have correct id and title', () => {
-      expect(MortgageRefinanceCalculator.id).toBe('mortgage-refinance-calculator');
+      expect(MortgageRefinanceCalculator.id).toBe('MortgageRefinanceCalculator');
       expect(MortgageRefinanceCalculator.title).toBe('Mortgage Refinance Calculator');
     });
 

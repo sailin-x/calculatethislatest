@@ -1,4 +1,4 @@
-export { MarketingAttributionModelComparisonCalculatorCalculator } from './MarketingAttributionModelComparisonCalculatorCalculator';
+export { MarketingAttributionModelComparisonCalculator } from './MarketingAttributionModelComparisonCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { registerTenantImprovementAllowanceCalculatorCalculator } from './registerTenantImprovementAllowanceCalculatorCalculator';
+import { registerTenantImprovementAllowanceCalculator } from './registerTenantImprovementAllowanceCalculator';
 
-export function registerregisterTenantImprovementAllowanceCalculatorCalculator(): void {
-  calculatorRegistry.register(new registerTenantImprovementAllowanceCalculatorCalculator());
+export function registerregisterTenantImprovementAllowanceCalculator(): void {
+  calculatorRegistry.register(new registerTenantImprovementAllowanceCalculator());
 }

@@ -3,7 +3,7 @@ import { saasMetricsCalculatorFormula } from './formulas';
 import { getSaaSMetricsValidationRules } from './validation';
 
 export const saasMetricsCalculator: Calculator = {
-  id: 'saas-metrics-calculator',
+  id: 'SaasMetricsCalculator',
   title: 'SaaS Metrics Calculator',
   category: 'business',
   subcategory: 'SaaS Metrics',
@@ -140,7 +140,7 @@ export const saasMetricsCalculator: Calculator = {
       id: 'monthlyGrowthRate',
       label: 'Monthly Growth Rate',
       type: 'percentage',
-      explanation: 'Month-over-month customer growth rate'
+      explanation: 'MonthOverMonth customer growth rate'
     },
     {
       id: 'annualGrowthRate',

@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateGolfLessonCostCalculatorInputs } from './validation';
 
 export const GolfLessonCostCalculator: Calculator = {
-  id: 'golf-lesson-cost-calculator',
+  id: 'GolfLessonCost-calculator',
   title: 'Golf Lesson Cost Calculator',
   category: 'health',
   subcategory: 'General',

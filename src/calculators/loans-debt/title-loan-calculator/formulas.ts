@@ -2,10 +2,10 @@
 import { TitleLoanCalculatorInputs, TitleLoanCalculatorMetrics, TitleLoanCalculatorAnalysis } from './types';
 
 /**
- * Calculates the maximum loan amount based on vehicle value and loan-to-value (LTV) ratio.
+ * Calculates the maximum loan amount based on vehicle value and LoanToValue (LTV) ratio.
  * LTV is typically 25-50% for title loans to mitigate risk on depreciating assets.
  * @param vehicleValue - The appraised wholesale value of the vehicle.
- * @param ltvRatio - Loan-to-value ratio (e.g., 0.5 for 50%).
+ * @param ltvRatio - LoanToValue ratio (e.g., 0.5 for 50%).
  * @returns The maximum eligible loan principal.
  */
 function calculateLoanAmount(vehicleValue: number, ltvRatio: number): number {

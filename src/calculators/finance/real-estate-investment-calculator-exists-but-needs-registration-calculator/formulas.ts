@@ -1,4 +1,4 @@
-import { real-estate-investment-calculator-exists-but-needs-registration-calculatorInputs, real-estate-investment-calculator-exists-but-needs-registration-calculatorMetrics, real-estate-investment-calculator-exists-but-needs-registration-calculatorAnalysis } from './types';
+import { RealEstateInvestment-CalculatorExistsBut-NeedsRegistrationCalculatorinputs, RealEstateInvestment-CalculatorExistsBut-NeedsRegistrationCalculatormetrics, RealEstateInvestment-CalculatorExistsBut-NeedsRegistrationCalculatoranalysis } from './types';
 
 // Investment Calculator - Compound Interest
 export function calculateFutureValue(principal: number, annualRate: number, years: number, compoundingFrequency: number = 12): number {
@@ -15,7 +15,7 @@ export function calculateTotalInterest(futureValue: number, principal: number, t
   return futureValue - principal - totalContributions;
 }
 
-export function calculateResult(inputs: real-estate-investment-calculator-exists-but-needs-registration-calculatorInputs): number {
+export function calculateResult(inputs: RealEstateInvestment-CalculatorExistsBut-NeedsRegistrationCalculatorinputs): number {
   if ('initialInvestment' in inputs && 'annualReturn' in inputs && 'investmentPeriod' in inputs) {
     return calculateFutureValue(
       inputs.initialInvestment,
@@ -27,7 +27,7 @@ export function calculateResult(inputs: real-estate-investment-calculator-exists
   return 0;
 }
 
-export function generateAnalysis(inputs: real-estate-investment-calculator-exists-but-needs-registration-calculatorInputs, metrics: real-estate-investment-calculator-exists-but-needs-registration-calculatorMetrics): real-estate-investment-calculator-exists-but-needs-registration-calculatorAnalysis {
+export function generateAnalysis(inputs: RealEstateInvestment-CalculatorExistsBut-NeedsRegistrationCalculatorinputs, metrics: RealEstateInvestment-CalculatorExistsBut-NeedsRegistrationCalculatormetrics): RealEstateInvestment-CalculatorExistsBut-NeedsRegistrationCalculatoranalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (result > 1000000) riskLevel = 'High';

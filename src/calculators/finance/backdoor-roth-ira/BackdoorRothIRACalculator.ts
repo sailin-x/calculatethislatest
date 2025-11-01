@@ -4,7 +4,7 @@ import { calculateBackdoorRothIRA } from './formulas';
 import { validateBackdoorRothIRAInputs } from './validation';
 
 export const BackdoorRothIRACalculator: Calculator = {
-  id: 'backdoor-roth-ira-calculator',
+  id: 'BackdoorRothIra-calculator',
   title: 'Backdoor Roth IRA Calculator',
   category: 'finance',
   subcategory: 'Retirement',
@@ -279,7 +279,7 @@ export const BackdoorRothIRACalculator: Calculator = {
   examples: [
     {
       title: 'High-Income Professional Backdoor Roth',
-      description: 'Analysis for a 35-year-old professional with $50K traditional IRA balance',
+      description: 'Analysis for a 35YearOld professional with $50K traditional IRA balance',
       inputs: {
         currentAge: 35,
         filingStatus: 'single',

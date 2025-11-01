@@ -4,7 +4,7 @@ import { calculateResult, generateAnalysis } from './formulas';
 import { validateMergerAcquisitionMADivestitureValuationInputs } from './validation';
 
 export const MergerAcquisitionMADivestitureValuation: Calculator = {
-  id: 'merger-acquisition-m-a-divestiture-valuation',
+  id: 'MergerAcquisitionM-ADivestitureValuation',
   title: 'Merger & Acquisition (M&A) Divestiture Valuation',
   category: 'legal',
   subcategory: 'General',

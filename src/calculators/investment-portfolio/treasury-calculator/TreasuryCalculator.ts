@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateTreasuryCalculatorInputs, validateTreasuryCalculatorBusinessRules } from './validation';
 
-export const TreasuryCalculatorCalculator: Calculator: Calculator = {
-  id: 'treasury-calculator-calculator',
+export const TreasuryCalculator: Calculator = {
+  id: 'TreasuryCalculatorCalculator',
   title: 'Treasury Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

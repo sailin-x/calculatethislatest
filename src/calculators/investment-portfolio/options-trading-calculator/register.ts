@@ -1,3 +1,3 @@
-import { OptionsTradingCalculatorCalculator } from './OptionsTradingCalculatorCalculator';
+import { OptionsTradingCalculator } from './OptionsTradingCalculator';
 
-export { OptionsTradingCalculatorCalculator };
+export { OptionsTradingCalculator };

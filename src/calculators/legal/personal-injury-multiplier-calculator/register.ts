@@ -1,3 +1,3 @@
-import { PersonalInjuryMultiplierCalculatorCalculator } from './PersonalInjuryMultiplierCalculatorCalculator';
+import { PersonalInjuryMultiplierCalculator } from './PersonalInjuryMultiplierCalculator';
 
-export { PersonalInjuryMultiplierCalculatorCalculator };
+export { PersonalInjuryMultiplierCalculator };

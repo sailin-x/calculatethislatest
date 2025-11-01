@@ -3,7 +3,7 @@ import { calculateGSTTax } from './formulas';
 import { ValidationRuleFactory } from '../../utils/validation';
 
 export const generationSkippingTransferTaxCalculator: Calculator = {
-  id: 'generation-skipping-transfer-tax-calculator',
+  id: 'GenerationSkippingTransfer-tax-calculator',
   title: 'Generation-Skipping Transfer (GST) Tax Calculator',
   category: 'finance',
   subcategory: 'Retirement & Savings',

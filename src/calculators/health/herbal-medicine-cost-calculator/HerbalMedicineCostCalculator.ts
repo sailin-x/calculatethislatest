@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateHerbalMedicineCostCalculatorInputs } from './validation';
 
 export const HerbalMedicineCostCalculator: Calculator = {
-  id: 'herbal-medicine-cost-calculator',
+  id: 'HerbalMedicineCost-calculator',
   title: 'Herbal Medicine Cost Calculator',
   category: 'health',
   subcategory: 'General',

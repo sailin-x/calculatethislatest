@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validatePersonalTrainerCostCalculatorInputs } from './validation';
 
 export const PersonalTrainerCostCalculator: Calculator = {
-  id: 'personal-trainer-cost-calculator',
+  id: 'PersonalTrainerCost-calculator',
   title: 'Personal Trainer Cost Calculator',
   category: 'health',
   subcategory: 'General',

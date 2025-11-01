@@ -1,4 +1,4 @@
-import { patreon-subscription-calculatorInputs, patreon-subscription-calculatorMetrics, patreon-subscription-calculatorAnalysis } from './types';
+import { PatreonSubscriptionCalculatorinputs, PatreonSubscriptionCalculatormetrics, PatreonSubscriptionCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: patreon-subscription-calculatorInputs): number {
+export function calculateResult(inputs: PatreonSubscriptionCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: patreon-subscription-calculatorInputs): 
   }
 }
 
-export function generateAnalysis(inputs: patreon-subscription-calculatorInputs, metrics: patreon-subscription-calculatorMetrics): patreon-subscription-calculatorAnalysis {
+export function generateAnalysis(inputs: PatreonSubscriptionCalculatorinputs, metrics: PatreonSubscriptionCalculatormetrics): PatreonSubscriptionCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

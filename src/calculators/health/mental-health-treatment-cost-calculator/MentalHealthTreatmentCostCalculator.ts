@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateMentalHealthTreatmentCostCalculatorInputs } from './validation';
 
 export const MentalHealthTreatmentCostCalculator: Calculator = {
-  id: 'mental-health-treatment-cost-calculator',
+  id: 'MentalHealthTreatment-cost-calculator',
   title: 'Mental Health Treatment Cost Calculator',
   category: 'health',
   subcategory: 'General',

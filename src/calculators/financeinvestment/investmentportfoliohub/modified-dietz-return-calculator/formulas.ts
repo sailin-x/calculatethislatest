@@ -1,4 +1,4 @@
-import { modified-dietz-return-calculatorInputs, modified-dietz-return-calculatorMetrics, modified-dietz-return-calculatorAnalysis } from './types';
+import { ModifiedDietzReturn-calculatorInputs, ModifiedDietzReturn-calculatorMetrics, ModifiedDietzReturn-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: modified-dietz-return-calculatorInputs): number {
+export function calculateResult(inputs: ModifiedDietzReturn-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: modified-dietz-return-calculatorInputs):
   }
 }
 
-export function generateAnalysis(inputs: modified-dietz-return-calculatorInputs, metrics: modified-dietz-return-calculatorMetrics): modified-dietz-return-calculatorAnalysis {
+export function generateAnalysis(inputs: ModifiedDietzReturn-calculatorInputs, metrics: ModifiedDietzReturn-calculatorMetrics): ModifiedDietzReturn-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

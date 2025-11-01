@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { concreteCalculatorCalculator } from './concreteCalculatorCalculator';
+import { concreteCalculator } from './concreteCalculator';
 
-export function registerconcreteCalculatorCalculator(): void {
-  calculatorRegistry.register(new concreteCalculatorCalculator());
+export function registerconcreteCalculator(): void {
+  calculatorRegistry.register(new concreteCalculator());
 }

@@ -1,4 +1,4 @@
-import { offshore-accident-lawyer-fee-calculatorInputs, offshore-accident-lawyer-fee-calculatorMetrics, offshore-accident-lawyer-fee-calculatorAnalysis } from './types';
+import { OffshoreAccidentLawyer-fee-calculatorInputs, OffshoreAccidentLawyer-fee-calculatorMetrics, OffshoreAccidentLawyer-fee-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: offshore-accident-lawyer-fee-calculatorInputs): number {
+export function calculateResult(inputs: OffshoreAccidentLawyer-fee-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: offshore-accident-lawyer-fee-calculatorI
   }
 }
 
-export function generateAnalysis(inputs: offshore-accident-lawyer-fee-calculatorInputs, metrics: offshore-accident-lawyer-fee-calculatorMetrics): offshore-accident-lawyer-fee-calculatorAnalysis {
+export function generateAnalysis(inputs: OffshoreAccidentLawyer-fee-calculatorInputs, metrics: OffshoreAccidentLawyer-fee-calculatorMetrics): OffshoreAccidentLawyer-fee-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

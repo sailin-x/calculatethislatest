@@ -10,7 +10,7 @@ import {
 import { validateCompoundAnnualGrowthRateCagrCalculatorInputs } from './validation';
 
 export const CompoundAnnualGrowthRateCagrCalculator: Calculator = {
-  id: 'compound-annual-growth-rate-cagr-calculator',
+  id: 'CompoundAnnualGrowth-RateCagrCalculator',
   title: 'Compound Annual Growth Rate (CAGR) Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

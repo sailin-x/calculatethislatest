@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { day_trading_calculatorInputs, day_trading_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const day_trading_calculatorCalculator: Calculator = {
-  id: 'day-trading-calculator',
+export const DayTradingCalculator: Calculator = {
+  id: 'DayTradingCalculator',
   title: 'Day Trading Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'investmentportfoliohub',

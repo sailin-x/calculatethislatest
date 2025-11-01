@@ -10,7 +10,7 @@ import {
 import { validateSpinOffCalculatorInputs } from './validation';
 
 export const SpinOffCalculator: Calculator = {
-  id: 'spin-off-calculator',
+  id: 'SpinOffCalculator',
   title: 'Spin Off Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

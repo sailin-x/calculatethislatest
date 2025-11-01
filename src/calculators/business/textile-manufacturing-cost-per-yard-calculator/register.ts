@@ -1,3 +1,3 @@
-import { TextileManufacturingCostperyardCalculatorCalculator } from './TextileManufacturingCostperyardCalculatorCalculator';
+import { TextileManufacturingCostperyardCalculator } from './TextileManufacturingCostperyardCalculator';
 
-export { TextileManufacturingCostperyardCalculatorCalculator };
+export { TextileManufacturingCostperyardCalculator };

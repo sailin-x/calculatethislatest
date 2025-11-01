@@ -1,4 +1,4 @@
-import { long-term-disability-calculatorInputs, long-term-disability-calculatorMetrics, long-term-disability-calculatorAnalysis } from './types';
+import { LongTermDisability-calculatorInputs, LongTermDisability-calculatorMetrics, LongTermDisability-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: long-term-disability-calculatorInputs): number {
+export function calculateResult(inputs: LongTermDisability-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: long-term-disability-calculatorInputs): 
   }
 }
 
-export function generateAnalysis(inputs: long-term-disability-calculatorInputs, metrics: long-term-disability-calculatorMetrics): long-term-disability-calculatorAnalysis {
+export function generateAnalysis(inputs: LongTermDisability-calculatorInputs, metrics: LongTermDisability-calculatorMetrics): LongTermDisability-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

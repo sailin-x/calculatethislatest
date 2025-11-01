@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { data_breach_cost_calculatorInputs, data_breach_cost_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const data_breach_cost_calculatorCalculator: Calculator = {
-  id: 'data-breach-cost-calculator',
+export const DataBreachCost-calculator: Calculator = {
+  id: 'DataBreachCost-calculator',
   title: 'Data Breach Cost Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

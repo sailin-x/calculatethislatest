@@ -1,3 +1,5 @@
-export { NetOperatingIncomeCalculator as netOperatingIncomeCalculator } from './NetOperatingIncomeCalculator';
-export { registerNetOperatingIncomeCalculator } from './register';
+export { NetOperatingIncomeCalculator } from './NetOperatingIncomeCalculator';
 export * from './types';
+export * from './formulas';
+export * from './validation';
+export * from './quickValidation';

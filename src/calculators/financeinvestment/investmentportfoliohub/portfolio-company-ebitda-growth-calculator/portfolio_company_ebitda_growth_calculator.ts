@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { portfolio_company_ebitda_growth_calculatorInputs, portfolio_company_ebitda_growth_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const portfolio_company_ebitda_growth_calculatorCalculator: Calculator = {
-  id: 'portfolio-company-ebitda-growth-calculator',
+export const PortfolioCompanyEbitda-growth-calculator: Calculator = {
+  id: 'PortfolioCompanyEbitda-growth-calculator',
   title: 'Portfolio Company EBITDA Growth Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'investmentportfoliohub',

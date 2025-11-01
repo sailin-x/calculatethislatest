@@ -1,4 +1,4 @@
-import { stock-buyback-roi-calculatorInputs, stock-buyback-roi-calculatorMetrics, stock-buyback-roi-calculatorAnalysis } from './types';
+import { StockBuybackRoi-calculatorInputs, StockBuybackRoi-calculatorMetrics, StockBuybackRoi-calculatorAnalysis } from './types';
 
 
 // Investment Calculator - ROI and growth calculations
@@ -12,7 +12,7 @@ export function calculateCompoundInterest(principal: number, rate: number, years
   return principal * Math.pow(1 + ratePerPeriod, totalPeriods);
 }
 
-export function calculateResult(inputs: stock-buyback-roi-calculatorInputs): number {
+export function calculateResult(inputs: StockBuybackRoi-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -36,7 +36,7 @@ export function calculateResult(inputs: stock-buyback-roi-calculatorInputs): num
   }
 }
 
-export function generateAnalysis(inputs: stock-buyback-roi-calculatorInputs, metrics: stock-buyback-roi-calculatorMetrics): stock-buyback-roi-calculatorAnalysis {
+export function generateAnalysis(inputs: StockBuybackRoi-calculatorInputs, metrics: StockBuybackRoi-calculatorMetrics): StockBuybackRoi-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

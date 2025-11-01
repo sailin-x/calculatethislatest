@@ -1,4 +1,4 @@
-import { cash-value-accumulation-test-calculatorInputs, cash-value-accumulation-test-calculatorMetrics, cash-value-accumulation-test-calculatorAnalysis } from './types';
+import { CashValueAccumulation-test-calculatorInputs, CashValueAccumulation-test-calculatorMetrics, CashValueAccumulation-test-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: cash-value-accumulation-test-calculatorInputs): number {
+export function calculateResult(inputs: CashValueAccumulation-test-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: cash-value-accumulation-test-calculatorI
   }
 }
 
-export function generateAnalysis(inputs: cash-value-accumulation-test-calculatorInputs, metrics: cash-value-accumulation-test-calculatorMetrics): cash-value-accumulation-test-calculatorAnalysis {
+export function generateAnalysis(inputs: CashValueAccumulation-test-calculatorInputs, metrics: CashValueAccumulation-test-calculatorMetrics): CashValueAccumulation-test-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

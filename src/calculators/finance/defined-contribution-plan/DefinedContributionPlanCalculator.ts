@@ -4,7 +4,7 @@ import { calculateDefinedContributionPlan } from './formulas';
 import { validateDefinedContributionPlanInputs } from './validation';
 
 export const DefinedContributionPlanCalculator: Calculator = {
-  id: 'defined-contribution-plan-calculator',
+  id: 'DefinedContributionPlan-calculator',
   title: 'Defined Contribution Plan Calculator',
   category: 'finance',
   subcategory: 'Retirement',

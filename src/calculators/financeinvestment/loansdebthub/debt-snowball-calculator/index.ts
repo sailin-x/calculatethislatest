@@ -1,4 +1,4 @@
-export { debt_snowball_calculatorCalculator } from './debt_snowball_calculator';
+export { debt_snowball_calculator } from './debt_snowball_calculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

@@ -1,3 +1,3 @@
-import { LifeSettlementValueCalculatorCalculator } from './LifeSettlementValueCalculatorCalculator';
+import { LifeSettlementValueCalculator } from './LifeSettlementValueCalculator';
 
-export { LifeSettlementValueCalculatorCalculator };
+export { LifeSettlementValueCalculator };

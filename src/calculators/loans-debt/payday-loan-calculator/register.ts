@@ -1,3 +1,3 @@
-import { PaydayLoanCalculatorCalculator } from './PaydayLoanCalculatorCalculator';
+import { PaydayLoanCalculator } from './PaydayLoanCalculator';
 
-export { PaydayLoanCalculatorCalculator };
+export { PaydayLoanCalculator };

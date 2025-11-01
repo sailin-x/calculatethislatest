@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { dui_accident_settlement_calculatorInputs, dui_accident_settlement_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const dui_accident_settlement_calculatorCalculator: Calculator = {
-  id: 'dui-accident-settlement-calculator',
+export const DuiAccidentSettlement-calculator: Calculator = {
+  id: 'DuiAccidentSettlement-calculator',
   title: 'DUI Accident Settlement Calculator Calculator',
   category: 'legalinsurancesettlements',
   subcategory: 'legalsettlementhub',

@@ -1,4 +1,4 @@
-import { birth-injury-malpractice-calculatorInputs, birth-injury-malpractice-calculatorMetrics, birth-injury-malpractice-calculatorAnalysis } from './types';
+import { BirthInjuryMalpractice-calculatorInputs, BirthInjuryMalpractice-calculatorMetrics, BirthInjuryMalpractice-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: birth-injury-malpractice-calculatorInputs): number {
+export function calculateResult(inputs: BirthInjuryMalpractice-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: birth-injury-malpractice-calculatorInput
   }
 }
 
-export function generateAnalysis(inputs: birth-injury-malpractice-calculatorInputs, metrics: birth-injury-malpractice-calculatorMetrics): birth-injury-malpractice-calculatorAnalysis {
+export function generateAnalysis(inputs: BirthInjuryMalpractice-calculatorInputs, metrics: BirthInjuryMalpractice-calculatorMetrics): BirthInjuryMalpractice-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

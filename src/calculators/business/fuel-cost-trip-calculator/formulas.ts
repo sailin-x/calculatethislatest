@@ -1,4 +1,4 @@
-import { fuel-cost-trip-calculatorInputs, fuel-cost-trip-calculatorMetrics, fuel-cost-trip-calculatorAnalysis } from './types';
+import { FuelCostTrip-calculatorInputs, FuelCostTrip-calculatorMetrics, FuelCostTrip-calculatorAnalysis } from './types';
 
 // Fuel Cost & Trip Calculator - Business calculations
 export function calculateNetPresentValue(cashFlows: number[], discountRate: number): number {
@@ -11,7 +11,7 @@ export function calculateROI(initialInvestment: number, finalValue: number): num
  return ((finalValue - initialInvestment) / initialInvestment) * 100;
 }
 
-export function calculateResult(inputs: fuel-cost-trip-calculatorInputs): number {
+export function calculateResult(inputs: FuelCostTrip-calculatorInputs): number {
  // Business calculation logic with real math
  const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
  if (numericValues.length >= 2) {
@@ -24,7 +24,7 @@ export function calculateResult(inputs: fuel-cost-trip-calculatorInputs): number
  return calculateNetPresentValue(numericValues, 10); // 10% discount rate
 }
 
-export function generateAnalysis(inputs: fuel-cost-trip-calculatorInputs, metrics: fuel-cost-trip-calculatorMetrics): fuel-cost-trip-calculatorAnalysis {
+export function generateAnalysis(inputs: FuelCostTrip-calculatorInputs, metrics: FuelCostTrip-calculatorMetrics): FuelCostTrip-calculatorAnalysis {
  const result = metrics.result;
  let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
  if (Math.abs(result) > 100000) riskLevel = 'High';

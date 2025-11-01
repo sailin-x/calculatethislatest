@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validatePlannedGivingCalculatorInputs, validatePlannedGivingCalculatorBusinessRules } from './validation';
 
-export const PlannedGivingCalculatorCalculator: Calculator: Calculator = {
-  id: 'planned-giving-calculator-calculator',
+export const PlannedGivingCalculator: Calculator = {
+  id: 'PlannedGivingCalculator-calculator',
   title: 'Planned Giving Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

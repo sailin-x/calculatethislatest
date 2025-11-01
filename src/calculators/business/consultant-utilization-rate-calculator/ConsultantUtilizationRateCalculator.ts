@@ -10,7 +10,7 @@ import {
 import { validateConsultantUtilizationRateCalculatorInputs } from './validation';
 
 export const ConsultantUtilizationRateCalculator: Calculator = {
-  id: 'consultant-utilization-rate-calculator',
+  id: 'ConsultantUtilizationRate-calculator',
   title: 'Consultant Utilization Rate Calculator',
   category: 'business',
   subcategory: 'Financial Planning',

@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { legal_malpractice_damages_calculatorInputs, legal_malpractice_damages_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const legal_malpractice_damages_calculatorCalculator: Calculator = {
-  id: 'legal-malpractice-damages-calculator',
+export const LegalMalpracticeDamages-calculator: Calculator = {
+  id: 'LegalMalpracticeDamages-calculator',
   title: 'Legal Malpractice Damages Calculator Calculator',
   category: 'legalinsurancesettlements',
   subcategory: 'legalsettlementhub',

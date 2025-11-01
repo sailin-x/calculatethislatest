@@ -1,3 +1,3 @@
-import { UsdaLoanCalculatorCalculator } from './UsdaLoanCalculatorCalculator';
+import { UsdaLoanCalculator } from './UsdaLoanCalculator';
 
-export { UsdaLoanCalculatorCalculator };
+export { UsdaLoanCalculator };

@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateWrongfulDeathSettlementCalculatorInputs, validateWrongfulDeathSettlementCalculatorBusinessRules } from './validation';
 
-export const WrongfulDeathSettlementCalculatorCalculator: Calculator: Calculator = {
-  id: 'wrongful-death-settlement-calculator-calculator',
+export const WrongfulDeathSettlementCalculator: Calculator = {
+  id: 'WrongfulDeathSettlement-calculator-calculator',
   title: 'Wrongful Death Settlement Calculator Calculator',
   legal: 'legal', // e.g., 'finance', 'math', 'health', 'business'
   sublegal: 'Sublegal Name',

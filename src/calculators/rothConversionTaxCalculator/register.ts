@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { rothConversionTaxCalculatorCalculator } from './rothConversionTaxCalculatorCalculator';
+import { rothConversionTaxCalculator } from './rothConversionTaxCalculator';
 
-export function registerrothConversionTaxCalculatorCalculator(): void {
-  calculatorRegistry.register(new rothConversionTaxCalculatorCalculator());
+export function registerrothConversionTaxCalculator(): void {
+  calculatorRegistry.register(new rothConversionTaxCalculator());
 }

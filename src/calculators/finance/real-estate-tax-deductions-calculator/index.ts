@@ -1,4 +1,4 @@
-export { RealEstateTaxDeductionsCalculatorCalculator } from './RealEstateTaxDeductionsCalculatorCalculator';
+export { RealEstateTaxDeductionsCalculator } from './RealEstateTaxDeductionsCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

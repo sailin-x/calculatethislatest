@@ -3,7 +3,7 @@ import { incurred_but_not_reported_ibnr_reserve_estimatorInputs, incurred_but_no
 import { calculateResult, generateAnalysis } from './formulas';
 
 export const incurred_but_not_reported_ibnr_reserve_estimatorCalculator: Calculator = {
-  id: 'incurred-but-not-reported-ibnr-reserve-estimator',
+  id: 'IncurredButNot-ReportedIbnrReserve-estimator',
   title: 'Incurred But Not Reported (IBNR) Reserve Estimator Calculator',
   category: 'finance',
   subcategory: 'general',

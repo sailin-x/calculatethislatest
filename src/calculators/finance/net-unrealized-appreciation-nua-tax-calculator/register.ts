@@ -1,3 +1,3 @@
-import { NetUnrealizedAppreciationNuaTaxCalculatorCalculator } from './NetUnrealizedAppreciationNuaTaxCalculatorCalculator';
+import { NetUnrealizedAppreciationNuaTaxCalculator } from './NetUnrealizedAppreciationNuaTaxCalculator';
 
-export { NetUnrealizedAppreciationNuaTaxCalculatorCalculator };
+export { NetUnrealizedAppreciationNuaTaxCalculator };

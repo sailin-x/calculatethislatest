@@ -1,4 +1,4 @@
-import { inventory-shrinkage-cost-calculatorInputs, inventory-shrinkage-cost-calculatorMetrics, inventory-shrinkage-cost-calculatorAnalysis } from './types';
+import { InventoryShrinkageCost-calculatorInputs, InventoryShrinkageCost-calculatorMetrics, InventoryShrinkageCost-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: inventory-shrinkage-cost-calculatorInputs): number {
+export function calculateResult(inputs: InventoryShrinkageCost-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: inventory-shrinkage-cost-calculatorInput
   }
 }
 
-export function generateAnalysis(inputs: inventory-shrinkage-cost-calculatorInputs, metrics: inventory-shrinkage-cost-calculatorMetrics): inventory-shrinkage-cost-calculatorAnalysis {
+export function generateAnalysis(inputs: InventoryShrinkageCost-calculatorInputs, metrics: InventoryShrinkageCost-calculatorMetrics): InventoryShrinkageCost-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

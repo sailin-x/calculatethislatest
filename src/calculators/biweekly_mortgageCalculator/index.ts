@@ -1,3 +1,3 @@
-export * from './biweekly_mortgageCalculatorCalculator';
+export * from './biweekly_mortgageCalculator';
 export * from './register';
 export * from './types';

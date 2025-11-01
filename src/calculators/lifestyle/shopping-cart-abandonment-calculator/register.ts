@@ -1,3 +1,3 @@
-import { ShoppingCartAbandonmentCalculatorCalculator } from './ShoppingCartAbandonmentCalculatorCalculator';
+import { ShoppingCartAbandonmentCalculator } from './ShoppingCartAbandonmentCalculator';
 
-export { ShoppingCartAbandonmentCalculatorCalculator };
+export { ShoppingCartAbandonmentCalculator };

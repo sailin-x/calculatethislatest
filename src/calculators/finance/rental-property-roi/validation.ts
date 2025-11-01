@@ -208,9 +208,9 @@ export function validateRentalPropertyROIInputs(inputs: CalculatorInputs): Valid
   if (inputs.monthlyRent && inputs.purchasePrice) {
     const rentToPriceRatio = (inputs.monthlyRent * 12) / inputs.purchasePrice;
     if (rentToPriceRatio < 0.06) {
-      warnings.push('Rent-to-price ratio is low - may indicate poor cash flow');
+      warnings.push('RentToPrice ratio is low - may indicate poor cash flow');
     } else if (rentToPriceRatio > 0.15) {
-      warnings.push('Rent-to-price ratio is high - verify rent is realistic');
+      warnings.push('RentToPrice ratio is high - verify rent is realistic');
     }
   }
 
@@ -243,9 +243,9 @@ export function validateRentalPropertyROIInputs(inputs: CalculatorInputs): Valid
     errors.push('Market conditions must be one of: hot, stable, cooling, declining');
   }
 
-  const validExitStrategies = ['sell', 'refinance', '1031-exchange', 'hold-long-term'];
+  const validExitStrategies = ['sell', 'refinance', '1031-exchange', 'HoldLongTerm'];
   if (inputs.exitStrategy && !validExitStrategies.includes(inputs.exitStrategy)) {
-    errors.push('Exit strategy must be one of: sell, refinance, 1031-exchange, hold-long-term');
+    errors.push('Exit strategy must be one of: sell, refinance, 1031-exchange, HoldLongTerm');
   }
 
   return {

@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { required_minimum_distribution_rmd_calculatorInputs, required_minimum_distribution_rmd_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const required_minimum_distribution_rmd_calculatorCalculator: Calculator = {
-  id: 'required-minimum-distribution-rmd-calculator',
+export const RequiredMinimumDistribution-rmd-calculator: Calculator = {
+  id: 'RequiredMinimumDistribution-rmd-calculator',
   title: 'Required Minimum Distribution (RMD) Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'retirementsavingshub',

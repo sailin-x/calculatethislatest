@@ -1,4 +1,4 @@
-export { MedicalDeviceDevelopmentCostCalculatorCalculator } from './MedicalDeviceDevelopmentCostCalculatorCalculator';
+export { MedicalDeviceDevelopmentCostCalculator } from './MedicalDeviceDevelopmentCostCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

@@ -1,4 +1,4 @@
-export { JewelryValuationCalculatorCalculator } from './JewelryValuationCalculatorCalculator';
+export { JewelryValuationCalculator } from './JewelryValuationCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

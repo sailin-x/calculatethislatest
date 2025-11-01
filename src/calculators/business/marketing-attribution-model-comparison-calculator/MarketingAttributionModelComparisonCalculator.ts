@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateMarketingAttributionModelComparisonCalculatorInputs, validateMarketingAttributionModelComparisonCalculatorBusinessRules } from './validation';
 
-export const MarketingAttributionModelComparisonCalculatorCalculator: Calculator: Calculator = {
-  id: 'marketing-attribution-model-comparison-calculator-calculator',
+export const MarketingAttributionModelComparisonCalculator: Calculator = {
+  id: 'MarketingAttributionModel-ComparisonCalculatorCalculator',
   title: 'Marketing Attribution Model Comparison Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

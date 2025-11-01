@@ -1,3 +1,3 @@
-import { MbaRoiCalculatorCalculator } from './MbaRoiCalculatorCalculator';
+import { MbaRoiCalculator } from './MbaRoiCalculator';
 
-export { MbaRoiCalculatorCalculator };
+export { MbaRoiCalculator };

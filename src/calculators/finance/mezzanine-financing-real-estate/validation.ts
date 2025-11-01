@@ -70,7 +70,7 @@ export function validateMezzanineFinancingRealEstateInputs(inputs: MezzanineFina
   // LTV validation
   const totalLTV = ((inputs.seniorLoanAmount + inputs.mezzanineLoanAmount) / inputs.propertyValue) * 100;
   if (totalLTV > 95) {
-    errors.push('Total loan-to-value ratio cannot exceed 95%');
+    errors.push('Total LoanToValue ratio cannot exceed 95%');
   }
 
   return {

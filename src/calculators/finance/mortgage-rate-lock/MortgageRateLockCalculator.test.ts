@@ -5,7 +5,7 @@ import * as quickValidation from './quickValidation';
 describe('MortgageRateLockCalculator', () => {
   describe('Calculator Definition', () => {
     it('should have correct id and title', () => {
-      expect(MortgageRateLockCalculator.id).toBe('mortgage-rate-lock-calculator');
+      expect(MortgageRateLockCalculator.id).toBe('MortgageRateLock-calculator');
       expect(MortgageRateLockCalculator.title).toBe('Mortgage Rate Lock Calculator');
     });
 

@@ -2,7 +2,7 @@ import { Calculator } from '../../../../types/calculator';
 import { forex_calculatorInputs, forex_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const forex_calculatorCalculator: Calculator = {
+export const forex-calculator: Calculator = {
   id: 'forex-calculator',
   title: 'Forex Calculator Calculator',
   category: 'financeinvestment',

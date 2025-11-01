@@ -90,12 +90,12 @@ export function validateAmortizationInputs(inputs: CalculatorInputs): Validation
     errors.push('Property value must be between $100,000 and $100,000,000');
   }
 
-  // Loan-to-value validation
+  // LoanToValue validation
   const loanToValue = inputs.loanToValue as number;
   if (typeof loanToValue !== 'number' || isNaN(loanToValue)) {
-    errors.push('Loan-to-value ratio must be a valid number');
+    errors.push('LoanToValue ratio must be a valid number');
   } else if (loanToValue < 10 || loanToValue > 95) {
-    errors.push('Loan-to-value ratio must be between 10% and 95%');
+    errors.push('LoanToValue ratio must be between 10% and 95%');
   }
 
   // Debt service coverage validation
@@ -159,7 +159,7 @@ export function validateAmortizationInputs(inputs: CalculatorInputs): Validation
   } else {
     const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
     if (!dateRegex.test(startDate)) {
-      errors.push('Start date must be in YYYY-MM-DD format');
+      errors.push('Start date must be in YyyyMmDd format');
     } else {
       const date = new Date(startDate);
       if (isNaN(date.getTime())) {
@@ -179,7 +179,7 @@ export function validateAmortizationInputs(inputs: CalculatorInputs): Validation
 
   const calculatedLTV = (loanAmount / propertyValue) * 100;
   if (Math.abs(calculatedLTV - loanToValue) > 1) {
-    errors.push('Loan-to-value ratio does not match loan amount and property value');
+    errors.push('LoanToValue ratio does not match loan amount and property value');
   }
 
   return {
@@ -247,10 +247,10 @@ export function quickValidateAmortizationInput(field: string, value: any): strin
 
     case 'loanToValue':
       if (typeof value !== 'number' || isNaN(value)) {
-        return 'Loan-to-value ratio must be a valid number';
+        return 'LoanToValue ratio must be a valid number';
       }
       if (value < 10 || value > 95) {
-        return 'Loan-to-value ratio must be between 10% and 95%';
+        return 'LoanToValue ratio must be between 10% and 95%';
       }
       break;
 

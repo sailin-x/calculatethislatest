@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { prenuptial_agreement_value_calculatorInputs, prenuptial_agreement_value_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const prenuptial_agreement_value_calculatorCalculator: Calculator = {
-  id: 'prenuptial-agreement-value-calculator',
+export const PrenuptialAgreementValue-calculator: Calculator = {
+  id: 'PrenuptialAgreementValue-calculator',
   title: 'Prenuptial Agreement Value Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

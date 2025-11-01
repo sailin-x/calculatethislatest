@@ -1,13 +1,13 @@
-import { coordinate-geometry-calculatorInputs, coordinate-geometry-calculatorMetrics, coordinate-geometry-calculatorAnalysis } from './types';
+import { CoordinateGeometryCalculatorinputs, CoordinateGeometryCalculatormetrics, CoordinateGeometryCalculatoranalysis } from './types';
 
 // Coordinate Geometry Calculator - Math calculations
-export function calculateResult(inputs: coordinate-geometry-calculatorInputs): number {
+export function calculateResult(inputs: CoordinateGeometryCalculatorinputs): number {
   // Math calculation logic
   const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
   return numericValues.reduce((sum, val) => sum + val, 0) || 0;
 }
 
-export function generateAnalysis(inputs: coordinate-geometry-calculatorInputs, metrics: coordinate-geometry-calculatorMetrics): coordinate-geometry-calculatorAnalysis {
+export function generateAnalysis(inputs: CoordinateGeometryCalculatorinputs, metrics: CoordinateGeometryCalculatormetrics): CoordinateGeometryCalculatoranalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (Math.abs(result) > 1000) riskLevel = 'High';

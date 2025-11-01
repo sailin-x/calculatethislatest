@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { maximum_drawdown_calculatorInputs, maximum_drawdown_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const maximum_drawdown_calculatorCalculator: Calculator = {
-  id: 'maximum-drawdown-calculator',
+export const MaximumDrawdownCalculator: Calculator = {
+  id: 'MaximumDrawdownCalculator',
   title: 'Maximum Drawdown Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'investmentportfoliohub',

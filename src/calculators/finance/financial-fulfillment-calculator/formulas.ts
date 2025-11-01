@@ -1,4 +1,4 @@
-import { financial-fulfillment-calculatorInputs, financial-fulfillment-calculatorMetrics, financial-fulfillment-calculatorAnalysis } from './types';
+import { FinancialFulfillmentCalculatorinputs, FinancialFulfillmentCalculatormetrics, FinancialFulfillmentCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: financial-fulfillment-calculatorInputs): number {
+export function calculateResult(inputs: FinancialFulfillmentCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: financial-fulfillment-calculatorInputs):
   }
 }
 
-export function generateAnalysis(inputs: financial-fulfillment-calculatorInputs, metrics: financial-fulfillment-calculatorMetrics): financial-fulfillment-calculatorAnalysis {
+export function generateAnalysis(inputs: FinancialFulfillmentCalculatorinputs, metrics: FinancialFulfillmentCalculatormetrics): FinancialFulfillmentCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

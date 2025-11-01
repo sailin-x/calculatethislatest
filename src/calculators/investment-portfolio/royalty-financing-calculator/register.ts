@@ -1,3 +1,3 @@
-import { RoyaltyFinancingCalculatorCalculator } from './RoyaltyFinancingCalculatorCalculator';
+import { RoyaltyFinancingCalculator } from './RoyaltyFinancingCalculator';
 
-export { RoyaltyFinancingCalculatorCalculator };
+export { RoyaltyFinancingCalculator };

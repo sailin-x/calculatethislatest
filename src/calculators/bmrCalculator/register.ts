@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { bmrCalculatorCalculator } from './bmrCalculatorCalculator';
+import { bmrCalculator } from './bmrCalculator';
 
-export function registerbmrCalculatorCalculator(): void {
-  calculatorRegistry.register(new bmrCalculatorCalculator());
+export function registerbmrCalculator(): void {
+  calculatorRegistry.register(new bmrCalculator());
 }

@@ -1,4 +1,4 @@
-import { college-financial-aidInputs, college-financial-aidMetrics, college-financial-aidAnalysis } from './types';
+import { CollegeFinancialAidinputs, CollegeFinancialAidmetrics, CollegeFinancialAidanalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: college-financial-aidInputs): number {
+export function calculateResult(inputs: CollegeFinancialAidinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: college-financial-aidInputs): number {
   }
 }
 
-export function generateAnalysis(inputs: college-financial-aidInputs, metrics: college-financial-aidMetrics): college-financial-aidAnalysis {
+export function generateAnalysis(inputs: CollegeFinancialAidinputs, metrics: CollegeFinancialAidmetrics): CollegeFinancialAidanalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

@@ -1,4 +1,4 @@
-import { hospital-negligence-settlement-calculatorInputs, hospital-negligence-settlement-calculatorMetrics, hospital-negligence-settlement-calculatorAnalysis } from './types';
+import { HospitalNegligenceSettlement-calculatorInputs, HospitalNegligenceSettlement-calculatorMetrics, HospitalNegligenceSettlement-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: hospital-negligence-settlement-calculatorInputs): number {
+export function calculateResult(inputs: HospitalNegligenceSettlement-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: hospital-negligence-settlement-calculato
   }
 }
 
-export function generateAnalysis(inputs: hospital-negligence-settlement-calculatorInputs, metrics: hospital-negligence-settlement-calculatorMetrics): hospital-negligence-settlement-calculatorAnalysis {
+export function generateAnalysis(inputs: HospitalNegligenceSettlement-calculatorInputs, metrics: HospitalNegligenceSettlement-calculatorMetrics): HospitalNegligenceSettlement-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

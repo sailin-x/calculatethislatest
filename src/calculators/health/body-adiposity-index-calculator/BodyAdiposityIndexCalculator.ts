@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateBodyAdiposityIndexCalculatorInputs } from './validation';
 
 export const BodyAdiposityIndexCalculator: Calculator = {
-  id: 'body-adiposity-index-calculator',
+  id: 'BodyAdiposityIndex-calculator',
   title: 'Body Adiposity Index Calculator',
   category: 'health',
   subcategory: 'General',

@@ -1,4 +1,4 @@
-import { hr-tech-stack-roi-calculatorInputs, hr-tech-stack-roi-calculatorMetrics, hr-tech-stack-roi-calculatorAnalysis } from './types';
+import { HrTechStack-roi-calculatorInputs, HrTechStack-roi-calculatorMetrics, HrTechStack-roi-calculatorAnalysis } from './types';
 
 
 // Investment Calculator - ROI and growth calculations
@@ -12,7 +12,7 @@ export function calculateCompoundInterest(principal: number, rate: number, years
   return principal * Math.pow(1 + ratePerPeriod, totalPeriods);
 }
 
-export function calculateResult(inputs: hr-tech-stack-roi-calculatorInputs): number {
+export function calculateResult(inputs: HrTechStack-roi-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -36,7 +36,7 @@ export function calculateResult(inputs: hr-tech-stack-roi-calculatorInputs): num
   }
 }
 
-export function generateAnalysis(inputs: hr-tech-stack-roi-calculatorInputs, metrics: hr-tech-stack-roi-calculatorMetrics): hr-tech-stack-roi-calculatorAnalysis {
+export function generateAnalysis(inputs: HrTechStack-roi-calculatorInputs, metrics: HrTechStack-roi-calculatorMetrics): HrTechStack-roi-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

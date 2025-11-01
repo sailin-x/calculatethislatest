@@ -1,13 +1,13 @@
-import { defined-contribution-plan-calculatorInputs, defined-contribution-plan-calculatorMetrics, defined-contribution-plan-calculatorAnalysis } from './types';
+import { DefinedContributionPlan-calculatorInputs, DefinedContributionPlan-calculatorMetrics, DefinedContributionPlan-calculatorAnalysis } from './types';
 
 // Defined Contribution Plan Calculator - Finance calculations
-export function calculateResult(inputs: defined-contribution-plan-calculatorInputs): number {
+export function calculateResult(inputs: DefinedContributionPlan-calculatorInputs): number {
   // Financial calculation logic
   const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
   return numericValues.reduce((sum, val) => sum + val, 0) || 0;
 }
 
-export function generateAnalysis(inputs: defined-contribution-plan-calculatorInputs, metrics: defined-contribution-plan-calculatorMetrics): defined-contribution-plan-calculatorAnalysis {
+export function generateAnalysis(inputs: DefinedContributionPlan-calculatorInputs, metrics: DefinedContributionPlan-calculatorMetrics): DefinedContributionPlan-calculatorAnalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (Math.abs(result) > 100000) riskLevel = 'High';

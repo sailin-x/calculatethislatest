@@ -3,7 +3,7 @@ import { calculateMortgageClosingCost } from './formulas';
 import { generateMortgageClosingCostAnalysis } from './formulas';
 
 export const MortgageClosingCostCalculator: Calculator = {
-  id: 'mortgage-closing-cost-calculator',
+  id: 'MortgageClosingCost-calculator',
   name: 'Mortgage Closing Cost Calculator',
   category: 'finance',
   subcategory: 'mortgage',
@@ -400,7 +400,7 @@ export const MortgageClosingCostCalculator: Calculator = {
     },
     closingDate: {
       type: 'date',
-      value: '2024-01-15',
+      value: '20240115',
       unit: '',
       description: 'Closing date',
       placeholder: 'Select closing date',
@@ -410,7 +410,7 @@ export const MortgageClosingCostCalculator: Calculator = {
     },
     firstPaymentDate: {
       type: 'date',
-      value: '2024-03-01',
+      value: '20240301',
       unit: '',
       description: 'First mortgage payment date',
       placeholder: 'Select first payment date',

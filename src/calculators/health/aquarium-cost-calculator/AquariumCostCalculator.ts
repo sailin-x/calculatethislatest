@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateAquariumCostCalculatorInputs } from './validation';
 
 export const AquariumCostCalculator: Calculator = {
-  id: 'aquarium-cost-calculator',
+  id: 'AquariumCostCalculator',
   title: 'Aquarium Cost Calculator',
   category: 'health',
   subcategory: 'General',

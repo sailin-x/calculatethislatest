@@ -7,7 +7,7 @@ import { validateAllLoanToCostRatioInputs } from './quickValidation';
 describe('Loan to Cost (LTC) Ratio Calculator', () => {
   describe('Calculator Structure', () => {
     it('should have correct basic properties', () => {
-      expect(LoanToCostRatioCalculator.id).toBe('loan-to-cost-ratio-calculator');
+      expect(LoanToCostRatioCalculator.id).toBe('LoanToCost-ratio-calculator');
       expect(LoanToCostRatioCalculator.name).toBe('Loan to Cost (LTC) Ratio Calculator');
       expect(LoanToCostRatioCalculator.category).toBe('finance');
       expect(LoanToCostRatioCalculator.subcategory).toBe('investment');

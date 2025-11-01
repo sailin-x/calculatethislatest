@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { body_frame_size_calculatorInputs, body_frame_size_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const body_frame_size_calculatorCalculator: Calculator = {
-  id: 'body-frame-size-calculator',
+export const BodyFrameSize-calculator: Calculator = {
+  id: 'BodyFrameSize-calculator',
   title: 'Body Frame Size Calculator Calculator',
   category: 'healthfitnessdiet',
   subcategory: 'healthfitnesshub',

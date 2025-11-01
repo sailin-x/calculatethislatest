@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { information_ratio_calculatorInputs, information_ratio_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const information_ratio_calculatorCalculator: Calculator = {
-  id: 'information-ratio-calculator',
+export const InformationRatioCalculator: Calculator = {
+  id: 'InformationRatioCalculator',
   title: 'Information Ratio Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'investmentportfoliohub',

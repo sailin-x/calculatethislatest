@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateRetirementSavingsCalculatorInputs, validateRetirementSavingsCalculatorBusinessRules } from './validation';
 
-export const RetirementSavingsCalculatorCalculator: Calculator: Calculator = {
-  id: 'retirement-savings-calculator-calculator',
+export const RetirementSavingsCalculator: Calculator = {
+  id: 'RetirementSavingsCalculator-calculator',
   title: 'Retirement Savings Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

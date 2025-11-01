@@ -1,4 +1,4 @@
-export { ErrorsOmissionsInsuranceCalculatorCalculator } from './ErrorsOmissionsInsuranceCalculatorCalculator';
+export { ErrorsOmissionsInsuranceCalculator } from './ErrorsOmissionsInsuranceCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

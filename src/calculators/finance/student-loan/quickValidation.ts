@@ -33,7 +33,7 @@ export function validateGracePeriod(value: number, allInputs?: Record<string, an
 }
 
 export function validateRepaymentPlan(value: string, allInputs?: Record<string, any>): string | null {
-  const validPlans = ['standard', 'extended', 'graduated', 'income-based', 'pay-as-you-earn', 'revised-pay-as-you-earn', 'income-contingent', 'income-sensitive'];
+  const validPlans = ['standard', 'extended', 'graduated', 'income-based', 'PayAsYou-earn', 'RevisedPayAs-you-earn', 'income-contingent', 'income-sensitive'];
   if (!value) return 'Repayment plan is required';
   if (!validPlans.includes(value)) return 'Invalid repayment plan';
   return null;
@@ -58,7 +58,7 @@ export function validateFamilySize(value: number, allInputs?: Record<string, any
 }
 
 export function validateFilingStatus(value: string, allInputs?: Record<string, any>): string | null {
-  const validStatuses = ['single', 'married-filing-jointly', 'married-filing-separately', 'head-of-household'];
+  const validStatuses = ['single', 'MarriedFilingJointly', 'MarriedFilingSeparately', 'HeadOfHousehold'];
   if (!value) return 'Filing status is required';
   if (!validStatuses.includes(value)) return 'Invalid filing status';
   return null;
@@ -282,7 +282,7 @@ export function validateAllStudentLoanInputs(inputs: CalculatorInputs): { isVali
   if (inputs.monthlyPayment && inputs.annualIncome) {
     const debtToIncomeRatio = (inputs.monthlyPayment + (inputs.otherDebts || 0)) / (inputs.annualIncome / 12);
     if (debtToIncomeRatio > 0.43) {
-      warnings.push('High debt-to-income ratio - consider income-based repayment');
+      warnings.push('High DebtToIncome ratio - consider income-based repayment');
     }
   }
 

@@ -10,11 +10,11 @@ import {
 import { validateDtiRatioCalculatorInputs } from './validation';
 
 export const DtiRatioCalculator: Calculator = {
-  id: 'dti-ratio-calculator',
+  id: 'DtiRatioCalculator',
   title: 'DTI Ratio Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',
-  description: 'Calculate debt-to-income ratio.',
+  description: 'Calculate DebtToIncome ratio.',
   usageInstructions: [
     'Enter the principal amount to invest',
     'Specify the expected interest rate',

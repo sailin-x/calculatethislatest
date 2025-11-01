@@ -194,7 +194,7 @@ export function validateCostSegregationInputs(inputs: CalculatorInputs): Validat
   }
 
   // Validate depreciation method
-  const validDepreciationMethods = ['straight-line', 'declining-balance', 'sum-of-years'];
+  const validDepreciationMethods = ['straight-line', 'declining-balance', 'SumOfYears'];
   if (!validDepreciationMethods.includes(depreciationMethod)) {
     errors.push('Please select a valid depreciation method');
   }
@@ -400,7 +400,7 @@ export function quickValidateCostSegregationInput(field: string, value: any): st
       if (!value) {
         return 'Depreciation method is required';
       }
-      const validDepreciationMethods = ['straight-line', 'declining-balance', 'sum-of-years'];
+      const validDepreciationMethods = ['straight-line', 'declining-balance', 'SumOfYears'];
       if (!validDepreciationMethods.includes(value)) {
         return 'Please select a valid depreciation method';
       }

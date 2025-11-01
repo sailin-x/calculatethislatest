@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateDentalInsuranceCostCalculatorInputs } from './validation';
 
 export const DentalInsuranceCostCalculator: Calculator = {
-  id: 'dental-insurance-cost-calculator',
+  id: 'DentalInsuranceCost-calculator',
   title: 'Dental Insurance Cost Calculator',
   category: 'health',
   subcategory: 'General',

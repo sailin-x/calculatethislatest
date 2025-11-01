@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { geometryCalculatorCalculator } from './geometryCalculatorCalculator';
+import { geometryCalculator } from './geometryCalculator';
 
-export function registergeometryCalculatorCalculator(): void {
-  calculatorRegistry.register(new geometryCalculatorCalculator());
+export function registergeometryCalculator(): void {
+  calculatorRegistry.register(new geometryCalculator());
 }

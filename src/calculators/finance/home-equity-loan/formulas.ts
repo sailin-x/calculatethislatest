@@ -1,4 +1,4 @@
-import { home-equity-loanInputs, home-equity-loanMetrics, home-equity-loanAnalysis } from './types';
+import { HomeEquityLoaninputs, HomeEquityLoanmetrics, HomeEquityLoananalysis } from './types';
 
 
 // Loan Calculator - Standard loan formulas
@@ -14,7 +14,7 @@ export function calculateTotalCost(monthlyPayment: number, numPayments: number):
   return monthlyPayment * numPayments;
 }
 
-export function calculateResult(inputs: home-equity-loanInputs): number {
+export function calculateResult(inputs: HomeEquityLoaninputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: home-equity-loanInputs): number {
   }
 }
 
-export function generateAnalysis(inputs: home-equity-loanInputs, metrics: home-equity-loanMetrics): home-equity-loanAnalysis {
+export function generateAnalysis(inputs: HomeEquityLoaninputs, metrics: HomeEquityLoanmetrics): HomeEquityLoananalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

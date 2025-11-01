@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateEdiscoveryCostCalculatorInputs, validateEdiscoveryCostCalculatorBusinessRules } from './validation';
 
-export const EdiscoveryCostCalculatorCalculator: Calculator: Calculator = {
-  id: 'e-discovery-cost-calculator-calculator',
+export const EdiscoveryCostCalculator: Calculator = {
+  id: 'EDiscoveryCost-calculator-calculator',
   title: 'E-Discovery Cost Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

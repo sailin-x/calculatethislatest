@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { real_estate_investment_calculatorInputs, real_estate_investment_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const real_estate_investment_calculatorCalculator: Calculator = {
-  id: 'real-estate-investment-calculator',
+export const RealEstateInvestment-calculator: Calculator = {
+  id: 'RealEstateInvestment-calculator',
   title: '**Real Estate Investment Calculator** Calculator',
   category: 'businessmarketingoperations',
   subcategory: 'businessoperationsfinancehub',

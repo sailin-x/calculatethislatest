@@ -60,10 +60,10 @@ export function validateMortgageQualificationInputs(inputs: MortgageQualificatio
 export function validateMortgageQualificationBusinessRules(inputs: MortgageQualificationInputs): ValidationResult {
   const errors: Record<string, string> = {};
 
-  // Loan-to-value ratio validation
+  // LoanToValue ratio validation
   const ltvRatio = (inputs.loanAmount / inputs.propertyValue) * 100;
   if (ltvRatio > 97) {
-    errors.loanAmount = 'Loan-to-value ratio cannot exceed 97% for most conventional loans';
+    errors.loanAmount = 'LoanToValue ratio cannot exceed 97% for most conventional loans';
   }
 
   // Minimum down payment validation

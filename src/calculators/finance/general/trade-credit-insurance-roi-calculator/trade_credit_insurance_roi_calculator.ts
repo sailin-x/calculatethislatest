@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { trade_credit_insurance_roi_calculatorInputs, trade_credit_insurance_roi_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const trade_credit_insurance_roi_calculatorCalculator: Calculator = {
-  id: 'trade-credit-insurance-roi-calculator',
+export const TradeCreditInsurance-roi-calculator: Calculator = {
+  id: 'TradeCreditInsurance-roi-calculator',
   title: 'Trade Credit Insurance ROI Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

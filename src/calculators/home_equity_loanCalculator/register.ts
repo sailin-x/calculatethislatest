@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { home_equity_loanCalculatorCalculator } from './home_equity_loanCalculatorCalculator';
+import { home_equity_loanCalculator } from './home_equity_loanCalculator';
 
-export function registerhome_equity_loanCalculatorCalculator(): void {
-  calculatorRegistry.register(new home_equity_loanCalculatorCalculator());
+export function registerhome_equity_loanCalculator(): void {
+  calculatorRegistry.register(new home_equity_loanCalculator());
 }

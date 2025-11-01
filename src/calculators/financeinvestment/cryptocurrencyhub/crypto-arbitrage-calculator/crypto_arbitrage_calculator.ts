@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { crypto_arbitrage_calculatorInputs, crypto_arbitrage_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const crypto_arbitrage_calculatorCalculator: Calculator = {
-  id: 'crypto-arbitrage-calculator',
+export const CryptoArbitrageCalculator: Calculator = {
+  id: 'CryptoArbitrageCalculator',
   title: 'Crypto Arbitrage Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'cryptocurrencyhub',

@@ -33,7 +33,7 @@ export function runCapRateValidation(): void {
     console.log('✅ Basic calculation successful');
     console.log(`   Cap Rate: ${result.capRate.toFixed(1)}%`);
     console.log(`   NOI: $${result.netOperatingIncome.toLocaleString()}`);
-    console.log(`   Cash-on-Cash Return: ${result.cashOnCashReturn.toFixed(1)}%`);
+    console.log(`   CashOnCash Return: ${result.cashOnCashReturn.toFixed(1)}%`);
   } catch (error) {
     console.log(`❌ Basic calculation failed: ${error}`);
   }
@@ -167,11 +167,11 @@ export function runCapRateValidation(): void {
     console.log('⚠️ Operating expense ratio may be unusual');
   }
 
-  // Test cash-on-cash return
+  // Test CashOnCash return
   if (capRateMetrics.cashOnCashReturn > capRateMetrics.capRate) {
-    console.log('✅ Cash-on-cash return correctly higher than cap rate (due to leverage)');
+    console.log('✅ CashOnCash return correctly higher than cap rate (due to leverage)');
   } else {
-    console.log('⚠️ Cash-on-cash return calculation may be incorrect');
+    console.log('⚠️ CashOnCash return calculation may be incorrect');
   }
 
   console.log('\n🎉 Cap Rate Calculator Validation Complete!');

@@ -1,4 +1,4 @@
-export { YachtOperatingCostDepreciationCalculatorCalculator } from './YachtOperatingCostDepreciationCalculatorCalculator';
+export { YachtOperatingCostDepreciationCalculator } from './YachtOperatingCostDepreciationCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

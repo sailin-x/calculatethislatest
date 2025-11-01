@@ -1,3 +1,3 @@
-import { AirlineRouteProfitabilityCalculatorCalculator } from './AirlineRouteProfitabilityCalculatorCalculator';
+import { AirlineRouteProfitabilityCalculator } from './AirlineRouteProfitabilityCalculator';
 
-export { AirlineRouteProfitabilityCalculatorCalculator };
+export { AirlineRouteProfitabilityCalculator };

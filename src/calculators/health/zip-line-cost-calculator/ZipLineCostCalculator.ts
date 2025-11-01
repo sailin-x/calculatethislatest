@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateZipLineCostCalculatorInputs } from './validation';
 
 export const ZipLineCostCalculator: Calculator = {
-  id: 'zip-line-cost-calculator',
+  id: 'ZipLineCost-calculator',
   title: 'Zip Line Cost Calculator',
   category: 'health',
   subcategory: 'General',

@@ -1,13 +1,13 @@
-import { pension-plan-funding-calculatorInputs, pension-plan-funding-calculatorMetrics, pension-plan-funding-calculatorAnalysis } from './types';
+import { PensionPlanFunding-calculatorInputs, PensionPlanFunding-calculatorMetrics, PensionPlanFunding-calculatorAnalysis } from './types';
 
 // Pension Plan Funding Calculator - Finance calculations
-export function calculateResult(inputs: pension-plan-funding-calculatorInputs): number {
+export function calculateResult(inputs: PensionPlanFunding-calculatorInputs): number {
   // Financial calculation logic
   const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
   return numericValues.reduce((sum, val) => sum + val, 0) || 0;
 }
 
-export function generateAnalysis(inputs: pension-plan-funding-calculatorInputs, metrics: pension-plan-funding-calculatorMetrics): pension-plan-funding-calculatorAnalysis {
+export function generateAnalysis(inputs: PensionPlanFunding-calculatorInputs, metrics: PensionPlanFunding-calculatorMetrics): PensionPlanFunding-calculatorAnalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (Math.abs(result) > 100000) riskLevel = 'High';

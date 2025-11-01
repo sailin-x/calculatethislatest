@@ -1,3 +1,3 @@
-export * from './rental_property_roiCalculatorCalculator';
+export * from './rental_property_roiCalculator';
 export * from './register';
 export * from './types';

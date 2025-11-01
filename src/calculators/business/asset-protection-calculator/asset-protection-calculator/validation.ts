@@ -1,6 +1,6 @@
-import { asset-protection-calculatorInputs } from './types';
+import { assetprotectioncalculatorInputs } from './types';
 
-export function validateInputs(inputs: asset-protection-calculatorInputs): { isValid: boolean; errors: string[] } {
+export function validateInputs(inputs: assetprotectioncalculatorInputs): { isValid: boolean; errors: string[] } {
   const errors: string[] = [];
 
   // Add validation logic specific to this calculator

@@ -1,4 +1,4 @@
-import { loss-ratio-calculatorInputs, loss-ratio-calculatorMetrics, loss-ratio-calculatorAnalysis } from './types';
+import { LossRatioCalculatorinputs, LossRatioCalculatormetrics, LossRatioCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: loss-ratio-calculatorInputs): number {
+export function calculateResult(inputs: LossRatioCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: loss-ratio-calculatorInputs): number {
   }
 }
 
-export function generateAnalysis(inputs: loss-ratio-calculatorInputs, metrics: loss-ratio-calculatorMetrics): loss-ratio-calculatorAnalysis {
+export function generateAnalysis(inputs: LossRatioCalculatorinputs, metrics: LossRatioCalculatormetrics): LossRatioCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

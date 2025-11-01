@@ -1,4 +1,4 @@
-import { hotel-cost-calculatorInputs, hotel-cost-calculatorMetrics, hotel-cost-calculatorAnalysis } from './types';
+import { HotelCostCalculatorinputs, HotelCostCalculatormetrics, HotelCostCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: hotel-cost-calculatorInputs): number {
+export function calculateResult(inputs: HotelCostCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: hotel-cost-calculatorInputs): number {
   }
 }
 
-export function generateAnalysis(inputs: hotel-cost-calculatorInputs, metrics: hotel-cost-calculatorMetrics): hotel-cost-calculatorAnalysis {
+export function generateAnalysis(inputs: HotelCostCalculatorinputs, metrics: HotelCostCalculatormetrics): HotelCostCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

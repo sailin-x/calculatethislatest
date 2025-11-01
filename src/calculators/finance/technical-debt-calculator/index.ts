@@ -1,4 +1,4 @@
-export { TechnicalDebtCalculatorCalculator } from './TechnicalDebtCalculatorCalculator';
+export { TechnicalDebtCalculator } from './TechnicalDebtCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

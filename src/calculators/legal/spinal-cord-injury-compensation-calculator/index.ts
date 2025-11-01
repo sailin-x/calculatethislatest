@@ -1,4 +1,4 @@
-export { SpinalCordInjuryCompensationCalculatorCalculator } from './SpinalCordInjuryCompensationCalculatorCalculator';
+export { SpinalCordInjuryCompensationCalculator } from './SpinalCordInjuryCompensationCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

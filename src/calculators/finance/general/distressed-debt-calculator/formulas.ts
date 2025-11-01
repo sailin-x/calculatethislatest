@@ -1,4 +1,4 @@
-import { distressed-debt-calculatorInputs, distressed-debt-calculatorMetrics, distressed-debt-calculatorAnalysis } from './types';
+import { DistressedDebtCalculatorinputs, DistressedDebtCalculatormetrics, DistressedDebtCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: distressed-debt-calculatorInputs): number {
+export function calculateResult(inputs: DistressedDebtCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: distressed-debt-calculatorInputs): numbe
   }
 }
 
-export function generateAnalysis(inputs: distressed-debt-calculatorInputs, metrics: distressed-debt-calculatorMetrics): distressed-debt-calculatorAnalysis {
+export function generateAnalysis(inputs: DistressedDebtCalculatorinputs, metrics: DistressedDebtCalculatormetrics): DistressedDebtCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

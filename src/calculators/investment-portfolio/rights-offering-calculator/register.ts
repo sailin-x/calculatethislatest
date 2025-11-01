@@ -1,3 +1,3 @@
-import { RightsOfferingCalculatorCalculator } from './RightsOfferingCalculatorCalculator';
+import { RightsOfferingCalculator } from './RightsOfferingCalculator';
 
-export { RightsOfferingCalculatorCalculator };
+export { RightsOfferingCalculator };

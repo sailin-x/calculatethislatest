@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validatePassportCostCalculatorInputs } from './validation';
 
 export const PassportCostCalculator: Calculator = {
-  id: 'passport-cost-calculator',
+  id: 'PassportCostCalculator',
   title: 'Passport Cost Calculator',
   category: 'health',
   subcategory: 'General',

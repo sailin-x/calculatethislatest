@@ -1,3 +1,3 @@
-import { TotalCostOfOwnershipTcoForCommercialFleetCalculatorCalculator } from './TotalCostOfOwnershipTcoForCommercialFleetCalculatorCalculator';
+import { TotalCostOfOwnershipTcoForCommercialFleetCalculator } from './TotalCostOfOwnershipTcoForCommercialFleetCalculator';
 
-export { TotalCostOfOwnershipTcoForCommercialFleetCalculatorCalculator };
+export { TotalCostOfOwnershipTcoForCommercialFleetCalculator };

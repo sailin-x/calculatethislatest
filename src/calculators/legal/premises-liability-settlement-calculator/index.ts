@@ -1,4 +1,4 @@
-export { PremisesLiabilitySettlementCalculatorCalculator } from './PremisesLiabilitySettlementCalculatorCalculator';
+export { PremisesLiabilitySettlementCalculator } from './PremisesLiabilitySettlementCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

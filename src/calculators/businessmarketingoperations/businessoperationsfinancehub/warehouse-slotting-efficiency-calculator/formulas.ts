@@ -1,4 +1,4 @@
-import { warehouse-slotting-efficiency-calculatorInputs, warehouse-slotting-efficiency-calculatorMetrics, warehouse-slotting-efficiency-calculatorAnalysis } from './types';
+import { WarehouseSlottingEfficiency-calculatorInputs, WarehouseSlottingEfficiency-calculatorMetrics, WarehouseSlottingEfficiency-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: warehouse-slotting-efficiency-calculatorInputs): number {
+export function calculateResult(inputs: WarehouseSlottingEfficiency-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: warehouse-slotting-efficiency-calculator
   }
 }
 
-export function generateAnalysis(inputs: warehouse-slotting-efficiency-calculatorInputs, metrics: warehouse-slotting-efficiency-calculatorMetrics): warehouse-slotting-efficiency-calculatorAnalysis {
+export function generateAnalysis(inputs: WarehouseSlottingEfficiency-calculatorInputs, metrics: WarehouseSlottingEfficiency-calculatorMetrics): WarehouseSlottingEfficiency-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

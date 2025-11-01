@@ -187,7 +187,7 @@ export function validateRefinanceInputs(inputs: CalculatorInputs): ValidationRes
   }
 
   if (inputs.propertyValue && inputs.newLoanAmount && (inputs.newLoanAmount / inputs.propertyValue) > 0.97) {
-    warnings.push('Loan-to-value ratio is very high - may affect approval and rates');
+    warnings.push('LoanToValue ratio is very high - may affect approval and rates');
   }
 
   if (inputs.closingCosts && inputs.monthlyIncome && inputs.closingCosts > inputs.monthlyIncome * 2) {

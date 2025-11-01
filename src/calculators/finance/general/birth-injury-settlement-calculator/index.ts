@@ -1,4 +1,4 @@
-export { birth_injury_settlement_calculatorCalculator } from './birth_injury_settlement_calculator';
+export { birth_injury_settlement_calculator } from './birth_injury_settlement_calculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateMarketingRoiCalculatorInputs, validateMarketingRoiCalculatorBusinessRules } from './validation';
 
-export const MarketingRoiCalculatorCalculator: Calculator: Calculator = {
-  id: 'marketing-roi-calculator-calculator',
+export const MarketingRoiCalculator: Calculator = {
+  id: 'MarketingRoiCalculator-calculator',
   title: 'Marketing ROI Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

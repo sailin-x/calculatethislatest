@@ -1,4 +1,4 @@
-export { CropInsurancePremiumCalculatorCalculator } from './CropInsurancePremiumCalculatorCalculator';
+export { CropInsurancePremiumCalculator } from './CropInsurancePremiumCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

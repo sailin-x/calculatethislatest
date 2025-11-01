@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateVineyardProfitabilityCalculatorInputs, validateVineyardProfitabilityCalculatorBusinessRules } from './validation';
 
-export const VineyardProfitabilityCalculatorCalculator: Calculator: Calculator = {
-  id: 'vineyard-profitability-calculator-calculator',
+export const VineyardProfitabilityCalculator: Calculator = {
+  id: 'VineyardProfitabilityCalculator-calculator',
   title: 'Vineyard Profitability Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

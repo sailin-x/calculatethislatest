@@ -10,7 +10,7 @@ import {
 import { validateCommoditiesFuturesProfitabilityCalculatorInputs } from './validation';
 
 export const CommoditiesFuturesProfitabilityCalculator: Calculator = {
-  id: 'commodities-futures-profitability-calculator',
+  id: 'CommoditiesFuturesProfitability-calculator',
   title: 'Commodities Futures Profitability Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

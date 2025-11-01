@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateDayTradingCalculatorInputs, validateDayTradingCalculatorBusinessRules } from './validation';
 
-export const DayTradingCalculatorCalculator: Calculator: Calculator = {
-  id: 'day-trading-calculator-calculator',
+export const DayTradingCalculator: Calculator = {
+  id: 'DayTradingCalculator-calculator',
   title: 'Day Trading Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

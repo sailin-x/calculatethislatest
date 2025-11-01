@@ -1,3 +1,3 @@
-import { CapitalStructureOptimizationCalculatorCalculator } from './CapitalStructureOptimizationCalculatorCalculator';
+import { CapitalStructureOptimizationCalculator } from './CapitalStructureOptimizationCalculator';
 
-export { CapitalStructureOptimizationCalculatorCalculator };
+export { CapitalStructureOptimizationCalculator };

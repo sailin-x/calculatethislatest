@@ -1,3 +1,3 @@
-import { LegalMalpracticeDamagesCalculatorCalculator } from './LegalMalpracticeDamagesCalculatorCalculator';
+import { LegalMalpracticeDamagesCalculator } from './LegalMalpracticeDamagesCalculator';
 
-export { LegalMalpracticeDamagesCalculatorCalculator };
+export { LegalMalpracticeDamagesCalculator };

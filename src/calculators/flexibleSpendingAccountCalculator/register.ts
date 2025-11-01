@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { flexibleSpendingAccountCalculatorCalculator } from './flexibleSpendingAccountCalculatorCalculator';
+import { flexibleSpendingAccountCalculator } from './flexibleSpendingAccountCalculator';
 
-export function registerflexibleSpendingAccountCalculatorCalculator(): void {
-  calculatorRegistry.register(new flexibleSpendingAccountCalculatorCalculator());
+export function registerflexibleSpendingAccountCalculator(): void {
+  calculatorRegistry.register(new flexibleSpendingAccountCalculator());
 }

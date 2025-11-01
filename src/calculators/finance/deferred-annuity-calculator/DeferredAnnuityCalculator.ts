@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateDeferredAnnuityCalculatorInputs, validateDeferredAnnuityCalculatorBusinessRules } from './validation';
 
-export const DeferredAnnuityCalculatorCalculator: Calculator: Calculator = {
-  id: 'deferred-annuity-calculator-calculator',
+export const DeferredAnnuityCalculator: Calculator = {
+  id: 'DeferredAnnuityCalculator-calculator',
   title: 'Deferred Annuity Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateHospitalNegligenceSettlementCalculatorInputs, validateHospitalNegligenceSettlementCalculatorBusinessRules } from './validation';
 
-export const HospitalNegligenceSettlementCalculatorCalculator: Calculator: Calculator = {
-  id: 'hospital-negligence-settlement-calculator-calculator',
+export const HospitalNegligenceSettlementCalculator: Calculator = {
+  id: 'HospitalNegligenceSettlement-calculator-calculator',
   title: 'Hospital Negligence Settlement Calculator Calculator',
   legal: 'legal', // e.g., 'finance', 'math', 'health', 'business'
   sublegal: 'Sublegal Name',

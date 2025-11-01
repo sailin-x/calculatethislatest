@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { long_term_care_insurance_calculatorInputs, long_term_care_insurance_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const long_term_care_insurance_calculatorCalculator: Calculator = {
-  id: 'long-term-care-insurance-calculator',
+export const LongTermCare-insurance-calculator: Calculator = {
+  id: 'LongTermCare-insurance-calculator',
   title: 'Long Term Care Insurance Calculator Calculator',
   category: 'legalinsurancesettlements',
   subcategory: 'insurancehub',

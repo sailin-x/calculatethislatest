@@ -10,7 +10,7 @@ import {
 import { validateCollateralizationRatioCalculatorInputs } from './validation';
 
 export const CollateralizationRatioCalculator: Calculator = {
-  id: 'collateralization-ratio-calculator',
+  id: 'CollateralizationRatioCalculator',
   title: 'Collateralization Ratio Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

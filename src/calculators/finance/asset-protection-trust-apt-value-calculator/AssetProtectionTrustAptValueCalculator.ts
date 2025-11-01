@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateAssetProtectionTrustAptValueCalculatorInputs, validateAssetProtectionTrustAptValueCalculatorBusinessRules } from './validation';
 
-export const AssetProtectionTrustAptValueCalculatorCalculator: Calculator: Calculator = {
-  id: 'asset-protection-trust-apt-value-calculator-calculator',
+export const AssetProtectionTrustAptValueCalculator: Calculator = {
+  id: 'AssetProtectionTrust-AptValueCalculator-calculator',
   title: 'Asset Protection Trust (APT) Value Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

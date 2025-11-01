@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateRealEstateDevelopmentProformaCalculatorInputs, validateRealEstateDevelopmentProformaCalculatorBusinessRules } from './validation';
 
-export const RealEstateDevelopmentProformaCalculatorCalculator: Calculator: Calculator = {
-  id: 'real-estate-development-pro-forma-calculator-calculator',
+export const RealEstateDevelopmentProformaCalculator: Calculator = {
+  id: 'RealEstateDevelopment-ProFormaCalculator-calculator',
   title: 'Real Estate Development Pro-Forma Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

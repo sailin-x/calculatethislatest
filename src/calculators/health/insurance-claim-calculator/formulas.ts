@@ -1,4 +1,4 @@
-import { insurance-claim-calculatorInputs, insurance-claim-calculatorMetrics, insurance-claim-calculatorAnalysis } from './types';
+import { InsuranceClaimCalculatorinputs, InsuranceClaimCalculatormetrics, InsuranceClaimCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: insurance-claim-calculatorInputs): number {
+export function calculateResult(inputs: InsuranceClaimCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: insurance-claim-calculatorInputs): numbe
   }
 }
 
-export function generateAnalysis(inputs: insurance-claim-calculatorInputs, metrics: insurance-claim-calculatorMetrics): insurance-claim-calculatorAnalysis {
+export function generateAnalysis(inputs: InsuranceClaimCalculatorinputs, metrics: InsuranceClaimCalculatormetrics): InsuranceClaimCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

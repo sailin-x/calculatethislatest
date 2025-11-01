@@ -1,3 +1,3 @@
-export * from './down_payment_assistanceCalculatorCalculator';
+export * from './down_payment_assistanceCalculator';
 export * from './register';
 export * from './types';

@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateTermVsUniversalLifeInsuranceCalculatorInputs, validateTermVsUniversalLifeInsuranceCalculatorBusinessRules } from './validation';
 
-export const TermVsUniversalLifeInsuranceCalculatorCalculator: Calculator: Calculator = {
-  id: 'term-vs-universal-life-insurance-calculator-calculator',
+export const TermVsUniversalLifeInsuranceCalculator: Calculator = {
+  id: 'TermVsUniversal-LifeInsuranceCalculator-calculator',
   title: 'Term vs. Universal Life Insurance Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

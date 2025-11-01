@@ -10,7 +10,7 @@ import {
 import { validateTreynorRatioCalculatorInputs } from './validation';
 
 export const TreynorRatioCalculator: Calculator = {
-  id: 'treynor-ratio-calculator',
+  id: 'TreynorRatioCalculator',
   title: 'Treynor Ratio Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

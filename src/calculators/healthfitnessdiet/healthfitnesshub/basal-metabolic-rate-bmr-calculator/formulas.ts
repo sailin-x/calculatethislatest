@@ -1,4 +1,4 @@
-import { basal-metabolic-rate-bmr-calculatorInputs, basal-metabolic-rate-bmr-calculatorMetrics, basal-metabolic-rate-bmr-calculatorAnalysis } from './types';
+import { BasalMetabolicRate-bmr-calculatorInputs, BasalMetabolicRate-bmr-calculatorMetrics, BasalMetabolicRate-bmr-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: basal-metabolic-rate-bmr-calculatorInputs): number {
+export function calculateResult(inputs: BasalMetabolicRate-bmr-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: basal-metabolic-rate-bmr-calculatorInput
   }
 }
 
-export function generateAnalysis(inputs: basal-metabolic-rate-bmr-calculatorInputs, metrics: basal-metabolic-rate-bmr-calculatorMetrics): basal-metabolic-rate-bmr-calculatorAnalysis {
+export function generateAnalysis(inputs: BasalMetabolicRate-bmr-calculatorInputs, metrics: BasalMetabolicRate-bmr-calculatorMetrics): BasalMetabolicRate-bmr-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

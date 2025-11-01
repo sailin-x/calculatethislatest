@@ -3,7 +3,7 @@ import { calculateReplacementCost, calculateInsuranceCoverage, generateCostBreak
 import { validateBuildingReplacementCostInputs } from './validation';
 
 export const BuildingReplacementCostCalculator: Calculator = {
-  id: 'building-replacement-cost-calculator',
+  id: 'BuildingReplacementCost-calculator',
   name: 'Building Replacement Cost Calculator',
   description: 'Calculate the cost to rebuild a building from scratch, including materials, labor, and overhead costs for insurance and construction planning purposes.',
   category: 'finance',

@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { crypto_portfolio_rebalancing_calculatorInputs, crypto_portfolio_rebalancing_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const crypto_portfolio_rebalancing_calculatorCalculator: Calculator = {
-  id: 'crypto-portfolio-rebalancing-calculator',
+export const CryptoPortfolioRebalancing-calculator: Calculator = {
+  id: 'CryptoPortfolioRebalancing-calculator',
   title: 'Crypto Portfolio Rebalancing Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'cryptocurrencyhub',

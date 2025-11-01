@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { music_royalty_investment_calculatorInputs, music_royalty_investment_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const music_royalty_investment_calculatorCalculator: Calculator = {
-  id: 'music-royalty-investment-calculator',
+export const MusicRoyaltyInvestment-calculator: Calculator = {
+  id: 'MusicRoyaltyInvestment-calculator',
   title: 'Music Royalty Investment Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'investmentportfoliohub',

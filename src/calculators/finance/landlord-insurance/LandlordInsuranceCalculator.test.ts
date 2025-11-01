@@ -7,7 +7,7 @@ import { validateAllLandlordInsuranceInputs } from './quickValidation';
 describe('Landlord Insurance Calculator', () => {
   describe('Calculator Structure', () => {
     it('should have correct basic properties', () => {
-      expect(LandlordInsuranceCalculator.id).toBe('landlord-insurance-calculator');
+      expect(LandlordInsuranceCalculator.id).toBe('LandlordInsuranceCalculator');
       expect(LandlordInsuranceCalculator.name).toBe('Landlord Insurance Calculator');
       expect(LandlordInsuranceCalculator.category).toBe('finance');
       expect(LandlordInsuranceCalculator.subcategory).toBe('investment');

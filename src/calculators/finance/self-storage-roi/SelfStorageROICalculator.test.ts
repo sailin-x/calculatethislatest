@@ -7,7 +7,7 @@ import { CalculatorInputs, CalculatorOutputs } from '../../types/calculator';
 
 describe('SelfStorageROICalculator', () => {
   it('should have correct calculator structure', () => {
-    expect(SelfStorageROICalculator.id).toBe('self-storage-roi-calculator');
+    expect(SelfStorageROICalculator.id).toBe('SelfStorageRoi-calculator');
     expect(SelfStorageROICalculator.name).toBe('Self-Storage Facility ROI Calculator');
     expect(SelfStorageROICalculator.category).toBe('finance');
     expect(SelfStorageROICalculator.subcategory).toBe('real-estate');
@@ -93,7 +93,7 @@ describe('Self-Storage ROI Validation', () => {
     expect(result.errors).toContain('facilitySize is required');
   });
 
-  it('should reject out-of-range facility size', () => {
+  it('should reject OutOfRange facility size', () => {
     const invalidInputs = { ...validInputs, facilitySize: 500 };
     
     const result = validateSelfStorageROIInputs(invalidInputs);
@@ -205,7 +205,7 @@ describe('Self-Storage ROI Calculation', () => {
     expect(outputs.annualRentalIncome).toBeCloseTo(expectedIncome, 2);
   });
 
-  it('should calculate cash-on-cash return correctly', () => {
+  it('should calculate CashOnCash return correctly', () => {
     const outputs = calculateSelfStorageROI(testInputs);
     const expectedCoC = (outputs.annualCashFlow / (testInputs.downPayment as number)) * 100;
     

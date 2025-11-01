@@ -1,4 +1,4 @@
-import { spin-off-calculatorInputs, spin-off-calculatorMetrics, spin-off-calculatorAnalysis } from './types';
+import { SpinOffCalculatorinputs, SpinOffCalculatormetrics, SpinOffCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: spin-off-calculatorInputs): number {
+export function calculateResult(inputs: SpinOffCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: spin-off-calculatorInputs): number {
   }
 }
 
-export function generateAnalysis(inputs: spin-off-calculatorInputs, metrics: spin-off-calculatorMetrics): spin-off-calculatorAnalysis {
+export function generateAnalysis(inputs: SpinOffCalculatorinputs, metrics: SpinOffCalculatormetrics): SpinOffCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

@@ -1,4 +1,4 @@
-import { health-savings-account-contribution-calculatorInputs, health-savings-account-contribution-calculatorMetrics, health-savings-account-contribution-calculatorAnalysis } from './types';
+import { HealthSavingsAccount-contribution-calculatorInputs, HealthSavingsAccount-contribution-calculatorMetrics, HealthSavingsAccount-contribution-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: health-savings-account-contribution-calculatorInputs): number {
+export function calculateResult(inputs: HealthSavingsAccount-contribution-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: health-savings-account-contribution-calc
   }
 }
 
-export function generateAnalysis(inputs: health-savings-account-contribution-calculatorInputs, metrics: health-savings-account-contribution-calculatorMetrics): health-savings-account-contribution-calculatorAnalysis {
+export function generateAnalysis(inputs: HealthSavingsAccount-contribution-calculatorInputs, metrics: HealthSavingsAccount-contribution-calculatorMetrics): HealthSavingsAccount-contribution-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

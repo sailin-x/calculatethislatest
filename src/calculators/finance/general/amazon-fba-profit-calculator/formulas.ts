@@ -1,4 +1,4 @@
-import { amazon-fba-profit-calculatorInputs, amazon-fba-profit-calculatorMetrics, amazon-fba-profit-calculatorAnalysis } from './types';
+import { AmazonFbaProfit-calculatorInputs, AmazonFbaProfit-calculatorMetrics, AmazonFbaProfit-calculatorAnalysis } from './types';
 
 
 // Business Calculator - Financial metrics
@@ -14,7 +14,7 @@ export function calculatePaybackPeriod(initialInvestment: number, annualCashFlow
   return initialInvestment / annualCashFlow;
 }
 
-export function calculateResult(inputs: amazon-fba-profit-calculatorInputs): number {
+export function calculateResult(inputs: AmazonFbaProfit-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: amazon-fba-profit-calculatorInputs): num
   }
 }
 
-export function generateAnalysis(inputs: amazon-fba-profit-calculatorInputs, metrics: amazon-fba-profit-calculatorMetrics): amazon-fba-profit-calculatorAnalysis {
+export function generateAnalysis(inputs: AmazonFbaProfit-calculatorInputs, metrics: AmazonFbaProfit-calculatorMetrics): AmazonFbaProfit-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

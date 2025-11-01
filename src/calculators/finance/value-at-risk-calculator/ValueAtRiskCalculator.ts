@@ -10,7 +10,7 @@ import {
 import { validateValueAtRiskCalculatorInputs } from './validation';
 
 export const ValueAtRiskCalculator: Calculator = {
-  id: 'value-at-risk-calculator',
+  id: 'ValueAtRisk-calculator',
   title: 'Value at Risk Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

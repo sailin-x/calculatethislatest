@@ -1,4 +1,4 @@
-import { music-catalogue-valuation-calculatorInputs, music-catalogue-valuation-calculatorMetrics, music-catalogue-valuation-calculatorAnalysis } from './types';
+import { MusicCatalogueValuation-calculatorInputs, MusicCatalogueValuation-calculatorMetrics, MusicCatalogueValuation-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: music-catalogue-valuation-calculatorInputs): number {
+export function calculateResult(inputs: MusicCatalogueValuation-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: music-catalogue-valuation-calculatorInpu
   }
 }
 
-export function generateAnalysis(inputs: music-catalogue-valuation-calculatorInputs, metrics: music-catalogue-valuation-calculatorMetrics): music-catalogue-valuation-calculatorAnalysis {
+export function generateAnalysis(inputs: MusicCatalogueValuation-calculatorInputs, metrics: MusicCatalogueValuation-calculatorMetrics): MusicCatalogueValuation-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

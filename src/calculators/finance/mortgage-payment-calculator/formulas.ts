@@ -1,4 +1,4 @@
-import { mortgage-payment-calculatorInputs, mortgage-payment-calculatorMetrics, mortgage-payment-calculatorAnalysis } from './types';
+import { MortgagePaymentCalculatorinputs, MortgagePaymentCalculatormetrics, MortgagePaymentCalculatoranalysis } from './types';
 
 // Mortgage Payment Calculator - Standard loan amortization formula
 export function calculateMonthlyPayment(principal: number, annualRate: number, years: number): number {
@@ -21,21 +21,21 @@ export function calculateInterestPayment(principal: number, annualRate: number):
   return (principal * annualRate / 100) / 12;
 }
 
-export function calculateResult(inputs: mortgage-payment-calculatorInputs): number {
+export function calculateResult(inputs: MortgagePaymentCalculatorinputs): number {
   if ('loanAmount' in inputs && 'interestRate' in inputs && 'loanTerm' in inputs) {
     return calculateMonthlyPayment(inputs.loanAmount, inputs.interestRate, inputs.loanTerm);
   }
   return 0;
 }
 
-export function generateAnalysis(inputs: mortgage-payment-calculatorInputs, metrics: mortgage-payment-calculatorMetrics): mortgage-payment-calculatorAnalysis {
+export function generateAnalysis(inputs: MortgagePaymentCalculatorinputs, metrics: MortgagePaymentCalculatormetrics): MortgagePaymentCalculatoranalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (result > 5000) riskLevel = 'High';
   else if (result > 2000) riskLevel = 'Medium';
 
   const recommendation = result > 0 ?
-    'Monthly mortgage payment calculated. Consider debt-to-income ratio.' :
+    'Monthly mortgage payment calculated. Consider DebtToIncome ratio.' :
     'Review loan terms and interest rates';
 
   return { recommendation, riskLevel };

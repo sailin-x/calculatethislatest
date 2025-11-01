@@ -1,3 +1,3 @@
-export * from './alphaCalculatorCalculator';
+export * from './alphaCalculator';
 export * from './register';
 export * from './types';

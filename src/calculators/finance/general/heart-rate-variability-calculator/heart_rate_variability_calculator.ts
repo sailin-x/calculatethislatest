@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { heart_rate_variability_calculatorInputs, heart_rate_variability_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const heart_rate_variability_calculatorCalculator: Calculator = {
-  id: 'heart-rate-variability-calculator',
+export const HeartRateVariability-calculator: Calculator = {
+  id: 'HeartRateVariability-calculator',
   title: 'Heart Rate Variability Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

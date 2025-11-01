@@ -1,3 +1,3 @@
-import { TermVsUniversalLifeInsuranceCalculatorCalculator } from './TermVsUniversalLifeInsuranceCalculatorCalculator';
+import { TermVsUniversalLifeInsuranceCalculator } from './TermVsUniversalLifeInsuranceCalculator';
 
-export { TermVsUniversalLifeInsuranceCalculatorCalculator };
+export { TermVsUniversalLifeInsuranceCalculator };

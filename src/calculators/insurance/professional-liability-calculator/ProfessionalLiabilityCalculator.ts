@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateProfessionalLiabilityCalculatorInputs } from './validation';
 
 export const ProfessionalLiabilityCalculator: Calculator = {
-  id: 'professional-liability-calculator',
+  id: 'ProfessionalLiabilityCalculator',
   title: 'Professional Liability Calculator',
   category: 'insurance',
   subcategory: 'General',

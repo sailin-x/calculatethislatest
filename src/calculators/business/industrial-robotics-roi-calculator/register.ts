@@ -1,3 +1,3 @@
-import { IndustrialRoboticsRoiCalculatorCalculator } from './IndustrialRoboticsRoiCalculatorCalculator';
+import { IndustrialRoboticsRoiCalculator } from './IndustrialRoboticsRoiCalculator';
 
-export { IndustrialRoboticsRoiCalculatorCalculator };
+export { IndustrialRoboticsRoiCalculator };

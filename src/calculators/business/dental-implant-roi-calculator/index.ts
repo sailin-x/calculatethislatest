@@ -1,4 +1,4 @@
-export { DentalImplantRoiCalculatorCalculator } from './DentalImplantRoiCalculatorCalculator';
+export { DentalImplantRoiCalculator } from './DentalImplantRoiCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

@@ -1,3 +1,3 @@
-import { AdjustablerateMortgageArmCalculatorCalculator } from './AdjustablerateMortgageArmCalculatorCalculator';
+import { AdjustablerateMortgageArmCalculator } from './AdjustablerateMortgageArmCalculator';
 
-export { AdjustablerateMortgageArmCalculatorCalculator };
+export { AdjustablerateMortgageArmCalculator };

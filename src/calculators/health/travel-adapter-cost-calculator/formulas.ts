@@ -1,4 +1,4 @@
-import { travel-adapter-cost-calculatorInputs, travel-adapter-cost-calculatorMetrics, travel-adapter-cost-calculatorAnalysis } from './types';
+import { TravelAdapterCost-calculatorInputs, TravelAdapterCost-calculatorMetrics, TravelAdapterCost-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: travel-adapter-cost-calculatorInputs): number {
+export function calculateResult(inputs: TravelAdapterCost-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: travel-adapter-cost-calculatorInputs): n
   }
 }
 
-export function generateAnalysis(inputs: travel-adapter-cost-calculatorInputs, metrics: travel-adapter-cost-calculatorMetrics): travel-adapter-cost-calculatorAnalysis {
+export function generateAnalysis(inputs: TravelAdapterCost-calculatorInputs, metrics: TravelAdapterCost-calculatorMetrics): TravelAdapterCost-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

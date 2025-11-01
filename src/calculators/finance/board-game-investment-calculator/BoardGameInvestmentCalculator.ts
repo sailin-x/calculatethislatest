@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateBoardGameInvestmentCalculatorInputs, validateBoardGameInvestmentCalculatorBusinessRules } from './validation';
 
-export const BoardGameInvestmentCalculatorCalculator: Calculator: Calculator = {
-  id: 'board-game-investment-calculator-calculator',
+export const BoardGameInvestmentCalculator: Calculator = {
+  id: 'BoardGameInvestment-calculator-calculator',
   title: 'Board Game Investment Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

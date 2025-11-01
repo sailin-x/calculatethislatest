@@ -91,7 +91,7 @@ describe('Grantor Retained Annuity Trust (GRAT) Calculator', () => {
 
   describe('Calculator Definition', () => {
     it('should have correct calculator properties', () => {
-      expect(grantorRetainedAnnuityTrustCalculator.id).toBe('grantor-retained-annuity-trust-grat-calculator');
+      expect(grantorRetainedAnnuityTrustCalculator.id).toBe('GrantorRetainedAnnuity-TrustGratCalculator');
       expect(grantorRetainedAnnuityTrustCalculator.title).toBe('Grantor Retained Annuity Trust (GRAT) Calculator');
       expect(grantorRetainedAnnuityTrustCalculator.category).toBe('finance');
       expect(grantorRetainedAnnuityTrustCalculator.subcategory).toBe('Retirement & Savings');

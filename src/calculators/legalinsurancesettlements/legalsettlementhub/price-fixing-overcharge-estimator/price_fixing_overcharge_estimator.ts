@@ -3,7 +3,7 @@ import { price_fixing_overcharge_estimatorInputs, price_fixing_overcharge_estima
 import { calculateResult, generateAnalysis } from './formulas';
 
 export const price_fixing_overcharge_estimatorCalculator: Calculator = {
-  id: 'price-fixing-overcharge-estimator',
+  id: 'PriceFixingOvercharge-estimator',
   title: 'Price Fixing Overcharge Estimator Calculator',
   category: 'legalinsurancesettlements',
   subcategory: 'legalsettlementhub',

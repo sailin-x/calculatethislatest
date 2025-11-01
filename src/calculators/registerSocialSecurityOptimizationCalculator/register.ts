@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { registerSocialSecurityOptimizationCalculatorCalculator } from './registerSocialSecurityOptimizationCalculatorCalculator';
+import { registerSocialSecurityOptimizationCalculator } from './registerSocialSecurityOptimizationCalculator';
 
-export function registerregisterSocialSecurityOptimizationCalculatorCalculator(): void {
-  calculatorRegistry.register(new registerSocialSecurityOptimizationCalculatorCalculator());
+export function registerregisterSocialSecurityOptimizationCalculator(): void {
+  calculatorRegistry.register(new registerSocialSecurityOptimizationCalculator());
 }

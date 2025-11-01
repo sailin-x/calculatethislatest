@@ -1,4 +1,4 @@
-import { food-combining-calculatorInputs, food-combining-calculatorMetrics, food-combining-calculatorAnalysis } from './types';
+import { FoodCombiningCalculatorinputs, FoodCombiningCalculatormetrics, FoodCombiningCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: food-combining-calculatorInputs): number {
+export function calculateResult(inputs: FoodCombiningCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: food-combining-calculatorInputs): number
   }
 }
 
-export function generateAnalysis(inputs: food-combining-calculatorInputs, metrics: food-combining-calculatorMetrics): food-combining-calculatorAnalysis {
+export function generateAnalysis(inputs: FoodCombiningCalculatorinputs, metrics: FoodCombiningCalculatormetrics): FoodCombiningCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

@@ -1,4 +1,4 @@
-export { cam_girl_revenue_calculatorCalculator } from './cam_girl_revenue_calculator';
+export { cam_girl_revenue_calculator } from './cam_girl_revenue_calculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

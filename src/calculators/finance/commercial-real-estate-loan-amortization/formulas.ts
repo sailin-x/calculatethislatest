@@ -1,4 +1,4 @@
-import { commercial-real-estate-loan-amortizationInputs, commercial-real-estate-loan-amortizationMetrics, commercial-real-estate-loan-amortizationAnalysis } from './types';
+import { CommercialRealEstate-loan-amortizationInputs, CommercialRealEstate-loan-amortizationMetrics, CommercialRealEstate-loan-amortizationAnalysis } from './types';
 
 
 // Loan Calculator - Standard loan formulas
@@ -14,7 +14,7 @@ export function calculateTotalCost(monthlyPayment: number, numPayments: number):
   return monthlyPayment * numPayments;
 }
 
-export function calculateResult(inputs: commercial-real-estate-loan-amortizationInputs): number {
+export function calculateResult(inputs: CommercialRealEstate-loan-amortizationInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: commercial-real-estate-loan-amortization
   }
 }
 
-export function generateAnalysis(inputs: commercial-real-estate-loan-amortizationInputs, metrics: commercial-real-estate-loan-amortizationMetrics): commercial-real-estate-loan-amortizationAnalysis {
+export function generateAnalysis(inputs: CommercialRealEstate-loan-amortizationInputs, metrics: CommercialRealEstate-loan-amortizationMetrics): CommercialRealEstate-loan-amortizationAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

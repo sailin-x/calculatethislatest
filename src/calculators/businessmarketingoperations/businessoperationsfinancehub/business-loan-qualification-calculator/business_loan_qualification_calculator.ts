@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { business_loan_qualification_calculatorInputs, business_loan_qualification_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const business_loan_qualification_calculatorCalculator: Calculator = {
-  id: 'business-loan-qualification-calculator',
+export const BusinessLoanQualification-calculator: Calculator = {
+  id: 'BusinessLoanQualification-calculator',
   title: 'Business Loan Qualification Calculator Calculator',
   category: 'businessmarketingoperations',
   subcategory: 'businessoperationsfinancehub',

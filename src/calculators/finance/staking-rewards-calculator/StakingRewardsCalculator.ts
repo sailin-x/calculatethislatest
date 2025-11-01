@@ -10,7 +10,7 @@ import {
 import { validateStakingRewardsCalculatorInputs } from './validation';
 
 export const StakingRewardsCalculator: Calculator = {
-  id: 'staking-rewards-calculator',
+  id: 'StakingRewardsCalculator',
   title: 'Staking Rewards Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

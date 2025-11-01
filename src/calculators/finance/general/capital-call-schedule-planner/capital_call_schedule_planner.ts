@@ -3,7 +3,7 @@ import { capital_call_schedule_plannerInputs, capital_call_schedule_plannerOutpu
 import { calculateResult, generateAnalysis } from './formulas';
 
 export const capital_call_schedule_plannerCalculator: Calculator = {
-  id: 'capital-call-schedule-planner',
+  id: 'CapitalCallSchedule-planner',
   title: 'Capital Call Schedule Planner Calculator',
   category: 'finance',
   subcategory: 'general',

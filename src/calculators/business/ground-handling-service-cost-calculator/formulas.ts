@@ -1,4 +1,4 @@
-import { ground-handling-service-cost-calculatorInputs, ground-handling-service-cost-calculatorMetrics, ground-handling-service-cost-calculatorAnalysis } from './types';
+import { GroundHandlingService-cost-calculatorInputs, GroundHandlingService-cost-calculatorMetrics, GroundHandlingService-cost-calculatorAnalysis } from './types';
 
 // Ground Handling Service Cost Calculator - Business calculations
 export function calculateNetPresentValue(cashFlows: number[], discountRate: number): number {
@@ -11,7 +11,7 @@ export function calculateROI(initialInvestment: number, finalValue: number): num
  return ((finalValue - initialInvestment) / initialInvestment) * 100;
 }
 
-export function calculateResult(inputs: ground-handling-service-cost-calculatorInputs): number {
+export function calculateResult(inputs: GroundHandlingService-cost-calculatorInputs): number {
  // Business calculation logic with real math
  const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
  if (numericValues.length >= 2) {
@@ -24,7 +24,7 @@ export function calculateResult(inputs: ground-handling-service-cost-calculatorI
  return calculateNetPresentValue(numericValues, 10); // 10% discount rate
 }
 
-export function generateAnalysis(inputs: ground-handling-service-cost-calculatorInputs, metrics: ground-handling-service-cost-calculatorMetrics): ground-handling-service-cost-calculatorAnalysis {
+export function generateAnalysis(inputs: GroundHandlingService-cost-calculatorInputs, metrics: GroundHandlingService-cost-calculatorMetrics): GroundHandlingService-cost-calculatorAnalysis {
  const result = metrics.result;
  let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
  if (Math.abs(result) > 100000) riskLevel = 'High';

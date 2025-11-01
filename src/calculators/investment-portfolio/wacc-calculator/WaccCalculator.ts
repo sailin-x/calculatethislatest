@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateWaccCalculatorInputs, validateWaccCalculatorBusinessRules } from './validation';
 
-export const WaccCalculatorCalculator: Calculator: Calculator = {
-  id: 'wacc-calculator-calculator',
+export const WaccCalculator: Calculator = {
+  id: 'WaccCalculatorCalculator',
   title: 'WACC Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

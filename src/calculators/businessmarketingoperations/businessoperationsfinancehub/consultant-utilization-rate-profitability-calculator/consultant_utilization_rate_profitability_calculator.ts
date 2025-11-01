@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { consultant_utilization_rate_profitability_calculatorInputs, consultant_utilization_rate_profitability_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const consultant_utilization_rate_profitability_calculatorCalculator: Calculator = {
-  id: 'consultant-utilization-rate-profitability-calculator',
+export const ConsultantUtilizationRate-profitability-calculator: Calculator = {
+  id: 'ConsultantUtilizationRate-profitability-calculator',
   title: 'Consultant Utilization Rate & Profitability Calculator Calculator',
   category: 'businessmarketingoperations',
   subcategory: 'businessoperationsfinancehub',

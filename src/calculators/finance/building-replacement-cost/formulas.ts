@@ -1,4 +1,4 @@
-import { building-replacement-costInputs, building-replacement-costMetrics, building-replacement-costAnalysis } from './types';
+import { BuildingReplacementCostinputs, BuildingReplacementCostmetrics, BuildingReplacementCostanalysis } from './types';
 
 
 // Construction Calculator - Building material calculations
@@ -16,7 +16,7 @@ export function calculateTileQuantity(areaSqFt: number, tileSizeSqFt: number, wa
   return Math.ceil(areaSqFt / tileSizeSqFt * wasteFactor);
 }
 
-export function calculateResult(inputs: building-replacement-costInputs): number {
+export function calculateResult(inputs: BuildingReplacementCostinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -40,7 +40,7 @@ export function calculateResult(inputs: building-replacement-costInputs): number
   }
 }
 
-export function generateAnalysis(inputs: building-replacement-costInputs, metrics: building-replacement-costMetrics): building-replacement-costAnalysis {
+export function generateAnalysis(inputs: BuildingReplacementCostinputs, metrics: BuildingReplacementCostmetrics): BuildingReplacementCostanalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

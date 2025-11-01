@@ -6,7 +6,7 @@ import { getTenantImprovementAllowanceValidationRules } from './validation';
  * Tenant improvement allowance formula implementation
  */
 const tenantImprovementAllowanceFormula: Formula = {
-  id: 'tenant-improvement-allowance',
+  id: 'TenantImprovementAllowance',
   name: 'Tenant Improvement Allowance',
   description: 'Calculate TI allowance costs, financing, and ROI analysis',
   calculate: (inputs: Record<string, any>) => {
@@ -23,7 +23,7 @@ const tenantImprovementAllowanceFormula: Formula = {
  * Industry-leading tenant improvement allowance calculator with comprehensive features
  */
 export const tenantImprovementAllowanceCalculator: Calculator = {
-  id: 'tenant-improvement-ti-allowance-calculator',
+  id: 'TenantImprovementTi-allowance-calculator',
   title: 'Tenant Improvement (TI) Allowance Calculator',
   category: 'finance',
   subcategory: 'Mortgage & Real Estate',

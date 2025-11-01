@@ -2,7 +2,7 @@ import { Calculator } from '../../../../types/calculator';
 import { franchise_calculatorInputs, franchise_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const franchise_calculatorCalculator: Calculator = {
+export const franchise-calculator: Calculator = {
   id: 'franchise-calculator',
   title: 'Franchise Calculator Calculator',
   category: 'businessmarketingoperations',

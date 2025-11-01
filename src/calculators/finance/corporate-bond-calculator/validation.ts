@@ -1,11 +1,11 @@
 import { ValidationResult } from '../../lib/errors';
-import { corporatebondcalculatorCalculatorInputs } from './types';
+import { corporatebondcalculatorInputs } from './types';
 
 /**
  * Validate corporate bond calculator calculator inputs
  */
-export function validatecorporatebondcalculatorCalculatorInputs(
-  inputs: corporatebondcalculatorCalculatorInputs
+export function validatecorporatebondcalculatorInputs(
+  inputs: corporatebondcalculatorInputs
 ): ValidationResult {
   const errors: string[] = [];
 

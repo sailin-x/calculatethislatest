@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { mesothelioma_settlement_calculatorInputs, mesothelioma_settlement_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const mesothelioma_settlement_calculatorCalculator: Calculator = {
-  id: 'mesothelioma-settlement-calculator',
+export const MesotheliomaSettlementCalculator: Calculator = {
+  id: 'MesotheliomaSettlementCalculator',
   title: 'Mesothelioma Settlement Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

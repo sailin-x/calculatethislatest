@@ -1,4 +1,4 @@
-import { fund-level-irr-tvpi-and-dpi-calculatorInputs, fund-level-irr-tvpi-and-dpi-calculatorMetrics, fund-level-irr-tvpi-and-dpi-calculatorAnalysis } from './types';
+import { FundLevelIrr-TvpiAndDpi-calculatorInputs, FundLevelIrr-TvpiAndDpi-calculatorMetrics, FundLevelIrr-TvpiAndDpi-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: fund-level-irr-tvpi-and-dpi-calculatorInputs): number {
+export function calculateResult(inputs: FundLevelIrr-TvpiAndDpi-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: fund-level-irr-tvpi-and-dpi-calculatorIn
   }
 }
 
-export function generateAnalysis(inputs: fund-level-irr-tvpi-and-dpi-calculatorInputs, metrics: fund-level-irr-tvpi-and-dpi-calculatorMetrics): fund-level-irr-tvpi-and-dpi-calculatorAnalysis {
+export function generateAnalysis(inputs: FundLevelIrr-TvpiAndDpi-calculatorInputs, metrics: FundLevelIrr-TvpiAndDpi-calculatorMetrics): FundLevelIrr-TvpiAndDpi-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

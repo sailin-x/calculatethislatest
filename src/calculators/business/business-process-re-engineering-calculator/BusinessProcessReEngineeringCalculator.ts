@@ -10,7 +10,7 @@ import {
 import { validateBusinessProcessReEngineeringCalculatorInputs } from './validation';
 
 export const BusinessProcessReEngineeringCalculator: Calculator = {
-  id: 'business-process-re-engineering-calculator',
+  id: 'BusinessProcessRe-engineering-calculator',
   title: 'Business Process Re-engineering Calculator',
   category: 'business',
   subcategory: 'Financial Planning',

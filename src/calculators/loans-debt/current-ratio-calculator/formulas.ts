@@ -28,7 +28,7 @@ export function calculateResult(inputs: CurrentRatioCalculatorInputs): number {
 }
 
 /**
- * Generates a loans-debt-specific analysis for the Current Ratio.
+ * Generates a LoansDebtSpecific analysis for the Current Ratio.
  * Evaluates the borrower's short-term liquidity and debt coverage capacity.
  * Risk levels are based on industry-standard thresholds:
  * - > 2.0: Strong liquidity, low risk for short-term debt obligations

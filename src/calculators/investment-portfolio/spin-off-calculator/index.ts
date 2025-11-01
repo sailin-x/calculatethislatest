@@ -1,4 +1,4 @@
-export { SpinOffCalculatorCalculator } from './SpinOffCalculatorCalculator';
+export { SpinOffCalculator } from './SpinOffCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

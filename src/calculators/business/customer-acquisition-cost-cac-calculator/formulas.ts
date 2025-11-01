@@ -1,4 +1,4 @@
-import { customer-acquisition-cost-cac-calculatorInputs, customer-acquisition-cost-cac-calculatorMetrics, customer-acquisition-cost-cac-calculatorAnalysis } from './types';
+import { CustomerAcquisitionCost-cac-calculatorInputs, CustomerAcquisitionCost-cac-calculatorMetrics, CustomerAcquisitionCost-cac-calculatorAnalysis } from './types';
 
 // Customer Acquisition Cost (CAC) Calculator - Business calculations
 export function calculateNetPresentValue(cashFlows: number[], discountRate: number): number {
@@ -11,7 +11,7 @@ export function calculateROI(initialInvestment: number, finalValue: number): num
  return ((finalValue - initialInvestment) / initialInvestment) * 100;
 }
 
-export function calculateResult(inputs: customer-acquisition-cost-cac-calculatorInputs): number {
+export function calculateResult(inputs: CustomerAcquisitionCost-cac-calculatorInputs): number {
  // Business calculation logic with real math
  const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
  if (numericValues.length >= 2) {
@@ -24,7 +24,7 @@ export function calculateResult(inputs: customer-acquisition-cost-cac-calculator
  return calculateNetPresentValue(numericValues, 10); // 10% discount rate
 }
 
-export function generateAnalysis(inputs: customer-acquisition-cost-cac-calculatorInputs, metrics: customer-acquisition-cost-cac-calculatorMetrics): customer-acquisition-cost-cac-calculatorAnalysis {
+export function generateAnalysis(inputs: CustomerAcquisitionCost-cac-calculatorInputs, metrics: CustomerAcquisitionCost-cac-calculatorMetrics): CustomerAcquisitionCost-cac-calculatorAnalysis {
  const result = metrics.result;
  let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
  if (Math.abs(result) > 100000) riskLevel = 'High';

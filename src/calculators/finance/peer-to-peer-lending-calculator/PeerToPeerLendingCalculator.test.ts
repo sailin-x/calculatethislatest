@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { calculateResult } from './formulas';
 import { validatePeerToPeerLendingCalculatorInputs } from './validation';
 
-describe('Peer-to-Peer Lending Calculator', () => {
+describe('PeerToPeer Lending Calculator', () => {
   const mockInputs = {
     inputValue: 10,
     multiplier: 5

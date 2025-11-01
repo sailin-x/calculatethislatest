@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateLegalPracticeValuationCalculatorInputs, validateLegalPracticeValuationCalculatorBusinessRules } from './validation';
 
-export const LegalPracticeValuationCalculatorCalculator: Calculator: Calculator = {
-  id: 'legal-practice-valuation-calculator-calculator',
+export const LegalPracticeValuationCalculator: Calculator = {
+  id: 'LegalPracticeValuation-calculator-calculator',
   title: 'Legal Practice Valuation Calculator Calculator',
   legal: 'legal', // e.g., 'finance', 'math', 'health', 'business'
   sublegal: 'Sublegal Name',

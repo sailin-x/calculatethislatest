@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateMarineCargoCalculatorInputs } from './validation';
 
 export const MarineCargoCalculator: Calculator = {
-  id: 'marine-cargo-calculator',
+  id: 'MarineCargoCalculator',
   title: 'Marine Cargo Calculator',
   category: 'insurance',
   subcategory: 'General',

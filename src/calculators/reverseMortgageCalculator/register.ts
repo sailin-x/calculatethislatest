@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { reverseMortgageCalculatorCalculator } from './reverseMortgageCalculatorCalculator';
+import { reverseMortgageCalculator } from './reverseMortgageCalculator';
 
-export function registerreverseMortgageCalculatorCalculator(): void {
-  calculatorRegistry.register(new reverseMortgageCalculatorCalculator());
+export function registerreverseMortgageCalculator(): void {
+  calculatorRegistry.register(new reverseMortgageCalculator());
 }

@@ -1,11 +1,11 @@
 import { ValidationResult } from '../../lib/errors';
-import { businessloanqualificationcalculatorCalculatorInputs } from './types';
+import { businessloanqualificationcalculatorInputs } from './types';
 
 /**
  * Validate business loan qualification calculator calculator inputs
  */
-export function validatebusinessloanqualificationcalculatorCalculatorInputs(
-  inputs: businessloanqualificationcalculatorCalculatorInputs
+export function validatebusinessloanqualificationcalculatorInputs(
+  inputs: businessloanqualificationcalculatorInputs
 ): ValidationResult {
   const errors: string[] = [];
 

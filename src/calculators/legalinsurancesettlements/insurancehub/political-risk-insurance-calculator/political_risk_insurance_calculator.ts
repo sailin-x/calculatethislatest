@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { political_risk_insurance_calculatorInputs, political_risk_insurance_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const political_risk_insurance_calculatorCalculator: Calculator = {
-  id: 'political-risk-insurance-calculator',
+export const PoliticalRiskInsurance-calculator: Calculator = {
+  id: 'PoliticalRiskInsurance-calculator',
   title: 'Political Risk Insurance Calculator Calculator',
   category: 'legalinsurancesettlements',
   subcategory: 'insurancehub',

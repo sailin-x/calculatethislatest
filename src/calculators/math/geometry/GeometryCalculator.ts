@@ -165,7 +165,7 @@ export const geometryCalculator: Calculator = {
   examples: [
     {
       title: 'Right Triangle',
-      description: 'Calculate properties of a 3-4-5 right triangle',
+      description: 'Calculate properties of a 345 right triangle',
       inputs: {
         calculationType: 'triangle',
         sideA: 3,

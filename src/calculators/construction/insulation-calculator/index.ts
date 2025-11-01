@@ -1,4 +1,4 @@
-export { InsulationCalculatorCalculator } from './InsulationCalculatorCalculator';
+export { InsulationCalculator } from './InsulationCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

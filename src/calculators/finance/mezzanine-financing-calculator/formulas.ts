@@ -1,4 +1,4 @@
-import { mezzanine-financing-calculatorInputs, mezzanine-financing-calculatorMetrics, mezzanine-financing-calculatorAnalysis } from './types';
+import { MezzanineFinancingCalculatorinputs, MezzanineFinancingCalculatormetrics, MezzanineFinancingCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: mezzanine-financing-calculatorInputs): number {
+export function calculateResult(inputs: MezzanineFinancingCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: mezzanine-financing-calculatorInputs): n
   }
 }
 
-export function generateAnalysis(inputs: mezzanine-financing-calculatorInputs, metrics: mezzanine-financing-calculatorMetrics): mezzanine-financing-calculatorAnalysis {
+export function generateAnalysis(inputs: MezzanineFinancingCalculatorinputs, metrics: MezzanineFinancingCalculatormetrics): MezzanineFinancingCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

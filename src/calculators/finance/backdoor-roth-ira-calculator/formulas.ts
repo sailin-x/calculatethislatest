@@ -1,13 +1,13 @@
-import { backdoor-roth-ira-calculatorInputs, backdoor-roth-ira-calculatorMetrics, backdoor-roth-ira-calculatorAnalysis } from './types';
+import { BackdoorRothIra-calculatorInputs, BackdoorRothIra-calculatorMetrics, BackdoorRothIra-calculatorAnalysis } from './types';
 
 // Backdoor Roth IRA Calculator - Finance calculations
-export function calculateResult(inputs: backdoor-roth-ira-calculatorInputs): number {
+export function calculateResult(inputs: BackdoorRothIra-calculatorInputs): number {
   // Financial calculation logic
   const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
   return numericValues.reduce((sum, val) => sum + val, 0) || 0;
 }
 
-export function generateAnalysis(inputs: backdoor-roth-ira-calculatorInputs, metrics: backdoor-roth-ira-calculatorMetrics): backdoor-roth-ira-calculatorAnalysis {
+export function generateAnalysis(inputs: BackdoorRothIra-calculatorInputs, metrics: BackdoorRothIra-calculatorMetrics): BackdoorRothIra-calculatorAnalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (Math.abs(result) > 100000) riskLevel = 'High';

@@ -1,3 +1,3 @@
-import { CostOfEquityCalculatorCalculator } from './CostOfEquityCalculatorCalculator';
+import { CostOfEquityCalculator } from './CostOfEquityCalculator';
 
-export { CostOfEquityCalculatorCalculator };
+export { CostOfEquityCalculator };

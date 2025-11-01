@@ -1,4 +1,4 @@
-export { AirlineRouteProfitabilityCalculatorCalculator } from './AirlineRouteProfitabilityCalculatorCalculator';
+export { AirlineRouteProfitabilityCalculator } from './AirlineRouteProfitabilityCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

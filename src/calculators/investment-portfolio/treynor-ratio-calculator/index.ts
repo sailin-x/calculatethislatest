@@ -1,4 +1,4 @@
-export { TreynorRatioCalculatorCalculator } from './TreynorRatioCalculatorCalculator';
+export { TreynorRatioCalculator } from './TreynorRatioCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

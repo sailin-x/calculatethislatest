@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateFacultyCostbenefitAnalysisInputs, validateFacultyCostbenefitAnalysisBusinessRules } from './validation';
 
-export const FacultyCostbenefitAnalysisCalculator: Calculator: Calculator = {
-  id: 'faculty-cost-benefit-analysis-calculator',
+export const FacultyCostbenefitAnalysisCalculator: Calculator = {
+  id: 'FacultyCostBenefit-analysis-calculator',
   title: 'Faculty Cost-Benefit Analysis Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

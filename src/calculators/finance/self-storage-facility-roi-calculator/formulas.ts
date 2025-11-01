@@ -1,4 +1,4 @@
-import { self-storage-facility-roi-calculatorInputs, self-storage-facility-roi-calculatorMetrics, self-storage-facility-roi-calculatorAnalysis } from './types';
+import { SelfStorageFacility-roi-calculatorInputs, SelfStorageFacility-roi-calculatorMetrics, SelfStorageFacility-roi-calculatorAnalysis } from './types';
 
 
 // Investment Calculator - ROI and growth calculations
@@ -12,7 +12,7 @@ export function calculateCompoundInterest(principal: number, rate: number, years
   return principal * Math.pow(1 + ratePerPeriod, totalPeriods);
 }
 
-export function calculateResult(inputs: self-storage-facility-roi-calculatorInputs): number {
+export function calculateResult(inputs: SelfStorageFacility-roi-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -36,7 +36,7 @@ export function calculateResult(inputs: self-storage-facility-roi-calculatorInpu
   }
 }
 
-export function generateAnalysis(inputs: self-storage-facility-roi-calculatorInputs, metrics: self-storage-facility-roi-calculatorMetrics): self-storage-facility-roi-calculatorAnalysis {
+export function generateAnalysis(inputs: SelfStorageFacility-roi-calculatorInputs, metrics: SelfStorageFacility-roi-calculatorMetrics): SelfStorageFacility-roi-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

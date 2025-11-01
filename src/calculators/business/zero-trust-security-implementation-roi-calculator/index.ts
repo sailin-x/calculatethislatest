@@ -1,4 +1,4 @@
-export { ZerotrustSecurityImplementationRoiCalculatorCalculator } from './ZerotrustSecurityImplementationRoiCalculatorCalculator';
+export { ZerotrustSecurityImplementationRoiCalculator } from './ZerotrustSecurityImplementationRoiCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

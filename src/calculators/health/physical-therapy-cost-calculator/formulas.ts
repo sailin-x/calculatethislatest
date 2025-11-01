@@ -1,4 +1,4 @@
-import { physical-therapy-cost-calculatorInputs, physical-therapy-cost-calculatorMetrics, physical-therapy-cost-calculatorAnalysis } from './types';
+import { PhysicalTherapyCost-calculatorInputs, PhysicalTherapyCost-calculatorMetrics, PhysicalTherapyCost-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: physical-therapy-cost-calculatorInputs): number {
+export function calculateResult(inputs: PhysicalTherapyCost-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: physical-therapy-cost-calculatorInputs):
   }
 }
 
-export function generateAnalysis(inputs: physical-therapy-cost-calculatorInputs, metrics: physical-therapy-cost-calculatorMetrics): physical-therapy-cost-calculatorAnalysis {
+export function generateAnalysis(inputs: PhysicalTherapyCost-calculatorInputs, metrics: PhysicalTherapyCost-calculatorMetrics): PhysicalTherapyCost-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

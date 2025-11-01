@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateMachineLearningCalculatorInputs } from './validation';
 
 export const MachineLearningCalculator: Calculator = {
-  id: 'machine-learning-calculator',
+  id: 'MachineLearningCalculator',
   title: 'Machine Learning Calculator',
   category: 'math',
   subcategory: 'General',

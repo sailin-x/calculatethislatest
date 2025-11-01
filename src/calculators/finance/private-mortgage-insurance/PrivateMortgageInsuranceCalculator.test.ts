@@ -5,7 +5,7 @@ import * as quickValidation from './quickValidation';
 describe('PrivateMortgageInsuranceCalculator', () => {
   describe('Calculator Definition', () => {
     it('should have correct id and title', () => {
-      expect(PrivateMortgageInsuranceCalculator.id).toBe('private-mortgage-insurance-calculator');
+      expect(PrivateMortgageInsuranceCalculator.id).toBe('PrivateMortgageInsurance-calculator');
       expect(PrivateMortgageInsuranceCalculator.title).toBe('Private Mortgage Insurance Calculator');
     });
 

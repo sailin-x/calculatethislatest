@@ -4,7 +4,7 @@ import { validateFixAndFlipInputs } from './validation';
 import { FixAndFlipInputs, FixAndFlipOutputs } from './types';
 
 export const FixAndFlipCalculator: Calculator = {
-  id: 'fix-and-flip-calculator',
+  id: 'FixAndFlip-calculator',
   name: 'Fix and Flip Calculator',
   category: 'finance',
   subcategory: 'real-estate',
@@ -18,7 +18,7 @@ export const FixAndFlipCalculator: Calculator = {
     • **Renovation Planning**: Detailed renovation budgeting and timeline management
     • **Holding Cost Analysis**: Monthly expenses, property taxes, insurance, and utilities
     • **Exit Strategy Planning**: Market analysis, comparable properties, and selling costs
-    • **Profitability Analysis**: ROI, cash-on-cash return, and profit margin calculations
+    • **Profitability Analysis**: ROI, CashOnCash return, and profit margin calculations
     • **Risk Assessment**: Market risk, renovation risk, timeline risk, and financing risk
     • **Timeline Management**: Project phases, critical path analysis, and milestone tracking
     • **Sensitivity Analysis**: Impact of key variables on project profitability
@@ -49,7 +49,7 @@ export const FixAndFlipCalculator: Calculator = {
     
     // Purchase Information
     { id: 'purchasePrice', name: 'Purchase Price', type: 'number', unit: 'USD', required: true, description: 'Purchase price of property', placeholder: '200000', min: 10000, max: 10000000 },
-    { id: 'purchaseDate', name: 'Purchase Date', type: 'date', required: true, description: 'Expected purchase date', placeholder: '2024-01-15' },
+    { id: 'purchaseDate', name: 'Purchase Date', type: 'date', required: true, description: 'Expected purchase date', placeholder: '20240115' },
     { id: 'closingCosts', name: 'Closing Costs', type: 'number', unit: 'USD', required: true, description: 'Total closing costs', placeholder: '8000', min: 0, max: 500000 },
     { id: 'inspectionCosts', name: 'Inspection Costs', type: 'number', unit: 'USD', required: false, description: 'Property inspection costs', placeholder: '500', min: 0, max: 10000 },
     { id: 'titleInsurance', name: 'Title Insurance', type: 'number', unit: 'USD', required: false, description: 'Title insurance cost', placeholder: '1000', min: 0, max: 10000 },
@@ -109,7 +109,7 @@ export const FixAndFlipCalculator: Calculator = {
     
     // Exit Strategy
     { id: 'targetSalePrice', name: 'Target Sale Price', type: 'number', unit: 'USD', required: true, description: 'Target sale price', placeholder: '350000', min: 10000, max: 10000000 },
-    { id: 'targetSaleDate', name: 'Target Sale Date', type: 'date', required: true, description: 'Target sale date', placeholder: '2024-07-15' },
+    { id: 'targetSaleDate', name: 'Target Sale Date', type: 'date', required: true, description: 'Target sale date', placeholder: '20240715' },
     { id: 'sellingStrategy', name: 'Selling Strategy', type: 'select', required: false, description: 'Selling strategy', placeholder: 'Select strategy', options: ['mls', 'fsbo', 'wholesale', 'auction', 'investor_network'] },
     { id: 'realtorCommission', name: 'Realtor Commission', type: 'number', unit: '%', required: false, description: 'Realtor commission percentage', placeholder: '6', min: 0, max: 15 },
     { id: 'closingCostsSeller', name: 'Seller Closing Costs', type: 'number', unit: 'USD', required: false, description: 'Seller closing costs', placeholder: '5000', min: 0, max: 100000 },
@@ -281,7 +281,7 @@ export const FixAndFlipCalculator: Calculator = {
         yearBuilt: 1985,
         propertyCondition: 'fair',
         purchasePrice: 250000,
-        purchaseDate: '2024-01-15',
+        purchaseDate: '20240115',
         closingCosts: 10000,
         downPayment: 50000,
         loanAmount: 200000,
@@ -309,7 +309,7 @@ export const FixAndFlipCalculator: Calculator = {
         utilities: 250,
         maintenance: 120,
         targetSalePrice: 380000,
-        targetSaleDate: '2024-07-15',
+        targetSaleDate: '20240715',
         realtorCommission: 6,
         closingCostsSeller: 6000,
         stagingCosts: 3000,
@@ -341,7 +341,7 @@ export const FixAndFlipCalculator: Calculator = {
         yearBuilt: 1995,
         propertyCondition: 'good',
         purchasePrice: 180000,
-        purchaseDate: '2024-02-01',
+        purchaseDate: '20240201',
         closingCosts: 8000,
         downPayment: 36000,
         loanAmount: 144000,
@@ -360,7 +360,7 @@ export const FixAndFlipCalculator: Calculator = {
         insurance: 120,
         utilities: 180,
         targetSalePrice: 240000,
-        targetSaleDate: '2024-05-01',
+        targetSaleDate: '20240501',
         realtorCommission: 5,
         closingCostsSeller: 4000,
         stagingCosts: 2000,

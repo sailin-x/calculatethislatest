@@ -160,11 +160,11 @@ export function runCashOutRefinanceValidation(): void {
     console.log('⚠️ Current equity may be outside reasonable range');
   }
 
-  // Test loan-to-value ratio
+  // Test LoanToValue ratio
   if (refinanceMetrics.newLoanToValue > 0 && refinanceMetrics.newLoanToValue < 100) {
-    console.log('✅ New loan-to-value ratio is within reasonable range');
+    console.log('✅ New LoanToValue ratio is within reasonable range');
   } else {
-    console.log('⚠️ New loan-to-value ratio may be outside reasonable range');
+    console.log('⚠️ New LoanToValue ratio may be outside reasonable range');
   }
 
   // Test break-even months

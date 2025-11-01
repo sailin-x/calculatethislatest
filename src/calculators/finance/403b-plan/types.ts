@@ -1,166 +1,109 @@
-export interface FourZeroThreeBInputs {
-  // Personal Information
+export interface FourOhThreeBInputs {
+  // Employee Information
   currentAge: number;
   retirementAge: number;
-  lifeExpectancy: number;
-
-  // Current Account Information
-  currentBalance: number;
-  yearsOfService: number;
+  currentSalary: number;
+  expectedAnnualSalaryIncrease: number;
 
   // Contribution Information
-  annualSalary: number;
-  employeeContributionPercent: number; // percentage
-  employerMatchPercent: number; // percentage
-  catchUpContributions: boolean; // for age 50+
+  employeeContributionPercent: number; // Employee contribution as % of salary
+  employerMatchPercent: number; // Employer match as % of employee contribution
+  employerMatchLimitPercent: number; // Maximum employer match as % of salary
+  catchUpContribution?: number; // Additional catch-up contribution for age 50+
 
   // Investment Information
-  expectedAnnualReturn: number; // percentage
-  inflationRate: number; // percentage
+  currentBalance: number;
+  expectedAnnualReturn: number;
+  investmentFees: number; // Annual fee percentage
 
   // Tax Information
-  currentTaxRate: number; // percentage
-  retirementTaxRate: number; // percentage
+  currentTaxRate: number; // Current marginal tax rate
+  retirementTaxRate: number; // Expected tax rate in retirement
 
-  // Plan Rules
-  annualContributionLimit: number;
-  lifetimeContributionLimit: number;
-  vestingSchedule: 'immediate' | 'graded' | 'cliff';
-
-  // Analysis Parameters
-  analysisPeriod: number; // years
-  includeSocialSecurity: boolean;
-  socialSecurityBenefit: number; // monthly at retirement
-  otherRetirementIncome: number; // annual
-
-  // Withdrawal Strategy
-  withdrawalStrategy: 'fixed_amount' | 'percentage' | 'required_minimum';
-  annualWithdrawalAmount: number;
-  withdrawalPercentage: number; // percentage
-
-  // Cost Information
-  annualFees: number; // percentage
-  administrativeFees: number;
-
-  // Currency and Display
-  currency: 'USD' | 'EUR' | 'GBP' | 'CAD' | 'AUD';
+  // Analysis Options
+  includeEmployerMatch: boolean;
+  includeCatchUpContributions: boolean;
+  includeInvestmentFees: boolean;
+  analysisPeriod: 'annual' | 'monthly';
 }
 
-export interface FourZeroThreeBMetrics {
-  // Contribution Analysis
-  totalEmployeeContributions: number;
-  totalEmployerContributions: number;
+export interface FourOhThreeBMetrics {
+  // Contribution Calculations
+  annualEmployeeContribution: number;
+  annualEmployerContribution: number;
+  totalAnnualContribution: number;
   totalContributions: number;
-  averageAnnualContribution: number;
 
-  // Growth Projections
+  // Growth Calculations
   projectedBalance: number;
-  totalGrowth: number;
-  compoundAnnualGrowthRate: number;
+  investmentGrowth: number;
+  totalFeesPaid: number;
 
   // Tax Benefits
-  totalTaxSavings: number;
-  taxDeferredGrowth: number;
-  effectiveTaxRate: number;
+  taxDeferralBenefit: number;
+  employerMatchTaxBenefit: number;
+  totalTaxBenefits: number;
 
   // Retirement Income
-  monthlyRetirementIncome: number;
   annualRetirementIncome: number;
-  replacementRatio: number; // percentage of pre-retirement income
-
-  // Withdrawal Analysis
-  safeWithdrawalRate: number; // percentage
-  withdrawalPeriod: number; // years
-  totalWithdrawals: number;
-
-  // Risk Metrics
-  volatilityRisk: number;
-  longevityRisk: number;
-  inflationRisk: number;
-
-  // Scenario Analysis
-  conservativeProjection: number;
-  moderateProjection: number;
-  aggressiveProjection: number;
-
-  // Benchmarking
-  planPerformance: number; // percentage vs. benchmarks
-  contributionEfficiency: number;
-}
-
-export interface FourZeroThreeBAnalysis {
-  // Executive Summary
-  retirementReadiness: 'Excellent' | 'Good' | 'Fair' | 'Poor' | 'Critical';
-  riskLevel: 'Low' | 'Moderate' | 'High' | 'Very High';
-  recommendation: 'Increase Contributions' | 'Maintain Current' | 'Consider Alternatives' | 'Urgent Action Needed';
-
-  // Key Insights
-  keyStrengths: string[];
-  keyWeaknesses: string[];
-  riskFactors: string[];
-  opportunities: string[];
-
-  // Contribution Analysis
-  contributionSummary: string;
-  employerMatchAnalysis: string;
-  catchUpAnalysis: string;
-
-  // Investment Performance
-  performanceSummary: string;
-  riskAdjustedReturns: string;
-  diversificationAnalysis: string;
-
-  // Tax Efficiency
-  taxEfficiencySummary: string;
-  taxSavingsAnalysis: string;
-  retirementTaxAnalysis: string;
-
-  // Retirement Security
-  retirementSecuritySummary: string;
-  incomeReplacementAnalysis: string;
-  longevityRiskAnalysis: string;
-
-  // Recommendations
-  contributionRecommendations: string[];
-  investmentRecommendations: string[];
-  riskManagementRecommendations: string[];
-  planningRecommendations: string[];
-
-  // Action Items
-  immediateActions: string[];
-  shortTermGoals: string[];
-  longTermStrategies: string[];
-
-  // Performance Benchmarks
-  performanceBenchmarks: Array<{
-    metric: string;
-    value: number;
-    benchmark: number;
-    industry: string;
-  }>;
-
-  // Decision Support
-  decisionSummary: string;
-  scenarioAnalysis: string[];
-  sensitivityAnalysis: string[];
-}
-
-export interface FourZeroThreeBOutputs {
-  // Core Metrics
-  projectedBalance: number;
   monthlyRetirementIncome: number;
-  totalContributions: number;
-  totalTaxSavings: number;
+  replacementRatio: number; // Retirement income as % of final salary
 
   // Analysis
-  analysis: FourZeroThreeBAnalysis;
+  effectiveReturn: number;
+  netContributionRate: number;
+  breakEvenAnalysis: number;
+}
 
-  // Additional Metrics
-  annualContributions: number;
-  totalGrowth: number;
-  safeWithdrawalRate: number;
+export interface FourOhThreeBAnalysis {
+  // Plan Performance
+  contributionEfficiency: 'excellent' | 'good' | 'fair' | 'poor';
+  taxEfficiency: 'high' | 'moderate' | 'low';
+  retirementReadiness: 'on_track' | 'behind' | 'at_risk';
+
+  // Recommendations
+  recommendations: string[];
+  contributionOptimization: string[];
+  investmentStrategy: string[];
+
+  // Risk Analysis
+  riskFactors: string[];
+  marketVolatilityImpact: string;
+  longevityRisk: string;
+
+  // Compliance & Rules
+  contributionLimits: {
+    annualLimit: number;
+    catchUpLimit: number;
+    totalLimit: number;
+  };
+  vestingSchedule: string;
+  withdrawalPenalties: string[];
+
+  // Comparison Analysis
+  vsOtherRetirementPlans: {
+    vs401k: string;
+    vsIRA: string;
+    vsRoth: string;
+  };
+}
+
+export interface FourOhThreeBOutputs {
+  // Core Results
+  projectedBalance: number;
+  totalContributions: number;
+  annualRetirementIncome: number;
+  totalTaxBenefits: number;
+
+  // Contribution Breakdown
+  annualEmployeeContribution: number;
+  annualEmployerContribution: number;
+  totalAnnualContribution: number;
+
+  // Performance Metrics
+  effectiveReturn: number;
   replacementRatio: number;
-  conservativeProjection: number;
-  moderateProjection: number;
-  aggressiveProjection: number;
+
+  // Analysis
+  analysis: FourOhThreeBAnalysis;
 }

@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateStudentLoanPortfolioRiskCalculatorInputs, validateStudentLoanPortfolioRiskCalculatorBusinessRules } from './validation';
 
-export const StudentLoanPortfolioRiskCalculatorCalculator: Calculator: Calculator = {
-  id: 'student-loan-portfolio-risk-calculator-calculator',
+export const StudentLoanPortfolioRiskCalculator: Calculator = {
+  id: 'StudentLoanPortfolio-RiskCalculatorCalculator',
   title: 'Student Loan Portfolio Risk Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

@@ -1,3 +1,3 @@
-import { ProductLiabilitySettlementCalculatorCalculator } from './ProductLiabilitySettlementCalculatorCalculator';
+import { ProductLiabilitySettlementCalculator } from './ProductLiabilitySettlementCalculator';
 
-export { ProductLiabilitySettlementCalculatorCalculator };
+export { ProductLiabilitySettlementCalculator };

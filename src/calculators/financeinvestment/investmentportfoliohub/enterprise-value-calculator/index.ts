@@ -1,4 +1,4 @@
-export { enterprise_value_calculatorCalculator } from './enterprise_value_calculator';
+export { enterprise_value_calculator } from './enterprise_value_calculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

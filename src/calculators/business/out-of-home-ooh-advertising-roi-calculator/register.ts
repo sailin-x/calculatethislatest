@@ -1,3 +1,3 @@
-import { OutofhomeOohAdvertisingRoiCalculatorCalculator } from './OutofhomeOohAdvertisingRoiCalculatorCalculator';
+import { OutofhomeOohAdvertisingRoiCalculator } from './OutofhomeOohAdvertisingRoiCalculator';
 
-export { OutofhomeOohAdvertisingRoiCalculatorCalculator };
+export { OutofhomeOohAdvertisingRoiCalculator };

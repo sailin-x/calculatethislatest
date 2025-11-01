@@ -1,4 +1,4 @@
-export { MediterraneanDietCalculatorCalculator } from './MediterraneanDietCalculatorCalculator';
+export { MediterraneanDietCalculator } from './MediterraneanDietCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

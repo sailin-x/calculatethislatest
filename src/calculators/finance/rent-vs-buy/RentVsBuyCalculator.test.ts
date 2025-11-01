@@ -8,7 +8,7 @@ import { CalculatorInputs, CalculatorOutputs } from '../../types/calculator';
 describe('RentVsBuyCalculator', () => {
   describe('Calculator Structure', () => {
     it('should have correct basic properties', () => {
-      expect(RentVsBuyCalculator.id).toBe('rent-vs-buy-calculator');
+      expect(RentVsBuyCalculator.id).toBe('RentVsBuy-calculator');
       expect(RentVsBuyCalculator.name).toBe('Rent vs. Buy Calculator');
       expect(RentVsBuyCalculator.category).toBe('finance');
       expect(RentVsBuyCalculator.subcategory).toBe('real-estate');

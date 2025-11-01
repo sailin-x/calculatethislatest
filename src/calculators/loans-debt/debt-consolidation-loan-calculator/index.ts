@@ -1,4 +1,4 @@
-export { DebtConsolidationLoanCalculatorCalculator } from './DebtConsolidationLoanCalculatorCalculator';
+export { DebtConsolidationLoanCalculator } from './DebtConsolidationLoanCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

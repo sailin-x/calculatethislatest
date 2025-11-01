@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { glycemic_index_calculatorInputs, glycemic_index_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const glycemic_index_calculatorCalculator: Calculator = {
-  id: 'glycemic-index-calculator',
+export const GlycemicIndexCalculator: Calculator = {
+  id: 'GlycemicIndexCalculator',
   title: 'Glycemic Index Calculator Calculator',
   category: 'healthfitnessdiet',
   subcategory: 'healthfitnesshub',

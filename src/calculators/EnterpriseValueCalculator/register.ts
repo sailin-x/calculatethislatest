@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { EnterpriseValueCalculatorCalculator } from './EnterpriseValueCalculatorCalculator';
+import { EnterpriseValueCalculator } from './EnterpriseValueCalculator';
 
-export function registerEnterpriseValueCalculatorCalculator(): void {
-  calculatorRegistry.register(new EnterpriseValueCalculatorCalculator());
+export function registerEnterpriseValueCalculator(): void {
+  calculatorRegistry.register(new EnterpriseValueCalculator());
 }

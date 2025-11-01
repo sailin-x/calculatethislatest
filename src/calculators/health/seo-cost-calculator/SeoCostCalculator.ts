@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateSeoCostCalculatorInputs } from './validation';
 
 export const SeoCostCalculator: Calculator = {
-  id: 'seo-cost-calculator',
+  id: 'SeoCostCalculator',
   title: 'SEO Cost Calculator',
   category: 'health',
   subcategory: 'General',

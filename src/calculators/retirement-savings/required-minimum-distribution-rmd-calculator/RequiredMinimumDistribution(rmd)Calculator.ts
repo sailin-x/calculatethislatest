@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateRequiredMinimumDistribution(rmd)CalculatorInputs, validateRequiredMinimumDistribution(rmd)CalculatorBusinessRules } from './validation';
 
-export const RequiredMinimumDistribution(rmd)CalculatorCalculator: Calculator = {
-  id: 'required-minimum-distribution-rmd-calculator-calculator',
+export const RequiredMinimumDistribution(rmd)Calculator: Calculator = {
+  id: 'RequiredMinimumDistribution-RmdCalculatorCalculator',
   title: 'Required Minimum Distribution (RMD) Calculator Calculator',
   retirement-savings: 'retirement-savings', // e.g., 'finance', 'math', 'health', 'business'
   subretirement-savings: 'Subretirement-savings Name',

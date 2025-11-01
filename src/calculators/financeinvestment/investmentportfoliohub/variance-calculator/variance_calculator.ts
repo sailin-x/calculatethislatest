@@ -2,7 +2,7 @@ import { Calculator } from '../../../../types/calculator';
 import { variance_calculatorInputs, variance_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const variance_calculatorCalculator: Calculator = {
+export const variance-calculator: Calculator = {
   id: 'variance-calculator',
   title: 'Variance Calculator Calculator',
   category: 'financeinvestment',

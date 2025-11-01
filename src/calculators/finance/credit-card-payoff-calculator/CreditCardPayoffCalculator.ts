@@ -4,7 +4,7 @@ import { calculateCreditCardPayoff, validateCreditCardPayoffInputs } from './for
 import { getCreditCardPayoffValidationRules } from './validation';
 
 export const creditCardPayoffCalculator: Calculator = {
-  id: 'credit-card-payoff-calculator',
+  id: 'CreditCardPayoff-calculator',
   title: 'Credit Card Payoff Calculator',
   category: 'finance',
   subcategory: 'Loans & Debt',
@@ -310,7 +310,7 @@ export const creditCardPayoffCalculator: Calculator = {
   examples: [
     {
       title: 'Average Credit Card Debt Payoff',
-      description: '35-year-old with $5,000 balance at 18.99% APR',
+      description: '35YearOld with $5,000 balance at 18.99% APR',
       inputs: {
         currentBalance: 5000,
         annualInterestRate: 18.99,
@@ -341,7 +341,7 @@ export const creditCardPayoffCalculator: Calculator = {
     },
     {
       title: 'High-Interest Debt Crisis',
-      description: '28-year-old with $12,000 balance at 24.99% APR',
+      description: '28YearOld with $12,000 balance at 24.99% APR',
       inputs: {
         currentBalance: 12000,
         annualInterestRate: 24.99,
@@ -373,7 +373,7 @@ export const creditCardPayoffCalculator: Calculator = {
     },
     {
       title: 'Successful Debt Payoff Plan',
-      description: '42-year-old with $2,500 balance at 12.99% APR',
+      description: '42YearOld with $2,500 balance at 12.99% APR',
       inputs: {
         currentBalance: 2500,
         annualInterestRate: 12.99,

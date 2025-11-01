@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateTelehealthProgramRoiCalculatorInputs, validateTelehealthProgramRoiCalculatorBusinessRules } from './validation';
 
-export const TelehealthProgramRoiCalculatorCalculator: Calculator: Calculator = {
-  id: 'telehealth-program-roi-calculator-calculator',
+export const TelehealthProgramRoiCalculator: Calculator = {
+  id: 'TelehealthProgramRoi-calculator-calculator',
   title: 'Telehealth Program ROI Calculator Calculator',
   health: 'health', // e.g., 'finance', 'math', 'health', 'business'
   subhealth: 'Subhealth Name',

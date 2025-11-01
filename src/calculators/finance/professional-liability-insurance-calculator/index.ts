@@ -1,4 +1,4 @@
-export { ProfessionalLiabilityInsuranceCalculatorCalculator } from './ProfessionalLiabilityInsuranceCalculatorCalculator';
+export { ProfessionalLiabilityInsuranceCalculator } from './ProfessionalLiabilityInsuranceCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

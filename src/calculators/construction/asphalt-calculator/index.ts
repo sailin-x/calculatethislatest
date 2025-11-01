@@ -1,4 +1,4 @@
-export { AsphaltCalculatorCalculator } from './AsphaltCalculatorCalculator';
+export { AsphaltCalculator } from './AsphaltCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

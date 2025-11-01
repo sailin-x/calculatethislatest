@@ -1,4 +1,4 @@
-import { premium-deficiency-reserve-pdr-calculatorInputs, premium-deficiency-reserve-pdr-calculatorMetrics, premium-deficiency-reserve-pdr-calculatorAnalysis } from './types';
+import { PremiumDeficiencyReserve-pdr-calculatorInputs, PremiumDeficiencyReserve-pdr-calculatorMetrics, PremiumDeficiencyReserve-pdr-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: premium-deficiency-reserve-pdr-calculatorInputs): number {
+export function calculateResult(inputs: PremiumDeficiencyReserve-pdr-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: premium-deficiency-reserve-pdr-calculato
   }
 }
 
-export function generateAnalysis(inputs: premium-deficiency-reserve-pdr-calculatorInputs, metrics: premium-deficiency-reserve-pdr-calculatorMetrics): premium-deficiency-reserve-pdr-calculatorAnalysis {
+export function generateAnalysis(inputs: PremiumDeficiencyReserve-pdr-calculatorInputs, metrics: PremiumDeficiencyReserve-pdr-calculatorMetrics): PremiumDeficiencyReserve-pdr-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

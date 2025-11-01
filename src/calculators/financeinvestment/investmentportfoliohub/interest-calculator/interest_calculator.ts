@@ -2,7 +2,7 @@ import { Calculator } from '../../../../types/calculator';
 import { interest_calculatorInputs, interest_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const interest_calculatorCalculator: Calculator = {
+export const interest-calculator: Calculator = {
   id: 'interest-calculator',
   title: 'Interest Calculator Calculator',
   category: 'financeinvestment',

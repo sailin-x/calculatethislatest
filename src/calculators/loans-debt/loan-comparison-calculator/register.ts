@@ -1,3 +1,3 @@
-import { LoanComparisonCalculatorCalculator } from './LoanComparisonCalculatorCalculator';
+import { LoanComparisonCalculator } from './LoanComparisonCalculator';
 
-export { LoanComparisonCalculatorCalculator };
+export { LoanComparisonCalculator };

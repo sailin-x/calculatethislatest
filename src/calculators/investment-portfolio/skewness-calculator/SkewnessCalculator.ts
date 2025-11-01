@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateSkewnessCalculatorInputs, validateSkewnessCalculatorBusinessRules } from './validation';
 
-export const SkewnessCalculatorCalculator: Calculator: Calculator = {
-  id: 'skewness-calculator-calculator',
+export const SkewnessCalculator: Calculator = {
+  id: 'SkewnessCalculatorCalculator',
   title: 'Skewness Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

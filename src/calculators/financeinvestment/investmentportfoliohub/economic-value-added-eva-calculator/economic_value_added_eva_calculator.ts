@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { economic_value_added_eva_calculatorInputs, economic_value_added_eva_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const economic_value_added_eva_calculatorCalculator: Calculator = {
-  id: 'economic-value-added-eva-calculator',
+export const EconomicValueAdded-eva-calculator: Calculator = {
+  id: 'EconomicValueAdded-eva-calculator',
   title: 'Economic Value Added (EVA) Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'investmentportfoliohub',

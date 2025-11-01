@@ -3,7 +3,7 @@ import { calculateInsuranceCosts, generateInsuranceAnalysis } from './formulas';
 import { validateInsuranceInputs } from './validation';
 
 export const CommercialPropertyInsuranceCalculator: Calculator = {
-  id: 'commercial-property-insurance-calculator',
+  id: 'CommercialPropertyInsurance-calculator',
   name: 'Commercial Property Insurance Calculator',
   category: 'finance',
   subcategory: 'business',
@@ -81,8 +81,8 @@ export const CommercialPropertyInsuranceCalculator: Calculator = {
         { value: 'frame', label: 'Frame (Wood)' },
         { value: 'joisted-masonry', label: 'Joisted Masonry' },
         { value: 'non-combustible', label: 'Non-Combustible' },
-        { value: 'masonry-non-combustible', label: 'Masonry Non-Combustible' },
-        { value: 'modified-fire-resistive', label: 'Modified Fire Resistive' },
+        { value: 'MasonryNonCombustible', label: 'Masonry Non-Combustible' },
+        { value: 'ModifiedFireResistive', label: 'Modified Fire Resistive' },
         { value: 'fire-resistive', label: 'Fire Resistive' }
       ]
     },

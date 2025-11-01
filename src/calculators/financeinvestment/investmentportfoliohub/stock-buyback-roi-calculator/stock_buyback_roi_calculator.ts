@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { stock_buyback_roi_calculatorInputs, stock_buyback_roi_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const stock_buyback_roi_calculatorCalculator: Calculator = {
-  id: 'stock-buyback-roi-calculator',
+export const StockBuybackRoi-calculator: Calculator = {
+  id: 'StockBuybackRoi-calculator',
   title: 'Stock Buyback ROI Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'investmentportfoliohub',

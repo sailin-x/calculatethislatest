@@ -1,3 +1,3 @@
-import { SplitDollarLifeInsuranceCalculatorCalculator } from './SplitDollarLifeInsuranceCalculatorCalculator';
+import { SplitDollarLifeInsuranceCalculator } from './SplitDollarLifeInsuranceCalculator';
 
-export { SplitDollarLifeInsuranceCalculatorCalculator };
+export { SplitDollarLifeInsuranceCalculator };

@@ -10,7 +10,7 @@ import {
 import { validateMerchantCashAdvanceCalculatorInputs } from './validation';
 
 export const MerchantCashAdvanceCalculator: Calculator = {
-  id: 'merchant-cash-advance-calculator',
+  id: 'MerchantCashAdvance-calculator',
   title: 'Merchant Cash Advance Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

@@ -1,4 +1,4 @@
-export { body_fat_calculatorCalculator } from './body_fat_calculator';
+export { body_fat_calculator } from './body_fat_calculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

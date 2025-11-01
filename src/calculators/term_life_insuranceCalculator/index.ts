@@ -1,3 +1,3 @@
-export * from './term_life_insuranceCalculatorCalculator';
+export * from './term_life_insuranceCalculator';
 export * from './register';
 export * from './types';

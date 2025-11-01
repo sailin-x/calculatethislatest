@@ -10,7 +10,7 @@ import {
 import { validateRequestForProposalScoringCalculatorInputs } from './validation';
 
 export const RequestForProposalScoringCalculator: Calculator = {
-  id: 'request-for-proposal-scoring-calculator',
+  id: 'RequestForProposal-scoring-calculator',
   title: 'Request for Proposal Scoring Calculator',
   category: 'business',
   subcategory: 'Financial Planning',

@@ -10,7 +10,7 @@ import {
 import { validateCarPaymentCalculatorInputs } from './validation';
 
 export const CarPaymentCalculator: Calculator = {
-  id: 'car-payment-calculator',
+  id: 'CarPaymentCalculator',
   title: 'Car Payment Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

@@ -1,4 +1,4 @@
-import { recaptitalization-impact-calculatorInputs, recaptitalization-impact-calculatorMetrics, recaptitalization-impact-calculatorAnalysis } from './types';
+import { RecaptitalizationImpactCalculatorinputs, RecaptitalizationImpactCalculatormetrics, RecaptitalizationImpactCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: recaptitalization-impact-calculatorInputs): number {
+export function calculateResult(inputs: RecaptitalizationImpactCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: recaptitalization-impact-calculatorInput
   }
 }
 
-export function generateAnalysis(inputs: recaptitalization-impact-calculatorInputs, metrics: recaptitalization-impact-calculatorMetrics): recaptitalization-impact-calculatorAnalysis {
+export function generateAnalysis(inputs: RecaptitalizationImpactCalculatorinputs, metrics: RecaptitalizationImpactCalculatormetrics): RecaptitalizationImpactCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

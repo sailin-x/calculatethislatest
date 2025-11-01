@@ -1,3 +1,3 @@
-import { HighnetworthDivorceAssetDivisionCalculatorCalculator } from './HighnetworthDivorceAssetDivisionCalculatorCalculator';
+import { HighnetworthDivorceAssetDivisionCalculator } from './HighnetworthDivorceAssetDivisionCalculator';
 
-export { HighnetworthDivorceAssetDivisionCalculatorCalculator };
+export { HighnetworthDivorceAssetDivisionCalculator };

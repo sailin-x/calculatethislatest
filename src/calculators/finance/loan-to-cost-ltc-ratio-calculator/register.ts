@@ -1,3 +1,3 @@
-import { LoanToCostLtcRatioCalculatorCalculator } from './LoanToCostLtcRatioCalculatorCalculator';
+import { LoanToCostLtcRatioCalculator } from './LoanToCostLtcRatioCalculator';
 
-export { LoanToCostLtcRatioCalculatorCalculator };
+export { LoanToCostLtcRatioCalculator };

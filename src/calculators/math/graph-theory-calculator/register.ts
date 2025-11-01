@@ -1,3 +1,3 @@
-import { GraphTheoryCalculatorCalculator } from './GraphTheoryCalculatorCalculator';
+import { GraphTheoryCalculator } from './GraphTheoryCalculator';
 
-export { GraphTheoryCalculatorCalculator };
+export { GraphTheoryCalculator };

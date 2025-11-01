@@ -104,13 +104,13 @@ export function validateAnnualDebtPayments(value: number, allInputs: HomeAfforda
 
 export function validateDebtToIncomeRatio(value: number, allInputs: HomeAffordabilityInputs): string | null {
   if (value === undefined || value < 0) {
-    return 'Debt-to-income ratio must be 0 or greater';
+    return 'DebtToIncome ratio must be 0 or greater';
   }
   if (value > 100) {
-    return 'Debt-to-income ratio cannot exceed 100%';
+    return 'DebtToIncome ratio cannot exceed 100%';
   }
   if (value > 50) {
-    return 'High debt-to-income ratio may affect loan approval';
+    return 'High DebtToIncome ratio may affect loan approval';
   }
   return null;
 }
@@ -251,7 +251,7 @@ export function validateMedianHomePrice(value: number, allInputs: HomeAffordabil
   if (allInputs.annualIncome) {
     const priceToIncomeRatio = value / allInputs.annualIncome;
     if (priceToIncomeRatio > 5) {
-      return 'High price-to-income ratio may indicate affordability challenges';
+      return 'High PriceToIncome ratio may indicate affordability challenges';
     }
   }
   return null;

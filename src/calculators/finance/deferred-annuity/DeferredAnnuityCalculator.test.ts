@@ -35,7 +35,7 @@ describe('DeferredAnnuityCalculator', () => {
 
   describe('Calculator Structure', () => {
     it('should have correct calculator properties', () => {
-      expect(DeferredAnnuityCalculator.id).toBe('deferred-annuity-calculator');
+      expect(DeferredAnnuityCalculator.id).toBe('DeferredAnnuityCalculator');
       expect(DeferredAnnuityCalculator.title).toBe('Deferred Annuity Calculator');
       expect(DeferredAnnuityCalculator.category).toBe('finance');
       expect(DeferredAnnuityCalculator.subcategory).toBe('Retirement');

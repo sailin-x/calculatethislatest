@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateRestaurantTipCalculatorInputs } from './validation';
 
 export const RestaurantTipCalculator: Calculator = {
-  id: 'restaurant-tip-calculator',
+  id: 'RestaurantTipCalculator',
   title: 'Restaurant Tip Calculator',
   category: 'health',
   subcategory: 'General',

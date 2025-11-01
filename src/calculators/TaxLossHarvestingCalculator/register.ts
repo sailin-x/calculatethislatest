@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { TaxLossHarvestingCalculatorCalculator } from './TaxLossHarvestingCalculatorCalculator';
+import { TaxLossHarvestingCalculator } from './TaxLossHarvestingCalculator';
 
-export function registerTaxLossHarvestingCalculatorCalculator(): void {
-  calculatorRegistry.register(new TaxLossHarvestingCalculatorCalculator());
+export function registerTaxLossHarvestingCalculator(): void {
+  calculatorRegistry.register(new TaxLossHarvestingCalculator());
 }

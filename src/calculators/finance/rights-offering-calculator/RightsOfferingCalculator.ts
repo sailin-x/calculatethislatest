@@ -10,7 +10,7 @@ import {
 import { validateRightsOfferingCalculatorInputs } from './validation';
 
 export const RightsOfferingCalculator: Calculator = {
-  id: 'rights-offering-calculator',
+  id: 'RightsOfferingCalculator',
   title: 'Rights Offering Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

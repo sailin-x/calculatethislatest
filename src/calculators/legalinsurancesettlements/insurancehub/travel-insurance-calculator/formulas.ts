@@ -1,4 +1,4 @@
-import { travel-insurance-calculatorInputs, travel-insurance-calculatorMetrics, travel-insurance-calculatorAnalysis } from './types';
+import { TravelInsuranceCalculatorinputs, TravelInsuranceCalculatormetrics, TravelInsuranceCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: travel-insurance-calculatorInputs): number {
+export function calculateResult(inputs: TravelInsuranceCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: travel-insurance-calculatorInputs): numb
   }
 }
 
-export function generateAnalysis(inputs: travel-insurance-calculatorInputs, metrics: travel-insurance-calculatorMetrics): travel-insurance-calculatorAnalysis {
+export function generateAnalysis(inputs: TravelInsuranceCalculatorinputs, metrics: TravelInsuranceCalculatormetrics): TravelInsuranceCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

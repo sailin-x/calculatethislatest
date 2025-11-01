@@ -1,4 +1,4 @@
-import { retirement-planning-calculatorInputs, retirement-planning-calculatorMetrics, retirement-planning-calculatorAnalysis } from './types';
+import { RetirementPlanningCalculatorinputs, RetirementPlanningCalculatormetrics, RetirementPlanningCalculatoranalysis } from './types';
 
 // Retirement Calculator
 export function calculateRetirementSavings(currentSavings: number, monthlyContribution: number, annualReturn: number, years: number): number {
@@ -26,7 +26,7 @@ export function calculateRequiredMonthlyContribution(targetAmount: number, curre
   return remainingAmount / ((Math.pow(1 + monthlyRate, months) - 1) / monthlyRate);
 }
 
-export function calculateResult(inputs: retirement-planning-calculatorInputs): number {
+export function calculateResult(inputs: RetirementPlanningCalculatorinputs): number {
   if ('currentSavings' in inputs && 'monthlyContribution' in inputs && 'expectedReturn' in inputs && 'yearsToRetirement' in inputs) {
     return calculateRetirementSavings(
       inputs.currentSavings,
@@ -38,7 +38,7 @@ export function calculateResult(inputs: retirement-planning-calculatorInputs): n
   return 0;
 }
 
-export function generateAnalysis(inputs: retirement-planning-calculatorInputs, metrics: retirement-planning-calculatorMetrics): retirement-planning-calculatorAnalysis {
+export function generateAnalysis(inputs: RetirementPlanningCalculatorinputs, metrics: RetirementPlanningCalculatormetrics): RetirementPlanningCalculatoranalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (result < 500000) riskLevel = 'High';

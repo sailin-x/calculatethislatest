@@ -10,7 +10,7 @@ import {
 import { validateSortinoRatioCalculatorInputs } from './validation';
 
 export const SortinoRatioCalculator: Calculator = {
-  id: 'sortino-ratio-calculator',
+  id: 'SortinoRatioCalculator',
   title: 'Sortino Ratio Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

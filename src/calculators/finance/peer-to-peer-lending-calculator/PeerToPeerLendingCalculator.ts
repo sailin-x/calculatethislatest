@@ -10,8 +10,8 @@ import {
 import { validatePeerToPeerLendingCalculatorInputs } from './validation';
 
 export const PeerToPeerLendingCalculator: Calculator = {
-  id: 'peer-to-peer-lending-calculator',
-  title: 'Peer-to-Peer Lending Calculator',
+  id: 'PeerToPeer-lending-calculator',
+  title: 'PeerToPeer Lending Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',
   description: 'Calculate P2P lending returns.',

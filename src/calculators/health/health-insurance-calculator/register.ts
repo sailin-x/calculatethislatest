@@ -1,3 +1,3 @@
-import { HealthInsuranceCalculatorCalculator } from './HealthInsuranceCalculatorCalculator';
+import { HealthInsuranceCalculator } from './HealthInsuranceCalculator';
 
-export { HealthInsuranceCalculatorCalculator };
+export { HealthInsuranceCalculator };

@@ -1,4 +1,4 @@
-import { hotel-feasibility-adrInputs, hotel-feasibility-adrMetrics, hotel-feasibility-adrAnalysis } from './types';
+import { HotelFeasibilityAdrinputs, HotelFeasibilityAdrmetrics, HotelFeasibilityAdranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: hotel-feasibility-adrInputs): number {
+export function calculateResult(inputs: HotelFeasibilityAdrinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: hotel-feasibility-adrInputs): number {
   }
 }
 
-export function generateAnalysis(inputs: hotel-feasibility-adrInputs, metrics: hotel-feasibility-adrMetrics): hotel-feasibility-adrAnalysis {
+export function generateAnalysis(inputs: HotelFeasibilityAdrinputs, metrics: HotelFeasibilityAdrmetrics): HotelFeasibilityAdranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

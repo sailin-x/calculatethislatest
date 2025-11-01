@@ -1,4 +1,4 @@
-export { MegaBackdoorRothCalculatorCalculator } from './MegaBackdoorRothCalculatorCalculator';
+export { MegaBackdoorRothCalculator } from './MegaBackdoorRothCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

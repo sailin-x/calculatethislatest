@@ -1,3 +1,3 @@
-import { ForexCalculatorCalculator } from './ForexCalculatorCalculator';
+import { ForexCalculator } from './ForexCalculator';
 
-export { ForexCalculatorCalculator };
+export { ForexCalculator };

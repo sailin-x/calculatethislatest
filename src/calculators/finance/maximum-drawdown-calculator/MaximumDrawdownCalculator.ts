@@ -10,7 +10,7 @@ import {
 import { validateMaximumDrawdownCalculatorInputs } from './validation';
 
 export const MaximumDrawdownCalculator: Calculator = {
-  id: 'maximum-drawdown-calculator',
+  id: 'MaximumDrawdownCalculator',
   title: 'Maximum Drawdown Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

@@ -1,4 +1,4 @@
-export { MarineInsuranceCalculatorCalculator } from './MarineInsuranceCalculatorCalculator';
+export { MarineInsuranceCalculator } from './MarineInsuranceCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

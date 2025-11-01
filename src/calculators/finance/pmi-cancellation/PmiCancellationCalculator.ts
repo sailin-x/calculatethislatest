@@ -1,14 +1,14 @@
 import { Calculator } from '../../types/calculator';
 
 export const PmiCancellationCalculator: Calculator = {
-  id: 'pmi-cancellation-calculator',
+  id: 'PmiCancellationCalculator',
   title: 'PMI Cancellation Calculator',
   category: 'finance',
   subcategory: 'Mortgage & Real Estate',
   description: 'Calculate when you can cancel private mortgage insurance (PMI) and how much you can save by removing PMI from your mortgage payments.',
   usageInstructions: [
     'Enter your loan details and current home value',
-    'Specify your PMI rate and loan-to-value ratio',
+    'Specify your PMI rate and LoanToValue ratio',
     'Determine automatic vs. lender-paid PMI cancellation',
     'Calculate savings from PMI removal'
   ],
@@ -38,7 +38,7 @@ export const PmiCancellationCalculator: Calculator = {
     { id: 'yearsToCancel', label: 'Years Until Cancellation', type: 'number', required: false, placeholder: '2', tooltip: 'Years until you plan to cancel PMI' }
   ],
   outputs: [
-    { id: 'currentLtvRatio', label: 'Current Loan-to-Value Ratio (%)', type: 'percentage', explanation: 'Your current LTV ratio based on home value' },
+    { id: 'currentLtvRatio', label: 'Current LoanToValue Ratio (%)', type: 'percentage', explanation: 'Your current LTV ratio based on home value' },
     { id: 'automaticCancellationLtv', label: 'Automatic Cancellation LTV (%)', type: 'percentage', explanation: 'LTV ratio required for automatic PMI cancellation' },
     { id: 'lenderCancellationLtv', label: 'Lender Cancellation LTV (%)', type: 'percentage', explanation: 'LTV ratio required for lender-paid PMI cancellation' },
     { id: 'canCancelNow', label: 'Can Cancel PMI Now?', type: 'text', explanation: 'Whether you can cancel PMI based on current LTV' },

@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validatePrecisionAgricultureRoiCalculatorInputs, validatePrecisionAgricultureRoiCalculatorBusinessRules } from './validation';
 
-export const PrecisionAgricultureRoiCalculatorCalculator: Calculator: Calculator = {
-  id: 'precision-agriculture-roi-calculator-calculator',
+export const PrecisionAgricultureRoiCalculator: Calculator = {
+  id: 'PrecisionAgricultureRoi-calculator-calculator',
   title: 'Precision Agriculture ROI Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

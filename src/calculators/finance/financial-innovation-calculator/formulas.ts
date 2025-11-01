@@ -1,4 +1,4 @@
-import { financial-innovation-calculatorInputs, financial-innovation-calculatorMetrics, financial-innovation-calculatorAnalysis } from './types';
+import { FinancialInnovationCalculatorinputs, FinancialInnovationCalculatormetrics, FinancialInnovationCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: financial-innovation-calculatorInputs): number {
+export function calculateResult(inputs: FinancialInnovationCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: financial-innovation-calculatorInputs): 
   }
 }
 
-export function generateAnalysis(inputs: financial-innovation-calculatorInputs, metrics: financial-innovation-calculatorMetrics): financial-innovation-calculatorAnalysis {
+export function generateAnalysis(inputs: FinancialInnovationCalculatorinputs, metrics: FinancialInnovationCalculatormetrics): FinancialInnovationCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

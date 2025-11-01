@@ -10,7 +10,7 @@ import {
 import { validateCreditUtilizationCalculatorInputs } from './validation';
 
 export const CreditUtilizationCalculator: Calculator = {
-  id: 'credit-utilization-calculator',
+  id: 'CreditUtilizationCalculator',
   title: 'Credit Utilization Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

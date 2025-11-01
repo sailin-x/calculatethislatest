@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateMbaRoiCalculatorInputs, validateMbaRoiCalculatorBusinessRules } from './validation';
 
-export const MbaRoiCalculatorCalculator: Calculator: Calculator = {
-  id: 'mba-roi-calculator-calculator',
+export const MbaRoiCalculator: Calculator = {
+  id: 'MbaRoiCalculator-calculator',
   title: 'MBA ROI Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

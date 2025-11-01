@@ -1,4 +1,4 @@
-export { TelehealthProgramRoiCalculatorCalculator } from './TelehealthProgramRoiCalculatorCalculator';
+export { TelehealthProgramRoiCalculator } from './TelehealthProgramRoiCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

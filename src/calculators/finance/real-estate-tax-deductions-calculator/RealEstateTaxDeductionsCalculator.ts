@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateRealEstateTaxDeductionsCalculatorInputs, validateRealEstateTaxDeductionsCalculatorBusinessRules } from './validation';
 
-export const RealEstateTaxDeductionsCalculatorCalculator: Calculator: Calculator = {
-  id: 'real-estate-tax-deductions-calculator-calculator',
+export const RealEstateTaxDeductionsCalculator: Calculator = {
+  id: 'RealEstateTax-DeductionsCalculatorCalculator',
   title: 'Real Estate Tax Deductions Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

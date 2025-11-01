@@ -1,3 +1,3 @@
-import { RealEstateWaterfallModelCalculatorCalculator } from './RealEstateWaterfallModelCalculatorCalculator';
+import { RealEstateWaterfallModelCalculator } from './RealEstateWaterfallModelCalculator';
 
-export { RealEstateWaterfallModelCalculatorCalculator };
+export { RealEstateWaterfallModelCalculator };

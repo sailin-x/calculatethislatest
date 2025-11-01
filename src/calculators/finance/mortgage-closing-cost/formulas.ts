@@ -1,4 +1,4 @@
-import { mortgage-closing-costInputs, mortgage-closing-costMetrics, mortgage-closing-costAnalysis } from './types';
+import { MortgageClosingCostinputs, MortgageClosingCostmetrics, MortgageClosingCostanalysis } from './types';
 
 
 // Mortgage Payment Calculator - Standard loan amortization formula
@@ -14,7 +14,7 @@ export function calculateTotalInterest(principal: number, monthlyPayment: number
   return (monthlyPayment * numPayments) - principal;
 }
 
-export function calculateResult(inputs: mortgage-closing-costInputs): number {
+export function calculateResult(inputs: MortgageClosingCostinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: mortgage-closing-costInputs): number {
   }
 }
 
-export function generateAnalysis(inputs: mortgage-closing-costInputs, metrics: mortgage-closing-costMetrics): mortgage-closing-costAnalysis {
+export function generateAnalysis(inputs: MortgageClosingCostinputs, metrics: MortgageClosingCostmetrics): MortgageClosingCostanalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

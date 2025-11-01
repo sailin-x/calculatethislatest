@@ -10,7 +10,7 @@ import {
 import { validateStructuredSettlementPayoutCalculatorInputs } from './validation';
 
 export const StructuredSettlementPayoutCalculator: Calculator = {
-  id: 'structured-settlement-payout-calculator',
+  id: 'StructuredSettlementPayout-calculator',
   title: 'Structured Settlement Payout Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

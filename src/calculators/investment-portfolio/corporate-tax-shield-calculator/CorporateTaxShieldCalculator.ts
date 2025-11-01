@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateCorporateTaxShieldCalculatorInputs, validateCorporateTaxShieldCalculatorBusinessRules } from './validation';
 
-export const CorporateTaxShieldCalculatorCalculator: Calculator: Calculator = {
-  id: 'corporate-tax-shield-calculator-calculator',
+export const CorporateTaxShieldCalculator: Calculator = {
+  id: 'CorporateTaxShield-calculator-calculator',
   title: 'Corporate Tax Shield Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

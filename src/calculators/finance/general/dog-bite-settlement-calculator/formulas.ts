@@ -1,4 +1,4 @@
-import { dog-bite-settlement-calculatorInputs, dog-bite-settlement-calculatorMetrics, dog-bite-settlement-calculatorAnalysis } from './types';
+import { DogBiteSettlement-calculatorInputs, DogBiteSettlement-calculatorMetrics, DogBiteSettlement-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: dog-bite-settlement-calculatorInputs): number {
+export function calculateResult(inputs: DogBiteSettlement-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: dog-bite-settlement-calculatorInputs): n
   }
 }
 
-export function generateAnalysis(inputs: dog-bite-settlement-calculatorInputs, metrics: dog-bite-settlement-calculatorMetrics): dog-bite-settlement-calculatorAnalysis {
+export function generateAnalysis(inputs: DogBiteSettlement-calculatorInputs, metrics: DogBiteSettlement-calculatorMetrics): DogBiteSettlement-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

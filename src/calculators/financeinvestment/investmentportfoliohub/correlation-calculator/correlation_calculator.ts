@@ -2,7 +2,7 @@ import { Calculator } from '../../../../types/calculator';
 import { correlation_calculatorInputs, correlation_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const correlation_calculatorCalculator: Calculator = {
+export const correlation-calculator: Calculator = {
   id: 'correlation-calculator',
   title: 'Correlation Calculator Calculator',
   category: 'financeinvestment',

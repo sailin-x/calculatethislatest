@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateMovieTicketCostCalculatorInputs } from './validation';
 
 export const MovieTicketCostCalculator: Calculator = {
-  id: 'movie-ticket-cost-calculator',
+  id: 'MovieTicketCost-calculator',
   title: 'Movie Ticket Cost Calculator',
   category: 'health',
   subcategory: 'General',

@@ -9,7 +9,7 @@ import {
 import { validateBusinessFormationCalculatorInputs } from './validation';
 
 export const BusinessFormationCalculator: Calculator = {
-  id: 'business-formation-calculator',
+  id: 'BusinessFormationCalculator',
   title: 'Business Formation Calculator',
   category: 'legal',
   subcategory: 'Settlement Analysis',

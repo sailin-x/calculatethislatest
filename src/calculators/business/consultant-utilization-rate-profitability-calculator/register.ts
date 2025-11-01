@@ -1,3 +1,3 @@
-import { ConsultantUtilizationRateProfitabilityCalculatorCalculator } from './ConsultantUtilizationRateProfitabilityCalculatorCalculator';
+import { ConsultantUtilizationRateProfitabilityCalculator } from './ConsultantUtilizationRateProfitabilityCalculator';
 
-export { ConsultantUtilizationRateProfitabilityCalculatorCalculator };
+export { ConsultantUtilizationRateProfitabilityCalculator };

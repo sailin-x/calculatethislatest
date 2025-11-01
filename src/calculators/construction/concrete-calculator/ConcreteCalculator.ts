@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateConcreteCalculatorInputs, validateConcreteCalculatorBusinessRules } from './validation';
 
-export const ConcreteCalculatorCalculator: Calculator: Calculator = {
-  id: 'concrete-calculator-calculator',
+export const ConcreteCalculator: Calculator = {
+  id: 'ConcreteCalculatorCalculator',
   title: 'Concrete Calculator Calculator',
   construction: 'construction', // e.g., 'finance', 'math', 'health', 'business'
   subconstruction: 'Subconstruction Name',

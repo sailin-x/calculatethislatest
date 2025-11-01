@@ -8,7 +8,7 @@ import { CalculatorInputs, CalculatorOutputs } from '../../types/calculator';
 describe('StudentLoanCalculator', () => {
   describe('Calculator Structure', () => {
     it('should have correct basic properties', () => {
-      expect(StudentLoanCalculator.id).toBe('student-loan-calculator');
+      expect(StudentLoanCalculator.id).toBe('StudentLoanCalculator');
       expect(StudentLoanCalculator.name).toBe('Student Loan Calculator');
       expect(StudentLoanCalculator.category).toBe('finance');
       expect(StudentLoanCalculator.subcategory).toBe('education');
@@ -80,8 +80,8 @@ describe('StudentLoanCalculator', () => {
       const result = validateStudentLoanInputs(inputs);
       expect(result.isValid).toBe(false);
       expect(result.errors).toContain('Loan type must be one of: federal-subsidized, federal-unsubsidized, federal-plus, private, consolidated');
-      expect(result.errors).toContain('Repayment plan must be one of: standard, extended, graduated, income-based, pay-as-you-earn, revised-pay-as-you-earn, income-contingent, income-sensitive');
-      expect(result.errors).toContain('Filing status must be one of: single, married-filing-jointly, married-filing-separately, head-of-household');
+      expect(result.errors).toContain('Repayment plan must be one of: standard, extended, graduated, income-based, PayAsYou-earn, RevisedPayAs-you-earn, income-contingent, income-sensitive');
+      expect(result.errors).toContain('Filing status must be one of: single, MarriedFilingJointly, MarriedFilingSeparately, HeadOfHousehold');
       expect(result.errors).toContain('Invalid state selection');
       expect(result.errors).toContain('Repayment strategy must be one of: minimum-payments, debt-snowball, debt-avalanche, aggressive-payoff, income-based');
     });
@@ -322,7 +322,7 @@ describe('StudentLoanCalculator', () => {
       expect(report).toContain('Basic Information');
       expect(report).toContain('Payment Analysis');
       expect(report).toContain('Financial Impact');
-      expect(report).toContain('Debt-to-Income Analysis');
+      expect(report).toContain('DebtToIncome Analysis');
       expect(report).toContain('Savings Impact');
       expect(report).toContain('Repayment Plan Comparison');
       expect(report).toContain('Income-Based Repayment Analysis');

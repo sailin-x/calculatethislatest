@@ -1,3 +1,3 @@
-import { RevenueCalculatorCalculator } from './RevenueCalculatorCalculator';
+import { RevenueCalculator } from './RevenueCalculator';
 
-export { RevenueCalculatorCalculator };
+export { RevenueCalculator };

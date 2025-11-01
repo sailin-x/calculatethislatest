@@ -3,7 +3,7 @@ import { calculateIndustrialWarehouseProfitability, generateIndustrialWarehouseP
 import { validateIndustrialWarehouseProfitabilityInputs } from './validation';
 
 export const IndustrialWarehouseProfitabilityCalculator: Calculator = {
-  id: 'industrial-warehouse-profitability-calculator',
+  id: 'IndustrialWarehouseProfitability-calculator',
   name: 'Industrial Warehouse Profitability Calculator',
   category: 'finance',
   subcategory: 'investment',
@@ -57,7 +57,7 @@ export const IndustrialWarehouseProfitabilityCalculator: Calculator = {
     { id: 'constructionTime', name: 'Construction Time', type: 'number', required: false, description: 'Construction time in months', placeholder: '12', min: 3, max: 36 },
     { id: 'stabilizationTime', name: 'Stabilization Time', type: 'number', required: false, description: 'Time to stabilization in months', placeholder: '6', min: 0, max: 24 },
     { id: 'energyEfficiency', name: 'Energy Efficiency', type: 'select', required: false, description: 'Energy efficiency rating', options: ['basic', 'standard', 'efficient', 'green', 'leed-certified'] },
-    { id: 'sustainabilityFeatures', name: 'Sustainability Features', type: 'multiselect', required: false, description: 'Sustainability features', options: ['solar-panels', 'led-lighting', 'high-efficiency-hvac', 'water-conservation', 'waste-recycling', 'green-roof', 'ev-charging', 'bike-facilities'] },
+    { id: 'sustainabilityFeatures', name: 'Sustainability Features', type: 'multiselect', required: false, description: 'Sustainability features', options: ['solar-panels', 'led-lighting', 'HighEfficiencyHvac', 'water-conservation', 'waste-recycling', 'green-roof', 'ev-charging', 'bike-facilities'] },
     { id: 'technologyFeatures', name: 'Technology Features', type: 'multiselect', required: false, description: 'Technology features', options: ['automated-systems', 'smart-building', 'security-systems', 'fire-suppression', 'climate-control', 'inventory-tracking', 'loading-automation', 'warehouse-management'] },
     { id: 'accessibility', name: 'Accessibility', type: 'select', required: false, description: 'Transportation accessibility', options: ['excellent', 'good', 'fair', 'poor'] },
     { id: 'infrastructure', name: 'Infrastructure', type: 'select', required: false, description: 'Infrastructure quality', options: ['excellent', 'good', 'fair', 'poor'] },
@@ -74,7 +74,7 @@ export const IndustrialWarehouseProfitabilityCalculator: Calculator = {
     { id: 'cashFlow', name: 'Cash Flow', type: 'number', unit: 'USD', description: 'Annual cash flow after debt service' },
     { id: 'monthlyPayment', name: 'Monthly Payment', type: 'number', unit: 'USD', description: 'Monthly debt service payment' },
     { id: 'annualDebtService', name: 'Annual Debt Service', type: 'number', unit: 'USD', description: 'Annual debt service payment' },
-    { id: 'cashOnCashReturn', name: 'Cash-on-Cash Return', type: 'number', description: 'Cash-on-cash return percentage' },
+    { id: 'cashOnCashReturn', name: 'CashOnCash Return', type: 'number', description: 'CashOnCash return percentage' },
     { id: 'capRate', name: 'Cap Rate', type: 'number', description: 'Capitalization rate percentage' },
     { id: 'IRR', name: 'IRR', type: 'number', description: 'Internal rate of return percentage' },
     { id: 'paybackPeriod', name: 'Payback Period', type: 'number', description: 'Payback period in years' },
@@ -129,9 +129,9 @@ export const IndustrialWarehouseProfitabilityCalculator: Calculator = {
       description: 'Calculates capitalization rate'
     },
     {
-      name: 'Cash-on-Cash Return',
-      formula: 'Cash-on-Cash Return = Cash Flow / (Total Investment × Down Payment Percentage) × 100',
-      description: 'Calculates cash-on-cash return'
+      name: 'CashOnCash Return',
+      formula: 'CashOnCash Return = Cash Flow / (Total Investment × Down Payment Percentage) × 100',
+      description: 'Calculates CashOnCash return'
     },
     {
       name: 'Break-Even Occupancy',
@@ -150,7 +150,7 @@ export const IndustrialWarehouseProfitabilityCalculator: Calculator = {
     },
     {
       name: 'Profitability Score',
-      formula: 'Profitability Score = (Cap Rate × 0.4) + (Cash-on-Cash Return × 0.3) + (IRR × 0.3)',
+      formula: 'Profitability Score = (Cap Rate × 0.4) + (CashOnCash Return × 0.3) + (IRR × 0.3)',
       description: 'Calculates overall profitability score'
     },
     {

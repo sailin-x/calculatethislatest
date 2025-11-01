@@ -6,7 +6,7 @@ export interface CondoInsuranceInputs {
   lossAssessmentCoverage: number;
   additionalLivingExpenses: number;
   deductible: number;
-  condoType: 'condo' | 'townhouse' | 'co-op' | 'planned-unit-development';
+  condoType: 'condo' | 'townhouse' | 'co-op' | 'PlannedUnitDevelopment';
   constructionType: 'frame' | 'brick' | 'stone' | 'stucco' | 'siding' | 'concrete';
   yearBuilt: number;
   squareFootage: number;

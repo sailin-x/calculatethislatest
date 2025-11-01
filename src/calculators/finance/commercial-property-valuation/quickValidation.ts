@@ -350,7 +350,7 @@ export function validateTenantQuality(value: any, allInputs?: Record<string, any
 }
 
 export function validateLeaseTerms(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  const validTerms = ['month-to-month', 'short-term', 'medium-term', 'long-term'];
+  const validTerms = ['MonthToMonth', 'short-term', 'medium-term', 'long-term'];
   
   if (!value) {
     return { isValid: false, message: 'Lease terms is required' };

@@ -1,4 +1,4 @@
-export { calorie_cycling_calculatorCalculator } from './calorie_cycling_calculator';
+export { calorie_cycling_calculator } from './calorie_cycling_calculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { business_interruption_calculatorInputs, business_interruption_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const business_interruption_calculatorCalculator: Calculator = {
-  id: 'business-interruption-calculator',
+export const BusinessInterruptionCalculator: Calculator = {
+  id: 'BusinessInterruptionCalculator',
   title: 'Business Interruption Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

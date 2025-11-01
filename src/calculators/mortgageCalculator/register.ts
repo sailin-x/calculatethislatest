@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { mortgageCalculatorCalculator } from './mortgageCalculatorCalculator';
+import { mortgageCalculator } from './mortgageCalculator';
 
-export function registermortgageCalculatorCalculator(): void {
-  calculatorRegistry.register(new mortgageCalculatorCalculator());
+export function registermortgageCalculator(): void {
+  calculatorRegistry.register(new mortgageCalculator());
 }

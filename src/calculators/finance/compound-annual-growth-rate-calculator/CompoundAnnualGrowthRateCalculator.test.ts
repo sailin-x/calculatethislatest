@@ -103,7 +103,7 @@ describe('Compound Annual Growth Rate (CAGR) Calculator', () => {
 
   describe('Calculator Definition', () => {
     it('should have correct calculator properties', () => {
-      expect(compoundAnnualGrowthRateCalculator.id).toBe('compound-annual-growth-rate-calculator');
+      expect(compoundAnnualGrowthRateCalculator.id).toBe('CompoundAnnualGrowth-rate-calculator');
       expect(compoundAnnualGrowthRateCalculator.title).toBe('Compound Annual Growth Rate (CAGR) Calculator');
       expect(compoundAnnualGrowthRateCalculator.category).toBe('finance');
       expect(compoundAnnualGrowthRateCalculator.subcategory).toBe('Investment & Portfolio');

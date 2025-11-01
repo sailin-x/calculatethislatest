@@ -3,7 +3,7 @@ import { calculatePropertyTaxProration } from './formulas';
 import { ValidationRuleFactory } from '../../utils/validation';
 
 export const PropertyTaxProrationCalculator: Calculator = {
-  id: 'property-tax-proration-calculator',
+  id: 'PropertyTaxProration-calculator',
   title: 'Property Tax Proration Calculator',
   category: 'finance',
   subcategory: 'Mortgage & Real Estate',
@@ -92,9 +92,9 @@ export const PropertyTaxProrationCalculator: Calculator = {
       description: 'Mid-year property sale with standard proration',
       inputs: {
         annualPropertyTax: 4800,
-        taxYearStart: '2024-01-01',
-        taxYearEnd: '2024-12-31',
-        closingDate: '2024-06-15',
+        taxYearStart: '20240101',
+        taxYearEnd: '20241231',
+        closingDate: '20240615',
         prorationMethod: '365-day',
         includeInterest: false,
         interestAmount: 0,
@@ -111,7 +111,7 @@ export const PropertyTaxProrationCalculator: Calculator = {
         buyerInterestPortion: 0,
         totalSellerResponsibility: 2193.15,
         totalBuyerResponsibility: 2606.85,
-        prorationDate: '2024-06-15',
+        prorationDate: '20240615',
         adjustmentAmount: 2193.15
       }
     }

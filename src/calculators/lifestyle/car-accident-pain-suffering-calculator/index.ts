@@ -1,4 +1,4 @@
-export { CarAccidentPainSufferingCalculatorCalculator } from './CarAccidentPainSufferingCalculatorCalculator';
+export { CarAccidentPainSufferingCalculator } from './CarAccidentPainSufferingCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

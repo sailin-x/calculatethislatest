@@ -1,13 +1,13 @@
-import { medical-malpractice-insurance-calculatorInputs, medical-malpractice-insurance-calculatorMetrics, medical-malpractice-insurance-calculatorAnalysis } from './types';
+import { MedicalMalpracticeInsurance-calculatorInputs, MedicalMalpracticeInsurance-calculatorMetrics, MedicalMalpracticeInsurance-calculatorAnalysis } from './types';
 
 // Medical Malpractice Insurance Calculator - Finance calculations
-export function calculateResult(inputs: medical-malpractice-insurance-calculatorInputs): number {
+export function calculateResult(inputs: MedicalMalpracticeInsurance-calculatorInputs): number {
   // Financial calculation logic
   const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
   return numericValues.reduce((sum, val) => sum + val, 0) || 0;
 }
 
-export function generateAnalysis(inputs: medical-malpractice-insurance-calculatorInputs, metrics: medical-malpractice-insurance-calculatorMetrics): medical-malpractice-insurance-calculatorAnalysis {
+export function generateAnalysis(inputs: MedicalMalpracticeInsurance-calculatorInputs, metrics: MedicalMalpracticeInsurance-calculatorMetrics): MedicalMalpracticeInsurance-calculatorAnalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (Math.abs(result) > 100000) riskLevel = 'High';

@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { rentersInsuranceCalculatorCalculator } from './rentersInsuranceCalculatorCalculator';
+import { rentersInsuranceCalculator } from './rentersInsuranceCalculator';
 
-export function registerrentersInsuranceCalculatorCalculator(): void {
-  calculatorRegistry.register(new rentersInsuranceCalculatorCalculator());
+export function registerrentersInsuranceCalculator(): void {
+  calculatorRegistry.register(new rentersInsuranceCalculator());
 }

@@ -1,3 +1,3 @@
-export * from './matrixCalculatorCalculator';
+export * from './matrixCalculator';
 export * from './register';
 export * from './types';

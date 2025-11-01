@@ -1,61 +1,187 @@
-import { OpportunityZoneInvestmentRoiCalculatorInputs } from './types';
+import { OpportunityZoneInvestmentRoiInputs } from './types';
 
-export function validatePrimaryInput(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+export function validateInitialInvestment(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   if (!value || value <= 0) {
-    return { isValid: false, message: 'Primary input must be greater than 0' };
+    return { isValid: false, message: 'Initial investment must be greater than 0' };
   }
-  if (value > 1000000) {
-    return { isValid: false, message: 'Primary input cannot exceed 1,000,000' };
+  if (value > 10000000) {
+    return { isValid: false, message: 'Initial investment cannot exceed $10,000,000' };
   }
   return { isValid: true };
 }
 
-export function validateSecondaryInput(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+export function validateInvestmentDate(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (!value) {
+    return { isValid: false, message: 'Investment date is required' };
+  }
+  const investmentDate = new Date(value);
+  const now = new Date();
+  if (investmentDate > now) {
+    return { isValid: false, message: 'Investment date cannot be in the future' };
+  }
+  return { isValid: true };
+}
+
+export function validateHoldingPeriod(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (!value || value <= 0) {
+    return { isValid: false, message: 'Holding period must be greater than 0 years' };
+  }
+  if (value > 10) {
+    return { isValid: false, message: 'Holding period cannot exceed 10 years' };
+  }
+  return { isValid: true };
+}
+
+export function validatePropertyValue(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (!value || value <= 0) {
+    return { isValid: false, message: 'Property value must be greater than 0' };
+  }
+  return { isValid: true };
+}
+
+export function validateStepUpInBasis(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value < 0 || value > 20) {
+    return { isValid: false, message: 'Step-up in basis must be between 0% and 20%' };
+  }
+  return { isValid: true };
+}
+
+export function validateCapitalGainsTaxReduction(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value < 0 || value > 20) {
+    return { isValid: false, message: 'Capital gains tax reduction must be between 0% and 20%' };
+  }
+  return { isValid: true };
+}
+
+export function validateExpectedAppreciation(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value < -10 || value > 30) {
+    return { isValid: false, message: 'Expected appreciation must be between -10% and 30%' };
+  }
+  return { isValid: true };
+}
+
+export function validateExpectedRentalIncome(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   if (value < 0) {
-    return { isValid: false, message: 'Secondary input cannot be negative' };
-  }
-  if (allInputs?.primaryInput && value > allInputs.primaryInput) {
-    return { isValid: false, message: 'Secondary input cannot exceed primary input' };
+    return { isValid: false, message: 'Expected rental income cannot be negative' };
   }
   return { isValid: true };
 }
 
-export function validateSelectInput(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  const validOptions = ['option1', 'option2'];
-  if (!value || !validOptions.includes(value)) {
-    return { isValid: false, message: 'Please select a valid option' };
+export function validateOperatingExpenses(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value < 0) {
+    return { isValid: false, message: 'Operating expenses cannot be negative' };
   }
   return { isValid: true };
 }
 
-export function validateOptionalParameter(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && value.length > 100) {
-    return { isValid: false, message: 'Optional parameter cannot exceed 100 characters' };
+export function validateVacancyRate(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value < 0 || value > 50) {
+    return { isValid: false, message: 'Vacancy rate must be between 0% and 50%' };
   }
   return { isValid: true };
 }
 
-export function validateBooleanFlag(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (typeof value !== 'boolean' && value !== undefined) {
-    return { isValid: false, message: 'Boolean flag must be true or false' };
+export function validateLeverageRatio(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value < 0 || value > 90) {
+    return { isValid: false, message: 'Leverage ratio must be between 0% and 90%' };
   }
   return { isValid: true };
 }
 
-// Additional validation functions as needed
-export function validateNumericRange(value: any, min: number, max: number, fieldName: string, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value < min) {
-    return { isValid: false, message: `${fieldName} must be at least ${min}` };
-  }
-  if (value > max) {
-    return { isValid: false, message: `${fieldName} cannot exceed ${max}` };
+export function validateInterestRate(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value < 0 || value > 20) {
+    return { isValid: false, message: 'Interest rate must be between 0% and 20%' };
   }
   return { isValid: true };
 }
 
-export function validateRequired(value: any, fieldName: string, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value === null || value === undefined || value === '') {
-    return { isValid: false, message: `${fieldName} is required` };
+export function validateLoanTerm(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value <= 0 || value > 50) {
+    return { isValid: false, message: 'Loan term must be between 1 and 50 years' };
+  }
+  return { isValid: true };
+}
+
+export function validateExitCapRate(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value <= 0 || value > 20) {
+    return { isValid: false, message: 'Exit cap rate must be between 0% and 20%' };
+  }
+  return { isValid: true };
+}
+
+export function validateExitYear(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value <= 0 || value > 10) {
+    return { isValid: false, message: 'Exit year must be between 1 and 10' };
+  }
+  return { isValid: true };
+}
+
+export function validateCapitalGainsTaxRate(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value < 0 || value > 50) {
+    return { isValid: false, message: 'Capital gains tax rate must be between 0% and 50%' };
+  }
+  return { isValid: true };
+}
+
+export function validateOrdinaryIncomeTaxRate(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value < 0 || value > 50) {
+    return { isValid: false, message: 'Ordinary income tax rate must be between 0% and 50%' };
+  }
+  return { isValid: true };
+}
+
+export function validateStateTaxRate(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value < 0 || value > 20) {
+    return { isValid: false, message: 'State tax rate must be between 0% and 20%' };
+  }
+  return { isValid: true };
+}
+
+export function validateAcquisitionCosts(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value < 0 || value > 10) {
+    return { isValid: false, message: 'Acquisition costs must be between 0% and 10% of property value' };
+  }
+  return { isValid: true };
+}
+
+export function validateAnnualManagementFees(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value < 0 || value > 20) {
+    return { isValid: false, message: 'Annual management fees must be between 0% and 20% of rental income' };
+  }
+  return { isValid: true };
+}
+
+export function validatePropertyInsurance(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value < 0) {
+    return { isValid: false, message: 'Property insurance cannot be negative' };
+  }
+  return { isValid: true };
+}
+
+export function validatePropertyTaxes(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value < 0) {
+    return { isValid: false, message: 'Property taxes cannot be negative' };
+  }
+  return { isValid: true };
+}
+
+export function validateMaintenanceReserves(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value < 0 || value > 10) {
+    return { isValid: false, message: 'Maintenance reserves must be between 0% and 10% of rental income' };
+  }
+  return { isValid: true };
+}
+
+export function validateMarketGrowthRate(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value < -10 || value > 30) {
+    return { isValid: false, message: 'Market growth rate must be between -10% and 30%' };
+  }
+  return { isValid: true };
+}
+
+export function validateInflationRate(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value < -5 || value > 20) {
+    return { isValid: false, message: 'Inflation rate must be between -5% and 20%' };
   }
   return { isValid: true };
 }

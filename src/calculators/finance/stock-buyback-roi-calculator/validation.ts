@@ -1,11 +1,11 @@
 import { ValidationResult } from '../../lib/errors';
-import { stockbuybackroicalculatorCalculatorInputs } from './types';
+import { stockbuybackroicalculatorInputs } from './types';
 
 /**
  * Validate stock buyback roi calculator calculator inputs
  */
-export function validatestockbuybackroicalculatorCalculatorInputs(
-  inputs: stockbuybackroicalculatorCalculatorInputs
+export function validatestockbuybackroicalculatorInputs(
+  inputs: stockbuybackroicalculatorInputs
 ): ValidationResult {
   const errors: string[] = [];
 

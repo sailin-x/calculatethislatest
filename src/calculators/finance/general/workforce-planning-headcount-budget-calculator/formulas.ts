@@ -1,4 +1,4 @@
-import { workforce-planning-headcount-budget-calculatorInputs, workforce-planning-headcount-budget-calculatorMetrics, workforce-planning-headcount-budget-calculatorAnalysis } from './types';
+import { WorkforcePlanningHeadcount-budget-calculatorInputs, WorkforcePlanningHeadcount-budget-calculatorMetrics, WorkforcePlanningHeadcount-budget-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: workforce-planning-headcount-budget-calculatorInputs): number {
+export function calculateResult(inputs: WorkforcePlanningHeadcount-budget-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: workforce-planning-headcount-budget-calc
   }
 }
 
-export function generateAnalysis(inputs: workforce-planning-headcount-budget-calculatorInputs, metrics: workforce-planning-headcount-budget-calculatorMetrics): workforce-planning-headcount-budget-calculatorAnalysis {
+export function generateAnalysis(inputs: WorkforcePlanningHeadcount-budget-calculatorInputs, metrics: WorkforcePlanningHeadcount-budget-calculatorMetrics): WorkforcePlanningHeadcount-budget-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

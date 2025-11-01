@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateWaterRightsValuationCalculatorInputs, validateWaterRightsValuationCalculatorBusinessRules } from './validation';
 
-export const WaterRightsValuationCalculatorCalculator: Calculator: Calculator = {
-  id: 'water-rights-valuation-calculator-calculator',
+export const WaterRightsValuationCalculator: Calculator = {
+  id: 'WaterRightsValuation-calculator-calculator',
   title: 'Water Rights Valuation Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

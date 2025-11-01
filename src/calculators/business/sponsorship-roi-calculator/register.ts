@@ -1,3 +1,3 @@
-import { SponsorshipRoiCalculatorCalculator } from './SponsorshipRoiCalculatorCalculator';
+import { SponsorshipRoiCalculator } from './SponsorshipRoiCalculator';
 
-export { SponsorshipRoiCalculatorCalculator };
+export { SponsorshipRoiCalculator };

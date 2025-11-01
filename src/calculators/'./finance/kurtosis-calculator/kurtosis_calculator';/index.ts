@@ -1,3 +1,0 @@
-export * from './'./finance/kurtosis-calculator/kurtosis_calculator';Calculator';
-export * from './register';
-export * from './types';

@@ -1,4 +1,4 @@
-import { real-estate-investment-calculator-exists-but-needs-registrationInputs, real-estate-investment-calculator-exists-but-needs-registrationMetrics, real-estate-investment-calculator-exists-but-needs-registrationAnalysis } from './types';
+import { RealEstateInvestment-CalculatorExistsBut-needs-registrationInputs, RealEstateInvestment-CalculatorExistsBut-needs-registrationMetrics, RealEstateInvestment-CalculatorExistsBut-needs-registrationAnalysis } from './types';
 
 
 // Investment Calculator - ROI and growth calculations
@@ -12,7 +12,7 @@ export function calculateCompoundInterest(principal: number, rate: number, years
   return principal * Math.pow(1 + ratePerPeriod, totalPeriods);
 }
 
-export function calculateResult(inputs: real-estate-investment-calculator-exists-but-needs-registrationInputs): number {
+export function calculateResult(inputs: RealEstateInvestment-CalculatorExistsBut-needs-registrationInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -36,7 +36,7 @@ export function calculateResult(inputs: real-estate-investment-calculator-exists
   }
 }
 
-export function generateAnalysis(inputs: real-estate-investment-calculator-exists-but-needs-registrationInputs, metrics: real-estate-investment-calculator-exists-but-needs-registrationMetrics): real-estate-investment-calculator-exists-but-needs-registrationAnalysis {
+export function generateAnalysis(inputs: RealEstateInvestment-CalculatorExistsBut-needs-registrationInputs, metrics: RealEstateInvestment-CalculatorExistsBut-needs-registrationMetrics): RealEstateInvestment-CalculatorExistsBut-needs-registrationAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

@@ -1,4 +1,4 @@
-import { maximum-drawdown-calculatorInputs, maximum-drawdown-calculatorMetrics, maximum-drawdown-calculatorAnalysis } from './types';
+import { MaximumDrawdownCalculatorinputs, MaximumDrawdownCalculatormetrics, MaximumDrawdownCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: maximum-drawdown-calculatorInputs): number {
+export function calculateResult(inputs: MaximumDrawdownCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: maximum-drawdown-calculatorInputs): numb
   }
 }
 
-export function generateAnalysis(inputs: maximum-drawdown-calculatorInputs, metrics: maximum-drawdown-calculatorMetrics): maximum-drawdown-calculatorAnalysis {
+export function generateAnalysis(inputs: MaximumDrawdownCalculatorinputs, metrics: MaximumDrawdownCalculatormetrics): MaximumDrawdownCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

@@ -1,3 +1,3 @@
-import { CompoundAnnualGrowthRateCagrCalculatorCalculator } from './CompoundAnnualGrowthRateCagrCalculatorCalculator';
+import { CompoundAnnualGrowthRateCagrCalculator } from './CompoundAnnualGrowthRateCagrCalculator';
 
-export { CompoundAnnualGrowthRateCagrCalculatorCalculator };
+export { CompoundAnnualGrowthRateCagrCalculator };

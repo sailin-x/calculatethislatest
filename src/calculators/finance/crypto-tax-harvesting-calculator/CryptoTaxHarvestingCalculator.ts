@@ -1,69 +1,29 @@
-import { Calculator } from '../../types/calculator';
-import { CryptoTaxHarvestingCalculatorInputs, CryptoTaxHarvestingCalculatorOutputs } from './types';
-import {
-  // Import calculation functions from formulas.ts
-  calculateResult,
-  calculateSecondaryResult,
-  // Add other formula imports as needed
-} from './formulas';
-import { validateCryptoTaxHarvestingCalculatorInputs, validateCryptoTaxHarvestingCalculatorBusinessRules } from './validation';
+import { Calculator } from '../../engines/CalculatorEngine';
+import { cryptotaxharvestingcalculatorInputs, cryptotaxharvestingcalculatorOutputs } from './types';
+import { calculatecryptotaxharvestingcalculatorResults } from './formulas';
+import { validatecryptotaxharvestingcalculatorInputs } from './validation';
 
-export const CryptoTaxHarvestingCalculatorCalculator: Calculator: Calculator = {
-  id: 'crypto-tax-harvesting-calculator-calculator',
-  title: 'Crypto Tax Harvesting Calculator Calculator',
-  finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
-  subfinance: 'Subfinance Name',
-  description: 'Brief description of what this calculator does and its purpose.',
-  usageInstructions: [
-    'Step 1: Enter the primary input values',
-    'Step 2: Configure any optional parameters',
-    'Step 3: Review the calculated results',
-    'Step 4: Adjust inputs as needed for different scenarios'
-  ],
+export class cryptotaxharvestingcalculator implements Calculator<
+  cryptotaxharvestingcalculatorInputs,
+  cryptotaxharvestingcalculatorOutputs
+> {
+  readonly id = 'crypto_tax_harvesting_calculator_calculator';
+  readonly name = 'crypto tax harvesting calculator Calculator';
+  readonly description = 'Professional crypto tax harvesting calculator calculator with domain-specific functionality';
 
-  inputs: [
-    {
-        "id": "input1",
-        "label": "Input 1",
-        "type": "number",
-        "required": true,
-        "min": 0,
-        "tooltip": "Primary input value"
-    },
-    {
-        "id": "input2",
-        "label": "Input 2",
-        "type": "currency",
-        "required": true,
-        "min": 0,
-        "tooltip": "Secondary input value"
+  calculate(inputs: cryptotaxharvestingcalculatorInputs): cryptotaxharvestingcalculatorOutputs {
+    const validation = validatecryptotaxharvestingcalculatorInputs(inputs);
+    if (!validation.isValid) {
+      throw new Error(`Validation failed: ${validation.errors.join(', ')}`);
     }
-],
 
-  outputs: [
-    {
-        "id": "result",
-        "label": "Result",
-        "type": "currency",
-        "explanation": "Calculated result"
-    }
-],
+    return calculatecryptotaxharvestingcalculatorResults(inputs);
+  }
 
-  formulas: [], // Formulas are implemented in formulas.ts
+  validateInputs(inputs: cryptotaxharvestingcalculatorInputs): boolean {
+    const validation = validatecryptotaxharvestingcalculatorInputs(inputs);
+    return validation.isValid;
+  }
+}
 
-  validationRules: [], // Validation rules are implemented in validation.ts
-
-  examples: [
-    {
-        "title": "Basic Example",
-        "description": "Standard calculation example",
-        "inputs": {
-            "input1": 100,
-            "input2": 50
-        },
-        "expectedOutputs": {
-            "result": 150
-        }
-    }
-]
-};
+export const CryptoTaxHarvestingCalculator = cryptotaxharvestingcalculator;

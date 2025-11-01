@@ -1,4 +1,4 @@
-import { financial-achievement-calculatorInputs, financial-achievement-calculatorMetrics, financial-achievement-calculatorAnalysis } from './types';
+import { FinancialAchievementCalculatorinputs, FinancialAchievementCalculatormetrics, FinancialAchievementCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: financial-achievement-calculatorInputs): number {
+export function calculateResult(inputs: FinancialAchievementCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: financial-achievement-calculatorInputs):
   }
 }
 
-export function generateAnalysis(inputs: financial-achievement-calculatorInputs, metrics: financial-achievement-calculatorMetrics): financial-achievement-calculatorAnalysis {
+export function generateAnalysis(inputs: FinancialAchievementCalculatorinputs, metrics: FinancialAchievementCalculatormetrics): FinancialAchievementCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

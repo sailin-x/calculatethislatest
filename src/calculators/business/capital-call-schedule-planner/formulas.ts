@@ -1,4 +1,4 @@
-import { capital-call-schedule-plannerInputs, capital-call-schedule-plannerMetrics, capital-call-schedule-plannerAnalysis } from './types';
+import { CapitalCallSchedule-plannerInputs, CapitalCallSchedule-plannerMetrics, CapitalCallSchedule-plannerAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: capital-call-schedule-plannerInputs): number {
+export function calculateResult(inputs: CapitalCallSchedule-plannerInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: capital-call-schedule-plannerInputs): nu
   }
 }
 
-export function generateAnalysis(inputs: capital-call-schedule-plannerInputs, metrics: capital-call-schedule-plannerMetrics): capital-call-schedule-plannerAnalysis {
+export function generateAnalysis(inputs: CapitalCallSchedule-plannerInputs, metrics: CapitalCallSchedule-plannerMetrics): CapitalCallSchedule-plannerAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

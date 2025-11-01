@@ -1,11 +1,11 @@
 import { ValidationResult } from '../../lib/errors';
-import { bondconvexitycalculatorCalculatorInputs } from './types';
+import { bondconvexitycalculatorInputs } from './types';
 
 /**
  * Validate bond convexity calculator calculator inputs
  */
-export function validatebondconvexitycalculatorCalculatorInputs(
-  inputs: bondconvexitycalculatorCalculatorInputs
+export function validatebondconvexitycalculatorInputs(
+  inputs: bondconvexitycalculatorInputs
 ): ValidationResult {
   const errors: string[] = [];
 

@@ -1,4 +1,4 @@
-export { FineArtInvestmentRoiCalculatorCalculator } from './FineArtInvestmentRoiCalculatorCalculator';
+export { FineArtInvestmentRoiCalculator } from './FineArtInvestmentRoiCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

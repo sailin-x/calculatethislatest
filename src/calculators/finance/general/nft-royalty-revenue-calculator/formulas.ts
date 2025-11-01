@@ -1,4 +1,4 @@
-import { nft-royalty-revenue-calculatorInputs, nft-royalty-revenue-calculatorMetrics, nft-royalty-revenue-calculatorAnalysis } from './types';
+import { NftRoyaltyRevenue-calculatorInputs, NftRoyaltyRevenue-calculatorMetrics, NftRoyaltyRevenue-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: nft-royalty-revenue-calculatorInputs): number {
+export function calculateResult(inputs: NftRoyaltyRevenue-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: nft-royalty-revenue-calculatorInputs): n
   }
 }
 
-export function generateAnalysis(inputs: nft-royalty-revenue-calculatorInputs, metrics: nft-royalty-revenue-calculatorMetrics): nft-royalty-revenue-calculatorAnalysis {
+export function generateAnalysis(inputs: NftRoyaltyRevenue-calculatorInputs, metrics: NftRoyaltyRevenue-calculatorMetrics): NftRoyaltyRevenue-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

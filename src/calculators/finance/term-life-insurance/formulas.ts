@@ -1,4 +1,4 @@
-import { term-life-insuranceInputs, term-life-insuranceMetrics, term-life-insuranceAnalysis } from './types';
+import { TermLifeInsuranceinputs, TermLifeInsurancemetrics, TermLifeInsuranceanalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: term-life-insuranceInputs): number {
+export function calculateResult(inputs: TermLifeInsuranceinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: term-life-insuranceInputs): number {
   }
 }
 
-export function generateAnalysis(inputs: term-life-insuranceInputs, metrics: term-life-insuranceMetrics): term-life-insuranceAnalysis {
+export function generateAnalysis(inputs: TermLifeInsuranceinputs, metrics: TermLifeInsurancemetrics): TermLifeInsuranceanalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

@@ -51,7 +51,7 @@ describe('RealEstateCrowdfundingCalculator', () => {
 
   describe('Calculator Structure', () => {
     it('should have correct calculator properties', () => {
-      expect(RealEstateCrowdfundingCalculator.id).toBe('real-estate-crowdfunding-calculator');
+      expect(RealEstateCrowdfundingCalculator.id).toBe('RealEstateCrowdfunding-calculator');
       expect(RealEstateCrowdfundingCalculator.title).toBe('Real Estate Crowdfunding Calculator');
       expect(RealEstateCrowdfundingCalculator.category).toBe('finance');
       expect(RealEstateCrowdfundingCalculator.description).toBeTruthy();
@@ -83,7 +83,7 @@ describe('RealEstateCrowdfundingCalculator', () => {
       expect(result.equityPercentage).toBeLessThanOrEqual(100);
     });
 
-    it('should calculate cash-on-cash return', () => {
+    it('should calculate CashOnCash return', () => {
       const result = calculateRealEstateCrowdfunding(testInputs);
       expect(result.cashOnCashReturn).toBeGreaterThan(0);
       expect(typeof result.cashOnCashReturn).toBe('number');
@@ -129,11 +129,11 @@ describe('RealEstateCrowdfundingCalculator', () => {
       expect(validation.errors).toContain('Investment amount cannot exceed total project cost');
     });
 
-    it('should reject invalid loan-to-value ratio', () => {
+    it('should reject invalid LoanToValue ratio', () => {
       const invalidInputs = { ...testInputs, loanToValue: 150 };
       const validation = validateRealEstateCrowdfundingInputs(invalidInputs);
       expect(validation.isValid).toBe(false);
-      expect(validation.errors).toContain('Loan-to-value ratio must be between 0 and 100');
+      expect(validation.errors).toContain('LoanToValue ratio must be between 0 and 100');
     });
   });
 

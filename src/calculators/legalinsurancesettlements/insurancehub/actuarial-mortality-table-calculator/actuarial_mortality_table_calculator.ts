@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { actuarial_mortality_table_calculatorInputs, actuarial_mortality_table_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const actuarial_mortality_table_calculatorCalculator: Calculator = {
-  id: 'actuarial-mortality-table-calculator',
+export const ActuarialMortalityTable-calculator: Calculator = {
+  id: 'ActuarialMortalityTable-calculator',
   title: 'Actuarial Mortality Table Calculator Calculator',
   category: 'legalinsurancesettlements',
   subcategory: 'insurancehub',

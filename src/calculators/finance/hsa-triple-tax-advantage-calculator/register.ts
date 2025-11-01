@@ -1,3 +1,3 @@
-import { HsaTripleTaxAdvantageCalculatorCalculator } from './HsaTripleTaxAdvantageCalculatorCalculator';
+import { HsaTripleTaxAdvantageCalculator } from './HsaTripleTaxAdvantageCalculator';
 
-export { HsaTripleTaxAdvantageCalculatorCalculator };
+export { HsaTripleTaxAdvantageCalculator };

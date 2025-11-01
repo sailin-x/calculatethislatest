@@ -10,7 +10,7 @@ import {
 import { validateSwingTradingCalculatorInputs } from './validation';
 
 export const SwingTradingCalculator: Calculator = {
-  id: 'swing-trading-calculator',
+  id: 'SwingTradingCalculator',
   title: 'Swing Trading Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

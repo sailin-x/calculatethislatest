@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateAngelInvestmentDilutionCalculatorInputs, validateAngelInvestmentDilutionCalculatorBusinessRules } from './validation';
 
-export const AngelInvestmentDilutionCalculatorCalculator: Calculator: Calculator = {
-  id: 'angel-investment-dilution-calculator-calculator',
+export const AngelInvestmentDilutionCalculator: Calculator = {
+  id: 'AngelInvestmentDilution-calculator-calculator',
   title: 'Angel Investment Dilution Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

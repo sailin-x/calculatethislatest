@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { government_contract_bid_no_bid_decision_calculatorInputs, government_contract_bid_no_bid_decision_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const government_contract_bid_no_bid_decision_calculatorCalculator: Calculator = {
-  id: 'government-contract-bid-no-bid-decision-calculator',
+export const GovernmentContractBid-NoBidDecision-calculator: Calculator = {
+  id: 'GovernmentContractBid-NoBidDecision-calculator',
   title: 'Government Contract Bid/No Bid Decision Calculator Calculator',
   category: 'businessmarketingoperations',
   subcategory: 'businessoperationsfinancehub',

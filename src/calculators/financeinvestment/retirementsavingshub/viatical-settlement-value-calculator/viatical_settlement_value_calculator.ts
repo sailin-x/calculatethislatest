@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { viatical_settlement_value_calculatorInputs, viatical_settlement_value_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const viatical_settlement_value_calculatorCalculator: Calculator = {
-  id: 'viatical-settlement-value-calculator',
+export const ViaticalSettlementValue-calculator: Calculator = {
+  id: 'ViaticalSettlementValue-calculator',
   title: 'Viatical Settlement Value Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'retirementsavingshub',

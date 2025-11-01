@@ -1,11 +1,11 @@
 import { ValidationResult } from '../../lib/errors';
-import { stockoptionsvaluationcalculatorCalculatorInputs } from './types';
+import { stockoptionsvaluationcalculatorInputs } from './types';
 
 /**
  * Validate stock options valuation calculator calculator inputs
  */
-export function validatestockoptionsvaluationcalculatorCalculatorInputs(
-  inputs: stockoptionsvaluationcalculatorCalculatorInputs
+export function validatestockoptionsvaluationcalculatorInputs(
+  inputs: stockoptionsvaluationcalculatorInputs
 ): ValidationResult {
   const errors: string[] = [];
 

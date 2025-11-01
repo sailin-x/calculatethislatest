@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { working_capital_calculatorInputs, working_capital_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const working_capital_calculatorCalculator: Calculator = {
-  id: 'working-capital-calculator',
+export const WorkingCapitalCalculator: Calculator = {
+  id: 'WorkingCapitalCalculator',
   title: 'Working Capital Calculator Calculator',
   category: 'businessmarketingoperations',
   subcategory: 'businessoperationsfinancehub',

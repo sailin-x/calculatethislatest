@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { child_support_calculatorInputs, child_support_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const child_support_calculatorCalculator: Calculator = {
-  id: 'child-support-calculator',
+export const ChildSupportCalculator: Calculator = {
+  id: 'ChildSupportCalculator',
   title: 'Child Support Calculator Calculator',
   category: 'legalinsurancesettlements',
   subcategory: 'legalsettlementhub',

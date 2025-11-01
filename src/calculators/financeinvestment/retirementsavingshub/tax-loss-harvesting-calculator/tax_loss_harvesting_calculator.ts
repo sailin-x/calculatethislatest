@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { tax_loss_harvesting_calculatorInputs, tax_loss_harvesting_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const tax_loss_harvesting_calculatorCalculator: Calculator = {
-  id: 'tax-loss-harvesting-calculator',
+export const TaxLossHarvesting-calculator: Calculator = {
+  id: 'TaxLossHarvesting-calculator',
   title: 'Tax Loss Harvesting Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'retirementsavingshub',

@@ -1,3 +1,3 @@
-import { CarbCyclingCalculatorCalculator } from './CarbCyclingCalculatorCalculator';
+import { CarbCyclingCalculator } from './CarbCyclingCalculator';
 
-export { CarbCyclingCalculatorCalculator };
+export { CarbCyclingCalculator };

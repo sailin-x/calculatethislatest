@@ -1,4 +1,4 @@
-export { BusinessInterruptionCalculatorCalculator } from './BusinessInterruptionCalculatorCalculator';
+export { BusinessInterruptionCalculator } from './BusinessInterruptionCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

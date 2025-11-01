@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateOutofhomeOohAdvertisingRoiCalculatorInputs, validateOutofhomeOohAdvertisingRoiCalculatorBusinessRules } from './validation';
 
-export const OutofhomeOohAdvertisingRoiCalculatorCalculator: Calculator: Calculator = {
-  id: 'out-of-home-ooh-advertising-roi-calculator-calculator',
-  title: 'Out-of-Home (OOH) Advertising ROI Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+export const OutofhomeOohAdvertisingRoiCalculator: Calculator = {
+  id: 'OutOfHome-OohAdvertisingRoi-calculator-calculator',
+  title: 'OutOfHome (OOH) Advertising ROI Calculator Calculator',
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

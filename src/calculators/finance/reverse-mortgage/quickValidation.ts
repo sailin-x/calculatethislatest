@@ -97,9 +97,9 @@ export function validateLoanType(value: string, allInputs?: Record<string, any>)
 
 export function validatePaymentOption(value: string, allInputs?: Record<string, any>): string | null {
   if (!value) return 'Payment option is required';
-  const validOptions = ['tenure', 'term', 'line-of-credit', 'modified-tenure', 'modified-term'];
+  const validOptions = ['tenure', 'term', 'LineOfCredit', 'modified-tenure', 'modified-term'];
   if (!validOptions.includes(value)) {
-    return 'Payment option must be one of: tenure, term, line-of-credit, modified-tenure, modified-term';
+    return 'Payment option must be one of: tenure, term, LineOfCredit, modified-tenure, modified-term';
   }
   return null;
 }

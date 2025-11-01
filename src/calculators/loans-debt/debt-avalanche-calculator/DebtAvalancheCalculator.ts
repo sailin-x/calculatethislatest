@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateDebtAvalancheCalculatorInputs, validateDebtAvalancheCalculatorBusinessRules } from './validation';
 
-export const DebtAvalancheCalculatorCalculator: Calculator: Calculator = {
-  id: 'debt-avalanche-calculator-calculator',
+export const DebtAvalancheCalculator: Calculator = {
+  id: 'DebtAvalancheCalculator-calculator',
   title: 'Debt Avalanche Calculator Calculator',
   loans-debt: 'loans-debt', // e.g., 'finance', 'math', 'health', 'business'
   subloans-debt: 'Subloans-debt Name',

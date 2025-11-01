@@ -1,4 +1,4 @@
-import { quick-ratio-calculatorInputs, quick-ratio-calculatorMetrics, quick-ratio-calculatorAnalysis } from './types';
+import { QuickRatioCalculatorinputs, QuickRatioCalculatormetrics, QuickRatioCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: quick-ratio-calculatorInputs): number {
+export function calculateResult(inputs: QuickRatioCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: quick-ratio-calculatorInputs): number {
   }
 }
 
-export function generateAnalysis(inputs: quick-ratio-calculatorInputs, metrics: quick-ratio-calculatorMetrics): quick-ratio-calculatorAnalysis {
+export function generateAnalysis(inputs: QuickRatioCalculatorinputs, metrics: QuickRatioCalculatormetrics): QuickRatioCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

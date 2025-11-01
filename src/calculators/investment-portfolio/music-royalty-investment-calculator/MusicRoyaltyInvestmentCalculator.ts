@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateMusicRoyaltyInvestmentCalculatorInputs, validateMusicRoyaltyInvestmentCalculatorBusinessRules } from './validation';
 
-export const MusicRoyaltyInvestmentCalculatorCalculator: Calculator: Calculator = {
-  id: 'music-royalty-investment-calculator-calculator',
+export const MusicRoyaltyInvestmentCalculator: Calculator = {
+  id: 'MusicRoyaltyInvestment-calculator-calculator',
   title: 'Music Royalty Investment Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

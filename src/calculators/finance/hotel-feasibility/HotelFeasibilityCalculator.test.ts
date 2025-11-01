@@ -7,7 +7,7 @@ import { validateAllHotelFeasibilityInputs } from './quickValidation';
 describe('Hotel Feasibility Calculator', () => {
   describe('Calculator Structure', () => {
     it('should have correct basic properties', () => {
-      expect(HotelFeasibilityCalculator.id).toBe('hotel-feasibility-calculator');
+      expect(HotelFeasibilityCalculator.id).toBe('HotelFeasibilityCalculator');
       expect(HotelFeasibilityCalculator.name).toBe('Hotel Feasibility & ADR Calculator');
       expect(HotelFeasibilityCalculator.category).toBe('finance');
       expect(HotelFeasibilityCalculator.subcategory).toBe('investment');
@@ -276,7 +276,7 @@ describe('Hotel Feasibility Calculator', () => {
       expect(outputs.annualDebtService).toBeGreaterThan(0);
     });
 
-    it('should calculate cash-on-cash return', () => {
+    it('should calculate CashOnCash return', () => {
       const inputs = {
         totalRooms: 100,
         downPayment: 25

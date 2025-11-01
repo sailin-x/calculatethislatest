@@ -1,4 +1,4 @@
-import { commodities-futures-profitability-calculatorInputs, commodities-futures-profitability-calculatorMetrics, commodities-futures-profitability-calculatorAnalysis } from './types';
+import { CommoditiesFuturesProfitability-calculatorInputs, CommoditiesFuturesProfitability-calculatorMetrics, CommoditiesFuturesProfitability-calculatorAnalysis } from './types';
 
 
 // Business Calculator - Financial metrics
@@ -14,7 +14,7 @@ export function calculatePaybackPeriod(initialInvestment: number, annualCashFlow
   return initialInvestment / annualCashFlow;
 }
 
-export function calculateResult(inputs: commodities-futures-profitability-calculatorInputs): number {
+export function calculateResult(inputs: CommoditiesFuturesProfitability-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: commodities-futures-profitability-calcul
   }
 }
 
-export function generateAnalysis(inputs: commodities-futures-profitability-calculatorInputs, metrics: commodities-futures-profitability-calculatorMetrics): commodities-futures-profitability-calculatorAnalysis {
+export function generateAnalysis(inputs: CommoditiesFuturesProfitability-calculatorInputs, metrics: CommoditiesFuturesProfitability-calculatorMetrics): CommoditiesFuturesProfitability-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

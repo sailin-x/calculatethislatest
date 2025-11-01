@@ -4,7 +4,7 @@ import { calculateCollegeSavings } from './formulas';
 import { validateCollegeSavingsInputs } from './validation';
 
 export const CollegeSavingsCalculator: Calculator = {
-  id: 'college-savings-calculator',
+  id: 'CollegeSavingsCalculator',
   title: 'College Savings Calculator',
   category: 'finance',
   subcategory: 'Education',
@@ -259,7 +259,7 @@ export const CollegeSavingsCalculator: Calculator = {
   examples: [
     {
       title: 'Middle-Income Family',
-      description: 'Family planning for a 5-year-old child with moderate savings goals',
+      description: 'Family planning for a 5YearOld child with moderate savings goals',
       inputs: {
         childAge: 5,
         childName: 'Emma Johnson',

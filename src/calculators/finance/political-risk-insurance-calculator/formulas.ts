@@ -1,13 +1,13 @@
-import { political-risk-insurance-calculatorInputs, political-risk-insurance-calculatorMetrics, political-risk-insurance-calculatorAnalysis } from './types';
+import { PoliticalRiskInsurance-calculatorInputs, PoliticalRiskInsurance-calculatorMetrics, PoliticalRiskInsurance-calculatorAnalysis } from './types';
 
 // Political Risk Insurance Calculator - Finance calculations
-export function calculateResult(inputs: political-risk-insurance-calculatorInputs): number {
+export function calculateResult(inputs: PoliticalRiskInsurance-calculatorInputs): number {
   // Financial calculation logic
   const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
   return numericValues.reduce((sum, val) => sum + val, 0) || 0;
 }
 
-export function generateAnalysis(inputs: political-risk-insurance-calculatorInputs, metrics: political-risk-insurance-calculatorMetrics): political-risk-insurance-calculatorAnalysis {
+export function generateAnalysis(inputs: PoliticalRiskInsurance-calculatorInputs, metrics: PoliticalRiskInsurance-calculatorMetrics): PoliticalRiskInsurance-calculatorAnalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (Math.abs(result) > 100000) riskLevel = 'High';

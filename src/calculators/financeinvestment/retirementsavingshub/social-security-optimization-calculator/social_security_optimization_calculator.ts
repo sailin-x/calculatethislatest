@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { social_security_optimization_calculatorInputs, social_security_optimization_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const social_security_optimization_calculatorCalculator: Calculator = {
-  id: 'social-security-optimization-calculator',
+export const SocialSecurityOptimization-calculator: Calculator = {
+  id: 'SocialSecurityOptimization-calculator',
   title: 'Social Security Optimization Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'retirementsavingshub',

@@ -1,4 +1,4 @@
-export { RequiredBeginningDate(rbd)ForRmdsCalculatorCalculator } from './RequiredBeginningDate(rbd)ForRmdsCalculatorCalculator';
+export { RequiredBeginningDate(rbd)ForRmdsCalculator } from './RequiredBeginningDate(rbd)ForRmdsCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

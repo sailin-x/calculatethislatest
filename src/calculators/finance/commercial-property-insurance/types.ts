@@ -4,7 +4,7 @@ export interface CommercialPropertyInsuranceInputs {
   contentsValue: number;
   businessIncome: number;
   propertyType: 'office' | 'retail' | 'warehouse' | 'restaurant' | 'hotel' | 'medical' | 'manufacturing' | 'mixed-use';
-  constructionType: 'frame' | 'joisted-masonry' | 'non-combustible' | 'masonry-non-combustible' | 'modified-fire-resistive' | 'fire-resistive';
+  constructionType: 'frame' | 'joisted-masonry' | 'non-combustible' | 'MasonryNonCombustible' | 'ModifiedFireResistive' | 'fire-resistive';
   yearBuilt: number;
   squareFootage: number;
   location: string;

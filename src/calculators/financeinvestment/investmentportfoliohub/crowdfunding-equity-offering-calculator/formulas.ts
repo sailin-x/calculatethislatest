@@ -1,4 +1,4 @@
-import { crowdfunding-equity-offering-calculatorInputs, crowdfunding-equity-offering-calculatorMetrics, crowdfunding-equity-offering-calculatorAnalysis } from './types';
+import { CrowdfundingEquityOffering-calculatorInputs, CrowdfundingEquityOffering-calculatorMetrics, CrowdfundingEquityOffering-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: crowdfunding-equity-offering-calculatorInputs): number {
+export function calculateResult(inputs: CrowdfundingEquityOffering-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: crowdfunding-equity-offering-calculatorI
   }
 }
 
-export function generateAnalysis(inputs: crowdfunding-equity-offering-calculatorInputs, metrics: crowdfunding-equity-offering-calculatorMetrics): crowdfunding-equity-offering-calculatorAnalysis {
+export function generateAnalysis(inputs: CrowdfundingEquityOffering-calculatorInputs, metrics: CrowdfundingEquityOffering-calculatorMetrics): CrowdfundingEquityOffering-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

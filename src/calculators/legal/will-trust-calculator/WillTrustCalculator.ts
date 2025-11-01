@@ -9,7 +9,7 @@ import {
 import { validateWillTrustCalculatorInputs } from './validation';
 
 export const WillTrustCalculator: Calculator = {
-  id: 'will-trust-calculator',
+  id: 'WillTrustCalculator',
   title: 'Will & Trust Calculator',
   category: 'legal',
   subcategory: 'Settlement Analysis',

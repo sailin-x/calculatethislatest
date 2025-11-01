@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validatePersonalInjuryMultiplierCalculatorInputs, validatePersonalInjuryMultiplierCalculatorBusinessRules } from './validation';
 
-export const PersonalInjuryMultiplierCalculatorCalculator: Calculator: Calculator = {
-  id: 'personal-injury-multiplier-calculator-calculator',
+export const PersonalInjuryMultiplierCalculator: Calculator = {
+  id: 'PersonalInjuryMultiplier-calculator-calculator',
   title: 'Personal Injury Multiplier Calculator Calculator',
   legal: 'legal', // e.g., 'finance', 'math', 'health', 'business'
   sublegal: 'Sublegal Name',

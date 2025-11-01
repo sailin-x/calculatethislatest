@@ -1,3 +1,3 @@
-import { PriceToEarningsCalculatorCalculator } from './PriceToEarningsCalculatorCalculator';
+import { PriceToEarningsCalculator } from './PriceToEarningsCalculator';
 
-export { PriceToEarningsCalculatorCalculator };
+export { PriceToEarningsCalculator };

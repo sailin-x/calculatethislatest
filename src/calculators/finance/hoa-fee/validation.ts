@@ -170,7 +170,7 @@ export function validateHOAFeeInputs(inputs: CalculatorInputs): ValidationResult
   }
 
   // Rental restrictions validation
-  if (inputs.rentalRestrictions && !['none', 'minimum-lease', 'rental-cap', 'owner-occupancy-required', 'no-rentals'].includes(inputs.rentalRestrictions)) {
+  if (inputs.rentalRestrictions && !['none', 'minimum-lease', 'rental-cap', 'OwnerOccupancyRequired', 'no-rentals'].includes(inputs.rentalRestrictions)) {
     errors.push('Invalid rental restrictions');
   }
 

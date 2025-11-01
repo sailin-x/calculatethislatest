@@ -1,4 +1,4 @@
-export { AirCargoYieldManagementCalculatorCalculator } from './AirCargoYieldManagementCalculatorCalculator';
+export { AirCargoYieldManagementCalculator } from './AirCargoYieldManagementCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

@@ -1,4 +1,4 @@
-import { zoning-variance-economic-impact-calculatorInputs, zoning-variance-economic-impact-calculatorMetrics, zoning-variance-economic-impact-calculatorAnalysis } from './types';
+import { ZoningVarianceEconomic-impact-calculatorInputs, ZoningVarianceEconomic-impact-calculatorMetrics, ZoningVarianceEconomic-impact-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: zoning-variance-economic-impact-calculatorInputs): number {
+export function calculateResult(inputs: ZoningVarianceEconomic-impact-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: zoning-variance-economic-impact-calculat
   }
 }
 
-export function generateAnalysis(inputs: zoning-variance-economic-impact-calculatorInputs, metrics: zoning-variance-economic-impact-calculatorMetrics): zoning-variance-economic-impact-calculatorAnalysis {
+export function generateAnalysis(inputs: ZoningVarianceEconomic-impact-calculatorInputs, metrics: ZoningVarianceEconomic-impact-calculatorMetrics): ZoningVarianceEconomic-impact-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

@@ -1,4 +1,4 @@
-import { classic-car-valuation-calculatorInputs, classic-car-valuation-calculatorMetrics, classic-car-valuation-calculatorAnalysis } from './types';
+import { ClassicCarValuation-calculatorInputs, ClassicCarValuation-calculatorMetrics, ClassicCarValuation-calculatorAnalysis } from './types';
 
 // Classic Car Valuation Calculator - Business calculations
 export function calculateNetPresentValue(cashFlows: number[], discountRate: number): number {
@@ -11,7 +11,7 @@ export function calculateROI(initialInvestment: number, finalValue: number): num
  return ((finalValue - initialInvestment) / initialInvestment) * 100;
 }
 
-export function calculateResult(inputs: classic-car-valuation-calculatorInputs): number {
+export function calculateResult(inputs: ClassicCarValuation-calculatorInputs): number {
  // Business calculation logic with real math
  const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
  if (numericValues.length >= 2) {
@@ -24,7 +24,7 @@ export function calculateResult(inputs: classic-car-valuation-calculatorInputs):
  return calculateNetPresentValue(numericValues, 10); // 10% discount rate
 }
 
-export function generateAnalysis(inputs: classic-car-valuation-calculatorInputs, metrics: classic-car-valuation-calculatorMetrics): classic-car-valuation-calculatorAnalysis {
+export function generateAnalysis(inputs: ClassicCarValuation-calculatorInputs, metrics: ClassicCarValuation-calculatorMetrics): ClassicCarValuation-calculatorAnalysis {
  const result = metrics.result;
  let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
  if (Math.abs(result) > 100000) riskLevel = 'High';

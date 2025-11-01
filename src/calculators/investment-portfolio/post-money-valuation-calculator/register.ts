@@ -1,3 +1,3 @@
-import { PostmoneyValuationCalculatorCalculator } from './PostmoneyValuationCalculatorCalculator';
+import { PostmoneyValuationCalculator } from './PostmoneyValuationCalculator';
 
-export { PostmoneyValuationCalculatorCalculator };
+export { PostmoneyValuationCalculator };

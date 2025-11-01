@@ -1,3 +1,3 @@
-import { ExecutiveDeferredCompensationPlanCalculatorCalculator } from './ExecutiveDeferredCompensationPlanCalculatorCalculator';
+import { ExecutiveDeferredCompensationPlanCalculator } from './ExecutiveDeferredCompensationPlanCalculator';
 
-export { ExecutiveDeferredCompensationPlanCalculatorCalculator };
+export { ExecutiveDeferredCompensationPlanCalculator };

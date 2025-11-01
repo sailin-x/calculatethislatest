@@ -1,5 +1,5 @@
-export { stockcalculatorCalculator } from './stockcalculatorCalculator';
-export { registerstockcalculatorCalculator } from './register';
+export { stockcalculator } from './stockcalculator';
+export { registerstockcalculator } from './register';
 export * from './types';
 export * from './formulas';
 export * from './validation';

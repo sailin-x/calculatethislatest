@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateDefectiveDrugSettlementCalculatorInputs, validateDefectiveDrugSettlementCalculatorBusinessRules } from './validation';
 
-export const DefectiveDrugSettlementCalculatorCalculator: Calculator: Calculator = {
-  id: 'defective-drug-settlement-calculator-calculator',
+export const DefectiveDrugSettlementCalculator: Calculator = {
+  id: 'DefectiveDrugSettlement-calculator-calculator',
   title: 'Defective Drug Settlement Calculator Calculator',
   legal: 'legal', // e.g., 'finance', 'math', 'health', 'business'
   sublegal: 'Sublegal Name',

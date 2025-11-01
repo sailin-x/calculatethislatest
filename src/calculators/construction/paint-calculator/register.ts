@@ -1,3 +1,3 @@
-import { PaintCalculatorCalculator } from './PaintCalculatorCalculator';
+import { PaintCalculator } from './PaintCalculator';
 
-export { PaintCalculatorCalculator };
+export { PaintCalculator };

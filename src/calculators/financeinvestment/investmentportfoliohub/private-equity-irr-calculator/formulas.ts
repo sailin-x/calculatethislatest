@@ -1,4 +1,4 @@
-import { private-equity-irr-calculatorInputs, private-equity-irr-calculatorMetrics, private-equity-irr-calculatorAnalysis } from './types';
+import { PrivateEquityIrr-calculatorInputs, PrivateEquityIrr-calculatorMetrics, PrivateEquityIrr-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: private-equity-irr-calculatorInputs): number {
+export function calculateResult(inputs: PrivateEquityIrr-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: private-equity-irr-calculatorInputs): nu
   }
 }
 
-export function generateAnalysis(inputs: private-equity-irr-calculatorInputs, metrics: private-equity-irr-calculatorMetrics): private-equity-irr-calculatorAnalysis {
+export function generateAnalysis(inputs: PrivateEquityIrr-calculatorInputs, metrics: PrivateEquityIrr-calculatorMetrics): PrivateEquityIrr-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

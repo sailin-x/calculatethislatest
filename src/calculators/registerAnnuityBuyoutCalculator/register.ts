@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { registerAnnuityBuyoutCalculatorCalculator } from './registerAnnuityBuyoutCalculatorCalculator';
+import { registerAnnuityBuyoutCalculator } from './registerAnnuityBuyoutCalculator';
 
-export function registerregisterAnnuityBuyoutCalculatorCalculator(): void {
-  calculatorRegistry.register(new registerAnnuityBuyoutCalculatorCalculator());
+export function registerregisterAnnuityBuyoutCalculator(): void {
+  calculatorRegistry.register(new registerAnnuityBuyoutCalculator());
 }

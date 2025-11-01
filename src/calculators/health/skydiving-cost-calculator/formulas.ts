@@ -1,4 +1,4 @@
-import { skydiving-cost-calculatorInputs, skydiving-cost-calculatorMetrics, skydiving-cost-calculatorAnalysis } from './types';
+import { SkydivingCostCalculatorinputs, SkydivingCostCalculatormetrics, SkydivingCostCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: skydiving-cost-calculatorInputs): number {
+export function calculateResult(inputs: SkydivingCostCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: skydiving-cost-calculatorInputs): number
   }
 }
 
-export function generateAnalysis(inputs: skydiving-cost-calculatorInputs, metrics: skydiving-cost-calculatorMetrics): skydiving-cost-calculatorAnalysis {
+export function generateAnalysis(inputs: SkydivingCostCalculatorinputs, metrics: SkydivingCostCalculatormetrics): SkydivingCostCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

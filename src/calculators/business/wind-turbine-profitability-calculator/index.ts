@@ -1,4 +1,4 @@
-export { WindTurbineProfitabilityCalculatorCalculator } from './WindTurbineProfitabilityCalculatorCalculator';
+export { WindTurbineProfitabilityCalculator } from './WindTurbineProfitabilityCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

@@ -1,4 +1,4 @@
-import { guideline-premium-test-gpt-calculatorInputs, guideline-premium-test-gpt-calculatorMetrics, guideline-premium-test-gpt-calculatorAnalysis } from './types';
+import { GuidelinePremiumTest-gpt-calculatorInputs, GuidelinePremiumTest-gpt-calculatorMetrics, GuidelinePremiumTest-gpt-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: guideline-premium-test-gpt-calculatorInputs): number {
+export function calculateResult(inputs: GuidelinePremiumTest-gpt-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: guideline-premium-test-gpt-calculatorInp
   }
 }
 
-export function generateAnalysis(inputs: guideline-premium-test-gpt-calculatorInputs, metrics: guideline-premium-test-gpt-calculatorMetrics): guideline-premium-test-gpt-calculatorAnalysis {
+export function generateAnalysis(inputs: GuidelinePremiumTest-gpt-calculatorInputs, metrics: GuidelinePremiumTest-gpt-calculatorMetrics): GuidelinePremiumTest-gpt-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

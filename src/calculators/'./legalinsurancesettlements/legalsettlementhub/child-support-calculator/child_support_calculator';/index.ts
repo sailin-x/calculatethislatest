@@ -1,3 +1,0 @@
-export * from './'./legalinsurancesettlements/legalsettlementhub/child-support-calculator/child_support_calculator';Calculator';
-export * from './register';
-export * from './types';

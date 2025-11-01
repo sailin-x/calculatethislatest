@@ -1,4 +1,4 @@
-export { employment_practices_liability_calculatorCalculator } from './employment_practices_liability_calculator';
+export { employment_practices_liability_calculator } from './employment_practices_liability_calculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

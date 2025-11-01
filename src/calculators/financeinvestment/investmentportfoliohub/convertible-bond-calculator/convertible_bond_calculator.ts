@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { convertible_bond_calculatorInputs, convertible_bond_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const convertible_bond_calculatorCalculator: Calculator = {
-  id: 'convertible-bond-calculator',
+export const ConvertibleBondCalculator: Calculator = {
+  id: 'ConvertibleBondCalculator',
   title: 'Convertible Bond Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'investmentportfoliohub',

@@ -3,7 +3,7 @@ import { catastrophe_bond_pricing_modelInputs, catastrophe_bond_pricing_modelOut
 import { calculateResult, generateAnalysis } from './formulas';
 
 export const catastrophe_bond_pricing_modelCalculator: Calculator = {
-  id: 'catastrophe-bond-pricing-model',
+  id: 'CatastropheBondPricing-model',
   title: 'Catastrophe Bond Pricing Model Calculator',
   category: 'finance',
   subcategory: 'general',

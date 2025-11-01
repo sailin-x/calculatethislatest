@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { contract_breach_damages_calculatorInputs, contract_breach_damages_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const contract_breach_damages_calculatorCalculator: Calculator = {
-  id: 'contract-breach-damages-calculator',
+export const ContractBreachDamages-calculator: Calculator = {
+  id: 'ContractBreachDamages-calculator',
   title: 'Contract Breach Damages Calculator Calculator',
   category: 'legalinsurancesettlements',
   subcategory: 'legalsettlementhub',

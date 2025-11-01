@@ -1,4 +1,4 @@
-import { cash-out-refinanceInputs, cash-out-refinanceMetrics, cash-out-refinanceAnalysis } from './types';
+import { CashOutRefinanceinputs, CashOutRefinancemetrics, CashOutRefinanceanalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: cash-out-refinanceInputs): number {
+export function calculateResult(inputs: CashOutRefinanceinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: cash-out-refinanceInputs): number {
   }
 }
 
-export function generateAnalysis(inputs: cash-out-refinanceInputs, metrics: cash-out-refinanceMetrics): cash-out-refinanceAnalysis {
+export function generateAnalysis(inputs: CashOutRefinanceinputs, metrics: CashOutRefinancemetrics): CashOutRefinanceanalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

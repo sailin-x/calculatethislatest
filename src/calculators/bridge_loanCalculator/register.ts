@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { bridge_loanCalculatorCalculator } from './bridge_loanCalculatorCalculator';
+import { bridge_loanCalculator } from './bridge_loanCalculator';
 
-export function registerbridge_loanCalculatorCalculator(): void {
-  calculatorRegistry.register(new bridge_loanCalculatorCalculator());
+export function registerbridge_loanCalculator(): void {
+  calculatorRegistry.register(new bridge_loanCalculator());
 }

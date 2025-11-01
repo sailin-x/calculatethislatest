@@ -3,7 +3,7 @@ import { free_cash_flow_to_equity_fcfe_valuationInputs, free_cash_flow_to_equity
 import { calculateResult, generateAnalysis } from './formulas';
 
 export const free_cash_flow_to_equity_fcfe_valuationCalculator: Calculator = {
-  id: 'free-cash-flow-to-equity-fcfe-valuation',
+  id: 'FreeCashFlow-ToEquityFcfe-valuation',
   title: 'Free Cash Flow to Equity (FCFE) Valuation Calculator',
   category: 'finance',
   subcategory: 'general',

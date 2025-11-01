@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateProjectManagementCostCalculatorInputs } from './validation';
 
 export const ProjectManagementCostCalculator: Calculator = {
-  id: 'project-management-cost-calculator',
+  id: 'ProjectManagementCost-calculator',
   title: 'Project Management Cost Calculator',
   category: 'health',
   subcategory: 'General',

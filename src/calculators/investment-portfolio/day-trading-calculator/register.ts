@@ -1,3 +1,3 @@
-import { DayTradingCalculatorCalculator } from './DayTradingCalculatorCalculator';
+import { DayTradingCalculator } from './DayTradingCalculator';
 
-export { DayTradingCalculatorCalculator };
+export { DayTradingCalculator };

@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { roiCalculatorCalculator } from './roiCalculatorCalculator';
+import { roiCalculator } from './roiCalculator';
 
-export function registerroiCalculatorCalculator(): void {
-  calculatorRegistry.register(new roiCalculatorCalculator());
+export function registerroiCalculator(): void {
+  calculatorRegistry.register(new roiCalculator());
 }

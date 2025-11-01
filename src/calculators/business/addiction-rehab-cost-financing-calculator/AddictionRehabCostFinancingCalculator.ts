@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateAddictionRehabCostFinancingCalculatorInputs, validateAddictionRehabCostFinancingCalculatorBusinessRules } from './validation';
 
-export const AddictionRehabCostFinancingCalculatorCalculator: Calculator: Calculator = {
-  id: 'addiction-rehab-cost-financing-calculator-calculator',
+export const AddictionRehabCostFinancingCalculator: Calculator = {
+  id: 'AddictionRehabCost-FinancingCalculatorCalculator',
   title: 'Addiction Rehab Cost & Financing Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

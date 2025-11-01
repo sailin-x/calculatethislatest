@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateClinicalTrialCostEstimatorInputs, validateClinicalTrialCostEstimatorBusinessRules } from './validation';
 
-export const ClinicalTrialCostEstimatorCalculator: Calculator: Calculator = {
-  id: 'clinical-trial-cost-estimator-calculator',
+export const ClinicalTrialCostEstimatorCalculator: Calculator = {
+  id: 'ClinicalTrialCost-estimator-calculator',
   title: 'Clinical Trial Cost Estimator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

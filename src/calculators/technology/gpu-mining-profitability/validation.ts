@@ -106,12 +106,12 @@ export function validateGPUModelCompatibility(gpuModel: string, cryptocurrency: 
   const gpuSpecs = {
     'rtx-4090': { hashrate: 83, power: 450 },
     'rtx-4080': { hashrate: 65, power: 320 },
-    'rtx-4070-ti': { hashrate: 50, power: 285 },
+    'Rtx4070Ti': { hashrate: 50, power: 285 },
     'rtx-3090': { hashrate: 120, power: 350 },
     'rtx-3080': { hashrate: 100, power: 320 },
     'rtx-3070': { hashrate: 62, power: 220 },
-    'rx-7900-xtx': { hashrate: 85, power: 355 },
-    'rx-6900-xt': { hashrate: 64, power: 300 }
+    'Rx7900Xtx': { hashrate: 85, power: 355 },
+    'Rx6900Xt': { hashrate: 64, power: 300 }
   };
 
   if (gpuModel !== 'custom' && !gpuSpecs[gpuModel]) {

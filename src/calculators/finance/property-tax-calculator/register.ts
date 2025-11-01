@@ -1,3 +1,3 @@
-import { PropertyTaxCalculatorCalculator } from './PropertyTaxCalculatorCalculator';
+import { PropertyTaxCalculator } from './PropertyTaxCalculator';
 
-export { PropertyTaxCalculatorCalculator };
+export { PropertyTaxCalculator };

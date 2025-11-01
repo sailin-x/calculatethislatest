@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateBusinessValuationCalculatorInputs, validateBusinessValuationCalculatorBusinessRules } from './validation';
 
-export const BusinessValuationCalculatorCalculator: Calculator: Calculator = {
-  id: 'business-valuation-calculator-calculator',
+export const BusinessValuationCalculator: Calculator = {
+  id: 'BusinessValuationCalculator-calculator',
   title: 'Business Valuation Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

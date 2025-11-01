@@ -72,7 +72,7 @@ export function calculateTotalPayment(principal: number, totalInterest: number):
 }
 
 /**
- * Calculates the debt-to-income (DTI) ratio as a percentage.
+ * Calculates the DebtToIncome (DTI) ratio as a percentage.
  * Used for risk assessment in loan affordability.
  * @param monthlyPayment - Monthly loan payment.
  * @param monthlyIncome - Borrower's monthly income.
@@ -91,7 +91,7 @@ export function calculateDTI(monthlyPayment: number, monthlyIncome: number): num
  * - Medium: DTI 28-36% or rate 5-7%
  * - High: DTI > 36% or rate > 7%
  * Falls back to interest rate if income not provided.
- * @param dti - Debt-to-income ratio (%).
+ * @param dti - DebtToIncome ratio (%).
  * @param annualRate - Annual interest rate (%).
  * @param monthlyIncome - Monthly income (for validation).
  * @returns Risk level.

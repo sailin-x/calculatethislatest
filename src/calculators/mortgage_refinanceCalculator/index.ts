@@ -1,3 +1,3 @@
-export * from './mortgage_refinanceCalculatorCalculator';
+export * from './mortgage_refinanceCalculator';
 export * from './register';
 export * from './types';

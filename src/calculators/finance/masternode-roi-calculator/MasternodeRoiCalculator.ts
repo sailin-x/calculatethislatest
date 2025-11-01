@@ -10,7 +10,7 @@ import {
 import { validateMasternodeRoiCalculatorInputs } from './validation';
 
 export const MasternodeRoiCalculator: Calculator = {
-  id: 'masternode-roi-calculator',
+  id: 'MasternodeRoiCalculator',
   title: 'Masternode ROI Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateRansomwareDowntimeCostCalculatorInputs, validateRansomwareDowntimeCostCalculatorBusinessRules } from './validation';
 
-export const RansomwareDowntimeCostCalculatorCalculator: Calculator: Calculator = {
-  id: 'ransomware-downtime-cost-calculator-calculator',
+export const RansomwareDowntimeCostCalculator: Calculator = {
+  id: 'RansomwareDowntimeCost-calculator-calculator',
   title: 'Ransomware Downtime Cost Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

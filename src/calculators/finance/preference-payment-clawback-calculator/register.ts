@@ -1,3 +1,3 @@
-import { PreferencePaymentClawbackCalculatorCalculator } from './PreferencePaymentClawbackCalculatorCalculator';
+import { PreferencePaymentClawbackCalculator } from './PreferencePaymentClawbackCalculator';
 
-export { PreferencePaymentClawbackCalculatorCalculator };
+export { PreferencePaymentClawbackCalculator };

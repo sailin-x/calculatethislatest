@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { calculateResult } from './formulas';
 import { validateOutOfHomeOhAdvertisingRoiCalculatorInputs } from './validation';
 
-describe('Out-of-Home (OOH) Advertising ROI Calculator', () => {
+describe('OutOfHome (OOH) Advertising ROI Calculator', () => {
   const mockInputs = {
     inputValue: 10,
     multiplier: 5

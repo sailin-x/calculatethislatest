@@ -1,5 +1,5 @@
 import { calculatorRegistry } from '../../../data/calculatorRegistry';
-import { mortgageClosingCostCalculator } from './MortgageClosingCostCalculator';
+import { MortgageClosingCostCalculator } from './MortgageClosingCostCalculator';
 
 export function registerMortgageClosingCostCalculator(): void {
   calculatorRegistry.register(mortgageClosingCostCalculator);

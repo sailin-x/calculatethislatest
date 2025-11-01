@@ -10,7 +10,7 @@ import {
 import { validateRecapitalizationImpactCalculatorInputs } from './validation';
 
 export const RecapitalizationImpactCalculator: Calculator = {
-  id: 'recapitalization-impact-calculator',
+  id: 'RecapitalizationImpactCalculator',
   title: 'Recapitalization Impact Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

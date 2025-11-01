@@ -16,7 +16,7 @@ import { CompoundInterestInputs, CompoundInterestResults } from './types';
  * - Real-time validation and error handling
  */
 export const compoundInterestCalculator: Calculator = {
-  id: 'compound-interest-calculator',
+  id: 'CompoundInterestCalculator',
   title: 'Compound Interest Calculator',
   description: 'Advanced compound interest calculations with contributions, inflation adjustment, tax considerations, and comprehensive analysis',
   category: 'finance',
@@ -256,8 +256,8 @@ export const compoundInterestCalculator: Calculator = {
   // Related calculators
   relatedCalculators: [
     'mortgage-calculator',
-    'investment-return-calculator',
-    'retirement-planning-calculator',
-    'savings-goal-calculator'
+    'InvestmentReturnCalculator',
+    'RetirementPlanningCalculator',
+    'SavingsGoalCalculator'
   ]
 };

@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateMezzanineFinancingCalculatorInputs, validateMezzanineFinancingCalculatorBusinessRules } from './validation';
 
-export const MezzanineFinancingCalculatorCalculator: Calculator: Calculator = {
-  id: 'mezzanine-financing-calculator-calculator',
+export const MezzanineFinancingCalculator: Calculator = {
+  id: 'MezzanineFinancingCalculator-calculator',
   title: 'Mezzanine Financing Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

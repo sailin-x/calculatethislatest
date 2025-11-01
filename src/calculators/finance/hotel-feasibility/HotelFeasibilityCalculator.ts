@@ -3,7 +3,7 @@ import { calculateHotelFeasibility, generateHotelFeasibilityAnalysis } from './f
 import { validateHotelFeasibilityInputs } from './validation';
 
 export const HotelFeasibilityCalculator: Calculator = {
-  id: 'hotel-feasibility-calculator',
+  id: 'HotelFeasibilityCalculator',
   name: 'Hotel Feasibility & ADR Calculator',
   category: 'finance',
   subcategory: 'investment',
@@ -55,7 +55,7 @@ export const HotelFeasibilityCalculator: Calculator = {
     { id: 'annualExpenses', name: 'Annual Expenses', type: 'number', unit: 'USD', description: 'Projected annual operating expenses' },
     { id: 'netOperatingIncome', name: 'Net Operating Income', type: 'number', unit: 'USD', description: 'Annual net operating income' },
     { id: 'cashFlow', name: 'Annual Cash Flow', type: 'number', unit: 'USD', description: 'Annual cash flow after debt service' },
-    { id: 'cashOnCashReturn', name: 'Cash-on-Cash Return', type: 'number', unit: '%', description: 'Cash-on-cash return on investment' },
+    { id: 'cashOnCashReturn', name: 'CashOnCash Return', type: 'number', unit: '%', description: 'CashOnCash return on investment' },
     { id: 'capRate', name: 'Cap Rate', type: 'number', unit: '%', description: 'Capitalization rate' },
     { id: 'irr', name: 'Internal Rate of Return', type: 'number', unit: '%', description: 'Projected IRR over investment period' },
     { id: 'paybackPeriod', name: 'Payback Period', type: 'number', unit: 'years', description: 'Time to recover initial investment' },
@@ -104,8 +104,8 @@ export const HotelFeasibilityCalculator: Calculator = {
       description: 'Capitalization rate based on NOI and total investment'
     },
     {
-      name: 'Cash-on-Cash Return',
-      formula: 'Cash-on-Cash = (NOI - Debt Service) / Equity Investment',
+      name: 'CashOnCash Return',
+      formula: 'CashOnCash = (NOI - Debt Service) / Equity Investment',
       description: 'Return on equity investment'
     },
     {

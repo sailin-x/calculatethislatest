@@ -1,4 +1,4 @@
-import { tiktok-creator-fund-calculatorInputs, tiktok-creator-fund-calculatorMetrics, tiktok-creator-fund-calculatorAnalysis } from './types';
+import { TiktokCreatorFund-calculatorInputs, TiktokCreatorFund-calculatorMetrics, TiktokCreatorFund-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: tiktok-creator-fund-calculatorInputs): number {
+export function calculateResult(inputs: TiktokCreatorFund-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: tiktok-creator-fund-calculatorInputs): n
   }
 }
 
-export function generateAnalysis(inputs: tiktok-creator-fund-calculatorInputs, metrics: tiktok-creator-fund-calculatorMetrics): tiktok-creator-fund-calculatorAnalysis {
+export function generateAnalysis(inputs: TiktokCreatorFund-calculatorInputs, metrics: TiktokCreatorFund-calculatorMetrics): TiktokCreatorFund-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

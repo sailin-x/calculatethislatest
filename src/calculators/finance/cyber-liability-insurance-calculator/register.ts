@@ -1,3 +1,3 @@
-import { CyberLiabilityInsuranceCalculatorCalculator } from './CyberLiabilityInsuranceCalculatorCalculator';
+import { CyberLiabilityInsuranceCalculator } from './CyberLiabilityInsuranceCalculator';
 
-export { CyberLiabilityInsuranceCalculatorCalculator };
+export { CyberLiabilityInsuranceCalculator };

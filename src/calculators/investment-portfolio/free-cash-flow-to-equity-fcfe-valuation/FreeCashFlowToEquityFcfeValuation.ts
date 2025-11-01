@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateFreeCashFlowToEquityFcfeValuationInputs, validateFreeCashFlowToEquityFcfeValuationBusinessRules } from './validation';
 
-export const FreeCashFlowToEquityFcfeValuationCalculator: Calculator: Calculator = {
-  id: 'free-cash-flow-to-equity-fcfe-valuation-calculator',
+export const FreeCashFlowToEquityFcfeValuationCalculator: Calculator = {
+  id: 'FreeCashFlow-ToEquityFcfe-valuation-calculator',
   title: 'Free Cash Flow to Equity (FCFE) Valuation Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

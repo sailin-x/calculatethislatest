@@ -9,7 +9,7 @@ import {
 import { validateTrademarkRegistrationCalculatorInputs } from './validation';
 
 export const TrademarkRegistrationCalculator: Calculator = {
-  id: 'trademark-registration-calculator',
+  id: 'TrademarkRegistrationCalculator',
   title: 'Trademark Registration Calculator',
   category: 'legal',
   subcategory: 'Settlement Analysis',

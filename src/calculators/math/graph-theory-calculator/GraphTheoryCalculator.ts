@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateGraphTheoryCalculatorInputs, validateGraphTheoryCalculatorBusinessRules } from './validation';
 
-export const GraphTheoryCalculatorCalculator: Calculator: Calculator = {
-  id: 'graph-theory-calculator-calculator',
+export const GraphTheoryCalculator: Calculator = {
+  id: 'GraphTheoryCalculator-calculator',
   title: 'Graph Theory Calculator Calculator',
   math: 'math', // e.g., 'finance', 'math', 'health', 'business'
   submath: 'Submath Name',

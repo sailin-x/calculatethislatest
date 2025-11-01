@@ -1,4 +1,4 @@
-import { event-sponsorship-tier-valuation-calculatorInputs, event-sponsorship-tier-valuation-calculatorMetrics, event-sponsorship-tier-valuation-calculatorAnalysis } from './types';
+import { EventSponsorshipTier-valuation-calculatorInputs, EventSponsorshipTier-valuation-calculatorMetrics, EventSponsorshipTier-valuation-calculatorAnalysis } from './types';
 
 // Event Sponsorship Tier Valuation Calculator - Business calculations
 export function calculateNetPresentValue(cashFlows: number[], discountRate: number): number {
@@ -11,7 +11,7 @@ export function calculateROI(initialInvestment: number, finalValue: number): num
  return ((finalValue - initialInvestment) / initialInvestment) * 100;
 }
 
-export function calculateResult(inputs: event-sponsorship-tier-valuation-calculatorInputs): number {
+export function calculateResult(inputs: EventSponsorshipTier-valuation-calculatorInputs): number {
  // Business calculation logic with real math
  const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
  if (numericValues.length >= 2) {
@@ -24,7 +24,7 @@ export function calculateResult(inputs: event-sponsorship-tier-valuation-calcula
  return calculateNetPresentValue(numericValues, 10); // 10% discount rate
 }
 
-export function generateAnalysis(inputs: event-sponsorship-tier-valuation-calculatorInputs, metrics: event-sponsorship-tier-valuation-calculatorMetrics): event-sponsorship-tier-valuation-calculatorAnalysis {
+export function generateAnalysis(inputs: EventSponsorshipTier-valuation-calculatorInputs, metrics: EventSponsorshipTier-valuation-calculatorMetrics): EventSponsorshipTier-valuation-calculatorAnalysis {
  const result = metrics.result;
  let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
  if (Math.abs(result) > 100000) riskLevel = 'High';

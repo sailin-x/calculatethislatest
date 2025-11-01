@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { industrial_robotics_roi_calculatorInputs, industrial_robotics_roi_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const industrial_robotics_roi_calculatorCalculator: Calculator = {
-  id: 'industrial-robotics-roi-calculator',
+export const IndustrialRoboticsRoi-calculator: Calculator = {
+  id: 'IndustrialRoboticsRoi-calculator',
   title: 'Industrial Robotics ROI Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

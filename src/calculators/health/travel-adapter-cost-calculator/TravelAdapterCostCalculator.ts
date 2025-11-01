@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateTravelAdapterCostCalculatorInputs } from './validation';
 
 export const TravelAdapterCostCalculator: Calculator = {
-  id: 'travel-adapter-cost-calculator',
+  id: 'TravelAdapterCost-calculator',
   title: 'Travel Adapter Cost Calculator',
   category: 'health',
   subcategory: 'General',

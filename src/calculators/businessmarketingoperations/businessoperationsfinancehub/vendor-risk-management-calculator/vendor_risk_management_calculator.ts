@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { vendor_risk_management_calculatorInputs, vendor_risk_management_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const vendor_risk_management_calculatorCalculator: Calculator = {
-  id: 'vendor-risk-management-calculator',
+export const VendorRiskManagement-calculator: Calculator = {
+  id: 'VendorRiskManagement-calculator',
   title: 'Vendor Risk Management Calculator Calculator',
   category: 'businessmarketingoperations',
   subcategory: 'businessoperationsfinancehub',

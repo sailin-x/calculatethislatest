@@ -1,4 +1,4 @@
-import { car-accident-pain-suffering-calculatorInputs, car-accident-pain-suffering-calculatorMetrics, car-accident-pain-suffering-calculatorAnalysis } from './types';
+import { CarAccidentPain-suffering-calculatorInputs, CarAccidentPain-suffering-calculatorMetrics, CarAccidentPain-suffering-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: car-accident-pain-suffering-calculatorInputs): number {
+export function calculateResult(inputs: CarAccidentPain-suffering-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: car-accident-pain-suffering-calculatorIn
   }
 }
 
-export function generateAnalysis(inputs: car-accident-pain-suffering-calculatorInputs, metrics: car-accident-pain-suffering-calculatorMetrics): car-accident-pain-suffering-calculatorAnalysis {
+export function generateAnalysis(inputs: CarAccidentPain-suffering-calculatorInputs, metrics: CarAccidentPain-suffering-calculatorMetrics): CarAccidentPain-suffering-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

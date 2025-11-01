@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateRealEstateInvestmentCalculatorExistsButNeedsRegistrationCalculatorInputs, validateRealEstateInvestmentCalculatorExistsButNeedsRegistrationCalculatorBusinessRules } from './validation';
 
-export const RealEstateInvestmentCalculatorExistsButNeedsRegistrationCalculatorCalculator: Calculator: Calculator = {
-  id: 'real-estate-investment-calculator-exists-but-needs-registration-calculator-calculator',
+export const RealEstateInvestmentCalculatorExistsButNeedsRegistrationCalculator: Calculator = {
+  id: 'RealEstateInvestment-CalculatorExistsBut-NeedsRegistrationCalculator-calculator',
   title: '**Real Estate Investment Calculator Exists But Needs Registration Calculator** Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateRecipeScalingCalculatorInputs } from './validation';
 
 export const RecipeScalingCalculator: Calculator = {
-  id: 'recipe-scaling-calculator',
+  id: 'RecipeScalingCalculator',
   title: 'Recipe Scaling Calculator',
   category: 'health',
   subcategory: 'General',

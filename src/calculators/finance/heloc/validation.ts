@@ -115,11 +115,11 @@ export function validateHELOCInputs(inputs: HELOCInputs): ValidationResult {
   }
 
   if (inputs.borrowerDebtToIncomeRatio === undefined || inputs.borrowerDebtToIncomeRatio < 0) {
-    errors.push('Debt-to-income ratio must be 0 or greater');
+    errors.push('DebtToIncome ratio must be 0 or greater');
   }
 
   if (inputs.borrowerDebtToIncomeRatio > 100) {
-    errors.push('Debt-to-income ratio cannot exceed 100%');
+    errors.push('DebtToIncome ratio cannot exceed 100%');
   }
 
   if (!inputs.borrowerEmploymentType) {
@@ -270,7 +270,7 @@ export function validateHELOCInputs(inputs: HELOCInputs): ValidationResult {
   }
 
   if (inputs.borrowerDebtToIncomeRatio > 50) {
-    warnings.push('High debt-to-income ratio may affect approval');
+    warnings.push('High DebtToIncome ratio may affect approval');
   }
 
   if (inputs.borrowerEmploymentType === 'unemployed') {
@@ -309,7 +309,7 @@ export function validateHELOCInputs(inputs: HELOCInputs): ValidationResult {
     const totalPayments = inputs.currentMortgagePayment + inputs.minimumPayment;
     const paymentRatio = (totalPayments * 12) / inputs.borrowerIncome;
     if (paymentRatio > 0.4) {
-      warnings.push('High payment-to-income ratio may indicate affordability concerns');
+      warnings.push('High PaymentToIncome ratio may indicate affordability concerns');
     }
   }
 

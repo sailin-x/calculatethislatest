@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validatePriceToEarningsCalculatorInputs, validatePriceToEarningsCalculatorBusinessRules } from './validation';
 
-export const PriceToEarningsCalculatorCalculator: Calculator: Calculator = {
-  id: 'price-to-earnings-calculator-calculator',
+export const PriceToEarningsCalculator: Calculator = {
+  id: 'PriceToEarnings-calculator-calculator',
   title: 'Price to Earnings Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

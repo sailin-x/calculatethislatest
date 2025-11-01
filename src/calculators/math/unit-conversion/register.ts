@@ -1,5 +1,5 @@
 import { calculatorRegistry } from '../../../data/calculatorRegistry';
-import { UnitConversionCalculator } from './UnitConversionCalculator';
+import { unitConversionCalculator } from './UnitConversionCalculator';
 
 export function registerUnitConversionCalculator() {
   calculatorRegistry.register(UnitConversionCalculator);

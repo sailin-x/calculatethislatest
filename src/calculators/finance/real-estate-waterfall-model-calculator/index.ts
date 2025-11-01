@@ -1,4 +1,4 @@
-export { RealEstateWaterfallModelCalculatorCalculator } from './RealEstateWaterfallModelCalculatorCalculator';
+export { RealEstateWaterfallModelCalculator } from './RealEstateWaterfallModelCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

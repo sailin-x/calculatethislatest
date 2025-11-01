@@ -1,3 +1,3 @@
-import { HitAndRunSettlementCalculatorCalculator } from './HitAndRunSettlementCalculatorCalculator';
+import { HitAndRunSettlementCalculator } from './HitAndRunSettlementCalculator';
 
-export { HitAndRunSettlementCalculatorCalculator };
+export { HitAndRunSettlementCalculator };

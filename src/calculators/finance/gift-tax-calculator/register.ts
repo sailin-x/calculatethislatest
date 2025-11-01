@@ -1,3 +1,3 @@
-import { GiftTaxCalculatorCalculator } from './GiftTaxCalculatorCalculator';
+import { GiftTaxCalculator } from './GiftTaxCalculator';
 
-export { GiftTaxCalculatorCalculator };
+export { GiftTaxCalculator };

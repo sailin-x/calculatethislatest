@@ -1,3 +1,3 @@
-import { AlphaCalculatorCalculator } from './AlphaCalculatorCalculator';
+import { AlphaCalculator } from './AlphaCalculator';
 
-export { AlphaCalculatorCalculator };
+export { AlphaCalculator };

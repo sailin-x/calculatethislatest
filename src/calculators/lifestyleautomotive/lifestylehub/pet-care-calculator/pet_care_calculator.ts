@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { pet_care_calculatorInputs, pet_care_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const pet_care_calculatorCalculator: Calculator = {
-  id: 'pet-care-calculator',
+export const PetCareCalculator: Calculator = {
+  id: 'PetCareCalculator',
   title: 'Pet Care Calculator Calculator',
   category: 'lifestyleautomotive',
   subcategory: 'lifestylehub',

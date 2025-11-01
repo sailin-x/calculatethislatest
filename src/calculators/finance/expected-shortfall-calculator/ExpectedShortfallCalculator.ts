@@ -10,7 +10,7 @@ import {
 import { validateExpectedShortfallCalculatorInputs } from './validation';
 
 export const ExpectedShortfallCalculator: Calculator = {
-  id: 'expected-shortfall-calculator',
+  id: 'ExpectedShortfallCalculator',
   title: 'Expected Shortfall Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

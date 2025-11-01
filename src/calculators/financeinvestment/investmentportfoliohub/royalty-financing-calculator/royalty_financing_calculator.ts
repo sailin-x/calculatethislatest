@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { royalty_financing_calculatorInputs, royalty_financing_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const royalty_financing_calculatorCalculator: Calculator = {
-  id: 'royalty-financing-calculator',
+export const RoyaltyFinancingCalculator: Calculator = {
+  id: 'RoyaltyFinancingCalculator',
   title: 'Royalty Financing Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'investmentportfoliohub',

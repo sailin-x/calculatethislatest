@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateInjectionMoldingCostEstimatorInputs, validateInjectionMoldingCostEstimatorBusinessRules } from './validation';
 
-export const InjectionMoldingCostEstimatorCalculator: Calculator: Calculator = {
-  id: 'injection-molding-cost-estimator-calculator',
+export const InjectionMoldingCostEstimatorCalculator: Calculator = {
+  id: 'InjectionMoldingCost-estimator-calculator',
   title: 'Injection Molding Cost Estimator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

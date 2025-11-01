@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { hospital_negligence_settlement_calculatorInputs, hospital_negligence_settlement_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const hospital_negligence_settlement_calculatorCalculator: Calculator = {
-  id: 'hospital-negligence-settlement-calculator',
+export const HospitalNegligenceSettlement-calculator: Calculator = {
+  id: 'HospitalNegligenceSettlement-calculator',
   title: 'Hospital Negligence Settlement Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

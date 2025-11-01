@@ -10,7 +10,7 @@ import {
 import { validateDefiYieldOptimizationCalculatorInputs } from './validation';
 
 export const DefiYieldOptimizationCalculator: Calculator = {
-  id: 'defi-yield-optimization-calculator',
+  id: 'DefiYieldOptimization-calculator',
   title: 'DeFi Yield Optimization Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

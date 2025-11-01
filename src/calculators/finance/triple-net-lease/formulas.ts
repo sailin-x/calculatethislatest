@@ -1,4 +1,4 @@
-import { triple-net-leaseInputs, triple-net-leaseMetrics, triple-net-leaseAnalysis } from './types';
+import { TripleNetLeaseinputs, TripleNetLeasemetrics, TripleNetLeaseanalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: triple-net-leaseInputs): number {
+export function calculateResult(inputs: TripleNetLeaseinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: triple-net-leaseInputs): number {
   }
 }
 
-export function generateAnalysis(inputs: triple-net-leaseInputs, metrics: triple-net-leaseMetrics): triple-net-leaseAnalysis {
+export function generateAnalysis(inputs: TripleNetLeaseinputs, metrics: TripleNetLeasemetrics): TripleNetLeaseanalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

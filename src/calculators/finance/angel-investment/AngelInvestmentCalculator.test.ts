@@ -42,7 +42,7 @@ describe('AngelInvestmentCalculator', () => {
   };
 
   test('should have correct calculator properties', () => {
-    expect(AngelInvestmentCalculator.id).toBe('angel-investment-calculator');
+    expect(AngelInvestmentCalculator.id).toBe('AngelInvestmentCalculator');
     expect(AngelInvestmentCalculator.name).toBe('Angel Investment Calculator');
     expect(AngelInvestmentCalculator.category).toBe('finance');
     expect(AngelInvestmentCalculator.subcategory).toBe('investment');

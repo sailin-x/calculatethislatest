@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { stop_loss_insurance_premium_calculatorInputs, stop_loss_insurance_premium_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const stop_loss_insurance_premium_calculatorCalculator: Calculator = {
-  id: 'stop-loss-insurance-premium-calculator',
+export const StopLossInsurance-premium-calculator: Calculator = {
+  id: 'StopLossInsurance-premium-calculator',
   title: 'Stop Loss Insurance Premium Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

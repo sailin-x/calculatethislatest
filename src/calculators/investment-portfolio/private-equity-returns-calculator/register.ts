@@ -1,3 +1,3 @@
-import { PrivateEquityReturnsCalculatorCalculator } from './PrivateEquityReturnsCalculatorCalculator';
+import { PrivateEquityReturnsCalculator } from './PrivateEquityReturnsCalculator';
 
-export { PrivateEquityReturnsCalculatorCalculator };
+export { PrivateEquityReturnsCalculator };

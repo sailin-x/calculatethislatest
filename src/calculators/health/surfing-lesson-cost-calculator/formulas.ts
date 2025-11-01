@@ -1,4 +1,4 @@
-import { surfing-lesson-cost-calculatorInputs, surfing-lesson-cost-calculatorMetrics, surfing-lesson-cost-calculatorAnalysis } from './types';
+import { SurfingLessonCost-calculatorInputs, SurfingLessonCost-calculatorMetrics, SurfingLessonCost-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: surfing-lesson-cost-calculatorInputs): number {
+export function calculateResult(inputs: SurfingLessonCost-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: surfing-lesson-cost-calculatorInputs): n
   }
 }
 
-export function generateAnalysis(inputs: surfing-lesson-cost-calculatorInputs, metrics: surfing-lesson-cost-calculatorMetrics): surfing-lesson-cost-calculatorAnalysis {
+export function generateAnalysis(inputs: SurfingLessonCost-calculatorInputs, metrics: SurfingLessonCost-calculatorMetrics): SurfingLessonCost-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

@@ -1,3 +1,3 @@
-import { CoordinateGeometryCalculatorCalculator } from './CoordinateGeometryCalculatorCalculator';
+import { CoordinateGeometryCalculator } from './CoordinateGeometryCalculator';
 
-export { CoordinateGeometryCalculatorCalculator };
+export { CoordinateGeometryCalculator };

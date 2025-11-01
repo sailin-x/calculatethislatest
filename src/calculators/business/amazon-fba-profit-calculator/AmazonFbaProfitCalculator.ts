@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateAmazonFbaProfitCalculatorInputs, validateAmazonFbaProfitCalculatorBusinessRules } from './validation';
 
-export const AmazonFbaProfitCalculatorCalculator: Calculator: Calculator = {
-  id: 'amazon-fba-profit-calculator-calculator',
+export const AmazonFbaProfitCalculator: Calculator = {
+  id: 'AmazonFbaProfit-calculator-calculator',
   title: 'Amazon FBA Profit Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

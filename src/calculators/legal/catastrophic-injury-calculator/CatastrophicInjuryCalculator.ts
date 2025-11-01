@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateCatastrophicInjuryCalculatorInputs, validateCatastrophicInjuryCalculatorBusinessRules } from './validation';
 
-export const CatastrophicInjuryCalculatorCalculator: Calculator: Calculator = {
-  id: 'catastrophic-injury-calculator-calculator',
+export const CatastrophicInjuryCalculator: Calculator = {
+  id: 'CatastrophicInjuryCalculator-calculator',
   title: 'Catastrophic Injury Calculator Calculator',
   legal: 'legal', // e.g., 'finance', 'math', 'health', 'business'
   sublegal: 'Sublegal Name',

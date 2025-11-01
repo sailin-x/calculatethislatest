@@ -9,7 +9,7 @@ import {
 import { validateContractReviewCalculatorInputs } from './validation';
 
 export const ContractReviewCalculator: Calculator = {
-  id: 'contract-review-calculator',
+  id: 'ContractReviewCalculator',
   title: 'Contract Review Calculator',
   category: 'legal',
   subcategory: 'Settlement Analysis',

@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateCostOfEquityCalculatorInputs, validateCostOfEquityCalculatorBusinessRules } from './validation';
 
-export const CostOfEquityCalculatorCalculator: Calculator: Calculator = {
-  id: 'cost-of-equity-calculator-calculator',
+export const CostOfEquityCalculator: Calculator = {
+  id: 'CostOfEquity-calculator-calculator',
   title: 'Cost of Equity Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

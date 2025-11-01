@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateFlooringCalculatorInputs, validateFlooringCalculatorBusinessRules } from './validation';
 
-export const FlooringCalculatorCalculator: Calculator: Calculator = {
-  id: 'flooring-calculator-calculator',
+export const FlooringCalculator: Calculator = {
+  id: 'FlooringCalculatorCalculator',
   title: 'Flooring Calculator Calculator',
   construction: 'construction', // e.g., 'finance', 'math', 'health', 'business'
   subconstruction: 'Subconstruction Name',

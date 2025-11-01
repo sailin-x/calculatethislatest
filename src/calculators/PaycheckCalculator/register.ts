@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { PaycheckCalculatorCalculator } from './PaycheckCalculatorCalculator';
+import { PaycheckCalculator } from './PaycheckCalculator';
 
-export function registerPaycheckCalculatorCalculator(): void {
-  calculatorRegistry.register(new PaycheckCalculatorCalculator());
+export function registerPaycheckCalculator(): void {
+  calculatorRegistry.register(new PaycheckCalculator());
 }

@@ -1,13 +1,13 @@
-import { executive-deferred-compensation-plan-calculatorInputs, executive-deferred-compensation-plan-calculatorMetrics, executive-deferred-compensation-plan-calculatorAnalysis } from './types';
+import { ExecutiveDeferredCompensation-plan-calculatorInputs, ExecutiveDeferredCompensation-plan-calculatorMetrics, ExecutiveDeferredCompensation-plan-calculatorAnalysis } from './types';
 
 // Executive Deferred Compensation Plan Calculator - Finance calculations
-export function calculateResult(inputs: executive-deferred-compensation-plan-calculatorInputs): number {
+export function calculateResult(inputs: ExecutiveDeferredCompensation-plan-calculatorInputs): number {
   // Financial calculation logic
   const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
   return numericValues.reduce((sum, val) => sum + val, 0) || 0;
 }
 
-export function generateAnalysis(inputs: executive-deferred-compensation-plan-calculatorInputs, metrics: executive-deferred-compensation-plan-calculatorMetrics): executive-deferred-compensation-plan-calculatorAnalysis {
+export function generateAnalysis(inputs: ExecutiveDeferredCompensation-plan-calculatorInputs, metrics: ExecutiveDeferredCompensation-plan-calculatorMetrics): ExecutiveDeferredCompensation-plan-calculatorAnalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (Math.abs(result) > 100000) riskLevel = 'High';

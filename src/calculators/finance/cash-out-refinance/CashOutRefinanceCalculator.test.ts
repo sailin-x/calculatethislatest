@@ -29,7 +29,7 @@ describe('Cash-Out Refinance Calculator', () => {
 
   describe('Calculator Definition', () => {
     it('should have correct basic properties', () => {
-      expect(CashOutRefinanceCalculator.id).toBe('cash-out-refinance-calculator');
+      expect(CashOutRefinanceCalculator.id).toBe('CashOutRefinance-calculator');
       expect(CashOutRefinanceCalculator.name).toBe('Cash-Out Refinance Calculator');
       expect(CashOutRefinanceCalculator.category).toBe('finance');
       expect(CashOutRefinanceCalculator.subcategory).toBe('mortgage');
@@ -102,11 +102,11 @@ describe('Cash-Out Refinance Calculator', () => {
       expect(result.errors.some(error => error.includes('interest rate'))).toBe(true);
     });
 
-    it('should validate loan-to-value ratio', () => {
+    it('should validate LoanToValue ratio', () => {
       const highLTVInputs = { ...validInputs, newLoanAmount: 450000 };
       const result = validateCashOutRefinanceInputs(highLTVInputs);
       expect(result.isValid).toBe(false);
-      expect(result.errors.some(error => error.includes('loan-to-value'))).toBe(true);
+      expect(result.errors.some(error => error.includes('LoanToValue'))).toBe(true);
     });
 
     it('should validate current equity', () => {
@@ -152,7 +152,7 @@ describe('Cash-Out Refinance Calculator', () => {
       expect(metrics.currentEquity).toBe(expectedEquity);
     });
 
-    it('should calculate new loan-to-value correctly', () => {
+    it('should calculate new LoanToValue correctly', () => {
       const metrics = calculateCashOutRefinance(validInputs);
       
       const expectedLTV = (validInputs.newLoanAmount / validInputs.currentHomeValue) * 100;
@@ -322,7 +322,7 @@ describe('Cash-Out Refinance Calculator', () => {
       expect(reductionResult.paymentDifference).toBeLessThan(increaseResult.paymentDifference);
     });
 
-    it('should calculate loan-to-value ratio appropriately', () => {
+    it('should calculate LoanToValue ratio appropriately', () => {
       const result = CashOutRefinanceCalculator.calculate(validInputs);
       
       // LTV should be reasonable

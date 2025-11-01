@@ -1,3 +1,3 @@
-import { LongtermCareInsuranceCalculatorCalculator } from './LongtermCareInsuranceCalculatorCalculator';
+import { LongtermCareInsuranceCalculator } from './LongtermCareInsuranceCalculator';
 
-export { LongtermCareInsuranceCalculatorCalculator };
+export { LongtermCareInsuranceCalculator };

@@ -1,3 +1,3 @@
-import { PetInsuranceCalculatorCalculator } from './PetInsuranceCalculatorCalculator';
+import { PetInsuranceCalculator } from './PetInsuranceCalculator';
 
-export { PetInsuranceCalculatorCalculator };
+export { PetInsuranceCalculator };

@@ -1,3 +1,3 @@
-import { NetPresentValueCalculatorCalculator } from './NetPresentValueCalculatorCalculator';
+import { NetPresentValueCalculator } from './NetPresentValueCalculator';
 
-export { NetPresentValueCalculatorCalculator };
+export { NetPresentValueCalculator };

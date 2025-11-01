@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateCampingCostCalculatorInputs } from './validation';
 
 export const CampingCostCalculator: Calculator = {
-  id: 'camping-cost-calculator',
+  id: 'CampingCostCalculator',
   title: 'Camping Cost Calculator',
   category: 'health',
   subcategory: 'General',

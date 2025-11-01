@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateBetaCalculatorInputs, validateBetaCalculatorBusinessRules } from './validation';
 
-export const BetaCalculatorCalculator: Calculator: Calculator = {
-  id: 'beta-calculator-calculator',
+export const BetaCalculator: Calculator = {
+  id: 'BetaCalculatorCalculator',
   title: 'Beta Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

@@ -10,7 +10,7 @@ import {
 import { validateFinancialAgilityCalculatorInputs } from './validation';
 
 export const FinancialAgilityCalculator: Calculator = {
-  id: 'financial-agility-calculator',
+  id: 'FinancialAgilityCalculator',
   title: 'Financial Agility Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

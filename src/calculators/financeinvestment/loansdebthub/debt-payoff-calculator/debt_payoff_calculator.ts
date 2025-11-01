@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { debt_payoff_calculatorInputs, debt_payoff_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const debt_payoff_calculatorCalculator: Calculator = {
-  id: 'debt-payoff-calculator',
+export const DebtPayoffCalculator: Calculator = {
+  id: 'DebtPayoffCalculator',
   title: 'Debt Payoff Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'loansdebthub',

@@ -3,7 +3,7 @@ import { calculateCAGR } from './formulas';
 import { ValidationRuleFactory } from '../../utils/validation';
 
 export const compoundAnnualGrowthRateCalculator: Calculator = {
-  id: 'compound-annual-growth-rate-calculator',
+  id: 'CompoundAnnualGrowth-rate-calculator',
   title: 'Compound Annual Growth Rate (CAGR) Calculator',
   category: 'finance',
   subcategory: 'Investment & Portfolio',

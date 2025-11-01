@@ -3,7 +3,7 @@ import { calculateMortgagePayoff } from './formulas';
 import { generateMortgagePayoffAnalysis } from './formulas';
 
 export const MortgagePayoffCalculator: Calculator = {
-  id: 'mortgage-payoff-calculator',
+  id: 'MortgagePayoffCalculator',
   name: 'Mortgage Payoff Calculator',
   category: 'finance',
   subcategory: 'mortgage',
@@ -257,7 +257,7 @@ export const MortgagePayoffCalculator: Calculator = {
     },
     targetPayoffDate: {
       type: 'date',
-      value: '2030-12-31',
+      value: '20301231',
       unit: '',
       description: 'Target payoff date',
       placeholder: 'Select target payoff date',
@@ -435,7 +435,7 @@ export const MortgagePayoffCalculator: Calculator = {
       label: 'Implementation Plan',
       type: 'string',
       unit: '',
-      description: 'Step-by-step implementation plan'
+      description: 'StepByStep implementation plan'
     },
     {
       name: 'milestoneTimeline',

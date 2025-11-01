@@ -1,3 +1,3 @@
-import { OptionsValuationCalculatorCalculator } from './OptionsValuationCalculatorCalculator';
+import { OptionsValuationCalculator } from './OptionsValuationCalculator';
 
-export { OptionsValuationCalculatorCalculator };
+export { OptionsValuationCalculator };

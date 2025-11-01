@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateHealthSavingsAccountHsaCalculatorInputs, validateHealthSavingsAccountHsaCalculatorBusinessRules } from './validation';
 
-export const HealthSavingsAccountHsaCalculatorCalculator: Calculator: Calculator = {
-  id: 'health-savings-account-hsa-calculator-calculator',
+export const HealthSavingsAccountHsaCalculator: Calculator = {
+  id: 'HealthSavingsAccount-HsaCalculatorCalculator',
   title: 'Health Savings Account (HSA) Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

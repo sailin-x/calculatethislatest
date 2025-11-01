@@ -10,7 +10,7 @@ import {
 import { validateExpenseTrackerCalculatorInputs } from './validation';
 
 export const ExpenseTrackerCalculator: Calculator = {
-  id: 'expense-tracker-calculator',
+  id: 'ExpenseTrackerCalculator',
   title: 'Expense Tracker Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

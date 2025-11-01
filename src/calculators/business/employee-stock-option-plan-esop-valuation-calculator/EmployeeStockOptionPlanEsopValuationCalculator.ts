@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateEmployeeStockOptionPlanEsopValuationCalculatorInputs, validateEmployeeStockOptionPlanEsopValuationCalculatorBusinessRules } from './validation';
 
-export const EmployeeStockOptionPlanEsopValuationCalculatorCalculator: Calculator: Calculator = {
-  id: 'employee-stock-option-plan-esop-valuation-calculator-calculator',
+export const EmployeeStockOptionPlanEsopValuationCalculator: Calculator = {
+  id: 'EmployeeStockOption-PlanEsopValuation-calculator-calculator',
   title: 'Employee Stock Option Plan (ESOP) Valuation Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

@@ -1,4 +1,4 @@
-import { dogecoin-mining-calculatorInputs, dogecoin-mining-calculatorMetrics, dogecoin-mining-calculatorAnalysis } from './types';
+import { DogecoinMiningCalculatorinputs, DogecoinMiningCalculatormetrics, DogecoinMiningCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: dogecoin-mining-calculatorInputs): number {
+export function calculateResult(inputs: DogecoinMiningCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: dogecoin-mining-calculatorInputs): numbe
   }
 }
 
-export function generateAnalysis(inputs: dogecoin-mining-calculatorInputs, metrics: dogecoin-mining-calculatorMetrics): dogecoin-mining-calculatorAnalysis {
+export function generateAnalysis(inputs: DogecoinMiningCalculatorinputs, metrics: DogecoinMiningCalculatormetrics): DogecoinMiningCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

@@ -1,4 +1,4 @@
-export { distressed_debt_calculatorCalculator } from './distressed_debt_calculator';
+export { distressed_debt_calculator } from './distressed_debt_calculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

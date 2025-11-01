@@ -1,3 +1,3 @@
-import { AdViewabilityImpactOnRoiCalculatorCalculator } from './AdViewabilityImpactOnRoiCalculatorCalculator';
+import { AdViewabilityImpactOnRoiCalculator } from './AdViewabilityImpactOnRoiCalculator';
 
-export { AdViewabilityImpactOnRoiCalculatorCalculator };
+export { AdViewabilityImpactOnRoiCalculator };

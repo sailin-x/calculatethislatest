@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateWindowCleaningCostCalculatorInputs } from './validation';
 
 export const WindowCleaningCostCalculator: Calculator = {
-  id: 'window-cleaning-cost-calculator',
+  id: 'WindowCleaningCost-calculator',
   title: 'Window Cleaning Cost Calculator',
   category: 'health',
   subcategory: 'General',

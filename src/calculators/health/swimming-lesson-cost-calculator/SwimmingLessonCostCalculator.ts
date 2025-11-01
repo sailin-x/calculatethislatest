@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateSwimmingLessonCostCalculatorInputs } from './validation';
 
 export const SwimmingLessonCostCalculator: Calculator = {
-  id: 'swimming-lesson-cost-calculator',
+  id: 'SwimmingLessonCost-calculator',
   title: 'Swimming Lesson Cost Calculator',
   category: 'health',
   subcategory: 'General',

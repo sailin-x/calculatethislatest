@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validatePostmoneyValuationCalculatorInputs, validatePostmoneyValuationCalculatorBusinessRules } from './validation';
 
-export const PostmoneyValuationCalculatorCalculator: Calculator: Calculator = {
-  id: 'post-money-valuation-calculator-calculator',
+export const PostmoneyValuationCalculator: Calculator = {
+  id: 'PostMoneyValuation-calculator-calculator',
   title: 'Post-Money Valuation Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

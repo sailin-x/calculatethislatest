@@ -1,4 +1,4 @@
-import { dental-implant-roi-calculatorInputs, dental-implant-roi-calculatorMetrics, dental-implant-roi-calculatorAnalysis } from './types';
+import { DentalImplantRoi-calculatorInputs, DentalImplantRoi-calculatorMetrics, DentalImplantRoi-calculatorAnalysis } from './types';
 
 
 // Investment Calculator - ROI and growth calculations
@@ -12,7 +12,7 @@ export function calculateCompoundInterest(principal: number, rate: number, years
   return principal * Math.pow(1 + ratePerPeriod, totalPeriods);
 }
 
-export function calculateResult(inputs: dental-implant-roi-calculatorInputs): number {
+export function calculateResult(inputs: DentalImplantRoi-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -36,7 +36,7 @@ export function calculateResult(inputs: dental-implant-roi-calculatorInputs): nu
   }
 }
 
-export function generateAnalysis(inputs: dental-implant-roi-calculatorInputs, metrics: dental-implant-roi-calculatorMetrics): dental-implant-roi-calculatorAnalysis {
+export function generateAnalysis(inputs: DentalImplantRoi-calculatorInputs, metrics: DentalImplantRoi-calculatorMetrics): DentalImplantRoi-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

@@ -1,3 +1,3 @@
-import { PriceToBookCalculatorCalculator } from './PriceToBookCalculatorCalculator';
+import { PriceToBookCalculator } from './PriceToBookCalculator';
 
-export { PriceToBookCalculatorCalculator };
+export { PriceToBookCalculator };

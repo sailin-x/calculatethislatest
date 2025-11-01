@@ -4,11 +4,11 @@ import { calculateResult, generateAnalysis } from './formulas';
 import { validateHighNetWorthDivorceAssetDivisionInputs } from './validation';
 
 export const HighNetWorthDivorceAssetDivision: Calculator = {
-  id: 'high-net-worth-divorce-asset-division',
-  title: 'High-Net-Worth Divorce Asset Division',
+  id: 'HighNetWorth-DivorceAssetDivision',
+  title: 'HighNetWorth Divorce Asset Division',
   category: 'legal',
   subcategory: 'General',
-  description: 'Calculate high-net-worth divorce asset division',
+  description: 'Calculate HighNetWorth divorce asset division',
   usageInstructions: [
     'Add usage instructions here'
   ],

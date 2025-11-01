@@ -1,3 +1,3 @@
-import { SurgicalCenterCaseCostingCalculatorCalculator } from './SurgicalCenterCaseCostingCalculatorCalculator';
+import { SurgicalCenterCaseCostingCalculator } from './SurgicalCenterCaseCostingCalculator';
 
-export { SurgicalCenterCaseCostingCalculatorCalculator };
+export { SurgicalCenterCaseCostingCalculator };

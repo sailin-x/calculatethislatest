@@ -103,11 +103,11 @@ export function validateHomeEquityLoanInputs(inputs: HomeEquityLoanInputs): Vali
   }
 
   if (inputs.borrowerDebtToIncomeRatio === undefined || inputs.borrowerDebtToIncomeRatio < 0) {
-    errors.push('Debt-to-income ratio must be 0 or greater');
+    errors.push('DebtToIncome ratio must be 0 or greater');
   }
 
   if (inputs.borrowerDebtToIncomeRatio > 100) {
-    errors.push('Debt-to-income ratio cannot exceed 100%');
+    errors.push('DebtToIncome ratio cannot exceed 100%');
   }
 
   if (!inputs.borrowerEmploymentType) {
@@ -249,7 +249,7 @@ export function validateHomeEquityLoanInputs(inputs: HomeEquityLoanInputs): Vali
   }
 
   if (inputs.borrowerDebtToIncomeRatio > 50) {
-    warnings.push('High debt-to-income ratio may affect loan approval');
+    warnings.push('High DebtToIncome ratio may affect loan approval');
   }
 
   if (inputs.borrowerEmploymentType === 'unemployed') {
@@ -305,7 +305,7 @@ export function validateHomeEquityLoanInputs(inputs: HomeEquityLoanInputs): Vali
     const annualIncome = inputs.borrowerIncome;
     const loanToIncomeRatio = (inputs.loanAmount / annualIncome) * 100;
     if (loanToIncomeRatio > 200) {
-      warnings.push('High loan-to-income ratio may affect approval');
+      warnings.push('High LoanToIncome ratio may affect approval');
     }
   }
 
@@ -364,8 +364,8 @@ export function quickValidateHomeEquityLoanInput(field: string, value: any): str
       break;
 
     case 'debtToIncomeRatio':
-      if (value && typeof value !== 'number') return 'Debt-to-income ratio must be a number';
-      if (value && (value < 0 || value > 100)) return 'Debt-to-income ratio must be between 0% and 100%';
+      if (value && typeof value !== 'number') return 'DebtToIncome ratio must be a number';
+      if (value && (value < 0 || value > 100)) return 'DebtToIncome ratio must be between 0% and 100%';
       break;
 
     case 'monthlyIncome':

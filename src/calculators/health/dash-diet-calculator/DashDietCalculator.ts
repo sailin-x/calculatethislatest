@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateDashDietCalculatorInputs, validateDashDietCalculatorBusinessRules } from './validation';
 
-export const DashDietCalculatorCalculator: Calculator: Calculator = {
-  id: 'dash-diet-calculator-calculator',
+export const DashDietCalculator: Calculator = {
+  id: 'DashDietCalculator-calculator',
   title: 'DASH Diet Calculator Calculator',
   health: 'health', // e.g., 'finance', 'math', 'health', 'business'
   subhealth: 'Subhealth Name',

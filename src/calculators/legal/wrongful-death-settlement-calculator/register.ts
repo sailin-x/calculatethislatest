@@ -1,3 +1,3 @@
-import { WrongfulDeathSettlementCalculatorCalculator } from './WrongfulDeathSettlementCalculatorCalculator';
+import { WrongfulDeathSettlementCalculator } from './WrongfulDeathSettlementCalculator';
 
-export { WrongfulDeathSettlementCalculatorCalculator };
+export { WrongfulDeathSettlementCalculator };

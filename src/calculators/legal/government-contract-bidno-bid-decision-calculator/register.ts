@@ -1,3 +1,3 @@
-import { GovernmentContractBidnobidDecisionCalculatorCalculator } from './GovernmentContractBidnobidDecisionCalculatorCalculator';
+import { GovernmentContractBidnobidDecisionCalculator } from './GovernmentContractBidnobidDecisionCalculator';
 
-export { GovernmentContractBidnobidDecisionCalculatorCalculator };
+export { GovernmentContractBidnobidDecisionCalculator };

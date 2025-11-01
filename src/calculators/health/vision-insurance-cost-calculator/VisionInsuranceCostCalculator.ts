@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateVisionInsuranceCostCalculatorInputs } from './validation';
 
 export const VisionInsuranceCostCalculator: Calculator = {
-  id: 'vision-insurance-cost-calculator',
+  id: 'VisionInsuranceCost-calculator',
   title: 'Vision Insurance Cost Calculator',
   category: 'health',
   subcategory: 'General',

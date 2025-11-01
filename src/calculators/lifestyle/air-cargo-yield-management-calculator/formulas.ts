@@ -1,13 +1,13 @@
-import { air-cargo-yield-management-calculatorInputs, air-cargo-yield-management-calculatorMetrics, air-cargo-yield-management-calculatorAnalysis } from './types';
+import { AirCargoYield-management-calculatorInputs, AirCargoYield-management-calculatorMetrics, AirCargoYield-management-calculatorAnalysis } from './types';
 
 // Air Cargo Yield Management Calculator - Lifestyle calculations
-export function calculateResult(inputs: air-cargo-yield-management-calculatorInputs): number {
+export function calculateResult(inputs: AirCargoYield-management-calculatorInputs): number {
   // Lifestyle calculation logic
   const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
   return numericValues.reduce((sum, val) => sum + val, 0) || 0;
 }
 
-export function generateAnalysis(inputs: air-cargo-yield-management-calculatorInputs, metrics: air-cargo-yield-management-calculatorMetrics): air-cargo-yield-management-calculatorAnalysis {
+export function generateAnalysis(inputs: AirCargoYield-management-calculatorInputs, metrics: AirCargoYield-management-calculatorMetrics): AirCargoYield-management-calculatorAnalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (Math.abs(result) > 1000) riskLevel = 'High';

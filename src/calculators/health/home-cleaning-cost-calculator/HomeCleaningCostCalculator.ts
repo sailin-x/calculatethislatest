@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateHomeCleaningCostCalculatorInputs } from './validation';
 
 export const HomeCleaningCostCalculator: Calculator = {
-  id: 'home-cleaning-cost-calculator',
+  id: 'HomeCleaningCost-calculator',
   title: 'Home Cleaning Cost Calculator',
   category: 'health',
   subcategory: 'General',

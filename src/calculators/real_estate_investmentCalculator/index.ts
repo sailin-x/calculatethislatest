@@ -1,3 +1,3 @@
-export * from './real_estate_investmentCalculatorCalculator';
+export * from './real_estate_investmentCalculator';
 export * from './register';
 export * from './types';

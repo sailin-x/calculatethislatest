@@ -1,13 +1,13 @@
-import { union-vs-non-union-labor-cost-calculatorInputs, union-vs-non-union-labor-cost-calculatorMetrics, union-vs-non-union-labor-cost-calculatorAnalysis } from './types';
+import { UnionVsNon-UnionLaborCost-calculatorInputs, UnionVsNon-UnionLaborCost-calculatorMetrics, UnionVsNon-UnionLaborCost-calculatorAnalysis } from './types';
 
 // Union vs. Non-Union Labor Cost Calculator - Business calculations
-export function calculateResult(inputs: union-vs-non-union-labor-cost-calculatorInputs): number {
+export function calculateResult(inputs: UnionVsNon-UnionLaborCost-calculatorInputs): number {
   // Business calculation logic
   const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
   return numericValues.reduce((sum, val) => sum + val, 0) || 0;
 }
 
-export function generateAnalysis(inputs: union-vs-non-union-labor-cost-calculatorInputs, metrics: union-vs-non-union-labor-cost-calculatorMetrics): union-vs-non-union-labor-cost-calculatorAnalysis {
+export function generateAnalysis(inputs: UnionVsNon-UnionLaborCost-calculatorInputs, metrics: UnionVsNon-UnionLaborCost-calculatorMetrics): UnionVsNon-UnionLaborCost-calculatorAnalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (Math.abs(result) > 100000) riskLevel = 'High';

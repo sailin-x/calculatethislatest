@@ -1,3 +1,3 @@
-import { TechnicalDebtCalculatorCalculator } from './TechnicalDebtCalculatorCalculator';
+import { TechnicalDebtCalculator } from './TechnicalDebtCalculator';
 
-export { TechnicalDebtCalculatorCalculator };
+export { TechnicalDebtCalculator };

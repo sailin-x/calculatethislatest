@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateBondConvexityCalculatorInputs, validateBondConvexityCalculatorBusinessRules } from './validation';
 
-export const BondConvexityCalculatorCalculator: Calculator: Calculator = {
-  id: 'bond-convexity-calculator-calculator',
+export const BondConvexityCalculator: Calculator = {
+  id: 'BondConvexityCalculator-calculator',
   title: 'Bond Convexity Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

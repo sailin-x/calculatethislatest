@@ -1,4 +1,4 @@
-export { MedicalMalpracticeSettlementCalculatorCalculator } from './MedicalMalpracticeSettlementCalculatorCalculator';
+export { MedicalMalpracticeSettlementCalculator } from './MedicalMalpracticeSettlementCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

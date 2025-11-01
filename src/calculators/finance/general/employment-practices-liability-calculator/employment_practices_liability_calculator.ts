@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { employment_practices_liability_calculatorInputs, employment_practices_liability_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const employment_practices_liability_calculatorCalculator: Calculator = {
-  id: 'employment-practices-liability-calculator',
+export const EmploymentPracticesLiability-calculator: Calculator = {
+  id: 'EmploymentPracticesLiability-calculator',
   title: 'Employment Practices Liability Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

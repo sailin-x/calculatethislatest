@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateIrrevocableLifeInsuranceTrustIlitValueCalculatorInputs, validateIrrevocableLifeInsuranceTrustIlitValueCalculatorBusinessRules } from './validation';
 
-export const IrrevocableLifeInsuranceTrustIlitValueCalculatorCalculator: Calculator: Calculator = {
-  id: 'irrevocable-life-insurance-trust-ilit-value-calculator-calculator',
+export const IrrevocableLifeInsuranceTrustIlitValueCalculator: Calculator = {
+  id: 'IrrevocableLifeInsurance-TrustIlitValue-calculator-calculator',
   title: 'Irrevocable Life Insurance Trust (ILIT) Value Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

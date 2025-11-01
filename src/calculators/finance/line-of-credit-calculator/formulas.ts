@@ -1,4 +1,4 @@
-import { line-of-credit-calculatorInputs, line-of-credit-calculatorMetrics, line-of-credit-calculatorAnalysis } from './types';
+import { LineOfCredit-calculatorInputs, LineOfCredit-calculatorMetrics, LineOfCredit-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: line-of-credit-calculatorInputs): number {
+export function calculateResult(inputs: LineOfCredit-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: line-of-credit-calculatorInputs): number
   }
 }
 
-export function generateAnalysis(inputs: line-of-credit-calculatorInputs, metrics: line-of-credit-calculatorMetrics): line-of-credit-calculatorAnalysis {
+export function generateAnalysis(inputs: LineOfCredit-calculatorInputs, metrics: LineOfCredit-calculatorMetrics): LineOfCredit-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

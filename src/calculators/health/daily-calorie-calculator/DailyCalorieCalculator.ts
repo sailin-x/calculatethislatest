@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateDailyCalorieCalculatorInputs, validateDailyCalorieCalculatorBusinessRules } from './validation';
 
-export const DailyCalorieCalculatorCalculator: Calculator: Calculator = {
-  id: 'daily-calorie-calculator-calculator',
+export const DailyCalorieCalculator: Calculator = {
+  id: 'DailyCalorieCalculator-calculator',
   title: 'Daily Calorie Calculator Calculator',
   health: 'health', // e.g., 'finance', 'math', 'health', 'business'
   subhealth: 'Subhealth Name',

@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validatePoolMaintenanceCostCalculatorInputs } from './validation';
 
 export const PoolMaintenanceCostCalculator: Calculator = {
-  id: 'pool-maintenance-cost-calculator',
+  id: 'PoolMaintenanceCost-calculator',
   title: 'Pool Maintenance Cost Calculator',
   category: 'health',
   subcategory: 'General',

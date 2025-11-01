@@ -78,7 +78,7 @@ export interface EconomicValueAddedAnalysis {
 
   // Risk Management
   riskAssessment: string;
-  mitigationStrategies: string;
+  mitigationStrategies: string[];
   uncertaintyAnalysis: string;
 
   // Comparative Analysis

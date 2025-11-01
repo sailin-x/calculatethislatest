@@ -1,4 +1,4 @@
-export { OperatingMarginCalculatorCalculator } from './OperatingMarginCalculatorCalculator';
+export { OperatingMarginCalculator } from './OperatingMarginCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

@@ -1,3 +1,3 @@
-import { BusinessProcessReengineeringBprSavingsCalculatorCalculator } from './BusinessProcessReengineeringBprSavingsCalculatorCalculator';
+import { BusinessProcessReengineeringBprSavingsCalculator } from './BusinessProcessReengineeringBprSavingsCalculator';
 
-export { BusinessProcessReengineeringBprSavingsCalculatorCalculator };
+export { BusinessProcessReengineeringBprSavingsCalculator };

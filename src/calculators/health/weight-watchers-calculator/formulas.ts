@@ -1,13 +1,13 @@
-import { weight-watchers-calculatorInputs, weight-watchers-calculatorMetrics, weight-watchers-calculatorAnalysis } from './types';
+import { WeightWatchersCalculatorinputs, WeightWatchersCalculatormetrics, WeightWatchersCalculatoranalysis } from './types';
 
 // Weight Watchers Calculator - Health calculations
-export function calculateResult(inputs: weight-watchers-calculatorInputs): number {
+export function calculateResult(inputs: WeightWatchersCalculatorinputs): number {
   // Health calculation logic
   const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
   return numericValues.reduce((sum, val) => sum + val, 0) || 0;
 }
 
-export function generateAnalysis(inputs: weight-watchers-calculatorInputs, metrics: weight-watchers-calculatorMetrics): weight-watchers-calculatorAnalysis {
+export function generateAnalysis(inputs: WeightWatchersCalculatorinputs, metrics: WeightWatchersCalculatormetrics): WeightWatchersCalculatoranalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (Math.abs(result) > 1000) riskLevel = 'High';

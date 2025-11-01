@@ -1,3 +1,3 @@
-import { AnnuityBuyoutCalculatorCalculator } from './AnnuityBuyoutCalculatorCalculator';
+import { AnnuityBuyoutCalculator } from './AnnuityBuyoutCalculator';
 
-export { AnnuityBuyoutCalculatorCalculator };
+export { AnnuityBuyoutCalculator };

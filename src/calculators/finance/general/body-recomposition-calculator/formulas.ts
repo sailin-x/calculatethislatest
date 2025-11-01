@@ -1,4 +1,4 @@
-import { body-recomposition-calculatorInputs, body-recomposition-calculatorMetrics, body-recomposition-calculatorAnalysis } from './types';
+import { BodyRecompositionCalculatorinputs, BodyRecompositionCalculatormetrics, BodyRecompositionCalculatoranalysis } from './types';
 
 
 // Health Calculator - BMI and body metrics
@@ -20,7 +20,7 @@ export function calculateBMR(weightKg: number, heightCm: number, age: number, is
   return isMale ? base + 5 : base - 161;
 }
 
-export function calculateResult(inputs: body-recomposition-calculatorInputs): number {
+export function calculateResult(inputs: BodyRecompositionCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -44,7 +44,7 @@ export function calculateResult(inputs: body-recomposition-calculatorInputs): nu
   }
 }
 
-export function generateAnalysis(inputs: body-recomposition-calculatorInputs, metrics: body-recomposition-calculatorMetrics): body-recomposition-calculatorAnalysis {
+export function generateAnalysis(inputs: BodyRecompositionCalculatorinputs, metrics: BodyRecompositionCalculatormetrics): BodyRecompositionCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

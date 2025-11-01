@@ -10,7 +10,7 @@ import {
 import { validateOverallEquipmentEffectivenessCalculatorInputs } from './validation';
 
 export const OverallEquipmentEffectivenessCalculator: Calculator = {
-  id: 'overall-equipment-effectiveness-calculator',
+  id: 'OverallEquipmentEffectiveness-calculator',
   title: 'Overall Equipment Effectiveness Calculator',
   category: 'business',
   subcategory: 'Financial Planning',

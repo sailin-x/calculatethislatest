@@ -1,4 +1,4 @@
-export { commodities_futures_profitability_calculatorCalculator } from './commodities_futures_profitability_calculator';
+export { commodities_futures_profitability_calculator } from './commodities_futures_profitability_calculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

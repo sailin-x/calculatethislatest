@@ -1,13 +1,13 @@
-import { medical-malpractice-settlement-calculatorInputs, medical-malpractice-settlement-calculatorMetrics, medical-malpractice-settlement-calculatorAnalysis } from './types';
+import { MedicalMalpracticeSettlement-calculatorInputs, MedicalMalpracticeSettlement-calculatorMetrics, MedicalMalpracticeSettlement-calculatorAnalysis } from './types';
 
 // Medical Malpractice Settlement Calculator - Legal calculations
-export function calculateResult(inputs: medical-malpractice-settlement-calculatorInputs): number {
+export function calculateResult(inputs: MedicalMalpracticeSettlement-calculatorInputs): number {
   // Legal calculation logic
   const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
   return numericValues.reduce((sum, val) => sum + val, 0) || 0;
 }
 
-export function generateAnalysis(inputs: medical-malpractice-settlement-calculatorInputs, metrics: medical-malpractice-settlement-calculatorMetrics): medical-malpractice-settlement-calculatorAnalysis {
+export function generateAnalysis(inputs: MedicalMalpracticeSettlement-calculatorInputs, metrics: MedicalMalpracticeSettlement-calculatorMetrics): MedicalMalpracticeSettlement-calculatorAnalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (Math.abs(result) > 100000) riskLevel = 'High';

@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateRSquaredCalculatorInputs, validateRSquaredCalculatorBusinessRules } from './validation';
 
-export const RSquaredCalculatorCalculator: Calculator: Calculator = {
-  id: 'r-squared-calculator-calculator',
+export const RSquaredCalculator: Calculator = {
+  id: 'RSquaredCalculator-calculator',
   title: 'R Squared Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

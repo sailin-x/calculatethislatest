@@ -1,5 +1,5 @@
-export { bariatricsurgerycostsavingscalculatorCalculator } from './bariatricsurgerycostsavingscalculatorCalculator';
-export { registerbariatricsurgerycostsavingscalculatorCalculator } from './register';
+export { bariatricsurgerycostsavingscalculator } from './bariatricsurgerycostsavingscalculator';
+export { registerbariatricsurgerycostsavingscalculator } from './register';
 export * from './types';
 export * from './formulas';
 export * from './validation';

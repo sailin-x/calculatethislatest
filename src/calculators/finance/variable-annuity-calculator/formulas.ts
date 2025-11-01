@@ -1,4 +1,4 @@
-import { variable-annuity-calculatorInputs, variable-annuity-calculatorMetrics, variable-annuity-calculatorAnalysis } from './types';
+import { VariableAnnuityCalculatorinputs, VariableAnnuityCalculatormetrics, VariableAnnuityCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: variable-annuity-calculatorInputs): number {
+export function calculateResult(inputs: VariableAnnuityCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: variable-annuity-calculatorInputs): numb
   }
 }
 
-export function generateAnalysis(inputs: variable-annuity-calculatorInputs, metrics: variable-annuity-calculatorMetrics): variable-annuity-calculatorAnalysis {
+export function generateAnalysis(inputs: VariableAnnuityCalculatorinputs, metrics: VariableAnnuityCalculatormetrics): VariableAnnuityCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

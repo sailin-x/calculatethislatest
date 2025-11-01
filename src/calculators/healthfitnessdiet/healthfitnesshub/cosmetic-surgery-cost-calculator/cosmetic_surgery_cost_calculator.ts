@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { cosmetic_surgery_cost_calculatorInputs, cosmetic_surgery_cost_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const cosmetic_surgery_cost_calculatorCalculator: Calculator = {
-  id: 'cosmetic-surgery-cost-calculator',
+export const CosmeticSurgeryCost-calculator: Calculator = {
+  id: 'CosmeticSurgeryCost-calculator',
   title: 'Cosmetic Surgery Cost Calculator Calculator',
   category: 'healthfitnessdiet',
   subcategory: 'healthfitnesshub',

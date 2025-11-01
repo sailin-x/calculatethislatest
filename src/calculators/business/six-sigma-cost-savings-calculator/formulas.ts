@@ -1,4 +1,4 @@
-import { six-sigma-cost-savings-calculatorInputs, six-sigma-cost-savings-calculatorMetrics, six-sigma-cost-savings-calculatorAnalysis } from './types';
+import { SixSigmaCost-savings-calculatorInputs, SixSigmaCost-savings-calculatorMetrics, SixSigmaCost-savings-calculatorAnalysis } from './types';
 
 // Six Sigma Cost Savings Calculator - Business calculations
 export function calculateNetPresentValue(cashFlows: number[], discountRate: number): number {
@@ -11,7 +11,7 @@ export function calculateROI(initialInvestment: number, finalValue: number): num
  return ((finalValue - initialInvestment) / initialInvestment) * 100;
 }
 
-export function calculateResult(inputs: six-sigma-cost-savings-calculatorInputs): number {
+export function calculateResult(inputs: SixSigmaCost-savings-calculatorInputs): number {
  // Business calculation logic with real math
  const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
  if (numericValues.length >= 2) {
@@ -24,7 +24,7 @@ export function calculateResult(inputs: six-sigma-cost-savings-calculatorInputs)
  return calculateNetPresentValue(numericValues, 10); // 10% discount rate
 }
 
-export function generateAnalysis(inputs: six-sigma-cost-savings-calculatorInputs, metrics: six-sigma-cost-savings-calculatorMetrics): six-sigma-cost-savings-calculatorAnalysis {
+export function generateAnalysis(inputs: SixSigmaCost-savings-calculatorInputs, metrics: SixSigmaCost-savings-calculatorMetrics): SixSigmaCost-savings-calculatorAnalysis {
  const result = metrics.result;
  let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
  if (Math.abs(result) > 100000) riskLevel = 'High';

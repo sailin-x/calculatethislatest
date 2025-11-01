@@ -1,4 +1,4 @@
-export { CarpetCalculatorCalculator } from './CarpetCalculatorCalculator';
+export { CarpetCalculator } from './CarpetCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

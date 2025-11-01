@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { tender_offer_valuation_calculatorInputs, tender_offer_valuation_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const tender_offer_valuation_calculatorCalculator: Calculator = {
-  id: 'tender-offer-valuation-calculator',
+export const TenderOfferValuation-calculator: Calculator = {
+  id: 'TenderOfferValuation-calculator',
   title: 'Tender Offer Valuation Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'investmentportfoliohub',

@@ -8,9 +8,9 @@ import {
 } from './formulas';
 import { validatePeertopeerLendingCalculatorInputs, validatePeertopeerLendingCalculatorBusinessRules } from './validation';
 
-export const PeertopeerLendingCalculatorCalculator: Calculator: Calculator = {
-  id: 'peer-to-peer-lending-calculator-calculator',
-  title: 'Peer-to-Peer Lending Calculator Calculator',
+export const PeertopeerLendingCalculator: Calculator = {
+  id: 'PeerToPeer-LendingCalculatorCalculator',
+  title: 'PeerToPeer Lending Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',
   description: 'Brief description of what this calculator does and its purpose.',

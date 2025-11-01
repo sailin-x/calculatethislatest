@@ -1,3 +1,3 @@
-import { PokemonCardCollectionCalculatorCalculator } from './PokemonCardCollectionCalculatorCalculator';
+import { PokemonCardCollectionCalculator } from './PokemonCardCollectionCalculator';
 
-export { PokemonCardCollectionCalculatorCalculator };
+export { PokemonCardCollectionCalculator };

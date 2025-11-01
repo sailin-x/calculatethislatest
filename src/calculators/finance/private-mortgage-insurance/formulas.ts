@@ -1,4 +1,4 @@
-import { private-mortgage-insuranceInputs, private-mortgage-insuranceMetrics, private-mortgage-insuranceAnalysis } from './types';
+import { PrivateMortgageInsuranceinputs, PrivateMortgageInsurancemetrics, PrivateMortgageInsuranceanalysis } from './types';
 
 
 // Mortgage Payment Calculator - Standard loan amortization formula
@@ -14,7 +14,7 @@ export function calculateTotalInterest(principal: number, monthlyPayment: number
   return (monthlyPayment * numPayments) - principal;
 }
 
-export function calculateResult(inputs: private-mortgage-insuranceInputs): number {
+export function calculateResult(inputs: PrivateMortgageInsuranceinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: private-mortgage-insuranceInputs): numbe
   }
 }
 
-export function generateAnalysis(inputs: private-mortgage-insuranceInputs, metrics: private-mortgage-insuranceMetrics): private-mortgage-insuranceAnalysis {
+export function generateAnalysis(inputs: PrivateMortgageInsuranceinputs, metrics: PrivateMortgageInsurancemetrics): PrivateMortgageInsuranceanalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

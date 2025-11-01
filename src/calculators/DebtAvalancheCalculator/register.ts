@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { DebtAvalancheCalculatorCalculator } from './DebtAvalancheCalculatorCalculator';
+import { DebtAvalancheCalculator } from './DebtAvalancheCalculator';
 
-export function registerDebtAvalancheCalculatorCalculator(): void {
-  calculatorRegistry.register(new DebtAvalancheCalculatorCalculator());
+export function registerDebtAvalancheCalculator(): void {
+  calculatorRegistry.register(new DebtAvalancheCalculator());
 }

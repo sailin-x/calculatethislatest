@@ -1,4 +1,4 @@
-export { OpioidSettlementCalculatorCalculator } from './OpioidSettlementCalculatorCalculator';
+export { OpioidSettlementCalculator } from './OpioidSettlementCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

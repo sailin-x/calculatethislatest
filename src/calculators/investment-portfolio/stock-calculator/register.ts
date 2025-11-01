@@ -1,3 +1,3 @@
-import { StockCalculatorCalculator } from './StockCalculatorCalculator';
+import { StockCalculator } from './StockCalculator';
 
-export { StockCalculatorCalculator };
+export { StockCalculator };

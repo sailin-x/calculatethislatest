@@ -1,4 +1,4 @@
-import { plumbing-repair-cost-calculatorInputs, plumbing-repair-cost-calculatorMetrics, plumbing-repair-cost-calculatorAnalysis } from './types';
+import { PlumbingRepairCost-calculatorInputs, PlumbingRepairCost-calculatorMetrics, PlumbingRepairCost-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: plumbing-repair-cost-calculatorInputs): number {
+export function calculateResult(inputs: PlumbingRepairCost-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: plumbing-repair-cost-calculatorInputs): 
   }
 }
 
-export function generateAnalysis(inputs: plumbing-repair-cost-calculatorInputs, metrics: plumbing-repair-cost-calculatorMetrics): plumbing-repair-cost-calculatorAnalysis {
+export function generateAnalysis(inputs: PlumbingRepairCost-calculatorInputs, metrics: PlumbingRepairCost-calculatorMetrics): PlumbingRepairCost-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

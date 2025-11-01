@@ -1,4 +1,4 @@
-import { hvac-maintenance-cost-calculatorInputs, hvac-maintenance-cost-calculatorMetrics, hvac-maintenance-cost-calculatorAnalysis } from './types';
+import { HvacMaintenanceCost-calculatorInputs, HvacMaintenanceCost-calculatorMetrics, HvacMaintenanceCost-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: hvac-maintenance-cost-calculatorInputs): number {
+export function calculateResult(inputs: HvacMaintenanceCost-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: hvac-maintenance-cost-calculatorInputs):
   }
 }
 
-export function generateAnalysis(inputs: hvac-maintenance-cost-calculatorInputs, metrics: hvac-maintenance-cost-calculatorMetrics): hvac-maintenance-cost-calculatorAnalysis {
+export function generateAnalysis(inputs: HvacMaintenanceCost-calculatorInputs, metrics: HvacMaintenanceCost-calculatorMetrics): HvacMaintenanceCost-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

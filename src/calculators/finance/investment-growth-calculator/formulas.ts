@@ -1,4 +1,4 @@
-import { investment-growth-calculatorInputs, investment-growth-calculatorMetrics, investment-growth-calculatorAnalysis } from './types';
+import { InvestmentGrowthCalculatorinputs, InvestmentGrowthCalculatormetrics, InvestmentGrowthCalculatoranalysis } from './types';
 
 
 // Investment Calculator - ROI and growth calculations
@@ -12,7 +12,7 @@ export function calculateCompoundInterest(principal: number, rate: number, years
   return principal * Math.pow(1 + ratePerPeriod, totalPeriods);
 }
 
-export function calculateResult(inputs: investment-growth-calculatorInputs): number {
+export function calculateResult(inputs: InvestmentGrowthCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -36,7 +36,7 @@ export function calculateResult(inputs: investment-growth-calculatorInputs): num
   }
 }
 
-export function generateAnalysis(inputs: investment-growth-calculatorInputs, metrics: investment-growth-calculatorMetrics): investment-growth-calculatorAnalysis {
+export function generateAnalysis(inputs: InvestmentGrowthCalculatorinputs, metrics: InvestmentGrowthCalculatormetrics): InvestmentGrowthCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

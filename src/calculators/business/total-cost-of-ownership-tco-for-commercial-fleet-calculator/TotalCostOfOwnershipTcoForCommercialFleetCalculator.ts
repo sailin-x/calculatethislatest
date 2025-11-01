@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateTotalCostOfOwnershipTcoForCommercialFleetCalculatorInputs, validateTotalCostOfOwnershipTcoForCommercialFleetCalculatorBusinessRules } from './validation';
 
-export const TotalCostOfOwnershipTcoForCommercialFleetCalculatorCalculator: Calculator: Calculator = {
-  id: 'total-cost-of-ownership-tco-for-commercial-fleet-calculator-calculator',
+export const TotalCostOfOwnershipTcoForCommercialFleetCalculator: Calculator = {
+  id: 'TotalCostOf-OwnershipTcoFor-CommercialFleetCalculator-calculator',
   title: 'Total Cost of Ownership (TCO) for Commercial Fleet Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

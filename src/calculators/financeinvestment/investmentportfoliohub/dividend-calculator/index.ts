@@ -1,4 +1,4 @@
-export { dividend_calculatorCalculator } from './dividend_calculator';
+export { dividend_calculator } from './dividend_calculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

@@ -207,7 +207,7 @@ export const balloonMortgageBusinessRules = {
     cash: {
       requirements: ['Sufficient liquidity', 'No impact on other goals'],
       risks: ['Opportunity cost', 'Reduced emergency funds'],
-      suitability: 'Best for high-net-worth borrowers with excess liquidity'
+      suitability: 'Best for HighNetWorth borrowers with excess liquidity'
     },
     extend: {
       requirements: ['Lender cooperation', 'Good payment history'],

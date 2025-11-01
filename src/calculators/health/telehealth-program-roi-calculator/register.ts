@@ -1,3 +1,3 @@
-import { TelehealthProgramRoiCalculatorCalculator } from './TelehealthProgramRoiCalculatorCalculator';
+import { TelehealthProgramRoiCalculator } from './TelehealthProgramRoiCalculator';
 
-export { TelehealthProgramRoiCalculatorCalculator };
+export { TelehealthProgramRoiCalculator };

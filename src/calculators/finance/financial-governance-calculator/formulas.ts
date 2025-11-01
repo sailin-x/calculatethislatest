@@ -1,4 +1,4 @@
-import { financial-governance-calculatorInputs, financial-governance-calculatorMetrics, financial-governance-calculatorAnalysis } from './types';
+import { FinancialGovernanceCalculatorinputs, FinancialGovernanceCalculatormetrics, FinancialGovernanceCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: financial-governance-calculatorInputs): number {
+export function calculateResult(inputs: FinancialGovernanceCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: financial-governance-calculatorInputs): 
   }
 }
 
-export function generateAnalysis(inputs: financial-governance-calculatorInputs, metrics: financial-governance-calculatorMetrics): financial-governance-calculatorAnalysis {
+export function generateAnalysis(inputs: FinancialGovernanceCalculatorinputs, metrics: FinancialGovernanceCalculatormetrics): FinancialGovernanceCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

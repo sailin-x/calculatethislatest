@@ -3,9 +3,9 @@ import { CalculatorInputs } from '../../types/calculator';
 // Individual field validation functions
 export function validateFilingStatus(value: string, allInputs?: Record<string, any>): string | null {
   if (!value) return 'Filing status is required';
-  const validStatuses = ['single', 'married-filing-jointly', 'married-filing-separately', 'head-of-household', 'qualifying-widow'];
+  const validStatuses = ['single', 'MarriedFilingJointly', 'MarriedFilingSeparately', 'HeadOfHousehold', 'qualifying-widow'];
   if (!validStatuses.includes(value)) {
-    return 'Filing status must be one of: single, married-filing-jointly, married-filing-separately, head-of-household, qualifying-widow';
+    return 'Filing status must be one of: single, MarriedFilingJointly, MarriedFilingSeparately, HeadOfHousehold, qualifying-widow';
   }
   return null;
 }

@@ -1,4 +1,4 @@
-export { TenderOfferValuationCalculatorCalculator } from './TenderOfferValuationCalculatorCalculator';
+export { TenderOfferValuationCalculator } from './TenderOfferValuationCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

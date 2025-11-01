@@ -1,3 +1,3 @@
-import { StreamingServiceSubscriberChurnCostCalculatorCalculator } from './StreamingServiceSubscriberChurnCostCalculatorCalculator';
+import { StreamingServiceSubscriberChurnCostCalculator } from './StreamingServiceSubscriberChurnCostCalculator';
 
-export { StreamingServiceSubscriberChurnCostCalculatorCalculator };
+export { StreamingServiceSubscriberChurnCostCalculator };

@@ -3,7 +3,7 @@ import { calculateCostSegregation, generateCostSegregationAnalysis } from './for
 import { validateCostSegregationInputs } from './validation';
 
 export const CostSegregationDepreciationCalculator: Calculator = {
-  id: 'cost-segregation-depreciation-calculator',
+  id: 'CostSegregationDepreciation-calculator',
   name: 'Cost Segregation Depreciation Calculator',
   category: 'finance',
   subcategory: 'tax',
@@ -273,7 +273,7 @@ export const CostSegregationDepreciationCalculator: Calculator = {
       options: [
         { value: 'straight-line', label: 'Straight-Line' },
         { value: 'declining-balance', label: 'Declining Balance' },
-        { value: 'sum-of-years', label: 'Sum-of-Years Digits' }
+        { value: 'SumOfYears', label: 'SumOfYears Digits' }
       ]
     },
     {
@@ -346,7 +346,7 @@ export const CostSegregationDepreciationCalculator: Calculator = {
       name: 'Depreciation Schedule',
       type: 'array',
       unit: '',
-      description: 'Year-by-year depreciation schedule'
+      description: 'YearByYear depreciation schedule'
     },
     {
       id: 'cashFlowImpact',
@@ -464,14 +464,14 @@ export const CostSegregationDepreciationCalculator: Calculator = {
         siteImprovements: 300000,
         personalProperty: 150000,
         landImprovements: 50000,
-        acquisitionDate: '2023-01-15',
+        acquisitionDate: '20230115',
         studyCost: 15000,
         taxYear: 2024,
         marginalTaxRate: 37,
         stateTaxRate: 5,
         propertyAge: 2,
         renovationCost: 200000,
-        renovationDate: '2023-06-01',
+        renovationDate: '20230601',
         propertyUse: 'business',
         ownershipType: 'corporation',
         bonusDepreciation: '80',
@@ -493,14 +493,14 @@ export const CostSegregationDepreciationCalculator: Calculator = {
         siteImprovements: 200000,
         personalProperty: 120000,
         landImprovements: 80000,
-        acquisitionDate: '2022-03-01',
+        acquisitionDate: '20220301',
         studyCost: 12000,
         taxYear: 2024,
         marginalTaxRate: 32,
         stateTaxRate: 7,
         propertyAge: 3,
         renovationCost: 150000,
-        renovationDate: '2023-09-15',
+        renovationDate: '20230915',
         propertyUse: 'rental',
         ownershipType: 'llc',
         bonusDepreciation: '80',
@@ -522,14 +522,14 @@ export const CostSegregationDepreciationCalculator: Calculator = {
         siteImprovements: 500000,
         personalProperty: 300000,
         landImprovements: 200000,
-        acquisitionDate: '2021-07-01',
+        acquisitionDate: '20210701',
         studyCost: 20000,
         taxYear: 2024,
         marginalTaxRate: 24,
         stateTaxRate: 0,
         propertyAge: 4,
         renovationCost: 300000,
-        renovationDate: '2023-12-01',
+        renovationDate: '20231201',
         propertyUse: 'business',
         ownershipType: 'partnership',
         bonusDepreciation: '60',

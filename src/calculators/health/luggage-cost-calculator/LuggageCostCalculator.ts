@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateLuggageCostCalculatorInputs } from './validation';
 
 export const LuggageCostCalculator: Calculator = {
-  id: 'luggage-cost-calculator',
+  id: 'LuggageCostCalculator',
   title: 'Luggage Cost Calculator',
   category: 'health',
   subcategory: 'General',

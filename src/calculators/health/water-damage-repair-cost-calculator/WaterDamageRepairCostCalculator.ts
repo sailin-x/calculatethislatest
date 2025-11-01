@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateWaterDamageRepairCostCalculatorInputs } from './validation';
 
 export const WaterDamageRepairCostCalculator: Calculator = {
-  id: 'water-damage-repair-cost-calculator',
+  id: 'WaterDamageRepair-cost-calculator',
   title: 'Water Damage Repair Cost Calculator',
   category: 'health',
   subcategory: 'General',

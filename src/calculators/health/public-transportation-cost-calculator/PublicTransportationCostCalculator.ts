@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validatePublicTransportationCostCalculatorInputs } from './validation';
 
 export const PublicTransportationCostCalculator: Calculator = {
-  id: 'public-transportation-cost-calculator',
+  id: 'PublicTransportationCost-calculator',
   title: 'Public Transportation Cost Calculator',
   category: 'health',
   subcategory: 'General',

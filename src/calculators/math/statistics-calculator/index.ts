@@ -1,4 +1,4 @@
-export { StatisticsCalculatorCalculator } from './StatisticsCalculatorCalculator';
+export { StatisticsCalculator } from './StatisticsCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

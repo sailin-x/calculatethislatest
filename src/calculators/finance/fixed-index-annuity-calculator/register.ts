@@ -1,3 +1,3 @@
-import { FixedIndexAnnuityCalculatorCalculator } from './FixedIndexAnnuityCalculatorCalculator';
+import { FixedIndexAnnuityCalculator } from './FixedIndexAnnuityCalculator';
 
-export { FixedIndexAnnuityCalculatorCalculator };
+export { FixedIndexAnnuityCalculator };

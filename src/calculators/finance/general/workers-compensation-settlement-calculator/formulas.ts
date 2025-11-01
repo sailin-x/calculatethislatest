@@ -1,4 +1,4 @@
-import { workers-compensation-settlement-calculatorInputs, workers-compensation-settlement-calculatorMetrics, workers-compensation-settlement-calculatorAnalysis } from './types';
+import { WorkersCompensationSettlement-calculatorInputs, WorkersCompensationSettlement-calculatorMetrics, WorkersCompensationSettlement-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: workers-compensation-settlement-calculatorInputs): number {
+export function calculateResult(inputs: WorkersCompensationSettlement-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: workers-compensation-settlement-calculat
   }
 }
 
-export function generateAnalysis(inputs: workers-compensation-settlement-calculatorInputs, metrics: workers-compensation-settlement-calculatorMetrics): workers-compensation-settlement-calculatorAnalysis {
+export function generateAnalysis(inputs: WorkersCompensationSettlement-calculatorInputs, metrics: WorkersCompensationSettlement-calculatorMetrics): WorkersCompensationSettlement-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

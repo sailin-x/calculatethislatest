@@ -1,3 +1,3 @@
-export * from './hotel_feasibilityCalculatorCalculator';
+export * from './hotel_feasibilityCalculator';
 export * from './register';
 export * from './types';

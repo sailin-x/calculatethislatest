@@ -7,7 +7,7 @@ import { CalculatorInputs, CalculatorOutputs } from '../../types/calculator';
 
 describe('TenantImprovementCalculator', () => {
   it('should have correct calculator structure', () => {
-    expect(TenantImprovementCalculator.id).toBe('tenant-improvement-calculator');
+    expect(TenantImprovementCalculator.id).toBe('TenantImprovementCalculator');
     expect(TenantImprovementCalculator.name).toBe('Tenant Improvement (TI) Allowance Calculator');
     expect(TenantImprovementCalculator.category).toBe('finance');
     expect(TenantImprovementCalculator.subcategory).toBe('real-estate');
@@ -91,7 +91,7 @@ describe('Tenant Improvement Validation', () => {
     expect(result.errors).toContain('spaceSize is required');
   });
 
-  it('should reject out-of-range space size', () => {
+  it('should reject OutOfRange space size', () => {
     const invalidInputs = { ...validInputs, spaceSize: 50 };
     
     const result = validateTenantImprovementInputs(invalidInputs);
@@ -214,7 +214,7 @@ describe('Tenant Improvement Calculation', () => {
     expect(outputs.tiAllowanceAmount).toBeCloseTo(expectedAllowance, 2);
   });
 
-  it('should calculate tenant out-of-pocket correctly', () => {
+  it('should calculate tenant OutOfPocket correctly', () => {
     const outputs = calculateTenantImprovement(testInputs);
     const expectedOutOfPocket = Math.max(0, outputs.totalTICosts - outputs.tiAllowanceAmount + testInputs.tenantContribution);
     
@@ -440,7 +440,7 @@ describe('Tenant Improvement Report Generation', () => {
     expect(report).toContain('Recommendation');
   });
 
-  it('should handle high tenant out-of-pocket in recommendations', () => {
+  it('should handle high tenant OutOfPocket in recommendations', () => {
     const highCostInputs = { ...testInputs, constructionCosts: 50, tiAllowance: 10 };
     
     const outputs = calculateTenantImprovement(highCostInputs);

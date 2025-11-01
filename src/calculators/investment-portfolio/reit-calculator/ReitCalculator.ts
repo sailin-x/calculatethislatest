@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateReitCalculatorInputs, validateReitCalculatorBusinessRules } from './validation';
 
-export const ReitCalculatorCalculator: Calculator: Calculator = {
-  id: 'reit-calculator-calculator',
+export const ReitCalculator: Calculator = {
+  id: 'ReitCalculatorCalculator',
   title: 'REIT Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

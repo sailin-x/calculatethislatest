@@ -10,7 +10,7 @@ import {
 import { validateFinancialGratitudeCalculatorInputs } from './validation';
 
 export const FinancialGratitudeCalculator: Calculator = {
-  id: 'financial-gratitude-calculator',
+  id: 'FinancialGratitudeCalculator',
   title: 'Financial Gratitude Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

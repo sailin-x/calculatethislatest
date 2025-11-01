@@ -1,4 +1,4 @@
-import { prenuptial-agreement-value-calculatorInputs, prenuptial-agreement-value-calculatorMetrics, prenuptial-agreement-value-calculatorAnalysis } from './types';
+import { PrenuptialAgreementValue-calculatorInputs, PrenuptialAgreementValue-calculatorMetrics, PrenuptialAgreementValue-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: prenuptial-agreement-value-calculatorInputs): number {
+export function calculateResult(inputs: PrenuptialAgreementValue-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: prenuptial-agreement-value-calculatorInp
   }
 }
 
-export function generateAnalysis(inputs: prenuptial-agreement-value-calculatorInputs, metrics: prenuptial-agreement-value-calculatorMetrics): prenuptial-agreement-value-calculatorAnalysis {
+export function generateAnalysis(inputs: PrenuptialAgreementValue-calculatorInputs, metrics: PrenuptialAgreementValue-calculatorMetrics): PrenuptialAgreementValue-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

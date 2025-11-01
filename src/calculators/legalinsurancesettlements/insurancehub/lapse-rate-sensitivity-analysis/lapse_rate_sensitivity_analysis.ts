@@ -3,7 +3,7 @@ import { lapse_rate_sensitivity_analysisInputs, lapse_rate_sensitivity_analysisO
 import { calculateResult, generateAnalysis } from './formulas';
 
 export const lapse_rate_sensitivity_analysisCalculator: Calculator = {
-  id: 'lapse-rate-sensitivity-analysis',
+  id: 'LapseRateSensitivity-analysis',
   title: 'Lapse Rate Sensitivity Analysis Calculator',
   category: 'legalinsurancesettlements',
   subcategory: 'insurancehub',

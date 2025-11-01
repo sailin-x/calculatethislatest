@@ -1,4 +1,4 @@
-import { industrial-robotics-roi-calculatorInputs, industrial-robotics-roi-calculatorMetrics, industrial-robotics-roi-calculatorAnalysis } from './types';
+import { IndustrialRoboticsRoi-calculatorInputs, IndustrialRoboticsRoi-calculatorMetrics, IndustrialRoboticsRoi-calculatorAnalysis } from './types';
 
 
 // Investment Calculator - ROI and growth calculations
@@ -12,7 +12,7 @@ export function calculateCompoundInterest(principal: number, rate: number, years
   return principal * Math.pow(1 + ratePerPeriod, totalPeriods);
 }
 
-export function calculateResult(inputs: industrial-robotics-roi-calculatorInputs): number {
+export function calculateResult(inputs: IndustrialRoboticsRoi-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -36,7 +36,7 @@ export function calculateResult(inputs: industrial-robotics-roi-calculatorInputs
   }
 }
 
-export function generateAnalysis(inputs: industrial-robotics-roi-calculatorInputs, metrics: industrial-robotics-roi-calculatorMetrics): industrial-robotics-roi-calculatorAnalysis {
+export function generateAnalysis(inputs: IndustrialRoboticsRoi-calculatorInputs, metrics: IndustrialRoboticsRoi-calculatorMetrics): IndustrialRoboticsRoi-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

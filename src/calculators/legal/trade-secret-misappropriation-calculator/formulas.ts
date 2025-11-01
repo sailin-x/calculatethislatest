@@ -1,4 +1,4 @@
-import { trade-secret-misappropriation-calculatorInputs, trade-secret-misappropriation-calculatorMetrics, trade-secret-misappropriation-calculatorAnalysis } from './types';
+import { TradeSecretMisappropriation-calculatorInputs, TradeSecretMisappropriation-calculatorMetrics, TradeSecretMisappropriation-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: trade-secret-misappropriation-calculatorInputs): number {
+export function calculateResult(inputs: TradeSecretMisappropriation-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: trade-secret-misappropriation-calculator
   }
 }
 
-export function generateAnalysis(inputs: trade-secret-misappropriation-calculatorInputs, metrics: trade-secret-misappropriation-calculatorMetrics): trade-secret-misappropriation-calculatorAnalysis {
+export function generateAnalysis(inputs: TradeSecretMisappropriation-calculatorInputs, metrics: TradeSecretMisappropriation-calculatorMetrics): TradeSecretMisappropriation-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

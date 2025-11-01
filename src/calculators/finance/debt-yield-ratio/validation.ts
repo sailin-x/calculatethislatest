@@ -208,7 +208,7 @@ export function validateDebtYieldInputs(inputs: CalculatorInputs): ValidationRes
   }
 
   if (loanToValue < 0 || loanToValue > 100) {
-    errors.push('Loan-to-value ratio must be between 0% and 100%');
+    errors.push('LoanToValue ratio must be between 0% and 100%');
   }
 
   if (debtServiceCoverageRatio < 0 || debtServiceCoverageRatio > 5) {
@@ -424,14 +424,14 @@ export function quickValidateDebtYieldInput(field: string, value: any): string |
 
     case 'loanToValue':
       if (value === undefined || value === null || value === '') {
-        return 'Loan-to-value ratio is required';
+        return 'LoanToValue ratio is required';
       }
       const ltv = Number(value);
       if (isNaN(ltv)) {
-        return 'Loan-to-value ratio must be a valid number';
+        return 'LoanToValue ratio must be a valid number';
       }
       if (ltv < 0 || ltv > 100) {
-        return 'Loan-to-value ratio must be between 0% and 100%';
+        return 'LoanToValue ratio must be between 0% and 100%';
       }
       break;
 

@@ -1,3 +1,3 @@
-import { OperatingMarginCalculatorCalculator } from './OperatingMarginCalculatorCalculator';
+import { OperatingMarginCalculator } from './OperatingMarginCalculator';
 
-export { OperatingMarginCalculatorCalculator };
+export { OperatingMarginCalculator };

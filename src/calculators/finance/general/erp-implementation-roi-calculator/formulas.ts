@@ -1,4 +1,4 @@
-import { erp-implementation-roi-calculatorInputs, erp-implementation-roi-calculatorMetrics, erp-implementation-roi-calculatorAnalysis } from './types';
+import { ErpImplementationRoi-calculatorInputs, ErpImplementationRoi-calculatorMetrics, ErpImplementationRoi-calculatorAnalysis } from './types';
 
 
 // Investment Calculator - ROI and growth calculations
@@ -12,7 +12,7 @@ export function calculateCompoundInterest(principal: number, rate: number, years
   return principal * Math.pow(1 + ratePerPeriod, totalPeriods);
 }
 
-export function calculateResult(inputs: erp-implementation-roi-calculatorInputs): number {
+export function calculateResult(inputs: ErpImplementationRoi-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -36,7 +36,7 @@ export function calculateResult(inputs: erp-implementation-roi-calculatorInputs)
   }
 }
 
-export function generateAnalysis(inputs: erp-implementation-roi-calculatorInputs, metrics: erp-implementation-roi-calculatorMetrics): erp-implementation-roi-calculatorAnalysis {
+export function generateAnalysis(inputs: ErpImplementationRoi-calculatorInputs, metrics: ErpImplementationRoi-calculatorMetrics): ErpImplementationRoi-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

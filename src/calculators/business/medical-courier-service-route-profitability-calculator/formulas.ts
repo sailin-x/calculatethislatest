@@ -1,4 +1,4 @@
-import { medical-courier-service-route-profitability-calculatorInputs, medical-courier-service-route-profitability-calculatorMetrics, medical-courier-service-route-profitability-calculatorAnalysis } from './types';
+import { MedicalCourierService-RouteProfitabilityCalculatorinputs, MedicalCourierService-RouteProfitabilityCalculatormetrics, MedicalCourierService-RouteProfitabilityCalculatoranalysis } from './types';
 
 // Medical Courier Service Route Profitability Calculator - Business calculations
 export function calculateNetPresentValue(cashFlows: number[], discountRate: number): number {
@@ -11,7 +11,7 @@ export function calculateROI(initialInvestment: number, finalValue: number): num
  return ((finalValue - initialInvestment) / initialInvestment) * 100;
 }
 
-export function calculateResult(inputs: medical-courier-service-route-profitability-calculatorInputs): number {
+export function calculateResult(inputs: MedicalCourierService-RouteProfitabilityCalculatorinputs): number {
  // Business calculation logic with real math
  const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
  if (numericValues.length >= 2) {
@@ -24,7 +24,7 @@ export function calculateResult(inputs: medical-courier-service-route-profitabil
  return calculateNetPresentValue(numericValues, 10); // 10% discount rate
 }
 
-export function generateAnalysis(inputs: medical-courier-service-route-profitability-calculatorInputs, metrics: medical-courier-service-route-profitability-calculatorMetrics): medical-courier-service-route-profitability-calculatorAnalysis {
+export function generateAnalysis(inputs: MedicalCourierService-RouteProfitabilityCalculatorinputs, metrics: MedicalCourierService-RouteProfitabilityCalculatormetrics): MedicalCourierService-RouteProfitabilityCalculatoranalysis {
  const result = metrics.result;
  let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
  if (Math.abs(result) > 100000) riskLevel = 'High';

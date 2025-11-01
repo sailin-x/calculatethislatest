@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateGuidebookCostCalculatorInputs } from './validation';
 
 export const GuidebookCostCalculator: Calculator = {
-  id: 'guidebook-cost-calculator',
+  id: 'GuidebookCostCalculator',
   title: 'Guidebook Cost Calculator',
   category: 'health',
   subcategory: 'General',

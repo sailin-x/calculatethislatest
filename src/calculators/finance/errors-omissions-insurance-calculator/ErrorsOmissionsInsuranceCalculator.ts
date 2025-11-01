@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateErrorsOmissionsInsuranceCalculatorInputs, validateErrorsOmissionsInsuranceCalculatorBusinessRules } from './validation';
 
-export const ErrorsOmissionsInsuranceCalculatorCalculator: Calculator: Calculator = {
-  id: 'errors-omissions-insurance-calculator-calculator',
+export const ErrorsOmissionsInsuranceCalculator: Calculator = {
+  id: 'ErrorsOmissionsInsurance-calculator-calculator',
   title: 'Errors & Omissions Insurance Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

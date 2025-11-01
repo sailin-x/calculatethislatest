@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { blood_sugar_calculatorInputs, blood_sugar_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const blood_sugar_calculatorCalculator: Calculator = {
-  id: 'blood-sugar-calculator',
+export const BloodSugarCalculator: Calculator = {
+  id: 'BloodSugarCalculator',
   title: 'Blood Sugar Calculator Calculator',
   category: 'healthfitnessdiet',
   subcategory: 'healthfitnesshub',

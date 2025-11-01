@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateMedicalBillNegotiationCalculatorInputs } from './validation';
 
 export const MedicalBillNegotiationCalculator: Calculator = {
-  id: 'medical-bill-negotiation-calculator',
+  id: 'MedicalBillNegotiation-calculator',
   title: 'Medical Bill Negotiation Calculator',
   category: 'health',
   subcategory: 'General',

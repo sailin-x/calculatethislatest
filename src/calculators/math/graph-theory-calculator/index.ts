@@ -1,4 +1,4 @@
-export { GraphTheoryCalculatorCalculator } from './GraphTheoryCalculatorCalculator';
+export { GraphTheoryCalculator } from './GraphTheoryCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

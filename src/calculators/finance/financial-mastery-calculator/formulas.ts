@@ -1,4 +1,4 @@
-import { financial-mastery-calculatorInputs, financial-mastery-calculatorMetrics, financial-mastery-calculatorAnalysis } from './types';
+import { FinancialMasteryCalculatorinputs, FinancialMasteryCalculatormetrics, FinancialMasteryCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: financial-mastery-calculatorInputs): number {
+export function calculateResult(inputs: FinancialMasteryCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: financial-mastery-calculatorInputs): num
   }
 }
 
-export function generateAnalysis(inputs: financial-mastery-calculatorInputs, metrics: financial-mastery-calculatorMetrics): financial-mastery-calculatorAnalysis {
+export function generateAnalysis(inputs: FinancialMasteryCalculatorinputs, metrics: FinancialMasteryCalculatormetrics): FinancialMasteryCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

@@ -1,3 +1,3 @@
-export * from './pensionPlanFundingCalculatorCalculator';
+export * from './pensionPlanFundingCalculator';
 export * from './register';
 export * from './types';

@@ -3,7 +3,7 @@ import { calculateGRAT } from './formulas';
 import { ValidationRuleFactory } from '../../utils/validation';
 
 export const grantorRetainedAnnuityTrustCalculator: Calculator = {
-  id: 'grantor-retained-annuity-trust-grat-calculator',
+  id: 'GrantorRetainedAnnuity-TrustGratCalculator',
   title: 'Grantor Retained Annuity Trust (GRAT) Calculator',
   category: 'finance',
   subcategory: 'Retirement & Savings',

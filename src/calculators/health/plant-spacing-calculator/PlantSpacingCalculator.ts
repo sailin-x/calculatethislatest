@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validatePlantSpacingCalculatorInputs } from './validation';
 
 export const PlantSpacingCalculator: Calculator = {
-  id: 'plant-spacing-calculator',
+  id: 'PlantSpacingCalculator',
   title: 'Plant Spacing Calculator',
   category: 'health',
   subcategory: 'General',

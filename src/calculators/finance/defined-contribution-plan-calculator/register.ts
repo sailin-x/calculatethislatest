@@ -1,3 +1,3 @@
-import { DefinedContributionPlanCalculatorCalculator } from './DefinedContributionPlanCalculatorCalculator';
+import { DefinedContributionPlanCalculator } from './DefinedContributionPlanCalculator';
 
-export { DefinedContributionPlanCalculatorCalculator };
+export { DefinedContributionPlanCalculator };

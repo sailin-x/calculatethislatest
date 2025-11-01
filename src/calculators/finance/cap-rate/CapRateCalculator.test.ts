@@ -28,7 +28,7 @@ describe('Cap Rate Calculator', () => {
 
   describe('Calculator Definition', () => {
     it('should have correct basic properties', () => {
-      expect(CapRateCalculator.id).toBe('cap-rate-calculator');
+      expect(CapRateCalculator.id).toBe('CapRateCalculator');
       expect(CapRateCalculator.name).toBe('Cap Rate Calculator');
       expect(CapRateCalculator.category).toBe('finance');
       expect(CapRateCalculator.subcategory).toBe('investment');
@@ -278,7 +278,7 @@ describe('Cap Rate Calculator', () => {
       const lowValueResult = CapRateCalculator.calculate(lowValueInputs);
       const highValueResult = CapRateCalculator.calculate(highValueInputs);
       
-      // Cap rates should be similar for similar rent-to-value ratios
+      // Cap rates should be similar for similar RentToValue ratios
       const lowValueRatio = lowValueInputs.grossRent / lowValueInputs.propertyValue;
       const highValueRatio = highValueInputs.grossRent / highValueInputs.propertyValue;
       
@@ -287,10 +287,10 @@ describe('Cap Rate Calculator', () => {
       }
     });
 
-    it('should calculate cash-on-cash return appropriately', () => {
+    it('should calculate CashOnCash return appropriately', () => {
       const result = CapRateCalculator.calculate(validInputs);
       
-      // Cash-on-cash return should be higher than cap rate due to leverage
+      // CashOnCash return should be higher than cap rate due to leverage
       expect(result.cashOnCashReturn).toBeGreaterThan(result.capRate);
     });
 

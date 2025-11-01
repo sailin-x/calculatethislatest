@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { medical_malpractice_insurance_calculatorInputs, medical_malpractice_insurance_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const medical_malpractice_insurance_calculatorCalculator: Calculator = {
-  id: 'medical-malpractice-insurance-calculator',
+export const MedicalMalpracticeInsurance-calculator: Calculator = {
+  id: 'MedicalMalpracticeInsurance-calculator',
   title: 'Medical Malpractice Insurance Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

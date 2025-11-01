@@ -1,3 +1,3 @@
-export * from './nft_royaltyCalculatorCalculator';
+export * from './nft_royaltyCalculator';
 export * from './register';
 export * from './types';

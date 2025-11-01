@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateOperatingMarginCalculatorInputs, validateOperatingMarginCalculatorBusinessRules } from './validation';
 
-export const OperatingMarginCalculatorCalculator: Calculator: Calculator = {
-  id: 'operating-margin-calculator-calculator',
+export const OperatingMarginCalculator: Calculator = {
+  id: 'OperatingMarginCalculator-calculator',
   title: 'Operating Margin Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

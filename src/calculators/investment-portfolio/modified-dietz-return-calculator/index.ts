@@ -1,4 +1,4 @@
-export { ModifiedDietzReturnCalculatorCalculator } from './ModifiedDietzReturnCalculatorCalculator';
+export { ModifiedDietzReturnCalculator } from './ModifiedDietzReturnCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

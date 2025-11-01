@@ -1,3 +1,3 @@
-import { MusicFestivalProfitLossPlCalculatorCalculator } from './MusicFestivalProfitLossPlCalculatorCalculator';
+import { MusicFestivalProfitLossPlCalculator } from './MusicFestivalProfitLossPlCalculator';
 
-export { MusicFestivalProfitLossPlCalculatorCalculator };
+export { MusicFestivalProfitLossPlCalculator };

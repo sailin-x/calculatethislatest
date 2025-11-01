@@ -1,4 +1,4 @@
-import { gross-margin-calculatorInputs, gross-margin-calculatorMetrics, gross-margin-calculatorAnalysis } from './types';
+import { GrossMarginCalculatorinputs, GrossMarginCalculatormetrics, GrossMarginCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: gross-margin-calculatorInputs): number {
+export function calculateResult(inputs: GrossMarginCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: gross-margin-calculatorInputs): number {
   }
 }
 
-export function generateAnalysis(inputs: gross-margin-calculatorInputs, metrics: gross-margin-calculatorMetrics): gross-margin-calculatorAnalysis {
+export function generateAnalysis(inputs: GrossMarginCalculatorinputs, metrics: GrossMarginCalculatormetrics): GrossMarginCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

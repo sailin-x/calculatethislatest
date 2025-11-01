@@ -1,3 +1,3 @@
-import { MedicalPracticeValuationCalculatorCalculator } from './MedicalPracticeValuationCalculatorCalculator';
+import { MedicalPracticeValuationCalculator } from './MedicalPracticeValuationCalculator';
 
-export { MedicalPracticeValuationCalculatorCalculator };
+export { MedicalPracticeValuationCalculator };

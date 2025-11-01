@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateCarLeaseVsBuyCalculatorInputs, validateCarLeaseVsBuyCalculatorBusinessRules } from './validation';
 
-export const CarLeaseVsBuyCalculatorCalculator: Calculator: Calculator = {
-  id: 'car-lease-vs-buy-calculator-calculator',
+export const CarLeaseVsBuyCalculator: Calculator = {
+  id: 'CarLeaseVs-BuyCalculatorCalculator',
   title: 'Car Lease vs. Buy Calculator Calculator',
   lifestyle: 'lifestyle', // e.g., 'finance', 'math', 'health', 'business'
   sublifestyle: 'Sublifestyle Name',

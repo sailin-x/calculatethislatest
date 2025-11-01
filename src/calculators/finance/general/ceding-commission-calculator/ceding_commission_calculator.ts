@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { ceding_commission_calculatorInputs, ceding_commission_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const ceding_commission_calculatorCalculator: Calculator = {
-  id: 'ceding-commission-calculator',
+export const CedingCommissionCalculator: Calculator = {
+  id: 'CedingCommissionCalculator',
   title: 'Ceding Commission Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

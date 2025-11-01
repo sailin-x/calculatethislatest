@@ -1,4 +1,4 @@
-export { RetirementSavingsCalculatorCalculator } from './RetirementSavingsCalculatorCalculator';
+export { RetirementSavingsCalculator } from './RetirementSavingsCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

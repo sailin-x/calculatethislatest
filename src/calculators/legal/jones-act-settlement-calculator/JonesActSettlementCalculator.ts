@@ -9,7 +9,7 @@ import {
 import { validateJonesActSettlementCalculatorInputs } from './validation';
 
 export const JonesActSettlementCalculator: Calculator = {
-  id: 'jones-act-settlement-calculator',
+  id: 'JonesActSettlement-calculator',
   title: 'Jones Act Settlement Calculator (Maritime)',
   category: 'legal',
   subcategory: 'Settlement Analysis',

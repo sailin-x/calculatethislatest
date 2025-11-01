@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateFelaSettlementCalculatorRailroadInputs, validateFelaSettlementCalculatorRailroadBusinessRules } from './validation';
 
-export const FelaSettlementCalculatorRailroadCalculator: Calculator: Calculator = {
-  id: 'fela-settlement-calculator-railroad-calculator',
+export const FelaSettlementCalculatorRailroadCalculator: Calculator = {
+  id: 'FelaSettlementCalculator-railroad-calculator',
   title: 'FELA Settlement Calculator (Railroad) Calculator',
   legal: 'legal', // e.g., 'finance', 'math', 'health', 'business'
   sublegal: 'Sublegal Name',

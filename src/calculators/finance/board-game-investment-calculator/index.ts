@@ -1,4 +1,4 @@
-export { BoardGameInvestmentCalculatorCalculator } from './BoardGameInvestmentCalculatorCalculator';
+export { BoardGameInvestmentCalculator } from './BoardGameInvestmentCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { fitness_age_calculatorInputs, fitness_age_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const fitness_age_calculatorCalculator: Calculator = {
-  id: 'fitness-age-calculator',
+export const FitnessAgeCalculator: Calculator = {
+  id: 'FitnessAgeCalculator',
   title: 'Fitness Age Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

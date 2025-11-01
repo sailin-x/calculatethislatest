@@ -3,7 +3,7 @@ import { calculateBRRRRStrategy, calculateRefinanceAnalysis, generateInvestmentT
 import { validateBRRRRStrategyInputs } from './validation';
 
 export const BRRRRStrategyCalculator: Calculator = {
-  id: 'brrrr-strategy-calculator',
+  id: 'BrrrrStrategyCalculator',
   name: 'BRRRR Strategy Calculator',
   description: 'Calculate the Buy, Rehab, Rent, Refinance, Repeat (BRRRR) real estate investment strategy to analyze potential returns, cash flow, and scalability of your investment portfolio.',
   category: 'finance',
@@ -140,7 +140,7 @@ export const BRRRRStrategyCalculator: Calculator = {
       min: 60,
       max: 85,
       step: 1,
-      tooltip: 'Loan-to-value ratio for refinance',
+      tooltip: 'LoanToValue ratio for refinance',
       placeholder: '75'
     },
     {
@@ -221,7 +221,7 @@ export const BRRRRStrategyCalculator: Calculator = {
     },
     {
       id: 'cashOnCashReturn',
-      label: 'Cash-on-Cash Return (%)',
+      label: 'CashOnCash Return (%)',
       type: 'percentage',
       explanation: 'Annual return on total cash invested'
     },
@@ -314,7 +314,7 @@ export const BRRRRStrategyCalculator: Calculator = {
       description: 'Total cash required for the BRRRR strategy'
     },
     {
-      name: 'Cash-on-Cash Return',
+      name: 'CashOnCash Return',
       formula: 'CoC Return = (Annual Cash Flow / Total Investment) × 100',
       description: 'Annual return on total cash invested'
     },

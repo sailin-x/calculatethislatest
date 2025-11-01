@@ -1,4 +1,4 @@
-import { addiction-rehab-cost-financing-calculatorInputs, addiction-rehab-cost-financing-calculatorMetrics, addiction-rehab-cost-financing-calculatorAnalysis } from './types';
+import { AddictionRehabCost-financing-calculatorInputs, AddictionRehabCost-financing-calculatorMetrics, AddictionRehabCost-financing-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: addiction-rehab-cost-financing-calculatorInputs): number {
+export function calculateResult(inputs: AddictionRehabCost-financing-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: addiction-rehab-cost-financing-calculato
   }
 }
 
-export function generateAnalysis(inputs: addiction-rehab-cost-financing-calculatorInputs, metrics: addiction-rehab-cost-financing-calculatorMetrics): addiction-rehab-cost-financing-calculatorAnalysis {
+export function generateAnalysis(inputs: AddictionRehabCost-financing-calculatorInputs, metrics: AddictionRehabCost-financing-calculatorMetrics): AddictionRehabCost-financing-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateWifiHotspotCostCalculatorInputs } from './validation';
 
 export const WifiHotspotCostCalculator: Calculator = {
-  id: 'wifi-hotspot-cost-calculator',
+  id: 'WifiHotspotCost-calculator',
   title: 'WiFi Hotspot Cost Calculator',
   category: 'health',
   subcategory: 'General',

@@ -96,7 +96,7 @@ describe('Health Savings Account (HSA) Calculator', () => {
 
   describe('Calculator Definition', () => {
     it('should have correct calculator properties', () => {
-      expect(healthSavingsAccountCalculator.id).toBe('health-savings-account-hsa-calculator');
+      expect(healthSavingsAccountCalculator.id).toBe('HealthSavingsAccount-hsa-calculator');
       expect(healthSavingsAccountCalculator.title).toBe('Health Savings Account (HSA) Calculator');
       expect(healthSavingsAccountCalculator.category).toBe('finance');
       expect(healthSavingsAccountCalculator.subcategory).toBe('Retirement & Savings');

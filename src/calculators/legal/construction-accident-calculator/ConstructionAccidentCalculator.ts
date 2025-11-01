@@ -9,7 +9,7 @@ import {
 import { validateConstructionAccidentCalculatorInputs } from './validation';
 
 export const ConstructionAccidentCalculator: Calculator = {
-  id: 'construction-accident-calculator',
+  id: 'ConstructionAccidentCalculator',
   title: 'Construction Accident Calculator',
   category: 'legal',
   subcategory: 'Settlement Analysis',

@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { car_accident_pain_suffering_calculatorInputs, car_accident_pain_suffering_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const car_accident_pain_suffering_calculatorCalculator: Calculator = {
-  id: 'car-accident-pain-suffering-calculator',
+export const CarAccidentPain-suffering-calculator: Calculator = {
+  id: 'CarAccidentPain-suffering-calculator',
   title: 'Car Accident Pain & Suffering Calculator Calculator',
   category: 'legalinsurancesettlements',
   subcategory: 'legalsettlementhub',

@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateCreditUtilizationCalculatorInputs, validateCreditUtilizationCalculatorBusinessRules } from './validation';
 
-export const CreditUtilizationCalculatorCalculator: Calculator: Calculator = {
-  id: 'credit-utilization-calculator-calculator',
+export const CreditUtilizationCalculator: Calculator = {
+  id: 'CreditUtilizationCalculator-calculator',
   title: 'Credit Utilization Calculator Calculator',
   loans-debt: 'loans-debt', // e.g., 'finance', 'math', 'health', 'business'
   subloans-debt: 'Subloans-debt Name',

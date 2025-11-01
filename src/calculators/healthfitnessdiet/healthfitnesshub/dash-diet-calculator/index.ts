@@ -1,4 +1,4 @@
-export { dash_diet_calculatorCalculator } from './dash_diet_calculator';
+export { dash_diet_calculator } from './dash_diet_calculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

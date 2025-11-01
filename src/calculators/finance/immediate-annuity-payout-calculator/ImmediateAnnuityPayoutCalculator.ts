@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateImmediateAnnuityPayoutCalculatorInputs, validateImmediateAnnuityPayoutCalculatorBusinessRules } from './validation';
 
-export const ImmediateAnnuityPayoutCalculatorCalculator: Calculator: Calculator = {
-  id: 'immediate-annuity-payout-calculator-calculator',
+export const ImmediateAnnuityPayoutCalculator: Calculator = {
+  id: 'ImmediateAnnuityPayout-calculator-calculator',
   title: 'Immediate Annuity Payout Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

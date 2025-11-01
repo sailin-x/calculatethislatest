@@ -10,7 +10,7 @@ import {
 import { validateRSquaredCalculatorInputs } from './validation';
 
 export const RSquaredCalculator: Calculator = {
-  id: 'r-squared-calculator',
+  id: 'RSquaredCalculator',
   title: 'R Squared Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

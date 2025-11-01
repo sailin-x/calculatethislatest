@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { registerIrrevocableLifeInsuranceTrustILITValueCalculatorCalculator } from './registerIrrevocableLifeInsuranceTrustILITValueCalculatorCalculator';
+import { registerIrrevocableLifeInsuranceTrustILITValueCalculator } from './registerIrrevocableLifeInsuranceTrustILITValueCalculator';
 
-export function registerregisterIrrevocableLifeInsuranceTrustILITValueCalculatorCalculator(): void {
-  calculatorRegistry.register(new registerIrrevocableLifeInsuranceTrustILITValueCalculatorCalculator());
+export function registerregisterIrrevocableLifeInsuranceTrustILITValueCalculator(): void {
+  calculatorRegistry.register(new registerIrrevocableLifeInsuranceTrustILITValueCalculator());
 }

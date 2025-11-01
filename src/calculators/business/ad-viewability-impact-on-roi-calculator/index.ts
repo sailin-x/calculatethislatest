@@ -1,4 +1,4 @@
-export { AdViewabilityImpactOnRoiCalculatorCalculator } from './AdViewabilityImpactOnRoiCalculatorCalculator';
+export { AdViewabilityImpactOnRoiCalculator } from './AdViewabilityImpactOnRoiCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

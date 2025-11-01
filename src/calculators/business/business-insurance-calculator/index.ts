@@ -1,4 +1,4 @@
-export { BusinessInsuranceCalculatorCalculator } from './BusinessInsuranceCalculatorCalculator';
+export { BusinessInsuranceCalculator } from './BusinessInsuranceCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

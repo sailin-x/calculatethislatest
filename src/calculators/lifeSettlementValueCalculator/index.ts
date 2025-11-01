@@ -1,3 +1,3 @@
-export * from './lifeSettlementValueCalculatorCalculator';
+export * from './lifeSettlementValueCalculator';
 export * from './register';
 export * from './types';

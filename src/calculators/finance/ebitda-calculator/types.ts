@@ -1,27 +1,31 @@
 export interface EbitdaCalculatorInputs {
-  principalAmount: number;
-  interestRate: number;
-  timePeriod: number;
-  compoundingFrequency: number;
+  revenue: number;
+  operatingExpenses: number;
+  depreciation: number;
+  amortization: number;
+  interestExpense?: number;
+  taxRate?: number;
 }
 
 export interface EbitdaCalculatorMetrics {
-  totalAmount: number;
-  totalInterest: number;
-  monthlyPayment: number;
-  effectiveRate: number;
+  ebitda: number;
+  ebitdaMargin: number;
+  adjustedEbitda: number;
+  ebitdaToRevenue: number;
+  ebitdaGrowth: number;
 }
 
 export interface EbitdaCalculatorAnalysis {
-  profitability: string;
-  riskLevel: string;
+  profitability: 'excellent' | 'good' | 'fair' | 'poor';
+  efficiency: 'high' | 'medium' | 'low';
   recommendations: string[];
+  industryComparison: string;
 }
 
 export interface EbitdaCalculatorOutputs {
-  totalAmount: number;
-  totalInterest: number;
-  monthlyPayment: number;
-  effectiveRate: number;
+  ebitda: number;
+  ebitdaMargin: number;
+  adjustedEbitda: number;
+  ebitdaToRevenue: number;
   analysis: EbitdaCalculatorAnalysis;
 }

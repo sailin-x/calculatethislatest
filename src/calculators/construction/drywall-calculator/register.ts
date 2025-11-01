@@ -1,3 +1,3 @@
-import { DrywallCalculatorCalculator } from './DrywallCalculatorCalculator';
+import { DrywallCalculator } from './DrywallCalculator';
 
-export { DrywallCalculatorCalculator };
+export { DrywallCalculator };

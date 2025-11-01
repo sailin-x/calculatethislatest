@@ -1,3 +1,3 @@
-import { CollegeFinancialAidCalculatorCalculator } from './CollegeFinancialAidCalculatorCalculator';
+import { CollegeFinancialAidCalculator } from './CollegeFinancialAidCalculator';
 
-export { CollegeFinancialAidCalculatorCalculator };
+export { CollegeFinancialAidCalculator };

@@ -1,3 +1,3 @@
-import { DailyCalorieCalculatorCalculator } from './DailyCalorieCalculatorCalculator';
+import { DailyCalorieCalculator } from './DailyCalorieCalculator';
 
-export { DailyCalorieCalculatorCalculator };
+export { DailyCalorieCalculator };

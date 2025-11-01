@@ -1,4 +1,4 @@
-import { film-slate-financing-roi-calculatorInputs, film-slate-financing-roi-calculatorMetrics, film-slate-financing-roi-calculatorAnalysis } from './types';
+import { FilmSlateFinancing-roi-calculatorInputs, FilmSlateFinancing-roi-calculatorMetrics, FilmSlateFinancing-roi-calculatorAnalysis } from './types';
 
 // ROI Calculator
 export function calculateROI(netProfit: number, investment: number): number {
@@ -13,7 +13,7 @@ export function calculatePaybackPeriod(investment: number, annualCashFlow: numbe
   return investment / annualCashFlow;
 }
 
-export function calculateResult(inputs: film-slate-financing-roi-calculatorInputs): number {
+export function calculateResult(inputs: FilmSlateFinancing-roi-calculatorInputs): number {
   if ('netProfit' in inputs && 'investment' in inputs) {
     return calculateROI(inputs.netProfit, inputs.investment);
   }
@@ -24,7 +24,7 @@ export function calculateResult(inputs: film-slate-financing-roi-calculatorInput
   return 0;
 }
 
-export function generateAnalysis(inputs: film-slate-financing-roi-calculatorInputs, metrics: film-slate-financing-roi-calculatorMetrics): film-slate-financing-roi-calculatorAnalysis {
+export function generateAnalysis(inputs: FilmSlateFinancing-roi-calculatorInputs, metrics: FilmSlateFinancing-roi-calculatorMetrics): FilmSlateFinancing-roi-calculatorAnalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (result < 10) riskLevel = 'High';

@@ -1,6 +1,6 @@
 export interface TaxInputs {
   grossIncome: number;
-  filingStatus: 'single' | 'married-filing-jointly' | 'married-filing-separately' | 'head-of-household' | 'qualifying-widow';
+  filingStatus: 'single' | 'MarriedFilingJointly' | 'MarriedFilingSeparately' | 'HeadOfHousehold' | 'qualifying-widow';
   dependents: number;
   age: number;
   blind: boolean;

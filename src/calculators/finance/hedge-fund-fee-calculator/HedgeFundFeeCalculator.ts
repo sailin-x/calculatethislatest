@@ -10,7 +10,7 @@ import {
 import { validateHedgeFundFeeCalculatorInputs } from './validation';
 
 export const HedgeFundFeeCalculator: Calculator = {
-  id: 'hedge-fund-fee-calculator',
+  id: 'HedgeFundFee-calculator',
   title: 'Hedge Fund Fee Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

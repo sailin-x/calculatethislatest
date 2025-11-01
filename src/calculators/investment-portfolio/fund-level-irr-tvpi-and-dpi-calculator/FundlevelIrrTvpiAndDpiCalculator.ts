@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateFundlevelIrrTvpiAndDpiCalculatorInputs, validateFundlevelIrrTvpiAndDpiCalculatorBusinessRules } from './validation';
 
-export const FundlevelIrrTvpiAndDpiCalculatorCalculator: Calculator: Calculator = {
-  id: 'fund-level-irr-tvpi-and-dpi-calculator-calculator',
+export const FundlevelIrrTvpiAndDpiCalculator: Calculator = {
+  id: 'FundLevelIrr-TvpiAndDpi-calculator-calculator',
   title: 'Fund-Level IRR, TVPI, and DPI Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

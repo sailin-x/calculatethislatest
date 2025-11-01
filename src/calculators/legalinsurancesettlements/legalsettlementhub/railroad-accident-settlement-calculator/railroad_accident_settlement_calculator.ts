@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { railroad_accident_settlement_calculatorInputs, railroad_accident_settlement_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const railroad_accident_settlement_calculatorCalculator: Calculator = {
-  id: 'railroad-accident-settlement-calculator',
+export const RailroadAccidentSettlement-calculator: Calculator = {
+  id: 'RailroadAccidentSettlement-calculator',
   title: 'Railroad Accident Settlement Calculator Calculator',
   category: 'legalinsurancesettlements',
   subcategory: 'legalsettlementhub',

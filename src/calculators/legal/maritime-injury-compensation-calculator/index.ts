@@ -1,4 +1,4 @@
-export { MaritimeInjuryCompensationCalculatorCalculator } from './MaritimeInjuryCompensationCalculatorCalculator';
+export { MaritimeInjuryCompensationCalculator } from './MaritimeInjuryCompensationCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

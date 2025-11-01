@@ -3,7 +3,7 @@ import { calculateBareboatCharter, calculateTimeCharter, compareCharterOptions }
 import { validateBareboatCharterInputs } from './validation';
 
 export const BareboatCharterCalculator: Calculator = {
-  id: 'bareboat-charter-calculator',
+  id: 'BareboatCharterCalculator',
   name: 'Bareboat Charter vs. Time Charter Calculator',
   description: 'Compare the financial implications of bareboat charter vs. time charter arrangements for maritime vessels, including operating costs, revenue potential, and risk analysis.',
   category: 'finance',

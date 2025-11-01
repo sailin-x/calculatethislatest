@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateAdjustablerateMortgageArmCalculatorInputs, validateAdjustablerateMortgageArmCalculatorBusinessRules } from './validation';
 
-export const AdjustablerateMortgageArmCalculatorCalculator: Calculator: Calculator = {
-  id: 'adjustable-rate-mortgage-arm-calculator-calculator',
+export const AdjustablerateMortgageArmCalculator: Calculator = {
+  id: 'AdjustableRateMortgage-ArmCalculatorCalculator',
   title: 'Adjustable-Rate Mortgage (ARM) Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

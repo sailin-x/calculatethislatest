@@ -35,6 +35,10 @@ export function validateCryptoTaxHarvestingCalculatorInputs(inputs: CryptoTaxHar
   return errors;
 }
 
+export function validatecryptotaxharvestingcalculatorInputs(inputs: any): any {
+  return validateCryptoTaxHarvestingCalculatorInputs(inputs);
+}
+
 export function validateCryptoTaxHarvestingCalculatorBusinessRules(inputs: CryptoTaxHarvestingCalculatorInputs): Array<{ field: string; message: string }> {
   const warnings: Array<{ field: string; message: string }> = [];
 

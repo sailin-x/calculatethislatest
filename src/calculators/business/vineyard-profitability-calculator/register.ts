@@ -1,3 +1,3 @@
-import { VineyardProfitabilityCalculatorCalculator } from './VineyardProfitabilityCalculatorCalculator';
+import { VineyardProfitabilityCalculator } from './VineyardProfitabilityCalculator';
 
-export { VineyardProfitabilityCalculatorCalculator };
+export { VineyardProfitabilityCalculator };

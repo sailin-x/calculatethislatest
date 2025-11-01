@@ -1,4 +1,4 @@
-export { CombinatoricsCalculatorCalculator } from './CombinatoricsCalculatorCalculator';
+export { CombinatoricsCalculator } from './CombinatoricsCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

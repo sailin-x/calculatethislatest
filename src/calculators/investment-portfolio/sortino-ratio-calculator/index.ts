@@ -1,4 +1,4 @@
-export { SortinoRatioCalculatorCalculator } from './SortinoRatioCalculatorCalculator';
+export { SortinoRatioCalculator } from './SortinoRatioCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

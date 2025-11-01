@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { copyright_infringement_damages_calculatorInputs, copyright_infringement_damages_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const copyright_infringement_damages_calculatorCalculator: Calculator = {
-  id: 'copyright-infringement-damages-calculator',
+export const CopyrightInfringementDamages-calculator: Calculator = {
+  id: 'CopyrightInfringementDamages-calculator',
   title: 'Copyright Infringement Damages Calculator Calculator',
   category: 'legalinsurancesettlements',
   subcategory: 'legalsettlementhub',

@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { policy_lapse_rate_calculatorInputs, policy_lapse_rate_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const policy_lapse_rate_calculatorCalculator: Calculator = {
-  id: 'policy-lapse-rate-calculator',
+export const PolicyLapseRate-calculator: Calculator = {
+  id: 'PolicyLapseRate-calculator',
   title: 'Policy Lapse Rate Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

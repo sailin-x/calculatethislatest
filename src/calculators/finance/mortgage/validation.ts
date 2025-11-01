@@ -71,7 +71,7 @@ export const mortgageValidationRules: ValidationRule[] = [
     'Extra payment must be between $0 and $50,000 per month'
   ),
 
-  // Loan-to-Value ratio validation by loan type
+  // LoanToValue ratio validation by loan type
   ValidationRuleFactory.businessRule(
     'downPayment',
     (downPayment, allInputs) => {

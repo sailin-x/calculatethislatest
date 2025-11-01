@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateDentalMalpracticeSettlementCalculatorInputs, validateDentalMalpracticeSettlementCalculatorBusinessRules } from './validation';
 
-export const DentalMalpracticeSettlementCalculatorCalculator: Calculator: Calculator = {
-  id: 'dental-malpractice-settlement-calculator-calculator',
+export const DentalMalpracticeSettlementCalculator: Calculator = {
+  id: 'DentalMalpracticeSettlement-calculator-calculator',
   title: 'Dental Malpractice Settlement Calculator Calculator',
   legal: 'legal', // e.g., 'finance', 'math', 'health', 'business'
   sublegal: 'Sublegal Name',

@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateFarmSuccessionPlanningValuationInputs, validateFarmSuccessionPlanningValuationBusinessRules } from './validation';
 
-export const FarmSuccessionPlanningValuationCalculator: Calculator: Calculator = {
-  id: 'farm-succession-planning-valuation-calculator',
+export const FarmSuccessionPlanningValuationCalculator: Calculator = {
+  id: 'FarmSuccessionPlanning-valuation-calculator',
   title: 'Farm Succession Planning Valuation Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateVentureDebtVsEquityFinancingCalculatorInputs, validateVentureDebtVsEquityFinancingCalculatorBusinessRules } from './validation';
 
-export const VentureDebtVsEquityFinancingCalculatorCalculator: Calculator: Calculator = {
-  id: 'venture-debt-vs-equity-financing-calculator-calculator',
+export const VentureDebtVsEquityFinancingCalculator: Calculator = {
+  id: 'VentureDebtVs-EquityFinancingCalculator-calculator',
   title: 'Venture Debt vs. Equity Financing Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

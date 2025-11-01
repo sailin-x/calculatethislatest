@@ -155,7 +155,7 @@ export function validateFarmlandInvestmentInputs(inputs: CalculatorInputs): Vali
   }
 
   if (inputs.conservationPrograms) {
-    const validConservationPrograms = ['none', 'crop-insurance', 'conservation-reserve', 'wetlands-reserve', 'environmental-quality-incentives'];
+    const validConservationPrograms = ['none', 'crop-insurance', 'conservation-reserve', 'wetlands-reserve', 'EnvironmentalQualityIncentives'];
     if (!validConservationPrograms.includes(inputs.conservationPrograms)) {
       errors.push('Invalid conservation program');
     }

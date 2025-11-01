@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { defective_drug_settlement_calculatorInputs, defective_drug_settlement_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const defective_drug_settlement_calculatorCalculator: Calculator = {
-  id: 'defective-drug-settlement-calculator',
+export const DefectiveDrugSettlement-calculator: Calculator = {
+  id: 'DefectiveDrugSettlement-calculator',
   title: 'Defective Drug Settlement Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

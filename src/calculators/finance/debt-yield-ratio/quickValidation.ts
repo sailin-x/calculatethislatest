@@ -475,16 +475,16 @@ export function validateOccupancyRate(value: any, allInputs?: Record<string, any
 
 export function validateLoanToValue(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   if (value === undefined || value === null || value === '') {
-    return { isValid: false, message: 'Loan-to-value ratio is required' };
+    return { isValid: false, message: 'LoanToValue ratio is required' };
   }
 
   const numValue = Number(value);
   if (isNaN(numValue)) {
-    return { isValid: false, message: 'Loan-to-value ratio must be a valid number' };
+    return { isValid: false, message: 'LoanToValue ratio must be a valid number' };
   }
 
   if (numValue < 0 || numValue > 100) {
-    return { isValid: false, message: 'Loan-to-value ratio must be between 0% and 100%' };
+    return { isValid: false, message: 'LoanToValue ratio must be between 0% and 100%' };
   }
 
   return { isValid: true };

@@ -1,4 +1,4 @@
-export { GovernmentContractBidnobidDecisionCalculatorCalculator } from './GovernmentContractBidnobidDecisionCalculatorCalculator';
+export { GovernmentContractBidnobidDecisionCalculator } from './GovernmentContractBidnobidDecisionCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

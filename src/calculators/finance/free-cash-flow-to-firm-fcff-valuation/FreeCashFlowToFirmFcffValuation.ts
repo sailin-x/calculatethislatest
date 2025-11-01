@@ -10,7 +10,7 @@ import {
 import { validateFreeCashFlowToFirmFcffValuationInputs } from './validation';
 
 export const FreeCashFlowToFirmFcffValuation: Calculator = {
-  id: 'free-cash-flow-to-firm-fcff-valuation',
+  id: 'FreeCashFlow-ToFirmFcff-valuation',
   title: 'Free Cash Flow to Firm (FCFF) Valuation',
   category: 'finance',
   subcategory: 'Financial Planning',

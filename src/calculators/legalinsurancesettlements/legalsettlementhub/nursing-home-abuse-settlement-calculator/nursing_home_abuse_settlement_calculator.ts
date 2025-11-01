@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { nursing_home_abuse_settlement_calculatorInputs, nursing_home_abuse_settlement_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const nursing_home_abuse_settlement_calculatorCalculator: Calculator = {
-  id: 'nursing-home-abuse-settlement-calculator',
+export const NursingHomeAbuse-settlement-calculator: Calculator = {
+  id: 'NursingHomeAbuse-settlement-calculator',
   title: 'Nursing Home Abuse Settlement Calculator Calculator',
   category: 'legalinsurancesettlements',
   subcategory: 'legalsettlementhub',

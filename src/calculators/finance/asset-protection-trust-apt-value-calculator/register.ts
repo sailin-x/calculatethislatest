@@ -1,3 +1,3 @@
-import { AssetProtectionTrustAptValueCalculatorCalculator } from './AssetProtectionTrustAptValueCalculatorCalculator';
+import { AssetProtectionTrustAptValueCalculator } from './AssetProtectionTrustAptValueCalculator';
 
-export { AssetProtectionTrustAptValueCalculatorCalculator };
+export { AssetProtectionTrustAptValueCalculator };

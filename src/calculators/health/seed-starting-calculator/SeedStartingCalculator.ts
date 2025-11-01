@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateSeedStartingCalculatorInputs } from './validation';
 
 export const SeedStartingCalculator: Calculator = {
-  id: 'seed-starting-calculator',
+  id: 'SeedStartingCalculator',
   title: 'Seed Starting Calculator',
   category: 'health',
   subcategory: 'General',

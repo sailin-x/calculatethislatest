@@ -1,3 +1,3 @@
-import { DefectiveDrugSettlementCalculatorCalculator } from './DefectiveDrugSettlementCalculatorCalculator';
+import { DefectiveDrugSettlementCalculator } from './DefectiveDrugSettlementCalculator';
 
-export { DefectiveDrugSettlementCalculatorCalculator };
+export { DefectiveDrugSettlementCalculator };

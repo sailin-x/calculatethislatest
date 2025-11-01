@@ -104,7 +104,7 @@ export function validateRetrofitStatus(value: any, allInputs?: Record<string, an
 }
 
 export function validateCoverageType(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  const validTypes = ['building-only', 'contents-only', 'building-contents', 'loss-of-use', 'comprehensive'];
+  const validTypes = ['building-only', 'contents-only', 'building-contents', 'LossOfUse', 'comprehensive'];
   if (!validTypes.includes(value)) return { isValid: false, message: 'Please select a valid coverage type' };
   return { isValid: true };
 }

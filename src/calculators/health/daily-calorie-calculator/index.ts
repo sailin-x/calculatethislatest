@@ -1,4 +1,4 @@
-export { DailyCalorieCalculatorCalculator } from './DailyCalorieCalculatorCalculator';
+export { DailyCalorieCalculator } from './DailyCalorieCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

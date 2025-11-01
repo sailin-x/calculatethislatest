@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateEmailMarketingCostCalculatorInputs } from './validation';
 
 export const EmailMarketingCostCalculator: Calculator = {
-  id: 'email-marketing-cost-calculator',
+  id: 'EmailMarketingCost-calculator',
   title: 'Email Marketing Cost Calculator',
   category: 'health',
   subcategory: 'General',

@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { talcum_powder_settlement_calculatorInputs, talcum_powder_settlement_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const talcum_powder_settlement_calculatorCalculator: Calculator = {
-  id: 'talcum-powder-settlement-calculator',
+export const TalcumPowderSettlement-calculator: Calculator = {
+  id: 'TalcumPowderSettlement-calculator',
   title: 'Talcum Powder Settlement Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

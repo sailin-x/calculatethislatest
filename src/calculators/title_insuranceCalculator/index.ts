@@ -1,3 +1,3 @@
-export * from './title_insuranceCalculatorCalculator';
+export * from './title_insuranceCalculator';
 export * from './register';
 export * from './types';

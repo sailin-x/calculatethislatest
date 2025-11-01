@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { rights_offering_calculatorInputs, rights_offering_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const rights_offering_calculatorCalculator: Calculator = {
-  id: 'rights-offering-calculator',
+export const RightsOfferingCalculator: Calculator = {
+  id: 'RightsOfferingCalculator',
   title: 'Rights Offering Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'investmentportfoliohub',

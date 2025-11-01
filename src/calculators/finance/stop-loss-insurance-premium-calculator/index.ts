@@ -1,4 +1,4 @@
-export { StoplossInsurancePremiumCalculatorCalculator } from './StoplossInsurancePremiumCalculatorCalculator';
+export { StoplossInsurancePremiumCalculator } from './StoplossInsurancePremiumCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

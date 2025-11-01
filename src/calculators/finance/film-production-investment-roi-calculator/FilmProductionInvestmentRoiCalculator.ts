@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateFilmProductionInvestmentRoiCalculatorInputs, validateFilmProductionInvestmentRoiCalculatorBusinessRules } from './validation';
 
-export const FilmProductionInvestmentRoiCalculatorCalculator: Calculator: Calculator = {
-  id: 'film-production-investment-roi-calculator-calculator',
+export const FilmProductionInvestmentRoiCalculator: Calculator = {
+  id: 'FilmProductionInvestment-RoiCalculatorCalculator',
   title: 'Film Production Investment ROI Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

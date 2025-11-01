@@ -1,4 +1,4 @@
-import { franchise-roi-calculatorInputs, franchise-roi-calculatorMetrics, franchise-roi-calculatorAnalysis } from './types';
+import { FranchiseRoiCalculatorinputs, FranchiseRoiCalculatormetrics, FranchiseRoiCalculatoranalysis } from './types';
 
 
 // Investment Calculator - ROI and growth calculations
@@ -12,7 +12,7 @@ export function calculateCompoundInterest(principal: number, rate: number, years
   return principal * Math.pow(1 + ratePerPeriod, totalPeriods);
 }
 
-export function calculateResult(inputs: franchise-roi-calculatorInputs): number {
+export function calculateResult(inputs: FranchiseRoiCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -36,7 +36,7 @@ export function calculateResult(inputs: franchise-roi-calculatorInputs): number 
   }
 }
 
-export function generateAnalysis(inputs: franchise-roi-calculatorInputs, metrics: franchise-roi-calculatorMetrics): franchise-roi-calculatorAnalysis {
+export function generateAnalysis(inputs: FranchiseRoiCalculatorinputs, metrics: FranchiseRoiCalculatormetrics): FranchiseRoiCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

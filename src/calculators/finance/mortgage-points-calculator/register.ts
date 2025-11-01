@@ -1,3 +1,3 @@
-import { MortgagePointsCalculatorCalculator } from './MortgagePointsCalculatorCalculator';
+import { MortgagePointsCalculator } from './MortgagePointsCalculator';
 
-export { MortgagePointsCalculatorCalculator };
+export { MortgagePointsCalculator };

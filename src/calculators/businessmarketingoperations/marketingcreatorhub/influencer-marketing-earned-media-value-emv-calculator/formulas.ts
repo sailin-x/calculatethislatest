@@ -1,4 +1,4 @@
-import { influencer-marketing-earned-media-value-emv-calculatorInputs, influencer-marketing-earned-media-value-emv-calculatorMetrics, influencer-marketing-earned-media-value-emv-calculatorAnalysis } from './types';
+import { InfluencerMarketingEarned-MediaValueEmv-calculatorInputs, InfluencerMarketingEarned-MediaValueEmv-calculatorMetrics, InfluencerMarketingEarned-MediaValueEmv-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: influencer-marketing-earned-media-value-emv-calculatorInputs): number {
+export function calculateResult(inputs: InfluencerMarketingEarned-MediaValueEmv-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: influencer-marketing-earned-media-value-
   }
 }
 
-export function generateAnalysis(inputs: influencer-marketing-earned-media-value-emv-calculatorInputs, metrics: influencer-marketing-earned-media-value-emv-calculatorMetrics): influencer-marketing-earned-media-value-emv-calculatorAnalysis {
+export function generateAnalysis(inputs: InfluencerMarketingEarned-MediaValueEmv-calculatorInputs, metrics: InfluencerMarketingEarned-MediaValueEmv-calculatorMetrics): InfluencerMarketingEarned-MediaValueEmv-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

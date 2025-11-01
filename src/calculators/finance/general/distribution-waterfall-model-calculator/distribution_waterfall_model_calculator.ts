@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { distribution_waterfall_model_calculatorInputs, distribution_waterfall_model_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const distribution_waterfall_model_calculatorCalculator: Calculator = {
-  id: 'distribution-waterfall-model-calculator',
+export const DistributionWaterfallModel-calculator: Calculator = {
+  id: 'DistributionWaterfallModel-calculator',
   title: 'Distribution Waterfall Model Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

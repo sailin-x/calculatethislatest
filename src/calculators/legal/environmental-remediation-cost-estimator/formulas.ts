@@ -1,4 +1,4 @@
-import { environmental-remediation-cost-estimatorInputs, environmental-remediation-cost-estimatorMetrics, environmental-remediation-cost-estimatorAnalysis } from './types';
+import { EnvironmentalRemediationCost-estimatorInputs, EnvironmentalRemediationCost-estimatorMetrics, EnvironmentalRemediationCost-estimatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: environmental-remediation-cost-estimatorInputs): number {
+export function calculateResult(inputs: EnvironmentalRemediationCost-estimatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: environmental-remediation-cost-estimator
   }
 }
 
-export function generateAnalysis(inputs: environmental-remediation-cost-estimatorInputs, metrics: environmental-remediation-cost-estimatorMetrics): environmental-remediation-cost-estimatorAnalysis {
+export function generateAnalysis(inputs: EnvironmentalRemediationCost-estimatorInputs, metrics: EnvironmentalRemediationCost-estimatorMetrics): EnvironmentalRemediationCost-estimatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

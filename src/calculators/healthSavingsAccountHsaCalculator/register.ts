@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { HealthSavingsAccountHsaCalculatorCalculator } from './HealthSavingsAccountHsaCalculatorCalculator';
+import { healthSavingsAccountHsaCalculator } from './HealthSavingsAccountHsaCalculator';
 
-export function registerHealthSavingsAccountHsaCalculatorCalculator(): void {
-  calculatorRegistry.register(new HealthSavingsAccountHsaCalculatorCalculator());
+export function registerHealthSavingsAccountHsaCalculator(): void {
+  calculatorRegistry.register(healthSavingsAccountHsaCalculator);
 }

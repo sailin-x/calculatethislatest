@@ -1,4 +1,4 @@
-export { ProfitMarginCalculatorCalculator } from './ProfitMarginCalculatorCalculator';
+export { ProfitMarginCalculator } from './ProfitMarginCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

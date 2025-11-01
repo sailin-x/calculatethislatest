@@ -1,4 +1,4 @@
-import { industrial-warehouse-profitabilityInputs, industrial-warehouse-profitabilityMetrics, industrial-warehouse-profitabilityAnalysis } from './types';
+import { IndustrialWarehouseProfitabilityinputs, IndustrialWarehouseProfitabilitymetrics, IndustrialWarehouseProfitabilityanalysis } from './types';
 
 
 // Business Calculator - Financial metrics
@@ -14,7 +14,7 @@ export function calculatePaybackPeriod(initialInvestment: number, annualCashFlow
   return initialInvestment / annualCashFlow;
 }
 
-export function calculateResult(inputs: industrial-warehouse-profitabilityInputs): number {
+export function calculateResult(inputs: IndustrialWarehouseProfitabilityinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: industrial-warehouse-profitabilityInputs
   }
 }
 
-export function generateAnalysis(inputs: industrial-warehouse-profitabilityInputs, metrics: industrial-warehouse-profitabilityMetrics): industrial-warehouse-profitabilityAnalysis {
+export function generateAnalysis(inputs: IndustrialWarehouseProfitabilityinputs, metrics: IndustrialWarehouseProfitabilitymetrics): IndustrialWarehouseProfitabilityanalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

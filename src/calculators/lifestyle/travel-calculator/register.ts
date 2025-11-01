@@ -1,3 +1,3 @@
-import { TravelCalculatorCalculator } from './TravelCalculatorCalculator';
+import { TravelCalculator } from './TravelCalculator';
 
-export { TravelCalculatorCalculator };
+export { TravelCalculator };

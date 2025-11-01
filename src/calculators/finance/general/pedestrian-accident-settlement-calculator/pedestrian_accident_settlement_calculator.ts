@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { pedestrian_accident_settlement_calculatorInputs, pedestrian_accident_settlement_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const pedestrian_accident_settlement_calculatorCalculator: Calculator = {
-  id: 'pedestrian-accident-settlement-calculator',
+export const PedestrianAccidentSettlement-calculator: Calculator = {
+  id: 'PedestrianAccidentSettlement-calculator',
   title: 'Pedestrian Accident Settlement Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

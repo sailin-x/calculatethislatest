@@ -53,7 +53,7 @@ describe('Mortgage Closing Cost Calculator', () => {
 
   describe('Calculator Definition', () => {
     it('should have correct calculator properties', () => {
-      expect(mortgageClosingCostCalculator.id).toBe('mortgage-closing-cost');
+      expect(mortgageClosingCostCalculator.id).toBe('MortgageClosingCost');
       expect(mortgageClosingCostCalculator.name).toBe('Mortgage Closing Cost Calculator');
       expect(mortgageClosingCostCalculator.category).toBe('finance');
       expect(mortgageClosingCostCalculator.tags).toContain('mortgage');

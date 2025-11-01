@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateTripleNetNnnLeaseRoiCalculatorInputs, validateTripleNetNnnLeaseRoiCalculatorBusinessRules } from './validation';
 
-export const TripleNetNnnLeaseRoiCalculatorCalculator: Calculator: Calculator = {
-  id: 'triple-net-nnn-lease-roi-calculator-calculator',
+export const TripleNetNnnLeaseRoiCalculator: Calculator = {
+  id: 'TripleNetNnn-LeaseRoiCalculator-calculator',
   title: 'Triple Net (NNN) Lease ROI Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

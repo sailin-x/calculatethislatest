@@ -1,4 +1,4 @@
-export { TotalReturnSwapCalculatorCalculator } from './TotalReturnSwapCalculatorCalculator';
+export { TotalReturnSwapCalculator } from './TotalReturnSwapCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

@@ -1,3 +1,3 @@
-import { GroundHandlingServiceCostCalculatorCalculator } from './GroundHandlingServiceCostCalculatorCalculator';
+import { GroundHandlingServiceCostCalculator } from './GroundHandlingServiceCostCalculator';
 
-export { GroundHandlingServiceCostCalculatorCalculator };
+export { GroundHandlingServiceCostCalculator };

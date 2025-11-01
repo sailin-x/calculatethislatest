@@ -1,6 +1,6 @@
-import { ad-viewability-impact-calculatorInputs } from './types';
+import { AdViewabilityImpact-calculatorInputs } from './types';
 
-export function validateInputs(inputs: ad-viewability-impact-calculatorInputs): { isValid: boolean; errors: string[] } {
+export function validateInputs(inputs: AdViewabilityImpact-calculatorInputs): { isValid: boolean; errors: string[] } {
   const errors: string[] = [];
 
   // Add validation logic specific to this calculator

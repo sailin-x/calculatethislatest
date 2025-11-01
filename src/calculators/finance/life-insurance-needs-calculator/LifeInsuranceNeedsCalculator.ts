@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateLifeInsuranceNeedsCalculatorInputs, validateLifeInsuranceNeedsCalculatorBusinessRules } from './validation';
 
-export const LifeInsuranceNeedsCalculatorCalculator: Calculator: Calculator = {
-  id: 'life-insurance-needs-calculator-calculator',
+export const LifeInsuranceNeedsCalculator: Calculator = {
+  id: 'LifeInsuranceNeeds-calculator-calculator',
   title: 'Life Insurance Needs Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

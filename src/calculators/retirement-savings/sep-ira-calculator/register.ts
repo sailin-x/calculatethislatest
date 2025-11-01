@@ -1,3 +1,3 @@
-import { SepIraCalculatorCalculator } from './SepIraCalculatorCalculator';
+import { SepIraCalculator } from './SepIraCalculator';
 
-export { SepIraCalculatorCalculator };
+export { SepIraCalculator };

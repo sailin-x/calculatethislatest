@@ -1,5 +1,5 @@
-export { businessloanqualificationcalculatorCalculator } from './businessloanqualificationcalculatorCalculator';
-export { registerbusinessloanqualificationcalculatorCalculator } from './register';
+export { businessloanqualificationcalculator } from './businessloanqualificationcalculator';
+export { registerbusinessloanqualificationcalculator } from './register';
 export * from './types';
 export * from './formulas';
 export * from './validation';

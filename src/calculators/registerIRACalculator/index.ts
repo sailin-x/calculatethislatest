@@ -1,3 +1,3 @@
-export * from './registerIRACalculatorCalculator';
+export * from './registerIRACalculator';
 export * from './register';
 export * from './types';

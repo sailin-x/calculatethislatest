@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { burn_mechanism_calculatorInputs, burn_mechanism_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const burn_mechanism_calculatorCalculator: Calculator = {
-  id: 'burn-mechanism-calculator',
+export const BurnMechanismCalculator: Calculator = {
+  id: 'BurnMechanismCalculator',
   title: 'Burn Mechanism Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'cryptocurrencyhub',

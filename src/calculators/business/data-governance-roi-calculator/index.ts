@@ -1,4 +1,4 @@
-export { DataGovernanceRoiCalculatorCalculator } from './DataGovernanceRoiCalculatorCalculator';
+export { DataGovernanceRoiCalculator } from './DataGovernanceRoiCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

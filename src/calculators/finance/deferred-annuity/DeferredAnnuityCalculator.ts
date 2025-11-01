@@ -4,7 +4,7 @@ import { calculateDeferredAnnuity } from './formulas';
 import { validateDeferredAnnuityInputs } from './validation';
 
 export const DeferredAnnuityCalculator: Calculator = {
-  id: 'deferred-annuity-calculator',
+  id: 'DeferredAnnuityCalculator',
   title: 'Deferred Annuity Calculator',
   category: 'finance',
   subcategory: 'Retirement',
@@ -347,7 +347,7 @@ export const DeferredAnnuityCalculator: Calculator = {
   examples: [
     {
       title: 'Retirement Planning with Deferred Annuity',
-      description: 'A 45-year-old planning retirement with systematic contributions',
+      description: 'A 45YearOld planning retirement with systematic contributions',
       inputs: {
         initialInvestment: 100000,
         monthlyContribution: 500,

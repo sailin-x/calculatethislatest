@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateMusicFestivalProfitLossPlCalculatorInputs, validateMusicFestivalProfitLossPlCalculatorBusinessRules } from './validation';
 
-export const MusicFestivalProfitLossPlCalculatorCalculator: Calculator: Calculator = {
-  id: 'music-festival-profit-loss-pl-calculator-calculator',
+export const MusicFestivalProfitLossPlCalculator: Calculator = {
+  id: 'MusicFestivalProfit-LossPlCalculator-calculator',
   title: 'Music Festival Profit & Loss (P&L) Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { scientificCalculatorCalculator } from './scientificCalculatorCalculator';
+import { scientificCalculator } from './scientificCalculator';
 
-export function registerscientificCalculatorCalculator(): void {
-  calculatorRegistry.register(new scientificCalculatorCalculator());
+export function registerscientificCalculator(): void {
+  calculatorRegistry.register(new scientificCalculator());
 }

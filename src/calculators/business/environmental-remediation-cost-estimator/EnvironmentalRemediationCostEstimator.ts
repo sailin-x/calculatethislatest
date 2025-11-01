@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateEnvironmentalRemediationCostEstimatorInputs, validateEnvironmentalRemediationCostEstimatorBusinessRules } from './validation';
 
-export const EnvironmentalRemediationCostEstimatorCalculator: Calculator: Calculator = {
-  id: 'environmental-remediation-cost-estimator-calculator',
+export const EnvironmentalRemediationCostEstimatorCalculator: Calculator = {
+  id: 'EnvironmentalRemediationCost-estimator-calculator',
   title: 'Environmental Remediation Cost Estimator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

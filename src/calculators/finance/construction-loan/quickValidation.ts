@@ -339,20 +339,20 @@ export function validateInspectionFee(value: any, allInputs?: Record<string, any
 
 export function validateLoanToCost(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   if (value === undefined || value === null || value === '') {
-    return { isValid: false, message: 'Loan-to-cost ratio is required' };
+    return { isValid: false, message: 'LoanToCost ratio is required' };
   }
   
   const numValue = Number(value);
   if (isNaN(numValue)) {
-    return { isValid: false, message: 'Loan-to-cost ratio must be a valid number' };
+    return { isValid: false, message: 'LoanToCost ratio must be a valid number' };
   }
   
   if (numValue < 50) {
-    return { isValid: false, message: 'Loan-to-cost ratio must be at least 50%' };
+    return { isValid: false, message: 'LoanToCost ratio must be at least 50%' };
   }
   
   if (numValue > 90) {
-    return { isValid: false, message: 'Loan-to-cost ratio cannot exceed 90%' };
+    return { isValid: false, message: 'LoanToCost ratio cannot exceed 90%' };
   }
   
   return { isValid: true };
@@ -360,20 +360,20 @@ export function validateLoanToCost(value: any, allInputs?: Record<string, any>, 
 
 export function validateLoanToValue(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   if (value === undefined || value === null || value === '') {
-    return { isValid: false, message: 'Loan-to-value ratio is required' };
+    return { isValid: false, message: 'LoanToValue ratio is required' };
   }
   
   const numValue = Number(value);
   if (isNaN(numValue)) {
-    return { isValid: false, message: 'Loan-to-value ratio must be a valid number' };
+    return { isValid: false, message: 'LoanToValue ratio must be a valid number' };
   }
   
   if (numValue < 50) {
-    return { isValid: false, message: 'Loan-to-value ratio must be at least 50%' };
+    return { isValid: false, message: 'LoanToValue ratio must be at least 50%' };
   }
   
   if (numValue > 85) {
-    return { isValid: false, message: 'Loan-to-value ratio cannot exceed 85%' };
+    return { isValid: false, message: 'LoanToValue ratio cannot exceed 85%' };
   }
   
   return { isValid: true };

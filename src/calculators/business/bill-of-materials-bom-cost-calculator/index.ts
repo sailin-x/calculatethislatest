@@ -1,4 +1,4 @@
-export { BillOfMaterialsBomCostCalculatorCalculator } from './BillOfMaterialsBomCostCalculatorCalculator';
+export { BillOfMaterialsBomCostCalculator } from './BillOfMaterialsBomCostCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

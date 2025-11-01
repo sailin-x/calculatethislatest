@@ -1,4 +1,4 @@
-import { growth-hormone-calculatorInputs, growth-hormone-calculatorMetrics, growth-hormone-calculatorAnalysis } from './types';
+import { GrowthHormoneCalculatorinputs, GrowthHormoneCalculatormetrics, GrowthHormoneCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: growth-hormone-calculatorInputs): number {
+export function calculateResult(inputs: GrowthHormoneCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: growth-hormone-calculatorInputs): number
   }
 }
 
-export function generateAnalysis(inputs: growth-hormone-calculatorInputs, metrics: growth-hormone-calculatorMetrics): growth-hormone-calculatorAnalysis {
+export function generateAnalysis(inputs: GrowthHormoneCalculatorinputs, metrics: GrowthHormoneCalculatormetrics): GrowthHormoneCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

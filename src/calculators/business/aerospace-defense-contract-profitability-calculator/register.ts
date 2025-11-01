@@ -1,3 +1,3 @@
-import { AerospaceDefenseContractProfitabilityCalculatorCalculator } from './AerospaceDefenseContractProfitabilityCalculatorCalculator';
+import { AerospaceDefenseContractProfitabilityCalculator } from './AerospaceDefenseContractProfitabilityCalculator';
 
-export { AerospaceDefenseContractProfitabilityCalculatorCalculator };
+export { AerospaceDefenseContractProfitabilityCalculator };

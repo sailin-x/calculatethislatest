@@ -5,7 +5,7 @@ import * as quickValidation from './quickValidation';
 describe('PmiCancellationCalculator', () => {
   describe('Calculator Definition', () => {
     it('should have correct id and title', () => {
-      expect(PmiCancellationCalculator.id).toBe('pmi-cancellation-calculator');
+      expect(PmiCancellationCalculator.id).toBe('PmiCancellationCalculator');
       expect(PmiCancellationCalculator.title).toBe('PMI Cancellation Calculator');
     });
 

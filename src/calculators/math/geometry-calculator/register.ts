@@ -1,3 +1,3 @@
-import { GeometryCalculatorCalculator } from './GeometryCalculatorCalculator';
+import { GeometryCalculator } from './GeometryCalculator';
 
-export { GeometryCalculatorCalculator };
+export { GeometryCalculator };

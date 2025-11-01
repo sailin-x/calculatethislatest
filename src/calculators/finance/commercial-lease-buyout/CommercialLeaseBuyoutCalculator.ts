@@ -3,7 +3,7 @@ import { calculateLeaseBuyout, generateBuyoutAnalysis } from './formulas';
 import { validateLeaseBuyoutInputs } from './validation';
 
 export const CommercialLeaseBuyoutCalculator: Calculator = {
-  id: 'commercial-lease-buyout-calculator',
+  id: 'CommercialLeaseBuyout-calculator',
   name: 'Commercial Lease Buyout Calculator',
   category: 'finance',
   subcategory: 'business',
@@ -301,7 +301,7 @@ export const CommercialLeaseBuyoutCalculator: Calculator = {
     },
     {
       id: 'cashOnCashReturn',
-      name: 'Cash-on-Cash Return',
+      name: 'CashOnCash Return',
       type: 'number',
       unit: '%',
       description: 'Annual return on cash investment'
@@ -336,7 +336,7 @@ export const CommercialLeaseBuyoutCalculator: Calculator = {
     },
     {
       id: 'loanToValue',
-      name: 'Loan-to-Value Ratio',
+      name: 'LoanToValue Ratio',
       type: 'number',
       unit: '%',
       description: 'Loan amount as percentage of property value'
@@ -414,8 +414,8 @@ export const CommercialLeaseBuyoutCalculator: Calculator = {
       description: 'Measures unleveraged return on property value'
     },
     {
-      name: 'Cash-on-Cash Return',
-      formula: 'Cash-on-Cash = (Annual Cash Flow / Total Cash Invested) × 100',
+      name: 'CashOnCash Return',
+      formula: 'CashOnCash = (Annual Cash Flow / Total Cash Invested) × 100',
       description: 'Measures annual return on cash investment'
     },
     {

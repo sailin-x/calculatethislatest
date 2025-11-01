@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { twitch_subscriber_revenue_calculatorInputs, twitch_subscriber_revenue_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const twitch_subscriber_revenue_calculatorCalculator: Calculator = {
-  id: 'twitch-subscriber-revenue-calculator',
+export const TwitchSubscriberRevenue-calculator: Calculator = {
+  id: 'TwitchSubscriberRevenue-calculator',
   title: 'Twitch Subscriber Revenue Calculator Calculator',
   category: 'businessmarketingoperations',
   subcategory: 'marketingcreatorhub',

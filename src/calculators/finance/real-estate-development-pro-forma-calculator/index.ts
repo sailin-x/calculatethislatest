@@ -1,4 +1,4 @@
-export { RealEstateDevelopmentProformaCalculatorCalculator } from './RealEstateDevelopmentProformaCalculatorCalculator';
+export { RealEstateDevelopmentProformaCalculator } from './RealEstateDevelopmentProformaCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

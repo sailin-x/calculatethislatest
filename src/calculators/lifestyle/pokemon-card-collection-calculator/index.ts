@@ -1,4 +1,4 @@
-export { PokemonCardCollectionCalculatorCalculator } from './PokemonCardCollectionCalculatorCalculator';
+export { PokemonCardCollectionCalculator } from './PokemonCardCollectionCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

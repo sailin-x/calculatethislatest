@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateCapitalGainsCalculatorInputs, validateCapitalGainsCalculatorBusinessRules } from './validation';
 
-export const CapitalGainsCalculatorCalculator: Calculator: Calculator = {
-  id: 'capital-gains-calculator-calculator',
+export const CapitalGainsCalculator: Calculator = {
+  id: 'CapitalGainsCalculator-calculator',
   title: 'Capital Gains Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

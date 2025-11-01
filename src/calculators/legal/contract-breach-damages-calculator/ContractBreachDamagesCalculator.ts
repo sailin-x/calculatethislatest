@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateContractBreachDamagesCalculatorInputs, validateContractBreachDamagesCalculatorBusinessRules } from './validation';
 
-export const ContractBreachDamagesCalculatorCalculator: Calculator: Calculator = {
-  id: 'contract-breach-damages-calculator-calculator',
+export const ContractBreachDamagesCalculator: Calculator = {
+  id: 'ContractBreachDamages-calculator-calculator',
   title: 'Contract Breach Damages Calculator Calculator',
   legal: 'legal', // e.g., 'finance', 'math', 'health', 'business'
   sublegal: 'Sublegal Name',

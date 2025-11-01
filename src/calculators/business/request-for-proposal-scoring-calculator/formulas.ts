@@ -1,4 +1,4 @@
-import { request-for-proposal-scoring-calculatorInputs, request-for-proposal-scoring-calculatorMetrics, request-for-proposal-scoring-calculatorAnalysis } from './types';
+import { RequestForProposal-scoring-calculatorInputs, RequestForProposal-scoring-calculatorMetrics, RequestForProposal-scoring-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: request-for-proposal-scoring-calculatorInputs): number {
+export function calculateResult(inputs: RequestForProposal-scoring-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: request-for-proposal-scoring-calculatorI
   }
 }
 
-export function generateAnalysis(inputs: request-for-proposal-scoring-calculatorInputs, metrics: request-for-proposal-scoring-calculatorMetrics): request-for-proposal-scoring-calculatorAnalysis {
+export function generateAnalysis(inputs: RequestForProposal-scoring-calculatorInputs, metrics: RequestForProposal-scoring-calculatorMetrics): RequestForProposal-scoring-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

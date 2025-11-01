@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateSepIraCalculatorInputs, validateSepIraCalculatorBusinessRules } from './validation';
 
-export const SepIraCalculatorCalculator: Calculator: Calculator = {
-  id: 'sep-ira-calculator-calculator',
+export const SepIraCalculator: Calculator = {
+  id: 'SepIraCalculator-calculator',
   title: 'SEP IRA Calculator Calculator',
   retirement-savings: 'retirement-savings', // e.g., 'finance', 'math', 'health', 'business'
   subretirement-savings: 'Subretirement-savings Name',

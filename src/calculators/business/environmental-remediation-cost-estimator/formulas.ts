@@ -1,4 +1,4 @@
-import { environmental-remediation-cost-estimatorInputs, environmental-remediation-cost-estimatorMetrics, environmental-remediation-cost-estimatorAnalysis } from './types';
+import { EnvironmentalRemediationCost-estimatorInputs, EnvironmentalRemediationCost-estimatorMetrics, EnvironmentalRemediationCost-estimatorAnalysis } from './types';
 
 // Environmental Remediation Cost Estimator - Business calculations
 export function calculateNetPresentValue(cashFlows: number[], discountRate: number): number {
@@ -11,7 +11,7 @@ export function calculateROI(initialInvestment: number, finalValue: number): num
  return ((finalValue - initialInvestment) / initialInvestment) * 100;
 }
 
-export function calculateResult(inputs: environmental-remediation-cost-estimatorInputs): number {
+export function calculateResult(inputs: EnvironmentalRemediationCost-estimatorInputs): number {
  // Business calculation logic with real math
  const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
  if (numericValues.length >= 2) {
@@ -24,7 +24,7 @@ export function calculateResult(inputs: environmental-remediation-cost-estimator
  return calculateNetPresentValue(numericValues, 10); // 10% discount rate
 }
 
-export function generateAnalysis(inputs: environmental-remediation-cost-estimatorInputs, metrics: environmental-remediation-cost-estimatorMetrics): environmental-remediation-cost-estimatorAnalysis {
+export function generateAnalysis(inputs: EnvironmentalRemediationCost-estimatorInputs, metrics: EnvironmentalRemediationCost-estimatorMetrics): EnvironmentalRemediationCost-estimatorAnalysis {
  const result = metrics.result;
  let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
  if (Math.abs(result) > 100000) riskLevel = 'High';

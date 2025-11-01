@@ -9,7 +9,7 @@ import {
 import { validateCommercialFleetInsuranceCalculatorInputs } from './validation';
 
 export const CommercialFleetInsuranceCalculator: Calculator = {
-  id: 'commercial-fleet-insurance-calculator',
+  id: 'CommercialFleetInsurance-calculator',
   title: 'Commercial Fleet Insurance Calculator',
   category: 'legal',
   subcategory: 'Settlement Analysis',

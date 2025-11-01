@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateTraumaticBrainInjurySettlementCalculatorInputs, validateTraumaticBrainInjurySettlementCalculatorBusinessRules } from './validation';
 
-export const TraumaticBrainInjurySettlementCalculatorCalculator: Calculator: Calculator = {
-  id: 'traumatic-brain-injury-settlement-calculator-calculator',
+export const TraumaticBrainInjurySettlementCalculator: Calculator = {
+  id: 'TraumaticBrainInjury-SettlementCalculatorCalculator',
   title: 'Traumatic Brain Injury Settlement Calculator Calculator',
   legal: 'legal', // e.g., 'finance', 'math', 'health', 'business'
   sublegal: 'Sublegal Name',

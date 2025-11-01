@@ -1,4 +1,4 @@
-export { expected_shortfall_calculatorCalculator } from './expected_shortfall_calculator';
+export { expected_shortfall_calculator } from './expected_shortfall_calculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

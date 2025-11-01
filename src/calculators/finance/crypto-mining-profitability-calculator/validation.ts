@@ -1,11 +1,11 @@
 import { ValidationResult } from '../../lib/errors';
-import { cryptominingprofitabilitycalculatorCalculatorInputs } from './types';
+import { cryptominingprofitabilitycalculatorInputs } from './types';
 
 /**
  * Validate crypto mining profitability calculator calculator inputs
  */
-export function validatecryptominingprofitabilitycalculatorCalculatorInputs(
-  inputs: cryptominingprofitabilitycalculatorCalculatorInputs
+export function validatecryptominingprofitabilitycalculatorInputs(
+  inputs: cryptominingprofitabilitycalculatorInputs
 ): ValidationResult {
   const errors: string[] = [];
 

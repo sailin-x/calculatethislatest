@@ -1,4 +1,4 @@
-import { anti-aging-regenerative-medicine-cost-calculatorInputs, anti-aging-regenerative-medicine-cost-calculatorMetrics, anti-aging-regenerative-medicine-cost-calculatorAnalysis } from './types';
+import { AntiAgingRegenerative-MedicineCostCalculatorinputs, AntiAgingRegenerative-MedicineCostCalculatormetrics, AntiAgingRegenerative-MedicineCostCalculatoranalysis } from './types';
 
 // Anti-Aging & Regenerative Medicine Cost Calculator - Business calculations
 export function calculateNetPresentValue(cashFlows: number[], discountRate: number): number {
@@ -11,7 +11,7 @@ export function calculateROI(initialInvestment: number, finalValue: number): num
  return ((finalValue - initialInvestment) / initialInvestment) * 100;
 }
 
-export function calculateResult(inputs: anti-aging-regenerative-medicine-cost-calculatorInputs): number {
+export function calculateResult(inputs: AntiAgingRegenerative-MedicineCostCalculatorinputs): number {
  // Business calculation logic with real math
  const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
  if (numericValues.length >= 2) {
@@ -24,7 +24,7 @@ export function calculateResult(inputs: anti-aging-regenerative-medicine-cost-ca
  return calculateNetPresentValue(numericValues, 10); // 10% discount rate
 }
 
-export function generateAnalysis(inputs: anti-aging-regenerative-medicine-cost-calculatorInputs, metrics: anti-aging-regenerative-medicine-cost-calculatorMetrics): anti-aging-regenerative-medicine-cost-calculatorAnalysis {
+export function generateAnalysis(inputs: AntiAgingRegenerative-MedicineCostCalculatorinputs, metrics: AntiAgingRegenerative-MedicineCostCalculatormetrics): AntiAgingRegenerative-MedicineCostCalculatoranalysis {
  const result = metrics.result;
  let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
  if (Math.abs(result) > 100000) riskLevel = 'High';

@@ -2,7 +2,7 @@ import { Calculator } from '../../../../types/calculator';
 import { flooring_calculatorInputs, flooring_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const flooring_calculatorCalculator: Calculator = {
+export const flooring-calculator: Calculator = {
   id: 'flooring-calculator',
   title: 'Flooring Calculator Calculator',
   category: 'finance',

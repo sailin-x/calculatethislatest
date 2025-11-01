@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateCreditCardPayoffCalculatorInputs, validateCreditCardPayoffCalculatorBusinessRules } from './validation';
 
-export const CreditCardPayoffCalculatorCalculator: Calculator: Calculator = {
-  id: 'credit-card-payoff-calculator-calculator',
+export const CreditCardPayoffCalculator: Calculator = {
+  id: 'CreditCardPayoff-calculator-calculator',
   title: 'Credit Card Payoff Calculator Calculator',
   lifestyle: 'lifestyle', // e.g., 'finance', 'math', 'health', 'business'
   sublifestyle: 'Sublifestyle Name',

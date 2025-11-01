@@ -9,7 +9,7 @@ import {
 import { validateHospitalNegligenceCalculatorInputs } from './validation';
 
 export const HospitalNegligenceCalculator: Calculator = {
-  id: 'hospital-negligence-calculator',
+  id: 'HospitalNegligenceCalculator',
   title: 'Hospital Negligence Calculator',
   category: 'legal',
   subcategory: 'Settlement Analysis',

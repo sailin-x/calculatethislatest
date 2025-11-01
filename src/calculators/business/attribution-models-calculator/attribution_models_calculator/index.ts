@@ -1,3 +1,2 @@
-export * from './attribution_models_calculatorCalculator';
-export * from './register';
+export * from './attribution_models_calculator';
 export * from './types';

@@ -5,7 +5,7 @@ import { validateGroundLeaseValuationInputs } from './validation';
 import { generateGroundLeaseValuationReport } from './formulas';
 
 export const GroundLeaseValuationCalculator: Calculator<GroundLeaseValuationInputs, GroundLeaseValuationOutputs> = {
-  id: 'ground-lease-valuation',
+  id: 'GroundLeaseValuation',
   name: 'Ground Lease Valuation Calculator',
   category: 'finance',
   subcategory: 'real-estate',
@@ -714,8 +714,8 @@ This calculator is essential for real estate investors, lenders, appraisers, and
         currentUse: 'Office building',
         highestBestUse: 'Mixed-use development',
         leaseType: 'ground_lease',
-        leaseStartDate: '2020-01-01',
-        leaseEndDate: '2070-01-01',
+        leaseStartDate: '20200101',
+        leaseEndDate: '20700101',
         leaseTerm: 50,
         remainingTerm: 45,
         renewalOptions: 2,
@@ -771,8 +771,8 @@ This calculator is essential for real estate investors, lenders, appraisers, and
         currentUse: 'Shopping center',
         highestBestUse: 'Mixed retail and entertainment',
         leaseType: 'ground_lease',
-        leaseStartDate: '2015-06-01',
-        leaseEndDate: '2045-06-01',
+        leaseStartDate: '20150601',
+        leaseEndDate: '20450601',
         leaseTerm: 30,
         remainingTerm: 20,
         renewalOptions: 1,

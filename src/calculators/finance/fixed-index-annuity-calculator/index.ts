@@ -1,4 +1,4 @@
-export { FixedIndexAnnuityCalculatorCalculator } from './FixedIndexAnnuityCalculatorCalculator';
+export { FixedIndexAnnuityCalculator } from './FixedIndexAnnuityCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

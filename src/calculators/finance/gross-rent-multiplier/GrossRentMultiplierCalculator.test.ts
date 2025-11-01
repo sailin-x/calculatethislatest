@@ -80,7 +80,7 @@ describe('GrossRentMultiplierCalculator', () => {
 
   describe('Calculator Definition', () => {
     it('should have correct basic properties', () => {
-      expect(GrossRentMultiplierCalculator.id).toBe('gross-rent-multiplier');
+      expect(GrossRentMultiplierCalculator.id).toBe('GrossRentMultiplier');
       expect(GrossRentMultiplierCalculator.name).toBe('Gross Rent Multiplier Calculator');
       expect(GrossRentMultiplierCalculator.category).toBe('finance');
       expect(GrossRentMultiplierCalculator.subcategory).toBe('real-estate');

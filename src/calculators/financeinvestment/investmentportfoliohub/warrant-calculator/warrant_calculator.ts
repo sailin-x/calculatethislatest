@@ -2,7 +2,7 @@ import { Calculator } from '../../../../types/calculator';
 import { warrant_calculatorInputs, warrant_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const warrant_calculatorCalculator: Calculator = {
+export const warrant-calculator: Calculator = {
   id: 'warrant-calculator',
   title: 'Warrant Calculator Calculator',
   category: 'financeinvestment',

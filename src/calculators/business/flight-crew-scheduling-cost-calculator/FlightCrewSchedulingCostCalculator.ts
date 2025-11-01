@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateFlightCrewSchedulingCostCalculatorInputs, validateFlightCrewSchedulingCostCalculatorBusinessRules } from './validation';
 
-export const FlightCrewSchedulingCostCalculatorCalculator: Calculator: Calculator = {
-  id: 'flight-crew-scheduling-cost-calculator-calculator',
+export const FlightCrewSchedulingCostCalculator: Calculator = {
+  id: 'FlightCrewScheduling-CostCalculatorCalculator',
   title: 'Flight Crew Scheduling Cost Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

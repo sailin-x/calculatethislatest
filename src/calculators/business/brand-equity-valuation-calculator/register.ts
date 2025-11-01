@@ -1,3 +1,3 @@
-import { BrandEquityValuationCalculatorCalculator } from './BrandEquityValuationCalculatorCalculator';
+import { BrandEquityValuationCalculator } from './BrandEquityValuationCalculator';
 
-export { BrandEquityValuationCalculatorCalculator };
+export { BrandEquityValuationCalculator };

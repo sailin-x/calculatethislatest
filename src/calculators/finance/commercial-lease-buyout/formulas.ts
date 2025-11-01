@@ -1,4 +1,4 @@
-import { commercial-lease-buyoutInputs, commercial-lease-buyoutMetrics, commercial-lease-buyoutAnalysis } from './types';
+import { CommercialLeaseBuyoutinputs, CommercialLeaseBuyoutmetrics, CommercialLeaseBuyoutanalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: commercial-lease-buyoutInputs): number {
+export function calculateResult(inputs: CommercialLeaseBuyoutinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: commercial-lease-buyoutInputs): number {
   }
 }
 
-export function generateAnalysis(inputs: commercial-lease-buyoutInputs, metrics: commercial-lease-buyoutMetrics): commercial-lease-buyoutAnalysis {
+export function generateAnalysis(inputs: CommercialLeaseBuyoutinputs, metrics: CommercialLeaseBuyoutmetrics): CommercialLeaseBuyoutanalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

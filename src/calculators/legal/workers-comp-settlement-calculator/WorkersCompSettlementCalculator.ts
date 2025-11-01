@@ -8,9 +8,9 @@ import {
 } from './formulas';
 import { validateWorkersCompSettlementCalculatorInputs, validateWorkersCompSettlementCalculatorBusinessRules } from './validation';
 
-export const WorkersCompSettlementCalculatorCalculator: Calculator: Calculator = {
-  id: 'workers-comp-settlement-calculator-calculator',
-  title: 'Workers' Comp Settlement Calculator Calculator',
+export const WorkersCompSettlementCalculator: Calculator = {
+  id: 'WorkersCompSettlement-calculator-calculator',
+  title: "Workers' Comp Settlement Calculator Calculator",
   legal: 'legal', // e.g., 'finance', 'math', 'health', 'business'
   sublegal: 'Sublegal Name',
   description: 'Brief description of what this calculator does and its purpose.',

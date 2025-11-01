@@ -1,4 +1,4 @@
-import { instagram-influencer-rate-calculatorInputs, instagram-influencer-rate-calculatorMetrics, instagram-influencer-rate-calculatorAnalysis } from './types';
+import { InstagramInfluencerRate-calculatorInputs, InstagramInfluencerRate-calculatorMetrics, InstagramInfluencerRate-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: instagram-influencer-rate-calculatorInputs): number {
+export function calculateResult(inputs: InstagramInfluencerRate-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: instagram-influencer-rate-calculatorInpu
   }
 }
 
-export function generateAnalysis(inputs: instagram-influencer-rate-calculatorInputs, metrics: instagram-influencer-rate-calculatorMetrics): instagram-influencer-rate-calculatorAnalysis {
+export function generateAnalysis(inputs: InstagramInfluencerRate-calculatorInputs, metrics: InstagramInfluencerRate-calculatorMetrics): InstagramInfluencerRate-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

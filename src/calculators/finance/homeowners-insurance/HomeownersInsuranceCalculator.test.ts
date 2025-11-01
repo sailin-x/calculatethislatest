@@ -7,7 +7,7 @@ import { validateAllHomeownersInsuranceInputs } from './quickValidation';
 describe('Homeowners Insurance Calculator', () => {
   describe('Calculator Structure', () => {
     it('should have correct basic properties', () => {
-      expect(HomeownersInsuranceCalculator.id).toBe('homeowners-insurance-calculator');
+      expect(HomeownersInsuranceCalculator.id).toBe('HomeownersInsuranceCalculator');
       expect(HomeownersInsuranceCalculator.name).toBe('Homeowners Insurance Calculator');
       expect(HomeownersInsuranceCalculator.category).toBe('finance');
       expect(HomeownersInsuranceCalculator.subcategory).toBe('investment');

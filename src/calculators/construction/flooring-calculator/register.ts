@@ -1,3 +1,3 @@
-import { FlooringCalculatorCalculator } from './FlooringCalculatorCalculator';
+import { FlooringCalculator } from './FlooringCalculator';
 
-export { FlooringCalculatorCalculator };
+export { FlooringCalculator };

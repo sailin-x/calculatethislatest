@@ -1,4 +1,4 @@
-export { QuickRatioCalculatorCalculator } from './QuickRatioCalculatorCalculator';
+export { QuickRatioCalculator } from './QuickRatioCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

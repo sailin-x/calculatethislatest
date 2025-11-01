@@ -1,4 +1,4 @@
-import { tokenomics-simulation-calculatorInputs, tokenomics-simulation-calculatorMetrics, tokenomics-simulation-calculatorAnalysis } from './types';
+import { TokenomicsSimulationCalculatorinputs, TokenomicsSimulationCalculatormetrics, TokenomicsSimulationCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: tokenomics-simulation-calculatorInputs): number {
+export function calculateResult(inputs: TokenomicsSimulationCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: tokenomics-simulation-calculatorInputs):
   }
 }
 
-export function generateAnalysis(inputs: tokenomics-simulation-calculatorInputs, metrics: tokenomics-simulation-calculatorMetrics): tokenomics-simulation-calculatorAnalysis {
+export function generateAnalysis(inputs: TokenomicsSimulationCalculatorinputs, metrics: TokenomicsSimulationCalculatormetrics): TokenomicsSimulationCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateEmployeeTurnoverCostCalculatorInputs, validateEmployeeTurnoverCostCalculatorBusinessRules } from './validation';
 
-export const EmployeeTurnoverCostCalculatorCalculator: Calculator: Calculator = {
-  id: 'employee-turnover-cost-calculator-calculator',
+export const EmployeeTurnoverCostCalculator: Calculator = {
+  id: 'EmployeeTurnoverCost-calculator-calculator',
   title: 'Employee Turnover Cost Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { quick_ratio_calculatorInputs, quick_ratio_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const quick_ratio_calculatorCalculator: Calculator = {
-  id: 'quick-ratio-calculator',
+export const QuickRatioCalculator: Calculator = {
+  id: 'QuickRatioCalculator',
   title: 'Quick Ratio Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'investmentportfoliohub',

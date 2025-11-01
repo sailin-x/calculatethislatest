@@ -1,4 +1,4 @@
-import { sponsorship-roi-calculatorInputs, sponsorship-roi-calculatorMetrics, sponsorship-roi-calculatorAnalysis } from './types';
+import { SponsorshipRoiCalculatorinputs, SponsorshipRoiCalculatormetrics, SponsorshipRoiCalculatoranalysis } from './types';
 
 
 // Investment Calculator - ROI and growth calculations
@@ -12,7 +12,7 @@ export function calculateCompoundInterest(principal: number, rate: number, years
   return principal * Math.pow(1 + ratePerPeriod, totalPeriods);
 }
 
-export function calculateResult(inputs: sponsorship-roi-calculatorInputs): number {
+export function calculateResult(inputs: SponsorshipRoiCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -36,7 +36,7 @@ export function calculateResult(inputs: sponsorship-roi-calculatorInputs): numbe
   }
 }
 
-export function generateAnalysis(inputs: sponsorship-roi-calculatorInputs, metrics: sponsorship-roi-calculatorMetrics): sponsorship-roi-calculatorAnalysis {
+export function generateAnalysis(inputs: SponsorshipRoiCalculatorinputs, metrics: SponsorshipRoiCalculatormetrics): SponsorshipRoiCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

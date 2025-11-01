@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateBoxOfficeBreakevenCalculatorInputs, validateBoxOfficeBreakevenCalculatorBusinessRules } from './validation';
 
-export const BoxOfficeBreakevenCalculatorCalculator: Calculator: Calculator = {
-  id: 'box-office-breakeven-calculator-calculator',
+export const BoxOfficeBreakevenCalculator: Calculator = {
+  id: 'BoxOfficeBreakeven-calculator-calculator',
   title: 'Box Office Breakeven Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

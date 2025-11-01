@@ -1,4 +1,4 @@
-export { LeverageRatioCalculatorCalculator } from './LeverageRatioCalculatorCalculator';
+export { LeverageRatioCalculator } from './LeverageRatioCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

@@ -1,4 +1,4 @@
-export { CosmeticSurgeryCostCalculatorCalculator } from './CosmeticSurgeryCostCalculatorCalculator';
+export { CosmeticSurgeryCostCalculator } from './CosmeticSurgeryCostCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

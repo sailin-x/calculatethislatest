@@ -1,3 +1,3 @@
-import { AntiagingRegenerativeMedicineCostCalculatorCalculator } from './AntiagingRegenerativeMedicineCostCalculatorCalculator';
+import { AntiagingRegenerativeMedicineCostCalculator } from './AntiagingRegenerativeMedicineCostCalculator';
 
-export { AntiagingRegenerativeMedicineCostCalculatorCalculator };
+export { AntiagingRegenerativeMedicineCostCalculator };

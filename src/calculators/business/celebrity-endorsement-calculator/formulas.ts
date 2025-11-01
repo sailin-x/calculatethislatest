@@ -1,4 +1,4 @@
-import { celebrity-endorsement-calculatorInputs, celebrity-endorsement-calculatorMetrics, celebrity-endorsement-calculatorAnalysis } from './types';
+import { CelebrityEndorsementCalculatorinputs, CelebrityEndorsementCalculatormetrics, CelebrityEndorsementCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: celebrity-endorsement-calculatorInputs): number {
+export function calculateResult(inputs: CelebrityEndorsementCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: celebrity-endorsement-calculatorInputs):
   }
 }
 
-export function generateAnalysis(inputs: celebrity-endorsement-calculatorInputs, metrics: celebrity-endorsement-calculatorMetrics): celebrity-endorsement-calculatorAnalysis {
+export function generateAnalysis(inputs: CelebrityEndorsementCalculatorinputs, metrics: CelebrityEndorsementCalculatormetrics): CelebrityEndorsementCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

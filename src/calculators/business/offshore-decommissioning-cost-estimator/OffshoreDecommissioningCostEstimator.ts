@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateOffshoreDecommissioningCostEstimatorInputs, validateOffshoreDecommissioningCostEstimatorBusinessRules } from './validation';
 
-export const OffshoreDecommissioningCostEstimatorCalculator: Calculator: Calculator = {
-  id: 'offshore-decommissioning-cost-estimator-calculator',
+export const OffshoreDecommissioningCostEstimatorCalculator: Calculator = {
+  id: 'OffshoreDecommissioningCost-estimator-calculator',
   title: 'Offshore Decommissioning Cost Estimator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

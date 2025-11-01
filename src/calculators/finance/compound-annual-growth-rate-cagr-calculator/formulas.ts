@@ -1,4 +1,4 @@
-import { compound-annual-growth-rate-cagr-calculatorInputs, compound-annual-growth-rate-cagr-calculatorMetrics, compound-annual-growth-rate-cagr-calculatorAnalysis } from './types';
+import { CompoundAnnualGrowth-RateCagrCalculatorinputs, CompoundAnnualGrowth-RateCagrCalculatormetrics, CompoundAnnualGrowth-RateCagrCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: compound-annual-growth-rate-cagr-calculatorInputs): number {
+export function calculateResult(inputs: CompoundAnnualGrowth-RateCagrCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: compound-annual-growth-rate-cagr-calcula
   }
 }
 
-export function generateAnalysis(inputs: compound-annual-growth-rate-cagr-calculatorInputs, metrics: compound-annual-growth-rate-cagr-calculatorMetrics): compound-annual-growth-rate-cagr-calculatorAnalysis {
+export function generateAnalysis(inputs: CompoundAnnualGrowth-RateCagrCalculatorinputs, metrics: CompoundAnnualGrowth-RateCagrCalculatormetrics): CompoundAnnualGrowth-RateCagrCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

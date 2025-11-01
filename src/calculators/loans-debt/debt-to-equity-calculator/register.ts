@@ -1,3 +1,3 @@
-import { DebtToEquityCalculatorCalculator } from './DebtToEquityCalculatorCalculator';
+import { DebtToEquityCalculator } from './DebtToEquityCalculator';
 
-export { DebtToEquityCalculatorCalculator };
+export { DebtToEquityCalculator };

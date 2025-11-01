@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { cam_girl_revenue_calculatorInputs, cam_girl_revenue_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const cam_girl_revenue_calculatorCalculator: Calculator = {
-  id: 'cam-girl-revenue-calculator',
+export const CamGirlRevenue-calculator: Calculator = {
+  id: 'CamGirlRevenue-calculator',
   title: 'Cam Girl Revenue Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

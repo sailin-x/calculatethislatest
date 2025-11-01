@@ -1,3 +1,3 @@
-import { MedicalMalpracticeInsuranceCalculatorCalculator } from './MedicalMalpracticeInsuranceCalculatorCalculator';
+import { MedicalMalpracticeInsuranceCalculator } from './MedicalMalpracticeInsuranceCalculator';
 
-export { MedicalMalpracticeInsuranceCalculatorCalculator };
+export { MedicalMalpracticeInsuranceCalculator };

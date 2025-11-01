@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateDividendDiscountModelDdmCalculatorInputs, validateDividendDiscountModelDdmCalculatorBusinessRules } from './validation';
 
-export const DividendDiscountModelDdmCalculatorCalculator: Calculator: Calculator = {
-  id: 'dividend-discount-model-ddm-calculator-calculator',
+export const DividendDiscountModelDdmCalculator: Calculator = {
+  id: 'DividendDiscountModel-DdmCalculatorCalculator',
   title: 'Dividend Discount Model (DDM) Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

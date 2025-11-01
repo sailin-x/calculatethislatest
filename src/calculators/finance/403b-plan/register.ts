@@ -1,8 +1,7 @@
-import { FourZeroThreeBPlanCalculator } from './FourZeroThreeBPlanCalculator.ts';
+import { FourOhThreeBCalculator } from './FourOhThreeBCalculator';
 
-export const finance_403b_planRegistration = {
-  id: 'finance/403b-plan',
-  category: 'finance',
-  subcategory: '403b Plan',
-  calculator: FourZeroThreeBPlanCalculator,
-};
+export function registerFourOhThreeBCalculator() {
+  // Registration logic would go here - this follows the pattern of other calculators
+  // The actual registration is typically handled by the calculator registry system
+  return FourOhThreeBCalculator;
+}

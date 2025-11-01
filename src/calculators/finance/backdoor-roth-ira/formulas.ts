@@ -1,4 +1,4 @@
-import { backdoor-roth-iraInputs, backdoor-roth-iraMetrics, backdoor-roth-iraAnalysis } from './types';
+import { BackdoorRothIrainputs, BackdoorRothIrametrics, BackdoorRothIraanalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: backdoor-roth-iraInputs): number {
+export function calculateResult(inputs: BackdoorRothIrainputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: backdoor-roth-iraInputs): number {
   }
 }
 
-export function generateAnalysis(inputs: backdoor-roth-iraInputs, metrics: backdoor-roth-iraMetrics): backdoor-roth-iraAnalysis {
+export function generateAnalysis(inputs: BackdoorRothIrainputs, metrics: BackdoorRothIrametrics): BackdoorRothIraanalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

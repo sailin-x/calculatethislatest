@@ -1,4 +1,4 @@
-import { interest-only-mortgageInputs, interest-only-mortgageMetrics, interest-only-mortgageAnalysis } from './types';
+import { InterestOnlyMortgageinputs, InterestOnlyMortgagemetrics, InterestOnlyMortgageanalysis } from './types';
 
 
 // Mortgage Payment Calculator - Standard loan amortization formula
@@ -14,7 +14,7 @@ export function calculateTotalInterest(principal: number, monthlyPayment: number
   return (monthlyPayment * numPayments) - principal;
 }
 
-export function calculateResult(inputs: interest-only-mortgageInputs): number {
+export function calculateResult(inputs: InterestOnlyMortgageinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: interest-only-mortgageInputs): number {
   }
 }
 
-export function generateAnalysis(inputs: interest-only-mortgageInputs, metrics: interest-only-mortgageMetrics): interest-only-mortgageAnalysis {
+export function generateAnalysis(inputs: InterestOnlyMortgageinputs, metrics: InterestOnlyMortgagemetrics): InterestOnlyMortgageanalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

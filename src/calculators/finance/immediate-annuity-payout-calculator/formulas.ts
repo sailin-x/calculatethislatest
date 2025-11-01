@@ -1,13 +1,13 @@
-import { immediate-annuity-payout-calculatorInputs, immediate-annuity-payout-calculatorMetrics, immediate-annuity-payout-calculatorAnalysis } from './types';
+import { ImmediateAnnuityPayout-calculatorInputs, ImmediateAnnuityPayout-calculatorMetrics, ImmediateAnnuityPayout-calculatorAnalysis } from './types';
 
 // Immediate Annuity Payout Calculator - Finance calculations
-export function calculateResult(inputs: immediate-annuity-payout-calculatorInputs): number {
+export function calculateResult(inputs: ImmediateAnnuityPayout-calculatorInputs): number {
   // Financial calculation logic
   const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
   return numericValues.reduce((sum, val) => sum + val, 0) || 0;
 }
 
-export function generateAnalysis(inputs: immediate-annuity-payout-calculatorInputs, metrics: immediate-annuity-payout-calculatorMetrics): immediate-annuity-payout-calculatorAnalysis {
+export function generateAnalysis(inputs: ImmediateAnnuityPayout-calculatorInputs, metrics: ImmediateAnnuityPayout-calculatorMetrics): ImmediateAnnuityPayout-calculatorAnalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (Math.abs(result) > 100000) riskLevel = 'High';

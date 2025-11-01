@@ -1,3 +1,3 @@
-import { PortfolioOptimizationCalculatorCalculator } from './PortfolioOptimizationCalculatorCalculator';
+import { PortfolioOptimizationCalculator } from './PortfolioOptimizationCalculator';
 
-export { PortfolioOptimizationCalculatorCalculator };
+export { PortfolioOptimizationCalculator };

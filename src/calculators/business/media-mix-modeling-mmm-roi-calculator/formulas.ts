@@ -1,4 +1,4 @@
-import { media-mix-modeling-mmm-roi-calculatorInputs, media-mix-modeling-mmm-roi-calculatorMetrics, media-mix-modeling-mmm-roi-calculatorAnalysis } from './types';
+import { MediaMixModeling-MmmRoiCalculatorinputs, MediaMixModeling-MmmRoiCalculatormetrics, MediaMixModeling-MmmRoiCalculatoranalysis } from './types';
 
 // ROI Calculator
 export function calculateROI(netProfit: number, investment: number): number {
@@ -13,7 +13,7 @@ export function calculatePaybackPeriod(investment: number, annualCashFlow: numbe
   return investment / annualCashFlow;
 }
 
-export function calculateResult(inputs: media-mix-modeling-mmm-roi-calculatorInputs): number {
+export function calculateResult(inputs: MediaMixModeling-MmmRoiCalculatorinputs): number {
   if ('netProfit' in inputs && 'investment' in inputs) {
     return calculateROI(inputs.netProfit, inputs.investment);
   }
@@ -24,7 +24,7 @@ export function calculateResult(inputs: media-mix-modeling-mmm-roi-calculatorInp
   return 0;
 }
 
-export function generateAnalysis(inputs: media-mix-modeling-mmm-roi-calculatorInputs, metrics: media-mix-modeling-mmm-roi-calculatorMetrics): media-mix-modeling-mmm-roi-calculatorAnalysis {
+export function generateAnalysis(inputs: MediaMixModeling-MmmRoiCalculatorinputs, metrics: MediaMixModeling-MmmRoiCalculatormetrics): MediaMixModeling-MmmRoiCalculatoranalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (result < 10) riskLevel = 'High';

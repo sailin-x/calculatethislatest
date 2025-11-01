@@ -1,4 +1,4 @@
-import { flood-risk-zonal-pricing-calculatorInputs, flood-risk-zonal-pricing-calculatorMetrics, flood-risk-zonal-pricing-calculatorAnalysis } from './types';
+import { FloodRiskZonal-pricing-calculatorInputs, FloodRiskZonal-pricing-calculatorMetrics, FloodRiskZonal-pricing-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: flood-risk-zonal-pricing-calculatorInputs): number {
+export function calculateResult(inputs: FloodRiskZonal-pricing-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: flood-risk-zonal-pricing-calculatorInput
   }
 }
 
-export function generateAnalysis(inputs: flood-risk-zonal-pricing-calculatorInputs, metrics: flood-risk-zonal-pricing-calculatorMetrics): flood-risk-zonal-pricing-calculatorAnalysis {
+export function generateAnalysis(inputs: FloodRiskZonal-pricing-calculatorInputs, metrics: FloodRiskZonal-pricing-calculatorMetrics): FloodRiskZonal-pricing-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

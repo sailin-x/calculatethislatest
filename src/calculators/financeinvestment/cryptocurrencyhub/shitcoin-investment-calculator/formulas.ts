@@ -1,4 +1,4 @@
-import { shitcoin-investment-calculatorInputs, shitcoin-investment-calculatorMetrics, shitcoin-investment-calculatorAnalysis } from './types';
+import { ShitcoinInvestmentCalculatorinputs, ShitcoinInvestmentCalculatormetrics, ShitcoinInvestmentCalculatoranalysis } from './types';
 
 
 // Investment Calculator - ROI and growth calculations
@@ -12,7 +12,7 @@ export function calculateCompoundInterest(principal: number, rate: number, years
   return principal * Math.pow(1 + ratePerPeriod, totalPeriods);
 }
 
-export function calculateResult(inputs: shitcoin-investment-calculatorInputs): number {
+export function calculateResult(inputs: ShitcoinInvestmentCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -36,7 +36,7 @@ export function calculateResult(inputs: shitcoin-investment-calculatorInputs): n
   }
 }
 
-export function generateAnalysis(inputs: shitcoin-investment-calculatorInputs, metrics: shitcoin-investment-calculatorMetrics): shitcoin-investment-calculatorAnalysis {
+export function generateAnalysis(inputs: ShitcoinInvestmentCalculatorinputs, metrics: ShitcoinInvestmentCalculatormetrics): ShitcoinInvestmentCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

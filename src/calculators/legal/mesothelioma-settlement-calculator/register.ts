@@ -1,3 +1,3 @@
-import { MesotheliomaSettlementCalculatorCalculator } from './MesotheliomaSettlementCalculatorCalculator';
+import { MesotheliomaSettlementCalculator } from './MesotheliomaSettlementCalculator';
 
-export { MesotheliomaSettlementCalculatorCalculator };
+export { MesotheliomaSettlementCalculator };

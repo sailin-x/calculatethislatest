@@ -1,4 +1,4 @@
-export { EventSponsorshipTierValuationCalculatorCalculator } from './EventSponsorshipTierValuationCalculatorCalculator';
+export { EventSponsorshipTierValuationCalculator } from './EventSponsorshipTierValuationCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

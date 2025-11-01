@@ -10,7 +10,7 @@ import {
 import { validateReitDividendCalculatorInputs } from './validation';
 
 export const ReitDividendCalculator: Calculator = {
-  id: 'reit-dividend-calculator',
+  id: 'ReitDividendCalculator',
   title: 'REIT Dividend Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

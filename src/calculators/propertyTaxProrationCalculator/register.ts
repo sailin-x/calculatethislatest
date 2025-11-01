@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { propertyTaxProrationCalculatorCalculator } from './propertyTaxProrationCalculatorCalculator';
+import { propertyTaxProrationCalculator } from './propertyTaxProrationCalculator';
 
-export function registerpropertyTaxProrationCalculatorCalculator(): void {
-  calculatorRegistry.register(new propertyTaxProrationCalculatorCalculator());
+export function registerpropertyTaxProrationCalculator(): void {
+  calculatorRegistry.register(new propertyTaxProrationCalculator());
 }

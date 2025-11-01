@@ -1,4 +1,4 @@
-import { cost-of-poor-quality-copq-calculatorInputs, cost-of-poor-quality-copq-calculatorMetrics, cost-of-poor-quality-copq-calculatorAnalysis } from './types';
+import { CostOfPoor-QualityCopqCalculatorinputs, CostOfPoor-QualityCopqCalculatormetrics, CostOfPoor-QualityCopqCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: cost-of-poor-quality-copq-calculatorInputs): number {
+export function calculateResult(inputs: CostOfPoor-QualityCopqCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: cost-of-poor-quality-copq-calculatorInpu
   }
 }
 
-export function generateAnalysis(inputs: cost-of-poor-quality-copq-calculatorInputs, metrics: cost-of-poor-quality-copq-calculatorMetrics): cost-of-poor-quality-copq-calculatorAnalysis {
+export function generateAnalysis(inputs: CostOfPoor-QualityCopqCalculatorinputs, metrics: CostOfPoor-QualityCopqCalculatormetrics): CostOfPoor-QualityCopqCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

@@ -1,4 +1,4 @@
-import { trademark-registration-calculatorInputs, trademark-registration-calculatorMetrics, trademark-registration-calculatorAnalysis } from './types';
+import { TrademarkRegistrationCalculatorinputs, TrademarkRegistrationCalculatormetrics, TrademarkRegistrationCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: trademark-registration-calculatorInputs): number {
+export function calculateResult(inputs: TrademarkRegistrationCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: trademark-registration-calculatorInputs)
   }
 }
 
-export function generateAnalysis(inputs: trademark-registration-calculatorInputs, metrics: trademark-registration-calculatorMetrics): trademark-registration-calculatorAnalysis {
+export function generateAnalysis(inputs: TrademarkRegistrationCalculatorinputs, metrics: TrademarkRegistrationCalculatormetrics): TrademarkRegistrationCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

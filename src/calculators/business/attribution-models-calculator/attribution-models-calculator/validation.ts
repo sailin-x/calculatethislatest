@@ -1,6 +1,6 @@
-import { attribution-models-calculatorInputs } from './types';
+import { AttributionModelsCalculatorinputs } from './types';
 
-export function validateInputs(inputs: attribution-models-calculatorInputs): { isValid: boolean; errors: string[] } {
+export function validateInputs(inputs: AttributionModelsCalculatorinputs): { isValid: boolean; errors: string[] } {
   const errors: string[] = [];
 
   // Add validation logic specific to this calculator

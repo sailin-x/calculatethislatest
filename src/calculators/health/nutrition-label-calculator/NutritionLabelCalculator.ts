@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateNutritionLabelCalculatorInputs } from './validation';
 
 export const NutritionLabelCalculator: Calculator = {
-  id: 'nutrition-label-calculator',
+  id: 'NutritionLabelCalculator',
   title: 'Nutrition Label Calculator',
   category: 'health',
   subcategory: 'General',

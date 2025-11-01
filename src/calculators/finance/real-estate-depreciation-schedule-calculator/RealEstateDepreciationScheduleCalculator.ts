@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateRealEstateDepreciationScheduleCalculatorInputs, validateRealEstateDepreciationScheduleCalculatorBusinessRules } from './validation';
 
-export const RealEstateDepreciationScheduleCalculatorCalculator: Calculator: Calculator = {
-  id: 'real-estate-depreciation-schedule-calculator-calculator',
+export const RealEstateDepreciationScheduleCalculator: Calculator = {
+  id: 'RealEstateDepreciation-ScheduleCalculatorCalculator',
   title: 'Real Estate Depreciation Schedule Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

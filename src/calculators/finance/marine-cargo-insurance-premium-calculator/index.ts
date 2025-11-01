@@ -1,4 +1,4 @@
-export { MarineCargoInsurancePremiumCalculatorCalculator } from './MarineCargoInsurancePremiumCalculatorCalculator';
+export { MarineCargoInsurancePremiumCalculator } from './MarineCargoInsurancePremiumCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validatePokemonCardCollectionCalculatorInputs, validatePokemonCardCollectionCalculatorBusinessRules } from './validation';
 
-export const PokemonCardCollectionCalculatorCalculator: Calculator: Calculator = {
-  id: 'pokemon-card-collection-calculator-calculator',
+export const PokemonCardCollectionCalculator: Calculator = {
+  id: 'PokemonCardCollection-calculator-calculator',
   title: 'Pokemon Card Collection Calculator Calculator',
   lifestyle: 'lifestyle', // e.g., 'finance', 'math', 'health', 'business'
   sublifestyle: 'Sublifestyle Name',

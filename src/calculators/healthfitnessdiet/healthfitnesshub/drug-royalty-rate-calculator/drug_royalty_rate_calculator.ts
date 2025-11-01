@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { drug_royalty_rate_calculatorInputs, drug_royalty_rate_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const drug_royalty_rate_calculatorCalculator: Calculator = {
-  id: 'drug-royalty-rate-calculator',
+export const DrugRoyaltyRate-calculator: Calculator = {
+  id: 'DrugRoyaltyRate-calculator',
   title: 'Drug Royalty Rate Calculator Calculator',
   category: 'healthfitnessdiet',
   subcategory: 'healthfitnesshub',

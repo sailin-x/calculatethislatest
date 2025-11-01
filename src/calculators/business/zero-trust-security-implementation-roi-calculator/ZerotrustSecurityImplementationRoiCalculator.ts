@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateZerotrustSecurityImplementationRoiCalculatorInputs, validateZerotrustSecurityImplementationRoiCalculatorBusinessRules } from './validation';
 
-export const ZerotrustSecurityImplementationRoiCalculatorCalculator: Calculator: Calculator = {
-  id: 'zero-trust-security-implementation-roi-calculator-calculator',
+export const ZerotrustSecurityImplementationRoiCalculator: Calculator = {
+  id: 'ZeroTrustSecurity-ImplementationRoiCalculator-calculator',
   title: 'Zero-Trust Security Implementation ROI Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

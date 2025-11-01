@@ -1,4 +1,4 @@
-import { blood-sugar-calculatorInputs, blood-sugar-calculatorMetrics, blood-sugar-calculatorAnalysis } from './types';
+import { BloodSugarCalculatorinputs, BloodSugarCalculatormetrics, BloodSugarCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: blood-sugar-calculatorInputs): number {
+export function calculateResult(inputs: BloodSugarCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: blood-sugar-calculatorInputs): number {
   }
 }
 
-export function generateAnalysis(inputs: blood-sugar-calculatorInputs, metrics: blood-sugar-calculatorMetrics): blood-sugar-calculatorAnalysis {
+export function generateAnalysis(inputs: BloodSugarCalculatorinputs, metrics: BloodSugarCalculatormetrics): BloodSugarCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

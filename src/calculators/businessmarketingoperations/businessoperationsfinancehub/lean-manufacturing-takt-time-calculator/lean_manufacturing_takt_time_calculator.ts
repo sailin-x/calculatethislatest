@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { lean_manufacturing_takt_time_calculatorInputs, lean_manufacturing_takt_time_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const lean_manufacturing_takt_time_calculatorCalculator: Calculator = {
-  id: 'lean-manufacturing-takt-time-calculator',
+export const LeanManufacturingTakt-time-calculator: Calculator = {
+  id: 'LeanManufacturingTakt-time-calculator',
   title: 'Lean Manufacturing Takt Time Calculator Calculator',
   category: 'businessmarketingoperations',
   subcategory: 'businessoperationsfinancehub',

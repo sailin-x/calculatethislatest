@@ -10,11 +10,11 @@ import {
 import { validateDebtToEquityCalculatorInputs } from './validation';
 
 export const DebtToEquityCalculator: Calculator = {
-  id: 'debt-to-equity-calculator',
+  id: 'DebtToEquity-calculator',
   title: 'Debt to Equity Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',
-  description: 'Calculate debt-to-equity ratio.',
+  description: 'Calculate DebtToEquity ratio.',
   usageInstructions: [
     'Enter the principal amount to invest',
     'Specify the expected interest rate',

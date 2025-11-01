@@ -1,4 +1,4 @@
-import { employee-stock-option-plan-esop-valuation-calculatorInputs, employee-stock-option-plan-esop-valuation-calculatorMetrics, employee-stock-option-plan-esop-valuation-calculatorAnalysis } from './types';
+import { EmployeeStockOption-PlanEsopValuation-calculatorInputs, EmployeeStockOption-PlanEsopValuation-calculatorMetrics, EmployeeStockOption-PlanEsopValuation-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: employee-stock-option-plan-esop-valuation-calculatorInputs): number {
+export function calculateResult(inputs: EmployeeStockOption-PlanEsopValuation-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: employee-stock-option-plan-esop-valuatio
   }
 }
 
-export function generateAnalysis(inputs: employee-stock-option-plan-esop-valuation-calculatorInputs, metrics: employee-stock-option-plan-esop-valuation-calculatorMetrics): employee-stock-option-plan-esop-valuation-calculatorAnalysis {
+export function generateAnalysis(inputs: EmployeeStockOption-PlanEsopValuation-calculatorInputs, metrics: EmployeeStockOption-PlanEsopValuation-calculatorMetrics): EmployeeStockOption-PlanEsopValuation-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { estate_tax_life_insurance_calculatorInputs, estate_tax_life_insurance_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const estate_tax_life_insurance_calculatorCalculator: Calculator = {
-  id: 'estate-tax-life-insurance-calculator',
+export const EstateTaxLife-insurance-calculator: Calculator = {
+  id: 'EstateTaxLife-insurance-calculator',
   title: 'Estate Tax Life Insurance Calculator Calculator',
   category: 'legalinsurancesettlements',
   subcategory: 'insurancehub',

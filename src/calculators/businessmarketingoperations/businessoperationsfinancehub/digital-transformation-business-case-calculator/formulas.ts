@@ -1,4 +1,4 @@
-import { digital-transformation-business-case-calculatorInputs, digital-transformation-business-case-calculatorMetrics, digital-transformation-business-case-calculatorAnalysis } from './types';
+import { DigitalTransformationBusiness-case-calculatorInputs, DigitalTransformationBusiness-case-calculatorMetrics, DigitalTransformationBusiness-case-calculatorAnalysis } from './types';
 
 
 // Business Calculator - Financial metrics
@@ -14,7 +14,7 @@ export function calculatePaybackPeriod(initialInvestment: number, annualCashFlow
   return initialInvestment / annualCashFlow;
 }
 
-export function calculateResult(inputs: digital-transformation-business-case-calculatorInputs): number {
+export function calculateResult(inputs: DigitalTransformationBusiness-case-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: digital-transformation-business-case-cal
   }
 }
 
-export function generateAnalysis(inputs: digital-transformation-business-case-calculatorInputs, metrics: digital-transformation-business-case-calculatorMetrics): digital-transformation-business-case-calculatorAnalysis {
+export function generateAnalysis(inputs: DigitalTransformationBusiness-case-calculatorInputs, metrics: DigitalTransformationBusiness-case-calculatorMetrics): DigitalTransformationBusiness-case-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

@@ -47,9 +47,9 @@ export function validatePricePerToken(value: any, allInputs?: Record<string, any
     const modelPricing: Record<string, number> = {
       'gpt-4': 0.000045,
       'gpt-3.5-turbo': 0.00000175,
-      'claude-3-opus': 0.000045,
-      'claude-3-sonnet': 0.000009,
-      'claude-3-haiku': 0.000000875
+      'Claude3Opus': 0.000045,
+      'Claude3Sonnet': 0.000009,
+      'Claude3Haiku': 0.000000875
     };
     
     const expectedPrice = modelPricing[allInputs.modelType];
@@ -190,7 +190,7 @@ export function validateOutputPricePerToken(value: any, allInputs?: Record<strin
 }
 
 export function validateModelType(value: any, allInputs?: Record<string, any>): ValidationResult {
-  const validModels = ['custom', 'gpt-4', 'gpt-3.5-turbo', 'claude-3-opus', 'claude-3-sonnet', 'claude-3-haiku'];
+  const validModels = ['custom', 'gpt-4', 'gpt-3.5-turbo', 'Claude3Opus', 'Claude3Sonnet', 'Claude3Haiku'];
   
   if (!value || !validModels.includes(value)) {
     return { isValid: false, message: 'Please select a valid model type' };

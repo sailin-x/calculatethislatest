@@ -9,7 +9,7 @@ import {
 import { validatePremiumDeficiencyReserveCalculatorInputs } from './validation';
 
 export const PremiumDeficiencyReserveCalculator: Calculator = {
-  id: 'premium-deficiency-reserve-calculator',
+  id: 'PremiumDeficiencyReserve-calculator',
   title: 'Premium Deficiency Reserve Calculator',
   category: 'legal',
   subcategory: 'Settlement Analysis',

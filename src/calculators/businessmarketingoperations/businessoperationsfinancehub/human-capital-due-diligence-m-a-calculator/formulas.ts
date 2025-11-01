@@ -1,4 +1,4 @@
-import { human-capital-due-diligence-m-a-calculatorInputs, human-capital-due-diligence-m-a-calculatorMetrics, human-capital-due-diligence-m-a-calculatorAnalysis } from './types';
+import { HumanCapitalDue-DiligenceMA-calculatorInputs, HumanCapitalDue-DiligenceMA-calculatorMetrics, HumanCapitalDue-DiligenceMA-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: human-capital-due-diligence-m-a-calculatorInputs): number {
+export function calculateResult(inputs: HumanCapitalDue-DiligenceMA-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: human-capital-due-diligence-m-a-calculat
   }
 }
 
-export function generateAnalysis(inputs: human-capital-due-diligence-m-a-calculatorInputs, metrics: human-capital-due-diligence-m-a-calculatorMetrics): human-capital-due-diligence-m-a-calculatorAnalysis {
+export function generateAnalysis(inputs: HumanCapitalDue-DiligenceMA-calculatorInputs, metrics: HumanCapitalDue-DiligenceMA-calculatorMetrics): HumanCapitalDue-DiligenceMA-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

@@ -10,7 +10,7 @@ import {
 import { validateMarketCapCalculatorInputs } from './validation';
 
 export const MarketCapCalculator: Calculator = {
-  id: 'market-cap-calculator',
+  id: 'MarketCapCalculator',
   title: 'Market Cap Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

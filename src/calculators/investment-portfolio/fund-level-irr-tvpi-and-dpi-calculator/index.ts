@@ -1,4 +1,4 @@
-export { FundlevelIrrTvpiAndDpiCalculatorCalculator } from './FundlevelIrrTvpiAndDpiCalculatorCalculator';
+export { FundlevelIrrTvpiAndDpiCalculator } from './FundlevelIrrTvpiAndDpiCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

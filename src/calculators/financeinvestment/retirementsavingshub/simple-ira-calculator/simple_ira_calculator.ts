@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { simple_ira_calculatorInputs, simple_ira_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const simple_ira_calculatorCalculator: Calculator = {
-  id: 'simple-ira-calculator',
+export const SimpleIraCalculator: Calculator = {
+  id: 'SimpleIraCalculator',
   title: 'SIMPLE IRA Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'retirementsavingshub',

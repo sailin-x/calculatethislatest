@@ -1,4 +1,4 @@
-import { property-tax-appeal-savings-calculatorInputs, property-tax-appeal-savings-calculatorMetrics, property-tax-appeal-savings-calculatorAnalysis } from './types';
+import { PropertyTaxAppeal-savings-calculatorInputs, PropertyTaxAppeal-savings-calculatorMetrics, PropertyTaxAppeal-savings-calculatorAnalysis } from './types';
 
 
 // Tax Calculator - Progressive tax calculations
@@ -20,7 +20,7 @@ export function calculateEffectiveTaxRate(taxPaid: number, totalIncome: number):
   return (taxPaid / totalIncome) * 100;
 }
 
-export function calculateResult(inputs: property-tax-appeal-savings-calculatorInputs): number {
+export function calculateResult(inputs: PropertyTaxAppeal-savings-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -44,7 +44,7 @@ export function calculateResult(inputs: property-tax-appeal-savings-calculatorIn
   }
 }
 
-export function generateAnalysis(inputs: property-tax-appeal-savings-calculatorInputs, metrics: property-tax-appeal-savings-calculatorMetrics): property-tax-appeal-savings-calculatorAnalysis {
+export function generateAnalysis(inputs: PropertyTaxAppeal-savings-calculatorInputs, metrics: PropertyTaxAppeal-savings-calculatorMetrics): PropertyTaxAppeal-savings-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

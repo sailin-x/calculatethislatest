@@ -1,3 +1,3 @@
-import { CollegeCostCalculatorCalculator } from './CollegeCostCalculatorCalculator';
+import { CollegeCostCalculator } from './CollegeCostCalculator';
 
-export { CollegeCostCalculatorCalculator };
+export { CollegeCostCalculator };

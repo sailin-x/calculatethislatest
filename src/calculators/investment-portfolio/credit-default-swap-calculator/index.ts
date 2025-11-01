@@ -1,4 +1,4 @@
-export { CreditDefaultSwapCalculatorCalculator } from './CreditDefaultSwapCalculatorCalculator';
+export { CreditDefaultSwapCalculator } from './CreditDefaultSwapCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

@@ -11,8 +11,8 @@ export interface EarthquakeInsuranceInputs {
   propertyLocation: string;
   seismicZone: 'low' | 'moderate' | 'high' | 'very-high';
   faultProximity: number;
-  soilType: 'rock' | 'firm-soil' | 'soft-soil' | 'very-soft-soil';
-  foundationType: 'slab' | 'crawlspace' | 'basement' | 'pier-and-beam';
+  soilType: 'rock' | 'firm-soil' | 'soft-soil' | 'VerySoftSoil';
+  foundationType: 'slab' | 'crawlspace' | 'basement' | 'PierAndBeam';
   retrofitting: boolean;
   retrofittingType: 'bolting' | 'bracing' | 'anchoring' | 'reinforcing' | 'none';
   retrofittingYear: number;

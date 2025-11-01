@@ -1,4 +1,4 @@
-import { aerospace-defense-contract-profitability-calculatorInputs, aerospace-defense-contract-profitability-calculatorMetrics, aerospace-defense-contract-profitability-calculatorAnalysis } from './types';
+import { AerospaceDefenseContract-profitability-calculatorInputs, AerospaceDefenseContract-profitability-calculatorMetrics, AerospaceDefenseContract-profitability-calculatorAnalysis } from './types';
 
 // Aerospace & Defense Contract Profitability Calculator - Business calculations
 export function calculateNetPresentValue(cashFlows: number[], discountRate: number): number {
@@ -11,7 +11,7 @@ export function calculateROI(initialInvestment: number, finalValue: number): num
  return ((finalValue - initialInvestment) / initialInvestment) * 100;
 }
 
-export function calculateResult(inputs: aerospace-defense-contract-profitability-calculatorInputs): number {
+export function calculateResult(inputs: AerospaceDefenseContract-profitability-calculatorInputs): number {
  // Business calculation logic with real math
  const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
  if (numericValues.length >= 2) {
@@ -24,7 +24,7 @@ export function calculateResult(inputs: aerospace-defense-contract-profitability
  return calculateNetPresentValue(numericValues, 10); // 10% discount rate
 }
 
-export function generateAnalysis(inputs: aerospace-defense-contract-profitability-calculatorInputs, metrics: aerospace-defense-contract-profitability-calculatorMetrics): aerospace-defense-contract-profitability-calculatorAnalysis {
+export function generateAnalysis(inputs: AerospaceDefenseContract-profitability-calculatorInputs, metrics: AerospaceDefenseContract-profitability-calculatorMetrics): AerospaceDefenseContract-profitability-calculatorAnalysis {
  const result = metrics.result;
  let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
  if (Math.abs(result) > 100000) riskLevel = 'High';

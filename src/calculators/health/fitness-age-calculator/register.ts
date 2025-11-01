@@ -1,3 +1,3 @@
-import { FitnessAgeCalculatorCalculator } from './FitnessAgeCalculatorCalculator';
+import { FitnessAgeCalculator } from './FitnessAgeCalculator';
 
-export { FitnessAgeCalculatorCalculator };
+export { FitnessAgeCalculator };

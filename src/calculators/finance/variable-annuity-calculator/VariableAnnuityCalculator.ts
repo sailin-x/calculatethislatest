@@ -10,7 +10,7 @@ import {
 import { validateVariableAnnuityCalculatorInputs } from './validation';
 
 export const VariableAnnuityCalculator: Calculator = {
-  id: 'variable-annuity-calculator',
+  id: 'VariableAnnuityCalculator',
   title: 'Variable Annuity Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

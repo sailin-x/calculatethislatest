@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { fund_level_irr_tvpi_and_dpi_calculatorInputs, fund_level_irr_tvpi_and_dpi_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const fund_level_irr_tvpi_and_dpi_calculatorCalculator: Calculator = {
-  id: 'fund-level-irr-tvpi-and-dpi-calculator',
+export const FundLevelIrr-TvpiAndDpi-calculator: Calculator = {
+  id: 'FundLevelIrr-TvpiAndDpi-calculator',
   title: 'Fund Level IRR, TVPI, and DPI Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'investmentportfoliohub',

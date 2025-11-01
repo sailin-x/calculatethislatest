@@ -1,4 +1,4 @@
-import { medical-device-royalty-rate-calculatorInputs, medical-device-royalty-rate-calculatorMetrics, medical-device-royalty-rate-calculatorAnalysis } from './types';
+import { MedicalDeviceRoyalty-rate-calculatorInputs, MedicalDeviceRoyalty-rate-calculatorMetrics, MedicalDeviceRoyalty-rate-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: medical-device-royalty-rate-calculatorInputs): number {
+export function calculateResult(inputs: MedicalDeviceRoyalty-rate-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: medical-device-royalty-rate-calculatorIn
   }
 }
 
-export function generateAnalysis(inputs: medical-device-royalty-rate-calculatorInputs, metrics: medical-device-royalty-rate-calculatorMetrics): medical-device-royalty-rate-calculatorAnalysis {
+export function generateAnalysis(inputs: MedicalDeviceRoyalty-rate-calculatorInputs, metrics: MedicalDeviceRoyalty-rate-calculatorMetrics): MedicalDeviceRoyalty-rate-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

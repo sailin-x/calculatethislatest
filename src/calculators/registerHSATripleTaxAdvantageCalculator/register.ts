@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { registerHSATripleTaxAdvantageCalculatorCalculator } from './registerHSATripleTaxAdvantageCalculatorCalculator';
+import { registerHSATripleTaxAdvantageCalculator } from './registerHSATripleTaxAdvantageCalculator';
 
-export function registerregisterHSATripleTaxAdvantageCalculatorCalculator(): void {
-  calculatorRegistry.register(new registerHSATripleTaxAdvantageCalculatorCalculator());
+export function registerregisterHSATripleTaxAdvantageCalculator(): void {
+  calculatorRegistry.register(new registerHSATripleTaxAdvantageCalculator());
 }

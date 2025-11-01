@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { qui_tam_whistleblower_reward_calculatorInputs, qui_tam_whistleblower_reward_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const qui_tam_whistleblower_reward_calculatorCalculator: Calculator = {
-  id: 'qui-tam-whistleblower-reward-calculator',
+export const QuiTamWhistleblower-reward-calculator: Calculator = {
+  id: 'QuiTamWhistleblower-reward-calculator',
   title: 'Qui Tam (Whistleblower) Reward Calculator Calculator',
   category: 'legalinsurancesettlements',
   subcategory: 'legalsettlementhub',

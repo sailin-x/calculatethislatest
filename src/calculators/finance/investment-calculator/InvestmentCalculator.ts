@@ -496,7 +496,7 @@ export const investmentCalculator: Calculator = {
       id: 'maximumDrawdown',
       label: 'Maximum Drawdown',
       type: 'percentage',
-      explanation: 'Largest peak-to-trough decline in portfolio value'
+      explanation: 'Largest PeakToTrough decline in portfolio value'
     },
     {
       id: 'valueAtRisk',

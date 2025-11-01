@@ -1,3 +1,3 @@
-import { FuturesCalculatorCalculator } from './FuturesCalculatorCalculator';
+import { FuturesCalculator } from './FuturesCalculator';
 
-export { FuturesCalculatorCalculator };
+export { FuturesCalculator };

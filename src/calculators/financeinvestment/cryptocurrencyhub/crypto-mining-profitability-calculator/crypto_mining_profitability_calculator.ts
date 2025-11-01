@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { crypto_mining_profitability_calculatorInputs, crypto_mining_profitability_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const crypto_mining_profitability_calculatorCalculator: Calculator = {
-  id: 'crypto-mining-profitability-calculator',
+export const CryptoMiningProfitability-calculator: Calculator = {
+  id: 'CryptoMiningProfitability-calculator',
   title: 'Crypto Mining Profitability Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'cryptocurrencyhub',

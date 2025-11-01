@@ -3,7 +3,7 @@ import { MaximumDrawdownCalculatorInputs, MaximumDrawdownCalculatorMetrics, Maxi
 
 /**
  * Calculates the Maximum Drawdown (MDD) from a series of portfolio values.
- * MDD is the largest peak-to-trough decline as a percentage.
+ * MDD is the largest PeakToTrough decline as a percentage.
  * 
  * Formula:
  * For each point i in the series:

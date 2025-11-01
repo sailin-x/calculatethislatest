@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { stretch_ira_calculatorInputs, stretch_ira_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const stretch_ira_calculatorCalculator: Calculator = {
-  id: 'stretch-ira-calculator',
+export const StretchIraCalculator: Calculator = {
+  id: 'StretchIraCalculator',
   title: 'Stretch IRA Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'retirementsavingshub',

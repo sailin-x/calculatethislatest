@@ -1,4 +1,4 @@
-export { RoofingCalculatorCalculator } from './RoofingCalculatorCalculator';
+export { RoofingCalculator } from './RoofingCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

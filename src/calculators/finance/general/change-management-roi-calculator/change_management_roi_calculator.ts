@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { change_management_roi_calculatorInputs, change_management_roi_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const change_management_roi_calculatorCalculator: Calculator = {
-  id: 'change-management-roi-calculator',
+export const ChangeManagementRoi-calculator: Calculator = {
+  id: 'ChangeManagementRoi-calculator',
   title: 'Change Management ROI Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

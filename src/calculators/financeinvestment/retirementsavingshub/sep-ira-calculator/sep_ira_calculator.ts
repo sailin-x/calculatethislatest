@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { sep_ira_calculatorInputs, sep_ira_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const sep_ira_calculatorCalculator: Calculator = {
-  id: 'sep-ira-calculator',
+export const SepIraCalculator: Calculator = {
+  id: 'SepIraCalculator',
   title: 'SEP IRA Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'retirementsavingshub',

@@ -1,13 +1,13 @@
-import { inheritance-tax-estimatorInputs, inheritance-tax-estimatorMetrics, inheritance-tax-estimatorAnalysis } from './types';
+import { InheritanceTaxEstimatorinputs, InheritanceTaxEstimatormetrics, InheritanceTaxEstimatoranalysis } from './types';
 
 // Inheritance Tax Estimator - Finance calculations
-export function calculateResult(inputs: inheritance-tax-estimatorInputs): number {
+export function calculateResult(inputs: InheritanceTaxEstimatorinputs): number {
   // Financial calculation logic
   const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
   return numericValues.reduce((sum, val) => sum + val, 0) || 0;
 }
 
-export function generateAnalysis(inputs: inheritance-tax-estimatorInputs, metrics: inheritance-tax-estimatorMetrics): inheritance-tax-estimatorAnalysis {
+export function generateAnalysis(inputs: InheritanceTaxEstimatorinputs, metrics: InheritanceTaxEstimatormetrics): InheritanceTaxEstimatoranalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (Math.abs(result) > 100000) riskLevel = 'High';

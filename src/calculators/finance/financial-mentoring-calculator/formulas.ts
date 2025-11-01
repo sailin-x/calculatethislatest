@@ -1,4 +1,4 @@
-import { financial-mentoring-calculatorInputs, financial-mentoring-calculatorMetrics, financial-mentoring-calculatorAnalysis } from './types';
+import { FinancialMentoringCalculatorinputs, FinancialMentoringCalculatormetrics, FinancialMentoringCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: financial-mentoring-calculatorInputs): number {
+export function calculateResult(inputs: FinancialMentoringCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: financial-mentoring-calculatorInputs): n
   }
 }
 
-export function generateAnalysis(inputs: financial-mentoring-calculatorInputs, metrics: financial-mentoring-calculatorMetrics): financial-mentoring-calculatorAnalysis {
+export function generateAnalysis(inputs: FinancialMentoringCalculatorinputs, metrics: FinancialMentoringCalculatormetrics): FinancialMentoringCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

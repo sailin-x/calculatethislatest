@@ -1,4 +1,4 @@
-import { salary-benchmarking-calculatorInputs, salary-benchmarking-calculatorMetrics, salary-benchmarking-calculatorAnalysis } from './types';
+import { SalaryBenchmarkingCalculatorinputs, SalaryBenchmarkingCalculatormetrics, SalaryBenchmarkingCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: salary-benchmarking-calculatorInputs): number {
+export function calculateResult(inputs: SalaryBenchmarkingCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: salary-benchmarking-calculatorInputs): n
   }
 }
 
-export function generateAnalysis(inputs: salary-benchmarking-calculatorInputs, metrics: salary-benchmarking-calculatorMetrics): salary-benchmarking-calculatorAnalysis {
+export function generateAnalysis(inputs: SalaryBenchmarkingCalculatorinputs, metrics: SalaryBenchmarkingCalculatormetrics): SalaryBenchmarkingCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { patreon_subscription_calculatorInputs, patreon_subscription_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const patreon_subscription_calculatorCalculator: Calculator = {
-  id: 'patreon-subscription-calculator',
+export const PatreonSubscriptionCalculator: Calculator = {
+  id: 'PatreonSubscriptionCalculator',
   title: 'Patreon Subscription Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

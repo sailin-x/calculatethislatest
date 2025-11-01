@@ -1,13 +1,13 @@
-import { dash-diet-calculatorInputs, dash-diet-calculatorMetrics, dash-diet-calculatorAnalysis } from './types';
+import { DashDietCalculatorinputs, DashDietCalculatormetrics, DashDietCalculatoranalysis } from './types';
 
 // DASH Diet Calculator - Health calculations
-export function calculateResult(inputs: dash-diet-calculatorInputs): number {
+export function calculateResult(inputs: DashDietCalculatorinputs): number {
   // Health calculation logic
   const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
   return numericValues.reduce((sum, val) => sum + val, 0) || 0;
 }
 
-export function generateAnalysis(inputs: dash-diet-calculatorInputs, metrics: dash-diet-calculatorMetrics): dash-diet-calculatorAnalysis {
+export function generateAnalysis(inputs: DashDietCalculatorinputs, metrics: DashDietCalculatormetrics): DashDietCalculatoranalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (Math.abs(result) > 1000) riskLevel = 'High';

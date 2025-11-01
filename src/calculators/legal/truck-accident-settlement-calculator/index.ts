@@ -1,4 +1,4 @@
-export { TruckAccidentSettlementCalculatorCalculator } from './TruckAccidentSettlementCalculatorCalculator';
+export { TruckAccidentSettlementCalculator } from './TruckAccidentSettlementCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

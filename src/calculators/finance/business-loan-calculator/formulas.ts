@@ -1,4 +1,4 @@
-import { business-loan-calculatorInputs, business-loan-calculatorMetrics, business-loan-calculatorAnalysis } from './types';
+import { BusinessLoanCalculatorinputs, BusinessLoanCalculatormetrics, BusinessLoanCalculatoranalysis } from './types';
 
 
 // Loan Calculator - Standard loan formulas
@@ -14,7 +14,7 @@ export function calculateTotalCost(monthlyPayment: number, numPayments: number):
   return monthlyPayment * numPayments;
 }
 
-export function calculateResult(inputs: business-loan-calculatorInputs): number {
+export function calculateResult(inputs: BusinessLoanCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: business-loan-calculatorInputs): number 
   }
 }
 
-export function generateAnalysis(inputs: business-loan-calculatorInputs, metrics: business-loan-calculatorMetrics): business-loan-calculatorAnalysis {
+export function generateAnalysis(inputs: BusinessLoanCalculatorinputs, metrics: BusinessLoanCalculatormetrics): BusinessLoanCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

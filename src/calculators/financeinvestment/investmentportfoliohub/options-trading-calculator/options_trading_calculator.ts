@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { options_trading_calculatorInputs, options_trading_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const options_trading_calculatorCalculator: Calculator = {
-  id: 'options-trading-calculator',
+export const OptionsTradingCalculator: Calculator = {
+  id: 'OptionsTradingCalculator',
   title: 'Options Trading Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'investmentportfoliohub',

@@ -1,4 +1,4 @@
-import { managed-security-service-provider-calculatorInputs, managed-security-service-provider-calculatorMetrics, managed-security-service-provider-calculatorAnalysis } from './types';
+import { ManagedSecurityService-provider-calculatorInputs, ManagedSecurityService-provider-calculatorMetrics, ManagedSecurityService-provider-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: managed-security-service-provider-calculatorInputs): number {
+export function calculateResult(inputs: ManagedSecurityService-provider-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: managed-security-service-provider-calcul
   }
 }
 
-export function generateAnalysis(inputs: managed-security-service-provider-calculatorInputs, metrics: managed-security-service-provider-calculatorMetrics): managed-security-service-provider-calculatorAnalysis {
+export function generateAnalysis(inputs: ManagedSecurityService-provider-calculatorInputs, metrics: ManagedSecurityService-provider-calculatorMetrics): ManagedSecurityService-provider-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

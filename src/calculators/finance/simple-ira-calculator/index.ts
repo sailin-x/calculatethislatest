@@ -1,5 +1,5 @@
-export { simpleiracalculatorCalculator } from './simpleiracalculatorCalculator';
-export { registersimpleiracalculatorCalculator } from './register';
+export { simpleiracalculator } from './simpleiracalculator';
+export { registersimpleiracalculator } from './register';
 export * from './types';
 export * from './formulas';
 export * from './validation';

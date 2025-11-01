@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { employee_turnover_cost_calculatorInputs, employee_turnover_cost_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const employee_turnover_cost_calculatorCalculator: Calculator = {
-  id: 'employee-turnover-cost-calculator',
+export const EmployeeTurnoverCost-calculator: Calculator = {
+  id: 'EmployeeTurnoverCost-calculator',
   title: 'Employee Turnover Cost Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

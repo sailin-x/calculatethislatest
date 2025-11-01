@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateBlackLittermanCalculatorInputs, validateBlackLittermanCalculatorBusinessRules } from './validation';
 
-export const BlackLittermanCalculatorCalculator: Calculator: Calculator = {
-  id: 'black-litterman-calculator-calculator',
+export const BlackLittermanCalculator: Calculator = {
+  id: 'BlackLittermanCalculator-calculator',
   title: 'Black Litterman Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

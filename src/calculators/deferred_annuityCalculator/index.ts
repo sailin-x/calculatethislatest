@@ -1,3 +1,3 @@
-export * from './deferred_annuityCalculatorCalculator';
+export * from './deferred_annuityCalculator';
 export * from './register';
 export * from './types';

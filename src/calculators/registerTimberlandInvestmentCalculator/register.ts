@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { registerTimberlandInvestmentCalculatorCalculator } from './registerTimberlandInvestmentCalculatorCalculator';
+import { registerTimberlandInvestmentCalculator } from './registerTimberlandInvestmentCalculator';
 
-export function registerregisterTimberlandInvestmentCalculatorCalculator(): void {
-  calculatorRegistry.register(new registerTimberlandInvestmentCalculatorCalculator());
+export function registerregisterTimberlandInvestmentCalculator(): void {
+  calculatorRegistry.register(new registerTimberlandInvestmentCalculator());
 }

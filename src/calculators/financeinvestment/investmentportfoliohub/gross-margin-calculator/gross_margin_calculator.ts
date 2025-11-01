@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { gross_margin_calculatorInputs, gross_margin_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const gross_margin_calculatorCalculator: Calculator = {
-  id: 'gross-margin-calculator',
+export const GrossMarginCalculator: Calculator = {
+  id: 'GrossMarginCalculator',
   title: 'Gross Margin Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'investmentportfoliohub',

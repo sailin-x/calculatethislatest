@@ -3,7 +3,7 @@ import { bmrTdeeCalculatorFormula } from './formulas';
 import { ValidationRuleFactory } from '../../utils/validation';
 
 export const bmrCalculator: Calculator = {
-  id: 'bmr-tdee-calculator',
+  id: 'BmrTdeeCalculator',
   title: 'BMR & TDEE Calculator',
   category: 'health',
   subcategory: 'Fitness & Exercise',
@@ -199,7 +199,7 @@ export const bmrCalculator: Calculator = {
   examples: [
     {
       title: 'Active Male Weight Loss',
-      description: '30-year-old active male looking to lose 1 lb per week',
+      description: '30YearOld active male looking to lose 1 lb per week',
       inputs: {
         age: 30,
         gender: 'male',
@@ -219,7 +219,7 @@ export const bmrCalculator: Calculator = {
     },
     {
       title: 'Sedentary Female Maintenance',
-      description: '25-year-old sedentary female maintaining current weight',
+      description: '25YearOld sedentary female maintaining current weight',
       inputs: {
         age: 25,
         gender: 'female',

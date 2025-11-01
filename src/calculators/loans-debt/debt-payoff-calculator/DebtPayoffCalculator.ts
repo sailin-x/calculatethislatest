@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateDebtPayoffCalculatorInputs, validateDebtPayoffCalculatorBusinessRules } from './validation';
 
-export const DebtPayoffCalculatorCalculator: Calculator: Calculator = {
-  id: 'debt-payoff-calculator-calculator',
+export const DebtPayoffCalculator: Calculator = {
+  id: 'DebtPayoffCalculator-calculator',
   title: 'Debt Payoff Calculator Calculator',
   loans-debt: 'loans-debt', // e.g., 'finance', 'math', 'health', 'business'
   subloans-debt: 'Subloans-debt Name',

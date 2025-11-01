@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateGroceryBudgetCalculatorInputs } from './validation';
 
 export const GroceryBudgetCalculator: Calculator = {
-  id: 'grocery-budget-calculator',
+  id: 'GroceryBudgetCalculator',
   title: 'Grocery Budget Calculator',
   category: 'health',
   subcategory: 'General',

@@ -23,7 +23,7 @@ const aptValueFormula: Formula = {
  * Industry-leading Asset Protection Trust (APT) Value Calculator
  */
 export const aptValueCalculator: Calculator = {
-  id: 'asset-protection-trust-apt-value-calculator',
+  id: 'AssetProtectionTrust-AptValueCalculator',
   title: 'Asset Protection Trust (APT) Value Calculator',
   category: 'finance',
   subcategory: 'Retirement & Savings',
@@ -378,8 +378,8 @@ export const aptValueCalculator: Calculator = {
 
   examples: [
     {
-      title: 'High-Net-Worth Estate Protection',
-      description: 'APT analysis for high-net-worth individual seeking asset protection',
+      title: 'HighNetWorth Estate Protection',
+      description: 'APT analysis for HighNetWorth individual seeking asset protection',
       inputs: {
         trustAssets: 2000000,
         annualContributions: 100000,

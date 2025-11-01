@@ -3,7 +3,7 @@ import { calculateDSCR, generateDSCRAnalysis } from './formulas';
 import { validateDSCRInputs } from './validation';
 
 export const DebtServiceCoverageRatioCalculator: Calculator = {
-  id: 'debt-service-coverage-ratio-calculator',
+  id: 'DebtServiceCoverage-ratio-calculator',
   name: 'Debt Service Coverage Ratio Calculator',
   category: 'finance',
   subcategory: 'real-estate',
@@ -400,14 +400,14 @@ export const DebtServiceCoverageRatioCalculator: Calculator = {
     },
     {
       id: 'cashOnCashReturn',
-      name: 'Cash-on-Cash Return',
+      name: 'CashOnCash Return',
       type: 'number',
       unit: '%',
       description: 'Annual cash flow divided by equity investment'
     },
     {
       id: 'loanToValue',
-      name: 'Loan-to-Value Ratio',
+      name: 'LoanToValue Ratio',
       type: 'number',
       unit: '%',
       description: 'Loan amount divided by property value'
@@ -466,7 +466,7 @@ export const DebtServiceCoverageRatioCalculator: Calculator = {
       name: 'Financial Projections',
       type: 'array',
       unit: '',
-      description: 'Year-by-year financial projections'
+      description: 'YearByYear financial projections'
     },
     {
       id: 'dscrAnalysis',
@@ -509,14 +509,14 @@ export const DebtServiceCoverageRatioCalculator: Calculator = {
       description: 'Calculate annual cash flow'
     },
     {
-      name: 'Cash-on-Cash Return',
-      formula: 'Cash-on-Cash Return = (Cash Flow ÷ Equity Investment) × 100',
-      description: 'Calculate cash-on-cash return on investment'
+      name: 'CashOnCash Return',
+      formula: 'CashOnCash Return = (Cash Flow ÷ Equity Investment) × 100',
+      description: 'Calculate CashOnCash return on investment'
     },
     {
-      name: 'Loan-to-Value Ratio',
+      name: 'LoanToValue Ratio',
       formula: 'LTV = (Loan Amount ÷ Property Value) × 100',
-      description: 'Calculate loan-to-value ratio'
+      description: 'Calculate LoanToValue ratio'
     },
     {
       name: 'Debt Yield',

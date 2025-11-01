@@ -1,4 +1,4 @@
-export { MesotheliomaSettlementCalculatorCalculator } from './MesotheliomaSettlementCalculatorCalculator';
+export { MesotheliomaSettlementCalculator } from './MesotheliomaSettlementCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

@@ -98,7 +98,7 @@ function simulatePayoff(inputs: DebtPayoffCalculatorInputs): { months: number; t
 
 export function calculateResult(inputs: DebtPayoffCalculatorInputs): number {
   // Primary result: total months to pay off all debts using the specified strategy
-  // Uses month-by-month simulation for accuracy, accounting for interest accrual and payment allocation
+  // Uses MonthByMonth simulation for accuracy, accounting for interest accrual and payment allocation
   const { months } = simulatePayoff(inputs);
   return months;
 }

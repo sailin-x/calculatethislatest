@@ -63,3 +63,7 @@ export function validateShitcoinInvestmentCalculatorBusinessRules(inputs: Shitco
 
   return warnings;
 }
+
+export function validateshitcoininvestmentcalculatorInputs(inputs: any): any {
+  return validateShitcoinInvestmentCalculatorInputs(inputs);
+}

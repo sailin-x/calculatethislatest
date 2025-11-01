@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { fixedIndexAnnuityCalculatorCalculator } from './fixedIndexAnnuityCalculatorCalculator';
+import { fixedIndexAnnuityCalculator } from './fixedIndexAnnuityCalculator';
 
-export function registerfixedIndexAnnuityCalculatorCalculator(): void {
-  calculatorRegistry.register(new fixedIndexAnnuityCalculatorCalculator());
+export function registerfixedIndexAnnuityCalculator(): void {
+  calculatorRegistry.register(new fixedIndexAnnuityCalculator());
 }

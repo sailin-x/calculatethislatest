@@ -1,4 +1,4 @@
-import { clinical-trial-cost-estimatorInputs, clinical-trial-cost-estimatorMetrics, clinical-trial-cost-estimatorAnalysis } from './types';
+import { ClinicalTrialCost-estimatorInputs, ClinicalTrialCost-estimatorMetrics, ClinicalTrialCost-estimatorAnalysis } from './types';
 
 // Clinical Trial Cost Estimator - Business calculations
 export function calculateNetPresentValue(cashFlows: number[], discountRate: number): number {
@@ -11,7 +11,7 @@ export function calculateROI(initialInvestment: number, finalValue: number): num
  return ((finalValue - initialInvestment) / initialInvestment) * 100;
 }
 
-export function calculateResult(inputs: clinical-trial-cost-estimatorInputs): number {
+export function calculateResult(inputs: ClinicalTrialCost-estimatorInputs): number {
  // Business calculation logic with real math
  const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
  if (numericValues.length >= 2) {
@@ -24,7 +24,7 @@ export function calculateResult(inputs: clinical-trial-cost-estimatorInputs): nu
  return calculateNetPresentValue(numericValues, 10); // 10% discount rate
 }
 
-export function generateAnalysis(inputs: clinical-trial-cost-estimatorInputs, metrics: clinical-trial-cost-estimatorMetrics): clinical-trial-cost-estimatorAnalysis {
+export function generateAnalysis(inputs: ClinicalTrialCost-estimatorInputs, metrics: ClinicalTrialCost-estimatorMetrics): ClinicalTrialCost-estimatorAnalysis {
  const result = metrics.result;
  let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
  if (Math.abs(result) > 100000) riskLevel = 'High';

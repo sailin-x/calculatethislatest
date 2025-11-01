@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateCarriedInterestWaterfallModelCalculatorInputs, validateCarriedInterestWaterfallModelCalculatorBusinessRules } from './validation';
 
-export const CarriedInterestWaterfallModelCalculatorCalculator: Calculator: Calculator = {
-  id: 'carried-interest-waterfall-model-calculator-calculator',
+export const CarriedInterestWaterfallModelCalculator: Calculator = {
+  id: 'CarriedInterestWaterfall-ModelCalculatorCalculator',
   title: 'Carried Interest Waterfall Model Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

@@ -10,7 +10,7 @@ import {
 import { validatePublicPrivatePartnershipRoiCalculatorInputs } from './validation';
 
 export const PublicPrivatePartnershipRoiCalculator: Calculator = {
-  id: 'public-private-partnership-roi-calculator',
+  id: 'PublicPrivatePartnership-roi-calculator',
   title: 'Public Private Partnership ROI Calculator',
   category: 'business',
   subcategory: 'Financial Planning',

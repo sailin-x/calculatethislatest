@@ -1,4 +1,4 @@
-import { medical-device-development-cost-calculatorInputs, medical-device-development-cost-calculatorMetrics, medical-device-development-cost-calculatorAnalysis } from './types';
+import { MedicalDeviceDevelopment-cost-calculatorInputs, MedicalDeviceDevelopment-cost-calculatorMetrics, MedicalDeviceDevelopment-cost-calculatorAnalysis } from './types';
 
 // Medical Device Development Cost Calculator - Business calculations
 export function calculateNetPresentValue(cashFlows: number[], discountRate: number): number {
@@ -11,7 +11,7 @@ export function calculateROI(initialInvestment: number, finalValue: number): num
  return ((finalValue - initialInvestment) / initialInvestment) * 100;
 }
 
-export function calculateResult(inputs: medical-device-development-cost-calculatorInputs): number {
+export function calculateResult(inputs: MedicalDeviceDevelopment-cost-calculatorInputs): number {
  // Business calculation logic with real math
  const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
  if (numericValues.length >= 2) {
@@ -24,7 +24,7 @@ export function calculateResult(inputs: medical-device-development-cost-calculat
  return calculateNetPresentValue(numericValues, 10); // 10% discount rate
 }
 
-export function generateAnalysis(inputs: medical-device-development-cost-calculatorInputs, metrics: medical-device-development-cost-calculatorMetrics): medical-device-development-cost-calculatorAnalysis {
+export function generateAnalysis(inputs: MedicalDeviceDevelopment-cost-calculatorInputs, metrics: MedicalDeviceDevelopment-cost-calculatorMetrics): MedicalDeviceDevelopment-cost-calculatorAnalysis {
  const result = metrics.result;
  let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
  if (Math.abs(result) > 100000) riskLevel = 'High';

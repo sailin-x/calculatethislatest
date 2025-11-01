@@ -10,7 +10,7 @@ import {
 import { validateCorporateTaxShieldCalculatorInputs } from './validation';
 
 export const CorporateTaxShieldCalculator: Calculator = {
-  id: 'corporate-tax-shield-calculator',
+  id: 'CorporateTaxShield-calculator',
   title: 'Corporate Tax Shield Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

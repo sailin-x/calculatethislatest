@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateDefinedContributionPlanCalculatorInputs, validateDefinedContributionPlanCalculatorBusinessRules } from './validation';
 
-export const DefinedContributionPlanCalculatorCalculator: Calculator: Calculator = {
-  id: 'defined-contribution-plan-calculator-calculator',
+export const DefinedContributionPlanCalculator: Calculator = {
+  id: 'DefinedContributionPlan-calculator-calculator',
   title: 'Defined Contribution Plan Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

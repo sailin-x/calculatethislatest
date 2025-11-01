@@ -1,4 +1,4 @@
-export { calories_burned_calculatorCalculator } from './calories_burned_calculator';
+export { calories_burned_calculator } from './calories_burned_calculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

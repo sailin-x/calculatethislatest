@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateMaximumDrawdownCalculatorInputs, validateMaximumDrawdownCalculatorBusinessRules } from './validation';
 
-export const MaximumDrawdownCalculatorCalculator: Calculator: Calculator = {
-  id: 'maximum-drawdown-calculator-calculator',
+export const MaximumDrawdownCalculator: Calculator = {
+  id: 'MaximumDrawdownCalculator-calculator',
   title: 'Maximum Drawdown Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

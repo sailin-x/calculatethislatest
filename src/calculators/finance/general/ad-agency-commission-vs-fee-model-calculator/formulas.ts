@@ -1,4 +1,4 @@
-import { ad-agency-commission-vs-fee-model-calculatorInputs, ad-agency-commission-vs-fee-model-calculatorMetrics, ad-agency-commission-vs-fee-model-calculatorAnalysis } from './types';
+import { AdAgencyCommission-VsFeeModel-calculatorInputs, AdAgencyCommission-VsFeeModel-calculatorMetrics, AdAgencyCommission-VsFeeModel-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: ad-agency-commission-vs-fee-model-calculatorInputs): number {
+export function calculateResult(inputs: AdAgencyCommission-VsFeeModel-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: ad-agency-commission-vs-fee-model-calcul
   }
 }
 
-export function generateAnalysis(inputs: ad-agency-commission-vs-fee-model-calculatorInputs, metrics: ad-agency-commission-vs-fee-model-calculatorMetrics): ad-agency-commission-vs-fee-model-calculatorAnalysis {
+export function generateAnalysis(inputs: AdAgencyCommission-VsFeeModel-calculatorInputs, metrics: AdAgencyCommission-VsFeeModel-calculatorMetrics): AdAgencyCommission-VsFeeModel-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

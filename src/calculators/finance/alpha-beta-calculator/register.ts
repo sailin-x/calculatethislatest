@@ -1,3 +1,3 @@
-import { AlphaBetaCalculatorCalculator } from './AlphaBetaCalculatorCalculator';
+import { AlphaBetaCalculator } from './AlphaBetaCalculator';
 
-export { AlphaBetaCalculatorCalculator };
+export { AlphaBetaCalculator };

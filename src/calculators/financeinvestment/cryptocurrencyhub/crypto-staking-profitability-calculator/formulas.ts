@@ -1,4 +1,4 @@
-import { crypto-staking-profitability-calculatorInputs, crypto-staking-profitability-calculatorMetrics, crypto-staking-profitability-calculatorAnalysis } from './types';
+import { CryptoStakingProfitability-calculatorInputs, CryptoStakingProfitability-calculatorMetrics, CryptoStakingProfitability-calculatorAnalysis } from './types';
 
 
 // Business Calculator - Financial metrics
@@ -14,7 +14,7 @@ export function calculatePaybackPeriod(initialInvestment: number, annualCashFlow
   return initialInvestment / annualCashFlow;
 }
 
-export function calculateResult(inputs: crypto-staking-profitability-calculatorInputs): number {
+export function calculateResult(inputs: CryptoStakingProfitability-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: crypto-staking-profitability-calculatorI
   }
 }
 
-export function generateAnalysis(inputs: crypto-staking-profitability-calculatorInputs, metrics: crypto-staking-profitability-calculatorMetrics): crypto-staking-profitability-calculatorAnalysis {
+export function generateAnalysis(inputs: CryptoStakingProfitability-calculatorInputs, metrics: CryptoStakingProfitability-calculatorMetrics): CryptoStakingProfitability-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

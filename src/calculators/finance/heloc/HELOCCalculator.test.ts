@@ -191,7 +191,7 @@ describe('HELOCCalculator', () => {
       const result = validateHELOCInputs(warningInputs);
       expect(result.isValid).toBe(true);
       expect(result.warnings).toContain('Borrower has poor credit score, which may affect approval');
-      expect(result.warnings).toContain('High debt-to-income ratio may affect approval');
+      expect(result.warnings).toContain('High DebtToIncome ratio may affect approval');
     });
   });
 

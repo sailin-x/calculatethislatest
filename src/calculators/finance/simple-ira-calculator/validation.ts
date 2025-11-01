@@ -1,11 +1,11 @@
 import { ValidationResult } from '../../lib/errors';
-import { simpleiracalculatorCalculatorInputs } from './types';
+import { simpleiracalculatorInputs } from './types';
 
 /**
  * Validate simple ira calculator calculator inputs
  */
-export function validatesimpleiracalculatorCalculatorInputs(
-  inputs: simpleiracalculatorCalculatorInputs
+export function validatesimpleiracalculatorInputs(
+  inputs: simpleiracalculatorInputs
 ): ValidationResult {
   const errors: string[] = [];
 

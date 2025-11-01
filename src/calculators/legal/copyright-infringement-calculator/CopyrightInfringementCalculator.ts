@@ -9,7 +9,7 @@ import {
 import { validateCopyrightInfringementCalculatorInputs } from './validation';
 
 export const CopyrightInfringementCalculator: Calculator = {
-  id: 'copyright-infringement-calculator',
+  id: 'CopyrightInfringementCalculator',
   title: 'Copyright Infringement Calculator',
   category: 'legal',
   subcategory: 'Settlement Analysis',

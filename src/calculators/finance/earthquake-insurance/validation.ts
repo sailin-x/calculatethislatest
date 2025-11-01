@@ -88,7 +88,7 @@ export function validateEarthquakeInsuranceInputs(inputs: CalculatorInputs): Val
   }
 
   // Validate coverage type
-  const validCoverageTypes = ['building-only', 'contents-only', 'building-contents', 'loss-of-use', 'comprehensive'];
+  const validCoverageTypes = ['building-only', 'contents-only', 'building-contents', 'LossOfUse', 'comprehensive'];
   if (!validCoverageTypes.includes(inputs.coverageType)) {
     errors.push('Invalid coverage type selected');
   }

@@ -1,3 +1,3 @@
-import { PensionLumpSumVsAnnuityCalculatorCalculator } from './PensionLumpSumVsAnnuityCalculatorCalculator';
+import { PensionLumpSumVsAnnuityCalculator } from './PensionLumpSumVsAnnuityCalculator';
 
-export { PensionLumpSumVsAnnuityCalculatorCalculator };
+export { PensionLumpSumVsAnnuityCalculator };

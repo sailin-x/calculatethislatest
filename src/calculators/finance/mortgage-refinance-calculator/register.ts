@@ -1,3 +1,3 @@
-import { MortgageRefinanceCalculatorCalculator } from './MortgageRefinanceCalculatorCalculator';
+import { MortgageRefinanceCalculator } from './MortgageRefinanceCalculator';
 
-export { MortgageRefinanceCalculatorCalculator };
+export { MortgageRefinanceCalculator };

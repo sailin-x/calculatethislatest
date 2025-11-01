@@ -1,3 +1,3 @@
-import { SharpeRatioCalculatorCalculator } from './SharpeRatioCalculatorCalculator';
+import { SharpeRatioCalculator } from './SharpeRatioCalculator';
 
-export { SharpeRatioCalculatorCalculator };
+export { SharpeRatioCalculator };

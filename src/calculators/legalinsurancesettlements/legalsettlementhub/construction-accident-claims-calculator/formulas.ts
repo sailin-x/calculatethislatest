@@ -1,4 +1,4 @@
-import { construction-accident-claims-calculatorInputs, construction-accident-claims-calculatorMetrics, construction-accident-claims-calculatorAnalysis } from './types';
+import { ConstructionAccidentClaims-calculatorInputs, ConstructionAccidentClaims-calculatorMetrics, ConstructionAccidentClaims-calculatorAnalysis } from './types';
 
 
 // Construction Calculator - Building material calculations
@@ -16,7 +16,7 @@ export function calculateTileQuantity(areaSqFt: number, tileSizeSqFt: number, wa
   return Math.ceil(areaSqFt / tileSizeSqFt * wasteFactor);
 }
 
-export function calculateResult(inputs: construction-accident-claims-calculatorInputs): number {
+export function calculateResult(inputs: ConstructionAccidentClaims-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -40,7 +40,7 @@ export function calculateResult(inputs: construction-accident-claims-calculatorI
   }
 }
 
-export function generateAnalysis(inputs: construction-accident-claims-calculatorInputs, metrics: construction-accident-claims-calculatorMetrics): construction-accident-claims-calculatorAnalysis {
+export function generateAnalysis(inputs: ConstructionAccidentClaims-calculatorInputs, metrics: ConstructionAccidentClaims-calculatorMetrics): ConstructionAccidentClaims-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

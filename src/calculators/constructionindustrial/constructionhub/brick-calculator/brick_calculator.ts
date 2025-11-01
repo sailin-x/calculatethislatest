@@ -2,7 +2,7 @@ import { Calculator } from '../../../../types/calculator';
 import { brick_calculatorInputs, brick_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const brick_calculatorCalculator: Calculator = {
+export const brick-calculator: Calculator = {
   id: 'brick-calculator',
   title: 'Brick Calculator Calculator',
   category: 'constructionindustrial',

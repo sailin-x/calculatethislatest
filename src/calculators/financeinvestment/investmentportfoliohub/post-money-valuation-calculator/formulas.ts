@@ -1,4 +1,4 @@
-import { post-money-valuation-calculatorInputs, post-money-valuation-calculatorMetrics, post-money-valuation-calculatorAnalysis } from './types';
+import { PostMoneyValuation-calculatorInputs, PostMoneyValuation-calculatorMetrics, PostMoneyValuation-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: post-money-valuation-calculatorInputs): number {
+export function calculateResult(inputs: PostMoneyValuation-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: post-money-valuation-calculatorInputs): 
   }
 }
 
-export function generateAnalysis(inputs: post-money-valuation-calculatorInputs, metrics: post-money-valuation-calculatorMetrics): post-money-valuation-calculatorAnalysis {
+export function generateAnalysis(inputs: PostMoneyValuation-calculatorInputs, metrics: PostMoneyValuation-calculatorMetrics): PostMoneyValuation-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

@@ -1,4 +1,4 @@
-import { catastrophe-bond-pricing-calculatorInputs, catastrophe-bond-pricing-calculatorMetrics, catastrophe-bond-pricing-calculatorAnalysis } from './types';
+import { CatastropheBondPricing-calculatorInputs, CatastropheBondPricing-calculatorMetrics, CatastropheBondPricing-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: catastrophe-bond-pricing-calculatorInputs): number {
+export function calculateResult(inputs: CatastropheBondPricing-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: catastrophe-bond-pricing-calculatorInput
   }
 }
 
-export function generateAnalysis(inputs: catastrophe-bond-pricing-calculatorInputs, metrics: catastrophe-bond-pricing-calculatorMetrics): catastrophe-bond-pricing-calculatorAnalysis {
+export function generateAnalysis(inputs: CatastropheBondPricing-calculatorInputs, metrics: CatastropheBondPricing-calculatorMetrics): CatastropheBondPricing-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

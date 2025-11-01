@@ -1,4 +1,4 @@
-import { amusement-park-cost-calculatorInputs, amusement-park-cost-calculatorMetrics, amusement-park-cost-calculatorAnalysis } from './types';
+import { AmusementParkCost-calculatorInputs, AmusementParkCost-calculatorMetrics, AmusementParkCost-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: amusement-park-cost-calculatorInputs): number {
+export function calculateResult(inputs: AmusementParkCost-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: amusement-park-cost-calculatorInputs): n
   }
 }
 
-export function generateAnalysis(inputs: amusement-park-cost-calculatorInputs, metrics: amusement-park-cost-calculatorMetrics): amusement-park-cost-calculatorAnalysis {
+export function generateAnalysis(inputs: AmusementParkCost-calculatorInputs, metrics: AmusementParkCost-calculatorMetrics): AmusementParkCost-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

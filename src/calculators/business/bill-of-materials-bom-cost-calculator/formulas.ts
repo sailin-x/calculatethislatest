@@ -1,13 +1,13 @@
-import { bill-of-materials-bom-cost-calculatorInputs, bill-of-materials-bom-cost-calculatorMetrics, bill-of-materials-bom-cost-calculatorAnalysis } from './types';
+import { BillOfMaterials-BomCostCalculatorinputs, BillOfMaterials-BomCostCalculatormetrics, BillOfMaterials-BomCostCalculatoranalysis } from './types';
 
 // Bill of Materials (BOM) Cost Calculator - Business calculations
-export function calculateResult(inputs: bill-of-materials-bom-cost-calculatorInputs): number {
+export function calculateResult(inputs: BillOfMaterials-BomCostCalculatorinputs): number {
   // Business calculation logic
   const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
   return numericValues.reduce((sum, val) => sum + val, 0) || 0;
 }
 
-export function generateAnalysis(inputs: bill-of-materials-bom-cost-calculatorInputs, metrics: bill-of-materials-bom-cost-calculatorMetrics): bill-of-materials-bom-cost-calculatorAnalysis {
+export function generateAnalysis(inputs: BillOfMaterials-BomCostCalculatorinputs, metrics: BillOfMaterials-BomCostCalculatormetrics): BillOfMaterials-BomCostCalculatoranalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (Math.abs(result) > 100000) riskLevel = 'High';

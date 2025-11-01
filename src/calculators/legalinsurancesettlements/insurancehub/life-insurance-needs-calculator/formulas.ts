@@ -1,4 +1,4 @@
-import { life-insurance-needs-calculatorInputs, life-insurance-needs-calculatorMetrics, life-insurance-needs-calculatorAnalysis } from './types';
+import { LifeInsuranceNeeds-calculatorInputs, LifeInsuranceNeeds-calculatorMetrics, LifeInsuranceNeeds-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: life-insurance-needs-calculatorInputs): number {
+export function calculateResult(inputs: LifeInsuranceNeeds-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: life-insurance-needs-calculatorInputs): 
   }
 }
 
-export function generateAnalysis(inputs: life-insurance-needs-calculatorInputs, metrics: life-insurance-needs-calculatorMetrics): life-insurance-needs-calculatorAnalysis {
+export function generateAnalysis(inputs: LifeInsuranceNeeds-calculatorInputs, metrics: LifeInsuranceNeeds-calculatorMetrics): LifeInsuranceNeeds-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

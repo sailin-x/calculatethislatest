@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { DividendCalculatorCalculator } from './DividendCalculatorCalculator';
+import { DividendCalculator } from './DividendCalculator';
 
-export function registerDividendCalculatorCalculator(): void {
-  calculatorRegistry.register(new DividendCalculatorCalculator());
+export function registerDividendCalculator(): void {
+  calculatorRegistry.register(new DividendCalculator());
 }

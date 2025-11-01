@@ -1,3 +1,3 @@
-export * from './coverdell_esaCalculatorCalculator';
+export * from './coverdell_esaCalculator';
 export * from './register';
 export * from './types';

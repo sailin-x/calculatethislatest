@@ -167,7 +167,7 @@ const developerSalaryCalculator: Calculator = {
 
   formulas: [
     {
-      id: 'developer-salary-calculation',
+      id: 'DeveloperSalaryCalculation',
       name: 'Developer Salary Calculation',
       description: 'Calculate comprehensive developer compensation',
       calculate: (inputs: Record<string, any>) => {

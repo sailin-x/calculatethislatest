@@ -1,5 +1,5 @@
-export { musicroyaltyinvestmentcalculatorCalculator } from './musicroyaltyinvestmentcalculatorCalculator';
-export { registermusicroyaltyinvestmentcalculatorCalculator } from './register';
+export { musicroyaltyinvestmentcalculator } from './musicroyaltyinvestmentcalculator';
+export { registermusicroyaltyinvestmentcalculator } from './register';
 export * from './types';
 export * from './formulas';
 export * from './validation';

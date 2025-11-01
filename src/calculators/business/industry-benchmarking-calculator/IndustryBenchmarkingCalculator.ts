@@ -10,7 +10,7 @@ import {
 import { validateIndustryBenchmarkingCalculatorInputs } from './validation';
 
 export const IndustryBenchmarkingCalculator: Calculator = {
-  id: 'industry-benchmarking-calculator',
+  id: 'IndustryBenchmarkingCalculator',
   title: 'Industry Benchmarking Calculator',
   category: 'business',
   subcategory: 'Financial Planning',

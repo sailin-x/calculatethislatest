@@ -1,3 +1,3 @@
-import { OffshoreWindFarmInstallationCostCalculatorCalculator } from './OffshoreWindFarmInstallationCostCalculatorCalculator';
+import { OffshoreWindFarmInstallationCostCalculator } from './OffshoreWindFarmInstallationCostCalculator';
 
-export { OffshoreWindFarmInstallationCostCalculatorCalculator };
+export { OffshoreWindFarmInstallationCostCalculator };

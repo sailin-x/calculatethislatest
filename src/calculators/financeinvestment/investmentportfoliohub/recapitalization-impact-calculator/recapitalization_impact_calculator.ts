@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { recapitalization_impact_calculatorInputs, recapitalization_impact_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const recapitalization_impact_calculatorCalculator: Calculator = {
-  id: 'recapitalization-impact-calculator',
+export const RecapitalizationImpactCalculator: Calculator = {
+  id: 'RecapitalizationImpactCalculator',
   title: 'Recapitalization Impact Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'investmentportfoliohub',

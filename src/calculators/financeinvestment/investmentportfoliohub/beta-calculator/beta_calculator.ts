@@ -2,7 +2,7 @@ import { Calculator } from '../../../../types/calculator';
 import { beta_calculatorInputs, beta_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const beta_calculatorCalculator: Calculator = {
+export const beta-calculator: Calculator = {
   id: 'beta-calculator',
   title: 'Beta Calculator Calculator',
   category: 'financeinvestment',

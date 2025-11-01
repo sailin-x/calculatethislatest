@@ -7,7 +7,7 @@ import { validateAllCashFlowInputs } from './quickValidation';
 describe('Commercial Real Estate Cash Flow Calculator', () => {
   describe('Calculator Structure', () => {
     it('should have correct basic properties', () => {
-      expect(CommercialRealEstateCashFlowCalculator.id).toBe('commercial-real-estate-cash-flow-calculator');
+      expect(CommercialRealEstateCashFlowCalculator.id).toBe('CommercialRealEstate-CashFlowCalculator');
       expect(CommercialRealEstateCashFlowCalculator.name).toBe('Commercial Real Estate Cash Flow Calculator');
       expect(CommercialRealEstateCashFlowCalculator.category).toBe('finance');
       expect(CommercialRealEstateCashFlowCalculator.subcategory).toBe('business');
@@ -373,7 +373,7 @@ describe('Commercial Real Estate Cash Flow Calculator', () => {
       expect(outputs.netOperatingIncome).toBeCloseTo(expectedNOI, -1);
     });
 
-    it('should calculate cash-on-cash return correctly', () => {
+    it('should calculate CashOnCash return correctly', () => {
       const inputs = {
         propertyType: 'apartment',
         totalUnits: 50,

@@ -1,3 +1,3 @@
-import { BrickCalculatorCalculator } from './BrickCalculatorCalculator';
+import { BrickCalculator } from './BrickCalculator';
 
-export { BrickCalculatorCalculator };
+export { BrickCalculator };

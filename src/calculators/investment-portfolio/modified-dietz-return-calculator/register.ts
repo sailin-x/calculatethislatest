@@ -1,3 +1,3 @@
-import { ModifiedDietzReturnCalculatorCalculator } from './ModifiedDietzReturnCalculatorCalculator';
+import { ModifiedDietzReturnCalculator } from './ModifiedDietzReturnCalculator';
 
-export { ModifiedDietzReturnCalculatorCalculator };
+export { ModifiedDietzReturnCalculator };

@@ -1,3 +1,3 @@
-import { UnionVsNonunionLaborCostCalculatorCalculator } from './UnionVsNonunionLaborCostCalculatorCalculator';
+import { UnionVsNonunionLaborCostCalculator } from './UnionVsNonunionLaborCostCalculator';
 
-export { UnionVsNonunionLaborCostCalculatorCalculator };
+export { UnionVsNonunionLaborCostCalculator };

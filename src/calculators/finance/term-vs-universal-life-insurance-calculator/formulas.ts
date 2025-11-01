@@ -1,13 +1,13 @@
-import { term-vs-universal-life-insurance-calculatorInputs, term-vs-universal-life-insurance-calculatorMetrics, term-vs-universal-life-insurance-calculatorAnalysis } from './types';
+import { TermVsUniversal-LifeInsuranceCalculatorinputs, TermVsUniversal-LifeInsuranceCalculatormetrics, TermVsUniversal-LifeInsuranceCalculatoranalysis } from './types';
 
 // Term vs. Universal Life Insurance Calculator - Finance calculations
-export function calculateResult(inputs: term-vs-universal-life-insurance-calculatorInputs): number {
+export function calculateResult(inputs: TermVsUniversal-LifeInsuranceCalculatorinputs): number {
   // Financial calculation logic
   const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
   return numericValues.reduce((sum, val) => sum + val, 0) || 0;
 }
 
-export function generateAnalysis(inputs: term-vs-universal-life-insurance-calculatorInputs, metrics: term-vs-universal-life-insurance-calculatorMetrics): term-vs-universal-life-insurance-calculatorAnalysis {
+export function generateAnalysis(inputs: TermVsUniversal-LifeInsuranceCalculatorinputs, metrics: TermVsUniversal-LifeInsuranceCalculatormetrics): TermVsUniversal-LifeInsuranceCalculatoranalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (Math.abs(result) > 100000) riskLevel = 'High';

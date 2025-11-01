@@ -106,9 +106,9 @@ export function validateCapRateInputs(inputs: Record<string, any>): ValidationRe
   // Cross-field validation
   const rentToValueRatio = (inputs.grossRent / inputs.propertyValue) * 100;
   if (rentToValueRatio < 5) {
-    warnings.push('Low rent-to-value ratio may indicate overvaluation');
+    warnings.push('Low RentToValue ratio may indicate overvaluation');
   } else if (rentToValueRatio > 20) {
-    warnings.push('High rent-to-value ratio may indicate undervaluation or high-risk area');
+    warnings.push('High RentToValue ratio may indicate undervaluation or high-risk area');
   }
 
   // Business rule validation

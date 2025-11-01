@@ -5,7 +5,7 @@ export interface AIPromptCostInputs {
   numberOfRequests: number;
   
   // Advanced Options
-  modelType: 'custom' | 'gpt-4' | 'gpt-3.5-turbo' | 'claude-3-opus' | 'claude-3-sonnet' | 'claude-3-haiku';
+  modelType: 'custom' | 'gpt-4' | 'gpt-3.5-turbo' | 'Claude3Opus' | 'Claude3Sonnet' | 'Claude3Haiku';
   usagePattern: 'one-time' | 'daily' | 'weekly' | 'monthly';
   
   // Optional Parameters

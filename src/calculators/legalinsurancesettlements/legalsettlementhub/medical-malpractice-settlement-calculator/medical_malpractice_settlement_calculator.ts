@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { medical_malpractice_settlement_calculatorInputs, medical_malpractice_settlement_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const medical_malpractice_settlement_calculatorCalculator: Calculator = {
-  id: 'medical-malpractice-settlement-calculator',
+export const MedicalMalpracticeSettlement-calculator: Calculator = {
+  id: 'MedicalMalpracticeSettlement-calculator',
   title: 'Medical Malpractice Settlement Calculator Calculator',
   category: 'legalinsurancesettlements',
   subcategory: 'legalsettlementhub',

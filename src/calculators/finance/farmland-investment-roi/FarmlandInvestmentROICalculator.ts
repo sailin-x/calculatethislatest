@@ -3,7 +3,7 @@ import { calculateFarmlandInvestmentROI, generateFarmlandInvestmentAnalysis } fr
 import { validateFarmlandInvestmentInputs } from './validation';
 
 export const FarmlandInvestmentROICalculator: Calculator = {
-  id: 'farmland-investment-roi-calculator',
+  id: 'FarmlandInvestmentRoi-calculator',
   name: 'Farmland Investment ROI Calculator',
   category: 'finance',
   subcategory: 'investment',
@@ -30,7 +30,7 @@ export const FarmlandInvestmentROICalculator: Calculator = {
     { id: 'climateZone', name: 'Climate Zone', type: 'select', required: true, description: 'Climate zone and growing conditions', placeholder: 'Select climate zone', options: ['arid', 'semi-arid', 'temperate', 'humid', 'tropical', 'mediterranean'] },
     { id: 'marketAccess', name: 'Market Access', type: 'select', required: true, description: 'Proximity to markets and transportation', placeholder: 'Select market access', options: ['excellent', 'good', 'average', 'poor', 'remote'] },
     { id: 'governmentSubsidies', name: 'Government Subsidies', type: 'number', unit: 'USD', required: false, description: 'Annual government subsidies or payments', placeholder: '5000', min: 0, max: 100000 },
-    { id: 'conservationPrograms', name: 'Conservation Programs', type: 'select', required: false, description: 'Participation in conservation programs', placeholder: 'Select conservation programs', options: ['none', 'crop-insurance', 'conservation-reserve', 'wetlands-reserve', 'environmental-quality-incentives'] },
+    { id: 'conservationPrograms', name: 'Conservation Programs', type: 'select', required: false, description: 'Participation in conservation programs', placeholder: 'Select conservation programs', options: ['none', 'crop-insurance', 'conservation-reserve', 'wetlands-reserve', 'EnvironmentalQualityIncentives'] },
     { id: 'organicCertification', name: 'Organic Certification', type: 'select', required: false, description: 'Organic certification status', placeholder: 'Select certification status', options: ['none', 'certified-organic', 'transitioning', 'conventional'] },
     { id: 'energyCosts', name: 'Annual Energy Costs', type: 'number', unit: 'USD', required: false, description: 'Annual energy costs for operations', placeholder: '3000', min: 0, max: 50000 },
     { id: 'laborCosts', name: 'Annual Labor Costs', type: 'number', unit: 'USD', required: false, description: 'Annual labor costs for farm operations', placeholder: '15000', min: 0, max: 200000 },
@@ -45,7 +45,7 @@ export const FarmlandInvestmentROICalculator: Calculator = {
     { id: 'monthlyPayment', name: 'Monthly Payment', type: 'number', unit: 'USD', description: 'Monthly mortgage payment' },
     { id: 'annualROI', name: 'Annual ROI', type: 'number', unit: '%', description: 'Annual return on investment percentage' },
     { id: 'totalROI', name: 'Total ROI', type: 'number', unit: '%', description: 'Total return on investment over holding period' },
-    { id: 'cashOnCashReturn', name: 'Cash-on-Cash Return', type: 'number', unit: '%', description: 'Annual cash-on-cash return percentage' },
+    { id: 'cashOnCashReturn', name: 'CashOnCash Return', type: 'number', unit: '%', description: 'Annual CashOnCash return percentage' },
     { id: 'breakEvenYears', name: 'Break-Even Years', type: 'number', unit: 'years', description: 'Years to break even on the investment' },
     { id: 'netPresentValue', name: 'Net Present Value', type: 'number', unit: 'USD', description: 'Net present value of the investment' },
     { id: 'internalRateOfReturn', name: 'Internal Rate of Return', type: 'number', unit: '%', description: 'Internal rate of return percentage' },
@@ -80,8 +80,8 @@ export const FarmlandInvestmentROICalculator: Calculator = {
       description: 'Net annual cash flow from farm operations'
     },
     {
-      name: 'Cash-on-Cash Return',
-      formula: 'Cash-on-Cash Return = (Annual Cash Flow / Total Investment) × 100',
+      name: 'CashOnCash Return',
+      formula: 'CashOnCash Return = (Annual Cash Flow / Total Investment) × 100',
       description: 'Annual return on total cash invested'
     },
     {

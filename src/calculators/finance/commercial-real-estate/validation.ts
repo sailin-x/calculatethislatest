@@ -148,9 +148,9 @@ export function validateCommercialRealEstateInputs(inputs: Record<string, any>):
 
   const loanToValue = (inputs.loanAmount / inputs.propertyValue) * 100;
   if (loanToValue > 80) {
-    errors.push('Loan-to-value ratio cannot exceed 80% for commercial properties');
+    errors.push('LoanToValue ratio cannot exceed 80% for commercial properties');
   } else if (loanToValue > 70) {
-    warnings.push('High loan-to-value ratio increases risk');
+    warnings.push('High LoanToValue ratio increases risk');
   }
 
   const downPaymentPercentage = (inputs.downPayment / inputs.purchasePrice) * 100;
@@ -160,12 +160,12 @@ export function validateCommercialRealEstateInputs(inputs: Record<string, any>):
     warnings.push('Low down payment may require additional guarantees');
   }
 
-  // Rent-to-value ratio validation
+  // RentToValue ratio validation
   const rentToValueRatio = (inputs.annualRent / inputs.propertyValue) * 100;
   if (rentToValueRatio < 6) {
-    warnings.push('Low rent-to-value ratio may indicate overvaluation');
+    warnings.push('Low RentToValue ratio may indicate overvaluation');
   } else if (rentToValueRatio > 25) {
-    warnings.push('High rent-to-value ratio may indicate undervaluation or high-risk area');
+    warnings.push('High RentToValue ratio may indicate undervaluation or high-risk area');
   }
 
   // Business rule validation
@@ -208,11 +208,11 @@ export function validateCommercialRealEstateReasonableness(
     warnings.push('Very high cap rate may indicate high-risk area or property issues');
   }
 
-  // Cash-on-cash return validation
+  // CashOnCash return validation
   if (cashOnCashReturn < -10) {
-    warnings.push('Very negative cash-on-cash return indicates high-risk investment');
+    warnings.push('Very negative CashOnCash return indicates high-risk investment');
   } else if (cashOnCashReturn > 20) {
-    warnings.push('Very high cash-on-cash return may indicate unrealistic assumptions');
+    warnings.push('Very high CashOnCash return may indicate unrealistic assumptions');
   }
 
   // Debt service coverage ratio validation

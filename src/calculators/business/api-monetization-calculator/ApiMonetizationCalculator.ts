@@ -10,7 +10,7 @@ import {
 import { validateApiMonetizationCalculatorInputs } from './validation';
 
 export const ApiMonetizationCalculator: Calculator = {
-  id: 'api-monetization-calculator',
+  id: 'ApiMonetizationCalculator',
   title: 'API Monetization Calculator',
   category: 'business',
   subcategory: 'Financial Planning',

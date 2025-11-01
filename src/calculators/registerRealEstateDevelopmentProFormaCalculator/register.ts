@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { registerRealEstateDevelopmentProFormaCalculatorCalculator } from './registerRealEstateDevelopmentProFormaCalculatorCalculator';
+import { registerRealEstateDevelopmentProFormaCalculator } from './registerRealEstateDevelopmentProFormaCalculator';
 
-export function registerregisterRealEstateDevelopmentProFormaCalculatorCalculator(): void {
-  calculatorRegistry.register(new registerRealEstateDevelopmentProFormaCalculatorCalculator());
+export function registerregisterRealEstateDevelopmentProFormaCalculator(): void {
+  calculatorRegistry.register(new registerRealEstateDevelopmentProFormaCalculator());
 }

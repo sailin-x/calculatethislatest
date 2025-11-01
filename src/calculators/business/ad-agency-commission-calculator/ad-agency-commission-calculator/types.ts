@@ -1,4 +1,4 @@
-export interface ad-agency-commission-calculatorInputs {
+export interface AdAgencyCommission-calculatorInputs {
   // Calculator-specific input fields
   value?: number;
   rate?: number;
@@ -7,17 +7,17 @@ export interface ad-agency-commission-calculatorInputs {
   // Add more fields as needed for this calculator
 }
 
-export interface ad-agency-commission-calculatorResults {
+export interface AdAgencyCommission-calculatorResults {
   result: number;
   analysis?: string;
 }
 
-export interface ad-agency-commission-calculatorMetrics {
+export interface AdAgencyCommission-calculatorMetrics {
   result: number;
   // Add more metrics as needed
 }
 
-export interface ad-agency-commission-calculatorAnalysis {
+export interface AdAgencyCommission-calculatorAnalysis {
   recommendation: string;
   riskLevel: 'Low' | 'Medium' | 'High';
 }

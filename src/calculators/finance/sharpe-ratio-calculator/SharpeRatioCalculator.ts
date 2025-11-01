@@ -10,7 +10,7 @@ import {
 import { validateSharpeRatioCalculatorInputs } from './validation';
 
 export const SharpeRatioCalculator: Calculator = {
-  id: 'sharpe-ratio-calculator',
+  id: 'SharpeRatioCalculator',
   title: 'Sharpe Ratio Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

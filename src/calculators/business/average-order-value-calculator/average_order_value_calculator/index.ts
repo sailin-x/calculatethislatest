@@ -1,3 +1,2 @@
-export * from './average_order_value_calculatorCalculator';
-export * from './register';
+export * from './average_order_value_calculator';
 export * from './types';

@@ -1,4 +1,4 @@
-import { medical-malpractice-damages-calculatorInputs, medical-malpractice-damages-calculatorMetrics, medical-malpractice-damages-calculatorAnalysis } from './types';
+import { MedicalMalpracticeDamages-calculatorInputs, MedicalMalpracticeDamages-calculatorMetrics, MedicalMalpracticeDamages-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: medical-malpractice-damages-calculatorInputs): number {
+export function calculateResult(inputs: MedicalMalpracticeDamages-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: medical-malpractice-damages-calculatorIn
   }
 }
 
-export function generateAnalysis(inputs: medical-malpractice-damages-calculatorInputs, metrics: medical-malpractice-damages-calculatorMetrics): medical-malpractice-damages-calculatorAnalysis {
+export function generateAnalysis(inputs: MedicalMalpracticeDamages-calculatorInputs, metrics: MedicalMalpracticeDamages-calculatorMetrics): MedicalMalpracticeDamages-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

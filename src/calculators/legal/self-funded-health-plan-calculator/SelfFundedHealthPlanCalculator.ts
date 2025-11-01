@@ -9,7 +9,7 @@ import {
 import { validateSelfFundedHealthPlanCalculatorInputs } from './validation';
 
 export const SelfFundedHealthPlanCalculator: Calculator = {
-  id: 'self-funded-health-plan-calculator',
+  id: 'SelfFundedHealth-plan-calculator',
   title: 'Self Funded Health Plan Calculator',
   category: 'legal',
   subcategory: 'Settlement Analysis',

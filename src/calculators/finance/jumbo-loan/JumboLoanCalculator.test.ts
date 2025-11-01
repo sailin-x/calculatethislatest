@@ -7,7 +7,7 @@ import { validateAllJumboLoanInputs } from './quickValidation';
 describe('Jumbo Loan Calculator', () => {
   describe('Calculator Structure', () => {
     it('should have correct basic properties', () => {
-      expect(JumboLoanCalculator.id).toBe('jumbo-loan-calculator');
+      expect(JumboLoanCalculator.id).toBe('JumboLoanCalculator');
       expect(JumboLoanCalculator.name).toBe('Jumbo Loan Calculator');
       expect(JumboLoanCalculator.category).toBe('finance');
       expect(JumboLoanCalculator.subcategory).toBe('investment');
@@ -170,7 +170,7 @@ describe('Jumbo Loan Calculator', () => {
       expect(outputs.monthlyPayment).toBeLessThan(10000);
     });
 
-    it('should calculate loan-to-value ratio correctly', () => {
+    it('should calculate LoanToValue ratio correctly', () => {
       const inputs = {
         loanAmount: 600000,
         interestRate: 6.5,
@@ -183,7 +183,7 @@ describe('Jumbo Loan Calculator', () => {
       expect(outputs.loanToValueRatio).toBe(80); // 600,000 / 750,000 * 100
     });
 
-    it('should calculate debt-to-income ratio correctly', () => {
+    it('should calculate DebtToIncome ratio correctly', () => {
       const inputs = {
         loanAmount: 750000,
         interestRate: 6.5,
@@ -643,7 +643,7 @@ describe('Jumbo Loan Calculator', () => {
   });
 
   describe('DTI Impact', () => {
-    it('should assess risk based on debt-to-income ratio', () => {
+    it('should assess risk based on DebtToIncome ratio', () => {
       const lowDTIInputs = {
         loanAmount: 750000,
         interestRate: 6.5,

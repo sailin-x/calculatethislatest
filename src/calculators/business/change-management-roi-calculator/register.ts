@@ -1,3 +1,3 @@
-import { ChangeManagementRoiCalculatorCalculator } from './ChangeManagementRoiCalculatorCalculator';
+import { ChangeManagementRoiCalculator } from './ChangeManagementRoiCalculator';
 
-export { ChangeManagementRoiCalculatorCalculator };
+export { ChangeManagementRoiCalculator };

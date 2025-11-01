@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateBurnInjurySettlementCalculatorInputs, validateBurnInjurySettlementCalculatorBusinessRules } from './validation';
 
-export const BurnInjurySettlementCalculatorCalculator: Calculator: Calculator = {
-  id: 'burn-injury-settlement-calculator-calculator',
+export const BurnInjurySettlementCalculator: Calculator = {
+  id: 'BurnInjurySettlement-calculator-calculator',
   title: 'Burn Injury Settlement Calculator Calculator',
   legal: 'legal', // e.g., 'finance', 'math', 'health', 'business'
   sublegal: 'Sublegal Name',

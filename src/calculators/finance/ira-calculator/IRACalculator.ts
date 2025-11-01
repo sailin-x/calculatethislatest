@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateIraCalculatorInputs, validateIraCalculatorBusinessRules } from './validation';
 
-export const IraCalculatorCalculator: Calculator: Calculator = {
-  id: 'ira-calculator-calculator',
+export const IraCalculator: Calculator = {
+  id: 'IraCalculatorCalculator',
   title: 'IRA Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

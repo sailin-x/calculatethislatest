@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateFranchiseRoiCalculatorInputs, validateFranchiseRoiCalculatorBusinessRules } from './validation';
 
-export const FranchiseRoiCalculatorCalculator: Calculator: Calculator = {
-  id: 'franchise-roi-calculator-calculator',
+export const FranchiseRoiCalculator: Calculator = {
+  id: 'FranchiseRoiCalculator-calculator',
   title: 'Franchise ROI Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

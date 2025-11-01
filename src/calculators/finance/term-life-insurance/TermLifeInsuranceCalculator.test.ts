@@ -8,7 +8,7 @@ import { CalculatorInputs, CalculatorOutputs } from '../../types/calculator';
 describe('TermLifeInsuranceCalculator', () => {
   describe('Calculator Structure', () => {
     it('should have correct basic properties', () => {
-      expect(TermLifeInsuranceCalculator.id).toBe('term-life-insurance-calculator');
+      expect(TermLifeInsuranceCalculator.id).toBe('TermLifeInsurance-calculator');
       expect(TermLifeInsuranceCalculator.name).toBe('Term Life Insurance Calculator');
       expect(TermLifeInsuranceCalculator.category).toBe('finance');
       expect(TermLifeInsuranceCalculator.subcategory).toBe('insurance');

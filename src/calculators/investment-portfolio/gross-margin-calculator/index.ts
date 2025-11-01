@@ -1,4 +1,4 @@
-export { GrossMarginCalculatorCalculator } from './GrossMarginCalculatorCalculator';
+export { GrossMarginCalculator } from './GrossMarginCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

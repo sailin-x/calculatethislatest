@@ -1,4 +1,4 @@
-export { umbrella_insurance_coverage_calculatorCalculator } from './umbrella_insurance_coverage_calculator';
+export { umbrella_insurance_coverage_calculator } from './umbrella_insurance_coverage_calculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

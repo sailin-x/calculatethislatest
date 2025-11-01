@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateCropInsurancePremiumCalculatorInputs, validateCropInsurancePremiumCalculatorBusinessRules } from './validation';
 
-export const CropInsurancePremiumCalculatorCalculator: Calculator: Calculator = {
-  id: 'crop-insurance-premium-calculator-calculator',
+export const CropInsurancePremiumCalculator: Calculator = {
+  id: 'CropInsurancePremium-calculator-calculator',
   title: 'Crop Insurance Premium Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

@@ -1,4 +1,4 @@
-export { BusinessLoanQualificationCalculatorCalculator } from './BusinessLoanQualificationCalculatorCalculator';
+export { BusinessLoanQualificationCalculator } from './BusinessLoanQualificationCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

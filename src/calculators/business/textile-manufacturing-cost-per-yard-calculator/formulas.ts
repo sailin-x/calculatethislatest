@@ -1,6 +1,6 @@
-import { textile-manufacturing-cost-per-yard-calculatorInputs, textile-manufacturing-cost-per-yard-calculatorMetrics, textile-manufacturing-cost-per-yard-calculatorAnalysis } from './types';
+import { TextileManufacturingCost-PerYardCalculatorinputs, TextileManufacturingCost-PerYardCalculatormetrics, TextileManufacturingCost-PerYardCalculatoranalysis } from './types';
 
-// Textile Manufacturing Cost-Per-Yard Calculator - Business calculations
+// Textile Manufacturing CostPerYard Calculator - Business calculations
 export function calculateNetPresentValue(cashFlows: number[], discountRate: number): number {
  return cashFlows.reduce((npv, cashFlow, index) => {
    return npv + cashFlow / Math.pow(1 + discountRate / 100, index);
@@ -11,7 +11,7 @@ export function calculateROI(initialInvestment: number, finalValue: number): num
  return ((finalValue - initialInvestment) / initialInvestment) * 100;
 }
 
-export function calculateResult(inputs: textile-manufacturing-cost-per-yard-calculatorInputs): number {
+export function calculateResult(inputs: TextileManufacturingCost-PerYardCalculatorinputs): number {
  // Business calculation logic with real math
  const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
  if (numericValues.length >= 2) {
@@ -24,7 +24,7 @@ export function calculateResult(inputs: textile-manufacturing-cost-per-yard-calc
  return calculateNetPresentValue(numericValues, 10); // 10% discount rate
 }
 
-export function generateAnalysis(inputs: textile-manufacturing-cost-per-yard-calculatorInputs, metrics: textile-manufacturing-cost-per-yard-calculatorMetrics): textile-manufacturing-cost-per-yard-calculatorAnalysis {
+export function generateAnalysis(inputs: TextileManufacturingCost-PerYardCalculatorinputs, metrics: TextileManufacturingCost-PerYardCalculatormetrics): TextileManufacturingCost-PerYardCalculatoranalysis {
  const result = metrics.result;
  let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
  if (Math.abs(result) > 100000) riskLevel = 'High';

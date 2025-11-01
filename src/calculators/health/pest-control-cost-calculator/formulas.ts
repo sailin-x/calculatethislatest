@@ -1,4 +1,4 @@
-import { pest-control-cost-calculatorInputs, pest-control-cost-calculatorMetrics, pest-control-cost-calculatorAnalysis } from './types';
+import { PestControlCost-calculatorInputs, PestControlCost-calculatorMetrics, PestControlCost-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: pest-control-cost-calculatorInputs): number {
+export function calculateResult(inputs: PestControlCost-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: pest-control-cost-calculatorInputs): num
   }
 }
 
-export function generateAnalysis(inputs: pest-control-cost-calculatorInputs, metrics: pest-control-cost-calculatorMetrics): pest-control-cost-calculatorAnalysis {
+export function generateAnalysis(inputs: PestControlCost-calculatorInputs, metrics: PestControlCost-calculatorMetrics): PestControlCost-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

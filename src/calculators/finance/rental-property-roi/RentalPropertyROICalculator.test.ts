@@ -8,7 +8,7 @@ import { CalculatorInputs, CalculatorOutputs } from '../../types/calculator';
 describe('RentalPropertyROICalculator', () => {
   describe('Calculator Structure', () => {
     it('should have correct basic properties', () => {
-      expect(RentalPropertyROICalculator.id).toBe('rental-property-roi-calculator');
+      expect(RentalPropertyROICalculator.id).toBe('RentalPropertyRoi-calculator');
       expect(RentalPropertyROICalculator.name).toBe('Rental Property ROI Calculator');
       expect(RentalPropertyROICalculator.category).toBe('finance');
       expect(RentalPropertyROICalculator.subcategory).toBe('real-estate');
@@ -146,7 +146,7 @@ describe('RentalPropertyROICalculator', () => {
       expect(result.errors).toContain('Property type must be one of: single-family, condo, townhouse, duplex, triplex, fourplex, apartment, commercial');
       expect(result.errors).toContain('Location must be one of: urban, suburban, rural');
       expect(result.errors).toContain('Market conditions must be one of: hot, stable, cooling, declining');
-      expect(result.errors).toContain('Exit strategy must be one of: sell, refinance, 1031-exchange, hold-long-term');
+      expect(result.errors).toContain('Exit strategy must be one of: sell, refinance, 1031-exchange, HoldLongTerm');
     });
 
     it('should provide warnings for logical issues', () => {
@@ -163,7 +163,7 @@ describe('RentalPropertyROICalculator', () => {
       };
       
       const result = validateRentalPropertyROIInputs(inputs);
-      expect(result.warnings).toContain('Rent-to-price ratio is low - may indicate poor cash flow');
+      expect(result.warnings).toContain('RentToPrice ratio is low - may indicate poor cash flow');
       expect(result.warnings).toContain('High vacancy rate may indicate market issues');
       expect(result.warnings).toContain('Negative appreciation rate indicates declining market');
     });

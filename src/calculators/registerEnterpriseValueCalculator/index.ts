@@ -1,3 +1,3 @@
-export * from './registerEnterpriseValueCalculatorCalculator';
+export * from './registerEnterpriseValueCalculator';
 export * from './register';
 export * from './types';

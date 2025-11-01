@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { ad_agency_commission_vs_fee_model_calculatorInputs, ad_agency_commission_vs_fee_model_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const ad_agency_commission_vs_fee_model_calculatorCalculator: Calculator = {
-  id: 'ad-agency-commission-vs-fee-model-calculator',
+export const AdAgencyCommission-VsFeeModel-calculator: Calculator = {
+  id: 'AdAgencyCommission-VsFeeModel-calculator',
   title: 'Ad Agency Commission vs. Fee Model Calculator Calculator',
   category: 'businessmarketingoperations',
   subcategory: 'marketingcreatorhub',

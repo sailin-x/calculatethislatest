@@ -1,11 +1,11 @@
 import { ValidationResult } from '../../lib/errors';
-import { rothiracalculatorCalculatorInputs } from './types';
+import { rothiracalculatorInputs } from './types';
 
 /**
  * Validate roth ira calculator calculator inputs
  */
-export function validaterothiracalculatorCalculatorInputs(
-  inputs: rothiracalculatorCalculatorInputs
+export function validaterothiracalculatorInputs(
+  inputs: rothiracalculatorInputs
 ): ValidationResult {
   const errors: string[] = [];
 

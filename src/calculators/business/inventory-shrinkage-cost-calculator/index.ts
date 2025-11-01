@@ -1,4 +1,4 @@
-export { InventoryShrinkageCostCalculatorCalculator } from './InventoryShrinkageCostCalculatorCalculator';
+export { InventoryShrinkageCostCalculator } from './InventoryShrinkageCostCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

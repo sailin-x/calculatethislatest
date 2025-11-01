@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateFoundationRepairCostCalculatorInputs } from './validation';
 
 export const FoundationRepairCostCalculator: Calculator = {
-  id: 'foundation-repair-cost-calculator',
+  id: 'FoundationRepairCost-calculator',
   title: 'Foundation Repair Cost Calculator',
   category: 'health',
   subcategory: 'General',

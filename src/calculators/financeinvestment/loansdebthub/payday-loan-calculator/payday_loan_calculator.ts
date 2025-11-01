@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { payday_loan_calculatorInputs, payday_loan_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const payday_loan_calculatorCalculator: Calculator = {
-  id: 'payday-loan-calculator',
+export const PaydayLoanCalculator: Calculator = {
+  id: 'PaydayLoanCalculator',
   title: 'Payday Loan Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'loansdebthub',

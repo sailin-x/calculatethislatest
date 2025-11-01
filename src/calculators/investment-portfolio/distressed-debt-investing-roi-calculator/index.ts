@@ -1,4 +1,4 @@
-export { DistressedDebtInvestingRoiCalculatorCalculator } from './DistressedDebtInvestingRoiCalculatorCalculator';
+export { DistressedDebtInvestingRoiCalculator } from './DistressedDebtInvestingRoiCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { mass_tort_settlement_calculatorInputs, mass_tort_settlement_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const mass_tort_settlement_calculatorCalculator: Calculator = {
-  id: 'mass-tort-settlement-calculator',
+export const MassTortSettlement-calculator: Calculator = {
+  id: 'MassTortSettlement-calculator',
   title: 'Mass Tort Settlement Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

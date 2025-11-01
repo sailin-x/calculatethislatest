@@ -1,4 +1,4 @@
-import { out-of-home-oh-advertising-roi-calculatorInputs, out-of-home-oh-advertising-roi-calculatorMetrics, out-of-home-oh-advertising-roi-calculatorAnalysis } from './types';
+import { OutOfHome-OhAdvertisingRoi-calculatorInputs, OutOfHome-OhAdvertisingRoi-calculatorMetrics, OutOfHome-OhAdvertisingRoi-calculatorAnalysis } from './types';
 
 
 // Investment Calculator - ROI and growth calculations
@@ -12,7 +12,7 @@ export function calculateCompoundInterest(principal: number, rate: number, years
   return principal * Math.pow(1 + ratePerPeriod, totalPeriods);
 }
 
-export function calculateResult(inputs: out-of-home-oh-advertising-roi-calculatorInputs): number {
+export function calculateResult(inputs: OutOfHome-OhAdvertisingRoi-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -36,7 +36,7 @@ export function calculateResult(inputs: out-of-home-oh-advertising-roi-calculato
   }
 }
 
-export function generateAnalysis(inputs: out-of-home-oh-advertising-roi-calculatorInputs, metrics: out-of-home-oh-advertising-roi-calculatorMetrics): out-of-home-oh-advertising-roi-calculatorAnalysis {
+export function generateAnalysis(inputs: OutOfHome-OhAdvertisingRoi-calculatorInputs, metrics: OutOfHome-OhAdvertisingRoi-calculatorMetrics): OutOfHome-OhAdvertisingRoi-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

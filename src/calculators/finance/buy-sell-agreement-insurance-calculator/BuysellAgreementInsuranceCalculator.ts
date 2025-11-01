@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateBuysellAgreementInsuranceCalculatorInputs, validateBuysellAgreementInsuranceCalculatorBusinessRules } from './validation';
 
-export const BuysellAgreementInsuranceCalculatorCalculator: Calculator: Calculator = {
-  id: 'buy-sell-agreement-insurance-calculator-calculator',
+export const BuysellAgreementInsuranceCalculator: Calculator = {
+  id: 'BuySellAgreement-InsuranceCalculatorCalculator',
   title: 'Buy-Sell Agreement Insurance Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

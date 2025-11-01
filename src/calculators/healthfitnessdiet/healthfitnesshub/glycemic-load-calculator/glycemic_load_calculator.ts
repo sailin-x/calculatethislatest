@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { glycemic_load_calculatorInputs, glycemic_load_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const glycemic_load_calculatorCalculator: Calculator = {
-  id: 'glycemic-load-calculator',
+export const GlycemicLoadCalculator: Calculator = {
+  id: 'GlycemicLoadCalculator',
   title: 'Glycemic Load Calculator Calculator',
   category: 'healthfitnessdiet',
   subcategory: 'healthfitnesshub',

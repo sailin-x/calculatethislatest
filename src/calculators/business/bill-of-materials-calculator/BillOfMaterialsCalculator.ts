@@ -7,12 +7,12 @@ import * as quickValidation from './quickValidation';
  * Bill of Materials (BOM) Cost Calculator
  */
 export const billOfMaterialsCalculator: Calculator = {
-  id: 'bill-of-materials-calculator',
+  id: 'BillOfMaterials-calculator',
   title: 'Bill of Materials (BOM) Cost Calculator',
   description: 'Comprehensive cost analysis and optimization for manufacturing bill of materials including materials, labor, overhead, and supply chain management.',
   category: 'Business Operations & Finance Hub',
   subcategory: 'Manufacturing & Supply Chain',
-  tags: ['bill-of-materials', 'manufacturing', 'cost-analysis', 'supply-chain', 'inventory-management'],
+  tags: ['BillOfMaterials', 'manufacturing', 'cost-analysis', 'supply-chain', 'inventory-management'],
   
   inputs: {
     productName: {
@@ -711,15 +711,15 @@ export const billOfMaterialsCalculator: Calculator = {
   ],
 
   relatedCalculators: [
-    'break-even-analysis-calculator',
-    'inventory-turnover-calculator',
-    'supply-chain-optimization-calculator',
-    'manufacturing-cost-calculator',
-    'supplier-performance-calculator',
-    'quality-cost-calculator',
-    'logistics-cost-calculator',
-    'production-planning-calculator',
-    'cost-optimization-calculator',
-    'risk-assessment-calculator'
+    'BreakEvenAnalysis-calculator',
+    'InventoryTurnoverCalculator',
+    'SupplyChainOptimization-calculator',
+    'ManufacturingCostCalculator',
+    'SupplierPerformanceCalculator',
+    'QualityCostCalculator',
+    'LogisticsCostCalculator',
+    'ProductionPlanningCalculator',
+    'CostOptimizationCalculator',
+    'RiskAssessmentCalculator'
   ]
 };

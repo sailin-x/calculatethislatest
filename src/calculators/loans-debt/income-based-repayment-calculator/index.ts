@@ -1,4 +1,4 @@
-export { IncomeBasedRepaymentCalculatorCalculator } from './IncomeBasedRepaymentCalculatorCalculator';
+export { IncomeBasedRepaymentCalculator } from './IncomeBasedRepaymentCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

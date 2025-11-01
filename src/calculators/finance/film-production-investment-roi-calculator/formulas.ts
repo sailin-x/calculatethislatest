@@ -1,4 +1,4 @@
-import { film-production-investment-roi-calculatorInputs, film-production-investment-roi-calculatorMetrics, film-production-investment-roi-calculatorAnalysis } from './types';
+import { FilmProductionInvestment-roi-calculatorInputs, FilmProductionInvestment-roi-calculatorMetrics, FilmProductionInvestment-roi-calculatorAnalysis } from './types';
 
 // Investment Calculator - Compound Interest
 export function calculateFutureValue(principal: number, annualRate: number, years: number, compoundingFrequency: number = 12): number {
@@ -15,7 +15,7 @@ export function calculateTotalInterest(futureValue: number, principal: number, t
   return futureValue - principal - totalContributions;
 }
 
-export function calculateResult(inputs: film-production-investment-roi-calculatorInputs): number {
+export function calculateResult(inputs: FilmProductionInvestment-roi-calculatorInputs): number {
   if ('initialInvestment' in inputs && 'annualReturn' in inputs && 'investmentPeriod' in inputs) {
     return calculateFutureValue(
       inputs.initialInvestment,
@@ -27,7 +27,7 @@ export function calculateResult(inputs: film-production-investment-roi-calculato
   return 0;
 }
 
-export function generateAnalysis(inputs: film-production-investment-roi-calculatorInputs, metrics: film-production-investment-roi-calculatorMetrics): film-production-investment-roi-calculatorAnalysis {
+export function generateAnalysis(inputs: FilmProductionInvestment-roi-calculatorInputs, metrics: FilmProductionInvestment-roi-calculatorMetrics): FilmProductionInvestment-roi-calculatorAnalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (result > 1000000) riskLevel = 'High';

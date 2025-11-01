@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { instagram_influencer_rate_calculatorInputs, instagram_influencer_rate_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const instagram_influencer_rate_calculatorCalculator: Calculator = {
-  id: 'instagram-influencer-rate-calculator',
+export const InstagramInfluencerRate-calculator: Calculator = {
+  id: 'InstagramInfluencerRate-calculator',
   title: 'Instagram Influencer Rate Calculator Calculator',
   category: 'businessmarketingoperations',
   subcategory: 'marketingcreatorhub',

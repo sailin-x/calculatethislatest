@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateCharitableGiftAnnuityCalculatorInputs, validateCharitableGiftAnnuityCalculatorBusinessRules } from './validation';
 
-export const CharitableGiftAnnuityCalculatorCalculator: Calculator: Calculator = {
-  id: 'charitable-gift-annuity-calculator-calculator',
+export const CharitableGiftAnnuityCalculator: Calculator = {
+  id: 'CharitableGiftAnnuity-calculator-calculator',
   title: 'Charitable Gift Annuity Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

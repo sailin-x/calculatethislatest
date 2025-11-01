@@ -1,4 +1,4 @@
-export { EmployeeTurnoverCostCalculatorCalculator } from './EmployeeTurnoverCostCalculatorCalculator';
+export { EmployeeTurnoverCostCalculator } from './EmployeeTurnoverCostCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

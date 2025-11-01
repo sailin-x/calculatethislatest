@@ -1,3 +1,3 @@
-export * from './timberlandInvestmentCalculatorCalculator';
+export * from './timberlandInvestmentCalculator';
 export * from './register';
 export * from './types';

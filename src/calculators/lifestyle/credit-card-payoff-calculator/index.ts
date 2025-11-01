@@ -1,4 +1,4 @@
-export { CreditCardPayoffCalculatorCalculator } from './CreditCardPayoffCalculatorCalculator';
+export { CreditCardPayoffCalculator } from './CreditCardPayoffCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

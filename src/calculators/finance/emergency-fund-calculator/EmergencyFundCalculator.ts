@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateEmergencyFundCalculatorInputs, validateEmergencyFundCalculatorBusinessRules } from './validation';
 
-export const EmergencyFundCalculatorCalculator: Calculator: Calculator = {
-  id: 'emergency-fund-calculator-calculator',
+export const EmergencyFundCalculator: Calculator = {
+  id: 'EmergencyFundCalculator-calculator',
   title: 'Emergency Fund Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

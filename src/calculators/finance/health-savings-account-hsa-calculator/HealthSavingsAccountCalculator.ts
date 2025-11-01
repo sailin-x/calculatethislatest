@@ -3,7 +3,7 @@ import { calculateHSA } from './formulas';
 import { ValidationRuleFactory } from '../../utils/validation';
 
 export const healthSavingsAccountCalculator: Calculator = {
-  id: 'health-savings-account-hsa-calculator',
+  id: 'HealthSavingsAccount-hsa-calculator',
   title: 'Health Savings Account (HSA) Calculator',
   category: 'finance',
   subcategory: 'Retirement & Savings',

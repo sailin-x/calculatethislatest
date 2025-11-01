@@ -1,13 +1,13 @@
-import { marine-cargo-insurance-premium-calculatorInputs, marine-cargo-insurance-premium-calculatorMetrics, marine-cargo-insurance-premium-calculatorAnalysis } from './types';
+import { MarineCargoInsurance-premium-calculatorInputs, MarineCargoInsurance-premium-calculatorMetrics, MarineCargoInsurance-premium-calculatorAnalysis } from './types';
 
 // Marine Cargo Insurance Premium Calculator - Finance calculations
-export function calculateResult(inputs: marine-cargo-insurance-premium-calculatorInputs): number {
+export function calculateResult(inputs: MarineCargoInsurance-premium-calculatorInputs): number {
   // Financial calculation logic
   const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
   return numericValues.reduce((sum, val) => sum + val, 0) || 0;
 }
 
-export function generateAnalysis(inputs: marine-cargo-insurance-premium-calculatorInputs, metrics: marine-cargo-insurance-premium-calculatorMetrics): marine-cargo-insurance-premium-calculatorAnalysis {
+export function generateAnalysis(inputs: MarineCargoInsurance-premium-calculatorInputs, metrics: MarineCargoInsurance-premium-calculatorMetrics): MarineCargoInsurance-premium-calculatorAnalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (Math.abs(result) > 100000) riskLevel = 'High';

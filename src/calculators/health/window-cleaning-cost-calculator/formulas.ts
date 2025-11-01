@@ -1,4 +1,4 @@
-import { window-cleaning-cost-calculatorInputs, window-cleaning-cost-calculatorMetrics, window-cleaning-cost-calculatorAnalysis } from './types';
+import { WindowCleaningCost-calculatorInputs, WindowCleaningCost-calculatorMetrics, WindowCleaningCost-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: window-cleaning-cost-calculatorInputs): number {
+export function calculateResult(inputs: WindowCleaningCost-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: window-cleaning-cost-calculatorInputs): 
   }
 }
 
-export function generateAnalysis(inputs: window-cleaning-cost-calculatorInputs, metrics: window-cleaning-cost-calculatorMetrics): window-cleaning-cost-calculatorAnalysis {
+export function generateAnalysis(inputs: WindowCleaningCost-calculatorInputs, metrics: WindowCleaningCost-calculatorMetrics): WindowCleaningCost-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

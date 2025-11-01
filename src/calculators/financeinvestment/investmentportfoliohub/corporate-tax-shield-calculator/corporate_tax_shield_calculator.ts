@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { corporate_tax_shield_calculatorInputs, corporate_tax_shield_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const corporate_tax_shield_calculatorCalculator: Calculator = {
-  id: 'corporate-tax-shield-calculator',
+export const CorporateTaxShield-calculator: Calculator = {
+  id: 'CorporateTaxShield-calculator',
   title: 'Corporate Tax Shield Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'investmentportfoliohub',

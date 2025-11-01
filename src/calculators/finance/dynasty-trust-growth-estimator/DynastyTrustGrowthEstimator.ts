@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateDynastyTrustGrowthEstimatorInputs, validateDynastyTrustGrowthEstimatorBusinessRules } from './validation';
 
-export const DynastyTrustGrowthEstimatorCalculator: Calculator: Calculator = {
-  id: 'dynasty-trust-growth-estimator-calculator',
+export const DynastyTrustGrowthEstimatorCalculator: Calculator = {
+  id: 'DynastyTrustGrowth-estimator-calculator',
   title: 'Dynasty Trust Growth Estimator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

@@ -185,20 +185,20 @@ export function validateConstructionLoanInputs(inputs: CalculatorInputs): Valida
     errors.push('Inspection fee cannot exceed $20,000');
   }
 
-  // Validate loan-to-cost ratio
+  // Validate LoanToCost ratio
   if (loanToCost < 50) {
-    errors.push('Loan-to-cost ratio must be at least 50%');
+    errors.push('LoanToCost ratio must be at least 50%');
   }
   if (loanToCost > 90) {
-    errors.push('Loan-to-cost ratio cannot exceed 90%');
+    errors.push('LoanToCost ratio cannot exceed 90%');
   }
 
-  // Validate loan-to-value ratio
+  // Validate LoanToValue ratio
   if (loanToValue < 50) {
-    errors.push('Loan-to-value ratio must be at least 50%');
+    errors.push('LoanToValue ratio must be at least 50%');
   }
   if (loanToValue > 85) {
-    errors.push('Loan-to-value ratio cannot exceed 85%');
+    errors.push('LoanToValue ratio cannot exceed 85%');
   }
 
   // Validate completion value

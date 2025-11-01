@@ -1,28 +1,24 @@
 import re
+import sys
 
-def camel_to_snake(name):
-    s1 = re.sub('(.)([A-Z][a-z]+)', r'\1_\2', name)
-    return re.sub('([a-z0-9])([A-Z])', r'\1_\2', s1).lower()
+file_path = sys.argv[1] if len(sys.argv) > 1 else 'src/calculators/index.ts'
 
-def fix_imports(file_path):
-    with open(file_path, 'r') as f:
-        lines = f.readlines()
+with open(file_path, 'r') as f:
+    content = f.read()
 
-    fixed_lines = []
-    for line in lines:
-        # Match import statements like from './SomePathCalculator'
-        match = re.search(r"from '\./(.*)Calculator'", line)
+lines = content.split('\n')
+new_lines = []
+
+for line in lines:
+    if 'from \'./' in line:
+        match = re.search(r"import \{ (.+) as (.+) \} from '(.+)';", line)
         if match:
-            # Extract the path part before Calculator
-            path_part = match.group(1)
-            # Convert camelCase path to snake_case
-            snake_path = camel_to_snake(path_part)
-            # Replace the import path with snake_case version
-            line = re.sub(r"from '\./.*Calculator'", f"from './{snake_path}Calculator'", line)
-        fixed_lines.append(line)
+            variable = match.group(2)
+            path = match.group(3)
+            if variable.endswith('CalculatorCalculator'):
+                correct_path = './' + variable[:-10]
+                line = line.replace(f"from '{path}'", f"from '{correct_path}'")
+    new_lines.append(line)
 
-    with open(file_path, 'w') as f:
-        f.writelines(fixed_lines)
-
-if __name__ == "__main__":
-    fix_imports('src/calculators/index.ts')
+with open(file_path, 'w') as f:
+    f.write('\n'.join(new_lines))

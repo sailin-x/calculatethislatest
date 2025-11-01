@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateCryptoStakingProfitabilityCalculatorExistsButNeedsRegistrationInputs, validateCryptoStakingProfitabilityCalculatorExistsButNeedsRegistrationBusinessRules } from './validation';
 
-export const CryptoStakingProfitabilityCalculatorExistsButNeedsRegistrationCalculator: Calculator: Calculator = {
-  id: 'crypto-staking-profitability-calculator-exists-but-needs-registration-calculator',
+export const CryptoStakingProfitabilityCalculatorExistsButNeedsRegistrationCalculator: Calculator = {
+  id: 'CryptoStakingProfitability-CalculatorExistsBut-NeedsRegistrationCalculator',
   title: '**Crypto Staking Profitability Calculator** ❌ **(EXISTS BUT NEEDS REGISTRATION)** Calculator',
   cryptocurrency: 'cryptocurrency', // e.g., 'finance', 'math', 'health', 'business'
   subcryptocurrency: 'Subcryptocurrency Name',

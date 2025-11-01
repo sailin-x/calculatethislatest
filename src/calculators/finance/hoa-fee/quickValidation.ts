@@ -123,7 +123,7 @@ export function validatePetFees(value: any, allInputs?: Record<string, any>, all
 }
 
 export function validateRentalRestrictions(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && !['none', 'minimum-lease', 'rental-cap', 'owner-occupancy-required', 'no-rentals'].includes(value)) {
+  if (value && !['none', 'minimum-lease', 'rental-cap', 'OwnerOccupancyRequired', 'no-rentals'].includes(value)) {
     return { isValid: false, message: 'Invalid rental restrictions' };
   }
   return { isValid: true };

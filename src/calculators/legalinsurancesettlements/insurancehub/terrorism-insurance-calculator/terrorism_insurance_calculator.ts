@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { terrorism_insurance_calculatorInputs, terrorism_insurance_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const terrorism_insurance_calculatorCalculator: Calculator = {
-  id: 'terrorism-insurance-calculator',
+export const TerrorismInsuranceCalculator: Calculator = {
+  id: 'TerrorismInsuranceCalculator',
   title: 'Terrorism Insurance Calculator Calculator',
   category: 'legalinsurancesettlements',
   subcategory: 'insurancehub',

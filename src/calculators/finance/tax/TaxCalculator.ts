@@ -10,9 +10,9 @@ export const TaxCalculator: Calculator = {
     // Basic Information
     { id: 'filingStatus', name: 'Filing Status', type: 'select', required: true, description: 'Tax filing status', options: [
       { value: 'single', label: 'Single' },
-      { value: 'married-filing-jointly', label: 'Married Filing Jointly' },
-      { value: 'married-filing-separately', label: 'Married Filing Separately' },
-      { value: 'head-of-household', label: 'Head of Household' },
+      { value: 'MarriedFilingJointly', label: 'Married Filing Jointly' },
+      { value: 'MarriedFilingSeparately', label: 'Married Filing Separately' },
+      { value: 'HeadOfHousehold', label: 'Head of Household' },
       { value: 'qualifying-widow', label: 'Qualifying Widow(er)' }
     ] },
     { id: 'taxYear', name: 'Tax Year', type: 'select', required: true, description: 'Tax year for calculation', options: [
@@ -44,7 +44,7 @@ export const TaxCalculator: Calculator = {
     { id: 'casualtyLosses', name: 'Casualty Losses', type: 'number', unit: 'USD', required: false, description: 'Casualty and theft losses', placeholder: '0', min: 0, max: 100000 },
     { id: 'miscDeductions', name: 'Miscellaneous Deductions', type: 'number', unit: 'USD', required: false, description: 'Other itemized deductions', placeholder: '0', min: 0, max: 100000 },
 
-    // Above-the-Line Deductions
+    // AboveTheLine Deductions
     { id: 'studentLoanInterest', name: 'Student Loan Interest', type: 'number', unit: 'USD', required: false, description: 'Student loan interest paid', placeholder: '2500', min: 0, max: 2500 },
     { id: 'iraContribution', name: 'Traditional IRA Contribution', type: 'number', unit: 'USD', required: false, description: 'Traditional IRA contribution', placeholder: '6000', min: 0, max: 7000 },
     { id: 'hsaContribution', name: 'HSA Contribution', type: 'number', unit: 'USD', required: false, description: 'Health Savings Account contribution', placeholder: '3650', min: 0, max: 4150 },
@@ -107,7 +107,7 @@ export const TaxCalculator: Calculator = {
   ],
   outputs: [
     { id: 'grossIncome', name: 'Gross Income', type: 'number', unit: 'USD', description: 'Total gross income' },
-    { id: 'adjustedGrossIncome', name: 'Adjusted Gross Income (AGI)', type: 'number', unit: 'USD', description: 'AGI after above-the-line deductions' },
+    { id: 'adjustedGrossIncome', name: 'Adjusted Gross Income (AGI)', type: 'number', unit: 'USD', description: 'AGI after AboveTheLine deductions' },
     { id: 'taxableIncome', name: 'Taxable Income', type: 'number', unit: 'USD', description: 'Income subject to tax after deductions' },
     { id: 'federalTax', name: 'Federal Tax', type: 'number', unit: 'USD', description: 'Federal income tax liability' },
     { id: 'stateTax', name: 'State Tax', type: 'number', unit: 'USD', description: 'State income tax liability' },

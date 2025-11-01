@@ -1,4 +1,4 @@
-export { day_trading_calculatorCalculator } from './day_trading_calculator';
+export { day_trading_calculator } from './day_trading_calculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

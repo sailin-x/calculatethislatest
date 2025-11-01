@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { catastrophic_injury_calculatorInputs, catastrophic_injury_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const catastrophic_injury_calculatorCalculator: Calculator = {
-  id: 'catastrophic-injury-calculator',
+export const CatastrophicInjuryCalculator: Calculator = {
+  id: 'CatastrophicInjuryCalculator',
   title: 'Catastrophic Injury Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

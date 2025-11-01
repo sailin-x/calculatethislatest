@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { guideline_premium_test_gpt_calculatorInputs, guideline_premium_test_gpt_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const guideline_premium_test_gpt_calculatorCalculator: Calculator = {
-  id: 'guideline-premium-test-gpt-calculator',
+export const GuidelinePremiumTest-gpt-calculator: Calculator = {
+  id: 'GuidelinePremiumTest-gpt-calculator',
   title: 'Guideline Premium Test (GPT) Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

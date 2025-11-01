@@ -1,4 +1,4 @@
-export { ColdStorageFacilityForProduceRoiCalculatorCalculator } from './ColdStorageFacilityForProduceRoiCalculatorCalculator';
+export { ColdStorageFacilityForProduceRoiCalculator } from './ColdStorageFacilityForProduceRoiCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

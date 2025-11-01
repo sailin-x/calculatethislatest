@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { aviation_insurance_calculatorInputs, aviation_insurance_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const aviation_insurance_calculatorCalculator: Calculator = {
-  id: 'aviation-insurance-calculator',
+export const AviationInsuranceCalculator: Calculator = {
+  id: 'AviationInsuranceCalculator',
   title: 'Aviation Insurance Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

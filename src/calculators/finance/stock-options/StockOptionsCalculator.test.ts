@@ -10,7 +10,7 @@ describe('Stock Options Calculator', () => {
     strikePrice: 100,
     currentStockPrice: 110,
     optionPrice: 15,
-    expirationDate: '2024-12-20',
+    expirationDate: '20241220',
     numberOfContracts: 1,
     contractsPerOption: 100,
     volatility: 30,
@@ -312,7 +312,7 @@ describe('Stock Options Calculator', () => {
         expect(result.isValid).toBe(true);
       });
 
-      it('should reject out-of-range volatility', () => {
+      it('should reject OutOfRange volatility', () => {
         const result = quickValidateVolatility(600);
         expect(result.isValid).toBe(false);
         expect(result.message).toContain('cannot exceed 500%');
@@ -327,7 +327,7 @@ describe('Stock Options Calculator', () => {
   });
 
   describe('Edge Cases', () => {
-    it('should handle deep in-the-money options', () => {
+    it('should handle deep InTheMoney options', () => {
       const deepITMInputs = { ...validInputs, strikePrice: 50, currentStockPrice: 110 };
       const result = calculateStockOptions(deepITMInputs);
       
@@ -335,7 +335,7 @@ describe('Stock Options Calculator', () => {
       expect(result.intrinsicValue).toBe(60);
     });
 
-    it('should handle deep out-of-the-money options', () => {
+    it('should handle deep OutOfThe-money options', () => {
       const deepOTMInputs = { ...validInputs, strikePrice: 200, currentStockPrice: 110 };
       const result = calculateStockOptions(deepOTMInputs);
       

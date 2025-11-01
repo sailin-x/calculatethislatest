@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { shitcoin_investment_calculatorInputs, shitcoin_investment_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const shitcoin_investment_calculatorCalculator: Calculator = {
-  id: 'shitcoin-investment-calculator',
+export const ShitcoinInvestmentCalculator: Calculator = {
+  id: 'ShitcoinInvestmentCalculator',
   title: 'Shitcoin Investment Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'cryptocurrencyhub',

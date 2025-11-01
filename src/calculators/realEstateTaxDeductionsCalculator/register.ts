@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { realEstateTaxDeductionsCalculatorCalculator } from './realEstateTaxDeductionsCalculatorCalculator';
+import { realEstateTaxDeductionsCalculator } from './realEstateTaxDeductionsCalculator';
 
-export function registerrealEstateTaxDeductionsCalculatorCalculator(): void {
-  calculatorRegistry.register(new realEstateTaxDeductionsCalculatorCalculator());
+export function registerrealEstateTaxDeductionsCalculator(): void {
+  calculatorRegistry.register(new realEstateTaxDeductionsCalculator());
 }

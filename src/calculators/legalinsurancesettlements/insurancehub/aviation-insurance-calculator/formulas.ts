@@ -1,4 +1,4 @@
-import { aviation-insurance-calculatorInputs, aviation-insurance-calculatorMetrics, aviation-insurance-calculatorAnalysis } from './types';
+import { AviationInsuranceCalculatorinputs, AviationInsuranceCalculatormetrics, AviationInsuranceCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: aviation-insurance-calculatorInputs): number {
+export function calculateResult(inputs: AviationInsuranceCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: aviation-insurance-calculatorInputs): nu
   }
 }
 
-export function generateAnalysis(inputs: aviation-insurance-calculatorInputs, metrics: aviation-insurance-calculatorMetrics): aviation-insurance-calculatorAnalysis {
+export function generateAnalysis(inputs: AviationInsuranceCalculatorinputs, metrics: AviationInsuranceCalculatormetrics): AviationInsuranceCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

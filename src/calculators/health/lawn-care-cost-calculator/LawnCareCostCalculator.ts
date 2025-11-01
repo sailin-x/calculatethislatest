@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateLawnCareCostCalculatorInputs } from './validation';
 
 export const LawnCareCostCalculator: Calculator = {
-  id: 'lawn-care-cost-calculator',
+  id: 'LawnCareCost-calculator',
   title: 'Lawn Care Cost Calculator',
   category: 'health',
   subcategory: 'General',

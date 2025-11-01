@@ -1,4 +1,4 @@
-export { UnionVsNonunionLaborCostCalculatorCalculator } from './UnionVsNonunionLaborCostCalculatorCalculator';
+export { UnionVsNonunionLaborCostCalculator } from './UnionVsNonunionLaborCostCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateCarbCyclingCalculatorInputs, validateCarbCyclingCalculatorBusinessRules } from './validation';
 
-export const CarbCyclingCalculatorCalculator: Calculator: Calculator = {
-  id: 'carb-cycling-calculator-calculator',
+export const CarbCyclingCalculator: Calculator = {
+  id: 'CarbCyclingCalculator-calculator',
   title: 'Carb Cycling Calculator Calculator',
   lifestyle: 'lifestyle', // e.g., 'finance', 'math', 'health', 'business'
   sublifestyle: 'Sublifestyle Name',

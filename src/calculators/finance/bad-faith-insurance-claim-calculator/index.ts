@@ -1,4 +1,4 @@
-export { BadFaithInsuranceClaimCalculatorCalculator } from './BadFaithInsuranceClaimCalculatorCalculator';
+export { BadFaithInsuranceClaimCalculator } from './BadFaithInsuranceClaimCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

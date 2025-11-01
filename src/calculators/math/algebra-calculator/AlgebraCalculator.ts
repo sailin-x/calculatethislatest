@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateAlgebraCalculatorInputs, validateAlgebraCalculatorBusinessRules } from './validation';
 
-export const AlgebraCalculatorCalculator: Calculator: Calculator = {
-  id: 'algebra-calculator-calculator',
+export const AlgebraCalculator: Calculator = {
+  id: 'AlgebraCalculatorCalculator',
   title: 'Algebra Calculator Calculator',
   math: 'math', // e.g., 'finance', 'math', 'health', 'business'
   submath: 'Submath Name',

@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { rentalYieldCalculatorCalculator } from './rentalYieldCalculatorCalculator';
+import { rentalYieldCalculator } from './rentalYieldCalculator';
 
-export function registerrentalYieldCalculatorCalculator(): void {
-  calculatorRegistry.register(new rentalYieldCalculatorCalculator());
+export function registerrentalYieldCalculator(): void {
+  calculatorRegistry.register(new rentalYieldCalculator());
 }

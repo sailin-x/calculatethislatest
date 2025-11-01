@@ -1,4 +1,4 @@
-export { ConsultantUtilizationRateProfitabilityCalculatorCalculator } from './ConsultantUtilizationRateProfitabilityCalculatorCalculator';
+export { ConsultantUtilizationRateProfitabilityCalculator } from './ConsultantUtilizationRateProfitabilityCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

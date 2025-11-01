@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { spotify_royalty_calculatorInputs, spotify_royalty_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const spotify_royalty_calculatorCalculator: Calculator = {
-  id: 'spotify-royalty-calculator',
+export const SpotifyRoyaltyCalculator: Calculator = {
+  id: 'SpotifyRoyaltyCalculator',
   title: 'Spotify Royalty Calculator Calculator',
   category: 'businessmarketingoperations',
   subcategory: 'marketingcreatorhub',

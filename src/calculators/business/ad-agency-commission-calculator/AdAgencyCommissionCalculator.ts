@@ -10,7 +10,7 @@ import {
 import { validateAdAgencyCommissionCalculatorInputs } from './validation';
 
 export const AdAgencyCommissionCalculator: Calculator = {
-  id: 'ad-agency-commission-calculator',
+  id: 'AdAgencyCommission-calculator',
   title: 'Ad Agency Commission Calculator',
   category: 'business',
   subcategory: 'Financial Planning',

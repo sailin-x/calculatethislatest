@@ -10,7 +10,7 @@ import {
 import { validateImpermanentLossCalculatorInputs } from './validation';
 
 export const ImpermanentLossCalculator: Calculator = {
-  id: 'impermanent-loss-calculator',
+  id: 'ImpermanentLossCalculator',
   title: 'Impermanent Loss Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

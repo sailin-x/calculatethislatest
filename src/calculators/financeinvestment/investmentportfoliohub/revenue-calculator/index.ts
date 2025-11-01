@@ -1,4 +1,4 @@
-export { revenue_calculatorCalculator } from './revenue_calculator';
+export { revenue_calculator } from './revenue_calculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

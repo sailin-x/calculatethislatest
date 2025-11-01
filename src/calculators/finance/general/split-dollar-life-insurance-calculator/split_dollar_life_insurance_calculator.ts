@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { split_dollar_life_insurance_calculatorInputs, split_dollar_life_insurance_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const split_dollar_life_insurance_calculatorCalculator: Calculator = {
-  id: 'split-dollar-life-insurance-calculator',
+export const SplitDollarLife-insurance-calculator: Calculator = {
+  id: 'SplitDollarLife-insurance-calculator',
   title: 'Split Dollar Life Insurance Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

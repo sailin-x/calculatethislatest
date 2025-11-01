@@ -1,4 +1,4 @@
-export { RoyaltyFinancingCalculatorCalculator } from './RoyaltyFinancingCalculatorCalculator';
+export { RoyaltyFinancingCalculator } from './RoyaltyFinancingCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

@@ -249,7 +249,7 @@ export function getMortgageValidationRules(): ValidationRule[] {
     {
       field: 'loanAmount',
       type: 'business',
-      message: 'Loan-to-value ratio cannot exceed 97%',
+      message: 'LoanToValue ratio cannot exceed 97%',
       validator: (value: any, allInputs?: Record<string, any>) => {
         if (!allInputs?.propertyValue) return true;
         const ltvRatio = (value / allInputs.propertyValue) * 100;

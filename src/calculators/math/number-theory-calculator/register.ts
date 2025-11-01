@@ -1,3 +1,3 @@
-import { NumberTheoryCalculatorCalculator } from './NumberTheoryCalculatorCalculator';
+import { NumberTheoryCalculator } from './NumberTheoryCalculator';
 
-export { NumberTheoryCalculatorCalculator };
+export { NumberTheoryCalculator };

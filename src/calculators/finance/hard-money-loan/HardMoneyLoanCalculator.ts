@@ -4,12 +4,12 @@ import { calculateHardMoneyLoan } from './formulas';
 import { validateHardMoneyLoanInputs } from './validation';
 
 export const HardMoneyLoanCalculator: Calculator<HardMoneyLoanInputs, HardMoneyLoanOutputs> = {
-  id: 'hard-money-loan',
+  id: 'HardMoneyLoan',
   name: 'Hard Money Loan Calculator',
   category: 'finance',
   subcategory: 'real-estate',
   description: 'Calculate hard money loan terms, costs, and returns for real estate investments',
-  longDescription: `A comprehensive hard money loan calculator that analyzes short-term, asset-based financing for real estate investments. This calculator evaluates loan terms, costs, returns, and risks for fix-and-flip, buy-and-hold, construction, and other real estate projects. It provides detailed analysis of loan-to-value ratios, cash-on-cash returns, break-even analysis, and risk assessment to help investors and lenders make informed decisions about hard money financing.`,
+  longDescription: `A comprehensive hard money loan calculator that analyzes short-term, asset-based financing for real estate investments. This calculator evaluates loan terms, costs, returns, and risks for FixAndFlip, BuyAndHold, construction, and other real estate projects. It provides detailed analysis of LoanToValue ratios, CashOnCash returns, break-even analysis, and risk assessment to help investors and lenders make informed decisions about hard money financing.`,
   
   inputs: {
     // Loan Information
@@ -214,8 +214,8 @@ export const HardMoneyLoanCalculator: Calculator<HardMoneyLoanInputs, HardMoneyL
     },
     borrowerDebtToIncomeRatio: {
       type: 'number',
-      label: 'Debt-to-Income Ratio (%)',
-      description: 'Borrower\'s debt-to-income ratio',
+      label: 'DebtToIncome Ratio (%)',
+      description: 'Borrower\'s DebtToIncome ratio',
       required: true,
       min: 0,
       max: 100,
@@ -512,12 +512,12 @@ export const HardMoneyLoanCalculator: Calculator<HardMoneyLoanInputs, HardMoneyL
     },
     loanToValueRatio: {
       type: 'number',
-      label: 'Loan-to-Value Ratio',
+      label: 'LoanToValue Ratio',
       description: 'Ratio of loan amount to property value'
     },
     cashOnCashReturn: {
       type: 'number',
-      label: 'Cash-on-Cash Return',
+      label: 'CashOnCash Return',
       description: 'Annual return on cash invested'
     },
     internalRateOfReturn: {
@@ -561,8 +561,8 @@ export const HardMoneyLoanCalculator: Calculator<HardMoneyLoanInputs, HardMoneyL
 - **Total Loan Cost**: $${outputs.totalLoanCost.toLocaleString()}
 - **Monthly Payment**: $${outputs.monthlyPayment.toLocaleString()}
 - **Effective Interest Rate**: ${outputs.effectiveInterestRate.toFixed(2)}%
-- **Loan-to-Value Ratio**: ${outputs.loanToValueRatio.toFixed(2)}%
-- **Cash-on-Cash Return**: ${outputs.cashOnCashReturn.toFixed(2)}%
+- **LoanToValue Ratio**: ${outputs.loanToValueRatio.toFixed(2)}%
+- **CashOnCash Return**: ${outputs.cashOnCashReturn.toFixed(2)}%
 - **Internal Rate of Return**: ${outputs.internalRateOfReturn.toFixed(2)}%
 - **Risk Score**: ${outputs.riskScore}/10
 
@@ -584,8 +584,8 @@ ${analysis.nextSteps.join('\n')}
     'Monthly Payment': 'P = L[c(1 + c)^n]/[(1 + c)^n - 1] where P = payment, L = loan amount, c = monthly interest rate, n = number of payments',
     'Total Interest': 'Total Interest = (Monthly Payment × Number of Payments) - Loan Amount',
     'Effective Interest Rate': 'EIR = [(1 + r/n)^n - 1] × 100 where r = nominal rate, n = number of compounding periods',
-    'Loan-to-Value Ratio': 'LTV = (Loan Amount / Property Value) × 100',
-    'Cash-on-Cash Return': 'CoC = (Annual Cash Flow / Total Cash Invested) × 100',
+    'LoanToValue Ratio': 'LTV = (Loan Amount / Property Value) × 100',
+    'CashOnCash Return': 'CoC = (Annual Cash Flow / Total Cash Invested) × 100',
     'Internal Rate of Return': 'IRR is the discount rate that makes NPV = 0',
     'Risk Score': 'Weighted average of borrower, property, market, and project risk factors'
   },

@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateDialysisCenterProfitabilityCalculatorInputs, validateDialysisCenterProfitabilityCalculatorBusinessRules } from './validation';
 
-export const DialysisCenterProfitabilityCalculatorCalculator: Calculator: Calculator = {
-  id: 'dialysis-center-profitability-calculator-calculator',
+export const DialysisCenterProfitabilityCalculator: Calculator = {
+  id: 'DialysisCenterProfitability-calculator-calculator',
   title: 'Dialysis Center Profitability Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

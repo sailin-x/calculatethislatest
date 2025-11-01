@@ -1,4 +1,4 @@
-import { conservation-easement-tax-benefitInputs, conservation-easement-tax-benefitMetrics, conservation-easement-tax-benefitAnalysis } from './types';
+import { ConservationEasementTax-benefitInputs, ConservationEasementTax-benefitMetrics, ConservationEasementTax-benefitAnalysis } from './types';
 
 
 // Tax Calculator - Progressive tax calculations
@@ -20,7 +20,7 @@ export function calculateEffectiveTaxRate(taxPaid: number, totalIncome: number):
   return (taxPaid / totalIncome) * 100;
 }
 
-export function calculateResult(inputs: conservation-easement-tax-benefitInputs): number {
+export function calculateResult(inputs: ConservationEasementTax-benefitInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -44,7 +44,7 @@ export function calculateResult(inputs: conservation-easement-tax-benefitInputs)
   }
 }
 
-export function generateAnalysis(inputs: conservation-easement-tax-benefitInputs, metrics: conservation-easement-tax-benefitMetrics): conservation-easement-tax-benefitAnalysis {
+export function generateAnalysis(inputs: ConservationEasementTax-benefitInputs, metrics: ConservationEasementTax-benefitMetrics): ConservationEasementTax-benefitAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

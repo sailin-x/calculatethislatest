@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { youtube_ad_revenue_calculatorInputs, youtube_ad_revenue_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const youtube_ad_revenue_calculatorCalculator: Calculator = {
-  id: 'youtube-ad-revenue-calculator',
+export const YoutubeAdRevenue-calculator: Calculator = {
+  id: 'YoutubeAdRevenue-calculator',
   title: 'YouTube Ad Revenue Calculator Calculator',
   category: 'businessmarketingoperations',
   subcategory: 'marketingcreatorhub',

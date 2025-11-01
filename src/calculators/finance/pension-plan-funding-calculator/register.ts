@@ -1,3 +1,3 @@
-import { PensionPlanFundingCalculatorCalculator } from './PensionPlanFundingCalculatorCalculator';
+import { PensionPlanFundingCalculator } from './PensionPlanFundingCalculator';
 
-export { PensionPlanFundingCalculatorCalculator };
+export { PensionPlanFundingCalculator };

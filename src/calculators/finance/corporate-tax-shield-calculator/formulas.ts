@@ -1,4 +1,4 @@
-import { corporate-tax-shield-calculatorInputs, corporate-tax-shield-calculatorMetrics, corporate-tax-shield-calculatorAnalysis } from './types';
+import { CorporateTaxShield-calculatorInputs, CorporateTaxShield-calculatorMetrics, CorporateTaxShield-calculatorAnalysis } from './types';
 
 
 // Tax Calculator - Progressive tax calculations
@@ -20,7 +20,7 @@ export function calculateEffectiveTaxRate(taxPaid: number, totalIncome: number):
   return (taxPaid / totalIncome) * 100;
 }
 
-export function calculateResult(inputs: corporate-tax-shield-calculatorInputs): number {
+export function calculateResult(inputs: CorporateTaxShield-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -44,7 +44,7 @@ export function calculateResult(inputs: corporate-tax-shield-calculatorInputs): 
   }
 }
 
-export function generateAnalysis(inputs: corporate-tax-shield-calculatorInputs, metrics: corporate-tax-shield-calculatorMetrics): corporate-tax-shield-calculatorAnalysis {
+export function generateAnalysis(inputs: CorporateTaxShield-calculatorInputs, metrics: CorporateTaxShield-calculatorMetrics): CorporateTaxShield-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

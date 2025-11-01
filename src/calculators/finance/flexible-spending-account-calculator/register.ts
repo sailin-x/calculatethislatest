@@ -1,3 +1,3 @@
-import { FlexibleSpendingAccountCalculatorCalculator } from './FlexibleSpendingAccountCalculatorCalculator';
+import { FlexibleSpendingAccountCalculator } from './FlexibleSpendingAccountCalculator';
 
-export { FlexibleSpendingAccountCalculatorCalculator };
+export { FlexibleSpendingAccountCalculator };

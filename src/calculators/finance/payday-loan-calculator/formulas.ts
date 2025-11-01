@@ -1,4 +1,4 @@
-import { payday-loan-calculatorInputs, payday-loan-calculatorMetrics, payday-loan-calculatorAnalysis } from './types';
+import { PaydayLoanCalculatorinputs, PaydayLoanCalculatormetrics, PaydayLoanCalculatoranalysis } from './types';
 
 
 // Loan Calculator - Standard loan formulas
@@ -14,7 +14,7 @@ export function calculateTotalCost(monthlyPayment: number, numPayments: number):
   return monthlyPayment * numPayments;
 }
 
-export function calculateResult(inputs: payday-loan-calculatorInputs): number {
+export function calculateResult(inputs: PaydayLoanCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: payday-loan-calculatorInputs): number {
   }
 }
 
-export function generateAnalysis(inputs: payday-loan-calculatorInputs, metrics: payday-loan-calculatorMetrics): payday-loan-calculatorAnalysis {
+export function generateAnalysis(inputs: PaydayLoanCalculatorinputs, metrics: PaydayLoanCalculatormetrics): PaydayLoanCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

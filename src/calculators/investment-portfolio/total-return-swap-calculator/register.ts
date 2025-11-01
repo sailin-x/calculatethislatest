@@ -1,3 +1,3 @@
-import { TotalReturnSwapCalculatorCalculator } from './TotalReturnSwapCalculatorCalculator';
+import { TotalReturnSwapCalculator } from './TotalReturnSwapCalculator';
 
-export { TotalReturnSwapCalculatorCalculator };
+export { TotalReturnSwapCalculator };

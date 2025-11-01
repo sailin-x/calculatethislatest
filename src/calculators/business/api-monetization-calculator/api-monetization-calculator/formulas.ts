@@ -1,4 +1,4 @@
-import { api-monetization-calculatorInputs, api-monetization-calculatorMetrics, api-monetization-calculatorAnalysis } from './types';
+import { ApiMonetizationCalculatorinputs, ApiMonetizationCalculatormetrics, ApiMonetizationCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: api-monetization-calculatorInputs): number {
+export function calculateResult(inputs: ApiMonetizationCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: api-monetization-calculatorInputs): numb
   }
 }
 
-export function generateAnalysis(inputs: api-monetization-calculatorInputs, metrics: api-monetization-calculatorMetrics): api-monetization-calculatorAnalysis {
+export function generateAnalysis(inputs: ApiMonetizationCalculatorinputs, metrics: ApiMonetizationCalculatormetrics): ApiMonetizationCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

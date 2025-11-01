@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { epa_fine_penalty_calculatorInputs, epa_fine_penalty_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const epa_fine_penalty_calculatorCalculator: Calculator = {
-  id: 'epa-fine-penalty-calculator',
+export const EpaFinePenalty-calculator: Calculator = {
+  id: 'EpaFinePenalty-calculator',
   title: 'EPA Fine & Penalty Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

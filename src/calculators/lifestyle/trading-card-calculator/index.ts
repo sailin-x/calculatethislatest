@@ -1,4 +1,4 @@
-export { TradingCardCalculatorCalculator } from './TradingCardCalculatorCalculator';
+export { TradingCardCalculator } from './TradingCardCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

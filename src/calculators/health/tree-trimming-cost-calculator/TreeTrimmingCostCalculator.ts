@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateTreeTrimmingCostCalculatorInputs } from './validation';
 
 export const TreeTrimmingCostCalculator: Calculator = {
-  id: 'tree-trimming-cost-calculator',
+  id: 'TreeTrimmingCost-calculator',
   title: 'Tree Trimming Cost Calculator',
   category: 'health',
   subcategory: 'General',

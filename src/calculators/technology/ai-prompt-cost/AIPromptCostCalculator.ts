@@ -7,7 +7,7 @@ import {
 } from './formulas';
 
 export class AIPromptCostCalculator implements Calculator {
-  readonly id = 'ai-prompt-cost';
+  readonly id = 'AiPromptCost';
   readonly title = 'AI Prompt Cost & Token Estimator';
   readonly description = 'Calculate costs for AI API usage including tokens, requests, and pricing models';
   readonly category = 'business';
@@ -69,9 +69,9 @@ export class AIPromptCostCalculator implements Calculator {
         { value: 'custom', label: 'Custom Pricing' },
         { value: 'gpt-4', label: 'GPT-4 ($0.00003/token)' },
         { value: 'gpt-3.5-turbo', label: 'GPT-3.5 Turbo ($0.0000015/token)' },
-        { value: 'claude-3-opus', label: 'Claude 3 Opus ($0.000015/token)' },
-        { value: 'claude-3-sonnet', label: 'Claude 3 Sonnet ($0.000003/token)' },
-        { value: 'claude-3-haiku', label: 'Claude 3 Haiku ($0.00000025/token)' }
+        { value: 'Claude3Opus', label: 'Claude 3 Opus ($0.000015/token)' },
+        { value: 'Claude3Sonnet', label: 'Claude 3 Sonnet ($0.000003/token)' },
+        { value: 'Claude3Haiku', label: 'Claude 3 Haiku ($0.00000025/token)' }
       ],
       defaultValue: 'custom',
       tooltip: 'Select the AI model for preset pricing'
@@ -220,7 +220,7 @@ export class AIPromptCostCalculator implements Calculator {
 
   readonly formulas: Formula[] = [
     {
-      id: 'ai-cost-calculation',
+      id: 'AiCostCalculation',
       name: 'AI Cost Calculation',
       description: 'Calculate total cost for AI API usage based on tokens and pricing',
       calculate: (inputs: Record<string, any>) => {

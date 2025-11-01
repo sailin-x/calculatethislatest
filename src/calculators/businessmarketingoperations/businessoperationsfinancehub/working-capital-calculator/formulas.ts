@@ -1,4 +1,4 @@
-import { working-capital-calculatorInputs, working-capital-calculatorMetrics, working-capital-calculatorAnalysis } from './types';
+import { WorkingCapitalCalculatorinputs, WorkingCapitalCalculatormetrics, WorkingCapitalCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: working-capital-calculatorInputs): number {
+export function calculateResult(inputs: WorkingCapitalCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: working-capital-calculatorInputs): numbe
   }
 }
 
-export function generateAnalysis(inputs: working-capital-calculatorInputs, metrics: working-capital-calculatorMetrics): working-capital-calculatorAnalysis {
+export function generateAnalysis(inputs: WorkingCapitalCalculatorinputs, metrics: WorkingCapitalCalculatormetrics): WorkingCapitalCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

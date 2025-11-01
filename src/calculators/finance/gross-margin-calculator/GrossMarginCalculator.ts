@@ -10,7 +10,7 @@ import {
 import { validateGrossMarginCalculatorInputs } from './validation';
 
 export const GrossMarginCalculator: Calculator = {
-  id: 'gross-margin-calculator',
+  id: 'GrossMarginCalculator',
   title: 'Gross Margin Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

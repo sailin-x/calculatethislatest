@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validatePrivateEquityIrrCalculatorInputs, validatePrivateEquityIrrCalculatorBusinessRules } from './validation';
 
-export const PrivateEquityIrrCalculatorCalculator: Calculator: Calculator = {
-  id: 'private-equity-irr-calculator-calculator',
+export const PrivateEquityIrrCalculator: Calculator = {
+  id: 'PrivateEquityIrr-calculator-calculator',
   title: 'Private Equity IRR Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateTradeCreditInsuranceRoiCalculatorInputs, validateTradeCreditInsuranceRoiCalculatorBusinessRules } from './validation';
 
-export const TradeCreditInsuranceRoiCalculatorCalculator: Calculator: Calculator = {
-  id: 'trade-credit-insurance-roi-calculator-calculator',
+export const TradeCreditInsuranceRoiCalculator: Calculator = {
+  id: 'TradeCreditInsurance-RoiCalculatorCalculator',
   title: 'Trade Credit Insurance ROI Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

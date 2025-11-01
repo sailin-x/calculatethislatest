@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { supply_chain_bullwhip_effect_calculatorInputs, supply_chain_bullwhip_effect_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const supply_chain_bullwhip_effect_calculatorCalculator: Calculator = {
-  id: 'supply-chain-bullwhip-effect-calculator',
+export const SupplyChainBullwhip-effect-calculator: Calculator = {
+  id: 'SupplyChainBullwhip-effect-calculator',
   title: 'Supply Chain Bullwhip Effect Calculator Calculator',
   category: 'businessmarketingoperations',
   subcategory: 'businessoperationsfinancehub',

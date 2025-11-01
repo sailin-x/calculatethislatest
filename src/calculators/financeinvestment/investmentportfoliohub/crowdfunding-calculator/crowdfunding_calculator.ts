@@ -2,7 +2,7 @@ import { Calculator } from '../../../../types/calculator';
 import { crowdfunding_calculatorInputs, crowdfunding_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const crowdfunding_calculatorCalculator: Calculator = {
+export const crowdfunding-calculator: Calculator = {
   id: 'crowdfunding-calculator',
   title: 'Crowdfunding Calculator Calculator',
   category: 'financeinvestment',

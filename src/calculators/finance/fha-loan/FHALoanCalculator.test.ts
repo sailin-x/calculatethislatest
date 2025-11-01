@@ -7,7 +7,7 @@ import { validateAllFHALoanInputs } from './quickValidation';
 describe('FHA Loan Calculator', () => {
   describe('Calculator Structure', () => {
     it('should have correct basic properties', () => {
-      expect(FHALoanCalculator.id).toBe('fha-loan-calculator');
+      expect(FHALoanCalculator.id).toBe('FhaLoanCalculator');
       expect(FHALoanCalculator.name).toBe('FHA Loan Calculator');
       expect(FHALoanCalculator.category).toBe('finance');
       expect(FHALoanCalculator.subcategory).toBe('mortgage');

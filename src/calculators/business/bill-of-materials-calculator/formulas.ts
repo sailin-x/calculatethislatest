@@ -1,4 +1,4 @@
-import { bill-of-materials-calculatorInputs, bill-of-materials-calculatorMetrics, bill-of-materials-calculatorAnalysis } from './types';
+import { BillOfMaterials-calculatorInputs, BillOfMaterials-calculatorMetrics, BillOfMaterials-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: bill-of-materials-calculatorInputs): number {
+export function calculateResult(inputs: BillOfMaterials-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: bill-of-materials-calculatorInputs): num
   }
 }
 
-export function generateAnalysis(inputs: bill-of-materials-calculatorInputs, metrics: bill-of-materials-calculatorMetrics): bill-of-materials-calculatorAnalysis {
+export function generateAnalysis(inputs: BillOfMaterials-calculatorInputs, metrics: BillOfMaterials-calculatorMetrics): BillOfMaterials-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

@@ -1,4 +1,4 @@
-export { DividendDiscountModelDdmCalculatorCalculator } from './DividendDiscountModelDdmCalculatorCalculator';
+export { DividendDiscountModelDdmCalculator } from './DividendDiscountModelDdmCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

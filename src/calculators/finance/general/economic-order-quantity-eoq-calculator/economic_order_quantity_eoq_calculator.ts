@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { economic_order_quantity_eoq_calculatorInputs, economic_order_quantity_eoq_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const economic_order_quantity_eoq_calculatorCalculator: Calculator = {
-  id: 'economic-order-quantity-eoq-calculator',
+export const EconomicOrderQuantity-eoq-calculator: Calculator = {
+  id: 'EconomicOrderQuantity-eoq-calculator',
   title: 'Economic Order Quantity (EOQ) Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

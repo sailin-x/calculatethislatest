@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { legal_practice_valuation_calculatorInputs, legal_practice_valuation_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const legal_practice_valuation_calculatorCalculator: Calculator = {
-  id: 'legal-practice-valuation-calculator',
+export const LegalPracticeValuation-calculator: Calculator = {
+  id: 'LegalPracticeValuation-calculator',
   title: 'Legal Practice Valuation Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

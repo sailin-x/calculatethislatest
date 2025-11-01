@@ -1,3 +1,3 @@
-import { OpportunityZoneInvestmentRoiCalculatorCalculator } from './OpportunityZoneInvestmentRoiCalculatorCalculator';
+import { OpportunityZoneInvestmentRoiCalculator } from './OpportunityZoneInvestmentRoiCalculator';
 
-export { OpportunityZoneInvestmentRoiCalculatorCalculator };
+export { OpportunityZoneInvestmentRoiCalculator };

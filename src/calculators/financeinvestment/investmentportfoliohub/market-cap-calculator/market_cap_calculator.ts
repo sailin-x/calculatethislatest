@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { market_cap_calculatorInputs, market_cap_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const market_cap_calculatorCalculator: Calculator = {
-  id: 'market-cap-calculator',
+export const MarketCapCalculator: Calculator = {
+  id: 'MarketCapCalculator',
   title: 'Market Cap Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'investmentportfoliohub',

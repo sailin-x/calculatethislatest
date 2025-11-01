@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { dash_diet_calculatorInputs, dash_diet_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const dash_diet_calculatorCalculator: Calculator = {
-  id: 'dash-diet-calculator',
+export const DashDietCalculator: Calculator = {
+  id: 'DashDietCalculator',
   title: 'DASH Diet Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

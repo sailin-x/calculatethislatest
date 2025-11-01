@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateDebtSnowballCalculatorInputs, validateDebtSnowballCalculatorBusinessRules } from './validation';
 
-export const DebtSnowballCalculatorCalculator: Calculator: Calculator = {
-  id: 'debt-snowball-calculator-calculator',
+export const DebtSnowballCalculator: Calculator = {
+  id: 'DebtSnowballCalculator-calculator',
   title: 'Debt Snowball Calculator Calculator',
   loans-debt: 'loans-debt', // e.g., 'finance', 'math', 'health', 'business'
   subloans-debt: 'Subloans-debt Name',

@@ -1,4 +1,4 @@
-import { dti-ratio-calculatorInputs, dti-ratio-calculatorMetrics, dti-ratio-calculatorAnalysis } from './types';
+import { DtiRatioCalculatorinputs, DtiRatioCalculatormetrics, DtiRatioCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: dti-ratio-calculatorInputs): number {
+export function calculateResult(inputs: DtiRatioCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: dti-ratio-calculatorInputs): number {
   }
 }
 
-export function generateAnalysis(inputs: dti-ratio-calculatorInputs, metrics: dti-ratio-calculatorMetrics): dti-ratio-calculatorAnalysis {
+export function generateAnalysis(inputs: DtiRatioCalculatorinputs, metrics: DtiRatioCalculatormetrics): DtiRatioCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

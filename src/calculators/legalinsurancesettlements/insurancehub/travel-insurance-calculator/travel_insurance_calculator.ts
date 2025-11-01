@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { travel_insurance_calculatorInputs, travel_insurance_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const travel_insurance_calculatorCalculator: Calculator = {
-  id: 'travel-insurance-calculator',
+export const TravelInsuranceCalculator: Calculator = {
+  id: 'TravelInsuranceCalculator',
   title: 'Travel Insurance Calculator Calculator',
   category: 'legalinsurancesettlements',
   subcategory: 'insurancehub',

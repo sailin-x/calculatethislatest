@@ -10,7 +10,7 @@ import {
 import { validateFreeCashFlowToEquityFcfeValuationInputs } from './validation';
 
 export const FreeCashFlowToEquityFcfeValuation: Calculator = {
-  id: 'free-cash-flow-to-equity-fcfe-valuation',
+  id: 'FreeCashFlow-ToEquityFcfe-valuation',
   title: 'Free Cash Flow to Equity (FCFE) Valuation',
   category: 'finance',
   subcategory: 'Financial Planning',

@@ -1,4 +1,4 @@
-import { free-cash-flow-to-firm-calculatorInputs, free-cash-flow-to-firm-calculatorMetrics, free-cash-flow-to-firm-calculatorAnalysis } from './types';
+import { FreeCashFlow-ToFirmCalculatorinputs, FreeCashFlow-ToFirmCalculatormetrics, FreeCashFlow-ToFirmCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: free-cash-flow-to-firm-calculatorInputs): number {
+export function calculateResult(inputs: FreeCashFlow-ToFirmCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: free-cash-flow-to-firm-calculatorInputs)
   }
 }
 
-export function generateAnalysis(inputs: free-cash-flow-to-firm-calculatorInputs, metrics: free-cash-flow-to-firm-calculatorMetrics): free-cash-flow-to-firm-calculatorAnalysis {
+export function generateAnalysis(inputs: FreeCashFlow-ToFirmCalculatorinputs, metrics: FreeCashFlow-ToFirmCalculatormetrics): FreeCashFlow-ToFirmCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

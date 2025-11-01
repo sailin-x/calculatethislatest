@@ -1,3 +1,3 @@
-import { KidnapRansomInsuranceCalculatorCalculator } from './KidnapRansomInsuranceCalculatorCalculator';
+import { KidnapRansomInsuranceCalculator } from './KidnapRansomInsuranceCalculator';
 
-export { KidnapRansomInsuranceCalculatorCalculator };
+export { KidnapRansomInsuranceCalculator };

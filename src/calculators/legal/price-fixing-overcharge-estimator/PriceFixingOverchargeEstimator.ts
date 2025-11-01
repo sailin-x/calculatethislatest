@@ -9,7 +9,7 @@ import {
 import { validatePriceFixingOverchargeEstimatorInputs } from './validation';
 
 export const PriceFixingOverchargeEstimator: Calculator = {
-  id: 'price-fixing-overcharge-estimator',
+  id: 'PriceFixingOvercharge-estimator',
   title: 'Price-Fixing Overcharge Estimator',
   category: 'legal',
   subcategory: 'Settlement Analysis',

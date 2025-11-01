@@ -1,3 +1,3 @@
-import { EdiscoveryCostCalculatorCalculator } from './EdiscoveryCostCalculatorCalculator';
+import { EdiscoveryCostCalculator } from './EdiscoveryCostCalculator';
 
-export { EdiscoveryCostCalculatorCalculator };
+export { EdiscoveryCostCalculator };

@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateTreynorRatioCalculatorInputs, validateTreynorRatioCalculatorBusinessRules } from './validation';
 
-export const TreynorRatioCalculatorCalculator: Calculator: Calculator = {
-  id: 'treynor-ratio-calculator-calculator',
+export const TreynorRatioCalculator: Calculator = {
+  id: 'TreynorRatioCalculator-calculator',
   title: 'Treynor Ratio Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

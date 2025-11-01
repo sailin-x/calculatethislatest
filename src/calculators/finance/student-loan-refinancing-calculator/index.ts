@@ -1,5 +1,5 @@
-export { studentloanrefinancingcalculatorCalculator } from './studentloanrefinancingcalculatorCalculator';
-export { registerstudentloanrefinancingcalculatorCalculator } from './register';
+export { studentloanrefinancingcalculator } from './studentloanrefinancingcalculator';
+export { registerstudentloanrefinancingcalculator } from './register';
 export * from './types';
 export * from './formulas';
 export * from './validation';

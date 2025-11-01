@@ -346,7 +346,7 @@ describe('Real Estate Investment Calculator', () => {
     it('should provide accurate market comparison', () => {
       const result = calculateRealEstateInvestment(validInputs);
       
-      const cashOnCashComparison = result.marketComparison.find(comp => comp.metric === 'Cash-on-Cash Return');
+      const cashOnCashComparison = result.marketComparison.find(comp => comp.metric === 'CashOnCash Return');
       expect(cashOnCashComparison?.yourProperty).toBe(result.cashOnCashReturn);
       expect(cashOnCashComparison?.marketAverage).toBeGreaterThan(0);
     });

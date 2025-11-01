@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateBrickCalculatorInputs, validateBrickCalculatorBusinessRules } from './validation';
 
-export const BrickCalculatorCalculator: Calculator: Calculator = {
-  id: 'brick-calculator-calculator',
+export const BrickCalculator: Calculator = {
+  id: 'BrickCalculatorCalculator',
   title: 'Brick Calculator Calculator',
   construction: 'construction', // e.g., 'finance', 'math', 'health', 'business'
   subconstruction: 'Subconstruction Name',

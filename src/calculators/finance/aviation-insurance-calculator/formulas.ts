@@ -1,13 +1,13 @@
-import { aviation-insurance-calculatorInputs, aviation-insurance-calculatorMetrics, aviation-insurance-calculatorAnalysis } from './types';
+import { AviationInsuranceCalculatorinputs, AviationInsuranceCalculatormetrics, AviationInsuranceCalculatoranalysis } from './types';
 
 // Aviation Insurance Calculator - Finance calculations
-export function calculateResult(inputs: aviation-insurance-calculatorInputs): number {
+export function calculateResult(inputs: AviationInsuranceCalculatorinputs): number {
   // Financial calculation logic
   const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
   return numericValues.reduce((sum, val) => sum + val, 0) || 0;
 }
 
-export function generateAnalysis(inputs: aviation-insurance-calculatorInputs, metrics: aviation-insurance-calculatorMetrics): aviation-insurance-calculatorAnalysis {
+export function generateAnalysis(inputs: AviationInsuranceCalculatorinputs, metrics: AviationInsuranceCalculatormetrics): AviationInsuranceCalculatoranalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (Math.abs(result) > 100000) riskLevel = 'High';

@@ -10,7 +10,7 @@ import {
 import { validateWorkforcePlanningCalculatorInputs } from './validation';
 
 export const WorkforcePlanningCalculator: Calculator = {
-  id: 'workforce-planning-calculator',
+  id: 'WorkforcePlanningCalculator',
   title: 'Workforce Planning Calculator',
   category: 'business',
   subcategory: 'Financial Planning',

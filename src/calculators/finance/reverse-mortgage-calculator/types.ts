@@ -14,7 +14,7 @@ export interface ReverseMortgageInputs {
   maintenanceCost: number;
   repairSetAside: number;
   lifeExpectancy: number;
-  paymentPlan: 'tenure' | 'term' | 'line-of-credit';
+  paymentPlan: 'tenure' | 'term' | 'LineOfCredit';
   termYears: number;
   monthlyIncome: number;
   monthlyExpenses: number;

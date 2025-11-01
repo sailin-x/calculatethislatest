@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateEstateTaxLiabilityCalculatorInputs, validateEstateTaxLiabilityCalculatorBusinessRules } from './validation';
 
-export const EstateTaxLiabilityCalculatorCalculator: Calculator: Calculator = {
-  id: 'estate-tax-liability-calculator-calculator',
+export const EstateTaxLiabilityCalculator: Calculator = {
+  id: 'EstateTaxLiability-calculator-calculator',
   title: 'Estate Tax Liability Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

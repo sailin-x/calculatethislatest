@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateClinicalTrialCostCalculatorInputs } from './validation';
 
 export const ClinicalTrialCostCalculator: Calculator = {
-  id: 'clinical-trial-cost-calculator',
+  id: 'ClinicalTrialCost-calculator',
   title: 'Clinical Trial Cost Calculator',
   category: 'health',
   subcategory: 'General',

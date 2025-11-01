@@ -55,7 +55,7 @@ export function generateAnalysis(inputs: WACCCalculatorInputs, metrics: WACCCalc
   const result = metrics.result;
   const { equityWeight, debtWeight } = calculateWeights(inputs);
 
-  // Investment-portfolio-specific risk assessment:
+  // InvestmentPortfolioSpecific risk assessment:
   // WACC reflects the blended cost of capital; higher WACC indicates higher hurdle rate for investments,
   // potentially signaling higher risk in the portfolio's financing structure.
   // Thresholds based on typical corporate finance benchmarks (e.g., low < 8%, medium 8-12%, high >12%).

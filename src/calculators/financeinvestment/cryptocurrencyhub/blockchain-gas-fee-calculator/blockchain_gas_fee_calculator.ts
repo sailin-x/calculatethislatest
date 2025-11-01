@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { blockchain_gas_fee_calculatorInputs, blockchain_gas_fee_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const blockchain_gas_fee_calculatorCalculator: Calculator = {
-  id: 'blockchain-gas-fee-calculator',
+export const BlockchainGasFee-calculator: Calculator = {
+  id: 'BlockchainGasFee-calculator',
   title: 'Blockchain Gas Fee Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'cryptocurrencyhub',

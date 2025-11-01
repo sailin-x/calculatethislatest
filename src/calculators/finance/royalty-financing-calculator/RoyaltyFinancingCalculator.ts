@@ -10,7 +10,7 @@ import {
 import { validateRoyaltyFinancingCalculatorInputs } from './validation';
 
 export const RoyaltyFinancingCalculator: Calculator = {
-  id: 'royalty-financing-calculator',
+  id: 'RoyaltyFinancingCalculator',
   title: 'Royalty Financing Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

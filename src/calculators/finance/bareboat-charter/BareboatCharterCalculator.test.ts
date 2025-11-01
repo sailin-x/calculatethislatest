@@ -25,7 +25,7 @@ describe('Bareboat Charter Calculator', () => {
 
   describe('Calculator Definition', () => {
     it('should have correct basic properties', () => {
-      expect(BareboatCharterCalculator.id).toBe('bareboat-charter-calculator');
+      expect(BareboatCharterCalculator.id).toBe('BareboatCharterCalculator');
       expect(BareboatCharterCalculator.name).toBe('Bareboat Charter vs. Time Charter Calculator');
       expect(BareboatCharterCalculator.category).toBe('finance');
       expect(BareboatCharterCalculator.subcategory).toBe('maritime-finance');

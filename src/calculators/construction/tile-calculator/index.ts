@@ -1,4 +1,4 @@
-export { TileCalculatorCalculator } from './TileCalculatorCalculator';
+export { TileCalculator } from './TileCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

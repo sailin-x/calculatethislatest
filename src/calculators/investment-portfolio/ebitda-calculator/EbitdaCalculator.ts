@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateEbitdaCalculatorInputs, validateEbitdaCalculatorBusinessRules } from './validation';
 
-export const EbitdaCalculatorCalculator: Calculator: Calculator = {
-  id: 'ebitda-calculator-calculator',
+export const EbitdaCalculator: Calculator = {
+  id: 'EbitdaCalculatorCalculator',
   title: 'EBITDA Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

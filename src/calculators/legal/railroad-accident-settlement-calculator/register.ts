@@ -1,3 +1,3 @@
-import { RailroadAccidentSettlementCalculatorCalculator } from './RailroadAccidentSettlementCalculatorCalculator';
+import { RailroadAccidentSettlementCalculator } from './RailroadAccidentSettlementCalculator';
 
-export { RailroadAccidentSettlementCalculatorCalculator };
+export { RailroadAccidentSettlementCalculator };

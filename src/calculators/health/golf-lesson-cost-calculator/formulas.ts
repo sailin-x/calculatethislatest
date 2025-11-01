@@ -1,4 +1,4 @@
-import { golf-lesson-cost-calculatorInputs, golf-lesson-cost-calculatorMetrics, golf-lesson-cost-calculatorAnalysis } from './types';
+import { GolfLessonCost-calculatorInputs, GolfLessonCost-calculatorMetrics, GolfLessonCost-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: golf-lesson-cost-calculatorInputs): number {
+export function calculateResult(inputs: GolfLessonCost-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: golf-lesson-cost-calculatorInputs): numb
   }
 }
 
-export function generateAnalysis(inputs: golf-lesson-cost-calculatorInputs, metrics: golf-lesson-cost-calculatorMetrics): golf-lesson-cost-calculatorAnalysis {
+export function generateAnalysis(inputs: GolfLessonCost-calculatorInputs, metrics: GolfLessonCost-calculatorMetrics): GolfLessonCost-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

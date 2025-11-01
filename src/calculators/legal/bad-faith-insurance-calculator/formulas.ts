@@ -1,4 +1,4 @@
-import { bad-faith-insurance-calculatorInputs, bad-faith-insurance-calculatorMetrics, bad-faith-insurance-calculatorAnalysis } from './types';
+import { BadFaithInsurance-calculatorInputs, BadFaithInsurance-calculatorMetrics, BadFaithInsurance-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: bad-faith-insurance-calculatorInputs): number {
+export function calculateResult(inputs: BadFaithInsurance-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: bad-faith-insurance-calculatorInputs): n
   }
 }
 
-export function generateAnalysis(inputs: bad-faith-insurance-calculatorInputs, metrics: bad-faith-insurance-calculatorMetrics): bad-faith-insurance-calculatorAnalysis {
+export function generateAnalysis(inputs: BadFaithInsurance-calculatorInputs, metrics: BadFaithInsurance-calculatorMetrics): BadFaithInsurance-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

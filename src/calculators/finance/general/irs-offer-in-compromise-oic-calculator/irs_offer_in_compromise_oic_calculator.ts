@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { irs_offer_in_compromise_oic_calculatorInputs, irs_offer_in_compromise_oic_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const irs_offer_in_compromise_oic_calculatorCalculator: Calculator = {
-  id: 'irs-offer-in-compromise-oic-calculator',
+export const IrsOfferIn-CompromiseOicCalculator: Calculator = {
+  id: 'IrsOfferIn-CompromiseOicCalculator',
   title: 'IRS Offer in Compromise (OIC) Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

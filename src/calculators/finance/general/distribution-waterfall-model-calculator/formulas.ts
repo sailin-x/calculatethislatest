@@ -1,4 +1,4 @@
-import { distribution-waterfall-model-calculatorInputs, distribution-waterfall-model-calculatorMetrics, distribution-waterfall-model-calculatorAnalysis } from './types';
+import { DistributionWaterfallModel-calculatorInputs, DistributionWaterfallModel-calculatorMetrics, DistributionWaterfallModel-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: distribution-waterfall-model-calculatorInputs): number {
+export function calculateResult(inputs: DistributionWaterfallModel-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: distribution-waterfall-model-calculatorI
   }
 }
 
-export function generateAnalysis(inputs: distribution-waterfall-model-calculatorInputs, metrics: distribution-waterfall-model-calculatorMetrics): distribution-waterfall-model-calculatorAnalysis {
+export function generateAnalysis(inputs: DistributionWaterfallModel-calculatorInputs, metrics: DistributionWaterfallModel-calculatorMetrics): DistributionWaterfallModel-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

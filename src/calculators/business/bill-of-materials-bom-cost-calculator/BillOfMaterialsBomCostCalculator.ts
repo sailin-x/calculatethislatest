@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateBillOfMaterialsBomCostCalculatorInputs, validateBillOfMaterialsBomCostCalculatorBusinessRules } from './validation';
 
-export const BillOfMaterialsBomCostCalculatorCalculator: Calculator: Calculator = {
-  id: 'bill-of-materials-bom-cost-calculator-calculator',
+export const BillOfMaterialsBomCostCalculator: Calculator = {
+  id: 'BillOfMaterials-BomCostCalculator-calculator',
   title: 'Bill of Materials (BOM) Cost Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

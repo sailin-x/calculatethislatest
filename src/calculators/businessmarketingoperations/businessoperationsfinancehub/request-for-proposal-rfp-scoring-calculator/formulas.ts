@@ -1,4 +1,4 @@
-import { request-for-proposal-rfp-scoring-calculatorInputs, request-for-proposal-rfp-scoring-calculatorMetrics, request-for-proposal-rfp-scoring-calculatorAnalysis } from './types';
+import { RequestForProposal-RfpScoringCalculatorinputs, RequestForProposal-RfpScoringCalculatormetrics, RequestForProposal-RfpScoringCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: request-for-proposal-rfp-scoring-calculatorInputs): number {
+export function calculateResult(inputs: RequestForProposal-RfpScoringCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: request-for-proposal-rfp-scoring-calcula
   }
 }
 
-export function generateAnalysis(inputs: request-for-proposal-rfp-scoring-calculatorInputs, metrics: request-for-proposal-rfp-scoring-calculatorMetrics): request-for-proposal-rfp-scoring-calculatorAnalysis {
+export function generateAnalysis(inputs: RequestForProposal-RfpScoringCalculatorinputs, metrics: RequestForProposal-RfpScoringCalculatormetrics): RequestForProposal-RfpScoringCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

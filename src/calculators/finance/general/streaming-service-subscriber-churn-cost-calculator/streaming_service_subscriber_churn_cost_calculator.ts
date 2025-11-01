@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { streaming_service_subscriber_churn_cost_calculatorInputs, streaming_service_subscriber_churn_cost_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const streaming_service_subscriber_churn_cost_calculatorCalculator: Calculator = {
-  id: 'streaming-service-subscriber-churn-cost-calculator',
+export const StreamingServiceSubscriber-ChurnCostCalculator: Calculator = {
+  id: 'StreamingServiceSubscriber-ChurnCostCalculator',
   title: 'Streaming Service Subscriber Churn Cost Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

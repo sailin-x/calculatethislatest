@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateYogaStudioCostCalculatorInputs } from './validation';
 
 export const YogaStudioCostCalculator: Calculator = {
-  id: 'yoga-studio-cost-calculator',
+  id: 'YogaStudioCost-calculator',
   title: 'Yoga Studio Cost Calculator',
   category: 'health',
   subcategory: 'General',

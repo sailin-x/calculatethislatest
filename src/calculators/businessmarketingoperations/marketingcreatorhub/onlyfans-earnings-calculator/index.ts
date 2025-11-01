@@ -1,4 +1,4 @@
-export { onlyfans_earnings_calculatorCalculator } from './onlyfans_earnings_calculator';
+export { onlyfans_earnings_calculator } from './onlyfans_earnings_calculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

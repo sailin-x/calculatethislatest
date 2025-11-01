@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { trust_fund_distribution_calculatorInputs, trust_fund_distribution_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const trust_fund_distribution_calculatorCalculator: Calculator = {
-  id: 'trust-fund-distribution-calculator',
+export const TrustFundDistribution-calculator: Calculator = {
+  id: 'TrustFundDistribution-calculator',
   title: 'Trust Fund Distribution Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'retirementsavingshub',

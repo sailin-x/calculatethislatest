@@ -1,3 +1,3 @@
-import { DtiRatioCalculatorCalculator } from './DtiRatioCalculatorCalculator';
+import { DtiRatioCalculator } from './DtiRatioCalculator';
 
-export { DtiRatioCalculatorCalculator };
+export { DtiRatioCalculator };

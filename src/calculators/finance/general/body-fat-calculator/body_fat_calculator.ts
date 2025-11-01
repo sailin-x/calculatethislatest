@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { body_fat_calculatorInputs, body_fat_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const body_fat_calculatorCalculator: Calculator = {
-  id: 'body-fat-calculator',
+export const BodyFatCalculator: Calculator = {
+  id: 'BodyFatCalculator',
   title: 'Body Fat Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

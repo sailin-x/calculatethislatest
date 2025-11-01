@@ -1,4 +1,4 @@
-import { mortgage-rate-lockInputs, mortgage-rate-lockMetrics, mortgage-rate-lockAnalysis } from './types';
+import { MortgageRateLockinputs, MortgageRateLockmetrics, MortgageRateLockanalysis } from './types';
 
 
 // Mortgage Payment Calculator - Standard loan amortization formula
@@ -14,7 +14,7 @@ export function calculateTotalInterest(principal: number, monthlyPayment: number
   return (monthlyPayment * numPayments) - principal;
 }
 
-export function calculateResult(inputs: mortgage-rate-lockInputs): number {
+export function calculateResult(inputs: MortgageRateLockinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: mortgage-rate-lockInputs): number {
   }
 }
 
-export function generateAnalysis(inputs: mortgage-rate-lockInputs, metrics: mortgage-rate-lockMetrics): mortgage-rate-lockAnalysis {
+export function generateAnalysis(inputs: MortgageRateLockinputs, metrics: MortgageRateLockmetrics): MortgageRateLockanalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

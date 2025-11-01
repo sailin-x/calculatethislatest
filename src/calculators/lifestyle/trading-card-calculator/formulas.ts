@@ -1,13 +1,13 @@
-import { trading-card-calculatorInputs, trading-card-calculatorMetrics, trading-card-calculatorAnalysis } from './types';
+import { TradingCardCalculatorinputs, TradingCardCalculatormetrics, TradingCardCalculatoranalysis } from './types';
 
 // Trading Card Calculator - Lifestyle calculations
-export function calculateResult(inputs: trading-card-calculatorInputs): number {
+export function calculateResult(inputs: TradingCardCalculatorinputs): number {
   // Lifestyle calculation logic
   const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
   return numericValues.reduce((sum, val) => sum + val, 0) || 0;
 }
 
-export function generateAnalysis(inputs: trading-card-calculatorInputs, metrics: trading-card-calculatorMetrics): trading-card-calculatorAnalysis {
+export function generateAnalysis(inputs: TradingCardCalculatorinputs, metrics: TradingCardCalculatormetrics): TradingCardCalculatoranalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (Math.abs(result) > 1000) riskLevel = 'High';

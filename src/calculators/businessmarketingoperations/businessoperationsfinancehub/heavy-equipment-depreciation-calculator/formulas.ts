@@ -1,4 +1,4 @@
-import { heavy-equipment-depreciation-calculatorInputs, heavy-equipment-depreciation-calculatorMetrics, heavy-equipment-depreciation-calculatorAnalysis } from './types';
+import { HeavyEquipmentDepreciation-calculatorInputs, HeavyEquipmentDepreciation-calculatorMetrics, HeavyEquipmentDepreciation-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: heavy-equipment-depreciation-calculatorInputs): number {
+export function calculateResult(inputs: HeavyEquipmentDepreciation-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: heavy-equipment-depreciation-calculatorI
   }
 }
 
-export function generateAnalysis(inputs: heavy-equipment-depreciation-calculatorInputs, metrics: heavy-equipment-depreciation-calculatorMetrics): heavy-equipment-depreciation-calculatorAnalysis {
+export function generateAnalysis(inputs: HeavyEquipmentDepreciation-calculatorInputs, metrics: HeavyEquipmentDepreciation-calculatorMetrics): HeavyEquipmentDepreciation-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

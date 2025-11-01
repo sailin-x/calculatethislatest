@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateFitnessAgeCalculatorInputs, validateFitnessAgeCalculatorBusinessRules } from './validation';
 
-export const FitnessAgeCalculatorCalculator: Calculator: Calculator = {
-  id: 'fitness-age-calculator-calculator',
+export const FitnessAgeCalculator: Calculator = {
+  id: 'FitnessAgeCalculator-calculator',
   title: 'Fitness Age Calculator Calculator',
   health: 'health', // e.g., 'finance', 'math', 'health', 'business'
   subhealth: 'Subhealth Name',

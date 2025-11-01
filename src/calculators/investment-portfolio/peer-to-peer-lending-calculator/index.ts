@@ -1,4 +1,4 @@
-export { PeertopeerLendingCalculatorCalculator } from './PeertopeerLendingCalculatorCalculator';
+export { PeertopeerLendingCalculator } from './PeertopeerLendingCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

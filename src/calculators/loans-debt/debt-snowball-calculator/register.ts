@@ -1,3 +1,3 @@
-import { DebtSnowballCalculatorCalculator } from './DebtSnowballCalculatorCalculator';
+import { DebtSnowballCalculator } from './DebtSnowballCalculator';
 
-export { DebtSnowballCalculatorCalculator };
+export { DebtSnowballCalculator };

@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateThreatIntelligencePlatformRoiCalculatorInputs, validateThreatIntelligencePlatformRoiCalculatorBusinessRules } from './validation';
 
-export const ThreatIntelligencePlatformRoiCalculatorCalculator: Calculator: Calculator = {
-  id: 'threat-intelligence-platform-roi-calculator-calculator',
+export const ThreatIntelligencePlatformRoiCalculator: Calculator = {
+  id: 'ThreatIntelligencePlatform-RoiCalculatorCalculator',
   title: 'Threat Intelligence Platform ROI Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

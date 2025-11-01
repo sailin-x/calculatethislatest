@@ -1,3 +1,3 @@
-import { AddictionRehabCostFinancingCalculatorCalculator } from './AddictionRehabCostFinancingCalculatorCalculator';
+import { AddictionRehabCostFinancingCalculator } from './AddictionRehabCostFinancingCalculator';
 
-export { AddictionRehabCostFinancingCalculatorCalculator };
+export { AddictionRehabCostFinancingCalculator };

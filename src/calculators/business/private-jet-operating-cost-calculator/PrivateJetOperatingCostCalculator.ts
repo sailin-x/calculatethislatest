@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validatePrivateJetOperatingCostCalculatorInputs, validatePrivateJetOperatingCostCalculatorBusinessRules } from './validation';
 
-export const PrivateJetOperatingCostCalculatorCalculator: Calculator: Calculator = {
-  id: 'private-jet-operating-cost-calculator-calculator',
+export const PrivateJetOperatingCostCalculator: Calculator = {
+  id: 'PrivateJetOperating-CostCalculatorCalculator',
   title: 'Private Jet Operating Cost Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

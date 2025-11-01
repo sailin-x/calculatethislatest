@@ -1,4 +1,4 @@
-import { nutrition-label-calculatorInputs, nutrition-label-calculatorMetrics, nutrition-label-calculatorAnalysis } from './types';
+import { NutritionLabelCalculatorinputs, NutritionLabelCalculatormetrics, NutritionLabelCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: nutrition-label-calculatorInputs): number {
+export function calculateResult(inputs: NutritionLabelCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: nutrition-label-calculatorInputs): numbe
   }
 }
 
-export function generateAnalysis(inputs: nutrition-label-calculatorInputs, metrics: nutrition-label-calculatorMetrics): nutrition-label-calculatorAnalysis {
+export function generateAnalysis(inputs: NutritionLabelCalculatorinputs, metrics: NutritionLabelCalculatormetrics): NutritionLabelCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

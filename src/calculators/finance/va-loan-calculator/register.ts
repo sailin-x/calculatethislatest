@@ -1,3 +1,3 @@
-import { VaLoanCalculatorCalculator } from './VaLoanCalculatorCalculator';
+import { VaLoanCalculator } from './VaLoanCalculator';
 
-export { VaLoanCalculatorCalculator };
+export { VaLoanCalculator };

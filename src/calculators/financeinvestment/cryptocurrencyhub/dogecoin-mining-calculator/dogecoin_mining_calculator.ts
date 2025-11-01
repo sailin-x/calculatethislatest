@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { dogecoin_mining_calculatorInputs, dogecoin_mining_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const dogecoin_mining_calculatorCalculator: Calculator = {
-  id: 'dogecoin-mining-calculator',
+export const DogecoinMiningCalculator: Calculator = {
+  id: 'DogecoinMiningCalculator',
   title: 'Dogecoin Mining Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'cryptocurrencyhub',

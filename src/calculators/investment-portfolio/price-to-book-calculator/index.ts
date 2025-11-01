@@ -1,4 +1,4 @@
-export { PriceToBookCalculatorCalculator } from './PriceToBookCalculatorCalculator';
+export { PriceToBookCalculator } from './PriceToBookCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

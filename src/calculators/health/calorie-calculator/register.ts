@@ -1,3 +1,3 @@
-import { CalorieCalculatorCalculator } from './CalorieCalculatorCalculator';
+import { CalorieCalculator } from './CalorieCalculator';
 
-export { CalorieCalculatorCalculator };
+export { CalorieCalculator };

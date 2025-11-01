@@ -82,9 +82,9 @@ export function generateAnalysis(
 
   let recommendation = '';
   if (result > 0) {
-    recommendation = `The swap has positive NPV ($${result.toFixed(2)}) to the fixed payer, indicating it is in-the-money. Consider holding to capture value.`;
+    recommendation = `The swap has positive NPV ($${result.toFixed(2)}) to the fixed payer, indicating it is InTheMoney. Consider holding to capture value.`;
   } else if (result < 0) {
-    recommendation = `The swap has negative NPV ($${result.toFixed(2)}) to the fixed payer, indicating it is out-of-the-money. Evaluate unwinding or hedging if termination costs are manageable.`;
+    recommendation = `The swap has negative NPV ($${result.toFixed(2)}) to the fixed payer, indicating it is OutOfThe-money. Evaluate unwinding or hedging if termination costs are manageable.`;
   } else {
     recommendation = 'The swap is at fair value (NPV ≈ 0). Monitor for rate changes.';
   }

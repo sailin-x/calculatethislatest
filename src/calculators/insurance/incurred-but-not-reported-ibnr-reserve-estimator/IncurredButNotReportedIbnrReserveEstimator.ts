@@ -4,7 +4,7 @@ import { calculateResult, generateAnalysis } from './formulas';
 import { validateIncurredButNotReportedIbnrReserveEstimatorInputs } from './validation';
 
 export const IncurredButNotReportedIbnrReserveEstimator: Calculator = {
-  id: 'incurred-but-not-reported-ibnr-reserve-estimator',
+  id: 'IncurredButNot-ReportedIbnrReserve-estimator',
   title: 'Incurred But Not Reported (IBNR) Reserve Estimator',
   category: 'insurance',
   subcategory: 'General',

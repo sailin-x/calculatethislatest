@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateStretchIraCalculatorInputs, validateStretchIraCalculatorBusinessRules } from './validation';
 
-export const StretchIraCalculatorCalculator: Calculator: Calculator = {
-  id: 'stretch-ira-calculator-calculator',
+export const StretchIraCalculator: Calculator = {
+  id: 'StretchIraCalculator-calculator',
   title: 'Stretch IRA Calculator Calculator',
   retirement-savings: 'retirement-savings', // e.g., 'finance', 'math', 'health', 'business'
   subretirement-savings: 'Subretirement-savings Name',

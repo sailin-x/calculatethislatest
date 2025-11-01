@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateTourCostCalculatorInputs } from './validation';
 
 export const TourCostCalculator: Calculator = {
-  id: 'tour-cost-calculator',
+  id: 'TourCostCalculator',
   title: 'Tour Cost Calculator',
   category: 'health',
   subcategory: 'General',

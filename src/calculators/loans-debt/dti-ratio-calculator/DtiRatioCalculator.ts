@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateDtiRatioCalculatorInputs, validateDtiRatioCalculatorBusinessRules } from './validation';
 
-export const DtiRatioCalculatorCalculator: Calculator: Calculator = {
-  id: 'dti-ratio-calculator-calculator',
+export const DtiRatioCalculator: Calculator = {
+  id: 'DtiRatioCalculator-calculator',
   title: 'DTI Ratio Calculator Calculator',
   loans-debt: 'loans-debt', // e.g., 'finance', 'math', 'health', 'business'
   subloans-debt: 'Subloans-debt Name',

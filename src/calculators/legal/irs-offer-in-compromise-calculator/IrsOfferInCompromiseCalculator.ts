@@ -9,7 +9,7 @@ import {
 import { validateIrsOfferInCompromiseCalculatorInputs } from './validation';
 
 export const IrsOfferInCompromiseCalculator: Calculator = {
-  id: 'irs-offer-in-compromise-calculator',
+  id: 'IrsOfferIn-compromise-calculator',
   title: 'IRS Offer in Compromise (OIC) Calculator',
   category: 'legal',
   subcategory: 'Settlement Analysis',

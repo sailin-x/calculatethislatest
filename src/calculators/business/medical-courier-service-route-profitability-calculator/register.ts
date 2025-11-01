@@ -1,3 +1,3 @@
-import { MedicalCourierServiceRouteProfitabilityCalculatorCalculator } from './MedicalCourierServiceRouteProfitabilityCalculatorCalculator';
+import { MedicalCourierServiceRouteProfitabilityCalculator } from './MedicalCourierServiceRouteProfitabilityCalculator';
 
-export { MedicalCourierServiceRouteProfitabilityCalculatorCalculator };
+export { MedicalCourierServiceRouteProfitabilityCalculator };

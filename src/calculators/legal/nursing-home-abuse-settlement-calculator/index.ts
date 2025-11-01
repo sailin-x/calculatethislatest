@@ -1,4 +1,4 @@
-export { NursingHomeAbuseSettlementCalculatorCalculator } from './NursingHomeAbuseSettlementCalculatorCalculator';
+export { NursingHomeAbuseSettlementCalculator } from './NursingHomeAbuseSettlementCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

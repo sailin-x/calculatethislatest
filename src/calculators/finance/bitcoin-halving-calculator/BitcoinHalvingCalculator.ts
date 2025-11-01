@@ -10,7 +10,7 @@ import {
 import { validateBitcoinHalvingCalculatorInputs } from './validation';
 
 export const BitcoinHalvingCalculator: Calculator = {
-  id: 'bitcoin-halving-calculator',
+  id: 'BitcoinHalvingCalculator',
   title: 'Bitcoin Halving Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

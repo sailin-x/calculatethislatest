@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateThyroidCalculatorInputs, validateThyroidCalculatorBusinessRules } from './validation';
 
-export const ThyroidCalculatorCalculator: Calculator: Calculator = {
-  id: 'thyroid-calculator-calculator',
+export const ThyroidCalculator: Calculator = {
+  id: 'ThyroidCalculatorCalculator',
   title: 'Thyroid Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

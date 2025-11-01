@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { data_center_total_cost_of_ownership_tco_calculatorInputs, data_center_total_cost_of_ownership_tco_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const data_center_total_cost_of_ownership_tco_calculatorCalculator: Calculator = {
-  id: 'data-center-total-cost-of-ownership-tco-calculator',
+export const DataCenterTotal-CostOfOwnership-tco-calculator: Calculator = {
+  id: 'DataCenterTotal-CostOfOwnership-tco-calculator',
   title: 'Data Center Total Cost of Ownership (TCO) Calculator Calculator',
   category: 'businessmarketingoperations',
   subcategory: 'businessoperationsfinancehub',

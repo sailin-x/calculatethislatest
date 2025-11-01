@@ -1,4 +1,4 @@
-import { expense-ratio-calculatorInputs, expense-ratio-calculatorMetrics, expense-ratio-calculatorAnalysis } from './types';
+import { ExpenseRatioCalculatorinputs, ExpenseRatioCalculatormetrics, ExpenseRatioCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: expense-ratio-calculatorInputs): number {
+export function calculateResult(inputs: ExpenseRatioCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: expense-ratio-calculatorInputs): number 
   }
 }
 
-export function generateAnalysis(inputs: expense-ratio-calculatorInputs, metrics: expense-ratio-calculatorMetrics): expense-ratio-calculatorAnalysis {
+export function generateAnalysis(inputs: ExpenseRatioCalculatorinputs, metrics: ExpenseRatioCalculatormetrics): ExpenseRatioCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

@@ -3,7 +3,7 @@ import { calculateTenantImprovement } from './formulas';
 import { generateTenantImprovementAnalysis } from './formulas';
 
 export const TenantImprovementCalculator: Calculator = {
-  id: 'tenant-improvement-calculator',
+  id: 'TenantImprovementCalculator',
   name: 'Tenant Improvement (TI) Allowance Calculator',
   category: 'finance',
   subcategory: 'real-estate',
@@ -255,10 +255,10 @@ export const TenantImprovementCalculator: Calculator = {
     },
     {
       id: 'tenantOutOfPocket',
-      name: 'Tenant Out-of-Pocket',
+      name: 'Tenant OutOfPocket',
       type: 'number',
       unit: '$',
-      description: 'Amount tenant must pay out-of-pocket'
+      description: 'Amount tenant must pay OutOfPocket'
     },
     {
       id: 'monthlyTIRent',

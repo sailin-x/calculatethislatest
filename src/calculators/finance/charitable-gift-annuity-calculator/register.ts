@@ -1,3 +1,3 @@
-import { CharitableGiftAnnuityCalculatorCalculator } from './CharitableGiftAnnuityCalculatorCalculator';
+import { CharitableGiftAnnuityCalculator } from './CharitableGiftAnnuityCalculator';
 
-export { CharitableGiftAnnuityCalculatorCalculator };
+export { CharitableGiftAnnuityCalculator };

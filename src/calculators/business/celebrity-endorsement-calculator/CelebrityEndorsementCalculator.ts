@@ -10,7 +10,7 @@ import {
 import { validateCelebrityEndorsementCalculatorInputs } from './validation';
 
 export const CelebrityEndorsementCalculator: Calculator = {
-  id: 'celebrity-endorsement-calculator',
+  id: 'CelebrityEndorsementCalculator',
   title: 'Celebrity Endorsement Calculator',
   category: 'business',
   subcategory: 'Financial Planning',

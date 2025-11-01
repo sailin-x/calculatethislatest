@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateBuySellCalculatorInputs } from './validation';
 
 export const BuySellCalculator: Calculator = {
-  id: 'buy-sell-calculator',
+  id: 'BuySellCalculator',
   title: 'Buy Sell Calculator',
   category: 'insurance',
   subcategory: 'General',

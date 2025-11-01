@@ -2,7 +2,7 @@ import { Calculator } from '../../../../types/calculator';
 import { alkalinity_calculatorInputs, alkalinity_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const alkalinity_calculatorCalculator: Calculator = {
+export const alkalinity-calculator: Calculator = {
   id: 'alkalinity-calculator',
   title: 'Alkalinity Calculator Calculator',
   category: 'healthfitnessdiet',

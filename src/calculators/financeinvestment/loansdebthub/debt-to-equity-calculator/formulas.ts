@@ -1,4 +1,4 @@
-import { debt-to-equity-calculatorInputs, debt-to-equity-calculatorMetrics, debt-to-equity-calculatorAnalysis } from './types';
+import { DebtToEquity-calculatorInputs, DebtToEquity-calculatorMetrics, DebtToEquity-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: debt-to-equity-calculatorInputs): number {
+export function calculateResult(inputs: DebtToEquity-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: debt-to-equity-calculatorInputs): number
   }
 }
 
-export function generateAnalysis(inputs: debt-to-equity-calculatorInputs, metrics: debt-to-equity-calculatorMetrics): debt-to-equity-calculatorAnalysis {
+export function generateAnalysis(inputs: DebtToEquity-calculatorInputs, metrics: DebtToEquity-calculatorMetrics): DebtToEquity-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

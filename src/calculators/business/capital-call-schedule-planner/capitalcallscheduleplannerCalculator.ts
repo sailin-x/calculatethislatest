@@ -4,7 +4,7 @@ import { calculateResult, generateAnalysis } from './formulas';
 import { validatecapitalcallscheduleplannerCalculatorInputs } from './validation';
 
 export const capitalcallscheduleplannerCalculator: Calculator = {
-  id: 'capital-call-schedule-planner',
+  id: 'CapitalCallSchedule-planner',
   title: 'Capital Call Schedule Planner',
   category: 'business',
   subcategory: 'General',

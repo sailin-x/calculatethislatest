@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateVisaCostCalculatorInputs } from './validation';
 
 export const VisaCostCalculator: Calculator = {
-  id: 'visa-cost-calculator',
+  id: 'VisaCostCalculator',
   title: 'Visa Cost Calculator',
   category: 'health',
   subcategory: 'General',

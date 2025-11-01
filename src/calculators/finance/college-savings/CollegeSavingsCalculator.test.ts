@@ -29,7 +29,7 @@ describe('CollegeSavingsCalculator', () => {
 
   describe('Calculator Structure', () => {
     it('should have correct calculator properties', () => {
-      expect(CollegeSavingsCalculator.id).toBe('college-savings-calculator');
+      expect(CollegeSavingsCalculator.id).toBe('CollegeSavingsCalculator');
       expect(CollegeSavingsCalculator.title).toBe('College Savings Calculator');
       expect(CollegeSavingsCalculator.category).toBe('finance');
       expect(CollegeSavingsCalculator.subcategory).toBe('Education');

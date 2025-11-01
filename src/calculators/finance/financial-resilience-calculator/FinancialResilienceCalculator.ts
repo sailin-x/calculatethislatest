@@ -10,7 +10,7 @@ import {
 import { validateFinancialResilienceCalculatorInputs } from './validation';
 
 export const FinancialResilienceCalculator: Calculator = {
-  id: 'financial-resilience-calculator',
+  id: 'FinancialResilienceCalculator',
   title: 'Financial Resilience Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

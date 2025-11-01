@@ -3,7 +3,7 @@ import { calculateSelfStorageROI } from './formulas';
 import { generateSelfStorageROIAnalysis } from './formulas';
 
 export const SelfStorageROICalculator: Calculator = {
-  id: 'self-storage-roi-calculator',
+  id: 'SelfStorageRoi-calculator',
   name: 'Self-Storage Facility ROI Calculator',
   category: 'finance',
   subcategory: 'real-estate',
@@ -281,10 +281,10 @@ export const SelfStorageROICalculator: Calculator = {
     },
     {
       id: 'cashOnCashReturn',
-      name: 'Cash-on-Cash Return',
+      name: 'CashOnCash Return',
       type: 'number',
       unit: '%',
-      description: 'Annual cash-on-cash return on investment'
+      description: 'Annual CashOnCash return on investment'
     },
     {
       id: 'capRate',

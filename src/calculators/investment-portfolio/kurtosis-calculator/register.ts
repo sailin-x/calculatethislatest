@@ -1,3 +1,3 @@
-import { KurtosisCalculatorCalculator } from './KurtosisCalculatorCalculator';
+import { KurtosisCalculator } from './KurtosisCalculator';
 
-export { KurtosisCalculatorCalculator };
+export { KurtosisCalculator };

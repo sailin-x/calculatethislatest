@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { leverage_ratio_calculatorInputs, leverage_ratio_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const leverage_ratio_calculatorCalculator: Calculator = {
-  id: 'leverage-ratio-calculator',
+export const LeverageRatioCalculator: Calculator = {
+  id: 'LeverageRatioCalculator',
   title: 'Leverage Ratio Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'investmentportfoliohub',

@@ -1,11 +1,11 @@
 import { ValidationResult } from '../../lib/errors';
-import { municipalbondcalculatorCalculatorInputs } from './types';
+import { municipalbondcalculatorInputs } from './types';
 
 /**
  * Validate municipal bond calculator calculator inputs
  */
-export function validatemunicipalbondcalculatorCalculatorInputs(
-  inputs: municipalbondcalculatorCalculatorInputs
+export function validatemunicipalbondcalculatorInputs(
+  inputs: municipalbondcalculatorInputs
 ): ValidationResult {
   const errors: string[] = [];
 

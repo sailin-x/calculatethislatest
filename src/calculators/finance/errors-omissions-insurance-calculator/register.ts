@@ -1,3 +1,3 @@
-import { ErrorsOmissionsInsuranceCalculatorCalculator } from './ErrorsOmissionsInsuranceCalculatorCalculator';
+import { ErrorsOmissionsInsuranceCalculator } from './ErrorsOmissionsInsuranceCalculator';
 
-export { ErrorsOmissionsInsuranceCalculatorCalculator };
+export { ErrorsOmissionsInsuranceCalculator };

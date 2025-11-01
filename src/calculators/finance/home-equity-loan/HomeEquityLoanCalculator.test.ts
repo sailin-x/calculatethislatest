@@ -68,7 +68,7 @@ describe('HomeEquityLoanCalculator', () => {
 
   describe('Calculator Definition', () => {
     it('should have correct basic properties', () => {
-      expect(HomeEquityLoanCalculator.id).toBe('home-equity-loan');
+      expect(HomeEquityLoanCalculator.id).toBe('HomeEquityLoan');
       expect(HomeEquityLoanCalculator.name).toBe('Home Equity Loan Calculator');
       expect(HomeEquityLoanCalculator.category).toBe('finance');
       expect(HomeEquityLoanCalculator.subcategory).toBe('real-estate');
@@ -195,7 +195,7 @@ describe('HomeEquityLoanCalculator', () => {
       const result = validateHomeEquityLoanInputs(warningInputs);
       expect(result.isValid).toBe(true);
       expect(result.warnings).toContain('Credit score below 620 may affect loan approval');
-      expect(result.warnings).toContain('High debt-to-income ratio may affect loan approval');
+      expect(result.warnings).toContain('High DebtToIncome ratio may affect loan approval');
       expect(result.warnings).toContain('Poor property condition may affect loan approval');
     });
   });

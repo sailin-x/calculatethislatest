@@ -33,7 +33,7 @@ describe('Commercial Lease Buyout Calculator', () => {
 
   describe('Calculator Definition', () => {
     it('should have correct basic properties', () => {
-      expect(CommercialLeaseBuyoutCalculator.id).toBe('commercial-lease-buyout-calculator');
+      expect(CommercialLeaseBuyoutCalculator.id).toBe('CommercialLeaseBuyout-calculator');
       expect(CommercialLeaseBuyoutCalculator.name).toBe('Commercial Lease Buyout Calculator');
       expect(CommercialLeaseBuyoutCalculator.category).toBe('finance');
       expect(CommercialLeaseBuyoutCalculator.subcategory).toBe('business');
@@ -114,11 +114,11 @@ describe('Commercial Lease Buyout Calculator', () => {
       expect(result.errors.some(error => error.includes('market rent'))).toBe(true);
     });
 
-    it('should validate loan-to-value ratio', () => {
+    it('should validate LoanToValue ratio', () => {
       const highLTVInputs = { ...validInputs, loanAmount: 2200000 };
       const result = validateLeaseBuyoutInputs(highLTVInputs);
       expect(result.isValid).toBe(false);
-      expect(result.errors.some(error => error.includes('Loan-to-value'))).toBe(true);
+      expect(result.errors.some(error => error.includes('LoanToValue'))).toBe(true);
     });
 
     it('should validate down payment percentage', () => {
@@ -185,7 +185,7 @@ describe('Commercial Lease Buyout Calculator', () => {
       }
     });
 
-    it('should calculate loan-to-value correctly', () => {
+    it('should calculate LoanToValue correctly', () => {
       const metrics = calculateLeaseBuyout(validInputs);
       
       const expectedLTV = (validInputs.loanAmount / validInputs.propertyValue) * 100;
@@ -347,7 +347,7 @@ describe('Commercial Lease Buyout Calculator', () => {
       expect(positiveResult.rentSavings).toBeGreaterThan(negativeResult.rentSavings);
     });
 
-    it('should calculate loan-to-value ratio appropriately', () => {
+    it('should calculate LoanToValue ratio appropriately', () => {
       const result = CommercialLeaseBuyoutCalculator.calculate(validInputs);
       
       // LTV should be reasonable

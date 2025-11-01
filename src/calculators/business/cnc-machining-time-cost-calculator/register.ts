@@ -1,3 +1,3 @@
-import { CncMachiningTimeCostCalculatorCalculator } from './CncMachiningTimeCostCalculatorCalculator';
+import { CncMachiningTimeCostCalculator } from './CncMachiningTimeCostCalculator';
 
-export { CncMachiningTimeCostCalculatorCalculator };
+export { CncMachiningTimeCostCalculator };

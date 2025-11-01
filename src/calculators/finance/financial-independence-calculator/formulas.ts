@@ -1,4 +1,4 @@
-import { financial-independence-calculatorInputs, financial-independence-calculatorMetrics, financial-independence-calculatorAnalysis } from './types';
+import { FinancialIndependenceCalculatorinputs, FinancialIndependenceCalculatormetrics, FinancialIndependenceCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: financial-independence-calculatorInputs): number {
+export function calculateResult(inputs: FinancialIndependenceCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: financial-independence-calculatorInputs)
   }
 }
 
-export function generateAnalysis(inputs: financial-independence-calculatorInputs, metrics: financial-independence-calculatorMetrics): financial-independence-calculatorAnalysis {
+export function generateAnalysis(inputs: FinancialIndependenceCalculatorinputs, metrics: FinancialIndependenceCalculatormetrics): FinancialIndependenceCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateGamingPcBuildCostEstimatorInputs, validateGamingPcBuildCostEstimatorBusinessRules } from './validation';
 
-export const GamingPcBuildCostEstimatorCalculator: Calculator: Calculator = {
-  id: 'gaming-pc-build-cost-estimator-calculator',
+export const GamingPcBuildCostEstimatorCalculator: Calculator = {
+  id: 'GamingPcBuild-CostEstimatorCalculator',
   title: 'Gaming PC Build Cost Estimator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

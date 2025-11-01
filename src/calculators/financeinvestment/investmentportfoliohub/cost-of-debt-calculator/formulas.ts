@@ -1,4 +1,4 @@
-import { cost-of-debt-calculatorInputs, cost-of-debt-calculatorMetrics, cost-of-debt-calculatorAnalysis } from './types';
+import { CostOfDebt-calculatorInputs, CostOfDebt-calculatorMetrics, CostOfDebt-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: cost-of-debt-calculatorInputs): number {
+export function calculateResult(inputs: CostOfDebt-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: cost-of-debt-calculatorInputs): number {
   }
 }
 
-export function generateAnalysis(inputs: cost-of-debt-calculatorInputs, metrics: cost-of-debt-calculatorMetrics): cost-of-debt-calculatorAnalysis {
+export function generateAnalysis(inputs: CostOfDebt-calculatorInputs, metrics: CostOfDebt-calculatorMetrics): CostOfDebt-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

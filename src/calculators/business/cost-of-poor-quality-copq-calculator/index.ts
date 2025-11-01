@@ -1,4 +1,4 @@
-export { CostOfPoorQualityCopqCalculatorCalculator } from './CostOfPoorQualityCopqCalculatorCalculator';
+export { CostOfPoorQualityCopqCalculator } from './CostOfPoorQualityCopqCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

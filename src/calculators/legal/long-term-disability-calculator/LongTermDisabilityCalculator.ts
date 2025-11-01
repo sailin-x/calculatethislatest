@@ -9,7 +9,7 @@ import {
 import { validateLongTermDisabilityCalculatorInputs } from './validation';
 
 export const LongTermDisabilityCalculator: Calculator = {
-  id: 'long-term-disability-calculator',
+  id: 'LongTermDisability-calculator',
   title: 'Long Term Disability Calculator',
   category: 'legal',
   subcategory: 'Settlement Analysis',

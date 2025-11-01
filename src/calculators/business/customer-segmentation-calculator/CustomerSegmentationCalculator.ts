@@ -10,7 +10,7 @@ import {
 import { validateCustomerSegmentationCalculatorInputs } from './validation';
 
 export const CustomerSegmentationCalculator: Calculator = {
-  id: 'customer-segmentation-calculator',
+  id: 'CustomerSegmentationCalculator',
   title: 'Customer Segmentation Calculator',
   category: 'business',
   subcategory: 'Financial Planning',

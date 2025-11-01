@@ -1,3 +1,3 @@
-import { NursingHomeAbuseSettlementCalculatorCalculator } from './NursingHomeAbuseSettlementCalculatorCalculator';
+import { NursingHomeAbuseSettlementCalculator } from './NursingHomeAbuseSettlementCalculator';
 
-export { NursingHomeAbuseSettlementCalculatorCalculator };
+export { NursingHomeAbuseSettlementCalculator };

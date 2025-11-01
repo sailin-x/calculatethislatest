@@ -1,4 +1,4 @@
-export { GiftTaxCalculatorCalculator } from './GiftTaxCalculatorCalculator';
+export { GiftTaxCalculator } from './GiftTaxCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

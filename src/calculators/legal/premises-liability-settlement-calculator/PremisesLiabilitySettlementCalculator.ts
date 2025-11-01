@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validatePremisesLiabilitySettlementCalculatorInputs, validatePremisesLiabilitySettlementCalculatorBusinessRules } from './validation';
 
-export const PremisesLiabilitySettlementCalculatorCalculator: Calculator: Calculator = {
-  id: 'premises-liability-settlement-calculator-calculator',
+export const PremisesLiabilitySettlementCalculator: Calculator = {
+  id: 'PremisesLiabilitySettlement-calculator-calculator',
   title: 'Premises Liability Settlement Calculator Calculator',
   legal: 'legal', // e.g., 'finance', 'math', 'health', 'business'
   sublegal: 'Sublegal Name',

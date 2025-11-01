@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateGapInsuranceCalculatorInputs } from './validation';
 
 export const GapInsuranceCalculator: Calculator = {
-  id: 'gap-insurance-calculator',
+  id: 'GapInsuranceCalculator',
   title: 'Gap Insurance Calculator',
   category: 'insurance',
   subcategory: 'General',

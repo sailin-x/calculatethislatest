@@ -1,13 +1,13 @@
-import { roth-conversion-tax-calculatorInputs, roth-conversion-tax-calculatorMetrics, roth-conversion-tax-calculatorAnalysis } from './types';
+import { RothConversionTax-calculatorInputs, RothConversionTax-calculatorMetrics, RothConversionTax-calculatorAnalysis } from './types';
 
 // Roth Conversion Tax Calculator - Finance calculations
-export function calculateResult(inputs: roth-conversion-tax-calculatorInputs): number {
+export function calculateResult(inputs: RothConversionTax-calculatorInputs): number {
   // Financial calculation logic
   const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
   return numericValues.reduce((sum, val) => sum + val, 0) || 0;
 }
 
-export function generateAnalysis(inputs: roth-conversion-tax-calculatorInputs, metrics: roth-conversion-tax-calculatorMetrics): roth-conversion-tax-calculatorAnalysis {
+export function generateAnalysis(inputs: RothConversionTax-calculatorInputs, metrics: RothConversionTax-calculatorMetrics): RothConversionTax-calculatorAnalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (Math.abs(result) > 100000) riskLevel = 'High';

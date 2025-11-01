@@ -1,13 +1,13 @@
-import { liability-insurance-calculatorInputs, liability-insurance-calculatorMetrics, liability-insurance-calculatorAnalysis } from './types';
+import { LiabilityInsuranceCalculatorinputs, LiabilityInsuranceCalculatormetrics, LiabilityInsuranceCalculatoranalysis } from './types';
 
 // Liability Insurance Calculator - Finance calculations
-export function calculateResult(inputs: liability-insurance-calculatorInputs): number {
+export function calculateResult(inputs: LiabilityInsuranceCalculatorinputs): number {
   // Financial calculation logic
   const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
   return numericValues.reduce((sum, val) => sum + val, 0) || 0;
 }
 
-export function generateAnalysis(inputs: liability-insurance-calculatorInputs, metrics: liability-insurance-calculatorMetrics): liability-insurance-calculatorAnalysis {
+export function generateAnalysis(inputs: LiabilityInsuranceCalculatorinputs, metrics: LiabilityInsuranceCalculatormetrics): LiabilityInsuranceCalculatoranalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (Math.abs(result) > 100000) riskLevel = 'High';

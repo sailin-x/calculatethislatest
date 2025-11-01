@@ -6,7 +6,7 @@ import { getRentVsBuyValidationRules } from './validation';
  * Rent vs. buy formula implementation
  */
 const rentVsBuyFormula: Formula = {
-  id: 'rent-vs-buy',
+  id: 'RentVsBuy',
   name: 'Rent vs. Buy',
   description: 'Compare renting vs. buying costs and determine the better financial option',
   calculate: (inputs: Record<string, any>) => {
@@ -23,7 +23,7 @@ const rentVsBuyFormula: Formula = {
  * Industry-leading rent vs. buy calculator with comprehensive features
  */
 export const rentVsBuyCalculator: Calculator = {
-  id: 'rent-vs-buy-calculator',
+  id: 'RentVsBuy-calculator',
   title: 'Rent vs. Buy Calculator',
   category: 'finance',
   subcategory: 'Mortgage & Real Estate',

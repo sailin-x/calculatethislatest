@@ -170,7 +170,7 @@ export const amortizationValidationRules: ValidationRule[] = [
       const maxFutureDate = new Date();
       maxFutureDate.setFullYear(now.getFullYear() + 1);
       
-      return date >= new Date('1900-01-01') && date <= maxFutureDate;
+      return date >= new Date('19000101') && date <= maxFutureDate;
     },
     message: 'Start date must be between 1900 and one year from now'
   }

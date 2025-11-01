@@ -1,3 +1,3 @@
-import { BusinessLoanQualificationCalculatorCalculator } from './BusinessLoanQualificationCalculatorCalculator';
+import { BusinessLoanQualificationCalculator } from './BusinessLoanQualificationCalculator';
 
-export { BusinessLoanQualificationCalculatorCalculator };
+export { BusinessLoanQualificationCalculator };

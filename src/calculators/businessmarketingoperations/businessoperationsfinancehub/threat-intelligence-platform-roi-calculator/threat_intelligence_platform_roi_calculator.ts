@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { threat_intelligence_platform_roi_calculatorInputs, threat_intelligence_platform_roi_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const threat_intelligence_platform_roi_calculatorCalculator: Calculator = {
-  id: 'threat-intelligence-platform-roi-calculator',
+export const ThreatIntelligencePlatform-roi-calculator: Calculator = {
+  id: 'ThreatIntelligencePlatform-roi-calculator',
   title: 'Threat Intelligence Platform ROI Calculator Calculator',
   category: 'businessmarketingoperations',
   subcategory: 'businessoperationsfinancehub',

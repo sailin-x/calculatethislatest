@@ -1,4 +1,4 @@
-export { WeightWatchersCalculatorCalculator } from './WeightWatchersCalculatorCalculator';
+export { WeightWatchersCalculator } from './WeightWatchersCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

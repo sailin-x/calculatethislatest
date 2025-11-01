@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { operating_margin_calculatorInputs, operating_margin_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const operating_margin_calculatorCalculator: Calculator = {
-  id: 'operating-margin-calculator',
+export const OperatingMarginCalculator: Calculator = {
+  id: 'OperatingMarginCalculator',
   title: 'Operating Margin Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'investmentportfoliohub',

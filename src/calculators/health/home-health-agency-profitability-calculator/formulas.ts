@@ -1,13 +1,13 @@
-import { home-health-agency-profitability-calculatorInputs, home-health-agency-profitability-calculatorMetrics, home-health-agency-profitability-calculatorAnalysis } from './types';
+import { HomeHealthAgency-profitability-calculatorInputs, HomeHealthAgency-profitability-calculatorMetrics, HomeHealthAgency-profitability-calculatorAnalysis } from './types';
 
 // Home Health Agency Profitability Calculator - Health calculations
-export function calculateResult(inputs: home-health-agency-profitability-calculatorInputs): number {
+export function calculateResult(inputs: HomeHealthAgency-profitability-calculatorInputs): number {
   // Health calculation logic
   const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
   return numericValues.reduce((sum, val) => sum + val, 0) || 0;
 }
 
-export function generateAnalysis(inputs: home-health-agency-profitability-calculatorInputs, metrics: home-health-agency-profitability-calculatorMetrics): home-health-agency-profitability-calculatorAnalysis {
+export function generateAnalysis(inputs: HomeHealthAgency-profitability-calculatorInputs, metrics: HomeHealthAgency-profitability-calculatorMetrics): HomeHealthAgency-profitability-calculatorAnalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (Math.abs(result) > 1000) riskLevel = 'High';

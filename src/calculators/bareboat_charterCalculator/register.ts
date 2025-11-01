@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { bareboat_charterCalculatorCalculator } from './bareboat_charterCalculatorCalculator';
+import { bareboat_charterCalculator } from './bareboat_charterCalculator';
 
-export function registerbareboat_charterCalculatorCalculator(): void {
-  calculatorRegistry.register(new bareboat_charterCalculatorCalculator());
+export function registerbareboat_charterCalculator(): void {
+  calculatorRegistry.register(new bareboat_charterCalculator());
 }

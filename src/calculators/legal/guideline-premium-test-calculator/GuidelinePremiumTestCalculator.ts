@@ -9,7 +9,7 @@ import {
 import { validateGuidelinePremiumTestCalculatorInputs } from './validation';
 
 export const GuidelinePremiumTestCalculator: Calculator = {
-  id: 'guideline-premium-test-calculator',
+  id: 'GuidelinePremiumTest-calculator',
   title: 'Guideline Premium Test Calculator',
   category: 'legal',
   subcategory: 'Settlement Analysis',

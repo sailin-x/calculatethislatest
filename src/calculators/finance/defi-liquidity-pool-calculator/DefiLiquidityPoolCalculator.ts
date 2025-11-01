@@ -10,7 +10,7 @@ import {
 import { validateDefiLiquidityPoolCalculatorInputs } from './validation';
 
 export const DefiLiquidityPoolCalculator: Calculator = {
-  id: 'defi-liquidity-pool-calculator',
+  id: 'DefiLiquidityPool-calculator',
   title: 'DeFi Liquidity Pool Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

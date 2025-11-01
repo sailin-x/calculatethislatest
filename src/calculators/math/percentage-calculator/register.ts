@@ -1,3 +1,3 @@
-import { PercentageCalculatorCalculator } from './PercentageCalculatorCalculator';
+import { PercentageCalculator } from './PercentageCalculator';
 
-export { PercentageCalculatorCalculator };
+export { PercentageCalculator };

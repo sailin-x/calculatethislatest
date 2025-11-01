@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateSlipAndFallSettlementCalculatorInputs, validateSlipAndFallSettlementCalculatorBusinessRules } from './validation';
 
-export const SlipAndFallSettlementCalculatorCalculator: Calculator: Calculator = {
-  id: 'slip-and-fall-settlement-calculator-calculator',
+export const SlipAndFallSettlementCalculator: Calculator = {
+  id: 'SlipAndFall-SettlementCalculatorCalculator',
   title: 'Slip and Fall Settlement Calculator Calculator',
   legal: 'legal', // e.g., 'finance', 'math', 'health', 'business'
   sublegal: 'Sublegal Name',

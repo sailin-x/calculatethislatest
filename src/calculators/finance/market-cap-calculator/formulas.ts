@@ -1,4 +1,4 @@
-import { market-cap-calculatorInputs, market-cap-calculatorMetrics, market-cap-calculatorAnalysis } from './types';
+import { MarketCapCalculatorinputs, MarketCapCalculatormetrics, MarketCapCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: market-cap-calculatorInputs): number {
+export function calculateResult(inputs: MarketCapCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: market-cap-calculatorInputs): number {
   }
 }
 
-export function generateAnalysis(inputs: market-cap-calculatorInputs, metrics: market-cap-calculatorMetrics): market-cap-calculatorAnalysis {
+export function generateAnalysis(inputs: MarketCapCalculatorinputs, metrics: MarketCapCalculatormetrics): MarketCapCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

@@ -1,3 +1,3 @@
-export * from './hobbiesCalculatorCalculator';
+export * from './hobbiesCalculator';
 export * from './register';
 export * from './types';

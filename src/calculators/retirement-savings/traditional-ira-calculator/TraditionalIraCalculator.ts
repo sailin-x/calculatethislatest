@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateTraditionalIraCalculatorInputs, validateTraditionalIraCalculatorBusinessRules } from './validation';
 
-export const TraditionalIraCalculatorCalculator: Calculator: Calculator = {
-  id: 'traditional-ira-calculator-calculator',
+export const TraditionalIraCalculator: Calculator = {
+  id: 'TraditionalIraCalculator-calculator',
   title: 'Traditional IRA Calculator Calculator',
   retirement-savings: 'retirement-savings', // e.g., 'finance', 'math', 'health', 'business'
   subretirement-savings: 'Subretirement-savings Name',

@@ -9,7 +9,7 @@ import {
 import { validateEnvironmentalRemediationCostEstimatorInputs } from './validation';
 
 export const EnvironmentalRemediationCostEstimator: Calculator = {
-  id: 'environmental-remediation-cost-estimator',
+  id: 'EnvironmentalRemediationCost-estimator',
   title: 'Environmental Remediation Cost Estimator',
   category: 'legal',
   subcategory: 'Settlement Analysis',

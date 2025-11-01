@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { growth_hormone_calculatorInputs, growth_hormone_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const growth_hormone_calculatorCalculator: Calculator = {
-  id: 'growth-hormone-calculator',
+export const GrowthHormoneCalculator: Calculator = {
+  id: 'GrowthHormoneCalculator',
   title: 'Growth Hormone Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

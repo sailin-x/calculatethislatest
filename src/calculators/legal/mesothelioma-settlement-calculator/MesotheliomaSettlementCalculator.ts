@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateMesotheliomaSettlementCalculatorInputs, validateMesotheliomaSettlementCalculatorBusinessRules } from './validation';
 
-export const MesotheliomaSettlementCalculatorCalculator: Calculator: Calculator = {
-  id: 'mesothelioma-settlement-calculator-calculator',
+export const MesotheliomaSettlementCalculator: Calculator = {
+  id: 'MesotheliomaSettlementCalculator-calculator',
   title: 'Mesothelioma Settlement Calculator Calculator',
   legal: 'legal', // e.g., 'finance', 'math', 'health', 'business'
   sublegal: 'Sublegal Name',

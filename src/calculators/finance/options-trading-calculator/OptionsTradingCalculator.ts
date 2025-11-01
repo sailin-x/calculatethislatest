@@ -10,7 +10,7 @@ import {
 import { validateOptionsTradingCalculatorInputs } from './validation';
 
 export const OptionsTradingCalculator: Calculator = {
-  id: 'options-trading-calculator',
+  id: 'OptionsTradingCalculator',
   title: 'Options Trading Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

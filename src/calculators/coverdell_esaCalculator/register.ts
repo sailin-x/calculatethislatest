@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { coverdell_esaCalculatorCalculator } from './coverdell_esaCalculatorCalculator';
+import { coverdell_esaCalculator } from './coverdell_esaCalculator';
 
-export function registercoverdell_esaCalculatorCalculator(): void {
-  calculatorRegistry.register(new coverdell_esaCalculatorCalculator());
+export function registercoverdell_esaCalculator(): void {
+  calculatorRegistry.register(new coverdell_esaCalculator());
 }

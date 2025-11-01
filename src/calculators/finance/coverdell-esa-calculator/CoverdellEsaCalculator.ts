@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateCoverdellEsaCalculatorInputs, validateCoverdellEsaCalculatorBusinessRules } from './validation';
 
-export const CoverdellEsaCalculatorCalculator: Calculator: Calculator = {
-  id: 'coverdell-esa-calculator-calculator',
+export const CoverdellEsaCalculator: Calculator = {
+  id: 'CoverdellEsaCalculator-calculator',
   title: 'Coverdell ESA Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

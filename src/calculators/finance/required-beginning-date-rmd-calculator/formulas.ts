@@ -1,4 +1,4 @@
-import { required-beginning-date-rmd-calculatorInputs, required-beginning-date-rmd-calculatorMetrics, required-beginning-date-rmd-calculatorAnalysis } from './types';
+import { RequiredBeginningDate-rmd-calculatorInputs, RequiredBeginningDate-rmd-calculatorMetrics, RequiredBeginningDate-rmd-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: required-beginning-date-rmd-calculatorInputs): number {
+export function calculateResult(inputs: RequiredBeginningDate-rmd-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: required-beginning-date-rmd-calculatorIn
   }
 }
 
-export function generateAnalysis(inputs: required-beginning-date-rmd-calculatorInputs, metrics: required-beginning-date-rmd-calculatorMetrics): required-beginning-date-rmd-calculatorAnalysis {
+export function generateAnalysis(inputs: RequiredBeginningDate-rmd-calculatorInputs, metrics: RequiredBeginningDate-rmd-calculatorMetrics): RequiredBeginningDate-rmd-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

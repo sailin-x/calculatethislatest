@@ -1,4 +1,4 @@
-import { trade-credit-insurance-roi-calculatorInputs, trade-credit-insurance-roi-calculatorMetrics, trade-credit-insurance-roi-calculatorAnalysis } from './types';
+import { TradeCreditInsurance-roi-calculatorInputs, TradeCreditInsurance-roi-calculatorMetrics, TradeCreditInsurance-roi-calculatorAnalysis } from './types';
 
 
 // Investment Calculator - ROI and growth calculations
@@ -12,7 +12,7 @@ export function calculateCompoundInterest(principal: number, rate: number, years
   return principal * Math.pow(1 + ratePerPeriod, totalPeriods);
 }
 
-export function calculateResult(inputs: trade-credit-insurance-roi-calculatorInputs): number {
+export function calculateResult(inputs: TradeCreditInsurance-roi-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -36,7 +36,7 @@ export function calculateResult(inputs: trade-credit-insurance-roi-calculatorInp
   }
 }
 
-export function generateAnalysis(inputs: trade-credit-insurance-roi-calculatorInputs, metrics: trade-credit-insurance-roi-calculatorMetrics): trade-credit-insurance-roi-calculatorAnalysis {
+export function generateAnalysis(inputs: TradeCreditInsurance-roi-calculatorInputs, metrics: TradeCreditInsurance-roi-calculatorMetrics): TradeCreditInsurance-roi-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

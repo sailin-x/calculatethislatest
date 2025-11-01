@@ -1,4 +1,4 @@
-import { net-promoter-score-calculatorInputs, net-promoter-score-calculatorMetrics, net-promoter-score-calculatorAnalysis } from './types';
+import { NetPromoterScore-calculatorInputs, NetPromoterScore-calculatorMetrics, NetPromoterScore-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: net-promoter-score-calculatorInputs): number {
+export function calculateResult(inputs: NetPromoterScore-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: net-promoter-score-calculatorInputs): nu
   }
 }
 
-export function generateAnalysis(inputs: net-promoter-score-calculatorInputs, metrics: net-promoter-score-calculatorMetrics): net-promoter-score-calculatorAnalysis {
+export function generateAnalysis(inputs: NetPromoterScore-calculatorInputs, metrics: NetPromoterScore-calculatorMetrics): NetPromoterScore-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

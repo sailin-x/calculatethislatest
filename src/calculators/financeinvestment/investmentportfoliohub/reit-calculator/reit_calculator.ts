@@ -2,7 +2,7 @@ import { Calculator } from '../../../../types/calculator';
 import { reit_calculatorInputs, reit_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const reit_calculatorCalculator: Calculator = {
+export const reit-calculator: Calculator = {
   id: 'reit-calculator',
   title: 'REIT Calculator Calculator',
   category: 'financeinvestment',

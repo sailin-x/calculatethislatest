@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateTalcumPowderSettlementCalculatorInputs, validateTalcumPowderSettlementCalculatorBusinessRules } from './validation';
 
-export const TalcumPowderSettlementCalculatorCalculator: Calculator: Calculator = {
-  id: 'talcum-powder-settlement-calculator-calculator',
+export const TalcumPowderSettlementCalculator: Calculator = {
+  id: 'TalcumPowderSettlement-calculator-calculator',
   title: 'Talcum Powder Settlement Calculator Calculator',
   legal: 'legal', // e.g., 'finance', 'math', 'health', 'business'
   sublegal: 'Sublegal Name',

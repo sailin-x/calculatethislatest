@@ -3,7 +3,7 @@ import { corporate_compliance_cost_benefit_analysisInputs, corporate_compliance_
 import { calculateResult, generateAnalysis } from './formulas';
 
 export const corporate_compliance_cost_benefit_analysisCalculator: Calculator = {
-  id: 'corporate-compliance-cost-benefit-analysis',
+  id: 'CorporateComplianceCost-benefit-analysis',
   title: 'Corporate Compliance Cost Benefit Analysis Calculator',
   category: 'businessmarketingoperations',
   subcategory: 'businessoperationsfinancehub',

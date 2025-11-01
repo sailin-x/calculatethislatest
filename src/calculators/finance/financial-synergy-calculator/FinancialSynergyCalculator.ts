@@ -10,7 +10,7 @@ import {
 import { validateFinancialSynergyCalculatorInputs } from './validation';
 
 export const FinancialSynergyCalculator: Calculator = {
-  id: 'financial-synergy-calculator',
+  id: 'FinancialSynergyCalculator',
   title: 'Financial Synergy Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

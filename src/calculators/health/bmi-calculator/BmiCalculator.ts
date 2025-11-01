@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateBmiCalculatorInputs, validateBmiCalculatorBusinessRules } from './validation';
 
-export const BmiCalculatorCalculator: Calculator: Calculator = {
-  id: 'bmi-calculator-calculator',
+export const BmiCalculator: Calculator = {
+  id: 'BmiCalculatorCalculator',
   title: 'BMI Calculator Calculator',
   health: 'health', // e.g., 'finance', 'math', 'health', 'business'
   subhealth: 'Subhealth Name',

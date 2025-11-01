@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateVitaminDCalculatorInputs } from './validation';
 
 export const VitaminDCalculator: Calculator = {
-  id: 'vitamin-d-calculator',
+  id: 'VitaminDCalculator',
   title: 'Vitamin D Calculator',
   category: 'health',
   subcategory: 'General',

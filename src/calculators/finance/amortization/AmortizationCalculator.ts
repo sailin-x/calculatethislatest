@@ -162,7 +162,7 @@ export const AmortizationCalculator: Calculator = {
       id: 'yearlyTotals',
       label: 'Yearly Summary',
       type: 'text',
-      description: 'Year-by-year payment and balance summary'
+      description: 'YearByYear payment and balance summary'
     }
   ],
 
@@ -391,7 +391,7 @@ export const AmortizationCalculator: Calculator = {
       yearlyTotals: {
         value: yearlyTotalsSummary.join('; '),
         formatted: yearlyTotalsSummary.map(item => `• ${item}`).join('\n'),
-        explanation: 'Year-by-year breakdown of payments and remaining balance'
+        explanation: 'YearByYear breakdown of payments and remaining balance'
       }
     };
   },

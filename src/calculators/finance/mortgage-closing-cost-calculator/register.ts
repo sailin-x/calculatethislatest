@@ -1,3 +1,3 @@
-import { MortgageClosingCostCalculatorCalculator } from './MortgageClosingCostCalculatorCalculator';
+import { MortgageClosingCostCalculator } from './MortgageClosingCostCalculator';
 
-export { MortgageClosingCostCalculatorCalculator };
+export { MortgageClosingCostCalculator };

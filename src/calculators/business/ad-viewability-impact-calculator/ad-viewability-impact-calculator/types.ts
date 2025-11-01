@@ -1,4 +1,4 @@
-export interface ad-viewability-impact-calculatorInputs {
+export interface AdViewabilityImpact-calculatorInputs {
   // Calculator-specific input fields
   value?: number;
   rate?: number;
@@ -7,17 +7,17 @@ export interface ad-viewability-impact-calculatorInputs {
   // Add more fields as needed for this calculator
 }
 
-export interface ad-viewability-impact-calculatorResults {
+export interface AdViewabilityImpact-calculatorResults {
   result: number;
   analysis?: string;
 }
 
-export interface ad-viewability-impact-calculatorMetrics {
+export interface AdViewabilityImpact-calculatorMetrics {
   result: number;
   // Add more metrics as needed
 }
 
-export interface ad-viewability-impact-calculatorAnalysis {
+export interface AdViewabilityImpact-calculatorAnalysis {
   recommendation: string;
   riskLevel: 'Low' | 'Medium' | 'High';
 }

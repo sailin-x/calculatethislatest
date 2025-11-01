@@ -1,4 +1,4 @@
-export { SharpeRatioCalculatorCalculator } from './SharpeRatioCalculatorCalculator';
+export { SharpeRatioCalculator } from './SharpeRatioCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

@@ -8,9 +8,9 @@ import {
 } from './formulas';
 import { validateHighnetworthDivorceAssetDivisionCalculatorInputs, validateHighnetworthDivorceAssetDivisionCalculatorBusinessRules } from './validation';
 
-export const HighnetworthDivorceAssetDivisionCalculatorCalculator: Calculator: Calculator = {
-  id: 'high-net-worth-divorce-asset-division-calculator-calculator',
-  title: 'High-Net-Worth Divorce Asset Division Calculator Calculator',
+export const HighnetworthDivorceAssetDivisionCalculator: Calculator = {
+  id: 'HighNetWorth-DivorceAssetDivision-calculator-calculator',
+  title: 'HighNetWorth Divorce Asset Division Calculator Calculator',
   legal: 'legal', // e.g., 'finance', 'math', 'health', 'business'
   sublegal: 'Sublegal Name',
   description: 'Brief description of what this calculator does and its purpose.',

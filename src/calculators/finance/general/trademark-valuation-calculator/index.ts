@@ -1,4 +1,4 @@
-export { trademark_valuation_calculatorCalculator } from './trademark_valuation_calculator';
+export { trademark_valuation_calculator } from './trademark_valuation_calculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

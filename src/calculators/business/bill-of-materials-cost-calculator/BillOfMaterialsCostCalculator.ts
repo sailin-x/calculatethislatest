@@ -10,7 +10,7 @@ import {
 import { validateBillOfMaterialsCostCalculatorInputs } from './validation';
 
 export const BillOfMaterialsCostCalculator: Calculator = {
-  id: 'bill-of-materials-cost-calculator',
+  id: 'BillOfMaterials-cost-calculator',
   title: 'Bill of Materials Cost Calculator',
   category: 'business',
   subcategory: 'Financial Planning',

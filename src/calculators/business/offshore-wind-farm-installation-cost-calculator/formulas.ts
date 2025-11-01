@@ -1,4 +1,4 @@
-import { offshore-wind-farm-installation-cost-calculatorInputs, offshore-wind-farm-installation-cost-calculatorMetrics, offshore-wind-farm-installation-cost-calculatorAnalysis } from './types';
+import { OffshoreWindFarm-InstallationCostCalculatorinputs, OffshoreWindFarm-InstallationCostCalculatormetrics, OffshoreWindFarm-InstallationCostCalculatoranalysis } from './types';
 
 // Offshore Wind Farm Installation Cost Calculator - Business calculations
 export function calculateNetPresentValue(cashFlows: number[], discountRate: number): number {
@@ -11,7 +11,7 @@ export function calculateROI(initialInvestment: number, finalValue: number): num
  return ((finalValue - initialInvestment) / initialInvestment) * 100;
 }
 
-export function calculateResult(inputs: offshore-wind-farm-installation-cost-calculatorInputs): number {
+export function calculateResult(inputs: OffshoreWindFarm-InstallationCostCalculatorinputs): number {
  // Business calculation logic with real math
  const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
  if (numericValues.length >= 2) {
@@ -24,7 +24,7 @@ export function calculateResult(inputs: offshore-wind-farm-installation-cost-cal
  return calculateNetPresentValue(numericValues, 10); // 10% discount rate
 }
 
-export function generateAnalysis(inputs: offshore-wind-farm-installation-cost-calculatorInputs, metrics: offshore-wind-farm-installation-cost-calculatorMetrics): offshore-wind-farm-installation-cost-calculatorAnalysis {
+export function generateAnalysis(inputs: OffshoreWindFarm-InstallationCostCalculatorinputs, metrics: OffshoreWindFarm-InstallationCostCalculatormetrics): OffshoreWindFarm-InstallationCostCalculatoranalysis {
  const result = metrics.result;
  let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
  if (Math.abs(result) > 100000) riskLevel = 'High';

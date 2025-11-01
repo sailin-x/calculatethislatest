@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateWaterIntakeCalculatorInputs } from './validation';
 
 export const WaterIntakeCalculator: Calculator = {
-  id: 'water-intake-calculator',
+  id: 'WaterIntakeCalculator',
   title: 'Water Intake Calculator',
   category: 'health',
   subcategory: 'General',

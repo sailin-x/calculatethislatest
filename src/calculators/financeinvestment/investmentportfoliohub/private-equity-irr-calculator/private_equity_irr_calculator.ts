@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { private_equity_irr_calculatorInputs, private_equity_irr_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const private_equity_irr_calculatorCalculator: Calculator = {
-  id: 'private-equity-irr-calculator',
+export const PrivateEquityIrr-calculator: Calculator = {
+  id: 'PrivateEquityIrr-calculator',
   title: 'Private Equity IRR Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'investmentportfoliohub',

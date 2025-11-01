@@ -1,3 +1,3 @@
-import { DialysisCenterProfitabilityCalculatorCalculator } from './DialysisCenterProfitabilityCalculatorCalculator';
+import { DialysisCenterProfitabilityCalculator } from './DialysisCenterProfitabilityCalculator';
 
-export { DialysisCenterProfitabilityCalculatorCalculator };
+export { DialysisCenterProfitabilityCalculator };

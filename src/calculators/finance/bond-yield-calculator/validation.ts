@@ -1,11 +1,11 @@
 import { ValidationResult } from '../../lib/errors';
-import { bondyieldcalculatorCalculatorInputs } from './types';
+import { bondyieldcalculatorInputs } from './types';
 
 /**
  * Validate bond yield calculator calculator inputs
  */
-export function validatebondyieldcalculatorCalculatorInputs(
-  inputs: bondyieldcalculatorCalculatorInputs
+export function validatebondyieldcalculatorInputs(
+  inputs: bondyieldcalculatorInputs
 ): ValidationResult {
   const errors: string[] = [];
 

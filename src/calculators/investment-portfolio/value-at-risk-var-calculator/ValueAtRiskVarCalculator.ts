@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateValueAtRiskVarCalculatorInputs, validateValueAtRiskVarCalculatorBusinessRules } from './validation';
 
-export const ValueAtRiskVarCalculatorCalculator: Calculator: Calculator = {
-  id: 'value-at-risk-var-calculator-calculator',
+export const ValueAtRiskVarCalculator: Calculator = {
+  id: 'ValueAtRisk-VarCalculatorCalculator',
   title: 'Value at Risk (VaR) Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

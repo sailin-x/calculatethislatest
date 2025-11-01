@@ -1,3 +1,3 @@
-export * from './catastrophe_bond_pricing_modelCalculatorCalculator';
+export * from './catastrophe_bond_pricing_modelCalculator';
 export * from './register';
 export * from './types';

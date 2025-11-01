@@ -1,3 +1,3 @@
-export * from './mortgage_payoffCalculatorCalculator';
+export * from './mortgage_payoffCalculator';
 export * from './register';
 export * from './types';

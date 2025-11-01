@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { registerRequiredBeginningDateRmdCalculatorCalculator } from './registerRequiredBeginningDateRmdCalculatorCalculator';
+import { registerRequiredBeginningDateRmdCalculator } from './registerRequiredBeginningDateRmdCalculator';
 
-export function registerregisterRequiredBeginningDateRmdCalculatorCalculator(): void {
-  calculatorRegistry.register(new registerRequiredBeginningDateRmdCalculatorCalculator());
+export function registerregisterRequiredBeginningDateRmdCalculator(): void {
+  calculatorRegistry.register(new registerRequiredBeginningDateRmdCalculator());
 }

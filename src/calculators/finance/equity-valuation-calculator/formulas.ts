@@ -1,4 +1,4 @@
-import { equity-valuation-calculatorInputs, equity-valuation-calculatorMetrics, equity-valuation-calculatorAnalysis } from './types';
+import { EquityValuationCalculatorinputs, EquityValuationCalculatormetrics, EquityValuationCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: equity-valuation-calculatorInputs): number {
+export function calculateResult(inputs: EquityValuationCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: equity-valuation-calculatorInputs): numb
   }
 }
 
-export function generateAnalysis(inputs: equity-valuation-calculatorInputs, metrics: equity-valuation-calculatorMetrics): equity-valuation-calculatorAnalysis {
+export function generateAnalysis(inputs: EquityValuationCalculatorinputs, metrics: EquityValuationCalculatormetrics): EquityValuationCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

@@ -1,3 +1,3 @@
-import { TitleLoanCalculatorCalculator } from './TitleLoanCalculatorCalculator';
+import { TitleLoanCalculator } from './TitleLoanCalculator';
 
-export { TitleLoanCalculatorCalculator };
+export { TitleLoanCalculator };

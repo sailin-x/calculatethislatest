@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateBusinessProcessReengineeringBprSavingsCalculatorInputs, validateBusinessProcessReengineeringBprSavingsCalculatorBusinessRules } from './validation';
 
-export const BusinessProcessReengineeringBprSavingsCalculatorCalculator: Calculator: Calculator = {
-  id: 'business-process-re-engineering-bpr-savings-calculator-calculator',
+export const BusinessProcessReengineeringBprSavingsCalculator: Calculator = {
+  id: 'BusinessProcessRe-EngineeringBprSavings-calculator-calculator',
   title: 'Business Process Re-engineering (BPR) Savings Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

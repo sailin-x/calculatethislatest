@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { down_payment_assistanceCalculatorCalculator } from './down_payment_assistanceCalculatorCalculator';
+import { down_payment_assistanceCalculator } from './down_payment_assistanceCalculator';
 
-export function registerdown_payment_assistanceCalculatorCalculator(): void {
-  calculatorRegistry.register(new down_payment_assistanceCalculatorCalculator());
+export function registerdown_payment_assistanceCalculator(): void {
+  calculatorRegistry.register(new down_payment_assistanceCalculator());
 }

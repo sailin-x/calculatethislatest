@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateAirlineTicketCostCalculatorInputs } from './validation';
 
 export const AirlineTicketCostCalculator: Calculator = {
-  id: 'airline-ticket-cost-calculator',
+  id: 'AirlineTicketCost-calculator',
   title: 'Airline Ticket Cost Calculator',
   category: 'health',
   subcategory: 'General',

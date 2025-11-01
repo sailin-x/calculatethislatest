@@ -9,7 +9,7 @@ import {
 import { validateContractBreachCalculatorInputs } from './validation';
 
 export const ContractBreachCalculator: Calculator = {
-  id: 'contract-breach-calculator',
+  id: 'ContractBreachCalculator',
   title: 'Contract Breach Calculator',
   category: 'legal',
   subcategory: 'Settlement Analysis',

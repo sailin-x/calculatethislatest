@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateRealEstateSyndicationCalculatorInputs, validateRealEstateSyndicationCalculatorBusinessRules } from './validation';
 
-export const RealEstateSyndicationCalculatorCalculator: Calculator: Calculator = {
-  id: 'real-estate-syndication-calculator-calculator',
+export const RealEstateSyndicationCalculator: Calculator = {
+  id: 'RealEstateSyndication-calculator-calculator',
   title: 'Real Estate Syndication Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

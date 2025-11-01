@@ -10,7 +10,7 @@ import {
 import { validateCdInterestCalculatorInputs } from './validation';
 
 export const CdInterestCalculator: Calculator = {
-  id: 'cd-interest-calculator',
+  id: 'CdInterestCalculator',
   title: 'CD Interest Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

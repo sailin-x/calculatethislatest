@@ -10,7 +10,7 @@ import {
 import { validateFundLevelIrrTvpiAndDpiCalculatorInputs } from './validation';
 
 export const FundLevelIrrTvpiAndDpiCalculator: Calculator = {
-  id: 'fund-level-irr-tvpi-and-dpi-calculator',
+  id: 'FundLevelIrr-TvpiAndDpi-calculator',
   title: 'Fund-Level IRR, TVPI, and DPI Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

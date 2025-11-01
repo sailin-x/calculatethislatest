@@ -362,7 +362,7 @@ export const HOAFeeCalculator: Calculator<HOAFeeInputs, HOAFeeOutputs> = {
       label: 'Reserve Study Date',
       description: 'Date of last reserve study',
       required: true,
-      placeholder: '2023-01-15'
+      placeholder: '20230115'
     },
     reserveFundingLevel: {
       type: 'number',
@@ -603,7 +603,7 @@ ${analysis.nextSteps.join('\n')}
         maintenanceSchedule: 'quarterly',
         lastMajorRenovation: 8,
         reserveStudy: true,
-        reserveStudyDate: '2023-01-15',
+        reserveStudyDate: '20230115',
         reserveFundingLevel: 85,
         reserveFundingTarget: 100,
         marketLocation: 'Downtown Area',

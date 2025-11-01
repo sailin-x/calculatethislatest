@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateAlphaBetaCalculatorInputs, validateAlphaBetaCalculatorBusinessRules } from './validation';
 
-export const AlphaBetaCalculatorCalculator: Calculator: Calculator = {
-  id: 'alpha-beta-calculator-calculator',
+export const AlphaBetaCalculator: Calculator = {
+  id: 'AlphaBetaCalculator-calculator',
   title: 'Alpha & Beta Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

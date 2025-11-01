@@ -1,4 +1,4 @@
-import { merger-model-calculatorInputs, merger-model-calculatorMetrics, merger-model-calculatorAnalysis } from './types';
+import { MergerModelCalculatorinputs, MergerModelCalculatormetrics, MergerModelCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: merger-model-calculatorInputs): number {
+export function calculateResult(inputs: MergerModelCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: merger-model-calculatorInputs): number {
   }
 }
 
-export function generateAnalysis(inputs: merger-model-calculatorInputs, metrics: merger-model-calculatorMetrics): merger-model-calculatorAnalysis {
+export function generateAnalysis(inputs: MergerModelCalculatorinputs, metrics: MergerModelCalculatormetrics): MergerModelCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

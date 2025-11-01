@@ -1,4 +1,4 @@
-import { credit-card-payoff-calculatorInputs, credit-card-payoff-calculatorMetrics, credit-card-payoff-calculatorAnalysis } from './types';
+import { CreditCardPayoff-calculatorInputs, CreditCardPayoff-calculatorMetrics, CreditCardPayoff-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: credit-card-payoff-calculatorInputs): number {
+export function calculateResult(inputs: CreditCardPayoff-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: credit-card-payoff-calculatorInputs): nu
   }
 }
 
-export function generateAnalysis(inputs: credit-card-payoff-calculatorInputs, metrics: credit-card-payoff-calculatorMetrics): credit-card-payoff-calculatorAnalysis {
+export function generateAnalysis(inputs: CreditCardPayoff-calculatorInputs, metrics: CreditCardPayoff-calculatorMetrics): CreditCardPayoff-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

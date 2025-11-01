@@ -1,4 +1,4 @@
-import { twitch-subscriber-revenue-calculatorInputs, twitch-subscriber-revenue-calculatorMetrics, twitch-subscriber-revenue-calculatorAnalysis } from './types';
+import { TwitchSubscriberRevenue-calculatorInputs, TwitchSubscriberRevenue-calculatorMetrics, TwitchSubscriberRevenue-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: twitch-subscriber-revenue-calculatorInputs): number {
+export function calculateResult(inputs: TwitchSubscriberRevenue-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: twitch-subscriber-revenue-calculatorInpu
   }
 }
 
-export function generateAnalysis(inputs: twitch-subscriber-revenue-calculatorInputs, metrics: twitch-subscriber-revenue-calculatorMetrics): twitch-subscriber-revenue-calculatorAnalysis {
+export function generateAnalysis(inputs: TwitchSubscriberRevenue-calculatorInputs, metrics: TwitchSubscriberRevenue-calculatorMetrics): TwitchSubscriberRevenue-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

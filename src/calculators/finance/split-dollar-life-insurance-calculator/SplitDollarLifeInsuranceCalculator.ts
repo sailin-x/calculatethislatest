@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateSplitDollarLifeInsuranceCalculatorInputs, validateSplitDollarLifeInsuranceCalculatorBusinessRules } from './validation';
 
-export const SplitDollarLifeInsuranceCalculatorCalculator: Calculator: Calculator = {
-  id: 'split-dollar-life-insurance-calculator-calculator',
+export const SplitDollarLifeInsuranceCalculator: Calculator = {
+  id: 'SplitDollarLife-InsuranceCalculatorCalculator',
   title: 'Split Dollar Life Insurance Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

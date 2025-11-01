@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { gas_fee_optimizer_calculatorInputs, gas_fee_optimizer_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const gas_fee_optimizer_calculatorCalculator: Calculator = {
-  id: 'gas-fee-optimizer-calculator',
+export const GasFeeOptimizer-calculator: Calculator = {
+  id: 'GasFeeOptimizer-calculator',
   title: 'Gas Fee Optimizer Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'cryptocurrencyhub',

@@ -10,7 +10,7 @@ import {
 import { validateCreditCardCalculatorInputs } from './validation';
 
 export const CreditCardCalculator: Calculator = {
-  id: 'credit-card-calculator',
+  id: 'CreditCardCalculator',
   title: 'Credit Card Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

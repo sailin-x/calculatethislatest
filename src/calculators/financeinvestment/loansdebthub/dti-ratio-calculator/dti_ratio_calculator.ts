@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { dti_ratio_calculatorInputs, dti_ratio_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const dti_ratio_calculatorCalculator: Calculator = {
-  id: 'dti-ratio-calculator',
+export const DtiRatioCalculator: Calculator = {
+  id: 'DtiRatioCalculator',
   title: 'DTI Ratio Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'loansdebthub',

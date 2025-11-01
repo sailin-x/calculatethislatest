@@ -9,7 +9,7 @@ import {
 import { validatePatentFilingCalculatorInputs } from './validation';
 
 export const PatentFilingCalculator: Calculator = {
-  id: 'patent-filing-calculator',
+  id: 'PatentFilingCalculator',
   title: 'Patent Filing Calculator',
   category: 'legal',
   subcategory: 'Settlement Analysis',

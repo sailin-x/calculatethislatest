@@ -5,7 +5,7 @@ import * as quickValidation from './quickValidation';
 describe('MortgageVsRentCalculator', () => {
   describe('Calculator Definition', () => {
     it('should have correct id and title', () => {
-      expect(MortgageVsRentCalculator.id).toBe('mortgage-vs-rent-calculator');
+      expect(MortgageVsRentCalculator.id).toBe('MortgageVsRent-calculator');
       expect(MortgageVsRentCalculator.title).toBe('Mortgage vs. Rent Calculator');
     });
 

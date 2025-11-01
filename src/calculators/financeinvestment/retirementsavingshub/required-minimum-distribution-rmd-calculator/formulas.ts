@@ -1,4 +1,4 @@
-import { required-minimum-distribution-rmd-calculatorInputs, required-minimum-distribution-rmd-calculatorMetrics, required-minimum-distribution-rmd-calculatorAnalysis } from './types';
+import { RequiredMinimumDistribution-rmd-calculatorInputs, RequiredMinimumDistribution-rmd-calculatorMetrics, RequiredMinimumDistribution-rmd-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: required-minimum-distribution-rmd-calculatorInputs): number {
+export function calculateResult(inputs: RequiredMinimumDistribution-rmd-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: required-minimum-distribution-rmd-calcul
   }
 }
 
-export function generateAnalysis(inputs: required-minimum-distribution-rmd-calculatorInputs, metrics: required-minimum-distribution-rmd-calculatorMetrics): required-minimum-distribution-rmd-calculatorAnalysis {
+export function generateAnalysis(inputs: RequiredMinimumDistribution-rmd-calculatorInputs, metrics: RequiredMinimumDistribution-rmd-calculatorMetrics): RequiredMinimumDistribution-rmd-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

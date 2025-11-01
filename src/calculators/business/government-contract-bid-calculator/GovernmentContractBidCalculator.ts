@@ -10,7 +10,7 @@ import {
 import { validateGovernmentContractBidCalculatorInputs } from './validation';
 
 export const GovernmentContractBidCalculator: Calculator = {
-  id: 'government-contract-bid-calculator',
+  id: 'GovernmentContractBid-calculator',
   title: 'Government Contract Bid Calculator',
   category: 'business',
   subcategory: 'Financial Planning',

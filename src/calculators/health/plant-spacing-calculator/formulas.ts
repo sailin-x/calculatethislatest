@@ -1,4 +1,4 @@
-import { plant-spacing-calculatorInputs, plant-spacing-calculatorMetrics, plant-spacing-calculatorAnalysis } from './types';
+import { PlantSpacingCalculatorinputs, PlantSpacingCalculatormetrics, PlantSpacingCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: plant-spacing-calculatorInputs): number {
+export function calculateResult(inputs: PlantSpacingCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: plant-spacing-calculatorInputs): number 
   }
 }
 
-export function generateAnalysis(inputs: plant-spacing-calculatorInputs, metrics: plant-spacing-calculatorMetrics): plant-spacing-calculatorAnalysis {
+export function generateAnalysis(inputs: PlantSpacingCalculatorinputs, metrics: PlantSpacingCalculatormetrics): PlantSpacingCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

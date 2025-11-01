@@ -1,4 +1,4 @@
-import { shitcoin-investment-calculatorInputs, shitcoin-investment-calculatorMetrics, shitcoin-investment-calculatorAnalysis } from './types';
+import { ShitcoinInvestmentCalculatorInputs, ShitcoinInvestmentCalculatorMetrics, ShitcoinInvestmentCalculatorAnalysis } from './types';
 
 // Investment Calculator - Compound Interest
 export function calculateFutureValue(principal: number, annualRate: number, years: number, compoundingFrequency: number = 12): number {
@@ -15,7 +15,7 @@ export function calculateTotalInterest(futureValue: number, principal: number, t
   return futureValue - principal - totalContributions;
 }
 
-export function calculateResult(inputs: shitcoin-investment-calculatorInputs): number {
+export function calculateResult(inputs: ShitcoinInvestmentCalculatorInputs): number {
   if ('initialInvestment' in inputs && 'annualReturn' in inputs && 'investmentPeriod' in inputs) {
     return calculateFutureValue(
       inputs.initialInvestment,
@@ -27,13 +27,22 @@ export function calculateResult(inputs: shitcoin-investment-calculatorInputs): n
   return 0;
 }
 
-export function generateAnalysis(inputs: shitcoin-investment-calculatorInputs, metrics: shitcoin-investment-calculatorMetrics): shitcoin-investment-calculatorAnalysis {
-  const result = metrics.result;
+export function generateAnalysis(inputs: ShitcoinInvestmentCalculatorInputs, metrics: ShitcoinInvestmentCalculatorMetrics): ShitcoinInvestmentCalculatorAnalysis {
+  const result = metrics.intermediateValue;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (result > 1000000) riskLevel = 'High';
   else if (result > 100000) riskLevel = 'Medium';
 
   const recommendation = 'Investment growth calculated using compound interest. Past performance does not guarantee future results.';
 
-  return { recommendation, riskLevel };
+  return {
+    recommendation,
+    riskLevel,
+    insights: ['Analysis completed'],
+    warnings: []
+  };
+}
+
+export function calculateshitcoininvestmentcalculatorResults(inputs: any): any {
+  return calculateResult(inputs);
 }

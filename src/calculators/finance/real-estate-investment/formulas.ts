@@ -1,4 +1,4 @@
-import { real-estate-investmentInputs, real-estate-investmentMetrics, real-estate-investmentAnalysis } from './types';
+import { RealEstateInvestmentinputs, RealEstateInvestmentmetrics, RealEstateInvestmentanalysis } from './types';
 
 
 // Investment Calculator - ROI and growth calculations
@@ -12,7 +12,7 @@ export function calculateCompoundInterest(principal: number, rate: number, years
   return principal * Math.pow(1 + ratePerPeriod, totalPeriods);
 }
 
-export function calculateResult(inputs: real-estate-investmentInputs): number {
+export function calculateResult(inputs: RealEstateInvestmentinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -36,7 +36,7 @@ export function calculateResult(inputs: real-estate-investmentInputs): number {
   }
 }
 
-export function generateAnalysis(inputs: real-estate-investmentInputs, metrics: real-estate-investmentMetrics): real-estate-investmentAnalysis {
+export function generateAnalysis(inputs: RealEstateInvestmentinputs, metrics: RealEstateInvestmentmetrics): RealEstateInvestmentanalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

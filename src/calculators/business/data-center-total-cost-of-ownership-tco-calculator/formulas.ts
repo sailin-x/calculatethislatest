@@ -1,4 +1,4 @@
-import { data-center-total-cost-of-ownership-tco-calculatorInputs, data-center-total-cost-of-ownership-tco-calculatorMetrics, data-center-total-cost-of-ownership-tco-calculatorAnalysis } from './types';
+import { DataCenterTotal-CostOfOwnership-tco-calculatorInputs, DataCenterTotal-CostOfOwnership-tco-calculatorMetrics, DataCenterTotal-CostOfOwnership-tco-calculatorAnalysis } from './types';
 
 // Data Center Total Cost of Ownership (TCO) Calculator - Business calculations
 export function calculateNetPresentValue(cashFlows: number[], discountRate: number): number {
@@ -11,7 +11,7 @@ export function calculateROI(initialInvestment: number, finalValue: number): num
  return ((finalValue - initialInvestment) / initialInvestment) * 100;
 }
 
-export function calculateResult(inputs: data-center-total-cost-of-ownership-tco-calculatorInputs): number {
+export function calculateResult(inputs: DataCenterTotal-CostOfOwnership-tco-calculatorInputs): number {
  // Business calculation logic with real math
  const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
  if (numericValues.length >= 2) {
@@ -24,7 +24,7 @@ export function calculateResult(inputs: data-center-total-cost-of-ownership-tco-
  return calculateNetPresentValue(numericValues, 10); // 10% discount rate
 }
 
-export function generateAnalysis(inputs: data-center-total-cost-of-ownership-tco-calculatorInputs, metrics: data-center-total-cost-of-ownership-tco-calculatorMetrics): data-center-total-cost-of-ownership-tco-calculatorAnalysis {
+export function generateAnalysis(inputs: DataCenterTotal-CostOfOwnership-tco-calculatorInputs, metrics: DataCenterTotal-CostOfOwnership-tco-calculatorMetrics): DataCenterTotal-CostOfOwnership-tco-calculatorAnalysis {
  const result = metrics.result;
  let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
  if (Math.abs(result) > 100000) riskLevel = 'High';

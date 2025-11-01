@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { merger_arbitrage_spread_calculatorInputs, merger_arbitrage_spread_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const merger_arbitrage_spread_calculatorCalculator: Calculator = {
-  id: 'merger-arbitrage-spread-calculator',
+export const MergerArbitrageSpread-calculator: Calculator = {
+  id: 'MergerArbitrageSpread-calculator',
   title: 'Merger Arbitrage Spread Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'investmentportfoliohub',

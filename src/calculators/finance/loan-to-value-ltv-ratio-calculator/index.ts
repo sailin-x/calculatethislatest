@@ -1,4 +1,4 @@
-export { LoantovalueLtvRatioCalculatorCalculator } from './LoantovalueLtvRatioCalculatorCalculator';
+export { LoantovalueLtvRatioCalculator } from './LoantovalueLtvRatioCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

@@ -10,7 +10,7 @@ import {
 import { validateMusicFestivalProfitCalculatorInputs } from './validation';
 
 export const MusicFestivalProfitCalculator: Calculator = {
-  id: 'music-festival-profit-calculator',
+  id: 'MusicFestivalProfit-calculator',
   title: 'Music Festival Profit Calculator',
   category: 'business',
   subcategory: 'Financial Planning',

@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { stock_options_valuation_calculatorInputs, stock_options_valuation_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const stock_options_valuation_calculatorCalculator: Calculator = {
-  id: 'stock-options-valuation-calculator',
+export const StockOptionsValuation-calculator: Calculator = {
+  id: 'StockOptionsValuation-calculator',
   title: 'Stock Options Valuation Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'investmentportfoliohub',

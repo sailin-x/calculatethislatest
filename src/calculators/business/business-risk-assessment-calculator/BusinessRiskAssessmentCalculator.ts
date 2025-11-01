@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateBusinessRiskAssessmentCalculatorInputs, validateBusinessRiskAssessmentCalculatorBusinessRules } from './validation';
 
-export const BusinessRiskAssessmentCalculatorCalculator: Calculator: Calculator = {
-  id: 'business-risk-assessment-calculator-calculator',
+export const BusinessRiskAssessmentCalculator: Calculator = {
+  id: 'BusinessRiskAssessment-calculator-calculator',
   title: 'Business Risk Assessment Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

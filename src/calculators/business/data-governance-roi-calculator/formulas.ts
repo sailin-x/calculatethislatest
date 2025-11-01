@@ -1,4 +1,4 @@
-import { data-governance-roi-calculatorInputs, data-governance-roi-calculatorMetrics, data-governance-roi-calculatorAnalysis } from './types';
+import { DataGovernanceRoi-calculatorInputs, DataGovernanceRoi-calculatorMetrics, DataGovernanceRoi-calculatorAnalysis } from './types';
 
 // ROI Calculator
 export function calculateROI(netProfit: number, investment: number): number {
@@ -13,7 +13,7 @@ export function calculatePaybackPeriod(investment: number, annualCashFlow: numbe
   return investment / annualCashFlow;
 }
 
-export function calculateResult(inputs: data-governance-roi-calculatorInputs): number {
+export function calculateResult(inputs: DataGovernanceRoi-calculatorInputs): number {
   if ('netProfit' in inputs && 'investment' in inputs) {
     return calculateROI(inputs.netProfit, inputs.investment);
   }
@@ -24,7 +24,7 @@ export function calculateResult(inputs: data-governance-roi-calculatorInputs): n
   return 0;
 }
 
-export function generateAnalysis(inputs: data-governance-roi-calculatorInputs, metrics: data-governance-roi-calculatorMetrics): data-governance-roi-calculatorAnalysis {
+export function generateAnalysis(inputs: DataGovernanceRoi-calculatorInputs, metrics: DataGovernanceRoi-calculatorMetrics): DataGovernanceRoi-calculatorAnalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (result < 10) riskLevel = 'High';

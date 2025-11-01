@@ -1,3 +1,2 @@
-export * from './ad_agency_commission_calculatorCalculator';
-export * from './register';
+export * from './ad_agency_commission_calculator';
 export * from './types';

@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { self_funded_health_plan_vs_fully_insured_calculatorInputs, self_funded_health_plan_vs_fully_insured_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const self_funded_health_plan_vs_fully_insured_calculatorCalculator: Calculator = {
-  id: 'self-funded-health-plan-vs-fully-insured-calculator',
+export const SelfFundedHealth-PlanVsFully-insured-calculator: Calculator = {
+  id: 'SelfFundedHealth-PlanVsFully-insured-calculator',
   title: 'Self Funded Health Plan vs. Fully Insured Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

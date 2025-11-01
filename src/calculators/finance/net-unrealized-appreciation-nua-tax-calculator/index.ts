@@ -1,4 +1,4 @@
-export { NetUnrealizedAppreciationNuaTaxCalculatorCalculator } from './NetUnrealizedAppreciationNuaTaxCalculatorCalculator';
+export { NetUnrealizedAppreciationNuaTaxCalculator } from './NetUnrealizedAppreciationNuaTaxCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

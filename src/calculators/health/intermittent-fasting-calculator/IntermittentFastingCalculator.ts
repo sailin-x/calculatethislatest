@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateIntermittentFastingCalculatorInputs } from './validation';
 
 export const IntermittentFastingCalculator: Calculator = {
-  id: 'intermittent-fasting-calculator',
+  id: 'IntermittentFastingCalculator',
   title: 'Intermittent Fasting Calculator',
   category: 'health',
   subcategory: 'General',

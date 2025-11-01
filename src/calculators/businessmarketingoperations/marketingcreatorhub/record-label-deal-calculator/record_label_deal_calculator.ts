@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { record_label_deal_calculatorInputs, record_label_deal_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const record_label_deal_calculatorCalculator: Calculator = {
-  id: 'record-label-deal-calculator',
+export const RecordLabelDeal-calculator: Calculator = {
+  id: 'RecordLabelDeal-calculator',
   title: 'Record Label Deal Calculator Calculator',
   category: 'businessmarketingoperations',
   subcategory: 'marketingcreatorhub',

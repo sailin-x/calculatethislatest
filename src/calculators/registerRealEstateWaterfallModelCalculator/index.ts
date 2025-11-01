@@ -1,3 +1,3 @@
-export * from './registerRealEstateWaterfallModelCalculatorCalculator';
+export * from './registerRealEstateWaterfallModelCalculator';
 export * from './register';
 export * from './types';

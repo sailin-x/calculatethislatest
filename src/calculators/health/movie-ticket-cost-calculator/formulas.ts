@@ -1,4 +1,4 @@
-import { movie-ticket-cost-calculatorInputs, movie-ticket-cost-calculatorMetrics, movie-ticket-cost-calculatorAnalysis } from './types';
+import { MovieTicketCost-calculatorInputs, MovieTicketCost-calculatorMetrics, MovieTicketCost-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: movie-ticket-cost-calculatorInputs): number {
+export function calculateResult(inputs: MovieTicketCost-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: movie-ticket-cost-calculatorInputs): num
   }
 }
 
-export function generateAnalysis(inputs: movie-ticket-cost-calculatorInputs, metrics: movie-ticket-cost-calculatorMetrics): movie-ticket-cost-calculatorAnalysis {
+export function generateAnalysis(inputs: MovieTicketCost-calculatorInputs, metrics: MovieTicketCost-calculatorMetrics): MovieTicketCost-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

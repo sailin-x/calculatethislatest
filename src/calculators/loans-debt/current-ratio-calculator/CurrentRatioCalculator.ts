@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateCurrentRatioCalculatorInputs, validateCurrentRatioCalculatorBusinessRules } from './validation';
 
-export const CurrentRatioCalculatorCalculator: Calculator: Calculator = {
-  id: 'current-ratio-calculator-calculator',
+export const CurrentRatioCalculator: Calculator = {
+  id: 'CurrentRatioCalculator-calculator',
   title: 'Current Ratio Calculator Calculator',
   loans-debt: 'loans-debt', // e.g., 'finance', 'math', 'health', 'business'
   subloans-debt: 'Subloans-debt Name',

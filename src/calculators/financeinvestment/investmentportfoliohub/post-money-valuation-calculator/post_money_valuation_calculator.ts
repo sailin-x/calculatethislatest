@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { post_money_valuation_calculatorInputs, post_money_valuation_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const post_money_valuation_calculatorCalculator: Calculator = {
-  id: 'post-money-valuation-calculator',
+export const PostMoneyValuation-calculator: Calculator = {
+  id: 'PostMoneyValuation-calculator',
   title: 'Post Money Valuation Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'investmentportfoliohub',

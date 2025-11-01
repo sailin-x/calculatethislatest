@@ -4,7 +4,7 @@ import { calculateResult, generateAnalysis } from './formulas';
 import { validateFeraSettlementCalculatorInputs } from './validation';
 
 export const FeraSettlementCalculator: Calculator = {
-  id: 'fera-settlement-calculator',
+  id: 'FeraSettlementCalculator',
   title: 'FELA Settlement Calculator (Railroad)',
   category: 'legal',
   subcategory: 'General',

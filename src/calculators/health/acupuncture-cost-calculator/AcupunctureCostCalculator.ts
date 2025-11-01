@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateAcupunctureCostCalculatorInputs } from './validation';
 
 export const AcupunctureCostCalculator: Calculator = {
-  id: 'acupuncture-cost-calculator',
+  id: 'AcupunctureCostCalculator',
   title: 'Acupuncture Cost Calculator',
   category: 'health',
   subcategory: 'General',

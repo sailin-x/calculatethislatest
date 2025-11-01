@@ -1,4 +1,4 @@
-import { data-science-calculatorInputs, data-science-calculatorMetrics, data-science-calculatorAnalysis } from './types';
+import { DataScienceCalculatorinputs, DataScienceCalculatormetrics, DataScienceCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: data-science-calculatorInputs): number {
+export function calculateResult(inputs: DataScienceCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: data-science-calculatorInputs): number {
   }
 }
 
-export function generateAnalysis(inputs: data-science-calculatorInputs, metrics: data-science-calculatorMetrics): data-science-calculatorAnalysis {
+export function generateAnalysis(inputs: DataScienceCalculatorinputs, metrics: DataScienceCalculatormetrics): DataScienceCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

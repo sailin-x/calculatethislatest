@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { return_on_ad_spend_roas_calculatorInputs, return_on_ad_spend_roas_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const return_on_ad_spend_roas_calculatorCalculator: Calculator = {
-  id: 'return-on-ad-spend-roas-calculator',
+export const ReturnOnAd-SpendRoasCalculator: Calculator = {
+  id: 'ReturnOnAd-SpendRoasCalculator',
   title: 'Return on Ad Spend (ROAS) Calculator Calculator',
   category: 'businessmarketingoperations',
   subcategory: 'marketingcreatorhub',

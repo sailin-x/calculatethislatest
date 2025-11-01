@@ -1,3 +1,3 @@
-export * from './registerDebtPayoffCalculatorCalculator';
+export * from './registerDebtPayoffCalculator';
 export * from './register';
 export * from './types';

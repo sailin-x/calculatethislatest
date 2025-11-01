@@ -1,3 +1,3 @@
-export * from './charitable_gift_annuityCalculatorCalculator';
+export * from './charitable_gift_annuityCalculator';
 export * from './register';
 export * from './types';

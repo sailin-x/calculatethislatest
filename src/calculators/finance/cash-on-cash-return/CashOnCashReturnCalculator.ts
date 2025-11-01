@@ -3,11 +3,11 @@ import { calculateCashOnCashReturn, generateInvestmentAnalysis } from './formula
 import { validateCashOnCashReturnInputs } from './validation';
 
 export const CashOnCashReturnCalculator: Calculator = {
-  id: 'cash-on-cash-return-calculator',
-  name: 'Cash-on-Cash Return Calculator',
+  id: 'CashOnCash-return-calculator',
+  name: 'CashOnCash Return Calculator',
   category: 'finance',
   subcategory: 'investment',
-  description: 'Calculate cash-on-cash return for real estate investments, measuring annual return on cash invested.',
+  description: 'Calculate CashOnCash return for real estate investments, measuring annual return on cash invested.',
   
   inputs: [
     {
@@ -267,7 +267,7 @@ export const CashOnCashReturnCalculator: Calculator = {
     },
     {
       id: 'cashOnCashReturn',
-      name: 'Cash-on-Cash Return',
+      name: 'CashOnCash Return',
       type: 'number',
       unit: '%',
       description: 'Annual return on cash investment'
@@ -327,7 +327,7 @@ export const CashOnCashReturnCalculator: Calculator = {
       throw new Error(`Invalid inputs: ${validation.errors.join(', ')}`);
     }
     
-    // Calculate cash-on-cash return metrics
+    // Calculate CashOnCash return metrics
     const cashOnCashMetrics = calculateCashOnCashReturn(inputs);
     
     // Generate analysis
@@ -353,8 +353,8 @@ export const CashOnCashReturnCalculator: Calculator = {
   
   formulas: [
     {
-      name: 'Cash-on-Cash Return',
-      formula: 'Cash-on-Cash = (Annual Cash Flow / Total Cash Invested) × 100',
+      name: 'CashOnCash Return',
+      formula: 'CashOnCash = (Annual Cash Flow / Total Cash Invested) × 100',
       description: 'Measures annual return on cash investment'
     },
     {
@@ -418,7 +418,7 @@ export const CashOnCashReturnCalculator: Calculator = {
       }
     },
     {
-      name: 'High Cash-on-Cash Return Property',
+      name: 'High CashOnCash Return Property',
       description: 'A property with strong positive cash flow and high returns',
       inputs: {
         purchasePrice: 200000,

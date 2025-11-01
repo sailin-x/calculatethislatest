@@ -4,7 +4,7 @@ import { calculateDynastyTrustGrowthEstimator } from './formulas';
 import { validateDynastyTrustGrowthEstimatorInputs } from './validation';
 
 export const DynastyTrustGrowthEstimatorCalculator: Calculator = {
-  id: 'dynasty-trust-growth-estimator',
+  id: 'DynastyTrustGrowth-estimator',
   title: 'Dynasty Trust Growth Estimator',
   category: 'finance',
   subcategory: 'Retirement',

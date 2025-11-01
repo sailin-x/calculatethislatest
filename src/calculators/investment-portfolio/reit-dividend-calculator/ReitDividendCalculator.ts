@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateReitDividendCalculatorInputs, validateReitDividendCalculatorBusinessRules } from './validation';
 
-export const ReitDividendCalculatorCalculator: Calculator: Calculator = {
-  id: 'reit-dividend-calculator-calculator',
+export const ReitDividendCalculator: Calculator = {
+  id: 'ReitDividendCalculator-calculator',
   title: 'REIT Dividend Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

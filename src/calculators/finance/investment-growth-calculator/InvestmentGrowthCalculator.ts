@@ -10,7 +10,7 @@ import {
 import { validateInvestmentGrowthCalculatorInputs } from './validation';
 
 export const InvestmentGrowthCalculator: Calculator = {
-  id: 'investment-growth-calculator',
+  id: 'InvestmentGrowthCalculator',
   title: 'Investment Growth Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

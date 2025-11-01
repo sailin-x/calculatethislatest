@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateStoplossInsurancePremiumCalculatorInputs, validateStoplossInsurancePremiumCalculatorBusinessRules } from './validation';
 
-export const StoplossInsurancePremiumCalculatorCalculator: Calculator: Calculator = {
-  id: 'stop-loss-insurance-premium-calculator-calculator',
+export const StoplossInsurancePremiumCalculator: Calculator = {
+  id: 'StopLossInsurance-PremiumCalculatorCalculator',
   title: 'Stop-Loss Insurance Premium Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

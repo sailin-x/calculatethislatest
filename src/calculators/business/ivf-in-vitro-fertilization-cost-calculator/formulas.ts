@@ -1,4 +1,4 @@
-import { ivf-in-vitro-fertilization-cost-calculatorInputs, ivf-in-vitro-fertilization-cost-calculatorMetrics, ivf-in-vitro-fertilization-cost-calculatorAnalysis } from './types';
+import { IvfInVitro-FertilizationCostCalculatorinputs, IvfInVitro-FertilizationCostCalculatormetrics, IvfInVitro-FertilizationCostCalculatoranalysis } from './types';
 
 // IVF (In Vitro Fertilization) Cost Calculator - Business calculations
 export function calculateNetPresentValue(cashFlows: number[], discountRate: number): number {
@@ -11,7 +11,7 @@ export function calculateROI(initialInvestment: number, finalValue: number): num
  return ((finalValue - initialInvestment) / initialInvestment) * 100;
 }
 
-export function calculateResult(inputs: ivf-in-vitro-fertilization-cost-calculatorInputs): number {
+export function calculateResult(inputs: IvfInVitro-FertilizationCostCalculatorinputs): number {
  // Business calculation logic with real math
  const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
  if (numericValues.length >= 2) {
@@ -24,7 +24,7 @@ export function calculateResult(inputs: ivf-in-vitro-fertilization-cost-calculat
  return calculateNetPresentValue(numericValues, 10); // 10% discount rate
 }
 
-export function generateAnalysis(inputs: ivf-in-vitro-fertilization-cost-calculatorInputs, metrics: ivf-in-vitro-fertilization-cost-calculatorMetrics): ivf-in-vitro-fertilization-cost-calculatorAnalysis {
+export function generateAnalysis(inputs: IvfInVitro-FertilizationCostCalculatorinputs, metrics: IvfInVitro-FertilizationCostCalculatormetrics): IvfInVitro-FertilizationCostCalculatoranalysis {
  const result = metrics.result;
  let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
  if (Math.abs(result) > 100000) riskLevel = 'High';

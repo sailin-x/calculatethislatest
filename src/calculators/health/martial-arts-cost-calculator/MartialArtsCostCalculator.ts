@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateMartialArtsCostCalculatorInputs } from './validation';
 
 export const MartialArtsCostCalculator: Calculator = {
-  id: 'martial-arts-cost-calculator',
+  id: 'MartialArtsCost-calculator',
   title: 'Martial Arts Cost Calculator',
   category: 'health',
   subcategory: 'General',

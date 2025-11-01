@@ -10,7 +10,7 @@ import {
 import { validateFreeCashFlowToEquityCalculatorInputs } from './validation';
 
 export const FreeCashFlowToEquityCalculator: Calculator = {
-  id: 'free-cash-flow-to-equity-calculator',
+  id: 'FreeCashFlow-ToEquityCalculator',
   title: 'Free Cash Flow to Equity Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

@@ -10,7 +10,7 @@ import {
 import { validateAdReachFrequencyCalculatorInputs } from './validation';
 
 export const AdReachFrequencyCalculator: Calculator = {
-  id: 'ad-reach-frequency-calculator',
+  id: 'AdReachFrequency-calculator',
   title: 'Ad Reach and Frequency Calculator',
   category: 'business',
   subcategory: 'Financial Planning',

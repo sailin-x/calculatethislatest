@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { nft_minting_cost_calculatorInputs, nft_minting_cost_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const nft_minting_cost_calculatorCalculator: Calculator = {
-  id: 'nft-minting-cost-calculator',
+export const NftMintingCost-calculator: Calculator = {
+  id: 'NftMintingCost-calculator',
   title: 'NFT Minting Cost Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'cryptocurrencyhub',

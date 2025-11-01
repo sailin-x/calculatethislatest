@@ -1,3 +1,3 @@
-import { MortgagePaymentCalculatorCalculator } from './MortgagePaymentCalculatorCalculator';
+import { MortgagePaymentCalculator } from './MortgagePaymentCalculator';
 
-export { MortgagePaymentCalculatorCalculator };
+export { MortgagePaymentCalculator };

@@ -1,3 +1,3 @@
-export * from './registerCorporateBondCalculatorCalculator';
+export * from './registerCorporateBondCalculator';
 export * from './register';
 export * from './types';

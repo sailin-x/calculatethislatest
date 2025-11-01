@@ -4,7 +4,7 @@ import { calculateResult, generateAnalysis } from './formulas';
 import { validateBlackLittermanCalculatorInputs } from './validation';
 
 export const BlackLittermanCalculator: Calculator = {
-  id: 'black-litterman-calculator',
+  id: 'BlackLittermanCalculator',
   title: 'Black Litterman Calculator',
   category: 'finance',
   subcategory: 'General',

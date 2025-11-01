@@ -10,7 +10,7 @@ import {
 import { validateRequiredBeginningDateRbdForRmdsCalculatorInputs } from './validation';
 
 export const RequiredBeginningDateRbdForRmdsCalculator: Calculator = {
-  id: 'required-beginning-date-rbd-for-rmds-calculator',
+  id: 'RequiredBeginningDate-RbdForRmds-calculator',
   title: 'Required Beginning Date (RBD) for RMDs Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

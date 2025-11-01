@@ -1,3 +1,3 @@
-import { MegaBackdoorRothCalculatorCalculator } from './MegaBackdoorRothCalculatorCalculator';
+import { MegaBackdoorRothCalculator } from './MegaBackdoorRothCalculator';
 
-export { MegaBackdoorRothCalculatorCalculator };
+export { MegaBackdoorRothCalculator };

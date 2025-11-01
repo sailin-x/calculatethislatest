@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { discord_server_monetization_calculatorInputs, discord_server_monetization_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const discord_server_monetization_calculatorCalculator: Calculator = {
-  id: 'discord-server-monetization-calculator',
+export const DiscordServerMonetization-calculator: Calculator = {
+  id: 'DiscordServerMonetization-calculator',
   title: 'Discord Server Monetization Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

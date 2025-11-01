@@ -55,7 +55,7 @@ describe('AccretionDilutionCalculator', () => {
 
   describe('Calculator Definition', () => {
     test('should have correct calculator properties', () => {
-      expect(AccretionDilutionCalculator.id).toBe('accretion-dilution-calculator');
+      expect(AccretionDilutionCalculator.id).toBe('AccretionDilutionCalculator');
       expect(AccretionDilutionCalculator.name).toBe('Accretion/Dilution (M&A) Model Calculator');
       expect(AccretionDilutionCalculator.category).toBe('finance');
       expect(AccretionDilutionCalculator.subcategory).toBe('investment');

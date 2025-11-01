@@ -10,7 +10,7 @@ import {
 import { validateUgmaUtmaCustodialAccountCalculatorInputs } from './validation';
 
 export const UgmaUtmaCustodialAccountCalculator: Calculator = {
-  id: 'ugma-utma-custodial-account-calculator',
+  id: 'UgmaUtmaCustodial-account-calculator',
   title: 'UGMA/UTMA Custodial Account Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

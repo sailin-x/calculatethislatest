@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { workers_compensation_insurance_calculatorInputs, workers_compensation_insurance_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const workers_compensation_insurance_calculatorCalculator: Calculator = {
-  id: 'workers-compensation-insurance-calculator',
+export const WorkersCompensationInsurance-calculator: Calculator = {
+  id: 'WorkersCompensationInsurance-calculator',
   title: 'Workers' Compensation Insurance Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

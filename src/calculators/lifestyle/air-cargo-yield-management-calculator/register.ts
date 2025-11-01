@@ -1,3 +1,3 @@
-import { AirCargoYieldManagementCalculatorCalculator } from './AirCargoYieldManagementCalculatorCalculator';
+import { AirCargoYieldManagementCalculator } from './AirCargoYieldManagementCalculator';
 
-export { AirCargoYieldManagementCalculatorCalculator };
+export { AirCargoYieldManagementCalculator };

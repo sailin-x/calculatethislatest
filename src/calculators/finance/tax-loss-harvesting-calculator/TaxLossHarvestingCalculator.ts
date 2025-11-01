@@ -10,7 +10,7 @@ import {
 import { validateTaxLossHarvestingCalculatorInputs } from './validation';
 
 export const TaxLossHarvestingCalculator: Calculator = {
-  id: 'tax-loss-harvesting-calculator',
+  id: 'TaxLossHarvesting-calculator',
   title: 'Tax-Loss Harvesting Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

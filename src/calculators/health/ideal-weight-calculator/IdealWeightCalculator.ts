@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateIdealWeightCalculatorInputs, validateIdealWeightCalculatorBusinessRules } from './validation';
 
-export const IdealWeightCalculatorCalculator: Calculator: Calculator = {
-  id: 'ideal-weight-calculator-calculator',
+export const IdealWeightCalculator: Calculator = {
+  id: 'IdealWeightCalculator-calculator',
   title: 'Ideal Weight Calculator Calculator',
   health: 'health', // e.g., 'finance', 'math', 'health', 'business'
   subhealth: 'Subhealth Name',

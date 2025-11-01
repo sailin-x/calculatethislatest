@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateMortgagePaymentCalculatorInputs, validateMortgagePaymentCalculatorBusinessRules } from './validation';
 
-export const MortgagePaymentCalculatorCalculator: Calculator: Calculator = {
-  id: 'mortgage-payment-calculator-calculator',
+export const MortgagePaymentCalculator: Calculator = {
+  id: 'MortgagePaymentCalculator-calculator',
   title: 'Mortgage Payment Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

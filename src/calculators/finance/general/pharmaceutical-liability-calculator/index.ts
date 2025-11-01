@@ -1,4 +1,4 @@
-export { pharmaceutical_liability_calculatorCalculator } from './pharmaceutical_liability_calculator';
+export { pharmaceutical_liability_calculator } from './pharmaceutical_liability_calculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

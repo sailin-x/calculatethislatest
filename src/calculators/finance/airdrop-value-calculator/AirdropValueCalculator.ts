@@ -10,7 +10,7 @@ import {
 import { validateAirdropValueCalculatorInputs } from './validation';
 
 export const AirdropValueCalculator: Calculator = {
-  id: 'airdrop-value-calculator',
+  id: 'AirdropValueCalculator',
   title: 'Airdrop Value Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

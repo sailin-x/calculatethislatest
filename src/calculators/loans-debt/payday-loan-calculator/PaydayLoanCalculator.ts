@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validatePaydayLoanCalculatorInputs, validatePaydayLoanCalculatorBusinessRules } from './validation';
 
-export const PaydayLoanCalculatorCalculator: Calculator: Calculator = {
-  id: 'payday-loan-calculator-calculator',
+export const PaydayLoanCalculator: Calculator = {
+  id: 'PaydayLoanCalculator-calculator',
   title: 'Payday Loan Calculator Calculator',
   loans-debt: 'loans-debt', // e.g., 'finance', 'math', 'health', 'business'
   subloans-debt: 'Subloans-debt Name',

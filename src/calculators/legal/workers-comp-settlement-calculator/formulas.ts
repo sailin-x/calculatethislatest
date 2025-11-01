@@ -1,13 +1,13 @@
-import { workers-comp-settlement-calculatorInputs, workers-comp-settlement-calculatorMetrics, workers-comp-settlement-calculatorAnalysis } from './types';
+import { WorkersCompSettlement-calculatorInputs, WorkersCompSettlement-calculatorMetrics, WorkersCompSettlement-calculatorAnalysis } from './types';
 
 // Workers' Comp Settlement Calculator - Legal calculations
-export function calculateResult(inputs: workers-comp-settlement-calculatorInputs): number {
+export function calculateResult(inputs: WorkersCompSettlement-calculatorInputs): number {
   // Legal calculation logic
   const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
   return numericValues.reduce((sum, val) => sum + val, 0) || 0;
 }
 
-export function generateAnalysis(inputs: workers-comp-settlement-calculatorInputs, metrics: workers-comp-settlement-calculatorMetrics): workers-comp-settlement-calculatorAnalysis {
+export function generateAnalysis(inputs: WorkersCompSettlement-calculatorInputs, metrics: WorkersCompSettlement-calculatorMetrics): WorkersCompSettlement-calculatorAnalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (Math.abs(result) > 100000) riskLevel = 'High';

@@ -1,6 +1,0 @@
-import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { './finance/401k-calculator/401k_calculator';Calculator } from './'./finance/401k-calculator/401k_calculator';Calculator';
-
-export function register'./finance/401k-calculator/401k_calculator';Calculator(): void {
-  calculatorRegistry.register(new './finance/401k-calculator/401k_calculator';Calculator());
-}

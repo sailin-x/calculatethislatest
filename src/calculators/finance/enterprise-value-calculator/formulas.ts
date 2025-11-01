@@ -1,53 +1,72 @@
-import { enterprise-value-calculatorInputs, enterprise-value-calculatorMetrics, enterprise-value-calculatorAnalysis } from './types';
+import { EnterpriseValueCalculatorInputs, EnterpriseValueCalculatorMetrics, EnterpriseValueCalculatorAnalysis } from './types';
 
+// Calculate Enterprise Value (EV)
+export function calculateEnterpriseValue(inputs: EnterpriseValueCalculatorInputs): number {
+  const { marketCap, totalDebt, cashAndEquivalents, preferredStock = 0, minorityInterest = 0 } = inputs;
 
-// Generic Calculator - Basic mathematical operations
-export function calculatePercentage(value: number, percentage: number): number {
-  return value * (percentage / 100);
+  // EV = Market Cap + Total Debt + Preferred Stock + Minority Interest - Cash & Equivalents
+  return marketCap + totalDebt + preferredStock + minorityInterest - cashAndEquivalents;
 }
 
-export function calculatePercentageChange(oldValue: number, newValue: number): number {
-  return ((newValue - oldValue) / oldValue) * 100;
+// Calculate Net Debt
+export function calculateNetDebt(totalDebt: number, cashAndEquivalents: number): number {
+  return totalDebt - cashAndEquivalents;
 }
 
-export function calculateAverage(values: number[]): number {
-  return values.reduce((sum, val) => sum + val, 0) / values.length;
+// Calculate Debt to Equity Ratio
+export function calculateDebtToEquity(totalDebt: number, marketCap: number): number {
+  if (marketCap <= 0) return 0;
+  return totalDebt / marketCap;
 }
 
-export function calculateResult(inputs: enterprise-value-calculatorInputs): number {
-  // Use domain-specific calculations based on input properties
-  try {
-    // Try to match inputs to appropriate calculation
-    if ('principal' in inputs && 'annualRate' in inputs && 'years' in inputs) {
-      return calculateMonthlyPayment(inputs.principal, inputs.annualRate, inputs.years);
-    }
-    if ('initialInvestment' in inputs && 'finalValue' in inputs) {
-      return calculateROI(inputs.initialInvestment, inputs.finalValue);
-    }
-    if ('weightKg' in inputs && 'heightCm' in inputs) {
-      return calculateBMI(inputs.weightKg, inputs.heightCm);
-    }
-    if ('value' in inputs && 'percentage' in inputs) {
-      return calculatePercentage(inputs.value, inputs.percentage);
-    }
-    // Fallback to basic calculation
-    return inputs.value || inputs.amount || inputs.principal || 0;
-  } catch (error) {
-    console.warn('Calculation error:', error);
-    return 0;
-  }
+// Calculate Cash to Debt Ratio
+export function calculateCashToDebt(cashAndEquivalents: number, totalDebt: number): number {
+  if (totalDebt <= 0) return 0;
+  return cashAndEquivalents / totalDebt;
 }
 
-export function generateAnalysis(inputs: enterprise-value-calculatorInputs, metrics: enterprise-value-calculatorMetrics): enterprise-value-calculatorAnalysis {
-  const result = metrics.result;
+// Calculate Enterprise Value to Revenue Ratio
+export function calculateEVToRevenue(enterpriseValue: number, revenue: number): number {
+  if (revenue <= 0) return 0;
+  return enterpriseValue / revenue;
+}
 
-  let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
-  if (Math.abs(result) > 100000) riskLevel = 'High';
-  else if (Math.abs(result) > 10000) riskLevel = 'Medium';
+// Calculate Enterprise Value to EBITDA Ratio
+export function calculateEVToEBITDA(enterpriseValue: number, ebitda: number): number {
+  if (ebitda <= 0) return 0;
+  return enterpriseValue / ebitda;
+}
 
-  const recommendation = result > 0 ?
-    'Calculation completed successfully - positive result' :
-    'Calculation completed - review inputs if result seems unexpected';
+// Generate Enterprise Value analysis
+export function generateEnterpriseValueAnalysis(
+  inputs: EnterpriseValueCalculatorInputs,
+  metrics: EnterpriseValueCalculatorMetrics
+): EnterpriseValueCalculatorAnalysis {
+  const { enterpriseValue, debtToEquity, cashToDebt } = metrics;
 
-  return { recommendation, riskLevel };
+  // Determine leverage level
+  let leverage: 'low' | 'moderate' | 'high' = 'low';
+  if (debtToEquity > 2) leverage = 'high';
+  else if (debtToEquity > 1) leverage = 'moderate';
+
+  // Determine valuation (simplified - would need industry benchmarks)
+  let valuation: 'undervalued' | 'fairly_valued' | 'overvalued' = 'fairly_valued';
+  // This would typically compare to industry averages
+
+  const recommendations = [];
+  if (leverage === 'high') recommendations.push('High leverage may increase financial risk');
+  if (cashToDebt > 0.5) recommendations.push('Strong cash position provides financial flexibility');
+  if (enterpriseValue < 0) recommendations.push('Negative enterprise value may indicate distressed situation');
+
+  // Simplified industry comparison
+  let industryComparison = 'Enterprise value analysis requires industry-specific benchmarks';
+  if (leverage === 'low') industryComparison = 'Lower leverage than typical industry levels';
+  else if (leverage === 'high') industryComparison = 'Higher leverage than typical industry levels';
+
+  return {
+    valuation,
+    leverage,
+    recommendations,
+    industryComparison
+  };
 }

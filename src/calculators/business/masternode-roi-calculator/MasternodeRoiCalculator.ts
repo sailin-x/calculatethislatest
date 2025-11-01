@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateMasternodeRoiCalculatorInputs, validateMasternodeRoiCalculatorBusinessRules } from './validation';
 
-export const MasternodeRoiCalculatorCalculator: Calculator: Calculator = {
-  id: 'masternode-roi-calculator-calculator',
+export const MasternodeRoiCalculator: Calculator = {
+  id: 'MasternodeRoiCalculator-calculator',
   title: 'Masternode ROI Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

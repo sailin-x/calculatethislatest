@@ -4,7 +4,7 @@ import { calculateMortgage, validateMortgageInputs } from './formulas';
 import { getMortgageValidationRules } from './validation';
 
 export const comprehensiveMortgageCalculator: Calculator = {
-  id: 'comprehensive-mortgage-calculator',
+  id: 'ComprehensiveMortgageCalculator',
   title: 'Comprehensive Mortgage Calculator',
   category: 'finance',
   subcategory: 'Real Estate',
@@ -418,7 +418,7 @@ export const comprehensiveMortgageCalculator: Calculator = {
     // Loan Summary
     {
       id: 'loanToValueRatio',
-      label: 'Loan-to-Value Ratio (%)',
+      label: 'LoanToValue Ratio (%)',
       type: 'percentage',
       explanation: 'Percentage of property value financed by the loan'
     },
@@ -546,7 +546,7 @@ export const comprehensiveMortgageCalculator: Calculator = {
     // Cash Flow Analysis
     {
       id: 'cashOnCashReturn',
-      label: 'Cash-on-Cash Return (%)',
+      label: 'CashOnCash Return (%)',
       type: 'percentage',
       explanation: 'Annual return on cash invested in the property'
     },
@@ -626,13 +626,13 @@ export const comprehensiveMortgageCalculator: Calculator = {
     // Affordability Metrics
     {
       id: 'frontEndRatio',
-      label: 'Front-End Debt-to-Income Ratio (%)',
+      label: 'Front-End DebtToIncome Ratio (%)',
       type: 'percentage',
       explanation: 'Housing expenses as percentage of gross income'
     },
     {
       id: 'backEndRatio',
-      label: 'Back-End Debt-to-Income Ratio (%)',
+      label: 'Back-End DebtToIncome Ratio (%)',
       type: 'percentage',
       explanation: 'Total debt payments as percentage of gross income'
     },

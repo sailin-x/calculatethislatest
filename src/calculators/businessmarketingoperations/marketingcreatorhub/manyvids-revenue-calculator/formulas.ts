@@ -1,4 +1,4 @@
-import { manyvids-revenue-calculatorInputs, manyvids-revenue-calculatorMetrics, manyvids-revenue-calculatorAnalysis } from './types';
+import { ManyvidsRevenueCalculatorinputs, ManyvidsRevenueCalculatormetrics, ManyvidsRevenueCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: manyvids-revenue-calculatorInputs): number {
+export function calculateResult(inputs: ManyvidsRevenueCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: manyvids-revenue-calculatorInputs): numb
   }
 }
 
-export function generateAnalysis(inputs: manyvids-revenue-calculatorInputs, metrics: manyvids-revenue-calculatorMetrics): manyvids-revenue-calculatorAnalysis {
+export function generateAnalysis(inputs: ManyvidsRevenueCalculatorinputs, metrics: ManyvidsRevenueCalculatormetrics): ManyvidsRevenueCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

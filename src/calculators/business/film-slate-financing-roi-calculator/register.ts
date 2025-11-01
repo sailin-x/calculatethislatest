@@ -1,3 +1,3 @@
-import { FilmSlateFinancingRoiCalculatorCalculator } from './FilmSlateFinancingRoiCalculatorCalculator';
+import { FilmSlateFinancingRoiCalculator } from './FilmSlateFinancingRoiCalculator';
 
-export { FilmSlateFinancingRoiCalculatorCalculator };
+export { FilmSlateFinancingRoiCalculator };

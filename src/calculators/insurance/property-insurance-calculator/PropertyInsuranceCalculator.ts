@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validatePropertyInsuranceCalculatorInputs } from './validation';
 
 export const PropertyInsuranceCalculator: Calculator = {
-  id: 'property-insurance-calculator',
+  id: 'PropertyInsuranceCalculator',
   title: 'Property Insurance Calculator',
   category: 'insurance',
   subcategory: 'General',

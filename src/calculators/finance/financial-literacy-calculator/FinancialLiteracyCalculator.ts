@@ -10,7 +10,7 @@ import {
 import { validateFinancialLiteracyCalculatorInputs } from './validation';
 
 export const FinancialLiteracyCalculator: Calculator = {
-  id: 'financial-literacy-calculator',
+  id: 'FinancialLiteracyCalculator',
   title: 'Financial Literacy Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

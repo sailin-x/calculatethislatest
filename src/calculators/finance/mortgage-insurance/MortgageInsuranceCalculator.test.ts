@@ -13,7 +13,7 @@ describe('Mortgage Insurance Calculator', () => {
     loanTerm: 30,
     interestRate: 6.5,
     monthlyPayment: 2275,
-    purchaseDate: '2023-01-15',
+    purchaseDate: '20230115',
     propertyType: 'single-family',
     occupancyType: 'primary',
     propertyTaxRate: 1.2,
@@ -142,7 +142,7 @@ describe('Mortgage Insurance Calculator', () => {
     });
 
     it('should reject invalid purchase date', () => {
-      const invalidInputs = { ...mockInputs, purchaseDate: '2025-01-15' };
+      const invalidInputs = { ...mockInputs, purchaseDate: '20250115' };
       const validationResults = validateAllMortgageInsuranceInputs(invalidInputs);
       
       const purchaseDateValidation = validationResults.find(result => 

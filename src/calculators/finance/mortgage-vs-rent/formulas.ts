@@ -1,4 +1,4 @@
-import { mortgage-vs-rentInputs, mortgage-vs-rentMetrics, mortgage-vs-rentAnalysis } from './types';
+import { MortgageVsRentinputs, MortgageVsRentmetrics, MortgageVsRentanalysis } from './types';
 
 
 // Mortgage Payment Calculator - Standard loan amortization formula
@@ -14,7 +14,7 @@ export function calculateTotalInterest(principal: number, monthlyPayment: number
   return (monthlyPayment * numPayments) - principal;
 }
 
-export function calculateResult(inputs: mortgage-vs-rentInputs): number {
+export function calculateResult(inputs: MortgageVsRentinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: mortgage-vs-rentInputs): number {
   }
 }
 
-export function generateAnalysis(inputs: mortgage-vs-rentInputs, metrics: mortgage-vs-rentMetrics): mortgage-vs-rentAnalysis {
+export function generateAnalysis(inputs: MortgageVsRentinputs, metrics: MortgageVsRentmetrics): MortgageVsRentanalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

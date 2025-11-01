@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateMergerAcquisitionMaDivestitureValuationInputs, validateMergerAcquisitionMaDivestitureValuationBusinessRules } from './validation';
 
-export const MergerAcquisitionMaDivestitureValuationCalculator: Calculator: Calculator = {
-  id: 'merger-acquisition-ma-divestiture-valuation-calculator',
+export const MergerAcquisitionMaDivestitureValuationCalculator: Calculator = {
+  id: 'MergerAcquisitionMa-DivestitureValuationCalculator',
   title: 'Merger & Acquisition (M&A) Divestiture Valuation Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

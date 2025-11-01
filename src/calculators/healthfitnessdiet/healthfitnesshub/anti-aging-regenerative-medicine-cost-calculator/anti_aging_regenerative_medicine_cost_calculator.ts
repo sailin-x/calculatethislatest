@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { anti_aging_regenerative_medicine_cost_calculatorInputs, anti_aging_regenerative_medicine_cost_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const anti_aging_regenerative_medicine_cost_calculatorCalculator: Calculator = {
-  id: 'anti-aging-regenerative-medicine-cost-calculator',
+export const AntiAgingRegenerative-MedicineCostCalculator: Calculator = {
+  id: 'AntiAgingRegenerative-MedicineCostCalculator',
   title: 'Anti Aging & Regenerative Medicine Cost Calculator Calculator',
   category: 'healthfitnessdiet',
   subcategory: 'healthfitnesshub',

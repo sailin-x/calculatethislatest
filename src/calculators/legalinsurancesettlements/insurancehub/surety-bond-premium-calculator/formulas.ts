@@ -1,4 +1,4 @@
-import { surety-bond-premium-calculatorInputs, surety-bond-premium-calculatorMetrics, surety-bond-premium-calculatorAnalysis } from './types';
+import { SuretyBondPremium-calculatorInputs, SuretyBondPremium-calculatorMetrics, SuretyBondPremium-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: surety-bond-premium-calculatorInputs): number {
+export function calculateResult(inputs: SuretyBondPremium-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: surety-bond-premium-calculatorInputs): n
   }
 }
 
-export function generateAnalysis(inputs: surety-bond-premium-calculatorInputs, metrics: surety-bond-premium-calculatorMetrics): surety-bond-premium-calculatorAnalysis {
+export function generateAnalysis(inputs: SuretyBondPremium-calculatorInputs, metrics: SuretyBondPremium-calculatorMetrics): SuretyBondPremium-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

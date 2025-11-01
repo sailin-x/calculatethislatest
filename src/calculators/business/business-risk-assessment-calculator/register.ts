@@ -1,3 +1,3 @@
-import { BusinessRiskAssessmentCalculatorCalculator } from './BusinessRiskAssessmentCalculatorCalculator';
+import { BusinessRiskAssessmentCalculator } from './BusinessRiskAssessmentCalculator';
 
-export { BusinessRiskAssessmentCalculatorCalculator };
+export { BusinessRiskAssessmentCalculator };

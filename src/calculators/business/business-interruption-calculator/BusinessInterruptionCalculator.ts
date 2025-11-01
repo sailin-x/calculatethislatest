@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateBusinessInterruptionCalculatorInputs, validateBusinessInterruptionCalculatorBusinessRules } from './validation';
 
-export const BusinessInterruptionCalculatorCalculator: Calculator: Calculator = {
-  id: 'business-interruption-calculator-calculator',
+export const BusinessInterruptionCalculator: Calculator = {
+  id: 'BusinessInterruptionCalculator-calculator',
   title: 'Business Interruption Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

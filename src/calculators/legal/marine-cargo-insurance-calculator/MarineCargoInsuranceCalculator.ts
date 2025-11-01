@@ -9,7 +9,7 @@ import {
 import { validateMarineCargoInsuranceCalculatorInputs } from './validation';
 
 export const MarineCargoInsuranceCalculator: Calculator = {
-  id: 'marine-cargo-insurance-calculator',
+  id: 'MarineCargoInsurance-calculator',
   title: 'Marine Cargo Insurance Calculator',
   category: 'legal',
   subcategory: 'Settlement Analysis',

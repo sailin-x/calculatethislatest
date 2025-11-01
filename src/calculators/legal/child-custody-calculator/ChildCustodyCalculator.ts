@@ -9,7 +9,7 @@ import {
 import { validateChildCustodyCalculatorInputs } from './validation';
 
 export const ChildCustodyCalculator: Calculator = {
-  id: 'child-custody-calculator',
+  id: 'ChildCustodyCalculator',
   title: 'Child Custody Calculator',
   category: 'legal',
   subcategory: 'Settlement Analysis',

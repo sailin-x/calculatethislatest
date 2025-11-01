@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateRoyaltyFinancingCalculatorInputs, validateRoyaltyFinancingCalculatorBusinessRules } from './validation';
 
-export const RoyaltyFinancingCalculatorCalculator: Calculator: Calculator = {
-  id: 'royalty-financing-calculator-calculator',
+export const RoyaltyFinancingCalculator: Calculator = {
+  id: 'RoyaltyFinancingCalculator-calculator',
   title: 'Royalty Financing Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

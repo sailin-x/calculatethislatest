@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { enterprise_value_calculatorInputs, enterprise_value_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const enterprise_value_calculatorCalculator: Calculator = {
-  id: 'enterprise-value-calculator',
+export const EnterpriseValueCalculator: Calculator = {
+  id: 'EnterpriseValueCalculator',
   title: 'Enterprise Value Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'investmentportfoliohub',

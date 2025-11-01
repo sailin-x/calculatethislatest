@@ -10,7 +10,7 @@ import {
 import { validateGasFeeOptimizerCalculatorInputs } from './validation';
 
 export const GasFeeOptimizerCalculator: Calculator = {
-  id: 'gas-fee-optimizer-calculator',
+  id: 'GasFeeOptimizer-calculator',
   title: 'Gas Fee Optimizer Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

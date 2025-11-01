@@ -1,4 +1,4 @@
-export { CreditUtilizationCalculatorCalculator } from './CreditUtilizationCalculatorCalculator';
+export { CreditUtilizationCalculator } from './CreditUtilizationCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

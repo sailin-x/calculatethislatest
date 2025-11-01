@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { data_governance_roi_calculatorInputs, data_governance_roi_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const data_governance_roi_calculatorCalculator: Calculator = {
-  id: 'data-governance-roi-calculator',
+export const DataGovernanceRoi-calculator: Calculator = {
+  id: 'DataGovernanceRoi-calculator',
   title: 'Data Governance ROI Calculator Calculator',
   category: 'businessmarketingoperations',
   subcategory: 'businessoperationsfinancehub',

@@ -1,4 +1,4 @@
-export { GenerationskippingTransferGstTaxCalculatorCalculator } from './GenerationskippingTransferGstTaxCalculatorCalculator';
+export { GenerationskippingTransferGstTaxCalculator } from './GenerationskippingTransferGstTaxCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

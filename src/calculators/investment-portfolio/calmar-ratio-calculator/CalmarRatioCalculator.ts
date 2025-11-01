@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateCalmarRatioCalculatorInputs, validateCalmarRatioCalculatorBusinessRules } from './validation';
 
-export const CalmarRatioCalculatorCalculator: Calculator: Calculator = {
-  id: 'calmar-ratio-calculator-calculator',
+export const CalmarRatioCalculator: Calculator = {
+  id: 'CalmarRatioCalculator-calculator',
   title: 'Calmar Ratio Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

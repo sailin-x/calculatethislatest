@@ -70,7 +70,7 @@ export function validatePaymentPlan(value: any, allInputs?: Record<string, any>)
   if (!value || value === '') {
     return { isValid: false, errors: { paymentPlan: 'Payment plan is required' } };
   }
-  const validPlans = ['tenure', 'term', 'line-of-credit'];
+  const validPlans = ['tenure', 'term', 'LineOfCredit'];
   if (!validPlans.includes(value)) {
     return { isValid: false, errors: { paymentPlan: 'Invalid payment plan selected' } };
   }

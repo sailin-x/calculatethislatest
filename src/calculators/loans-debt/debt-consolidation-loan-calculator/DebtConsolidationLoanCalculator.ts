@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateDebtConsolidationLoanCalculatorInputs, validateDebtConsolidationLoanCalculatorBusinessRules } from './validation';
 
-export const DebtConsolidationLoanCalculatorCalculator: Calculator: Calculator = {
-  id: 'debt-consolidation-loan-calculator-calculator',
+export const DebtConsolidationLoanCalculator: Calculator = {
+  id: 'DebtConsolidationLoan-calculator-calculator',
   title: 'Debt Consolidation Loan Calculator Calculator',
   loans-debt: 'loans-debt', // e.g., 'finance', 'math', 'health', 'business'
   subloans-debt: 'Subloans-debt Name',

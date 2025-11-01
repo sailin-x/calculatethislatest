@@ -1,7 +1,7 @@
 import { Calculator } from '../../types/calculator';
 
 export const TermLifeInsuranceCalculator: Calculator = {
-  id: 'term-life-insurance-calculator',
+  id: 'TermLifeInsurance-calculator',
   name: 'Term Life Insurance Calculator',
   category: 'finance',
   subcategory: 'insurance',
@@ -28,12 +28,12 @@ export const TermLifeInsuranceCalculator: Calculator = {
       { value: 'level-term', label: 'Level Term' },
       { value: 'decreasing-term', label: 'Decreasing Term' },
       { value: 'increasing-term', label: 'Increasing Term' },
-      { value: 'return-of-premium', label: 'Return of Premium' }
+      { value: 'ReturnOfPremium', label: 'Return of Premium' }
     ] },
     { id: 'riders', name: 'Riders', type: 'select', required: false, description: 'Additional policy riders', options: [
       { value: 'none', label: 'None' },
-      { value: 'waiver-of-premium', label: 'Waiver of Premium' },
-      { value: 'accelerated-death-benefit', label: 'Accelerated Death Benefit' },
+      { value: 'WaiverOfPremium', label: 'Waiver of Premium' },
+      { value: 'AcceleratedDeathBenefit', label: 'Accelerated Death Benefit' },
       { value: 'child-rider', label: 'Child Rider' },
       { value: 'spouse-rider', label: 'Spouse Rider' },
       { value: 'multiple', label: 'Multiple Riders' }
@@ -65,7 +65,7 @@ export const TermLifeInsuranceCalculator: Calculator = {
       { value: 'diabetes', label: 'Diabetes' },
       { value: 'heart-disease', label: 'Heart Disease' },
       { value: 'cancer', label: 'Cancer' },
-      { value: 'high-blood-pressure', label: 'High Blood Pressure' },
+      { value: 'HighBloodPressure', label: 'High Blood Pressure' },
       { value: 'multiple', label: 'Multiple Conditions' }
     ] },
     { id: 'familyHistory', name: 'Family History', type: 'select', required: false, description: 'Family medical history', options: [
@@ -104,7 +104,7 @@ export const TermLifeInsuranceCalculator: Calculator = {
       { value: 'needs-analysis', label: 'Needs Analysis' }
     ] },
     { id: 'comparisonTerms', name: 'Comparison Terms', type: 'select', required: false, description: 'Term lengths to compare', options: [
-      { value: '10-20-30', label: '10, 20, 30 Years' },
+      { value: '102030', label: '10, 20, 30 Years' },
       { value: '15-25', label: '15, 25 Years' },
       { value: '20-30', label: '20, 30 Years' },
       { value: 'custom', label: 'Custom Terms' }

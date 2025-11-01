@@ -10,7 +10,7 @@ import {
 import { validatePrivateEquityIrrCalculatorInputs } from './validation';
 
 export const PrivateEquityIrrCalculator: Calculator = {
-  id: 'private-equity-irr-calculator',
+  id: 'PrivateEquityIrr-calculator',
   title: 'Private Equity IRR Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

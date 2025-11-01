@@ -1,4 +1,4 @@
-export { VarianceCalculatorCalculator } from './VarianceCalculatorCalculator';
+export { VarianceCalculator } from './VarianceCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

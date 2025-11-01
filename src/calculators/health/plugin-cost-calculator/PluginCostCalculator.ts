@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validatePluginCostCalculatorInputs } from './validation';
 
 export const PluginCostCalculator: Calculator = {
-  id: 'plugin-cost-calculator',
+  id: 'PluginCostCalculator',
   title: 'Plugin Cost Calculator',
   category: 'health',
   subcategory: 'General',

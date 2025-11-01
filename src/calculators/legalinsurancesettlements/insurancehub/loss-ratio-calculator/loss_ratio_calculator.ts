@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { loss_ratio_calculatorInputs, loss_ratio_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const loss_ratio_calculatorCalculator: Calculator = {
-  id: 'loss-ratio-calculator',
+export const LossRatioCalculator: Calculator = {
+  id: 'LossRatioCalculator',
   title: 'Loss Ratio Calculator Calculator',
   category: 'legalinsurancesettlements',
   subcategory: 'insurancehub',

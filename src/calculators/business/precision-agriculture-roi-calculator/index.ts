@@ -1,4 +1,4 @@
-export { PrecisionAgricultureRoiCalculatorCalculator } from './PrecisionAgricultureRoiCalculatorCalculator';
+export { PrecisionAgricultureRoiCalculator } from './PrecisionAgricultureRoiCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

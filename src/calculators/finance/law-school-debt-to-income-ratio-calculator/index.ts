@@ -1,4 +1,4 @@
-export { LawSchoolDebttoincomeRatioCalculatorCalculator } from './LawSchoolDebttoincomeRatioCalculatorCalculator';
+export { LawSchoolDebttoincomeRatioCalculator } from './LawSchoolDebttoincomeRatioCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

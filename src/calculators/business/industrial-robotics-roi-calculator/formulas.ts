@@ -1,4 +1,4 @@
-import { industrial-robotics-roi-calculatorInputs, industrial-robotics-roi-calculatorMetrics, industrial-robotics-roi-calculatorAnalysis } from './types';
+import { IndustrialRoboticsRoi-calculatorInputs, IndustrialRoboticsRoi-calculatorMetrics, IndustrialRoboticsRoi-calculatorAnalysis } from './types';
 
 // ROI Calculator
 export function calculateROI(netProfit: number, investment: number): number {
@@ -13,7 +13,7 @@ export function calculatePaybackPeriod(investment: number, annualCashFlow: numbe
   return investment / annualCashFlow;
 }
 
-export function calculateResult(inputs: industrial-robotics-roi-calculatorInputs): number {
+export function calculateResult(inputs: IndustrialRoboticsRoi-calculatorInputs): number {
   if ('netProfit' in inputs && 'investment' in inputs) {
     return calculateROI(inputs.netProfit, inputs.investment);
   }
@@ -24,7 +24,7 @@ export function calculateResult(inputs: industrial-robotics-roi-calculatorInputs
   return 0;
 }
 
-export function generateAnalysis(inputs: industrial-robotics-roi-calculatorInputs, metrics: industrial-robotics-roi-calculatorMetrics): industrial-robotics-roi-calculatorAnalysis {
+export function generateAnalysis(inputs: IndustrialRoboticsRoi-calculatorInputs, metrics: IndustrialRoboticsRoi-calculatorMetrics): IndustrialRoboticsRoi-calculatorAnalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (result < 10) riskLevel = 'High';

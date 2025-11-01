@@ -27,7 +27,7 @@ describe('Bridge Loan Calculator', () => {
 
   describe('Calculator Definition', () => {
     it('should have correct basic properties', () => {
-      expect(BridgeLoanCalculator.id).toBe('bridge-loan-calculator');
+      expect(BridgeLoanCalculator.id).toBe('BridgeLoanCalculator');
       expect(BridgeLoanCalculator.name).toBe('Bridge Loan Calculator');
       expect(BridgeLoanCalculator.category).toBe('finance');
       expect(BridgeLoanCalculator.subcategory).toBe('mortgage');

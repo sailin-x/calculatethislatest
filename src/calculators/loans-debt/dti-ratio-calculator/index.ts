@@ -1,4 +1,4 @@
-export { DtiRatioCalculatorCalculator } from './DtiRatioCalculatorCalculator';
+export { DtiRatioCalculator } from './DtiRatioCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

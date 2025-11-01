@@ -7,7 +7,7 @@ import {
 } from './formulas';
 
 export class GPUMiningProfitabilityCalculator implements Calculator<GPUMiningProfitabilityInputs, GPUMiningProfitabilityOutputs> {
-  readonly id = 'gpu-mining-profitability';
+  readonly id = 'GpuMiningProfitability';
   readonly name = 'GPU Mining Profitability Calculator';
   readonly description = 'Calculate cryptocurrency mining profitability, ROI, and break-even analysis for GPU mining operations';
   readonly category = 'technology';
@@ -22,12 +22,12 @@ export class GPUMiningProfitabilityCalculator implements Calculator<GPUMiningPro
       options: [
         { value: 'rtx-4090', label: 'RTX 4090 (83 MH/s, 450W)' },
         { value: 'rtx-4080', label: 'RTX 4080 (65 MH/s, 320W)' },
-        { value: 'rtx-4070-ti', label: 'RTX 4070 Ti (50 MH/s, 285W)' },
+        { value: 'Rtx4070Ti', label: 'RTX 4070 Ti (50 MH/s, 285W)' },
         { value: 'rtx-3090', label: 'RTX 3090 (120 MH/s, 350W)' },
         { value: 'rtx-3080', label: 'RTX 3080 (100 MH/s, 320W)' },
         { value: 'rtx-3070', label: 'RTX 3070 (62 MH/s, 220W)' },
-        { value: 'rx-7900-xtx', label: 'RX 7900 XTX (85 MH/s, 355W)' },
-        { value: 'rx-6900-xt', label: 'RX 6900 XT (64 MH/s, 300W)' },
+        { value: 'Rx7900Xtx', label: 'RX 7900 XTX (85 MH/s, 355W)' },
+        { value: 'Rx6900Xt', label: 'RX 6900 XT (64 MH/s, 300W)' },
         { value: 'custom', label: 'Custom GPU Configuration' }
       ],
       defaultValue: 'rtx-3080',

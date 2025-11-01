@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateSwingTradingCalculatorInputs, validateSwingTradingCalculatorBusinessRules } from './validation';
 
-export const SwingTradingCalculatorCalculator: Calculator: Calculator = {
-  id: 'swing-trading-calculator-calculator',
+export const SwingTradingCalculator: Calculator = {
+  id: 'SwingTradingCalculator-calculator',
   title: 'Swing Trading Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

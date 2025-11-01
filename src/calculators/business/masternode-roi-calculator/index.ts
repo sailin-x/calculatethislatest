@@ -1,4 +1,4 @@
-export { MasternodeRoiCalculatorCalculator } from './MasternodeRoiCalculatorCalculator';
+export { MasternodeRoiCalculator } from './MasternodeRoiCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

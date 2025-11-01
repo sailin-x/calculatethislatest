@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateIvfInVitroFertilizationCostCalculatorInputs, validateIvfInVitroFertilizationCostCalculatorBusinessRules } from './validation';
 
-export const IvfInVitroFertilizationCostCalculatorCalculator: Calculator: Calculator = {
-  id: 'ivf-in-vitro-fertilization-cost-calculator-calculator',
+export const IvfInVitroFertilizationCostCalculator: Calculator = {
+  id: 'IvfInVitro-FertilizationCostCalculator-calculator',
   title: 'IVF (In Vitro Fertilization) Cost Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

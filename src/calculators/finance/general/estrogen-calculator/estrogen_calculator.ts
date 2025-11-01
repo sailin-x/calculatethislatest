@@ -2,7 +2,7 @@ import { Calculator } from '../../../../types/calculator';
 import { estrogen_calculatorInputs, estrogen_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const estrogen_calculatorCalculator: Calculator = {
+export const estrogen-calculator: Calculator = {
   id: 'estrogen-calculator',
   title: 'Estrogen Calculator Calculator',
   category: 'finance',

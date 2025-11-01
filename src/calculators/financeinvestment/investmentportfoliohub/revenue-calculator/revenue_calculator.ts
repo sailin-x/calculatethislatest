@@ -2,7 +2,7 @@ import { Calculator } from '../../../../types/calculator';
 import { revenue_calculatorInputs, revenue_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const revenue_calculatorCalculator: Calculator = {
+export const revenue-calculator: Calculator = {
   id: 'revenue-calculator',
   title: 'Revenue Calculator Calculator',
   category: 'financeinvestment',

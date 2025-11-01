@@ -7,7 +7,7 @@ export const statisticsCalculator: Calculator = {
   title: 'Statistics Calculator',
   category: 'math',
   subcategory: 'Statistics & Probability',
-  description: 'Comprehensive statistical analysis including descriptive statistics, confidence intervals, hypothesis testing, and regression analysis with step-by-step solutions.',
+  description: 'Comprehensive statistical analysis including descriptive statistics, confidence intervals, hypothesis testing, and regression analysis with StepByStep solutions.',
   
   usageInstructions: [
     'Enter your dataset as comma-separated numbers',

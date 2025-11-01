@@ -1,3 +1,3 @@
-import { FineArtInvestmentRoiCalculatorCalculator } from './FineArtInvestmentRoiCalculatorCalculator';
+import { FineArtInvestmentRoiCalculator } from './FineArtInvestmentRoiCalculator';
 
-export { FineArtInvestmentRoiCalculatorCalculator };
+export { FineArtInvestmentRoiCalculator };

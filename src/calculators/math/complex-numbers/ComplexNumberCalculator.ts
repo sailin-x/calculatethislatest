@@ -3,11 +3,11 @@ import { complexNumberCalculatorFormula } from './formulas';
 import { ValidationRuleFactory } from '../../utils/validation';
 
 export const complexNumberCalculator: Calculator = {
-  id: 'complex-number-calculator',
+  id: 'ComplexNumberCalculator',
   title: 'Advanced Complex Number Calculator',
   category: 'math',
   subcategory: 'Complex Numbers',
-  description: 'Comprehensive complex number calculator supporting arithmetic operations, polar/rectangular conversions, roots, powers, and advanced functions with step-by-step solutions.',
+  description: 'Comprehensive complex number calculator supporting arithmetic operations, polar/rectangular conversions, roots, powers, and advanced functions with StepByStep solutions.',
   
   usageInstructions: [
     'Select the operation you want to perform on complex numbers',

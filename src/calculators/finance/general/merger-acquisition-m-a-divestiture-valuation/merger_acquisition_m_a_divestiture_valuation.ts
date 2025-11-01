@@ -3,7 +3,7 @@ import { merger_acquisition_m_a_divestiture_valuationInputs, merger_acquisition_
 import { calculateResult, generateAnalysis } from './formulas';
 
 export const merger_acquisition_m_a_divestiture_valuationCalculator: Calculator = {
-  id: 'merger-acquisition-m-a-divestiture-valuation',
+  id: 'MergerAcquisitionM-ADivestitureValuation',
   title: 'Merger & Acquisition (M&A) Divestiture Valuation Calculator',
   category: 'finance',
   subcategory: 'general',

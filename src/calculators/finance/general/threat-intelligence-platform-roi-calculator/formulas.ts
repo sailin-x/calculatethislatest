@@ -1,4 +1,4 @@
-import { threat-intelligence-platform-roi-calculatorInputs, threat-intelligence-platform-roi-calculatorMetrics, threat-intelligence-platform-roi-calculatorAnalysis } from './types';
+import { ThreatIntelligencePlatform-roi-calculatorInputs, ThreatIntelligencePlatform-roi-calculatorMetrics, ThreatIntelligencePlatform-roi-calculatorAnalysis } from './types';
 
 
 // Investment Calculator - ROI and growth calculations
@@ -12,7 +12,7 @@ export function calculateCompoundInterest(principal: number, rate: number, years
   return principal * Math.pow(1 + ratePerPeriod, totalPeriods);
 }
 
-export function calculateResult(inputs: threat-intelligence-platform-roi-calculatorInputs): number {
+export function calculateResult(inputs: ThreatIntelligencePlatform-roi-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -36,7 +36,7 @@ export function calculateResult(inputs: threat-intelligence-platform-roi-calcula
   }
 }
 
-export function generateAnalysis(inputs: threat-intelligence-platform-roi-calculatorInputs, metrics: threat-intelligence-platform-roi-calculatorMetrics): threat-intelligence-platform-roi-calculatorAnalysis {
+export function generateAnalysis(inputs: ThreatIntelligencePlatform-roi-calculatorInputs, metrics: ThreatIntelligencePlatform-roi-calculatorMetrics): ThreatIntelligencePlatform-roi-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

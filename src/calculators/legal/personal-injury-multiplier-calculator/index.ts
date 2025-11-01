@@ -1,4 +1,4 @@
-export { PersonalInjuryMultiplierCalculatorCalculator } from './PersonalInjuryMultiplierCalculatorCalculator';
+export { PersonalInjuryMultiplierCalculator } from './PersonalInjuryMultiplierCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

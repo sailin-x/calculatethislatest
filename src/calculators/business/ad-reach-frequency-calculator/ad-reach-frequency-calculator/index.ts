@@ -1,3 +1,2 @@
-export * from './ad-reach-frequency-calculatorCalculator';
-export * from './register';
+export * from './AdReachFrequency-calculator';
 export * from './types';

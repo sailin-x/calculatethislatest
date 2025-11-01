@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateDrywallCalculatorInputs, validateDrywallCalculatorBusinessRules } from './validation';
 
-export const DrywallCalculatorCalculator: Calculator: Calculator = {
-  id: 'drywall-calculator-calculator',
+export const DrywallCalculator: Calculator = {
+  id: 'DrywallCalculatorCalculator',
   title: 'Drywall Calculator Calculator',
   construction: 'construction', // e.g., 'finance', 'math', 'health', 'business'
   subconstruction: 'Subconstruction Name',

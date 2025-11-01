@@ -1,13 +1,13 @@
-import { student-loan-portfolio-risk-calculatorInputs, student-loan-portfolio-risk-calculatorMetrics, student-loan-portfolio-risk-calculatorAnalysis } from './types';
+import { StudentLoanPortfolio-risk-calculatorInputs, StudentLoanPortfolio-risk-calculatorMetrics, StudentLoanPortfolio-risk-calculatorAnalysis } from './types';
 
 // Student Loan Portfolio Risk Calculator - Finance calculations
-export function calculateResult(inputs: student-loan-portfolio-risk-calculatorInputs): number {
+export function calculateResult(inputs: StudentLoanPortfolio-risk-calculatorInputs): number {
   // Financial calculation logic
   const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
   return numericValues.reduce((sum, val) => sum + val, 0) || 0;
 }
 
-export function generateAnalysis(inputs: student-loan-portfolio-risk-calculatorInputs, metrics: student-loan-portfolio-risk-calculatorMetrics): student-loan-portfolio-risk-calculatorAnalysis {
+export function generateAnalysis(inputs: StudentLoanPortfolio-risk-calculatorInputs, metrics: StudentLoanPortfolio-risk-calculatorMetrics): StudentLoanPortfolio-risk-calculatorAnalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (Math.abs(result) > 100000) riskLevel = 'High';

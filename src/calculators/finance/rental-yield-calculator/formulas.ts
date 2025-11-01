@@ -1,4 +1,4 @@
-import { rental-yield-calculatorInputs, rental-yield-calculatorMetrics, rental-yield-calculatorAnalysis } from './types';
+import { RentalYieldCalculatorinputs, RentalYieldCalculatormetrics, RentalYieldCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: rental-yield-calculatorInputs): number {
+export function calculateResult(inputs: RentalYieldCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: rental-yield-calculatorInputs): number {
   }
 }
 
-export function generateAnalysis(inputs: rental-yield-calculatorInputs, metrics: rental-yield-calculatorMetrics): rental-yield-calculatorAnalysis {
+export function generateAnalysis(inputs: RentalYieldCalculatorinputs, metrics: RentalYieldCalculatormetrics): RentalYieldCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

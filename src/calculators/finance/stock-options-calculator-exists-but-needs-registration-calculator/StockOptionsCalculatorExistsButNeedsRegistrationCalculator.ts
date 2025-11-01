@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateStockOptionsCalculatorExistsButNeedsRegistrationCalculatorInputs, validateStockOptionsCalculatorExistsButNeedsRegistrationCalculatorBusinessRules } from './validation';
 
-export const StockOptionsCalculatorExistsButNeedsRegistrationCalculatorCalculator: Calculator: Calculator = {
-  id: 'stock-options-calculator-exists-but-needs-registration-calculator-calculator',
+export const StockOptionsCalculatorExistsButNeedsRegistrationCalculator: Calculator = {
+  id: 'StockOptionsCalculator-ExistsButNeeds-RegistrationCalculatorCalculator',
   title: '**Stock Options Calculator Exists But Needs Registration Calculator** Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

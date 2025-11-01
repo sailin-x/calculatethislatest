@@ -23,7 +23,7 @@ const timberlandInvestmentFormula: Formula = {
  * Industry-leading timberland investment calculator with comprehensive features
  */
 export const timberlandInvestmentCalculator: Calculator = {
-  id: 'timberland-investment-calculator',
+  id: 'TimberlandInvestmentCalculator',
   title: 'Timberland Investment Calculator',
   category: 'finance',
   subcategory: 'Mortgage & Real Estate',
@@ -314,7 +314,7 @@ export const timberlandInvestmentCalculator: Calculator = {
     },
     {
       id: 'cashOnCashReturn',
-      label: 'Cash-on-Cash Return (%)',
+      label: 'CashOnCash Return (%)',
       type: 'percentage',
       explanation: 'Annual cash flow divided by equity invested'
     },

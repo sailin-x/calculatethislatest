@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { capital_structure_optimization_calculatorInputs, capital_structure_optimization_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const capital_structure_optimization_calculatorCalculator: Calculator = {
-  id: 'capital-structure-optimization-calculator',
+export const CapitalStructureOptimization-calculator: Calculator = {
+  id: 'CapitalStructureOptimization-calculator',
   title: 'Capital Structure Optimization Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'investmentportfoliohub',

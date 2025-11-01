@@ -3,11 +3,11 @@ import { calculateCashFlow, generateCashFlowAnalysis } from './formulas';
 import { validateCashFlowInputs } from './validation';
 
 export const CommercialRealEstateCashFlowCalculator: Calculator = {
-  id: 'commercial-real-estate-cash-flow-calculator',
+  id: 'CommercialRealEstate-CashFlowCalculator',
   name: 'Commercial Real Estate Cash Flow Calculator',
   category: 'finance',
   subcategory: 'business',
-  description: 'Calculate and analyze commercial real estate cash flow performance, including NOI, cash-on-cash return, and investment metrics.',
+  description: 'Calculate and analyze commercial real estate cash flow performance, including NOI, CashOnCash return, and investment metrics.',
   
   inputs: [
     {
@@ -330,7 +330,7 @@ export const CommercialRealEstateCashFlowCalculator: Calculator = {
     },
     {
       id: 'cashOnCashReturn',
-      name: 'Cash-on-Cash Return',
+      name: 'CashOnCash Return',
       type: 'number',
       unit: '%',
       description: 'Annual cash flow as percentage of cash invested'
@@ -432,8 +432,8 @@ export const CommercialRealEstateCashFlowCalculator: Calculator = {
       description: 'Calculates monthly cash flow after debt service'
     },
     {
-      name: 'Cash-on-Cash Return',
-      formula: 'Cash-on-Cash = (Annual Cash Flow / Total Cash Invested) × 100',
+      name: 'CashOnCash Return',
+      formula: 'CashOnCash = (Annual Cash Flow / Total Cash Invested) × 100',
       description: 'Calculates return on cash invested'
     },
     {

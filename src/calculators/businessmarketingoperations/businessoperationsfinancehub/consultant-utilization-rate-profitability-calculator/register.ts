@@ -1,3 +1,0 @@
-import { consultant_utilization_rate_profitability_calculatorCalculator } from './consultant_utilization_rate_profitability_calculator';
-
-export { consultant_utilization_rate_profitability_calculatorCalculator };

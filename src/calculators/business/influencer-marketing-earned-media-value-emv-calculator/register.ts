@@ -1,3 +1,3 @@
-import { InfluencerMarketingEarnedMediaValueEmvCalculatorCalculator } from './InfluencerMarketingEarnedMediaValueEmvCalculatorCalculator';
+import { InfluencerMarketingEarnedMediaValueEmvCalculator } from './InfluencerMarketingEarnedMediaValueEmvCalculator';
 
-export { InfluencerMarketingEarnedMediaValueEmvCalculatorCalculator };
+export { InfluencerMarketingEarnedMediaValueEmvCalculator };

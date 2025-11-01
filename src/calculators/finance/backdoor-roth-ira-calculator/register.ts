@@ -1,3 +1,3 @@
-import { BackdoorRothIraCalculatorCalculator } from './BackdoorRothIraCalculatorCalculator';
+import { BackdoorRothIraCalculator } from './BackdoorRothIraCalculator';
 
-export { BackdoorRothIraCalculatorCalculator };
+export { BackdoorRothIraCalculator };

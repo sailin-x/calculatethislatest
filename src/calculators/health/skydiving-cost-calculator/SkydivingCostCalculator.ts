@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateSkydivingCostCalculatorInputs } from './validation';
 
 export const SkydivingCostCalculator: Calculator = {
-  id: 'skydiving-cost-calculator',
+  id: 'SkydivingCostCalculator',
   title: 'Skydiving Cost Calculator',
   category: 'health',
   subcategory: 'General',

@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateInsulationCalculatorInputs, validateInsulationCalculatorBusinessRules } from './validation';
 
-export const InsulationCalculatorCalculator: Calculator: Calculator = {
-  id: 'insulation-calculator-calculator',
+export const InsulationCalculator: Calculator = {
+  id: 'InsulationCalculatorCalculator',
   title: 'Insulation Calculator Calculator',
   construction: 'construction', // e.g., 'finance', 'math', 'health', 'business'
   subconstruction: 'Subconstruction Name',

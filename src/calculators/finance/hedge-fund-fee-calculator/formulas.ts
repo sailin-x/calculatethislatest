@@ -1,4 +1,4 @@
-import { hedge-fund-fee-calculatorInputs, hedge-fund-fee-calculatorMetrics, hedge-fund-fee-calculatorAnalysis } from './types';
+import { HedgeFundFee-calculatorInputs, HedgeFundFee-calculatorMetrics, HedgeFundFee-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: hedge-fund-fee-calculatorInputs): number {
+export function calculateResult(inputs: HedgeFundFee-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: hedge-fund-fee-calculatorInputs): number
   }
 }
 
-export function generateAnalysis(inputs: hedge-fund-fee-calculatorInputs, metrics: hedge-fund-fee-calculatorMetrics): hedge-fund-fee-calculatorAnalysis {
+export function generateAnalysis(inputs: HedgeFundFee-calculatorInputs, metrics: HedgeFundFee-calculatorMetrics): HedgeFundFee-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

@@ -1,3 +1,3 @@
-import { MedicalDeviceDevelopmentCostCalculatorCalculator } from './MedicalDeviceDevelopmentCostCalculatorCalculator';
+import { MedicalDeviceDevelopmentCostCalculator } from './MedicalDeviceDevelopmentCostCalculator';
 
-export { MedicalDeviceDevelopmentCostCalculatorCalculator };
+export { MedicalDeviceDevelopmentCostCalculator };

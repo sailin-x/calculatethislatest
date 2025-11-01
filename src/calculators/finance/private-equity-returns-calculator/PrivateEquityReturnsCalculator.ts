@@ -10,7 +10,7 @@ import {
 import { validatePrivateEquityReturnsCalculatorInputs } from './validation';
 
 export const PrivateEquityReturnsCalculator: Calculator = {
-  id: 'private-equity-returns-calculator',
+  id: 'PrivateEquityReturns-calculator',
   title: 'Private Equity Returns Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

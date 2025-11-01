@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateNumberTheoryCalculatorInputs, validateNumberTheoryCalculatorBusinessRules } from './validation';
 
-export const NumberTheoryCalculatorCalculator: Calculator: Calculator = {
-  id: 'number-theory-calculator-calculator',
+export const NumberTheoryCalculator: Calculator = {
+  id: 'NumberTheoryCalculator-calculator',
   title: 'Number Theory Calculator Calculator',
   math: 'math', // e.g., 'finance', 'math', 'health', 'business'
   submath: 'Submath Name',

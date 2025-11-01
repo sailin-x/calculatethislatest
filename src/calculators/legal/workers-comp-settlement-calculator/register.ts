@@ -1,3 +1,3 @@
-import { WorkersCompSettlementCalculatorCalculator } from './WorkersCompSettlementCalculatorCalculator';
+import { WorkersCompSettlementCalculator } from './WorkersCompSettlementCalculator';
 
-export { WorkersCompSettlementCalculatorCalculator };
+export { WorkersCompSettlementCalculator };

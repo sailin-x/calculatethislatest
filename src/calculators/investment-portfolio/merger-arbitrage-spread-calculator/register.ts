@@ -1,3 +1,3 @@
-import { MergerArbitrageSpreadCalculatorCalculator } from './MergerArbitrageSpreadCalculatorCalculator';
+import { MergerArbitrageSpreadCalculator } from './MergerArbitrageSpreadCalculator';
 
-export { MergerArbitrageSpreadCalculatorCalculator };
+export { MergerArbitrageSpreadCalculator };

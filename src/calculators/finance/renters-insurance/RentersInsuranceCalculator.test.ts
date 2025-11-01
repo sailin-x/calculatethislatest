@@ -8,7 +8,7 @@ import { CalculatorInputs, CalculatorOutputs } from '../../types/calculator';
 describe('RentersInsuranceCalculator', () => {
   describe('Calculator Structure', () => {
     it('should have correct basic properties', () => {
-      expect(RentersInsuranceCalculator.id).toBe('renters-insurance-calculator');
+      expect(RentersInsuranceCalculator.id).toBe('RentersInsuranceCalculator');
       expect(RentersInsuranceCalculator.name).toBe('Renters Insurance Calculator');
       expect(RentersInsuranceCalculator.category).toBe('finance');
       expect(RentersInsuranceCalculator.subcategory).toBe('insurance');
@@ -93,13 +93,13 @@ describe('RentersInsuranceCalculator', () => {
       expect(result.errors).toContain('Smoking status must be one of: non-smoker, smoker, former-smoker');
       expect(result.errors).toContain('Pet type must be one of: none, dog, cat, other');
       expect(result.errors).toContain('Security features must be one of: none, basic, advanced, gated');
-      expect(result.errors).toContain('Fire protection must be one of: none, smoke-detectors, sprinklers, fire-station-nearby');
+      expect(result.errors).toContain('Fire protection must be one of: none, smoke-detectors, sprinklers, FireStationNearby');
       expect(result.errors).toContain('Flood zone must be one of: none, low-risk, moderate-risk, high-risk');
       expect(result.errors).toContain('Earthquake zone must be one of: none, low, moderate, high');
       expect(result.errors).toContain('Claims history must be one of: none, 1-2, 3-5, 5-plus');
       expect(result.errors).toContain('Occupation must be one of: student, professional, service, retail, unemployed, retired, other');
       expect(result.errors).toContain('Policy type must be one of: basic, standard, premium, comprehensive');
-      expect(result.errors).toContain('Replacement cost must be one of: actual-cash-value, replacement-cost');
+      expect(result.errors).toContain('Replacement cost must be one of: ActualCashValue, replacement-cost');
       expect(result.errors).toContain('Identity theft coverage must be one of: none, basic, comprehensive');
       expect(result.errors).toContain('Water backup coverage must be one of: none, basic, enhanced');
     });
@@ -113,7 +113,7 @@ describe('RentersInsuranceCalculator', () => {
       
       const result = validateRentersInsuranceInputs(inputs);
       expect(result.warnings).toContain('Very low property value - consider if all items are included');
-      expect(result.warnings).toContain('High deductible may result in significant out-of-pocket costs');
+      expect(result.warnings).toContain('High deductible may result in significant OutOfPocket costs');
       expect(result.warnings).toContain('Consider higher liability coverage for better protection');
     });
 
@@ -133,7 +133,7 @@ describe('RentersInsuranceCalculator', () => {
         claimsHistory: 'none',
         occupation: 'professional',
         policyType: 'standard',
-        replacementCost: 'actual-cash-value',
+        replacementCost: 'ActualCashValue',
         identityTheft: 'none',
         waterBackup: 'none'
       };
@@ -179,7 +179,7 @@ describe('RentersInsuranceCalculator', () => {
         creditScore: 750,
         claimsHistory: 'none',
         policyType: 'standard',
-        replacementCost: 'actual-cash-value',
+        replacementCost: 'ActualCashValue',
         identityTheft: 'none',
         waterBackup: 'none'
       };

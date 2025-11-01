@@ -10,7 +10,7 @@ import {
 import { validateAiPromptCostCalculatorInputs } from './validation';
 
 export const AiPromptCostCalculator: Calculator = {
-  id: 'ai-prompt-cost-calculator',
+  id: 'AiPromptCost-calculator',
   title: 'AI Prompt Cost Calculator',
   category: 'technology',
   subcategory: 'Financial Planning',

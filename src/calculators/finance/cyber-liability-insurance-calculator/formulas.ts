@@ -1,13 +1,13 @@
-import { cyber-liability-insurance-calculatorInputs, cyber-liability-insurance-calculatorMetrics, cyber-liability-insurance-calculatorAnalysis } from './types';
+import { CyberLiabilityInsurance-calculatorInputs, CyberLiabilityInsurance-calculatorMetrics, CyberLiabilityInsurance-calculatorAnalysis } from './types';
 
 // Cyber Liability Insurance Calculator - Finance calculations
-export function calculateResult(inputs: cyber-liability-insurance-calculatorInputs): number {
+export function calculateResult(inputs: CyberLiabilityInsurance-calculatorInputs): number {
   // Financial calculation logic
   const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
   return numericValues.reduce((sum, val) => sum + val, 0) || 0;
 }
 
-export function generateAnalysis(inputs: cyber-liability-insurance-calculatorInputs, metrics: cyber-liability-insurance-calculatorMetrics): cyber-liability-insurance-calculatorAnalysis {
+export function generateAnalysis(inputs: CyberLiabilityInsurance-calculatorInputs, metrics: CyberLiabilityInsurance-calculatorMetrics): CyberLiabilityInsurance-calculatorAnalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (Math.abs(result) > 100000) riskLevel = 'High';

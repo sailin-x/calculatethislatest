@@ -1,3 +1,3 @@
-import { CalculusCalculatorCalculator } from './CalculusCalculatorCalculator';
+import { CalculusCalculator } from './CalculusCalculator';
 
-export { CalculusCalculatorCalculator };
+export { CalculusCalculator };

@@ -1,4 +1,4 @@
-import { it-outsourcing-vs-in-house-cost-benefit-analysisInputs, it-outsourcing-vs-in-house-cost-benefit-analysisMetrics, it-outsourcing-vs-in-house-cost-benefit-analysisAnalysis } from './types';
+import { ItOutsourcingVs-InHouseCost-benefit-analysisInputs, ItOutsourcingVs-InHouseCost-benefit-analysisMetrics, ItOutsourcingVs-InHouseCost-benefit-analysisAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: it-outsourcing-vs-in-house-cost-benefit-analysisInputs): number {
+export function calculateResult(inputs: ItOutsourcingVs-InHouseCost-benefit-analysisInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: it-outsourcing-vs-in-house-cost-benefit-
   }
 }
 
-export function generateAnalysis(inputs: it-outsourcing-vs-in-house-cost-benefit-analysisInputs, metrics: it-outsourcing-vs-in-house-cost-benefit-analysisMetrics): it-outsourcing-vs-in-house-cost-benefit-analysisAnalysis {
+export function generateAnalysis(inputs: ItOutsourcingVs-InHouseCost-benefit-analysisInputs, metrics: ItOutsourcingVs-InHouseCost-benefit-analysisMetrics): ItOutsourcingVs-InHouseCost-benefit-analysisAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

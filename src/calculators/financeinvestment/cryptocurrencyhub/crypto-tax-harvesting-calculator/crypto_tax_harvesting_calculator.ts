@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { crypto_tax_harvesting_calculatorInputs, crypto_tax_harvesting_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const crypto_tax_harvesting_calculatorCalculator: Calculator = {
-  id: 'crypto-tax-harvesting-calculator',
+export const CryptoTaxHarvesting-calculator: Calculator = {
+  id: 'CryptoTaxHarvesting-calculator',
   title: 'Crypto Tax Harvesting Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'cryptocurrencyhub',

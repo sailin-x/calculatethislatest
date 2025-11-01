@@ -9,7 +9,7 @@ import {
 import { validateStopLossInsuranceCalculatorInputs } from './validation';
 
 export const StopLossInsuranceCalculator: Calculator = {
-  id: 'stop-loss-insurance-calculator',
+  id: 'StopLossInsurance-calculator',
   title: 'Stop Loss Insurance Calculator',
   category: 'legal',
   subcategory: 'Settlement Analysis',

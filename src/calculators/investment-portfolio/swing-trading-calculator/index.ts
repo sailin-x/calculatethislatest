@@ -1,4 +1,4 @@
-export { SwingTradingCalculatorCalculator } from './SwingTradingCalculatorCalculator';
+export { SwingTradingCalculator } from './SwingTradingCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

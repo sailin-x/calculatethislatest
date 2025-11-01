@@ -1,4 +1,4 @@
-import { wind-turbine-profitability-calculatorInputs, wind-turbine-profitability-calculatorMetrics, wind-turbine-profitability-calculatorAnalysis } from './types';
+import { WindTurbineProfitability-calculatorInputs, WindTurbineProfitability-calculatorMetrics, WindTurbineProfitability-calculatorAnalysis } from './types';
 
 // Wind Turbine Profitability Calculator - Business calculations
 export function calculateNetPresentValue(cashFlows: number[], discountRate: number): number {
@@ -11,7 +11,7 @@ export function calculateROI(initialInvestment: number, finalValue: number): num
  return ((finalValue - initialInvestment) / initialInvestment) * 100;
 }
 
-export function calculateResult(inputs: wind-turbine-profitability-calculatorInputs): number {
+export function calculateResult(inputs: WindTurbineProfitability-calculatorInputs): number {
  // Business calculation logic with real math
  const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
  if (numericValues.length >= 2) {
@@ -24,7 +24,7 @@ export function calculateResult(inputs: wind-turbine-profitability-calculatorInp
  return calculateNetPresentValue(numericValues, 10); // 10% discount rate
 }
 
-export function generateAnalysis(inputs: wind-turbine-profitability-calculatorInputs, metrics: wind-turbine-profitability-calculatorMetrics): wind-turbine-profitability-calculatorAnalysis {
+export function generateAnalysis(inputs: WindTurbineProfitability-calculatorInputs, metrics: WindTurbineProfitability-calculatorMetrics): WindTurbineProfitability-calculatorAnalysis {
  const result = metrics.result;
  let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
  if (Math.abs(result) > 100000) riskLevel = 'High';

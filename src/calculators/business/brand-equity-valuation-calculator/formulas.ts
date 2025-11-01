@@ -1,4 +1,4 @@
-import { brand-equity-valuation-calculatorInputs, brand-equity-valuation-calculatorMetrics, brand-equity-valuation-calculatorAnalysis } from './types';
+import { BrandEquityValuation-calculatorInputs, BrandEquityValuation-calculatorMetrics, BrandEquityValuation-calculatorAnalysis } from './types';
 
 // Brand Equity Valuation Calculator - Business calculations
 export function calculateNetPresentValue(cashFlows: number[], discountRate: number): number {
@@ -11,7 +11,7 @@ export function calculateROI(initialInvestment: number, finalValue: number): num
  return ((finalValue - initialInvestment) / initialInvestment) * 100;
 }
 
-export function calculateResult(inputs: brand-equity-valuation-calculatorInputs): number {
+export function calculateResult(inputs: BrandEquityValuation-calculatorInputs): number {
  // Business calculation logic with real math
  const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
  if (numericValues.length >= 2) {
@@ -24,7 +24,7 @@ export function calculateResult(inputs: brand-equity-valuation-calculatorInputs)
  return calculateNetPresentValue(numericValues, 10); // 10% discount rate
 }
 
-export function generateAnalysis(inputs: brand-equity-valuation-calculatorInputs, metrics: brand-equity-valuation-calculatorMetrics): brand-equity-valuation-calculatorAnalysis {
+export function generateAnalysis(inputs: BrandEquityValuation-calculatorInputs, metrics: BrandEquityValuation-calculatorMetrics): BrandEquityValuation-calculatorAnalysis {
  const result = metrics.result;
  let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
  if (Math.abs(result) > 100000) riskLevel = 'High';

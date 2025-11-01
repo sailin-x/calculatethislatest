@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { internal_rate_of_return_calculatorInputs, internal_rate_of_return_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const internal_rate_of_return_calculatorCalculator: Calculator = {
-  id: 'internal-rate-of-return-calculator',
+export const InternalRateOf-return-calculator: Calculator = {
+  id: 'InternalRateOf-return-calculator',
   title: 'Internal Rate of Return Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'investmentportfoliohub',

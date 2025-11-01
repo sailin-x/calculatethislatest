@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateGymMembershipCostCalculatorInputs } from './validation';
 
 export const GymMembershipCostCalculator: Calculator = {
-  id: 'gym-membership-cost-calculator',
+  id: 'GymMembershipCost-calculator',
   title: 'Gym Membership Cost Calculator',
   category: 'health',
   subcategory: 'General',

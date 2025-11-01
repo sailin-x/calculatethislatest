@@ -2,7 +2,7 @@ import { Calculator } from '../../../../types/calculator';
 import { stock_calculatorInputs, stock_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const stock_calculatorCalculator: Calculator = {
+export const stock-calculator: Calculator = {
   id: 'stock-calculator',
   title: 'Stock Calculator Calculator',
   category: 'financeinvestment',

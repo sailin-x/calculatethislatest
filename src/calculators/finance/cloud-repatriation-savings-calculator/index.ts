@@ -1,5 +1,5 @@
-export { cloudrepatriationsavingscalculatorCalculator } from './cloudrepatriationsavingscalculatorCalculator';
-export { registercloudrepatriationsavingscalculatorCalculator } from './register';
+export { cloudrepatriationsavingscalculator } from './cloudrepatriationsavingscalculator';
+export { registercloudrepatriationsavingscalculator } from './register';
 export * from './types';
 export * from './formulas';
 export * from './validation';

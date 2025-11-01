@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { debt_consolidation_loan_calculatorInputs, debt_consolidation_loan_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const debt_consolidation_loan_calculatorCalculator: Calculator = {
-  id: 'debt-consolidation-loan-calculator',
+export const DebtConsolidationLoan-calculator: Calculator = {
+  id: 'DebtConsolidationLoan-calculator',
   title: 'Debt Consolidation Loan Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'loansdebthub',

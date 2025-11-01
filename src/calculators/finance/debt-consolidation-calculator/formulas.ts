@@ -1,13 +1,13 @@
-import { debt-consolidation-calculatorInputs, debt-consolidation-calculatorMetrics, debt-consolidation-calculatorAnalysis } from './types';
+import { DebtConsolidationCalculatorinputs, DebtConsolidationCalculatormetrics, DebtConsolidationCalculatoranalysis } from './types';
 
 // Debt Consolidation Calculator - Finance calculations
-export function calculateResult(inputs: debt-consolidation-calculatorInputs): number {
+export function calculateResult(inputs: DebtConsolidationCalculatorinputs): number {
   // Financial calculation logic
   const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
   return numericValues.reduce((sum, val) => sum + val, 0) || 0;
 }
 
-export function generateAnalysis(inputs: debt-consolidation-calculatorInputs, metrics: debt-consolidation-calculatorMetrics): debt-consolidation-calculatorAnalysis {
+export function generateAnalysis(inputs: DebtConsolidationCalculatorinputs, metrics: DebtConsolidationCalculatormetrics): DebtConsolidationCalculatoranalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (Math.abs(result) > 100000) riskLevel = 'High';

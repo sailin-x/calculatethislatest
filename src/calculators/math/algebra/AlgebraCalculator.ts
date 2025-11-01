@@ -7,13 +7,13 @@ export const algebraCalculator: Calculator = {
   title: 'Advanced Algebra Calculator',
   category: 'math',
   subcategory: 'Algebra & Equations',
-  description: 'Comprehensive algebraic equation solver supporting linear, quadratic, cubic, and polynomial equations with step-by-step solutions and graphing capabilities.',
+  description: 'Comprehensive algebraic equation solver supporting linear, quadratic, cubic, and polynomial equations with StepByStep solutions and graphing capabilities.',
   
   usageInstructions: [
     'Select the type of equation you want to solve',
     'Enter coefficients for your equation',
     'For polynomial equations, enter coefficients from highest to lowest degree',
-    'Review step-by-step solution and graphical representation',
+    'Review StepByStep solution and graphical representation',
     'Use the factoring tool for polynomial factorization'
   ],
 

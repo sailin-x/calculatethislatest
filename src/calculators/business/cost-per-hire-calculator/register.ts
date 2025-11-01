@@ -1,3 +1,3 @@
-import { CostPerHireCalculatorCalculator } from './CostPerHireCalculatorCalculator';
+import { CostPerHireCalculator } from './CostPerHireCalculator';
 
-export { CostPerHireCalculatorCalculator };
+export { CostPerHireCalculator };

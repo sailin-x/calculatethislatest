@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { collateralization_ratio_calculatorInputs, collateralization_ratio_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const collateralization_ratio_calculatorCalculator: Calculator = {
-  id: 'collateralization-ratio-calculator',
+export const CollateralizationRatioCalculator: Calculator = {
+  id: 'CollateralizationRatioCalculator',
   title: 'Collateralization Ratio Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'cryptocurrencyhub',

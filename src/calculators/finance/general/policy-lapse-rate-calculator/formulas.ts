@@ -1,4 +1,4 @@
-import { policy-lapse-rate-calculatorInputs, policy-lapse-rate-calculatorMetrics, policy-lapse-rate-calculatorAnalysis } from './types';
+import { PolicyLapseRate-calculatorInputs, PolicyLapseRate-calculatorMetrics, PolicyLapseRate-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: policy-lapse-rate-calculatorInputs): number {
+export function calculateResult(inputs: PolicyLapseRate-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: policy-lapse-rate-calculatorInputs): num
   }
 }
 
-export function generateAnalysis(inputs: policy-lapse-rate-calculatorInputs, metrics: policy-lapse-rate-calculatorMetrics): policy-lapse-rate-calculatorAnalysis {
+export function generateAnalysis(inputs: PolicyLapseRate-calculatorInputs, metrics: PolicyLapseRate-calculatorMetrics): PolicyLapseRate-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

@@ -1,4 +1,4 @@
-import { copyright-registration-calculatorInputs, copyright-registration-calculatorMetrics, copyright-registration-calculatorAnalysis } from './types';
+import { CopyrightRegistrationCalculatorinputs, CopyrightRegistrationCalculatormetrics, CopyrightRegistrationCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: copyright-registration-calculatorInputs): number {
+export function calculateResult(inputs: CopyrightRegistrationCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: copyright-registration-calculatorInputs)
   }
 }
 
-export function generateAnalysis(inputs: copyright-registration-calculatorInputs, metrics: copyright-registration-calculatorMetrics): copyright-registration-calculatorAnalysis {
+export function generateAnalysis(inputs: CopyrightRegistrationCalculatorinputs, metrics: CopyrightRegistrationCalculatormetrics): CopyrightRegistrationCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateMezzanineFinancingForRealEstateCalculatorInputs, validateMezzanineFinancingForRealEstateCalculatorBusinessRules } from './validation';
 
-export const MezzanineFinancingForRealEstateCalculatorCalculator: Calculator: Calculator = {
-  id: 'mezzanine-financing-for-real-estate-calculator-calculator',
+export const MezzanineFinancingForRealEstateCalculator: Calculator = {
+  id: 'MezzanineFinancingFor-RealEstateCalculator-calculator',
   title: 'Mezzanine Financing for Real Estate Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

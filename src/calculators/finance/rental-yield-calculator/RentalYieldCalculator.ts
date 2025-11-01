@@ -23,11 +23,11 @@ const rentalYieldFormula: Formula = {
  * Industry-leading rental yield calculator with comprehensive features
  */
 export const rentalYieldCalculator: Calculator = {
-  id: 'rental-yield-calculator',
+  id: 'RentalYieldCalculator',
   title: 'Rental Yield Calculator',
   category: 'finance',
   subcategory: 'Mortgage & Real Estate',
-  description: 'Comprehensive rental yield analysis calculator including gross/net rental yields, cap rates, cash-on-cash returns, and debt service coverage ratios with industry-standard metrics.',
+  description: 'Comprehensive rental yield analysis calculator including gross/net rental yields, cap rates, CashOnCash returns, and debt service coverage ratios with industry-standard metrics.',
 
   usageInstructions: [
     'Enter property price and monthly rental income',
@@ -184,7 +184,7 @@ export const rentalYieldCalculator: Calculator = {
     },
     {
       id: 'cashOnCashReturn',
-      label: 'Cash-on-Cash Return (%)',
+      label: 'CashOnCash Return (%)',
       type: 'percentage',
       explanation: 'Annual cash flow divided by initial investment'
     },

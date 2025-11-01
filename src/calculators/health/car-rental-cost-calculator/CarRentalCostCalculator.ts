@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateCarRentalCostCalculatorInputs } from './validation';
 
 export const CarRentalCostCalculator: Calculator = {
-  id: 'car-rental-cost-calculator',
+  id: 'CarRentalCost-calculator',
   title: 'Car Rental Cost Calculator',
   category: 'health',
   subcategory: 'General',

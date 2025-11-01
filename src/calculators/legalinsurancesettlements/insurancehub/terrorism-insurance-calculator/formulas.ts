@@ -1,4 +1,4 @@
-import { terrorism-insurance-calculatorInputs, terrorism-insurance-calculatorMetrics, terrorism-insurance-calculatorAnalysis } from './types';
+import { TerrorismInsuranceCalculatorinputs, TerrorismInsuranceCalculatormetrics, TerrorismInsuranceCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: terrorism-insurance-calculatorInputs): number {
+export function calculateResult(inputs: TerrorismInsuranceCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: terrorism-insurance-calculatorInputs): n
   }
 }
 
-export function generateAnalysis(inputs: terrorism-insurance-calculatorInputs, metrics: terrorism-insurance-calculatorMetrics): terrorism-insurance-calculatorAnalysis {
+export function generateAnalysis(inputs: TerrorismInsuranceCalculatorinputs, metrics: TerrorismInsuranceCalculatormetrics): TerrorismInsuranceCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

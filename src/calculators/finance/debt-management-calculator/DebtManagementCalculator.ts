@@ -10,7 +10,7 @@ import {
 import { validateDebtManagementCalculatorInputs } from './validation';
 
 export const DebtManagementCalculator: Calculator = {
-  id: 'debt-management-calculator',
+  id: 'DebtManagementCalculator',
   title: 'Debt Management Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateGeometryCalculatorInputs, validateGeometryCalculatorBusinessRules } from './validation';
 
-export const GeometryCalculatorCalculator: Calculator: Calculator = {
-  id: 'geometry-calculator-calculator',
+export const GeometryCalculator: Calculator = {
+  id: 'GeometryCalculatorCalculator',
   title: 'Geometry Calculator Calculator',
   math: 'math', // e.g., 'finance', 'math', 'health', 'business'
   submath: 'Submath Name',

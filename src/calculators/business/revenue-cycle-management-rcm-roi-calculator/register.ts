@@ -1,3 +1,3 @@
-import { RevenueCycleManagementRcmRoiCalculatorCalculator } from './RevenueCycleManagementRcmRoiCalculatorCalculator';
+import { RevenueCycleManagementRcmRoiCalculator } from './RevenueCycleManagementRcmRoiCalculator';
 
-export { RevenueCycleManagementRcmRoiCalculatorCalculator };
+export { RevenueCycleManagementRcmRoiCalculator };

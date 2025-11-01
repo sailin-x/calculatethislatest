@@ -14,7 +14,7 @@ export const scientificCalculator: Calculator = {
     'Enter your mathematical expression or values',
     'Choose precision level for high-accuracy calculations',
     'For number system conversions, select source and target bases',
-    'Review results with full precision and step-by-step explanations'
+    'Review results with full precision and StepByStep explanations'
   ],
 
   inputs: [

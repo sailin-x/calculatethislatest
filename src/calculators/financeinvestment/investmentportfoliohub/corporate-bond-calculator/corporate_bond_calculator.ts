@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { corporate_bond_calculatorInputs, corporate_bond_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const corporate_bond_calculatorCalculator: Calculator = {
-  id: 'corporate-bond-calculator',
+export const CorporateBondCalculator: Calculator = {
+  id: 'CorporateBondCalculator',
   title: 'Corporate Bond Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'investmentportfoliohub',

@@ -1,4 +1,4 @@
-import { gaming-pc-build-cost-estimatorInputs, gaming-pc-build-cost-estimatorMetrics, gaming-pc-build-cost-estimatorAnalysis } from './types';
+import { GamingPcBuild-cost-estimatorInputs, GamingPcBuild-cost-estimatorMetrics, GamingPcBuild-cost-estimatorAnalysis } from './types';
 
 // Gaming PC Build Cost Estimator - Business calculations
 export function calculateNetPresentValue(cashFlows: number[], discountRate: number): number {
@@ -11,7 +11,7 @@ export function calculateROI(initialInvestment: number, finalValue: number): num
  return ((finalValue - initialInvestment) / initialInvestment) * 100;
 }
 
-export function calculateResult(inputs: gaming-pc-build-cost-estimatorInputs): number {
+export function calculateResult(inputs: GamingPcBuild-cost-estimatorInputs): number {
  // Business calculation logic with real math
  const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
  if (numericValues.length >= 2) {
@@ -24,7 +24,7 @@ export function calculateResult(inputs: gaming-pc-build-cost-estimatorInputs): n
  return calculateNetPresentValue(numericValues, 10); // 10% discount rate
 }
 
-export function generateAnalysis(inputs: gaming-pc-build-cost-estimatorInputs, metrics: gaming-pc-build-cost-estimatorMetrics): gaming-pc-build-cost-estimatorAnalysis {
+export function generateAnalysis(inputs: GamingPcBuild-cost-estimatorInputs, metrics: GamingPcBuild-cost-estimatorMetrics): GamingPcBuild-cost-estimatorAnalysis {
  const result = metrics.result;
  let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
  if (Math.abs(result) > 100000) riskLevel = 'High';

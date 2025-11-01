@@ -1,4 +1,4 @@
-import { tax-loss-harvesting-calculatorInputs, tax-loss-harvesting-calculatorMetrics, tax-loss-harvesting-calculatorAnalysis } from './types';
+import { TaxLossHarvesting-calculatorInputs, TaxLossHarvesting-calculatorMetrics, TaxLossHarvesting-calculatorAnalysis } from './types';
 
 
 // Tax Calculator - Progressive tax calculations
@@ -20,7 +20,7 @@ export function calculateEffectiveTaxRate(taxPaid: number, totalIncome: number):
   return (taxPaid / totalIncome) * 100;
 }
 
-export function calculateResult(inputs: tax-loss-harvesting-calculatorInputs): number {
+export function calculateResult(inputs: TaxLossHarvesting-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -44,7 +44,7 @@ export function calculateResult(inputs: tax-loss-harvesting-calculatorInputs): n
   }
 }
 
-export function generateAnalysis(inputs: tax-loss-harvesting-calculatorInputs, metrics: tax-loss-harvesting-calculatorMetrics): tax-loss-harvesting-calculatorAnalysis {
+export function generateAnalysis(inputs: TaxLossHarvesting-calculatorInputs, metrics: TaxLossHarvesting-calculatorMetrics): TaxLossHarvesting-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

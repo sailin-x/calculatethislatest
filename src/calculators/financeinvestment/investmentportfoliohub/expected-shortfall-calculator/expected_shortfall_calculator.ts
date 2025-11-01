@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { expected_shortfall_calculatorInputs, expected_shortfall_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const expected_shortfall_calculatorCalculator: Calculator = {
-  id: 'expected-shortfall-calculator',
+export const ExpectedShortfallCalculator: Calculator = {
+  id: 'ExpectedShortfallCalculator',
   title: 'Expected Shortfall Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'investmentportfoliohub',

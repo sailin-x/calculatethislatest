@@ -2,7 +2,7 @@ import { Calculator } from '../../../../types/calculator';
 import { creatine_calculatorInputs, creatine_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const creatine_calculatorCalculator: Calculator = {
+export const creatine-calculator: Calculator = {
   id: 'creatine-calculator',
   title: 'Creatine Calculator Calculator',
   category: 'healthfitnessdiet',

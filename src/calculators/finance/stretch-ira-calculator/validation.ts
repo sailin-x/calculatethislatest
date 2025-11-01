@@ -1,11 +1,11 @@
 import { ValidationResult } from '../../lib/errors';
-import { stretchiracalculatorCalculatorInputs } from './types';
+import { stretchiracalculatorInputs } from './types';
 
 /**
  * Validate stretch ira calculator calculator inputs
  */
-export function validatestretchiracalculatorCalculatorInputs(
-  inputs: stretchiracalculatorCalculatorInputs
+export function validatestretchiracalculatorInputs(
+  inputs: stretchiracalculatorInputs
 ): ValidationResult {
   const errors: string[] = [];
 

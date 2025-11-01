@@ -1,4 +1,4 @@
-import { amazon-fba-profit-calculatorInputs, amazon-fba-profit-calculatorMetrics, amazon-fba-profit-calculatorAnalysis } from './types';
+import { AmazonFbaProfit-calculatorInputs, AmazonFbaProfit-calculatorMetrics, AmazonFbaProfit-calculatorAnalysis } from './types';
 
 // Amazon FBA Profit Calculator - Business calculations
 export function calculateNetPresentValue(cashFlows: number[], discountRate: number): number {
@@ -11,7 +11,7 @@ export function calculateROI(initialInvestment: number, finalValue: number): num
  return ((finalValue - initialInvestment) / initialInvestment) * 100;
 }
 
-export function calculateResult(inputs: amazon-fba-profit-calculatorInputs): number {
+export function calculateResult(inputs: AmazonFbaProfit-calculatorInputs): number {
  // Business calculation logic with real math
  const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
  if (numericValues.length >= 2) {
@@ -24,7 +24,7 @@ export function calculateResult(inputs: amazon-fba-profit-calculatorInputs): num
  return calculateNetPresentValue(numericValues, 10); // 10% discount rate
 }
 
-export function generateAnalysis(inputs: amazon-fba-profit-calculatorInputs, metrics: amazon-fba-profit-calculatorMetrics): amazon-fba-profit-calculatorAnalysis {
+export function generateAnalysis(inputs: AmazonFbaProfit-calculatorInputs, metrics: AmazonFbaProfit-calculatorMetrics): AmazonFbaProfit-calculatorAnalysis {
  const result = metrics.result;
  let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
  if (Math.abs(result) > 100000) riskLevel = 'High';

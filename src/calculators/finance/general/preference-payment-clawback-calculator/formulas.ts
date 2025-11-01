@@ -1,4 +1,4 @@
-import { preference-payment-clawback-calculatorInputs, preference-payment-clawback-calculatorMetrics, preference-payment-clawback-calculatorAnalysis } from './types';
+import { PreferencePaymentClawback-calculatorInputs, PreferencePaymentClawback-calculatorMetrics, PreferencePaymentClawback-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: preference-payment-clawback-calculatorInputs): number {
+export function calculateResult(inputs: PreferencePaymentClawback-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: preference-payment-clawback-calculatorIn
   }
 }
 
-export function generateAnalysis(inputs: preference-payment-clawback-calculatorInputs, metrics: preference-payment-clawback-calculatorMetrics): preference-payment-clawback-calculatorAnalysis {
+export function generateAnalysis(inputs: PreferencePaymentClawback-calculatorInputs, metrics: PreferencePaymentClawback-calculatorMetrics): PreferencePaymentClawback-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

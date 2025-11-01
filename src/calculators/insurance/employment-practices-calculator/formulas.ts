@@ -1,4 +1,4 @@
-import { employment-practices-calculatorInputs, employment-practices-calculatorMetrics, employment-practices-calculatorAnalysis } from './types';
+import { EmploymentPracticesCalculatorinputs, EmploymentPracticesCalculatormetrics, EmploymentPracticesCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: employment-practices-calculatorInputs): number {
+export function calculateResult(inputs: EmploymentPracticesCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: employment-practices-calculatorInputs): 
   }
 }
 
-export function generateAnalysis(inputs: employment-practices-calculatorInputs, metrics: employment-practices-calculatorMetrics): employment-practices-calculatorAnalysis {
+export function generateAnalysis(inputs: EmploymentPracticesCalculatorinputs, metrics: EmploymentPracticesCalculatormetrics): EmploymentPracticesCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

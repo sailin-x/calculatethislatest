@@ -1,4 +1,4 @@
-import { business-risk-assessment-calculatorInputs, business-risk-assessment-calculatorMetrics, business-risk-assessment-calculatorAnalysis } from './types';
+import { BusinessRiskAssessment-calculatorInputs, BusinessRiskAssessment-calculatorMetrics, BusinessRiskAssessment-calculatorAnalysis } from './types';
 
 
 // Business Calculator - Financial metrics
@@ -14,7 +14,7 @@ export function calculatePaybackPeriod(initialInvestment: number, annualCashFlow
   return initialInvestment / annualCashFlow;
 }
 
-export function calculateResult(inputs: business-risk-assessment-calculatorInputs): number {
+export function calculateResult(inputs: BusinessRiskAssessment-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: business-risk-assessment-calculatorInput
   }
 }
 
-export function generateAnalysis(inputs: business-risk-assessment-calculatorInputs, metrics: business-risk-assessment-calculatorMetrics): business-risk-assessment-calculatorAnalysis {
+export function generateAnalysis(inputs: BusinessRiskAssessment-calculatorInputs, metrics: BusinessRiskAssessment-calculatorMetrics): BusinessRiskAssessment-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

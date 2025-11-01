@@ -1,3 +1,3 @@
-import { JewelryValuationCalculatorCalculator } from './JewelryValuationCalculatorCalculator';
+import { JewelryValuationCalculator } from './JewelryValuationCalculator';
 
-export { JewelryValuationCalculatorCalculator };
+export { JewelryValuationCalculator };

@@ -10,7 +10,7 @@ import {
 import { validateNetPromoterScoreCalculatorInputs } from './validation';
 
 export const NetPromoterScoreCalculator: Calculator = {
-  id: 'net-promoter-score-calculator',
+  id: 'NetPromoterScore-calculator',
   title: 'Net Promoter Score Calculator',
   category: 'business',
   subcategory: 'Financial Planning',

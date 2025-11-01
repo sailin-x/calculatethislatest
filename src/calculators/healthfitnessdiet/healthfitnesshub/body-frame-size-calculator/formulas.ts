@@ -1,4 +1,4 @@
-import { body-frame-size-calculatorInputs, body-frame-size-calculatorMetrics, body-frame-size-calculatorAnalysis } from './types';
+import { BodyFrameSize-calculatorInputs, BodyFrameSize-calculatorMetrics, BodyFrameSize-calculatorAnalysis } from './types';
 
 
 // Health Calculator - BMI and body metrics
@@ -20,7 +20,7 @@ export function calculateBMR(weightKg: number, heightCm: number, age: number, is
   return isMale ? base + 5 : base - 161;
 }
 
-export function calculateResult(inputs: body-frame-size-calculatorInputs): number {
+export function calculateResult(inputs: BodyFrameSize-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -44,7 +44,7 @@ export function calculateResult(inputs: body-frame-size-calculatorInputs): numbe
   }
 }
 
-export function generateAnalysis(inputs: body-frame-size-calculatorInputs, metrics: body-frame-size-calculatorMetrics): body-frame-size-calculatorAnalysis {
+export function generateAnalysis(inputs: BodyFrameSize-calculatorInputs, metrics: BodyFrameSize-calculatorMetrics): BodyFrameSize-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

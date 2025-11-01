@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { sortino_ratio_calculatorInputs, sortino_ratio_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const sortino_ratio_calculatorCalculator: Calculator = {
-  id: 'sortino-ratio-calculator',
+export const SortinoRatioCalculator: Calculator = {
+  id: 'SortinoRatioCalculator',
   title: 'Sortino Ratio Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'investmentportfoliohub',

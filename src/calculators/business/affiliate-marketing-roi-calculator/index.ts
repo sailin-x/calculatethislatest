@@ -1,4 +1,4 @@
-export { AffiliateMarketingRoiCalculatorCalculator } from './AffiliateMarketingRoiCalculatorCalculator';
+export { AffiliateMarketingRoiCalculator } from './AffiliateMarketingRoiCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

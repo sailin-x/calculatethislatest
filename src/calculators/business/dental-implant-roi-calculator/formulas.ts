@@ -1,4 +1,4 @@
-import { dental-implant-roi-calculatorInputs, dental-implant-roi-calculatorMetrics, dental-implant-roi-calculatorAnalysis } from './types';
+import { DentalImplantRoi-calculatorInputs, DentalImplantRoi-calculatorMetrics, DentalImplantRoi-calculatorAnalysis } from './types';
 
 // ROI Calculator
 export function calculateROI(netProfit: number, investment: number): number {
@@ -13,7 +13,7 @@ export function calculatePaybackPeriod(investment: number, annualCashFlow: numbe
   return investment / annualCashFlow;
 }
 
-export function calculateResult(inputs: dental-implant-roi-calculatorInputs): number {
+export function calculateResult(inputs: DentalImplantRoi-calculatorInputs): number {
   if ('netProfit' in inputs && 'investment' in inputs) {
     return calculateROI(inputs.netProfit, inputs.investment);
   }
@@ -24,7 +24,7 @@ export function calculateResult(inputs: dental-implant-roi-calculatorInputs): nu
   return 0;
 }
 
-export function generateAnalysis(inputs: dental-implant-roi-calculatorInputs, metrics: dental-implant-roi-calculatorMetrics): dental-implant-roi-calculatorAnalysis {
+export function generateAnalysis(inputs: DentalImplantRoi-calculatorInputs, metrics: DentalImplantRoi-calculatorMetrics): DentalImplantRoi-calculatorAnalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (result < 10) riskLevel = 'High';

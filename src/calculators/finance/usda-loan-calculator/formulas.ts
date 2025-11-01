@@ -1,13 +1,13 @@
-import { usda-loan-calculatorInputs, usda-loan-calculatorMetrics, usda-loan-calculatorAnalysis } from './types';
+import { UsdaLoanCalculatorinputs, UsdaLoanCalculatormetrics, UsdaLoanCalculatoranalysis } from './types';
 
 // USDA Loan Calculator - Finance calculations
-export function calculateResult(inputs: usda-loan-calculatorInputs): number {
+export function calculateResult(inputs: UsdaLoanCalculatorinputs): number {
   // Financial calculation logic
   const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
   return numericValues.reduce((sum, val) => sum + val, 0) || 0;
 }
 
-export function generateAnalysis(inputs: usda-loan-calculatorInputs, metrics: usda-loan-calculatorMetrics): usda-loan-calculatorAnalysis {
+export function generateAnalysis(inputs: UsdaLoanCalculatorinputs, metrics: UsdaLoanCalculatormetrics): UsdaLoanCalculatoranalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (Math.abs(result) > 100000) riskLevel = 'High';

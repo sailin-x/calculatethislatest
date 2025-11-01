@@ -1,4 +1,4 @@
-import { barre-class-cost-calculatorInputs, barre-class-cost-calculatorMetrics, barre-class-cost-calculatorAnalysis } from './types';
+import { BarreClassCost-calculatorInputs, BarreClassCost-calculatorMetrics, BarreClassCost-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: barre-class-cost-calculatorInputs): number {
+export function calculateResult(inputs: BarreClassCost-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: barre-class-cost-calculatorInputs): numb
   }
 }
 
-export function generateAnalysis(inputs: barre-class-cost-calculatorInputs, metrics: barre-class-cost-calculatorMetrics): barre-class-cost-calculatorAnalysis {
+export function generateAnalysis(inputs: BarreClassCost-calculatorInputs, metrics: BarreClassCost-calculatorMetrics): BarreClassCost-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { staking_rewards_calculatorInputs, staking_rewards_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const staking_rewards_calculatorCalculator: Calculator = {
-  id: 'staking-rewards-calculator',
+export const StakingRewardsCalculator: Calculator = {
+  id: 'StakingRewardsCalculator',
   title: 'Staking Rewards Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'cryptocurrencyhub',

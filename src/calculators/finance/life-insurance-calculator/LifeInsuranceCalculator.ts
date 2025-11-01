@@ -14,7 +14,7 @@ import { LifeInsuranceCalculatorInputs, LifeInsuranceCalculatorResults } from '.
  * - Professional-grade calculations
  */
 export const lifeInsuranceCalculator: Calculator = {
-  id: 'life-insurance-calculator',
+  id: 'LifeInsuranceCalculator',
   title: 'Life Insurance Calculator',
   description: 'Comprehensive life insurance calculations including term, whole, universal, and variable life insurance with needs analysis',
   category: 'finance',
@@ -687,8 +687,8 @@ export const lifeInsuranceCalculator: Calculator = {
   relatedCalculators: [
     'annuity-calculator',
     'retirement-calculator',
-    'social-security-calculator',
+    'SocialSecurityCalculator',
     'mortgage-calculator',
-    'estate-planning-calculator'
+    'EstatePlanningCalculator'
   ]
 };

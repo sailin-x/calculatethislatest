@@ -1,7 +1,7 @@
 import { Calculator } from '../../types/calculator';
 
 export const PrivateMortgageInsuranceCalculator: Calculator = {
-  id: 'private-mortgage-insurance-calculator',
+  id: 'PrivateMortgageInsurance-calculator',
   title: 'Private Mortgage Insurance Calculator',
   category: 'finance',
   subcategory: 'Mortgage & Real Estate',
@@ -39,7 +39,7 @@ export const PrivateMortgageInsuranceCalculator: Calculator = {
     ], tooltip: 'Your lender\'s PMI cancellation policy' }
   ],
   outputs: [
-    { id: 'ltvRatio', label: 'LTV Ratio (%)', type: 'percentage', explanation: 'Loan-to-value ratio based on current home value' },
+    { id: 'ltvRatio', label: 'LTV Ratio (%)', type: 'percentage', explanation: 'LoanToValue ratio based on current home value' },
     { id: 'pmiRequired', label: 'PMI Required', type: 'text', explanation: 'Whether PMI is required based on LTV' },
     { id: 'monthlyPmi', label: 'Monthly PMI Payment', type: 'currency', explanation: 'Current monthly PMI payment' },
     { id: 'annualPmi', label: 'Annual PMI Cost', type: 'currency', explanation: 'Total annual PMI cost' },

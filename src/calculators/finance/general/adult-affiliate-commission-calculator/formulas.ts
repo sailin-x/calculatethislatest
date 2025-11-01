@@ -1,4 +1,4 @@
-import { adult-affiliate-commission-calculatorInputs, adult-affiliate-commission-calculatorMetrics, adult-affiliate-commission-calculatorAnalysis } from './types';
+import { AdultAffiliateCommission-calculatorInputs, AdultAffiliateCommission-calculatorMetrics, AdultAffiliateCommission-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: adult-affiliate-commission-calculatorInputs): number {
+export function calculateResult(inputs: AdultAffiliateCommission-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: adult-affiliate-commission-calculatorInp
   }
 }
 
-export function generateAnalysis(inputs: adult-affiliate-commission-calculatorInputs, metrics: adult-affiliate-commission-calculatorMetrics): adult-affiliate-commission-calculatorAnalysis {
+export function generateAnalysis(inputs: AdultAffiliateCommission-calculatorInputs, metrics: AdultAffiliateCommission-calculatorMetrics): AdultAffiliateCommission-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

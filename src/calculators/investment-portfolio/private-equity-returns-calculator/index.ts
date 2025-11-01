@@ -1,4 +1,4 @@
-export { PrivateEquityReturnsCalculatorCalculator } from './PrivateEquityReturnsCalculatorCalculator';
+export { PrivateEquityReturnsCalculator } from './PrivateEquityReturnsCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

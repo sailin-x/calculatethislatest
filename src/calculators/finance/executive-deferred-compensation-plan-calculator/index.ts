@@ -1,4 +1,4 @@
-export { ExecutiveDeferredCompensationPlanCalculatorCalculator } from './ExecutiveDeferredCompensationPlanCalculatorCalculator';
+export { ExecutiveDeferredCompensationPlanCalculator } from './ExecutiveDeferredCompensationPlanCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateMarketCapCalculatorInputs, validateMarketCapCalculatorBusinessRules } from './validation';
 
-export const MarketCapCalculatorCalculator: Calculator: Calculator = {
-  id: 'market-cap-calculator-calculator',
+export const MarketCapCalculator: Calculator = {
+  id: 'MarketCapCalculator-calculator',
   title: 'Market Cap Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { value_at_risk_var_calculatorInputs, value_at_risk_var_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const value_at_risk_var_calculatorCalculator: Calculator = {
-  id: 'value-at-risk-var-calculator',
+export const ValueAtRisk-var-calculator: Calculator = {
+  id: 'ValueAtRisk-var-calculator',
   title: 'Value at Risk (VaR) Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'investmentportfoliohub',

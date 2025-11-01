@@ -1,61 +1,141 @@
-import { MortgageQualificationCalculatorInputs } from './types';
+import { MortgageQualificationInputs } from './types';
 
-export function validatePrimaryInput(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+export function validateAnnualIncome(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   if (!value || value <= 0) {
-    return { isValid: false, message: 'Primary input must be greater than 0' };
+    return { isValid: false, message: 'Annual income must be greater than 0' };
   }
-  if (value > 1000000) {
-    return { isValid: false, message: 'Primary input cannot exceed 1,000,000' };
+  if (value > 10000000) {
+    return { isValid: false, message: 'Annual income cannot exceed $10,000,000' };
   }
   return { isValid: true };
 }
 
-export function validateSecondaryInput(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+export function validateMonthlyIncome(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (!value || value <= 0) {
+    return { isValid: false, message: 'Monthly income must be greater than 0' };
+  }
+  return { isValid: true };
+}
+
+export function validateMonthlyDebts(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   if (value < 0) {
-    return { isValid: false, message: 'Secondary input cannot be negative' };
-  }
-  if (allInputs?.primaryInput && value > allInputs.primaryInput) {
-    return { isValid: false, message: 'Secondary input cannot exceed primary input' };
+    return { isValid: false, message: 'Monthly debts cannot be negative' };
   }
   return { isValid: true };
 }
 
-export function validateSelectInput(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  const validOptions = ['option1', 'option2'];
-  if (!value || !validOptions.includes(value)) {
-    return { isValid: false, message: 'Please select a valid option' };
+export function validateDownPayment(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value < 0) {
+    return { isValid: false, message: 'Down payment cannot be negative' };
   }
   return { isValid: true };
 }
 
-export function validateOptionalParameter(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && value.length > 100) {
-    return { isValid: false, message: 'Optional parameter cannot exceed 100 characters' };
+export function validateCreditScore(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (!value || value < 300) {
+    return { isValid: false, message: 'Credit score must be at least 300' };
+  }
+  if (value > 850) {
+    return { isValid: false, message: 'Credit score cannot exceed 850' };
   }
   return { isValid: true };
 }
 
-export function validateBooleanFlag(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (typeof value !== 'boolean' && value !== undefined) {
-    return { isValid: false, message: 'Boolean flag must be true or false' };
+export function validatePropertyValue(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (!value || value <= 0) {
+    return { isValid: false, message: 'Property value must be greater than 0' };
   }
   return { isValid: true };
 }
 
-// Additional validation functions as needed
-export function validateNumericRange(value: any, min: number, max: number, fieldName: string, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value < min) {
-    return { isValid: false, message: `${fieldName} must be at least ${min}` };
+export function validateLoanTerm(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (!value || value < 1) {
+    return { isValid: false, message: 'Loan term must be at least 1 year' };
   }
-  if (value > max) {
-    return { isValid: false, message: `${fieldName} cannot exceed ${max}` };
+  if (value > 50) {
+    return { isValid: false, message: 'Loan term cannot exceed 50 years' };
   }
   return { isValid: true };
 }
 
-export function validateRequired(value: any, fieldName: string, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value === null || value === undefined || value === '') {
-    return { isValid: false, message: `${fieldName} is required` };
+export function validateInterestRate(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value < 0) {
+    return { isValid: false, message: 'Interest rate cannot be negative' };
+  }
+  if (value > 30) {
+    return { isValid: false, message: 'Interest rate cannot exceed 30%' };
+  }
+  return { isValid: true };
+}
+
+export function validateEmploymentLength(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value < 0) {
+    return { isValid: false, message: 'Employment length cannot be negative' };
+  }
+  return { isValid: true };
+}
+
+export function validateLatePayments(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value < 0) {
+    return { isValid: false, message: 'Late payments count cannot be negative' };
+  }
+  return { isValid: true };
+}
+
+export function validateGiftFunds(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value < 0) {
+    return { isValid: false, message: 'Gift funds cannot be negative' };
+  }
+  return { isValid: true };
+}
+
+export function validateCoSignerIncome(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (allInputs?.coSigner && (!value || value <= 0)) {
+    return { isValid: false, message: 'Co-signer income must be greater than 0' };
+  }
+  return { isValid: true };
+}
+
+export function validateCoSignerCreditScore(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (allInputs?.coSigner && value) {
+    if (value < 300 || value > 850) {
+      return { isValid: false, message: 'Co-signer credit score must be between 300 and 850' };
+    }
+  }
+  return { isValid: true };
+}
+
+export function validateIncome(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value < 0) {
+    return { isValid: false, message: 'Income cannot be negative' };
+  }
+  return { isValid: true };
+}
+
+export function validateExpense(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value < 0) {
+    return { isValid: false, message: 'Expense cannot be negative' };
+  }
+  return { isValid: true };
+}
+
+export function validateNumberOfDependents(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value < 0) {
+    return { isValid: false, message: 'Number of dependents cannot be negative' };
+  }
+  return { isValid: true };
+}
+
+export function validateAsset(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value < 0) {
+    return { isValid: false, message: 'Asset balance cannot be negative' };
+  }
+  return { isValid: true };
+}
+
+export function validateDebt(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value < 0) {
+    return { isValid: false, message: 'Debt balance cannot be negative' };
   }
   return { isValid: true };
 }

@@ -1,4 +1,4 @@
-import { data-breach-cost-calculatorInputs, data-breach-cost-calculatorMetrics, data-breach-cost-calculatorAnalysis } from './types';
+import { DataBreachCost-calculatorInputs, DataBreachCost-calculatorMetrics, DataBreachCost-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: data-breach-cost-calculatorInputs): number {
+export function calculateResult(inputs: DataBreachCost-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: data-breach-cost-calculatorInputs): numb
   }
 }
 
-export function generateAnalysis(inputs: data-breach-cost-calculatorInputs, metrics: data-breach-cost-calculatorMetrics): data-breach-cost-calculatorAnalysis {
+export function generateAnalysis(inputs: DataBreachCost-calculatorInputs, metrics: DataBreachCost-calculatorMetrics): DataBreachCost-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

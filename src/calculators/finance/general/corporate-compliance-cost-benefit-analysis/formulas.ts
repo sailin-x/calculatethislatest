@@ -1,4 +1,4 @@
-import { corporate-compliance-cost-benefit-analysisInputs, corporate-compliance-cost-benefit-analysisMetrics, corporate-compliance-cost-benefit-analysisAnalysis } from './types';
+import { CorporateComplianceCost-benefit-analysisInputs, CorporateComplianceCost-benefit-analysisMetrics, CorporateComplianceCost-benefit-analysisAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: corporate-compliance-cost-benefit-analysisInputs): number {
+export function calculateResult(inputs: CorporateComplianceCost-benefit-analysisInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: corporate-compliance-cost-benefit-analys
   }
 }
 
-export function generateAnalysis(inputs: corporate-compliance-cost-benefit-analysisInputs, metrics: corporate-compliance-cost-benefit-analysisMetrics): corporate-compliance-cost-benefit-analysisAnalysis {
+export function generateAnalysis(inputs: CorporateComplianceCost-benefit-analysisInputs, metrics: CorporateComplianceCost-benefit-analysisMetrics): CorporateComplianceCost-benefit-analysisAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

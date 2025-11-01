@@ -1,3 +1,3 @@
-export * from './registerRequiredBeginningDateRmdCalculatorCalculator';
+export * from './registerRequiredBeginningDateRmdCalculator';
 export * from './register';
 export * from './types';

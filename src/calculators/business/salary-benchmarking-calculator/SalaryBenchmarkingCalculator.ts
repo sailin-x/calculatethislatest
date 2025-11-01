@@ -10,7 +10,7 @@ import {
 import { validateSalaryBenchmarkingCalculatorInputs } from './validation';
 
 export const SalaryBenchmarkingCalculator: Calculator = {
-  id: 'salary-benchmarking-calculator',
+  id: 'SalaryBenchmarkingCalculator',
   title: 'Salary Benchmarking Calculator',
   category: 'business',
   subcategory: 'Financial Planning',

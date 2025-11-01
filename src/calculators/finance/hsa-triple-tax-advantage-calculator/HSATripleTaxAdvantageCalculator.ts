@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateHsaTripleTaxAdvantageCalculatorInputs, validateHsaTripleTaxAdvantageCalculatorBusinessRules } from './validation';
 
-export const HsaTripleTaxAdvantageCalculatorCalculator: Calculator: Calculator = {
-  id: 'hsa-triple-tax-advantage-calculator-calculator',
+export const HsaTripleTaxAdvantageCalculator: Calculator = {
+  id: 'HsaTripleTax-AdvantageCalculatorCalculator',
   title: 'HSA Triple Tax Advantage Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

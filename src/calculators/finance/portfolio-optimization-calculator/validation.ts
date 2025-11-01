@@ -1,11 +1,11 @@
 import { ValidationResult } from '../../lib/errors';
-import { portfoliooptimizationcalculatorCalculatorInputs } from './types';
+import { portfoliooptimizationcalculatorInputs } from './types';
 
 /**
  * Validate portfolio optimization calculator calculator inputs
  */
-export function validateportfoliooptimizationcalculatorCalculatorInputs(
-  inputs: portfoliooptimizationcalculatorCalculatorInputs
+export function validateportfoliooptimizationcalculatorInputs(
+  inputs: portfoliooptimizationcalculatorInputs
 ): ValidationResult {
   const errors: string[] = [];
 

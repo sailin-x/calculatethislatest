@@ -93,13 +93,13 @@ export function generateAnalysis(inputs: OptionsTradingCalculatorInputs, metrics
   const isUndervalued = timeValue > 0 && sigma > 0.15; // Basic heuristic: positive time value with sufficient vol suggests potential
 
   if (moneyness === 'ITM' && riskLevel === 'Low') {
-    recommendation = 'This in-the-money option has low risk due to stable volatility. Consider holding or selling to capture intrinsic value.';
+    recommendation = 'This InTheMoney option has low risk due to stable volatility. Consider holding or selling to capture intrinsic value.';
   } else if (moneyness === 'OTM' && isUndervalued) {
-    recommendation = `This out-of-the-money ${optionType} option shows positive time value. If bullish (for call) or bearish (for put), consider buying for leverage, but monitor high volatility risk.`;
+    recommendation = `This OutOfThe-money ${optionType} option shows positive time value. If bullish (for call) or bearish (for put), consider buying for leverage, but monitor high volatility risk.`;
   } else if (riskLevel === 'High') {
     recommendation = 'High volatility indicates significant risk. Avoid trading this option unless hedging a portfolio position.';
   } else {
-    recommendation = `The ${optionType} option is at-the-money with moderate pricing (${result.toFixed(2)}). Evaluate based on your market outlook and portfolio diversification.`;
+    recommendation = `The ${optionType} option is AtTheMoney with moderate pricing (${result.toFixed(2)}). Evaluate based on your market outlook and portfolio diversification.`;
   }
 
   return { recommendation, riskLevel };

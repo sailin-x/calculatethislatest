@@ -1,3 +1,3 @@
-import { PatentValuationCalculatorCalculator } from './PatentValuationCalculatorCalculator';
+import { PatentValuationCalculator } from './PatentValuationCalculator';
 
-export { PatentValuationCalculatorCalculator };
+export { PatentValuationCalculator };

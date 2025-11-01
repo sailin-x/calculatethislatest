@@ -1,4 +1,4 @@
-import { personal-injury-settlement-calculatorInputs, personal-injury-settlement-calculatorMetrics, personal-injury-settlement-calculatorAnalysis } from './types';
+import { PersonalInjurySettlement-calculatorInputs, PersonalInjurySettlement-calculatorMetrics, PersonalInjurySettlement-calculatorAnalysis } from './types';
 
 // Personal Injury Settlement Calculator
 export function calculateEconomicDamages(medicalExpenses: number, lostWages: number, futureEarnings: number): number {
@@ -21,7 +21,7 @@ export function calculateSettlementRange(totalDamages: number, liabilityPercenta
   };
 }
 
-export function calculateResult(inputs: personal-injury-settlement-calculatorInputs): number {
+export function calculateResult(inputs: PersonalInjurySettlement-calculatorInputs): number {
   if ('medicalExpenses' in inputs && 'lostWages' in inputs && 'painAndSuffering' in inputs) {
     const economic = calculateEconomicDamages(
       inputs.medicalExpenses,
@@ -34,7 +34,7 @@ export function calculateResult(inputs: personal-injury-settlement-calculatorInp
   return 0;
 }
 
-export function generateAnalysis(inputs: personal-injury-settlement-calculatorInputs, metrics: personal-injury-settlement-calculatorMetrics): personal-injury-settlement-calculatorAnalysis {
+export function generateAnalysis(inputs: PersonalInjurySettlement-calculatorInputs, metrics: PersonalInjurySettlement-calculatorMetrics): PersonalInjurySettlement-calculatorAnalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (result > 1000000) riskLevel = 'High';

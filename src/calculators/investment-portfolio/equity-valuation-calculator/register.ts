@@ -1,3 +1,3 @@
-import { EquityValuationCalculatorCalculator } from './EquityValuationCalculatorCalculator';
+import { EquityValuationCalculator } from './EquityValuationCalculator';
 
-export { EquityValuationCalculatorCalculator };
+export { EquityValuationCalculator };

@@ -10,7 +10,7 @@ import {
 import { validateFinancialAchievementCalculatorInputs } from './validation';
 
 export const FinancialAchievementCalculator: Calculator = {
-  id: 'financial-achievement-calculator',
+  id: 'FinancialAchievementCalculator',
   title: 'Financial Achievement Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

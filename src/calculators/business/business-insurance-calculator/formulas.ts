@@ -1,4 +1,4 @@
-import { business-insurance-calculatorInputs, business-insurance-calculatorMetrics, business-insurance-calculatorAnalysis } from './types';
+import { BusinessInsuranceCalculatorinputs, BusinessInsuranceCalculatormetrics, BusinessInsuranceCalculatoranalysis } from './types';
 
 // Business Insurance Calculator - Business calculations
 export function calculateNetPresentValue(cashFlows: number[], discountRate: number): number {
@@ -11,7 +11,7 @@ export function calculateROI(initialInvestment: number, finalValue: number): num
  return ((finalValue - initialInvestment) / initialInvestment) * 100;
 }
 
-export function calculateResult(inputs: business-insurance-calculatorInputs): number {
+export function calculateResult(inputs: BusinessInsuranceCalculatorinputs): number {
  // Business calculation logic with real math
  const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
  if (numericValues.length >= 2) {
@@ -24,7 +24,7 @@ export function calculateResult(inputs: business-insurance-calculatorInputs): nu
  return calculateNetPresentValue(numericValues, 10); // 10% discount rate
 }
 
-export function generateAnalysis(inputs: business-insurance-calculatorInputs, metrics: business-insurance-calculatorMetrics): business-insurance-calculatorAnalysis {
+export function generateAnalysis(inputs: BusinessInsuranceCalculatorinputs, metrics: BusinessInsuranceCalculatormetrics): BusinessInsuranceCalculatoranalysis {
  const result = metrics.result;
  let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
  if (Math.abs(result) > 100000) riskLevel = 'High';

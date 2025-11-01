@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { trademark_valuation_calculatorInputs, trademark_valuation_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const trademark_valuation_calculatorCalculator: Calculator = {
-  id: 'trademark-valuation-calculator',
+export const TrademarkValuationCalculator: Calculator = {
+  id: 'TrademarkValuationCalculator',
   title: 'Trademark Valuation Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

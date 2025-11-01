@@ -7,7 +7,7 @@ import { validateAllInsuranceInputs } from './quickValidation';
 describe('Condo Insurance Calculator', () => {
   describe('Calculator Structure', () => {
     it('should have correct basic properties', () => {
-      expect(CondoInsuranceCalculator.id).toBe('condo-insurance-calculator');
+      expect(CondoInsuranceCalculator.id).toBe('CondoInsuranceCalculator');
       expect(CondoInsuranceCalculator.name).toBe('Condo Insurance Calculator');
       expect(CondoInsuranceCalculator.category).toBe('finance');
       expect(CondoInsuranceCalculator.subcategory).toBe('insurance');

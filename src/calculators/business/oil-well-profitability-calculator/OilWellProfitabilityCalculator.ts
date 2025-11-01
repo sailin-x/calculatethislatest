@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateOilWellProfitabilityCalculatorInputs, validateOilWellProfitabilityCalculatorBusinessRules } from './validation';
 
-export const OilWellProfitabilityCalculatorCalculator: Calculator: Calculator = {
-  id: 'oil-well-profitability-calculator-calculator',
+export const OilWellProfitabilityCalculator: Calculator = {
+  id: 'OilWellProfitability-calculator-calculator',
   title: 'Oil Well Profitability Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

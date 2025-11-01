@@ -1,4 +1,4 @@
-import { medical-practice-valuation-calculatorInputs, medical-practice-valuation-calculatorMetrics, medical-practice-valuation-calculatorAnalysis } from './types';
+import { MedicalPracticeValuation-calculatorInputs, MedicalPracticeValuation-calculatorMetrics, MedicalPracticeValuation-calculatorAnalysis } from './types';
 
 // Medical Practice Valuation Calculator - Business calculations
 export function calculateNetPresentValue(cashFlows: number[], discountRate: number): number {
@@ -11,7 +11,7 @@ export function calculateROI(initialInvestment: number, finalValue: number): num
  return ((finalValue - initialInvestment) / initialInvestment) * 100;
 }
 
-export function calculateResult(inputs: medical-practice-valuation-calculatorInputs): number {
+export function calculateResult(inputs: MedicalPracticeValuation-calculatorInputs): number {
  // Business calculation logic with real math
  const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
  if (numericValues.length >= 2) {
@@ -24,7 +24,7 @@ export function calculateResult(inputs: medical-practice-valuation-calculatorInp
  return calculateNetPresentValue(numericValues, 10); // 10% discount rate
 }
 
-export function generateAnalysis(inputs: medical-practice-valuation-calculatorInputs, metrics: medical-practice-valuation-calculatorMetrics): medical-practice-valuation-calculatorAnalysis {
+export function generateAnalysis(inputs: MedicalPracticeValuation-calculatorInputs, metrics: MedicalPracticeValuation-calculatorMetrics): MedicalPracticeValuation-calculatorAnalysis {
  const result = metrics.result;
  let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
  if (Math.abs(result) > 100000) riskLevel = 'High';

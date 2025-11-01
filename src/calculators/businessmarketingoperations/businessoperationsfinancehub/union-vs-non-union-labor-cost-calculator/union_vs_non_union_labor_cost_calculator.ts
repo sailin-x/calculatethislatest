@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { union_vs_non_union_labor_cost_calculatorInputs, union_vs_non_union_labor_cost_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const union_vs_non_union_labor_cost_calculatorCalculator: Calculator = {
-  id: 'union-vs-non-union-labor-cost-calculator',
+export const UnionVsNon-UnionLaborCost-calculator: Calculator = {
+  id: 'UnionVsNon-UnionLaborCost-calculator',
   title: 'Union vs. Non Union Labor Cost Calculator Calculator',
   category: 'businessmarketingoperations',
   subcategory: 'businessoperationsfinancehub',

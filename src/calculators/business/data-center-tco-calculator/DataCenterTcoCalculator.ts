@@ -10,7 +10,7 @@ import {
 import { validateDataCenterTcoCalculatorInputs } from './validation';
 
 export const DataCenterTcoCalculator: Calculator = {
-  id: 'data-center-tco-calculator',
+  id: 'DataCenterTco-calculator',
   title: 'Data Center TCO Calculator',
   category: 'business',
   subcategory: 'Financial Planning',

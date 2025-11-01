@@ -9,7 +9,7 @@ import {
 import { validateIntellectualPropertyLicensingCalculatorInputs } from './validation';
 
 export const IntellectualPropertyLicensingCalculator: Calculator = {
-  id: 'intellectual-property-licensing-calculator',
+  id: 'IntellectualPropertyLicensing-calculator',
   title: 'Intellectual Property Licensing Calculator',
   category: 'legal',
   subcategory: 'Settlement Analysis',

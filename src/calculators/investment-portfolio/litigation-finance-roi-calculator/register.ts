@@ -1,3 +1,3 @@
-import { LitigationFinanceRoiCalculatorCalculator } from './LitigationFinanceRoiCalculatorCalculator';
+import { LitigationFinanceRoiCalculator } from './LitigationFinanceRoiCalculator';
 
-export { LitigationFinanceRoiCalculatorCalculator };
+export { LitigationFinanceRoiCalculator };

@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { retirement_abroad_calculatorInputs, retirement_abroad_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const retirement_abroad_calculatorCalculator: Calculator = {
-  id: 'retirement-abroad-calculator',
+export const RetirementAbroadCalculator: Calculator = {
+  id: 'RetirementAbroadCalculator',
   title: 'Retirement Abroad Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'retirementsavingshub',

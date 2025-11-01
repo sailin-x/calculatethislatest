@@ -1,4 +1,4 @@
-import { affiliate-marketing-roi-calculatorInputs, affiliate-marketing-roi-calculatorMetrics, affiliate-marketing-roi-calculatorAnalysis } from './types';
+import { AffiliateMarketingRoi-calculatorInputs, AffiliateMarketingRoi-calculatorMetrics, AffiliateMarketingRoi-calculatorAnalysis } from './types';
 
 // ROI Calculator
 export function calculateROI(netProfit: number, investment: number): number {
@@ -13,7 +13,7 @@ export function calculatePaybackPeriod(investment: number, annualCashFlow: numbe
   return investment / annualCashFlow;
 }
 
-export function calculateResult(inputs: affiliate-marketing-roi-calculatorInputs): number {
+export function calculateResult(inputs: AffiliateMarketingRoi-calculatorInputs): number {
   if ('netProfit' in inputs && 'investment' in inputs) {
     return calculateROI(inputs.netProfit, inputs.investment);
   }
@@ -24,7 +24,7 @@ export function calculateResult(inputs: affiliate-marketing-roi-calculatorInputs
   return 0;
 }
 
-export function generateAnalysis(inputs: affiliate-marketing-roi-calculatorInputs, metrics: affiliate-marketing-roi-calculatorMetrics): affiliate-marketing-roi-calculatorAnalysis {
+export function generateAnalysis(inputs: AffiliateMarketingRoi-calculatorInputs, metrics: AffiliateMarketingRoi-calculatorMetrics): AffiliateMarketingRoi-calculatorAnalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (result < 10) riskLevel = 'High';

@@ -36,7 +36,7 @@ describe('CharitableRemainderTrustCalculator', () => {
 
   describe('Calculator Structure', () => {
     it('should have correct calculator properties', () => {
-      expect(CharitableRemainderTrustCalculator.id).toBe('charitable-remainder-trust-calculator');
+      expect(CharitableRemainderTrustCalculator.id).toBe('CharitableRemainderTrust-calculator');
       expect(CharitableRemainderTrustCalculator.title).toBe('Charitable Remainder Trust Calculator');
       expect(CharitableRemainderTrustCalculator.category).toBe('finance');
       expect(CharitableRemainderTrustCalculator.subcategory).toBe('Retirement');

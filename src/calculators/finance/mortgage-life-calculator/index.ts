@@ -1,4 +1,4 @@
-export { MortgageLifeCalculatorCalculator } from './MortgageLifeCalculatorCalculator';
+export { MortgageLifeCalculator } from './MortgageLifeCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

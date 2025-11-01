@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateStructuredSettlementPayoutCalculatorInputs, validateStructuredSettlementPayoutCalculatorBusinessRules } from './validation';
 
-export const StructuredSettlementPayoutCalculatorCalculator: Calculator: Calculator = {
-  id: 'structured-settlement-payout-calculator-calculator',
+export const StructuredSettlementPayoutCalculator: Calculator = {
+  id: 'StructuredSettlementPayout-calculator-calculator',
   title: 'Structured Settlement Payout Calculator Calculator',
   retirement-savings: 'retirement-savings', // e.g., 'finance', 'math', 'health', 'business'
   subretirement-savings: 'Subretirement-savings Name',

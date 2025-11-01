@@ -10,7 +10,7 @@ import {
 import { validateMergerArbitrageSpreadCalculatorInputs } from './validation';
 
 export const MergerArbitrageSpreadCalculator: Calculator = {
-  id: 'merger-arbitrage-spread-calculator',
+  id: 'MergerArbitrageSpread-calculator',
   title: 'Merger Arbitrage Spread Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

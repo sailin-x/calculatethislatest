@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateMarineCargoInsurancePremiumCalculatorInputs, validateMarineCargoInsurancePremiumCalculatorBusinessRules } from './validation';
 
-export const MarineCargoInsurancePremiumCalculatorCalculator: Calculator: Calculator = {
-  id: 'marine-cargo-insurance-premium-calculator-calculator',
+export const MarineCargoInsurancePremiumCalculator: Calculator = {
+  id: 'MarineCargoInsurance-PremiumCalculatorCalculator',
   title: 'Marine Cargo Insurance Premium Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

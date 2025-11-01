@@ -1,3 +1,3 @@
-import { MortgageAprComparisonCalculatorCalculator } from './MortgageAprComparisonCalculatorCalculator';
+import { MortgageAprComparisonCalculator } from './MortgageAprComparisonCalculator';
 
-export { MortgageAprComparisonCalculatorCalculator };
+export { MortgageAprComparisonCalculator };

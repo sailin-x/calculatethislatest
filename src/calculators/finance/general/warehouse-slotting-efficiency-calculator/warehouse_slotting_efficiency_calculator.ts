@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { warehouse_slotting_efficiency_calculatorInputs, warehouse_slotting_efficiency_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const warehouse_slotting_efficiency_calculatorCalculator: Calculator = {
-  id: 'warehouse-slotting-efficiency-calculator',
+export const WarehouseSlottingEfficiency-calculator: Calculator = {
+  id: 'WarehouseSlottingEfficiency-calculator',
   title: 'Warehouse Slotting & Efficiency Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

@@ -1,11 +1,11 @@
 import { ValidationResult } from '../../lib/errors';
-import { studentloanrefinancingcalculatorCalculatorInputs } from './types';
+import { studentloanrefinancingcalculatorInputs } from './types';
 
 /**
  * Validate student loan refinancing calculator calculator inputs
  */
-export function validatestudentloanrefinancingcalculatorCalculatorInputs(
-  inputs: studentloanrefinancingcalculatorCalculatorInputs
+export function validatestudentloanrefinancingcalculatorInputs(
+  inputs: studentloanrefinancingcalculatorInputs
 ): ValidationResult {
   const errors: string[] = [];
 

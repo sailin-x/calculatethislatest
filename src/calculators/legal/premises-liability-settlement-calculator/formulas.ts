@@ -1,13 +1,13 @@
-import { premises-liability-settlement-calculatorInputs, premises-liability-settlement-calculatorMetrics, premises-liability-settlement-calculatorAnalysis } from './types';
+import { PremisesLiabilitySettlement-calculatorInputs, PremisesLiabilitySettlement-calculatorMetrics, PremisesLiabilitySettlement-calculatorAnalysis } from './types';
 
 // Premises Liability Settlement Calculator - Legal calculations
-export function calculateResult(inputs: premises-liability-settlement-calculatorInputs): number {
+export function calculateResult(inputs: PremisesLiabilitySettlement-calculatorInputs): number {
   // Legal calculation logic
   const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
   return numericValues.reduce((sum, val) => sum + val, 0) || 0;
 }
 
-export function generateAnalysis(inputs: premises-liability-settlement-calculatorInputs, metrics: premises-liability-settlement-calculatorMetrics): premises-liability-settlement-calculatorAnalysis {
+export function generateAnalysis(inputs: PremisesLiabilitySettlement-calculatorInputs, metrics: PremisesLiabilitySettlement-calculatorMetrics): PremisesLiabilitySettlement-calculatorAnalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (Math.abs(result) > 100000) riskLevel = 'High';

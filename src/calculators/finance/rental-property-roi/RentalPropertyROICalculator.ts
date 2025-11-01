@@ -1,7 +1,7 @@
 import { Calculator } from '../../types/calculator';
 
 export const RentalPropertyROICalculator: Calculator = {
-  id: 'rental-property-roi-calculator',
+  id: 'RentalPropertyRoi-calculator',
   name: 'Rental Property ROI Calculator',
   category: 'finance',
   subcategory: 'real-estate',
@@ -12,7 +12,7 @@ export const RentalPropertyROICalculator: Calculator = {
     { id: 'downPayment', name: 'Down Payment', type: 'number', unit: 'USD', required: true, description: 'Down payment amount', placeholder: '60000', min: 0, max: 10000000 },
     { id: 'closingCosts', name: 'Closing Costs', type: 'number', unit: 'USD', required: true, description: 'Total closing costs', placeholder: '9000', min: 0, max: 10000 },
     { id: 'renovationCosts', name: 'Renovation Costs', type: 'number', unit: 'USD', required: false, description: 'Renovation and improvement costs', placeholder: '15000', min: 0, max: 500000 },
-    { id: 'purchaseDate', name: 'Purchase Date', type: 'date', required: false, description: 'Date of property purchase', placeholder: '2024-01-01' },
+    { id: 'purchaseDate', name: 'Purchase Date', type: 'date', required: false, description: 'Date of property purchase', placeholder: '20240101' },
 
     // Financing Details
     { id: 'loanAmount', name: 'Loan Amount', type: 'number', unit: 'USD', required: true, description: 'Mortgage loan amount', placeholder: '240000', min: 0, max: 10000000 },
@@ -84,7 +84,7 @@ export const RentalPropertyROICalculator: Calculator = {
       { value: 'sell', label: 'Sell Property' },
       { value: 'refinance', label: 'Refinance' },
       { value: '1031-exchange', label: '1031 Exchange' },
-      { value: 'hold-long-term', label: 'Hold Long Term' }
+      { value: 'HoldLongTerm', label: 'Hold Long Term' }
     ] },
     { id: 'sellingCosts', name: 'Selling Costs', type: 'number', unit: '%', required: false, description: 'Selling costs as percentage of sale price', placeholder: '6', min: 0, max: 20 }
   ],
@@ -92,7 +92,7 @@ export const RentalPropertyROICalculator: Calculator = {
     { id: 'totalInvestment', name: 'Total Investment', type: 'number', unit: 'USD', description: 'Total cash invested' },
     { id: 'monthlyCashFlow', name: 'Monthly Cash Flow', type: 'number', unit: 'USD', description: 'Monthly net cash flow' },
     { id: 'annualCashFlow', name: 'Annual Cash Flow', type: 'number', unit: 'USD', description: 'Annual net cash flow' },
-    { id: 'cashOnCashReturn', name: 'Cash-on-Cash Return', type: 'number', unit: '%', description: 'Annual cash flow return on investment' },
+    { id: 'cashOnCashReturn', name: 'CashOnCash Return', type: 'number', unit: '%', description: 'Annual cash flow return on investment' },
     { id: 'capRate', name: 'Cap Rate', type: 'number', unit: '%', description: 'Capitalization rate' },
     { id: 'totalROI', name: 'Total ROI', type: 'number', unit: '%', description: 'Total return on investment including appreciation' },
     { id: 'annualizedROI', name: 'Annualized ROI', type: 'number', unit: '%', description: 'Annualized total return' },

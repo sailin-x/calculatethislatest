@@ -1,4 +1,4 @@
-export { PricePerSquareFootCalculatorCalculator } from './PricePerSquareFootCalculatorCalculator';
+export { PricePerSquareFootCalculator } from './PricePerSquareFootCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

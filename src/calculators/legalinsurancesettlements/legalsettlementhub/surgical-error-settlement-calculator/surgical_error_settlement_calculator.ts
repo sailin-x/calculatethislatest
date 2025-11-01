@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { surgical_error_settlement_calculatorInputs, surgical_error_settlement_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const surgical_error_settlement_calculatorCalculator: Calculator = {
-  id: 'surgical-error-settlement-calculator',
+export const SurgicalErrorSettlement-calculator: Calculator = {
+  id: 'SurgicalErrorSettlement-calculator',
   title: 'Surgical Error Settlement Calculator Calculator',
   category: 'legalinsurancesettlements',
   subcategory: 'legalsettlementhub',

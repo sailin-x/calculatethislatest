@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateGrossMarginCalculatorInputs, validateGrossMarginCalculatorBusinessRules } from './validation';
 
-export const GrossMarginCalculatorCalculator: Calculator: Calculator = {
-  id: 'gross-margin-calculator-calculator',
+export const GrossMarginCalculator: Calculator = {
+  id: 'GrossMarginCalculator-calculator',
   title: 'Gross Margin Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { workers_compensation_settlement_calculatorInputs, workers_compensation_settlement_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const workers_compensation_settlement_calculatorCalculator: Calculator = {
-  id: 'workers-compensation-settlement-calculator',
+export const WorkersCompensationSettlement-calculator: Calculator = {
+  id: 'WorkersCompensationSettlement-calculator',
   title: 'Workers' Compensation Settlement Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

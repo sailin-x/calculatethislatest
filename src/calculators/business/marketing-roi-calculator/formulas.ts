@@ -1,4 +1,4 @@
-import { marketing-roi-calculatorInputs, marketing-roi-calculatorMetrics, marketing-roi-calculatorAnalysis } from './types';
+import { MarketingRoiCalculatorinputs, MarketingRoiCalculatormetrics, MarketingRoiCalculatoranalysis } from './types';
 
 // ROI Calculator
 export function calculateROI(netProfit: number, investment: number): number {
@@ -13,7 +13,7 @@ export function calculatePaybackPeriod(investment: number, annualCashFlow: numbe
   return investment / annualCashFlow;
 }
 
-export function calculateResult(inputs: marketing-roi-calculatorInputs): number {
+export function calculateResult(inputs: MarketingRoiCalculatorinputs): number {
   if ('netProfit' in inputs && 'investment' in inputs) {
     return calculateROI(inputs.netProfit, inputs.investment);
   }
@@ -24,7 +24,7 @@ export function calculateResult(inputs: marketing-roi-calculatorInputs): number 
   return 0;
 }
 
-export function generateAnalysis(inputs: marketing-roi-calculatorInputs, metrics: marketing-roi-calculatorMetrics): marketing-roi-calculatorAnalysis {
+export function generateAnalysis(inputs: MarketingRoiCalculatorinputs, metrics: MarketingRoiCalculatormetrics): MarketingRoiCalculatoranalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (result < 10) riskLevel = 'High';

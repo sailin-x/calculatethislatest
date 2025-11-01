@@ -10,7 +10,7 @@ import {
 import { validateHomeEquityCalculatorInputs } from './validation';
 
 export const HomeEquityCalculator: Calculator = {
-  id: 'home-equity-calculator',
+  id: 'HomeEquityCalculator',
   title: 'Home Equity Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

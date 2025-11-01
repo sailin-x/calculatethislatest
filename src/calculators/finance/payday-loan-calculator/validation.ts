@@ -1,11 +1,11 @@
 import { ValidationResult } from '../../lib/errors';
-import { paydayloancalculatorCalculatorInputs } from './types';
+import { paydayloancalculatorInputs } from './types';
 
 /**
  * Validate payday loan calculator calculator inputs
  */
-export function validatepaydayloancalculatorCalculatorInputs(
-  inputs: paydayloancalculatorCalculatorInputs
+export function validatepaydayloancalculatorInputs(
+  inputs: paydayloancalculatorInputs
 ): ValidationResult {
   const errors: string[] = [];
 

@@ -8,7 +8,7 @@ const roiCalculator: CalculatorRegistration = {
   name: 'ROI Calculator',
   description: 'Comprehensive return on investment analysis with risk assessment, sensitivity analysis, and optimization insights',
   category: 'business',
-  tags: ['roi', 'return-on-investment', 'investment-analysis', 'financial-metrics', 'risk-assessment', 'npv', 'irr', 'payback-period', 'business-metrics'],
+  tags: ['roi', 'ReturnOnInvestment', 'investment-analysis', 'financial-metrics', 'risk-assessment', 'npv', 'irr', 'payback-period', 'business-metrics'],
   inputs: {
     initialInvestment: {
       type: 'number',
@@ -422,8 +422,8 @@ const roiCalculator: CalculatorRegistration = {
         finalValue: 150000,
         totalReturn: 50000,
         investmentPeriod: 12,
-        startDate: '2024-01-01',
-        endDate: '2024-12-31',
+        startDate: '20240101',
+        endDate: '20241231',
         investmentType: 'business',
         investmentCategory: 'capital-expenditure',
         additionalRevenue: 20000,
@@ -464,8 +464,8 @@ const roiCalculator: CalculatorRegistration = {
         finalValue: 80000,
         totalReturn: 30000,
         investmentPeriod: 6,
-        startDate: '2024-01-01',
-        endDate: '2024-06-30',
+        startDate: '20240101',
+        endDate: '20240630',
         investmentType: 'marketing',
         investmentCategory: 'marketing-campaign',
         additionalRevenue: 25000,
@@ -506,8 +506,8 @@ const roiCalculator: CalculatorRegistration = {
         finalValue: 650000,
         totalReturn: 150000,
         investmentPeriod: 60,
-        startDate: '2024-01-01',
-        endDate: '2028-12-31',
+        startDate: '20240101',
+        endDate: '20281231',
         investmentType: 'real-estate',
         investmentCategory: 'capital-expenditure',
         additionalRevenue: 30000,
@@ -543,7 +543,7 @@ const roiCalculator: CalculatorRegistration = {
     }
   ],
   relatedCalculators: [
-    'customer-lifetime-value', 'customer-acquisition-cost', 'churn-rate-calculator', 'business-valuation', 'payback-period'
+    'CustomerLifetimeValue', 'CustomerAcquisitionCost', 'ChurnRateCalculator', 'business-valuation', 'payback-period'
   ]
 };
 

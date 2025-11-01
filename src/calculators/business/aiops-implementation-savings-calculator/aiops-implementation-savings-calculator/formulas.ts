@@ -1,4 +1,4 @@
-import { aiops-implementation-savings-calculatorInputs, aiops-implementation-savings-calculatorMetrics, aiops-implementation-savings-calculatorAnalysis } from './types';
+import { AiopsImplementationSavings-calculatorInputs, AiopsImplementationSavings-calculatorMetrics, AiopsImplementationSavings-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: aiops-implementation-savings-calculatorInputs): number {
+export function calculateResult(inputs: AiopsImplementationSavings-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: aiops-implementation-savings-calculatorI
   }
 }
 
-export function generateAnalysis(inputs: aiops-implementation-savings-calculatorInputs, metrics: aiops-implementation-savings-calculatorMetrics): aiops-implementation-savings-calculatorAnalysis {
+export function generateAnalysis(inputs: AiopsImplementationSavings-calculatorInputs, metrics: AiopsImplementationSavings-calculatorMetrics): AiopsImplementationSavings-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

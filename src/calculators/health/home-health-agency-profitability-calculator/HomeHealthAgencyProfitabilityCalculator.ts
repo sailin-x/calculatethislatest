@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateHomeHealthAgencyProfitabilityCalculatorInputs, validateHomeHealthAgencyProfitabilityCalculatorBusinessRules } from './validation';
 
-export const HomeHealthAgencyProfitabilityCalculatorCalculator: Calculator: Calculator = {
-  id: 'home-health-agency-profitability-calculator-calculator',
+export const HomeHealthAgencyProfitabilityCalculator: Calculator = {
+  id: 'HomeHealthAgency-ProfitabilityCalculatorCalculator',
   title: 'Home Health Agency Profitability Calculator Calculator',
   health: 'health', // e.g., 'finance', 'math', 'health', 'business'
   subhealth: 'Subhealth Name',

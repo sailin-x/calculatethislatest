@@ -1,33 +1,57 @@
-export interface MortgageEquityCalculatorInputs {
-  // Define input properties based on the calculator's requirements
-  primaryInput: number;
-  secondaryInput?: number;
-  selectInput: string;
-  // Add more input properties as needed
-  optionalParameter?: string;
-  booleanFlag?: boolean;
+export interface MortgageEquityInputs {
+  propertyValue: number;
+  loanBalance: number;
+  originalLoanAmount: number;
+  monthlyPayment: number;
+  interestRate: number;
+  loanTerm: number;
+  monthsPaid: number;
+  propertyAppreciationRate: number;
+  marketGrowthRate: number;
+  analysisPeriod: number;
+  propertyTaxes: number;
+  homeownersInsurance: number;
+  hoaFees: number;
+  maintenanceCosts: number;
+  vacancyRate: number;
+  propertyManagementFee: number;
+  rentalIncome: number;
 }
 
-export interface MortgageEquityCalculatorOutputs {
-  // Define output properties that the calculator will produce
-  primaryResult: number;
-  secondaryResult: number;
-  // Add more output properties as needed
-  percentageResult?: number;
-  textResult?: string;
-}
-
-export interface MortgageEquityCalculatorMetrics {
-  // Define intermediate calculation results or metrics
-  intermediateValue: number;
-  calculationSteps: string[];
-  riskLevel: 'Low' | 'Medium' | 'High';
-}
-
-export interface MortgageEquityCalculatorAnalysis {
-  // Define analysis results
-  recommendation: string;
-  riskLevel: 'Low' | 'Medium' | 'High';
-  insights: string[];
-  warnings: string[];
+export interface MortgageEquityOutputs {
+  currentEquity: number;
+  equityPercentage: number;
+  loanToValueRatio: number;
+  equityGrowth: {
+    period: number;
+    equityAmount: number;
+    equityPercentage: number;
+    propertyValue: number;
+    loanBalance: number;
+  }[];
+  equityBuildUp: {
+    principalPaid: number;
+    appreciation: number;
+    totalEquity: number;
+  };
+  cashFlowAnalysis: {
+    monthlyIncome: number;
+    monthlyExpenses: number;
+    monthlyCashFlow: number;
+    annualCashFlow: number;
+    cashOnCashReturn: number;
+  };
+  breakevenAnalysis: {
+    breakevenMonths: number;
+    breakevenYears: number;
+    totalInvestment: number;
+    totalReturn: number;
+  };
+  riskAssessment: {
+    equityRisk: 'Low' | 'Medium' | 'High';
+    marketRisk: 'Low' | 'Medium' | 'High';
+    cashFlowRisk: 'Low' | 'Medium' | 'High';
+    overallRisk: 'Low' | 'Medium' | 'High';
+    recommendations: string[];
+  };
 }

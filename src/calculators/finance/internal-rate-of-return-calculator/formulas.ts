@@ -1,4 +1,4 @@
-import { internal-rate-of-return-calculatorInputs, internal-rate-of-return-calculatorMetrics, internal-rate-of-return-calculatorAnalysis } from './types';
+import { InternalRateOf-return-calculatorInputs, InternalRateOf-return-calculatorMetrics, InternalRateOf-return-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: internal-rate-of-return-calculatorInputs): number {
+export function calculateResult(inputs: InternalRateOf-return-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: internal-rate-of-return-calculatorInputs
   }
 }
 
-export function generateAnalysis(inputs: internal-rate-of-return-calculatorInputs, metrics: internal-rate-of-return-calculatorMetrics): internal-rate-of-return-calculatorAnalysis {
+export function generateAnalysis(inputs: InternalRateOf-return-calculatorInputs, metrics: InternalRateOf-return-calculatorMetrics): InternalRateOf-return-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

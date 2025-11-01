@@ -1,4 +1,4 @@
-import { umbrella-insurance-coverage-calculatorInputs, umbrella-insurance-coverage-calculatorMetrics, umbrella-insurance-coverage-calculatorAnalysis } from './types';
+import { UmbrellaInsuranceCoverage-calculatorInputs, UmbrellaInsuranceCoverage-calculatorMetrics, UmbrellaInsuranceCoverage-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: umbrella-insurance-coverage-calculatorInputs): number {
+export function calculateResult(inputs: UmbrellaInsuranceCoverage-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: umbrella-insurance-coverage-calculatorIn
   }
 }
 
-export function generateAnalysis(inputs: umbrella-insurance-coverage-calculatorInputs, metrics: umbrella-insurance-coverage-calculatorMetrics): umbrella-insurance-coverage-calculatorAnalysis {
+export function generateAnalysis(inputs: UmbrellaInsuranceCoverage-calculatorInputs, metrics: UmbrellaInsuranceCoverage-calculatorMetrics): UmbrellaInsuranceCoverage-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { fha_loanCalculatorCalculator } from './fha_loanCalculatorCalculator';
+import { fha_loanCalculator } from './fha_loanCalculator';
 
-export function registerfha_loanCalculatorCalculator(): void {
-  calculatorRegistry.register(new fha_loanCalculatorCalculator());
+export function registerfha_loanCalculator(): void {
+  calculatorRegistry.register(new fha_loanCalculator());
 }

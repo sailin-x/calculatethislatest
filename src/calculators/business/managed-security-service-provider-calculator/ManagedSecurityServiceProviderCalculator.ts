@@ -10,7 +10,7 @@ import {
 import { validateManagedSecurityServiceProviderCalculatorInputs } from './validation';
 
 export const ManagedSecurityServiceProviderCalculator: Calculator = {
-  id: 'managed-security-service-provider-calculator',
+  id: 'ManagedSecurityService-provider-calculator',
   title: 'Managed Security Service Provider Calculator',
   category: 'business',
   subcategory: 'Financial Planning',

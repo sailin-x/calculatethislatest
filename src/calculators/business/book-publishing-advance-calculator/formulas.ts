@@ -1,4 +1,4 @@
-import { book-publishing-advance-calculatorInputs, book-publishing-advance-calculatorMetrics, book-publishing-advance-calculatorAnalysis } from './types';
+import { BookPublishingAdvance-calculatorInputs, BookPublishingAdvance-calculatorMetrics, BookPublishingAdvance-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: book-publishing-advance-calculatorInputs): number {
+export function calculateResult(inputs: BookPublishingAdvance-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: book-publishing-advance-calculatorInputs
   }
 }
 
-export function generateAnalysis(inputs: book-publishing-advance-calculatorInputs, metrics: book-publishing-advance-calculatorMetrics): book-publishing-advance-calculatorAnalysis {
+export function generateAnalysis(inputs: BookPublishingAdvance-calculatorInputs, metrics: BookPublishingAdvance-calculatorMetrics): BookPublishingAdvance-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

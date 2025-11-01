@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { cost_of_equity_calculatorInputs, cost_of_equity_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const cost_of_equity_calculatorCalculator: Calculator = {
-  id: 'cost-of-equity-calculator',
+export const CostOfEquity-calculator: Calculator = {
+  id: 'CostOfEquity-calculator',
   title: 'Cost of Equity Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'investmentportfoliohub',

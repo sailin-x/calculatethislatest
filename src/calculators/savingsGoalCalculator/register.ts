@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { savingsGoalCalculatorCalculator } from './savingsGoalCalculatorCalculator';
+import { savingsGoalCalculator } from './savingsGoalCalculator';
 
-export function registersavingsGoalCalculatorCalculator(): void {
-  calculatorRegistry.register(new savingsGoalCalculatorCalculator());
+export function registersavingsGoalCalculator(): void {
+  calculatorRegistry.register(new savingsGoalCalculator());
 }

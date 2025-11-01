@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateRothConversionTaxCalculatorInputs, validateRothConversionTaxCalculatorBusinessRules } from './validation';
 
-export const RothConversionTaxCalculatorCalculator: Calculator: Calculator = {
-  id: 'roth-conversion-tax-calculator-calculator',
+export const RothConversionTaxCalculator: Calculator = {
+  id: 'RothConversionTax-calculator-calculator',
   title: 'Roth Conversion Tax Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

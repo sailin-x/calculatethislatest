@@ -1,4 +1,4 @@
-import { offshore-decommissioning-cost-estimatorInputs, offshore-decommissioning-cost-estimatorMetrics, offshore-decommissioning-cost-estimatorAnalysis } from './types';
+import { OffshoreDecommissioningCost-estimatorInputs, OffshoreDecommissioningCost-estimatorMetrics, OffshoreDecommissioningCost-estimatorAnalysis } from './types';
 
 // Offshore Decommissioning Cost Estimator - Business calculations
 export function calculateNetPresentValue(cashFlows: number[], discountRate: number): number {
@@ -11,7 +11,7 @@ export function calculateROI(initialInvestment: number, finalValue: number): num
  return ((finalValue - initialInvestment) / initialInvestment) * 100;
 }
 
-export function calculateResult(inputs: offshore-decommissioning-cost-estimatorInputs): number {
+export function calculateResult(inputs: OffshoreDecommissioningCost-estimatorInputs): number {
  // Business calculation logic with real math
  const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
  if (numericValues.length >= 2) {
@@ -24,7 +24,7 @@ export function calculateResult(inputs: offshore-decommissioning-cost-estimatorI
  return calculateNetPresentValue(numericValues, 10); // 10% discount rate
 }
 
-export function generateAnalysis(inputs: offshore-decommissioning-cost-estimatorInputs, metrics: offshore-decommissioning-cost-estimatorMetrics): offshore-decommissioning-cost-estimatorAnalysis {
+export function generateAnalysis(inputs: OffshoreDecommissioningCost-estimatorInputs, metrics: OffshoreDecommissioningCost-estimatorMetrics): OffshoreDecommissioningCost-estimatorAnalysis {
  const result = metrics.result;
  let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
  if (Math.abs(result) > 100000) riskLevel = 'High';

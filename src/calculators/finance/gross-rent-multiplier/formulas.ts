@@ -1,4 +1,4 @@
-import { gross-rent-multiplierInputs, gross-rent-multiplierMetrics, gross-rent-multiplierAnalysis } from './types';
+import { GrossRentMultiplierinputs, GrossRentMultipliermetrics, GrossRentMultiplieranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: gross-rent-multiplierInputs): number {
+export function calculateResult(inputs: GrossRentMultiplierinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: gross-rent-multiplierInputs): number {
   }
 }
 
-export function generateAnalysis(inputs: gross-rent-multiplierInputs, metrics: gross-rent-multiplierMetrics): gross-rent-multiplierAnalysis {
+export function generateAnalysis(inputs: GrossRentMultiplierinputs, metrics: GrossRentMultipliermetrics): GrossRentMultiplieranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

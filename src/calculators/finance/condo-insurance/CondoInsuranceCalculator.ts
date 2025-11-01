@@ -3,7 +3,7 @@ import { calculateInsurance, generateInsuranceAnalysis } from './formulas';
 import { validateInsuranceInputs } from './validation';
 
 export const CondoInsuranceCalculator: Calculator = {
-  id: 'condo-insurance-calculator',
+  id: 'CondoInsuranceCalculator',
   name: 'Condo Insurance Calculator',
   category: 'finance',
   subcategory: 'insurance',

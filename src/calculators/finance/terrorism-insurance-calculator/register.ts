@@ -1,3 +1,3 @@
-import { TerrorismInsuranceCalculatorCalculator } from './TerrorismInsuranceCalculatorCalculator';
+import { TerrorismInsuranceCalculator } from './TerrorismInsuranceCalculator';
 
-export { TerrorismInsuranceCalculatorCalculator };
+export { TerrorismInsuranceCalculator };

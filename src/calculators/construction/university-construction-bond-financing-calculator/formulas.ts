@@ -1,13 +1,13 @@
-import { university-construction-bond-financing-calculatorInputs, university-construction-bond-financing-calculatorMetrics, university-construction-bond-financing-calculatorAnalysis } from './types';
+import { UniversityConstructionBond-financing-calculatorInputs, UniversityConstructionBond-financing-calculatorMetrics, UniversityConstructionBond-financing-calculatorAnalysis } from './types';
 
 // University Construction Bond Financing Calculator - Construction calculations
-export function calculateResult(inputs: university-construction-bond-financing-calculatorInputs): number {
+export function calculateResult(inputs: UniversityConstructionBond-financing-calculatorInputs): number {
   // Construction calculation logic
   const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
   return numericValues.reduce((sum, val) => sum + val, 0) || 0;
 }
 
-export function generateAnalysis(inputs: university-construction-bond-financing-calculatorInputs, metrics: university-construction-bond-financing-calculatorMetrics): university-construction-bond-financing-calculatorAnalysis {
+export function generateAnalysis(inputs: UniversityConstructionBond-financing-calculatorInputs, metrics: UniversityConstructionBond-financing-calculatorMetrics): UniversityConstructionBond-financing-calculatorAnalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (Math.abs(result) > 10000) riskLevel = 'High';

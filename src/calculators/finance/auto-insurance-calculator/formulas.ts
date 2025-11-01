@@ -1,13 +1,13 @@
-import { auto-insurance-calculatorInputs, auto-insurance-calculatorMetrics, auto-insurance-calculatorAnalysis } from './types';
+import { AutoInsuranceCalculatorinputs, AutoInsuranceCalculatormetrics, AutoInsuranceCalculatoranalysis } from './types';
 
 // Auto Insurance Calculator - Finance calculations
-export function calculateResult(inputs: auto-insurance-calculatorInputs): number {
+export function calculateResult(inputs: AutoInsuranceCalculatorinputs): number {
   // Financial calculation logic
   const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
   return numericValues.reduce((sum, val) => sum + val, 0) || 0;
 }
 
-export function generateAnalysis(inputs: auto-insurance-calculatorInputs, metrics: auto-insurance-calculatorMetrics): auto-insurance-calculatorAnalysis {
+export function generateAnalysis(inputs: AutoInsuranceCalculatorinputs, metrics: AutoInsuranceCalculatormetrics): AutoInsuranceCalculatoranalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (Math.abs(result) > 100000) riskLevel = 'High';

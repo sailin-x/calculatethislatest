@@ -6,7 +6,7 @@ import { getRentalPropertyROIValidationRules } from './validation';
  * Rental property ROI formula implementation
  */
 const rentalPropertyROIFormula: Formula = {
-  id: 'rental-property-roi',
+  id: 'RentalPropertyRoi',
   name: 'Rental Property ROI',
   description: 'Calculate return on investment for rental properties',
   calculate: (inputs: Record<string, any>) => {
@@ -23,11 +23,11 @@ const rentalPropertyROIFormula: Formula = {
  * Industry-leading rental property ROI calculator with comprehensive features
  */
 export const rentalPropertyROICalculator: Calculator = {
-  id: 'rental-property-roi-calculator',
+  id: 'RentalPropertyRoi-calculator',
   title: 'Rental Property ROI Calculator',
   category: 'finance',
   subcategory: 'Mortgage & Real Estate',
-  description: 'Comprehensive rental property investment analysis calculator including cash flow, cap rates, cash-on-cash returns, IRR, and total ROI with industry-standard metrics.',
+  description: 'Comprehensive rental property investment analysis calculator including cash flow, cap rates, CashOnCash returns, IRR, and total ROI with industry-standard metrics.',
 
   usageInstructions: [
     'Enter property purchase details and financing information',
@@ -232,7 +232,7 @@ export const rentalPropertyROICalculator: Calculator = {
     },
     {
       id: 'cashOnCashReturn',
-      label: 'Cash-on-Cash Return (%)',
+      label: 'CashOnCash Return (%)',
       type: 'percentage',
       explanation: 'Annual cash flow divided by initial investment'
     },

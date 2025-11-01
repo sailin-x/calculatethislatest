@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateLifeSettlementValueCalculatorInputs, validateLifeSettlementValueCalculatorBusinessRules } from './validation';
 
-export const LifeSettlementValueCalculatorCalculator: Calculator: Calculator = {
-  id: 'life-settlement-value-calculator-calculator',
+export const LifeSettlementValueCalculator: Calculator = {
+  id: 'LifeSettlementValue-calculator-calculator',
   title: 'Life Settlement Value Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

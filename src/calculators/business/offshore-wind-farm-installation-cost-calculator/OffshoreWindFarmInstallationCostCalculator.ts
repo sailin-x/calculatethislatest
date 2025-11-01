@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateOffshoreWindFarmInstallationCostCalculatorInputs, validateOffshoreWindFarmInstallationCostCalculatorBusinessRules } from './validation';
 
-export const OffshoreWindFarmInstallationCostCalculatorCalculator: Calculator: Calculator = {
-  id: 'offshore-wind-farm-installation-cost-calculator-calculator',
+export const OffshoreWindFarmInstallationCostCalculator: Calculator = {
+  id: 'OffshoreWindFarm-InstallationCostCalculator-calculator',
   title: 'Offshore Wind Farm Installation Cost Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

@@ -285,7 +285,7 @@ export const USDALoanCalculator: Calculator = {
     },
     debtToIncomeRatio: {
       type: 'number',
-      label: 'Debt-to-Income Ratio',
+      label: 'DebtToIncome Ratio',
       description: 'Total debt payments divided by gross income',
       unit: '%'
     },

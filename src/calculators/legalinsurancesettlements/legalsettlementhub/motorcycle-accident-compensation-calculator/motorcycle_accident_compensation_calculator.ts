@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { motorcycle_accident_compensation_calculatorInputs, motorcycle_accident_compensation_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const motorcycle_accident_compensation_calculatorCalculator: Calculator = {
-  id: 'motorcycle-accident-compensation-calculator',
+export const MotorcycleAccidentCompensation-calculator: Calculator = {
+  id: 'MotorcycleAccidentCompensation-calculator',
   title: 'Motorcycle Accident Compensation Calculator Calculator',
   category: 'legalinsurancesettlements',
   subcategory: 'legalsettlementhub',

@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateThemeCostCalculatorInputs } from './validation';
 
 export const ThemeCostCalculator: Calculator = {
-  id: 'theme-cost-calculator',
+  id: 'ThemeCostCalculator',
   title: 'Theme Cost Calculator',
   category: 'health',
   subcategory: 'General',

@@ -1,3 +1,0 @@
-export * from './'./finance/general/marine-insurance-calculator/marine-insurance-calculator';Calculator';
-export * from './register';
-export * from './types';

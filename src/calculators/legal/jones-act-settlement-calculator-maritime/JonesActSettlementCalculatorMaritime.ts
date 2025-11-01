@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateJonesActSettlementCalculatorMaritimeInputs, validateJonesActSettlementCalculatorMaritimeBusinessRules } from './validation';
 
-export const JonesActSettlementCalculatorMaritimeCalculator: Calculator: Calculator = {
-  id: 'jones-act-settlement-calculator-maritime-calculator',
+export const JonesActSettlementCalculatorMaritimeCalculator: Calculator = {
+  id: 'JonesActSettlement-CalculatorMaritimeCalculator',
   title: 'Jones Act Settlement Calculator (Maritime) Calculator',
   legal: 'legal', // e.g., 'finance', 'math', 'health', 'business'
   sublegal: 'Sublegal Name',

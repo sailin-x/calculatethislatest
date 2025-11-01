@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { chaturbate_token_calculatorInputs, chaturbate_token_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const chaturbate_token_calculatorCalculator: Calculator = {
-  id: 'chaturbate-token-calculator',
+export const ChaturbateTokenCalculator: Calculator = {
+  id: 'ChaturbateTokenCalculator',
   title: 'Chaturbate Token Calculator Calculator',
   category: 'businessmarketingoperations',
   subcategory: 'marketingcreatorhub',

@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { futures_trading_profitability_calculatorInputs, futures_trading_profitability_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const futures_trading_profitability_calculatorCalculator: Calculator = {
-  id: 'futures-trading-profitability-calculator',
+export const FuturesTradingProfitability-calculator: Calculator = {
+  id: 'FuturesTradingProfitability-calculator',
   title: 'Futures Trading Profitability Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'investmentportfoliohub',

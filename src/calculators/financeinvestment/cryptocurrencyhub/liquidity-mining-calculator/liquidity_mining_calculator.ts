@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { liquidity_mining_calculatorInputs, liquidity_mining_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const liquidity_mining_calculatorCalculator: Calculator = {
-  id: 'liquidity-mining-calculator',
+export const LiquidityMiningCalculator: Calculator = {
+  id: 'LiquidityMiningCalculator',
   title: 'Liquidity Mining Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'cryptocurrencyhub',

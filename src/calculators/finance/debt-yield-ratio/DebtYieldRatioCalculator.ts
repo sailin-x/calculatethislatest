@@ -3,7 +3,7 @@ import { calculateDebtYield, generateDebtYieldAnalysis } from './formulas';
 import { validateDebtYieldInputs } from './validation';
 
 export const DebtYieldRatioCalculator: Calculator = {
-  id: 'debt-yield-ratio-calculator',
+  id: 'DebtYieldRatio-calculator',
   name: 'Debt Yield Ratio Calculator',
   category: 'finance',
   subcategory: 'real-estate',
@@ -288,7 +288,7 @@ export const DebtYieldRatioCalculator: Calculator = {
       placeholder: 'Select tenant credit rating',
       options: [
         { value: 'investment-grade', label: 'Investment Grade (BBB+ or higher)' },
-        { value: 'non-investment-grade', label: 'Non-Investment Grade (BB+ to BBB-)' },
+        { value: 'NonInvestmentGrade', label: 'Non-Investment Grade (BB+ to BBB-)' },
         { value: 'speculative', label: 'Speculative (BB- or lower)' },
         { value: 'unrated', label: 'Unrated' }
       ]
@@ -343,11 +343,11 @@ export const DebtYieldRatioCalculator: Calculator = {
     },
     {
       id: 'loanToValue',
-      name: 'Loan-to-Value Ratio',
+      name: 'LoanToValue Ratio',
       type: 'number',
       unit: '%',
       required: true,
-      description: 'Current loan-to-value ratio',
+      description: 'Current LoanToValue ratio',
       placeholder: 'Enter LTV ratio',
       min: 0,
       max: 100
@@ -388,10 +388,10 @@ export const DebtYieldRatioCalculator: Calculator = {
     },
     {
       id: 'loanToValueRatio',
-      name: 'Loan-to-Value Ratio',
+      name: 'LoanToValue Ratio',
       type: 'number',
       unit: '%',
-      description: 'Calculated loan-to-value ratio'
+      description: 'Calculated LoanToValue ratio'
     },
     {
       id: 'capRate',
@@ -487,9 +487,9 @@ export const DebtYieldRatioCalculator: Calculator = {
       description: 'Maximum loan amount is calculated by dividing NOI by the required debt yield ratio.'
     },
     {
-      name: 'Loan-to-Value Ratio',
+      name: 'LoanToValue Ratio',
       formula: 'LTV = (Loan Amount / Property Value) × 100',
-      description: 'Loan-to-value ratio measures the loan amount as a percentage of the property value.'
+      description: 'LoanToValue ratio measures the loan amount as a percentage of the property value.'
     },
     {
       name: 'Cap Rate',
@@ -565,7 +565,7 @@ export const DebtYieldRatioCalculator: Calculator = {
         propertyAge: 18,
         occupancyRate: 92,
         leaseType: 'net',
-        tenantCreditRating: 'non-investment-grade',
+        tenantCreditRating: 'NonInvestmentGrade',
         marketConditions: 'stable',
         loanTerm: 25,
         interestRate: 6.0,

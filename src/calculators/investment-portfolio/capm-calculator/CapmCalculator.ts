@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateCapmCalculatorInputs, validateCapmCalculatorBusinessRules } from './validation';
 
-export const CapmCalculatorCalculator: Calculator: Calculator = {
-  id: 'capm-calculator-calculator',
+export const CapmCalculator: Calculator = {
+  id: 'CapmCalculatorCalculator',
   title: 'CAPM Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

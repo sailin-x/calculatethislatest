@@ -88,7 +88,7 @@ describe('AmortizationCalculator', () => {
         oneTimePaymentMonth: 1,
         paymentFrequency: 'monthly' as const,
         compoundingFrequency: 'monthly' as const,
-        startDate: new Date('2024-01-01')
+        startDate: new Date('20240101')
       };
 
       const result = generateAmortizationSchedule(inputs);

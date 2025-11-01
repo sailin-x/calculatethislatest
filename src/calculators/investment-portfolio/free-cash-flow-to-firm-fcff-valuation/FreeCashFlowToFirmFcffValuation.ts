@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateFreeCashFlowToFirmFcffValuationInputs, validateFreeCashFlowToFirmFcffValuationBusinessRules } from './validation';
 
-export const FreeCashFlowToFirmFcffValuationCalculator: Calculator: Calculator = {
-  id: 'free-cash-flow-to-firm-fcff-valuation-calculator',
+export const FreeCashFlowToFirmFcffValuationCalculator: Calculator = {
+  id: 'FreeCashFlow-ToFirmFcff-valuation-calculator',
   title: 'Free Cash Flow to Firm (FCFF) Valuation Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { ad_viewability_impact_on_roi_calculatorInputs, ad_viewability_impact_on_roi_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const ad_viewability_impact_on_roi_calculatorCalculator: Calculator = {
-  id: 'ad-viewability-impact-on-roi-calculator',
+export const AdViewabilityImpact-OnRoiCalculator: Calculator = {
+  id: 'AdViewabilityImpact-OnRoiCalculator',
   title: 'Ad Viewability Impact on ROI Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

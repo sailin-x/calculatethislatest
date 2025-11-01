@@ -1,4 +1,4 @@
-export { RSquaredCalculatorCalculator } from './RSquaredCalculatorCalculator';
+export { RSquaredCalculator } from './RSquaredCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

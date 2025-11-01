@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateFoodWasteCalculatorInputs } from './validation';
 
 export const FoodWasteCalculator: Calculator = {
-  id: 'food-waste-calculator',
+  id: 'FoodWasteCalculator',
   title: 'Food Waste Calculator',
   category: 'health',
   subcategory: 'General',

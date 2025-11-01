@@ -1,4 +1,4 @@
-export { MbaRoiCalculatorCalculator } from './MbaRoiCalculatorCalculator';
+export { MbaRoiCalculator } from './MbaRoiCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

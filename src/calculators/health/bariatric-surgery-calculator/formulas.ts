@@ -1,4 +1,4 @@
-import { bariatric-surgery-calculatorInputs, bariatric-surgery-calculatorMetrics, bariatric-surgery-calculatorAnalysis } from './types';
+import { BariatricSurgeryCalculatorinputs, BariatricSurgeryCalculatormetrics, BariatricSurgeryCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: bariatric-surgery-calculatorInputs): number {
+export function calculateResult(inputs: BariatricSurgeryCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: bariatric-surgery-calculatorInputs): num
   }
 }
 
-export function generateAnalysis(inputs: bariatric-surgery-calculatorInputs, metrics: bariatric-surgery-calculatorMetrics): bariatric-surgery-calculatorAnalysis {
+export function generateAnalysis(inputs: BariatricSurgeryCalculatorinputs, metrics: BariatricSurgeryCalculatormetrics): BariatricSurgeryCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

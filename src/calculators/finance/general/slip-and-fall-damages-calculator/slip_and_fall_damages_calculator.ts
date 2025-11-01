@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { slip_and_fall_damages_calculatorInputs, slip_and_fall_damages_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const slip_and_fall_damages_calculatorCalculator: Calculator = {
-  id: 'slip-and-fall-damages-calculator',
+export const SlipAndFall-damages-calculator: Calculator = {
+  id: 'SlipAndFall-damages-calculator',
   title: 'Slip and Fall Damages Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

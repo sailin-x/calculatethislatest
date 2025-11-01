@@ -1,173 +1,214 @@
 import { NetOperatingIncomeCalculator } from './NetOperatingIncomeCalculator';
-import { getNetOperatingIncomeValidationRules } from './validation';
-import * as quickValidation from './quickValidation';
+import {
+  calculateGrossOperatingIncome,
+  calculateEffectiveGrossIncome,
+  calculateTotalOperatingExpenses,
+  calculateNetOperatingIncome,
+  calculateOperatingExpenseRatio,
+  calculateNetIncomeRatio
+} from './formulas';
+import { validateNetOperatingIncomeInputs } from './validation';
 
 describe('NetOperatingIncomeCalculator', () => {
   describe('Calculator Definition', () => {
-    it('should have correct id and title', () => {
+    it('should have correct calculator properties', () => {
       expect(NetOperatingIncomeCalculator.id).toBe('net-operating-income-calculator');
       expect(NetOperatingIncomeCalculator.title).toBe('Net Operating Income (NOI) Calculator');
-    });
-
-    it('should have correct category and subcategory', () => {
       expect(NetOperatingIncomeCalculator.category).toBe('finance');
-      expect(NetOperatingIncomeCalculator.subcategory).toBe('Mortgage & Real Estate');
+      expect(NetOperatingIncomeCalculator.subcategory).toBe('Real Estate Investment');
     });
 
-    it('should have usage instructions', () => {
-      expect(NetOperatingIncomeCalculator.usageInstructions).toBeDefined();
-      expect(NetOperatingIncomeCalculator.usageInstructions.length).toBeGreaterThan(0);
+    it('should have required inputs', () => {
+      const requiredInputs = NetOperatingIncomeCalculator.inputs.filter(input => input.required);
+      expect(requiredInputs).toHaveLength(14); // All income and expense fields plus analysis period
+      expect(requiredInputs.map(i => i.id)).toEqual([
+        'rentalIncome', 'otherIncome', 'propertyManagement', 'maintenance',
+        'repairs', 'utilities', 'insurance', 'propertyTaxes', 'legalFees',
+        'advertising', 'supplies', 'otherExpenses', 'analysisPeriod'
+      ]);
     });
 
-    it('should have inputs defined', () => {
-      expect(NetOperatingIncomeCalculator.inputs).toBeDefined();
-      expect(NetOperatingIncomeCalculator.inputs.length).toBeGreaterThan(0);
-    });
-
-    it('should have outputs defined', () => {
-      expect(NetOperatingIncomeCalculator.outputs).toBeDefined();
-      expect(NetOperatingIncomeCalculator.outputs.length).toBeGreaterThan(0);
+    it('should have correct outputs', () => {
+      expect(NetOperatingIncomeCalculator.outputs).toHaveLength(7);
+      expect(NetOperatingIncomeCalculator.outputs.map(o => o.id)).toEqual([
+        'grossOperatingIncome',
+        'effectiveGrossIncome',
+        'totalOperatingExpenses',
+        'netOperatingIncome',
+        'operatingExpenseRatio',
+        'netIncomeRatio',
+        'breakEvenRatio'
+      ]);
     });
   });
 
-  describe('Input Validation', () => {
-    describe('Gross Rental Income Validation', () => {
-      it('should validate gross rental income correctly', () => {
-        const result = quickValidation.validateGrossRentalIncome(50000);
-        expect(result.isValid).toBe(true);
-      });
-
-      it('should reject negative gross rental income', () => {
-        const result = quickValidation.validateGrossRentalIncome(-1000);
-        expect(result.isValid).toBe(false);
-        expect(result.errors.grossRentalIncome).toBeDefined();
-      });
-
-      it('should reject gross rental income below minimum', () => {
-        const result = quickValidation.validateGrossRentalIncome(500);
-        expect(result.isValid).toBe(false);
-        expect(result.errors.grossRentalIncome).toContain('at least $1,000');
-      });
-
-      it('should reject gross rental income above maximum', () => {
-        const result = quickValidation.validateGrossRentalIncome(20000000);
-        expect(result.isValid).toBe(false);
-        expect(result.errors.grossRentalIncome).toContain('cannot exceed $10,000,000');
+  describe('Formulas', () => {
+    describe('calculateGrossOperatingIncome', () => {
+      it('should calculate gross operating income correctly', () => {
+        const result = calculateGrossOperatingIncome(120000, 5000);
+        expect(result).toBe(125000);
       });
     });
 
-    describe('Other Income Validation', () => {
-      it('should validate other income correctly', () => {
-        const result = quickValidation.validateOtherIncome(5000);
-        expect(result.isValid).toBe(true);
+    describe('calculateEffectiveGrossIncome', () => {
+      it('should calculate effective gross income with vacancy allowance', () => {
+        const result = calculateEffectiveGrossIncome(125000, true, 5);
+        expect(result).toBe(118750);
       });
 
-      it('should allow undefined other income', () => {
-        const result = quickValidation.validateOtherIncome(undefined);
-        expect(result.isValid).toBe(true);
-      });
-
-      it('should reject negative other income', () => {
-        const result = quickValidation.validateOtherIncome(-1000);
-        expect(result.isValid).toBe(false);
-        expect(result.errors.otherIncome).toContain('cannot be negative');
+      it('should return gross income when vacancy allowance is disabled', () => {
+        const result = calculateEffectiveGrossIncome(125000, false, 5);
+        expect(result).toBe(125000);
       });
     });
 
-    describe('Property Management Validation', () => {
-      it('should validate property management percentage correctly', () => {
-        const result = quickValidation.validatePropertyManagement(8.5);
-        expect(result.isValid).toBe(true);
-      });
-
-      it('should reject property management above maximum', () => {
-        const result = quickValidation.validatePropertyManagement(25);
-        expect(result.isValid).toBe(false);
-        expect(result.errors.propertyManagement).toContain('cannot exceed 20%');
-      });
-
-      it('should reject both percentage and fixed management fees', () => {
-        const result = quickValidation.validatePropertyManagement(8, { propertyManagementFixed: 5000 });
-        expect(result.isValid).toBe(false);
-        expect(result.errors.propertyManagement).toContain('Cannot specify both');
+    describe('calculateTotalOperatingExpenses', () => {
+      it('should calculate total operating expenses correctly', () => {
+        const inputs = {
+          rentalIncome: 120000,
+          otherIncome: 5000,
+          propertyManagement: 12000,
+          maintenance: 8000,
+          repairs: 6000,
+          utilities: 0,
+          insurance: 4000,
+          propertyTaxes: 15000,
+          legalFees: 2000,
+          advertising: 1000,
+          supplies: 500,
+          otherExpenses: 1000,
+          includeVacancyAllowance: true,
+          vacancyRate: 5,
+          includeReplacementReserve: true,
+          replacementReserveRate: 2,
+          analysisPeriod: 'annual' as const
+        };
+        const result = calculateTotalOperatingExpenses(inputs);
+        expect(result).toBeCloseTo(39750, 0);
       });
     });
 
-    describe('Operating Expense Validation', () => {
-      it('should validate maintenance expenses correctly', () => {
-        const result = quickValidation.validateMaintenance(5000);
-        expect(result.isValid).toBe(true);
+    describe('calculateNetOperatingIncome', () => {
+      it('should calculate NOI correctly', () => {
+        const result = calculateNetOperatingIncome(118750, 39750);
+        expect(result).toBe(79000);
+      });
+    });
+
+    describe('calculateOperatingExpenseRatio', () => {
+      it('should calculate operating expense ratio correctly', () => {
+        const result = calculateOperatingExpenseRatio(39750, 118750);
+        expect(result).toBeCloseTo(33.47, 2);
       });
 
-      it('should validate utilities correctly', () => {
-        const result = quickValidation.validateUtilities(3000);
-        expect(result.isValid).toBe(true);
+      it('should return 0 for zero effective gross income', () => {
+        const result = calculateOperatingExpenseRatio(39750, 0);
+        expect(result).toBe(0);
+      });
+    });
+
+    describe('calculateNetIncomeRatio', () => {
+      it('should calculate net income ratio correctly', () => {
+        const result = calculateNetIncomeRatio(79000, 118750);
+        expect(result).toBeCloseTo(66.53, 2);
       });
 
-      it('should validate insurance correctly', () => {
-        const result = quickValidation.validateInsurance(2000);
-        expect(result.isValid).toBe(true);
-      });
-
-      it('should validate property taxes correctly', () => {
-        const result = quickValidation.validatePropertyTaxes(8000);
-        expect(result.isValid).toBe(true);
-      });
-
-      it('should reject negative operating expenses', () => {
-        const result = quickValidation.validateMaintenance(-1000);
-        expect(result.isValid).toBe(false);
-        expect(result.errors.maintenance).toContain('cannot be negative');
+      it('should return 0 for zero effective gross income', () => {
+        const result = calculateNetIncomeRatio(79000, 0);
+        expect(result).toBe(0);
       });
     });
   });
 
-  describe('Validation Rules', () => {
-    it('should have validation rules defined', () => {
-      const rules = getNetOperatingIncomeValidationRules();
-      expect(rules).toBeDefined();
-      expect(rules.length).toBeGreaterThan(0);
+  describe('Validation', () => {
+    it('should validate correct inputs', () => {
+      const inputs = {
+        rentalIncome: 120000,
+        otherIncome: 5000,
+        propertyManagement: 12000,
+        maintenance: 8000,
+        repairs: 6000,
+        utilities: 0,
+        insurance: 4000,
+        propertyTaxes: 15000,
+        legalFees: 2000,
+        advertising: 1000,
+        supplies: 500,
+        otherExpenses: 1000,
+        includeVacancyAllowance: true,
+        vacancyRate: 5,
+        includeReplacementReserve: true,
+        replacementReserveRate: 2,
+        analysisPeriod: 'annual' as const
+      };
+      const errors = validateNetOperatingIncomeInputs(inputs);
+      expect(errors).toHaveLength(0);
     });
 
-    it('should include required field validations', () => {
-      const rules = getNetOperatingIncomeValidationRules();
-      const requiredRules = rules.filter(rule => rule.type === 'required');
-      expect(requiredRules.length).toBeGreaterThan(0);
+    it('should reject negative rental income', () => {
+      const inputs = {
+        rentalIncome: -1000,
+        otherIncome: 5000,
+        propertyManagement: 12000,
+        maintenance: 8000,
+        repairs: 6000,
+        utilities: 0,
+        insurance: 4000,
+        propertyTaxes: 15000,
+        legalFees: 2000,
+        advertising: 1000,
+        supplies: 500,
+        otherExpenses: 1000,
+        includeVacancyAllowance: true,
+        vacancyRate: 5,
+        includeReplacementReserve: true,
+        replacementReserveRate: 2,
+        analysisPeriod: 'annual' as const
+      };
+      const errors = validateNetOperatingIncomeInputs(inputs);
+      expect(errors).toContainEqual({
+        field: 'rentalIncome',
+        message: 'Rental income cannot be negative'
+      });
     });
 
-    it('should include range validations', () => {
-      const rules = getNetOperatingIncomeValidationRules();
-      const rangeRules = rules.filter(rule => rule.type === 'range');
-      expect(rangeRules.length).toBeGreaterThan(0);
+    it('should reject invalid vacancy rate', () => {
+      const inputs = {
+        rentalIncome: 120000,
+        otherIncome: 5000,
+        propertyManagement: 12000,
+        maintenance: 8000,
+        repairs: 6000,
+        utilities: 0,
+        insurance: 4000,
+        propertyTaxes: 15000,
+        legalFees: 2000,
+        advertising: 1000,
+        supplies: 500,
+        otherExpenses: 1000,
+        includeVacancyAllowance: true,
+        vacancyRate: 150, // Invalid - over 100%
+        includeReplacementReserve: true,
+        replacementReserveRate: 2,
+        analysisPeriod: 'annual' as const
+      };
+      const errors = validateNetOperatingIncomeInputs(inputs);
+      expect(errors).toContainEqual({
+        field: 'vacancyRate',
+        message: 'Vacancy rate must be between 0% and 100%'
+      });
     });
   });
 
-  describe('Calculator Structure', () => {
-    it('should have all required calculator properties', () => {
-      expect(NetOperatingIncomeCalculator.id).toBeDefined();
-      expect(NetOperatingIncomeCalculator.title).toBeDefined();
-      expect(NetOperatingIncomeCalculator.category).toBeDefined();
-      expect(NetOperatingIncomeCalculator.description).toBeDefined();
-      expect(NetOperatingIncomeCalculator.inputs).toBeDefined();
-      expect(NetOperatingIncomeCalculator.outputs).toBeDefined();
-    });
+  describe('Examples', () => {
+    it('should have valid examples', () => {
+      expect(NetOperatingIncomeCalculator.examples).toHaveLength(2);
 
-    it('should have proper input structure', () => {
-      const inputs = NetOperatingIncomeCalculator.inputs;
-      inputs.forEach(input => {
-        expect(input.id).toBeDefined();
-        expect(input.label).toBeDefined();
-        expect(input.type).toBeDefined();
-      });
-    });
-
-    it('should have proper output structure', () => {
-      const outputs = NetOperatingIncomeCalculator.outputs;
-      outputs.forEach(output => {
-        expect(output.id).toBeDefined();
-        expect(output.label).toBeDefined();
-        expect(output.type).toBeDefined();
-      });
+      const multiFamily = NetOperatingIncomeCalculator.examples[0];
+      expect(multiFamily.title).toBe('Multi-Family Investment Property');
+      expect(multiFamily.inputs.rentalIncome).toBe(120000);
+      expect(multiFamily.inputs.otherIncome).toBe(5000);
+      expect(multiFamily.expectedOutputs.netOperatingIncome).toBe(79000);
     });
   });
 });

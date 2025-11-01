@@ -10,7 +10,7 @@ import {
 import { validateDaoGovernanceTokenCalculatorInputs } from './validation';
 
 export const DaoGovernanceTokenCalculator: Calculator = {
-  id: 'dao-governance-token-calculator',
+  id: 'DaoGovernanceToken-calculator',
   title: 'DAO Governance Token Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

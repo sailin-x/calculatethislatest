@@ -1,3 +1,3 @@
-import { TrademarkValuationCalculatorCalculator } from './TrademarkValuationCalculatorCalculator';
+import { TrademarkValuationCalculator } from './TrademarkValuationCalculator';
 
-export { TrademarkValuationCalculatorCalculator };
+export { TrademarkValuationCalculator };

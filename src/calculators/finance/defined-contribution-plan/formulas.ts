@@ -1,4 +1,4 @@
-import { defined-contribution-planInputs, defined-contribution-planMetrics, defined-contribution-planAnalysis } from './types';
+import { DefinedContributionPlaninputs, DefinedContributionPlanmetrics, DefinedContributionPlananalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: defined-contribution-planInputs): number {
+export function calculateResult(inputs: DefinedContributionPlaninputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: defined-contribution-planInputs): number
   }
 }
 
-export function generateAnalysis(inputs: defined-contribution-planInputs, metrics: defined-contribution-planMetrics): defined-contribution-planAnalysis {
+export function generateAnalysis(inputs: DefinedContributionPlaninputs, metrics: DefinedContributionPlanmetrics): DefinedContributionPlananalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

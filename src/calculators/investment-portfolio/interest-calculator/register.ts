@@ -1,3 +1,3 @@
-import { InterestCalculatorCalculator } from './InterestCalculatorCalculator';
+import { InterestCalculator } from './InterestCalculator';
 
-export { InterestCalculatorCalculator };
+export { InterestCalculator };

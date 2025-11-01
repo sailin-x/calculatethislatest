@@ -1,3 +1,3 @@
-import { TradeCreditInsuranceRoiCalculatorCalculator } from './TradeCreditInsuranceRoiCalculatorCalculator';
+import { TradeCreditInsuranceRoiCalculator } from './TradeCreditInsuranceRoiCalculator';
 
-export { TradeCreditInsuranceRoiCalculatorCalculator };
+export { TradeCreditInsuranceRoiCalculator };

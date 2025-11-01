@@ -1,3 +1,3 @@
-import { CropYieldProfitabilityCalculatorCalculator } from './CropYieldProfitabilityCalculatorCalculator';
+import { CropYieldProfitabilityCalculator } from './CropYieldProfitabilityCalculator';
 
-export { CropYieldProfitabilityCalculatorCalculator };
+export { CropYieldProfitabilityCalculator };

@@ -81,11 +81,11 @@ export function generateAnalysis(
     riskLevel = 'Medium';
   }
 
-  // Recommendation based on loan-to-value ratio, term, and interest
+  // Recommendation based on LoanToValue ratio, term, and interest
   let recommendation: string;
   const loanToValueRatio = (principal / inputs.vehiclePrice) * 100;
   if (loanToValueRatio > 80) {
-    recommendation = 'Consider increasing your down payment to reduce the loan-to-value ratio below 80% and lower monthly payments.';
+    recommendation = 'Consider increasing your down payment to reduce the LoanToValue ratio below 80% and lower monthly payments.';
   } else if (inputs.loanTermYears > 5) {
     recommendation = 'A shorter loan term could save on interest costs, though it increases monthly payments. Evaluate your budget.';
   } else if (totalInterest > principal * 0.2) {

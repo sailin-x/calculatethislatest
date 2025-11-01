@@ -1,13 +1,13 @@
-import { mediterranean-diet-calculatorInputs, mediterranean-diet-calculatorMetrics, mediterranean-diet-calculatorAnalysis } from './types';
+import { MediterraneanDietCalculatorinputs, MediterraneanDietCalculatormetrics, MediterraneanDietCalculatoranalysis } from './types';
 
 // Mediterranean Diet Calculator - Health calculations
-export function calculateResult(inputs: mediterranean-diet-calculatorInputs): number {
+export function calculateResult(inputs: MediterraneanDietCalculatorinputs): number {
   // Health calculation logic
   const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
   return numericValues.reduce((sum, val) => sum + val, 0) || 0;
 }
 
-export function generateAnalysis(inputs: mediterranean-diet-calculatorInputs, metrics: mediterranean-diet-calculatorMetrics): mediterranean-diet-calculatorAnalysis {
+export function generateAnalysis(inputs: MediterraneanDietCalculatorinputs, metrics: MediterraneanDietCalculatormetrics): MediterraneanDietCalculatoranalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (Math.abs(result) > 1000) riskLevel = 'High';

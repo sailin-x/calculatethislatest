@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateWeightedGradeCalculatorInputs, validateWeightedGradeCalculatorBusinessRules } from './validation';
 
-export const WeightedGradeCalculatorCalculator: Calculator: Calculator = {
-  id: 'weighted-grade-calculator-calculator',
+export const WeightedGradeCalculator: Calculator = {
+  id: 'WeightedGradeCalculator-calculator',
   title: 'Weighted Grade Calculator Calculator',
   health: 'health', // e.g., 'finance', 'math', 'health', 'business'
   subhealth: 'Subhealth Name',

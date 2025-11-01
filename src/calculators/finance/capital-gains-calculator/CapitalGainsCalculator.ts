@@ -4,7 +4,7 @@ import { calculateResult, generateAnalysis } from './formulas';
 import { validateCapitalGainsCalculatorInputs } from './validation';
 
 export const CapitalGainsCalculator: Calculator = {
-  id: 'capital-gains-calculator',
+  id: 'CapitalGainsCalculator',
   title: 'Capital Gains Calculator',
   category: 'finance',
   subcategory: 'General',

@@ -10,7 +10,7 @@ import {
 import { validateMediaMixModelingCalculatorInputs } from './validation';
 
 export const MediaMixModelingCalculator: Calculator = {
-  id: 'media-mix-modeling-calculator',
+  id: 'MediaMixModeling-calculator',
   title: 'Media Mix Modeling Calculator',
   category: 'business',
   subcategory: 'Financial Planning',

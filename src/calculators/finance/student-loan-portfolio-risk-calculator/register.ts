@@ -1,3 +1,3 @@
-import { StudentLoanPortfolioRiskCalculatorCalculator } from './StudentLoanPortfolioRiskCalculatorCalculator';
+import { StudentLoanPortfolioRiskCalculator } from './StudentLoanPortfolioRiskCalculator';
 
-export { StudentLoanPortfolioRiskCalculatorCalculator };
+export { StudentLoanPortfolioRiskCalculator };

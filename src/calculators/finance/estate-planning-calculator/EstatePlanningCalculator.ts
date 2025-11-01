@@ -23,7 +23,7 @@ const estatePlanningFormula: Formula = {
  * Industry-leading Estate Planning Calculator
  */
 export const estatePlanningCalculator: Calculator = {
-  id: 'estate-planning-calculator',
+  id: 'EstatePlanningCalculator',
   title: 'Estate Planning Calculator',
   category: 'finance',
   subcategory: 'Retirement & Savings',
@@ -483,8 +483,8 @@ export const estatePlanningCalculator: Calculator = {
 
   examples: [
     {
-      title: 'High-Net-Worth Estate Planning',
-      description: 'Comprehensive estate planning for high-net-worth individual',
+      title: 'HighNetWorth Estate Planning',
+      description: 'Comprehensive estate planning for HighNetWorth individual',
       inputs: {
         age: 65,
         maritalStatus: 'married',

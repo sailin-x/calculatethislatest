@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateChangeManagementRoiCalculatorInputs, validateChangeManagementRoiCalculatorBusinessRules } from './validation';
 
-export const ChangeManagementRoiCalculatorCalculator: Calculator: Calculator = {
-  id: 'change-management-roi-calculator-calculator',
+export const ChangeManagementRoiCalculator: Calculator = {
+  id: 'ChangeManagementRoi-calculator-calculator',
   title: 'Change Management ROI Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

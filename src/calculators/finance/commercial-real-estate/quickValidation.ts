@@ -37,7 +37,7 @@ export function runCommercialRealEstateValidation(): void {
     console.log('✅ Basic calculation successful');
     console.log(`   NOI: $${result.netOperatingIncome.toLocaleString()}`);
     console.log(`   Cap Rate: ${result.capRate.toFixed(1)}%`);
-    console.log(`   Cash-on-Cash Return: ${result.cashOnCashReturn.toFixed(1)}%`);
+    console.log(`   CashOnCash Return: ${result.cashOnCashReturn.toFixed(1)}%`);
   } catch (error) {
     console.log(`❌ Basic calculation failed: ${error}`);
   }
@@ -60,7 +60,7 @@ export function runCommercialRealEstateValidation(): void {
   
   console.log(`✅ NOI: $${commercialMetrics.netOperatingIncome.toLocaleString()}`);
   console.log(`✅ Cap Rate: ${commercialMetrics.capRate.toFixed(1)}%`);
-  console.log(`✅ Cash-on-Cash Return: ${commercialMetrics.cashOnCashReturn.toFixed(1)}%`);
+  console.log(`✅ CashOnCash Return: ${commercialMetrics.cashOnCashReturn.toFixed(1)}%`);
   console.log(`✅ DSCR: ${commercialMetrics.debtServiceCoverageRatio.toFixed(2)}`);
   
   // Verify NOI calculation

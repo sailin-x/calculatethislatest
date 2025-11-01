@@ -1,3 +1,3 @@
-import { StockOptionsCalculatorExistsButNeedsRegistrationCalculatorCalculator } from './StockOptionsCalculatorExistsButNeedsRegistrationCalculatorCalculator';
+import { StockOptionsCalculatorExistsButNeedsRegistrationCalculator } from './StockOptionsCalculatorExistsButNeedsRegistrationCalculator';
 
-export { StockOptionsCalculatorExistsButNeedsRegistrationCalculatorCalculator };
+export { StockOptionsCalculatorExistsButNeedsRegistrationCalculator };

@@ -1,4 +1,4 @@
-import { ceding-commission-calculatorInputs, ceding-commission-calculatorMetrics, ceding-commission-calculatorAnalysis } from './types';
+import { CedingCommissionCalculatorinputs, CedingCommissionCalculatormetrics, CedingCommissionCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: ceding-commission-calculatorInputs): number {
+export function calculateResult(inputs: CedingCommissionCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: ceding-commission-calculatorInputs): num
   }
 }
 
-export function generateAnalysis(inputs: ceding-commission-calculatorInputs, metrics: ceding-commission-calculatorMetrics): ceding-commission-calculatorAnalysis {
+export function generateAnalysis(inputs: CedingCommissionCalculatorinputs, metrics: CedingCommissionCalculatormetrics): CedingCommissionCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

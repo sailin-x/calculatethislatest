@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateUnitConversionCalculatorInputs } from './validation';
 
 export const UnitConversionCalculator: Calculator = {
-  id: 'unit-conversion-calculator',
+  id: 'UnitConversionCalculator',
   title: 'Unit Conversion Calculator',
   category: 'math',
   subcategory: 'General',

@@ -2,7 +2,7 @@ import { Calculator } from '../../../../types/calculator';
 import { drywall_calculatorInputs, drywall_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const drywall_calculatorCalculator: Calculator = {
+export const drywall-calculator: Calculator = {
   id: 'drywall-calculator',
   title: 'Drywall Calculator Calculator',
   category: 'constructionindustrial',

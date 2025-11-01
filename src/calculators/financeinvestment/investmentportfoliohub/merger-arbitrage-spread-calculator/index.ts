@@ -1,4 +1,4 @@
-export { merger_arbitrage_spread_calculatorCalculator } from './merger_arbitrage_spread_calculator';
+export { merger_arbitrage_spread_calculator } from './merger_arbitrage_spread_calculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

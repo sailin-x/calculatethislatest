@@ -37,7 +37,7 @@ import {
 import { validateMortgagePointsInputs, validateMortgagePointsBusinessRules } from './validation';
 
 export const MortgagePointsCalculator: Calculator = {
-  id: 'mortgage-points-calculator',
+  id: 'MortgagePointsCalculator',
   title: 'Mortgage Points Calculator',
   category: 'finance',
   subcategory: 'Mortgage & Real Estate',

@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { nft_royalty_calculatorInputs, nft_royalty_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const nft_royalty_calculatorCalculator: Calculator = {
-  id: 'nft-royalty-calculator',
+export const NftRoyaltyCalculator: Calculator = {
+  id: 'NftRoyaltyCalculator',
   title: 'NFT Royalty Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'cryptocurrencyhub',

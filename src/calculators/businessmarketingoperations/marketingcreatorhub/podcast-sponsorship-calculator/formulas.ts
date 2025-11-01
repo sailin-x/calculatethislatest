@@ -1,4 +1,4 @@
-import { podcast-sponsorship-calculatorInputs, podcast-sponsorship-calculatorMetrics, podcast-sponsorship-calculatorAnalysis } from './types';
+import { PodcastSponsorshipCalculatorinputs, PodcastSponsorshipCalculatormetrics, PodcastSponsorshipCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: podcast-sponsorship-calculatorInputs): number {
+export function calculateResult(inputs: PodcastSponsorshipCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: podcast-sponsorship-calculatorInputs): n
   }
 }
 
-export function generateAnalysis(inputs: podcast-sponsorship-calculatorInputs, metrics: podcast-sponsorship-calculatorMetrics): podcast-sponsorship-calculatorAnalysis {
+export function generateAnalysis(inputs: PodcastSponsorshipCalculatorinputs, metrics: PodcastSponsorshipCalculatormetrics): PodcastSponsorshipCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

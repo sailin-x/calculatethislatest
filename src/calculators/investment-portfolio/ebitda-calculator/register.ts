@@ -1,3 +1,3 @@
-import { EbitdaCalculatorCalculator } from './EbitdaCalculatorCalculator';
+import { EbitdaCalculator } from './EbitdaCalculator';
 
-export { EbitdaCalculatorCalculator };
+export { EbitdaCalculator };

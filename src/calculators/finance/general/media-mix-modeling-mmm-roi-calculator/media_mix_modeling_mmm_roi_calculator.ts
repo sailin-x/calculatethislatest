@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { media_mix_modeling_mmm_roi_calculatorInputs, media_mix_modeling_mmm_roi_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const media_mix_modeling_mmm_roi_calculatorCalculator: Calculator = {
-  id: 'media-mix-modeling-mmm-roi-calculator',
+export const MediaMixModeling-MmmRoiCalculator: Calculator = {
+  id: 'MediaMixModeling-MmmRoiCalculator',
   title: 'Media Mix Modeling (MMM) ROI Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

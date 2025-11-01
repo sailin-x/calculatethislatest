@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateMassageTherapyCostCalculatorInputs } from './validation';
 
 export const MassageTherapyCostCalculator: Calculator = {
-  id: 'massage-therapy-cost-calculator',
+  id: 'MassageTherapyCost-calculator',
   title: 'Massage Therapy Cost Calculator',
   category: 'health',
   subcategory: 'General',

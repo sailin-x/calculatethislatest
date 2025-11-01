@@ -10,7 +10,7 @@ import {
 import { validateReturnOnAssetsCalculatorInputs } from './validation';
 
 export const ReturnOnAssetsCalculator: Calculator = {
-  id: 'return-on-assets-calculator',
+  id: 'ReturnOnAssets-calculator',
   title: 'Return on Assets Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

@@ -207,13 +207,13 @@ export function validateBiweeklyPaymentFeasibility(
   const monthlyPayment = estimateMonthlyPayment({ loanAmount, interestRate, loanTerm });
   const biweeklyPayment = monthlyPayment / 2;
 
-  // Debt-to-income ratio check
+  // DebtToIncome ratio check
   const debtToIncomeRatio = (monthlyPayment / monthlyIncome) * 100;
   
   if (debtToIncomeRatio > 43) {
-    errors.push('Debt-to-income ratio exceeds recommended 43% limit');
+    errors.push('DebtToIncome ratio exceeds recommended 43% limit');
   } else if (debtToIncomeRatio > 28) {
-    warnings.push('Debt-to-income ratio is above recommended 28% limit');
+    warnings.push('DebtToIncome ratio is above recommended 28% limit');
   }
 
   // Biweekly payment affordability check

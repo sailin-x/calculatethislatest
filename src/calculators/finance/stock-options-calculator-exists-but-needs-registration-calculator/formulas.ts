@@ -1,13 +1,13 @@
-import { stock-options-calculator-exists-but-needs-registration-calculatorInputs, stock-options-calculator-exists-but-needs-registration-calculatorMetrics, stock-options-calculator-exists-but-needs-registration-calculatorAnalysis } from './types';
+import { StockOptionsCalculator-ExistsButNeeds-registration-calculatorInputs, StockOptionsCalculator-ExistsButNeeds-registration-calculatorMetrics, StockOptionsCalculator-ExistsButNeeds-registration-calculatorAnalysis } from './types';
 
 // **Stock Options Calculator Exists But Needs Registration Calculator** - Finance calculations
-export function calculateResult(inputs: stock-options-calculator-exists-but-needs-registration-calculatorInputs): number {
+export function calculateResult(inputs: StockOptionsCalculator-ExistsButNeeds-registration-calculatorInputs): number {
   // Financial calculation logic
   const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
   return numericValues.reduce((sum, val) => sum + val, 0) || 0;
 }
 
-export function generateAnalysis(inputs: stock-options-calculator-exists-but-needs-registration-calculatorInputs, metrics: stock-options-calculator-exists-but-needs-registration-calculatorMetrics): stock-options-calculator-exists-but-needs-registration-calculatorAnalysis {
+export function generateAnalysis(inputs: StockOptionsCalculator-ExistsButNeeds-registration-calculatorInputs, metrics: StockOptionsCalculator-ExistsButNeeds-registration-calculatorMetrics): StockOptionsCalculator-ExistsButNeeds-registration-calculatorAnalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (Math.abs(result) > 100000) riskLevel = 'High';

@@ -271,7 +271,7 @@ export function validateConservationPrograms(value: any, allInputs?: Record<stri
   if (value === '' || value === null || value === undefined) {
     return { isValid: true }; // Optional field
   }
-  const validConservationPrograms = ['none', 'crop-insurance', 'conservation-reserve', 'wetlands-reserve', 'environmental-quality-incentives'];
+  const validConservationPrograms = ['none', 'crop-insurance', 'conservation-reserve', 'wetlands-reserve', 'EnvironmentalQualityIncentives'];
   if (!validConservationPrograms.includes(value)) {
     return { isValid: false, message: 'Invalid conservation program' };
   }

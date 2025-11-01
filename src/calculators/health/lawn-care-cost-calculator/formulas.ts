@@ -1,4 +1,4 @@
-import { lawn-care-cost-calculatorInputs, lawn-care-cost-calculatorMetrics, lawn-care-cost-calculatorAnalysis } from './types';
+import { LawnCareCost-calculatorInputs, LawnCareCost-calculatorMetrics, LawnCareCost-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: lawn-care-cost-calculatorInputs): number {
+export function calculateResult(inputs: LawnCareCost-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: lawn-care-cost-calculatorInputs): number
   }
 }
 
-export function generateAnalysis(inputs: lawn-care-cost-calculatorInputs, metrics: lawn-care-cost-calculatorMetrics): lawn-care-cost-calculatorAnalysis {
+export function generateAnalysis(inputs: LawnCareCost-calculatorInputs, metrics: LawnCareCost-calculatorMetrics): LawnCareCost-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

@@ -6,7 +6,7 @@ import { getPersonalInjuryValidationRules } from './validation';
  * Professional personal injury settlement calculator with legal accuracy
  */
 export const personalInjuryCalculator: Calculator = {
-  id: 'personal-injury-calculator',
+  id: 'PersonalInjuryCalculator',
   title: 'Personal Injury Settlement Calculator',
   category: 'legal',
   subcategory: 'Personal Injury',

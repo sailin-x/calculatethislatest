@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { nursing_home_negligence_calculatorInputs, nursing_home_negligence_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const nursing_home_negligence_calculatorCalculator: Calculator = {
-  id: 'nursing-home-negligence-calculator',
+export const NursingHomeNegligence-calculator: Calculator = {
+  id: 'NursingHomeNegligence-calculator',
   title: 'Nursing Home Negligence Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

@@ -1,7 +1,7 @@
 import { Calculator } from '../../types/calculator';
 
 export const MortgageVsRentCalculator: Calculator = {
-  id: 'mortgage-vs-rent-calculator',
+  id: 'MortgageVsRent-calculator',
   title: 'Mortgage vs. Rent Calculator',
   category: 'finance',
   subcategory: 'Mortgage & Real Estate',

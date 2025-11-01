@@ -1,3 +1,3 @@
-import { PedestrianAccidentSettlementCalculatorCalculator } from './PedestrianAccidentSettlementCalculatorCalculator';
+import { PedestrianAccidentSettlementCalculator } from './PedestrianAccidentSettlementCalculator';
 
-export { PedestrianAccidentSettlementCalculatorCalculator };
+export { PedestrianAccidentSettlementCalculator };

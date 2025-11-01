@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateCommodityCalculatorInputs, validateCommodityCalculatorBusinessRules } from './validation';
 
-export const CommodityCalculatorCalculator: Calculator: Calculator = {
-  id: 'commodity-calculator-calculator',
+export const CommodityCalculator: Calculator = {
+  id: 'CommodityCalculatorCalculator',
   title: 'Commodity Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validatePoliticalRiskInsuranceCalculatorInputs, validatePoliticalRiskInsuranceCalculatorBusinessRules } from './validation';
 
-export const PoliticalRiskInsuranceCalculatorCalculator: Calculator: Calculator = {
-  id: 'political-risk-insurance-calculator-calculator',
+export const PoliticalRiskInsuranceCalculator: Calculator = {
+  id: 'PoliticalRiskInsurance-calculator-calculator',
   title: 'Political Risk Insurance Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

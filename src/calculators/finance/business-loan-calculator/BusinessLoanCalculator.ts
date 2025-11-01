@@ -10,7 +10,7 @@ import {
 import { validateBusinessLoanCalculatorInputs } from './validation';
 
 export const BusinessLoanCalculator: Calculator = {
-  id: 'business-loan-calculator',
+  id: 'BusinessLoanCalculator',
   title: 'Business Loan Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

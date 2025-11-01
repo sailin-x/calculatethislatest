@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateMaritimeInjuryCompensationCalculatorInputs, validateMaritimeInjuryCompensationCalculatorBusinessRules } from './validation';
 
-export const MaritimeInjuryCompensationCalculatorCalculator: Calculator: Calculator = {
-  id: 'maritime-injury-compensation-calculator-calculator',
+export const MaritimeInjuryCompensationCalculator: Calculator = {
+  id: 'MaritimeInjuryCompensation-calculator-calculator',
   title: 'Maritime Injury Compensation Calculator Calculator',
   legal: 'legal', // e.g., 'finance', 'math', 'health', 'business'
   sublegal: 'Sublegal Name',

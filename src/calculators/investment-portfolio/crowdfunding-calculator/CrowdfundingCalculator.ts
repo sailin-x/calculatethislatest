@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateCrowdfundingCalculatorInputs, validateCrowdfundingCalculatorBusinessRules } from './validation';
 
-export const CrowdfundingCalculatorCalculator: Calculator: Calculator = {
-  id: 'crowdfunding-calculator-calculator',
+export const CrowdfundingCalculator: Calculator = {
+  id: 'CrowdfundingCalculatorCalculator',
   title: 'Crowdfunding Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

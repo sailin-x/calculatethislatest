@@ -1,4 +1,4 @@
-import { business-process-re-engineering-bpr-savings-calculatorInputs, business-process-re-engineering-bpr-savings-calculatorMetrics, business-process-re-engineering-bpr-savings-calculatorAnalysis } from './types';
+import { BusinessProcessRe-EngineeringBprSavings-calculatorInputs, BusinessProcessRe-EngineeringBprSavings-calculatorMetrics, BusinessProcessRe-EngineeringBprSavings-calculatorAnalysis } from './types';
 
 
 // Business Calculator - Financial metrics
@@ -14,7 +14,7 @@ export function calculatePaybackPeriod(initialInvestment: number, annualCashFlow
   return initialInvestment / annualCashFlow;
 }
 
-export function calculateResult(inputs: business-process-re-engineering-bpr-savings-calculatorInputs): number {
+export function calculateResult(inputs: BusinessProcessRe-EngineeringBprSavings-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: business-process-re-engineering-bpr-savi
   }
 }
 
-export function generateAnalysis(inputs: business-process-re-engineering-bpr-savings-calculatorInputs, metrics: business-process-re-engineering-bpr-savings-calculatorMetrics): business-process-re-engineering-bpr-savings-calculatorAnalysis {
+export function generateAnalysis(inputs: BusinessProcessRe-EngineeringBprSavings-calculatorInputs, metrics: BusinessProcessRe-EngineeringBprSavings-calculatorMetrics): BusinessProcessRe-EngineeringBprSavings-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

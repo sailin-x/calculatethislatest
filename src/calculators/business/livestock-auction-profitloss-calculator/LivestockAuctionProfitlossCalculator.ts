@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateLivestockAuctionProfitlossCalculatorInputs, validateLivestockAuctionProfitlossCalculatorBusinessRules } from './validation';
 
-export const LivestockAuctionProfitlossCalculatorCalculator: Calculator: Calculator = {
-  id: 'livestock-auction-profitloss-calculator-calculator',
+export const LivestockAuctionProfitlossCalculator: Calculator = {
+  id: 'LivestockAuctionProfitloss-calculator-calculator',
   title: 'Livestock Auction Profit/Loss Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

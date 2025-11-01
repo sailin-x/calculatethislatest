@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateUniversityConstructionBondFinancingCalculatorInputs, validateUniversityConstructionBondFinancingCalculatorBusinessRules } from './validation';
 
-export const UniversityConstructionBondFinancingCalculatorCalculator: Calculator: Calculator = {
-  id: 'university-construction-bond-financing-calculator-calculator',
+export const UniversityConstructionBondFinancingCalculator: Calculator = {
+  id: 'UniversityConstructionBond-FinancingCalculatorCalculator',
   title: 'University Construction Bond Financing Calculator Calculator',
   construction: 'construction', // e.g., 'finance', 'math', 'health', 'business'
   subconstruction: 'Subconstruction Name',

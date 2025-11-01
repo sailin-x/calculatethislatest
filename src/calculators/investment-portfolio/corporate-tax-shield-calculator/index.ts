@@ -1,4 +1,4 @@
-export { CorporateTaxShieldCalculatorCalculator } from './CorporateTaxShieldCalculatorCalculator';
+export { CorporateTaxShieldCalculator } from './CorporateTaxShieldCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

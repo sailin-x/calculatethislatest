@@ -9,7 +9,7 @@ import {
 import { validateCarAccidentPainCalculatorInputs } from './validation';
 
 export const CarAccidentPainCalculator: Calculator = {
-  id: 'car-accident-pain-calculator',
+  id: 'CarAccidentPain-calculator',
   title: 'Car Accident Pain Calculator',
   category: 'legal',
   subcategory: 'Settlement Analysis',

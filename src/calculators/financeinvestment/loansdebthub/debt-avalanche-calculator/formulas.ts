@@ -1,4 +1,4 @@
-import { debt-avalanche-calculatorInputs, debt-avalanche-calculatorMetrics, debt-avalanche-calculatorAnalysis } from './types';
+import { DebtAvalancheCalculatorinputs, DebtAvalancheCalculatormetrics, DebtAvalancheCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: debt-avalanche-calculatorInputs): number {
+export function calculateResult(inputs: DebtAvalancheCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: debt-avalanche-calculatorInputs): number
   }
 }
 
-export function generateAnalysis(inputs: debt-avalanche-calculatorInputs, metrics: debt-avalanche-calculatorMetrics): debt-avalanche-calculatorAnalysis {
+export function generateAnalysis(inputs: DebtAvalancheCalculatorinputs, metrics: DebtAvalancheCalculatormetrics): DebtAvalancheCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

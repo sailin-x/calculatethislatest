@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateMuseumAdmissionCostCalculatorInputs } from './validation';
 
 export const MuseumAdmissionCostCalculator: Calculator = {
-  id: 'museum-admission-cost-calculator',
+  id: 'MuseumAdmissionCost-calculator',
   title: 'Museum Admission Cost Calculator',
   category: 'health',
   subcategory: 'General',

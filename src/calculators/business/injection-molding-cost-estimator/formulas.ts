@@ -1,4 +1,4 @@
-import { injection-molding-cost-estimatorInputs, injection-molding-cost-estimatorMetrics, injection-molding-cost-estimatorAnalysis } from './types';
+import { InjectionMoldingCost-estimatorInputs, InjectionMoldingCost-estimatorMetrics, InjectionMoldingCost-estimatorAnalysis } from './types';
 
 // Injection Molding Cost Estimator - Business calculations
 export function calculateNetPresentValue(cashFlows: number[], discountRate: number): number {
@@ -11,7 +11,7 @@ export function calculateROI(initialInvestment: number, finalValue: number): num
  return ((finalValue - initialInvestment) / initialInvestment) * 100;
 }
 
-export function calculateResult(inputs: injection-molding-cost-estimatorInputs): number {
+export function calculateResult(inputs: InjectionMoldingCost-estimatorInputs): number {
  // Business calculation logic with real math
  const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
  if (numericValues.length >= 2) {
@@ -24,7 +24,7 @@ export function calculateResult(inputs: injection-molding-cost-estimatorInputs):
  return calculateNetPresentValue(numericValues, 10); // 10% discount rate
 }
 
-export function generateAnalysis(inputs: injection-molding-cost-estimatorInputs, metrics: injection-molding-cost-estimatorMetrics): injection-molding-cost-estimatorAnalysis {
+export function generateAnalysis(inputs: InjectionMoldingCost-estimatorInputs, metrics: InjectionMoldingCost-estimatorMetrics): InjectionMoldingCost-estimatorAnalysis {
  const result = metrics.result;
  let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
  if (Math.abs(result) > 100000) riskLevel = 'High';

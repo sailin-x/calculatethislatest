@@ -1,3 +1,3 @@
-import { HomeImprovementCalculatorCalculator } from './HomeImprovementCalculatorCalculator';
+import { HomeImprovementCalculator } from './HomeImprovementCalculator';
 
-export { HomeImprovementCalculatorCalculator };
+export { HomeImprovementCalculator };

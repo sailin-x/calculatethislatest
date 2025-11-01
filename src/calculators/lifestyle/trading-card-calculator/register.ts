@@ -1,3 +1,3 @@
-import { TradingCardCalculatorCalculator } from './TradingCardCalculatorCalculator';
+import { TradingCardCalculator } from './TradingCardCalculator';
 
-export { TradingCardCalculatorCalculator };
+export { TradingCardCalculator };

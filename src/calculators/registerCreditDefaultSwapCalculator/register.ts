@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { registerCreditDefaultSwapCalculatorCalculator } from './registerCreditDefaultSwapCalculatorCalculator';
+import { registerCreditDefaultSwapCalculator } from './registerCreditDefaultSwapCalculator';
 
-export function registerregisterCreditDefaultSwapCalculatorCalculator(): void {
-  calculatorRegistry.register(new registerCreditDefaultSwapCalculatorCalculator());
+export function registerregisterCreditDefaultSwapCalculator(): void {
+  calculatorRegistry.register(new registerCreditDefaultSwapCalculator());
 }

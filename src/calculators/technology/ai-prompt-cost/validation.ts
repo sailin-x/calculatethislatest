@@ -163,9 +163,9 @@ export const aiPromptCostValidationRules = [
       const modelPricing: Record<string, number> = {
         'gpt-4': 0.000045, // Average of input/output
         'gpt-3.5-turbo': 0.00000175,
-        'claude-3-opus': 0.000045,
-        'claude-3-sonnet': 0.000009,
-        'claude-3-haiku': 0.000000875
+        'Claude3Opus': 0.000045,
+        'Claude3Sonnet': 0.000009,
+        'Claude3Haiku': 0.000000875
       };
       
       const expectedPrice = modelPricing[modelType];

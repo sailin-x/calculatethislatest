@@ -1,4 +1,4 @@
-import { surgical-center-case-costing-calculatorInputs, surgical-center-case-costing-calculatorMetrics, surgical-center-case-costing-calculatorAnalysis } from './types';
+import { SurgicalCenterCase-costing-calculatorInputs, SurgicalCenterCase-costing-calculatorMetrics, SurgicalCenterCase-costing-calculatorAnalysis } from './types';
 
 // Surgical Center Case Costing Calculator - Business calculations
 export function calculateNetPresentValue(cashFlows: number[], discountRate: number): number {
@@ -11,7 +11,7 @@ export function calculateROI(initialInvestment: number, finalValue: number): num
  return ((finalValue - initialInvestment) / initialInvestment) * 100;
 }
 
-export function calculateResult(inputs: surgical-center-case-costing-calculatorInputs): number {
+export function calculateResult(inputs: SurgicalCenterCase-costing-calculatorInputs): number {
  // Business calculation logic with real math
  const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
  if (numericValues.length >= 2) {
@@ -24,7 +24,7 @@ export function calculateResult(inputs: surgical-center-case-costing-calculatorI
  return calculateNetPresentValue(numericValues, 10); // 10% discount rate
 }
 
-export function generateAnalysis(inputs: surgical-center-case-costing-calculatorInputs, metrics: surgical-center-case-costing-calculatorMetrics): surgical-center-case-costing-calculatorAnalysis {
+export function generateAnalysis(inputs: SurgicalCenterCase-costing-calculatorInputs, metrics: SurgicalCenterCase-costing-calculatorMetrics): SurgicalCenterCase-costing-calculatorAnalysis {
  const result = metrics.result;
  let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
  if (Math.abs(result) > 100000) riskLevel = 'High';

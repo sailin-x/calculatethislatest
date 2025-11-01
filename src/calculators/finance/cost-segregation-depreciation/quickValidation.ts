@@ -366,7 +366,7 @@ export function validateRecoveryPeriod(value: any, allInputs?: Record<string, an
 }
 
 export function validateDepreciationMethod(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  const validMethods = ['straight-line', 'declining-balance', 'sum-of-years'];
+  const validMethods = ['straight-line', 'declining-balance', 'SumOfYears'];
   
   if (!value) {
     return { isValid: false, message: 'Depreciation method is required' };

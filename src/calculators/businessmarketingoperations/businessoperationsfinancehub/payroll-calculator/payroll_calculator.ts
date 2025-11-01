@@ -2,7 +2,7 @@ import { Calculator } from '../../../../types/calculator';
 import { payroll_calculatorInputs, payroll_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const payroll_calculatorCalculator: Calculator = {
+export const payroll-calculator: Calculator = {
   id: 'payroll-calculator',
   title: 'Payroll Calculator Calculator',
   category: 'businessmarketingoperations',

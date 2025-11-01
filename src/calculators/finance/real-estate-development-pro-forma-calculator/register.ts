@@ -1,3 +1,3 @@
-import { RealEstateDevelopmentProformaCalculatorCalculator } from './RealEstateDevelopmentProformaCalculatorCalculator';
+import { RealEstateDevelopmentProformaCalculator } from './RealEstateDevelopmentProformaCalculator';
 
-export { RealEstateDevelopmentProformaCalculatorCalculator };
+export { RealEstateDevelopmentProformaCalculator };

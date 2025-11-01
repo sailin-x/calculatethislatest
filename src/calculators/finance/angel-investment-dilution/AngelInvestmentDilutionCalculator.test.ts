@@ -24,7 +24,7 @@ describe('AngelInvestmentDilutionCalculator', () => {
   };
 
   test('should have correct calculator properties', () => {
-    expect(AngelInvestmentDilutionCalculator.id).toBe('angel-investment-dilution-calculator');
+    expect(AngelInvestmentDilutionCalculator.id).toBe('AngelInvestmentDilution-calculator');
     expect(AngelInvestmentDilutionCalculator.name).toBe('Angel Investment Dilution Calculator');
     expect(AngelInvestmentDilutionCalculator.category).toBe('finance');
     expect(AngelInvestmentDilutionCalculator.subcategory).toBe('investment');

@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateComputerScienceCalculatorInputs } from './validation';
 
 export const ComputerScienceCalculator: Calculator = {
-  id: 'computer-science-calculator',
+  id: 'ComputerScienceCalculator',
   title: 'Computer Science Calculator',
   category: 'math',
   subcategory: 'General',

@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { home_improvement_calculatorInputs, home_improvement_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const home_improvement_calculatorCalculator: Calculator = {
-  id: 'home-improvement-calculator',
+export const HomeImprovementCalculator: Calculator = {
+  id: 'HomeImprovementCalculator',
   title: 'Home Improvement Calculator Calculator',
   category: 'lifestyleautomotive',
   subcategory: 'lifestylehub',

@@ -2,7 +2,7 @@ import { Calculator } from '../../../../types/calculator';
 import { garden_calculatorInputs, garden_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const garden_calculatorCalculator: Calculator = {
+export const garden-calculator: Calculator = {
   id: 'garden-calculator',
   title: 'Garden Calculator Calculator',
   category: 'finance',

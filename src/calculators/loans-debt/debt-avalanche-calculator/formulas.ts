@@ -2,7 +2,7 @@
 import { DebtAvalancheCalculatorInputs, DebtAvalancheCalculatorMetrics, DebtAvalancheCalculatorAnalysis } from './types';
 
 // Domain-specific helper function for debt avalanche simulation
-// Simulates month-by-month repayment using avalanche method: pay minimums on all debts,
+// Simulates MonthByMonth repayment using avalanche method: pay minimums on all debts,
 // add interest monthly, and apply extra payment to highest-interest debt first (moving to next when paid off).
 // Returns the number of months to pay off all debt.
 function simulateAvalancheMonths(inputs: DebtAvalancheCalculatorInputs): number {
@@ -94,7 +94,7 @@ export function generateAnalysis(
   // Total initial debt for context
   const totalDebt = debts.reduce((sum, d) => sum + d.balance, 0);
 
-  // Loans-debt-specific recommendation: Emphasize interest minimization and strategy adherence
+  // LoansDebtSpecific recommendation: Emphasize interest minimization and strategy adherence
   const recommendation = debts.length > 0
     ? `Using the debt avalanche method, prioritize paying off your highest-interest debt (${maxApr}%) first while making minimum payments on others. With an extra payment of $${extraPayment.toFixed(2)} per month, you can eliminate $${totalDebt.toFixed(2)} in total debt in approximately ${result} months, minimizing overall interest costs. Stay consistent to avoid extending the payoff timeline.`
     : 'No debts entered; you are already debt-free! Consider building an emergency fund.';

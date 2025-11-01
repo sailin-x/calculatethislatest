@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { alimony_spousal_support_calculatorInputs, alimony_spousal_support_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const alimony_spousal_support_calculatorCalculator: Calculator = {
-  id: 'alimony-spousal-support-calculator',
+export const AlimonySpousalSupport-calculator: Calculator = {
+  id: 'AlimonySpousalSupport-calculator',
   title: 'Alimony & Spousal Support Calculator Calculator',
   category: 'legalinsurancesettlements',
   subcategory: 'legalsettlementhub',

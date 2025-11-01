@@ -1,3 +1,3 @@
-import { NetMarginCalculatorCalculator } from './NetMarginCalculatorCalculator';
+import { NetMarginCalculator } from './NetMarginCalculator';
 
-export { NetMarginCalculatorCalculator };
+export { NetMarginCalculator };

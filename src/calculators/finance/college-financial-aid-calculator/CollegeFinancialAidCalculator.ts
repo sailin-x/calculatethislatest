@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateCollegeFinancialAidCalculatorInputs, validateCollegeFinancialAidCalculatorBusinessRules } from './validation';
 
-export const CollegeFinancialAidCalculatorCalculator: Calculator: Calculator = {
-  id: 'college-financial-aid-calculator-calculator',
+export const CollegeFinancialAidCalculator: Calculator = {
+  id: 'CollegeFinancialAid-calculator-calculator',
   title: 'College Financial Aid Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

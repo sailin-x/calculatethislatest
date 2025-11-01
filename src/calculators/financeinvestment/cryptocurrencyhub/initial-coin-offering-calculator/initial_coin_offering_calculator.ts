@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { initial_coin_offering_calculatorInputs, initial_coin_offering_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const initial_coin_offering_calculatorCalculator: Calculator = {
-  id: 'initial-coin-offering-calculator',
+export const InitialCoinOffering-calculator: Calculator = {
+  id: 'InitialCoinOffering-calculator',
   title: 'Initial Coin Offering Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'cryptocurrencyhub',

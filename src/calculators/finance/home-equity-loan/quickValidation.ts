@@ -110,7 +110,7 @@ export function validateLoanAmount(value: number, allInputs: HomeEquityLoanInput
     }
   }
   if (allInputs.borrowerIncome && value > allInputs.borrowerIncome * 2) {
-    return 'High loan-to-income ratio may affect approval';
+    return 'High LoanToIncome ratio may affect approval';
   }
   return null;
 }
@@ -188,13 +188,13 @@ export function validateBorrowerIncome(value: number, allInputs: HomeEquityLoanI
 
 export function validateBorrowerDebtToIncomeRatio(value: number, allInputs: HomeEquityLoanInputs): string | null {
   if (value === undefined || value < 0) {
-    return 'Debt-to-income ratio must be 0 or greater';
+    return 'DebtToIncome ratio must be 0 or greater';
   }
   if (value > 100) {
-    return 'Debt-to-income ratio cannot exceed 100%';
+    return 'DebtToIncome ratio cannot exceed 100%';
   }
   if (value > 50) {
-    return 'High debt-to-income ratio may affect loan approval';
+    return 'High DebtToIncome ratio may affect loan approval';
   }
   return null;
 }

@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { blood_alcohol_calculatorInputs, blood_alcohol_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const blood_alcohol_calculatorCalculator: Calculator = {
-  id: 'blood-alcohol-calculator',
+export const BloodAlcoholCalculator: Calculator = {
+  id: 'BloodAlcoholCalculator',
   title: 'Blood Alcohol Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

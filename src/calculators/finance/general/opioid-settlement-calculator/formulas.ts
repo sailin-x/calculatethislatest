@@ -1,4 +1,4 @@
-import { opioid-settlement-calculatorInputs, opioid-settlement-calculatorMetrics, opioid-settlement-calculatorAnalysis } from './types';
+import { OpioidSettlementCalculatorinputs, OpioidSettlementCalculatormetrics, OpioidSettlementCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: opioid-settlement-calculatorInputs): number {
+export function calculateResult(inputs: OpioidSettlementCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: opioid-settlement-calculatorInputs): num
   }
 }
 
-export function generateAnalysis(inputs: opioid-settlement-calculatorInputs, metrics: opioid-settlement-calculatorMetrics): opioid-settlement-calculatorAnalysis {
+export function generateAnalysis(inputs: OpioidSettlementCalculatorinputs, metrics: OpioidSettlementCalculatormetrics): OpioidSettlementCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

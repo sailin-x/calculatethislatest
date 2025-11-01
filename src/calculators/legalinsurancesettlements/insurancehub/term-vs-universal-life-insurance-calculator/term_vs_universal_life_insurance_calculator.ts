@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { term_vs_universal_life_insurance_calculatorInputs, term_vs_universal_life_insurance_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const term_vs_universal_life_insurance_calculatorCalculator: Calculator = {
-  id: 'term-vs-universal-life-insurance-calculator',
+export const TermVsUniversal-LifeInsuranceCalculator: Calculator = {
+  id: 'TermVsUniversal-LifeInsuranceCalculator',
   title: 'Term vs. Universal Life Insurance Calculator Calculator',
   category: 'legalinsurancesettlements',
   subcategory: 'insurancehub',

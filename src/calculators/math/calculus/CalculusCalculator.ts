@@ -7,14 +7,14 @@ export const calculusCalculator: Calculator = {
   title: 'Advanced Calculus Calculator',
   category: 'math',
   subcategory: 'Calculus & Analysis',
-  description: 'Comprehensive calculus calculator supporting derivatives, integrals, limits, and series with step-by-step solutions and graphical analysis.',
+  description: 'Comprehensive calculus calculator supporting derivatives, integrals, limits, and series with StepByStep solutions and graphical analysis.',
   
   usageInstructions: [
     'Select the type of calculus operation (derivative, integral, limit, or series)',
     'Enter your function using standard mathematical notation',
     'Specify the variable of integration/differentiation',
     'Set bounds for definite integrals or limits',
-    'Review step-by-step solution and graphical representation'
+    'Review StepByStep solution and graphical representation'
   ],
 
   inputs: [
@@ -66,7 +66,7 @@ export const calculusCalculator: Calculator = {
     },
     {
       id: 'stepByStep',
-      label: 'Step-by-Step Solution',
+      label: 'StepByStep Solution',
       type: 'text',
       explanation: 'Detailed solution steps'
     }

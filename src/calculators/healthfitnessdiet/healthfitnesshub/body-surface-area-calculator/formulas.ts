@@ -1,4 +1,4 @@
-import { body-surface-area-calculatorInputs, body-surface-area-calculatorMetrics, body-surface-area-calculatorAnalysis } from './types';
+import { BodySurfaceArea-calculatorInputs, BodySurfaceArea-calculatorMetrics, BodySurfaceArea-calculatorAnalysis } from './types';
 
 
 // Health Calculator - BMI and body metrics
@@ -20,7 +20,7 @@ export function calculateBMR(weightKg: number, heightCm: number, age: number, is
   return isMale ? base + 5 : base - 161;
 }
 
-export function calculateResult(inputs: body-surface-area-calculatorInputs): number {
+export function calculateResult(inputs: BodySurfaceArea-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -44,7 +44,7 @@ export function calculateResult(inputs: body-surface-area-calculatorInputs): num
   }
 }
 
-export function generateAnalysis(inputs: body-surface-area-calculatorInputs, metrics: body-surface-area-calculatorMetrics): body-surface-area-calculatorAnalysis {
+export function generateAnalysis(inputs: BodySurfaceArea-calculatorInputs, metrics: BodySurfaceArea-calculatorMetrics): BodySurfaceArea-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

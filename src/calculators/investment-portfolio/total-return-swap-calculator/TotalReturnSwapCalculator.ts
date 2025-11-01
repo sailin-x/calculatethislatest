@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateTotalReturnSwapCalculatorInputs, validateTotalReturnSwapCalculatorBusinessRules } from './validation';
 
-export const TotalReturnSwapCalculatorCalculator: Calculator: Calculator = {
-  id: 'total-return-swap-calculator-calculator',
+export const TotalReturnSwapCalculator: Calculator = {
+  id: 'TotalReturnSwap-calculator-calculator',
   title: 'Total Return Swap Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

@@ -3,11 +3,11 @@ import { calculateMortgageEquity } from './formulas';
 import { generateMortgageEquityAnalysis } from './formulas';
 
 export const MortgageEquityCalculator: Calculator = {
-  id: 'mortgage-equity-calculator',
+  id: 'MortgageEquityCalculator',
   name: 'Mortgage Equity Calculator',
   category: 'finance',
   subcategory: 'mortgage',
-  description: 'Calculate your home equity, loan-to-value ratio, and equity growth over time to understand your property investment and borrowing potential.',
+  description: 'Calculate your home equity, LoanToValue ratio, and equity growth over time to understand your property investment and borrowing potential.',
   inputs: {
     homeValue: {
       type: 'currency',
@@ -35,7 +35,7 @@ export const MortgageEquityCalculator: Calculator = {
     },
     purchaseDate: {
       type: 'date',
-      value: '2020-01-15',
+      value: '20200115',
       unit: '',
       description: 'Date of purchase',
       placeholder: 'Select purchase date',
@@ -371,7 +371,7 @@ export const MortgageEquityCalculator: Calculator = {
     },
     {
       name: 'loanToValueRatio',
-      label: 'Loan-to-Value Ratio',
+      label: 'LoanToValue Ratio',
       type: 'percentage',
       unit: '%',
       description: 'Current LTV ratio'

@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateCryptoMiningProfitabilityCalculatorInputs, validateCryptoMiningProfitabilityCalculatorBusinessRules } from './validation';
 
-export const CryptoMiningProfitabilityCalculatorCalculator: Calculator: Calculator = {
-  id: 'crypto-mining-profitability-calculator-calculator',
+export const CryptoMiningProfitabilityCalculator: Calculator = {
+  id: 'CryptoMiningProfitability-calculator-calculator',
   title: 'Crypto Mining Profitability Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

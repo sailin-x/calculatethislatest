@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateSurgicalErrorSettlementCalculatorInputs, validateSurgicalErrorSettlementCalculatorBusinessRules } from './validation';
 
-export const SurgicalErrorSettlementCalculatorCalculator: Calculator: Calculator = {
-  id: 'surgical-error-settlement-calculator-calculator',
+export const SurgicalErrorSettlementCalculator: Calculator = {
+  id: 'SurgicalErrorSettlement-calculator-calculator',
   title: 'Surgical Error Settlement Calculator Calculator',
   legal: 'legal', // e.g., 'finance', 'math', 'health', 'business'
   sublegal: 'Sublegal Name',

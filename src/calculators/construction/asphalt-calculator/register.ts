@@ -1,3 +1,3 @@
-import { AsphaltCalculatorCalculator } from './AsphaltCalculatorCalculator';
+import { AsphaltCalculator } from './AsphaltCalculator';
 
-export { AsphaltCalculatorCalculator };
+export { AsphaltCalculator };

@@ -9,7 +9,7 @@ import {
 import { validateBankruptcyFilingCalculatorInputs } from './validation';
 
 export const BankruptcyFilingCalculator: Calculator = {
-  id: 'bankruptcy-filing-calculator',
+  id: 'BankruptcyFilingCalculator',
   title: 'Bankruptcy Filing Calculator',
   category: 'legal',
   subcategory: 'Settlement Analysis',

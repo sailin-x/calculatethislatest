@@ -1,4 +1,4 @@
-import { amino-acid-calculatorInputs, amino-acid-calculatorMetrics, amino-acid-calculatorAnalysis } from './types';
+import { AminoAcidCalculatorinputs, AminoAcidCalculatormetrics, AminoAcidCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: amino-acid-calculatorInputs): number {
+export function calculateResult(inputs: AminoAcidCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: amino-acid-calculatorInputs): number {
   }
 }
 
-export function generateAnalysis(inputs: amino-acid-calculatorInputs, metrics: amino-acid-calculatorMetrics): amino-acid-calculatorAnalysis {
+export function generateAnalysis(inputs: AminoAcidCalculatorinputs, metrics: AminoAcidCalculatormetrics): AminoAcidCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

@@ -1,4 +1,4 @@
-export { NftRoyaltyRevenueCalculatorExistsButNeedsRegistrationCalculatorCalculator } from './NftRoyaltyRevenueCalculatorExistsButNeedsRegistrationCalculatorCalculator';
+export { NftRoyaltyRevenueCalculatorExistsButNeedsRegistrationCalculator } from './NftRoyaltyRevenueCalculatorExistsButNeedsRegistrationCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

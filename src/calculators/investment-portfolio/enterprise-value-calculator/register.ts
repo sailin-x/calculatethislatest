@@ -1,3 +1,3 @@
-import { EnterpriseValueCalculatorCalculator } from './EnterpriseValueCalculatorCalculator';
+import { EnterpriseValueCalculator } from './EnterpriseValueCalculator';
 
-export { EnterpriseValueCalculatorCalculator };
+export { EnterpriseValueCalculator };

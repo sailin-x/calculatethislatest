@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validatePilatesStudioCostCalculatorInputs } from './validation';
 
 export const PilatesStudioCostCalculator: Calculator = {
-  id: 'pilates-studio-cost-calculator',
+  id: 'PilatesStudioCost-calculator',
   title: 'Pilates Studio Cost Calculator',
   category: 'health',
   subcategory: 'General',

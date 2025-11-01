@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateCarValueDepreciationCalculatorInputs, validateCarValueDepreciationCalculatorBusinessRules } from './validation';
 
-export const CarValueDepreciationCalculatorCalculator: Calculator: Calculator = {
-  id: 'car-value-depreciation-calculator-calculator',
+export const CarValueDepreciationCalculator: Calculator = {
+  id: 'CarValueDepreciation-calculator-calculator',
   title: 'Car Value Depreciation Calculator Calculator',
   lifestyle: 'lifestyle', // e.g., 'finance', 'math', 'health', 'business'
   sublifestyle: 'Sublifestyle Name',

@@ -1,4 +1,4 @@
-export { LifeSettlementValueCalculatorCalculator } from './LifeSettlementValueCalculatorCalculator';
+export { LifeSettlementValueCalculator } from './LifeSettlementValueCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

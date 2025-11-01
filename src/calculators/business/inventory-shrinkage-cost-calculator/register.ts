@@ -1,3 +1,3 @@
-import { InventoryShrinkageCostCalculatorCalculator } from './InventoryShrinkageCostCalculatorCalculator';
+import { InventoryShrinkageCostCalculator } from './InventoryShrinkageCostCalculator';
 
-export { InventoryShrinkageCostCalculatorCalculator };
+export { InventoryShrinkageCostCalculator };

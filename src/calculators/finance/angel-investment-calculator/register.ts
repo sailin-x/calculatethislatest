@@ -1,3 +1,3 @@
-import { AngelInvestmentCalculatorCalculator } from './AngelInvestmentCalculatorCalculator';
+import { AngelInvestmentCalculator } from './AngelInvestmentCalculator';
 
-export { AngelInvestmentCalculatorCalculator };
+export { AngelInvestmentCalculator };

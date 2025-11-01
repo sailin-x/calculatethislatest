@@ -1,4 +1,4 @@
-import { economic-order-quantity-eoq-calculatorInputs, economic-order-quantity-eoq-calculatorMetrics, economic-order-quantity-eoq-calculatorAnalysis } from './types';
+import { EconomicOrderQuantity-eoq-calculatorInputs, EconomicOrderQuantity-eoq-calculatorMetrics, EconomicOrderQuantity-eoq-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: economic-order-quantity-eoq-calculatorInputs): number {
+export function calculateResult(inputs: EconomicOrderQuantity-eoq-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: economic-order-quantity-eoq-calculatorIn
   }
 }
 
-export function generateAnalysis(inputs: economic-order-quantity-eoq-calculatorInputs, metrics: economic-order-quantity-eoq-calculatorMetrics): economic-order-quantity-eoq-calculatorAnalysis {
+export function generateAnalysis(inputs: EconomicOrderQuantity-eoq-calculatorInputs, metrics: EconomicOrderQuantity-eoq-calculatorMetrics): EconomicOrderQuantity-eoq-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

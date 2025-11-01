@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { dog_bite_settlement_calculatorInputs, dog_bite_settlement_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const dog_bite_settlement_calculatorCalculator: Calculator = {
-  id: 'dog-bite-settlement-calculator',
+export const DogBiteSettlement-calculator: Calculator = {
+  id: 'DogBiteSettlement-calculator',
   title: 'Dog Bite Settlement Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

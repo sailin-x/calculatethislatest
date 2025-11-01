@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { spinal_cord_injury_compensation_calculatorInputs, spinal_cord_injury_compensation_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const spinal_cord_injury_compensation_calculatorCalculator: Calculator = {
-  id: 'spinal-cord-injury-compensation-calculator',
+export const SpinalCordInjury-compensation-calculator: Calculator = {
+  id: 'SpinalCordInjury-compensation-calculator',
   title: 'Spinal Cord Injury Compensation Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

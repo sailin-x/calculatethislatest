@@ -10,7 +10,7 @@ import {
 import { validateChurnRateCalculatorInputs } from './validation';
 
 export const ChurnRateCalculator: Calculator = {
-  id: 'churn-rate-calculator',
+  id: 'ChurnRateCalculator',
   title: 'Churn Rate Calculator',
   category: 'business',
   subcategory: 'Financial Planning',

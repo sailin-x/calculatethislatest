@@ -2,7 +2,7 @@ import { Calculator } from '../../../../types/calculator';
 import { cortisol_calculatorInputs, cortisol_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const cortisol_calculatorCalculator: Calculator = {
+export const cortisol-calculator: Calculator = {
   id: 'cortisol-calculator',
   title: 'Cortisol Calculator Calculator',
   category: 'finance',

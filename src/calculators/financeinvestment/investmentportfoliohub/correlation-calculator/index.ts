@@ -1,4 +1,4 @@
-export { correlation_calculatorCalculator } from './correlation_calculator';
+export { correlation_calculator } from './correlation_calculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

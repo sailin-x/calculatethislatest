@@ -1,4 +1,4 @@
-import { professional-liability-insurance-calculatorInputs, professional-liability-insurance-calculatorMetrics, professional-liability-insurance-calculatorAnalysis } from './types';
+import { ProfessionalLiabilityInsurance-calculatorInputs, ProfessionalLiabilityInsurance-calculatorMetrics, ProfessionalLiabilityInsurance-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: professional-liability-insurance-calculatorInputs): number {
+export function calculateResult(inputs: ProfessionalLiabilityInsurance-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: professional-liability-insurance-calcula
   }
 }
 
-export function generateAnalysis(inputs: professional-liability-insurance-calculatorInputs, metrics: professional-liability-insurance-calculatorMetrics): professional-liability-insurance-calculatorAnalysis {
+export function generateAnalysis(inputs: ProfessionalLiabilityInsurance-calculatorInputs, metrics: ProfessionalLiabilityInsurance-calculatorMetrics): ProfessionalLiabilityInsurance-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

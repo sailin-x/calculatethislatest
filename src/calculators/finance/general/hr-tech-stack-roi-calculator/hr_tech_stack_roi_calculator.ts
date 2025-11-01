@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { hr_tech_stack_roi_calculatorInputs, hr_tech_stack_roi_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const hr_tech_stack_roi_calculatorCalculator: Calculator = {
-  id: 'hr-tech-stack-roi-calculator',
+export const HrTechStack-roi-calculator: Calculator = {
+  id: 'HrTechStack-roi-calculator',
   title: 'HR Tech Stack ROI Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

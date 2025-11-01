@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateKeyPersonInsuranceCalculatorInputs, validateKeyPersonInsuranceCalculatorBusinessRules } from './validation';
 
-export const KeyPersonInsuranceCalculatorCalculator: Calculator: Calculator = {
-  id: 'key-person-insurance-calculator-calculator',
+export const KeyPersonInsuranceCalculator: Calculator = {
+  id: 'KeyPersonInsurance-calculator-calculator',
   title: 'Key Person Insurance Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

@@ -10,7 +10,7 @@ import {
 import { validateEmployeeStockOptionPlanCalculatorInputs } from './validation';
 
 export const EmployeeStockOptionPlanCalculator: Calculator = {
-  id: 'employee-stock-option-plan-calculator',
+  id: 'EmployeeStockOption-plan-calculator',
   title: 'Employee Stock Option Plan Calculator',
   category: 'business',
   subcategory: 'Financial Planning',

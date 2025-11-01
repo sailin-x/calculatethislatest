@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateMedicalDeviceDevelopmentCostCalculatorInputs, validateMedicalDeviceDevelopmentCostCalculatorBusinessRules } from './validation';
 
-export const MedicalDeviceDevelopmentCostCalculatorCalculator: Calculator: Calculator = {
-  id: 'medical-device-development-cost-calculator-calculator',
+export const MedicalDeviceDevelopmentCostCalculator: Calculator = {
+  id: 'MedicalDeviceDevelopment-CostCalculatorCalculator',
   title: 'Medical Device Development Cost Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

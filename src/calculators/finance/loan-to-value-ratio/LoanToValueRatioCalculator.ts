@@ -3,11 +3,11 @@ import { calculateLoanToValueRatio, generateLoanToValueRatioAnalysis } from './f
 import { validateLoanToValueRatioInputs } from './validation';
 
 export const LoanToValueRatioCalculator: Calculator = {
-  id: 'loan-to-value-ratio-calculator',
-  name: 'Loan-to-Value (LTV) Ratio Calculator',
+  id: 'LoanToValue-ratio-calculator',
+  name: 'LoanToValue (LTV) Ratio Calculator',
   category: 'finance',
   subcategory: 'investment',
-  description: 'Calculate Loan-to-Value (LTV) ratio for real estate financing, determining maximum loan amount based on property value and lender requirements.',
+  description: 'Calculate LoanToValue (LTV) ratio for real estate financing, determining maximum loan amount based on property value and lender requirements.',
   inputs: [
     { id: 'propertyValue', name: 'Property Value', type: 'number', unit: 'USD', required: true, description: 'Current market value of the property', placeholder: '500000', min: 10000, max: 10000000 },
     { id: 'loanAmount', name: 'Loan Amount', type: 'number', unit: 'USD', required: true, description: 'Requested loan amount', placeholder: '400000', min: 1000, max: 10000000 },
@@ -17,7 +17,7 @@ export const LoanToValueRatioCalculator: Calculator = {
     { id: 'occupancyType', name: 'Occupancy Type', type: 'select', required: false, description: 'Occupancy status', placeholder: 'Select occupancy type', options: ['Primary Residence', 'Secondary Home', 'Investment Property', 'Vacation Rental', 'Commercial Use'] },
     { id: 'loanType', name: 'Loan Type', type: 'select', required: false, description: 'Type of loan', placeholder: 'Select loan type', options: ['Conventional', 'FHA', 'VA', 'USDA', 'Jumbo', 'Portfolio', 'Hard Money', 'Bridge Loan', 'Construction Loan', 'HELOC'] },
     { id: 'creditScore', name: 'Credit Score', type: 'number', required: false, description: 'Borrower credit score', placeholder: '750', min: 300, max: 850 },
-    { id: 'debtToIncomeRatio', name: 'Debt-to-Income Ratio', type: 'number', unit: '%', required: false, description: 'Borrower DTI ratio', placeholder: '35', min: 0, max: 100 },
+    { id: 'debtToIncomeRatio', name: 'DebtToIncome Ratio', type: 'number', unit: '%', required: false, description: 'Borrower DTI ratio', placeholder: '35', min: 0, max: 100 },
     { id: 'loanPurpose', name: 'Loan Purpose', type: 'select', required: false, description: 'Purpose of the loan', placeholder: 'Select loan purpose', options: ['Purchase', 'Refinance', 'Cash-Out Refinance', 'Construction', 'Renovation', 'Investment', 'Bridge Financing'] },
     { id: 'propertyLocation', name: 'Property Location', type: 'select', required: false, description: 'Property location type', placeholder: 'Select location', options: ['Urban', 'Suburban', 'Rural', 'Downtown', 'Residential Area', 'Commercial District', 'Industrial Zone', 'Coastal', 'Mountain', 'Desert'] },
     { id: 'marketCondition', name: 'Market Condition', type: 'select', required: false, description: 'Current market conditions', placeholder: 'Select market condition', options: ['Strong', 'Stable', 'Weak', 'Recovering', 'Declining', 'Volatile'] },
@@ -31,7 +31,7 @@ export const LoanToValueRatioCalculator: Calculator = {
     { id: 'insuranceRequired', name: 'Insurance Required', type: 'select', required: false, description: 'Insurance requirements', placeholder: 'Select insurance status', options: ['Standard', 'Flood Insurance Required', 'Earthquake Insurance Required', 'Wind Insurance Required', 'Additional Coverage Required', 'No Insurance Required'] }
   ],
   outputs: [
-    { id: 'ltvRatio', name: 'LTV Ratio', type: 'number', unit: '%', description: 'Calculated loan-to-value ratio' },
+    { id: 'ltvRatio', name: 'LTV Ratio', type: 'number', unit: '%', description: 'Calculated LoanToValue ratio' },
     { id: 'maxLoanAmount', name: 'Maximum Loan Amount', type: 'number', unit: 'USD', description: 'Maximum loan amount based on LTV ratio' },
     { id: 'requiredDownPayment', name: 'Required Down Payment', type: 'number', unit: 'USD', description: 'Required down payment amount' },
     { id: 'loanApprovalStatus', name: 'Loan Approval Status', type: 'string', description: 'Loan approval status based on LTV ratio' },
@@ -54,7 +54,7 @@ export const LoanToValueRatioCalculator: Calculator = {
     {
       name: 'LTV Ratio Calculation',
       formula: 'LTV Ratio = (Loan Amount / Property Value) × 100',
-      description: 'Calculates the loan-to-value ratio as a percentage'
+      description: 'Calculates the LoanToValue ratio as a percentage'
     },
     {
       name: 'Maximum Loan Amount',

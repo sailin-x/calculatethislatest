@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateUgmautmaCustodialAccountCalculatorInputs, validateUgmautmaCustodialAccountCalculatorBusinessRules } from './validation';
 
-export const UgmautmaCustodialAccountCalculatorCalculator: Calculator: Calculator = {
-  id: 'ugmautma-custodial-account-calculator-calculator',
+export const UgmautmaCustodialAccountCalculator: Calculator = {
+  id: 'UgmautmaCustodialAccount-calculator-calculator',
   title: 'UGMA/UTMA Custodial Account Calculator Calculator',
   retirement-savings: 'retirement-savings', // e.g., 'finance', 'math', 'health', 'business'
   subretirement-savings: 'Subretirement-savings Name',

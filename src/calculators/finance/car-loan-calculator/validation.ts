@@ -1,11 +1,11 @@
 import { ValidationResult } from '../../lib/errors';
-import { carloancalculatorCalculatorInputs } from './types';
+import { carloancalculatorInputs } from './types';
 
 /**
  * Validate car loan calculator calculator inputs
  */
-export function validatecarloancalculatorCalculatorInputs(
-  inputs: carloancalculatorCalculatorInputs
+export function validatecarloancalculatorInputs(
+  inputs: carloancalculatorInputs
 ): ValidationResult {
   const errors: string[] = [];
 

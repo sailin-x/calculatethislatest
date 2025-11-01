@@ -1,4 +1,4 @@
-import { cost-of-poor-quality-copq-calculatorInputs, cost-of-poor-quality-copq-calculatorMetrics, cost-of-poor-quality-copq-calculatorAnalysis } from './types';
+import { CostOfPoor-QualityCopqCalculatorinputs, CostOfPoor-QualityCopqCalculatormetrics, CostOfPoor-QualityCopqCalculatoranalysis } from './types';
 
 // Cost of Poor Quality (COPQ) Calculator - Business calculations
 export function calculateNetPresentValue(cashFlows: number[], discountRate: number): number {
@@ -11,7 +11,7 @@ export function calculateROI(initialInvestment: number, finalValue: number): num
  return ((finalValue - initialInvestment) / initialInvestment) * 100;
 }
 
-export function calculateResult(inputs: cost-of-poor-quality-copq-calculatorInputs): number {
+export function calculateResult(inputs: CostOfPoor-QualityCopqCalculatorinputs): number {
  // Business calculation logic with real math
  const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
  if (numericValues.length >= 2) {
@@ -24,7 +24,7 @@ export function calculateResult(inputs: cost-of-poor-quality-copq-calculatorInpu
  return calculateNetPresentValue(numericValues, 10); // 10% discount rate
 }
 
-export function generateAnalysis(inputs: cost-of-poor-quality-copq-calculatorInputs, metrics: cost-of-poor-quality-copq-calculatorMetrics): cost-of-poor-quality-copq-calculatorAnalysis {
+export function generateAnalysis(inputs: CostOfPoor-QualityCopqCalculatorinputs, metrics: CostOfPoor-QualityCopqCalculatormetrics): CostOfPoor-QualityCopqCalculatoranalysis {
  const result = metrics.result;
  let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
  if (Math.abs(result) > 100000) riskLevel = 'High';

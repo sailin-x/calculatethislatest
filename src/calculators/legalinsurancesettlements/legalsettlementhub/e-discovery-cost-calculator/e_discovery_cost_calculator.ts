@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { e_discovery_cost_calculatorInputs, e_discovery_cost_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const e_discovery_cost_calculatorCalculator: Calculator = {
-  id: 'e-discovery-cost-calculator',
+export const EDiscoveryCost-calculator: Calculator = {
+  id: 'EDiscoveryCost-calculator',
   title: 'E Discovery Cost Calculator Calculator',
   category: 'legalinsurancesettlements',
   subcategory: 'legalsettlementhub',

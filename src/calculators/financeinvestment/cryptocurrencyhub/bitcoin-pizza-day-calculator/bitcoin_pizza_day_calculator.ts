@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { bitcoin_pizza_day_calculatorInputs, bitcoin_pizza_day_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const bitcoin_pizza_day_calculatorCalculator: Calculator = {
-  id: 'bitcoin-pizza-day-calculator',
+export const BitcoinPizzaDay-calculator: Calculator = {
+  id: 'BitcoinPizzaDay-calculator',
   title: 'Bitcoin Pizza Day Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'cryptocurrencyhub',

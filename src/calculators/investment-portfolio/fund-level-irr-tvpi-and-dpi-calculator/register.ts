@@ -1,3 +1,3 @@
-import { FundlevelIrrTvpiAndDpiCalculatorCalculator } from './FundlevelIrrTvpiAndDpiCalculatorCalculator';
+import { FundlevelIrrTvpiAndDpiCalculator } from './FundlevelIrrTvpiAndDpiCalculator';
 
-export { FundlevelIrrTvpiAndDpiCalculatorCalculator };
+export { FundlevelIrrTvpiAndDpiCalculator };

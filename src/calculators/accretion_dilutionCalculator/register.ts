@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { accretion_dilutionCalculatorCalculator } from './accretion_dilutionCalculatorCalculator';
+import { accretion_dilutionCalculator } from './accretion_dilutionCalculator';
 
-export function registeraccretion_dilutionCalculatorCalculator(): void {
-  calculatorRegistry.register(new accretion_dilutionCalculatorCalculator());
+export function registeraccretion_dilutionCalculator(): void {
+  calculatorRegistry.register(new accretion_dilutionCalculator());
 }

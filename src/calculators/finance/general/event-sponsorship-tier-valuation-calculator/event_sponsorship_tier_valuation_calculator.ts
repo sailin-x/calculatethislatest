@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { event_sponsorship_tier_valuation_calculatorInputs, event_sponsorship_tier_valuation_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const event_sponsorship_tier_valuation_calculatorCalculator: Calculator = {
-  id: 'event-sponsorship-tier-valuation-calculator',
+export const EventSponsorshipTier-valuation-calculator: Calculator = {
+  id: 'EventSponsorshipTier-valuation-calculator',
   title: 'Event Sponsorship Tier Valuation Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

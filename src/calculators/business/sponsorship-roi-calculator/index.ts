@@ -1,4 +1,4 @@
-export { SponsorshipRoiCalculatorCalculator } from './SponsorshipRoiCalculatorCalculator';
+export { SponsorshipRoiCalculator } from './SponsorshipRoiCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

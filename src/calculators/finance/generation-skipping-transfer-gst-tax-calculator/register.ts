@@ -1,3 +1,3 @@
-import { GenerationskippingTransferGstTaxCalculatorCalculator } from './GenerationskippingTransferGstTaxCalculatorCalculator';
+import { GenerationskippingTransferGstTaxCalculator } from './GenerationskippingTransferGstTaxCalculator';
 
-export { GenerationskippingTransferGstTaxCalculatorCalculator };
+export { GenerationskippingTransferGstTaxCalculator };

@@ -17,7 +17,7 @@ export function validateFunction(value: string, allInputs?: Record<string, any>)
 export function validateVariable(value: string, allInputs?: Record<string, any>): string | null {
   if (!value || value.trim() === '') return 'Variable is required';
   if (value.length > 10) return 'Variable name is too long';
-  if (!/^[a-zA-Z]$/.test(value)) return 'Variable must be a single letter';
+  if (!/^[AZaZ]$/.test(value)) return 'Variable must be a single letter';
   return null;
 }
 

@@ -1,3 +1,3 @@
-import { IrrevocableLifeInsuranceTrustIlitValueCalculatorCalculator } from './IrrevocableLifeInsuranceTrustIlitValueCalculatorCalculator';
+import { IrrevocableLifeInsuranceTrustIlitValueCalculator } from './IrrevocableLifeInsuranceTrustIlitValueCalculator';
 
-export { IrrevocableLifeInsuranceTrustIlitValueCalculatorCalculator };
+export { IrrevocableLifeInsuranceTrustIlitValueCalculator };

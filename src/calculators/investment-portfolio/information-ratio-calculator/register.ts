@@ -1,3 +1,3 @@
-import { InformationRatioCalculatorCalculator } from './InformationRatioCalculatorCalculator';
+import { InformationRatioCalculator } from './InformationRatioCalculator';
 
-export { InformationRatioCalculatorCalculator };
+export { InformationRatioCalculator };

@@ -3,7 +3,7 @@ import { unitConversionCalculatorFormula } from './formulas';
 import { ValidationRuleFactory } from '../../utils/validation';
 
 export const unitConversionCalculator: Calculator = {
-  id: 'unit-conversion-calculator',
+  id: 'UnitConversionCalculator',
   title: 'Comprehensive Unit Conversion System',
   category: 'math',
   subcategory: 'Unit Conversion',

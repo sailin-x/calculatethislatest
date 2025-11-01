@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateKurtosisCalculatorInputs, validateKurtosisCalculatorBusinessRules } from './validation';
 
-export const KurtosisCalculatorCalculator: Calculator: Calculator = {
-  id: 'kurtosis-calculator-calculator',
+export const KurtosisCalculator: Calculator = {
+  id: 'KurtosisCalculatorCalculator',
   title: 'Kurtosis Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

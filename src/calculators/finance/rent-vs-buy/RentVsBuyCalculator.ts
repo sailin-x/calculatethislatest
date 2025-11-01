@@ -1,7 +1,7 @@
 import { Calculator } from '../../types/calculator';
 
 export const RentVsBuyCalculator: Calculator = {
-  id: 'rent-vs-buy-calculator',
+  id: 'RentVsBuy-calculator',
   name: 'Rent vs. Buy Calculator',
   category: 'finance',
   subcategory: 'real-estate',

@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { onlyfans_earnings_calculatorInputs, onlyfans_earnings_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const onlyfans_earnings_calculatorCalculator: Calculator = {
-  id: 'onlyfans-earnings-calculator',
+export const OnlyfansEarningsCalculator: Calculator = {
+  id: 'OnlyfansEarningsCalculator',
   title: 'OnlyFans Earnings Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

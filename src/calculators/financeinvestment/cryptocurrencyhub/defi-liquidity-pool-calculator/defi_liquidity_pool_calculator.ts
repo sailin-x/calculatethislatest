@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { defi_liquidity_pool_calculatorInputs, defi_liquidity_pool_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const defi_liquidity_pool_calculatorCalculator: Calculator = {
-  id: 'defi-liquidity-pool-calculator',
+export const DefiLiquidityPool-calculator: Calculator = {
+  id: 'DefiLiquidityPool-calculator',
   title: 'DeFi Liquidity Pool Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'cryptocurrencyhub',

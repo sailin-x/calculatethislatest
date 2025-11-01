@@ -1,4 +1,4 @@
-import { home-cleaning-cost-calculatorInputs, home-cleaning-cost-calculatorMetrics, home-cleaning-cost-calculatorAnalysis } from './types';
+import { HomeCleaningCost-calculatorInputs, HomeCleaningCost-calculatorMetrics, HomeCleaningCost-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: home-cleaning-cost-calculatorInputs): number {
+export function calculateResult(inputs: HomeCleaningCost-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: home-cleaning-cost-calculatorInputs): nu
   }
 }
 
-export function generateAnalysis(inputs: home-cleaning-cost-calculatorInputs, metrics: home-cleaning-cost-calculatorMetrics): home-cleaning-cost-calculatorAnalysis {
+export function generateAnalysis(inputs: HomeCleaningCost-calculatorInputs, metrics: HomeCleaningCost-calculatorMetrics): HomeCleaningCost-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

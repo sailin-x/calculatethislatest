@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateMarketingCostCalculatorInputs } from './validation';
 
 export const MarketingCostCalculator: Calculator = {
-  id: 'marketing-cost-calculator',
+  id: 'MarketingCostCalculator',
   title: 'Marketing Cost Calculator',
   category: 'health',
   subcategory: 'General',

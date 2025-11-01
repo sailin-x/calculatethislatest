@@ -1,4 +1,4 @@
-export { CompoundAnnualGrowthRateCagrCalculatorCalculator } from './CompoundAnnualGrowthRateCagrCalculatorCalculator';
+export { CompoundAnnualGrowthRateCagrCalculator } from './CompoundAnnualGrowthRateCagrCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

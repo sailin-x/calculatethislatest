@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { registerExpectedShortfallCalculatorCalculator } from './registerExpectedShortfallCalculatorCalculator';
+import { registerExpectedShortfallCalculator } from './registerExpectedShortfallCalculator';
 
-export function registerregisterExpectedShortfallCalculatorCalculator(): void {
-  calculatorRegistry.register(new registerExpectedShortfallCalculatorCalculator());
+export function registerregisterExpectedShortfallCalculator(): void {
+  calculatorRegistry.register(new registerExpectedShortfallCalculator());
 }

@@ -1,4 +1,4 @@
-export { KeyPersonLifeInsuranceCalculatorCalculator } from './KeyPersonLifeInsuranceCalculatorCalculator';
+export { KeyPersonLifeInsuranceCalculator } from './KeyPersonLifeInsuranceCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

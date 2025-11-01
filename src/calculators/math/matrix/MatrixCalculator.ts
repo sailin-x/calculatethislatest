@@ -7,7 +7,7 @@ export const matrixCalculator: Calculator = {
   title: 'Advanced Matrix Calculator',
   category: 'math',
   subcategory: 'Linear Algebra & Matrices',
-  description: 'Comprehensive matrix calculator supporting all matrix operations including determinants, inverses, eigenvalues, decompositions, and system solving with step-by-step solutions.',
+  description: 'Comprehensive matrix calculator supporting all matrix operations including determinants, inverses, eigenvalues, decompositions, and system solving with StepByStep solutions.',
   
   usageInstructions: [
     'Select the matrix operation you want to perform',

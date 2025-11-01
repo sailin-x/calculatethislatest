@@ -10,7 +10,7 @@ import {
 import { validateLineOfCreditCalculatorInputs } from './validation';
 
 export const LineOfCreditCalculator: Calculator = {
-  id: 'line-of-credit-calculator',
+  id: 'LineOfCredit-calculator',
   title: 'Line of Credit Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

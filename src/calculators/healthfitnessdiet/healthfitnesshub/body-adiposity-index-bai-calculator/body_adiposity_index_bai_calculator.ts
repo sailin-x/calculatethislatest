@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { body_adiposity_index_bai_calculatorInputs, body_adiposity_index_bai_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const body_adiposity_index_bai_calculatorCalculator: Calculator = {
-  id: 'body-adiposity-index-bai-calculator',
+export const BodyAdiposityIndex-bai-calculator: Calculator = {
+  id: 'BodyAdiposityIndex-bai-calculator',
   title: 'Body Adiposity Index (BAI) Calculator Calculator',
   category: 'healthfitnessdiet',
   subcategory: 'healthfitnesshub',

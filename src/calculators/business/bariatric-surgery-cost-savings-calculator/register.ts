@@ -1,3 +1,3 @@
-import { BariatricSurgeryCostSavingsCalculatorCalculator } from './BariatricSurgeryCostSavingsCalculatorCalculator';
+import { BariatricSurgeryCostSavingsCalculator } from './BariatricSurgeryCostSavingsCalculator';
 
-export { BariatricSurgeryCostSavingsCalculatorCalculator };
+export { BariatricSurgeryCostSavingsCalculator };

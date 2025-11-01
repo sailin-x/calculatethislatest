@@ -1,3 +1,3 @@
-import { HospitalNegligenceSettlementCalculatorCalculator } from './HospitalNegligenceSettlementCalculatorCalculator';
+import { HospitalNegligenceSettlementCalculator } from './HospitalNegligenceSettlementCalculator';
 
-export { HospitalNegligenceSettlementCalculatorCalculator };
+export { HospitalNegligenceSettlementCalculator };

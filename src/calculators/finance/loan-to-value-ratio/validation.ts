@@ -52,9 +52,9 @@ export function validateLoanToValueRatioInputs(inputs: CalculatorInputs): Valida
 
   if (inputs.debtToIncomeRatio !== undefined) {
     if (typeof inputs.debtToIncomeRatio !== 'number' || inputs.debtToIncomeRatio < 0) {
-      errors.push('Debt-to-income ratio must be a non-negative number');
+      errors.push('DebtToIncome ratio must be a non-negative number');
     } else if (inputs.debtToIncomeRatio > 100) {
-      errors.push('Debt-to-income ratio must be 100% or less');
+      errors.push('DebtToIncome ratio must be 100% or less');
     }
   }
 

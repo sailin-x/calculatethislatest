@@ -1,4 +1,4 @@
-import { surgical-error-settlement-calculatorInputs, surgical-error-settlement-calculatorMetrics, surgical-error-settlement-calculatorAnalysis } from './types';
+import { SurgicalErrorSettlement-calculatorInputs, SurgicalErrorSettlement-calculatorMetrics, SurgicalErrorSettlement-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: surgical-error-settlement-calculatorInputs): number {
+export function calculateResult(inputs: SurgicalErrorSettlement-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: surgical-error-settlement-calculatorInpu
   }
 }
 
-export function generateAnalysis(inputs: surgical-error-settlement-calculatorInputs, metrics: surgical-error-settlement-calculatorMetrics): surgical-error-settlement-calculatorAnalysis {
+export function generateAnalysis(inputs: SurgicalErrorSettlement-calculatorInputs, metrics: SurgicalErrorSettlement-calculatorMetrics): SurgicalErrorSettlement-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

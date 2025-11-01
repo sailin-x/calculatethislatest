@@ -10,7 +10,7 @@ import {
 import { validateCustomerLifetimeValueCalculatorInputs } from './validation';
 
 export const CustomerLifetimeValueCalculator: Calculator = {
-  id: 'customer-lifetime-value-calculator',
+  id: 'CustomerLifetimeValue-calculator',
   title: 'Customer Lifetime Value Calculator',
   category: 'business',
   subcategory: 'Financial Planning',

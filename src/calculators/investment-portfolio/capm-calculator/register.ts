@@ -1,3 +1,3 @@
-import { CapmCalculatorCalculator } from './CapmCalculatorCalculator';
+import { CapmCalculator } from './CapmCalculator';
 
-export { CapmCalculatorCalculator };
+export { CapmCalculator };

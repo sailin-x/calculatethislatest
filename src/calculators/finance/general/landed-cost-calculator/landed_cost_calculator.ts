@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { landed_cost_calculatorInputs, landed_cost_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const landed_cost_calculatorCalculator: Calculator = {
-  id: 'landed-cost-calculator',
+export const LandedCostCalculator: Calculator = {
+  id: 'LandedCostCalculator',
   title: 'Landed Cost Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

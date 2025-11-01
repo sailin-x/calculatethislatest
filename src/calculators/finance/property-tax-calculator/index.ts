@@ -1,4 +1,4 @@
-export { PropertyTaxCalculatorCalculator } from './PropertyTaxCalculatorCalculator';
+export { PropertyTaxCalculator } from './PropertyTaxCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

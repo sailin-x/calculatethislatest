@@ -8,7 +8,7 @@ import { CalculatorInputs, CalculatorOutputs } from '../../types/calculator';
 describe('TitleInsuranceCalculator', () => {
   describe('Calculator Structure', () => {
     it('should have correct basic properties', () => {
-      expect(TitleInsuranceCalculator.id).toBe('title-insurance-calculator');
+      expect(TitleInsuranceCalculator.id).toBe('TitleInsuranceCalculator');
       expect(TitleInsuranceCalculator.name).toBe('Title Insurance Calculator');
       expect(TitleInsuranceCalculator.category).toBe('finance');
       expect(TitleInsuranceCalculator.subcategory).toBe('insurance');

@@ -1,3 +1,3 @@
-export * from './CreditDefaultSwapCalculatorCalculator';
+export * from './CreditDefaultSwapCalculator';
 export * from './register';
 export * from './types';

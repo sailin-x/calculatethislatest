@@ -10,7 +10,7 @@ import {
 import { validateTotalCostOfOwnershipCalculatorInputs } from './validation';
 
 export const TotalCostOfOwnershipCalculator: Calculator = {
-  id: 'total-cost-of-ownership-calculator',
+  id: 'TotalCostOf-ownership-calculator',
   title: 'Total Cost of Ownership Calculator',
   category: 'business',
   subcategory: 'Financial Planning',

@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { registerFAFSACalculatorCalculator } from './registerFAFSACalculatorCalculator';
+import { registerFAFSACalculator } from './registerFAFSACalculator';
 
-export function registerregisterFAFSACalculatorCalculator(): void {
-  calculatorRegistry.register(new registerFAFSACalculatorCalculator());
+export function registerregisterFAFSACalculator(): void {
+  calculatorRegistry.register(new registerFAFSACalculator());
 }

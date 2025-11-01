@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateTruckAccidentSettlementCalculatorInputs, validateTruckAccidentSettlementCalculatorBusinessRules } from './validation';
 
-export const TruckAccidentSettlementCalculatorCalculator: Calculator: Calculator = {
-  id: 'truck-accident-settlement-calculator-calculator',
+export const TruckAccidentSettlementCalculator: Calculator = {
+  id: 'TruckAccidentSettlement-calculator-calculator',
   title: 'Truck Accident Settlement Calculator Calculator',
   legal: 'legal', // e.g., 'finance', 'math', 'health', 'business'
   sublegal: 'Sublegal Name',

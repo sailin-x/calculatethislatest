@@ -3,7 +3,7 @@ import { calculateBiweeklyMortgage, calculateSavings, generateAmortizationSchedu
 import { validateBiweeklyMortgageInputs } from './validation';
 
 export const BiweeklyMortgageCalculator: Calculator = {
-  id: 'biweekly-mortgage-calculator',
+  id: 'BiweeklyMortgageCalculator',
   name: 'Biweekly Mortgage Calculator',
   description: 'Calculate biweekly mortgage payments and compare with traditional monthly payments to see how much you can save in interest and time to pay off your loan.',
   category: 'finance',
@@ -50,7 +50,7 @@ export const BiweeklyMortgageCalculator: Calculator = {
       type: 'date',
       required: true,
       tooltip: 'Date when the mortgage payments begin',
-      placeholder: '2024-01-01'
+      placeholder: '20240101'
     },
     {
       id: 'propertyTax',
@@ -241,7 +241,7 @@ export const BiweeklyMortgageCalculator: Calculator = {
         loanAmount: 300000,
         interestRate: 4.5,
         loanTerm: 30,
-        startDate: '2024-01-01',
+        startDate: '20240101',
         propertyTax: 3600,
         homeInsurance: 1200,
         pmi: 0,
@@ -262,7 +262,7 @@ export const BiweeklyMortgageCalculator: Calculator = {
         loanAmount: 750000,
         interestRate: 3.75,
         loanTerm: 30,
-        startDate: '2024-01-01',
+        startDate: '20240101',
         propertyTax: 9000,
         homeInsurance: 2400,
         pmi: 150,
@@ -283,7 +283,7 @@ export const BiweeklyMortgageCalculator: Calculator = {
         loanAmount: 200000,
         interestRate: 3.25,
         loanTerm: 15,
-        startDate: '2024-01-01',
+        startDate: '20240101',
         propertyTax: 2400,
         homeInsurance: 800,
         pmi: 0,

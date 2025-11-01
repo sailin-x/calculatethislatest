@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateInterestRateSwapCalculatorInputs, validateInterestRateSwapCalculatorBusinessRules } from './validation';
 
-export const InterestRateSwapCalculatorCalculator: Calculator: Calculator = {
-  id: 'interest-rate-swap-calculator-calculator',
+export const InterestRateSwapCalculator: Calculator = {
+  id: 'InterestRateSwap-calculator-calculator',
   title: 'Interest Rate Swap Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

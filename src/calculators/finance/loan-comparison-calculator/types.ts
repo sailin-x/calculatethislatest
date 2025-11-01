@@ -1,10 +1,10 @@
-export interface loancomparisoncalculatorCalculatorInputs {
+export interface loancomparisoncalculatorInputs {
   // Domain-specific input fields for loan comparison calculator Calculator
   // TODO: Add specific input fields based on calculator requirements
   value: number;
 }
 
-export interface loancomparisoncalculatorCalculatorOutputs {
+export interface loancomparisoncalculatorOutputs {
   // Domain-specific output fields for loan comparison calculator Calculator
   // TODO: Add specific output fields based on calculator requirements
   result: number;

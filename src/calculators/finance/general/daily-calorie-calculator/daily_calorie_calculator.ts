@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { daily_calorie_calculatorInputs, daily_calorie_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const daily_calorie_calculatorCalculator: Calculator = {
-  id: 'daily-calorie-calculator',
+export const DailyCalorieCalculator: Calculator = {
+  id: 'DailyCalorieCalculator',
   title: 'Daily Calorie Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

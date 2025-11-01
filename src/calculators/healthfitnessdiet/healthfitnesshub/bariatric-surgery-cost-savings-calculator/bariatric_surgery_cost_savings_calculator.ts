@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { bariatric_surgery_cost_savings_calculatorInputs, bariatric_surgery_cost_savings_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const bariatric_surgery_cost_savings_calculatorCalculator: Calculator = {
-  id: 'bariatric-surgery-cost-savings-calculator',
+export const BariatricSurgeryCost-savings-calculator: Calculator = {
+  id: 'BariatricSurgeryCost-savings-calculator',
   title: 'Bariatric Surgery Cost & Savings Calculator Calculator',
   category: 'healthfitnessdiet',
   subcategory: 'healthfitnesshub',

@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateDividendCalculatorInputs, validateDividendCalculatorBusinessRules } from './validation';
 
-export const DividendCalculatorCalculator: Calculator: Calculator = {
-  id: 'dividend-calculator-calculator',
+export const DividendCalculator: Calculator = {
+  id: 'DividendCalculatorCalculator',
   title: 'Dividend Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

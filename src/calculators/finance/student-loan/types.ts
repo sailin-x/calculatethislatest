@@ -3,7 +3,7 @@ export interface StudentLoanInputs {
   interestRate: number;
   loanTerm: number;
   loanType: 'federal' | 'private' | 'parent-plus' | 'grad-plus' | 'consolidation';
-  repaymentPlan: 'standard' | 'graduated' | 'extended' | 'income-based' | 'pay-as-you-earn' | 'revised-pay-as-you-earn' | 'income-contingent';
+  repaymentPlan: 'standard' | 'graduated' | 'extended' | 'income-based' | 'PayAsYou-earn' | 'RevisedPayAs-you-earn' | 'income-contingent';
   borrowerIncome: number;
   familySize: number;
   povertyGuideline: number;

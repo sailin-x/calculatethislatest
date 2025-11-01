@@ -4,11 +4,11 @@ import { validateRealEstateInvestmentInputs } from './validation';
 import { RealEstateInvestmentInputs } from './types';
 
 const realEstateInvestmentCalculator: CalculatorRegistration = {
-  id: 'real-estate-investment',
+  id: 'RealEstateInvestment',
   name: 'Real Estate Investment Calculator',
   description: 'Comprehensive real estate investment analysis with cash flow, ROI, and market comparison',
   category: 'finance',
-  tags: ['real-estate', 'investment', 'cash-flow', 'roi', 'property', 'rental', 'cap-rate', 'cash-on-cash'],
+  tags: ['real-estate', 'investment', 'cash-flow', 'roi', 'property', 'rental', 'cap-rate', 'CashOnCash'],
   
   inputs: {
     propertyType: {
@@ -463,10 +463,10 @@ const realEstateInvestmentCalculator: CalculatorRegistration = {
   
   relatedCalculators: [
     'mortgage-calculator',
-    'cap-rate-calculator',
-    'cash-flow-calculator',
-    'brrrr-strategy-calculator',
-    'fix-and-flip-calculator'
+    'CapRateCalculator',
+    'CashFlowCalculator',
+    'BrrrrStrategyCalculator',
+    'FixAndFlip-calculator'
   ]
 };
 

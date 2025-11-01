@@ -1,4 +1,4 @@
-import { income-based-repayment-calculatorInputs, income-based-repayment-calculatorMetrics, income-based-repayment-calculatorAnalysis } from './types';
+import { IncomeBasedRepayment-calculatorInputs, IncomeBasedRepayment-calculatorMetrics, IncomeBasedRepayment-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: income-based-repayment-calculatorInputs): number {
+export function calculateResult(inputs: IncomeBasedRepayment-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: income-based-repayment-calculatorInputs)
   }
 }
 
-export function generateAnalysis(inputs: income-based-repayment-calculatorInputs, metrics: income-based-repayment-calculatorMetrics): income-based-repayment-calculatorAnalysis {
+export function generateAnalysis(inputs: IncomeBasedRepayment-calculatorInputs, metrics: IncomeBasedRepayment-calculatorMetrics): IncomeBasedRepayment-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

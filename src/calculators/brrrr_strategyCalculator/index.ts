@@ -1,3 +1,3 @@
-export * from './brrrr_strategyCalculatorCalculator';
+export * from './brrrr_strategyCalculator';
 export * from './register';
 export * from './types';

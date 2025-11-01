@@ -1,4 +1,4 @@
-import { value-at-risk-calculatorInputs, value-at-risk-calculatorMetrics, value-at-risk-calculatorAnalysis } from './types';
+import { ValueAtRisk-calculatorInputs, ValueAtRisk-calculatorMetrics, ValueAtRisk-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: value-at-risk-calculatorInputs): number {
+export function calculateResult(inputs: ValueAtRisk-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: value-at-risk-calculatorInputs): number 
   }
 }
 
-export function generateAnalysis(inputs: value-at-risk-calculatorInputs, metrics: value-at-risk-calculatorMetrics): value-at-risk-calculatorAnalysis {
+export function generateAnalysis(inputs: ValueAtRisk-calculatorInputs, metrics: ValueAtRisk-calculatorMetrics): ValueAtRisk-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

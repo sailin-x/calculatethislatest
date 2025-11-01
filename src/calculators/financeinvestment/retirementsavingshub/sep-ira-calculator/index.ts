@@ -1,4 +1,4 @@
-export { sep_ira_calculatorCalculator } from './sep_ira_calculator';
+export { sep_ira_calculator } from './sep_ira_calculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

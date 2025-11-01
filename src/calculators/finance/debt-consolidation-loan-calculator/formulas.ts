@@ -1,4 +1,4 @@
-import { debt-consolidation-loan-calculatorInputs, debt-consolidation-loan-calculatorMetrics, debt-consolidation-loan-calculatorAnalysis } from './types';
+import { DebtConsolidationLoan-calculatorInputs, DebtConsolidationLoan-calculatorMetrics, DebtConsolidationLoan-calculatorAnalysis } from './types';
 
 
 // Loan Calculator - Standard loan formulas
@@ -14,7 +14,7 @@ export function calculateTotalCost(monthlyPayment: number, numPayments: number):
   return monthlyPayment * numPayments;
 }
 
-export function calculateResult(inputs: debt-consolidation-loan-calculatorInputs): number {
+export function calculateResult(inputs: DebtConsolidationLoan-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: debt-consolidation-loan-calculatorInputs
   }
 }
 
-export function generateAnalysis(inputs: debt-consolidation-loan-calculatorInputs, metrics: debt-consolidation-loan-calculatorMetrics): debt-consolidation-loan-calculatorAnalysis {
+export function generateAnalysis(inputs: DebtConsolidationLoan-calculatorInputs, metrics: DebtConsolidationLoan-calculatorMetrics): DebtConsolidationLoan-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

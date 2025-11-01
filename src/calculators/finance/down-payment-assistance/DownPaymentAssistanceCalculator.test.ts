@@ -7,7 +7,7 @@ import { validateAllDownPaymentAssistanceInputs } from './quickValidation';
 describe('Down Payment Assistance Calculator', () => {
   describe('Calculator Structure', () => {
     it('should have correct basic properties', () => {
-      expect(DownPaymentAssistanceCalculator.id).toBe('down-payment-assistance-calculator');
+      expect(DownPaymentAssistanceCalculator.id).toBe('DownPaymentAssistance-calculator');
       expect(DownPaymentAssistanceCalculator.name).toBe('Down Payment Assistance Calculator');
       expect(DownPaymentAssistanceCalculator.category).toBe('finance');
       expect(DownPaymentAssistanceCalculator.subcategory).toBe('mortgage');
@@ -241,7 +241,7 @@ describe('Down Payment Assistance Calculator', () => {
       expect(outputs.monthlyPayment).toBeLessThan(1900);
     });
 
-    it('should calculate debt-to-income ratio correctly', () => {
+    it('should calculate DebtToIncome ratio correctly', () => {
       const inputs = {
         homePrice: 300000,
         downPaymentPercentage: 3.5,
@@ -267,7 +267,7 @@ describe('Down Payment Assistance Calculator', () => {
       expect(outputs.debtToIncomeRatio).toBeLessThan(40);
     });
 
-    it('should calculate loan-to-value ratio correctly', () => {
+    it('should calculate LoanToValue ratio correctly', () => {
       const inputs = {
         homePrice: 300000,
         downPaymentPercentage: 3.5,

@@ -119,7 +119,7 @@ export function validateMortgageInsuranceInputs(): ValidationRule[] {
     ),
     ValidationRuleFactory.createRule(
       'debtToIncomeRatio',
-      'Debt-to-income ratio is required',
+      'DebtToIncome ratio is required',
       (value: any, allInputs?: Record<string, any>) => typeof value === 'number' && !isNaN(value) && value >= 0 && value <= 100
     ),
     ValidationRuleFactory.createRule(
@@ -183,7 +183,7 @@ export function validateMortgageInsuranceInputs(): ValidationRule[] {
     ),
     ValidationRuleFactory.createRule(
       'debtToIncomeRatio',
-      'Debt-to-income ratio should be reasonable',
+      'DebtToIncome ratio should be reasonable',
       (value: any, allInputs?: Record<string, any>) => {
         if (!allInputs?.annualIncome || !allInputs?.monthlyPayment || !allInputs?.otherMonthlyDebts) return true;
         const monthlyIncome = allInputs?.annualIncome / 12;

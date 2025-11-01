@@ -1,3 +1,3 @@
-import { AsbestosSettlementCalculatorCalculator } from './AsbestosSettlementCalculatorCalculator';
+import { AsbestosSettlementCalculator } from './AsbestosSettlementCalculator';
 
-export { AsbestosSettlementCalculatorCalculator };
+export { AsbestosSettlementCalculator };

@@ -1,3 +1,3 @@
-import { DefinedBenefitPlanCalculatorCalculator } from './DefinedBenefitPlanCalculatorCalculator';
+import { DefinedBenefitPlanCalculator } from './DefinedBenefitPlanCalculator';
 
-export { DefinedBenefitPlanCalculatorCalculator };
+export { DefinedBenefitPlanCalculator };

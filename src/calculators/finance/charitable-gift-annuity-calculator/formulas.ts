@@ -1,13 +1,13 @@
-import { charitable-gift-annuity-calculatorInputs, charitable-gift-annuity-calculatorMetrics, charitable-gift-annuity-calculatorAnalysis } from './types';
+import { CharitableGiftAnnuity-calculatorInputs, CharitableGiftAnnuity-calculatorMetrics, CharitableGiftAnnuity-calculatorAnalysis } from './types';
 
 // Charitable Gift Annuity Calculator - Finance calculations
-export function calculateResult(inputs: charitable-gift-annuity-calculatorInputs): number {
+export function calculateResult(inputs: CharitableGiftAnnuity-calculatorInputs): number {
   // Financial calculation logic
   const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
   return numericValues.reduce((sum, val) => sum + val, 0) || 0;
 }
 
-export function generateAnalysis(inputs: charitable-gift-annuity-calculatorInputs, metrics: charitable-gift-annuity-calculatorMetrics): charitable-gift-annuity-calculatorAnalysis {
+export function generateAnalysis(inputs: CharitableGiftAnnuity-calculatorInputs, metrics: CharitableGiftAnnuity-calculatorMetrics): CharitableGiftAnnuity-calculatorAnalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (Math.abs(result) > 100000) riskLevel = 'High';

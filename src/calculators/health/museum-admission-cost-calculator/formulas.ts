@@ -1,4 +1,4 @@
-import { museum-admission-cost-calculatorInputs, museum-admission-cost-calculatorMetrics, museum-admission-cost-calculatorAnalysis } from './types';
+import { MuseumAdmissionCost-calculatorInputs, MuseumAdmissionCost-calculatorMetrics, MuseumAdmissionCost-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: museum-admission-cost-calculatorInputs): number {
+export function calculateResult(inputs: MuseumAdmissionCost-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: museum-admission-cost-calculatorInputs):
   }
 }
 
-export function generateAnalysis(inputs: museum-admission-cost-calculatorInputs, metrics: museum-admission-cost-calculatorMetrics): museum-admission-cost-calculatorAnalysis {
+export function generateAnalysis(inputs: MuseumAdmissionCost-calculatorInputs, metrics: MuseumAdmissionCost-calculatorMetrics): MuseumAdmissionCost-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

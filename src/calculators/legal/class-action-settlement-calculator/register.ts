@@ -1,3 +1,3 @@
-import { ClassActionSettlementCalculatorCalculator } from './ClassActionSettlementCalculatorCalculator';
+import { ClassActionSettlementCalculator } from './ClassActionSettlementCalculator';
 
-export { ClassActionSettlementCalculatorCalculator };
+export { ClassActionSettlementCalculator };

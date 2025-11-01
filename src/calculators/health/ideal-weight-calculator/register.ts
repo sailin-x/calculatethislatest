@@ -1,3 +1,3 @@
-import { IdealWeightCalculatorCalculator } from './IdealWeightCalculatorCalculator';
+import { IdealWeightCalculator } from './IdealWeightCalculator';
 
-export { IdealWeightCalculatorCalculator };
+export { IdealWeightCalculator };

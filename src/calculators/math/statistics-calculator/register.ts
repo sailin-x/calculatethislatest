@@ -1,3 +1,3 @@
-import { StatisticsCalculatorCalculator } from './StatisticsCalculatorCalculator';
+import { StatisticsCalculator } from './StatisticsCalculator';
 
-export { StatisticsCalculatorCalculator };
+export { StatisticsCalculator };

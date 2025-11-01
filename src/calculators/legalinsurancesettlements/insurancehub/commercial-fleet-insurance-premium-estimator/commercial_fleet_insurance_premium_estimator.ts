@@ -3,7 +3,7 @@ import { commercial_fleet_insurance_premium_estimatorInputs, commercial_fleet_in
 import { calculateResult, generateAnalysis } from './formulas';
 
 export const commercial_fleet_insurance_premium_estimatorCalculator: Calculator = {
-  id: 'commercial-fleet-insurance-premium-estimator',
+  id: 'CommercialFleetInsurance-premium-estimator',
   title: 'Commercial Fleet Insurance Premium Estimator Calculator',
   category: 'legalinsurancesettlements',
   subcategory: 'insurancehub',

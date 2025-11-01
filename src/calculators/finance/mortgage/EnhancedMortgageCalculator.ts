@@ -7,7 +7,7 @@ import { getMortgageValidationRules } from './validation';
  * Automatically fetches current mortgage rates and regional property data
  */
 export const enhancedMortgageCalculator: Calculator = {
-  id: 'enhanced-mortgage-calculator',
+  id: 'EnhancedMortgageCalculator',
   title: 'Enhanced Mortgage Calculator with Live Data',
   category: 'finance',
   subcategory: 'Mortgage & Real Estate',
@@ -353,9 +353,9 @@ export const enhancedMortgageCalculator: Calculator = {
 
   // Enhanced features for real-world data integration
   dataIntegration: {
-    requiredSources: ['mortgage-rates', 'regional-property-data'],
+    requiredSources: ['mortgage-rates', 'RegionalPropertyData'],
     refreshInterval: 3600000, // 1 hour
-    fallbackBehavior: 'use-cached-or-default',
+    fallbackBehavior: 'UseCachedOr-default',
     trackCalculations: true
   },
 

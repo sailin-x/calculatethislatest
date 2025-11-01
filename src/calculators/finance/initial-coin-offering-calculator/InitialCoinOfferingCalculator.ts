@@ -10,7 +10,7 @@ import {
 import { validateInitialCoinOfferingCalculatorInputs } from './validation';
 
 export const InitialCoinOfferingCalculator: Calculator = {
-  id: 'initial-coin-offering-calculator',
+  id: 'InitialCoinOffering-calculator',
   title: 'Initial Coin Offering Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

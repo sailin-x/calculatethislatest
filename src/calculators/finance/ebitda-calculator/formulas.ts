@@ -1,53 +1,69 @@
-import { ebitda-calculatorInputs, ebitda-calculatorMetrics, ebitda-calculatorAnalysis } from './types';
+import { EbitdaCalculatorInputs, EbitdaCalculatorMetrics, EbitdaCalculatorAnalysis } from './types';
 
+// Calculate EBITDA (Earnings Before Interest, Taxes, Depreciation, and Amortization)
+export function calculateEBITDA(inputs: EbitdaCalculatorInputs): number {
+  const { revenue, operatingExpenses, depreciation, amortization } = inputs;
 
-// Generic Calculator - Basic mathematical operations
-export function calculatePercentage(value: number, percentage: number): number {
-  return value * (percentage / 100);
+  // EBITDA = Revenue - Operating Expenses + Depreciation + Amortization
+  // Note: Operating Expenses should exclude depreciation and amortization
+  return revenue - operatingExpenses + depreciation + amortization;
 }
 
-export function calculatePercentageChange(oldValue: number, newValue: number): number {
-  return ((newValue - oldValue) / oldValue) * 100;
+// Calculate EBITDA Margin
+export function calculateEBITDAMargin(ebitda: number, revenue: number): number {
+  if (revenue <= 0) return 0;
+  return (ebitda / revenue) * 100;
 }
 
-export function calculateAverage(values: number[]): number {
-  return values.reduce((sum, val) => sum + val, 0) / values.length;
+// Calculate Adjusted EBITDA (excluding one-time items, but simplified here)
+export function calculateAdjustedEBITDA(ebitda: number, adjustments: number = 0): number {
+  return ebitda + adjustments;
 }
 
-export function calculateResult(inputs: ebitda-calculatorInputs): number {
-  // Use domain-specific calculations based on input properties
-  try {
-    // Try to match inputs to appropriate calculation
-    if ('principal' in inputs && 'annualRate' in inputs && 'years' in inputs) {
-      return calculateMonthlyPayment(inputs.principal, inputs.annualRate, inputs.years);
-    }
-    if ('initialInvestment' in inputs && 'finalValue' in inputs) {
-      return calculateROI(inputs.initialInvestment, inputs.finalValue);
-    }
-    if ('weightKg' in inputs && 'heightCm' in inputs) {
-      return calculateBMI(inputs.weightKg, inputs.heightCm);
-    }
-    if ('value' in inputs && 'percentage' in inputs) {
-      return calculatePercentage(inputs.value, inputs.percentage);
-    }
-    // Fallback to basic calculation
-    return inputs.value || inputs.amount || inputs.principal || 0;
-  } catch (error) {
-    console.warn('Calculation error:', error);
-    return 0;
-  }
+// Calculate EBITDA to Revenue ratio
+export function calculateEBITDAToRevenue(ebitda: number, revenue: number): number {
+  if (revenue <= 0) return 0;
+  return ebitda / revenue;
 }
 
-export function generateAnalysis(inputs: ebitda-calculatorInputs, metrics: ebitda-calculatorMetrics): ebitda-calculatorAnalysis {
-  const result = metrics.result;
+// Calculate EBIT (Earnings Before Interest and Taxes) from EBITDA
+export function calculateEBITFromEBITDA(ebitda: number, depreciation: number, amortization: number): number {
+  return ebitda - depreciation - amortization;
+}
 
-  let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
-  if (Math.abs(result) > 100000) riskLevel = 'High';
-  else if (Math.abs(result) > 10000) riskLevel = 'Medium';
+// Generate EBITDA analysis
+export function generateEBITDAAnalysis(
+  inputs: EbitdaCalculatorInputs,
+  metrics: EbitdaCalculatorMetrics
+): EbitdaCalculatorAnalysis {
+  const { ebitda, ebitdaMargin } = metrics;
 
-  const recommendation = result > 0 ?
-    'Calculation completed successfully - positive result' :
-    'Calculation completed - review inputs if result seems unexpected';
+  // Determine profitability
+  let profitability: 'excellent' | 'good' | 'fair' | 'poor' = 'poor';
+  if (ebitdaMargin >= 25) profitability = 'excellent';
+  else if (ebitdaMargin >= 15) profitability = 'good';
+  else if (ebitdaMargin >= 10) profitability = 'fair';
 
-  return { recommendation, riskLevel };
+  // Determine efficiency
+  let efficiency: 'high' | 'medium' | 'low' = 'low';
+  if (ebitdaMargin >= 20) efficiency = 'high';
+  else if (ebitdaMargin >= 12) efficiency = 'medium';
+
+  const recommendations = [];
+  if (profitability === 'excellent') recommendations.push('Strong EBITDA performance indicates healthy profitability');
+  if (ebitdaMargin < 10) recommendations.push('Low EBITDA margin suggests potential operational inefficiencies');
+  if (ebitda <= 0) recommendations.push('Negative EBITDA indicates the company is not generating sufficient cash from operations');
+
+  // Simplified industry comparison (would be more sophisticated in real implementation)
+  let industryComparison = 'Industry comparison requires additional context';
+  if (ebitdaMargin >= 20) industryComparison = 'Above industry average EBITDA margin';
+  else if (ebitdaMargin >= 10) industryComparison = 'At or near industry average EBITDA margin';
+  else industryComparison = 'Below industry average EBITDA margin';
+
+  return {
+    profitability,
+    efficiency,
+    recommendations,
+    industryComparison
+  };
 }

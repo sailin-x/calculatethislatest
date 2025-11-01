@@ -4,7 +4,7 @@ import { calculateCollegeFinancialAid } from './formulas';
 import { validateCollegeFinancialAidInputs } from './validation';
 
 export const CollegeFinancialAidCalculator: Calculator = {
-  id: 'college-financial-aid-calculator',
+  id: 'CollegeFinancialAid-calculator',
   title: 'College Financial Aid Calculator',
   category: 'finance',
   subcategory: 'Education',
@@ -308,7 +308,7 @@ export const CollegeFinancialAidCalculator: Calculator = {
       label: 'Willing to Relocate',
       type: 'boolean',
       required: true,
-      tooltip: 'Willingness to attend college out-of-state'
+      tooltip: 'Willingness to attend college OutOfState'
     },
     {
       id: 'willingToAttendTwoYear',

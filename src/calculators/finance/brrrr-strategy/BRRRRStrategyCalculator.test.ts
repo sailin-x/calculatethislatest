@@ -30,7 +30,7 @@ describe('BRRRR Strategy Calculator', () => {
 
   describe('Calculator Definition', () => {
     it('should have correct basic properties', () => {
-      expect(BRRRRStrategyCalculator.id).toBe('brrrr-strategy-calculator');
+      expect(BRRRRStrategyCalculator.id).toBe('BrrrrStrategyCalculator');
       expect(BRRRRStrategyCalculator.name).toBe('BRRRR Strategy Calculator');
       expect(BRRRRStrategyCalculator.category).toBe('finance');
       expect(BRRRRStrategyCalculator.subcategory).toBe('investment');
@@ -160,7 +160,7 @@ describe('BRRRR Strategy Calculator', () => {
       expect(Math.abs(metrics.totalInvestment - expectedTotalInvestment)).toBeLessThan(1);
     });
 
-    it('should calculate cash-on-cash return correctly', () => {
+    it('should calculate CashOnCash return correctly', () => {
       const metrics = calculateBRRRRStrategy(validInputs);
       const expectedCocReturn = (metrics.annualCashFlow / metrics.totalInvestment) * 100;
       
@@ -301,7 +301,7 @@ describe('BRRRR Strategy Calculator', () => {
     it('should show realistic BRRRR returns', () => {
       const result = BRRRRStrategyCalculator.calculate(validInputs);
       
-      // Cash-on-cash return should be reasonable
+      // CashOnCash return should be reasonable
       expect(result.cashOnCashReturn).toBeGreaterThan(0);
       expect(result.cashOnCashReturn).toBeLessThan(25); // Very high returns may be unrealistic
     });
@@ -316,7 +316,7 @@ describe('BRRRR Strategy Calculator', () => {
       // Higher value properties should have higher payments
       expect(highValueResult.monthlyPayment).toBeGreaterThan(lowValueResult.monthlyPayment);
       
-      // But cash-on-cash returns should be reasonable in both cases
+      // But CashOnCash returns should be reasonable in both cases
       expect(lowValueResult.cashOnCashReturn).toBeGreaterThan(0);
       expect(highValueResult.cashOnCashReturn).toBeGreaterThan(0);
     });
@@ -331,7 +331,7 @@ describe('BRRRR Strategy Calculator', () => {
       // Higher rehab costs should result in higher total investment
       expect(highRehabResult.totalInvestment).toBeGreaterThan(lowRehabResult.totalInvestment);
       
-      // But cash-on-cash returns should be reasonable
+      // But CashOnCash returns should be reasonable
       expect(lowRehabResult.cashOnCashReturn).toBeGreaterThan(0);
       expect(highRehabResult.cashOnCashReturn).toBeGreaterThan(0);
     });

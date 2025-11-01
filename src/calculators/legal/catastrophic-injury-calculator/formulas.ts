@@ -1,13 +1,13 @@
-import { catastrophic-injury-calculatorInputs, catastrophic-injury-calculatorMetrics, catastrophic-injury-calculatorAnalysis } from './types';
+import { CatastrophicInjuryCalculatorinputs, CatastrophicInjuryCalculatormetrics, CatastrophicInjuryCalculatoranalysis } from './types';
 
 // Catastrophic Injury Calculator - Legal calculations
-export function calculateResult(inputs: catastrophic-injury-calculatorInputs): number {
+export function calculateResult(inputs: CatastrophicInjuryCalculatorinputs): number {
   // Legal calculation logic
   const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
   return numericValues.reduce((sum, val) => sum + val, 0) || 0;
 }
 
-export function generateAnalysis(inputs: catastrophic-injury-calculatorInputs, metrics: catastrophic-injury-calculatorMetrics): catastrophic-injury-calculatorAnalysis {
+export function generateAnalysis(inputs: CatastrophicInjuryCalculatorinputs, metrics: CatastrophicInjuryCalculatormetrics): CatastrophicInjuryCalculatoranalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (Math.abs(result) > 100000) riskLevel = 'High';

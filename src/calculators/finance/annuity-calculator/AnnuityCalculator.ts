@@ -443,9 +443,9 @@ export const annuityCalculator: Calculator = {
   // Related calculators
   relatedCalculators: [
     'retirement-calculator',
-    'compound-interest-calculator',
-    'life-insurance-calculator',
+    'CompoundInterestCalculator',
+    'LifeInsuranceCalculator',
     'pension-calculator',
-    'social-security-calculator'
+    'SocialSecurityCalculator'
   ]
 };

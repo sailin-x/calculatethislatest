@@ -210,7 +210,7 @@ export function validateDepreciationPeriod(value: number, allInputs?: Record<str
 }
 
 export function validateExitStrategy(value: string, allInputs?: Record<string, any>): string | null {
-  const validStrategies = ['sell', 'refinance', '1031-exchange', 'hold-long-term'];
+  const validStrategies = ['sell', 'refinance', '1031-exchange', 'HoldLongTerm'];
   if (!value) return 'Exit strategy is required';
   if (!validStrategies.includes(value)) return 'Invalid exit strategy';
   return null;
@@ -410,9 +410,9 @@ export function validateAllRentalPropertyROIInputs(inputs: CalculatorInputs): { 
   if (inputs.monthlyRent && inputs.purchasePrice) {
     const rentToPriceRatio = (inputs.monthlyRent * 12) / inputs.purchasePrice;
     if (rentToPriceRatio < 0.06) {
-      warnings.push('Rent-to-price ratio is low - may indicate poor cash flow');
+      warnings.push('RentToPrice ratio is low - may indicate poor cash flow');
     } else if (rentToPriceRatio > 0.15) {
-      warnings.push('Rent-to-price ratio is high - verify rent is realistic');
+      warnings.push('RentToPrice ratio is high - verify rent is realistic');
     }
   }
 

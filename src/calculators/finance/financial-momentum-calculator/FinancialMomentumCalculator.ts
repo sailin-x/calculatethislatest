@@ -10,7 +10,7 @@ import {
 import { validateFinancialMomentumCalculatorInputs } from './validation';
 
 export const FinancialMomentumCalculator: Calculator = {
-  id: 'financial-momentum-calculator',
+  id: 'FinancialMomentumCalculator',
   title: 'Financial Momentum Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

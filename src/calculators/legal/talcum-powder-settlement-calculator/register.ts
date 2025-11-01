@@ -1,3 +1,3 @@
-import { TalcumPowderSettlementCalculatorCalculator } from './TalcumPowderSettlementCalculatorCalculator';
+import { TalcumPowderSettlementCalculator } from './TalcumPowderSettlementCalculator';
 
-export { TalcumPowderSettlementCalculatorCalculator };
+export { TalcumPowderSettlementCalculator };

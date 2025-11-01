@@ -1,4 +1,4 @@
-import { long-term-disability-ltd-elimination-period-calculatorInputs, long-term-disability-ltd-elimination-period-calculatorMetrics, long-term-disability-ltd-elimination-period-calculatorAnalysis } from './types';
+import { LongTermDisability-LtdEliminationPeriod-calculatorInputs, LongTermDisability-LtdEliminationPeriod-calculatorMetrics, LongTermDisability-LtdEliminationPeriod-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: long-term-disability-ltd-elimination-period-calculatorInputs): number {
+export function calculateResult(inputs: LongTermDisability-LtdEliminationPeriod-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: long-term-disability-ltd-elimination-per
   }
 }
 
-export function generateAnalysis(inputs: long-term-disability-ltd-elimination-period-calculatorInputs, metrics: long-term-disability-ltd-elimination-period-calculatorMetrics): long-term-disability-ltd-elimination-period-calculatorAnalysis {
+export function generateAnalysis(inputs: LongTermDisability-LtdEliminationPeriod-calculatorInputs, metrics: LongTermDisability-LtdEliminationPeriod-calculatorMetrics): LongTermDisability-LtdEliminationPeriod-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

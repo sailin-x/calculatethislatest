@@ -1,4 +1,4 @@
-export { GroundHandlingServiceCostCalculatorCalculator } from './GroundHandlingServiceCostCalculatorCalculator';
+export { GroundHandlingServiceCostCalculator } from './GroundHandlingServiceCostCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

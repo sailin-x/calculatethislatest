@@ -31,7 +31,7 @@ import {
 import { validateMortgagePaymentInputs, validateMortgagePaymentBusinessRules } from './validation';
 
 export const MortgagePaymentCalculator: Calculator = {
-  id: 'mortgage-payment-calculator',
+  id: 'MortgagePaymentCalculator',
   title: 'Mortgage Payment Calculator',
   category: 'finance',
   subcategory: 'Mortgage & Real Estate',
@@ -177,7 +177,7 @@ export const MortgagePaymentCalculator: Calculator = {
     },
     {
       id: 'borrowerDebtToIncomeRatio',
-      label: 'Debt-to-Income Ratio (%)',
+      label: 'DebtToIncome Ratio (%)',
       type: 'percentage',
       required: false,
       min: 0,
@@ -311,7 +311,7 @@ export const MortgagePaymentCalculator: Calculator = {
     },
     {
       id: 'loanToValueRatio',
-      label: 'Loan-to-Value Ratio',
+      label: 'LoanToValue Ratio',
       type: 'percentage',
       explanation: 'Loan amount as percentage of property value'
     },
@@ -365,7 +365,7 @@ export const MortgagePaymentCalculator: Calculator = {
         borrowerIncome: 80000,
         borrowerCreditScore: 750,
         borrowerDebtToIncomeRatio: 35,
-        firstPaymentDate: '2024-02-01',
+        firstPaymentDate: '20240201',
         marketGrowthRate: 3,
         analysisPeriod: 5
       },
@@ -406,7 +406,7 @@ export const MortgagePaymentCalculator: Calculator = {
         borrowerIncome: 65000,
         borrowerCreditScore: 720,
         borrowerDebtToIncomeRatio: 28,
-        firstPaymentDate: '2024-02-01',
+        firstPaymentDate: '20240201',
         marketGrowthRate: 4,
         analysisPeriod: 5
       },
@@ -447,7 +447,7 @@ export const MortgagePaymentCalculator: Calculator = {
         borrowerIncome: 90000,
         borrowerCreditScore: 780,
         borrowerDebtToIncomeRatio: 32,
-        firstPaymentDate: '2024-02-01',
+        firstPaymentDate: '20240201',
         initialFixedPeriod: 5,
         adjustmentPeriod: 1,
         lifetimeCap: 9.25,

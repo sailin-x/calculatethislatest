@@ -7,7 +7,7 @@ import { validateAllTaxBenefitInputs } from './quickValidation';
 describe('Conservation Easement Tax Benefit Calculator', () => {
   describe('Calculator Structure', () => {
     it('should have correct basic properties', () => {
-      expect(ConservationEasementTaxBenefitCalculator.id).toBe('conservation-easement-tax-benefit-calculator');
+      expect(ConservationEasementTaxBenefitCalculator.id).toBe('ConservationEasementTax-benefit-calculator');
       expect(ConservationEasementTaxBenefitCalculator.name).toBe('Conservation Easement Tax Benefit Calculator');
       expect(ConservationEasementTaxBenefitCalculator.category).toBe('finance');
       expect(ConservationEasementTaxBenefitCalculator.subcategory).toBe('tax');

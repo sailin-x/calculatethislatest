@@ -10,7 +10,7 @@ import {
 import { validateEquityValuationCalculatorInputs } from './validation';
 
 export const EquityValuationCalculator: Calculator = {
-  id: 'equity-valuation-calculator',
+  id: 'EquityValuationCalculator',
   title: 'Equity Valuation Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

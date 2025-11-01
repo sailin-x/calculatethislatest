@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateDentalImplantRoiCalculatorInputs, validateDentalImplantRoiCalculatorBusinessRules } from './validation';
 
-export const DentalImplantRoiCalculatorCalculator: Calculator: Calculator = {
-  id: 'dental-implant-roi-calculator-calculator',
+export const DentalImplantRoiCalculator: Calculator = {
+  id: 'DentalImplantRoi-calculator-calculator',
   title: 'Dental Implant ROI Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

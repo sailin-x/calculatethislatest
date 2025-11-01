@@ -1,3 +1,3 @@
-import { BoardGameInvestmentCalculatorCalculator } from './BoardGameInvestmentCalculatorCalculator';
+import { BoardGameInvestmentCalculator } from './BoardGameInvestmentCalculator';
 
-export { BoardGameInvestmentCalculatorCalculator };
+export { BoardGameInvestmentCalculator };

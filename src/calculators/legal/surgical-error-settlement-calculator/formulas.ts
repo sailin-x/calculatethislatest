@@ -1,13 +1,13 @@
-import { surgical-error-settlement-calculatorInputs, surgical-error-settlement-calculatorMetrics, surgical-error-settlement-calculatorAnalysis } from './types';
+import { SurgicalErrorSettlement-calculatorInputs, SurgicalErrorSettlement-calculatorMetrics, SurgicalErrorSettlement-calculatorAnalysis } from './types';
 
 // Surgical Error Settlement Calculator - Legal calculations
-export function calculateResult(inputs: surgical-error-settlement-calculatorInputs): number {
+export function calculateResult(inputs: SurgicalErrorSettlement-calculatorInputs): number {
   // Legal calculation logic
   const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
   return numericValues.reduce((sum, val) => sum + val, 0) || 0;
 }
 
-export function generateAnalysis(inputs: surgical-error-settlement-calculatorInputs, metrics: surgical-error-settlement-calculatorMetrics): surgical-error-settlement-calculatorAnalysis {
+export function generateAnalysis(inputs: SurgicalErrorSettlement-calculatorInputs, metrics: SurgicalErrorSettlement-calculatorMetrics): SurgicalErrorSettlement-calculatorAnalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (Math.abs(result) > 100000) riskLevel = 'High';

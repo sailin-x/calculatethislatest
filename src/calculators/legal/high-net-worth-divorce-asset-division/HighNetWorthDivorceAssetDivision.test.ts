@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { calculateResult } from './formulas';
 import { validateHighNetWorthDivorceAssetDivisionInputs } from './validation';
 
-describe('High-Net-Worth Divorce Asset Division', () => {
+describe('HighNetWorth Divorce Asset Division', () => {
   const mockInputs = {
     // Add mock inputs here
   };

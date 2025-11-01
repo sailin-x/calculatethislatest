@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateGardenCalculatorInputs, validateGardenCalculatorBusinessRules } from './validation';
 
-export const GardenCalculatorCalculator: Calculator: Calculator = {
-  id: 'garden-calculator-calculator',
+export const GardenCalculator: Calculator = {
+  id: 'GardenCalculatorCalculator',
   title: 'Garden Calculator Calculator',
   lifestyle: 'lifestyle', // e.g., 'finance', 'math', 'health', 'business'
   sublifestyle: 'Sublifestyle Name',

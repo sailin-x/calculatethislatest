@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateSidingCalculatorInputs, validateSidingCalculatorBusinessRules } from './validation';
 
-export const SidingCalculatorCalculator: Calculator: Calculator = {
-  id: 'siding-calculator-calculator',
+export const SidingCalculator: Calculator = {
+  id: 'SidingCalculatorCalculator',
   title: 'Siding Calculator Calculator',
   construction: 'construction', // e.g., 'finance', 'math', 'health', 'business'
   subconstruction: 'Subconstruction Name',

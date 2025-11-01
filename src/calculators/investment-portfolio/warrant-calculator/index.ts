@@ -1,4 +1,4 @@
-export { WarrantCalculatorCalculator } from './WarrantCalculatorCalculator';
+export { WarrantCalculator } from './WarrantCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

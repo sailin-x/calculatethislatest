@@ -1,4 +1,4 @@
-import { startup-valuation-calculatorInputs, startup-valuation-calculatorMetrics, startup-valuation-calculatorAnalysis } from './types';
+import { StartupValuationCalculatorinputs, StartupValuationCalculatormetrics, StartupValuationCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: startup-valuation-calculatorInputs): number {
+export function calculateResult(inputs: StartupValuationCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: startup-valuation-calculatorInputs): num
   }
 }
 
-export function generateAnalysis(inputs: startup-valuation-calculatorInputs, metrics: startup-valuation-calculatorMetrics): startup-valuation-calculatorAnalysis {
+export function generateAnalysis(inputs: StartupValuationCalculatorinputs, metrics: StartupValuationCalculatormetrics): StartupValuationCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

@@ -1,4 +1,4 @@
-import { self-funded-health-plan-calculatorInputs, self-funded-health-plan-calculatorMetrics, self-funded-health-plan-calculatorAnalysis } from './types';
+import { SelfFundedHealth-plan-calculatorInputs, SelfFundedHealth-plan-calculatorMetrics, SelfFundedHealth-plan-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: self-funded-health-plan-calculatorInputs): number {
+export function calculateResult(inputs: SelfFundedHealth-plan-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: self-funded-health-plan-calculatorInputs
   }
 }
 
-export function generateAnalysis(inputs: self-funded-health-plan-calculatorInputs, metrics: self-funded-health-plan-calculatorMetrics): self-funded-health-plan-calculatorAnalysis {
+export function generateAnalysis(inputs: SelfFundedHealth-plan-calculatorInputs, metrics: SelfFundedHealth-plan-calculatorMetrics): SelfFundedHealth-plan-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

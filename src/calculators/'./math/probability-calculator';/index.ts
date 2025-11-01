@@ -1,3 +1,0 @@
-export * from './'./math/probability-calculator';Calculator';
-export * from './register';
-export * from './types';

@@ -1,4 +1,4 @@
-import { cost-segregation-depreciationInputs, cost-segregation-depreciationMetrics, cost-segregation-depreciationAnalysis } from './types';
+import { CostSegregationDepreciationinputs, CostSegregationDepreciationmetrics, CostSegregationDepreciationanalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: cost-segregation-depreciationInputs): number {
+export function calculateResult(inputs: CostSegregationDepreciationinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: cost-segregation-depreciationInputs): nu
   }
 }
 
-export function generateAnalysis(inputs: cost-segregation-depreciationInputs, metrics: cost-segregation-depreciationMetrics): cost-segregation-depreciationAnalysis {
+export function generateAnalysis(inputs: CostSegregationDepreciationinputs, metrics: CostSegregationDepreciationmetrics): CostSegregationDepreciationanalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

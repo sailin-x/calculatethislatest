@@ -1,4 +1,4 @@
-export { DrywallCalculatorCalculator } from './DrywallCalculatorCalculator';
+export { DrywallCalculator } from './DrywallCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

@@ -10,7 +10,7 @@ import {
 import { validateTotalCostOfOwnershipForCommercialFleetCalculatorInputs } from './validation';
 
 export const TotalCostOfOwnershipForCommercialFleetCalculator: Calculator = {
-  id: 'total-cost-of-ownership-for-commercial-fleet-calculator',
+  id: 'TotalCostOf-OwnershipForCommercial-fleet-calculator',
   title: 'Total Cost of Ownership for Commercial Fleet Calculator',
   category: 'business',
   subcategory: 'Financial Planning',

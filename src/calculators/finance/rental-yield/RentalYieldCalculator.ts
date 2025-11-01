@@ -1,11 +1,11 @@
 import { Calculator } from '../../types/calculator';
 
 export const RentalYieldCalculator: Calculator = {
-  id: 'rental-yield-calculator',
+  id: 'RentalYieldCalculator',
   name: 'Rental Yield Calculator',
   category: 'finance',
   subcategory: 'real-estate',
-  description: 'Calculate rental yield metrics including gross yield, net yield, and cash-on-cash return for real estate investments',
+  description: 'Calculate rental yield metrics including gross yield, net yield, and CashOnCash return for real estate investments',
   inputs: [
     // Property Details
     { id: 'propertyValue', name: 'Property Value', type: 'number', unit: 'USD', required: true, description: 'Current market value of the property', placeholder: '300000', min: 0, max: 10000000 },
@@ -90,7 +90,7 @@ export const RentalYieldCalculator: Calculator = {
   outputs: [
     { id: 'grossYield', name: 'Gross Yield', type: 'number', unit: '%', description: 'Gross rental yield (annual rent / property value)' },
     { id: 'netYield', name: 'Net Yield', type: 'number', unit: '%', description: 'Net rental yield after expenses' },
-    { id: 'cashOnCashReturn', name: 'Cash-on-Cash Return', type: 'number', unit: '%', description: 'Annual cash flow return on investment' },
+    { id: 'cashOnCashReturn', name: 'CashOnCash Return', type: 'number', unit: '%', description: 'Annual cash flow return on investment' },
     { id: 'totalInvestment', name: 'Total Investment', type: 'number', unit: 'USD', description: 'Total cash invested' },
     { id: 'monthlyCashFlow', name: 'Monthly Cash Flow', type: 'number', unit: 'USD', description: 'Monthly net cash flow' },
     { id: 'annualCashFlow', name: 'Annual Cash Flow', type: 'number', unit: 'USD', description: 'Annual net cash flow' },
@@ -101,8 +101,8 @@ export const RentalYieldCalculator: Calculator = {
     { id: 'debtServiceCoverage', name: 'Debt Service Coverage Ratio', type: 'number', description: 'Net operating income to debt service ratio' },
     { id: 'breakEvenRent', name: 'Break-Even Rent', type: 'number', unit: 'USD', description: 'Minimum rent needed to break even' },
     { id: 'breakEvenOccupancy', name: 'Break-Even Occupancy', type: 'number', unit: '%', description: 'Minimum occupancy rate to break even' },
-    { id: 'rentToPriceRatio', name: 'Rent-to-Price Ratio', type: 'number', description: 'Annual rent to property value ratio' },
-    { id: 'priceToRentRatio', name: 'Price-to-Rent Ratio', type: 'number', description: 'Property value to annual rent ratio' },
+    { id: 'rentToPriceRatio', name: 'RentToPrice Ratio', type: 'number', description: 'Annual rent to property value ratio' },
+    { id: 'priceToRentRatio', name: 'PriceToRent Ratio', type: 'number', description: 'Property value to annual rent ratio' },
     { id: 'capRate', name: 'Cap Rate', type: 'number', unit: '%', description: 'Capitalization rate' },
     { id: 'totalROI', name: 'Total ROI', type: 'number', unit: '%', description: 'Total return on investment including appreciation' },
     { id: 'annualizedROI', name: 'Annualized ROI', type: 'number', unit: '%', description: 'Annualized total return' },

@@ -1,3 +1,3 @@
-import { ClassicCarValuationCalculatorCalculator } from './ClassicCarValuationCalculatorCalculator';
+import { ClassicCarValuationCalculator } from './ClassicCarValuationCalculator';
 
-export { ClassicCarValuationCalculatorCalculator };
+export { ClassicCarValuationCalculator };

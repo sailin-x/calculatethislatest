@@ -10,7 +10,7 @@ import {
 import { validateAssetProtectionCalculatorInputs } from './validation';
 
 export const AssetProtectionCalculator: Calculator = {
-  id: 'asset-protection-calculator',
+  id: 'AssetProtectionCalculator',
   title: 'Asset Protection Calculator',
   category: 'business',
   subcategory: 'Financial Planning',

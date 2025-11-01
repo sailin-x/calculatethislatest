@@ -1,4 +1,4 @@
-export { FuturesTradingProfitabilityCalculatorCalculator } from './FuturesTradingProfitabilityCalculatorCalculator';
+export { FuturesTradingProfitabilityCalculator } from './FuturesTradingProfitabilityCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

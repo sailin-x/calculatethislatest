@@ -10,7 +10,7 @@ import {
 import { validateDebtPayoffCalculatorInputs } from './validation';
 
 export const DebtPayoffCalculator: Calculator = {
-  id: 'debt-payoff-calculator',
+  id: 'DebtPayoffCalculator',
   title: 'Debt Payoff Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

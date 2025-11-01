@@ -171,7 +171,7 @@ export function validateValuationInputs(inputs: CalculatorInputs): ValidationRes
   }
 
   // Lease terms validation
-  const validLeaseTerms = ['month-to-month', 'short-term', 'medium-term', 'long-term'];
+  const validLeaseTerms = ['MonthToMonth', 'short-term', 'medium-term', 'long-term'];
   const leaseTerms = inputs.leaseTerms as string;
   if (!validLeaseTerms.includes(leaseTerms)) {
     errors.push('Invalid lease terms selected');

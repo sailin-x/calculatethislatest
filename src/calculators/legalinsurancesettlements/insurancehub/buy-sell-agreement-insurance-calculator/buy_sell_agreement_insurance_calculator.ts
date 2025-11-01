@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { buy_sell_agreement_insurance_calculatorInputs, buy_sell_agreement_insurance_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const buy_sell_agreement_insurance_calculatorCalculator: Calculator = {
-  id: 'buy-sell-agreement-insurance-calculator',
+export const BuySellAgreement-insurance-calculator: Calculator = {
+  id: 'BuySellAgreement-insurance-calculator',
   title: 'Buy Sell Agreement Insurance Calculator Calculator',
   category: 'legalinsurancesettlements',
   subcategory: 'insurancehub',

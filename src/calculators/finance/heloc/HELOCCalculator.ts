@@ -9,7 +9,7 @@ export const HELOCCalculator: Calculator<HELOCInputs, HELOCOutputs> = {
   category: 'finance',
   subcategory: 'real-estate',
   description: 'Calculate HELOC terms, payments, and costs for home equity financing',
-  longDescription: `A comprehensive HELOC calculator that analyzes home equity line of credit financing options. This calculator evaluates equity availability, payment structures, costs, and risks for homeowners seeking flexible credit lines secured by their property. It provides detailed analysis of combined loan-to-value ratios, payment schedules, cost comparisons, and risk assessment to help borrowers make informed decisions about HELOC financing.`,
+  longDescription: `A comprehensive HELOC calculator that analyzes home equity line of credit financing options. This calculator evaluates equity availability, payment structures, costs, and risks for homeowners seeking flexible credit lines secured by their property. It provides detailed analysis of combined LoanToValue ratios, payment schedules, cost comparisons, and risk assessment to help borrowers make informed decisions about HELOC financing.`,
   
   inputs: {
     // Property Information
@@ -213,8 +213,8 @@ export const HELOCCalculator: Calculator<HELOCInputs, HELOCOutputs> = {
     },
     borrowerDebtToIncomeRatio: {
       type: 'number',
-      label: 'Debt-to-Income Ratio (%)',
-      description: 'Borrower\'s debt-to-income ratio',
+      label: 'DebtToIncome Ratio (%)',
+      description: 'Borrower\'s DebtToIncome ratio',
       required: true,
       min: 0,
       max: 100,
@@ -524,7 +524,7 @@ export const HELOCCalculator: Calculator<HELOCInputs, HELOCOutputs> = {
     combinedLTV: {
       type: 'number',
       label: 'Combined LTV',
-      description: 'Combined loan-to-value ratio'
+      description: 'Combined LoanToValue ratio'
     },
     monthlyPayment: {
       type: 'number',

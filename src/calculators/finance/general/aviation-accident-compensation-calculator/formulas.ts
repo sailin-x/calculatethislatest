@@ -1,4 +1,4 @@
-import { aviation-accident-compensation-calculatorInputs, aviation-accident-compensation-calculatorMetrics, aviation-accident-compensation-calculatorAnalysis } from './types';
+import { AviationAccidentCompensation-calculatorInputs, AviationAccidentCompensation-calculatorMetrics, AviationAccidentCompensation-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: aviation-accident-compensation-calculatorInputs): number {
+export function calculateResult(inputs: AviationAccidentCompensation-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: aviation-accident-compensation-calculato
   }
 }
 
-export function generateAnalysis(inputs: aviation-accident-compensation-calculatorInputs, metrics: aviation-accident-compensation-calculatorMetrics): aviation-accident-compensation-calculatorAnalysis {
+export function generateAnalysis(inputs: AviationAccidentCompensation-calculatorInputs, metrics: AviationAccidentCompensation-calculatorMetrics): AviationAccidentCompensation-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

@@ -1,3 +1,3 @@
-import { CreditCardPayoffCalculatorCalculator } from './CreditCardPayoffCalculatorCalculator';
+import { CreditCardPayoffCalculator } from './CreditCardPayoffCalculator';
 
-export { CreditCardPayoffCalculatorCalculator };
+export { CreditCardPayoffCalculator };

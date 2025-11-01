@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { calories_burned_calculatorInputs, calories_burned_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const calories_burned_calculatorCalculator: Calculator = {
-  id: 'calories-burned-calculator',
+export const CaloriesBurnedCalculator: Calculator = {
+  id: 'CaloriesBurnedCalculator',
   title: 'Calories Burned Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

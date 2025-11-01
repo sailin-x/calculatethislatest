@@ -1,4 +1,4 @@
-import { calories-burned-calculatorInputs, calories-burned-calculatorMetrics, calories-burned-calculatorAnalysis } from './types';
+import { CaloriesBurnedCalculatorinputs, CaloriesBurnedCalculatormetrics, CaloriesBurnedCalculatoranalysis } from './types';
 
 
 // Calorie Calculator - Nutrition calculations
@@ -22,7 +22,7 @@ export function calculateWeightLossRate(calorieDeficit: number): number {
   return calorieDeficit * 7 / 3500; // pounds per week
 }
 
-export function calculateResult(inputs: calories-burned-calculatorInputs): number {
+export function calculateResult(inputs: CaloriesBurnedCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -46,7 +46,7 @@ export function calculateResult(inputs: calories-burned-calculatorInputs): numbe
   }
 }
 
-export function generateAnalysis(inputs: calories-burned-calculatorInputs, metrics: calories-burned-calculatorMetrics): calories-burned-calculatorAnalysis {
+export function generateAnalysis(inputs: CaloriesBurnedCalculatorinputs, metrics: CaloriesBurnedCalculatormetrics): CaloriesBurnedCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

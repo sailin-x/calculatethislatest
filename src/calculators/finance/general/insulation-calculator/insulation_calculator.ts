@@ -2,7 +2,7 @@ import { Calculator } from '../../../../types/calculator';
 import { insulation_calculatorInputs, insulation_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const insulation_calculatorCalculator: Calculator = {
+export const insulation-calculator: Calculator = {
   id: 'insulation-calculator',
   title: 'Insulation Calculator Calculator',
   category: 'finance',

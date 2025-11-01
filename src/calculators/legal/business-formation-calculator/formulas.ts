@@ -1,4 +1,4 @@
-import { business-formation-calculatorInputs, business-formation-calculatorMetrics, business-formation-calculatorAnalysis } from './types';
+import { BusinessFormationCalculatorinputs, BusinessFormationCalculatormetrics, BusinessFormationCalculatoranalysis } from './types';
 
 
 // Business Calculator - Financial metrics
@@ -14,7 +14,7 @@ export function calculatePaybackPeriod(initialInvestment: number, annualCashFlow
   return initialInvestment / annualCashFlow;
 }
 
-export function calculateResult(inputs: business-formation-calculatorInputs): number {
+export function calculateResult(inputs: BusinessFormationCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: business-formation-calculatorInputs): nu
   }
 }
 
-export function generateAnalysis(inputs: business-formation-calculatorInputs, metrics: business-formation-calculatorMetrics): business-formation-calculatorAnalysis {
+export function generateAnalysis(inputs: BusinessFormationCalculatorinputs, metrics: BusinessFormationCalculatormetrics): BusinessFormationCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

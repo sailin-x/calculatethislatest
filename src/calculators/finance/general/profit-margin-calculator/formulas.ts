@@ -1,4 +1,4 @@
-import { profit-margin-calculatorInputs, profit-margin-calculatorMetrics, profit-margin-calculatorAnalysis } from './types';
+import { ProfitMarginCalculatorinputs, ProfitMarginCalculatormetrics, ProfitMarginCalculatoranalysis } from './types';
 
 
 // Business Calculator - Financial metrics
@@ -14,7 +14,7 @@ export function calculatePaybackPeriod(initialInvestment: number, annualCashFlow
   return initialInvestment / annualCashFlow;
 }
 
-export function calculateResult(inputs: profit-margin-calculatorInputs): number {
+export function calculateResult(inputs: ProfitMarginCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: profit-margin-calculatorInputs): number 
   }
 }
 
-export function generateAnalysis(inputs: profit-margin-calculatorInputs, metrics: profit-margin-calculatorMetrics): profit-margin-calculatorAnalysis {
+export function generateAnalysis(inputs: ProfitMarginCalculatorinputs, metrics: ProfitMarginCalculatormetrics): ProfitMarginCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

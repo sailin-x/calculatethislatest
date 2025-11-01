@@ -1,3 +1,3 @@
-import { SkewnessCalculatorCalculator } from './SkewnessCalculatorCalculator';
+import { SkewnessCalculator } from './SkewnessCalculator';
 
-export { SkewnessCalculatorCalculator };
+export { SkewnessCalculator };

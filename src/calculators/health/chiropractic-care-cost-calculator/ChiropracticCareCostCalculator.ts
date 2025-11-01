@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateChiropracticCareCostCalculatorInputs } from './validation';
 
 export const ChiropracticCareCostCalculator: Calculator = {
-  id: 'chiropractic-care-cost-calculator',
+  id: 'ChiropracticCareCost-calculator',
   title: 'Chiropractic Care Cost Calculator',
   category: 'health',
   subcategory: 'General',

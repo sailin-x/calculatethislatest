@@ -4,7 +4,7 @@ import { calculateResult, generateAnalysis } from './formulas';
 import { validateinheritancetaxestimatorCalculatorInputs } from './validation';
 
 export const inheritancetaxestimatorCalculator: Calculator = {
-  id: 'inheritance-tax-estimator',
+  id: 'InheritanceTaxEstimator',
   title: 'Inheritance Tax Estimator',
   category: 'finance',
   subcategory: 'General',

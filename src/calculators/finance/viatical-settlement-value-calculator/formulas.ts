@@ -1,4 +1,4 @@
-import { viatical-settlement-value-calculatorInputs, viatical-settlement-value-calculatorMetrics, viatical-settlement-value-calculatorAnalysis } from './types';
+import { ViaticalSettlementValue-calculatorInputs, ViaticalSettlementValue-calculatorMetrics, ViaticalSettlementValue-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: viatical-settlement-value-calculatorInputs): number {
+export function calculateResult(inputs: ViaticalSettlementValue-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: viatical-settlement-value-calculatorInpu
   }
 }
 
-export function generateAnalysis(inputs: viatical-settlement-value-calculatorInputs, metrics: viatical-settlement-value-calculatorMetrics): viatical-settlement-value-calculatorAnalysis {
+export function generateAnalysis(inputs: ViaticalSettlementValue-calculatorInputs, metrics: ViaticalSettlementValue-calculatorMetrics): ViaticalSettlementValue-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

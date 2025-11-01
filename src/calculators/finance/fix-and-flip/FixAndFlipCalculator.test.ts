@@ -14,7 +14,7 @@ describe('FixAndFlipCalculator', () => {
     yearBuilt: 1985,
     propertyCondition: 'fair',
     purchasePrice: 250000,
-    purchaseDate: '2024-01-15',
+    purchaseDate: '20240115',
     closingCosts: 10000,
     downPayment: 50000,
     loanAmount: 200000,
@@ -42,7 +42,7 @@ describe('FixAndFlipCalculator', () => {
     utilities: 250,
     maintenance: 120,
     targetSalePrice: 380000,
-    targetSaleDate: '2024-07-15',
+    targetSaleDate: '20240715',
     realtorCommission: 6,
     closingCostsSeller: 6000,
     stagingCosts: 3000,
@@ -63,7 +63,7 @@ describe('FixAndFlipCalculator', () => {
   };
 
   test('should have correct calculator properties', () => {
-    expect(FixAndFlipCalculator.id).toBe('fix-and-flip-calculator');
+    expect(FixAndFlipCalculator.id).toBe('FixAndFlip-calculator');
     expect(FixAndFlipCalculator.name).toBe('Fix and Flip Calculator');
     expect(FixAndFlipCalculator.category).toBe('finance');
     expect(FixAndFlipCalculator.subcategory).toBe('real-estate');

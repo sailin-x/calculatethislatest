@@ -1,3 +1,3 @@
-import { LandedCostCalculatorCalculator } from './LandedCostCalculatorCalculator';
+import { LandedCostCalculator } from './LandedCostCalculator';
 
-export { LandedCostCalculatorCalculator };
+export { LandedCostCalculator };

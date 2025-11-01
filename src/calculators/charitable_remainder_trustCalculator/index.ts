@@ -1,3 +1,3 @@
-export * from './charitable_remainder_trustCalculatorCalculator';
+export * from './charitable_remainder_trustCalculator';
 export * from './register';
 export * from './types';

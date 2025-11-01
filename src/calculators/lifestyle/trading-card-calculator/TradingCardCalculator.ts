@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateTradingCardCalculatorInputs, validateTradingCardCalculatorBusinessRules } from './validation';
 
-export const TradingCardCalculatorCalculator: Calculator: Calculator = {
-  id: 'trading-card-calculator-calculator',
+export const TradingCardCalculator: Calculator = {
+  id: 'TradingCardCalculator-calculator',
   title: 'Trading Card Calculator Calculator',
   lifestyle: 'lifestyle', // e.g., 'finance', 'math', 'health', 'business'
   sublifestyle: 'Sublifestyle Name',

@@ -3,7 +3,7 @@ import { calculateTaxBenefits, generateTaxBenefitAnalysis } from './formulas';
 import { validateTaxBenefitInputs } from './validation';
 
 export const ConservationEasementTaxBenefitCalculator: Calculator = {
-  id: 'conservation-easement-tax-benefit-calculator',
+  id: 'ConservationEasementTax-benefit-calculator',
   name: 'Conservation Easement Tax Benefit Calculator',
   category: 'finance',
   subcategory: 'tax',

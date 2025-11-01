@@ -3,7 +3,7 @@ import { fela_settlement_calculator_railroadInputs, fela_settlement_calculator_r
 import { calculateResult, generateAnalysis } from './formulas';
 
 export const fela_settlement_calculator_railroadCalculator: Calculator = {
-  id: 'fela-settlement-calculator-railroad',
+  id: 'FelaSettlementCalculator-railroad',
   title: 'FELA Settlement Calculator (Railroad) Calculator',
   category: 'finance',
   subcategory: 'general',

@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validatePoliticalRiskCalculatorInputs } from './validation';
 
 export const PoliticalRiskCalculator: Calculator = {
-  id: 'political-risk-calculator',
+  id: 'PoliticalRiskCalculator',
   title: 'Political Risk Calculator',
   category: 'insurance',
   subcategory: 'General',

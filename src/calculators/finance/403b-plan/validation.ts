@@ -1,170 +1,159 @@
-import { FourZeroThreeBInputs } from './types';
+import { FourOhThreeBInputs } from './types';
 
-export function validateFourZeroThreeBInputs(inputs: FourZeroThreeBInputs): { isValid: boolean; errors: string[] } {
-  const errors: string[] = [];
+export function validateFourOhThreeBInputs(inputs: FourOhThreeBInputs): Array<{ field: string; message: string }> {
+  const errors: Array<{ field: string; message: string }> = [];
 
-  // Personal Information Validation
-  if (!inputs.currentAge || inputs.currentAge < 18 || inputs.currentAge > 100) {
-    errors.push('Current age must be between 18 and 100');
+  // Validate ages
+  if (!inputs.currentAge || inputs.currentAge < 18) {
+    errors.push({ field: 'currentAge', message: 'Current age must be at least 18' });
+  }
+  if (inputs.currentAge && inputs.currentAge > 100) {
+    errors.push({ field: 'currentAge', message: 'Current age cannot exceed 100' });
   }
 
-  if (!inputs.retirementAge || inputs.retirementAge <= inputs.currentAge || inputs.retirementAge > 100) {
-    errors.push('Retirement age must be greater than current age and less than or equal to 100');
+  if (!inputs.retirementAge || inputs.retirementAge <= inputs.currentAge) {
+    errors.push({ field: 'retirementAge', message: 'Retirement age must be greater than current age' });
+  }
+  if (inputs.retirementAge && inputs.retirementAge > 100) {
+    errors.push({ field: 'retirementAge', message: 'Retirement age cannot exceed 100' });
   }
 
-  if (!inputs.lifeExpectancy || inputs.lifeExpectancy <= inputs.retirementAge || inputs.lifeExpectancy > 120) {
-    errors.push('Life expectancy must be greater than retirement age and less than or equal to 120');
+  // Validate salary
+  if (!inputs.currentSalary || inputs.currentSalary <= 0) {
+    errors.push({ field: 'currentSalary', message: 'Current salary must be greater than 0' });
+  }
+  if (inputs.currentSalary && inputs.currentSalary > 10000000) {
+    errors.push({ field: 'currentSalary', message: 'Current salary seems unusually high' });
   }
 
-  // Account Information Validation
-  if (inputs.currentBalance !== undefined && inputs.currentBalance < 0) {
-    errors.push('Current balance cannot be negative');
+  // Validate contribution percentages
+  if (inputs.employeeContributionPercent === undefined || inputs.employeeContributionPercent < 0) {
+    errors.push({ field: 'employeeContributionPercent', message: 'Employee contribution percentage cannot be negative' });
+  }
+  if (inputs.employeeContributionPercent && inputs.employeeContributionPercent > 100) {
+    errors.push({ field: 'employeeContributionPercent', message: 'Employee contribution percentage cannot exceed 100%' });
   }
 
-  if (!inputs.yearsOfService || inputs.yearsOfService < 0) {
-    errors.push('Years of service cannot be negative');
+  if (inputs.employerMatchPercent === undefined || inputs.employerMatchPercent < 0) {
+    errors.push({ field: 'employerMatchPercent', message: 'Employer match percentage cannot be negative' });
+  }
+  if (inputs.employerMatchPercent && inputs.employerMatchPercent > 200) {
+    errors.push({ field: 'employerMatchPercent', message: 'Employer match percentage seems unusually high' });
   }
 
-  // Contribution Information Validation
-  if (!inputs.annualSalary || inputs.annualSalary <= 0) {
-    errors.push('Annual salary must be greater than 0');
+  if (inputs.employerMatchLimitPercent === undefined || inputs.employerMatchLimitPercent < 0) {
+    errors.push({ field: 'employerMatchLimitPercent', message: 'Employer match limit percentage cannot be negative' });
+  }
+  if (inputs.employerMatchLimitPercent && inputs.employerMatchLimitPercent > 100) {
+    errors.push({ field: 'employerMatchLimitPercent', message: 'Employer match limit percentage cannot exceed 100%' });
   }
 
-  if (inputs.employeeContributionPercent !== undefined &&
-      (inputs.employeeContributionPercent < 0 || inputs.employeeContributionPercent > 100)) {
-    errors.push('Employee contribution percentage must be between 0 and 100');
+  // Validate salary increase
+  if (inputs.expectedAnnualSalaryIncrease === undefined || inputs.expectedAnnualSalaryIncrease < -10) {
+    errors.push({ field: 'expectedAnnualSalaryIncrease', message: 'Expected salary increase cannot be less than -10%' });
+  }
+  if (inputs.expectedAnnualSalaryIncrease && inputs.expectedAnnualSalaryIncrease > 20) {
+    errors.push({ field: 'expectedAnnualSalaryIncrease', message: 'Expected salary increase seems unusually high (>20%)' });
   }
 
-  if (inputs.employerMatchPercent !== undefined &&
-      (inputs.employerMatchPercent < 0 || inputs.employerMatchPercent > 100)) {
-    errors.push('Employer match percentage must be between 0 and 100');
+  // Validate current balance
+  if (inputs.currentBalance === undefined || inputs.currentBalance < 0) {
+    errors.push({ field: 'currentBalance', message: 'Current balance cannot be negative' });
   }
 
-  if (inputs.annualContributionLimit !== undefined && inputs.annualContributionLimit <= 0) {
-    errors.push('Annual contribution limit must be greater than 0');
+  // Validate investment return
+  if (inputs.expectedAnnualReturn === undefined || inputs.expectedAnnualReturn < -10) {
+    errors.push({ field: 'expectedAnnualReturn', message: 'Expected annual return cannot be less than -10%' });
+  }
+  if (inputs.expectedAnnualReturn && inputs.expectedAnnualReturn > 30) {
+    errors.push({ field: 'expectedAnnualReturn', message: 'Expected annual return seems unusually high (>30%)' });
   }
 
-  if (inputs.lifetimeContributionLimit !== undefined && inputs.lifetimeContributionLimit <= 0) {
-    errors.push('Lifetime contribution limit must be greater than 0');
+  // Validate fees
+  if (inputs.investmentFees === undefined || inputs.investmentFees < 0) {
+    errors.push({ field: 'investmentFees', message: 'Investment fees cannot be negative' });
+  }
+  if (inputs.investmentFees && inputs.investmentFees > 5) {
+    errors.push({ field: 'investmentFees', message: 'Investment fees seem unusually high (>5%)' });
   }
 
-  // Investment Information Validation
-  if (inputs.expectedAnnualReturn !== undefined &&
-      (inputs.expectedAnnualReturn < 0 || inputs.expectedAnnualReturn > 20)) {
-    errors.push('Expected annual return must be between 0 and 20 percent');
+  // Validate tax rates
+  if (inputs.currentTaxRate === undefined || inputs.currentTaxRate < 0) {
+    errors.push({ field: 'currentTaxRate', message: 'Current tax rate cannot be negative' });
+  }
+  if (inputs.currentTaxRate && inputs.currentTaxRate > 50) {
+    errors.push({ field: 'currentTaxRate', message: 'Current tax rate cannot exceed 50%' });
   }
 
-  if (inputs.inflationRate !== undefined &&
-      (inputs.inflationRate < -5 || inputs.inflationRate > 15)) {
-    errors.push('Inflation rate must be between -5% and 15%');
+  if (inputs.retirementTaxRate === undefined || inputs.retirementTaxRate < 0) {
+    errors.push({ field: 'retirementTaxRate', message: 'Retirement tax rate cannot be negative' });
+  }
+  if (inputs.retirementTaxRate && inputs.retirementTaxRate > 50) {
+    errors.push({ field: 'retirementTaxRate', message: 'Retirement tax rate cannot exceed 50%' });
   }
 
-  // Tax Information Validation
-  if (inputs.currentTaxRate !== undefined &&
-      (inputs.currentTaxRate < 0 || inputs.currentTaxRate > 50)) {
-    errors.push('Current tax rate must be between 0 and 50 percent');
+  // Validate catch-up contribution
+  if (inputs.catchUpContribution !== undefined && inputs.catchUpContribution < 0) {
+    errors.push({ field: 'catchUpContribution', message: 'Catch-up contribution cannot be negative' });
   }
 
-  if (inputs.retirementTaxRate !== undefined &&
-      (inputs.retirementTaxRate < 0 || inputs.retirementTaxRate > 50)) {
-    errors.push('Retirement tax rate must be between 0 and 50 percent');
-  }
-
-  // Analysis Parameters Validation
-  if (!inputs.analysisPeriod || inputs.analysisPeriod <= 0) {
-    errors.push('Analysis period must be greater than 0 years');
-  }
-
-  if (inputs.socialSecurityBenefit !== undefined && inputs.socialSecurityBenefit < 0) {
-    errors.push('Social Security benefit cannot be negative');
-  }
-
-  if (inputs.otherRetirementIncome !== undefined && inputs.otherRetirementIncome < 0) {
-    errors.push('Other retirement income cannot be negative');
-  }
-
-  // Withdrawal Strategy Validation
-  if (inputs.annualWithdrawalAmount !== undefined && inputs.annualWithdrawalAmount < 0) {
-    errors.push('Annual withdrawal amount cannot be negative');
-  }
-
-  if (inputs.withdrawalPercentage !== undefined &&
-      (inputs.withdrawalPercentage < 0 || inputs.withdrawalPercentage > 100)) {
-    errors.push('Withdrawal percentage must be between 0 and 100');
-  }
-
-  // Cost Information Validation
-  if (inputs.annualFees !== undefined && (inputs.annualFees < 0 || inputs.annualFees > 10)) {
-    errors.push('Annual fees must be between 0 and 10 percent');
-  }
-
-  if (inputs.administrativeFees !== undefined && inputs.administrativeFees < 0) {
-    errors.push('Administrative fees cannot be negative');
-  }
-
-  return {
-    isValid: errors.length === 0,
-    errors
-  };
+  return errors;
 }
 
-export function validateFourZeroThreeBBusinessRules(inputs: FourZeroThreeBInputs): { isValid: boolean; warnings: string[] } {
-  const warnings: string[] = [];
+export function validateFourOhThreeBBusinessRules(inputs: FourOhThreeBInputs): Array<{ field: string; message: string }> {
+  const warnings: Array<{ field: string; message: string }> = [];
 
   // Business rule validations
-  if (inputs.currentAge && inputs.retirementAge) {
-    const yearsToRetirement = inputs.retirementAge - inputs.currentAge;
-    if (yearsToRetirement < 10) {
-      warnings.push('Less than 10 years to retirement - consider aggressive savings strategy');
-    }
+  const yearsToRetirement = inputs.retirementAge - inputs.currentAge;
+
+  if (yearsToRetirement < 10) {
+    warnings.push({
+      field: 'retirementAge',
+      message: 'Short time to retirement - consider delaying retirement or reducing contribution expectations'
+    });
   }
 
-  if (inputs.employeeContributionPercent && inputs.employeeContributionPercent < 5) {
-    warnings.push('Employee contribution is below 5% - missing out on tax benefits and employer match');
+  if (inputs.employeeContributionPercent < 5) {
+    warnings.push({
+      field: 'employeeContributionPercent',
+      message: 'Low contribution percentage may result in insufficient retirement savings'
+    });
   }
 
-  if (inputs.employerMatchPercent && inputs.employerMatchPercent > 0 &&
-      inputs.employeeContributionPercent && inputs.employeeContributionPercent < inputs.employerMatchPercent) {
-    warnings.push('Not maximizing employer match - increase contributions to match employer percentage');
+  if (inputs.expectedAnnualReturn < 4) {
+    warnings.push({
+      field: 'expectedAnnualReturn',
+      message: 'Low expected return may not keep pace with inflation'
+    });
   }
 
-  if (inputs.currentAge && inputs.currentAge >= 50 && !inputs.catchUpContributions) {
-    warnings.push('Age 50+ eligible for catch-up contributions but not enabled');
+  if (inputs.investmentFees > 1.5) {
+    warnings.push({
+      field: 'investmentFees',
+      message: 'High investment fees will significantly reduce retirement savings'
+    });
   }
 
-  if (inputs.expectedAnnualReturn && inputs.expectedAnnualReturn > 12) {
-    warnings.push('Expected return above 12% may be unrealistic - consider more conservative assumptions');
+  if (inputs.employerMatchPercent > 0 && inputs.employeeContributionPercent < inputs.employerMatchLimitPercent) {
+    warnings.push({
+      field: 'employeeContributionPercent',
+      message: 'You may not be maximizing free employer matching contributions'
+    });
   }
 
-  if (inputs.currentTaxRate && inputs.retirementTaxRate &&
-      inputs.currentTaxRate < inputs.retirementTaxRate) {
-    warnings.push('Retirement tax rate higher than current rate - consider Roth options if available');
+  if (inputs.currentAge >= 50 && !inputs.includeCatchUpContributions) {
+    warnings.push({
+      field: 'includeCatchUpContributions',
+      message: 'Consider catch-up contributions now that you are 50 or older'
+    });
   }
 
-  if (inputs.annualSalary && inputs.employeeContributionPercent) {
-    const contributionAmount = inputs.annualSalary * (inputs.employeeContributionPercent / 100);
-    if (contributionAmount > 22000) {
-      warnings.push('Contribution exceeds 2023 annual limit of $22,000');
-    }
+  if (inputs.expectedAnnualSalaryIncrease < 2) {
+    warnings.push({
+      field: 'expectedAnnualSalaryIncrease',
+      message: 'Low salary increase assumptions may understate future contributions'
+    });
   }
 
-  if (inputs.currentBalance && inputs.annualSalary) {
-    const balanceToSalaryRatio = inputs.currentBalance / inputs.annualSalary;
-    if (balanceToSalaryRatio < 1 && inputs.currentAge && inputs.currentAge > 35) {
-      warnings.push('Savings balance is less than 1x annual salary - consider increasing contributions');
-    }
-  }
-
-  if (inputs.expectedAnnualReturn && inputs.expectedAnnualReturn < 4) {
-    warnings.push('Expected return below 4% may not keep pace with inflation');
-  }
-
-  if (inputs.annualFees && inputs.annualFees > 1) {
-    warnings.push('Annual fees above 1% may significantly impact long-term returns');
-  }
-
-  return {
-    isValid: true, // Business rules don't make the input invalid, just warn
-    warnings
-  };
+  return warnings;
 }

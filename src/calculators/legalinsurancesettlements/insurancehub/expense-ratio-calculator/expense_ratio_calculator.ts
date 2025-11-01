@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { expense_ratio_calculatorInputs, expense_ratio_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const expense_ratio_calculatorCalculator: Calculator = {
-  id: 'expense-ratio-calculator',
+export const ExpenseRatioCalculator: Calculator = {
+  id: 'ExpenseRatioCalculator',
   title: 'Expense Ratio Calculator Calculator',
   category: 'legalinsurancesettlements',
   subcategory: 'insurancehub',

@@ -1,13 +1,13 @@
-import { crypto-staking-profitability-calculator-exists-but-needs-registration-calculatorInputs, crypto-staking-profitability-calculator-exists-but-needs-registration-calculatorMetrics, crypto-staking-profitability-calculator-exists-but-needs-registration-calculatorAnalysis } from './types';
+import { CryptoStakingProfitability-CalculatorExistsBut-NeedsRegistrationCalculatorinputs, CryptoStakingProfitability-CalculatorExistsBut-NeedsRegistrationCalculatormetrics, CryptoStakingProfitability-CalculatorExistsBut-NeedsRegistrationCalculatoranalysis } from './types';
 
 // **Crypto Staking Profitability Calculator Exists But Needs Registration Calculator** - Finance calculations
-export function calculateResult(inputs: crypto-staking-profitability-calculator-exists-but-needs-registration-calculatorInputs): number {
+export function calculateResult(inputs: CryptoStakingProfitability-CalculatorExistsBut-NeedsRegistrationCalculatorinputs): number {
   // Financial calculation logic
   const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
   return numericValues.reduce((sum, val) => sum + val, 0) || 0;
 }
 
-export function generateAnalysis(inputs: crypto-staking-profitability-calculator-exists-but-needs-registration-calculatorInputs, metrics: crypto-staking-profitability-calculator-exists-but-needs-registration-calculatorMetrics): crypto-staking-profitability-calculator-exists-but-needs-registration-calculatorAnalysis {
+export function generateAnalysis(inputs: CryptoStakingProfitability-CalculatorExistsBut-NeedsRegistrationCalculatorinputs, metrics: CryptoStakingProfitability-CalculatorExistsBut-NeedsRegistrationCalculatormetrics): CryptoStakingProfitability-CalculatorExistsBut-NeedsRegistrationCalculatoranalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (Math.abs(result) > 100000) riskLevel = 'High';

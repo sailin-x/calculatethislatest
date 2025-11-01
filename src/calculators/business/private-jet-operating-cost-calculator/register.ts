@@ -1,3 +1,3 @@
-import { PrivateJetOperatingCostCalculatorCalculator } from './PrivateJetOperatingCostCalculatorCalculator';
+import { PrivateJetOperatingCostCalculator } from './PrivateJetOperatingCostCalculator';
 
-export { PrivateJetOperatingCostCalculatorCalculator };
+export { PrivateJetOperatingCostCalculator };

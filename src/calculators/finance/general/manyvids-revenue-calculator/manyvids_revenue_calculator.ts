@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { manyvids_revenue_calculatorInputs, manyvids_revenue_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const manyvids_revenue_calculatorCalculator: Calculator = {
-  id: 'manyvids-revenue-calculator',
+export const ManyvidsRevenueCalculator: Calculator = {
+  id: 'ManyvidsRevenueCalculator',
   title: 'ManyVids Revenue Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

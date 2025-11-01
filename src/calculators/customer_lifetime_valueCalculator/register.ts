@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { customer_lifetime_valueCalculatorCalculator } from './customer_lifetime_valueCalculatorCalculator';
+import { customer_lifetime_valueCalculator } from './customer_lifetime_valueCalculator';
 
-export function registercustomer_lifetime_valueCalculatorCalculator(): void {
-  calculatorRegistry.register(new customer_lifetime_valueCalculatorCalculator());
+export function registercustomer_lifetime_valueCalculator(): void {
+  calculatorRegistry.register(new customer_lifetime_valueCalculator());
 }

@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateRealEstateCrowdfundingCalculatorInputs, validateRealEstateCrowdfundingCalculatorBusinessRules } from './validation';
 
-export const RealEstateCrowdfundingCalculatorCalculator: Calculator: Calculator = {
-  id: 'real-estate-crowdfunding-calculator-calculator',
+export const RealEstateCrowdfundingCalculator: Calculator = {
+  id: 'RealEstateCrowdfunding-calculator-calculator',
   title: 'Real Estate Crowdfunding Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

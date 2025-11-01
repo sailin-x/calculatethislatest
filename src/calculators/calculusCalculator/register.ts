@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { calculusCalculatorCalculator } from './calculusCalculatorCalculator';
+import { calculusCalculator } from './calculusCalculator';
 
-export function registercalculusCalculatorCalculator(): void {
-  calculatorRegistry.register(new calculusCalculatorCalculator());
+export function registercalculusCalculator(): void {
+  calculatorRegistry.register(new calculusCalculator());
 }

@@ -1,4 +1,4 @@
-import { crypto-staking-profitability-calculator-exists-but-needs-registrationInputs, crypto-staking-profitability-calculator-exists-but-needs-registrationMetrics, crypto-staking-profitability-calculator-exists-but-needs-registrationAnalysis } from './types';
+import { CryptoStakingProfitability-CalculatorExistsBut-needs-registrationInputs, CryptoStakingProfitability-CalculatorExistsBut-needs-registrationMetrics, CryptoStakingProfitability-CalculatorExistsBut-needs-registrationAnalysis } from './types';
 
 
 // Business Calculator - Financial metrics
@@ -14,7 +14,7 @@ export function calculatePaybackPeriod(initialInvestment: number, annualCashFlow
   return initialInvestment / annualCashFlow;
 }
 
-export function calculateResult(inputs: crypto-staking-profitability-calculator-exists-but-needs-registrationInputs): number {
+export function calculateResult(inputs: CryptoStakingProfitability-CalculatorExistsBut-needs-registrationInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: crypto-staking-profitability-calculator-
   }
 }
 
-export function generateAnalysis(inputs: crypto-staking-profitability-calculator-exists-but-needs-registrationInputs, metrics: crypto-staking-profitability-calculator-exists-but-needs-registrationMetrics): crypto-staking-profitability-calculator-exists-but-needs-registrationAnalysis {
+export function generateAnalysis(inputs: CryptoStakingProfitability-CalculatorExistsBut-needs-registrationInputs, metrics: CryptoStakingProfitability-CalculatorExistsBut-needs-registrationMetrics): CryptoStakingProfitability-CalculatorExistsBut-needs-registrationAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

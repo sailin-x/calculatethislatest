@@ -1,4 +1,4 @@
-export { AdjustablerateMortgageArmCalculatorCalculator } from './AdjustablerateMortgageArmCalculatorCalculator';
+export { AdjustablerateMortgageArmCalculator } from './AdjustablerateMortgageArmCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

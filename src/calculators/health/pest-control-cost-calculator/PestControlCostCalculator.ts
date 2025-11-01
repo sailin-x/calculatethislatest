@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validatePestControlCostCalculatorInputs } from './validation';
 
 export const PestControlCostCalculator: Calculator = {
-  id: 'pest-control-cost-calculator',
+  id: 'PestControlCost-calculator',
   title: 'Pest Control Cost Calculator',
   category: 'health',
   subcategory: 'General',

@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { heavy_equipment_depreciation_calculatorInputs, heavy_equipment_depreciation_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const heavy_equipment_depreciation_calculatorCalculator: Calculator = {
-  id: 'heavy-equipment-depreciation-calculator',
+export const HeavyEquipmentDepreciation-calculator: Calculator = {
+  id: 'HeavyEquipmentDepreciation-calculator',
   title: 'Heavy Equipment Depreciation Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

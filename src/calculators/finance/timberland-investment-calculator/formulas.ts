@@ -1,4 +1,4 @@
-import { timberland-investment-calculatorInputs, timberland-investment-calculatorMetrics, timberland-investment-calculatorAnalysis } from './types';
+import { TimberlandInvestmentCalculatorinputs, TimberlandInvestmentCalculatormetrics, TimberlandInvestmentCalculatoranalysis } from './types';
 
 
 // Investment Calculator - ROI and growth calculations
@@ -12,7 +12,7 @@ export function calculateCompoundInterest(principal: number, rate: number, years
   return principal * Math.pow(1 + ratePerPeriod, totalPeriods);
 }
 
-export function calculateResult(inputs: timberland-investment-calculatorInputs): number {
+export function calculateResult(inputs: TimberlandInvestmentCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -36,7 +36,7 @@ export function calculateResult(inputs: timberland-investment-calculatorInputs):
   }
 }
 
-export function generateAnalysis(inputs: timberland-investment-calculatorInputs, metrics: timberland-investment-calculatorMetrics): timberland-investment-calculatorAnalysis {
+export function generateAnalysis(inputs: TimberlandInvestmentCalculatorinputs, metrics: TimberlandInvestmentCalculatormetrics): TimberlandInvestmentCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

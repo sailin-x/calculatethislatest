@@ -1,4 +1,4 @@
-import { expected-shortfall-calculatorInputs, expected-shortfall-calculatorMetrics, expected-shortfall-calculatorAnalysis } from './types';
+import { ExpectedShortfallCalculatorinputs, ExpectedShortfallCalculatormetrics, ExpectedShortfallCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: expected-shortfall-calculatorInputs): number {
+export function calculateResult(inputs: ExpectedShortfallCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: expected-shortfall-calculatorInputs): nu
   }
 }
 
-export function generateAnalysis(inputs: expected-shortfall-calculatorInputs, metrics: expected-shortfall-calculatorMetrics): expected-shortfall-calculatorAnalysis {
+export function generateAnalysis(inputs: ExpectedShortfallCalculatorinputs, metrics: ExpectedShortfallCalculatormetrics): ExpectedShortfallCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

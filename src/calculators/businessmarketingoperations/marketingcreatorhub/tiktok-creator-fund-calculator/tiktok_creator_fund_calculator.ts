@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { tiktok_creator_fund_calculatorInputs, tiktok_creator_fund_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const tiktok_creator_fund_calculatorCalculator: Calculator = {
-  id: 'tiktok-creator-fund-calculator',
+export const TiktokCreatorFund-calculator: Calculator = {
+  id: 'TiktokCreatorFund-calculator',
   title: 'TikTok Creator Fund Calculator Calculator',
   category: 'businessmarketingoperations',
   subcategory: 'marketingcreatorhub',

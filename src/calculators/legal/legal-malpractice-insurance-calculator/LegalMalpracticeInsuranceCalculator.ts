@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateLegalMalpracticeInsuranceCalculatorInputs, validateLegalMalpracticeInsuranceCalculatorBusinessRules } from './validation';
 
-export const LegalMalpracticeInsuranceCalculatorCalculator: Calculator: Calculator = {
-  id: 'legal-malpractice-insurance-calculator-calculator',
+export const LegalMalpracticeInsuranceCalculator: Calculator = {
+  id: 'LegalMalpracticeInsurance-calculator-calculator',
   title: 'Legal Malpractice Insurance Calculator Calculator',
   legal: 'legal', // e.g., 'finance', 'math', 'health', 'business'
   sublegal: 'Sublegal Name',

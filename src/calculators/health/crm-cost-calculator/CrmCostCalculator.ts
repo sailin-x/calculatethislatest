@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateCrmCostCalculatorInputs } from './validation';
 
 export const CrmCostCalculator: Calculator = {
-  id: 'crm-cost-calculator',
+  id: 'CrmCostCalculator',
   title: 'CRM Cost Calculator',
   category: 'health',
   subcategory: 'General',

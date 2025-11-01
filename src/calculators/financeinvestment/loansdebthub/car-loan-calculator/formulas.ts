@@ -1,4 +1,4 @@
-import { car-loan-calculatorInputs, car-loan-calculatorMetrics, car-loan-calculatorAnalysis } from './types';
+import { CarLoanCalculatorinputs, CarLoanCalculatormetrics, CarLoanCalculatoranalysis } from './types';
 
 
 // Loan Calculator - Standard loan formulas
@@ -14,7 +14,7 @@ export function calculateTotalCost(monthlyPayment: number, numPayments: number):
   return monthlyPayment * numPayments;
 }
 
-export function calculateResult(inputs: car-loan-calculatorInputs): number {
+export function calculateResult(inputs: CarLoanCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: car-loan-calculatorInputs): number {
   }
 }
 
-export function generateAnalysis(inputs: car-loan-calculatorInputs, metrics: car-loan-calculatorMetrics): car-loan-calculatorAnalysis {
+export function generateAnalysis(inputs: CarLoanCalculatorinputs, metrics: CarLoanCalculatormetrics): CarLoanCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

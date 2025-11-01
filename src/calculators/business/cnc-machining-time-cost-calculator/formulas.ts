@@ -1,4 +1,4 @@
-import { cnc-machining-time-cost-calculatorInputs, cnc-machining-time-cost-calculatorMetrics, cnc-machining-time-cost-calculatorAnalysis } from './types';
+import { CncMachiningTime-cost-calculatorInputs, CncMachiningTime-cost-calculatorMetrics, CncMachiningTime-cost-calculatorAnalysis } from './types';
 
 // CNC Machining Time & Cost Calculator - Business calculations
 export function calculateNetPresentValue(cashFlows: number[], discountRate: number): number {
@@ -11,7 +11,7 @@ export function calculateROI(initialInvestment: number, finalValue: number): num
  return ((finalValue - initialInvestment) / initialInvestment) * 100;
 }
 
-export function calculateResult(inputs: cnc-machining-time-cost-calculatorInputs): number {
+export function calculateResult(inputs: CncMachiningTime-cost-calculatorInputs): number {
  // Business calculation logic with real math
  const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
  if (numericValues.length >= 2) {
@@ -24,7 +24,7 @@ export function calculateResult(inputs: cnc-machining-time-cost-calculatorInputs
  return calculateNetPresentValue(numericValues, 10); // 10% discount rate
 }
 
-export function generateAnalysis(inputs: cnc-machining-time-cost-calculatorInputs, metrics: cnc-machining-time-cost-calculatorMetrics): cnc-machining-time-cost-calculatorAnalysis {
+export function generateAnalysis(inputs: CncMachiningTime-cost-calculatorInputs, metrics: CncMachiningTime-cost-calculatorMetrics): CncMachiningTime-cost-calculatorAnalysis {
  const result = metrics.result;
  let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
  if (Math.abs(result) > 100000) riskLevel = 'High';

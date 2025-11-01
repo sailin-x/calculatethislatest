@@ -110,11 +110,11 @@ export function validateHardMoneyLoanInputs(inputs: HardMoneyLoanInputs): Valida
   }
 
   if (inputs.borrowerDebtToIncomeRatio === undefined || inputs.borrowerDebtToIncomeRatio < 0) {
-    errors.push('Debt-to-income ratio must be 0 or greater');
+    errors.push('DebtToIncome ratio must be 0 or greater');
   }
 
   if (inputs.borrowerDebtToIncomeRatio > 100) {
-    errors.push('Debt-to-income ratio cannot exceed 100%');
+    errors.push('DebtToIncome ratio cannot exceed 100%');
   }
 
   if (inputs.borrowerLiquidity === undefined || inputs.borrowerLiquidity < 0) {
@@ -273,7 +273,7 @@ export function validateHardMoneyLoanInputs(inputs: HardMoneyLoanInputs): Valida
   }
 
   if (inputs.borrowerDebtToIncomeRatio && inputs.borrowerDebtToIncomeRatio > 50) {
-    warnings.push('High debt-to-income ratio may indicate borrower financial stress');
+    warnings.push('High DebtToIncome ratio may indicate borrower financial stress');
   }
 
   if (inputs.borrowerExperience === 'none' || inputs.borrowerExperience === 'beginner') {
@@ -309,7 +309,7 @@ export function validateHardMoneyLoanInputs(inputs: HardMoneyLoanInputs): Valida
     const totalProjectCost = inputs.propertyValue + inputs.renovationBudget;
     const ltcRatio = (inputs.loanAmount / totalProjectCost) * 100;
     if (ltcRatio > 90) {
-      warnings.push('Loan-to-cost ratio exceeds 90%, indicating high leverage');
+      warnings.push('LoanToCost ratio exceeds 90%, indicating high leverage');
     }
   }
 

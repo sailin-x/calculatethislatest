@@ -1,4 +1,4 @@
-export { TalcumPowderSettlementCalculatorCalculator } from './TalcumPowderSettlementCalculatorCalculator';
+export { TalcumPowderSettlementCalculator } from './TalcumPowderSettlementCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

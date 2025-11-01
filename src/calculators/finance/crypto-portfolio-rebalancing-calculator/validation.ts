@@ -1,11 +1,11 @@
 import { ValidationResult } from '../../lib/errors';
-import { cryptoportfoliorebalancingcalculatorCalculatorInputs } from './types';
+import { cryptoportfoliorebalancingcalculatorInputs } from './types';
 
 /**
  * Validate crypto portfolio rebalancing calculator calculator inputs
  */
-export function validatecryptoportfoliorebalancingcalculatorCalculatorInputs(
-  inputs: cryptoportfoliorebalancingcalculatorCalculatorInputs
+export function validatecryptoportfoliorebalancingcalculatorInputs(
+  inputs: cryptoportfoliorebalancingcalculatorInputs
 ): ValidationResult {
   const errors: string[] = [];
 

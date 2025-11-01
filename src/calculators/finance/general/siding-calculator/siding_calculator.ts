@@ -2,7 +2,7 @@ import { Calculator } from '../../../../types/calculator';
 import { siding_calculatorInputs, siding_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const siding_calculatorCalculator: Calculator = {
+export const siding-calculator: Calculator = {
   id: 'siding-calculator',
   title: 'Siding Calculator Calculator',
   category: 'finance',

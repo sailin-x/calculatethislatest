@@ -9,7 +9,7 @@ export const HomeAffordabilityCalculator: Calculator<HomeAffordabilityInputs, Ho
   category: 'finance',
   subcategory: 'real-estate',
   description: 'Calculate maximum home price and affordability based on income, debt, and financial situation',
-  longDescription: `A comprehensive home affordability calculator that determines the maximum home price a borrower can afford based on their income, debt, down payment, and financial situation. This calculator analyzes debt-to-income ratios, housing expense ratios, cash flow, and market conditions to provide accurate affordability assessments. It includes stress testing, sensitivity analysis, and market comparisons to help borrowers make informed home buying decisions.`,
+  longDescription: `A comprehensive home affordability calculator that determines the maximum home price a borrower can afford based on their income, debt, down payment, and financial situation. This calculator analyzes DebtToIncome ratios, housing expense ratios, cash flow, and market conditions to provide accurate affordability assessments. It includes stress testing, sensitivity analysis, and market comparisons to help borrowers make informed home buying decisions.`,
   
   inputs: {
     // Borrower Information
@@ -110,8 +110,8 @@ export const HomeAffordabilityCalculator: Calculator<HomeAffordabilityInputs, Ho
     },
     debtToIncomeRatio: {
       type: 'number',
-      label: 'Debt-to-Income Ratio (%)',
-      description: 'Current debt-to-income ratio',
+      label: 'DebtToIncome Ratio (%)',
+      description: 'Current DebtToIncome ratio',
       required: true,
       min: 0,
       max: 100,
@@ -303,7 +303,7 @@ export const HomeAffordabilityCalculator: Calculator<HomeAffordabilityInputs, Ho
     maxLTV: {
       type: 'number',
       label: 'Max LTV (%)',
-      description: 'Maximum loan-to-value ratio',
+      description: 'Maximum LoanToValue ratio',
       required: true,
       min: 50,
       max: 100,
@@ -313,7 +313,7 @@ export const HomeAffordabilityCalculator: Calculator<HomeAffordabilityInputs, Ho
     maxDTI: {
       type: 'number',
       label: 'Max DTI (%)',
-      description: 'Maximum debt-to-income ratio',
+      description: 'Maximum DebtToIncome ratio',
       required: true,
       min: 20,
       max: 60,
@@ -589,7 +589,7 @@ ${analysis.nextSteps.join('\n')}
     'real estate',
     'buying',
     'financing',
-    'debt-to-income',
+    'DebtToIncome',
     'housing',
     'purchase',
     'qualification',

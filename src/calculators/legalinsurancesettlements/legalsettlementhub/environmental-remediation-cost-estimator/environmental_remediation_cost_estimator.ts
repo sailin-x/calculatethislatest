@@ -3,7 +3,7 @@ import { environmental_remediation_cost_estimatorInputs, environmental_remediati
 import { calculateResult, generateAnalysis } from './formulas';
 
 export const environmental_remediation_cost_estimatorCalculator: Calculator = {
-  id: 'environmental-remediation-cost-estimator',
+  id: 'EnvironmentalRemediationCost-estimator',
   title: 'Environmental Remediation Cost Estimator Calculator',
   category: 'legalinsurancesettlements',
   subcategory: 'legalsettlementhub',

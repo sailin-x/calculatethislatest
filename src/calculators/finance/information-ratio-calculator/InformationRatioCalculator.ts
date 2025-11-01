@@ -10,7 +10,7 @@ import {
 import { validateInformationRatioCalculatorInputs } from './validation';
 
 export const InformationRatioCalculator: Calculator = {
-  id: 'information-ratio-calculator',
+  id: 'InformationRatioCalculator',
   title: 'Information Ratio Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

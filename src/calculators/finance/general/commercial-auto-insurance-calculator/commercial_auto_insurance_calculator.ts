@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { commercial_auto_insurance_calculatorInputs, commercial_auto_insurance_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const commercial_auto_insurance_calculatorCalculator: Calculator = {
-  id: 'commercial-auto-insurance-calculator',
+export const CommercialAutoInsurance-calculator: Calculator = {
+  id: 'CommercialAutoInsurance-calculator',
   title: 'Commercial Auto Insurance Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

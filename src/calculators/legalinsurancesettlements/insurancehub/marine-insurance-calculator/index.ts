@@ -1,4 +1,4 @@
-export { marine_insurance_calculatorCalculator } from './marine_insurance_calculator';
+export { marine_insurance_calculator } from './marine_insurance_calculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

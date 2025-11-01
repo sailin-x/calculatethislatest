@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateHotelCostCalculatorInputs } from './validation';
 
 export const HotelCostCalculator: Calculator = {
-  id: 'hotel-cost-calculator',
+  id: 'HotelCostCalculator',
   title: 'Hotel Cost Calculator',
   category: 'health',
   subcategory: 'General',

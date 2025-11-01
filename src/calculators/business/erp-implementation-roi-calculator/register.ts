@@ -1,3 +1,3 @@
-import { ErpImplementationRoiCalculatorCalculator } from './ErpImplementationRoiCalculatorCalculator';
+import { ErpImplementationRoiCalculator } from './ErpImplementationRoiCalculator';
 
-export { ErpImplementationRoiCalculatorCalculator };
+export { ErpImplementationRoiCalculator };

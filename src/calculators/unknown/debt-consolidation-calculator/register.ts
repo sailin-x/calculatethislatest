@@ -1,3 +1,3 @@
-import { DebtConsolidationCalculatorCalculator } from './DebtConsolidationCalculatorCalculator';
+import { DebtConsolidationCalculator } from './DebtConsolidationCalculator';
 
-export { DebtConsolidationCalculatorCalculator };
+export { DebtConsolidationCalculator };

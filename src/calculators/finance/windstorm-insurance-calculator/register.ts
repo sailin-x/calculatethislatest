@@ -1,3 +1,3 @@
-import { WindstormInsuranceCalculatorCalculator } from './WindstormInsuranceCalculatorCalculator';
+import { WindstormInsuranceCalculator } from './WindstormInsuranceCalculator';
 
-export { WindstormInsuranceCalculatorCalculator };
+export { WindstormInsuranceCalculator };

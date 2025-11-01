@@ -1,4 +1,4 @@
-import { trade-credit-calculatorInputs, trade-credit-calculatorMetrics, trade-credit-calculatorAnalysis } from './types';
+import { TradeCreditCalculatorinputs, TradeCreditCalculatormetrics, TradeCreditCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: trade-credit-calculatorInputs): number {
+export function calculateResult(inputs: TradeCreditCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: trade-credit-calculatorInputs): number {
   }
 }
 
-export function generateAnalysis(inputs: trade-credit-calculatorInputs, metrics: trade-credit-calculatorMetrics): trade-credit-calculatorAnalysis {
+export function generateAnalysis(inputs: TradeCreditCalculatorinputs, metrics: TradeCreditCalculatormetrics): TradeCreditCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

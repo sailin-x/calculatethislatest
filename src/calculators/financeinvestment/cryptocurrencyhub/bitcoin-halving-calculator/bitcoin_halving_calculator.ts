@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { bitcoin_halving_calculatorInputs, bitcoin_halving_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const bitcoin_halving_calculatorCalculator: Calculator = {
-  id: 'bitcoin-halving-calculator',
+export const BitcoinHalvingCalculator: Calculator = {
+  id: 'BitcoinHalvingCalculator',
   title: 'Bitcoin Halving Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'cryptocurrencyhub',

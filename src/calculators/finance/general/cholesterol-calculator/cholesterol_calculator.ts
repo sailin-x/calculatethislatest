@@ -2,7 +2,7 @@ import { Calculator } from '../../../../types/calculator';
 import { cholesterol_calculatorInputs, cholesterol_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const cholesterol_calculatorCalculator: Calculator = {
+export const cholesterol-calculator: Calculator = {
   id: 'cholesterol-calculator',
   title: 'Cholesterol Calculator Calculator',
   category: 'finance',

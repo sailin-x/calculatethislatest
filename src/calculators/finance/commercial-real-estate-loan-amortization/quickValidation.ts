@@ -175,20 +175,20 @@ export function validatePropertyValue(value: any, allInputs?: Record<string, any
 
 export function validateLoanToValue(value: any, allInputs?: Record<string, any>, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   if (value === undefined || value === null || value === '') {
-    return { isValid: false, message: 'Loan-to-value ratio is required' };
+    return { isValid: false, message: 'LoanToValue ratio is required' };
   }
   
   const numValue = Number(value);
   if (isNaN(numValue)) {
-    return { isValid: false, message: 'Loan-to-value ratio must be a valid number' };
+    return { isValid: false, message: 'LoanToValue ratio must be a valid number' };
   }
   
   if (numValue < 10) {
-    return { isValid: false, message: 'Loan-to-value ratio must be at least 10%' };
+    return { isValid: false, message: 'LoanToValue ratio must be at least 10%' };
   }
   
   if (numValue > 95) {
-    return { isValid: false, message: 'Loan-to-value ratio cannot exceed 95%' };
+    return { isValid: false, message: 'LoanToValue ratio cannot exceed 95%' };
   }
   
   return { isValid: true };
@@ -338,7 +338,7 @@ export function validateStartDate(value: any, allInputs?: Record<string, any>, a
   
   const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
   if (!dateRegex.test(value)) {
-    return { isValid: false, message: 'Start date must be in YYYY-MM-DD format' };
+    return { isValid: false, message: 'Start date must be in YyyyMmDd format' };
   }
   
   const date = new Date(value);

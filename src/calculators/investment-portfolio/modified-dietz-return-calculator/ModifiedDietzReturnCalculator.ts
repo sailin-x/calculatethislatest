@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateModifiedDietzReturnCalculatorInputs, validateModifiedDietzReturnCalculatorBusinessRules } from './validation';
 
-export const ModifiedDietzReturnCalculatorCalculator: Calculator: Calculator = {
-  id: 'modified-dietz-return-calculator-calculator',
+export const ModifiedDietzReturnCalculator: Calculator = {
+  id: 'ModifiedDietzReturn-calculator-calculator',
   title: 'Modified Dietz Return Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

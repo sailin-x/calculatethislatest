@@ -1,3 +1,3 @@
-import { InheritanceTaxEstimatorCalculator } from './InheritanceTaxEstimatorCalculator';
+import { inheritancetaxestimatorCalculator } from './InheritanceTaxEstimatorCalculator';
 
 export { InheritanceTaxEstimatorCalculator };

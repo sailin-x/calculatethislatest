@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { pharmaceutical_liability_calculatorInputs, pharmaceutical_liability_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const pharmaceutical_liability_calculatorCalculator: Calculator = {
-  id: 'pharmaceutical-liability-calculator',
+export const PharmaceuticalLiabilityCalculator: Calculator = {
+  id: 'PharmaceuticalLiabilityCalculator',
   title: 'Pharmaceutical Liability Calculator Calculator',
   category: 'legalinsurancesettlements',
   subcategory: 'legalsettlementhub',

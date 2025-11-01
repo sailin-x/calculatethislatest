@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validatePortfolioOptimizationCalculatorInputs, validatePortfolioOptimizationCalculatorBusinessRules } from './validation';
 
-export const PortfolioOptimizationCalculatorCalculator: Calculator: Calculator = {
-  id: 'portfolio-optimization-calculator-calculator',
+export const PortfolioOptimizationCalculator: Calculator = {
+  id: 'PortfolioOptimizationCalculator-calculator',
   title: 'Portfolio Optimization Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

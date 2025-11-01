@@ -1,4 +1,4 @@
-export { PostmoneyValuationCalculatorCalculator } from './PostmoneyValuationCalculatorCalculator';
+export { PostmoneyValuationCalculator } from './PostmoneyValuationCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

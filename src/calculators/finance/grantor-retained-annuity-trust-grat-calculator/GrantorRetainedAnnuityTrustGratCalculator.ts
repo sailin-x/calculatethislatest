@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateGrantorRetainedAnnuityTrustGratCalculatorInputs, validateGrantorRetainedAnnuityTrustGratCalculatorBusinessRules } from './validation';
 
-export const GrantorRetainedAnnuityTrustGratCalculatorCalculator: Calculator: Calculator = {
-  id: 'grantor-retained-annuity-trust-grat-calculator-calculator',
+export const GrantorRetainedAnnuityTrustGratCalculator: Calculator = {
+  id: 'GrantorRetainedAnnuity-TrustGratCalculator-calculator',
   title: 'Grantor Retained Annuity Trust (GRAT) Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

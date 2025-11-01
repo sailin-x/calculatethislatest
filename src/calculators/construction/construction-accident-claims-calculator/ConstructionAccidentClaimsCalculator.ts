@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateConstructionAccidentClaimsCalculatorInputs, validateConstructionAccidentClaimsCalculatorBusinessRules } from './validation';
 
-export const ConstructionAccidentClaimsCalculatorCalculator: Calculator: Calculator = {
-  id: 'construction-accident-claims-calculator-calculator',
+export const ConstructionAccidentClaimsCalculator: Calculator = {
+  id: 'ConstructionAccidentClaims-calculator-calculator',
   title: 'Construction Accident Claims Calculator Calculator',
   construction: 'construction', // e.g., 'finance', 'math', 'health', 'business'
   subconstruction: 'Subconstruction Name',

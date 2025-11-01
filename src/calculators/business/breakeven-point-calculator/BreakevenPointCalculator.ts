@@ -10,7 +10,7 @@ import {
 } from './quickValidation';
 
 export const BreakevenPointCalculator: Calculator = {
-  id: 'breakeven-point-calculator',
+  id: 'BreakevenPointCalculator',
   title: 'Breakeven Point Calculator',
   category: 'business',
   subcategory: 'Financial Analysis',

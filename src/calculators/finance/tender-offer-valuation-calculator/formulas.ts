@@ -1,4 +1,4 @@
-import { tender-offer-valuation-calculatorInputs, tender-offer-valuation-calculatorMetrics, tender-offer-valuation-calculatorAnalysis } from './types';
+import { TenderOfferValuation-calculatorInputs, TenderOfferValuation-calculatorMetrics, TenderOfferValuation-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: tender-offer-valuation-calculatorInputs): number {
+export function calculateResult(inputs: TenderOfferValuation-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: tender-offer-valuation-calculatorInputs)
   }
 }
 
-export function generateAnalysis(inputs: tender-offer-valuation-calculatorInputs, metrics: tender-offer-valuation-calculatorMetrics): tender-offer-valuation-calculatorAnalysis {
+export function generateAnalysis(inputs: TenderOfferValuation-calculatorInputs, metrics: TenderOfferValuation-calculatorMetrics): TenderOfferValuation-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { portfolio_optimization_calculatorInputs, portfolio_optimization_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const portfolio_optimization_calculatorCalculator: Calculator = {
-  id: 'portfolio-optimization-calculator',
+export const PortfolioOptimizationCalculator: Calculator = {
+  id: 'PortfolioOptimizationCalculator',
   title: 'Portfolio Optimization Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'investmentportfoliohub',

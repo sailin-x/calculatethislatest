@@ -1,4 +1,4 @@
-export { WrongfulDeathSettlementCalculatorCalculator } from './WrongfulDeathSettlementCalculatorCalculator';
+export { WrongfulDeathSettlementCalculator } from './WrongfulDeathSettlementCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

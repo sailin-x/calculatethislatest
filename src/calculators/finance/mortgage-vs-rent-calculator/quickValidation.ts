@@ -1,61 +1,149 @@
-import { MortgageVsRentCalculatorInputs } from './types';
+import { MortgageVsRentInputs } from './types';
 
-export function validatePrimaryInput(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+export function validatePropertyValue(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   if (!value || value <= 0) {
-    return { isValid: false, message: 'Primary input must be greater than 0' };
+    return { isValid: false, message: 'Property value must be greater than 0' };
   }
-  if (value > 1000000) {
-    return { isValid: false, message: 'Primary input cannot exceed 1,000,000' };
+  if (value > 10000000) {
+    return { isValid: false, message: 'Property value cannot exceed $10,000,000' };
   }
   return { isValid: true };
 }
 
-export function validateSecondaryInput(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+export function validateDownPayment(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   if (value < 0) {
-    return { isValid: false, message: 'Secondary input cannot be negative' };
+    return { isValid: false, message: 'Down payment cannot be negative' };
   }
-  if (allInputs?.primaryInput && value > allInputs.primaryInput) {
-    return { isValid: false, message: 'Secondary input cannot exceed primary input' };
-  }
-  return { isValid: true };
-}
-
-export function validateSelectInput(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  const validOptions = ['option1', 'option2'];
-  if (!value || !validOptions.includes(value)) {
-    return { isValid: false, message: 'Please select a valid option' };
+  if (allInputs?.propertyValue && value >= allInputs.propertyValue) {
+    return { isValid: false, message: 'Down payment cannot be greater than or equal to property value' };
   }
   return { isValid: true };
 }
 
-export function validateOptionalParameter(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value && value.length > 100) {
-    return { isValid: false, message: 'Optional parameter cannot exceed 100 characters' };
+export function validateLoanTerm(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (!value || value <= 0) {
+    return { isValid: false, message: 'Loan term must be greater than 0 years' };
+  }
+  if (value > 50) {
+    return { isValid: false, message: 'Loan term cannot exceed 50 years' };
   }
   return { isValid: true };
 }
 
-export function validateBooleanFlag(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (typeof value !== 'boolean' && value !== undefined) {
-    return { isValid: false, message: 'Boolean flag must be true or false' };
+export function validateInterestRate(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value < 0) {
+    return { isValid: false, message: 'Interest rate cannot be negative' };
+  }
+  if (value > 30) {
+    return { isValid: false, message: 'Interest rate cannot exceed 30%' };
   }
   return { isValid: true };
 }
 
-// Additional validation functions as needed
-export function validateNumericRange(value: any, min: number, max: number, fieldName: string, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value < min) {
-    return { isValid: false, message: `${fieldName} must be at least ${min}` };
-  }
-  if (value > max) {
-    return { isValid: false, message: `${fieldName} cannot exceed ${max}` };
+export function validateMonthlyRent(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (!value || value <= 0) {
+    return { isValid: false, message: 'Monthly rent must be greater than 0' };
   }
   return { isValid: true };
 }
 
-export function validateRequired(value: any, fieldName: string, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
-  if (value === null || value === undefined || value === '') {
-    return { isValid: false, message: `${fieldName} is required` };
+export function validateAnnualRentIncrease(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value < -10 || value > 20) {
+    return { isValid: false, message: 'Annual rent increase must be between -10% and 20%' };
+  }
+  return { isValid: true };
+}
+
+export function validateAnnualPropertyTaxes(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value < 0) {
+    return { isValid: false, message: 'Annual property taxes cannot be negative' };
+  }
+  return { isValid: true };
+}
+
+export function validateAnnualHomeownersInsurance(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value < 0) {
+    return { isValid: false, message: 'Annual homeowners insurance cannot be negative' };
+  }
+  return { isValid: true };
+}
+
+export function validateMonthlyHOAFees(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value < 0) {
+    return { isValid: false, message: 'Monthly HOA fees cannot be negative' };
+  }
+  return { isValid: true };
+}
+
+export function validateAnnualMaintenance(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value < 0 || value > 10) {
+    return { isValid: false, message: 'Annual maintenance must be between 0% and 10% of property value' };
+  }
+  return { isValid: true };
+}
+
+export function validateClosingCosts(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value < 0) {
+    return { isValid: false, message: 'Closing costs cannot be negative' };
+  }
+  return { isValid: true };
+}
+
+export function validateExpectedHomeAppreciation(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value < -10 || value > 30) {
+    return { isValid: false, message: 'Expected home appreciation must be between -10% and 30%' };
+  }
+  return { isValid: true };
+}
+
+export function validateAlternativeInvestmentReturn(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value < -10 || value > 50) {
+    return { isValid: false, message: 'Alternative investment return must be between -10% and 50%' };
+  }
+  return { isValid: true };
+}
+
+export function validateMarginalTaxRate(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value < 0 || value > 50) {
+    return { isValid: false, message: 'Marginal tax rate must be between 0% and 50%' };
+  }
+  return { isValid: true };
+}
+
+export function validateAnalysisPeriod(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (!value || value <= 0) {
+    return { isValid: false, message: 'Analysis period must be greater than 0 years' };
+  }
+  if (value > 50) {
+    return { isValid: false, message: 'Analysis period cannot exceed 50 years' };
+  }
+  return { isValid: true };
+}
+
+export function validateOneTimeMovingCosts(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value < 0) {
+    return { isValid: false, message: 'One-time moving costs cannot be negative' };
+  }
+  return { isValid: true };
+}
+
+export function validateRentDeposit(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value < 0) {
+    return { isValid: false, message: 'Rent deposit cannot be negative' };
+  }
+  return { isValid: true };
+}
+
+export function validateMortgagePoints(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value < 0) {
+    return { isValid: false, message: 'Mortgage points cannot be negative' };
+  }
+  return { isValid: true };
+}
+
+export function validateMortgageOriginationFees(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value < 0) {
+    return { isValid: false, message: 'Mortgage origination fees cannot be negative' };
   }
   return { isValid: true };
 }

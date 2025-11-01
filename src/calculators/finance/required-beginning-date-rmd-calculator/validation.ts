@@ -124,8 +124,8 @@ export function validateRequiredBeginningDateRmdBusinessRules(inputs: RequiredBe
 
   // Inherited Account Warnings
   if (inputs.accountType === 'inherited_ira') {
-    const inheritanceDate = new Date(inputs.inheritanceDate || '2020-01-01');
-    const ruleChangeDate = new Date('2020-01-01');
+    const inheritanceDate = new Date(inputs.inheritanceDate || '20200101');
+    const ruleChangeDate = new Date('20200101');
 
     if (inheritanceDate >= ruleChangeDate) {
       warnings.push({ field: 'inheritanceDate', message: 'Inherited after 2019 - 10-year rule applies instead of stretch IRA' });

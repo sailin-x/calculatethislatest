@@ -1,4 +1,4 @@
-import { data-breach-cost-calculatorInputs, data-breach-cost-calculatorMetrics, data-breach-cost-calculatorAnalysis } from './types';
+import { DataBreachCost-calculatorInputs, DataBreachCost-calculatorMetrics, DataBreachCost-calculatorAnalysis } from './types';
 
 // Data Breach Cost Calculator - Business calculations
 export function calculateNetPresentValue(cashFlows: number[], discountRate: number): number {
@@ -11,7 +11,7 @@ export function calculateROI(initialInvestment: number, finalValue: number): num
  return ((finalValue - initialInvestment) / initialInvestment) * 100;
 }
 
-export function calculateResult(inputs: data-breach-cost-calculatorInputs): number {
+export function calculateResult(inputs: DataBreachCost-calculatorInputs): number {
  // Business calculation logic with real math
  const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
  if (numericValues.length >= 2) {
@@ -24,7 +24,7 @@ export function calculateResult(inputs: data-breach-cost-calculatorInputs): numb
  return calculateNetPresentValue(numericValues, 10); // 10% discount rate
 }
 
-export function generateAnalysis(inputs: data-breach-cost-calculatorInputs, metrics: data-breach-cost-calculatorMetrics): data-breach-cost-calculatorAnalysis {
+export function generateAnalysis(inputs: DataBreachCost-calculatorInputs, metrics: DataBreachCost-calculatorMetrics): DataBreachCost-calculatorAnalysis {
  const result = metrics.result;
  let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
  if (Math.abs(result) > 100000) riskLevel = 'High';

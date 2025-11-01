@@ -405,7 +405,7 @@ export function validateStockOptionsInputs(inputs: StockOptionsInputs, allInputs
   
   const moneyness = Math.log(inputs.currentStockPrice / inputs.strikePrice);
   if (Math.abs(moneyness) < 0.1 && (inputs.volatility < 10 || inputs.volatility > 100)) {
-    errors.push('At-the-money options should have moderate volatility');
+    errors.push('AtTheMoney options should have moderate volatility');
   }
   
   let expectedIntrinsic = 0;

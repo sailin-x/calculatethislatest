@@ -1,4 +1,4 @@
-import { bankruptcy-filing-calculatorInputs, bankruptcy-filing-calculatorMetrics, bankruptcy-filing-calculatorAnalysis } from './types';
+import { BankruptcyFilingCalculatorinputs, BankruptcyFilingCalculatormetrics, BankruptcyFilingCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: bankruptcy-filing-calculatorInputs): number {
+export function calculateResult(inputs: BankruptcyFilingCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: bankruptcy-filing-calculatorInputs): num
   }
 }
 
-export function generateAnalysis(inputs: bankruptcy-filing-calculatorInputs, metrics: bankruptcy-filing-calculatorMetrics): bankruptcy-filing-calculatorAnalysis {
+export function generateAnalysis(inputs: BankruptcyFilingCalculatorinputs, metrics: BankruptcyFilingCalculatormetrics): BankruptcyFilingCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

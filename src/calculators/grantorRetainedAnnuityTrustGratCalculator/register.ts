@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { GrantorRetainedAnnuityTrustGratCalculatorCalculator } from './GrantorRetainedAnnuityTrustGratCalculatorCalculator';
+import { grantorRetainedAnnuityTrustGratCalculator } from './GrantorRetainedAnnuityTrustGratCalculator';
 
-export function registerGrantorRetainedAnnuityTrustGratCalculatorCalculator(): void {
-  calculatorRegistry.register(new GrantorRetainedAnnuityTrustGratCalculatorCalculator());
+export function registerGrantorRetainedAnnuityTrustGratCalculator(): void {
+  calculatorRegistry.register(grantorRetainedAnnuityTrustGratCalculator);
 }

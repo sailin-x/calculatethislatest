@@ -1,3 +1,3 @@
-import { ColdStorageFacilityForProduceRoiCalculatorCalculator } from './ColdStorageFacilityForProduceRoiCalculatorCalculator';
+import { ColdStorageFacilityForProduceRoiCalculator } from './ColdStorageFacilityForProduceRoiCalculator';
 
-export { ColdStorageFacilityForProduceRoiCalculatorCalculator };
+export { ColdStorageFacilityForProduceRoiCalculator };

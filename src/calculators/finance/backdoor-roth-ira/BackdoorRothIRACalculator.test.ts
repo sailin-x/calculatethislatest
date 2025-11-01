@@ -31,7 +31,7 @@ describe('BackdoorRothIRACalculator', () => {
 
   describe('Calculator Structure', () => {
     it('should have correct calculator properties', () => {
-      expect(BackdoorRothIRACalculator.id).toBe('backdoor-roth-ira-calculator');
+      expect(BackdoorRothIRACalculator.id).toBe('BackdoorRothIra-calculator');
       expect(BackdoorRothIRACalculator.title).toBe('Backdoor Roth IRA Calculator');
       expect(BackdoorRothIRACalculator.category).toBe('finance');
       expect(BackdoorRothIRACalculator.subcategory).toBe('Retirement');

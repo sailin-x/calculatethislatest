@@ -1,4 +1,4 @@
-export { PortfolioOptimizationCalculatorCalculator } from './PortfolioOptimizationCalculatorCalculator';
+export { PortfolioOptimizationCalculator } from './PortfolioOptimizationCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

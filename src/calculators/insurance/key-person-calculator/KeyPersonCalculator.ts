@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateKeyPersonCalculatorInputs } from './validation';
 
 export const KeyPersonCalculator: Calculator = {
-  id: 'key-person-calculator',
+  id: 'KeyPersonCalculator',
   title: 'Key Person Calculator',
   category: 'insurance',
   subcategory: 'General',

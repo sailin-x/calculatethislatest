@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateMealPrepCalculatorInputs } from './validation';
 
 export const MealPrepCalculator: Calculator = {
-  id: 'meal-prep-calculator',
+  id: 'MealPrepCalculator',
   title: 'Meal Prep Calculator',
   category: 'health',
   subcategory: 'General',

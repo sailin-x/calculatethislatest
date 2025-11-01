@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { ad-agency-commission-calculatorCalculator } from './ad-agency-commission-calculatorCalculator';
+import { AdAgencyCommission-calculator } from './AdAgencyCommission-calculator';
 
-export function registerad-agency-commission-calculatorCalculator(): void {
-  calculatorRegistry.register(new ad-agency-commission-calculatorCalculator());
+export function RegisteradAgencyCommission-calculator(): void {
+  calculatorRegistry.register(new AdAgencyCommission-calculator());
 }

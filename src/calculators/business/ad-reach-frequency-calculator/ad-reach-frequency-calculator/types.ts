@@ -1,4 +1,4 @@
-export interface ad-reach-frequency-calculatorInputs {
+export interface AdReachFrequency-calculatorInputs {
   // Calculator-specific input fields
   value?: number;
   rate?: number;
@@ -7,17 +7,17 @@ export interface ad-reach-frequency-calculatorInputs {
   // Add more fields as needed for this calculator
 }
 
-export interface ad-reach-frequency-calculatorResults {
+export interface AdReachFrequency-calculatorResults {
   result: number;
   analysis?: string;
 }
 
-export interface ad-reach-frequency-calculatorMetrics {
+export interface AdReachFrequency-calculatorMetrics {
   result: number;
   // Add more metrics as needed
 }
 
-export interface ad-reach-frequency-calculatorAnalysis {
+export interface AdReachFrequency-calculatorAnalysis {
   recommendation: string;
   riskLevel: 'Low' | 'Medium' | 'High';
 }

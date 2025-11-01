@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateUsdaLoanCalculatorInputs, validateUsdaLoanCalculatorBusinessRules } from './validation';
 
-export const UsdaLoanCalculatorCalculator: Calculator: Calculator = {
-  id: 'usda-loan-calculator-calculator',
+export const UsdaLoanCalculator: Calculator = {
+  id: 'UsdaLoanCalculator-calculator',
   title: 'USDA Loan Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

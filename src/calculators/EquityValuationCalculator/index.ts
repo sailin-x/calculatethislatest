@@ -1,3 +1,3 @@
-export * from './EquityValuationCalculatorCalculator';
+export * from './EquityValuationCalculator';
 export * from './register';
 export * from './types';

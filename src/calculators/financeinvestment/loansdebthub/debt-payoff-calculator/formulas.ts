@@ -1,4 +1,4 @@
-import { debt-payoff-calculatorInputs, debt-payoff-calculatorMetrics, debt-payoff-calculatorAnalysis } from './types';
+import { DebtPayoffCalculatorinputs, DebtPayoffCalculatormetrics, DebtPayoffCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: debt-payoff-calculatorInputs): number {
+export function calculateResult(inputs: DebtPayoffCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: debt-payoff-calculatorInputs): number {
   }
 }
 
-export function generateAnalysis(inputs: debt-payoff-calculatorInputs, metrics: debt-payoff-calculatorMetrics): debt-payoff-calculatorAnalysis {
+export function generateAnalysis(inputs: DebtPayoffCalculatorinputs, metrics: DebtPayoffCalculatormetrics): DebtPayoffCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

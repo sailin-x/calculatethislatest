@@ -158,7 +158,7 @@ describe('TaxCalculator', () => {
 
     it('should calculate tax with credits', () => {
       const inputs: CalculatorInputs = {
-        filingStatus: 'married-filing-jointly',
+        filingStatus: 'MarriedFilingJointly',
         taxYear: '2024',
         wages: 80000,
         childTaxCredit: 2
@@ -208,7 +208,7 @@ describe('TaxCalculator', () => {
       expect(outputs.totalTax).toBe(outputs.federalTax + outputs.stateTax);
     });
 
-    it('should handle above-the-line deductions', () => {
+    it('should handle AboveTheLine deductions', () => {
       const inputs: CalculatorInputs = {
         filingStatus: 'single',
         taxYear: '2024',
@@ -298,7 +298,7 @@ describe('TaxCalculator', () => {
 
     it('should handle different filing statuses in report', () => {
       const inputs: CalculatorInputs = {
-        filingStatus: 'married-filing-jointly',
+        filingStatus: 'MarriedFilingJointly',
         taxYear: '2024',
         wages: 150000
       };

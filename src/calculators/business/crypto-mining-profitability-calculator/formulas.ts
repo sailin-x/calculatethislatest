@@ -1,4 +1,4 @@
-import { crypto-mining-profitability-calculatorInputs, crypto-mining-profitability-calculatorMetrics, crypto-mining-profitability-calculatorAnalysis } from './types';
+import { CryptoMiningProfitability-calculatorInputs, CryptoMiningProfitability-calculatorMetrics, CryptoMiningProfitability-calculatorAnalysis } from './types';
 
 // Crypto Mining Profitability Calculator - Business calculations
 export function calculateNetPresentValue(cashFlows: number[], discountRate: number): number {
@@ -11,7 +11,7 @@ export function calculateROI(initialInvestment: number, finalValue: number): num
  return ((finalValue - initialInvestment) / initialInvestment) * 100;
 }
 
-export function calculateResult(inputs: crypto-mining-profitability-calculatorInputs): number {
+export function calculateResult(inputs: CryptoMiningProfitability-calculatorInputs): number {
  // Business calculation logic with real math
  const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
  if (numericValues.length >= 2) {
@@ -24,7 +24,7 @@ export function calculateResult(inputs: crypto-mining-profitability-calculatorIn
  return calculateNetPresentValue(numericValues, 10); // 10% discount rate
 }
 
-export function generateAnalysis(inputs: crypto-mining-profitability-calculatorInputs, metrics: crypto-mining-profitability-calculatorMetrics): crypto-mining-profitability-calculatorAnalysis {
+export function generateAnalysis(inputs: CryptoMiningProfitability-calculatorInputs, metrics: CryptoMiningProfitability-calculatorMetrics): CryptoMiningProfitability-calculatorAnalysis {
  const result = metrics.result;
  let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
  if (Math.abs(result) > 100000) riskLevel = 'High';

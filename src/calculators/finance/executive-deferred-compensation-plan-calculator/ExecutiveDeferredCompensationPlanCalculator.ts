@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateExecutiveDeferredCompensationPlanCalculatorInputs, validateExecutiveDeferredCompensationPlanCalculatorBusinessRules } from './validation';
 
-export const ExecutiveDeferredCompensationPlanCalculatorCalculator: Calculator: Calculator = {
-  id: 'executive-deferred-compensation-plan-calculator-calculator',
+export const ExecutiveDeferredCompensationPlanCalculator: Calculator = {
+  id: 'ExecutiveDeferredCompensation-PlanCalculatorCalculator',
   title: 'Executive Deferred Compensation Plan Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

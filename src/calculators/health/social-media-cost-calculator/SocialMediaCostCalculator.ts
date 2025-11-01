@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateSocialMediaCostCalculatorInputs } from './validation';
 
 export const SocialMediaCostCalculator: Calculator = {
-  id: 'social-media-cost-calculator',
+  id: 'SocialMediaCost-calculator',
   title: 'Social Media Cost Calculator',
   category: 'health',
   subcategory: 'General',

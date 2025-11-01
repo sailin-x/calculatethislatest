@@ -1,7 +1,7 @@
 import { Calculator } from '../../types/calculator';
 
 export const StudentLoanCalculator: Calculator = {
-  id: 'student-loan-calculator',
+  id: 'StudentLoanCalculator',
   name: 'Student Loan Calculator',
   category: 'finance',
   subcategory: 'education',
@@ -27,8 +27,8 @@ export const StudentLoanCalculator: Calculator = {
       { value: 'extended', label: 'Extended (25 years)' },
       { value: 'graduated', label: 'Graduated (10 years)' },
       { value: 'income-based', label: 'Income-Based Repayment (IBR)' },
-      { value: 'pay-as-you-earn', label: 'Pay As You Earn (PAYE)' },
-      { value: 'revised-pay-as-you-earn', label: 'Revised Pay As You Earn (REPAYE)' },
+      { value: 'PayAsYou-earn', label: 'Pay As You Earn (PAYE)' },
+      { value: 'RevisedPayAs-you-earn', label: 'Revised Pay As You Earn (REPAYE)' },
       { value: 'income-contingent', label: 'Income-Contingent Repayment (ICR)' },
       { value: 'income-sensitive', label: 'Income-Sensitive Repayment' }
     ] },
@@ -39,9 +39,9 @@ export const StudentLoanCalculator: Calculator = {
     { id: 'familySize', name: 'Family Size', type: 'number', required: false, description: 'Number of people in household', placeholder: '1', min: 1, max: 10 },
     { id: 'filingStatus', name: 'Filing Status', type: 'select', required: false, description: 'Tax filing status', options: [
       { value: 'single', label: 'Single' },
-      { value: 'married-filing-jointly', label: 'Married Filing Jointly' },
-      { value: 'married-filing-separately', label: 'Married Filing Separately' },
-      { value: 'head-of-household', label: 'Head of Household' }
+      { value: 'MarriedFilingJointly', label: 'Married Filing Jointly' },
+      { value: 'MarriedFilingSeparately', label: 'Married Filing Separately' },
+      { value: 'HeadOfHousehold', label: 'Head of Household' }
     ] },
     { id: 'stateOfResidence', name: 'State of Residence', type: 'select', required: false, description: 'State of residence for poverty guidelines', options: [
       { value: 'al', label: 'Alabama' }, { value: 'ak', label: 'Alaska' }, { value: 'az', label: 'Arizona' }, { value: 'ar', label: 'Arkansas' },
@@ -94,9 +94,9 @@ export const StudentLoanCalculator: Calculator = {
     { id: 'totalInterest', name: 'Total Interest', type: 'number', unit: 'USD', description: 'Total interest paid over loan term' },
     { id: 'totalPayments', name: 'Total Payments', type: 'number', unit: 'USD', description: 'Total amount paid over loan term' },
     { id: 'payoffDate', name: 'Payoff Date', type: 'string', description: 'Expected loan payoff date' },
-    { id: 'amortizationSchedule', name: 'Amortization Schedule', type: 'array', description: 'Year-by-year payment breakdown' },
+    { id: 'amortizationSchedule', name: 'Amortization Schedule', type: 'array', description: 'YearByYear payment breakdown' },
     { id: 'interestToPrincipalRatio', name: 'Interest to Principal Ratio', type: 'number', description: 'Ratio of interest to principal payments' },
-    { id: 'debtToIncomeRatio', name: 'Debt-to-Income Ratio', type: 'number', unit: '%', description: 'Monthly debt payments to income ratio' },
+    { id: 'debtToIncomeRatio', name: 'DebtToIncome Ratio', type: 'number', unit: '%', description: 'Monthly debt payments to income ratio' },
     { id: 'affordabilityScore', name: 'Affordability Score', type: 'number', description: 'Loan affordability assessment (0-100)' },
     { id: 'repaymentEfficiency', name: 'Repayment Efficiency', type: 'number', unit: '%', description: 'Efficiency of repayment strategy' },
     { id: 'savingsImpact', name: 'Savings Impact', type: 'number', unit: 'USD', description: 'Impact on monthly savings' },

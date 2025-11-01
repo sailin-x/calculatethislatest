@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateCompostingSavingsCalculatorInputs } from './validation';
 
 export const CompostingSavingsCalculator: Calculator = {
-  id: 'composting-savings-calculator',
+  id: 'CompostingSavingsCalculator',
   title: 'Composting Savings Calculator',
   category: 'health',
   subcategory: 'General',

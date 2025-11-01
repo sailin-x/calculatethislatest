@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { kidnap_ransom_insurance_calculatorInputs, kidnap_ransom_insurance_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const kidnap_ransom_insurance_calculatorCalculator: Calculator = {
-  id: 'kidnap-ransom-insurance-calculator',
+export const KidnapRansomInsurance-calculator: Calculator = {
+  id: 'KidnapRansomInsurance-calculator',
   title: 'Kidnap & Ransom Insurance Calculator Calculator',
   category: 'legalinsurancesettlements',
   subcategory: 'insurancehub',

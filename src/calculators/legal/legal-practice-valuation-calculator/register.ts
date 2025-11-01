@@ -1,3 +1,3 @@
-import { LegalPracticeValuationCalculatorCalculator } from './LegalPracticeValuationCalculatorCalculator';
+import { LegalPracticeValuationCalculator } from './LegalPracticeValuationCalculator';
 
-export { LegalPracticeValuationCalculatorCalculator };
+export { LegalPracticeValuationCalculator };

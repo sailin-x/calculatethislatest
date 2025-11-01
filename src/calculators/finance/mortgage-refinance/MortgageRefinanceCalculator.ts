@@ -2,7 +2,7 @@ import { Calculator } from '../../types/calculator';
 import { calculateMortgageRefinance, validateMortgageRefinanceInputs } from './formulas';
 
 export const MortgageRefinanceCalculator: Calculator = {
-  id: 'mortgage-refinance-calculator',
+  id: 'MortgageRefinanceCalculator',
   title: 'Mortgage Refinance Calculator',
   category: 'finance',
   subcategory: 'Mortgage & Real Estate',
@@ -50,7 +50,7 @@ export const MortgageRefinanceCalculator: Calculator = {
     { id: 'totalSavings10Years', label: '10-Year Savings', type: 'currency', explanation: 'Total savings over 10 years' },
     { id: 'totalSavingsRemaining', label: 'Total Savings Over Loan Term', type: 'currency', explanation: 'Total savings over remaining loan term' },
     { id: 'roiPercentage', label: 'ROI on Refinance (%)', type: 'percentage', explanation: 'Return on investment from refinancing' },
-    { id: 'newLoanToValue', label: 'New Loan-to-Value Ratio (%)', type: 'percentage', explanation: 'LTV ratio after refinance' },
+    { id: 'newLoanToValue', label: 'New LoanToValue Ratio (%)', type: 'percentage', explanation: 'LTV ratio after refinance' },
     { id: 'recommendation', label: 'Refinance Recommendation', type: 'text', explanation: 'Whether refinancing is recommended based on analysis' }
   ],
   formulas: [calculateMortgageRefinance as any],

@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateCarpetCleaningCostCalculatorInputs } from './validation';
 
 export const CarpetCleaningCostCalculator: Calculator = {
-  id: 'carpet-cleaning-cost-calculator',
+  id: 'CarpetCleaningCost-calculator',
   title: 'Carpet Cleaning Cost Calculator',
   category: 'health',
   subcategory: 'General',

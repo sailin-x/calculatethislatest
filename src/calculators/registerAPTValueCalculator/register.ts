@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { registerAPTValueCalculatorCalculator } from './registerAPTValueCalculatorCalculator';
+import { registerAPTValueCalculator } from './registerAPTValueCalculator';
 
-export function registerregisterAPTValueCalculatorCalculator(): void {
-  calculatorRegistry.register(new registerAPTValueCalculatorCalculator());
+export function registerregisterAPTValueCalculator(): void {
+  calculatorRegistry.register(new registerAPTValueCalculator());
 }

@@ -1,4 +1,4 @@
-export { legal_practice_valuation_calculatorCalculator } from './legal_practice_valuation_calculator';
+export { legal_practice_valuation_calculator } from './legal_practice_valuation_calculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

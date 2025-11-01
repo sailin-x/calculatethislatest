@@ -73,11 +73,11 @@ export function validateHomeAffordabilityInputs(inputs: HomeAffordabilityInputs)
   }
 
   if (inputs.debtToIncomeRatio === undefined || inputs.debtToIncomeRatio < 0) {
-    errors.push('Debt-to-income ratio must be 0 or greater');
+    errors.push('DebtToIncome ratio must be 0 or greater');
   }
 
   if (inputs.debtToIncomeRatio > 100) {
-    errors.push('Debt-to-income ratio cannot exceed 100%');
+    errors.push('DebtToIncome ratio cannot exceed 100%');
   }
 
   if (inputs.frontEndRatio === undefined || inputs.frontEndRatio < 0) {
@@ -276,7 +276,7 @@ export function validateHomeAffordabilityInputs(inputs: HomeAffordabilityInputs)
     const monthlyIncome = inputs.annualIncome / 12;
     const dtiRatio = (inputs.monthlyDebtPayments / monthlyIncome) * 100;
     if (dtiRatio > 50) {
-      warnings.push('High debt-to-income ratio may affect loan approval');
+      warnings.push('High DebtToIncome ratio may affect loan approval');
     }
   }
 
@@ -303,7 +303,7 @@ export function validateHomeAffordabilityInputs(inputs: HomeAffordabilityInputs)
   if (inputs.medianHomePrice && inputs.annualIncome) {
     const priceToIncomeRatio = inputs.medianHomePrice / inputs.annualIncome;
     if (priceToIncomeRatio > 5) {
-      warnings.push('High price-to-income ratio may indicate affordability challenges');
+      warnings.push('High PriceToIncome ratio may indicate affordability challenges');
     }
   }
 
@@ -329,7 +329,7 @@ export function validateHomeAffordabilityInputs(inputs: HomeAffordabilityInputs)
     const totalDebt = inputs.monthlyDebtPayments + maxHousingPayment;
     const totalDTI = (totalDebt / inputs.monthlyIncome) * 100;
     if (totalDTI > inputs.maxDTI) {
-      warnings.push('Total debt-to-income ratio exceeds maximum allowed');
+      warnings.push('Total DebtToIncome ratio exceeds maximum allowed');
     }
   }
 

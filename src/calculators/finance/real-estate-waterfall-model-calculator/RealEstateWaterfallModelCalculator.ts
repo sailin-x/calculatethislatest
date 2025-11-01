@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateRealEstateWaterfallModelCalculatorInputs, validateRealEstateWaterfallModelCalculatorBusinessRules } from './validation';
 
-export const RealEstateWaterfallModelCalculatorCalculator: Calculator: Calculator = {
-  id: 'real-estate-waterfall-model-calculator-calculator',
+export const RealEstateWaterfallModelCalculator: Calculator = {
+  id: 'RealEstateWaterfall-ModelCalculatorCalculator',
   title: 'Real Estate Waterfall Model Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

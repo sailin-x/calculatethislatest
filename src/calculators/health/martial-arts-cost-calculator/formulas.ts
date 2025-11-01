@@ -1,4 +1,4 @@
-import { martial-arts-cost-calculatorInputs, martial-arts-cost-calculatorMetrics, martial-arts-cost-calculatorAnalysis } from './types';
+import { MartialArtsCost-calculatorInputs, MartialArtsCost-calculatorMetrics, MartialArtsCost-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: martial-arts-cost-calculatorInputs): number {
+export function calculateResult(inputs: MartialArtsCost-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: martial-arts-cost-calculatorInputs): num
   }
 }
 
-export function generateAnalysis(inputs: martial-arts-cost-calculatorInputs, metrics: martial-arts-cost-calculatorMetrics): martial-arts-cost-calculatorAnalysis {
+export function generateAnalysis(inputs: MartialArtsCost-calculatorInputs, metrics: MartialArtsCost-calculatorMetrics): MartialArtsCost-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

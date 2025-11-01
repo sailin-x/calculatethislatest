@@ -4,7 +4,7 @@ import { calculateResult, generateAnalysis } from './formulas';
 import { validateCapitalStructureOptimizationCalculatorInputs } from './validation';
 
 export const CapitalStructureOptimizationCalculator: Calculator = {
-  id: 'capital-structure-optimization-calculator',
+  id: 'CapitalStructureOptimization-calculator',
   title: 'Capital Structure Optimization Calculator',
   category: 'finance',
   subcategory: 'General',

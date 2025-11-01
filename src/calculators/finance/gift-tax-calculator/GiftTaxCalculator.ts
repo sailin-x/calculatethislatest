@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateGiftTaxCalculatorInputs, validateGiftTaxCalculatorBusinessRules } from './validation';
 
-export const GiftTaxCalculatorCalculator: Calculator: Calculator = {
-  id: 'gift-tax-calculator-calculator',
+export const GiftTaxCalculator: Calculator = {
+  id: 'GiftTaxCalculator-calculator',
   title: 'Gift Tax Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

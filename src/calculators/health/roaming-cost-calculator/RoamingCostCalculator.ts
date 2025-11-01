@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateRoamingCostCalculatorInputs } from './validation';
 
 export const RoamingCostCalculator: Calculator = {
-  id: 'roaming-cost-calculator',
+  id: 'RoamingCostCalculator',
   title: 'Roaming Cost Calculator',
   category: 'health',
   subcategory: 'General',

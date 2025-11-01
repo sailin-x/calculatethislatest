@@ -4,7 +4,7 @@ import { calculateRealEstateCrowdfunding } from './formulas';
 import { validateRealEstateCrowdfundingInputs } from './validation';
 
 export const RealEstateCrowdfundingCalculator: Calculator = {
-  id: 'real-estate-crowdfunding-calculator',
+  id: 'RealEstateCrowdfunding-calculator',
   title: 'Real Estate Crowdfunding Calculator',
   category: 'finance',
   subcategory: 'Real Estate',
@@ -273,7 +273,7 @@ export const RealEstateCrowdfundingCalculator: Calculator = {
     // Financing Information
     {
       id: 'loanToValue',
-      label: 'Loan-to-Value Ratio (%)',
+      label: 'LoanToValue Ratio (%)',
       type: 'percentage',
       required: true,
       min: 0,
@@ -516,7 +516,7 @@ export const RealEstateCrowdfundingCalculator: Calculator = {
 
   outputs: [
     { id: 'equityPercentage', label: 'Equity Percentage', type: 'percentage', explanation: 'Your percentage ownership in the project' },
-    { id: 'cashOnCashReturn', label: 'Cash-on-Cash Return', type: 'percentage', explanation: 'Annual return on invested capital' },
+    { id: 'cashOnCashReturn', label: 'CashOnCash Return', type: 'percentage', explanation: 'Annual return on invested capital' },
     { id: 'totalReturn', label: 'Total Return', type: 'percentage', explanation: 'Total return including appreciation' },
     { id: 'IRR', label: 'Internal Rate of Return', type: 'percentage', explanation: 'Internal rate of return on investment' },
     { id: 'riskScore', label: 'Risk Score', type: 'number', explanation: 'Overall risk assessment (0-100)' },

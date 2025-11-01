@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateAiPromptCostTokenEstimatorInputs, validateAiPromptCostTokenEstimatorBusinessRules } from './validation';
 
-export const AiPromptCostTokenEstimatorCalculator: Calculator: Calculator = {
-  id: 'ai-prompt-cost-token-estimator-calculator',
+export const AiPromptCostTokenEstimatorCalculator: Calculator = {
+  id: 'AiPromptCost-TokenEstimatorCalculator',
   title: 'AI Prompt Cost & Token Estimator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

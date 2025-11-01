@@ -105,7 +105,7 @@ export function validateRealEstateCrowdfundingInputs(inputs: RealEstateCrowdfund
 
   // Financing Information Validation
   if (inputs.loanToValue !== undefined && (inputs.loanToValue < 0 || inputs.loanToValue > 100)) {
-    errors.push('Loan-to-value ratio must be between 0 and 100 percent');
+    errors.push('LoanToValue ratio must be between 0 and 100 percent');
   }
 
   if (inputs.interestRate !== undefined && (inputs.interestRate < 0 || inputs.interestRate > 30)) {
@@ -207,7 +207,7 @@ export function validateRealEstateCrowdfundingBusinessRules(inputs: RealEstateCr
   }
 
   if (inputs.loanToValue && inputs.loanToValue > 80) {
-    warnings.push('High loan-to-value ratio may increase risk');
+    warnings.push('High LoanToValue ratio may increase risk');
   }
 
   if (inputs.occupancyRate && inputs.occupancyRate < 90) {

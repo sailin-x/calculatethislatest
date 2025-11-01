@@ -2,7 +2,7 @@ import { Calculator } from '../../../../types/calculator';
 import { ammonia_calculatorInputs, ammonia_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const ammonia_calculatorCalculator: Calculator = {
+export const ammonia-calculator: Calculator = {
   id: 'ammonia-calculator',
   title: 'Ammonia Calculator Calculator',
   category: 'finance',

@@ -148,9 +148,9 @@ export function validateCashFlowInputs(inputs: Record<string, any>): ValidationR
 
   const loanToValue = (inputs.loanAmount / inputs.propertyValue) * 100;
   if (loanToValue > 95) {
-    errors.push('Loan-to-value ratio cannot exceed 95%');
+    errors.push('LoanToValue ratio cannot exceed 95%');
   } else if (loanToValue > 80) {
-    warnings.push('High loan-to-value ratio increases risk');
+    warnings.push('High LoanToValue ratio increases risk');
   }
 
   const downPaymentPercentage = (inputs.downPayment / inputs.purchasePrice) * 100;
@@ -160,13 +160,13 @@ export function validateCashFlowInputs(inputs: Record<string, any>): ValidationR
     warnings.push('Low down payment may require PMI and increases risk');
   }
 
-  // Rent-to-value ratio validation
+  // RentToValue ratio validation
   const annualRent = inputs.monthlyRent * 12;
   const rentToValueRatio = (annualRent / inputs.propertyValue) * 100;
   if (rentToValueRatio < 5) {
-    warnings.push('Low rent-to-value ratio may indicate overvaluation');
+    warnings.push('Low RentToValue ratio may indicate overvaluation');
   } else if (rentToValueRatio > 20) {
-    warnings.push('High rent-to-value ratio may indicate undervaluation or high-risk area');
+    warnings.push('High RentToValue ratio may indicate undervaluation or high-risk area');
   }
 
   // Business rule validation
@@ -207,11 +207,11 @@ export function validateCashFlowReasonableness(
     warnings.push('Very negative cash flow may indicate poor investment');
   }
 
-  // Cash-on-cash return validation
+  // CashOnCash return validation
   if (cashOnCashReturn < -10) {
-    warnings.push('Very negative cash-on-cash return indicates high-risk investment');
+    warnings.push('Very negative CashOnCash return indicates high-risk investment');
   } else if (cashOnCashReturn > 20) {
-    warnings.push('Very high cash-on-cash return may indicate unrealistic assumptions');
+    warnings.push('Very high CashOnCash return may indicate unrealistic assumptions');
   }
 
   // Cap rate validation
@@ -221,7 +221,7 @@ export function validateCashFlowReasonableness(
     warnings.push('Very high cap rate may indicate high-risk area or property issues');
   }
 
-  // Loan-to-value validation
+  // LoanToValue validation
   if (loanToValue > 90) {
     warnings.push('Very high leverage increases risk significantly');
   }

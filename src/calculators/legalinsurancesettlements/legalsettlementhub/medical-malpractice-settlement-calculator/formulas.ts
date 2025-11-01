@@ -1,4 +1,4 @@
-import { medical-malpractice-settlement-calculatorInputs, medical-malpractice-settlement-calculatorMetrics, medical-malpractice-settlement-calculatorAnalysis } from './types';
+import { MedicalMalpracticeSettlement-calculatorInputs, MedicalMalpracticeSettlement-calculatorMetrics, MedicalMalpracticeSettlement-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: medical-malpractice-settlement-calculatorInputs): number {
+export function calculateResult(inputs: MedicalMalpracticeSettlement-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: medical-malpractice-settlement-calculato
   }
 }
 
-export function generateAnalysis(inputs: medical-malpractice-settlement-calculatorInputs, metrics: medical-malpractice-settlement-calculatorMetrics): medical-malpractice-settlement-calculatorAnalysis {
+export function generateAnalysis(inputs: MedicalMalpracticeSettlement-calculatorInputs, metrics: MedicalMalpracticeSettlement-calculatorMetrics): MedicalMalpracticeSettlement-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

@@ -1,4 +1,4 @@
-import { trade-secret-misappropriation-damages-calculatorInputs, trade-secret-misappropriation-damages-calculatorMetrics, trade-secret-misappropriation-damages-calculatorAnalysis } from './types';
+import { TradeSecretMisappropriation-damages-calculatorInputs, TradeSecretMisappropriation-damages-calculatorMetrics, TradeSecretMisappropriation-damages-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: trade-secret-misappropriation-damages-calculatorInputs): number {
+export function calculateResult(inputs: TradeSecretMisappropriation-damages-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: trade-secret-misappropriation-damages-ca
   }
 }
 
-export function generateAnalysis(inputs: trade-secret-misappropriation-damages-calculatorInputs, metrics: trade-secret-misappropriation-damages-calculatorMetrics): trade-secret-misappropriation-damages-calculatorAnalysis {
+export function generateAnalysis(inputs: TradeSecretMisappropriation-damages-calculatorInputs, metrics: TradeSecretMisappropriation-damages-calculatorMetrics): TradeSecretMisappropriation-damages-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

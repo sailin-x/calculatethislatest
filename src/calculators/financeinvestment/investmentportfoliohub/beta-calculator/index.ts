@@ -1,4 +1,4 @@
-export { beta_calculatorCalculator } from './beta_calculator';
+export { beta_calculator } from './beta_calculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

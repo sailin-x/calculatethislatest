@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { total_return_swap_calculatorInputs, total_return_swap_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const total_return_swap_calculatorCalculator: Calculator = {
-  id: 'total-return-swap-calculator',
+export const TotalReturnSwap-calculator: Calculator = {
+  id: 'TotalReturnSwap-calculator',
   title: 'Total Return Swap Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'investmentportfoliohub',

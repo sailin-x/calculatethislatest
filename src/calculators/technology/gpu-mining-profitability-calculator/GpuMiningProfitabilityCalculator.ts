@@ -10,7 +10,7 @@ import {
 import { validateGpuMiningProfitabilityCalculatorInputs } from './validation';
 
 export const GpuMiningProfitabilityCalculator: Calculator = {
-  id: 'gpu-mining-profitability-calculator',
+  id: 'GpuMiningProfitability-calculator',
   title: 'GPU Mining Profitability Calculator',
   category: 'technology',
   subcategory: 'Financial Planning',

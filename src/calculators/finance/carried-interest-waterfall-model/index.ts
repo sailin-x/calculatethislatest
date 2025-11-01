@@ -1,0 +1,2 @@
+export { CarriedInterestWaterfallModelCalculator } from './CarriedInterestWaterfallModelCalculator';
+export type { CarriedInterestWaterfallModelInputs, CarriedInterestWaterfallModelOutputs } from './types';

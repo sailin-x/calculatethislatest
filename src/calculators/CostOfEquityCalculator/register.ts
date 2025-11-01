@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { CostOfEquityCalculatorCalculator } from './CostOfEquityCalculatorCalculator';
+import { CostOfEquityCalculator } from './CostOfEquityCalculator';
 
-export function registerCostOfEquityCalculatorCalculator(): void {
-  calculatorRegistry.register(new CostOfEquityCalculatorCalculator());
+export function registerCostOfEquityCalculator(): void {
+  calculatorRegistry.register(new CostOfEquityCalculator());
 }

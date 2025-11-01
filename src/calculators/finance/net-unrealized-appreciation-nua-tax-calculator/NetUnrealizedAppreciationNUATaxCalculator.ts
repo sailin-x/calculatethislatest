@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateNetUnrealizedAppreciationNuaTaxCalculatorInputs, validateNetUnrealizedAppreciationNuaTaxCalculatorBusinessRules } from './validation';
 
-export const NetUnrealizedAppreciationNuaTaxCalculatorCalculator: Calculator: Calculator = {
-  id: 'net-unrealized-appreciation-nua-tax-calculator-calculator',
+export const NetUnrealizedAppreciationNuaTaxCalculator: Calculator = {
+  id: 'NetUnrealizedAppreciation-NuaTaxCalculator-calculator',
   title: 'Net Unrealized Appreciation (NUA) Tax Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

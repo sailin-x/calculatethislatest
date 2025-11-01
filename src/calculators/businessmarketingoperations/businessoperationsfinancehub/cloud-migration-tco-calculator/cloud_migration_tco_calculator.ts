@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { cloud_migration_tco_calculatorInputs, cloud_migration_tco_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const cloud_migration_tco_calculatorCalculator: Calculator = {
-  id: 'cloud-migration-tco-calculator',
+export const CloudMigrationTco-calculator: Calculator = {
+  id: 'CloudMigrationTco-calculator',
   title: 'Cloud Migration (TCO) Calculator Calculator',
   category: 'businessmarketingoperations',
   subcategory: 'businessoperationsfinancehub',

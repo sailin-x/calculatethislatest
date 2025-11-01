@@ -28,7 +28,7 @@ describe('CoverdellESACalculator', () => {
 
   describe('Calculator Structure', () => {
     it('should have correct calculator properties', () => {
-      expect(CoverdellESACalculator.id).toBe('coverdell-esa-calculator');
+      expect(CoverdellESACalculator.id).toBe('CoverdellEsaCalculator');
       expect(CoverdellESACalculator.title).toBe('Coverdell ESA Calculator');
       expect(CoverdellESACalculator.category).toBe('finance');
       expect(CoverdellESACalculator.subcategory).toBe('Education');

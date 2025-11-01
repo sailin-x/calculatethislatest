@@ -1,3 +1,3 @@
-export * from './CreditUtilizationCalculatorCalculator';
+export * from './CreditUtilizationCalculator';
 export * from './register';
 export * from './types';

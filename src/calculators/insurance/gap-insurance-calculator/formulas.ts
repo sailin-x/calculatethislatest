@@ -1,4 +1,4 @@
-import { gap-insurance-calculatorInputs, gap-insurance-calculatorMetrics, gap-insurance-calculatorAnalysis } from './types';
+import { GapInsuranceCalculatorinputs, GapInsuranceCalculatormetrics, GapInsuranceCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: gap-insurance-calculatorInputs): number {
+export function calculateResult(inputs: GapInsuranceCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: gap-insurance-calculatorInputs): number 
   }
 }
 
-export function generateAnalysis(inputs: gap-insurance-calculatorInputs, metrics: gap-insurance-calculatorMetrics): gap-insurance-calculatorAnalysis {
+export function generateAnalysis(inputs: GapInsuranceCalculatorinputs, metrics: GapInsuranceCalculatormetrics): GapInsuranceCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

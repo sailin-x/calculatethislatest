@@ -1,4 +1,4 @@
-export { CarLoanCalculatorCalculator } from './CarLoanCalculatorCalculator';
+export { CarLoanCalculator } from './CarLoanCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

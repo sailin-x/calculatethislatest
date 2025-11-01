@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { capital_gains_calculatorInputs, capital_gains_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const capital_gains_calculatorCalculator: Calculator = {
-  id: 'capital-gains-calculator',
+export const CapitalGainsCalculator: Calculator = {
+  id: 'CapitalGainsCalculator',
   title: 'Capital Gains Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'investmentportfoliohub',

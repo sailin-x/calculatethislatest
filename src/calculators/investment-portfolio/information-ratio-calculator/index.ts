@@ -1,4 +1,4 @@
-export { InformationRatioCalculatorCalculator } from './InformationRatioCalculatorCalculator';
+export { InformationRatioCalculator } from './InformationRatioCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

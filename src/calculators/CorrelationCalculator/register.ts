@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { CorrelationCalculatorCalculator } from './CorrelationCalculatorCalculator';
+import { CorrelationCalculator } from './CorrelationCalculator';
 
-export function registerCorrelationCalculatorCalculator(): void {
-  calculatorRegistry.register(new CorrelationCalculatorCalculator());
+export function registerCorrelationCalculator(): void {
+  calculatorRegistry.register(new CorrelationCalculator());
 }

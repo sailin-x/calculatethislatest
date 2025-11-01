@@ -1,4 +1,4 @@
-import { project-management-cost-calculatorInputs, project-management-cost-calculatorMetrics, project-management-cost-calculatorAnalysis } from './types';
+import { ProjectManagementCost-calculatorInputs, ProjectManagementCost-calculatorMetrics, ProjectManagementCost-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: project-management-cost-calculatorInputs): number {
+export function calculateResult(inputs: ProjectManagementCost-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: project-management-cost-calculatorInputs
   }
 }
 
-export function generateAnalysis(inputs: project-management-cost-calculatorInputs, metrics: project-management-cost-calculatorMetrics): project-management-cost-calculatorAnalysis {
+export function generateAnalysis(inputs: ProjectManagementCost-calculatorInputs, metrics: ProjectManagementCost-calculatorMetrics): ProjectManagementCost-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validatePatentValuationCalculatorInputs, validatePatentValuationCalculatorBusinessRules } from './validation';
 
-export const PatentValuationCalculatorCalculator: Calculator: Calculator = {
-  id: 'patent-valuation-calculator-calculator',
+export const PatentValuationCalculator: Calculator = {
+  id: 'PatentValuationCalculator-calculator',
   title: 'Patent Valuation Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

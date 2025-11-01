@@ -1,3 +1,3 @@
-import { CombinatoricsCalculatorCalculator } from './CombinatoricsCalculatorCalculator';
+import { CombinatoricsCalculator } from './CombinatoricsCalculator';
 
-export { CombinatoricsCalculatorCalculator };
+export { CombinatoricsCalculator };

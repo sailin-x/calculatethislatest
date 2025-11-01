@@ -10,7 +10,7 @@ import {
 import { validateEquipmentFinancingCalculatorInputs } from './validation';
 
 export const EquipmentFinancingCalculator: Calculator = {
-  id: 'equipment-financing-calculator',
+  id: 'EquipmentFinancingCalculator',
   title: 'Equipment Financing Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

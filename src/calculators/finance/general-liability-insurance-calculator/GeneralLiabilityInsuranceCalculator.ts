@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateGeneralLiabilityInsuranceCalculatorInputs, validateGeneralLiabilityInsuranceCalculatorBusinessRules } from './validation';
 
-export const GeneralLiabilityInsuranceCalculatorCalculator: Calculator: Calculator = {
-  id: 'general-liability-insurance-calculator-calculator',
+export const GeneralLiabilityInsuranceCalculator: Calculator = {
+  id: 'GeneralLiabilityInsurance-calculator-calculator',
   title: 'General Liability Insurance Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

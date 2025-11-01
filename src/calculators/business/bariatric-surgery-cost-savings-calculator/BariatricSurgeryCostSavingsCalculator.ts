@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateBariatricSurgeryCostSavingsCalculatorInputs, validateBariatricSurgeryCostSavingsCalculatorBusinessRules } from './validation';
 
-export const BariatricSurgeryCostSavingsCalculatorCalculator: Calculator: Calculator = {
-  id: 'bariatric-surgery-cost-savings-calculator-calculator',
+export const BariatricSurgeryCostSavingsCalculator: Calculator = {
+  id: 'BariatricSurgeryCost-SavingsCalculatorCalculator',
   title: 'Bariatric Surgery Cost & Savings Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

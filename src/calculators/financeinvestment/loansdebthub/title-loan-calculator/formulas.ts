@@ -1,4 +1,4 @@
-import { title-loan-calculatorInputs, title-loan-calculatorMetrics, title-loan-calculatorAnalysis } from './types';
+import { TitleLoanCalculatorinputs, TitleLoanCalculatormetrics, TitleLoanCalculatoranalysis } from './types';
 
 
 // Loan Calculator - Standard loan formulas
@@ -14,7 +14,7 @@ export function calculateTotalCost(monthlyPayment: number, numPayments: number):
   return monthlyPayment * numPayments;
 }
 
-export function calculateResult(inputs: title-loan-calculatorInputs): number {
+export function calculateResult(inputs: TitleLoanCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: title-loan-calculatorInputs): number {
   }
 }
 
-export function generateAnalysis(inputs: title-loan-calculatorInputs, metrics: title-loan-calculatorMetrics): title-loan-calculatorAnalysis {
+export function generateAnalysis(inputs: TitleLoanCalculatorinputs, metrics: TitleLoanCalculatormetrics): TitleLoanCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

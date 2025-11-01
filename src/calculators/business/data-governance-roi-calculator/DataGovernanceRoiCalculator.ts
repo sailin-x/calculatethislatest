@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateDataGovernanceRoiCalculatorInputs, validateDataGovernanceRoiCalculatorBusinessRules } from './validation';
 
-export const DataGovernanceRoiCalculatorCalculator: Calculator: Calculator = {
-  id: 'data-governance-roi-calculator-calculator',
+export const DataGovernanceRoiCalculator: Calculator = {
+  id: 'DataGovernanceRoi-calculator-calculator',
   title: 'Data Governance ROI Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

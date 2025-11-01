@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateCncMachiningTimeCostCalculatorInputs, validateCncMachiningTimeCostCalculatorBusinessRules } from './validation';
 
-export const CncMachiningTimeCostCalculatorCalculator: Calculator: Calculator = {
-  id: 'cnc-machining-time-cost-calculator-calculator',
+export const CncMachiningTimeCostCalculator: Calculator = {
+  id: 'CncMachiningTime-CostCalculatorCalculator',
   title: 'CNC Machining Time & Cost Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

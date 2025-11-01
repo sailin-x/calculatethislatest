@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateSponsorshipRoiCalculatorInputs, validateSponsorshipRoiCalculatorBusinessRules } from './validation';
 
-export const SponsorshipRoiCalculatorCalculator: Calculator: Calculator = {
-  id: 'sponsorship-roi-calculator-calculator',
+export const SponsorshipRoiCalculator: Calculator = {
+  id: 'SponsorshipRoiCalculator-calculator',
   title: 'Sponsorship ROI Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

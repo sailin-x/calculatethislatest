@@ -1,4 +1,4 @@
-import { customer-lifetime-value-calculatorInputs, customer-lifetime-value-calculatorMetrics, customer-lifetime-value-calculatorAnalysis } from './types';
+import { CustomerLifetimeValue-calculatorInputs, CustomerLifetimeValue-calculatorMetrics, CustomerLifetimeValue-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: customer-lifetime-value-calculatorInputs): number {
+export function calculateResult(inputs: CustomerLifetimeValue-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: customer-lifetime-value-calculatorInputs
   }
 }
 
-export function generateAnalysis(inputs: customer-lifetime-value-calculatorInputs, metrics: customer-lifetime-value-calculatorMetrics): customer-lifetime-value-calculatorAnalysis {
+export function generateAnalysis(inputs: CustomerLifetimeValue-calculatorInputs, metrics: CustomerLifetimeValue-calculatorMetrics): CustomerLifetimeValue-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

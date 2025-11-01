@@ -9,7 +9,7 @@ import {
 import { validateMergerAcquisitionDivestitureCalculatorInputs } from './validation';
 
 export const MergerAcquisitionDivestitureCalculator: Calculator = {
-  id: 'merger-acquisition-divestiture-calculator',
+  id: 'MergerAcquisitionDivestiture-calculator',
   title: 'Merger Acquisition Divestiture Calculator',
   category: 'legal',
   subcategory: 'Settlement Analysis',

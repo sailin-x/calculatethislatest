@@ -1,3 +1,3 @@
-import { ArmVsFixedMortgageCalculatorCalculator } from './ArmVsFixedMortgageCalculatorCalculator';
+import { ArmVsFixedMortgageCalculator } from './ArmVsFixedMortgageCalculator';
 
-export { ArmVsFixedMortgageCalculatorCalculator };
+export { ArmVsFixedMortgageCalculator };

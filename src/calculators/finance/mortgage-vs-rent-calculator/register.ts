@@ -1,3 +1,3 @@
-import { MortgageVsRentCalculatorCalculator } from './MortgageVsRentCalculatorCalculator';
+import { MortgageVsRentCalculator } from './MortgageVsRentCalculator';
 
-export { MortgageVsRentCalculatorCalculator };
+export { MortgageVsRentCalculator };

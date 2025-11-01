@@ -26,7 +26,7 @@ function calculatePostRecapLeverage(
   debtIssued: number, 
   newEquityValue: number
 ): number {
-  // Debt-to-equity ratio post-recapitalization
+  // DebtToEquity ratio post-recapitalization
   return newEquityValue > 0 ? debtIssued / newEquityValue : Infinity;
 }
 
@@ -64,7 +64,7 @@ export function generateAnalysis(
   );
   const leverageRatio = calculatePostRecapLeverage(inputs.debtIssued, newEquityValue);
   
-  // Investment-portfolio-specific risk assessment:
+  // InvestmentPortfolioSpecific risk assessment:
   // - Low: Leverage < 0.5 (conservative post-recap structure)
   // - Medium: 0.5 <= Leverage < 1.5 (moderate increase in financial risk)
   // - High: Leverage >= 1.5 (significant default risk, potential value erosion)

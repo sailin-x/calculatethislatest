@@ -1,13 +1,13 @@
-import { terrorism-insurance-calculatorInputs, terrorism-insurance-calculatorMetrics, terrorism-insurance-calculatorAnalysis } from './types';
+import { TerrorismInsuranceCalculatorinputs, TerrorismInsuranceCalculatormetrics, TerrorismInsuranceCalculatoranalysis } from './types';
 
 // Terrorism Insurance Calculator - Finance calculations
-export function calculateResult(inputs: terrorism-insurance-calculatorInputs): number {
+export function calculateResult(inputs: TerrorismInsuranceCalculatorinputs): number {
   // Financial calculation logic
   const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
   return numericValues.reduce((sum, val) => sum + val, 0) || 0;
 }
 
-export function generateAnalysis(inputs: terrorism-insurance-calculatorInputs, metrics: terrorism-insurance-calculatorMetrics): terrorism-insurance-calculatorAnalysis {
+export function generateAnalysis(inputs: TerrorismInsuranceCalculatorinputs, metrics: TerrorismInsuranceCalculatormetrics): TerrorismInsuranceCalculatoranalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (Math.abs(result) > 100000) riskLevel = 'High';

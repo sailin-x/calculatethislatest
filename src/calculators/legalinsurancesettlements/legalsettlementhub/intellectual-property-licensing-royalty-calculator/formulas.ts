@@ -1,4 +1,4 @@
-import { intellectual-property-licensing-royalty-calculatorInputs, intellectual-property-licensing-royalty-calculatorMetrics, intellectual-property-licensing-royalty-calculatorAnalysis } from './types';
+import { IntellectualPropertyLicensing-royalty-calculatorInputs, IntellectualPropertyLicensing-royalty-calculatorMetrics, IntellectualPropertyLicensing-royalty-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: intellectual-property-licensing-royalty-calculatorInputs): number {
+export function calculateResult(inputs: IntellectualPropertyLicensing-royalty-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: intellectual-property-licensing-royalty-
   }
 }
 
-export function generateAnalysis(inputs: intellectual-property-licensing-royalty-calculatorInputs, metrics: intellectual-property-licensing-royalty-calculatorMetrics): intellectual-property-licensing-royalty-calculatorAnalysis {
+export function generateAnalysis(inputs: IntellectualPropertyLicensing-royalty-calculatorInputs, metrics: IntellectualPropertyLicensing-royalty-calculatorMetrics): IntellectualPropertyLicensing-royalty-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

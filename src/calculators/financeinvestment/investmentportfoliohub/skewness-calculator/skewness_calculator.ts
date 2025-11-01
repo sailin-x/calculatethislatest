@@ -2,7 +2,7 @@ import { Calculator } from '../../../../types/calculator';
 import { skewness_calculatorInputs, skewness_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const skewness_calculatorCalculator: Calculator = {
+export const skewness-calculator: Calculator = {
   id: 'skewness-calculator',
   title: 'Skewness Calculator Calculator',
   category: 'financeinvestment',

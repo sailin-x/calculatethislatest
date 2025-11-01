@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { carried_interest_waterfall_model_calculatorInputs, carried_interest_waterfall_model_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const carried_interest_waterfall_model_calculatorCalculator: Calculator = {
-  id: 'carried-interest-waterfall-model-calculator',
+export const CarriedInterestWaterfall-model-calculator: Calculator = {
+  id: 'CarriedInterestWaterfall-model-calculator',
   title: 'Carried Interest Waterfall Model Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'investmentportfoliohub',

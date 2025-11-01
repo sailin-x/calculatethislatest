@@ -1,4 +1,4 @@
-export { PropertyTaxProrationCalculatorCalculator } from './PropertyTaxProrationCalculatorCalculator';
+export { PropertyTaxProrationCalculator } from './PropertyTaxProrationCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

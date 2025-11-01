@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { aviation_accident_compensation_calculatorInputs, aviation_accident_compensation_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const aviation_accident_compensation_calculatorCalculator: Calculator = {
-  id: 'aviation-accident-compensation-calculator',
+export const AviationAccidentCompensation-calculator: Calculator = {
+  id: 'AviationAccidentCompensation-calculator',
   title: 'Aviation Accident Compensation Calculator Calculator',
   category: 'legalinsurancesettlements',
   subcategory: 'legalsettlementhub',

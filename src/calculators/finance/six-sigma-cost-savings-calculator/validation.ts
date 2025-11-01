@@ -1,11 +1,11 @@
 import { ValidationResult } from '../../lib/errors';
-import { sixsigmacostsavingscalculatorCalculatorInputs } from './types';
+import { sixsigmacostsavingscalculatorInputs } from './types';
 
 /**
  * Validate six sigma cost savings calculator calculator inputs
  */
-export function validatesixsigmacostsavingscalculatorCalculatorInputs(
-  inputs: sixsigmacostsavingscalculatorCalculatorInputs
+export function validatesixsigmacostsavingscalculatorInputs(
+  inputs: sixsigmacostsavingscalculatorInputs
 ): ValidationResult {
   const errors: string[] = [];
 

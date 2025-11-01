@@ -4,7 +4,7 @@ import { validateFloodInsuranceInputs } from './validation';
 import { FloodInsuranceInputs, FloodInsuranceOutputs } from './types';
 
 export const FloodInsuranceCalculator: Calculator = {
-  id: 'flood-insurance-calculator',
+  id: 'FloodInsuranceCalculator',
   name: 'Flood Insurance Calculator',
   category: 'finance',
   subcategory: 'insurance',
@@ -69,8 +69,8 @@ export const FloodInsuranceCalculator: Calculator = {
     // Policy Information
     { id: 'policyType', name: 'Policy Type', type: 'select', required: true, description: 'Type of flood insurance policy', placeholder: 'Select policy type', options: ['standard', 'preferred', 'excess', 'private'] },
     { id: 'policyTerm', name: 'Policy Term', type: 'number', unit: 'months', required: true, description: 'Policy term in months', placeholder: '12', min: 1, max: 60 },
-    { id: 'policyStartDate', name: 'Policy Start Date', type: 'date', required: true, description: 'Policy start date', placeholder: '2024-01-01' },
-    { id: 'policyEndDate', name: 'Policy End Date', type: 'date', required: true, description: 'Policy end date', placeholder: '2024-12-31' },
+    { id: 'policyStartDate', name: 'Policy Start Date', type: 'date', required: true, description: 'Policy start date', placeholder: '20240101' },
+    { id: 'policyEndDate', name: 'Policy End Date', type: 'date', required: true, description: 'Policy end date', placeholder: '20241231' },
     
     // Risk Factors
     { id: 'floodHistory', name: 'Flood History', type: 'boolean', required: false, description: 'Whether property has flood history', placeholder: 'false' },
@@ -248,8 +248,8 @@ export const FloodInsuranceCalculator: Calculator = {
         separateDeductibles: true,
         policyType: 'standard',
         policyTerm: 12,
-        policyStartDate: '2024-01-01',
-        policyEndDate: '2024-12-31',
+        policyStartDate: '20240101',
+        policyEndDate: '20241231',
         floodHistory: false,
         numberOfPreviousClaims: 0,
         yearsSinceLastClaim: 10,
@@ -311,8 +311,8 @@ export const FloodInsuranceCalculator: Calculator = {
         separateDeductibles: true,
         policyType: 'standard',
         policyTerm: 12,
-        policyStartDate: '2024-01-01',
-        policyEndDate: '2024-12-31',
+        policyStartDate: '20240101',
+        policyEndDate: '20241231',
         floodHistory: true,
         numberOfPreviousClaims: 2,
         yearsSinceLastClaim: 3,

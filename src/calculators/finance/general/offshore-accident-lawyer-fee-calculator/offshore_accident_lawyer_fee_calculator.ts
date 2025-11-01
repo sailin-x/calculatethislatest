@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { offshore_accident_lawyer_fee_calculatorInputs, offshore_accident_lawyer_fee_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const offshore_accident_lawyer_fee_calculatorCalculator: Calculator = {
-  id: 'offshore-accident-lawyer-fee-calculator',
+export const OffshoreAccidentLawyer-fee-calculator: Calculator = {
+  id: 'OffshoreAccidentLawyer-fee-calculator',
   title: 'Offshore Accident Lawyer Fee Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

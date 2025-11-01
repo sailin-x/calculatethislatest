@@ -1,4 +1,4 @@
-import { operating-margin-calculatorInputs, operating-margin-calculatorMetrics, operating-margin-calculatorAnalysis } from './types';
+import { OperatingMarginCalculatorinputs, OperatingMarginCalculatormetrics, OperatingMarginCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: operating-margin-calculatorInputs): number {
+export function calculateResult(inputs: OperatingMarginCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: operating-margin-calculatorInputs): numb
   }
 }
 
-export function generateAnalysis(inputs: operating-margin-calculatorInputs, metrics: operating-margin-calculatorMetrics): operating-margin-calculatorAnalysis {
+export function generateAnalysis(inputs: OperatingMarginCalculatorinputs, metrics: OperatingMarginCalculatormetrics): OperatingMarginCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

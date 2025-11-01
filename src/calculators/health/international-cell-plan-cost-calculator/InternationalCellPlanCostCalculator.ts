@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateInternationalCellPlanCostCalculatorInputs } from './validation';
 
 export const InternationalCellPlanCostCalculator: Calculator = {
-  id: 'international-cell-plan-cost-calculator',
+  id: 'InternationalCellPlan-cost-calculator',
   title: 'International Cell Plan Cost Calculator',
   category: 'health',
   subcategory: 'General',

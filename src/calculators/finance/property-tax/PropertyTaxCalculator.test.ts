@@ -5,7 +5,7 @@ import * as quickValidation from './quickValidation';
 describe('PropertyTaxCalculator', () => {
   describe('Calculator Definition', () => {
     it('should have correct id and title', () => {
-      expect(PropertyTaxCalculator.id).toBe('property-tax-calculator');
+      expect(PropertyTaxCalculator.id).toBe('PropertyTaxCalculator');
       expect(PropertyTaxCalculator.title).toBe('Property Tax Calculator');
     });
 

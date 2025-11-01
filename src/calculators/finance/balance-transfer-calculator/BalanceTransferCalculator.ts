@@ -10,7 +10,7 @@ import {
 import { validateBalanceTransferCalculatorInputs } from './validation';
 
 export const BalanceTransferCalculator: Calculator = {
-  id: 'balance-transfer-calculator',
+  id: 'BalanceTransferCalculator',
   title: 'Balance Transfer Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

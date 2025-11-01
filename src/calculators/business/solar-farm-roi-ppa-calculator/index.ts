@@ -1,4 +1,4 @@
-export { SolarFarmRoiPpaCalculatorCalculator } from './SolarFarmRoiPpaCalculatorCalculator';
+export { SolarFarmRoiPpaCalculator } from './SolarFarmRoiPpaCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

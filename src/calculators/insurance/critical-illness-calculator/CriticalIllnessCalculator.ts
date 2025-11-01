@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateCriticalIllnessCalculatorInputs } from './validation';
 
 export const CriticalIllnessCalculator: Calculator = {
-  id: 'critical-illness-calculator',
+  id: 'CriticalIllnessCalculator',
   title: 'Critical Illness Calculator',
   category: 'insurance',
   subcategory: 'General',

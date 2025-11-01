@@ -9,11 +9,11 @@ import {
 import { validateHighNetWorthDivorceCalculatorInputs } from './validation';
 
 export const HighNetWorthDivorceCalculator: Calculator = {
-  id: 'high-net-worth-divorce-calculator',
+  id: 'HighNetWorth-divorce-calculator',
   title: 'High Net Worth Divorce Calculator',
   category: 'legal',
   subcategory: 'Settlement Analysis',
-  description: 'Calculate high-net-worth divorce settlements',
+  description: 'Calculate HighNetWorth divorce settlements',
   usageInstructions: [
     'Enter the total claim amount',
     'Specify expected settlement percentage',

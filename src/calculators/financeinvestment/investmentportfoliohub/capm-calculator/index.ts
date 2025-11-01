@@ -1,4 +1,4 @@
-export { capm_calculatorCalculator } from './capm_calculator';
+export { capm_calculator } from './capm_calculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

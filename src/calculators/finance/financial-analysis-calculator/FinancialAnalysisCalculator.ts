@@ -10,7 +10,7 @@ import {
 import { validateFinancialAnalysisCalculatorInputs } from './validation';
 
 export const FinancialAnalysisCalculator: Calculator = {
-  id: 'financial-analysis-calculator',
+  id: 'FinancialAnalysisCalculator',
   title: 'Financial Analysis Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

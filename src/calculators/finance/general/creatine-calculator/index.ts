@@ -1,4 +1,4 @@
-export { creatine_calculatorCalculator } from './creatine_calculator';
+export { creatine_calculator } from './creatine_calculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

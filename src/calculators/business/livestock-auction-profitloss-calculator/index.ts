@@ -1,4 +1,4 @@
-export { LivestockAuctionProfitlossCalculatorCalculator } from './LivestockAuctionProfitlossCalculatorCalculator';
+export { LivestockAuctionProfitlossCalculator } from './LivestockAuctionProfitlossCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

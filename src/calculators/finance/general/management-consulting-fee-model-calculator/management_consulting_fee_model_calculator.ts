@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { management_consulting_fee_model_calculatorInputs, management_consulting_fee_model_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const management_consulting_fee_model_calculatorCalculator: Calculator = {
-  id: 'management-consulting-fee-model-calculator',
+export const ManagementConsultingFee-model-calculator: Calculator = {
+  id: 'ManagementConsultingFee-model-calculator',
   title: 'Management Consulting Fee Model Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

@@ -1,3 +1,3 @@
-import { BurnInjurySettlementCalculatorCalculator } from './BurnInjurySettlementCalculatorCalculator';
+import { BurnInjurySettlementCalculator } from './BurnInjurySettlementCalculator';
 
-export { BurnInjurySettlementCalculatorCalculator };
+export { BurnInjurySettlementCalculator };

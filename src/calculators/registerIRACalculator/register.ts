@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { registerIRACalculatorCalculator } from './registerIRACalculatorCalculator';
+import { registerIRACalculator } from './registerIRACalculator';
 
-export function registerregisterIRACalculatorCalculator(): void {
-  calculatorRegistry.register(new registerIRACalculatorCalculator());
+export function registerregisterIRACalculator(): void {
+  calculatorRegistry.register(new registerIRACalculator());
 }

@@ -1,4 +1,4 @@
-import { sum-of-parts-calculatorInputs, sum-of-parts-calculatorMetrics, sum-of-parts-calculatorAnalysis } from './types';
+import { SumOfParts-calculatorInputs, SumOfParts-calculatorMetrics, SumOfParts-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: sum-of-parts-calculatorInputs): number {
+export function calculateResult(inputs: SumOfParts-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: sum-of-parts-calculatorInputs): number {
   }
 }
 
-export function generateAnalysis(inputs: sum-of-parts-calculatorInputs, metrics: sum-of-parts-calculatorMetrics): sum-of-parts-calculatorAnalysis {
+export function generateAnalysis(inputs: SumOfParts-calculatorInputs, metrics: SumOfParts-calculatorMetrics): SumOfParts-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

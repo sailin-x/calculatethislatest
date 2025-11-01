@@ -1,4 +1,4 @@
-export { PaydayLoanCalculatorCalculator } from './PaydayLoanCalculatorCalculator';
+export { PaydayLoanCalculator } from './PaydayLoanCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

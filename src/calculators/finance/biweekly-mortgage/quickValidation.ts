@@ -14,7 +14,7 @@ export function runBiweeklyMortgageValidation(): void {
     loanAmount: 300000,
     interestRate: 4.5,
     loanTerm: 30,
-    startDate: '2024-01-01',
+    startDate: '20240101',
     propertyTax: 3600,
     homeInsurance: 1200,
     pmi: 0,

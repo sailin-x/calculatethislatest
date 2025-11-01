@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { net_margin_calculatorInputs, net_margin_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const net_margin_calculatorCalculator: Calculator = {
-  id: 'net-margin-calculator',
+export const NetMarginCalculator: Calculator = {
+  id: 'NetMarginCalculator',
   title: 'Net Margin Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'investmentportfoliohub',

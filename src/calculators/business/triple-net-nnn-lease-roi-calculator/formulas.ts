@@ -1,4 +1,4 @@
-import { triple-net-nnn-lease-roi-calculatorInputs, triple-net-nnn-lease-roi-calculatorMetrics, triple-net-nnn-lease-roi-calculatorAnalysis } from './types';
+import { TripleNetNnn-LeaseRoiCalculatorinputs, TripleNetNnn-LeaseRoiCalculatormetrics, TripleNetNnn-LeaseRoiCalculatoranalysis } from './types';
 
 // ROI Calculator
 export function calculateROI(netProfit: number, investment: number): number {
@@ -13,7 +13,7 @@ export function calculatePaybackPeriod(investment: number, annualCashFlow: numbe
   return investment / annualCashFlow;
 }
 
-export function calculateResult(inputs: triple-net-nnn-lease-roi-calculatorInputs): number {
+export function calculateResult(inputs: TripleNetNnn-LeaseRoiCalculatorinputs): number {
   if ('netProfit' in inputs && 'investment' in inputs) {
     return calculateROI(inputs.netProfit, inputs.investment);
   }
@@ -24,7 +24,7 @@ export function calculateResult(inputs: triple-net-nnn-lease-roi-calculatorInput
   return 0;
 }
 
-export function generateAnalysis(inputs: triple-net-nnn-lease-roi-calculatorInputs, metrics: triple-net-nnn-lease-roi-calculatorMetrics): triple-net-nnn-lease-roi-calculatorAnalysis {
+export function generateAnalysis(inputs: TripleNetNnn-LeaseRoiCalculatorinputs, metrics: TripleNetNnn-LeaseRoiCalculatormetrics): TripleNetNnn-LeaseRoiCalculatoranalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (result < 10) riskLevel = 'High';

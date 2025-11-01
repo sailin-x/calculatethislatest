@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateWorkersCompensationCalculatorInputs } from './validation';
 
 export const WorkersCompensationCalculator: Calculator = {
-  id: 'workers-compensation-calculator',
+  id: 'WorkersCompensationCalculator',
   title: 'Workers Compensation Calculator',
   category: 'insurance',
   subcategory: 'General',

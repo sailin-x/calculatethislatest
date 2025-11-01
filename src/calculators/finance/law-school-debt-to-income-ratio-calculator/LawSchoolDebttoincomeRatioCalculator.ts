@@ -8,9 +8,9 @@ import {
 } from './formulas';
 import { validateLawSchoolDebttoincomeRatioCalculatorInputs, validateLawSchoolDebttoincomeRatioCalculatorBusinessRules } from './validation';
 
-export const LawSchoolDebttoincomeRatioCalculatorCalculator: Calculator: Calculator = {
-  id: 'law-school-debt-to-income-ratio-calculator-calculator',
-  title: 'Law School Debt-to-Income Ratio Calculator Calculator',
+export const LawSchoolDebttoincomeRatioCalculator: Calculator = {
+  id: 'LawSchoolDebt-ToIncomeRatio-calculator-calculator',
+  title: 'Law School DebtToIncome Ratio Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',
   description: 'Brief description of what this calculator does and its purpose.',

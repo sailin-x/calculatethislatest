@@ -1,4 +1,4 @@
-export { capital_structure_optimization_calculatorCalculator } from './capital_structure_optimization_calculator';
+export { capital_structure_optimization_calculator } from './capital_structure_optimization_calculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

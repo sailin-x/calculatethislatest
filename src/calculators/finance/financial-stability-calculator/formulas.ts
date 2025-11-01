@@ -1,4 +1,4 @@
-import { financial-stability-calculatorInputs, financial-stability-calculatorMetrics, financial-stability-calculatorAnalysis } from './types';
+import { FinancialStabilityCalculatorinputs, FinancialStabilityCalculatormetrics, FinancialStabilityCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: financial-stability-calculatorInputs): number {
+export function calculateResult(inputs: FinancialStabilityCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: financial-stability-calculatorInputs): n
   }
 }
 
-export function generateAnalysis(inputs: financial-stability-calculatorInputs, metrics: financial-stability-calculatorMetrics): financial-stability-calculatorAnalysis {
+export function generateAnalysis(inputs: FinancialStabilityCalculatorinputs, metrics: FinancialStabilityCalculatormetrics): FinancialStabilityCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

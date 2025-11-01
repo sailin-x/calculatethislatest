@@ -12,7 +12,7 @@ function isValidDTIInputs(inputs: DTIRatioCalculatorInputs): boolean {
 }
 
 /**
- * Helper function to calculate the Debt-to-Income (DTI) ratio percentage.
+ * Helper function to calculate the DebtToIncome (DTI) ratio percentage.
  * Formula: DTI = (Total Monthly Debt Payments / Gross Monthly Income) * 100
  * This is the standard formula used in mortgage and loan underwriting to assess borrower's ability to manage debt.
  * @param grossMonthlyIncome - Borrower's gross monthly income (pre-tax)

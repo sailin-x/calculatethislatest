@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { initial_dex_offering_calculatorInputs, initial_dex_offering_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const initial_dex_offering_calculatorCalculator: Calculator = {
-  id: 'initial-dex-offering-calculator',
+export const InitialDexOffering-calculator: Calculator = {
+  id: 'InitialDexOffering-calculator',
   title: 'Initial DEX Offering Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'cryptocurrencyhub',

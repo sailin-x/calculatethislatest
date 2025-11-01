@@ -1,3 +1,3 @@
-import { StartupValuationCalculatorCalculator } from './StartupValuationCalculatorCalculator';
+import { StartupValuationCalculator } from './StartupValuationCalculator';
 
-export { StartupValuationCalculatorCalculator };
+export { StartupValuationCalculator };

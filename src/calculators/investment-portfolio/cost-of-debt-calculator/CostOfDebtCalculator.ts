@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateCostOfDebtCalculatorInputs, validateCostOfDebtCalculatorBusinessRules } from './validation';
 
-export const CostOfDebtCalculatorCalculator: Calculator: Calculator = {
-  id: 'cost-of-debt-calculator-calculator',
+export const CostOfDebtCalculator: Calculator = {
+  id: 'CostOfDebt-calculator-calculator',
   title: 'Cost of Debt Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

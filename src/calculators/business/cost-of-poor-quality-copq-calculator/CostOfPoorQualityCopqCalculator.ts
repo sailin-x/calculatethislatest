@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateCostOfPoorQualityCopqCalculatorInputs, validateCostOfPoorQualityCopqCalculatorBusinessRules } from './validation';
 
-export const CostOfPoorQualityCopqCalculatorCalculator: Calculator: Calculator = {
-  id: 'cost-of-poor-quality-copq-calculator-calculator',
+export const CostOfPoorQualityCopqCalculator: Calculator = {
+  id: 'CostOfPoor-QualityCopqCalculator-calculator',
   title: 'Cost of Poor Quality (COPQ) Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

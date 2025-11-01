@@ -1,4 +1,4 @@
-export { PoliticalRiskInsuranceCalculatorCalculator } from './PoliticalRiskInsuranceCalculatorCalculator';
+export { PoliticalRiskInsuranceCalculator } from './PoliticalRiskInsuranceCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

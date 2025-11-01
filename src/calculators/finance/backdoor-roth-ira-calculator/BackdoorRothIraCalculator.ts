@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateBackdoorRothIraCalculatorInputs, validateBackdoorRothIraCalculatorBusinessRules } from './validation';
 
-export const BackdoorRothIraCalculatorCalculator: Calculator: Calculator = {
-  id: 'backdoor-roth-ira-calculator-calculator',
+export const BackdoorRothIraCalculator: Calculator = {
+  id: 'BackdoorRothIra-calculator-calculator',
   title: 'Backdoor Roth IRA Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

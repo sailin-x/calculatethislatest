@@ -1,4 +1,4 @@
-import { calorie-deficit-calculatorInputs, calorie-deficit-calculatorMetrics, calorie-deficit-calculatorAnalysis } from './types';
+import { CalorieDeficitCalculatorinputs, CalorieDeficitCalculatormetrics, CalorieDeficitCalculatoranalysis } from './types';
 
 // Calorie Calculator - BMR and TDEE
 export function calculateBMR(weightKg: number, heightCm: number, age: number, gender: string): number {
@@ -26,7 +26,7 @@ export function calculateDailyCalories(tdee: number, goal: string): number {
   }
 }
 
-export function calculateResult(inputs: calorie-deficit-calculatorInputs): number {
+export function calculateResult(inputs: CalorieDeficitCalculatorinputs): number {
   if ('weightKg' in inputs && 'heightCm' in inputs && 'age' in inputs && 'gender' in inputs) {
     const bmr = calculateBMR(inputs.weightKg, inputs.heightCm, inputs.age, inputs.gender);
     return calculateTDEE(bmr, inputs.activityLevel || 'sedentary');
@@ -34,7 +34,7 @@ export function calculateResult(inputs: calorie-deficit-calculatorInputs): numbe
   return 0;
 }
 
-export function generateAnalysis(inputs: calorie-deficit-calculatorInputs, metrics: calorie-deficit-calculatorMetrics): calorie-deficit-calculatorAnalysis {
+export function generateAnalysis(inputs: CalorieDeficitCalculatorinputs, metrics: CalorieDeficitCalculatormetrics): CalorieDeficitCalculatoranalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (result < 1200 || result > 4000) riskLevel = 'High';

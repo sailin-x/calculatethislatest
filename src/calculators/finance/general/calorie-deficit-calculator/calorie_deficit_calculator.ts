@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { calorie_deficit_calculatorInputs, calorie_deficit_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const calorie_deficit_calculatorCalculator: Calculator = {
-  id: 'calorie-deficit-calculator',
+export const CalorieDeficitCalculator: Calculator = {
+  id: 'CalorieDeficitCalculator',
   title: 'Calorie Deficit Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

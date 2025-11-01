@@ -1,13 +1,13 @@
-import { shopping-cart-abandonment-calculatorInputs, shopping-cart-abandonment-calculatorMetrics, shopping-cart-abandonment-calculatorAnalysis } from './types';
+import { ShoppingCartAbandonment-calculatorInputs, ShoppingCartAbandonment-calculatorMetrics, ShoppingCartAbandonment-calculatorAnalysis } from './types';
 
 // Shopping Cart Abandonment Calculator - Lifestyle calculations
-export function calculateResult(inputs: shopping-cart-abandonment-calculatorInputs): number {
+export function calculateResult(inputs: ShoppingCartAbandonment-calculatorInputs): number {
   // Lifestyle calculation logic
   const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
   return numericValues.reduce((sum, val) => sum + val, 0) || 0;
 }
 
-export function generateAnalysis(inputs: shopping-cart-abandonment-calculatorInputs, metrics: shopping-cart-abandonment-calculatorMetrics): shopping-cart-abandonment-calculatorAnalysis {
+export function generateAnalysis(inputs: ShoppingCartAbandonment-calculatorInputs, metrics: ShoppingCartAbandonment-calculatorMetrics): ShoppingCartAbandonment-calculatorAnalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (Math.abs(result) > 1000) riskLevel = 'High';

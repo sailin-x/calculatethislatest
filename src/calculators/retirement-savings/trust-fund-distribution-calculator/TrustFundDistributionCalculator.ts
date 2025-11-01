@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateTrustFundDistributionCalculatorInputs, validateTrustFundDistributionCalculatorBusinessRules } from './validation';
 
-export const TrustFundDistributionCalculatorCalculator: Calculator: Calculator = {
-  id: 'trust-fund-distribution-calculator-calculator',
+export const TrustFundDistributionCalculator: Calculator = {
+  id: 'TrustFundDistribution-calculator-calculator',
   title: 'Trust Fund Distribution Calculator Calculator',
   retirement-savings: 'retirement-savings', // e.g., 'finance', 'math', 'health', 'business'
   subretirement-savings: 'Subretirement-savings Name',

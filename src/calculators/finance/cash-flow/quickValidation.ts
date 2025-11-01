@@ -35,7 +35,7 @@ export function runCashFlowValidation(): void {
     console.log('✅ Basic calculation successful');
     console.log(`   Monthly Cash Flow: $${result.monthlyCashFlow.toFixed(0)}`);
     console.log(`   Annual Cash Flow: $${result.annualCashFlow.toLocaleString()}`);
-    console.log(`   Cash-on-Cash Return: ${result.cashOnCashReturn.toFixed(1)}%`);
+    console.log(`   CashOnCash Return: ${result.cashOnCashReturn.toFixed(1)}%`);
   } catch (error) {
     console.log(`❌ Basic calculation failed: ${error}`);
   }
@@ -58,7 +58,7 @@ export function runCashFlowValidation(): void {
   
   console.log(`✅ Monthly Payment: $${cashFlowMetrics.monthlyPayment.toFixed(0)}`);
   console.log(`✅ Monthly Cash Flow: $${cashFlowMetrics.monthlyCashFlow.toFixed(0)}`);
-  console.log(`✅ Cash-on-Cash Return: ${cashFlowMetrics.cashOnCashReturn.toFixed(1)}%`);
+  console.log(`✅ CashOnCash Return: ${cashFlowMetrics.cashOnCashReturn.toFixed(1)}%`);
   console.log(`✅ Cap Rate: ${cashFlowMetrics.capRate.toFixed(1)}%`);
   
   // Verify cash flow calculation
@@ -104,7 +104,7 @@ export function runCashFlowValidation(): void {
     if (cashFlowAccuracy < 15 && cashOnCashAccuracy < 15) {
       console.log('✅ Example validation passed (within 15% tolerance)');
     } else {
-      console.log(`⚠️ Example validation: Cash Flow ${cashFlowAccuracy.toFixed(1)}%, Cash-on-Cash ${cashOnCashAccuracy.toFixed(1)}% error`);
+      console.log(`⚠️ Example validation: Cash Flow ${cashFlowAccuracy.toFixed(1)}%, CashOnCash ${cashOnCashAccuracy.toFixed(1)}% error`);
     }
   } catch (error) {
     console.log(`❌ Example validation failed: ${error}`);
@@ -161,11 +161,11 @@ export function runCashFlowValidation(): void {
     console.log('⚠️ Monthly payment may be outside reasonable range');
   }
 
-  // Test cash-on-cash return
+  // Test CashOnCash return
   if (cashFlowMetrics.cashOnCashReturn > -20 && cashFlowMetrics.cashOnCashReturn < 30) {
-    console.log('✅ Cash-on-cash return is within reasonable range');
+    console.log('✅ CashOnCash return is within reasonable range');
   } else {
-    console.log('⚠️ Cash-on-cash return may be outside reasonable range');
+    console.log('⚠️ CashOnCash return may be outside reasonable range');
   }
 
   // Test break-even rent

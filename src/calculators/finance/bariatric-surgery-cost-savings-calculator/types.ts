@@ -1,10 +1,10 @@
-export interface bariatricsurgerycostsavingscalculatorCalculatorInputs {
+export interface bariatricsurgerycostsavingscalculatorInputs {
   // Domain-specific input fields for bariatric surgery cost savings calculator Calculator
   // TODO: Add specific input fields based on calculator requirements
   value: number;
 }
 
-export interface bariatricsurgerycostsavingscalculatorCalculatorOutputs {
+export interface bariatricsurgerycostsavingscalculatorOutputs {
   // Domain-specific output fields for bariatric surgery cost savings calculator Calculator
   // TODO: Add specific output fields based on calculator requirements
   result: number;

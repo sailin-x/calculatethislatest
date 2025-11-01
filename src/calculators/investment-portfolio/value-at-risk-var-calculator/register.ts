@@ -1,3 +1,3 @@
-import { ValueAtRiskVarCalculatorCalculator } from './ValueAtRiskVarCalculatorCalculator';
+import { ValueAtRiskVarCalculator } from './ValueAtRiskVarCalculator';
 
-export { ValueAtRiskVarCalculatorCalculator };
+export { ValueAtRiskVarCalculator };

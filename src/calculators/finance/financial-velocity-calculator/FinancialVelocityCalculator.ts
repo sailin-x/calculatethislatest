@@ -10,7 +10,7 @@ import {
 import { validateFinancialVelocityCalculatorInputs } from './validation';
 
 export const FinancialVelocityCalculator: Calculator = {
-  id: 'financial-velocity-calculator',
+  id: 'FinancialVelocityCalculator',
   title: 'Financial Velocity Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

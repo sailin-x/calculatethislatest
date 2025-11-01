@@ -1,13 +1,13 @@
-import { telehealth-program-roi-calculatorInputs, telehealth-program-roi-calculatorMetrics, telehealth-program-roi-calculatorAnalysis } from './types';
+import { TelehealthProgramRoi-calculatorInputs, TelehealthProgramRoi-calculatorMetrics, TelehealthProgramRoi-calculatorAnalysis } from './types';
 
 // Telehealth Program ROI Calculator - Health calculations
-export function calculateResult(inputs: telehealth-program-roi-calculatorInputs): number {
+export function calculateResult(inputs: TelehealthProgramRoi-calculatorInputs): number {
   // Health calculation logic
   const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
   return numericValues.reduce((sum, val) => sum + val, 0) || 0;
 }
 
-export function generateAnalysis(inputs: telehealth-program-roi-calculatorInputs, metrics: telehealth-program-roi-calculatorMetrics): telehealth-program-roi-calculatorAnalysis {
+export function generateAnalysis(inputs: TelehealthProgramRoi-calculatorInputs, metrics: TelehealthProgramRoi-calculatorMetrics): TelehealthProgramRoi-calculatorAnalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (Math.abs(result) > 1000) riskLevel = 'High';

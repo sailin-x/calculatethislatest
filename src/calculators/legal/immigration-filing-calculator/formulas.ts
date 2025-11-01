@@ -1,4 +1,4 @@
-import { immigration-filing-calculatorInputs, immigration-filing-calculatorMetrics, immigration-filing-calculatorAnalysis } from './types';
+import { ImmigrationFilingCalculatorinputs, ImmigrationFilingCalculatormetrics, ImmigrationFilingCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: immigration-filing-calculatorInputs): number {
+export function calculateResult(inputs: ImmigrationFilingCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: immigration-filing-calculatorInputs): nu
   }
 }
 
-export function generateAnalysis(inputs: immigration-filing-calculatorInputs, metrics: immigration-filing-calculatorMetrics): immigration-filing-calculatorAnalysis {
+export function generateAnalysis(inputs: ImmigrationFilingCalculatorinputs, metrics: ImmigrationFilingCalculatormetrics): ImmigrationFilingCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

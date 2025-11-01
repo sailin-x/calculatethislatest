@@ -1,3 +1,3 @@
-import { StockBuybackRoiCalculatorCalculator } from './StockBuybackRoiCalculatorCalculator';
+import { StockBuybackRoiCalculator } from './StockBuybackRoiCalculator';
 
-export { StockBuybackRoiCalculatorCalculator };
+export { StockBuybackRoiCalculator };

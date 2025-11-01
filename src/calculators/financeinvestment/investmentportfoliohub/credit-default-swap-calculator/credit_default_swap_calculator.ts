@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { credit_default_swap_calculatorInputs, credit_default_swap_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const credit_default_swap_calculatorCalculator: Calculator = {
-  id: 'credit-default-swap-calculator',
+export const CreditDefaultSwap-calculator: Calculator = {
+  id: 'CreditDefaultSwap-calculator',
   title: 'Credit Default Swap Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'investmentportfoliohub',

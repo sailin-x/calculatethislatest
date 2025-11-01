@@ -1,4 +1,4 @@
-import { data-center-total-cost-of-ownership-tco-calculatorInputs, data-center-total-cost-of-ownership-tco-calculatorMetrics, data-center-total-cost-of-ownership-tco-calculatorAnalysis } from './types';
+import { DataCenterTotal-CostOfOwnership-tco-calculatorInputs, DataCenterTotal-CostOfOwnership-tco-calculatorMetrics, DataCenterTotal-CostOfOwnership-tco-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: data-center-total-cost-of-ownership-tco-calculatorInputs): number {
+export function calculateResult(inputs: DataCenterTotal-CostOfOwnership-tco-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: data-center-total-cost-of-ownership-tco-
   }
 }
 
-export function generateAnalysis(inputs: data-center-total-cost-of-ownership-tco-calculatorInputs, metrics: data-center-total-cost-of-ownership-tco-calculatorMetrics): data-center-total-cost-of-ownership-tco-calculatorAnalysis {
+export function generateAnalysis(inputs: DataCenterTotal-CostOfOwnership-tco-calculatorInputs, metrics: DataCenterTotal-CostOfOwnership-tco-calculatorMetrics): DataCenterTotal-CostOfOwnership-tco-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

@@ -3,10 +3,10 @@ import { calculateCashOnCashReturn, generateInvestmentAnalysis } from './formula
 import { validateCashOnCashReturnInputs } from './validation';
 
 /**
- * Quick validation test for Cash-on-Cash Return Calculator
+ * Quick validation test for CashOnCash Return Calculator
  */
 export function runCashOnCashReturnValidation(): void {
-  console.log('🧪 Running Cash-on-Cash Return Calculator Validation...\n');
+  console.log('🧪 Running CashOnCash Return Calculator Validation...\n');
 
   // Test 1: Basic functionality
   console.log('📋 Test 1: Basic Calculator Functionality');
@@ -35,7 +35,7 @@ export function runCashOnCashReturnValidation(): void {
     const result = CashOnCashReturnCalculator.calculate(basicInputs);
     console.log('✅ Basic calculation successful');
     console.log(`   Total Cash Invested: $${result.totalCashInvested.toLocaleString()}`);
-    console.log(`   Cash-on-Cash Return: ${result.cashOnCashReturn.toFixed(1)}%`);
+    console.log(`   CashOnCash Return: ${result.cashOnCashReturn.toFixed(1)}%`);
     console.log(`   Total Return: ${result.totalReturn.toFixed(1)}%`);
   } catch (error) {
     console.log(`❌ Basic calculation failed: ${error}`);
@@ -58,24 +58,24 @@ export function runCashOnCashReturnValidation(): void {
   const cashOnCashMetrics = calculateCashOnCashReturn(basicInputs);
   
   console.log(`✅ Total Cash Invested: $${cashOnCashMetrics.totalCashInvested.toLocaleString()}`);
-  console.log(`✅ Cash-on-Cash Return: ${cashOnCashMetrics.cashOnCashReturn.toFixed(1)}%`);
+  console.log(`✅ CashOnCash Return: ${cashOnCashMetrics.cashOnCashReturn.toFixed(1)}%`);
   console.log(`✅ Total Return: ${cashOnCashMetrics.totalReturn.toFixed(1)}%`);
   console.log(`✅ Cap Rate: ${cashOnCashMetrics.capRate.toFixed(1)}%`);
   
-  // Verify cash-on-cash return calculation
+  // Verify CashOnCash return calculation
   const expectedCashOnCash = (cashOnCashMetrics.annualCashFlow / cashOnCashMetrics.totalCashInvested) * 100;
   const cashOnCashAccuracy = Math.abs(cashOnCashMetrics.cashOnCashReturn - expectedCashOnCash);
   
   if (cashOnCashAccuracy < 0.01) {
-    console.log('✅ Cash-on-cash return calculation accuracy: Excellent');
+    console.log('✅ CashOnCash return calculation accuracy: Excellent');
   } else {
-    console.log(`⚠️ Cash-on-cash return calculation accuracy: ${cashOnCashAccuracy.toFixed(4)}% error`);
+    console.log(`⚠️ CashOnCash return calculation accuracy: ${cashOnCashAccuracy.toFixed(4)}% error`);
   }
 
   // Test 4: Edge cases
   console.log('\n📋 Test 4: Edge Cases');
   
-  // High cash-on-cash return property
+  // High CashOnCash return property
   const highReturnInputs = { ...basicInputs, monthlyRent: 3000, downPayment: 40000 };
   try {
     const highReturnResult = CashOnCashReturnCalculator.calculate(highReturnInputs);
@@ -105,7 +105,7 @@ export function runCashOnCashReturnValidation(): void {
     if (cashOnCashAccuracy < 15 && totalReturnAccuracy < 15) {
       console.log('✅ Example validation passed (within 15% tolerance)');
     } else {
-      console.log(`⚠️ Example validation: Cash-on-Cash ${cashOnCashAccuracy.toFixed(1)}%, Total Return ${totalReturnAccuracy.toFixed(1)}% error`);
+      console.log(`⚠️ Example validation: CashOnCash ${cashOnCashAccuracy.toFixed(1)}%, Total Return ${totalReturnAccuracy.toFixed(1)}% error`);
     }
   } catch (error) {
     console.log(`❌ Example validation failed: ${error}`);
@@ -155,11 +155,11 @@ export function runCashOnCashReturnValidation(): void {
   // Test 9: Business logic validation
   console.log('\n📋 Test 9: Business Logic Validation');
   
-  // Test that cash-on-cash return is reasonable
+  // Test that CashOnCash return is reasonable
   if (cashOnCashMetrics.cashOnCashReturn > -20 && cashOnCashMetrics.cashOnCashReturn < 30) {
-    console.log('✅ Cash-on-cash return is within reasonable range');
+    console.log('✅ CashOnCash return is within reasonable range');
   } else {
-    console.log('⚠️ Cash-on-cash return may be outside reasonable range');
+    console.log('⚠️ CashOnCash return may be outside reasonable range');
   }
 
   // Test total cash invested calculation
@@ -177,7 +177,7 @@ export function runCashOnCashReturnValidation(): void {
     console.log('⚠️ Payback period may be outside reasonable range');
   }
 
-  console.log('\n🎉 Cash-on-Cash Return Calculator Validation Complete!');
+  console.log('\n🎉 CashOnCash Return Calculator Validation Complete!');
   console.log('✅ All core functionality working correctly');
   console.log('✅ Ready for production use');
 }

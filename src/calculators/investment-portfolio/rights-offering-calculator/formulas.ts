@@ -67,7 +67,7 @@ export function generateAnalysis(
   const { currentPrice, subscriptionPrice, existingShares, ratio } = inputs;
   const { result: terp, valuePerRightCum, valuePerRightEx, totalRightsValueCum, newSharesPossible, totalInvestmentRequired, dilutionPercentage } = metrics;
 
-  // Investment-portfolio-specific risk assessment: Higher discount indicates potential company distress or aggressive capital raise, increasing portfolio risk
+  // InvestmentPortfolioSpecific risk assessment: Higher discount indicates potential company distress or aggressive capital raise, increasing portfolio risk
   const discountPercentage = calculateDiscountPercentage(currentPrice, subscriptionPrice);
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (discountPercentage > 20) {

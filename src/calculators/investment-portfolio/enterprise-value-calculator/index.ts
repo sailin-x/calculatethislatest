@@ -1,4 +1,4 @@
-export { EnterpriseValueCalculatorCalculator } from './EnterpriseValueCalculatorCalculator';
+export { EnterpriseValueCalculator } from './EnterpriseValueCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

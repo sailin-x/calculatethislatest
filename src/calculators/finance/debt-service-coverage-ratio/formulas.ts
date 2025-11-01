@@ -1,4 +1,4 @@
-import { debt-service-coverage-ratioInputs, debt-service-coverage-ratioMetrics, debt-service-coverage-ratioAnalysis } from './types';
+import { DebtServiceCoverage-ratioInputs, DebtServiceCoverage-ratioMetrics, DebtServiceCoverage-ratioAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: debt-service-coverage-ratioInputs): number {
+export function calculateResult(inputs: DebtServiceCoverage-ratioInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: debt-service-coverage-ratioInputs): numb
   }
 }
 
-export function generateAnalysis(inputs: debt-service-coverage-ratioInputs, metrics: debt-service-coverage-ratioMetrics): debt-service-coverage-ratioAnalysis {
+export function generateAnalysis(inputs: DebtServiceCoverage-ratioInputs, metrics: DebtServiceCoverage-ratioMetrics): DebtServiceCoverage-ratioAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

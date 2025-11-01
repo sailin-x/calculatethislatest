@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateCreditDefaultSwapCalculatorInputs, validateCreditDefaultSwapCalculatorBusinessRules } from './validation';
 
-export const CreditDefaultSwapCalculatorCalculator: Calculator: Calculator = {
-  id: 'credit-default-swap-calculator-calculator',
+export const CreditDefaultSwapCalculator: Calculator = {
+  id: 'CreditDefaultSwap-calculator-calculator',
   title: 'Credit Default Swap Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

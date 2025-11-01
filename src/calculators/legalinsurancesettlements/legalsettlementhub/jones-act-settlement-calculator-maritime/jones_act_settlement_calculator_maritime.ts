@@ -3,7 +3,7 @@ import { jones_act_settlement_calculator_maritimeInputs, jones_act_settlement_ca
 import { calculateResult, generateAnalysis } from './formulas';
 
 export const jones_act_settlement_calculator_maritimeCalculator: Calculator = {
-  id: 'jones-act-settlement-calculator-maritime',
+  id: 'JonesActSettlement-calculator-maritime',
   title: 'Jones Act Settlement Calculator (Maritime) Calculator',
   category: 'legalinsurancesettlements',
   subcategory: 'legalsettlementhub',

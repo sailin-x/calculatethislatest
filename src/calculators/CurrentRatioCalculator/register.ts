@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { CurrentRatioCalculatorCalculator } from './CurrentRatioCalculatorCalculator';
+import { CurrentRatioCalculator } from './CurrentRatioCalculator';
 
-export function registerCurrentRatioCalculatorCalculator(): void {
-  calculatorRegistry.register(new CurrentRatioCalculatorCalculator());
+export function registerCurrentRatioCalculator(): void {
+  calculatorRegistry.register(new CurrentRatioCalculator());
 }

@@ -1,4 +1,4 @@
-import { data-governance-roi-calculatorInputs, data-governance-roi-calculatorMetrics, data-governance-roi-calculatorAnalysis } from './types';
+import { DataGovernanceRoi-calculatorInputs, DataGovernanceRoi-calculatorMetrics, DataGovernanceRoi-calculatorAnalysis } from './types';
 
 
 // Investment Calculator - ROI and growth calculations
@@ -12,7 +12,7 @@ export function calculateCompoundInterest(principal: number, rate: number, years
   return principal * Math.pow(1 + ratePerPeriod, totalPeriods);
 }
 
-export function calculateResult(inputs: data-governance-roi-calculatorInputs): number {
+export function calculateResult(inputs: DataGovernanceRoi-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -36,7 +36,7 @@ export function calculateResult(inputs: data-governance-roi-calculatorInputs): n
   }
 }
 
-export function generateAnalysis(inputs: data-governance-roi-calculatorInputs, metrics: data-governance-roi-calculatorMetrics): data-governance-roi-calculatorAnalysis {
+export function generateAnalysis(inputs: DataGovernanceRoi-calculatorInputs, metrics: DataGovernanceRoi-calculatorMetrics): DataGovernanceRoi-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

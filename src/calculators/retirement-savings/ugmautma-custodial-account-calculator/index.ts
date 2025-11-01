@@ -1,4 +1,4 @@
-export { UgmautmaCustodialAccountCalculatorCalculator } from './UgmautmaCustodialAccountCalculatorCalculator';
+export { UgmautmaCustodialAccountCalculator } from './UgmautmaCustodialAccountCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

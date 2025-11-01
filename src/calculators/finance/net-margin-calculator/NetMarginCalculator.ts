@@ -10,7 +10,7 @@ import {
 import { validateNetMarginCalculatorInputs } from './validation';
 
 export const NetMarginCalculator: Calculator = {
-  id: 'net-margin-calculator',
+  id: 'NetMarginCalculator',
   title: 'Net Margin Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

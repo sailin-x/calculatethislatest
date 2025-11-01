@@ -181,11 +181,11 @@ export function runLeaseBuyoutValidation(): void {
     console.log('⚠️ Break-even months may be outside reasonable range');
   }
 
-  // Test loan-to-value ratio
+  // Test LoanToValue ratio
   if (buyoutMetrics.loanToValue > 0 && buyoutMetrics.loanToValue < 100) {
-    console.log('✅ Loan-to-value ratio is within reasonable range');
+    console.log('✅ LoanToValue ratio is within reasonable range');
   } else {
-    console.log('⚠️ Loan-to-value ratio may be outside reasonable range');
+    console.log('⚠️ LoanToValue ratio may be outside reasonable range');
   }
 
   console.log('\n🎉 Commercial Lease Buyout Calculator Validation Complete!');

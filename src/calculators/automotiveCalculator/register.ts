@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { automotiveCalculatorCalculator } from './automotiveCalculatorCalculator';
+import { automotiveCalculator } from './automotiveCalculator';
 
-export function registerautomotiveCalculatorCalculator(): void {
-  calculatorRegistry.register(new automotiveCalculatorCalculator());
+export function registerautomotiveCalculator(): void {
+  calculatorRegistry.register(new automotiveCalculator());
 }

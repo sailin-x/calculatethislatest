@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateDebtToEquityCalculatorInputs, validateDebtToEquityCalculatorBusinessRules } from './validation';
 
-export const DebtToEquityCalculatorCalculator: Calculator: Calculator = {
-  id: 'debt-to-equity-calculator-calculator',
+export const DebtToEquityCalculator: Calculator = {
+  id: 'DebtToEquity-calculator-calculator',
   title: 'Debt to Equity Calculator Calculator',
   loans-debt: 'loans-debt', // e.g., 'finance', 'math', 'health', 'business'
   subloans-debt: 'Subloans-debt Name',

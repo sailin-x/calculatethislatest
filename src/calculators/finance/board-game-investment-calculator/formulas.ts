@@ -1,4 +1,4 @@
-import { board-game-investment-calculatorInputs, board-game-investment-calculatorMetrics, board-game-investment-calculatorAnalysis } from './types';
+import { BoardGameInvestment-calculatorInputs, BoardGameInvestment-calculatorMetrics, BoardGameInvestment-calculatorAnalysis } from './types';
 
 // Investment Calculator - Compound Interest
 export function calculateFutureValue(principal: number, annualRate: number, years: number, compoundingFrequency: number = 12): number {
@@ -15,7 +15,7 @@ export function calculateTotalInterest(futureValue: number, principal: number, t
   return futureValue - principal - totalContributions;
 }
 
-export function calculateResult(inputs: board-game-investment-calculatorInputs): number {
+export function calculateResult(inputs: BoardGameInvestment-calculatorInputs): number {
   if ('initialInvestment' in inputs && 'annualReturn' in inputs && 'investmentPeriod' in inputs) {
     return calculateFutureValue(
       inputs.initialInvestment,
@@ -27,7 +27,7 @@ export function calculateResult(inputs: board-game-investment-calculatorInputs):
   return 0;
 }
 
-export function generateAnalysis(inputs: board-game-investment-calculatorInputs, metrics: board-game-investment-calculatorMetrics): board-game-investment-calculatorAnalysis {
+export function generateAnalysis(inputs: BoardGameInvestment-calculatorInputs, metrics: BoardGameInvestment-calculatorMetrics): BoardGameInvestment-calculatorAnalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (result > 1000000) riskLevel = 'High';

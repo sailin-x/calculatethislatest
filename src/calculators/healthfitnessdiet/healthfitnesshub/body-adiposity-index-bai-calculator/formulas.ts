@@ -1,4 +1,4 @@
-import { body-adiposity-index-bai-calculatorInputs, body-adiposity-index-bai-calculatorMetrics, body-adiposity-index-bai-calculatorAnalysis } from './types';
+import { BodyAdiposityIndex-bai-calculatorInputs, BodyAdiposityIndex-bai-calculatorMetrics, BodyAdiposityIndex-bai-calculatorAnalysis } from './types';
 
 
 // Health Calculator - BMI and body metrics
@@ -20,7 +20,7 @@ export function calculateBMR(weightKg: number, heightCm: number, age: number, is
   return isMale ? base + 5 : base - 161;
 }
 
-export function calculateResult(inputs: body-adiposity-index-bai-calculatorInputs): number {
+export function calculateResult(inputs: BodyAdiposityIndex-bai-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -44,7 +44,7 @@ export function calculateResult(inputs: body-adiposity-index-bai-calculatorInput
   }
 }
 
-export function generateAnalysis(inputs: body-adiposity-index-bai-calculatorInputs, metrics: body-adiposity-index-bai-calculatorMetrics): body-adiposity-index-bai-calculatorAnalysis {
+export function generateAnalysis(inputs: BodyAdiposityIndex-bai-calculatorInputs, metrics: BodyAdiposityIndex-bai-calculatorMetrics): BodyAdiposityIndex-bai-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

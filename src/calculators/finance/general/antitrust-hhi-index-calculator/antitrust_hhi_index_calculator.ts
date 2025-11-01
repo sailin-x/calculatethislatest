@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { antitrust_hhi_index_calculatorInputs, antitrust_hhi_index_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const antitrust_hhi_index_calculatorCalculator: Calculator = {
-  id: 'antitrust-hhi-index-calculator',
+export const AntitrustHhiIndex-calculator: Calculator = {
+  id: 'AntitrustHhiIndex-calculator',
   title: 'Antitrust (HHI Index) Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

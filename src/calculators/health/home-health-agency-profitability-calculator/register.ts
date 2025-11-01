@@ -1,3 +1,3 @@
-import { HomeHealthAgencyProfitabilityCalculatorCalculator } from './HomeHealthAgencyProfitabilityCalculatorCalculator';
+import { HomeHealthAgencyProfitabilityCalculator } from './HomeHealthAgencyProfitabilityCalculator';
 
-export { HomeHealthAgencyProfitabilityCalculatorCalculator };
+export { HomeHealthAgencyProfitabilityCalculator };

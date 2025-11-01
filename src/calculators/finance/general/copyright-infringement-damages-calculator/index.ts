@@ -1,4 +1,4 @@
-export { copyright_infringement_damages_calculatorCalculator } from './copyright_infringement_damages_calculator';
+export { copyright_infringement_damages_calculator } from './copyright_infringement_damages_calculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

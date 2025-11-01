@@ -1,4 +1,4 @@
-import { concert-tour-budgeting-calculatorInputs, concert-tour-budgeting-calculatorMetrics, concert-tour-budgeting-calculatorAnalysis } from './types';
+import { ConcertTourBudgeting-calculatorInputs, ConcertTourBudgeting-calculatorMetrics, ConcertTourBudgeting-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: concert-tour-budgeting-calculatorInputs): number {
+export function calculateResult(inputs: ConcertTourBudgeting-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: concert-tour-budgeting-calculatorInputs)
   }
 }
 
-export function generateAnalysis(inputs: concert-tour-budgeting-calculatorInputs, metrics: concert-tour-budgeting-calculatorMetrics): concert-tour-budgeting-calculatorAnalysis {
+export function generateAnalysis(inputs: ConcertTourBudgeting-calculatorInputs, metrics: ConcertTourBudgeting-calculatorMetrics): ConcertTourBudgeting-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

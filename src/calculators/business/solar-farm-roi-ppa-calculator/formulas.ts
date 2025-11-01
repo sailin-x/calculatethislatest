@@ -1,4 +1,4 @@
-import { solar-farm-roi-ppa-calculatorInputs, solar-farm-roi-ppa-calculatorMetrics, solar-farm-roi-ppa-calculatorAnalysis } from './types';
+import { SolarFarmRoi-ppa-calculatorInputs, SolarFarmRoi-ppa-calculatorMetrics, SolarFarmRoi-ppa-calculatorAnalysis } from './types';
 
 // ROI Calculator
 export function calculateROI(netProfit: number, investment: number): number {
@@ -13,7 +13,7 @@ export function calculatePaybackPeriod(investment: number, annualCashFlow: numbe
   return investment / annualCashFlow;
 }
 
-export function calculateResult(inputs: solar-farm-roi-ppa-calculatorInputs): number {
+export function calculateResult(inputs: SolarFarmRoi-ppa-calculatorInputs): number {
   if ('netProfit' in inputs && 'investment' in inputs) {
     return calculateROI(inputs.netProfit, inputs.investment);
   }
@@ -24,7 +24,7 @@ export function calculateResult(inputs: solar-farm-roi-ppa-calculatorInputs): nu
   return 0;
 }
 
-export function generateAnalysis(inputs: solar-farm-roi-ppa-calculatorInputs, metrics: solar-farm-roi-ppa-calculatorMetrics): solar-farm-roi-ppa-calculatorAnalysis {
+export function generateAnalysis(inputs: SolarFarmRoi-ppa-calculatorInputs, metrics: SolarFarmRoi-ppa-calculatorMetrics): SolarFarmRoi-ppa-calculatorAnalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (result < 10) riskLevel = 'High';

@@ -1,3 +1,3 @@
-import { PassengerLoadFactorBreakevenCalculatorCalculator } from './PassengerLoadFactorBreakevenCalculatorCalculator';
+import { PassengerLoadFactorBreakevenCalculator } from './PassengerLoadFactorBreakevenCalculator';
 
-export { PassengerLoadFactorBreakevenCalculatorCalculator };
+export { PassengerLoadFactorBreakevenCalculator };

@@ -1,5 +1,5 @@
-export { cryptoarbitragecalculatorCalculator } from './cryptoarbitragecalculatorCalculator';
-export { registercryptoarbitragecalculatorCalculator } from './register';
+export { cryptoarbitragecalculator } from './cryptoarbitragecalculator';
+export { registercryptoarbitragecalculator } from './register';
 export * from './types';
 export * from './formulas';
 export * from './validation';

@@ -1,27 +1,36 @@
 export interface EnterpriseValueCalculatorInputs {
-  principalAmount: number;
-  interestRate: number;
-  timePeriod: number;
-  compoundingFrequency: number;
+  marketCap: number;
+  totalDebt: number;
+  cashAndEquivalents: number;
+  preferredStock?: number;
+  minorityInterest?: number;
+  enterpriseValueMultiples?: {
+    evToRevenue?: number;
+    evToEbitda?: number;
+    evToEbit?: number;
+    evToFcf?: number;
+  };
 }
 
 export interface EnterpriseValueCalculatorMetrics {
-  totalAmount: number;
-  totalInterest: number;
-  monthlyPayment: number;
-  effectiveRate: number;
+  enterpriseValue: number;
+  debtToEquity: number;
+  cashToDebt: number;
+  netDebt: number;
+  enterpriseValueToRevenue: number;
 }
 
 export interface EnterpriseValueCalculatorAnalysis {
-  profitability: string;
-  riskLevel: string;
+  valuation: 'undervalued' | 'fairly_valued' | 'overvalued';
+  leverage: 'low' | 'moderate' | 'high';
   recommendations: string[];
+  industryComparison: string;
 }
 
 export interface EnterpriseValueCalculatorOutputs {
-  totalAmount: number;
-  totalInterest: number;
-  monthlyPayment: number;
-  effectiveRate: number;
+  enterpriseValue: number;
+  netDebt: number;
+  debtToEquity: number;
+  cashToDebt: number;
   analysis: EnterpriseValueCalculatorAnalysis;
 }

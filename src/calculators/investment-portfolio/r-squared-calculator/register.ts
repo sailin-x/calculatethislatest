@@ -1,3 +1,3 @@
-import { RSquaredCalculatorCalculator } from './RSquaredCalculatorCalculator';
+import { RSquaredCalculator } from './RSquaredCalculator';
 
-export { RSquaredCalculatorCalculator };
+export { RSquaredCalculator };

@@ -1,3 +1,3 @@
-export * from './balloon_mortgageCalculatorCalculator';
+export * from './balloon_mortgageCalculator';
 export * from './register';
 export * from './types';

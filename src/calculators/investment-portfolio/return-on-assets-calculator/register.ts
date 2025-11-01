@@ -1,3 +1,3 @@
-import { ReturnOnAssetsCalculatorCalculator } from './ReturnOnAssetsCalculatorCalculator';
+import { ReturnOnAssetsCalculator } from './ReturnOnAssetsCalculator';
 
-export { ReturnOnAssetsCalculatorCalculator };
+export { ReturnOnAssetsCalculator };

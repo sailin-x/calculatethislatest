@@ -1,4 +1,4 @@
-export { CdInterestCalculatorCalculator } from './CdInterestCalculatorCalculator';
+export { CdInterestCalculator } from './CdInterestCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

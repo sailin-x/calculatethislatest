@@ -3,7 +3,7 @@ import { calculateRBDRMD } from './formulas';
 import { ValidationRuleFactory } from '../../utils/validation';
 
 export const requiredBeginningDateRMDCalculator: Calculator = {
-  id: 'required-beginning-date-rmd-calculator',
+  id: 'RequiredBeginningDate-rmd-calculator',
   title: 'Required Beginning Date (RBD) for RMDs Calculator',
   category: 'finance',
   subcategory: 'Retirement & Savings',
@@ -252,7 +252,7 @@ export const requiredBeginningDateRMDCalculator: Calculator = {
   examples: [
     {
       title: 'Traditional IRA RMD Calculation',
-      description: '72-year-old with traditional IRA requiring RMDs',
+      description: '72YearOld with traditional IRA requiring RMDs',
       inputs: {
         birthYear: 1952,
         currentYear: 2024,

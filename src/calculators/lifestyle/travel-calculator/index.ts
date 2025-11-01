@@ -1,4 +1,4 @@
-export { TravelCalculatorCalculator } from './TravelCalculatorCalculator';
+export { TravelCalculator } from './TravelCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

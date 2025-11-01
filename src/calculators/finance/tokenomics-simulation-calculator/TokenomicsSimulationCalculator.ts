@@ -10,7 +10,7 @@ import {
 import { validateTokenomicsSimulationCalculatorInputs } from './validation';
 
 export const TokenomicsSimulationCalculator: Calculator = {
-  id: 'tokenomics-simulation-calculator',
+  id: 'TokenomicsSimulationCalculator',
   title: 'Tokenomics Simulation Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

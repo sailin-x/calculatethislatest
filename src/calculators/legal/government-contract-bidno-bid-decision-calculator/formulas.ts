@@ -1,13 +1,13 @@
-import { government-contract-bidno-bid-decision-calculatorInputs, government-contract-bidno-bid-decision-calculatorMetrics, government-contract-bidno-bid-decision-calculatorAnalysis } from './types';
+import { GovernmentContractBidno-BidDecisionCalculatorinputs, GovernmentContractBidno-BidDecisionCalculatormetrics, GovernmentContractBidno-BidDecisionCalculatoranalysis } from './types';
 
 // Government Contract Bid/No-Bid Decision Calculator - Legal calculations
-export function calculateResult(inputs: government-contract-bidno-bid-decision-calculatorInputs): number {
+export function calculateResult(inputs: GovernmentContractBidno-BidDecisionCalculatorinputs): number {
   // Legal calculation logic
   const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
   return numericValues.reduce((sum, val) => sum + val, 0) || 0;
 }
 
-export function generateAnalysis(inputs: government-contract-bidno-bid-decision-calculatorInputs, metrics: government-contract-bidno-bid-decision-calculatorMetrics): government-contract-bidno-bid-decision-calculatorAnalysis {
+export function generateAnalysis(inputs: GovernmentContractBidno-BidDecisionCalculatorinputs, metrics: GovernmentContractBidno-BidDecisionCalculatormetrics): GovernmentContractBidno-BidDecisionCalculatoranalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (Math.abs(result) > 100000) riskLevel = 'High';

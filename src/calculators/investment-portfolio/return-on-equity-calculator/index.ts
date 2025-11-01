@@ -1,4 +1,4 @@
-export { ReturnOnEquityCalculatorCalculator } from './ReturnOnEquityCalculatorCalculator';
+export { ReturnOnEquityCalculator } from './ReturnOnEquityCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

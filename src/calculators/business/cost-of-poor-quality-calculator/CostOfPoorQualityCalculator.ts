@@ -10,7 +10,7 @@ import {
 import { validateCostOfPoorQualityCalculatorInputs } from './validation';
 
 export const CostOfPoorQualityCalculator: Calculator = {
-  id: 'cost-of-poor-quality-calculator',
+  id: 'CostOfPoor-quality-calculator',
   title: 'Cost of Poor Quality Calculator',
   category: 'business',
   subcategory: 'Financial Planning',

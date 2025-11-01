@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validatePodcastCostCalculatorInputs } from './validation';
 
 export const PodcastCostCalculator: Calculator = {
-  id: 'podcast-cost-calculator',
+  id: 'PodcastCostCalculator',
   title: 'Podcast Cost Calculator',
   category: 'health',
   subcategory: 'General',

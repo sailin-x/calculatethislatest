@@ -1,4 +1,4 @@
-export { WaccCalculatorCalculator } from './WaccCalculatorCalculator';
+export { WaccCalculator } from './WaccCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

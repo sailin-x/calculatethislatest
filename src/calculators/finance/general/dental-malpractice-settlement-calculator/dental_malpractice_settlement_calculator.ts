@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { dental_malpractice_settlement_calculatorInputs, dental_malpractice_settlement_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const dental_malpractice_settlement_calculatorCalculator: Calculator = {
-  id: 'dental-malpractice-settlement-calculator',
+export const DentalMalpracticeSettlement-calculator: Calculator = {
+  id: 'DentalMalpracticeSettlement-calculator',
   title: 'Dental Malpractice Settlement Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

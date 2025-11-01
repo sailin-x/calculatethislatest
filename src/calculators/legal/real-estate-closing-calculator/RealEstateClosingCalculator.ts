@@ -9,7 +9,7 @@ import {
 import { validateRealEstateClosingCalculatorInputs } from './validation';
 
 export const RealEstateClosingCalculator: Calculator = {
-  id: 'real-estate-closing-calculator',
+  id: 'RealEstateClosing-calculator',
   title: 'Real Estate Closing Calculator',
   category: 'legal',
   subcategory: 'Settlement Analysis',

@@ -3,7 +3,7 @@ import { celebrity_endorsement_deal_valuationInputs, celebrity_endorsement_deal_
 import { calculateResult, generateAnalysis } from './formulas';
 
 export const celebrity_endorsement_deal_valuationCalculator: Calculator = {
-  id: 'celebrity-endorsement-deal-valuation',
+  id: 'CelebrityEndorsementDeal-valuation',
   title: 'Celebrity Endorsement Deal Valuation Calculator',
   category: 'businessmarketingoperations',
   subcategory: 'marketingcreatorhub',

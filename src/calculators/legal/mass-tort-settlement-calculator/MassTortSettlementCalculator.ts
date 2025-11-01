@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateMassTortSettlementCalculatorInputs, validateMassTortSettlementCalculatorBusinessRules } from './validation';
 
-export const MassTortSettlementCalculatorCalculator: Calculator: Calculator = {
-  id: 'mass-tort-settlement-calculator-calculator',
+export const MassTortSettlementCalculator: Calculator = {
+  id: 'MassTortSettlement-calculator-calculator',
   title: 'Mass Tort Settlement Calculator Calculator',
   legal: 'legal', // e.g., 'finance', 'math', 'health', 'business'
   sublegal: 'Sublegal Name',

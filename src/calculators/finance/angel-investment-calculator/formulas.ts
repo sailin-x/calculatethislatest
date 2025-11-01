@@ -1,4 +1,4 @@
-import { angel-investment-calculatorInputs, angel-investment-calculatorMetrics, angel-investment-calculatorAnalysis } from './types';
+import { AngelInvestmentCalculatorinputs, AngelInvestmentCalculatormetrics, AngelInvestmentCalculatoranalysis } from './types';
 
 // Investment Calculator - Compound Interest
 export function calculateFutureValue(principal: number, annualRate: number, years: number, compoundingFrequency: number = 12): number {
@@ -15,7 +15,7 @@ export function calculateTotalInterest(futureValue: number, principal: number, t
   return futureValue - principal - totalContributions;
 }
 
-export function calculateResult(inputs: angel-investment-calculatorInputs): number {
+export function calculateResult(inputs: AngelInvestmentCalculatorinputs): number {
   if ('initialInvestment' in inputs && 'annualReturn' in inputs && 'investmentPeriod' in inputs) {
     return calculateFutureValue(
       inputs.initialInvestment,
@@ -27,7 +27,7 @@ export function calculateResult(inputs: angel-investment-calculatorInputs): numb
   return 0;
 }
 
-export function generateAnalysis(inputs: angel-investment-calculatorInputs, metrics: angel-investment-calculatorMetrics): angel-investment-calculatorAnalysis {
+export function generateAnalysis(inputs: AngelInvestmentCalculatorinputs, metrics: AngelInvestmentCalculatormetrics): AngelInvestmentCalculatoranalysis {
   const result = metrics.result;
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   if (result > 1000000) riskLevel = 'High';

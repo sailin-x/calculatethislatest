@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { structured_settlement_payout_calculatorInputs, structured_settlement_payout_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const structured_settlement_payout_calculatorCalculator: Calculator = {
-  id: 'structured-settlement-payout-calculator',
+export const StructuredSettlementPayout-calculator: Calculator = {
+  id: 'StructuredSettlementPayout-calculator',
   title: 'Structured Settlement Payout Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'retirementsavingshub',

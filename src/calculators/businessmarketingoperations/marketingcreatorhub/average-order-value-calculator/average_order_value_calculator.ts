@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { average_order_value_calculatorInputs, average_order_value_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const average_order_value_calculatorCalculator: Calculator = {
-  id: 'average-order-value-calculator',
+export const AverageOrderValue-calculator: Calculator = {
+  id: 'AverageOrderValue-calculator',
   title: 'Average Order Value Calculator Calculator',
   category: 'businessmarketingoperations',
   subcategory: 'marketingcreatorhub',

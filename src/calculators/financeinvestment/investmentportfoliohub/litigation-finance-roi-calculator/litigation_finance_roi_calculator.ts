@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { litigation_finance_roi_calculatorInputs, litigation_finance_roi_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const litigation_finance_roi_calculatorCalculator: Calculator = {
-  id: 'litigation-finance-roi-calculator',
+export const LitigationFinanceRoi-calculator: Calculator = {
+  id: 'LitigationFinanceRoi-calculator',
   title: 'Litigation Finance ROI Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'investmentportfoliohub',

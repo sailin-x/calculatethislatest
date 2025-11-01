@@ -1,4 +1,4 @@
-import { clinical-trial-cost-estimatorInputs, clinical-trial-cost-estimatorMetrics, clinical-trial-cost-estimatorAnalysis } from './types';
+import { ClinicalTrialCost-estimatorInputs, ClinicalTrialCost-estimatorMetrics, ClinicalTrialCost-estimatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: clinical-trial-cost-estimatorInputs): number {
+export function calculateResult(inputs: ClinicalTrialCost-estimatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: clinical-trial-cost-estimatorInputs): nu
   }
 }
 
-export function generateAnalysis(inputs: clinical-trial-cost-estimatorInputs, metrics: clinical-trial-cost-estimatorMetrics): clinical-trial-cost-estimatorAnalysis {
+export function generateAnalysis(inputs: ClinicalTrialCost-estimatorInputs, metrics: ClinicalTrialCost-estimatorMetrics): ClinicalTrialCost-estimatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

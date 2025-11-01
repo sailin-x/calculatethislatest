@@ -63,3 +63,7 @@ export function validatePropertyTaxAppealSavingsCalculatorBusinessRules(inputs: 
 
   return warnings;
 }
+
+export function validatepropertytaxappealsavingscalculatorInputs(inputs: any): any {
+  return validatePropertyTaxAppealSavingsCalculatorInputs(inputs);
+}

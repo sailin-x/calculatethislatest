@@ -1,3 +1,3 @@
-import { CryptoStakingProfitabilityCalculatorExistsButNeedsRegistrationCalculatorCalculator } from './CryptoStakingProfitabilityCalculatorExistsButNeedsRegistrationCalculatorCalculator';
+import { CryptoStakingProfitabilityCalculatorExistsButNeedsRegistrationCalculator } from './CryptoStakingProfitabilityCalculatorExistsButNeedsRegistrationCalculator';
 
-export { CryptoStakingProfitabilityCalculatorExistsButNeedsRegistrationCalculatorCalculator };
+export { CryptoStakingProfitabilityCalculatorExistsButNeedsRegistrationCalculator };

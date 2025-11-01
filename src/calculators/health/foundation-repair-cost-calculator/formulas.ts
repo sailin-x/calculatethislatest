@@ -1,4 +1,4 @@
-import { foundation-repair-cost-calculatorInputs, foundation-repair-cost-calculatorMetrics, foundation-repair-cost-calculatorAnalysis } from './types';
+import { FoundationRepairCost-calculatorInputs, FoundationRepairCost-calculatorMetrics, FoundationRepairCost-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: foundation-repair-cost-calculatorInputs): number {
+export function calculateResult(inputs: FoundationRepairCost-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: foundation-repair-cost-calculatorInputs)
   }
 }
 
-export function generateAnalysis(inputs: foundation-repair-cost-calculatorInputs, metrics: foundation-repair-cost-calculatorMetrics): foundation-repair-cost-calculatorAnalysis {
+export function generateAnalysis(inputs: FoundationRepairCost-calculatorInputs, metrics: FoundationRepairCost-calculatorMetrics): FoundationRepairCost-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

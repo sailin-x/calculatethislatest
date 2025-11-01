@@ -1,244 +1,139 @@
-import { FourZeroThreeBInputs } from './types';
+import { FourOhThreeBInputs } from './types';
 
-export function validateCurrentAge(value: any, allInputs?: Record<string, any>): { isValid: boolean; error?: string } {
-  if (!value || typeof value !== 'number' || value < 18 || value > 100) {
-    return { isValid: false, error: 'Current age must be between 18 and 100' };
+// Validation functions with allInputs parameter as required by standards
+export function validateCurrentAge(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (!value || value < 18) {
+    return { isValid: false, message: 'Current age must be at least 18' };
   }
-
-  if (allInputs?.retirementAge && value >= allInputs.retirementAge) {
-    return { isValid: false, error: 'Current age must be less than retirement age' };
+  if (value > 100) {
+    return { isValid: false, message: 'Current age cannot exceed 100' };
   }
-
   return { isValid: true };
 }
 
-export function validateRetirementAge(value: any, allInputs?: Record<string, any>): { isValid: boolean; error?: string } {
-  if (!value || typeof value !== 'number' || value <= 0 || value > 100) {
-    return { isValid: false, error: 'Retirement age must be between 1 and 100' };
+export function validateRetirementAge(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (!value || value <= 0) {
+    return { isValid: false, message: 'Retirement age must be greater than 0' };
   }
-
+  if (value > 100) {
+    return { isValid: false, message: 'Retirement age cannot exceed 100' };
+  }
   if (allInputs?.currentAge && value <= allInputs.currentAge) {
-    return { isValid: false, error: 'Retirement age must be greater than current age' };
+    return { isValid: false, message: 'Retirement age must be greater than current age' };
   }
-
-  if (value < 55) {
-    return { isValid: true, error: 'Early retirement may impact benefits and require careful planning' };
-  }
-
   return { isValid: true };
 }
 
-export function validateLifeExpectancy(value: any, allInputs?: Record<string, any>): { isValid: boolean; error?: string } {
-  if (!value || typeof value !== 'number' || value <= 0 || value > 120) {
-    return { isValid: false, error: 'Life expectancy must be between 1 and 120' };
+export function validateCurrentSalary(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (!value || value <= 0) {
+    return { isValid: false, message: 'Current salary must be greater than 0' };
   }
-
-  if (allInputs?.retirementAge && value <= allInputs.retirementAge) {
-    return { isValid: false, error: 'Life expectancy must be greater than retirement age' };
+  if (value > 10000000) {
+    return { isValid: false, message: 'Current salary seems unusually high' };
   }
-
   return { isValid: true };
 }
 
-export function validateCurrentBalance(value: any, allInputs?: Record<string, any>): { isValid: boolean; error?: string } {
-  if (value !== undefined && (typeof value !== 'number' || value < 0)) {
-    return { isValid: false, error: 'Current balance cannot be negative' };
+export function validateEmployeeContributionPercent(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value === undefined || value < 0) {
+    return { isValid: false, message: 'Employee contribution percentage cannot be negative' };
   }
-
+  if (value > 100) {
+    return { isValid: false, message: 'Employee contribution percentage cannot exceed 100%' };
+  }
   return { isValid: true };
 }
 
-export function validateAnnualSalary(value: any, allInputs?: Record<string, any>): { isValid: boolean; error?: string } {
-  if (!value || typeof value !== 'number' || value <= 0) {
-    return { isValid: false, error: 'Annual salary must be greater than 0' };
+export function validateEmployerMatchPercent(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value === undefined || value < 0) {
+    return { isValid: false, message: 'Employer match percentage cannot be negative' };
   }
-
-  if (value < 30000) {
-    return { isValid: true, error: 'Low salary may limit retirement contributions' };
+  if (value > 200) {
+    return { isValid: false, message: 'Employer match percentage seems unusually high' };
   }
-
   return { isValid: true };
 }
 
-export function validateEmployeeContributionPercent(value: any, allInputs?: Record<string, any>): { isValid: boolean; error?: string } {
-  if (value !== undefined && (typeof value !== 'number' || value < 0 || value > 100)) {
-    return { isValid: false, error: 'Employee contribution percentage must be between 0 and 100' };
+export function validateEmployerMatchLimitPercent(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value === undefined || value < 0) {
+    return { isValid: false, message: 'Employer match limit percentage cannot be negative' };
   }
-
-  if (value < 5) {
-    return { isValid: true, error: 'Contribution below 5% may miss tax benefits and employer match' };
+  if (value > 100) {
+    return { isValid: false, message: 'Employer match limit percentage cannot exceed 100%' };
   }
-
-  if (allInputs?.annualSalary && value) {
-    const contributionAmount = allInputs.annualSalary * (value / 100);
-    if (contributionAmount > 22000) {
-      return { isValid: false, error: 'Contribution exceeds 2023 annual limit of $22,000' };
-    }
-  }
-
   return { isValid: true };
 }
 
-export function validateEmployerMatchPercent(value: any, allInputs?: Record<string, any>): { isValid: boolean; error?: string } {
-  if (value !== undefined && (typeof value !== 'number' || value < 0 || value > 100)) {
-    return { isValid: false, error: 'Employer match percentage must be between 0 and 100' };
+export function validateExpectedAnnualSalaryIncrease(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value === undefined || value < -10) {
+    return { isValid: false, message: 'Expected salary increase cannot be less than -10%' };
   }
-
-  if (allInputs?.employeeContributionPercent && value > allInputs.employeeContributionPercent) {
-    return { isValid: true, error: 'Employer match exceeds employee contribution - consider increasing contributions' };
+  if (value > 20) {
+    return { isValid: false, message: 'Expected salary increase seems unusually high (>20%)' };
   }
-
   return { isValid: true };
 }
 
-export function validateExpectedAnnualReturn(value: any, allInputs?: Record<string, any>): { isValid: boolean; error?: string } {
-  if (value !== undefined && (typeof value !== 'number' || value < 0 || value > 20)) {
-    return { isValid: false, error: 'Expected annual return must be between 0 and 20 percent' };
+export function validateCurrentBalance(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value === undefined || value < 0) {
+    return { isValid: false, message: 'Current balance cannot be negative' };
   }
-
-  if (value > 12) {
-    return { isValid: true, error: 'Return above 12% may be unrealistic - consider conservative assumptions' };
-  }
-
-  if (value < 4) {
-    return { isValid: true, error: 'Return below 4% may not keep pace with inflation' };
-  }
-
   return { isValid: true };
 }
 
-export function validateInflationRate(value: any, allInputs?: Record<string, any>): { isValid: boolean; error?: string } {
-  if (value !== undefined && (typeof value !== 'number' || value < -5 || value > 15)) {
-    return { isValid: false, error: 'Inflation rate must be between -5% and 15%' };
+export function validateExpectedAnnualReturn(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value === undefined || value < -10) {
+    return { isValid: false, message: 'Expected annual return cannot be less than -10%' };
   }
-
+  if (value > 30) {
+    return { isValid: false, message: 'Expected annual return seems unusually high (>30%)' };
+  }
   return { isValid: true };
 }
 
-export function validateCurrentTaxRate(value: any, allInputs?: Record<string, any>): { isValid: boolean; error?: string } {
-  if (value !== undefined && (typeof value !== 'number' || value < 0 || value > 50)) {
-    return { isValid: false, error: 'Current tax rate must be between 0 and 50 percent' };
+export function validateInvestmentFees(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value === undefined || value < 0) {
+    return { isValid: false, message: 'Investment fees cannot be negative' };
   }
-
+  if (value > 5) {
+    return { isValid: false, message: 'Investment fees seem unusually high (>5%)' };
+  }
   return { isValid: true };
 }
 
-export function validateRetirementTaxRate(value: any, allInputs?: Record<string, any>): { isValid: boolean; error?: string } {
-  if (value !== undefined && (typeof value !== 'number' || value < 0 || value > 50)) {
-    return { isValid: false, error: 'Retirement tax rate must be between 0 and 50 percent' };
+export function validateCurrentTaxRate(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value === undefined || value < 0) {
+    return { isValid: false, message: 'Current tax rate cannot be negative' };
   }
-
-  if (allInputs?.currentTaxRate && value > allInputs.currentTaxRate) {
-    return { isValid: true, error: 'Higher retirement tax rate may impact retirement income' };
-  }
-
-  return { isValid: true };
-}
-
-export function validateAnalysisPeriod(value: any, allInputs?: Record<string, any>): { isValid: boolean; error?: string } {
-  if (!value || typeof value !== 'number' || value <= 0) {
-    return { isValid: false, error: 'Analysis period must be greater than 0 years' };
-  }
-
   if (value > 50) {
-    return { isValid: true, error: 'Analysis period over 50 years may be too long for accurate projections' };
+    return { isValid: false, message: 'Current tax rate cannot exceed 50%' };
   }
-
   return { isValid: true };
 }
 
-export function validateSocialSecurityBenefit(value: any, allInputs?: Record<string, any>): { isValid: boolean; error?: string } {
-  if (value !== undefined && (typeof value !== 'number' || value < 0)) {
-    return { isValid: false, error: 'Social Security benefit cannot be negative' };
+export function validateRetirementTaxRate(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value === undefined || value < 0) {
+    return { isValid: false, message: 'Retirement tax rate cannot be negative' };
   }
-
+  if (value > 50) {
+    return { isValid: false, message: 'Retirement tax rate cannot exceed 50%' };
+  }
   return { isValid: true };
 }
 
-export function validateAnnualFees(value: any, allInputs?: Record<string, any>): { isValid: boolean; error?: string } {
-  if (value !== undefined && (typeof value !== 'number' || value < 0 || value > 10)) {
-    return { isValid: false, error: 'Annual fees must be between 0 and 10 percent' };
-  }
+export function validateCatchUpContribution(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  if (value === undefined) return { isValid: true }; // Optional field
 
-  if (value > 1) {
-    return { isValid: true, error: 'Fees above 1% may significantly impact long-term returns' };
+  if (value < 0) {
+    return { isValid: false, message: 'Catch-up contribution cannot be negative' };
   }
-
   return { isValid: true };
 }
 
-export function validateAnnualContributionLimit(value: any, allInputs?: Record<string, any>): { isValid: boolean; error?: string } {
-  if (!value || typeof value !== 'number' || value <= 0) {
-    return { isValid: false, error: 'Annual contribution limit must be greater than 0' };
+export function validateAnalysisPeriod(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
+  const validPeriods = ['annual', 'monthly'];
+  if (!validPeriods.includes(value)) {
+    return { isValid: false, message: 'Analysis period must be annual or monthly' };
   }
-
-  if (value < 22000) {
-    return { isValid: true, error: 'Contribution limit below current IRS limit of $22,000' };
-  }
-
-  return { isValid: true };
-}
-
-export function validateLifetimeContributionLimit(value: any, allInputs?: Record<string, any>): { isValid: boolean; error?: string } {
-  if (!value || typeof value !== 'number' || value <= 0) {
-    return { isValid: false, error: 'Lifetime contribution limit must be greater than 0' };
-  }
-
-  return { isValid: true };
-}
-
-export function validateYearsOfService(value: any, allInputs?: Record<string, any>): { isValid: boolean; error?: string } {
-  if (value !== undefined && (typeof value !== 'number' || value < 0)) {
-    return { isValid: false, error: 'Years of service cannot be negative' };
-  }
-
-  return { isValid: true };
-}
-
-export function validateCatchUpContributions(value: any, allInputs?: Record<string, any>): { isValid: boolean; error?: string } {
-  // Boolean validation - no specific rules needed
-  if (typeof value !== 'boolean') {
-    return { isValid: false, error: 'Catch-up contributions must be true or false' };
-  }
-
-  if (allInputs?.currentAge && allInputs.currentAge >= 50 && !value) {
-    return { isValid: true, error: 'Age 50+ eligible for catch-up contributions' };
-  }
-
-  return { isValid: true };
-}
-
-export function validateIncludeSocialSecurity(value: any, allInputs?: Record<string, any>): { isValid: boolean; error?: string } {
-  if (typeof value !== 'boolean') {
-    return { isValid: false, error: 'Include Social Security must be true or false' };
-  }
-
-  return { isValid: true };
-}
-
-export function validateVestingSchedule(value: any, allInputs?: Record<string, any>): { isValid: boolean; error?: string } {
-  const validSchedules = ['immediate', 'graded', 'cliff'];
-  if (!value || !validSchedules.includes(value)) {
-    return { isValid: false, error: 'Please select a valid vesting schedule' };
-  }
-
-  return { isValid: true };
-}
-
-export function validateWithdrawalStrategy(value: any, allInputs?: Record<string, any>): { isValid: boolean; error?: string } {
-  const validStrategies = ['fixed_amount', 'percentage', 'required_minimum'];
-  if (!value || !validStrategies.includes(value)) {
-    return { isValid: false, error: 'Please select a valid withdrawal strategy' };
-  }
-
-  return { isValid: true };
-}
-
-export function validateCurrency(value: any, allInputs?: Record<string, any>): { isValid: boolean; error?: string } {
-  const validCurrencies = ['USD', 'EUR', 'GBP', 'CAD', 'AUD'];
-  if (!value || !validCurrencies.includes(value)) {
-    return { isValid: false, error: 'Please select a valid currency' };
-  }
-
   return { isValid: true };
 }

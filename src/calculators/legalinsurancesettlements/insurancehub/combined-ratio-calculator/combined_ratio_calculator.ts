@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { combined_ratio_calculatorInputs, combined_ratio_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const combined_ratio_calculatorCalculator: Calculator = {
-  id: 'combined-ratio-calculator',
+export const CombinedRatioCalculator: Calculator = {
+  id: 'CombinedRatioCalculator',
   title: 'Combined Ratio Calculator Calculator',
   category: 'legalinsurancesettlements',
   subcategory: 'insurancehub',

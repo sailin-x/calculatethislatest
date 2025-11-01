@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { body_recomposition_calculatorInputs, body_recomposition_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const body_recomposition_calculatorCalculator: Calculator = {
-  id: 'body-recomposition-calculator',
+export const BodyRecompositionCalculator: Calculator = {
+  id: 'BodyRecompositionCalculator',
   title: 'Body Recomposition Calculator Calculator',
   category: 'healthfitnessdiet',
   subcategory: 'healthfitnesshub',

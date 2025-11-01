@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateDistressedDebtInvestingRoiCalculatorInputs, validateDistressedDebtInvestingRoiCalculatorBusinessRules } from './validation';
 
-export const DistressedDebtInvestingRoiCalculatorCalculator: Calculator: Calculator = {
-  id: 'distressed-debt-investing-roi-calculator-calculator',
+export const DistressedDebtInvestingRoiCalculator: Calculator = {
+  id: 'DistressedDebtInvesting-RoiCalculatorCalculator',
   title: 'Distressed Debt Investing ROI Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

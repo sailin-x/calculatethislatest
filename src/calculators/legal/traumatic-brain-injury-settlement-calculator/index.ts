@@ -1,4 +1,4 @@
-export { TraumaticBrainInjurySettlementCalculatorCalculator } from './TraumaticBrainInjurySettlementCalculatorCalculator';
+export { TraumaticBrainInjurySettlementCalculator } from './TraumaticBrainInjurySettlementCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

@@ -1,4 +1,4 @@
-export { PassengerLoadFactorBreakevenCalculatorCalculator } from './PassengerLoadFactorBreakevenCalculatorCalculator';
+export { PassengerLoadFactorBreakevenCalculator } from './PassengerLoadFactorBreakevenCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

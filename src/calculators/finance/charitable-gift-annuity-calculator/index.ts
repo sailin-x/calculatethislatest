@@ -1,4 +1,4 @@
-export { CharitableGiftAnnuityCalculatorCalculator } from './CharitableGiftAnnuityCalculatorCalculator';
+export { CharitableGiftAnnuityCalculator } from './CharitableGiftAnnuityCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

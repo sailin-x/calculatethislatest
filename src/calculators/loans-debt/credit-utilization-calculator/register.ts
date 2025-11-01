@@ -1,3 +1,3 @@
-import { CreditUtilizationCalculatorCalculator } from './CreditUtilizationCalculatorCalculator';
+import { CreditUtilizationCalculator } from './CreditUtilizationCalculator';
 
-export { CreditUtilizationCalculatorCalculator };
+export { CreditUtilizationCalculator };

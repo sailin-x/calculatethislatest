@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateLongTermCareCalculatorInputs } from './validation';
 
 export const LongTermCareCalculator: Calculator = {
-  id: 'long-term-care-calculator',
+  id: 'LongTermCare-calculator',
   title: 'Long Term Care Calculator',
   category: 'insurance',
   subcategory: 'General',

@@ -1,4 +1,4 @@
-import { portfolio-company-ebitda-growth-calculatorInputs, portfolio-company-ebitda-growth-calculatorMetrics, portfolio-company-ebitda-growth-calculatorAnalysis } from './types';
+import { PortfolioCompanyEbitda-growth-calculatorInputs, PortfolioCompanyEbitda-growth-calculatorMetrics, PortfolioCompanyEbitda-growth-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: portfolio-company-ebitda-growth-calculatorInputs): number {
+export function calculateResult(inputs: PortfolioCompanyEbitda-growth-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: portfolio-company-ebitda-growth-calculat
   }
 }
 
-export function generateAnalysis(inputs: portfolio-company-ebitda-growth-calculatorInputs, metrics: portfolio-company-ebitda-growth-calculatorMetrics): portfolio-company-ebitda-growth-calculatorAnalysis {
+export function generateAnalysis(inputs: PortfolioCompanyEbitda-growth-calculatorInputs, metrics: PortfolioCompanyEbitda-growth-calculatorMetrics): PortfolioCompanyEbitda-growth-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

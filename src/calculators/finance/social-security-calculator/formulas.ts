@@ -1,4 +1,4 @@
-import { social-security-calculatorInputs, social-security-calculatorMetrics, social-security-calculatorAnalysis } from './types';
+import { SocialSecurityCalculatorinputs, SocialSecurityCalculatormetrics, SocialSecurityCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: social-security-calculatorInputs): number {
+export function calculateResult(inputs: SocialSecurityCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: social-security-calculatorInputs): numbe
   }
 }
 
-export function generateAnalysis(inputs: social-security-calculatorInputs, metrics: social-security-calculatorMetrics): social-security-calculatorAnalysis {
+export function generateAnalysis(inputs: SocialSecurityCalculatorinputs, metrics: SocialSecurityCalculatormetrics): SocialSecurityCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

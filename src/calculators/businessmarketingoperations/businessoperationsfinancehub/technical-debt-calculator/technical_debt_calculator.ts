@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { technical_debt_calculatorInputs, technical_debt_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const technical_debt_calculatorCalculator: Calculator = {
-  id: 'technical-debt-calculator',
+export const TechnicalDebtCalculator: Calculator = {
+  id: 'TechnicalDebtCalculator',
   title: 'Technical Debt Calculator Calculator',
   category: 'businessmarketingoperations',
   subcategory: 'businessoperationsfinancehub',

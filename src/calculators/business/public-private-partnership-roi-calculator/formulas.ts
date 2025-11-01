@@ -1,4 +1,4 @@
-import { public-private-partnership-roi-calculatorInputs, public-private-partnership-roi-calculatorMetrics, public-private-partnership-roi-calculatorAnalysis } from './types';
+import { PublicPrivatePartnership-roi-calculatorInputs, PublicPrivatePartnership-roi-calculatorMetrics, PublicPrivatePartnership-roi-calculatorAnalysis } from './types';
 
 
 // Investment Calculator - ROI and growth calculations
@@ -12,7 +12,7 @@ export function calculateCompoundInterest(principal: number, rate: number, years
   return principal * Math.pow(1 + ratePerPeriod, totalPeriods);
 }
 
-export function calculateResult(inputs: public-private-partnership-roi-calculatorInputs): number {
+export function calculateResult(inputs: PublicPrivatePartnership-roi-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -36,7 +36,7 @@ export function calculateResult(inputs: public-private-partnership-roi-calculato
   }
 }
 
-export function generateAnalysis(inputs: public-private-partnership-roi-calculatorInputs, metrics: public-private-partnership-roi-calculatorMetrics): public-private-partnership-roi-calculatorAnalysis {
+export function generateAnalysis(inputs: PublicPrivatePartnership-roi-calculatorInputs, metrics: PublicPrivatePartnership-roi-calculatorMetrics): PublicPrivatePartnership-roi-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

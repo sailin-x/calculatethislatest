@@ -1,3 +1,3 @@
-import { AirdropValueCalculatorCalculator } from './AirdropValueCalculatorCalculator';
+import { AirdropValueCalculator } from './AirdropValueCalculator';
 
-export { AirdropValueCalculatorCalculator };
+export { AirdropValueCalculator };

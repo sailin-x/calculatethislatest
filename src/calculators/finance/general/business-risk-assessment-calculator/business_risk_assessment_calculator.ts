@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { business_risk_assessment_calculatorInputs, business_risk_assessment_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const business_risk_assessment_calculatorCalculator: Calculator = {
-  id: 'business-risk-assessment-calculator',
+export const BusinessRiskAssessment-calculator: Calculator = {
+  id: 'BusinessRiskAssessment-calculator',
   title: 'Business Risk Assessment Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

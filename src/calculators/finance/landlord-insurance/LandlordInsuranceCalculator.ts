@@ -3,7 +3,7 @@ import { calculateLandlordInsurance, generateLandlordInsuranceAnalysis } from '.
 import { validateLandlordInsuranceInputs } from './validation';
 
 export const LandlordInsuranceCalculator: Calculator = {
-  id: 'landlord-insurance-calculator',
+  id: 'LandlordInsuranceCalculator',
   name: 'Landlord Insurance Calculator',
   category: 'finance',
   subcategory: 'investment',

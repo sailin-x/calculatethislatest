@@ -1,4 +1,4 @@
-export { FlexibleSpendingAccountCalculatorCalculator } from './FlexibleSpendingAccountCalculatorCalculator';
+export { FlexibleSpendingAccountCalculator } from './FlexibleSpendingAccountCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

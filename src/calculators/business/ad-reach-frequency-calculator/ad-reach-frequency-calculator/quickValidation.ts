@@ -1,4 +1,4 @@
-import { ad-reach-frequency-calculatorInputs } from './types';
+import { AdReachFrequency-calculatorInputs } from './types';
 
 export function validateValue(value: any, allInputs?: Record<string, any>): { isValid: boolean; message?: string } {
   if (value === null || value === undefined) {

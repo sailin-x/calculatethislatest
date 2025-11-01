@@ -317,7 +317,7 @@ const stockOptionsCalculator: CalculatorRegistration = {
         strikePrice: 100,
         currentStockPrice: 110,
         optionPrice: 15,
-        expirationDate: '2024-12-20',
+        expirationDate: '20241220',
         numberOfContracts: 1,
         contractsPerOption: 100,
         volatility: 30,
@@ -348,7 +348,7 @@ const stockOptionsCalculator: CalculatorRegistration = {
         strikePrice: 120,
         currentStockPrice: 110,
         optionPrice: 8,
-        expirationDate: '2024-12-20',
+        expirationDate: '20241220',
         numberOfContracts: 1,
         contractsPerOption: 100,
         volatility: 25,
@@ -379,7 +379,7 @@ const stockOptionsCalculator: CalculatorRegistration = {
         strikePrice: 100,
         currentStockPrice: 110,
         optionPrice: 3,
-        expirationDate: '2024-12-20',
+        expirationDate: '20241220',
         numberOfContracts: 1,
         contractsPerOption: 100,
         volatility: 35,
@@ -406,10 +406,10 @@ const stockOptionsCalculator: CalculatorRegistration = {
   ],
   
   relatedCalculators: [
-    'real-estate-investment',
+    'RealEstateInvestment',
     'mortgage-calculator',
-    'cap-rate-calculator',
-    'cash-flow-calculator',
+    'CapRateCalculator',
+    'CashFlowCalculator',
     'developer-salary'
   ]
 };

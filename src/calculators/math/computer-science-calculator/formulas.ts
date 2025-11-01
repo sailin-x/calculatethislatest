@@ -1,4 +1,4 @@
-import { computer-science-calculatorInputs, computer-science-calculatorMetrics, computer-science-calculatorAnalysis } from './types';
+import { ComputerScienceCalculatorinputs, ComputerScienceCalculatormetrics, ComputerScienceCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: computer-science-calculatorInputs): number {
+export function calculateResult(inputs: ComputerScienceCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: computer-science-calculatorInputs): numb
   }
 }
 
-export function generateAnalysis(inputs: computer-science-calculatorInputs, metrics: computer-science-calculatorMetrics): computer-science-calculatorAnalysis {
+export function generateAnalysis(inputs: ComputerScienceCalculatorinputs, metrics: ComputerScienceCalculatormetrics): ComputerScienceCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

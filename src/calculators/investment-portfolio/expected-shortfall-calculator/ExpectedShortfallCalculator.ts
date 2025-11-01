@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateExpectedShortfallCalculatorInputs, validateExpectedShortfallCalculatorBusinessRules } from './validation';
 
-export const ExpectedShortfallCalculatorCalculator: Calculator: Calculator = {
-  id: 'expected-shortfall-calculator-calculator',
+export const ExpectedShortfallCalculator: Calculator = {
+  id: 'ExpectedShortfallCalculator-calculator',
   title: 'Expected Shortfall Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

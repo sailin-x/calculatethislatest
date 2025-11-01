@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateMedicalDeviceRoyaltyRateCalculatorInputs } from './validation';
 
 export const MedicalDeviceRoyaltyRateCalculator: Calculator = {
-  id: 'medical-device-royalty-rate-calculator',
+  id: 'MedicalDeviceRoyalty-rate-calculator',
   title: 'Medical Device Royalty Rate Calculator',
   category: 'health',
   subcategory: 'General',

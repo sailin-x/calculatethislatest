@@ -10,7 +10,7 @@ import {
 import { validateLiquidityMiningCalculatorInputs } from './validation';
 
 export const LiquidityMiningCalculator: Calculator = {
-  id: 'liquidity-mining-calculator',
+  id: 'LiquidityMiningCalculator',
   title: 'Liquidity Mining Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

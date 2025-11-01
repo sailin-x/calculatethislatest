@@ -1,4 +1,4 @@
-export { DefinedBenefitPlanCalculatorCalculator } from './DefinedBenefitPlanCalculatorCalculator';
+export { DefinedBenefitPlanCalculator } from './DefinedBenefitPlanCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

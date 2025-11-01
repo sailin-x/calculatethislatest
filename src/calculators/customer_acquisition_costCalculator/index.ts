@@ -1,3 +1,3 @@
-export * from './customer_acquisition_costCalculatorCalculator';
+export * from './customer_acquisition_costCalculator';
 export * from './register';
 export * from './types';

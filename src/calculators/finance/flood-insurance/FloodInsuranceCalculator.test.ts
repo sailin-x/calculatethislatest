@@ -28,8 +28,8 @@ describe('FloodInsuranceCalculator', () => {
     separateDeductibles: true,
     policyType: 'standard',
     policyTerm: 12,
-    policyStartDate: '2024-01-01',
-    policyEndDate: '2024-12-31',
+    policyStartDate: '20240101',
+    policyEndDate: '20241231',
     floodHistory: false,
     numberOfPreviousClaims: 0,
     yearsSinceLastClaim: 10,
@@ -65,7 +65,7 @@ describe('FloodInsuranceCalculator', () => {
   };
 
   test('should have correct calculator properties', () => {
-    expect(FloodInsuranceCalculator.id).toBe('flood-insurance-calculator');
+    expect(FloodInsuranceCalculator.id).toBe('FloodInsuranceCalculator');
     expect(FloodInsuranceCalculator.name).toBe('Flood Insurance Calculator');
     expect(FloodInsuranceCalculator.category).toBe('finance');
     expect(FloodInsuranceCalculator.subcategory).toBe('insurance');

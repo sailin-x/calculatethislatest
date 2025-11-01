@@ -10,7 +10,7 @@ import {
 import { validateFinancialIntegrationCalculatorInputs } from './validation';
 
 export const FinancialIntegrationCalculator: Calculator = {
-  id: 'financial-integration-calculator',
+  id: 'FinancialIntegrationCalculator',
   title: 'Financial Integration Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

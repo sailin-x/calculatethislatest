@@ -1,3 +1,3 @@
-import { MarineInsuranceCalculatorCalculator } from './MarineInsuranceCalculatorCalculator';
+import { MarineInsuranceCalculator } from './MarineInsuranceCalculator';
 
-export { MarineInsuranceCalculatorCalculator };
+export { MarineInsuranceCalculator };

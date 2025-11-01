@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { dissolved_oxygen_calculatorInputs, dissolved_oxygen_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const dissolved_oxygen_calculatorCalculator: Calculator = {
-  id: 'dissolved-oxygen-calculator',
+export const DissolvedOxygenCalculator: Calculator = {
+  id: 'DissolvedOxygenCalculator',
   title: 'Dissolved Oxygen Calculator Calculator',
   category: 'healthfitnessdiet',
   subcategory: 'healthfitnesshub',

@@ -1,4 +1,4 @@
-import { gpu-mining-profitability-calculatorInputs, gpu-mining-profitability-calculatorMetrics, gpu-mining-profitability-calculatorAnalysis } from './types';
+import { GpuMiningProfitability-calculatorInputs, GpuMiningProfitability-calculatorMetrics, GpuMiningProfitability-calculatorAnalysis } from './types';
 
 
 // Business Calculator - Financial metrics
@@ -14,7 +14,7 @@ export function calculatePaybackPeriod(initialInvestment: number, annualCashFlow
   return initialInvestment / annualCashFlow;
 }
 
-export function calculateResult(inputs: gpu-mining-profitability-calculatorInputs): number {
+export function calculateResult(inputs: GpuMiningProfitability-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: gpu-mining-profitability-calculatorInput
   }
 }
 
-export function generateAnalysis(inputs: gpu-mining-profitability-calculatorInputs, metrics: gpu-mining-profitability-calculatorMetrics): gpu-mining-profitability-calculatorAnalysis {
+export function generateAnalysis(inputs: GpuMiningProfitability-calculatorInputs, metrics: GpuMiningProfitability-calculatorMetrics): GpuMiningProfitability-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

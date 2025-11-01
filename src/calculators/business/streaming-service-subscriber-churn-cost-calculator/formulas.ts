@@ -1,4 +1,4 @@
-import { streaming-service-subscriber-churn-cost-calculatorInputs, streaming-service-subscriber-churn-cost-calculatorMetrics, streaming-service-subscriber-churn-cost-calculatorAnalysis } from './types';
+import { StreamingServiceSubscriber-ChurnCostCalculatorinputs, StreamingServiceSubscriber-ChurnCostCalculatormetrics, StreamingServiceSubscriber-ChurnCostCalculatoranalysis } from './types';
 
 // Streaming Service Subscriber Churn Cost Calculator - Business calculations
 export function calculateNetPresentValue(cashFlows: number[], discountRate: number): number {
@@ -11,7 +11,7 @@ export function calculateROI(initialInvestment: number, finalValue: number): num
  return ((finalValue - initialInvestment) / initialInvestment) * 100;
 }
 
-export function calculateResult(inputs: streaming-service-subscriber-churn-cost-calculatorInputs): number {
+export function calculateResult(inputs: StreamingServiceSubscriber-ChurnCostCalculatorinputs): number {
  // Business calculation logic with real math
  const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
  if (numericValues.length >= 2) {
@@ -24,7 +24,7 @@ export function calculateResult(inputs: streaming-service-subscriber-churn-cost-
  return calculateNetPresentValue(numericValues, 10); // 10% discount rate
 }
 
-export function generateAnalysis(inputs: streaming-service-subscriber-churn-cost-calculatorInputs, metrics: streaming-service-subscriber-churn-cost-calculatorMetrics): streaming-service-subscriber-churn-cost-calculatorAnalysis {
+export function generateAnalysis(inputs: StreamingServiceSubscriber-ChurnCostCalculatorinputs, metrics: StreamingServiceSubscriber-ChurnCostCalculatormetrics): StreamingServiceSubscriber-ChurnCostCalculatoranalysis {
  const result = metrics.result;
  let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
  if (Math.abs(result) > 100000) riskLevel = 'High';

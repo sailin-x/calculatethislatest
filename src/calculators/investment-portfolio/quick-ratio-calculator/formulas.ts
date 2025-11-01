@@ -56,7 +56,7 @@ export function generateAnalysis(
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
   let recommendation = '';
 
-  // Investment-portfolio-specific risk assessment for liquidity:
+  // InvestmentPortfolioSpecific risk assessment for liquidity:
   // Quick Ratio > 1.0 indicates strong short-term solvency for portfolio holdings
   // Between 0.5 and 1.0 suggests moderate liquidity risk, potentially requiring monitoring
   // Below 0.5 signals high liquidity risk, impacting portfolio stability

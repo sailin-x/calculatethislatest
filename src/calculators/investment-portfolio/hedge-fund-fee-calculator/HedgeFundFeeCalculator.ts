@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateHedgeFundFeeCalculatorInputs, validateHedgeFundFeeCalculatorBusinessRules } from './validation';
 
-export const HedgeFundFeeCalculatorCalculator: Calculator: Calculator = {
-  id: 'hedge-fund-fee-calculator-calculator',
+export const HedgeFundFeeCalculator: Calculator = {
+  id: 'HedgeFundFee-calculator-calculator',
   title: 'Hedge Fund Fee Calculator Calculator',
   investment-portfolio: 'investment-portfolio', // e.g., 'finance', 'math', 'health', 'business'
   subinvestment-portfolio: 'Subinvestment-portfolio Name',

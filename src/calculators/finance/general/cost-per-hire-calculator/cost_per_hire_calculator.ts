@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { cost_per_hire_calculatorInputs, cost_per_hire_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const cost_per_hire_calculatorCalculator: Calculator = {
-  id: 'cost-per-hire-calculator',
+export const CostPerHire-calculator: Calculator = {
+  id: 'CostPerHire-calculator',
   title: 'Cost Per Hire Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

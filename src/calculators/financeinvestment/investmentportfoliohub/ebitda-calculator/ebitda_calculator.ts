@@ -2,7 +2,7 @@ import { Calculator } from '../../../../types/calculator';
 import { ebitda_calculatorInputs, ebitda_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const ebitda_calculatorCalculator: Calculator = {
+export const ebitda-calculator: Calculator = {
   id: 'ebitda-calculator',
   title: 'EBITDA Calculator Calculator',
   category: 'financeinvestment',

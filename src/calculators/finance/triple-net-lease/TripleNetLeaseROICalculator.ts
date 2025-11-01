@@ -247,7 +247,7 @@ export const TripleNetLeaseROICalculator: Calculator = {
     },
     cashOnCashReturn: {
       type: 'number',
-      label: 'Cash-on-Cash Return',
+      label: 'CashOnCash Return',
       description: 'Annual return on cash invested',
       unit: '%'
     },

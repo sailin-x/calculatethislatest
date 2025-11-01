@@ -1,3 +1,3 @@
-import { TraumaticBrainInjurySettlementCalculatorCalculator } from './TraumaticBrainInjurySettlementCalculatorCalculator';
+import { TraumaticBrainInjurySettlementCalculator } from './TraumaticBrainInjurySettlementCalculator';
 
-export { TraumaticBrainInjurySettlementCalculatorCalculator };
+export { TraumaticBrainInjurySettlementCalculator };

@@ -1,3 +1,3 @@
-import { BadFaithInsuranceClaimCalculatorCalculator } from './BadFaithInsuranceClaimCalculatorCalculator';
+import { BadFaithInsuranceClaimCalculator } from './BadFaithInsuranceClaimCalculator';
 
-export { BadFaithInsuranceClaimCalculatorCalculator };
+export { BadFaithInsuranceClaimCalculator };

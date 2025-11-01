@@ -4,11 +4,11 @@ import { calculateLoanToValueRatio } from './formulas';
 import { validateLoanToValueRatioInputs } from './validation';
 import { validateAllLoanToValueRatioInputs } from './quickValidation';
 
-describe('Loan-to-Value (LTV) Ratio Calculator', () => {
+describe('LoanToValue (LTV) Ratio Calculator', () => {
   describe('Calculator Structure', () => {
     it('should have correct basic properties', () => {
-      expect(LoanToValueRatioCalculator.id).toBe('loan-to-value-ratio-calculator');
-      expect(LoanToValueRatioCalculator.name).toBe('Loan-to-Value (LTV) Ratio Calculator');
+      expect(LoanToValueRatioCalculator.id).toBe('LoanToValue-ratio-calculator');
+      expect(LoanToValueRatioCalculator.name).toBe('LoanToValue (LTV) Ratio Calculator');
       expect(LoanToValueRatioCalculator.category).toBe('finance');
       expect(LoanToValueRatioCalculator.subcategory).toBe('investment');
     });
@@ -103,7 +103,7 @@ describe('Loan-to-Value (LTV) Ratio Calculator', () => {
         debtToIncomeRatio: 150
       });
       expect(result.isValid).toBe(false);
-      expect(result.errors).toContain('Debt-to-income ratio must be 100% or less');
+      expect(result.errors).toContain('DebtToIncome ratio must be 100% or less');
     });
 
     it('should validate property age range', () => {
@@ -325,7 +325,7 @@ describe('Loan-to-Value (LTV) Ratio Calculator', () => {
       const outputs = calculateLoanToValueRatio(inputs);
       const report = LoanToValueRatioCalculator.generateReport(inputs, outputs);
 
-      expect(report).toContain('Loan-to-Value (LTV) Ratio Analysis');
+      expect(report).toContain('LoanToValue (LTV) Ratio Analysis');
       expect(report).toContain('Executive Summary');
       expect(report).toContain('Loan Analysis');
       expect(report).toContain('Financing Structure');

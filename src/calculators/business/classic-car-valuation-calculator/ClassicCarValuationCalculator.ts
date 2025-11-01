@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateClassicCarValuationCalculatorInputs, validateClassicCarValuationCalculatorBusinessRules } from './validation';
 
-export const ClassicCarValuationCalculatorCalculator: Calculator: Calculator = {
-  id: 'classic-car-valuation-calculator-calculator',
+export const ClassicCarValuationCalculator: Calculator = {
+  id: 'ClassicCarValuation-calculator-calculator',
   title: 'Classic Car Valuation Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

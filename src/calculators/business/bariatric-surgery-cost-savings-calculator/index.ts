@@ -1,4 +1,4 @@
-export { BariatricSurgeryCostSavingsCalculatorCalculator } from './BariatricSurgeryCostSavingsCalculatorCalculator';
+export { BariatricSurgeryCostSavingsCalculator } from './BariatricSurgeryCostSavingsCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

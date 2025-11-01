@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateComplexNumberCalculatorInputs } from './validation';
 
 export const ComplexNumberCalculator: Calculator = {
-  id: 'complex-number-calculator',
+  id: 'ComplexNumberCalculator',
   title: 'Complex Number Calculator',
   category: 'math',
   subcategory: 'General',

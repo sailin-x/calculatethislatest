@@ -1,3 +1,3 @@
-export * from './commercial_lease_buyoutCalculatorCalculator';
+export * from './commercial_lease_buyoutCalculator';
 export * from './register';
 export * from './types';

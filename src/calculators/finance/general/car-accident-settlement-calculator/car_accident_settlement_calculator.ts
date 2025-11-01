@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { car_accident_settlement_calculatorInputs, car_accident_settlement_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const car_accident_settlement_calculatorCalculator: Calculator = {
-  id: 'car-accident-settlement-calculator',
+export const CarAccidentSettlement-calculator: Calculator = {
+  id: 'CarAccidentSettlement-calculator',
   title: 'Car Accident Settlement Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

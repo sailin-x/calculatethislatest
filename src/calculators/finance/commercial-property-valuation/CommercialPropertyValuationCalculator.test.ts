@@ -7,7 +7,7 @@ import { validateAllValuationInputs } from './quickValidation';
 describe('Commercial Property Valuation Calculator', () => {
   describe('Calculator Structure', () => {
     it('should have correct basic properties', () => {
-      expect(CommercialPropertyValuationCalculator.id).toBe('commercial-property-valuation-calculator');
+      expect(CommercialPropertyValuationCalculator.id).toBe('CommercialPropertyValuation-calculator');
       expect(CommercialPropertyValuationCalculator.name).toBe('Commercial Property Valuation Calculator');
       expect(CommercialPropertyValuationCalculator.category).toBe('finance');
       expect(CommercialPropertyValuationCalculator.subcategory).toBe('business');

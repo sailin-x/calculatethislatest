@@ -2,7 +2,7 @@ import { Calculator } from '../../../../types/calculator';
 import { roofing_calculatorInputs, roofing_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const roofing_calculatorCalculator: Calculator = {
+export const roofing-calculator: Calculator = {
   id: 'roofing-calculator',
   title: 'Roofing Calculator Calculator',
   category: 'finance',

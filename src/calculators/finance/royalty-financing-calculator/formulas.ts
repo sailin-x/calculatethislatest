@@ -1,4 +1,4 @@
-import { royalty-financing-calculatorInputs, royalty-financing-calculatorMetrics, royalty-financing-calculatorAnalysis } from './types';
+import { RoyaltyFinancingCalculatorinputs, RoyaltyFinancingCalculatormetrics, RoyaltyFinancingCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: royalty-financing-calculatorInputs): number {
+export function calculateResult(inputs: RoyaltyFinancingCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: royalty-financing-calculatorInputs): num
   }
 }
 
-export function generateAnalysis(inputs: royalty-financing-calculatorInputs, metrics: royalty-financing-calculatorMetrics): royalty-financing-calculatorAnalysis {
+export function generateAnalysis(inputs: RoyaltyFinancingCalculatorinputs, metrics: RoyaltyFinancingCalculatormetrics): RoyaltyFinancingCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

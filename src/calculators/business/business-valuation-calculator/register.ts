@@ -1,3 +1,3 @@
-import { BusinessValuationCalculatorCalculator } from './BusinessValuationCalculatorCalculator';
+import { BusinessValuationCalculator } from './BusinessValuationCalculator';
 
-export { BusinessValuationCalculatorCalculator };
+export { BusinessValuationCalculator };

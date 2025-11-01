@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { landlord_insuranceCalculatorCalculator } from './landlord_insuranceCalculatorCalculator';
+import { landlord_insuranceCalculator } from './landlord_insuranceCalculator';
 
-export function registerlandlord_insuranceCalculatorCalculator(): void {
-  calculatorRegistry.register(new landlord_insuranceCalculatorCalculator());
+export function registerlandlord_insuranceCalculator(): void {
+  calculatorRegistry.register(new landlord_insuranceCalculator());
 }

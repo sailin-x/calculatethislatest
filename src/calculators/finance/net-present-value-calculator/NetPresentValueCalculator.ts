@@ -10,7 +10,7 @@ import {
 import { validateNetPresentValueCalculatorInputs } from './validation';
 
 export const NetPresentValueCalculator: Calculator = {
-  id: 'net-present-value-calculator',
+  id: 'NetPresentValue-calculator',
   title: 'Net Present Value Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

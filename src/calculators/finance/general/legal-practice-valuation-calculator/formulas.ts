@@ -1,4 +1,4 @@
-import { legal-practice-valuation-calculatorInputs, legal-practice-valuation-calculatorMetrics, legal-practice-valuation-calculatorAnalysis } from './types';
+import { LegalPracticeValuation-calculatorInputs, LegalPracticeValuation-calculatorMetrics, LegalPracticeValuation-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: legal-practice-valuation-calculatorInputs): number {
+export function calculateResult(inputs: LegalPracticeValuation-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: legal-practice-valuation-calculatorInput
   }
 }
 
-export function generateAnalysis(inputs: legal-practice-valuation-calculatorInputs, metrics: legal-practice-valuation-calculatorMetrics): legal-practice-valuation-calculatorAnalysis {
+export function generateAnalysis(inputs: LegalPracticeValuation-calculatorInputs, metrics: LegalPracticeValuation-calculatorMetrics): LegalPracticeValuation-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

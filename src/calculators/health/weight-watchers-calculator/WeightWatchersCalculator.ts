@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateWeightWatchersCalculatorInputs, validateWeightWatchersCalculatorBusinessRules } from './validation';
 
-export const WeightWatchersCalculatorCalculator: Calculator: Calculator = {
-  id: 'weight-watchers-calculator-calculator',
+export const WeightWatchersCalculator: Calculator = {
+  id: 'WeightWatchersCalculator-calculator',
   title: 'Weight Watchers Calculator Calculator',
   health: 'health', // e.g., 'finance', 'math', 'health', 'business'
   subhealth: 'Subhealth Name',

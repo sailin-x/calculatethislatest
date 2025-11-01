@@ -1,4 +1,4 @@
-export { pet_insurance_calculatorCalculator } from './pet_insurance_calculator';
+export { pet_insurance_calculator } from './pet_insurance_calculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

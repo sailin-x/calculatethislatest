@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { business_insurance_calculatorInputs, business_insurance_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const business_insurance_calculatorCalculator: Calculator = {
-  id: 'business-insurance-calculator',
+export const BusinessInsuranceCalculator: Calculator = {
+  id: 'BusinessInsuranceCalculator',
   title: 'Business Insurance Calculator Calculator',
   category: 'finance',
   subcategory: 'general',

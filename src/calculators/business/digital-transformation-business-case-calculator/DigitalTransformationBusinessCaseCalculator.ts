@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateDigitalTransformationBusinessCaseCalculatorInputs, validateDigitalTransformationBusinessCaseCalculatorBusinessRules } from './validation';
 
-export const DigitalTransformationBusinessCaseCalculatorCalculator: Calculator: Calculator = {
-  id: 'digital-transformation-business-case-calculator-calculator',
+export const DigitalTransformationBusinessCaseCalculator: Calculator = {
+  id: 'DigitalTransformationBusiness-CaseCalculatorCalculator',
   title: 'Digital Transformation Business Case Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

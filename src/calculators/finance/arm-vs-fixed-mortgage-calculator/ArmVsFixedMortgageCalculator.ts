@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateArmVsFixedMortgageCalculatorInputs, validateArmVsFixedMortgageCalculatorBusinessRules } from './validation';
 
-export const ArmVsFixedMortgageCalculatorCalculator: Calculator: Calculator = {
-  id: 'arm-vs-fixed-mortgage-calculator-calculator',
+export const ArmVsFixedMortgageCalculator: Calculator = {
+  id: 'ArmVsFixed-MortgageCalculatorCalculator',
   title: 'ARM vs. Fixed Mortgage Calculator Calculator',
   finance: 'finance', // e.g., 'finance', 'math', 'health', 'business'
   subfinance: 'Subfinance Name',

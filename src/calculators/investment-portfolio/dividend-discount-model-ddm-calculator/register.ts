@@ -1,3 +1,3 @@
-import { DividendDiscountModelDdmCalculatorCalculator } from './DividendDiscountModelDdmCalculatorCalculator';
+import { DividendDiscountModelDdmCalculator } from './DividendDiscountModelDdmCalculator';
 
-export { DividendDiscountModelDdmCalculatorCalculator };
+export { DividendDiscountModelDdmCalculator };

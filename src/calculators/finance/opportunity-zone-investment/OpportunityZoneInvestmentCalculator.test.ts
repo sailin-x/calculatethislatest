@@ -5,7 +5,7 @@ import * as quickValidation from './quickValidation';
 describe('OpportunityZoneInvestmentCalculator', () => {
   describe('Calculator Definition', () => {
     it('should have correct id and title', () => {
-      expect(OpportunityZoneInvestmentCalculator.id).toBe('opportunity-zone-investment-calculator');
+      expect(OpportunityZoneInvestmentCalculator.id).toBe('OpportunityZoneInvestment-calculator');
       expect(OpportunityZoneInvestmentCalculator.title).toBe('Opportunity Zone Investment ROI Calculator');
     });
 

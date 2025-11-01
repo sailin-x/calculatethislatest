@@ -1,3 +1,3 @@
-import { CorporateTaxShieldCalculatorCalculator } from './CorporateTaxShieldCalculatorCalculator';
+import { CorporateTaxShieldCalculator } from './CorporateTaxShieldCalculator';
 
-export { CorporateTaxShieldCalculatorCalculator };
+export { CorporateTaxShieldCalculator };

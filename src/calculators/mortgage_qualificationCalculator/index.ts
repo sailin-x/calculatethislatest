@@ -1,3 +1,3 @@
-export * from './mortgage_qualificationCalculatorCalculator';
+export * from './mortgage_qualificationCalculator';
 export * from './register';
 export * from './types';

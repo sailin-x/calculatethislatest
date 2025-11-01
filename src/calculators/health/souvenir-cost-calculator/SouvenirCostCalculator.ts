@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateSouvenirCostCalculatorInputs } from './validation';
 
 export const SouvenirCostCalculator: Calculator = {
-  id: 'souvenir-cost-calculator',
+  id: 'SouvenirCostCalculator',
   title: 'Souvenir Cost Calculator',
   category: 'health',
   subcategory: 'General',

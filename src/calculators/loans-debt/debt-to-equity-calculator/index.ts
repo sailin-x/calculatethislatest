@@ -1,4 +1,4 @@
-export { DebtToEquityCalculatorCalculator } from './DebtToEquityCalculatorCalculator';
+export { DebtToEquityCalculator } from './DebtToEquityCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

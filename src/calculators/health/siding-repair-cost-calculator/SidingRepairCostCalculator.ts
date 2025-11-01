@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateSidingRepairCostCalculatorInputs } from './validation';
 
 export const SidingRepairCostCalculator: Calculator = {
-  id: 'siding-repair-cost-calculator',
+  id: 'SidingRepairCost-calculator',
   title: 'Siding Repair Cost Calculator',
   category: 'health',
   subcategory: 'General',

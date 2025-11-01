@@ -4,7 +4,7 @@ import { calculateResult, generateCalculation, generateAnalysis } from './formul
 import { validateDomainCostCalculatorInputs } from './validation';
 
 export const DomainCostCalculator: Calculator = {
-  id: 'domain-cost-calculator',
+  id: 'DomainCostCalculator',
   title: 'Domain Cost Calculator',
   category: 'health',
   subcategory: 'General',

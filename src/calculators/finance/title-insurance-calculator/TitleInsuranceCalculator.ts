@@ -23,7 +23,7 @@ const titleInsuranceFormula: Formula = {
  * Industry-leading title insurance calculator with comprehensive features
  */
 export const titleInsuranceCalculator: Calculator = {
-  id: 'title-insurance-calculator',
+  id: 'TitleInsuranceCalculator',
   title: 'Title Insurance Calculator',
   category: 'finance',
   subcategory: 'Mortgage & Real Estate',
@@ -329,7 +329,7 @@ export const titleInsuranceCalculator: Calculator = {
         notaryFee: 150,
         recordingFee: 500,
         transferTaxRate: 0.75,
-        settlementDate: '2024-06-15',
+        settlementDate: '20240615',
         isRefinance: false,
         isCashPurchase: false,
         includeEndorsements: false,

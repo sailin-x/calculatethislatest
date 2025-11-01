@@ -3,7 +3,7 @@ import { calculateBridgeLoan, calculateComparison, generatePaymentSchedule } fro
 import { validateBridgeLoanInputs } from './validation';
 
 export const BridgeLoanCalculator: Calculator = {
-  id: 'bridge-loan-calculator',
+  id: 'BridgeLoanCalculator',
   name: 'Bridge Loan Calculator',
   description: 'Calculate bridge loan payments, costs, and compare with alternative financing options to determine if a bridge loan is the right choice for your situation.',
   category: 'finance',
@@ -236,9 +236,9 @@ export const BridgeLoanCalculator: Calculator = {
     },
     {
       id: 'debtToIncomeRatio',
-      label: 'Debt-to-Income Ratio',
+      label: 'DebtToIncome Ratio',
       type: 'percentage',
-      explanation: 'Combined debt-to-income ratio with bridge loan'
+      explanation: 'Combined DebtToIncome ratio with bridge loan'
     }
   ],
 

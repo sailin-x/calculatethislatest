@@ -8,8 +8,8 @@ import {
 } from './formulas';
 import { validateSelffundedHealthPlanVsFullyinsuredCalculatorInputs, validateSelffundedHealthPlanVsFullyinsuredCalculatorBusinessRules } from './validation';
 
-export const SelffundedHealthPlanVsFullyinsuredCalculatorCalculator: Calculator: Calculator = {
-  id: 'self-funded-health-plan-vs-fully-insured-calculator-calculator',
+export const SelffundedHealthPlanVsFullyinsuredCalculator: Calculator = {
+  id: 'SelfFundedHealth-PlanVsFully-InsuredCalculatorCalculator',
   title: 'Self-Funded Health Plan vs. Fully-Insured Calculator Calculator',
   health: 'health', // e.g., 'finance', 'math', 'health', 'business'
   subhealth: 'Subhealth Name',

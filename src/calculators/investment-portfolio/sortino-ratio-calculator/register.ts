@@ -1,3 +1,3 @@
-import { SortinoRatioCalculatorCalculator } from './SortinoRatioCalculatorCalculator';
+import { SortinoRatioCalculator } from './SortinoRatioCalculator';
 
-export { SortinoRatioCalculatorCalculator };
+export { SortinoRatioCalculator };

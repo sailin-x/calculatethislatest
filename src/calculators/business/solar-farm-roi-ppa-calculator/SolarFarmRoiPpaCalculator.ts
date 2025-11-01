@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateSolarFarmRoiPpaCalculatorInputs, validateSolarFarmRoiPpaCalculatorBusinessRules } from './validation';
 
-export const SolarFarmRoiPpaCalculatorCalculator: Calculator: Calculator = {
-  id: 'solar-farm-roi-ppa-calculator-calculator',
+export const SolarFarmRoiPpaCalculator: Calculator = {
+  id: 'SolarFarmRoi-PpaCalculatorCalculator',
   title: 'Solar Farm ROI & PPA Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

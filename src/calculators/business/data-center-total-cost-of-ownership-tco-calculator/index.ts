@@ -1,4 +1,4 @@
-export { DataCenterTotalCostOfOwnershipTcoCalculatorCalculator } from './DataCenterTotalCostOfOwnershipTcoCalculatorCalculator';
+export { DataCenterTotalCostOfOwnershipTcoCalculator } from './DataCenterTotalCostOfOwnershipTcoCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

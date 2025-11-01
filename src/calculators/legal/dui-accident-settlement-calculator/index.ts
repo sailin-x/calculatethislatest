@@ -1,4 +1,4 @@
-export { DuiAccidentSettlementCalculatorCalculator } from './DuiAccidentSettlementCalculatorCalculator';
+export { DuiAccidentSettlementCalculator } from './DuiAccidentSettlementCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

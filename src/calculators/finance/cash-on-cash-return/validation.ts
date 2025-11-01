@@ -1,7 +1,7 @@
 import { ValidationResult } from '../../../types/calculator';
 
 /**
- * Validate cash-on-cash return calculator inputs
+ * Validate CashOnCash return calculator inputs
  */
 export function validateCashOnCashReturnInputs(inputs: Record<string, any>): ValidationResult {
   const errors: string[] = [];
@@ -153,9 +153,9 @@ export function validateCashOnCashReturnInputs(inputs: Record<string, any>): Val
 
   const loanToValue = (inputs.loanAmount / inputs.purchasePrice) * 100;
   if (loanToValue > 95) {
-    errors.push('Loan-to-value ratio cannot exceed 95%');
+    errors.push('LoanToValue ratio cannot exceed 95%');
   } else if (loanToValue > 80) {
-    warnings.push('High loan-to-value ratio increases risk');
+    warnings.push('High LoanToValue ratio increases risk');
   }
 
   const downPaymentPercentage = (inputs.downPayment / inputs.purchasePrice) * 100;
@@ -165,13 +165,13 @@ export function validateCashOnCashReturnInputs(inputs: Record<string, any>): Val
     warnings.push('Low down payment may require PMI and increases risk');
   }
 
-  // Rent-to-value ratio validation
+  // RentToValue ratio validation
   const annualRent = inputs.monthlyRent * 12;
   const rentToValueRatio = (annualRent / inputs.purchasePrice) * 100;
   if (rentToValueRatio < 5) {
-    warnings.push('Low rent-to-value ratio may indicate overvaluation');
+    warnings.push('Low RentToValue ratio may indicate overvaluation');
   } else if (rentToValueRatio > 20) {
-    warnings.push('High rent-to-value ratio may indicate undervaluation or high-risk area');
+    warnings.push('High RentToValue ratio may indicate undervaluation or high-risk area');
   }
 
   // Business rule validation
@@ -196,7 +196,7 @@ export function validateCashOnCashReturnInputs(inputs: Record<string, any>): Val
 }
 
 /**
- * Validate cash-on-cash return reasonableness
+ * Validate CashOnCash return reasonableness
  */
 export function validateCashOnCashReturnReasonableness(
   cashOnCashReturn: number,
@@ -207,11 +207,11 @@ export function validateCashOnCashReturnReasonableness(
   const errors: string[] = [];
   const warnings: string[] = [];
 
-  // Cash-on-cash return validation
+  // CashOnCash return validation
   if (cashOnCashReturn < -20) {
-    warnings.push('Very negative cash-on-cash return indicates high-risk investment');
+    warnings.push('Very negative CashOnCash return indicates high-risk investment');
   } else if (cashOnCashReturn > 25) {
-    warnings.push('Very high cash-on-cash return may indicate unrealistic assumptions');
+    warnings.push('Very high CashOnCash return may indicate unrealistic assumptions');
   }
 
   // Total return validation

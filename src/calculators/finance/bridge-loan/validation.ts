@@ -156,13 +156,13 @@ export function validateBridgeLoanInputs(inputs: Record<string, any>): Validatio
     warnings.push('Rental expenses exceed rental income');
   }
 
-  // Loan-to-value ratio validation
+  // LoanToValue ratio validation
   const ltvRatio = (inputs.bridgeLoanAmount / inputs.currentHomeValue) * 100;
   if (ltvRatio > 80) {
-    warnings.push('High loan-to-value ratio (>80%) may affect qualification');
+    warnings.push('High LoanToValue ratio (>80%) may affect qualification');
   }
 
-  // Debt-to-income ratio estimation
+  // DebtToIncome ratio estimation
   const estimatedMonthlyPayment = estimateBridgeLoanPayment(inputs.bridgeLoanAmount, inputs.bridgeLoanRate, inputs.bridgeLoanTerm);
   const estimatedCurrentPayment = inputs.currentMortgageBalance * 0.005; // Rough estimate
   const totalMonthlyDebt = estimatedMonthlyPayment + estimatedCurrentPayment;
@@ -170,9 +170,9 @@ export function validateBridgeLoanInputs(inputs: Record<string, any>): Validatio
   const dtiRatio = (totalMonthlyDebt / estimatedMonthlyIncome) * 100;
   
   if (dtiRatio > 50) {
-    warnings.push('Estimated debt-to-income ratio is very high (>50%)');
+    warnings.push('Estimated DebtToIncome ratio is very high (>50%)');
   } else if (dtiRatio > 43) {
-    warnings.push('Estimated debt-to-income ratio exceeds recommended limit (>43%)');
+    warnings.push('Estimated DebtToIncome ratio exceeds recommended limit (>43%)');
   }
 
   return {
@@ -214,16 +214,16 @@ export function validateBridgeLoanFeasibility(
     errors.push('Bridge loan amount exceeds available equity');
   }
 
-  // Debt-to-income ratio check
+  // DebtToIncome ratio check
   const estimatedBridgePayment = estimateBridgeLoanPayment(bridgeLoanAmount, 8.5, 12); // Assume 8.5% rate, 12-month term
   const estimatedCurrentPayment = currentMortgageBalance * 0.005; // Rough estimate
   const totalMonthlyDebt = estimatedBridgePayment + estimatedCurrentPayment + otherMonthlyDebt;
   const dtiRatio = (totalMonthlyDebt / monthlyIncome) * 100;
 
   if (dtiRatio > 50) {
-    errors.push('Debt-to-income ratio exceeds 50% - bridge loan may not be feasible');
+    errors.push('DebtToIncome ratio exceeds 50% - bridge loan may not be feasible');
   } else if (dtiRatio > 43) {
-    warnings.push('Debt-to-income ratio exceeds recommended 43% limit');
+    warnings.push('DebtToIncome ratio exceeds recommended 43% limit');
   }
 
   // Credit score considerations

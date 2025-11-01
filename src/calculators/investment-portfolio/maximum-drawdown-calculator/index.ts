@@ -1,4 +1,4 @@
-export { MaximumDrawdownCalculatorCalculator } from './MaximumDrawdownCalculatorCalculator';
+export { MaximumDrawdownCalculator } from './MaximumDrawdownCalculator';
 export * from './types';
 export * from './formulas';
 export * from './validation';

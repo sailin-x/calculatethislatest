@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateMedicalPracticeValuationCalculatorInputs, validateMedicalPracticeValuationCalculatorBusinessRules } from './validation';
 
-export const MedicalPracticeValuationCalculatorCalculator: Calculator: Calculator = {
-  id: 'medical-practice-valuation-calculator-calculator',
+export const MedicalPracticeValuationCalculator: Calculator = {
+  id: 'MedicalPracticeValuation-calculator-calculator',
   title: 'Medical Practice Valuation Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

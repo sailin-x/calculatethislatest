@@ -2,7 +2,7 @@ import { Calculator } from '../../../../types/calculator';
 import { chlorine_calculatorInputs, chlorine_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const chlorine_calculatorCalculator: Calculator = {
+export const chlorine-calculator: Calculator = {
   id: 'chlorine-calculator',
   title: 'Chlorine Calculator Calculator',
   category: 'finance',

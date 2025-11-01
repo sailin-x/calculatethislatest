@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { venture_debt_vs_equity_financing_calculatorInputs, venture_debt_vs_equity_financing_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const venture_debt_vs_equity_financing_calculatorCalculator: Calculator = {
-  id: 'venture-debt-vs-equity-financing-calculator',
+export const VentureDebtVs-EquityFinancingCalculator: Calculator = {
+  id: 'VentureDebtVs-EquityFinancingCalculator',
   title: 'Venture Debt vs. Equity Financing Calculator Calculator',
   category: 'financeinvestment',
   subcategory: 'investmentportfoliohub',

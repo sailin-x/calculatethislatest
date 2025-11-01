@@ -4,7 +4,7 @@ import { calculateResult, generateAnalysis } from './formulas';
 import { validateLapseRateSensitivityAnalysisInputs } from './validation';
 
 export const LapseRateSensitivityAnalysis: Calculator = {
-  id: 'lapse-rate-sensitivity-analysis',
+  id: 'LapseRateSensitivity-analysis',
   title: 'Lapse Rate Sensitivity Analysis',
   category: 'insurance',
   subcategory: 'General',

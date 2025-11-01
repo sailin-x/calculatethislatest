@@ -2,8 +2,8 @@ import { Calculator } from '../../../../types/calculator';
 import { maritime_injury_compensation_calculatorInputs, maritime_injury_compensation_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const maritime_injury_compensation_calculatorCalculator: Calculator = {
-  id: 'maritime-injury-compensation-calculator',
+export const MaritimeInjuryCompensation-calculator: Calculator = {
+  id: 'MaritimeInjuryCompensation-calculator',
   title: 'Maritime Injury Compensation Calculator Calculator',
   category: 'legalinsurancesettlements',
   subcategory: 'legalsettlementhub',

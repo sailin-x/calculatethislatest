@@ -1,7 +1,7 @@
 import { Calculator } from '../../types/calculator';
 
 export const PropertyTaxCalculator: Calculator = {
-  id: 'property-tax-calculator',
+  id: 'PropertyTaxCalculator',
   title: 'Property Tax Calculator',
   category: 'finance',
   subcategory: 'Mortgage & Real Estate',

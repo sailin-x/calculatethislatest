@@ -1,4 +1,4 @@
-import { expense-tracker-calculatorInputs, expense-tracker-calculatorMetrics, expense-tracker-calculatorAnalysis } from './types';
+import { ExpenseTrackerCalculatorinputs, ExpenseTrackerCalculatormetrics, ExpenseTrackerCalculatoranalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: expense-tracker-calculatorInputs): number {
+export function calculateResult(inputs: ExpenseTrackerCalculatorinputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: expense-tracker-calculatorInputs): numbe
   }
 }
 
-export function generateAnalysis(inputs: expense-tracker-calculatorInputs, metrics: expense-tracker-calculatorMetrics): expense-tracker-calculatorAnalysis {
+export function generateAnalysis(inputs: ExpenseTrackerCalculatorinputs, metrics: ExpenseTrackerCalculatormetrics): ExpenseTrackerCalculatoranalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

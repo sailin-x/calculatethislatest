@@ -1,4 +1,4 @@
-import { rental-property-roi-calculatorInputs, rental-property-roi-calculatorMetrics, rental-property-roi-calculatorAnalysis } from './types';
+import { RentalPropertyRoi-calculatorInputs, RentalPropertyRoi-calculatorMetrics, RentalPropertyRoi-calculatorAnalysis } from './types';
 
 
 // Investment Calculator - ROI and growth calculations
@@ -12,7 +12,7 @@ export function calculateCompoundInterest(principal: number, rate: number, years
   return principal * Math.pow(1 + ratePerPeriod, totalPeriods);
 }
 
-export function calculateResult(inputs: rental-property-roi-calculatorInputs): number {
+export function calculateResult(inputs: RentalPropertyRoi-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -36,7 +36,7 @@ export function calculateResult(inputs: rental-property-roi-calculatorInputs): n
   }
 }
 
-export function generateAnalysis(inputs: rental-property-roi-calculatorInputs, metrics: rental-property-roi-calculatorMetrics): rental-property-roi-calculatorAnalysis {
+export function generateAnalysis(inputs: RentalPropertyRoi-calculatorInputs, metrics: RentalPropertyRoi-calculatorMetrics): RentalPropertyRoi-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateYachtOperatingCostDepreciationCalculatorInputs, validateYachtOperatingCostDepreciationCalculatorBusinessRules } from './validation';
 
-export const YachtOperatingCostDepreciationCalculatorCalculator: Calculator: Calculator = {
-  id: 'yacht-operating-cost-depreciation-calculator-calculator',
+export const YachtOperatingCostDepreciationCalculator: Calculator = {
+  id: 'YachtOperatingCost-DepreciationCalculatorCalculator',
   title: 'Yacht Operating Cost & Depreciation Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

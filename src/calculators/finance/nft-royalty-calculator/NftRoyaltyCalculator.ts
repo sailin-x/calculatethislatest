@@ -10,7 +10,7 @@ import {
 import { validateNftRoyaltyCalculatorInputs } from './validation';
 
 export const NftRoyaltyCalculator: Calculator = {
-  id: 'nft-royalty-calculator',
+  id: 'NftRoyaltyCalculator',
   title: 'NFT Royalty Calculator',
   category: 'finance',
   subcategory: 'Financial Planning',

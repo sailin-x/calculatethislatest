@@ -1,4 +1,4 @@
-import { business-loan-qualification-calculatorInputs, business-loan-qualification-calculatorMetrics, business-loan-qualification-calculatorAnalysis } from './types';
+import { BusinessLoanQualification-calculatorInputs, BusinessLoanQualification-calculatorMetrics, BusinessLoanQualification-calculatorAnalysis } from './types';
 
 // Business Loan Qualification Calculator - Business calculations
 export function calculateNetPresentValue(cashFlows: number[], discountRate: number): number {
@@ -11,7 +11,7 @@ export function calculateROI(initialInvestment: number, finalValue: number): num
  return ((finalValue - initialInvestment) / initialInvestment) * 100;
 }
 
-export function calculateResult(inputs: business-loan-qualification-calculatorInputs): number {
+export function calculateResult(inputs: BusinessLoanQualification-calculatorInputs): number {
  // Business calculation logic with real math
  const numericValues = Object.values(inputs).filter(v => typeof v === 'number') as number[];
  if (numericValues.length >= 2) {
@@ -24,7 +24,7 @@ export function calculateResult(inputs: business-loan-qualification-calculatorIn
  return calculateNetPresentValue(numericValues, 10); // 10% discount rate
 }
 
-export function generateAnalysis(inputs: business-loan-qualification-calculatorInputs, metrics: business-loan-qualification-calculatorMetrics): business-loan-qualification-calculatorAnalysis {
+export function generateAnalysis(inputs: BusinessLoanQualification-calculatorInputs, metrics: BusinessLoanQualification-calculatorMetrics): BusinessLoanQualification-calculatorAnalysis {
  const result = metrics.result;
  let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';
  if (Math.abs(result) > 100000) riskLevel = 'High';

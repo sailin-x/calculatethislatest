@@ -1,4 +1,4 @@
-import { massage-therapy-cost-calculatorInputs, massage-therapy-cost-calculatorMetrics, massage-therapy-cost-calculatorAnalysis } from './types';
+import { MassageTherapyCost-calculatorInputs, MassageTherapyCost-calculatorMetrics, MassageTherapyCost-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: massage-therapy-cost-calculatorInputs): number {
+export function calculateResult(inputs: MassageTherapyCost-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: massage-therapy-cost-calculatorInputs): 
   }
 }
 
-export function generateAnalysis(inputs: massage-therapy-cost-calculatorInputs, metrics: massage-therapy-cost-calculatorMetrics): massage-therapy-cost-calculatorAnalysis {
+export function generateAnalysis(inputs: MassageTherapyCost-calculatorInputs, metrics: MassageTherapyCost-calculatorMetrics): MassageTherapyCost-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

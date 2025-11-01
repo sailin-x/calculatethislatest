@@ -9,7 +9,7 @@ import {
 import { validateDivorceSettlementCalculatorInputs } from './validation';
 
 export const DivorceSettlementCalculator: Calculator = {
-  id: 'divorce-settlement-calculator',
+  id: 'DivorceSettlementCalculator',
   title: 'Divorce Settlement Calculator',
   category: 'legal',
   subcategory: 'Settlement Analysis',

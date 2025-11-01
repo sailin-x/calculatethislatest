@@ -1,3 +1,3 @@
-import { RequiredBeginningDate(rbd)ForRmdsCalculatorCalculator } from './RequiredBeginningDate(rbd)ForRmdsCalculatorCalculator';
+import { RequiredBeginningDate(rbd)ForRmdsCalculator } from './RequiredBeginningDate(rbd)ForRmdsCalculator';
 
-export { RequiredBeginningDate(rbd)ForRmdsCalculatorCalculator };
+export { RequiredBeginningDate(rbd)ForRmdsCalculator };

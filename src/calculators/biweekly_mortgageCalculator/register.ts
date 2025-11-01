@@ -1,6 +1,6 @@
 import { calculatorRegistry } from '../../data/calculatorRegistry';
-import { biweekly_mortgageCalculatorCalculator } from './biweekly_mortgageCalculatorCalculator';
+import { biweekly_mortgageCalculator } from './biweekly_mortgageCalculator';
 
-export function registerbiweekly_mortgageCalculatorCalculator(): void {
-  calculatorRegistry.register(new biweekly_mortgageCalculatorCalculator());
+export function registerbiweekly_mortgageCalculator(): void {
+  calculatorRegistry.register(new biweekly_mortgageCalculator());
 }

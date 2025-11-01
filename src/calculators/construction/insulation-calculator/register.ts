@@ -1,3 +1,3 @@
-import { InsulationCalculatorCalculator } from './InsulationCalculatorCalculator';
+import { InsulationCalculator } from './InsulationCalculator';
 
-export { InsulationCalculatorCalculator };
+export { InsulationCalculator };

@@ -8,10 +8,10 @@ import {
 } from './formulas';
 import { validateCosmeticSurgeryCostCalculatorInputs, validateCosmeticSurgeryCostCalculatorBusinessRules } from './validation';
 
-export const CosmeticSurgeryCostCalculatorCalculator: Calculator: Calculator = {
-  id: 'cosmetic-surgery-cost-calculator-calculator',
+export const CosmeticSurgeryCostCalculator: Calculator = {
+  id: 'CosmeticSurgeryCost-calculator-calculator',
   title: 'Cosmetic Surgery Cost Calculator Calculator',
-  business: 'business', // e.g., 'finance', 'math', 'health', 'business'
+  category: 'business', // e.g., 'finance', 'math', 'health', 'business'
   subbusiness: 'Subbusiness Name',
   description: 'Brief description of what this calculator does and its purpose.',
   usageInstructions: [

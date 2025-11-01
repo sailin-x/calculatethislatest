@@ -9,7 +9,7 @@ import {
 import { validateImmigrationFilingCalculatorInputs } from './validation';
 
 export const ImmigrationFilingCalculator: Calculator = {
-  id: 'immigration-filing-calculator',
+  id: 'ImmigrationFilingCalculator',
   title: 'Immigration Filing Calculator',
   category: 'legal',
   subcategory: 'Settlement Analysis',

@@ -1,4 +1,4 @@
-import { record-label-deal-calculatorInputs, record-label-deal-calculatorMetrics, record-label-deal-calculatorAnalysis } from './types';
+import { RecordLabelDeal-calculatorInputs, RecordLabelDeal-calculatorMetrics, RecordLabelDeal-calculatorAnalysis } from './types';
 
 
 // Generic Calculator - Basic mathematical operations
@@ -14,7 +14,7 @@ export function calculateAverage(values: number[]): number {
   return values.reduce((sum, val) => sum + val, 0) / values.length;
 }
 
-export function calculateResult(inputs: record-label-deal-calculatorInputs): number {
+export function calculateResult(inputs: RecordLabelDeal-calculatorInputs): number {
   // Use domain-specific calculations based on input properties
   try {
     // Try to match inputs to appropriate calculation
@@ -38,7 +38,7 @@ export function calculateResult(inputs: record-label-deal-calculatorInputs): num
   }
 }
 
-export function generateAnalysis(inputs: record-label-deal-calculatorInputs, metrics: record-label-deal-calculatorMetrics): record-label-deal-calculatorAnalysis {
+export function generateAnalysis(inputs: RecordLabelDeal-calculatorInputs, metrics: RecordLabelDeal-calculatorMetrics): RecordLabelDeal-calculatorAnalysis {
   const result = metrics.result;
 
   let riskLevel: 'Low' | 'Medium' | 'High' = 'Low';

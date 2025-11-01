@@ -2,14 +2,14 @@ import { Calculator } from '../../../../types/calculator';
 import { out_of_home_ooh_advertising_roi_calculatorInputs, out_of_home_ooh_advertising_roi_calculatorOutputs } from './types';
 import { calculateResult, generateAnalysis } from './formulas';
 
-export const out_of_home_ooh_advertising_roi_calculatorCalculator: Calculator = {
-  id: 'out-of-home-ooh-advertising-roi-calculator',
+export const OutOfHome-OohAdvertisingRoi-calculator: Calculator = {
+  id: 'OutOfHome-OohAdvertisingRoi-calculator',
   title: 'Out of Home (OOH) Advertising ROI Calculator Calculator',
   category: 'businessmarketingoperations',
   subcategory: 'marketingcreatorhub',
-  description: 'Calculate Out-of-Home (OOH) Advertising ROI Calculator metrics with professional accuracy.',
+  description: 'Calculate OutOfHome (OOH) Advertising ROI Calculator metrics with professional accuracy.',
   usageInstructions: [
-    'Enter your Out-of-Home (OOH) Advertising ROI Calculator parameters',
+    'Enter your OutOfHome (OOH) Advertising ROI Calculator parameters',
     'Review calculation results',
     'Consider professional consultation for large amounts'
   ],
@@ -61,7 +61,7 @@ export const out_of_home_ooh_advertising_roi_calculatorCalculator: Calculator = 
   examples: [
     {
       title: 'Standard Calculation',
-      description: 'Basic Out-of-Home (OOH) Advertising ROI Calculator calculation',
+      description: 'Basic OutOfHome (OOH) Advertising ROI Calculator calculation',
       inputs: { amount: 10000, rate: 5, time: 1 },
       expectedOutputs: { result: 500 }
     }
